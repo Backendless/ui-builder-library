@@ -41,14 +41,14 @@ define(() => {
   } 
   
   function createImages(data, relations) {
-    const images = data.map((imgData,idx) => {
-      const imageSize = relations.find(el => el.id === imgData.objectId);
+    const images = data.map(imgData => {
+      const imageRelation = relations.find(el => el.url === imgData.URL);
       return React.createElement(
         'a', 
         {
           href: imgData.URL,
           'data-pswp-width': 3840,
-          'data-pswp-height': 3840 / imageSize.relation,
+          'data-pswp-height': 3840 / imageRelation.relation,
           key: `photoSwipeGallery-${imgData.objectId}`,
           target: "_blank",
           rel: "noreferrer",
@@ -69,10 +69,10 @@ define(() => {
     return images;
   }
   
-  function updateObjects(data) {
+  function createRelations(data) {
     return data.map(img => {
       const size = {};
-      size.id = img.objectId;
+      size.url = img.URL;
       const image = new Image();
       image.src = img.URL;
       size.relation = image.width / image.height;
@@ -81,7 +81,7 @@ define(() => {
   }
   
   function createGallery(data, show=true) {
-    const relations = updateObjects(data);
+    const relations = createRelations(data);
     const images = createImages(data, relations);
     const display = show? "flex" : "none"
     const gallery = React.createElement(
