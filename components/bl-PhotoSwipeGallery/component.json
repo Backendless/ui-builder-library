@@ -1,0 +1,78 @@
+{
+  "id": "c_fb6853430359a9723319423ea1e98685",
+  "name": "PhotoSwipe",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "imagesUrlLogic",
+      "handlerId": "imagesUrlLogic",
+      "handlerLabel": "Images Url Logic",
+      "type": "text",
+      "dataBinding": true,
+      "label": "",
+      "defaultValue": "",
+      "handlerDescription": "This is a handler for getting data for rendering images"
+    },
+    {
+      "name": "bgOpacity",
+      "label": "Background Opacity",
+      "type": "number",
+      "handlerId": ""
+    },
+    {
+      "name": "separator",
+      "handlerId": "",
+      "label": "Separator",
+      "type": "text",
+      "defaultValue": ""
+    },
+    {
+      "name": "allowPanToNext",
+      "label": "Allow swipe if current zoomed(mobile)",
+      "type": "checkbox",
+      "defaultValue": true
+    },
+    {
+      "name": "loop",
+      "label": "Loop Gallery",
+      "type": "checkbox",
+      "defaultValue": true
+    },
+    {
+      "name": "wheelToZoom",
+      "label": "Zoom by wheel",
+      "type": "checkbox",
+      "defaultValue": false
+    },
+    {
+      "name": "pinchToClose",
+      "label": "Pinch To Close",
+      "type": "checkbox",
+      "defaultValue": true
+    },
+    {
+      "name": "closeOnVerticalDrag",
+      "label": "Close On Vertical Drag",
+      "type": "checkbox",
+      "defaultValue": true
+    },
+    {
+      "name": "escKey",
+      "label": "Close on Esc",
+      "type": "checkbox",
+      "defaultValue": true
+    },
+    {
+      "name": "arrowKeys",
+      "label": "Allow Arrow Keys ",
+      "type": "checkbox",
+      "defaultValue": true
+    }
+  ],
+  "eventHandlers": [],
+  "actions": []
+}
