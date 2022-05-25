@@ -1,0 +1,177 @@
+{
+  "id": "c_e4f5716e8bc3ae951a1a1dadd59acd75",
+  "name": "signature-pad",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "buttonsColor",
+      "label": "Buttons Color",
+      "type": "text",
+      "handlerId": "buttonsColorLogic",
+      "handlerLabel": "Buttons Color Logic",
+      "handlerDescription": "This is a handler for the logic to determine what color should be applied to buttons.",
+      "defaultValue": "",
+      "dataBinding": true
+    },
+    {
+      "name": "penColor",
+      "label": "Pen Color",
+      "type": "text",
+      "handlerId": "penColorLogic",
+      "handlerLabel": "Pen Color Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine what color should be applied to pen.",
+      "defaultValue": ""
+    },
+    {
+      "name": "description",
+      "label": "Description",
+      "type": "text",
+      "defaultValue": "Sign Above",
+      "handlerId": "descriptionLogic",
+      "handlerLabel": "Description Logic",
+      "handlerDescription": "This is a handler for the logic to determine the description of the Signature Pad. Value returned by the handler will be used as the description of the Signature Pad.",
+      "dataBinding": true
+    },
+    {
+      "name": "savePNGButton",
+      "label": "Save PNG Button Visibility",
+      "type": "checkbox",
+      "handlerId": "savePNGButtonVisibilityLogic",
+      "handlerLabel": "Save PNG Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the Save PNG button should be visible. If the handler returns 'true' the button will be displayed.",
+      "defaultValue": true,
+      "dataBinding": true
+    },
+    {
+      "name": "saveJPGButton",
+      "label": "Save JPG Button Visibility",
+      "type": "checkbox",
+      "handlerId": "saveJPGButtonVisibilityLogic",
+      "handlerLabel": "Save JPG Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the Save JPG button should be visible. If the handler returns 'true' the button will be displayed.",
+      "defaultValue": true,
+      "dataBinding": true
+    },
+    {
+      "name": "saveSVGButton",
+      "label": "Save SVG Button Visibility",
+      "handlerId": "saveSVGButtonVisibilityLogic",
+      "handlerLabel": "Save SVG Button Visibility Logic",
+      "type": "checkbox",
+      "defaultValue": true,
+      "handlerDescription": "This is a handler for the logic to determine if the Save SVG button should be visible. If the handler returns 'true' the button will be displayed.",
+      "dataBinding": true
+    },
+    {
+      "name": "saveSignatureButton",
+      "label": "Save Signature Button Visibility",
+      "type": "checkbox",
+      "defaultValue": true,
+      "handlerId": "saveSignatureButtonVisibilityLogic",
+      "handlerLabel": "Save Signature Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the Save Signature button should be visible. If the handler returns 'true' the button will be displayed."
+    },
+    {
+      "name": "clearButtonLabel",
+      "label": "Clear Button Label",
+      "defaultValue": "Clear",
+      "type": "text"
+    },
+    {
+      "name": "changeColorButtonLabel",
+      "label": "Change Color Button Label",
+      "type": "text",
+      "defaultValue": "Change Color"
+    },
+    {
+      "name": "undoButtonLabel",
+      "label": "Undo Button Label",
+      "type": "text",
+      "defaultValue": "Undo"
+    },
+    {
+      "name": "savePNGButtonLabel",
+      "label": "Save PNG Button Label",
+      "type": "text",
+      "defaultValue": "Save as PNG"
+    },
+    {
+      "name": "saveJPGButtonLabel",
+      "label": "Save JPG Button Label",
+      "type": "text",
+      "defaultValue": "Save as JPG"
+    },
+    {
+      "name": "saveSVGButtonLabel",
+      "label": "Save SVG Button Label",
+      "type": "text",
+      "defaultValue": "Save as SVG"
+    },
+    {
+      "name": "saveSignatureButtonLabel",
+      "label": "Save Signature Button Label",
+      "type": "text",
+      "defaultValue": "Save Signature"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClearClick",
+      "label": "On Clear Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Clear button"
+    },
+    {
+      "name": "onUndoClick",
+      "label": "On Undo Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Undo button"
+    },
+    {
+      "name": "onChangeColorClick",
+      "label": "On Change Color Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the Change Color button",
+      "contextBlocks": [
+        {
+          "id": "color",
+          "label": "Color"
+        }
+      ]
+    },
+    {
+      "name": "onSaveClick",
+      "label": "On Save Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps one of the Save button"
+    },
+    {
+      "name": "onSaveSignatureClick",
+      "label": "On Save Signature Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps Save Signature button",
+      "contextBlocks": [
+        {
+          "id": "signature",
+          "label": "Signature"
+        },
+        {
+          "id": "fileName",
+          "label": "File Name"
+        }
+      ]
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "handlerDescription": "The event is fired when the mouse pointer hovers over the component"
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "handlerDescription": "The event is fired when the mouse pointer leaves the component boundaries"
+    }
+  ],
+  "actions": []
+}

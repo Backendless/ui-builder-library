@@ -1,0 +1,90 @@
+@signaturePadThemeColor: @themePrimary;
+@signaturePadBackgroundColor: @appBackgroundColor;
+@signaturePadTextColor: @appTextColor;
+@signaturePadDisabledColor: @disabledColor;
+@signaturePadBlockBorder: @appBlockBorder;
+
+@signaturePadBorderWidth: @appComponentBorderWidth/2;
+@signaturePadBorderType: solid;
+@signaturePadBorderRadius: @appComponentBorderRadius;
+@signaturePadBorderColor: contrast(@appBackgroundColor);
+
+@signaturePadFontSize: 12px;
+@signaturePadWidth: 100%;
+@signaturePadHeight: 100%;
+
+@bl-customComponent-signaturePad-actionButton-margin: 2px;
+@bl-customComponent-signaturePad-actionButton-padding: 6px 16px;
+@bl-customComponent-signaturePad-description-margin: 8px 0;
+
+@bl-customComponent-signaturePad-actionButton-background: @signaturePadThemeColor;
+@bl-customComponent-signaturePad-actionButton-color: contrast(@bl-customComponent-signaturePad-actionButton-background);
+@bl-customComponent-signaturePad-actionButton-shadowColor: @appComponentShadowColor;
+@bl-customComponent-signaturePad-actionButton-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-signaturePad-actionButton-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-signaturePad-actionButton-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-signaturePad-actionButton-shadowColor, 12%);
+@bl-customComponent-signaturePad-actionButton-disabledBackground: @signaturePadDisabledColor;
+@bl-customComponent-signaturePad-actionButton-disabledColor: contrast(@bl-customComponent-signaturePad-actionButton-disabledBackground);
+
+.bl-customComponent-signaturePad {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: @signaturePadWidth;
+  height: @signaturePadHeight;
+  border: @signaturePadBorderWidth @signaturePadBorderType @signaturePadBorderColor;
+  padding: 15px;
+  border-radius: @signaturePadBorderRadius;
+  
+  .bl-customComponent-signaturePad-actionButtonsBlock {
+    display: flex;
+    justify-content: space-between;
+    
+    .bl-customComponent-signaturePad-actionSaveButtons {
+      text-align: end;
+    }
+    
+    .bl-customComponent-signaturePad-button {
+      border-width: 0;
+      cursor: pointer;
+      padding: @bl-customComponent-signaturePad-actionButton-padding;
+      margin: @bl-customComponent-signaturePad-actionButton-margin;
+      border-radius: @signaturePadBorderRadius;
+      
+      &:not(:disabled) {
+        background: @bl-customComponent-signaturePad-actionButton-background;
+        color: @bl-customComponent-signaturePad-actionButton-color;
+        
+        &:hover {
+          box-shadow: @bl-customComponent-signaturePad-actionButton-shadowHover;
+        }
+      }
+      
+      &:disabled {
+        background: @bl-customComponent-signaturePad-actionButton-disabledBackground;
+        color: @bl-customComponent-signaturePad-actionButton-disabledColor;
+      }
+    }
+  }
+    
+  .bl-customComponent-signaturePad-description {
+    color: lighten(@signaturePadTextColor, 60%);
+    text-align: center;
+    font-size: @signaturePadFontSize;
+    margin: @bl-customComponent-signaturePad-description-margin;
+  }  
+  
+  .bl-customComponent-signaturePad-body {
+    position: relative;
+    flex: 1;
+    border: @signaturePadBlockBorder;
+    border-radius: @signaturePadBorderRadius;
+    
+    .bl-customComponent-signaturePad-canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: @signaturePadBorderRadius;
+    }
+  }
+}
