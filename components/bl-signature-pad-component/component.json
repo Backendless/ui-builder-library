@@ -1,23 +1,13 @@
 {
-  "id": "c_e4f5716e8bc3ae951a1a1dadd59acd75",
+  "id": "c_197b76b23dba14df0ad264df17532fb4",
   "name": "signature-pad",
   "description": "",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "file-signature",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
   "properties": [
-    {
-      "name": "buttonsColor",
-      "label": "Buttons Color",
-      "type": "text",
-      "handlerId": "buttonsColorLogic",
-      "handlerLabel": "Buttons Color Logic",
-      "handlerDescription": "This is a handler for the logic to determine what color should be applied to buttons.",
-      "defaultValue": "",
-      "dataBinding": true
-    },
     {
       "name": "penColor",
       "label": "Pen Color",
@@ -39,7 +29,7 @@
       "dataBinding": true
     },
     {
-      "name": "savePNGButton",
+      "name": "savePNGButtonVisibility",
       "label": "Save PNG Button Visibility",
       "type": "checkbox",
       "handlerId": "savePNGButtonVisibilityLogic",
@@ -49,7 +39,7 @@
       "dataBinding": true
     },
     {
-      "name": "saveJPGButton",
+      "name": "saveJPGButtonVisibility",
       "label": "Save JPG Button Visibility",
       "type": "checkbox",
       "handlerId": "saveJPGButtonVisibilityLogic",
@@ -59,7 +49,7 @@
       "dataBinding": true
     },
     {
-      "name": "saveSVGButton",
+      "name": "saveSVGButtonVisibility",
       "label": "Save SVG Button Visibility",
       "handlerId": "saveSVGButtonVisibilityLogic",
       "handlerLabel": "Save SVG Button Visibility Logic",
@@ -69,7 +59,7 @@
       "dataBinding": true
     },
     {
-      "name": "saveSignatureButton",
+      "name": "saveSignatureButtonVisibility",
       "label": "Save Signature Button Visibility",
       "type": "checkbox",
       "defaultValue": true,
@@ -124,17 +114,17 @@
     {
       "name": "onClearClick",
       "label": "On Clear Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Clear button"
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Clear button."
     },
     {
       "name": "onUndoClick",
       "label": "On Undo Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Undo button"
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Undo button."
     },
     {
-      "name": "onChangeColorClick",
-      "label": "On Change Color Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the Change Color button",
+      "name": "onChangeColor",
+      "label": "On Change Color Event",
+      "handlerDescription": "This event is fired when the user changes the pen color.",
       "contextBlocks": [
         {
           "id": "color",
@@ -145,32 +135,28 @@
     {
       "name": "onSaveClick",
       "label": "On Save Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps one of the Save button"
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps one of the Save button."
     },
     {
       "name": "onSaveSignatureClick",
       "label": "On Save Signature Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps Save Signature button",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps Save Signature button.",
       "contextBlocks": [
         {
-          "id": "signature",
-          "label": "Signature"
-        },
-        {
-          "id": "fileName",
-          "label": "File Name"
+          "id": "signatureBlob",
+          "label": "Signature Blob"
         }
       ]
     },
     {
       "name": "onMouseOver",
       "label": "On Mouse Over Event",
-      "handlerDescription": "The event is fired when the mouse pointer hovers over the component"
+      "handlerDescription": "The event is fired when the mouse pointer hovers over the component."
     },
     {
       "name": "onMouseOut",
       "label": "On Mouse Out Event",
-      "handlerDescription": "The event is fired when the mouse pointer leaves the component boundaries"
+      "handlerDescription": "The event is fired when the mouse pointer leaves the component boundaries."
     }
   ],
   "actions": []
