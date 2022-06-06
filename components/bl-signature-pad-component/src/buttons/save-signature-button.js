@@ -1,7 +1,8 @@
-import dataURLToBlob from '../utils/data-url-to-blob';
+import { dataURLToBlob } from '../utils/file';
 
-export default function SaveSignatureButton(props) {
-  const { signaturePad, component, eventHandlers } = props;
+export function SaveSignatureButton({ signaturePad, component, eventHandlers }) {
+  const { saveSignatureButtonVisibility, saveSignatureButtonLabel } = component;
+  const { onSaveSignatureClick } = eventHandlers;
 
   const saveSignature = () => {
     if (signaturePad.isEmpty()) {
@@ -10,24 +11,30 @@ export default function SaveSignatureButton(props) {
       return;
     }
 
-    if (eventHandlers.onSaveSignatureClick) {
+    if (onSaveSignatureClick) {
       const dataURL = signaturePad.toDataURL();
       const signatureBlob = dataURLToBlob(dataURL);
 
-      eventHandlers.onSaveSignatureClick({ signatureBlob });
+      onSaveSignatureClick({ signatureBlob });
     }
   };
 
+  // Waiting for BKNDLSS-28471, SHOULD BE
+  // if (!saveSignatureButtonVisibility) {
+  //   return null;
+  // }
+  if (saveSignatureButtonVisibility !== 'true') {
+    return null;
+  }
+
   return (
     <button
-      style={{
-        display: component.saveSignatureButtonVisibility === 'true' ? 'inline-block' : 'none',
-      }}
+      className="save-signature-button"
       onClick={ saveSignature }
     >
-      {/*SHOULD BE
-      { component.saveSignatureButtonLabel }*/}
-      { component.saveSignatureButtonLabel || 'Save Signature' }
+      {/*Waiting for BKNDLSS-28470, SHOULD BE
+      { saveSignatureButtonLabel }*/}
+      { saveSignatureButtonLabel || 'Save Signature' }
     </button>
   );
 }

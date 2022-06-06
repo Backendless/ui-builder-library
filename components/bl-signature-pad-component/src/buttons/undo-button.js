@@ -1,7 +1,8 @@
-export default function UndoButton(props) {
-  const { signaturePad, component, eventHandlers } = props;
+export function UndoButton({ signaturePad, component, eventHandlers }) {
+  const { undoButtonLabel } = component;
+  const { onUndoClick } = eventHandlers;
 
-  const onUndoClick = () => {
+  const undo = () => {
     const data = signaturePad.toData();
 
     if (data) {
@@ -9,18 +10,19 @@ export default function UndoButton(props) {
       signaturePad.fromData(data);
     }
 
-    if (eventHandlers.onUndoClick) {
-      eventHandlers.onUndoClick();
+    if (onUndoClick) {
+      onUndoClick();
     }
   };
 
   return (
     <button
-      onClick={ onUndoClick }
+      className="undo-button"
+      onClick={ undo }
     >
-      {/*SHOULD BE
-      { component.undoButtonLabel }*/}
-      { component.undoButtonLabel || 'Undo' }
+      {/*Waiting for BKNDLSS-28470, SHOULD BE
+      { undoButtonLabel }*/}
+      { undoButtonLabel || 'Undo' }
     </button>
   );
 }

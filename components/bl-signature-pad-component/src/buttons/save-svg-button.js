@@ -1,7 +1,8 @@
-import download from '../utils/download';
+import { download } from '../utils/file';
 
-export default function SaveSVGButton(props) {
-  const { signaturePad, component, eventHandlers } = props;
+export function SaveSVGButton({ signaturePad, component, eventHandlers }) {
+  const { saveSVGButtonVisibility, saveSVGButtonLabel } = component;
+  const { onSaveClick } = eventHandlers;
 
   const saveSVG = () => {
     if (signaturePad.isEmpty()) {
@@ -12,21 +13,27 @@ export default function SaveSVGButton(props) {
       download(dataURL, 'signature.svg');
     }
 
-    if (eventHandlers.onSaveClick) {
-      eventHandlers.onSaveClick();
+    if (onSaveClick) {
+      onSaveClick();
     }
   };
 
+  // Waiting for BKNDLSS-28471, SHOULD BE
+  // if (!saveSVGButtonVisibility) {
+  //   return null;
+  // }
+  if (saveSVGButtonVisibility !== 'true') {
+    return null;
+  }
+
   return (
     <button
-      style={{
-        display: component.saveSVGButtonVisibility === 'true' ? 'inline-block' : 'none',
-      }}
+      className="save-svg-button"
       onClick={ saveSVG }
     >
-      {/*SHOULD BE
-      { component.saveSVGButtonLabel }*/}
-      { component.saveSVGButtonLabel || 'Save as SVG' }
+      {/*Waiting for BKNDLSS-28470, SHOULD BE
+      { saveSVGButtonLabel }*/}
+      { saveSVGButtonLabel || 'Save as SVG' }
     </button>
   );
 }

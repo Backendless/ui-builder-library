@@ -1,7 +1,8 @@
-import download from '../utils/download';
+import { download } from '../utils/file';
 
-export default function SaveJPGButton(props) {
-  const { signaturePad, component, eventHandlers } = props;
+export function SaveJPGButton({ signaturePad, component, eventHandlers }) {
+  const { saveJPGButtonVisibility, saveJPGButtonLabel } = component;
+  const { onSaveClick } = eventHandlers;
 
   const saveJPG = () => {
     if (signaturePad.isEmpty()) {
@@ -12,21 +13,27 @@ export default function SaveJPGButton(props) {
       download(dataURL, 'signature.jpg');
     }
 
-    if (eventHandlers.onSaveClick) {
-      eventHandlers.onSaveClick();
+    if (onSaveClick) {
+      onSaveClick();
     }
   };
+  
+  // Waiting for BKNDLSS-28471, SHOULD BE
+  // if (!saveJPGButtonVisibility) {
+  //   return null;
+  // }
+  if (saveJPGButtonVisibility !== 'true') {
+    return null;
+  }
 
   return (
     <button
-      style={{
-        display: component.saveJPGButtonVisibility === 'true' ? 'inline-block' : 'none',
-      }}
+      className="save-jpg-button"
       onClick={ saveJPG }
     >
-      {/*SHOULD BE
-      { component.saveJPGButtonLabel }*/}
-      { component.saveJPGButtonLabel || 'Save as JPG' }
+      {/*Waiting for BKNDLSS-28470, SHOULD BE
+      { saveJPGButtonLabel }*/}
+      { saveJPGButtonLabel || 'Save as JPG' }
     </button>
   );
 }

@@ -1,7 +1,8 @@
-import download from '../utils/download';
+import { download } from '../utils/file';
 
-export default function SavePNGButton(props) {
-  const { signaturePad, component, eventHandlers } = props;
+export function SavePNGButton({ signaturePad, component, eventHandlers }) {
+  const { savePNGButtonVisibility, savePNGButtonLabel } = component;
+  const { onSaveClick } = eventHandlers;
 
   const savePNG = () => {
     if (signaturePad.isEmpty()) {
@@ -12,21 +13,27 @@ export default function SavePNGButton(props) {
       download(dataURL, 'signature.png');
     }
 
-    if (eventHandlers.onSaveClick) {
-      eventHandlers.onSaveClick();
+    if (onSaveClick) {
+      onSaveClick();
     }
   };
 
+  // Waiting for BKNDLSS-28471, SHOULD BE
+  // if (!savePNGButtonVisibility) {
+  //   return null;
+  // }
+  if (savePNGButtonVisibility !== 'true') {
+    return null;
+  }
+
   return (
     <button
-      style={{
-        display: component.savePNGButtonVisibility === 'true' ? 'inline-block' : 'none',
-      }}
+      className="save-png-button"
       onClick={ savePNG }
     >
-      {/*SHOULD BE
-      { component.savePNGButtonLabel }*/}
-      { component.savePNGButtonLabel || 'Save as PNG' }
+      {/*Waiting for BKNDLSS-28470, SHOULD BE
+      { savePNGButtonLabel }*/}
+      { savePNGButtonLabel || 'Save as PNG' }
     </button>
   );
 }

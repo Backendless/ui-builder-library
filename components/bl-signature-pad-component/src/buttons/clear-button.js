@@ -1,21 +1,23 @@
-export default function ClearButton(props) {
-  const { signaturePad, component, eventHandlers } = props;
+export function ClearButton({ signaturePad, component, eventHandlers }) {
+  const { clearButtonLabel } = component;
+  const { onClearClick } = eventHandlers;
 
-  const onClearClick = () => {
+  const clear = () => {
     signaturePad.clear();
 
-    if (eventHandlers.onClearClick) {
-      eventHandlers.onClearClick();
+    if (onClearClick) {
+      onClearClick();
     }
   };
 
   return (
     <button
-      onClick={ onClearClick }
+      className="clear-button"
+      onClick={ clear }
     >
-      {/*SHOULD BE
-      { component.clearButtonLabel }*/}
-      { component.clearButtonLabel || 'Clear' }
+      {/*Waiting for BKNDLSS-28470, SHOULD BE
+      { clearButtonLabel }*/}
+      { clearButtonLabel || 'Clear' }
     </button>
   );
 }

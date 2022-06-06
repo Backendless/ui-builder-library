@@ -1,25 +1,29 @@
-export default function ChangeColorButton(props) {
-  const { signaturePad, component, eventHandlers } = props;
+export function ChangeColorButton({ signaturePad, component, eventHandlers }) {
+  const { penColor, changeColorButtonLabel } = component;
+  const { onChangeColor } = eventHandlers;
 
-  const changeColor = e => {
-    const color = e.target.value;
+  const changeColor = React.useCallback(
+    e => {
+      const color = e.target.value;
 
-    signaturePad.penColor = color;
+      signaturePad.penColor = color;
 
-    if (eventHandlers.onChangeColor) {
-      eventHandlers.onChangeColor({ color });
-    }
-  };
+      if (onChangeColor) {
+        onChangeColor({ color });
+      }
+    },
+    [onChangeColor, signaturePad]
+  );
+
+  if (penColor !== '') {
+    return null;
+  }
 
   return (
-    <label
-      style={{
-        display: component.penColor ? 'none' : 'inline-block',
-      }}
-    >
-      {/*SHOULD BE
-      { component.changeColorButtonLabel }*/}
-      { component.changeColorButtonLabel || 'Change color' }
+    <label className="change-color-button">
+      {/*Waiting for BKNDLSS-28470, SHOULD BE
+      { changeColorButtonLabel }*/}
+      { changeColorButtonLabel || 'Change color' }
       <input
         type="color"
         onChange={ changeColor }

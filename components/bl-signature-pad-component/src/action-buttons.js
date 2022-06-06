@@ -1,12 +1,14 @@
-import ChangeColorButton from './buttons/change-color-button';
-import ClearButton from './buttons/clear-button';
-import SaveJPGButton from './buttons/save-jpg-button';
-import SavePNGButton from './buttons/save-png-button';
-import SaveSignatureButton from './buttons/save-signature-button';
-import SaveSVGButton from './buttons/save-svg-button';
-import UndoButton from './buttons/undo-button';
+import {
+  ChangeColorButton,
+  ClearButton,
+  SaveJPGButton,
+  SavePNGButton,
+  SaveSignatureButton,
+  SaveSVGButton,
+  UndoButton,
+} from './buttons';
 
-export default function ActionButtons(props) {
+export function ActionButtons(props) {
   const { signaturePad, component, eventHandlers } = props;
 
   return (
