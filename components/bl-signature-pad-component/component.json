@@ -62,10 +62,11 @@
       "name": "saveSignatureButtonVisibility",
       "label": "Save Signature Button Visibility",
       "type": "checkbox",
-      "defaultValue": true,
+      "defaultValue": false,
       "handlerId": "saveSignatureButtonVisibilityLogic",
       "handlerLabel": "Save Signature Button Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the Save Signature button should be visible. If the handler returns 'true' the button will be displayed."
+      "handlerDescription": "This is a handler for the logic to determine if the Save Signature button should be visible. If the handler returns 'true' the button will be displayed.",
+      "dataBinding": true
     },
     {
       "name": "clearButtonLabel",
@@ -114,12 +115,12 @@
     {
       "name": "onClearClick",
       "label": "On Clear Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Clear button."
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the Clear button."
     },
     {
       "name": "onUndoClick",
       "label": "On Undo Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the the Undo button."
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the Undo button."
     },
     {
       "name": "onChangeColor",
@@ -135,7 +136,7 @@
     {
       "name": "onSaveClick",
       "label": "On Save Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps one of the Save button."
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps \"Save as PNG\", \"Save as JPG\" or \"Save as SVG\"  button."
     },
     {
       "name": "onSaveSignatureClick",
@@ -151,12 +152,12 @@
     {
       "name": "onMouseOver",
       "label": "On Mouse Over Event",
-      "handlerDescription": "The event is fired when the mouse pointer hovers over the component."
+      "handlerDescription": "The event is fired when the mouse pointer hovers over the canvas."
     },
     {
       "name": "onMouseOut",
       "label": "On Mouse Out Event",
-      "handlerDescription": "The event is fired when the mouse pointer leaves the component boundaries."
+      "handlerDescription": "The event is fired when the mouse pointer leaves the canvas boundaries."
     }
   ],
   "actions": []
