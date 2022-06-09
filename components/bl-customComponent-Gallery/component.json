@@ -1,0 +1,123 @@
+{
+  "id": "c_817a95ccc1e3a5ab12495e5292359df2",
+  "name": "Gallery",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "images",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "imagesData",
+      "label": "Images URL",
+      "type": "text",
+      "handlerId": "imagesData",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for getting data for rendering images. Type of data is an array of objects, every object should have field \"URL\" with image URL and optionally field 'title' with text for every image."
+    },
+    {
+      "name": "gap",
+      "label": "Gap",
+      "type": "text",
+      "defaultValue": "5px",
+      "handlerId": "gap",
+      "handlerDescription": "This is a handler to set the distance between images."
+    },
+    {
+      "name": "imageHeight",
+      "label": "Image Height",
+      "type": "text",
+      "defaultValue": "200px",
+      "handlerId": "imageHeight",
+      "handlerDescription": "This is a handler to set image height."
+    },
+    {
+      "name": "borderRadius",
+      "label": "Image Border Radius",
+      "type": "text",
+      "defaultValue": "5px",
+      "handlerId": "borderRadius",
+      "handlerDescription": "This is a handler to set image border radius."
+    },
+    {
+      "name": "wrapAround",
+      "label": "Wrap Around",
+      "type": "checkbox",
+      "handlerId": "wrapAround",
+      "handlerDescription": "This is a handler for toggling gallery loops.  If true, when a user reaches the last image in a set, the right navigation arrow will appear and they will be to continue moving forward which will take them back to the first image in the set."
+    },
+    {
+      "name": "alwaysShowNavOnTouchDevices",
+      "label": "Nav On Mobile",
+      "type": "checkbox",
+      "handlerId": "navOnMobile",
+      "handlerDescription": "This is a handler to enable navigation for touchscreens. If true, the left and right navigation arrows which appear on mouse hover when viewing image sets will always be visible on devices that support touch.\n"
+    },
+    {
+      "name": "showImageNumberLabel",
+      "label": "Show Image Number Label",
+      "type": "checkbox",
+      "defaultValue": true,
+      "handlerId": "showImageNumberLabel",
+      "handlerDescription": "This is a handler for toggle image label and separator block visibility. "
+    },
+    {
+      "name": "disableScrolling",
+      "label": "Disable Scrolling",
+      "type": "checkbox",
+      "handlerId": "disableScrolling",
+      "handlerDescription": "This is a handler for toggle scrolling. If true, prevent the page from scrolling while Lightbox is open."
+    },
+    {
+      "name": "imageLabel",
+      "label": "Image Label",
+      "type": "text",
+      "defaultValue": "Image",
+      "handlerId": "imageLabel",
+      "handlerDescription": "This is a handler to set image label."
+    },
+    {
+      "name": "separator",
+      "label": "Separator",
+      "type": "text",
+      "defaultValue": "of",
+      "handlerId": "separator",
+      "handlerDescription": "This is a handler to set separator."
+    },
+    {
+      "name": "fadeDuration",
+      "label": "Fade Duration(ms)",
+      "type": "number",
+      "defaultValue": "600",
+      "handlerId": "fadeDuration",
+      "handlerDescription": "This is a handler to set fade duration. The time it takes for the Lightbox container and overlay to fade in and out, in milliseconds."
+    },
+    {
+      "name": "imageFadeDuration",
+      "label": "Image Fade Duration(ms)",
+      "type": "number",
+      "defaultValue": "600",
+      "handlerId": "imageFadeDuration",
+      "handlerDescription": "This is a handler to set image fade duration. The time it takes for the image to fade in once loaded, in milliseconds."
+    },
+    {
+      "name": "positionFromTop",
+      "label": "Position From Top(px)",
+      "type": "number",
+      "defaultValue": "50",
+      "handlerId": "postionFromTop",
+      "handlerDescription": "This is a handler to set the distance from top of viewport that the Lightbox container will appear, in pixels."
+    },
+    {
+      "name": "resizeDuration",
+      "label": "Resize Duration(ms)",
+      "type": "number",
+      "defaultValue": "700",
+      "handlerId": "resizeDuration",
+      "handlerDescription": "This is a handler to set the time it takes for the Lightbox container to animate its width and height when transition between different size images, in milliseconds."
+    }
+  ],
+  "eventHandlers": [],
+  "actions": []
+}
