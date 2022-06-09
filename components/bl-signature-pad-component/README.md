@@ -29,31 +29,31 @@ The component based on external [signature_pad](https://github.com/szimek/signat
 
 <dl>
 <dt>Pen Color</dt>
-<dd>(text) Color used to draw the lines. If this field has any value, the Change Color button isn't displayed in the component. Can be determined by Pen Color Logic.</dd>
+<dd>Color used to draw the lines. If this field has any value, the Change Color button isn't displayed in the component. Can be determined by Pen Color Logic.</dd>
 <dt>Description</dt>
-<dd>(text) Value from this field will be used as the description. Can be determined by Description Logic. Defaults to "Sign Above".</dd>
+<dd>Value from this field will be used as the description. Can be determined by Description Logic. Defaults to "Sign Above".</dd>
 <dt>Save PNG Button Visibility</dt>
-<dd>(checkbox) Checkbox for determining whether the button is visible to the user or not. Can be defined by Save PNG Button Visibility Logic. Checked by default.</dd>
+<dd>Checkbox for determining whether the button is visible to the user or not. Can be defined by Save PNG Button Visibility Logic. Checked by default.</dd>
 <dt>Save JPG Button Visibility</dt>
-<dd>(checkbox) Checkbox for determining whether the button is visible to the user or not. Can be defined by Save JPG Button Visibility Logic. Checked by default.</dd>
+<dd>Checkbox for determining whether the button is visible to the user or not. Can be defined by Save JPG Button Visibility Logic. Checked by default.</dd>
 <dt>Save SVG Button Visibility</dt>
-<dd>(checkbox) Checkbox for determining whether the button is visible to the user or not. Can be defined by Save SVG Button Visibility Logic. Checked by default.</dd>
+<dd>Checkbox for determining whether the button is visible to the user or not. Can be defined by Save SVG Button Visibility Logic. Checked by default.</dd>
 <dt>Save Signature Button Visibility</dt>
-<dd>(checkbox) Checkbox for determining whether the button is visible to the user or not. Can be defined by Save Signature Button Visibility Logic. Unchecked by default.</dd>
+<dd>Checkbox for determining whether the button is visible to the user or not. Can be defined by Save Signature Button Visibility Logic. Unchecked by default.</dd>
 <dt>Clear Button Label</dt>
-<dd>(text) Label on the Clear button. Defaults to "Clear".</dd>
+<dd>Label on the Clear button. Defaults to "Clear".</dd>
 <dt>Change Color Button Label</dt>
-<dd>(text) Label on the Change Color button. Defaults to "Change Color".</dd>
+<dd>Label on the Change Color button. Defaults to "Change Color".</dd>
 <dt>Undo Button Label</dt>
-<dd>(text) Label on the Undo button. Defaults to "Undo".</dd>
+<dd>Label on the Undo button. Defaults to "Undo".</dd>
 <dt>Save PNG Button Label</dt>
-<dd>(text) Label on the Save PNG button. Defaults to "Save as PNG".</dd>
+<dd>Label on the Save PNG button. Defaults to "Save as PNG".</dd>
 <dt>Save JPG Button Label</dt>
-<dd>(text) Label on the Save JPG button. Defaults to "Save as JPG".</dd>
+<dd>Label on the Save JPG button. Defaults to "Save as JPG".</dd>
 <dt>Save SVG Button Label</dt>
-<dd>(text) Label on the Save SVG button. Defaults to "Save as SVG".</dd>
+<dd>Label on the Save SVG button. Defaults to "Save as SVG".</dd>
 <dt>Save Signature Button Label</dt>
-<dd>(text) Label on the Save Signature button. Defaults to "Save Signature".</dd>
+<dd>Label on the Save Signature button. Defaults to "Save Signature".</dd>
 </dl>
 
 ### Events

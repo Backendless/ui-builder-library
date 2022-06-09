@@ -1,11 +1,13 @@
+import { useRef } from 'react';
+
 import SignaturePad from './lib/signature-pad.umd.min';
 import { ActionButtons } from './action-buttons';
 
-export default function MyCustomComponent({ component, eventHandlers }) {
+export default function SignaturePadComponent({ component, eventHandlers }) {
   const { penColor, classList, display, description } = component;
   const { onMouseOver, onMouseOut } = eventHandlers;
-  const elRef = React.useRef(null);
-  const signaturePad = React.useRef(null);
+  const elRef = useRef(null);
+  const signaturePad = useRef(null);
 
   function resizeCanvas() {
     const ratio = Math.max(window.devicePixelRatio || 1, 1);

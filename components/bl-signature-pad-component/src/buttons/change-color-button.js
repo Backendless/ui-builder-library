@@ -1,8 +1,10 @@
+import { useCallback } from 'react';
+
 export function ChangeColorButton({ signaturePad, component, eventHandlers }) {
   const { penColor, changeColorButtonLabel } = component;
   const { onChangeColor } = eventHandlers;
 
-  const changeColor = React.useCallback(
+  const changeColor = useCallback(
     e => {
       const color = e.target.value;
 
