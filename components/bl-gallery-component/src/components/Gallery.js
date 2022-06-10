@@ -1,4 +1,4 @@
-import LightBox from './lib/lightbox-jquery.js';
+import LightBox from '../lib/lightbox-jquery.js';
 import { GalleryImage } from './GalleryImage.js';
 
 export function Gallery({ images, options }) {
@@ -34,16 +34,20 @@ export function Gallery({ images, options }) {
   return (
     <div className="bl-customComponent-lightBox" style={{ gap: gap }}>
       {
-        images.map(image => (
-          <a
-            key={ image.objectId }
-            data-lightbox="example"
-            data-title={ image.title }
-            href={ image.url }
-          >
-            <GalleryImage url={ image.url } imageHeight={ imageHeight } borderRadius={ borderRadius }/>
-          </a>
-        ))
+        images.map(image => {
+          const { objectId, title, url } = image;
+
+          return (
+            <a
+              key={ objectId }
+              data-lightbox="example"
+              data-title={ title }
+              href={ url }
+            >
+              <GalleryImage url={ url } imageHeight={ imageHeight } borderRadius={ borderRadius }/>
+            </a>
+          )
+        })
       }
     </div>
   );

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { Gallery } from './Gallery.js';
+import { Gallery } from './components/Gallery.js';
 
 const DEFAULT_IMAGE_HEIGHT = '200px';
 const DEFAULT_GAP = 0;
@@ -12,7 +12,8 @@ const DEFAULT_POSITION_FROM_TOP = 50;
 const DEFAULT_RESIZE_DURATION = 700;
 const DEFAULT_BORDER_RADIUS = '5px';
 
-export default function CustomComponentGallery({ component }) {
+export default function GalleryComponent({ component }) {
+
   const {
     gap,
     imageHeight,
@@ -78,6 +79,6 @@ export default function CustomComponentGallery({ component }) {
   if (!component.display || !images.length) {
     return null;
   }
-  
+
   return <Gallery images={ images } options={ options } />;
 }

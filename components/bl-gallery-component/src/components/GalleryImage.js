@@ -3,8 +3,8 @@ export function GalleryImage({ url, imageHeight, borderRadius }) {
     <>
       <img
         src={ url }
-        style={{ height:imageHeight, width:'auto', borderRadius: borderRadius }}
-        className="bl-customComponent-lightBox__image"
+        style={{ height:imageHeight, borderRadius: borderRadius }}
+        className="image"
       />
     </>
   );
