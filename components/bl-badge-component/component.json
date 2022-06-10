@@ -1,0 +1,140 @@
+{
+  "id": "c_7e8237be9ed8a45d5a5e99d7c1ffd257",
+  "name": "Badge",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "certificate",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "badgeLabel",
+      "label": "Badge Label",
+      "type": "text",
+      "handlerId": "badgeLabelLogic",
+      "handlerLabel": "Badge Label Logic",
+      "handlerDescription": "This is a handler for the logic to determine the label of the Badge. Value returned by the handler will be used as the label of the Badge.",
+      "dataBinding": true
+    },
+    {
+      "name": "badgeLabelColor",
+      "label": "Badge Label Color",
+      "type": "text"
+    },
+    {
+      "name": "badgeBackgroundColor",
+      "label": "Badge Background Color",
+      "type": "text",
+      "handlerId": "",
+      "handlerLabel": "",
+      "handlerDescription": "",
+      "dataBinding": false
+    },
+    {
+      "name": "badgeFontSize",
+      "label": "Badge Font Size",
+      "type": "number",
+      "defaultValue": "12"
+    },
+    {
+      "name": "badgeAlignment",
+      "label": "Badge Alignment",
+      "type": "text",
+      "defaultValue": "top-right"
+    },
+    {
+      "name": "badgeVisibility",
+      "label": "Badge Visibility",
+      "type": "checkbox",
+      "handlerId": "badgeVisibilityLogic",
+      "handlerLabel": "Badge Visibility Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if Badge should be visible. If the handler returns 'true' Budge will be displayed.",
+      "defaultValue": true
+    },
+    {
+      "name": "badgeWidth",
+      "label": "Badge Width",
+      "type": "number",
+      "defaultValue": ""
+    },
+    {
+      "name": "badgeHeight",
+      "label": "Badge Height",
+      "type": "number"
+    },
+    {
+      "name": "badgeForm",
+      "label": "Badge Form",
+      "type": "text",
+      "defaultValue": "default"
+    },
+    {
+      "name": "icon",
+      "label": "Icon",
+      "type": "text"
+    },
+    {
+      "name": "text",
+      "label": "Text",
+      "type": "text"
+    },
+    {
+      "name": "contentFontSize",
+      "label": "Content Font Size",
+      "type": "number",
+      "defaultValue": "24"
+    },
+    {
+      "name": "imageUrl",
+      "label": "Image Url",
+      "type": "text"
+    },
+    {
+      "name": "imageWidth",
+      "label": "Image Width",
+      "type": "number",
+      "defaultValue": "24"
+    },
+    {
+      "name": "padding",
+      "label": "Padding",
+      "type": "number",
+      "defaultValue": "14"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onBadgeClick",
+      "label": "On Badge Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the badge."
+    },
+    {
+      "name": "onBadgeMouseOver",
+      "label": "On Badge Mouse Over Event",
+      "handlerDescription": "The event is fired when the mouse pointer hovers over the badge."
+    },
+    {
+      "name": "onBadgeMouseOut",
+      "label": "On Badge Mouse Out Event",
+      "handlerDescription": "The event is fired when the mouse pointer leaves the badge boundaries."
+    },
+    {
+      "name": "onContentClick",
+      "label": "On Content Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the component content ."
+    },
+    {
+      "name": "onContentMouseOver",
+      "label": "On Content Mouse Over Event",
+      "handlerDescription": "The event is fired when the mouse pointer hovers over the component content."
+    },
+    {
+      "name": "onContentMouseOut",
+      "label": "On Content Mouse Out Event",
+      "handlerDescription": "The event is fired when the mouse pointer leaves the component content boundaries."
+    }
+  ],
+  "actions": []
+}
