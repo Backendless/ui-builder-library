@@ -7,26 +7,16 @@ The component based on external [lightbox2](https://lokeshdhakar.com/projects/li
 ## Usage
 
  Add component on your page and add codeless logic which loading images.
-    Use ImagesUrl handler to load images in component.    
-    ImagesUrl type is an array of objects, where every object should have field "URL" with image URL and optionally field 'title' with text for every image.
-    
-    ImagesUrl:[{url:'http..', title:'Picture..' },..]
+ Use ImagesUrl handler to load images in component.    
+ ImagesUrl type is an array of objects, where every object should have field "URL" with image URL and optionally field 'title' with text for every image.
+ All images have the same height and stretch according to the sides, but it is possible to set the height of each image separately. To do this, add the 'height' value to the object.
+ Value must contain px, %, etc...   
+
+    ImagesUrl:[{url:'http..', title:'Picture..', height: '200px' },..]
 
 ### Options
 
 <dl>
-<dt>Gap</dt>
-
-    Default: 0
-<dd>This option sets the distance between each image.</dd>
-<dt>Image Height</dt>
-
-    Default: 200px
-<dd>This option sets the height of images on page.</dd>
-<dt>Image Border Radius</dt>
-
-    Default: 5px
-<dd>This option sets the radius of image border on page.</dd>
 <dt>Wrap Around</dt>
 
     Default: false
@@ -75,4 +65,30 @@ The time it takes for the image to fade in once loaded, in milliseconds.</dd>
 
     Default: 50px
 <dd>This option is to set the distance from top of viewport that the Lightbox container will appear, in pixels.</dd>
+</dl>
+
+###Styling
+
+<dl>
+<dt>Gap</dt>
+
+    Default: 5px
+<dd>If you want to change distance between images add theme extension with new gap variable.
+
+    @bl-customComponent-gallery-gap: 5px;
+</dd>
+<dt>Image Height</dt>
+
+    Default: 200px
+<dd>If you want to set image height for all images add theme extension with new imageHeight variable.
+
+    @bl-customComponent-gallery-image-height: 200px;
+</dd>
+<dt>Image Border Radius</dt>
+
+    Default: 5px
+<dd>If you want to change border radius of image add theme extension with new border radius variable.
+
+    @bl-customComponent-gallery-image-border-radius: 5px;
+</dd>
 </dl>

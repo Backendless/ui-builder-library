@@ -17,55 +17,34 @@
       "handlerDescription": "This is a handler for getting data for rendering images. Type of data is an array of objects, every object should have field \"URL\" with image URL and optionally field 'title' with text for every image."
     },
     {
-      "name": "gap",
-      "label": "Gap",
-      "type": "text",
-      "defaultValue": "5px",
-      "handlerId": "",
-      "handlerDescription": ""
-    },
-    {
-      "name": "imageHeight",
-      "label": "Image Height",
-      "type": "text",
-      "defaultValue": "200px",
-      "handlerId": "",
-      "handlerDescription": ""
-    },
-    {
-      "name": "borderRadius",
-      "label": "Image Border Radius",
-      "type": "text",
-      "defaultValue": "5px",
-      "handlerId": "",
-      "handlerDescription": ""
-    },
-    {
       "name": "wrapAround",
       "label": "Wrap Around",
       "type": "checkbox",
       "handlerId": "",
-      "handlerDescription": ""
+      "handlerDescription": "",
+      "defaultValue": false
     },
     {
       "name": "alwaysShowNavOnTouchDevices",
       "label": "Nav On Mobile",
       "type": "checkbox",
       "handlerId": "",
-      "handlerDescription": ""
+      "handlerDescription": "",
+      "defaultValue": false
+    },
+    {
+      "name": "disableScrolling",
+      "label": "Disable Scrolling",
+      "type": "checkbox",
+      "handlerId": "",
+      "handlerDescription": "",
+      "defaultValue": false
     },
     {
       "name": "showImageNumberLabel",
       "label": "Show Image Number Label",
       "type": "checkbox",
       "defaultValue": true,
-      "handlerId": "",
-      "handlerDescription": ""
-    },
-    {
-      "name": "disableScrolling",
-      "label": "Disable Scrolling",
-      "type": "checkbox",
       "handlerId": "",
       "handlerDescription": ""
     },
@@ -102,18 +81,18 @@
       "handlerDescription": ""
     },
     {
-      "name": "positionFromTop",
-      "label": "Position From Top(px)",
-      "type": "number",
-      "defaultValue": "50",
-      "handlerId": "",
-      "handlerDescription": ""
-    },
-    {
       "name": "resizeDuration",
       "label": "Resize Duration(ms)",
       "type": "number",
       "defaultValue": "700",
+      "handlerId": "",
+      "handlerDescription": ""
+    },
+    {
+      "name": "positionFromTop",
+      "label": "Position From Top(px)",
+      "type": "number",
+      "defaultValue": "50",
       "handlerId": "",
       "handlerDescription": ""
     }

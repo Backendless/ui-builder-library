@@ -1,22 +1,16 @@
 import { useMemo } from 'react';
 
-import { Gallery } from './components/Gallery.js';
+import { Gallery } from './components/gallery.js';
 
-const DEFAULT_IMAGE_HEIGHT = '200px';
-const DEFAULT_GAP = 0;
 const DEFAULT_IMAGE_LABEL = 'Image';
 const DEFAULT_SEPARATOR = 'of';
 const DEFAULT_FADE_DURATION = 600;
 const DEFAULT_IMAGE_FADE_DURATION = 600;
 const DEFAULT_POSITION_FROM_TOP = 50;
 const DEFAULT_RESIZE_DURATION = 700;
-const DEFAULT_BORDER_RADIUS = '5px';
 
 export default function GalleryComponent({ component }) {
-
   const {
-    gap,
-    imageHeight,
     imagesData,
     alwaysShowNavOnTouchDevices,
     imageLabel,
@@ -28,12 +22,9 @@ export default function GalleryComponent({ component }) {
     resizeDuration,
     showImageNumberLabel,
     wrapAround,
-    borderRadius,
   } = component;
 
   const options = useMemo(() => ({
-    gap: gap || DEFAULT_GAP,
-    imageHeight: imageHeight || DEFAULT_IMAGE_HEIGHT,
     alwaysShowNavOnTouchDevices: alwaysShowNavOnTouchDevices === 'true',
     imageLabel: imageLabel || DEFAULT_IMAGE_LABEL,
     separator: separator || DEFAULT_SEPARATOR,
@@ -44,10 +35,7 @@ export default function GalleryComponent({ component }) {
     resizeDuration: resizeDuration ? +resizeDuration : DEFAULT_RESIZE_DURATION,
     showImageNumberLabel: showImageNumberLabel === 'true',
     wrapAround: wrapAround === 'true',
-    borderRadius: borderRadius || DEFAULT_BORDER_RADIUS,
   }), [
-    gap,
-    imageHeight,
     alwaysShowNavOnTouchDevices,
     imageLabel,
     separator,
@@ -58,18 +46,21 @@ export default function GalleryComponent({ component }) {
     resizeDuration,
     showImageNumberLabel,
     wrapAround,
-    borderRadius,
   ]);
 
   const images = useMemo(() => {
-    const newData = Object.assign({}, imagesData);
     const imagesArray = [];
 
-    for(const key in newData) {
-      const point = Object.assign({}, newData[key]);
-      if (!point.hasOwnProperty('title')) {
-        point.title='';
+    for(const key in imagesData) {
+      const point = Object.assign({}, imagesData[key]);
+
+      if (!point.title) {
+        point.title = '';
       }
+      if (!point.height) {
+        point.height = '';
+      }
+
       imagesArray.push(point);
     }
 

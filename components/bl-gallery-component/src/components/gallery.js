@@ -1,11 +1,8 @@
 import LightBox from '../lib/lightbox-jquery.js';
-import { GalleryImage } from './GalleryImage.js';
+import { GalleryImage } from './gallery-image.js';
 
 export function Gallery({ images, options }) {
-
   const {
-    gap,
-    imageHeight,
     alwaysShowNavOnTouchDevices,
     imageLabel,
     separator,
@@ -16,7 +13,6 @@ export function Gallery({ images, options }) {
     resizeDuration,
     showImageNumberLabel,
     wrapAround,
-    borderRadius,
   } = options;
 
   LightBox.option({
@@ -32,21 +28,21 @@ export function Gallery({ images, options }) {
   });
 
   return (
-    <div className="bl-customComponent-lightBox" style={{ gap: gap }}>
+    <div className="bl-customComponent-lightBox">
       {
         images.map(image => {
-          const { objectId, title, url } = image;
+          const { title, url, height } = image;
 
           return (
             <a
-              key={ objectId }
+              key={ url }
               data-lightbox="example"
               data-title={ title }
               href={ url }
             >
-              <GalleryImage url={ url } imageHeight={ imageHeight } borderRadius={ borderRadius }/>
+              <GalleryImage url={ url } imageHeight={ height } />
             </a>
-          )
+          );
         })
       }
     </div>
