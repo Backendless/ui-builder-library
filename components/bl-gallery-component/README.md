@@ -86,9 +86,9 @@ The time it takes for the image to fade in once loaded, in milliseconds.</dd>
 </dd>
 <dt>Image Border Radius</dt>
 
-    Default: 5px
+    Default: 4px
 <dd>If you want to change border radius of image add theme extension with new border radius variable.
 
-    @bl-customComponent-gallery-image-border-radius: 5px;
+    @bl-customComponent-gallery-image-border-radius: 4px;
 </dd>
 </dl>
