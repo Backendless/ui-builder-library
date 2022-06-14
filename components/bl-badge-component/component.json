@@ -123,7 +123,7 @@
     {
       "name": "onContentClick",
       "label": "On Content Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the component content ."
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the component content."
     },
     {
       "name": "onContentMouseOver",

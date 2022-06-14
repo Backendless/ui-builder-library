@@ -15,8 +15,8 @@ export default function BadgeComponent({ component, eventHandlers }) {
         padding: padding+'px',
       }}
     >
-      <Content component={ component } eventHandlers={ eventHandlers }/>
-      <Badge component={ component } eventHandlers={ eventHandlers }/>
+      <Content component={ component } eventHandlers={ eventHandlers } />
+      <Badge component={ component } eventHandlers={ eventHandlers } />
     </div>
   );
 }

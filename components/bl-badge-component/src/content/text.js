@@ -1,5 +1,5 @@
 export function Text({ text, fontSize }) {
-  if (text === '') {
+  if (!text) {
     return null;
   }
 

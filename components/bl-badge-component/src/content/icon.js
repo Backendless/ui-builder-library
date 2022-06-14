@@ -1,5 +1,5 @@
 export function Icon({ icon, fontSize }) {
-  if (icon === '') {
+  if (!icon) {
     return null;
   }
 

@@ -1,5 +1,5 @@
 export function Image({ imageUrl, imageWidth }) {
-  if (imageUrl === '') {
+  if (!imageUrl) {
     return null;
   }
 
