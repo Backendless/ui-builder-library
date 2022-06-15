@@ -20,9 +20,7 @@ export function UndoButton({ signaturePad, component, eventHandlers }) {
       className="undo-button"
       onClick={ undo }
     >
-      {/*Waiting for BKNDLSS-28470, SHOULD BE
-      { undoButtonLabel }*/}
-      { undoButtonLabel || 'Undo' }
+      { undoButtonLabel }
     </button>
   );
 }

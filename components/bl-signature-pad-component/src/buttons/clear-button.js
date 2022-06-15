@@ -15,9 +15,7 @@ export function ClearButton({ signaturePad, component, eventHandlers }) {
       className="clear-button"
       onClick={ clear }
     >
-      {/*Waiting for BKNDLSS-28470, SHOULD BE
-      { clearButtonLabel }*/}
-      { clearButtonLabel || 'Clear' }
+      { clearButtonLabel }
     </button>
   );
 }

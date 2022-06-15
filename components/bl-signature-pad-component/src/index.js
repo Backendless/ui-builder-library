@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import SignaturePad from './lib/signature-pad.umd.min';
+import { resizeCanvas } from './utils/canvas';
 import { ActionButtons } from './action-buttons';
 
 export default function SignaturePadComponent({ component, eventHandlers }) {
@@ -9,26 +10,17 @@ export default function SignaturePadComponent({ component, eventHandlers }) {
   const elRef = useRef(null);
   const signaturePad = useRef(null);
 
-  function resizeCanvas() {
-    const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    const canvas = elRef.current;
-
-    canvas.width = canvas.offsetWidth * ratio;
-    canvas.height = canvas.offsetHeight * ratio;
-    canvas.getContext('2d').scale(ratio, ratio);
-
-    signaturePad.current.clear();
-  }
-
-  React.useEffect(() => {
+  useEffect(() => {
     signaturePad.current = new SignaturePad(elRef.current, {
       backgroundColor: 'rgb(255, 255, 255)',
       penColor,
     });
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', () => {
+      resizeCanvas(elRef.current, signaturePad.current);
+    });
 
-    resizeCanvas();
+    resizeCanvas(elRef.current, signaturePad.current);
   }, []);
 
   return (
@@ -48,9 +40,7 @@ export default function SignaturePadComponent({ component, eventHandlers }) {
       </div>
       <div className="footer">
         <div className="description">
-          {/*Waiting for BKNDLSS-28470, SHOULD BE
-          { description }*/}
-          { description || 'Sign Above' }
+          { description }
         </div>
         <ActionButtons
           signaturePad={ signaturePad.current }

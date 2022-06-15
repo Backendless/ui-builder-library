@@ -1,7 +1,7 @@
 {
   "id": "c_197b76b23dba14df0ad264df17532fb4",
   "name": "signature-pad",
-  "description": "",
+  "description": "Signature Pad is a component for drawing smooth signatures.",
   "showInToolbox": true,
   "faIcon": "file-signature",
   "mainJS": "dist/index.js",

@@ -31,9 +31,7 @@ export function SavePNGButton({ signaturePad, component, eventHandlers }) {
       className="save-png-button"
       onClick={ savePNG }
     >
-      {/*Waiting for BKNDLSS-28470, SHOULD BE
-      { savePNGButtonLabel }*/}
-      { savePNGButtonLabel || 'Save as PNG' }
+      { savePNGButtonLabel }
     </button>
   );
 }

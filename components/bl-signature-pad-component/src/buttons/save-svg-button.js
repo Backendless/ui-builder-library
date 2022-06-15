@@ -31,9 +31,7 @@ export function SaveSVGButton({ signaturePad, component, eventHandlers }) {
       className="save-svg-button"
       onClick={ saveSVG }
     >
-      {/*Waiting for BKNDLSS-28470, SHOULD BE
-      { saveSVGButtonLabel }*/}
-      { saveSVGButtonLabel || 'Save as SVG' }
+      { saveSVGButtonLabel }
     </button>
   );
 }

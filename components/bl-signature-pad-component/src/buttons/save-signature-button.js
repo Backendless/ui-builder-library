@@ -10,12 +10,13 @@ export function SaveSignatureButton({ signaturePad, component, eventHandlers }) 
 
       return;
     }
-
+    
     if (onSaveSignatureClick) {
       const dataURL = signaturePad.toDataURL();
-      const signatureBlob = dataURLToBlob(dataURL);
-
-      onSaveSignatureClick({ signatureBlob });
+      
+      dataURLToBlob(dataURL).then(signatureBlob => {
+        onSaveSignatureClick({ signatureBlob });
+      });
     }
   };
 
@@ -32,9 +33,7 @@ export function SaveSignatureButton({ signaturePad, component, eventHandlers }) 
       className="save-signature-button"
       onClick={ saveSignature }
     >
-      {/*Waiting for BKNDLSS-28470, SHOULD BE
-      { saveSignatureButtonLabel }*/}
-      { saveSignatureButtonLabel || 'Save Signature' }
+      { saveSignatureButtonLabel }
     </button>
   );
 }

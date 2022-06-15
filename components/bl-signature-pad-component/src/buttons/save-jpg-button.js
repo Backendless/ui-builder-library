@@ -31,9 +31,7 @@ export function SaveJPGButton({ signaturePad, component, eventHandlers }) {
       className="save-jpg-button"
       onClick={ saveJPG }
     >
-      {/*Waiting for BKNDLSS-28470, SHOULD BE
-      { saveJPGButtonLabel }*/}
-      { saveJPGButtonLabel || 'Save as JPG' }
+      { saveJPGButtonLabel }
     </button>
   );
 }

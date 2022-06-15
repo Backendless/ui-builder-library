@@ -16,16 +16,14 @@ export function ChangeColorButton({ signaturePad, component, eventHandlers }) {
     },
     [onChangeColor, signaturePad]
   );
-
-  if (penColor !== '') {
+  
+  if (!!penColor) {
     return null;
   }
 
   return (
     <label className="change-color-button">
-      {/*Waiting for BKNDLSS-28470, SHOULD BE
-      { changeColorButtonLabel }*/}
-      { changeColorButtonLabel || 'Change color' }
+      { changeColorButtonLabel }
       <input
         type="color"
         onChange={ changeColor }
