@@ -1,6 +1,6 @@
 # Gallery
 
-Gallery is a component of Backendless UI-Builder designer.The gallery is a component of the Backendless UI-Builder designer. It allows you to conveniently view images and stay on the page. 
+Gallery is a component of Backendless UI-Builder designer. It allows you to conveniently view images and stay on the page. 
 
 The component based on external [lightbox2](https://lokeshdhakar.com/projects/lightbox2/) library post by [Lokesh Dhakar](https://github.com/lokesh).
 

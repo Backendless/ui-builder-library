@@ -11,7 +11,7 @@ export function Gallery({ images, options }) {
     imageFadeDuration,
     positionFromTop,
     resizeDuration,
-    showImageNumberLabel,
+    showImageCount,
     wrapAround,
   } = options;
 
@@ -23,7 +23,7 @@ export function Gallery({ images, options }) {
     'imageFadeDuration': imageFadeDuration,
     'positionFromTop': positionFromTop,
     'resizeDuration': resizeDuration,
-    'showImageNumberLabel': showImageNumberLabel,
+    'showImageNumberLabel': showImageCount,
     'wrapAround': wrapAround,
   });
 
@@ -32,12 +32,13 @@ export function Gallery({ images, options }) {
       {
         images.map(image => {
           const { title, url, height } = image;
+          const fixedTitle = title.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
           return (
             <a
               key={ url }
-              data-lightbox="example"
-              data-title={ title }
+              data-lightbox="gallery"
+              data-title={ fixedTitle }
               href={ url }
             >
               <GalleryImage url={ url } imageHeight={ height } />
