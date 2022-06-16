@@ -1,0 +1,43 @@
+{
+  "id": "c_adde80d4b68e247ca0028eb4a6fc73bc",
+  "name": "Backdrop",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "backdropVisibility",
+      "label": "Is Backdrop Visible",
+      "handlerId": "backdropVisibilityHandler",
+      "dataBinding": true,
+      "defaultValue": false
+    },
+    {
+      "label": "Loader",
+      "type": "text",
+      "defaultValue": "line circle",
+      "name": "loaderType",
+      "handlerId": "loaderHandler",
+      "handlerDescription": "Possible:\n- line circle\n- doted circle"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "handlerDescription": "When click on backdrop"
+    },
+    {
+      "name": "onOpen",
+      "handlerDescription": "When open backdrop"
+    },
+    {
+      "name": "onClose",
+      "handlerDescription": "When close backdrop"
+    }
+  ],
+  "actions": []
+}
