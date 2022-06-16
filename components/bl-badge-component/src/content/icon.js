@@ -1,4 +1,10 @@
+import { useMemo } from 'react';
+
 export function Icon({ icon, fontSize }) {
+  const styles = useMemo(() => ({
+    fontSize,
+  }), []);
+  
   if (!icon) {
     return null;
   }
@@ -7,9 +13,8 @@ export function Icon({ icon, fontSize }) {
     <i
       className="content-icon material-icons-round"
       aria-hidden="true"
-      style={{
-        fontSize: fontSize+'px',
-      }}
-    >{ icon }</i>
+      style={ styles }>
+        { icon }
+    </i>
   );
 }

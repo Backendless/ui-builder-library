@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 export function Badge({ component, eventHandlers }) {
   const { onBadgeClick, onBadgeMouseOver, onBadgeMouseOut } = eventHandlers;
   const {
@@ -12,6 +14,27 @@ export function Badge({ component, eventHandlers }) {
     badgeHeight,
   } = component;
   
+  const badgeForms = {
+    DEFAULT: 'default',
+    CIRCLE: 'circle',
+    RECTANGLE: 'rectangle',
+  };
+
+  const badgeRadiusMap = {
+    [badgeForms.DEFAULT]: '25%',
+    [badgeForms.RECTANGLE]: '0',
+    [badgeForms.CIRCLE]: '50%',
+  };
+
+  const styles = useMemo(() => ({
+    color: badgeLabelColor,
+    background: badgeBackgroundColor,
+    borderRadius: badgeRadiusMap[badgeForm],
+    fontSize: badgeFontSize,
+    width: badgeWidth,
+    height: badgeHeight,
+  }), []);
+
   // Waiting for BKNDLSS-28471, SHOULD BE
   // if (!badgeVisibility) {
   //   return null;
@@ -19,29 +42,15 @@ export function Badge({ component, eventHandlers }) {
   if (badgeVisibility !== 'true') {
     return null;
   }
-  
-  const badgeStyles = {
-    color: badgeLabelColor,
-    background: badgeBackgroundColor,
-    borderRadius: '25%',
-    fontSize: badgeFontSize+'px',
-    width: badgeWidth+'px',
-    height: badgeHeight+'px',
-  };
-  
-  if (badgeForm === 'circle') {
-    badgeStyles.borderRadius = '50%';
-  } else if (badgeForm === 'rectangle') {
-    badgeStyles.borderRadius = '0';
-  } 
 
   return (
     <div
       className={ 'badge ' + badgeAlignment }
-      style={ badgeStyles }
+      style={ styles }
       onClick={ onBadgeClick }
       onMouseOver={ onBadgeMouseOver }
-      onMouseOut={ onBadgeMouseOut }
-    >{ badgeLabel }</div>
+      onMouseOut={ onBadgeMouseOut }>
+        { badgeLabel }
+    </div>
   );
 }

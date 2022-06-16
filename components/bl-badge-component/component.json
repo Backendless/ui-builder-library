@@ -1,7 +1,7 @@
 {
   "id": "c_7e8237be9ed8a45d5a5e99d7c1ffd257",
   "name": "Badge",
-  "description": "",
+  "description": "Badge generates a small badge to the corner of its child(ren).",
   "showInToolbox": true,
   "faIcon": "certificate",
   "mainJS": "dist/index.js",
@@ -25,17 +25,12 @@
     {
       "name": "badgeBackgroundColor",
       "label": "Badge Background Color",
-      "type": "text",
-      "handlerId": "",
-      "handlerLabel": "",
-      "handlerDescription": "",
-      "dataBinding": false
+      "type": "text"
     },
     {
       "name": "badgeFontSize",
       "label": "Badge Font Size",
-      "type": "number",
-      "defaultValue": "12"
+      "type": "number"
     },
     {
       "name": "badgeAlignment",
@@ -56,8 +51,7 @@
     {
       "name": "badgeWidth",
       "label": "Badge Width",
-      "type": "number",
-      "defaultValue": ""
+      "type": "number"
     },
     {
       "name": "badgeHeight",
@@ -83,8 +77,7 @@
     {
       "name": "contentFontSize",
       "label": "Content Font Size",
-      "type": "number",
-      "defaultValue": "24"
+      "type": "number"
     },
     {
       "name": "imageUrl",
@@ -94,14 +87,12 @@
     {
       "name": "imageWidth",
       "label": "Image Width",
-      "type": "number",
-      "defaultValue": "24"
+      "type": "number"
     },
     {
       "name": "padding",
       "label": "Padding",
-      "type": "number",
-      "defaultValue": "14"
+      "type": "number"
     }
   ],
   "eventHandlers": [
