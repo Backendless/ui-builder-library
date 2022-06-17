@@ -1,4 +1,14 @@
-import { useMemo } from 'react';
+const BadgeForms = {
+  DEFAULT: 'default',
+  CIRCLE: 'circle',
+  RECTANGLE: 'rectangle',
+};
+
+const BadgeRadiusMap = {
+  [BadgeForms.DEFAULT]: '25%',
+  [BadgeForms.CIRCLE]: '50%',
+  [BadgeForms.RECTANGLE]: '0',
+};
 
 export function Badge({ component, eventHandlers }) {
   const { onBadgeClick, onBadgeMouseOver, onBadgeMouseOut } = eventHandlers;
@@ -13,33 +23,17 @@ export function Badge({ component, eventHandlers }) {
     badgeWidth,
     badgeHeight,
   } = component;
-  
-  const badgeForms = {
-    DEFAULT: 'default',
-    CIRCLE: 'circle',
-    RECTANGLE: 'rectangle',
-  };
 
-  const badgeRadiusMap = {
-    [badgeForms.DEFAULT]: '25%',
-    [badgeForms.RECTANGLE]: '0',
-    [badgeForms.CIRCLE]: '50%',
-  };
-
-  const styles = useMemo(() => ({
+  const styles = {
     color: badgeLabelColor,
     background: badgeBackgroundColor,
-    borderRadius: badgeRadiusMap[badgeForm],
+    borderRadius: BadgeRadiusMap[badgeForm],
     fontSize: badgeFontSize,
     width: badgeWidth,
     height: badgeHeight,
-  }), []);
+  };
 
-  // Waiting for BKNDLSS-28471, SHOULD BE
-  // if (!badgeVisibility) {
-  //   return null;
-  // }
-  if (badgeVisibility !== 'true') {
+  if (!badgeVisibility) {
     return null;
   }
 

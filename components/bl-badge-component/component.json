@@ -30,7 +30,7 @@
     {
       "name": "badgeFontSize",
       "label": "Badge Font Size",
-      "type": "number"
+      "type": "text"
     },
     {
       "name": "badgeAlignment",
@@ -51,12 +51,12 @@
     {
       "name": "badgeWidth",
       "label": "Badge Width",
-      "type": "number"
+      "type": "text"
     },
     {
       "name": "badgeHeight",
       "label": "Badge Height",
-      "type": "number"
+      "type": "text"
     },
     {
       "name": "badgeForm",
@@ -77,7 +77,7 @@
     {
       "name": "contentFontSize",
       "label": "Content Font Size",
-      "type": "number"
+      "type": "text"
     },
     {
       "name": "imageUrl",
@@ -87,12 +87,12 @@
     {
       "name": "imageWidth",
       "label": "Image Width",
-      "type": "number"
+      "type": "text"
     },
     {
       "name": "padding",
       "label": "Padding",
-      "type": "number"
+      "type": "text"
     }
   ],
   "eventHandlers": [

@@ -11,11 +11,10 @@ export function Content({ component, eventHandlers }) {
       className="content"
       onClick={ onContentClick }
       onMouseOver={ onContentMouseOver }
-      onMouseOut={ onContentMouseOut }
-    >
-      <Text text={ text } fontSize={ contentFontSize } />
-      <Image imageUrl={ imageUrl } imageWidth={ imageWidth } />
-      <Icon icon={ icon } fontSize={ contentFontSize } />
+      onMouseOut={ onContentMouseOut }>
+        <Text text={ text } fontSize={ contentFontSize } />
+        <Image imageUrl={ imageUrl } width={ imageWidth } />
+        <Icon icon={ icon } fontSize={ contentFontSize } />
     </div>
   );
 }
