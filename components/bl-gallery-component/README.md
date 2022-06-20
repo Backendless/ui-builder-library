@@ -13,6 +13,10 @@ The component based on external [lightbox2](https://lokeshdhakar.com/projects/li
  Value must contain px, %, etc...   
 
     ImagesUrl:[{url:'http..', title:'Picture..', height: '200px' },..]
+Also, you can avoid any logic by writing in settings 'Images Data' links with separating comma ','. 
+
+    htttp://image1, http://image2
+But if you already have logic, this method will not work.
 
 ### Options
 
@@ -90,5 +94,14 @@ The time it takes for the image to fade in once loaded, in milliseconds.</dd>
 <dd>If you want to change border radius of image add theme extension with new border radius variable.
 
     @bl-customComponent-gallery-image-border-radius: 4px;
+</dd>
+
+<dt>Gallery Buttons</dt>
+<dd>If you want to change gallery buttons add theme extension variable with link. 
+    
+    Icon-close: @bl-customComponent-gallery-icon-close: 'https://img..';
+    Icon-loading: @bl-customComponent-gallery-icon-loading: 'https://loading.gif';
+    Icon-next: @bl-customComponent-gallery-icon-next: 'https://img..';
+    Icon-prev: @bl-customComponent-gallery-icon-prev: 'https://img..';
 </dd>
 </dl>
