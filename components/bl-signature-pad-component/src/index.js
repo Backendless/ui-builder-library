@@ -8,46 +8,45 @@ export default function SignaturePadComponent({ component, eventHandlers }) {
   const { penColor, classList, display, description } = component;
   const { onMouseOver, onMouseOut } = eventHandlers;
   const elRef = useRef(null);
-  const signaturePad = useRef(null);
+  const signaturePadRef = useRef(null);
+  const styles = {
+    display: display ? 'flex' : 'none',
+  };
 
   useEffect(() => {
-    signaturePad.current = new SignaturePad(elRef.current, {
+    signaturePadRef.current = new SignaturePad(elRef.current, {
       backgroundColor: 'rgb(255, 255, 255)',
       penColor,
     });
 
     window.addEventListener('resize', () => {
-      resizeCanvas(elRef.current, signaturePad.current);
+      resizeCanvas(elRef.current, signaturePadRef.current);
     });
 
-    resizeCanvas(elRef.current, signaturePad.current);
+    resizeCanvas(elRef.current, signaturePadRef.current);
   }, []);
 
   return (
     <div
       className={ 'bl-customComponent-signature-pad ' + classList.join(' ') }
-      style={{
-        display: display ? 'flex' : 'none',
-      }}
-    >
-      <div className="wrapper">
-        <canvas
-          ref={ elRef }
-          onMouseOver={ onMouseOver }
-          onMouseOut={ onMouseOut }
-        >
-        </canvas>
-      </div>
-      <div className="footer">
-        <div className="description">
-          { description }
+      style={ styles }>
+        <div className="wrapper">
+          <canvas
+            ref={ elRef }
+            onMouseOver={ onMouseOver }
+            onMouseOut={ onMouseOut }>
+          </canvas>
         </div>
-        <ActionButtons
-          signaturePad={ signaturePad.current }
-          component={ component }
-          eventHandlers={ eventHandlers }
-        />
-      </div>
+        <div className="footer">
+          <div className="description">
+            { description }
+          </div>
+          <ActionButtons
+            signaturePadRef={ signaturePadRef }
+            component={ component }
+            eventHandlers={ eventHandlers }
+          />
+        </div>
     </div>
   );
 }

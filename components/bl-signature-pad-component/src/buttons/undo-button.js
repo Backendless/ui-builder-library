@@ -1,13 +1,13 @@
-export function UndoButton({ signaturePad, component, eventHandlers }) {
+export function UndoButton({ signaturePadRef, component, eventHandlers }) {
   const { undoButtonLabel } = component;
   const { onUndoClick } = eventHandlers;
 
   const undo = () => {
-    const data = signaturePad.toData();
+    const data = signaturePadRef.current.toData();
 
     if (data) {
       data.pop();
-      signaturePad.fromData(data);
+      signaturePadRef.current.fromData(data);
     }
 
     if (onUndoClick) {
@@ -16,10 +16,7 @@ export function UndoButton({ signaturePad, component, eventHandlers }) {
   };
 
   return (
-    <button
-      className="undo-button"
-      onClick={ undo }
-    >
+    <button className="undo-button" onClick={ undo }>
       { undoButtonLabel }
     </button>
   );

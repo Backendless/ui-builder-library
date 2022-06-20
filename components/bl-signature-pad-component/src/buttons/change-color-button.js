@@ -1,21 +1,18 @@
 import { useCallback } from 'react';
 
-export function ChangeColorButton({ signaturePad, component, eventHandlers }) {
+export function ChangeColorButton({ signaturePadRef, component, eventHandlers }) {
   const { penColor, changeColorButtonLabel } = component;
   const { onChangeColor } = eventHandlers;
 
-  const changeColor = useCallback(
-    e => {
-      const color = e.target.value;
+  const changeColor = useCallback(e => {
+    const color = e.target.value;
 
-      signaturePad.penColor = color;
+    signaturePadRef.current.penColor = color;
 
-      if (onChangeColor) {
-        onChangeColor({ color });
-      }
-    },
-    [onChangeColor, signaturePad]
-  );
+    if (onChangeColor) {
+      onChangeColor({ color });
+    }
+  }, [onChangeColor, signaturePadRef]);
   
   if (!!penColor) {
     return null;
@@ -24,10 +21,7 @@ export function ChangeColorButton({ signaturePad, component, eventHandlers }) {
   return (
     <label className="change-color-button">
       { changeColorButtonLabel }
-      <input
-        type="color"
-        onChange={ changeColor }
-      />
+      <input type="color" onChange={ changeColor } />
     </label>
   );
 }

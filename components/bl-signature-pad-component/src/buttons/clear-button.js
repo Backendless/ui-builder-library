@@ -1,9 +1,9 @@
-export function ClearButton({ signaturePad, component, eventHandlers }) {
+export function ClearButton({ signaturePadRef, component, eventHandlers }) {
   const { clearButtonLabel } = component;
   const { onClearClick } = eventHandlers;
 
   const clear = () => {
-    signaturePad.clear();
+    signaturePadRef.current.clear();
 
     if (onClearClick) {
       onClearClick();
@@ -11,10 +11,7 @@ export function ClearButton({ signaturePad, component, eventHandlers }) {
   };
 
   return (
-    <button
-      className="clear-button"
-      onClick={ clear }
-    >
+    <button className="clear-button" onClick={ clear }>
       { clearButtonLabel }
     </button>
   );
