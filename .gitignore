@@ -1,1 +1,5 @@
 /node_modules/
+/components/bl-webcamPhoto-component/dist/
+!/babel.config.json
+!/package.json
+!/package-lock.json
