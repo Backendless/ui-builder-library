@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "eslint": "^8.18.0",
-    "eslint-config-backendless": "^1.0.0"
-  },
-  "devDependencies": {
-    "@babel/preset-react": "^7.17.12"
-  }
-}
