@@ -1,9 +1,7 @@
-import { Icon } from './content/icon';
-import { Image } from './content/image';
-import { Text } from './content/text';
+import { Icon, Image, Text } from './content-types';
 
 export function Content({ component, eventHandlers }) {
-  const { text, imageUrl, icon, contentFontSize, imageWidth } = component;
+  const { textContent, imageUrl, icon, contentFontSize, imageWidth } = component;
   const { onContentClick, onContentMouseOver, onContentMouseOut } = eventHandlers;
   
   return (
@@ -12,7 +10,7 @@ export function Content({ component, eventHandlers }) {
       onClick={ onContentClick }
       onMouseOver={ onContentMouseOver }
       onMouseOut={ onContentMouseOut }>
-        <Text text={ text } fontSize={ contentFontSize } />
+        <Text textContent={ textContent } fontSize={ contentFontSize } />
         <Image imageUrl={ imageUrl } width={ imageWidth } />
         <Icon icon={ icon } fontSize={ contentFontSize } />
     </div>

@@ -1,11 +1,11 @@
-export function Text({ text, fontSize }) {
-  if (!text) {
+export function Text({ textContent, fontSize }) {
+  if (!textContent) {
     return null;
   }
 
   return (
     <span className="content-text" style={{ fontSize }}>
-      { text }
+      { textContent }
     </span>
   );
 }

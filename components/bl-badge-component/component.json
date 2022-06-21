@@ -1,5 +1,5 @@
 {
-  "id": "c_7e8237be9ed8a45d5a5e99d7c1ffd257",
+  "id": "c_43f923fdd80e8ed727be59ea96811b64",
   "name": "Badge",
   "description": "Badge generates a small badge to the corner of its child(ren).",
   "showInToolbox": true,
@@ -70,8 +70,8 @@
       "type": "text"
     },
     {
-      "name": "text",
-      "label": "Text",
+      "name": "textContent",
+      "label": "Text Content",
       "type": "text"
     },
     {
