@@ -1,0 +1,76 @@
+{
+  "id": "c_eff6ce09bc06085eabf2b5547fa12404",
+  "name": "Rating",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "disabled",
+      "label": "Disabled",
+      "type": "checkbox",
+      "defaultValue": false,
+      "handlerId": "disabled",
+      "handlerLabel": "Disabled",
+      "dataBinding": true
+    },
+    {
+      "name": "icon",
+      "label": "Icon",
+      "type": "text",
+      "defaultValue": "star",
+      "handlerId": "icon",
+      "dataBinding": false,
+      "handlerLabel": "Icon",
+      "handlerDescription": "You can choose a star or heart icon, only these icons are valid."
+    },
+    {
+      "name": "defaultValue",
+      "label": "Default value",
+      "type": "number",
+      "defaultValue": "0",
+      "handlerId": "defaultValue",
+      "dataBinding": true,
+      "handlerLabel": "Default value"
+    },
+    {
+      "name": "iconsAmount",
+      "label": "Icons amount",
+      "type": "number",
+      "defaultValue": "5",
+      "handlerId": "iconsAmount",
+      "handlerLabel": "Icons amont",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onRatingChange",
+      "label": "On Rating change",
+      "dataBinding": true,
+      "contextBlocks": [
+        {
+          "label": "Curent Rating",
+          "id": "curentRating"
+        }
+      ]
+    },
+    {
+      "name": "onHighestRating",
+      "label": "On Highest Rating",
+      "dataBinding": true,
+      "contextBlocks": [
+        {
+          "id": "highestRating",
+          "label": "Highest Rating"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {}
+  ]
+}

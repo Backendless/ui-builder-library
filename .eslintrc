@@ -1,0 +1,19 @@
+{
+  "parser": "@babel/eslint-parser",
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "eslint-config-backendless",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": 1
+  }
+}
