@@ -1,22 +1,25 @@
 import { useEffect } from 'react';
 
 import LightBox from '../../lib/lightbox';
-import { fixTitle } from '../../utils/title';
+import { replaceArrowBrackets } from '../../utils/string';
 import { GalleryImage } from '../gallery-image';
 
-export function Gallery({
-                          images,
-                          wrapAround,
-                          showImageCount,
-                          resizeDuration,
-                          positionFromTop,
-                          imageFadeDuration,
-                          fadeDuration,
-                          disableScrolling,
-                          separator,
-                          imageLabel,
-                          alwaysShowNavOnTouchDevices,
-                        }) {
+export function Gallery(props) {
+  const {
+    images,
+    wrapAround,
+    showImageCount,
+    resizeDuration,
+    positionFromTop,
+    imageFadeDuration,
+    fadeDuration,
+    disableScrolling,
+    separator,
+    imageLabel,
+    alwaysShowNavOnTouchDevices,
+    shortId
+  } = props;
+
   useEffect(() => (
     LightBox.option({
       'alwaysShowNavOnTouchDevices': alwaysShowNavOnTouchDevices,
@@ -36,12 +39,12 @@ export function Gallery({
       {
         images.map(image => {
           const { title, url, height } = image;
-          const escapedTitle = fixTitle(title);
+          const escapedTitle = replaceArrowBrackets(title);
 
           return (
             <a
               key={ url }
-              data-lightbox="bl-gallery"
+              data-lightbox={ `bl-gallery-${shortId}` }
               data-title={ escapedTitle }
               href={ url }>
               <GalleryImage url={ url } height={ height } />

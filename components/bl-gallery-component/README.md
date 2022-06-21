@@ -20,56 +20,18 @@ But if you already have logic, this method will not work.
 
 ### Options
 
-<dl>
-<dt>Wrap Around</dt>
-
-    Default: false
-<dd>This checkbox toggling possibility to make the gallery infinite.
-If checked, when a user reaches the last image in a set, the right navigation arrow will appear and they will be to continue moving forward which will take them back to the first image in the set.</dd>
-<dt>Nav On Mobile</dt>
-
-    Default: false
-<dd>This checkbox toggles the visibility of navigation on touchscreen devices.
-If true, the left and right navigation arrows which appear on mouse hover when viewing image sets will always be visible on devices which support touch.</dd>
-<dt>Disable Scrolling</dt>
-
-    Default: false
-<dd>This checkbox toggles scroll possibility.
-If true, prevent the page from scrolling while Lightbox is open. This works by settings overflow hidden on the body.</dd>
-<dt>Show Image Number Label</dt>
-
-    Default: false
-<dd>This checkbox toggling indicator visibility of the number of images
-If unchecked, the text indicating the current image number and the total number of images in set (Ex. "image 2 of 4") will be hidden.</dd>
-<dt>Image Label</dt>
-
-    Default: 'Image'
-<dd>This option is to set the text in indicator of images.
-It works if "Show Image Number Label" is true.</dd>
-<dt>Separator</dt>
-
-    Default: 'of'
-<dd>This option is to set separator in indicator of images.
-It works if "Show Image Number Label" is true.</dd>
-<dt>Fade Duration</dt>
-    
-    Default: 600ms
-<dd>This option is to set the time of fade duration.
-The time it takes for the Lightbox container and overlay to fade in and out, in milliseconds.</dd>
-<dt>Image Fade Duration</dt>
-
-    Default: 600ms
-<dd>This option is to set the time of image fade duration.
-The time it takes for the image to fade in once loaded, in milliseconds.</dd>
-<dt>Resize Duration</dt>
-
-    Default: 700ms
-<dd>This option is to set the time it takes for the Lightbox container to animate its width and height when transition between different size images, in milliseconds.</dd>
-<dt>Position From Top</dt>
-
-    Default: 50px
-<dd>This option is to set the distance from top of viewport that the Lightbox container will appear, in pixels.</dd>
-</dl>
+| Name                    | Default value | Description                                                                                                                                                                                                                                                                |
+|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Wrap Around             | false         | This checkbox toggling possibility to make the gallery infinite. If checked, when a user reaches the last image in a set, the right navigation arrow will appear and they will be to continue moving forward which will take them back to the first image in the set.</dd> |
+| Nav On Mobile           | false         | This checkbox toggles the visibility of navigation on touchscreen devices. If true, the left and right navigation arrows which appear on mouse hover when viewing image sets will always be visible on devices which support touch.                                        |
+| Disable Scrolling       | false         | This checkbox toggles scroll possibility. If true, prevent the page from scrolling while Lightbox is open. This works by settings overflow hidden on the body.                                                                                                             |
+| Show Image Number Label | false         | This checkbox toggling indicator visibility of the number of images If unchecked, the text indicating the current image number and the total number of images in set (Ex. "image 2 of 4") will be hidden.                                                                  |
+| Image Label             | Image         | This option is to set the text in indicator of images. It works if "Show Image Number Label" is true.                                                                                                                                                                      |
+| Separator               | of            | This option is to set separator in indicator of images. It works if "Show Image Number Label" is true.                                                                                                                                                                     |
+| Fade Duration           | 600ms         | This option is to set the time of fade duration. The time it takes for the Lightbox container and overlay to fade in and out, in milliseconds.                                                                                                                             |
+| Image Fade Duration     | 600ms         | This option is to set the time of image fade duration. The time it takes for the image to fade in once loaded, in milliseconds.                                                                                                                                            |
+| Resize Duration         | 700ms         | This option is to set the time it takes for the Lightbox container to animate its width and height when transition between different size images, in milliseconds.                                                                                                         |
+| Position From Top       | 50px          | This option is to set the distance from top of viewport that the Lightbox container will appear, in pixels.                                                                                                                                                                |
 
 ###Styling
 

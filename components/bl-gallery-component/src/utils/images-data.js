@@ -5,7 +5,7 @@ export const createImagesData = imagesData => {
     return imagesArray.split(',').map(img => ({
       url:img,
     }));
-  } else {
-    return [];
   }
+
+  return [];
 };
