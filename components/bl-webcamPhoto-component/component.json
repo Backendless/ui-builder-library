@@ -1,0 +1,56 @@
+{
+  "id": "c_cccc9e38f98539cc151bc63ffe3b951a",
+  "name": "Webcam photo",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "uploadButtonText",
+      "label": "Text in upload button",
+      "type": "text",
+      "handlerId": "",
+      "defaultValue": "Upload"
+    },
+    {
+      "name": "makePhotoButtonText",
+      "label": "Text in make photo  button",
+      "type": "text",
+      "defaultValue": "Make photo"
+    },
+    {
+      "name": "makeSnapshotButtonText",
+      "label": "Text in snapshot button",
+      "type": "text",
+      "defaultValue": "Snapshot"
+    },
+    {
+      "name": "doneButtonText",
+      "label": "Text in done button",
+      "type": "text",
+      "defaultValue": "Done"
+    },
+    {
+      "name": "buttonDisabled",
+      "handlerId": "buttonDisabledHandler",
+      "dataBinding": true,
+      "type": "checkbox",
+      "label": "Default disabled",
+      "defaultValue": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onSaveImage",
+      "contextBlocks": [
+        {
+          "id": "imageBlob"
+        }
+      ]
+    }
+  ],
+  "actions": []
+}

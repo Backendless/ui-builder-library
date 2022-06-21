@@ -1,0 +1,195 @@
+@bl-customComponent-webcamPhoto-themeColor: @themePrimary;
+@bl-customComponent-webcamPhoto-backgroundColor: @appBackgroundColor;
+@bl-customComponent-webcamPhoto-textColor: @appTextColor;
+@bl-customComponent-webcamPhoto-disabledColor: @disabledColor;
+@bl-customComponent-webcamPhoto-blockBorder: @appBlockBorder;
+@bl-customComponent-webcamPhoto-borderRadius: @appComponentBorderRadius;
+@bl-customComponent-webcamPhoto-fontSize: 12px;
+@bl-customComponent-webcamPhoto-margin: 20px;
+
+@bl-customComponent-webcamPhoto-button-margin: 2px;
+@bl-customComponent-webcamPhoto-button-padding: 6px 16px;
+@bl-customComponent-webcamPhoto-button-background: @bl-customComponent-webcamPhoto-themeColor;
+@bl-customComponent-webcamPhoto-button-color: contrast(@bl-customComponent-webcamPhoto-button-background);
+@bl-customComponent-webcamPhoto-button-shadowColor: @appComponentShadowColor;
+@bl-customComponent-webcamPhoto-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 12%);
+@bl-customComponent-webcamPhoto-button-shadowDisabled: none;
+@bl-customComponent-webcamPhoto-button-disabledBackground: @bl-customComponent-webcamPhoto-disabledColor;
+@bl-customComponent-webcamPhoto-button-disabledColor: contrast(@bl-customComponent-webcamPhoto-button-disabledBackground);
+
+@bl-customComponent-webcamPhoto-button-doneButton-color: @bl-customComponent-webcamPhoto-button-color;
+@bl-customComponent-webcamPhoto-button-doneButton-background: @bl-customComponent-webcamPhoto-button-background;
+@bl-customComponent-webcamPhoto-button-doneButton-shadowHover: @bl-customComponent-webcamPhoto-button-shadowHover;
+@bl-customComponent-webcamPhoto-button-doneButton-disabledBackground: @bl-customComponent-webcamPhoto-button-disabledBackground;
+@bl-customComponent-webcamPhoto-button-doneButton-disabledColor: @bl-customComponent-webcamPhoto-button-disabledColor;
+
+@bl-customComponent-webcamPhoto-button-photoButton-color: @bl-customComponent-webcamPhoto-button-color;
+@bl-customComponent-webcamPhoto-button-photoButton-background: @bl-customComponent-webcamPhoto-button-background;
+@bl-customComponent-webcamPhoto-button-photoButton-shadowHover: @bl-customComponent-webcamPhoto-button-shadowHover;
+@bl-customComponent-webcamPhoto-button-photoButton-disabledBackground: @bl-customComponent-webcamPhoto-button-disabledBackground;
+@bl-customComponent-webcamPhoto-button-photoButton-disabledColor: @bl-customComponent-webcamPhoto-button-disabledColor;
+
+@bl-customComponent-webcamPhoto-button-snapshotButton-color: @bl-customComponent-webcamPhoto-button-color;
+@bl-customComponent-webcamPhoto-button-snapshotButton-background: @bl-customComponent-webcamPhoto-button-background;
+@bl-customComponent-webcamPhoto-button-snapshotButton-shadowHover: @bl-customComponent-webcamPhoto-button-shadowHover;
+@bl-customComponent-webcamPhoto-button-snapshotButton-disabledBackground: @bl-customComponent-webcamPhoto-button-disabledBackground;
+@bl-customComponent-webcamPhoto-button-snapshotButton-disabledColor: @bl-customComponent-webcamPhoto-button-disabledColor;
+
+@bl-customComponent-webcamPhoto-button-uploadButton-color: @bl-customComponent-webcamPhoto-button-color;
+@bl-customComponent-webcamPhoto-button-uploadButton-background: @bl-customComponent-webcamPhoto-button-background;
+@bl-customComponent-webcamPhoto-button-uploadButton-shadowHover: @bl-customComponent-webcamPhoto-button-shadowHover;
+@bl-customComponent-webcamPhoto-button-uploadButton-disabledBackground: @bl-customComponent-webcamPhoto-button-disabledBackground;
+@bl-customComponent-webcamPhoto-button-uploadButton-disabledColor: @bl-customComponent-webcamPhoto-button-disabledColor;
+
+@bl-customComponent-webcamPhoto-modal-backgroundColor: fade(@bl-customComponent-webcamPhoto-disabledColor, 40%);
+@bl-customComponent-webcamPhoto-modal-padding: 20px;
+
+@bl-customComponent-webcamPhoto-modal-content-backgroundColor: @bl-customComponent-webcamPhoto-backgroundColor;
+@bl-customComponent-webcamPhoto-modal-content-borderRadius: @bl-customComponent-webcamPhoto-borderRadius;
+@bl-customComponent-webcamPhoto-modal-content-border:@bl-customComponent-webcamPhoto-blockBorder;
+@bl-customComponent-webcamPhoto-modal-content-padding: 20px;
+
+@bl-customComponent-webcamPhoto-modal-content-images-marginBottom: 20px;
+
+@bl-customComponent-webcamPhoto-modal-content-image-border: @bl-customComponent-webcamPhoto-blockBorder;
+@bl-customComponent-webcamPhoto-modal-content-image-borderRadius: @bl-customComponent-webcamPhoto-borderRadius;
+@bl-customComponent-webcamPhoto-modal-content-video-marginRight: 20px;
+
+@bl-customComponent-webcamPhoto-modal-content-buttonContainer-jusify: center;
+
+@bl-customComponent-webcamPhoto-mediaQuery: calc(640px + @bl-customComponent-webcamPhoto-modal-padding * 2 + @bl-customComponent-webcamPhoto-modal-content-padding * 2 + @bl-customComponent-webcamPhoto-modal-content-video-marginRight);
+
+.bl-customComponent-webcamPhoto{
+  *{
+    box-sizing: border-box;
+  }
+  margin: @bl-customComponent-webcamPhoto-margin;
+  .modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: @bl-customComponent-webcamPhoto-modal-backgroundColor;
+    padding: @bl-customComponent-webcamPhoto-modal-padding;
+    
+    video,canvas{
+      border: @bl-customComponent-webcamPhoto-modal-content-image-border;
+      border-radius: @bl-customComponent-webcamPhoto-modal-content-image-borderRadius;
+    }
+    video {
+      margin-right: @bl-customComponent-webcamPhoto-modal-content-video-marginRight;
+    }
+    &__content{
+      background: @bl-customComponent-webcamPhoto-modal-content-backgroundColor;
+      border-radius: @bl-customComponent-webcamPhoto-modal-content-borderRadius;
+      padding: @bl-customComponent-webcamPhoto-modal-content-padding;
+    }
+    &__images{
+      display:flex;
+      margin-bottom: @bl-customComponent-webcamPhoto-modal-content-images-marginBottom;
+    }
+    &__button-container{
+      display: flex;
+      justify-content: @bl-customComponent-webcamPhoto-modal-content-buttonContainer-jusify;
+    }
+  }
+  
+  input[type="file"]{
+    display: none;
+  }
+  
+  button, label{
+    display: inline-block;
+    font-size: @bl-customComponent-webcamPhoto-fontSize;
+    border-width: 0;
+    cursor: pointer;
+    padding: @bl-customComponent-webcamPhoto-button-padding;
+    margin: @bl-customComponent-webcamPhoto-button-margin;
+    border-radius: @bl-customComponent-webcamPhoto-borderRadius;
+    &.done-button {
+      &:not(:disabled) {
+        background: @bl-customComponent-webcamPhoto-button-doneButton-background;
+        color: @bl-customComponent-webcamPhoto-button-doneButton-color;
+      
+        &:hover {
+          box-shadow: @bl-customComponent-webcamPhoto-button-doneButton-shadowHover;
+        }
+      }
+        
+      &:disabled {
+        background: @bl-customComponent-webcamPhoto-button-doneButton-disabledBackground;
+        color: @bl-customComponent-webcamPhoto-button-doneButton-disabledColor;
+      }
+    }
+    &.photo-button {
+      &:not(:disabled) {
+        background: @bl-customComponent-webcamPhoto-button-photoButton-background;
+        color: @bl-customComponent-webcamPhoto-button-photoButton-color;
+      
+        &:hover {
+          box-shadow: @bl-customComponent-webcamPhoto-button-photoButton-shadowHover;
+        }
+      }
+        
+      &:disabled {
+        background: @bl-customComponent-webcamPhoto-button-photoButton-disabledBackground;
+        color: @bl-customComponent-webcamPhoto-button-photoButton-disabledColor;
+      }
+    }
+    &.snapshot-button {
+      &:not(:disabled) {
+        background: @bl-customComponent-webcamPhoto-button-snapshotButton-background;
+        color: @bl-customComponent-webcamPhoto-button-snapshotButton-color;
+      
+        &:hover {
+          box-shadow: @bl-customComponent-webcamPhoto-button-snapshotButton-shadowHover;
+        }
+      }
+        
+      &:disabled {
+        background: @bl-customComponent-webcamPhoto-button-snapshotButton-disabledBackground;
+        color: @bl-customComponent-webcamPhoto-button-snapshotButton-disabledColor;
+      }
+    }
+    &.upload-button {
+      &:not(:disabled) {
+        background: @bl-customComponent-webcamPhoto-button-uploadButton-background;
+        color: @bl-customComponent-webcamPhoto-button-uploadButton-color;
+      
+        &:hover {
+          box-shadow: @bl-customComponent-webcamPhoto-button-uploadButton-shadowHover;
+        }
+      }
+        
+      &:disabled {
+        background: @bl-customComponent-webcamPhoto-button-uploadButton-disabledBackground;
+        color: @bl-customComponent-webcamPhoto-button-uploadButton-disabledColor;
+      }
+    }
+  }
+}
+
+@media(max-width: @bl-customComponent-webcamPhoto-mediaQuery){
+  .modal{
+    .modal__images{
+      flex-direction: column;
+      align-items: center;
+      video{
+        margin-right: 0;
+        margin-bottom: @bl-customComponent-webcamPhoto-modal-content-video-marginRight;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
