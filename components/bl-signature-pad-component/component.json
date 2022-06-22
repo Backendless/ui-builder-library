@@ -9,14 +9,13 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "color",
       "name": "penColor",
       "label": "Pen Color",
-      "type": "text",
       "handlerId": "penColorLogic",
       "handlerLabel": "Pen Color Logic",
-      "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine what color should be applied to pen.",
-      "defaultValue": ""
+      "dataBinding": true
     },
     {
       "name": "description",
