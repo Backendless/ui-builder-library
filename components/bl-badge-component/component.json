@@ -18,14 +18,14 @@
       "dataBinding": true
     },
     {
+      "type": "color",
       "name": "badgeLabelColor",
-      "label": "Badge Label Color",
-      "type": "text"
+      "label": "Badge Label Color"
     },
     {
+      "type": "color",
       "name": "badgeBackgroundColor",
-      "label": "Badge Background Color",
-      "type": "text"
+      "label": "Badge Background Color"
     },
     {
       "name": "badgeFontSize",
@@ -33,10 +33,28 @@
       "type": "text"
     },
     {
+      "type": "select",
       "name": "badgeAlignment",
       "label": "Badge Alignment",
-      "type": "text",
-      "defaultValue": "top-right"
+      "defaultValue": "top-right",
+      "options": [
+        {
+          "value": "top-right",
+          "label": "top-right"
+        },
+        {
+          "value": "top-left",
+          "label": "top-left"
+        },
+        {
+          "value": "bottom-left",
+          "label": "bottom-left"
+        },
+        {
+          "value": "bottom-right",
+          "label": "bottom-right"
+        }
+      ]
     },
     {
       "name": "badgeVisibility",
@@ -59,10 +77,24 @@
       "type": "text"
     },
     {
+      "type": "select",
       "name": "badgeForm",
       "label": "Badge Form",
-      "type": "text",
-      "defaultValue": "default"
+      "defaultValue": "roundedRectangle",
+      "options": [
+        {
+          "value": "roundedRectangle",
+          "label": "rounded rectangle"
+        },
+        {
+          "value": "circle",
+          "label": "circle"
+        },
+        {
+          "value": "rectangle",
+          "label": "rectangle"
+        }
+      ]
     },
     {
       "name": "icon",

@@ -1,5 +1,5 @@
 const BadgeForms = {
-  DEFAULT: 'default',
+  DEFAULT: 'roundedRectangle',
   CIRCLE: 'circle',
   RECTANGLE: 'rectangle',
 };
