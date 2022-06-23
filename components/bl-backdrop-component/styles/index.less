@@ -1,6 +1,5 @@
-@bl-customComponent-backdrop-background: black;
-@bl-customComponent-backdrop-opacity: 1;
-@bl-customComponent-loader-color: red;
+@bl-customComponent-backdrop-background: @disabledColor;
+@bl-customComponent-loader-color: @themePrimary;
 @bl-customComponent-loader-size: 120px;
 @bl-customComponent-lineCircleLoader-lineWeight: 14px;
 @bl-customComponent-lineCircleLoader-containerSize: @bl-customComponent-loader-size;
@@ -451,8 +450,8 @@
     opacity: 1;
   }
   100% {
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 72px;
     height: 72px;
     opacity: 0;
