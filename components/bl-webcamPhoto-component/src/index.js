@@ -7,11 +7,7 @@ import {toBase64} from './utils/to-base64'
 import {Modal} from './modal'
 
 export default function WebcamPhoto({component, eventHandlers}) {
-    const {
-        uploadButtonText,
-        makePhotoButtonText,
-        buttonDisabled,
-    } = component
+    const {uploadButtonText, makePhotoButtonText, buttonDisabled} = component
     const {onSaveImage} = eventHandlers
 
     const [modalVisibility, setModalVisibility] = useState(false)

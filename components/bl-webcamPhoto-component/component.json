@@ -46,6 +46,7 @@
     {
       "name": "onSaveImage",
       "label": "On Save Image",
+      "handlerDescription": "This event is fired when the user clicks on the 'Done' button.",
       "contextBlocks": [
         {
           "id": "imageBlob"
