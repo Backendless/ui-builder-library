@@ -1,9 +1,9 @@
 {
   "id": "c_adde80d4b68e247ca0028eb4a6fc73bc",
   "name": "Backdrop",
-  "description": "",
+  "description": "This component is a background with a loader inside it.",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "circle-dashed",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -22,7 +22,7 @@
       "defaultValue": "line circle",
       "name": "loaderType",
       "handlerId": "loaderHandler",
-      "handlerDescription": "Possible:\n- bar\n- doted circle\n- line horizon\n- doted line circle\n- doted square\n- line circle\n- radar"
+      "handlerDescription": "Possible: bar, doted circle, line horizon, doted line circle, doted square, line circle, radar"
     }
   ],
   "eventHandlers": [
