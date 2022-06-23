@@ -1,17 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { DoneButton } from './buttons/DoneButton'
-import { MakeSnapshotButton } from './buttons/MakeSnapshotButton'
-import { dataURLToBlob } from './utils/dataURLToBlob'
-import { getUserMedia } from './utils/getUserMedia'
-import { stopUserMedia } from './utils/stopUserMedia'
+import { DoneButton } from './buttons/done'
+import { MakeSnapshotButton } from './buttons/make-snapshot'
+import { dataURLToBlob } from './utils/data-url-to-blob'
+import { getUserMedia } from './utils/get-user-media'
+import { stopUserMedia } from './utils/stop-user-media'
 
-export function Modal({
-                        setVisibility,
-                        component,
-                        eventHandlers,
-                      }){
+export function Modal({setVisibility, component, eventHandlers}){
   const { makeSnapshotButtonText, doneButtonText } = component
   const { onSaveImage } = eventHandlers
+
   const videoRef = useRef()
   const canvasRef = useRef()
   const [isPhoto, setIsPhoto]=useState(false)
@@ -46,8 +43,7 @@ export function Modal({
         <div className="modal__content" onClick={ handleModalClick }>
             <div className="modal__images">
               <video 
-                ref={ videoRef } 
-                autoplay="autoplay"
+                ref={ videoRef }
                 width="320"
                 height="240"
               />

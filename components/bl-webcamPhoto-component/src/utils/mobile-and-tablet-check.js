@@ -1,5 +1,5 @@
 export const mobileAndTabletCheck = () => {
-  const toMatch = [
+    const toMatch = [
         /Android/i,
         /webOS/i,
         /iPhone/i,
@@ -8,7 +8,6 @@ export const mobileAndTabletCheck = () => {
         /BlackBerry/i,
         /Windows Phone/i,
     ]
-    
     return toMatch.some(toMatchItem => {
         return navigator.userAgent.match(toMatchItem)
     })

@@ -1,9 +1,9 @@
 {
   "id": "c_cccc9e38f98539cc151bc63ffe3b951a",
   "name": "Webcam photo",
-  "description": "",
+  "description": "This component allows you to take a picture on the webcam and save it.",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "camera-polaroid",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -45,6 +45,7 @@
   "eventHandlers": [
     {
       "name": "onSaveImage",
+      "label": "On Save Image",
       "contextBlocks": [
         {
           "id": "imageBlob"
