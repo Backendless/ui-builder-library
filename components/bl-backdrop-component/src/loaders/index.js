@@ -1,17 +1,26 @@
-import { BarLoader } from './BarLoader'
-import { DotedCircleLoader } from './DotedCircleLoader'
-import { DotedHorizonLoader } from './DotedHorizonLoader'
-import { DotedLineCircleLoader } from './DotedLineCircleLoader'
-import { DotedSquareLoader } from './DotedSquareLoader'
-import { LineCircleLoader } from './LineCircleLoader'
-import { RadarLoader } from './RadarLoader'
+import { BarLoader } from './bar'
+import { DotedCircleLoader } from './doted-circle'
+import { DotedHorizonLoader } from './doted-horizon'
+import { DotedLineCircleLoader } from './doted-line-circle'
+import { DotedSquareLoader } from './doted-square'
+import { LineCircleLoader } from './line-circle'
+import { RadarLoader } from './radar'
 
-export {
-  LineCircleLoader,
-  DotedCircleLoader,
-  BarLoader,
-  DotedLineCircleLoader,
-  RadarLoader,
-  DotedSquareLoader,
-  DotedHorizonLoader,
+const LoaderTypes = {
+    lineCircle: 'line circle',
+    dotedCircle: 'doted circle',
+    bar: 'bar',
+    dotedLineCircle: 'doted line circle',
+    radar: 'radar',
+    dotedSquare: 'doted square',
+    dotedHorizon: 'doted horizon',
+}
+export const LoadersMap = {
+    [LoaderTypes.lineCircle]: LineCircleLoader,
+    [LoaderTypes.dotedCircle]: DotedCircleLoader,
+    [LoaderTypes.bar]: BarLoader,
+    [LoaderTypes.dotedLineCircle]: DotedLineCircleLoader,
+    [LoaderTypes.radar]: RadarLoader,
+    [LoaderTypes.dotedSquare]: DotedSquareLoader,
+    [LoaderTypes.dotedHorizon]: DotedHorizonLoader,
 }
