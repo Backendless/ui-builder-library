@@ -1,0 +1,51 @@
+{
+  "id": "c_cf2905b57bfc4375f8e8d00b5f03090d",
+  "name": "Transfer list",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "list",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "listType",
+      "label": "List type",
+      "defaultValue": "basic",
+      "handlerId": "listType",
+      "handlerLabel": "List type",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "basic",
+          "label": "Basic"
+        },
+        {
+          "value": "enhanced",
+          "label": "Enhanced"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "leftItems",
+      "label": "Left items",
+      "handlerId": "leftItems",
+      "handlerLabel": "Left items",
+      "handlerDescription": "Please enter the items to be displayed on the left in a comma in this field.",
+      "dataBinding": true
+    },
+    {
+      "name": "rightItems",
+      "label": "Right items",
+      "handlerId": "rightItems",
+      "handlerLabel": "Right items",
+      "dataBinding": true,
+      "handlerDescription": "Please enter the items to be displayed on the right in a comma in this field.",
+      "type": "text"
+    }
+  ],
+  "eventHandlers": [],
+  "actions": []
+}
