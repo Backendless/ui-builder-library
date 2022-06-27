@@ -8,7 +8,7 @@ export function Icon({ icon, fontSize }) {
       className="content-icon material-icons-round"
       aria-hidden="true"
       style={{ fontSize }}>
-        { icon }
+      { icon }
     </i>
   );
 }

@@ -12,8 +12,8 @@ export default function BadgeComponent({ component, eventHandlers }) {
     <div
       className={ 'bl-customComponent-badge ' + classList.join(' ') }
       style={{ padding }}>
-        <Content component={ component } eventHandlers={ eventHandlers } />
-        <Badge component={ component } eventHandlers={ eventHandlers } />
+      <Content component={ component } eventHandlers={ eventHandlers }/>
+      <Badge component={ component } eventHandlers={ eventHandlers }/>
     </div>
   );
 }

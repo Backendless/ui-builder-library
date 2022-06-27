@@ -1,12 +1,12 @@
 const BadgeForms = {
-  DEFAULT: 'roundedRectangle',
-  CIRCLE: 'circle',
+  DEFAULT  : 'roundedRectangle',
+  CIRCLE   : 'circle',
   RECTANGLE: 'rectangle',
 };
 
 const BadgeRadiusMap = {
-  [BadgeForms.DEFAULT]: '25%',
-  [BadgeForms.CIRCLE]: '50%',
+  [BadgeForms.DEFAULT]  : '25%',
+  [BadgeForms.CIRCLE]   : '50%',
   [BadgeForms.RECTANGLE]: '0',
 };
 
@@ -25,12 +25,12 @@ export function Badge({ component, eventHandlers }) {
   } = component;
 
   const styles = {
-    color: badgeLabelColor,
-    background: badgeBackgroundColor,
+    color       : badgeLabelColor,
+    background  : badgeBackgroundColor,
     borderRadius: BadgeRadiusMap[badgeForm],
-    fontSize: badgeFontSize,
-    width: badgeWidth,
-    height: badgeHeight,
+    fontSize    : badgeFontSize,
+    width       : badgeWidth,
+    height      : badgeHeight,
   };
 
   if (!badgeVisibility) {
@@ -44,7 +44,7 @@ export function Badge({ component, eventHandlers }) {
       onClick={ onBadgeClick }
       onMouseOver={ onBadgeMouseOver }
       onMouseOut={ onBadgeMouseOut }>
-        { badgeLabel }
+      { badgeLabel }
     </div>
   );
 }
