@@ -1,0 +1,92 @@
+{
+  "id": "c_82fae8bc221e0f6df00c363a12931989",
+  "name": "SnackBar",
+  "description": "Snackbars provide brief notifications.\nSnackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the corner of the screen. They shouldn't interrupt the user experience, and they don't require user input to disappear.",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "showClose",
+      "label": "Show Close Button",
+      "type": "checkbox",
+      "defaultValue": true
+    },
+    {
+      "name": "showAction",
+      "label": "Show Action Button",
+      "type": "checkbox"
+    },
+    {
+      "name": "actionContent",
+      "label": "Action Button Content",
+      "type": "text",
+      "defaultValue": "Action",
+      "handlerId": "actionContentLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to set the text of the action button. ",
+      "handlerLabel": "Action Content Logic"
+    },
+    {
+      "name": "snackContent",
+      "label": "Snackbar Content",
+      "type": "text",
+      "defaultValue": "Snackbar Info",
+      "handlerId": "snackContentLogic",
+      "handlerLabel": "Snackbar Content Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to set the text of the snackbar."
+    },
+    {
+      "name": "autoHide",
+      "label": "Auto Hide Duration",
+      "type": "number",
+      "defaultValue": "0"
+    },
+    {
+      "name": "verticalPosition",
+      "label": "Vertical Position",
+      "type": "text",
+      "defaultValue": "Top"
+    },
+    {
+      "name": "horizontalPosition",
+      "label": "Horizontal Position",
+      "type": "text",
+      "defaultValue": "Right"
+    },
+    {
+      "name": "type",
+      "label": "Type",
+      "type": "text",
+      "handlerId": "type Logic",
+      "handlerDescription": "This is a handler to set the type of the snackbar.",
+      "handlerLabel": "Type Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "show",
+      "label": "Show",
+      "handlerId": "show",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to show the snackbar. If true snackbar will appear.",
+      "handlerLabel": "Show Logic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClose",
+      "label": "onClose Click",
+      "handlerDescription": "This event is fired when the user clicks on the close button."
+    },
+    {
+      "name": "onAction",
+      "label": "onAction Click",
+      "handlerDescription": "This event is fired when the user clicks on the action button."
+    }
+  ],
+  "actions": []
+}
