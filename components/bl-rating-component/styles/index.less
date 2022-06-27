@@ -1,21 +1,28 @@
 // you can use LESS variables from the current Theme and app extensions of the UI-Container
-@bl-customComponent-badge-themeColor: @themePrimary;
-@bl-customComponent-badge-backgroundColor: @appBackgroundColor;
-@bl-customComponent-badge-textColor: @appTextColor;
+@bl-customComponent-rating-themeColor: @themePrimary;
+@bl-customComponent-rating-backgroundColor: @appBackgroundColor;
+@bl-customComponent-rating-textColor: @appTextColor;
 
 @bl-customComponent-rating-iconWidth: 35px;
 @bl-customComponent-rating-iconStarFill: #faaf00;
 @bl-customComponent-rating-iconHeartFill: #ff6d75;
 
+@bl-customComponent-rating-disabled: 0.38;
 @bl-customComponent-rating-labelWidth: 100%;
 
-.rating {
+.disabled {
+  opacity: @bl-customComponent-rating-disabled;
+  pointer-events: none;
+  cursor: default;
+}
+
+.bl-customComponent-rating {
   display: flex;
   position: relative;
+}
 
-  &__icons {
-    display: inline-flex;
-  }
+.bl-customComponent-rating__icons {
+  display: inline-flex;
 }
 
 .rating-icon {

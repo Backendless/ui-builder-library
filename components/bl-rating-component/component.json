@@ -1,7 +1,7 @@
 {
   "id": "c_eff6ce09bc06085eabf2b5547fa12404",
   "name": "Rating",
-  "description": "",
+  "description": "Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own.",
   "showInToolbox": true,
   "faIcon": "pencil-ruler",
   "mainJS": "dist/index.js",
