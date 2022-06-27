@@ -1,4 +1,4 @@
 export async function dataURLToBlob(dataURL) {
-    const response = await fetch(dataURL)
-    return response.blob()
+  const response = await fetch(dataURL);
+  return response.blob();
 }

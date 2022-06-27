@@ -46,25 +46,20 @@
 
 @bl-customComponent-webcamPhoto-modal-content-backgroundColor: @bl-customComponent-webcamPhoto-backgroundColor;
 @bl-customComponent-webcamPhoto-modal-content-borderRadius: @bl-customComponent-webcamPhoto-borderRadius;
-@bl-customComponent-webcamPhoto-modal-content-border:@bl-customComponent-webcamPhoto-blockBorder;
+@bl-customComponent-webcamPhoto-modal-content-border: @bl-customComponent-webcamPhoto-blockBorder;
 @bl-customComponent-webcamPhoto-modal-content-padding: 20px;
-
 @bl-customComponent-webcamPhoto-modal-content-images-marginBottom: 20px;
-
 @bl-customComponent-webcamPhoto-modal-content-image-border: @bl-customComponent-webcamPhoto-blockBorder;
 @bl-customComponent-webcamPhoto-modal-content-image-borderRadius: @bl-customComponent-webcamPhoto-borderRadius;
 @bl-customComponent-webcamPhoto-modal-content-video-marginRight: 20px;
-
 @bl-customComponent-webcamPhoto-modal-content-buttonContainer-jusify: center;
 
 @bl-customComponent-webcamPhoto-mediaQuery: calc(640px + @bl-customComponent-webcamPhoto-modal-padding * 2 + @bl-customComponent-webcamPhoto-modal-content-padding * 2 + @bl-customComponent-webcamPhoto-modal-content-video-marginRight);
 
-.bl-customComponent-webcamPhoto{
-  *{
-    box-sizing: border-box;
-  }
+.bl-customComponent-webcamPhoto {
   margin: @bl-customComponent-webcamPhoto-margin;
-  .modal{
+
+  .modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -75,34 +70,38 @@
     align-items: center;
     background: @bl-customComponent-webcamPhoto-modal-backgroundColor;
     padding: @bl-customComponent-webcamPhoto-modal-padding;
-    
-    video,canvas{
+
+    video, canvas {
       border: @bl-customComponent-webcamPhoto-modal-content-image-border;
       border-radius: @bl-customComponent-webcamPhoto-modal-content-image-borderRadius;
     }
+
     video {
       margin-right: @bl-customComponent-webcamPhoto-modal-content-video-marginRight;
     }
-    &__content{
+
+    &__content {
       background: @bl-customComponent-webcamPhoto-modal-content-backgroundColor;
       border-radius: @bl-customComponent-webcamPhoto-modal-content-borderRadius;
       padding: @bl-customComponent-webcamPhoto-modal-content-padding;
     }
-    &__images{
-      display:flex;
+
+    &__images {
+      display: flex;
       margin-bottom: @bl-customComponent-webcamPhoto-modal-content-images-marginBottom;
     }
-    &__button-container{
+
+    &__button-container {
       display: flex;
       justify-content: @bl-customComponent-webcamPhoto-modal-content-buttonContainer-jusify;
     }
   }
-  
-  input[type="file"]{
+
+  input[type="file"] {
     display: none;
   }
-  
-  button, label{
+
+  button, label {
     display: inline-block;
     font-size: @bl-customComponent-webcamPhoto-fontSize;
     border-width: 0;
@@ -110,61 +109,65 @@
     padding: @bl-customComponent-webcamPhoto-button-padding;
     margin: @bl-customComponent-webcamPhoto-button-margin;
     border-radius: @bl-customComponent-webcamPhoto-borderRadius;
+
     &.done-button {
       &:not(:disabled) {
         background: @bl-customComponent-webcamPhoto-button-doneButton-background;
         color: @bl-customComponent-webcamPhoto-button-doneButton-color;
-      
+
         &:hover {
           box-shadow: @bl-customComponent-webcamPhoto-button-doneButton-shadowHover;
         }
       }
-        
+
       &:disabled {
         background: @bl-customComponent-webcamPhoto-button-doneButton-disabledBackground;
         color: @bl-customComponent-webcamPhoto-button-doneButton-disabledColor;
       }
     }
+
     &.photo-button {
       &:not(:disabled) {
         background: @bl-customComponent-webcamPhoto-button-photoButton-background;
         color: @bl-customComponent-webcamPhoto-button-photoButton-color;
-      
+
         &:hover {
           box-shadow: @bl-customComponent-webcamPhoto-button-photoButton-shadowHover;
         }
       }
-        
+
       &:disabled {
         background: @bl-customComponent-webcamPhoto-button-photoButton-disabledBackground;
         color: @bl-customComponent-webcamPhoto-button-photoButton-disabledColor;
       }
     }
+
     &.snapshot-button {
       &:not(:disabled) {
         background: @bl-customComponent-webcamPhoto-button-snapshotButton-background;
         color: @bl-customComponent-webcamPhoto-button-snapshotButton-color;
-      
+
         &:hover {
           box-shadow: @bl-customComponent-webcamPhoto-button-snapshotButton-shadowHover;
         }
       }
-        
+
       &:disabled {
         background: @bl-customComponent-webcamPhoto-button-snapshotButton-disabledBackground;
         color: @bl-customComponent-webcamPhoto-button-snapshotButton-disabledColor;
       }
     }
+
     &.upload-button {
       &:not(:disabled) {
         background: @bl-customComponent-webcamPhoto-button-uploadButton-background;
         color: @bl-customComponent-webcamPhoto-button-uploadButton-color;
-      
+
         &:hover {
           box-shadow: @bl-customComponent-webcamPhoto-button-uploadButton-shadowHover;
         }
       }
-        
+
       &:disabled {
         background: @bl-customComponent-webcamPhoto-button-uploadButton-disabledBackground;
         color: @bl-customComponent-webcamPhoto-button-uploadButton-disabledColor;
@@ -173,12 +176,13 @@
   }
 }
 
-@media(max-width: @bl-customComponent-webcamPhoto-mediaQuery){
-  .modal{
-    .modal__images{
+@media (max-width: @bl-customComponent-webcamPhoto-mediaQuery) {
+  .modal {
+    .modal__images {
       flex-direction: column;
       align-items: center;
-      video{
+
+      video {
         margin-right: 0;
         margin-bottom: @bl-customComponent-webcamPhoto-modal-content-video-marginRight;
       }
