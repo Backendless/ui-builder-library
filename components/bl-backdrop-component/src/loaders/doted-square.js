@@ -1,15 +1,15 @@
 export function DotedSquareLoader() {
-    return (
-        <div className="bl-customComponent-squareDotedLoader">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    )
+  return (
+    <div className="bl-customComponent-squareDotedLoader loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
 }
