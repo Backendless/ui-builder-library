@@ -6,7 +6,7 @@ The component based on external [signature_pad](https://github.com/szimek/signat
 
 ## Usage
 
-### API
+### Component Elements
 
 <dl>
 <dt>Clear button</dt>
@@ -25,7 +25,7 @@ The component based on external [signature_pad](https://github.com/szimek/signat
 <dd>Save signature as Blob in context block for codeless logic.</dd>
 </dl>
 
-### Options
+### Component Properties
 
 <dl>
 <dt>Pen Color</dt>
