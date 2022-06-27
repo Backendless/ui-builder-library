@@ -18,43 +18,43 @@ export function ActionButtons({ signaturePadRef, component, eventHandlers }) {
   const SaveJPGButton = makeSaveButton({
     signaturePadRef,
     onSaveClick,
-    className: 'save-jpg-button',
+    className : 'save-jpg-button',
     visibility: saveJPGButtonVisibility,
-    label: saveJPGButtonLabel,
-    type: 'jpeg',
-    extension: 'jpg',
+    label     : saveJPGButtonLabel,
+    type      : 'jpeg',
+    extension : 'jpg',
   });
 
   const SavePNGButton = makeSaveButton({
     signaturePadRef,
     onSaveClick,
-    className: 'save-png-button',
+    className : 'save-png-button',
     visibility: savePNGButtonVisibility,
-    label: savePNGButtonLabel,
-    type: 'png',
-    extension: 'png',
+    label     : savePNGButtonLabel,
+    type      : 'png',
+    extension : 'png',
   });
 
   const SaveSVGButton = makeSaveButton({
     signaturePadRef,
     onSaveClick,
-    className: 'save-svg-button',
+    className : 'save-svg-button',
     visibility: saveSVGButtonVisibility,
-    label: saveSVGButtonLabel,
-    type: 'svg+xml',
-    extension: 'svg',
+    label     : saveSVGButtonLabel,
+    type      : 'svg+xml',
+    extension : 'svg',
   });
 
   const SaveSignatureButton = makeSaveButton({
     signaturePadRef,
-    className: 'save-signature-button',
-    visibility: saveSignatureButtonVisibility,
-    label: saveSignatureButtonLabel,
+    className   : 'save-signature-button',
+    visibility  : saveSignatureButtonVisibility,
+    label       : saveSignatureButtonLabel,
     saveCallback: () => {
       if (!onSaveSignatureClick) {
         return;
       }
-      
+
       const dataURL = signaturePadRef.current.toDataURL();
 
       dataURLToBlob(dataURL).then(signatureBlob => {
@@ -83,10 +83,10 @@ export function ActionButtons({ signaturePadRef, component, eventHandlers }) {
         />
       </div>
       <div className="action-save-buttons">
-        <SavePNGButton />
-        <SaveJPGButton />
-        <SaveSVGButton />
-        <SaveSignatureButton />
+        <SavePNGButton/>
+        <SaveJPGButton/>
+        <SaveSVGButton/>
+        <SaveSignatureButton/>
       </div>
     </div>
   );

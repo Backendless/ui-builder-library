@@ -21,7 +21,7 @@ export function ChangeColorButton({ signaturePadRef, component, eventHandlers })
   return (
     <label className="change-color-button">
       { changeColorButtonLabel }
-      <input type="color" onChange={ changeColor } />
+      <input type="color" onChange={ changeColor }/>
     </label>
   );
 }

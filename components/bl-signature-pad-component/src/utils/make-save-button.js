@@ -1,6 +1,6 @@
 import { download } from './file';
 
-export function makeSaveButton(options)  {
+export function makeSaveButton(options) {
   return function() {
     const {
       signaturePadRef,
