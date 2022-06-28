@@ -12,6 +12,7 @@
       "type": "checkbox",
       "name": "backdropVisibility",
       "label": "Is Backdrop Visible",
+      "handlerLabel": "Backdrop Visibility Logic",
       "handlerId": "backdropVisibilityHandler",
       "dataBinding": true,
       "defaultValue": false
@@ -21,6 +22,7 @@
       "type": "text",
       "defaultValue": "line circle",
       "name": "loaderType",
+      "handlerLabel": "Loader Type Logic",
       "handlerId": "loaderHandler",
       "handlerDescription": "Possible: bar, doted circle, line horizon, doted line circle, doted square, line circle, radar"
     }
