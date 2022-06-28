@@ -1,9 +1,9 @@
 import { icons } from '../icons';
+import { actions } from '../hooks/useTransferList';
 
-import Checkbox from './Checkbox';
-import ListItem from './ListItem';
+import { Checkbox, ListItem } from './';
 
-const List = ({
+export const List = ({
   title,
   enableSelectAll,
   items,
@@ -14,18 +14,20 @@ const List = ({
   const isIndeterminated = selected.length > 0 && !isAllChecked;
 
   const handleToggleItem = ({ target: { value, checked } }) => {
+    const item = items.find(item => item.value === value);
+
     if (checked) {
-      dispatch({ type: 'selectItems', items: [value] });
+      dispatch({ type: actions.SELECT_ITEMS, items: [item] });
     } else {
-      dispatch({ type: 'unselectItems', items: [value] });
+      dispatch({ type: actions.UNSELECT_ITEMS, items: [item] });
     }
   };
 
   const handleToggleAll = ({ target: { checked } }) => {
     if (checked) {
-      dispatch({ type: 'selectItems', items });
+      dispatch({ type: actions.SELECT_ITEMS, items });
     } else {
-      dispatch({ type: 'unselectItems', items });
+      dispatch({ type: actions.UNSELECT_ITEMS, items });
     }
   };
 
@@ -60,15 +62,15 @@ const List = ({
         </div>
       )}
       <div className="list__items">
-        {items.map((item, index) => {
-          const isChecked = selected.includes(item)
-          const id = `${item}-${index}`
+        {items.map((item) => {
+          const isChecked = selected.some(({ objectId }) => item.objectId === objectId);
 
           return (
             <ListItem
-              key={id}
-              id={id}
-              item={item}
+              key={item.objectId}
+              id={item.objectId}
+              value={item.value}
+              label={item.label}
               isChecked={isChecked}
               onChange={handleToggleItem}
             />
@@ -78,5 +80,3 @@ const List = ({
     </div>
   );
 };
-
-export default List;

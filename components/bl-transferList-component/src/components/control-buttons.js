@@ -1,4 +1,6 @@
-const ControlButtons = ({
+import { actions } from "../hooks/useTransferList";
+
+export const ControlButtons = ({
   enableMoveAll,
   listState,
   dispatch,
@@ -11,25 +13,25 @@ const ControlButtons = ({
   const moveAllToRight = () => {
     if (isMoveAllToRightDisabled) return;
 
-    dispatch({ type: 'moveAllToRight' });
+    dispatch({ type: actions.MOVE_ALL_TO_RIGHT });
   };
 
   const moveAllToLeft = () => {
     if (isMoveAllToLeftDisabled) return;
 
-      dispatch({ type: 'moveAllToLeft' });
+      dispatch({ type: actions.MOVE_ALL_TO_LEFT });
   };
 
   const moveSelectedToLeft = () => {
     if (isMoveSelectedToLeftDisabled) return;
 
-    dispatch({ type: 'moveSelectedToLeft' });
+    dispatch({ type: actions.MOVE_SELECTED_TO_LEFT });
   };
 
   const moveSelectedToRight = () => {
     if (isMoveSelectedToRightDisabled) return;
 
-    dispatch({ type: 'moveSelectedToRight' });
+    dispatch({ type: actions.MOVE_SELECTED_TO_RIGHT });
   };
 
   return (
@@ -65,5 +67,3 @@ const ControlButtons = ({
     </div>
   );
 };
-
-export default ControlButtons;

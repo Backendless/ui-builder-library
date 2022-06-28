@@ -1,7 +1,7 @@
 {
   "id": "c_cf2905b57bfc4375f8e8d00b5f03090d",
   "name": "Transfer list",
-  "description": "",
+  "description": "A transfer list or shuttle enables the user to move one or more list items between lists.",
   "showInToolbox": true,
   "faIcon": "list",
   "mainJS": "dist/index.js",
@@ -31,21 +31,38 @@
       "type": "text",
       "name": "leftItems",
       "label": "Left items",
-      "handlerId": "leftItems",
-      "handlerLabel": "Left items",
+      "handlerId": "leftItemsLogic",
+      "handlerLabel": "Left items logic",
       "handlerDescription": "Please enter the items to be displayed on the left in a comma in this field.",
       "dataBinding": true
     },
     {
       "name": "rightItems",
       "label": "Right items",
-      "handlerId": "rightItems",
-      "handlerLabel": "Right items",
+      "handlerId": "rightItemsLogic",
+      "handlerLabel": "Right items logic",
       "dataBinding": true,
       "handlerDescription": "Please enter the items to be displayed on the right in a comma in this field.",
       "type": "text"
     }
   ],
-  "eventHandlers": [],
-  "actions": []
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "label": "On Change",
+      "contextBlocks": [
+        {
+          "id": "leftItems",
+          "label": "Left items"
+        },
+        {
+          "id": "rightItems",
+          "label": "Right items"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {}
+  ]
 }

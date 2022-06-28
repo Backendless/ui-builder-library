@@ -1,10 +1,10 @@
 import { icons } from '../icons';
+import { Checkbox } from './';
 
-import Checkbox from './Checkbox';
-
-const ListItem = ({
+export const ListItem = ({
   id,
-  item,
+  value,
+  label,
   isChecked,
   onChange,
 }) => {
@@ -12,18 +12,16 @@ const ListItem = ({
 
   return (
     <label
-    htmlFor={ id }
-    className="list-item">
+      htmlFor={id}
+      className="list-item">
       <Checkbox
         id={id}
         icon={icon}
-        value={item}
+        value={value}
         checked={isChecked}
         onChange={onChange}
       />
-      <span className="list-item__content">{item}</span>
+      <span className="list-item__content">{label}</span>
     </label>
-  );
+  )
 };
-
-export default ListItem;
