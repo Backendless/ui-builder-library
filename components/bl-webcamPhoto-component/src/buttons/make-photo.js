@@ -3,8 +3,7 @@ export function MakePhotoButton({ onClick, text, disabled }) {
     <button
       onClick={ onClick }
       className="photo-button"
-      disabled={ disabled }
-    >
+      disabled={ disabled }>
       { text }
     </button>
   );

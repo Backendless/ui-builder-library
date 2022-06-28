@@ -1,9 +1,8 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { MakePhotoButton } from './buttons/make-photo';
-import { UploadButton } from './buttons/upload';
-import { dataURLToBlob } from './utils/data-url-to-blob';
-import { mobileAndTabletCheck } from './utils/mobile-and-tablet-check';
-import { toBase64 } from './utils/to-base64';
+
+import { MakePhotoButton, UploadButton } from './buttons/index';
+import { dataURLToBlob, toBase64 } from './utils/file';
+import { mobileAndTabletCheck } from './utils/device';
 import { Modal } from './modal';
 
 export default function WebcamPhoto({ component, eventHandlers }) {
@@ -18,20 +17,25 @@ export default function WebcamPhoto({ component, eventHandlers }) {
   }, [modalVisibility]);
 
   const handleChange = useCallback(async () => {
-    const dataURL = await toBase64(inputRef.current.files[0]);
-    dataURLToBlob(dataURL)
-      .then(imageBlob => {
-        onSaveImage({ imageBlob });
-      });
+    try {
+      const dataURL = await toBase64(inputRef.current.files[0]);
+
+      dataURLToBlob(dataURL)
+        .then(imageBlob => {
+          onSaveImage({ imageBlob });
+        });
+    } catch (error) {
+      console.log(`Error: ${ error.name }. Message: ${ error.message }`);
+    }
   }, []);
 
-  const isMobile = useMemo(() => {
+  const checkMobile = useMemo(() => {
     return mobileAndTabletCheck();
   }, []);
 
   return (
     <div className="bl-customComponent-webcamPhoto">
-      { isMobile
+      { checkMobile
         ? <UploadButton
           onChange={ handleChange }
           text={ uploadButtonLabel }
@@ -44,13 +48,13 @@ export default function WebcamPhoto({ component, eventHandlers }) {
           disabled={ buttonDisabled }
         />
       }
-      {
-        modalVisibility && <Modal
-          setVisibility={ setModalVisibility }
-          component={ component }
-          eventHandlers={ eventHandlers }
-        />
-      }
+      { modalVisibility && (
+          <Modal
+            setVisibility={ setModalVisibility }
+            component={ component }
+            eventHandlers={ eventHandlers }
+          />
+        ) }
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { DoneButton } from './buttons/done';
-import { MakeSnapshotButton } from './buttons/make-snapshot';
-import { dataURLToBlob } from './utils/data-url-to-blob';
-import { getUserMedia } from './utils/get-user-media';
-import { stopUserMedia } from './utils/stop-user-media';
+
+import { DoneButton, MakeSnapshotButton } from './buttons/index';
+import { dataURLToBlob } from './utils/file';
+import { getUserMedia, stopUserMedia } from './utils/device';
 
 export function Modal({ setVisibility, component, eventHandlers }) {
   const { makeSnapshotButtonLabel, doneButtonLabel } = component;
@@ -17,11 +16,13 @@ export function Modal({ setVisibility, component, eventHandlers }) {
     const context = canvasRef.current.getContext('2d');
     context.drawImage(videoRef.current, 0, 0, 320, 240);
     setIsPhoto(true);
-  }, [canvasRef]);
+  }, [canvasRef.current]);
+
   const handleClose = useCallback(() => {
     setVisibility(false);
     stopUserMedia(videoRef);
   }, []);
+
   const handleDone = useCallback(() => {
     const dataURL = canvasRef.current.toDataURL();
     dataURLToBlob(dataURL)
@@ -29,7 +30,8 @@ export function Modal({ setVisibility, component, eventHandlers }) {
         onSaveImage({ imageBlob });
       });
     handleClose();
-  }, []);
+  }, [canvasRef.current]);
+
   const handleModalClick = useCallback(event => {
     event.stopPropagation();
   }, []);
@@ -46,6 +48,7 @@ export function Modal({ setVisibility, component, eventHandlers }) {
             ref={ videoRef }
             width="320"
             height="240"
+            autoPlay="autoPlay"
           />
           <canvas
             ref={ canvasRef }

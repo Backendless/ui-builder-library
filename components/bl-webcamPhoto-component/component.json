@@ -12,7 +12,6 @@
       "name": "uploadButtonLabel",
       "label": "Upload button label",
       "type": "text",
-      "handlerId": "",
       "defaultValue": "Upload"
     },
     {
@@ -35,6 +34,7 @@
     },
     {
       "name": "buttonDisabled",
+      "handlerLabel": "Button Disabled Logic",
       "handlerId": "buttonDisabledHandler",
       "dataBinding": true,
       "type": "checkbox",
