@@ -1,0 +1,119 @@
+@bl-customComponent-draggableList-themeColor: @themePrimary;
+@bl-customComponent-draggableList-backgroundColor: @appBackgroundColor;
+@bl-customComponent-draggableList-textColor: @appTextColor;
+@bl-customComponent-draggableList-disabledColor: @disabledColor;
+@bl-customComponent-draggableList-blockBorder: @appBlockBorder;
+@bl-customComponent-draggableList-borderRadius: @appComponentBorderRadius;
+@bl-customComponent-draggableList-fontSize: 12px;
+@bl-customComponent-draggableList-margin: 20px;
+
+@bl-customComponent-draggableList-title-fontSize: calc(@bl-customComponent-draggableList-fontSize * 2);
+@bl-customComponent-draggableList-title-margin: 20px;
+
+@bl-customComponent-draggableList-input-border: @bl-customComponent-draggableList-blockBorder;
+@bl-customComponent-draggableList-input-borderRadius: @bl-customComponent-draggableList-borderRadius;
+@bl-customComponent-draggableList-input-backgroundColor: @bl-customComponent-draggableList-backgroundColor;
+@bl-customComponent-draggableList-input-focus-borderColor: @bl-customComponent-draggableList-themeColor;
+@bl-customComponent-draggableList-input-color: contrast(@bl-customComponent-draggableList-input-backgroundColor);
+@bl-customComponent-draggableList-input-padding: 5px;
+
+@bl-customComponent-draggableList-list-backgroundColor: @bl-customComponent-draggableList-backgroundColor;
+@bl-customComponent-draggableList-list-textColor: @bl-customComponent-draggableList-textColor;
+@bl-customComponent-draggableList-list-border: @bl-customComponent-draggableList-blockBorder;
+@bl-customComponent-draggableList-list-borderRadius: @bl-customComponent-draggableList-borderRadius;
+@bl-customComponent-draggableList-list-padding: 0;
+
+@bl-customComponent-draggableList-listItem-backgroundColor: @bl-customComponent-draggableList-backgroundColor;
+@bl-customComponent-draggableList-listItem-textColor: @bl-customComponent-draggableList-textColor;
+@bl-customComponent-draggableList-listItem-border: @bl-customComponent-draggableList-blockBorder;
+@bl-customComponent-draggableList-listItem-borderRadius: @bl-customComponent-draggableList-borderRadius;
+@bl-customComponent-draggableList-listItem-width: 100%;
+@bl-customComponent-draggableList-listItem-padding: 10px;
+@bl-customComponent-draggableList-listItem-marginBottom: 10px;
+
+.bl-customComponent-draggableList {
+  .title {
+    font-size: @bl-customComponent-draggableList-title-fontSize;
+    text-align: center;
+    margin: @bl-customComponent-draggableList-title-margin;
+  }
+
+  .empty {
+    display: flex;
+    justify-content: center;
+  }
+
+  input {
+    background: @bl-customComponent-draggableList-input-backgroundColor;
+    border: @bl-customComponent-draggableList-input-border;
+    border-radius: @bl-customComponent-draggableList-input-borderRadius;
+    color: @bl-customComponent-draggableList-input-color;
+    padding: @bl-customComponent-draggableList-input-padding;
+
+    &:focus {
+      outline: none;
+      border-color: @bl-customComponent-draggableList-input-focus-borderColor;
+    }
+  }
+
+  ul {
+    list-style: none;
+    background: @bl-customComponent-draggableList-list-backgroundColor;
+    color: @bl-customComponent-draggableList-list-textColor;
+    border: @bl-customComponent-draggableList-list-border;
+    border-radius: @bl-customComponent-draggableList-list-borderRadius;
+    font-size: @bl-customComponent-draggableList-fontSize;
+    padding: @bl-customComponent-draggableList-list-padding;
+    margin: @bl-customComponent-draggableList-margin;
+
+    li {
+      background: @bl-customComponent-draggableList-listItem-backgroundColor;
+      color: @bl-customComponent-draggableList-listItem-textColor;
+      border-bottom: @bl-customComponent-draggableList-listItem-border;
+      width: @bl-customComponent-draggableList-listItem-width;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: @bl-customComponent-draggableList-listItem-padding;
+
+      .add-item {
+        margin: 0 auto;
+      }
+
+      .svg-container {
+        svg {
+          margin-right: 10px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      button {
+        border: none;
+        background: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: @bl-customComponent-draggableList-themeColor;
+        cursor: pointer;
+      }
+
+      .content {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 20px
+        }
+      }
+    }
+  }
+}

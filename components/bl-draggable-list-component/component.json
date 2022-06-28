@@ -1,0 +1,142 @@
+{
+  "id": "c_f1f837f1781e9409cd5f69da90e17bbf",
+  "name": "Drag and drop list",
+  "description": "This component is a list with floating elements.",
+  "showInToolbox": true,
+  "faIcon": "list",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "itemsArray",
+      "handlerLabel": "Items Array Logic",
+      "handlerDescription": "This is a handler for the logic to determine items array.",
+      "handlerId": "itemsArrayHandler",
+      "type": "text",
+      "dataBinding": true,
+      "label": "Items Array",
+      "defaultValue": "[]"
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "defaultValue": "List",
+      "handlerId": "titleHandler",
+      "handlerLabel": "Title Logic",
+      "handlerDescription": "This is a handler for the logic to determine title.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "draggableListVisibility",
+      "label": "Visibility",
+      "defaultValue": true,
+      "handlerLabel": "Draggable List Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if Draggable List should be visible.",
+      "handlerId": "draggableListVisibilityHandler",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "allowDelete",
+      "label": "Allow Delete",
+      "defaultValue": true,
+      "handlerLabel": "Allow Delete Logic",
+      "handlerDescription": "This is a handler for the logic to determine if item allowed deleted",
+      "handlerId": "allowDeleteHandler",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "allowEdit",
+      "label": "Allow Edit",
+      "defaultValue": true,
+      "handlerLabel": "Allow Edit Logic",
+      "handlerDescription": "This is a handler for the logic to determine if item allowed edited",
+      "handlerId": "allowEditHandler",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "allowAdd",
+      "label": "Allow Add Item",
+      "defaultValue": true,
+      "handlerLabel": "Allow Add Logic",
+      "handlerDescription": "This is a handler for the logic to determine if item allowed added",
+      "handlerId": "allowAddItemHandler",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onDrag",
+      "label": "On Drag Event",
+      "handlerDescription": "This event is fired when the user dragged list item.",
+      "contextBlocks": [
+        {
+          "id": "previousArray",
+          "label": "Previous array"
+        },
+        {
+          "id": "currentArray",
+          "label": "Current array"
+        },
+        {
+          "id": "draggableItem",
+          "label": "Dragged item"
+        }
+      ]
+    },
+    {
+      "name": "onDelete",
+      "label": "On Delete Event",
+      "handlerDescription": "This event is fired when the user deleted list item.",
+      "contextBlocks": [
+        {
+          "id": "currentArray",
+          "label": "Current array"
+        },
+        {
+          "id": "deletedItem",
+          "label": "Deleted item"
+        }
+      ]
+    },
+    {
+      "name": "onEdit",
+      "label": "On Edit Event",
+      "handlerDescription": "This event is fired when the user edited list item.",
+      "contextBlocks": [
+        {
+          "id": "currentArray",
+          "label": "Current array"
+        },
+        {
+          "id": "previousItem",
+          "label": "Previous item"
+        },
+        {
+          "id": "currentItem",
+          "label": "Current item"
+        }
+      ]
+    },
+    {
+      "name": "onAdd",
+      "label": "On Add Event",
+      "handlerDescription": "This event is fired when the user added list item.",
+      "contextBlocks": [
+        {
+          "id": "currentArray",
+          "label": "Current array"
+        },
+        {
+          "id": "addedItem"
+        }
+      ]
+    }
+  ],
+  "actions": []
+}
