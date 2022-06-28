@@ -22,7 +22,7 @@ export function List({ component, eventHandlers }) {
           const parseArray = JSON.parse(itemsArray);
           setData(addId(parseArray));
         } catch {
-          console.log('Not valid array');
+          console.error('Not valid array');
         }
       }
     }
