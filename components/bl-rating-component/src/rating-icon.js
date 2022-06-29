@@ -4,6 +4,7 @@ const halfIconStyle = { width: `50%`, overflow: 'hidden', position: 'absolute' }
 
 export const RatingIcon = ({
   icon,
+  iconColor,
   index,
   disabled,
   ratingValue,
@@ -17,14 +18,14 @@ export const RatingIcon = ({
       <label
         htmlFor={halfInputValue}
         style={halfIconStyle}
-        className="rating-icon__label"
-      >
+        className="rating-icon__label">
         <span className="rating-icon__span">
           <svg
             focusable="false"
             aria-hidden="true"
             viewBox="0 0 24 24"
-            className={`rating-icon__svg rating-icon__svg-${icon}`}>
+            fill={iconColor}
+            className="rating-icon__svg">
             <path d={ratingValue >= halfInputValue ? icons[`${icon}Active`] : icons[icon]} />
           </svg>
         </span>
@@ -41,14 +42,14 @@ export const RatingIcon = ({
       />
       <label
         htmlFor={inputValue}
-        className="rating-icon__label"
-      >
+        className="rating-icon__label">
         <span className="rating-icon__span">
           <svg
             focusable="false"
             aria-hidden="true"
             viewBox="0 0 24 24"
-            className={`rating-icon__svg rating-icon__svg-${icon}`}>
+            fill={iconColor}
+            className="rating-icon__svg">
             <path d={ratingValue >= inputValue ? icons[`${icon}Active`] : icons[icon]} />
           </svg>
         </span>

@@ -3,7 +3,7 @@
   "name": "Rating",
   "description": "Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own.",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "star",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -18,14 +18,23 @@
       "dataBinding": true
     },
     {
+      "type": "select",
       "name": "icon",
       "label": "Icon",
-      "type": "text",
       "defaultValue": "star",
       "handlerId": "icon",
-      "dataBinding": false,
       "handlerLabel": "Icon",
-      "handlerDescription": "You can choose a star or heart icon, only these icons are valid."
+      "dataBinding": false,
+      "options": [
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "heart",
+          "label": "Heart"
+        }
+      ]
     },
     {
       "name": "defaultValue",
@@ -44,6 +53,14 @@
       "handlerId": "iconsAmount",
       "handlerLabel": "Icons amont",
       "dataBinding": true
+    },
+    {
+      "type": "color",
+      "name": "iconColor",
+      "label": "Icon color",
+      "handlerId": "iconColorLogic",
+      "handlerLabel": "Icon color logic",
+      "defaultValue": "#faaf00"
     }
   ],
   "eventHandlers": [
@@ -55,17 +72,14 @@
         {
           "label": "Curent Rating",
           "id": "curentRating"
-        }
-      ]
-    },
-    {
-      "name": "onHighestRating",
-      "label": "On Highest Rating",
-      "dataBinding": true,
-      "contextBlocks": [
+        },
         {
-          "id": "highestRating",
-          "label": "Highest Rating"
+          "id": "minRating",
+          "label": "Min Rating"
+        },
+        {
+          "id": "maxRating",
+          "label": "Max Rating"
         }
       ]
     }

@@ -4,21 +4,19 @@
 @bl-customComponent-rating-textColor: @appTextColor;
 
 @bl-customComponent-rating-iconWidth: 35px;
-@bl-customComponent-rating-iconStarFill: #faaf00;
-@bl-customComponent-rating-iconHeartFill: #ff6d75;
 
 @bl-customComponent-rating-disabled: 0.38;
 @bl-customComponent-rating-labelWidth: 100%;
 
-.disabled {
-  opacity: @bl-customComponent-rating-disabled;
-  pointer-events: none;
-  cursor: default;
-}
-
 .bl-customComponent-rating {
   display: flex;
   position: relative;
+
+  &.disabled {
+    opacity: @bl-customComponent-rating-disabled;
+    pointer-events: none;
+    cursor: default;
+  }
 }
 
 .bl-customComponent-rating__icons {
@@ -45,14 +43,6 @@
     width: @bl-customComponent-rating-iconWidth;
     height: @bl-customComponent-rating-iconWidth;
     display: inline-block;
-
-    &-star {
-      fill: @bl-customComponent-rating-iconStarFill;
-    }
-
-    &-heart {
-      fill: @bl-customComponent-rating-iconHeartFill;
-    }
   }
 
   &__input {

@@ -20,6 +20,7 @@ Add a component to your page and select the initial rating values.
   Icon              | Star              | You can select the icon to be displayed.
   Default value     | 0                 | You can select the initial value to be displayed.
   Icons amount      | 5                 | This option is to set the number of icons in the rating.
+  Icon color        |                   | This property allows you to change the color of rating icon.
 
 
 ### Events

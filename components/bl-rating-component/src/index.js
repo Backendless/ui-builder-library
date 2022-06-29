@@ -1,10 +1,24 @@
-import { useState, useRef, useMemo, useCallback } from 'react';
+import {
+  useState,
+  useRef,
+  useMemo,
+  useCallback
+} from 'react';
 
 import { RatingIcon } from './rating-icon.js';
-import { roundValueToPrecision } from './utils/number';
+import { roundValueToPrecision } from './utils/number.js';
 
-export default function RatingComponent({ component, eventHandlers }) {
-  const { disabled, icon, defaultValue, iconsAmount, classList } = component;
+export default function RatingComponent({
+  component, eventHandlers
+}) {
+  const {
+    disabled,
+    icon,
+    iconColor,
+    defaultValue,
+    iconsAmount,
+    classList
+  } = component;
   const { onRatingChange } = eventHandlers;
 
   const rootRef = useRef();
@@ -14,8 +28,8 @@ export default function RatingComponent({ component, eventHandlers }) {
 
   const value = hoverValue || ratingValue;
 
-  const handleRatingValue = useCallback(({ target: { value } }) => {
-    setRatingValue(prevState => prevState === value ? 0 : value);
+  const handleRatingValue = useCallback(({ target: { value  } }) => {
+    setRatingValue(prevState => prevState === value ? 0: value);
 
     if (onRatingChange) {
       onRatingChange({ curentRating: value });
@@ -51,17 +65,16 @@ export default function RatingComponent({ component, eventHandlers }) {
   };
 
   const classes = useMemo(() => {
-    const classesArray = ["bl-customComponent-rating", ...classList];
-
+    const arr = ['bl-customComponent-rating', ...classList];
     if (disabled) {
-      classesArray.push('disabled');
+      arr.push('disabled');
     }
 
-    return classesArray.join(' ');
+    return arr.join(' ');
   }, [classList, disabled]);
 
   return (
-    <div className={classes}>
+    <div className = {classes}>
       <div
         ref={rootRef}
         onMouseMove={handleMouseMove}
@@ -71,6 +84,7 @@ export default function RatingComponent({ component, eventHandlers }) {
           <RatingIcon
             key={index}
             icon={icon}
+            iconColor={iconColor}
             index={index}
             disabled={disabled}
             ratingValue={value}
