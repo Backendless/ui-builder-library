@@ -5,6 +5,7 @@ export const ListItem = ({
   id,
   value,
   label,
+  iconColor,
   isChecked,
   onChange,
 }) => {
@@ -19,9 +20,10 @@ export const ListItem = ({
         icon={icon}
         value={value}
         checked={isChecked}
+        iconColor={iconColor}
         onChange={onChange}
       />
       <span className="list-item__content">{label}</span>
     </label>
-  )
+  );
 };

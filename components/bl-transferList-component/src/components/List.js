@@ -5,6 +5,7 @@ import { Checkbox, ListItem } from './';
 
 export const List = ({
   title,
+  iconColor,
   enableSelectAll,
   items,
   selected,
@@ -47,9 +48,10 @@ export const List = ({
         <div className="list__header">
           <Checkbox
             id="checkboxSelectAll"
-            checked={ isAllChecked }
-            icon={ setToggleAllIcon() }
-            onChange={ handleToggleAll }
+            checked={isAllChecked}
+            iconColor={iconColor}
+            icon={setToggleAllIcon()}
+            onChange={handleToggleAll}
           />
           <div className="list__header-content">
             <div className="list__header-title">
@@ -71,6 +73,7 @@ export const List = ({
               id={item.objectId}
               value={item.value}
               label={item.label}
+              iconColor={iconColor}
               isChecked={isChecked}
               onChange={handleToggleItem}
             />

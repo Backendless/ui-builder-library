@@ -44,6 +44,15 @@
       "dataBinding": true,
       "handlerDescription": "Please enter the items to be displayed on the right in a comma in this field.",
       "type": "text"
+    },
+    {
+      "type": "color",
+      "name": "iconColor",
+      "label": "Icon color",
+      "defaultValue": "#28f5be",
+      "handlerId": "iconColorLogic",
+      "handlerLabel": "Icon color logic",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
