@@ -8,7 +8,7 @@ export default function DraggableList({ component, eventHandlers }) {
   }
 
   return (
-    <div className="bl-customComponent-draggableList">
+    <div className={"bl-customComponent-draggableList " + component.classList.join(' ')}>
       <p className="title">{ title }</p>
       <List
         component={ component }
