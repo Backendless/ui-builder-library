@@ -10,11 +10,9 @@ After adding the component to the page, specify the label of the badge. This can
 
 Then it is necessary to determine the contents of the component. Go to UI-Builder designer and specify one of the content field or combine them if you need. The component will be displayed with default properties. If you need even more flexibility, make other changes to its appearance in UI-Builder designer or by codeless logic.
 
-### Options
+### Styles and Settings
 
 <dl>
-<dt>Badge Label</dt>
-<dd>Value from this field will be used as the badge label. Can be defined by Badge Label Logic.</dd>
 <dt>Badge Label Color</dt>
 <dd>Color used for badge label. Default depends on the selected theme.</dd>
 <dt>Badge Background Color</dt>
@@ -23,14 +21,12 @@ Then it is necessary to determine the contents of the component. Go to UI-Builde
 <dd>Value from this field will be used as the font size for the badge's label.</dd>
 <dt>Badge Alignment</dt>
 <dd>Value from this field will be used as the position of the badge. Defaults to top-right corner. Available values: top-right, top-left, bottom-left, bottom-right.</dd>
-<dt>Badge Visibility</dt>
-<dd>Checkbox for determining whether the badge is visible to the user or not. Can be defined by Badge Visibility Logic. Checked by default.</dd>
 <dt>Badge Width</dt>
 <dd>Value from this field will be used as the width of the badge. Default depends on the size of the badge label.</dd>
 <dt>Badge Height</dt>
 <dd>Value from this field will be used as the height of the badge. Default depends on the size of the badge label.</dd>
 <dt>Badge Form</dt>
-<dd>Value from this field will be used as the form of the badge. Defaults to rounded rectangle. Available values: rounded rectangle, circle, rectangle.</dd> 
+<dd>Value from this field will be used as the form of the badge. Defaults to rounded rectangle. Available values: rounded rectangle, circle, rectangle.</dd>
 <dt>Icon</dt>
 <dd>Icon from the Material library specified in this field will be used as the content of the component.</dd>
 <dt>Text</dt>
@@ -45,9 +41,13 @@ Then it is necessary to determine the contents of the component. Go to UI-Builde
 <dd>Value from this field will be used as the distance from the badge to the component content.</dd>
 </dl>
 
-### Events
+### Event Handlers and Bindable Properties
 
 <dl>
+<dt>Badge Label</dt>
+<dd>Value from this field will be used as the badge label. Can be defined by Badge Label Logic.</dd>
+<dt>Badge Visibility</dt>
+<dd>Checkbox for determining whether the badge is visible to the user or not. Can be defined by Badge Visibility Logic. Checked by default.</dd>
 <dt>On Badge Click Event</dt>
 <dd>Triggered when the user clicks the mouse or taps the badge.</dd>
 <dt>On Badge Mouse Over Event</dt>
