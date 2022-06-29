@@ -27,43 +27,31 @@ const reducer = (state, action) => {
       return {
         ...state,
         leftItems: [],
-        rightItems: state.rightItems.concat(state.leftItems),
+        rightItems: action.rightItems,
       };
     case actions.MOVE_ALL_TO_LEFT:
       return {
         ...state,
         rightItems: [],
-        leftItems: state.leftItems.concat(state.rightItems),
+        leftItems: action.leftItems,
       };
     case actions.MOVE_SELECTED_TO_LEFT:
-      const rightSelected = state.rightItems.filter(item => (
-        state.selected.find(({ objectId }) => item.objectId === objectId)
-      ));
-
       return {
         ...state,
         selected: state.selected.filter(item => (
-          !rightSelected.find(({ objectId }) => item.objectId === objectId)
+          !action.rightSelected.find(({ objectId }) => item.objectId === objectId)
         )),
-        leftItems: state.leftItems.concat(rightSelected),
-        rightItems: state.rightItems.filter(item => (
-          !rightSelected.find(({ objectId }) => item.objectId === objectId)
-        )),
+        leftItems: action.leftItems,
+        rightItems: action.rightItems,
       };
     case actions.MOVE_SELECTED_TO_RIGHT:
-      const leftSelected = state.leftItems.filter(item => (
-        state.selected.find(({ objectId }) => item.objectId === objectId)
-      ));
-
       return {
         ...state,
         selected: state.selected.filter(item => (
-          !leftSelected.find(({ objectId }) => item.objectId === objectId)
+          !action.leftSelected.find(({ objectId }) => item.objectId === objectId)
         )),
-        rightItems: state.rightItems.concat(leftSelected),
-        leftItems: state.leftItems.filter(item => (
-          !leftSelected.find(({ objectId }) => item.objectId === objectId)
-        )),
+        rightItems: action.rightItems,
+        leftItems: action.leftItems,
       };
 
     default:
