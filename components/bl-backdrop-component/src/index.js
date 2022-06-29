@@ -19,7 +19,7 @@ export default function Backdrop({ component, eventHandlers }) {
   return (
     <div
       onClick={ onClick }
-      className="bl-customComponent-backdrop"
+      className={ 'bl-customComponent-backdrop ' + component.classList.join(' ') }
     >
       <Loader/>
     </div>

@@ -3,7 +3,7 @@
   "name": "Backdrop",
   "description": "This component is a background with a loader inside it.",
   "showInToolbox": true,
-  "faIcon": "circle-dashed",
+  "faIcon": "loader",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -14,17 +14,47 @@
       "label": "Is Backdrop Visible",
       "handlerLabel": "Backdrop Visibility Logic",
       "handlerId": "backdropVisibilityHandler",
+      "handlerDescription": "Used to control the visibility of a component.",
       "dataBinding": true,
       "defaultValue": false
     },
     {
-      "label": "Loader Type",
-      "type": "text",
-      "defaultValue": "line circle",
+      "type": "select",
       "name": "loaderType",
-      "handlerLabel": "Loader Type Logic",
+      "label": "Loader Type",
+      "defaultValue": "bar",
       "handlerId": "loaderHandler",
-      "handlerDescription": "Possible: bar, doted circle, line horizon, doted line circle, doted square, line circle, radar"
+      "handlerDescription": "Used to determine the loader type.",
+      "options": [
+        {
+          "value": "bar",
+          "label": "Bar"
+        },
+        {
+          "value": "doted circle",
+          "label": "Doted Circle"
+        },
+        {
+          "value": "line horizon",
+          "label": "Line Horizon"
+        },
+        {
+          "value": "doted line circle",
+          "label": "Doted Line Circle"
+        },
+        {
+          "value": "doted square",
+          "label": "Doted Square"
+        },
+        {
+          "value": "line circle",
+          "label": "Line Circle"
+        },
+        {
+          "value": "radar",
+          "label": "Radar"
+        }
+      ]
     }
   ],
   "eventHandlers": [
