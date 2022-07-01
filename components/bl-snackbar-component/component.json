@@ -3,15 +3,15 @@
   "name": "SnackBar",
   "description": "Snackbars provide brief notifications.\nSnackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the corner of the screen. They shouldn't interrupt the user experience, and they don't require user input to disappear.",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "window-maximize",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
   "properties": [
     {
+      "type": "checkbox",
       "name": "showClose",
       "label": "Show Close Button",
-      "type": "checkbox",
       "defaultValue": true
     },
     {
@@ -26,7 +26,7 @@
       "defaultValue": "Action",
       "handlerId": "actionContentLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler to set the text of the action button. ",
+      "handlerDescription": "This is a handler to set the text of the action button.",
       "handlerLabel": "Action Content Logic"
     },
     {
@@ -46,25 +46,76 @@
       "defaultValue": "0"
     },
     {
+      "type": "select",
       "name": "verticalPosition",
       "label": "Vertical Position",
-      "type": "text",
-      "defaultValue": "Top"
+      "defaultValue": "top",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ]
     },
     {
+      "type": "select",
       "name": "horizontalPosition",
       "label": "Horizontal Position",
-      "type": "text",
-      "defaultValue": "Right"
+      "defaultValue": "right",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ]
     },
     {
+      "type": "select",
       "name": "type",
       "label": "Type",
-      "type": "text",
+      "defaultValue": "default",
       "handlerId": "type Logic",
-      "handlerDescription": "This is a handler to set the type of the snackbar.",
       "handlerLabel": "Type Logic",
-      "dataBinding": true
+      "handlerDescription": "This is a handler to set the type of the snackbar.  There are 5 types of snack bars: \"info\", \"success\", \"warning\", \"error\" or empty.",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "info",
+          "label": "Info"
+        },
+        {
+          "value": "success",
+          "label": "Success"
+        },
+        {
+          "value": "warning",
+          "label": "Warning"
+        },
+        {
+          "value": "error",
+          "label": "Error"
+        }
+      ]
     },
     {
       "type": "checkbox",
@@ -88,5 +139,6 @@
       "handlerDescription": "This event is fired when the user clicks on the action button."
     }
   ],
-  "actions": []
+  "actions": [],
+  "blockUI": ""
 }

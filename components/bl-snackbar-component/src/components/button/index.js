@@ -1,9 +1,9 @@
-export const Action = ({className, onFunction, content}) => {
-    return (
-        <button
-            className={className}
-            onClick={onFunction}>
-            {content}
-        </button>
-    )
+export const Action = ({ className, onClick, content }) => {
+  return (
+    <button
+      className={ className }
+      onClick={ onClick }>
+      { content }
+    </button>
+  )
 }
