@@ -1,0 +1,50 @@
+{
+  "id": "c_aa95bcb43027c32ad1352c77d9c8bf32",
+  "name": "Stepper",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "stepList",
+      "handlerId": "stepListLogic",
+      "dataBinding": true,
+      "type": "text"
+    },
+    {
+      "type": "select",
+      "name": "stepperType",
+      "label": "Type Stepper Style",
+      "defaultValue": "alternativeLabel",
+      "options": [
+        {
+          "value": "root",
+          "label": "root"
+        },
+        {
+          "value": "alternativeLabel",
+          "label": "alternativeLabel"
+        },
+        {
+          "value": "customized",
+          "label": "customized"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [
+    {
+      "id": "goNextStep"
+    },
+    {
+      "id": "goPrevStep"
+    },
+    {
+      "id": "resetStep"
+    }
+  ]
+}
