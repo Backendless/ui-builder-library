@@ -26,21 +26,21 @@
       "handlerId": "markersHandler",
       "handlerDescription": "Specifies an array of markers to display on the map",
       "dataBinding": true,
-      "handlerLabel": "Markers Handler"
+      "handlerLabel": "Markers Logic"
     },
     {
       "name": "circles",
       "handlerId": "circlesHandler",
       "dataBinding": true,
       "handlerDescription": "Specifies an array of circles to display on the map",
-      "handlerLabel": "Circles Handler",
+      "handlerLabel": "Circles Logic",
       "type": "text"
     },
     {
       "name": "polygons",
       "handlerId": "polygonsHandler",
       "handlerDescription": "Specifies an array of polygons to display on the map",
-      "handlerLabel": "Polygons Handler",
+      "handlerLabel": "Polygons Logic",
       "dataBinding": true,
       "type": "text"
     },

@@ -1,29 +1,32 @@
-# Backdrop spinner
+# Leaflet Map
 
-Backdrop Spinner is a component of Backendless UI-Builder designer. Represents a background with a loader in the center
-of it. The component is customizable, you can choose the visibility, background color, as well as the color and type of
-the loader.
+Leaflet Map is a component of Backendless UI-Builder designer. It is an interactive map. The component is configurable,
+you can start point, default zoom and map type.
+
+The component based on external [Leaflet](https://github.com/Leaflet/Leaflet) library.
 
 ## Usage
 
 ### Styles and Settings
 
 <dl>
-<dt>Loader Type</dt>
-<dd>Specifies the loader type. Possible: bar, doted circle, line horizon, doted line circle, doted square, line circle, radar. Defaults to "line circle"</dd>
+<dt>Center</dt>
+<dd>Specifies the default visible area. Defaults to "40.745026702817796, -73.96873601086195".</dd>
+<dt>Default zoom</dt>
+<dd>Specifies the default zoom. Defaults to "10".</dd>
+<dt>Center</dt>
+<dd>Specifies the default visible area. Defaults to "40.745026702817796, -73.96873601086195".</dd>
+<dt>Map Type</dt>
+<dd>Specifies the type of map. Defaults to "Open Street"</dd>
 </dl>
 
 ### Event Handlers and Bindable Properties
 
 <dl>
-<dt>Backdrop Visibility Logic</dt>
-<dd>Used to determine the visibility of the backdrop component in Backendless Logic.</dd>
-<dt>Loader Type Logic</dt>
-<dd>Used to determine the loader type of the backdrop component in Backendless Logic.</dd>
-<dt>On Click Event</dt>
-<dd>Triggered when the user clicks on the backdrop spinner component.</dd>
-<dt>On Open Event</dt>
-<dd>Triggered when the backdrop spinner component opens.</dd>
-<dt>On Close Event</dt>
-<dd>Triggered when the backdrop spinner component closes.</dd>
+<dt>Markers Logic</dt>
+<dd>Specifies an array of markers to display on the map.</dd>
+<dt>Circles Logic</dt>
+<dd>Specifies an array of circles to display on the map.</dd>
+<dt>Polygons Logic</dt>
+<dd>Specifies an array of polygons to display on the map.</dd>
 </dl>
