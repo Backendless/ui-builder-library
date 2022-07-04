@@ -10,8 +10,6 @@ dragged, modified, removed, and added. The component is customizable, you can en
 <dl>
 <dt>Title</dt>
 <dd>Title for draggable list. Defaults to "List".</dd>
-<dt>Items Array</dt>
-<dd>Specifies an array based on which the list will be drawn.</dd>
 <dt>Visibility</dt>
 <dd>Specifies whether the list will be displayed on the screen.</dd>
 <dt>Allow Delete</dt>

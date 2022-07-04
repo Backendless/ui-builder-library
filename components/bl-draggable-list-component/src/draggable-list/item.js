@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { DeleteSVG, DoneSVG, DraggableSVG, EditSVG } from '../svg/index';
+import { getContextForEditEvent } from '../utils/context';
 
 export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, component, onDelete, eventHandlers }) {
   const { itemsArray, allowEdit, allowDelete } = component;
@@ -19,17 +20,8 @@ export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, comp
 
   const handleDone = useCallback(() => {
     if (inputValue.trim().length) {
-      const editedArray = itemsArray.map((item, idx) => {
-        return index === idx
-          ? { ...item, label: inputValue }
-          : item;
-      });
-
-      onEdit({
-        currentArray: editedArray,
-        previousItem: itemsArray[index],
-        currentItem : editedArray[index],
-      });
+      const contextForEditEvent = getContextForEditEvent(itemsArray, index, inputValue);
+      onEdit(contextForEditEvent);
     }
 
     setIsEdit(false);

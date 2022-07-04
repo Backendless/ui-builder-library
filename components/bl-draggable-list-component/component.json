@@ -14,9 +14,7 @@
       "handlerDescription": "This is a handler for the logic to determine items array.",
       "handlerId": "itemsArrayHandler",
       "type": "text",
-      "dataBinding": true,
-      "label": "Items Array",
-      "defaultValue": "[]"
+      "dataBinding": true
     },
     {
       "type": "text",
@@ -133,7 +131,8 @@
           "label": "Current array"
         },
         {
-          "id": "addedItem"
+          "id": "addedItem",
+          "label": "Added Item"
         }
       ]
     }

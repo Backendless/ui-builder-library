@@ -1,10 +1,10 @@
-export function addId(array) {
-  return array.map((item, idx) => ({ ...item, uniqId: idx }));
+export function enrichWithUids(array) {
+  return array.map((item, i) => ({ ...item, uid: i }));
 }
 
 export function removeId(array) {
   return array.map(item => {
-    delete item.uniqId;
+    delete item.uid;
     return item;
   });
 }

@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { addId, removeId } from '../utils/id';
+import { ListContent } from './list-content';
 import { AddItem } from './add-item';
-import { ListItem } from './item';
+import { getContextForDeleteEvent, getContextForDragEvent } from '../utils/context';
+import { enrichWithUids } from '../utils/id';
 
 export function List({ component, eventHandlers }) {
   const { onDrag, onDelete } = eventHandlers;
@@ -14,17 +15,8 @@ export function List({ component, eventHandlers }) {
 
   useEffect(() => {
     if (itemsArray) {
-      if (Array.isArray(itemsArray)) {
-        const arrayWithId = addId(itemsArray);
-        setData(arrayWithId);
-      } else {
-        try {
-          const parseArray = JSON.parse(itemsArray);
-          setData(addId(parseArray));
-        } catch {
-          console.error('Not valid array');
-        }
-      }
+      const arrayWithUid = enrichWithUids(itemsArray);
+      setData(arrayWithUid);
     }
   }, [itemsArray]);
 
@@ -41,34 +33,27 @@ export function List({ component, eventHandlers }) {
     e.preventDefault();
     const draggedOverItem = data[index];
 
-    if (draggedItem.current.uniqId === draggedOverItem.uniqId) {
+    if (draggedItem.current.uid === draggedOverItem.uid) {
       return;
     }
 
-    const items = data.filter(item => item.uniqId !== draggedItem.current.uniqId);
+    const items = data.filter(item => item.uid !== draggedItem.current.uid);
     items.splice(index, 0, draggedItem.current);
 
     setData(items);
   }, [data, draggedItem]);
 
   const dragEndHandler = useCallback(() => {
-    onDrag({
-      currentArray : removeId(data),
-      draggableItem: removeId([draggedItem.current]),
-      previousArray: removeId(previousArray.current),
-    });
+    const contextForDragEvent = getContextForDragEvent(data, draggedItem.current, previousArray.current);
+    onDrag(contextForDragEvent);
 
     draggedItem.current = null;
     previousArray.current = null;
   }, [data, draggedItem, previousArray]);
 
   const onDeleteHandler = useCallback(index => {
-    const withoutDeletedItemArray = itemsArray.filter((_, idx) => idx !== index);
-
-    onDelete({
-      currentArray: withoutDeletedItemArray,
-      deletedItem : itemsArray[index],
-    });
+    const contextForDeleteEvent = getContextForDeleteEvent(itemsArray, index);
+    onDelete(contextForDeleteEvent);
   }, [itemsArray]);
 
   const handleAdded = useCallback(() => {
@@ -77,31 +62,23 @@ export function List({ component, eventHandlers }) {
 
   return (
     <ul onDragOver={ e => e.preventDefault }>
-      { data.length
-        ? data.map((item, index) => (
-            <ListItem
-              key={ item.uniqId }
-              item={ item }
-              index={ index }
-              onDragStart={ dragStartHandler }
-              onDragEnd={ dragEndHandler }
-              onDragOver={ dragOverHandler }
-              component={ component }
-              onDelete={ onDeleteHandler }
-              eventHandlers={ eventHandlers }
-            />
-          )
-        )
-        : <li className="empty">Empty</li>
-      }
-      {
-        allowAdd && <AddItem
+      <ListContent
+        data={ data }
+        onDragStart={ dragStartHandler }
+        onDragEnd={ dragEndHandler }
+        onDragOver={ dragOverHandler }
+        component={ component }
+        onDelete={ onDeleteHandler }
+        eventHandlers={ eventHandlers }
+      />
+      { allowAdd && (
+        <AddItem
           isAdded={ isAdded }
           toggleIsAdded={ handleAdded }
           component={ component }
           eventHandlers={ eventHandlers }
         />
-      }
+      ) }
     </ul>
   );
 }

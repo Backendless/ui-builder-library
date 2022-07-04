@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { AddSVG, DoneSVG } from '../svg/index';
+import { getContextForAddEvent } from '../utils/context';
 
 export function AddItem({ isAdded, toggleIsAdded, component, eventHandlers }) {
   const { itemsArray } = component;
@@ -13,14 +14,11 @@ export function AddItem({ isAdded, toggleIsAdded, component, eventHandlers }) {
 
   const handleDone = useCallback(() => {
     if (newItem.label.trim() && newItem.value.trim()) {
-      const arrayWithNewItem = [...itemsArray, newItem];
+      const contextForAddEvent = getContextForAddEvent(itemsArray, newItem);
+      onAdd(contextForAddEvent);
 
-      onAdd({
-        currentArray: arrayWithNewItem,
-        addedItem   : newItem,
-      });
-
-      setNewItem({ label: '', value: '' });
+      const defaultItemState = { label: '', value: '' };
+      setNewItem(defaultItemState);
       toggleIsAdded();
     }
   }, [itemsArray, newItem, itemsArray]);
