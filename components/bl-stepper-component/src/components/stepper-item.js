@@ -1,5 +1,6 @@
-import { StepTitle } from './StepTitle';
-import { CustomizedStepTitle } from './CustomizedStepTitle';
+import { StepTitle } from './step-title';
+import { CustomizedStepTitle } from './customized-step-title';
+import { StepperLine } from './stepper-line'
 
 export const StepperItem = ({
   customized,
@@ -11,10 +12,10 @@ export const StepperItem = ({
   stepperClassName,
 }) => {
   let stepperLineClass = stepperClassName.line;
-  
+
   if (completedSteps.includes(stepIndex)) {
     stepperLineClass += ' ' + stepperClassName.lineActive;
-  } 
+  }
 
   return (
     <div className={stepperClassName.item}>
@@ -35,9 +36,12 @@ export const StepperItem = ({
           step={step}
         />
       )}
-      {stepIndex !== steps.length - 1 && (
-        <span className={customized ? stepperLineClass : stepperClassName.line}></span>
-      )}
+
+      <StepperLine
+        stepIndex={stepIndex}
+        steps={steps}
+        stepperLineClass={customized ? stepperLineClass : stepperClassName.line}
+      />
     </div>
-  )
-}
+  );
+};

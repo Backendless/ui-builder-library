@@ -1,9 +1,9 @@
 {
-  "id": "c_aa95bcb43027c32ad1352c77d9c8bf32",
+  "id": "c_930425c2783410a7d71e0c82f99c7145",
   "name": "Stepper",
-  "description": "",
+  "description": "This component makes it possible to display the steps of performing an action",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "check-circle",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -12,7 +12,20 @@
       "name": "stepList",
       "handlerId": "stepListLogic",
       "dataBinding": true,
-      "type": "text"
+      "type": "text",
+      "label": "List of Steps",
+      "handlerLabel": "Step List Logic",
+      "handlerDescription": "This is a handler for the logic to determine the list of steps"
+    },
+    {
+      "type": "number",
+      "name": "countSteps",
+      "label": "Count Steps",
+      "defaultValue": "2",
+      "handlerId": "CountStepsLogic",
+      "handlerLabel": "Count Steps Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the count steps"
     },
     {
       "type": "select",
@@ -35,16 +48,25 @@
       ]
     }
   ],
-  "eventHandlers": [],
+  "eventHandlers": [
+    {
+      "name": "onStepChange",
+      "label": "On Step Change",
+      "handlerDescription": "This handler triggered when the step changed."
+    }
+  ],
   "actions": [
     {
-      "id": "goNextStep"
+      "id": "goNextStep",
+      "label": "Go Next Step"
     },
     {
-      "id": "goPrevStep"
+      "id": "goPrevStep",
+      "label": "Go Previous Step"
     },
     {
-      "id": "resetStep"
+      "id": "resetStep",
+      "label": "Reset Steps"
     }
   ]
 }

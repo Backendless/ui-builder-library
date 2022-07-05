@@ -1,14 +1,25 @@
-import React, { useMemo, useState } from 'react';
-import { StepperItem } from './components/StepperItem';
-import { useStepperClassName } from './hooks/useStepperClassName';
+import { useMemo, useState, useEffect } from 'react';
+import { StepperItem } from './components/stepper-item';
+import { useStepperClassName } from './hooks/use-stepper-class-name'
 
 export default function MyCustomComponent({ component, eventHandlers }) {
-  const { stepList, display, stepperType } = component;
+  const { stepList, display, stepperType, countSteps } = component;
+  const { onStepChange } = eventHandlers;
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState([]);
   const stepperClassName = useStepperClassName(stepperType);
 
+  useEffect(() => {
+    onStepChange();
+  }, [currentStep]);
+
   const steps = useMemo(() => {
+    console.log(stepList);
+    if (!stepList) {
+      console.log('createArray', countSteps);
+      return new Array(countSteps).fill(' ');
+    }
+
     if (typeof stepList === 'string') {
       return stepList.split(',');
     }
@@ -35,23 +46,25 @@ export default function MyCustomComponent({ component, eventHandlers }) {
     setCompletedSteps([]);
   };
 
-  if (!steps || !display) {
+  if (!display) {
     return null;
   }
 
   return (
-    <div className={stepperClassName.stepper}>
-      {steps.map((step, index) => (
-        <StepperItem
-          customized={stepperType === 'customized'}
-          stepperClassName={stepperClassName}
-          completedSteps={completedSteps}
-          currentStep={currentStep}
-          steps={steps}
-          stepIndex={index}
-          step={step}
-        />
-      ))}
+    <div className="bl-customComponent-stepper">
+      <div className={stepperClassName.stepper}>
+        {steps.map((step, index) => (
+          <StepperItem
+            customized={stepperType === 'customized'}
+            stepperClassName={stepperClassName}
+            completedSteps={completedSteps}
+            currentStep={currentStep}
+            steps={steps}
+            stepIndex={index}
+            step={step}
+          />
+        ))}
+      </div>
     </div>
   );
 };
