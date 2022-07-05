@@ -52,7 +52,16 @@
 @bl-customComponent-webcamPhoto-modal-content-image-border: @bl-customComponent-webcamPhoto-blockBorder;
 @bl-customComponent-webcamPhoto-modal-content-image-borderRadius: @bl-customComponent-webcamPhoto-borderRadius;
 @bl-customComponent-webcamPhoto-modal-content-video-marginRight: 20px;
-@bl-customComponent-webcamPhoto-modal-content-buttonContainer-jusify: center;
+@bl-customComponent-webcamPhoto-modal-content-buttonContainer-justify: center;
+
+@bl-customComponent-webcamPhoto-popup-backgroundColor: @bl-customComponent-webcamPhoto-backgroundColor;
+@bl-customComponent-webcamPhoto-popup-border: @bl-customComponent-webcamPhoto-blockBorder;
+@bl-customComponent-webcamPhoto-popup-borderRadius: @bl-customComponent-webcamPhoto-borderRadius;
+@bl-customComponent-webcamPhoto-popup-title-fontSize: 18px;
+@bl-customComponent-webcamPhoto-popup-title-fontWaight: 700;
+@bl-customComponent-webcamPhoto-popup-description-fontSize: 14px;
+@bl-customComponent-webcamPhoto-popup-link-fontSize: 14px;
+@bl-customComponent-webcamPhoto-popup-link-color: @bl-customComponent-webcamPhoto-themeColor;
 
 @bl-customComponent-webcamPhoto-mediaQuery: calc(640px + @bl-customComponent-webcamPhoto-modal-padding * 2 + @bl-customComponent-webcamPhoto-modal-content-padding * 2 + @bl-customComponent-webcamPhoto-modal-content-video-marginRight);
 
@@ -70,6 +79,31 @@
     align-items: center;
     background: @bl-customComponent-webcamPhoto-modal-backgroundColor;
     padding: @bl-customComponent-webcamPhoto-modal-padding;
+    z-index: 9999;
+
+    .popup {
+      position: absolute;
+      padding: 10px;
+      background: @bl-customComponent-webcamPhoto-popup-backgroundColor;
+      border: @bl-customComponent-webcamPhoto-popup-border;
+      border-radius: @bl-customComponent-webcamPhoto-popup-borderRadius;
+      max-width: 300px;
+
+      &__title {
+        font-size: @bl-customComponent-webcamPhoto-popup-title-fontSize;
+        font-weight: @bl-customComponent-webcamPhoto-popup-title-fontWaight;
+      }
+
+      &__description {
+        font-size: @bl-customComponent-webcamPhoto-popup-description-fontSize;
+      }
+
+      &__link {
+        text-decoration: none;
+        font-size: @bl-customComponent-webcamPhoto-popup-link-fontSize;
+        color: @bl-customComponent-webcamPhoto-popup-link-color;
+      }
+    }
 
     video, canvas {
       border: @bl-customComponent-webcamPhoto-modal-content-image-border;
@@ -93,7 +127,7 @@
 
     &__button-container {
       display: flex;
-      justify-content: @bl-customComponent-webcamPhoto-modal-content-buttonContainer-jusify;
+      justify-content: @bl-customComponent-webcamPhoto-modal-content-buttonContainer-justify;
     }
   }
 

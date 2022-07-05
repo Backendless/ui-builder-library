@@ -1,10 +1,13 @@
-export function getUserMedia(ref, close) {
+import { PopupOptionsMap } from '../popup/options';
+
+export function getUserMedia(ref, setPopupOptions) {
+  setPopupOptions(PopupOptionsMap.noYetPermission);
   const getStream = stream => {
     ref.current.srcObject = stream;
+    setPopupOptions(null);
   };
   const noStream = () => {
-    alert('For the application to work, you must provide access to the camera');
-    close();
+    setPopupOptions(PopupOptionsMap.noPermission);
   };
 
   navigator.getUserMedia = navigator.getUserMedia ||
@@ -20,7 +23,7 @@ export function getUserMedia(ref, close) {
   }
 }
 
-export const mobileAndTabletCheck = () => {
+export const checkMobile = () => {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 

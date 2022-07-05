@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { DoneButton, MakeSnapshotButton } from './buttons/index';
+import { Popup } from './popup';
+import { PopupOptionsMap } from './popup/options';
 import { dataURLToBlob } from './utils/file';
 import { getUserMedia, stopUserMedia } from './utils/device';
 
@@ -11,10 +13,12 @@ export function Modal({ setVisibility, component, eventHandlers }) {
   const videoRef = useRef();
   const canvasRef = useRef();
   const [isPhoto, setIsPhoto] = useState(false);
+  const [popupOptions, setPopupOptions] = useState(PopupOptionsMap.noPermission);
 
   const handleSnapshot = useCallback(() => {
     const context = canvasRef.current.getContext('2d');
     context.drawImage(videoRef.current, 0, 0, 320, 240);
+
     setIsPhoto(true);
   }, [canvasRef.current]);
 
@@ -25,10 +29,12 @@ export function Modal({ setVisibility, component, eventHandlers }) {
 
   const handleDone = useCallback(() => {
     const dataURL = canvasRef.current.toDataURL();
+
     dataURLToBlob(dataURL)
       .then(imageBlob => {
         onSaveImage({ imageBlob });
       });
+
     handleClose();
   }, [canvasRef.current]);
 
@@ -37,7 +43,7 @@ export function Modal({ setVisibility, component, eventHandlers }) {
   }, []);
 
   useEffect(() => {
-    getUserMedia(videoRef, handleClose);
+    getUserMedia(videoRef, setPopupOptions);
   }, []);
 
   return (
@@ -60,6 +66,7 @@ export function Modal({ setVisibility, component, eventHandlers }) {
           <MakeSnapshotButton
             onClick={ handleSnapshot }
             text={ makeSnapshotButtonLabel }
+            disabled={ popupOptions }
           />
           <DoneButton
             onClick={ handleDone }
@@ -68,6 +75,9 @@ export function Modal({ setVisibility, component, eventHandlers }) {
           />
         </div>
       </div>
+      { popupOptions && (
+        <Popup options={ popupOptions }/>
+      ) }
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { MakePhotoButton, UploadButton } from './buttons/index';
 import { dataURLToBlob, toBase64 } from './utils/file';
-import { mobileAndTabletCheck } from './utils/device';
+import { checkMobile } from './utils/device';
 import { Modal } from './modal';
 
 export default function WebcamPhoto({ component, eventHandlers }) {
@@ -25,17 +25,17 @@ export default function WebcamPhoto({ component, eventHandlers }) {
           onSaveImage({ imageBlob });
         });
     } catch (error) {
-      console.log(`Error: ${ error.name }. Message: ${ error.message }`);
+      console.error(`Webcam Photo: ${ error.message }`);
     }
   }, []);
 
-  const checkMobile = useMemo(() => {
-    return mobileAndTabletCheck();
+  const isMobile = useMemo(() => {
+    return checkMobile();
   }, []);
 
   return (
     <div className="bl-customComponent-webcamPhoto">
-      { checkMobile
+      { isMobile
         ? <UploadButton
           onChange={ handleChange }
           text={ uploadButtonLabel }
@@ -49,12 +49,12 @@ export default function WebcamPhoto({ component, eventHandlers }) {
         />
       }
       { modalVisibility && (
-          <Modal
-            setVisibility={ setModalVisibility }
-            component={ component }
-            eventHandlers={ eventHandlers }
-          />
-        ) }
+        <Modal
+          setVisibility={ setModalVisibility }
+          component={ component }
+          eventHandlers={ eventHandlers }
+        />
+      ) }
     </div>
   );
 }
