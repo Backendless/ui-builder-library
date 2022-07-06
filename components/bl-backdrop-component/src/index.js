@@ -7,6 +7,7 @@ export default function Backdrop({ component, eventHandlers }) {
 
   useEffect(() => {
     onOpen();
+
     return onClose;
   }, []);
 
@@ -17,10 +18,7 @@ export default function Backdrop({ component, eventHandlers }) {
   const Loader = LoadersMap[loaderType];
 
   return (
-    <div
-      onClick={ onClick }
-      className={ 'bl-customComponent-backdrop ' + component.classList.join(' ') }
-    >
+    <div onClick={ onClick } className={ 'bl-customComponent-backdrop ' + component.classList.join(' ') }>
       <Loader/>
     </div>
   );
