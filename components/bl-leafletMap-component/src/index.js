@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+import { initMap, makeMarkers, makeCircles, makePolygons, getGeolocation } from './utils/map';
 import { useIcon } from './hooks/useIcon';
-import Leaflet from './lib/leaflet/leaflet';
 import { PositionSVG } from './svg/position';
 import { IconOptions } from './icon-options';
-import { Maps } from './maps';
 
-export default function LeafletMap({ component }) {
-  const { center, defaultZoom, markers, circles, polygons, mapType, classList } = component;
+export default function LeafletMap({ component, eventHandlers }) {
+  const { markers, circles, polygons, classList, mapVisibility, display } = component;
 
   const mapRef = useRef(null);
   const geoMarker = useRef(null);
@@ -15,66 +14,34 @@ export default function LeafletMap({ component }) {
   const positionIcon = useIcon(IconOptions.position);
 
   useEffect(() => {
-    mapRef.current = Leaflet.map('bl-customComponent-leafletMap', {
-      zoom  : defaultZoom,
-      center: center.split(','),
-    });
-    Leaflet.tileLayer(Maps[mapType].mapUrl, Maps[mapType].options)
-      .addTo(mapRef.current);
+    initMap(component, eventHandlers, mapRef);
   }, []);
 
   useEffect(() => {
     if (markers) {
-      markers.forEach(item => {
-        Leaflet.marker([item.point.y, item.point.x], {
-          icon: markerIcon,
-        })
-          .addTo(mapRef.current)
-          .bindPopup(item.description);
-      });
+      makeMarkers(markers, markerIcon, mapRef);
     }
   }, [markers]);
 
   useEffect(() => {
     if (circles) {
-      circles.forEach(item => {
-        Leaflet.circle([item.point.y, item.point.x], {
-          radius: item.radius,
-        })
-          .addTo(mapRef.current)
-          .bindPopup(item.description);
-      });
+      makeCircles(circles, mapRef);
     }
   }, [circles]);
+
   useEffect(() => {
     if (polygons) {
-      polygons.forEach(item => {
-        const coordinates = item.polygon.boundary.points.map(point => [point.y, point.x]);
-        Leaflet.polygon(coordinates)
-          .addTo(mapRef.current)
-          .bindPopup(item.description);
-      });
+      makePolygons(polygons, mapRef);
     }
   }, [polygons]);
 
   const handleClick = useCallback(() => {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const coords = [pos.coords.latitude, pos.coords.longitude];
-        if (geoMarker.current) {
-          mapRef.current.removeLayer(geoMarker.current);
-        }
-        mapRef.current.setView(coords, 14);
-        geoMarker.current = Leaflet.marker(coords, {
-          icon: positionIcon,
-        })
-          .addTo(mapRef.current);
-      },
-      () => {
-        alert('Location permission required');
-      }
-    );
+    getGeolocation(mapRef, geoMarker, positionIcon);
   }, [mapRef]);
+
+  if (!display || !mapVisibility) {
+    return null;
+  }
 
   return (
     <div

@@ -9,15 +9,25 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "checkbox",
+      "name": "mapVisibility",
+      "label": "Map Visibility",
+      "defaultValue": true,
+      "handlerId": "mapVisibilityHandler",
+      "handlerLabel": "Map Visibility Logic",
+      "handlerDescription": "Used to control component visibility.",
+      "dataBinding": true
+    },
+    {
       "type": "text",
       "name": "center",
       "label": "Center",
-      "defaultValue": "40.745026702817796, -73.96873601086195"
+      "defaultValue": "40.74, -73.96"
     },
     {
       "type": "number",
-      "name": "defaultZoom",
-      "label": "Default Zoom",
+      "name": "zoom",
+      "label": "Zoom",
       "defaultValue": "10"
     },
     {
@@ -73,6 +83,20 @@
       ]
     }
   ],
-  "eventHandlers": [],
-  "actions": []
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when the user click on map.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        }
+      ]
+    }
+  ],
+  "actions": [],
+  "blockUI": ""
 }
