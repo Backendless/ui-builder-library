@@ -40,10 +40,15 @@
       "handlerDescription": "This is a handler to set the text of the snackbar."
     },
     {
+      "type": "checkbox",
       "name": "autoHide",
+      "label": "Auto Hide"
+    },
+    {
+      "name": "autoHideDuration",
       "label": "Auto Hide Duration",
       "type": "number",
-      "defaultValue": "0"
+      "defaultValue": "5000"
     },
     {
       "type": "select",
@@ -116,15 +121,6 @@
           "label": "Error"
         }
       ]
-    },
-    {
-      "type": "checkbox",
-      "name": "show",
-      "label": "Show",
-      "handlerId": "show",
-      "dataBinding": true,
-      "handlerDescription": "This is a handler to show the snackbar. If true snackbar will appear.",
-      "handlerLabel": "Show Logic"
     }
   ],
   "eventHandlers": [
@@ -139,6 +135,17 @@
       "handlerDescription": "This event is fired when the user clicks on the action button."
     }
   ],
-  "actions": [],
+  "actions": [
+    {
+      "id": "visibility",
+      "inputs": [
+        {
+          "id": "show",
+          "label": "Show"
+        }
+      ],
+      "label": "Visibility"
+    }
+  ],
   "blockUI": ""
 }

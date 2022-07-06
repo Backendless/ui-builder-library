@@ -19,8 +19,8 @@
   background: @bl-customComponent-snackBar-background-color;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.3s linear, opacity 0.3s linear;
-  display: flex;
+  transition: visibility 0.3s linear,opacity 0.3s linear;
+  display:flex;
   word-break: break-word;
   justify-content: space-between;
   min-width: 300px;
@@ -34,19 +34,28 @@
   .text {
     padding: 0 5px;
     display: flex;
-    line-height: 22px;
 
-    .icon {
-      fill: @bl-customComponent-snackBar-text-color;
-      width: 22px;
-      margin-right: 5px;
+    .content {
+      margin-left: 5px;
+      line-height: 24px;
     }
   }
 
+  .icon {
+    fill: @bl-customComponent-snackBar-text-color;
+    width: 22px;
+  }
+
+  .buttons {
+    display: flex;
+  }
+
   .close {
-    height: 20px;
+    padding: 0;
+    height: 24px;
+    width: 24px;
     word-break: normal;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: transparent;
     color: @bl-customComponent-snackBar-text-color;
     font-weight: bold;

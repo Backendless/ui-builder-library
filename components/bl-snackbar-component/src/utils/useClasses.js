@@ -1,15 +1,33 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
 
-export const useClasses = (initialValue) => {
-  const [classes, setClasses] = useState(initialValue)
+export const useClasses = (horizontalPosition, verticalPosition, type, visible) => {
+  return useMemo(() => {
+    let text = 'bl-customComponent-snackbar'
 
-  const addClasses = (value) => {
-    setClasses(prev => prev + ' ' + value)
-  }
+    if (horizontalPosition === 'left') {
+      text += ' bl-customComponent-snackbar_left'
+    } else if (horizontalPosition === 'center') {
+      text += ' bl-customComponent-snackbar_centerX'
+    } else {
+      text += ' bl-customComponent-snackbar_right'
+    }
 
-  const removeClasses = (value) => {
-    setClasses(prev => prev.replace(value, ''))
-  }
+    if (verticalPosition === 'bottom') {
+      text += ' bl-customComponent-snackbar_bottom'
+    } else if (verticalPosition === 'center') {
+      text += ' bl-customComponent-snackbar_centerY'
+    } else {
+      text += ' bl-customComponent-snackbar_top'
+    }
 
-  return [classes, addClasses, removeClasses]
+    if (type) {
+      text += ` bl-customComponent-snackbar_${ type }`
+    }
+
+    if (visible) {
+      text += ' bl-customComponent-snackbar_show'
+    }
+
+    return text
+  }, [horizontalPosition, verticalPosition, type, visible])
 }
