@@ -1,0 +1,53 @@
+{
+  "id": "c_d533daff580a0f6e5aeacfcff24adfab",
+  "name": "Autocomplete",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "keyboard",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "label",
+      "label": "Label",
+      "defaultValue": "Label",
+      "handlerId": "labelLogic",
+      "handlerLabel": "Label logic"
+    },
+    {
+      "type": "text",
+      "name": "suggestions",
+      "label": "Suggestions",
+      "handlerId": "suggestionsLogic",
+      "handlerLabel": "Suggestions logic",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onAutocompleteChange",
+      "label": "On Autocomplete Change",
+      "dataBinding": true,
+      "contextBlocks": [
+        {
+          "id": "autocompleteValue",
+          "label": "Autocomplete value"
+        }
+      ]
+    },
+    {
+      "name": "onButtonClearClick",
+      "label": "On Button Clear Click",
+      "dataBinding": true,
+      "contextBlocks": [
+        {
+          "id": "autocompleteValue"
+        }
+      ]
+    }
+  ],
+  "actions": [],
+  "blockUI": ""
+}
