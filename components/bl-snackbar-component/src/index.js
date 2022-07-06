@@ -1,15 +1,18 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useClasses } from './utils/useClasses'
-import { Action } from './components/button'
-import { IconsMap } from './utils/type'
-import { Close } from './components/icons'
+import { useState, useEffect, useCallback } from "react";
+import { useClasses } from './utils/useClasses';
+import { Action } from './components/button';
+import { IconsMap } from './utils/type';
+import { Close } from './components/icons';
+
+const DEFAULT_HIDE_DURATION = 5000;
 
 export default function SnackbarComponent({ component, eventHandlers }) {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
+  console.log(component);
 
   component.visibility = (show) => {
-    setVisible(show)
-  }
+    setVisible(show);
+  };
 
   const {
     snackContent,
@@ -21,42 +24,42 @@ export default function SnackbarComponent({ component, eventHandlers }) {
     showClose,
     showAction,
     actionContent,
-  } = component
+  } = component;
 
   const {
     onClose,
     onAction,
-  } = eventHandlers
+  } = eventHandlers;
 
-  const classes = useClasses(horizontalPosition, verticalPosition, type, visible)
+  const classes = useClasses(horizontalPosition, verticalPosition, type, visible);
 
-  const Icon = IconsMap[type]
+  const Icon = IconsMap[type];
 
-  useEffect(() => {
+  useEffect(()=> {
     if (autoHide) {
-      if (visible) {
-        setTimeout(() => {
-          setVisible(false)
-        }, autoHideDuration)
+      if(visible) {
+        setTimeout(()=>{
+          setVisible(false);
+        }, autoHideDuration || DEFAULT_HIDE_DURATION);
       }
     }
-  }, [visible])
+  },[visible]);
 
   const close = useCallback(() => {
-    setVisible(false)
+    setVisible(false);
     if (onClose) {
-      onClose()
+      onClose();
     }
-  }, [onClose])
+  },[onClose]);
 
   return (
     <div className={ classes }>
       <div className="text">
         { Icon && (
           <Icon/>
-        ) }
+        )}
         <div className="content">
-          { snackContent }
+          {snackContent}
         </div>
       </div>
       <div className="buttons">
@@ -66,15 +69,15 @@ export default function SnackbarComponent({ component, eventHandlers }) {
             onClick={ onAction }
             content={ actionContent }
           />
-        ) }
+        )}
         { showClose && (
           <Action
             className="close"
             onClick={ close }
             content={ Close() }
           />
-        ) }
+        )}
       </div>
     </div>
-  )
+  );
 }
