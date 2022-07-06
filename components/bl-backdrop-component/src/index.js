@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
+
 import { LoadersMap } from './loaders';
 
-export default function Backdrop({ component, eventHandlers }) {
+export default function BackdropSpinner({ component, eventHandlers }) {
   const { backdropVisibility, loaderType, display } = component;
   const { onClick, onOpen, onClose } = eventHandlers;
 

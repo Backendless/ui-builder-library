@@ -1,6 +1,6 @@
 {
   "id": "c_adde80d4b68e247ca0028eb4a6fc73bc",
-  "name": "Backdrop",
+  "name": "Backdrop Spinner",
   "description": "This component is a background with a loader inside it.",
   "showInToolbox": true,
   "faIcon": "loader",

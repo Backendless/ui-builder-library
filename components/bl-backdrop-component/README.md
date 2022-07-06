@@ -1,4 +1,4 @@
-# Backdrop spinner
+# Backdrop Spinner
 
 Backdrop Spinner is a component of Backendless UI-Builder designer. Represents a background with a loader in the center
 of it. The component is customizable, you can choose the visibility, background color, as well as the color and type of
