@@ -1,0 +1,474 @@
+@bl-customComponent-backdrop-background: @disabledColor;
+@bl-customComponent-loader-color: @themePrimary;
+@bl-customComponent-loader-size: 120px;
+@bl-customComponent-lineCircleLoader-lineWeight: 14px;
+@bl-customComponent-lineCircleLoader-containerSize: @bl-customComponent-loader-size;
+@bl-customComponent-lineCircleLoader-color: @bl-customComponent-loader-color;
+@bl-customComponent-dotedCircleLoader-color: @bl-customComponent-loader-color;
+@bl-customComponent-barLoader-color: @bl-customComponent-loader-color;
+@bl-customComponent-dotedLineCircleLoader-color: @bl-customComponent-loader-color;
+@bl-customComponent-radarLoader-color: @bl-customComponent-loader-color;
+@bl-customComponent-dotedSquareLoader-color: @bl-customComponent-loader-color;
+@bl-customComponent-dotedHorizonLoader-color: @bl-customComponent-loader-color;
+
+.bl-customComponent-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: @bl-customComponent-backdrop-background;
+
+  .loader {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+
+
+  .bl-customComponent-lineCircleLoader {
+    display: inline-block;
+    position: relative;
+
+    div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: @bl-customComponent-lineCircleLoader-containerSize;
+      height: @bl-customComponent-lineCircleLoader-containerSize;
+      margin: 8px;
+      border: @bl-customComponent-lineCircleLoader-lineWeight solid @bl-customComponent-lineCircleLoader-color;
+      border-radius: 50%;
+      animation: bl-customComponent-lineCircleLoader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: @bl-customComponent-lineCircleLoader-color transparent transparent transparent;
+
+      &:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+    }
+  }
+
+  .bl-customComponent-dotedCircleLoader {
+    div {
+      animation: bl-customComponent-dotedCircleLoader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      transform-origin: 40px 40px;
+
+      &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: @bl-customComponent-dotedCircleLoader-color;
+        margin: -4px 0 0 -4px;
+      }
+
+      &:nth-child(1) {
+        animation-delay: -0.036s;
+
+        &:after {
+          top: 63px;
+          left: 63px;
+        }
+      }
+
+      &:nth-child(2) {
+        animation-delay: -0.072s;
+
+        &:after {
+          top: 68px;
+          left: 56px;
+        }
+      }
+
+      &:nth-child(3) {
+        animation-delay: -0.108s;
+
+        &:after {
+          top: 71px;
+          left: 48px;
+        }
+      }
+
+      &:nth-child(4) {
+        animation-delay: -0.144s;
+
+        &:after {
+          top: 72px;
+          left: 40px;
+        }
+      }
+
+      &:nth-child(5) {
+        animation-delay: -0.18s;
+
+        &:after {
+          top: 71px;
+          left: 32px;
+        }
+      }
+
+      &:nth-child(6) {
+        animation-delay: -0.216s;
+
+        &:after {
+          top: 68px;
+          left: 24px;
+        }
+      }
+
+      &:nth-child(7) {
+        animation-delay: -0.252s;
+
+        &:after {
+          top: 63px;
+          left: 17px;
+        }
+      }
+
+      &:nth-child(8) {
+        animation-delay: -0.288s;
+
+        &:after {
+          top: 56px;
+          left: 12px;
+        }
+      }
+    }
+  }
+
+  .bl-customComponent-barLoader {
+    div {
+      display: inline-block;
+      position: absolute;
+      left: 8px;
+      width: 16px;
+      background: @bl-customComponent-barLoader-color;
+      animation: bl-customComponent-barLoader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+
+      &:nth-child(1) {
+        left: 8px;
+        animation-delay: -0.24s;
+      }
+
+      &:nth-child(2) {
+        left: 32px;
+        animation-delay: -0.12s;
+      }
+
+      &:nth-child(3) {
+        left: 56px;
+        animation-delay: 0s;
+      }
+    }
+  }
+
+  .bl-customComponent-dotedLineCircleLoader {
+    div {
+      transform-origin: 40px 40px;
+      animation: bl-customComponent-dotedLineCircleLoader 1.2s linear infinite;
+
+      &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 3px;
+        left: 37px;
+        width: 6px;
+        height: 18px;
+        border-radius: 20%;
+        background: @bl-customComponent-dotedLineCircleLoader-color;
+      }
+
+      &:nth-child(1) {
+        transform: rotate(0deg);
+        animation-delay: -1.1s;
+      }
+
+      &:nth-child(2) {
+        transform: rotate(30deg);
+        animation-delay: -1s;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(60deg);
+        animation-delay: -0.9s;
+      }
+
+      &:nth-child(4) {
+        transform: rotate(90deg);
+        animation-delay: -0.8s;
+      }
+
+      &:nth-child(5) {
+        transform: rotate(120deg);
+        animation-delay: -0.7s;
+      }
+
+      &:nth-child(6) {
+        transform: rotate(150deg);
+        animation-delay: -0.6s;
+      }
+
+      &:nth-child(7) {
+        transform: rotate(180deg);
+        animation-delay: -0.5s;
+      }
+
+      &:nth-child(8) {
+        transform: rotate(210deg);
+        animation-delay: -0.4s;
+      }
+
+      &:nth-child(9) {
+        transform: rotate(240deg);
+        animation-delay: -0.3s;
+      }
+
+      &:nth-child(10) {
+        transform: rotate(270deg);
+        animation-delay: -0.2s;
+      }
+
+      &:nth-child(11) {
+        transform: rotate(300deg);
+        animation-delay: -0.1s;
+      }
+
+      &:nth-child(12) {
+        transform: rotate(330deg);
+        animation-delay: 0s;
+      }
+    }
+  }
+
+  .bl-customComponent-radarLoader {
+    div {
+      position: absolute;
+      border: 4px solid @bl-customComponent-radarLoader-color;
+      opacity: 1;
+      border-radius: 50%;
+      animation: bl-customComponent-radarLoader 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+      &:nth-child(2) {
+        animation-delay: -0.5s;
+      }
+    }
+  }
+
+  .bl-customComponent-squareDotedLoader {
+    div {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: @bl-customComponent-dotedSquareLoader-color;
+      animation: bl-customComponent-squareDotedLoader 1.2s linear infinite;
+
+      &:nth-child(1) {
+        top: 8px;
+        left: 8px;
+        animation-delay: 0s;
+      }
+
+      &:nth-child(2) {
+        top: 8px;
+        left: 32px;
+        animation-delay: -0.4s;
+      }
+
+      &:nth-child(3) {
+        top: 8px;
+        left: 56px;
+        animation-delay: -0.8s;
+      }
+
+      &:nth-child(4) {
+        top: 32px;
+        left: 8px;
+        animation-delay: -0.4s;
+      }
+
+      &:nth-child(5) {
+        top: 32px;
+        left: 32px;
+        animation-delay: -0.8s;
+      }
+
+      &:nth-child(6) {
+        top: 32px;
+        left: 56px;
+        animation-delay: -1.2s;
+      }
+
+      &:nth-child(7) {
+        top: 56px;
+        left: 8px;
+        animation-delay: -0.8s;
+      }
+
+      &:nth-child(8) {
+        top: 56px;
+        left: 32px;
+        animation-delay: -1.2s;
+      }
+
+      &:nth-child(9) {
+        top: 56px;
+        left: 56px;
+        animation-delay: -1.6s;
+      }
+    }
+  }
+
+  .bl-customComponent-dotedHorizonLoader {
+    div {
+      position: absolute;
+      top: 33px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: @bl-customComponent-dotedHorizonLoader-color;
+      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+      &:nth-child(1) {
+        left: 8px;
+        animation: bl-customComponent-dotedHorizonLoader-animation-part-1 0.6s infinite;
+      }
+
+      &:nth-child(2) {
+        left: 8px;
+        animation: bl-customComponent-dotedHorizonLoader-animation-part-2 0.6s infinite;
+      }
+
+      &:nth-child(3) {
+        left: 32px;
+        animation: bl-customComponent-dotedHorizonLoader-animation-part-2 0.6s infinite;
+      }
+
+      &:nth-child(4) {
+        left: 56px;
+        animation: bl-customComponent-dotedHorizonLoader-animation-part-3 0.6s infinite;
+      }
+    }
+  }
+}
+
+@keyframes bl-customComponent-lineCircleLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bl-customComponent-barLoader {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+@keyframes bl-customComponent-dotedLineCircleLoader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bl-customComponent-radarLoader {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+@keyframes bl-customComponent-squareDotedLoader {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bl-customComponent-dotedHorizonLoader-animation-part-1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bl-customComponent-dotedHorizonLoader-animation-part-3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes bl-customComponent-dotedHorizonLoader-animation-part-2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+@keyframes bl-customComponent-dotedCircleLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
