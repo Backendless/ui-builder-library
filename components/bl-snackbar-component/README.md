@@ -1,13 +1,13 @@
 # Snackbar
 
 Snackbars provide brief notifications. Snackbars inform users of a process that an app has performed or will perform.
-They appear temporarily, towards the corner of the screen. They shouldn't interrupt the user experience, and they don't
+They appear temporarily, towards the edge or corner of the screen. They shouldn't interrupt the user experience, and they don't
 require user input to disappear.
 
 ## Usage
 
-Add component on your page and add codeless logic which will show snackbar. Use Show Logic handler to load to show
-snackbar. Show Logic handler getting boolean value. If true component will appear.
+Add component on your page and add codeless logic. Use Visibility Action to show
+snackbar.
 
 ### Styles and settings
 
@@ -60,16 +60,17 @@ Default background color: #d84646
 </dd>
 </dl>
 
-| Name                    | Default value   | Description                                                                                                                                                                     |
-|-------------------------|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Show Close Button       | true            | This checkbox toggles the visibility of close button. If true close button is visible.                                                                                          |
-| Show Action Button      | false           | This checkbox toggles the visibility of action button. If true action button is visible.                                                                                        |
-| Auto Hide Duration      | 0               | This option is to set the time when the snackbar will disappear. If `0` snack bar will not disappear else user can set the time in milliseconds when snackbar should be hidden. |
-| Vertical Position       | Top             | This option is to set the vertical position where snackbar will appear. Available 3 positions: `Top`, `Bottom` and `Center`.                                                    |
-| Horizontal Position     | Right           | This option is to set the horizontal position where snackbar will appear. Available 3 positions: `Left`, `Center` and `Right`.                                                  |
-| Snackbar Content        | "Snackbar info" | This option is to set the snackbar text.                                                                                                                                        |
-| Action Button Content   | "Action"        | This option is to set the action button text. Works only if "Show Action Button" is `true`.                                                                                     |
-| Type                    | Default         | This option is to set the type of snackbar. Available 5 types: `Info`, `Success`, `Warning`, `Error` and `Default`.                                                             |
+| Name                    | Default value   | Description                                                                                                                                                  |
+|-------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Show Close Button       | true            | This checkbox toggles the visibility of close button. If checked close button is visible.                                                                    |
+| Show Action Button      | false           | This checkbox toggles the visibility of action button. If checked action button is visible.                                                                  |
+| Auto Hide               | false           | This checkbox toggles the auto hiding of component. If checked snackbar will hide after time from `Auto Hide Duraiton`, if unchecked snackbar will not hide. |
+| Auto Hide Duration      | 5000            | This option is to set the time when the snackbar will disappear.                                                                                             |
+| Vertical Position       | Top             | This option is to set the vertical position where snackbar will appear. Available 3 positions: `Top`, `Bottom` and `Center`.                                 |
+| Horizontal Position     | Right           | This option is to set the horizontal position where snackbar will appear. Available 3 positions: `Left`, `Center` and `Right`.                               |
+| Snackbar Content        | "Snackbar info" | This option is to set the snackbar text.                                                                                                                     |
+| Action Button Content   | "Action"        | This option is to set the action button text. Works only if "Show Action Button" is `true`.                                                                  |
+| Type                    | Default         | This option is to set the type of snackbar. Available 5 types: `Info`, `Success`, `Warning`, `Error` and `Default`.                                          |
 
 ### Event Handlers and Bindable Properties
 
@@ -101,4 +102,13 @@ Defaults to "Action"</dd>
 
 <dt>onAction Click</dt>
 <dd>This event triggering when user clicks on action button.</dd>
+</dl>
+
+### Actions
+
+<dl>
+<dt>Visibility</dt>
+<dd>This action is to toggle visibility of snackbar.
+
+Action has input `Show` which can receive logical value true or false. If `true` snackbar will appear if `false` snackbar will disappear.</dd>
 </dl>
