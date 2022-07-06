@@ -27,20 +27,16 @@ export default function SignaturePadComponent({ component, eventHandlers }) {
   }, []);
 
   return (
-    <div
-      className={ 'bl-customComponent-signature-pad ' + classList.join(' ') }
-      style={ styles }>
+    <div className={ 'bl-customComponent-signature-pad ' + classList.join(' ') } style={ styles }>
         <div className="wrapper">
-          <canvas
-            ref={ elRef }
-            onMouseOver={ onMouseOver }
-            onMouseOut={ onMouseOut }>
-          </canvas>
+          <canvas ref={ elRef } onMouseOver={ onMouseOver } onMouseOut={ onMouseOut }/>
         </div>
+
         <div className="footer">
           <div className="description">
             { description }
           </div>
+
           <ActionButtons
             signaturePadRef={ signaturePadRef }
             component={ component }

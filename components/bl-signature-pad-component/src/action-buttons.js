@@ -71,17 +71,20 @@ export function ActionButtons({ signaturePadRef, component, eventHandlers }) {
           component={ component }
           eventHandlers={ eventHandlers }
         />
+
         <ChangeColorButton
           signaturePadRef={ signaturePadRef }
           component={ component }
           eventHandlers={ eventHandlers }
         />
+
         <UndoButton
           signaturePadRef={ signaturePadRef }
           component={ component }
           eventHandlers={ eventHandlers }
         />
       </div>
+
       <div className="action-save-buttons">
         <SavePNGButton/>
         <SaveJPGButton/>
