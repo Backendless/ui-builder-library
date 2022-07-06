@@ -1,13 +1,12 @@
 # Snackbar
 
 Snackbars provide brief notifications. Snackbars inform users of a process that an app has performed or will perform.
-They appear temporarily, towards the edge or corner of the screen. They shouldn't interrupt the user experience, and they don't
-require user input to disappear.
+They appear temporarily, towards the edge or corner of the screen. They shouldn't interrupt the user experience, and
+they don't require user input to disappear.
 
 ## Usage
 
-Add component on your page and add codeless logic. Use Visibility Action to show
-snackbar.
+Add component on your page and add codeless logic. Use Visibility Action to show snackbar.
 
 ### Styles and settings
 
@@ -110,5 +109,6 @@ Defaults to "Action"</dd>
 <dt>Visibility</dt>
 <dd>This action is to toggle visibility of snackbar.
 
-Action has input `Show` which can receive logical value true or false. If `true` snackbar will appear if `false` snackbar will disappear.</dd>
+Action has input `Show` which can receive logical value true or false. If `true` snackbar will appear if `false`
+snackbar will disappear.</dd>
 </dl>
