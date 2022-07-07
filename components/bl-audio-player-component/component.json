@@ -28,12 +28,6 @@
     },
     {
       "type": "checkbox",
-      "name": "multipleAudioPlayer",
-      "label": "Multiple Audio Player",
-      "defaultValue": false
-    },
-    {
-      "type": "checkbox",
       "name": "playerVisibility",
       "label": "Player Visibility",
       "defaultValue": true
@@ -59,28 +53,39 @@
     {
       "type": "checkbox",
       "name": "autoPlay",
-      "label": "Auto Play"
+      "label": "Auto Play",
+      "defaultValue": false
     },
     {
       "type": "checkbox",
-      "name": "repeatOne",
-      "label": "Repeat One"
-    },
-    {
-      "handlerId": "audioDataLogic",
-      "handlerLabel": "Audio Data Logic",
-      "dataBinding": true,
-      "type": "text",
-      "name": "audioData",
-      "label": "Audio Data",
-      "handlerDescription": "This is a handler for the logic to determine an array of objects for Multiple Audio Player. Each object should include 'url' and 'title' of the track. Array returned by the handler will be used as the playlist for Multiple Audio Player."
-    },
-    {
-      "type": "text",
-      "name": "playerWidth",
-      "label": "Player Width"
+      "name": "repeat",
+      "label": "Repeat",
+      "defaultValue": false
     }
   ],
   "eventHandlers": [],
-  "actions": []
+  "actions": [
+    {
+      "id": "playAudio",
+      "label": "Play Audio"
+    },
+    {
+      "id": "stopAudio",
+      "label": "Stop Audio"
+    },
+    {
+      "id": "replaceAudio",
+      "label": "Replace Audio",
+      "inputs": [
+        {
+          "id": "audioUrl",
+          "label": "Audio Url"
+        },
+        {
+          "id": "audioTitle",
+          "label": "Audio Title"
+        }
+      ]
+    }
+  ]
 }

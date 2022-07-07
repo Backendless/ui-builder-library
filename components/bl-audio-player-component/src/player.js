@@ -1,26 +1,25 @@
-import { ControlButtons, TrackNavigation, TrackTime, VolumeControl } from './components';
+import { Controls, TrackNavigation, TrackTime, VolumeControl } from './components';
 
 export function Player(props) {
   const {
+    audioRef,
     isMute,
     setIsMute,
-    audioRef,
-    tracks,
     currentTrack,
-    setCurrentTrack,
     isPlaying,
     setIsPlaying,
     timer,
     volume,
     setVolume,
+    index,
+    setIndex,
+    audioUrls,
   } = props;
 
   const {
     playerVisibility,
     titleVisibility,
     trackNavigationVisibility,
-    multipleAudioPlayer,
-    playerWidth,
   } = props.component;
 
   if (!playerVisibility) {
@@ -28,7 +27,7 @@ export function Player(props) {
   }
 
   return (
-    <div className="player-container" style={{ width: playerWidth }}>
+    <div className="player-container">
       { titleVisibility && <span className="title">{ currentTrack.title }</span> }
       <TrackNavigation
         audioRef={ audioRef }
@@ -37,14 +36,13 @@ export function Player(props) {
       />
       <div className="controls">
         <TrackTime audioRef={ audioRef } timer={ timer }/>
-        <ControlButtons
+        <Controls
           audioRef={ audioRef }
-          tracks={ tracks }
-          currentTrack={ currentTrack }
-          setCurrentTrack={ setCurrentTrack }
           isPlaying={ isPlaying }
           setIsPlaying={ setIsPlaying }
-          multipleAudioPlayer={ multipleAudioPlayer }
+          index={ index }
+          setIndex={ setIndex }
+          audioUrls={ audioUrls }
         />
         <VolumeControl
           isMute={ isMute }

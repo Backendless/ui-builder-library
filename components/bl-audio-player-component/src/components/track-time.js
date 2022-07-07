@@ -8,7 +8,7 @@ export function TrackTime({ audioRef, timer }) {
   useEffect(() => {
     audioRef.current.addEventListener('loadeddata', () => {
       const length = changeTimeFormat(audioRef.current.duration);
-    
+
       setTrackLength(length);
     });
   }, [trackLength]);

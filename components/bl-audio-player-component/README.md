@@ -9,8 +9,6 @@ While the player can be configured with multiple settings it is easy in use and 
 ### Styles and Settings
 
 <dl>
-<dt>Multiple Audio Player</dt>
-<dd>Checkbox for determining whether Audio Player should play multiple tracks from Audio Data Logic or just one from Audio Url. If the handler returns 'true' Audio Player will play tracks from Audio Data Logic. Unchecked by default.</dd>
 <dt>Player Visibility</dt>
 <dd>Checkbox for determining whether the Audio Player is visible to the user or not. Checked by default.</dd>
 <dt>Track Navigation Visibility</dt>
@@ -21,19 +19,26 @@ While the player can be configured with multiple settings it is easy in use and 
 <dd>Value from this field will be used as the default volume of Audio Player. Can be defined from 0 to 100. Defaults to 50.</dd>
 <dt>Auto Play</dt>
 <dd>Checkbox for determining whether the player will play automatically after loading the page. Unchecked by default.</dd>
-<dt>Repeat One</dt>
+<dt>Repeat</dt>
 <dd>Checkbox for determining whether the player will repeat one track over and over again. Unchecked by default.</dd>
-<dt>Player Width</dt>
-<dd>Value from this field will be used as the width of Audio Player. Defaults to 100%.</dd>
 </dl>
 
 ### Event Handlers and Bindable Properties
 
 <dl>
 <dt>Audio Url</dt>
-<dd>Value from this field will be used as the audio url of Single Track Audio Player. Can be determined by Audio Url Logic.</dd>
+<dd>Value from this field will be used as the audio url of the player. Can be determined by Audio Url Logic as an array of urls or as a single url.</dd>
 <dt>Audio Title</dt>
-<dd>Value from this field will be used as the audio title of Single Track Audio Player. Can be determined by Audio Title Logic.</dd>
-<dt>Audio Data</dt>
-<dd>Array of objects returned by Audio Data Logic will be used as the playlist for Multiple Audio Player. Each object should include 'url' and 'title' of the track.</dd>
+<dd>Value from this field will be used as the audio title of the player. Can be determined by Audio Title Logic as an array of titles or as a single title.</dd>
+</dl>
+
+### Actions
+
+<dl>
+<dt>Play Audio</dt>
+<dd>Action which starts playing the audio.</dd>
+<dt>Stop Audio</dt>
+<dd>Action which stops playing the audio.</dd>
+<dt>Replace Audio</dt>
+<dd>Action which replaces the audio. Value from Audio Url and Audio Title properties will be used as the current track of Audio Player.</dd>
 </dl>

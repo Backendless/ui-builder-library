@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { changeTimeFormat } from './utils/time';
+import { useTimeUpdate } from './hooks/use-time-update';
 import { Player } from './player';
 
 export default function AudioPlayer({ component }) {
@@ -9,73 +9,37 @@ export default function AudioPlayer({ component }) {
     audioUrl,
     audioTitle,
     classList,
-    multipleAudioPlayer,
-    repeatOne,
+    repeat,
     autoPlay,
     defaultVolume,
-    audioData,
   } = component;
+  const audioRef = useRef();
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isMute, setIsMute] = useState(false);
-  const [timer, setTimer] = useState('00:00');
   const [volume, setVolume] = useState(defaultVolume || 50);
-  const audioRef = useRef();
-  const tracks = audioData;
-  const singleAudio = {
-    url  : audioUrl,
-    title: audioTitle, 
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+
+  const audioUrls = Array.isArray(audioUrl) ? audioUrl : null;
+  const audioTitles = Array.isArray(audioTitle) ? audioTitle : null;
+  const defaultTrack = {
+    url  : audioUrls ? audioUrl[currentTrackIndex] : audioUrl,
+    title: audioTitles ? audioTitle[currentTrackIndex] : audioTitle,
   };
 
-  const defaultTrack = multipleAudioPlayer && Array.isArray(tracks) ? tracks[0] : singleAudio;
-  
   const [currentTrack, setCurrentTrack] = useState(defaultTrack);
-  
+  const { timer, onPlaying } = useTimeUpdate(audioRef, currentTrack, setCurrentTrack);
+
   useEffect(() => {
     setCurrentTrack(defaultTrack);
-  }, [audioTitle, audioUrl, audioData]);
-  
+  }, [audioTitle, audioUrl, currentTrackIndex]);
+
   useEffect(() => {
     audioRef.current.volume = volume / 100;
   }, [volume]);
-  
+
   useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
+    audioRef.current[isPlaying ? 'play' : 'pause']();
   }, [isPlaying]);
-
-  if (!display) {
-    return null;
-  }
-  
-  const onPlaying = () => {
-    const duration = audioRef.current.duration;
-    const currentTime = audioRef.current.currentTime;
-
-    setCurrentTrack({
-      ...currentTrack,
-      progress: currentTime / duration * 100,
-      length  : duration,
-    });
-
-    const currentTimeProgress = changeTimeFormat(audioRef.current.currentTime);
-
-    setTimer(currentTimeProgress);
-  };
-
-  const playNextTrack = () => {
-    const index = tracks.findIndex(track => {
-      return track.url === currentTrack.url;
-    });
-
-    if (index === tracks.length - 1) {
-      stopPlaying();
-    } else {
-      setCurrentTrack(tracks[index + 1]);
-    }
-  };
 
   const stopPlaying = () => {
     setIsPlaying(false);
@@ -83,39 +47,56 @@ export default function AudioPlayer({ component }) {
   };
 
   const onEnded = () => {
-    if (multipleAudioPlayer) {
-      playNextTrack();
+    if (audioUrls && audioUrls[currentTrackIndex + 1]) {
+      setCurrentTrackIndex(currentTrackIndex + 1);
     } else {
       stopPlaying();
     }
   };
 
+  component.playAudio = () => setIsPlaying(true);
+  component.stopAudio = () => stopPlaying();
+  component.replaceAudio = (audioUrl, audioTitle) => {
+    setCurrentTrack({
+      url  : audioUrl,
+      title: audioTitle,
+    });
+
+    setIsPlaying(true);
+  };
+
+  if (!display) {
+    return null;
+  }
+
   return (
     <div className={ 'bl-customComponent-audio-player ' + classList.join(' ') }>
-       <audio
-          autoPlay={ isPlaying }
-          ref={ audioRef }
-          src={ currentTrack.url }
-          onTimeUpdate={ onPlaying }
-          muted={ isMute }
-          preload="auto"
-          loop={ repeatOne }
-          onEnded={ onEnded }>
-        </audio>
-        <Player
-          component={ component }
-          tracks={ tracks }
-          audioRef={ audioRef }
-          currentTrack={ currentTrack }
-          setCurrentTrack={ setCurrentTrack }
-          isPlaying={ isPlaying }
-          setIsPlaying={ setIsPlaying }
-          isMute={ isMute }
-          setIsMute={ setIsMute }
-          timer={ timer }
-          volume={ volume }
-          setVolume={ setVolume }
-        />
+      <audio
+        autoPlay={ isPlaying }
+        ref={ audioRef }
+        src={ currentTrack.url }
+        onTimeUpdate={ onPlaying }
+        muted={ isMute }
+        preload="auto"
+        loop={ repeat }
+        onEnded={ onEnded }>
+      </audio>
+      <Player
+        component={ component }
+        audioRef={ audioRef }
+        currentTrack={ currentTrack }
+        setCurrentTrack={ setCurrentTrack }
+        isPlaying={ isPlaying }
+        setIsPlaying={ setIsPlaying }
+        isMute={ isMute }
+        setIsMute={ setIsMute }
+        timer={ timer }
+        volume={ volume }
+        setVolume={ setVolume }
+        index={ currentTrackIndex }
+        setIndex={ setCurrentTrackIndex }
+        audioUrls={ audioUrls }
+      />
     </div>
   );
 }
