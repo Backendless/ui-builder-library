@@ -1,4 +1,4 @@
-import { icons } from '../icons.js';
+import { iconsMap } from '../assets/icons';
 import { FullPointControll, HalfPointControll } from './components';
 
 export const RatingIcon = ({
@@ -15,7 +15,7 @@ export const RatingIcon = ({
   return (
     <div className="rating-icon">
       <HalfPointControll
-        icon={ ratingValue >= halfInputValue ? icons[`${icon}Active`] : icons[icon] }
+        icon={ ratingValue >= halfInputValue ? iconsMap[`${icon}Active`] : iconsMap[icon] }
         iconColor={ iconColor }
         disabled={ disabled }
         checked={ halfInputValue === ratingValue }
@@ -23,7 +23,7 @@ export const RatingIcon = ({
         onChange={ onChange }
       />
       <FullPointControll
-        icon={ ratingValue >= inputValue ? icons[`${icon}Active`] : icons[icon] }
+        icon={ ratingValue >= inputValue ? iconsMap[`${icon}Active`] : iconsMap[icon] }
         iconColor={ iconColor }
         disabled={ disabled }
         checked={ inputValue === ratingValue }

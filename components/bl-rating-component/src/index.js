@@ -1,8 +1,12 @@
-import { useState, useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
-import { useRatingClassList } from './hooks/useRatingClassList.js';
-import { roundValueToPrecision } from './utils/number.js';
+import { useRatingClassList } from './hooks/useRatingClassList';
+import { iconParams } from './utils/icon-params';
+import { iconsList } from './utils/icons-list.js';
+import { roundValueToPrecision } from './utils/number';
 import { RatingIcon } from './rating-icon';
+
+const RATING_PRECISION = 0.5;
 
 export default function RatingComponent({
   component, eventHandlers,
@@ -22,7 +26,7 @@ export default function RatingComponent({
   const rootRef = useRef();
   const [ratingValue, setRatingValue] = useState(defaultValue);
   const [hoverValue, setHoverValue] = useState();
-  const iconsArray = new Array(iconsAmount).fill(1);
+  const icons = iconsList(iconsAmount);
 
   const value = hoverValue || ratingValue;
 
@@ -52,14 +56,11 @@ export default function RatingComponent({
       return;
     }
 
-    const rootNode = rootRef.current;
-    const { left } = rootNode.getBoundingClientRect();
-    const { width } = rootNode.firstChild.getBoundingClientRect();
+    const [left, width] = iconParams(rootRef.current);
 
-    const precision = 0.5;
     const percent = (event.clientX - left) / (width * iconsAmount);
 
-    setHoverValue(roundValueToPrecision(iconsAmount * percent + precision / 2, precision).toString());
+    setHoverValue(roundValueToPrecision(iconsAmount * percent + RATING_PRECISION / 2, RATING_PRECISION).toString());
   };
 
   const handleMouseLeave = () => {
@@ -77,7 +78,7 @@ export default function RatingComponent({
         onMouseMove={ handleMouseMove }
         onMouseLeave={ handleMouseLeave }
         className="bl-customComponent-rating__icons">
-        {iconsArray.map((_, index) => (
+        {icons.map((_, index) => (
           <RatingIcon
             key={ index }
             icon={ icon }
