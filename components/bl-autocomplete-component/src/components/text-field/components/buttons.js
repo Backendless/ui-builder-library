@@ -7,14 +7,14 @@ export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
     const classes = ['button'];
 
     if (isSuggestionsOpen) {
-      classes.push('button__popup-up')
+      classes.push('button__popup-up');
     }
 
     return classes.join(' ');
   };
 
   const handleClick = () => {
-    dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: !isSuggestionsOpen })
+    dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: !isSuggestionsOpen });
   };
 
   const handleInputClear = () => {
@@ -24,7 +24,7 @@ export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
     if (onButtonClearClick) {
       onButtonClearClick({ autocompleteValue: null });
     }
-  }
+  };
 
   return (
     <div className="button-container">
@@ -32,7 +32,7 @@ export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
         <button
           tabIndex="-1"
           type="button"
-          onClick={handleInputClear}
+          onClick={ handleInputClear }
           className="button button__clear">
           <svg
             focusable="false"
@@ -48,8 +48,8 @@ export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
       <button
         tabIndex="-1"
         type="button"
-        onClick={handleClick}
-        className={popupButtonClasses()}>
+        onClick={ handleClick }
+        className={ popupButtonClasses() }>
         <svg
           focusable="false"
           aria-hidden="true"

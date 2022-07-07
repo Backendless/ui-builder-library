@@ -1,4 +1,4 @@
-import { useReducer, useMemo } from 'react';
+import { useMemo, useReducer } from 'react';
 
 export const actions = {
   HANDLE_SUGGESTIONS_OPEN: 'HANDLE_SUGGESTIONS_OPEN',
@@ -50,7 +50,7 @@ const initialState = {
   autocompleteValue: null,
 };
 
-export const useAutocomplete = (suggestions) => {
+export const useAutocomplete = suggestions => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const autocompleteState = useMemo(() => {
@@ -60,7 +60,7 @@ export const useAutocomplete = (suggestions) => {
 
     return {
       ...state,
-      suggestions: filteredSuggestions
+      suggestions: filteredSuggestions,
     };
   }, [state, suggestions]);
 

@@ -1,7 +1,7 @@
 import { actions } from '../../../hooks/useAutocomplete';
 
 export const Suggestion = ({ dispatch, item, onAutocompleteChange }) => {
-  const handleClick = (value) => {
+  const handleClick = value => {
     dispatch({ type: actions.HANDLE_AUTOCOMPLETE_VALUE, value });
     dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: false });
     
@@ -12,7 +12,7 @@ export const Suggestion = ({ dispatch, item, onAutocompleteChange }) => {
 
   return (
     <div
-      onClick={() => handleClick(item)}
+      onClick={ () => handleClick(item) }
       className="suggestion">
       {item.label}
     </div>

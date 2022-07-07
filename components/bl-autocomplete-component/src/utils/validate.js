@@ -1,4 +1,4 @@
-export const validate = (items) => {
+export const validate = items => {
   if (!items) {
     return [];
   }
@@ -8,7 +8,7 @@ export const validate = (items) => {
       objectId: item,
       value: item,
       label: item,
-    }))
+    }));
   }
     
   if (typeof items === 'object') {

@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 import { Suggestion } from './components/suggestion';
 
@@ -6,7 +6,7 @@ export const Suggestions = ({
   state,
   autocompleteHeight,
   dispatch,
-  onAutocompleteChange
+  onAutocompleteChange,
 }) => {
   const { suggestions } = state;
   const [suggestionsPlacement, setSuggestionsPlacement] = useState('bottom');
@@ -26,7 +26,7 @@ export const Suggestions = ({
       const viewPortHeight = window.innerHeight;
       const { bottom, height } = suggestionsRef.current.getBoundingClientRect();
 
-      setSuggestionsPlacement((placement) => {
+      setSuggestionsPlacement(placement => {
         const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height  : bottom;
 
         return (viewPortHeight - bottomCoordinate) > 0 ? 'bottom' : 'top';
@@ -37,20 +37,20 @@ export const Suggestions = ({
     document.addEventListener('wheel', handleScroll);
 
     return () => document.removeEventListener('wheel', handleScroll);
-  }, [autocompleteHeight])
+  }, [autocompleteHeight]);
 
   return (
     <div
-      ref={suggestionsRef}
-      style={suggestionsStyle}
+      ref={ suggestionsRef }
+      style={ suggestionsStyle }
       className="suggestions">
       {suggestions.length ? (
         suggestions.map(item => (
           <Suggestion
-            key={item.label}
-            item={item}
-            dispatch={dispatch}
-            onAutocompleteChange={onAutocompleteChange}
+            key={ item.label }
+            item={ item }
+            dispatch={ dispatch }
+            onAutocompleteChange={ onAutocompleteChange }
           />
         ))
       ) : (

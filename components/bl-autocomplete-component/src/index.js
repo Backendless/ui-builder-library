@@ -1,64 +1,54 @@
-import { useCallback, useRef, useEffect } from 'react';
+import { useCallback, useRef } from 'react';
 
-import { TextField } from './components/text-field';
 import { Suggestions } from './components/suggestions';
-
-import { validate } from './utils/validate';
-
+import { TextField } from './components/text-field';
 import { actions } from './hooks/useAutocomplete';
 import { useAutocomplete } from './hooks/useAutocomplete';
+import { useAutocompleteClassList } from './hooks/useAutocompleteClassList';
 import { useOnClickOutside } from './hooks/useOnClickOutside';
+import { validate } from './utils/validate';
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
-  const { label, suggestions } = component;
+  const { label, suggestions, classList } = component;
   const { onAutocompleteChange, onButtonClearClick } = eventHandlers;
-  
+
   const rootRef = useRef();
   const autocompleteRef = useRef();
   const [state, dispatch] = useAutocomplete(validate(suggestions));
 
+  const classesProps = {
+    classList,
+    autocompleteValue: state.autocompleteValue,
+    isAutocompleteActive: state.isAutocompleteActive,
+  };
+
+  const classes = useAutocompleteClassList(classesProps);
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
   
   const handleClickOutside = useCallback(() => {
     dispatch({ type: actions.HANDLE_AUTOCOMPLETE_DISABLE });
     dispatch({ type: actions.HANDLE_INPUT_VALUE, value: '' });
   }, [dispatch]);
-
-  useOnClickOutside(rootRef, handleClickOutside);
   
-  const autocompleteClasses = () => {
-    const { autocompleteValue, isAutocompleteActive } = state;
-
-    const classes = ['bl-customComponent-autocomplete'];
-
-    if (autocompleteValue) {
-      classes.push('has-clear-button');
-    }
-
-    if (isAutocompleteActive) {
-      classes.push('autocomplete-focused');
-    }
-
-    return classes.join(' ');
-  };
+  useOnClickOutside(rootRef, handleClickOutside);
 
   return (
     <div
-      ref={rootRef}
-      className={autocompleteClasses()}>
+      ref={ rootRef }
+      className={ classes }>
       <TextField
-        ref={autocompleteRef}
-        label={label}
-        state={state}
-        dispatch={dispatch}
-        onButtonClearClick={onButtonClearClick}
+        ref={ autocompleteRef }
+        label={ label }
+        state={ state }
+        dispatch={ dispatch }
+        onButtonClearClick={ onButtonClearClick }
       />
       {state.isSuggestionsOpen && (
         <Suggestions
-          state={state}
-          autocompleteHeight={autocompleteHeight}
-          dispatch={dispatch}
-          onAutocompleteChange={onAutocompleteChange}
+          state={ state }
+          autocompleteHeight={ autocompleteHeight }
+          dispatch={ dispatch }
+          onAutocompleteChange={ onAutocompleteChange }
         />
       )}
     </div>

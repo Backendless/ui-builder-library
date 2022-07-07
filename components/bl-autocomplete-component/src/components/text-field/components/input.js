@@ -25,17 +25,17 @@ export const Input = forwardRef(
 
   return (
     <div
-      onClick={() => dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: !isSuggestionsOpen })}
+      onClick={ () => dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: !isSuggestionsOpen }) }
       className="input__container">
       <input
-        ref={ref}
+        ref={ ref }
         type="text"
         id="autocomplete"
         autoComplete="off"
-        value={value}
-        onChange={handleChange}
+        value={ value }
+        onChange={ handleChange }
         className="input__field"
       />
     </div>
-  )}
+  );}
 );
