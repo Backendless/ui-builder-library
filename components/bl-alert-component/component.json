@@ -1,0 +1,108 @@
+{
+  "id": "c_fa1757f7e6364beffc29cfe9815bf84e",
+  "name": "Alert",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "exclamation-circle",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "messageTitle",
+      "label": "Message Title",
+      "handlerId": "messgeTitleLogic",
+      "handlerLabel": "Message Title Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the title for alert."
+    },
+    {
+      "type": "text",
+      "name": "messageText",
+      "label": "Message Text",
+      "handlerId": "messageTextLogic",
+      "handlerLabel": " Message Text Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the text for alert."
+    },
+    {
+      "type": "select",
+      "name": "messageType",
+      "label": "Message Type",
+      "defaultValue": "error",
+      "handlerId": "messageTypeLogic",
+      "handlerLabel": "Message Type Logic",
+      "options": [
+        {
+          "value": "error",
+          "label": "Error"
+        },
+        {
+          "value": "warning",
+          "label": "Warning"
+        },
+        {
+          "value": "info",
+          "label": "Info"
+        },
+        {
+          "value": "success",
+          "label": "Success"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the type of alert (error, warning,  info, success)."
+    },
+    {
+      "type": "checkbox",
+      "name": "iconVisibility",
+      "label": "Icon Visibility",
+      "defaultValue": true,
+      "handlerId": "iconVisibilityLogic",
+      "handlerLabel": "Icon Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine the icon is visible in alert"
+    },
+    {
+      "type": "checkbox",
+      "name": "isCloseButtonVisibility",
+      "label": "Close Button Visibility",
+      "defaultValue": true,
+      "handlerId": "isCloseButtonVisibilityLogic",
+      "handlerLabel": "Close Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine the close button is visible in alert"
+    },
+    {
+      "type": "select",
+      "name": "styleVariants",
+      "label": "Style Variants",
+      "defaultValue": "alert",
+      "options": [
+        {
+          "value": "alert",
+          "label": "Alert Root"
+        },
+        {
+          "value": "alert-outline",
+          "label": "Alert Outline"
+        },
+        {
+          "value": "alert-filled",
+          "label": "alert Filled"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onCloseButtonVisibility",
+      "handlerDescription": "This handler is triggered when the user clicks on the close button.",
+      "label": "On Close Button Visibility"
+    }
+  ],
+  "actions": [
+    {
+      "id": "closeButtonVisibility",
+      "label": "Close Button Visibility"
+    }
+  ]
+}
