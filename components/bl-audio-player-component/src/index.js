@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useTimeUpdate } from './hooks/use-time-update';
+import { useTimeUpdate } from './helpers/use-time-update';
 import { Player } from './player';
 
 export default function AudioPlayer({ component }) {

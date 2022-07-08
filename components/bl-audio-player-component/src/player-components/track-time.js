@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { changeTimeFormat } from '../utils/time';
+import { changeTimeFormat } from '../helpers/change-time-format';
 
 export function TrackTime({ audioRef, timer }) {
   const [trackLength, setTrackLength] = useState('00:00');
@@ -8,7 +8,7 @@ export function TrackTime({ audioRef, timer }) {
   useEffect(() => {
     audioRef.current.addEventListener('loadeddata', () => {
       const length = changeTimeFormat(audioRef.current.duration);
-
+    
       setTrackLength(length);
     });
   }, [trackLength]);

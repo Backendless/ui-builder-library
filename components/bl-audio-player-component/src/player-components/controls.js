@@ -1,4 +1,4 @@
-import { usePlayerHandlers } from '../hooks/use-player-handlers';
+import { usePlayerHandlers } from '../helpers/use-player-handlers';
 import { ControlButton } from './control-button';
 
 export function Controls(props) {

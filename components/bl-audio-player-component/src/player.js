@@ -1,4 +1,4 @@
-import { Controls, TrackNavigation, TrackTime, VolumeControl } from './components';
+import { Controls, TrackNavigation, TrackTime, VolumeControl } from './player-components';
 
 export function Player(props) {
   const {
