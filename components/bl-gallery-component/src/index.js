@@ -1,23 +1,23 @@
-import { useMemo } from 'react';
+import { useMemo } from 'react'
 
-import { Gallery } from './components/gallery';
-import { createImagesData } from './utils/images-data';
-import { handleOptions } from './utils/options';
-import { createShortId } from './utils/short-id';
+import { Gallery } from './components/gallery'
+import { createImagesData } from './helpers/images-data'
+import { handleOptions } from './helpers/options'
+import { createShortId } from './helpers/short-id'
 
 const DefaultOptions = {
-  IMAGE_LABEL: 'Image',
-  SEPARATOR: 'of',
-  FADE_DURATION: 600,
+  IMAGE_LABEL        : 'Image',
+  SEPARATOR          : 'of',
+  FADE_DURATION      : 600,
   IMAGE_FADE_DURATION: 600,
-  POSITION_FROM_TOP: 50,
-  RESIZE_DURATION: 700,
-};
+  POSITION_FROM_TOP  : 50,
+  RESIZE_DURATION    : 700,
+}
 
 const DefaultImageProperties = {
   height: '',
-  title: '',
-};
+  title : '',
+}
 
 export default function GalleryComponent({ component }) {
   const {
@@ -26,26 +26,26 @@ export default function GalleryComponent({ component }) {
     disableScrolling,
     showImageCount,
     wrapAround,
-  } = component;
+  } = component
 
-  const shortId = createShortId();
+  const shortId = createShortId()
 
-  const options = handleOptions(component, DefaultOptions);
+  const options = handleOptions(component, DefaultOptions)
 
   const images = useMemo(() => {
-    if(typeof imagesData === 'string') {
-      return createImagesData(imagesData);
+    if (typeof imagesData === 'string') {
+      return createImagesData(imagesData)
     }
 
     if (imagesData) {
-      return imagesData.map(image => ({ ...DefaultImageProperties, ...image }));
+      return imagesData.map(image => ({ ...DefaultImageProperties, ...image }))
     }
 
-    return [];
-  }, [imagesData]);
+    return []
+  }, [imagesData])
 
   if (!component.display || !images.length) {
-    return null;
+    return null
   }
 
   return <Gallery
@@ -61,5 +61,5 @@ export default function GalleryComponent({ component }) {
     imageLabel={ options.imageLabel }
     alwaysShowNavOnTouchDevices={ alwaysShowNavOnTouchDevices }
     shortId={ shortId }
-  />;
+  />
 }

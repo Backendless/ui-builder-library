@@ -1,11 +1,11 @@
 export const createImagesData = imagesData => {
-  const imagesArray = imagesData.replace(/\s/g, '');
+  const imagesArray = imagesData.replace(/\s/g, '')
 
   if (imagesArray) {
     return imagesArray.split(',').map(img => ({
-      url:img,
-    }));
+      url: img,
+    }))
   }
 
-  return [];
-};
+  return []
+}
