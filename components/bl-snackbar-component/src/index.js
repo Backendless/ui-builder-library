@@ -1,16 +1,16 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useClasses } from './utils/useClasses'
+import { useCallback, useEffect, useState } from 'react'
+
 import { Action } from './components/button'
-import { IconsMap } from './utils/type'
 import { Close } from './components/icons'
+import { IconsMap } from './helpers/type'
+import { useClasses } from './helpers/useClasses'
 
 const DEFAULT_HIDE_DURATION = 5000
 
 export default function SnackbarComponent({ component, eventHandlers }) {
   const [visible, setVisible] = useState(false)
-  console.log(component)
 
-  component.visibility = (show) => {
+  component.visibility = show => {
     setVisible(show)
   }
 
