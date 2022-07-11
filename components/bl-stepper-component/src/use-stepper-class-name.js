@@ -1,5 +1,5 @@
 export const useStepperClassName = (typeStepper) => {
-  const clsses = {
+  const classes = {
     root: {
       stepper: 'stepper',
       item: 'stepper__item',
@@ -23,7 +23,7 @@ export const useStepperClassName = (typeStepper) => {
       titleTextActive: 'step-alternative-label-title__text--active',
     },
     customized: {
-      stepper: 'stepper',
+      stepper: 'stepper-alternative-label',
       item: 'stepper-alternative-label__item',
       stepTitle: 'stepper-alternative-label__step-title step-alternative-label-title',
       line: 'stepper-customized__line',
@@ -36,5 +36,5 @@ export const useStepperClassName = (typeStepper) => {
     },
   };
 
-  return clsses[typeStepper];
+  return classes[typeStepper];
 };

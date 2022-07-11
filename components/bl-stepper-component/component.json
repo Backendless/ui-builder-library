@@ -1,5 +1,5 @@
 {
-  "id": "c_930425c2783410a7d71e0c82f99c7145",
+  "id": "c_cb263caa99937a6981fc4001cdb410f9",
   "name": "Stepper",
   "description": "This component makes it possible to display the steps of performing an action",
   "showInToolbox": true,
@@ -31,19 +31,19 @@
       "type": "select",
       "name": "stepperType",
       "label": "Type Stepper Style",
-      "defaultValue": "alternativeLabel",
+      "defaultValue": "root",
       "options": [
         {
           "value": "root",
-          "label": "root"
+          "label": "Root"
         },
         {
           "value": "alternativeLabel",
-          "label": "alternativeLabel"
+          "label": "Alternative Label"
         },
         {
           "value": "customized",
-          "label": "customized"
+          "label": "Customized"
         }
       ]
     }

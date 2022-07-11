@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { StepperItem } from './components/stepper-item';
-import { useStepperClassName } from './hooks/use-stepper-class-name'
+import { useStepperClassName } from './use-stepper-class-name'
 
 export default function MyCustomComponent({ component, eventHandlers }) {
   const { stepList, display, stepperType, countSteps } = component;

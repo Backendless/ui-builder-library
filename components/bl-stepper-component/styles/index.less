@@ -19,9 +19,13 @@
 @bl-customComponent-stepper-customized-iconMarkSize: 8px;
 
 .bl-customComponent-stepper {
+  display: flex;
+  justify-content: center;
+
   .stepper {
     display: flex;
     align-items: center;
+    width: 69%;
 
     &__item {
       display: flex;
@@ -80,6 +84,7 @@
     &__text {
       display: block;
       opacity: 0.6;
+      white-space: nowrap;
 
       margin-left: 5px;
 
@@ -93,6 +98,7 @@
 
   .stepper-alternative-label {
     display: flex;
+    width: 100%;
 
     &__item {
       position: relative;
@@ -125,6 +131,8 @@
       display: block;
       opacity: 0.6;
 
+      text-align: center;
+
       margin-top: @bl-customComponent-stepper-alternative-label-titleTextMarginTop;
 
       transition: opacity @bl-customComponent-stepper-transition;
@@ -132,6 +140,27 @@
       &--active {
         opacity: 1;
       }
+    }
+  }
+
+  .stepper-customized__line {
+    display: block;
+
+    opacity: 0.38;
+    border-color: @bl-customComponent-stepper-textColor;
+    border-top-style: solid;
+    border-top-width: @bl-customComponent-stepper-customized-lineBorderWidth;
+
+    position: absolute;
+    top: 8px;
+    left: calc(50% + 20px);
+    right: calc(-50% + 20px);
+
+    transition: border-color @bl-customComponent-stepper-transition;
+
+    &--active {
+      border-color: @bl-customComponent-stepper-themeColor;
+      opacity: 1;
     }
   }
 
@@ -168,26 +197,4 @@
       }
     }
   }
-
-  .stepper-customized__line {
-    display: block;
-
-    opacity: 0.38;
-    border-color: @bl-customComponent-stepper-textColor;
-    border-top-style: solid;
-    border-top-width: @bl-customComponent-stepper-customized-lineBorderWidth;
-
-    position: absolute;
-    top: 8px;
-    left: calc(50% + 20px);
-    right: calc(-50% + 20px);
-
-    transition: border-color @bl-customComponent-stepper-transition;
-
-    &--active {
-      border-color: @bl-customComponent-stepper-themeColor;
-      opacity: 1;
-    }
-  }
 }
-

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useActiveClassName } from '../hooks/use-active-class-name'
+import { useActiveClassName } from '../use-active-class-name';
 
 export const StepTitle = (props) => {
   const {
