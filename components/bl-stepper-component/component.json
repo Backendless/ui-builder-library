@@ -58,15 +58,25 @@
   "actions": [
     {
       "id": "goNextStep",
-      "label": "Go Next Step"
+      "label": "Go to Next Step"
     },
     {
       "id": "goPrevStep",
-      "label": "Go Previous Step"
+      "label": "Go to Previous Step"
     },
     {
       "id": "resetStep",
-      "label": "Reset Steps"
+      "label": "Reset Current Step"
+    },
+    {
+      "id": "goStep",
+      "label": "Go to step",
+      "inputs": [
+        {
+          "id": "step",
+          "label": "Step number"
+        }
+      ]
     }
   ]
 }

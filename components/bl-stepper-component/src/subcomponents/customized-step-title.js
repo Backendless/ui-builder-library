@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { useActiveClassName } from '../use-active-class-name';
+import { useActiveClassName } from '../helpers/use-active-class-name';
 
 export const CustomizedStepTitle = (props) => {
   const {
-    completedSteps,
+    steps,
     currentStep,
     stepIndex,
     step,
@@ -11,12 +11,12 @@ export const CustomizedStepTitle = (props) => {
   } = props;
 
   const { svgIconClass, titleTextClass } = useMemo(() => {
-    return useActiveClassName(currentStep, stepIndex, completedSteps, stepperClassName);
-  }, [stepIndex, currentStep, completedSteps]);
+    return useActiveClassName(currentStep, stepIndex, steps, stepperClassName);
+  }, [stepIndex, currentStep, steps]);
 
   return (
     <div className={stepperClassName.stepTitle}>
-      {completedSteps.includes(stepIndex)
+      {step.completed
         ? <CustomizedStepTitleItemCompleted
             stepperClassName={stepperClassName}
             titleTextClass={titleTextClass}
@@ -45,7 +45,7 @@ const CustomizedStepTitleItem = (props) => {
         <div className={svgIconClass}></div>
       </div>
       <span className={titleTextClass}>
-        {step}
+        {step.content}
       </span>
     </>
   );
@@ -69,7 +69,7 @@ const CustomizedStepTitleItemCompleted = (props) => {
         <path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
       </svg>
       <span className={titleTextClass}>
-        {step}
+        {step.content}
       </span>
     </>
   );

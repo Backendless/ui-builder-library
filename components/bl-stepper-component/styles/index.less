@@ -20,13 +20,16 @@
 
 .bl-customComponent-stepper {
   display: flex;
-  justify-content: center;
+  align-self: center;
+  align-items: center;
+  width: 69%;
+  
+  &--alternative-label {
+    width: 100%;
+  }
+}
 
   .stepper {
-    display: flex;
-    align-items: center;
-    width: 69%;
-
     &__item {
       display: flex;
       align-items: center;
@@ -51,6 +54,8 @@
       border-top-width: @bl-customComponent-stepper-lineBorderWidth;
     }
   }
+  
+  
 
   .step-title {
     display: flex;
@@ -97,9 +102,6 @@
   }
 
   .stepper-alternative-label {
-    display: flex;
-    width: 100%;
-
     &__item {
       position: relative;
 
@@ -197,4 +199,3 @@
       }
     }
   }
-}

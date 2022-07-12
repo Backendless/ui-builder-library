@@ -1,8 +1,8 @@
-export const useActiveClassName = (currentStep, stepIndex, completedSteps, stepperClassName) => {
+export const useActiveClassName = (currentStep, stepIndex, steps, stepperClassName) => {
   let svgIconClass = stepperClassName.titleIcon;
   let titleTextClass = stepperClassName.titleText;
 
-  if (stepIndex === currentStep || completedSteps.includes(stepIndex)) {
+  if (stepIndex === currentStep || steps[stepIndex].completed) {
     svgIconClass += ' ' + stepperClassName.titleIconActive;
     titleTextClass += ' ' + stepperClassName.titleTextActive;
   }

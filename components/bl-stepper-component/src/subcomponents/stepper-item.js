@@ -1,6 +1,6 @@
 import { StepTitle } from './step-title';
 import { CustomizedStepTitle } from './customized-step-title';
-import { StepperLine } from './stepper-line'
+import { StepperLine } from './stepper-line';
 
 export const StepperItem = ({
   customized,
@@ -13,7 +13,7 @@ export const StepperItem = ({
 }) => {
   let stepperLineClass = stepperClassName.line;
 
-  if (completedSteps.includes(stepIndex)) {
+  if (step.completed) {
     stepperLineClass += ' ' + stepperClassName.lineActive;
   }
 
@@ -22,7 +22,7 @@ export const StepperItem = ({
       {customized ? (
         <CustomizedStepTitle
           stepperClassName={stepperClassName}
-          completedSteps={completedSteps}
+          steps={steps}
           currentStep={currentStep}
           stepIndex={stepIndex}
           step={step}
@@ -30,7 +30,7 @@ export const StepperItem = ({
       ) : (
         <StepTitle
           stepperClassName={stepperClassName}
-          completedSteps={completedSteps}
+          steps={steps}
           currentStep={currentStep}
           stepIndex={stepIndex}
           step={step}
