@@ -8,12 +8,10 @@
 @bl-customComponent-alert-borderRadius: 4px;
 @bl-customComponent-alert-iconSize: 22px;
 
-@bl-customComponent-alert-animationTime: 0.1s;
-
-@bl-customComponent-alert-errorBackgroundColor: rgb(253, 237, 237);
-@bl-customComponent-alert-warningBackgroundColor: rgb(255, 244, 229);
-@bl-customComponent-alert-infoBackgroundColor: rgb(229, 246, 253);
-@bl-customComponent-alert-successBackgroundColor: rgb(237, 247, 237);
+@bl-customComponent-alert-errorBackgroundColor: #fdeded;
+@bl-customComponent-alert-warningBackgroundColor: #fff4e5;
+@bl-customComponent-alert-infoBackgroundColor: #e5f6fd;
+@bl-customComponent-alert-successBackgroundColor: #edf7ed;
 
 @bl-customComponent-alert-errorPrimaryColor: #ef5350;
 @bl-customComponent-alert-warningPrimaryColor: #ff9800;
@@ -171,7 +169,7 @@
   .alert-open {
     overflow: hidden;
     animation: alert-open linear forwards;
-    animation-duration: @bl-customComponent-alert-animationTime;
+    // animation-duration: @bl-customComponent-alert-animationTime;
   }
 
   @keyframes alert-open {
@@ -182,7 +180,7 @@
   .alert-close {
     overflow: hidden;
     animation: alert-close linear forwards;
-    animation-duration: @bl-customComponent-alert-animationTime;
+    // animation-duration: @bl-customComponent-alert-animationTime;
   }
 
   @keyframes alert-close {

@@ -1,5 +1,5 @@
 {
-  "id": "c_fa1757f7e6364beffc29cfe9815bf84e",
+  "id": "c_f7358966dfcbced8d5b6bf7cb1474837",
   "name": "Alert",
   "description": "",
   "showInToolbox": true,
@@ -60,7 +60,7 @@
       "defaultValue": true,
       "handlerId": "iconVisibilityLogic",
       "handlerLabel": "Icon Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine the icon is visible in alert"
+      "handlerDescription": "This is a handler for the logic to determine if an icon is visible in the alert."
     },
     {
       "type": "checkbox",
@@ -69,40 +69,46 @@
       "defaultValue": true,
       "handlerId": "isCloseButtonVisibilityLogic",
       "handlerLabel": "Close Button Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine the close button is visible in alert"
+      "handlerDescription": "This is a handler for the logic to determine if the close button is visible in the alert."
     },
     {
       "type": "select",
-      "name": "styleVariants",
-      "label": "Style Variants",
+      "name": "variant",
+      "label": "Variant",
       "defaultValue": "alert",
       "options": [
         {
           "value": "alert",
-          "label": "Alert Root"
+          "label": "Root"
         },
         {
           "value": "alert-outline",
-          "label": "Alert Outline"
+          "label": "Outline"
         },
         {
           "value": "alert-filled",
-          "label": "alert Filled"
+          "label": "Filled"
         }
       ]
+    },
+    {
+      "type": "number",
+      "name": "speedCloseAnimation",
+      "label": "Speed Close Animation",
+      "defaultValue": "0.1"
     }
   ],
   "eventHandlers": [
     {
-      "name": "onCloseButtonVisibility",
+      "name": "onCloseButton",
       "handlerDescription": "This handler is triggered when the user clicks on the close button.",
-      "label": "On Close Button Visibility"
+      "label": "On Close Button"
     }
   ],
   "actions": [
     {
-      "id": "closeButtonVisibility",
-      "label": "Close Button Visibility"
+      "id": "closeButtonAction",
+      "label": "Close Alert"
     }
   ]
 }
