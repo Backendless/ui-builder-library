@@ -22,10 +22,7 @@ export function TrackNavigation(props) {
 
   return (
     <div className="wrapper">
-      <div
-        className="track-navigation"
-        ref={ navigationRef }
-        onClick={ setProgress }>
+      <div className="track-navigation" ref={ navigationRef } onClick={ setProgress }>
         <div className="seek-bar" style={ styles }></div>
       </div>
     </div>

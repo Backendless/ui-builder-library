@@ -1,4 +1,3 @@
-import { usePlayerHandlers } from '../helpers/use-player-handlers';
 import { ControlButton } from './control-button';
 
 export function Controls(props) {
@@ -11,7 +10,15 @@ export function Controls(props) {
     audioUrls,
   } = props;
 
-  const { skipBack, skipNext } = usePlayerHandlers(index, setIndex, audioUrls, setIsPlaying);
+  const skipBack = () => {
+    setIndex((index - 1 + audioUrls.length) % audioUrls.length);
+    setIsPlaying(true);
+  };
+
+  const skipNext = () => {
+    setIndex((index + 1) % audioUrls.length);
+    setIsPlaying(true);
+  };
 
   const togglePlaying = () => {
     setIsPlaying(!isPlaying);

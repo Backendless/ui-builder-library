@@ -81,6 +81,7 @@ export default function AudioPlayer({ component }) {
         loop={ repeat }
         onEnded={ onEnded }>
       </audio>
+      
       <Player
         component={ component }
         audioRef={ audioRef }
