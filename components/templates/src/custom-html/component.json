@@ -1,0 +1,12 @@
+{
+  "id": "c_983fe9af05f71b4b434e47fbf83694e8",
+  "name": "custom-html",
+  "description": "",
+  "showInToolbox": true,
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [],
+  "eventHandlers": [],
+  "actions": [],
+  "mainJS": "dist/index.js"
+}
