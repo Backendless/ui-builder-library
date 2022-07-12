@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { MakePhotoButton, UploadButton } from './buttons/index';
-import { dataURLToBlob, toBase64 } from './utils/file';
-import { checkMobile } from './utils/device';
+import { dataURLToBlob, toBase64 } from './helpers/file';
+import { checkMobile } from './helpers/device';
 import { Modal } from './modal';
 
 export default function WebcamPhoto({ component, eventHandlers }) {
