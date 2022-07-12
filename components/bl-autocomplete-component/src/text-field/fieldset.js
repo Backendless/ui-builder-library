@@ -1,5 +1,9 @@
-export const Fieldset = ({ label, state }) => {
-  const { autocompleteValue, isAutocompleteActive } = state;
+export const Fieldset = props => {
+  const {
+    placeholder,
+    autocompleteValue,
+    isAutocompleteActive,
+  } = props;
 
   const legendStyle = {
     maxWidth: isAutocompleteActive || autocompleteValue
@@ -15,7 +19,7 @@ export const Fieldset = ({ label, state }) => {
       <legend
         style={ legendStyle }
         className="legend">
-        {label}
+        {placeholder}
       </legend>
     </fieldset>
   );

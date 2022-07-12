@@ -1,12 +1,18 @@
-import { actions } from '../../../hooks/useAutocomplete';
-
-export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
-  const { isSuggestionsOpen } = state;
+export const Buttons = props => {
+  const {
+    disabled,
+    isOptionsOpen,
+    autocompleteValue,
+    setInputValue,
+    setIsOptionsOpen,
+    setAutocompleteValue,
+    onButtonClearClick,
+  } = props;
 
   const popupButtonClasses = () => {
     const classes = ['button'];
 
-    if (isSuggestionsOpen) {
+    if (isOptionsOpen) {
       classes.push('button__popup-up');
     }
 
@@ -14,13 +20,13 @@ export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
   };
 
   const handleClick = () => {
-    dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: !isSuggestionsOpen });
+    setIsOptionsOpen(!isOptionsOpen);
   };
 
   const handleInputClear = () => {
-    dispatch({ type: actions.HANDLE_AUTOCOMPLETE_VALUE, value: null });
-    dispatch({ type: actions.HANDLE_INPUT_VALUE, value: '' });
-    
+    setInputValue('');
+    setAutocompleteValue(null);
+
     if (onButtonClearClick) {
       onButtonClearClick({ autocompleteValue: null });
     }
@@ -28,10 +34,11 @@ export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
 
   return (
     <div className="button-container">
-      {state.autocompleteValue && (
+      {autocompleteValue && (
         <button
           tabIndex="-1"
           type="button"
+          disabled={ disabled }
           onClick={ handleInputClear }
           className="button button__clear">
           <svg
@@ -48,6 +55,7 @@ export const Buttons = ({ state, dispatch, onButtonClearClick }) => {
       <button
         tabIndex="-1"
         type="button"
+        disabled={ disabled }
         onClick={ handleClick }
         className={ popupButtonClasses() }>
         <svg

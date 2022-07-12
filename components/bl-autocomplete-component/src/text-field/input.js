@@ -1,13 +1,16 @@
 import { forwardRef } from 'react';
 
-import { actions } from '../../../hooks/useAutocomplete';
+export const Input = forwardRef((props, ref) => {
+  const {
+    inputValue,
+    disabled,
+    autocompleteValue,
+    isOptionsOpen,
+    onChange,
+    setInputValue,
+    setIsOptionsOpen,
+  } = props;
 
-export const Input = forwardRef(
-  ({
-    state,
-    dispatch,
-  }, ref) => {
-  const { inputValue, autocompleteValue, isSuggestionsOpen } = state;
   let value;
 
   if (!autocompleteValue) {
@@ -19,13 +22,23 @@ export const Input = forwardRef(
   }
 
   const handleChange = ({ target: { value } }) => {
-    dispatch({ type: actions.HANDLE_INPUT_VALUE, value });
-    dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: true });
+    setInputValue(value);
+    setIsOptionsOpen(true);
+    
+    if (onChange) {
+      onChange({ inputValue: value });
+    }
+  };
+
+  const handleClick = () => {
+    if (!disabled) {
+      setIsOptionsOpen(!isOptionsOpen);
+    }
   };
 
   return (
     <div
-      onClick={ () => dispatch({ type: actions.HANDLE_SUGGESTIONS_OPEN, value: !isSuggestionsOpen }) }
+      onClick={ handleClick }
       className="input__container">
       <input
         ref={ ref }
@@ -33,6 +46,7 @@ export const Input = forwardRef(
         id="autocomplete"
         autoComplete="off"
         value={ value }
+        disabled={ disabled }
         onChange={ handleChange }
         className="input__field"
       />

@@ -1,7 +1,7 @@
 {
   "id": "c_d533daff580a0f6e5aeacfcff24adfab",
   "name": "Autocomplete",
-  "description": "",
+  "description": "The autocomplete is a normal text input enhanced by a panel of suggested options.",
   "showInToolbox": true,
   "faIcon": "keyboard",
   "mainJS": "dist/index.js",
@@ -9,20 +9,49 @@
   "category": "Custom Components",
   "properties": [
     {
-      "type": "text",
-      "name": "label",
-      "label": "Label",
-      "defaultValue": "Label",
-      "handlerId": "labelLogic",
-      "handlerLabel": "Label logic"
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic"
     },
     {
       "type": "text",
-      "name": "suggestions",
-      "label": "Suggestions",
-      "handlerId": "suggestionsLogic",
-      "handlerLabel": "Suggestions logic",
+      "name": "placeholder",
+      "label": "Placeholder",
+      "defaultValue": "Placeholder",
+      "handlerId": "placeholderLogic",
+      "handlerLabel": "Placeholder logic"
+    },
+    {
+      "type": "text",
+      "name": "options",
+      "label": "Options",
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options logic",
       "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "autocompleteVariant",
+      "label": "Autocomplete Variant",
+      "defaultValue": "outlined",
+      "options": [
+        {
+          "value": "outlined",
+          "label": "Outlined"
+        },
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "standart",
+          "label": "Standart"
+        }
+      ],
+      "handlerId": "autocompleteVariantLogic",
+      "handlerLabel": "Autocomplete Variant Logic"
     }
   ],
   "eventHandlers": [
@@ -46,6 +75,17 @@
           "id": "autocompleteValue"
         }
       ]
+    },
+    {
+      "name": "onChange",
+      "label": "On Change",
+      "contextBlocks": [
+        {
+          "id": "inputValue",
+          "label": "Input value"
+        }
+      ],
+      "dataBinding": true
     }
   ],
   "actions": [],

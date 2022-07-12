@@ -1,5 +1,10 @@
-export const Label = ({ label, state }) => {
-  const { isAutocompleteActive, autocompleteValue } = state;
+export const Placeholder = props => {
+  const {
+    placeholder,
+    autocompleteValue,
+    isAutocompleteActive,
+  } = props;
+
   const labelStyle = {
     transform: isAutocompleteActive || autocompleteValue
       ? 'translate(14px, -9px) scale(0.75)'
@@ -10,8 +15,8 @@ export const Label = ({ label, state }) => {
     <label
       htmlFor="autocomplete"
       style={ labelStyle }
-      className="label">
-      {label}
+      className="placeholder">
+      {placeholder}
     </label>
   );
 };

@@ -1,6 +1,6 @@
 # Autocomplete
 
-Autocomplete is a component of Backendless UI-Builder designer. This allows you to select an item from a list of suggestoins.
+Autocomplete is a component of Backendless UI-Builder designer. This allows you to select an item from a list of options.
 
 ## Usage
 
@@ -11,22 +11,26 @@ Add a component to your page and add the items to the list.
 <dl>
 <dt>Text field</dt>
 <dd>The component has a text field for filtering items from the list. When the user enters text, only those elements that match the entered value remain in the list.</dd>
-<dt>List of suggestions</dt>
-<dd>A list that displays all the suggestions that you specify in the `suggestion` propertie.</dd>
+<dt>List of options</dt>
+<dd>A list that displays all the options that you specify in the `Options` propertie.</dd>
 </dl>
 
 ### Component Properties
 
-  Name              | Default value     | Description
- -------------------|-------------------|-------------------------------------------------------------------------------------
-  Label             | Label             | This property allows you to select a label of autocomplete component.
-  Suggestions       |                   | This property allows you to add items to be displayed in the suggestions list.
+  Name                | Type   | Default value     | Description
+ ---------------------|--------|-------------------|-------------------------------------------------------------------------------------
+  Disabled            | bool   | False             | This property allows you to disable autocomplete.
+  Placeholder         | string | Placeholder       | This property allows you to select a label of autocomplete component.
+  Options             | string |                   | This property allows you to add items to be displayed in the options list. In the text field, you need to enter text separated by commas and without spaces.
+  Autocomplete variant| string | Outlined          | This property allows you to select the variant of autocomplete.
 
 ### Events
 
 <dl>
 <dt>On autocomplete change</dt>
-<dd>Triggered when the user select an item from the list of suggestions.</dd>
+<dd>Triggered when the user select an item from the options.</dd>
 <dt>On button clear click</dt>
 <dd>Triggered when the user clicks the clear button.</dd>
+<dt>On change</dt>
+<dd>Triggered when the user enters text into a text field.</dd>
 </dl>

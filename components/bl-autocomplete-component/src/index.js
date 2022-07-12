@@ -1,35 +1,41 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
-import { Suggestions } from './components/suggestions';
-import { TextField } from './components/text-field';
-import { actions } from './hooks/useAutocomplete';
-import { useAutocomplete } from './hooks/useAutocomplete';
-import { useAutocompleteClassList } from './hooks/useAutocompleteClassList';
-import { useOnClickOutside } from './hooks/useOnClickOutside';
-import { validate } from './utils/validate';
+import { useAutocompleteClassList, useOnClickOutside, validate } from './helpers';
+import { Options } from './options';
+import { TextField } from './text-field';
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
-  const { label, suggestions, classList } = component;
-  const { onAutocompleteChange, onButtonClearClick } = eventHandlers;
+  const { disabled, placeholder, options, autocompleteVariant, classList } = component;
+  const { onAutocompleteChange } = eventHandlers;
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
-  const [state, dispatch] = useAutocomplete(validate(suggestions));
+  const [inputValue, setInputValue] = useState('');
+  const [isOptionsOpen, setIsOptionsOpen]= useState(false);
+  const [autocompleteValue, setAutocompleteValue] = useState(null);
+  const [isAutocompleteActive, setIsAutocompleteActive] = useState(false);
+
+  const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
+  const optionsList = validate(options).filter(({ label }) => (
+    label.toLowerCase().includes(inputValue.toLowerCase())
+  ));
 
   const classesProps = {
+    disabled,
     classList,
-    autocompleteValue: state.autocompleteValue,
-    isAutocompleteActive: state.isAutocompleteActive,
+    autocompleteValue,
+    autocompleteVariant,
+    isAutocompleteActive,
   };
 
   const classes = useAutocompleteClassList(classesProps);
-  const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
-  
+
   const handleClickOutside = useCallback(() => {
-    dispatch({ type: actions.HANDLE_AUTOCOMPLETE_DISABLE });
-    dispatch({ type: actions.HANDLE_INPUT_VALUE, value: '' });
-  }, [dispatch]);
-  
+    setIsOptionsOpen(false);
+    setIsAutocompleteActive(false);
+    setInputValue('');
+  }, []);
+
   useOnClickOutside(rootRef, handleClickOutside);
 
   return (
@@ -38,16 +44,25 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
       className={ classes }>
       <TextField
         ref={ autocompleteRef }
-        label={ label }
-        state={ state }
-        dispatch={ dispatch }
-        onButtonClearClick={ onButtonClearClick }
+        disabled={ disabled }
+        inputValue={ inputValue }
+        placeholder={ placeholder }
+        isOptionsOpen={ isOptionsOpen }
+        autocompleteValue={ autocompleteValue }
+        isAutocompleteActive={ isAutocompleteActive }
+        setInputValue={ setInputValue }
+        setIsOptionsOpen={ setIsOptionsOpen }
+        setAutocompleteValue={ setAutocompleteValue }
+        setIsAutocompleteActive={ setIsAutocompleteActive }
+        eventHandlers={ eventHandlers }
       />
-      {state.isSuggestionsOpen && (
-        <Suggestions
-          state={ state }
+      {isOptionsOpen && (
+        <Options
+          optionsList={ optionsList }
           autocompleteHeight={ autocompleteHeight }
-          dispatch={ dispatch }
+          setInputValue={ setInputValue }
+          setIsOptionsOpen={ setIsOptionsOpen }
+          setAutocompleteValue={ setAutocompleteValue }
           onAutocompleteChange={ onAutocompleteChange }
         />
       )}
