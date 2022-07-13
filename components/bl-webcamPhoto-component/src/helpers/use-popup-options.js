@@ -16,9 +16,9 @@ export const usePopupOptions = (component) => {
     description: noPermissionPopupDescription,
     link       : 'https://support.google.com/chrome/answer/2693767'
   };
+
   return {
     noYetPermissionOptions,
     noPermissionOptions
   };
-
 };
