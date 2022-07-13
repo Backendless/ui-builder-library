@@ -2,15 +2,7 @@ import { ListHeader } from './list-header';
 import { ListItem } from './list-item';
 
 export const List = props => {
-  const {
-    title,
-    iconColor,
-    enableSelectAll,
-    items,
-    selected,
-    allSelected,
-    setAllSelected,
-  } = props;
+  const { title, iconColor, enableSelectAll, items, selected, allSelected, setAllSelected } = props;
 
   const handleToggleItem = ({ target: { value, checked } }) => {
     const item = items.find(item => item.value === value);
@@ -26,7 +18,7 @@ export const List = props => {
 
   return (
     <div className="list">
-      {enableSelectAll && (
+      { enableSelectAll &&
         <ListHeader
           items={ items }
           title={ title }
@@ -34,9 +26,9 @@ export const List = props => {
           iconColor={ iconColor }
           setAllSelected={ setAllSelected }
         />
-      )}
+      }
       <div className="list__items">
-        {items.map(item => {
+        { items.map(item => {
           const isChecked = allSelected.some(({ objectId }) => item.objectId === objectId);
 
           return (
@@ -50,7 +42,7 @@ export const List = props => {
               onChange={ handleToggleItem }
             />
           );
-        })}
+        }) }
       </div>
     </div>
   );

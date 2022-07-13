@@ -14,11 +14,6 @@ export const TransferButtons = props => {
 
   const { onChange } = eventHandlers;
 
-  const isMoveAllToRightDisabled = !left.length;
-  const isMoveAllToLeftDisabled = !right.length;
-  const isMoveSelectedToRightDisabled = !leftSelected.length;
-  const isMoveSelectedToLeftDisabled = !rightSelected.length;
-
   const moveAllToRight = () => {
     const newRightItems = right.concat(left);
 
@@ -103,34 +98,34 @@ export const TransferButtons = props => {
 
   return (
     <div className="control-buttons">
-      {enableMoveAll && (
+      { enableMoveAll &&
         <button
           onClick={ moveAllToRight }
-          disabled={ isMoveAllToRightDisabled }
+          disabled={ !left.length }
           className="control-buttons__item">
           ≫
         </button>
-      )}
+      }
       <button
         onClick={ moveSelectedToRight }
-        disabled={ isMoveSelectedToRightDisabled }
+        disabled={ !leftSelected.length }
         className="control-buttons__item">
         &gt;
       </button>
       <button
         onClick={ moveSelectedToLeft }
-        disabled={ isMoveSelectedToLeftDisabled }
+        disabled={ !rightSelected.length }
         className="control-buttons__item">
         &lt;
       </button>
-      {enableMoveAll && (
+      { enableMoveAll &&
         <button
           onClick={ moveAllToLeft }
-          disabled={ isMoveAllToLeftDisabled }
+          disabled={ !right.length }
           className="control-buttons__item">
           ≪
         </button>
-      )}
+      }
     </div>
   );
 };

@@ -5,19 +5,12 @@ import { List } from './list';
 import { TransferButtons } from './transfer-buttons';
 
 export default function TransferListComponent({ component, eventHandlers }) {
-  const {
-    display,
-    listType,
-    leftItems,
-    rightItems,
-    iconColor,
-    classList,
-  } = component;
+  const { display, listType, leftItems, rightItems, iconColor, classList } = component;
 
   const [left, setLeft] = useState(validate(leftItems));
   const [right, setRight] = useState(validate(rightItems));
   const [allSelected, setAllSelected] = useState([]);
-  const classes = useTransferListClassList(classList);
+  const classes = useTransferListClasses(classList);
 
   const leftSelected = left.filter(item => allSelected.includes(item));
   const rightSelected = right.filter(item => allSelected.includes(item));
@@ -62,7 +55,7 @@ export default function TransferListComponent({ component, eventHandlers }) {
   );
 };
 
-const useTransferListClassList = classList => {
+const useTransferListClasses = classList => {
   const classes = useMemo(() => {
     const classesArray = ['bl-customComponent-transferList', ...classList];
 

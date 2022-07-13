@@ -1,12 +1,5 @@
 export const Checkbox = props => {
-  const {
-    id,
-    icon,
-    value,
-    checked,
-    iconColor,
-    onChange,
-  } = props;
+  const { id, icon, value, checked, iconColor, onChange } = props;
 
   return (
     <div className="checkbox">
