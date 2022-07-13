@@ -59,7 +59,7 @@ export default function RatingComponent({ component, eventHandlers }) {
       return;
     }
 
-    setHoverValue();
+    setHoverValue(null);
   };
 
   if (!display) {
