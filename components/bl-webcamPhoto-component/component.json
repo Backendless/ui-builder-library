@@ -1,0 +1,87 @@
+{
+  "id": "c_cccc9e38f98539cc151bc63ffe3b951a",
+  "name": "Webcam photo",
+  "description": "This component allows you to take a picture on the webcam and save it.",
+  "showInToolbox": true,
+  "faIcon": "camera-polaroid",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "uploadButtonLabel",
+      "label": "Upload button label",
+      "type": "text",
+      "defaultValue": "Upload"
+    },
+    {
+      "name": "makePhotoButtonLabel",
+      "label": "Make photo button label",
+      "type": "text",
+      "defaultValue": "Make photo"
+    },
+    {
+      "name": "makeSnapshotButtonLabel",
+      "label": "Snapshot button label",
+      "type": "text",
+      "defaultValue": "Snapshot"
+    },
+    {
+      "name": "doneButtonLabel",
+      "label": "Done button label",
+      "type": "text",
+      "defaultValue": "Done"
+    },
+    {
+      "name": "buttonDisabled",
+      "handlerLabel": "Button Disabled Logic",
+      "handlerId": "buttonDisabledHandler",
+      "dataBinding": true,
+      "type": "checkbox",
+      "label": "Default disabled",
+      "defaultValue": true
+    },
+    {
+      "type": "text",
+      "name": "popupLinkLabel",
+      "label": "Popup link label",
+      "defaultValue": "Info..."
+    },
+    {
+      "type": "text",
+      "name": "noYetPermissionPopupTitle",
+      "label": "No yet  permission popup title",
+      "defaultValue": "Give access to the camera"
+    },
+    {
+      "type": "text",
+      "name": "noYetPermissionPopupDescription",
+      "label": "No yet permission popup description",
+      "defaultValue": "To work properly, you must allow the app to access the camera."
+    },
+    {
+      "type": "text",
+      "name": "noPermissionPopupTitle",
+      "label": "No permission popup title",
+      "defaultValue": "No camera access"
+    },
+    {
+      "type": "text",
+      "name": "noPermissionPopupDescription",
+      "label": "No yet permission popup description",
+      "defaultValue": "Blocked app access to the camera. Follow the link for detailed information on how to grant access."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onSaveImage",
+      "label": "On Save Image Event",
+      "handlerDescription": "This event is fired when the user clicks on the 'Done' button.",
+      "contextBlocks": [
+        {
+          "id": "imageBlob"
+        }
+      ]
+    }
+  ]
+}
