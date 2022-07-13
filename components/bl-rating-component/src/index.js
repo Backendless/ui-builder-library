@@ -1,54 +1,49 @@
 import { useCallback, useRef, useState } from 'react';
 
-import { useRatingClassList } from './hooks/useRatingClassList';
-import { iconParams } from './utils/icon-params';
-import { iconsList } from './utils/icons-list.js';
-import { roundValueToPrecision } from './utils/number';
+import { getIconHoverValue, useRatingClassList } from './helpers';
 import { RatingIcon } from './rating-icon';
 
-const RATING_PRECISION = 0.5;
+const iconsList = iconsAmount => new Array(iconsAmount).fill(1);
 
-export default function RatingComponent({
-  component, eventHandlers,
-}) {
+export default function RatingComponent({ component, eventHandlers }) {
   const {
     display,
     disabled,
     icon,
-    iconColor,
     defaultValue,
     iconsAmount,
+    iconColor,
+    precision,
     classList,
   } = component;
   const { onRatingChange } = eventHandlers;
-  const classes = useRatingClassList(disabled, classList);
 
   const rootRef = useRef();
+  const classes = useRatingClassList(disabled, classList);
   const [ratingValue, setRatingValue] = useState(defaultValue);
   const [hoverValue, setHoverValue] = useState();
+
   const icons = iconsList(iconsAmount);
-
   const value = hoverValue || ratingValue;
-
-  if (!display) {
-    return null;
-  }
 
   const handleRatingValue = useCallback(({ target: { value  } }) => {
     setRatingValue(prevState => prevState === value ? 0: value);
 
     if (onRatingChange) {
-      onRatingChange({ curentRating: value });
+      const requestParams = {
+        curentRating: value,
+      };
 
       if (Number(value) === iconsAmount) {
-        onRatingChange({ maxRating: value });
+        requestParams.maxRating = value;
       }
 
-      if (Number(value) === 0.5) {
-        onRatingChange({ maxRating: value });
+      if (value === precision) {
+        requestParams.minRating = value;
       }
+
+      onRatingChange(requestParams);
     }
-
   }, []);
 
   const handleMouseMove = event => {
@@ -56,11 +51,7 @@ export default function RatingComponent({
       return;
     }
 
-    const [left, width] = iconParams(rootRef.current);
-
-    const percent = (event.clientX - left) / (width * iconsAmount);
-
-    setHoverValue(roundValueToPrecision(iconsAmount * percent + RATING_PRECISION / 2, RATING_PRECISION).toString());
+    getIconHoverValue(rootRef.current, iconsAmount, event.clientX, setHoverValue, precision);
   };
 
   const handleMouseLeave = () => {
@@ -71,6 +62,10 @@ export default function RatingComponent({
     setHoverValue();
   };
 
+  if (!display) {
+    return null;
+  }
+
   return (
     <div className={ classes }>
       <div
@@ -78,7 +73,7 @@ export default function RatingComponent({
         onMouseMove={ handleMouseMove }
         onMouseLeave={ handleMouseLeave }
         className="bl-customComponent-rating__icons">
-        {icons.map((_, index) => (
+        { icons.map((_, index) => (
           <RatingIcon
             key={ index }
             icon={ icon }
@@ -86,9 +81,10 @@ export default function RatingComponent({
             index={ index }
             disabled={ disabled }
             ratingValue={ value }
+            precision={ precision }
             onChange={ handleRatingValue }
           />
-        ))}
+        )) }
       </div>
     </div>
   );

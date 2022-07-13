@@ -61,6 +61,25 @@
       "handlerId": "iconColorLogic",
       "handlerLabel": "Icon color logic",
       "defaultValue": "#faaf00"
+    },
+    {
+      "type": "select",
+      "name": "precision",
+      "label": "Precision",
+      "defaultValue": "1",
+      "handlerId": "precision",
+      "handlerLabel": "Precision",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "0.5",
+          "label": "0.5"
+        }
+      ]
     }
   ],
   "eventHandlers": [
