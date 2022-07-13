@@ -1,21 +1,23 @@
-import { PopupOptionsMap } from '../popup/options';
+navigator.getUserMedia = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia;
 
-export function getUserMedia(ref, setPopupOptions) {
-  setPopupOptions(PopupOptionsMap.noYetPermission);
+export function getUserMedia(element, setPopupOptions, options) {
+  const { noYetPermissionOptions, noPermissionOptions } = options;
+
+  setPopupOptions(noYetPermissionOptions);
+
   const getStream = stream => {
-    ref.current.srcObject = stream;
+    element.srcObject = stream;
     setPopupOptions(null);
   };
+
   const noStream = () => {
-    setPopupOptions(PopupOptionsMap.noPermission);
+    setPopupOptions(noPermissionOptions);
   };
 
-  navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia;
-
   if (navigator.getUserMedia) {
-    navigator.webkitGetUserMedia(
+    navigator.getUserMedia(
       { video: true },
       getStream,
       noStream
@@ -27,10 +29,10 @@ export const checkMobile = () => {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
-export const stopUserMedia = ref => {
-  if (ref.current.srcObject.stop) {
-    ref.current.srcObject.stop();
+export const stopUserMedia = element => {
+  if (element.srcObject.stop) {
+    element.srcObject.stop();
   } else {
-    ref.current.srcObject.getTracks().forEach(track => track.stop());
+    element.srcObject.getTracks().forEach(track => track.stop());
   }
 };

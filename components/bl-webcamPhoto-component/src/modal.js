@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { DoneButton, MakeSnapshotButton } from './buttons/index';
+import { DoneButton, MakeSnapshotButton } from './buttons';
 import { Popup } from './popup';
-import { PopupOptionsMap } from './popup/options';
 import { dataURLToBlob } from './helpers/file';
 import { getUserMedia, stopUserMedia } from './helpers/device';
+import { usePopupOptions } from './helpers/usePopupOptions';
 
 export function Modal({ setVisibility, component, eventHandlers }) {
   const { makeSnapshotButtonLabel, doneButtonLabel } = component;
   const { onSaveImage } = eventHandlers;
 
+  const options = usePopupOptions(component);
   const videoRef = useRef();
   const canvasRef = useRef();
   const [isPhoto, setIsPhoto] = useState(false);
-  const [popupOptions, setPopupOptions] = useState(PopupOptionsMap.noPermission);
+  const [popupOptions, setPopupOptions] = useState(options.noPermissionOptions);
 
   const handleSnapshot = useCallback(() => {
     const context = canvasRef.current.getContext('2d');
@@ -23,17 +24,17 @@ export function Modal({ setVisibility, component, eventHandlers }) {
   }, [canvasRef.current]);
 
   const handleClose = useCallback(() => {
+    if (videoRef.current.srcObject) {
+      stopUserMedia(videoRef.current);
+    }
     setVisibility(false);
-    stopUserMedia(videoRef);
-  }, []);
+  }, [videoRef.current]);
 
-  const handleDone = useCallback(() => {
+  const handleDone = useCallback(async () => {
     const dataURL = canvasRef.current.toDataURL();
+    const imageBlob = dataURLToBlob(dataURL);
 
-    dataURLToBlob(dataURL)
-      .then(imageBlob => {
-        onSaveImage({ imageBlob });
-      });
+    onSaveImage({ imageBlob });
 
     handleClose();
   }, [canvasRef.current]);
@@ -43,7 +44,7 @@ export function Modal({ setVisibility, component, eventHandlers }) {
   }, []);
 
   useEffect(() => {
-    getUserMedia(videoRef, setPopupOptions);
+    getUserMedia(videoRef.current, setPopupOptions, options);
   }, []);
 
   return (
@@ -62,6 +63,7 @@ export function Modal({ setVisibility, component, eventHandlers }) {
             height="240"
           />
         </div>
+
         <div className="modal__button-container">
           <MakeSnapshotButton
             onClick={ handleSnapshot }
@@ -75,8 +77,9 @@ export function Modal({ setVisibility, component, eventHandlers }) {
           />
         </div>
       </div>
+
       { popupOptions && (
-        <Popup options={ popupOptions }/>
+        <Popup options={ popupOptions } component={ component }/>
       ) }
     </div>
   );

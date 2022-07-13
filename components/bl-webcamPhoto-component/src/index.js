@@ -1,36 +1,32 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
-import { MakePhotoButton, UploadButton } from './buttons/index';
+import { MakePhotoButton, UploadButton } from './buttons';
 import { dataURLToBlob, toBase64 } from './helpers/file';
 import { checkMobile } from './helpers/device';
 import { Modal } from './modal';
+
+const isMobile = checkMobile();
 
 export default function WebcamPhoto({ component, eventHandlers }) {
   const { uploadButtonLabel, makePhotoButtonLabel, buttonDisabled } = component;
   const { onSaveImage } = eventHandlers;
 
   const [modalVisibility, setModalVisibility] = useState(false);
-  const inputRef = useRef();
+  const fileInputRef = useRef();
 
   const handleClick = useCallback(() => {
     setModalVisibility(true);
-  }, [modalVisibility]);
+  }, []);
 
   const handleChange = useCallback(async () => {
     try {
-      const dataURL = await toBase64(inputRef.current.files[0]);
+      const dataURL = await toBase64(fileInputRef.current.files[0]);
+      const imageBlob = dataURLToBlob(dataURL);
 
-      dataURLToBlob(dataURL)
-        .then(imageBlob => {
-          onSaveImage({ imageBlob });
-        });
+      onSaveImage({ imageBlob });
     } catch (error) {
       console.error(`Webcam Photo: ${ error.message }`);
     }
-  }, []);
-
-  const isMobile = useMemo(() => {
-    return checkMobile();
   }, []);
 
   return (
@@ -39,7 +35,7 @@ export default function WebcamPhoto({ component, eventHandlers }) {
         ? <UploadButton
           onChange={ handleChange }
           text={ uploadButtonLabel }
-          reference={ inputRef }
+          inputRef={ fileInputRef }
           disabled={ buttonDisabled }
         />
         : <MakePhotoButton
@@ -48,6 +44,7 @@ export default function WebcamPhoto({ component, eventHandlers }) {
           disabled={ buttonDisabled }
         />
       }
+
       { modalVisibility && (
         <Modal
           setVisibility={ setModalVisibility }

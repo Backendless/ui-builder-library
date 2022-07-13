@@ -1,11 +1,4 @@
-import { DoneButton } from './done';
-import { MakePhotoButton } from './make-photo';
-import { MakeSnapshotButton } from './make-snapshot';
-import { UploadButton } from './upload';
-
-export {
-  DoneButton,
-  MakePhotoButton,
-  MakeSnapshotButton,
-  UploadButton
-};
+export * from './done';
+export * from './make-photo';
+export * from './make-snapshot';
+export * from './upload';

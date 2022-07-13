@@ -40,6 +40,36 @@
       "type": "checkbox",
       "label": "Default disabled",
       "defaultValue": true
+    },
+    {
+      "type": "text",
+      "name": "popupLinkLabel",
+      "label": "Popup link label",
+      "defaultValue": "Info..."
+    },
+    {
+      "type": "text",
+      "name": "noYetPermissionPopupTitle",
+      "label": "No yet  permission popup title",
+      "defaultValue": "Give access to the camera"
+    },
+    {
+      "type": "text",
+      "name": "noYetPermissionPopupDescription",
+      "label": "No yet permission popup description",
+      "defaultValue": "To work properly, you must allow the app to access the camera."
+    },
+    {
+      "type": "text",
+      "name": "noPermissionPopupTitle",
+      "label": "No permission popup title",
+      "defaultValue": "No camera access"
+    },
+    {
+      "type": "text",
+      "name": "noPermissionPopupDescription",
+      "label": "No yet permission popup description",
+      "defaultValue": "Blocked app access to the camera. Follow the link for detailed information on how to grant access."
     }
   ],
   "eventHandlers": [
@@ -53,6 +83,5 @@
         }
       ]
     }
-  ],
-  "actions": []
+  ]
 }
