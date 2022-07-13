@@ -1,0 +1,91 @@
+{
+  "id": "c_8f1b55ecfb0b86c23eb39de3d72356a9",
+  "name": "Audio Player",
+  "description": "Audio Player is a component for playing a variety of audio URLs.",
+  "showInToolbox": true,
+  "faIcon": "music",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "audioUrl",
+      "label": "Audio Url",
+      "type": "text",
+      "handlerId": "audioUrlLogic",
+      "handlerLabel": "Audio Url Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the url of the audio. Value returned by the handler will be used as the audio url."
+    },
+    {
+      "name": "audioTitle",
+      "label": "Audio Title",
+      "type": "text",
+      "handlerId": "audioTitleLogic",
+      "handlerLabel": "Audio Title Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the title of the audio. Value returned by the handler will be used as the audio title."
+    },
+    {
+      "type": "checkbox",
+      "name": "playerVisibility",
+      "label": "Player Visibility",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "trackNavigationVisibility",
+      "label": "Track Navigation Visibility",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "titleVisibility",
+      "label": "Title Visibility",
+      "defaultValue": true
+    },
+    {
+      "type": "number",
+      "name": "defaultVolume",
+      "label": "Default Volume",
+      "defaultValue": "50"
+    },
+    {
+      "type": "checkbox",
+      "name": "autoPlay",
+      "label": "Auto Play",
+      "defaultValue": false
+    },
+    {
+      "type": "checkbox",
+      "name": "repeat",
+      "label": "Repeat",
+      "defaultValue": false
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [
+    {
+      "id": "playAudio",
+      "label": "Play Audio"
+    },
+    {
+      "id": "stopAudio",
+      "label": "Stop Audio"
+    },
+    {
+      "id": "replaceAudio",
+      "label": "Replace Audio",
+      "inputs": [
+        {
+          "id": "audioUrl",
+          "label": "Audio Url"
+        },
+        {
+          "id": "audioTitle",
+          "label": "Audio Title"
+        }
+      ]
+    }
+  ]
+}
