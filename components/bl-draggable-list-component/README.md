@@ -25,12 +25,12 @@ dragged, modified, removed, and added. The component is customizable, you can en
 ### Event Handlers and Bindable Properties
 
 <dl>
-<dt>Items Array Logic</dt>
-<dd>Allows to specify an array of elements in Backendless Logic.</dd>
+<dt>Items List Logic</dt>
+<dd>Allows to specify an items list in Backendless Logic.</dd>
 <dt>Title Logic</dt>
-<dd>Allows to specify an title in Backendless Logic.</dd>
-<dt>Draggable List Visibility Logic</dt>
-<dd>Allows to specify an Draggable List visibility in Backendless Logic.</dd>
+<dd>Allows to specify a title in Backendless Logic.</dd>
+<dt>Visibility Logic</dt>
+<dd>Allows to specify a visibility in Backendless Logic.</dd>
 <dt>Allow Delete Logic</dt>
 <dd>Allows to specify permission to delete elements in the Backendless Logic.</dd>
 <dt>Allow Edit Logic</dt>
@@ -38,7 +38,7 @@ dragged, modified, removed, and added. The component is customizable, you can en
 <dt>Allow Add Logic</dt>
 <dd>Allows to specify permission to add elements in list in the Backendless Logic.</dd>
 <dt>On Drag Event</dt>
-<dd>Triggered when the user drags list items.</dd>
+<dd>Triggered when the user drags list item.</dd>
 <dt>On Delete Event</dt>
 <dd>Triggered when the user delete item from list.</dd>
 <dt>On Edit Event</dt>

@@ -2,27 +2,27 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { ListContent } from './list-content';
 import { AddItem } from './add-item';
-import { getContextForDeleteEvent, getContextForDragEvent } from '../utils/context';
-import { enrichWithUids } from '../utils/id';
+import { prepareContext, ContextTypes } from './helpers/context';
+import { enrichWithUids } from './helpers/id';
 
 export function List({ component, eventHandlers }) {
   const { onDrag, onDelete } = eventHandlers;
-  const { itemsArray, allowAdd } = component;
+  const { itemsList, allowAdd } = component;
   const draggedItem = useRef(null);
-  const previousArray = useRef(null);
+  const previousList = useRef(null);
   const [isAdded, setIsAdded] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (itemsArray) {
-      const arrayWithUid = enrichWithUids(itemsArray);
-      setData(arrayWithUid);
+    if (itemsList) {
+      const listWithUid = enrichWithUids(itemsList);
+      setData(listWithUid);
     }
-  }, [itemsArray]);
+  }, [itemsList]);
 
   const dragStartHandler = useCallback((e, index) => {
     draggedItem.current = data[index];
-    previousArray.current = data;
+    previousList.current = data;
 
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', e.target.parentNode);
@@ -44,24 +44,22 @@ export function List({ component, eventHandlers }) {
   }, [data, draggedItem]);
 
   const dragEndHandler = useCallback(() => {
-    const contextForDragEvent = getContextForDragEvent(data, draggedItem.current, previousArray.current);
-    onDrag(contextForDragEvent);
+    const onDragContext = prepareContext(ContextTypes.onDrag, [data, draggedItem.current, previousList.current]);
+
+    onDrag(onDragContext);
 
     draggedItem.current = null;
-    previousArray.current = null;
-  }, [data, draggedItem, previousArray]);
+    previousList.current = null;
+  }, [data, draggedItem, previousList]);
 
   const onDeleteHandler = useCallback(index => {
-    const contextForDeleteEvent = getContextForDeleteEvent(itemsArray, index);
-    onDelete(contextForDeleteEvent);
-  }, [itemsArray]);
+    const onDeleteContext = prepareContext(ContextTypes.onDelete, [itemsList, index]);
 
-  const handleAdded = useCallback(() => {
-    setIsAdded(!isAdded);
-  }, [isAdded]);
+    onDelete(onDeleteContext);
+  }, [itemsList]);
 
   return (
-    <ul onDragOver={ e => e.preventDefault }>
+    <ul>
       <ListContent
         data={ data }
         onDragStart={ dragStartHandler }
@@ -74,7 +72,7 @@ export function List({ component, eventHandlers }) {
       { allowAdd && (
         <AddItem
           isAdded={ isAdded }
-          toggleIsAdded={ handleAdded }
+          toggleIsAdded={ () => setIsAdded(!isAdded) }
           component={ component }
           eventHandlers={ eventHandlers }
         />

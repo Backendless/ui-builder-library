@@ -9,10 +9,10 @@
   "category": "Custom Components",
   "properties": [
     {
-      "name": "itemsArray",
-      "handlerLabel": "Items Array Logic",
-      "handlerDescription": "This is a handler for the logic to determine items array.",
-      "handlerId": "itemsArrayHandler",
+      "name": "itemsList",
+      "handlerLabel": "Items List Logic",
+      "handlerDescription": "This is a handler for the logic to determine items list.",
+      "handlerId": "itemsListHandler",
       "type": "text",
       "dataBinding": true
     },
@@ -28,12 +28,12 @@
     },
     {
       "type": "checkbox",
-      "name": "draggableListVisibility",
+      "name": "visibility",
       "label": "Visibility",
       "defaultValue": true,
-      "handlerLabel": "Draggable List Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if Draggable List should be visible.",
-      "handlerId": "draggableListVisibilityHandler",
+      "handlerLabel": "Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if component should be visible.",
+      "handlerId": "visibilityHandler",
       "dataBinding": true
     },
     {
@@ -42,7 +42,7 @@
       "label": "Allow Delete",
       "defaultValue": true,
       "handlerLabel": "Allow Delete Logic",
-      "handlerDescription": "This is a handler for the logic to determine if item allowed deleted",
+      "handlerDescription": "This is a handler for the logic to determine if the item is allowed to delete.",
       "handlerId": "allowDeleteHandler",
       "dataBinding": true
     },
@@ -52,7 +52,7 @@
       "label": "Allow Edit",
       "defaultValue": true,
       "handlerLabel": "Allow Edit Logic",
-      "handlerDescription": "This is a handler for the logic to determine if item allowed edited",
+      "handlerDescription": "This is a handler for the logic to determine if the item is allowed to edit.",
       "handlerId": "allowEditHandler",
       "dataBinding": true
     },
@@ -62,7 +62,7 @@
       "label": "Allow Add Item",
       "defaultValue": true,
       "handlerLabel": "Allow Add Logic",
-      "handlerDescription": "This is a handler for the logic to determine if item allowed added",
+      "handlerDescription": "This is a handler for the logic to determine if the item is allowed to add",
       "handlerId": "allowAddItemHandler",
       "dataBinding": true
     }
@@ -71,15 +71,15 @@
     {
       "name": "onDrag",
       "label": "On Drag Event",
-      "handlerDescription": "This event is fired when the user dragged list item.",
+      "handlerDescription": "This event is fired when the user drags a list item.",
       "contextBlocks": [
         {
-          "id": "previousArray",
-          "label": "Previous array"
+          "id": "previousList",
+          "label": "Previous list"
         },
         {
-          "id": "currentArray",
-          "label": "Current array"
+          "id": "currentList",
+          "label": "Current list"
         },
         {
           "id": "draggableItem",
@@ -90,11 +90,11 @@
     {
       "name": "onDelete",
       "label": "On Delete Event",
-      "handlerDescription": "This event is fired when the user deleted list item.",
+      "handlerDescription": "This event is fired when the user deletes a list item.",
       "contextBlocks": [
         {
-          "id": "currentArray",
-          "label": "Current array"
+          "id": "currentList",
+          "label": "Current list"
         },
         {
           "id": "deletedItem",
@@ -105,11 +105,11 @@
     {
       "name": "onEdit",
       "label": "On Edit Event",
-      "handlerDescription": "This event is fired when the user edited list item.",
+      "handlerDescription": "This event is fired when the user edites a list item.",
       "contextBlocks": [
         {
-          "id": "currentArray",
-          "label": "Current array"
+          "id": "currentList",
+          "label": "Current list"
         },
         {
           "id": "previousItem",
@@ -124,18 +124,17 @@
     {
       "name": "onAdd",
       "label": "On Add Event",
-      "handlerDescription": "This event is fired when the user added list item.",
+      "handlerDescription": "This event is fired when the user adds a list item.",
       "contextBlocks": [
         {
-          "id": "currentArray",
-          "label": "Current array"
+          "id": "currentList",
+          "label": "Current list"
         },
         {
           "id": "addedItem",
-          "label": "Added Item"
+          "label": "Added item"
         }
       ]
     }
-  ],
-  "actions": []
+  ]
 }

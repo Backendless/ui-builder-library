@@ -1,4 +1,4 @@
-import { ListItem } from './item';
+import { ListItem } from './list-item';
 
 export function ListContent({ data, onDragStart, onDragEnd, onDragOver, component, onDelete, eventHandlers }) {
   if (!data.length) {
