@@ -59,17 +59,17 @@ Default background color: #d84646
 </dd>
 </dl>
 
-| Name                    | Default value   | Description                                                                                                                                                  |
-|-------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Show Close Button       | true            | This checkbox toggles the visibility of close button. If checked close button is visible.                                                                    |
-| Show Action Button      | false           | This checkbox toggles the visibility of action button. If checked action button is visible.                                                                  |
-| Auto Hide               | false           | This checkbox toggles the auto hiding of component. If checked snackbar will hide after time from `Auto Hide Duraiton`, if unchecked snackbar will not hide. |
-| Auto Hide Duration      | 5000            | This option is to set the time when the snackbar will disappear.                                                                                             |
-| Vertical Position       | Top             | This option is to set the vertical position where snackbar will appear. Available 3 positions: `Top`, `Bottom` and `Center`.                                 |
-| Horizontal Position     | Right           | This option is to set the horizontal position where snackbar will appear. Available 3 positions: `Left`, `Center` and `Right`.                               |
-| Snackbar Content        | "Snackbar info" | This option is to set the snackbar text.                                                                                                                     |
-| Action Button Content   | "Action"        | This option is to set the action button text. Works only if "Show Action Button" is `true`.                                                                  |
-| Type                    | Default         | This option is to set the type of snackbar. Available 5 types: `Info`, `Success`, `Warning`, `Error` and `Default`.                                          |
+| Name                    | Default value   | Description                                                                                                                                                                                |
+|-------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Show Close Button       | true            | This checkbox toggles the visibility of close button. If checked close button is visible. Value: Boolean (true, false).                                                                    |
+| Show Action Button      | false           | This checkbox toggles the visibility of action button. If checked action button is visible. Value: Boolean (true, false).                                                                  |
+| Auto Hide               | false           | This checkbox toggles the auto hiding of component. If checked snackbar will hide after time from `Auto Hide Duraiton`, if unchecked snackbar will not hide. Value: Boolean (true, false). |
+| Auto Hide Duration      | 5000            | This option is to set the time when the snackbar will disappear. Value: Number from 0.                                                                                                     |
+| Vertical Position       | Top             | This option is to set the vertical position where snackbar will appear. Available 3 positions: `Top`, `Bottom` and `Center`. Value: String ('Top', 'Bottom', 'Center').                    |
+| Horizontal Position     | Right           | This option is to set the horizontal position where snackbar will appear. Available 3 positions: `Left`, `Center` and `Right`. Value: String ('Left', 'Center', 'Right').                  |
+| Snackbar Content        | "Snackbar info" | This option is to set the snackbar text. Value: String                                                                                                                                     |
+| Action Button Content   | "Action"        | This option is to set the action button text. Works only if "Show Action Button" is `true`. Value: String                                                                                  |
+| Type                    | Default         | This option is to set the type of snackbar. Available 5 types: `Info`, `Success`, `Warning`, `Error` and `Default`. Value: String ('info', 'success', 'warning', 'error' or '').           |
 
 ### Event Handlers and Bindable Properties
 
