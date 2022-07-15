@@ -1,16 +1,15 @@
-import { useCallback, useEffect, useState } from 'react'
-
+import { useState, useEffect, useCallback } from 'react'
+import { useClasses } from './helpers/use-classes'
 import { Action } from './components/button'
-import { Close } from './components/icons'
 import { IconsMap } from './helpers/type'
-import { useClasses } from './helpers/useClasses'
+import { CloseIcon } from './components/icons'
 
 const DEFAULT_HIDE_DURATION = 5000
 
 export default function SnackbarComponent({ component, eventHandlers }) {
   const [visible, setVisible] = useState(false)
 
-  component.visibility = show => {
+  component.visibility = (show) => {
     setVisible(show)
   }
 
@@ -36,12 +35,10 @@ export default function SnackbarComponent({ component, eventHandlers }) {
   const Icon = IconsMap[type]
 
   useEffect(() => {
-    if (autoHide) {
-      if (visible) {
-        setTimeout(() => {
-          setVisible(false)
-        }, autoHideDuration || DEFAULT_HIDE_DURATION)
-      }
+    if (autoHide && visible) {
+      setTimeout(() => {
+        setVisible(false)
+      }, autoHideDuration || DEFAULT_HIDE_DURATION)
     }
   }, [visible])
 
@@ -66,16 +63,16 @@ export default function SnackbarComponent({ component, eventHandlers }) {
         { showAction && (
           <Action
             className="action"
-            onClick={ onAction }
-            content={ actionContent }
-          />
+            onClick={ onAction }>
+            { actionContent }
+          </Action>
         ) }
         { showClose && (
           <Action
             className="close"
-            onClick={ close }
-            content={ Close() }
-          />
+            onClick={ close }>
+            { CloseIcon() }
+          </Action>
         ) }
       </div>
     </div>
