@@ -64,10 +64,10 @@
     },
     {
       "type": "checkbox",
-      "name": "isCloseButtonVisibility",
+      "name": "closeButtonVisibility",
       "label": "Close Button Visibility",
       "defaultValue": true,
-      "handlerId": "isCloseButtonVisibilityLogic",
+      "handlerId": "closeButtonVisibilityLogic",
       "handlerLabel": "Close Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the close button is visible in the alert."
     },
@@ -93,8 +93,8 @@
     },
     {
       "type": "number",
-      "name": "speedCloseAnimation",
-      "label": "Speed Close Animation",
+      "name": "closingDuration",
+      "label": "Closing Duration",
       "defaultValue": "0.1"
     }
   ],

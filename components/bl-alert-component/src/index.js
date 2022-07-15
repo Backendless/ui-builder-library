@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { AlertButton, AlertIcon, AlertTitle } from './subcomponents';
+import { useState, useEffect } from 'react'
+import { AlertButton, AlertIcon, AlertTitle } from './subcomponents'
 
 export default function MyCustomComponent({ component, eventHandlers }) {
   const {
@@ -10,64 +10,76 @@ export default function MyCustomComponent({ component, eventHandlers }) {
     messageTitle,
     messageText,
     variant,
-    isCloseButtonVisibility,
-    speedCloseAnimation,
-  } = component;
-  const { onCloseButton } = eventHandlers;
+    closeButtonVisibility,
+    closingDuration,
+  } = component
+  const { onCloseButton } = eventHandlers
 
-  const [isAlertVisible, setIsAlertVisible] = useState(true);
-  const [alertAnimation, setAlertAnimation] = useState('');
-  const alertClass = useAlertClass(variant, messageType, alertAnimation);
-  
+  const [isAlertVisible, setIsAlertVisible] = useState(true)
+  const [isClosing, setIsClosing] = useState(false)
+  const classes = useAlertClasses(variant, messageType, isClosing)
+  const classesTitle = useTextClass('alert__title', variant, messageType)
+  const classesAlertText = useTextClass('alert__text', variant, messageType)
+
   useEffect(() => {
-    setAlertAnimation(isAlertVisible ? 'alert-open' : 'alert-close');
-  }, [isAlertVisible]);
+    setIsClosing(isAlertVisible)
+  }, [isAlertVisible])
 
   component.closeButtonAction = () => {
-    setAlertAnimation('alert-close');
+    setIsClosing(false)
 
     setTimeout(() => {
-      setIsAlertVisible(false);
-    }, (speedCloseAnimation * 1000) - 50);
-  };
+      setIsAlertVisible(false)
+    }, (closingDuration * 1000))
+  }
 
   if (!display || !isAlertVisible) {
-    return null;
+    return null
   }
 
   return (
-    <div className={'bl-customComponent-alert ' + classList.join(' ')}>
+    <div className={ 'bl-customComponent-alert ' + classList.join(' ') }>
       <div
-        className={alertClass}
-        style={{animationDuration: `${speedCloseAnimation}s`}}
+        className={ classes }
+        style={ { animationDuration: `${ closingDuration }s` } }
       >
-        {iconVisibility && (
+        { iconVisibility && (
           <div className="alert__icon">
             <AlertIcon
-              typeAlert={messageType}
-              variants={variant}
+              typeAlert={ messageType }
+              variant={ variant }
             />
           </div>
-        )}
+        ) }
 
         <div className="alert__content">
-          {messageTitle && (
-            <AlertTitle title={messageTitle} />
-          )}
-          <div className="alert__text">{messageText}</div>
+          { messageTitle && (<AlertTitle title={ messageTitle } classesTitle={ classesTitle }/>) }
+          <div className={ classesAlertText }>{ messageText }</div>
         </div>
 
-        {isCloseButtonVisibility && (
+        { closeButtonVisibility && (
           <AlertButton
-            onCloseButton={onCloseButton}
-            variants={variant}
+            onCloseButton={ onCloseButton }
+            variant={ variant }
           />
-        )}
+        ) }
       </div>
     </div>
-  );
+  )
 };
 
-const useAlertClass = (variant, messageType, alertAnimation) => {
-  return `alert ${variant} ${variant}--${messageType} ${alertAnimation}`
+const useAlertClasses = (variant, messageType, isClosing) => {
+  const classes = ['alert', variant, `${ variant }--${ messageType }`]
+
+  classes.push(isClosing ? 'alert-open' : 'alert-close')
+
+  return classes.join(' ')
+}
+
+const useTextClass = (initialClass, variant, messageType) => {
+  const classes = [initialClass]
+
+  classes.push(variant === 'alert-filled' ? '' : `${ initialClass }--${ messageType }`)
+
+  return classes.join(' ')
 }
