@@ -1,9 +1,9 @@
 import { List } from './list';
 
 export default function DraggableList({ component, eventHandlers }) {
-  const { title, visibility, display } = component;
+  const { title, display } = component;
 
-  if (!visibility || !display) {
+  if (!display) {
     return null;
   }
 

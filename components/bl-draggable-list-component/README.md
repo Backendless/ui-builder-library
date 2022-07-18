@@ -10,8 +10,6 @@ dragged, modified, removed, and added. The component is customizable, you can en
 <dl>
 <dt>Title</dt>
 <dd>Title for draggable list. Defaults to "List".</dd>
-<dt>Visibility</dt>
-<dd>Specifies whether the list will be displayed on the screen.</dd>
 <dt>Allow Delete</dt>
 <dd>Allows to delete items from the list.</dd>
 <dt>Allow Edit</dt>
@@ -29,8 +27,6 @@ dragged, modified, removed, and added. The component is customizable, you can en
 <dd>Allows to specify an items list in Backendless Logic.</dd>
 <dt>Title Logic</dt>
 <dd>Allows to specify a title in Backendless Logic.</dd>
-<dt>Visibility Logic</dt>
-<dd>Allows to specify a visibility in Backendless Logic.</dd>
 <dt>Allow Delete Logic</dt>
 <dd>Allows to specify permission to delete elements in the Backendless Logic.</dd>
 <dt>Allow Edit Logic</dt>

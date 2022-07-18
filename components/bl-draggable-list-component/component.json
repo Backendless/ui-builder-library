@@ -28,16 +28,6 @@
     },
     {
       "type": "checkbox",
-      "name": "visibility",
-      "label": "Visibility",
-      "defaultValue": true,
-      "handlerLabel": "Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if component should be visible.",
-      "handlerId": "visibilityHandler",
-      "dataBinding": true
-    },
-    {
-      "type": "checkbox",
       "name": "allowDelete",
       "label": "Allow Delete",
       "defaultValue": true,
