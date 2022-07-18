@@ -3,8 +3,5 @@ export function enrichWithUids(list) {
 }
 
 export function omitUids(list) {
-  return list.map(item => {
-    delete item.uid;
-    return item;
-  });
+  return list.map(item => ({ label: item.label, value: item.value }));
 }

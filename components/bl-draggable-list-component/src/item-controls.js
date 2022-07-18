@@ -10,7 +10,7 @@ export function ItemControls({ allowEdit, isEdit, handleEdit, handleDone, allowD
       ) }
 
       { allowDelete && (
-        <button onClick={ () => onDelete(index) }>< DeleteIcon/></button>
+        <button onClick={ () => onDelete(index) }><DeleteIcon/></button>
       ) }
     </div>
   );
