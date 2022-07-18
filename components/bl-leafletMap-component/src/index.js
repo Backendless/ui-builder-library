@@ -95,7 +95,7 @@ export default function LeafletMap({ component, eventHandlers }) {
       ref={ containerRef }>
       { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }
       { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers }/> }
-      { fullscreenControl && <FullscreenButton fullscreen={ fullscreen } eventHandlers={ eventHandlers }/> }
+      { fullscreenControl && <FullscreenButton component={ component } eventHandlers={ eventHandlers }/> }
     </div>
   );
 }

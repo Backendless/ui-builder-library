@@ -2,19 +2,21 @@ import { useCallback, useState, useEffect } from 'react';
 
 import { TurnOnFullscreenIcon, TurnOffFullscreenIcon } from './icons';
 
-export function FullscreenButton({ fullscreen, eventHandlers }) {
+export function FullscreenButton({ component, eventHandlers }) {
   const { onFullscreenClick } = eventHandlers;
 
   const [currentFullscreen, setCurrentFullscreen] = useState(null);
 
   useEffect(() => {
-    if (fullscreen !== undefined) {
-      setCurrentFullscreen(fullscreen);
+    if (component.fullscreen !== undefined) {
+      setCurrentFullscreen(component.fullscreen);
     }
-  }, [fullscreen]);
+  }, [component.fullscreen]);
 
   const handleClick = useCallback(() => {
-    onFullscreenClick({ fullscreen: !currentFullscreen });
+    component.fullscreen = !currentFullscreen
+
+    onFullscreenClick({ fullscreen: component.fullscreen });
   }, [currentFullscreen]);
 
   return (
