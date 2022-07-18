@@ -1,0 +1,121 @@
+{
+  "id": "c_25c90a88da567672578c1b7c8d4e44a9",
+  "name": "Simple Modal",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "window-restore",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "titleModal",
+      "label": "Title Modal",
+      "handlerId": "titleModalLogic",
+      "handlerLabel": "Title Modal Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the title for SImple Modal."
+    },
+    {
+      "type": "text",
+      "name": "textModal",
+      "label": "Text Modal",
+      "handlerId": "textModalLogic",
+      "handlerLabel": "Text Modal Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the text for SImple Modal."
+    },
+    {
+      "type": "text",
+      "name": "closeButtonLabel",
+      "label": "Close Button Label",
+      "defaultValue": "Close",
+      "handlerId": "closeButtonLabelLogic",
+      "handlerLabel": "Close Button Label Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label for Close Button."
+    },
+    {
+      "type": "select",
+      "name": "typeSimpleModal",
+      "label": "Type of Simple Modal",
+      "defaultValue": "alert",
+      "options": [
+        {
+          "value": "alert",
+          "label": "Alert"
+        },
+        {
+          "value": "prompt",
+          "label": "Prompt"
+        },
+        {
+          "value": "confirm",
+          "label": "Confirm"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "placeholderText",
+      "label": "Placeholder Text",
+      "handlerId": "placeholderTextLogic",
+      "handlerLabel": "Placeholder Text Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the text for input placeholder."
+    },
+    {
+      "type": "text",
+      "name": "submitButtonLabel",
+      "label": "Submit Button Label",
+      "defaultValue": "Submit",
+      "handlerId": "submitButtonLogic",
+      "handlerLabel": "Submit Button Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label for Submit Button."
+    },
+    {
+      "type": "number",
+      "name": "closingDuration",
+      "label": "Closing Duration",
+      "defaultValue": "0.1"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onCloseButton",
+      "label": "On Close Button"
+    },
+    {
+      "name": "onSubmitButton",
+      "label": "On Submit Button",
+      "contextBlocks": [
+        {
+          "id": "inputValue",
+          "label": "Input Value"
+        }
+      ]
+    },
+    {
+      "name": "onInputValueChange",
+      "label": "On Input Value Change",
+      "contextBlocks": [
+        {
+          "id": "inputValue",
+          "label": "Input Value"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "openModal",
+      "label": "Open Modal"
+    },
+    {
+      "id": "closeModal",
+      "label": "Close Modal"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+# Simple Modal
+
+Simple Modal is a designer component of Backendless UI-Builder. This allows you to add a modal dialog box. You can add "Alert" to notify you about certain information. You can add "Prompt" to get information from the user. You can add "Confirm" to get confirmation at user for some actions.
+
+The component based on external [Simple Modal](https://mui.com/material-ui/react-dialog/).
+## Usage
+
+### Styles and Settings
+
+<dl>
+<dt>Title Modal</dt>
+<dd>Allows write title for Simple Modal.</dd>
+<dt>Text Modal</dt>
+<dd>Allows write text for Simple Modal</dd>
+<dt>Close Button Label</dt>
+<dd>Allows to write label for close button. Default value "Close"</dd>
+<dt>Type Simple Modal</dt>
+<dd>Allows select type of Simple Modal (Alert, Prompt, Confirm). Default value 'Alert'.</dd>
+<dt>Placeholder Text</dt>
+<dd>Allows to write text for input placeholder.</dd>
+<dt>Submit Button Label</dt>
+<dd>Allows to write label for Submit Button. Default value "Submit"</dd>
+<dt>Closing Duration</dt>
+<dd>Allows to specify speed animation opening and closing for Simple Modal. Default value 0.1</dd>
+</dl>
+
+### Event Handlers and Bindable Properties
+
+<dl>
+<dt>Title Modal Logic</dt>
+<dd>Allows to specify title for Simple Modal in Backendless logic</dd>
+<dt>Text Modal Logic</dt>
+<dd>Allows to specify text for Simple Modal in Backendless logic</dt>
+<dt>Close Button Label Logic</dt>
+<dd>Allows to specify label for Close Button in Backendless logic</dd>
+<dt>Placeholder Text Logic</dt>
+<dd>Allows to specify text for input placeholder for Simple Modal in Backendless logic</dd>
+<dt>Submit Button Label Logic</dt>
+<dd>Allows to specify label for Submit Button in Backend logic</dd>
+<dt>On Close Button</dt>
+<dd>Triggered when the user click on close button </dd>
+<dt>On Submit Button</dt>
+<dd>Triggered when the user click on submit button</dd>
+<dt>On Input Value Change</dt>
+<dd>Triggered when the input value change</dd>
+</dl>
+
+### Action
+<dl>
+<dt>Open Modal</dt>
+<dd>An action that open Simple Modal</dd>
+<dt>Close Modal</dt>
+<dd>An action that close Simple Modal</dd>
+</dl>
