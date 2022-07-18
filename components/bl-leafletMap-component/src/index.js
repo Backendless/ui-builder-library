@@ -28,14 +28,14 @@ export default function LeafletMap({ component, eventHandlers }) {
     zoom,
     mapType,
     classList,
-    visibility,
     zoomControl,
     draggingControl,
     mapTypeControl,
     geopositionControl,
     display,
     fullscreen,
-    fullscreenControl
+    fullscreenControl,
+    id
   } = component;
 
   const containerRef = useRef(null);
@@ -84,13 +84,13 @@ export default function LeafletMap({ component, eventHandlers }) {
     toggleFullscreen(containerRef.current, fullscreen, mapRef.current);
   }, [fullscreen]);
 
-  if (!display || !visibility) {
+  if (!display) {
     return null;
   }
 
   return (
     <div
-      id="bl-customComponent-leafletMap"
+      id={ id }
       className={ 'bl-customComponent-leafletMap ' + classList.join(' ') }
       ref={ containerRef }>
       { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }

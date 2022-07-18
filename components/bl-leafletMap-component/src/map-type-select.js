@@ -1,14 +1,12 @@
-import { useCallback, useState, useEffect, useMemo } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { MapProviders } from './maps';
+
+const MapProvidersOptions = Object.keys(MapProviders).map(item => ({ label: MapProviders[item].label, value: item }));
 
 export function MapTypeSelect({ selected, eventHandlers }) {
   const { onMapTypeChange } = eventHandlers;
 
   const [currentSelected, setCurrentSelected] = useState(null);
-
-  const mapsList = useMemo(() => {
-    return Object.keys(MapProviders).map(item => ({ label: MapProviders[item].label, value: item }));
-  }, []);
 
   useEffect(() => {
     if (selected) {
@@ -25,7 +23,7 @@ export function MapTypeSelect({ selected, eventHandlers }) {
 
   return (
     <select className="control map-type-select" onChange={ handleChange }>
-      { mapsList.map(item =>
+      { MapProvidersOptions.map(item =>
         <option value={ item.value } selected={ item.value === currentSelected }>{ item.label }</option>
       ) }
     </select>

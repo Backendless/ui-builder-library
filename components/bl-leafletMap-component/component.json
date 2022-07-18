@@ -9,14 +9,9 @@
   "category": "Custom Components",
   "properties": [
     {
-      "type": "checkbox",
-      "name": "visibility",
-      "label": "Visibility",
-      "defaultValue": true,
-      "handlerId": "visibilityHandler",
-      "handlerLabel": "Visibility Logic",
-      "handlerDescription": "Used to control component visibility.",
-      "dataBinding": true
+      "type": "text",
+      "name": "id",
+      "label": "Component Id"
     },
     {
       "type": "text",

@@ -10,8 +10,8 @@ The component based on external [Leaflet](https://github.com/Leaflet/Leaflet) li
 ### Styles and Settings
 
 <dl>
-<dt>Map Visibility</dt>
-<dd>Used to determine the visibility of a component.</dd>
+<dt>Component Id</dt>
+<dd>Specifies the unique component id.</dd>
 <dt>Center</dt>
 <dd>Specifies the default visible area. Defaults to "40.6893, -74.0444".</dd>
 <dt>Zoom</dt>
@@ -35,8 +35,6 @@ The component based on external [Leaflet](https://github.com/Leaflet/Leaflet) li
 ### Event Handlers and Bindable Properties
 
 <dl>
-<dt>Map Visibility Logic</dt>
-<dd>Used to control component visibility in Backendless Logic.</dd>
 <dt>Center Logic</dt>
 <dd>Used to specifies center on map in Backendless Logic.</dd>
 <dt>Zoom Logic</dt>

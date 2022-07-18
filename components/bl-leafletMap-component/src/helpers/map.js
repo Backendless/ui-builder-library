@@ -25,13 +25,13 @@ export function getGeolocation(map, geoMarker, icon, eventHandlers) {
 
       onDeterminingGeoposition({ coordinates: coords });
 
-      if (geoMarker) {
-        map.removeLayer(geoMarker);
+      if (geoMarker.current) {
+        map.removeLayer(geoMarker.current);
       }
 
       map.setView(coords, 14);
 
-      geoMarker = Leaflet.marker(coords, { icon }).addTo(map);
+      geoMarker.current = Leaflet.marker(coords, { icon }).addTo(map);
     },
     (error) => {
       console.error(`Leaflet Map: ${ error.message }`);
@@ -40,12 +40,12 @@ export function getGeolocation(map, geoMarker, icon, eventHandlers) {
 }
 
 export function initMap(component, eventHandlers, map, currentLayer) {
-  const { zoom, center, mapType, zoomControl } = component;
+  const { zoom, center, mapType, zoomControl , id} = component;
   const { onClick } = eventHandlers;
 
   const centerCoords = toCoordinates(center);
 
-  map.current = Leaflet.map('bl-customComponent-leafletMap', {
+  map.current = Leaflet.map(id, {
     zoom,
     center           : centerCoords,
     fullscreenControl: true
