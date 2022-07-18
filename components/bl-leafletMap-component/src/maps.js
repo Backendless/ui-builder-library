@@ -1,4 +1,4 @@
-export const Maps = {
+export const MapProviders = {
   carto          : {
     mapUrl : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png',
     options: {

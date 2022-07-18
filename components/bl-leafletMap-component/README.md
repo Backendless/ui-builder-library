@@ -13,7 +13,7 @@ The component based on external [Leaflet](https://github.com/Leaflet/Leaflet) li
 <dt>Map Visibility</dt>
 <dd>Used to determine the visibility of a component.</dd>
 <dt>Center</dt>
-<dd>Specifies the default visible area. Defaults to "40.74, -73.96".</dd>
+<dd>Specifies the default visible area. Defaults to "40.6893, -74.0444".</dd>
 <dt>Zoom</dt>
 <dd>Specifies the default zoom. Defaults to "10".</dd>
 <dt>Map Type</dt>

@@ -3,34 +3,34 @@ import { toCoordinates } from './coordinates';
 export function createActions(component, map) {
   const { markers, circles, polygons } = component;
 
-  component.mapCenteringAction = (coords) => {
+  component.mapCentering = (coords) => {
     const currentCoords = toCoordinates(coords);
     const currentZoom = map.getZoom();
 
     map.setView(currentCoords, currentZoom);
   };
 
-  component.zoomControlAction = (value) => {
+  component.zoomControl = (value) => {
     map.setZoom(value);
   };
 
-  component.getMapZoomAction = () => {
+  component.getMapZoom = () => {
     return map.getZoom();
   };
 
-  component.getMapCenterAction = () => {
+  component.getMapCenter = () => {
     return map.getCenter();
   };
 
-  component.getAllMarkers = () => {
+  component.getMapMarkers = () => {
     return markers;
   };
 
-  component.getAllCircles = () => {
+  component.getMapCircles = () => {
     return circles;
   };
 
-  component.getAllPolygons = () => {
+  component.getMapPolygons = () => {
     return polygons;
   };
 }

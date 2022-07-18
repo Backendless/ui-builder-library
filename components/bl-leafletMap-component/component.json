@@ -22,7 +22,7 @@
       "type": "text",
       "name": "center",
       "label": "Center",
-      "defaultValue": "40.74, -73.96",
+      "defaultValue": "40.6893, -74.0444",
       "handlerId": "centerHandler",
       "handlerLabel": "Center Logic",
       "dataBinding": true,
@@ -121,7 +121,7 @@
       "defaultValue": true,
       "handlerId": "mapTypeControlHandler",
       "handlerLabel": "Map Type Control Logic",
-      "handlerDescription": "This is a handler for the logic to determine if map type changeing is allowed.",
+      "handlerDescription": "This is a handler for the logic to determine if map type changing is allowed.",
       "dataBinding": true
     },
     {
@@ -263,7 +263,7 @@
   ],
   "actions": [
     {
-      "id": "mapCenteringAction",
+      "id": "mapCentering",
       "label": "Set map center on",
       "inputs": [
         {
@@ -274,7 +274,7 @@
       "color": "#f76c6c"
     },
     {
-      "id": "zoomControlAction",
+      "id": "zoomControl",
       "label": "Set zoom on ",
       "inputs": [
         {
@@ -285,31 +285,31 @@
       "color": "#f76c6c"
     },
     {
-      "id": "getMapZoomAction",
+      "id": "getMapZoom",
       "label": "Get map zoom of",
       "color": "#f76c6c",
       "hasReturn": true
     },
     {
-      "id": "getMapCenterAction",
+      "id": "getMapCenter",
       "label": "Get map center of ",
       "color": "#f76c6c",
       "hasReturn": true
     },
     {
-      "id": "getAllMarkers",
+      "id": "getMapMarkers ",
       "label": "Get all markers of",
       "hasReturn": true,
       "color": "#f76c6c"
     },
     {
-      "id": "getAllCircles",
+      "id": "getMapCircles ",
       "label": "Get all circles of",
       "hasReturn": true,
       "color": "#f76c6c"
     },
     {
-      "id": "getAllPolygons",
+      "id": "getMapPolygons",
       "label": "Get all polygons",
       "color": "#f76c6c",
       "hasReturn": true

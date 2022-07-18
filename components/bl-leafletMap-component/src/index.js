@@ -93,23 +93,9 @@ export default function LeafletMap({ component, eventHandlers }) {
       id="bl-customComponent-leafletMap"
       className={ 'bl-customComponent-leafletMap ' + classList.join(' ') }
       ref={ containerRef }>
-      { geopositionControl && (
-        <GeopositionButton
-          map={ mapRef.current }
-          eventHandlers={ eventHandlers }/>
-      ) }
-      { mapTypeControl && (
-        <MapTypeSelect
-          selected={ mapType }
-          eventHandlers={ eventHandlers }
-        />
-      ) }
-      { fullscreenControl && (
-        <FullscreenButton
-          fullscreen={ fullscreen }
-          eventHandlers={ eventHandlers }
-        />
-      ) }
+      { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }
+      { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers }/> }
+      { fullscreenControl && <FullscreenButton fullscreen={ fullscreen } eventHandlers={ eventHandlers }/> }
     </div>
   );
 }
