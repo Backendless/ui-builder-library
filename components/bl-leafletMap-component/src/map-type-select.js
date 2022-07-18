@@ -1,13 +1,14 @@
 import { useCallback, useState, useEffect, useMemo } from 'react';
+import { Maps } from './maps';
 
-export function MapTypeSelect({ maps, selected, eventHandlers }) {
+export function MapTypeSelect({ selected, eventHandlers }) {
   const { onMapTypeChange } = eventHandlers;
 
   const [currentSelected, setCurrentSelected] = useState(null);
 
-  const mapsArray = useMemo(() => {
-    return Object.keys(maps).map(item => ({ ...maps[item], value: item }));
-  }, [maps]);
+  const mapsList = useMemo(() => {
+    return Object.keys(Maps).map(item => ({ label: Maps[item].label, value: item }));
+  }, []);
 
   useEffect(() => {
     if (selected) {
@@ -20,18 +21,19 @@ export function MapTypeSelect({ maps, selected, eventHandlers }) {
       previousType: selected,
       currentType : event.target.value
     });
-  }, [maps, selected, event]);
+  }, [selected]);
 
   return (
     <select
       className="control map-type-select"
       onChange={ handleChange }>
-      { mapsArray.map(item => (
+      { mapsList.map(item => (
         <option
           value={ item.value }
           selected={ item.value === currentSelected }>
           { item.label }
-        </option>)) }
+        </option>
+      )) }
     </select>
   );
 }

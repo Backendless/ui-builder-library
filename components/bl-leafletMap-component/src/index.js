@@ -2,23 +2,22 @@ import { useEffect, useRef } from 'react';
 
 import {
   initMap,
-  makeMarkers,
-  makeCircles,
-  makePolygons,
+  createMarkers,
+  createCircles,
+  createPolygons,
   changeMapType,
   setCenter,
   setZoom,
   toggleZoomControl,
   toggleDraggingControl,
   toggleFullscreen
-} from './utils/map';
-import { makeActions } from './utils/actions';
-import { useIcon } from './hooks/useIcon';
-import { IconOptions } from './icon-options';
-import { Maps } from './maps';
-import { MapTypeSelect } from './components/map-type-select';
-import { GeopositionButton } from './components/geoposition-button';
-import { FullscreenButton } from './components/fullscreen-button';
+} from './helpers/map';
+import { createActions } from './helpers/actions';
+import { useIcon } from './helpers/use-icon';
+import { IconOptions } from './icons';
+import { MapTypeSelect } from './map-type-select';
+import { GeopositionButton } from './geoposition-button';
+import { FullscreenButton } from './fullscreen-button';
 
 export default function LeafletMap({ component, eventHandlers }) {
   const {
@@ -29,7 +28,7 @@ export default function LeafletMap({ component, eventHandlers }) {
     zoom,
     mapType,
     classList,
-    mapVisibility,
+    visibility,
     zoomControl,
     draggingControl,
     mapTypeControl,
@@ -46,7 +45,7 @@ export default function LeafletMap({ component, eventHandlers }) {
 
   useEffect(() => {
     initMap(component, eventHandlers, mapRef, currentLayer);
-    makeActions(component, mapRef, markers, circles, polygons);
+    createActions(component, mapRef.current);
   }, []);
 
   useEffect(() => {
@@ -54,38 +53,38 @@ export default function LeafletMap({ component, eventHandlers }) {
   }, [mapType]);
 
   useEffect(() => {
-    makeMarkers(markers, markerIcon, mapRef, eventHandlers);
+    createMarkers(markers, markerIcon, mapRef.current, eventHandlers);
   }, [markers]);
 
   useEffect(() => {
-    makeCircles(circles, mapRef, eventHandlers);
+    createCircles(circles, mapRef.current, eventHandlers);
   }, [circles]);
 
   useEffect(() => {
-    makePolygons(polygons, mapRef, eventHandlers);
+    createPolygons(polygons, mapRef.current, eventHandlers);
   }, [polygons]);
 
   useEffect(() => {
-    setCenter(mapRef, center);
+    setCenter(mapRef.current, center);
   }, [center]);
 
   useEffect(() => {
-    setZoom(mapRef, zoom);
+    setZoom(mapRef.current, zoom);
   }, [zoom]);
 
   useEffect(() => {
-    toggleZoomControl(mapRef, zoomControl);
+    toggleZoomControl(mapRef.current, zoomControl);
   }, [zoomControl]);
 
   useEffect(() => {
-    toggleDraggingControl(mapRef, draggingControl);
+    toggleDraggingControl(mapRef.current, draggingControl);
   }, [draggingControl]);
 
   useEffect(() => {
-    toggleFullscreen(containerRef, fullscreen, mapRef);
+    toggleFullscreen(containerRef.current, fullscreen, mapRef.current);
   }, [fullscreen]);
 
-  if (!display || !mapVisibility) {
+  if (!display || !visibility) {
     return null;
   }
 
@@ -96,12 +95,11 @@ export default function LeafletMap({ component, eventHandlers }) {
       ref={ containerRef }>
       { geopositionControl && (
         <GeopositionButton
-          mapRef={ mapRef }
+          map={ mapRef.current }
           eventHandlers={ eventHandlers }/>
       ) }
       { mapTypeControl && (
         <MapTypeSelect
-          maps={ Maps }
           selected={ mapType }
           eventHandlers={ eventHandlers }
         />

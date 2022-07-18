@@ -12,3 +12,28 @@ export const IconOptions = {
     className: 'marker',
   },
 };
+
+export function PositionIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path
+        d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 21.949v-4.949h-2v4.949c-4.717-.47-8.479-4.232-8.949-8.949h4.949v-2h-4.949c.47-4.717 4.232-8.479 8.949-8.949v4.949h2v-4.949c4.717.471 8.479 4.232 8.949 8.949h-4.949v2h4.949c-.47 4.717-4.232 8.479-8.949 8.949z"/>
+    </svg>
+  );
+}
+
+export function TurnOffFullscreenIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M15 2h2v5h7v2h-9v-7zm9 13v2h-7v5h-2v-7h9zm-15 7h-2v-5h-7v-2h9v7zm-9-13v-2h7v-5h2v7h-9z"/>
+    </svg>
+  );
+}
+
+export function TurnOnFullscreenIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M24 9h-2v-7h-7v-2h9v9zm-9 15v-2h7v-7h2v9h-9zm-15-9h2v7h7v2h-9v-9zm9-15v2h-7v7h-2v-9h9z"/>
+    </svg>
+  );
+}

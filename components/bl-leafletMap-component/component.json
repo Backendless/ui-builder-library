@@ -10,11 +10,11 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "mapVisibility",
-      "label": "Map Visibility",
+      "name": "visibility",
+      "label": "Visibility",
       "defaultValue": true,
-      "handlerId": "mapVisibilityHandler",
-      "handlerLabel": "Map Visibility Logic",
+      "handlerId": "visibilityHandler",
+      "handlerLabel": "Visibility Logic",
       "handlerDescription": "Used to control component visibility.",
       "dataBinding": true
     },
@@ -42,7 +42,7 @@
       "type": "text",
       "name": "markers",
       "handlerId": "markersHandler",
-      "handlerDescription": "Specifies an array of markers to display on the map",
+      "handlerDescription": "Specifies an array of markers to display on the map. Signature of marker: {description, point}.",
       "dataBinding": true,
       "handlerLabel": "Markers Logic"
     },
@@ -50,14 +50,14 @@
       "name": "circles",
       "handlerId": "circlesHandler",
       "dataBinding": true,
-      "handlerDescription": "Specifies an array of circles to display on the map",
+      "handlerDescription": "Specifies an array of circles to display on the map. Signature of circle: {description, point, radius}.",
       "handlerLabel": "Circles Logic",
       "type": "text"
     },
     {
       "name": "polygons",
       "handlerId": "polygonsHandler",
-      "handlerDescription": "Specifies an array of polygons to display on the map",
+      "handlerDescription": "Specifies an array of polygons to display on the map. Signature of polygon: {description, [points]}.",
       "handlerLabel": "Polygons Logic",
       "dataBinding": true,
       "type": "text"
@@ -101,7 +101,7 @@
       "defaultValue": true,
       "handlerId": "zoomControlHandler",
       "handlerLabel": "Zoom Control Logic",
-      "handlerDescription": "Specifies whether the zoom is allowed.",
+      "handlerDescription": "This is a handler for the logic to determine if zooming is allowed.",
       "dataBinding": true
     },
     {
@@ -111,7 +111,7 @@
       "defaultValue": true,
       "handlerId": "draggingControlHandler",
       "handlerLabel": "Dragging Control Logic",
-      "handlerDescription": "Specifies whether the dragging is allowed.",
+      "handlerDescription": "This is a handler for the logic to determine if dragging is allowed.",
       "dataBinding": true
     },
     {
@@ -121,7 +121,7 @@
       "defaultValue": true,
       "handlerId": "mapTypeControlHandler",
       "handlerLabel": "Map Type Control Logic",
-      "handlerDescription": "Specifies whether the map type control is allowed.",
+      "handlerDescription": "This is a handler for the logic to determine if map type changeing is allowed.",
       "dataBinding": true
     },
     {
@@ -131,7 +131,7 @@
       "defaultValue": true,
       "handlerId": "geopositionControlHandler",
       "handlerLabel": "Geoposition Control Logic",
-      "handlerDescription": "Specifies whether the geoposition control is allowed.",
+      "handlerDescription": "This is a handler for the logic to determine if geoposition controlling is allowed.",
       "dataBinding": true
     },
     {
@@ -141,7 +141,7 @@
       "defaultValue": true,
       "handlerId": "fullscreenControlHandler",
       "handlerLabel": "Fullscreen Control Logic",
-      "handlerDescription": "Specifies whether the fullscreen control is allowed.",
+      "handlerDescription": "This is a handler for the logic to determine if fullscreen controlling is allowed.",
       "dataBinding": true
     },
     {
@@ -151,7 +151,7 @@
       "defaultValue": false,
       "handlerId": "fullscreenHandler",
       "handlerLabel": "Fullscreen Logic",
-      "handlerDescription": "Specifies whether your map will be fullscreen.",
+      "handlerDescription": "This is a handler for the logic to determine fullscreen.",
       "dataBinding": true
     }
   ],
@@ -300,8 +300,7 @@
       "id": "getAllMarkers",
       "label": "Get all markers of",
       "hasReturn": true,
-      "color": "#f76c6c",
-      "inputs": []
+      "color": "#f76c6c"
     },
     {
       "id": "getAllCircles",
@@ -315,6 +314,5 @@
       "color": "#f76c6c",
       "hasReturn": true
     }
-  ],
-  "blockUI": ""
+  ]
 }

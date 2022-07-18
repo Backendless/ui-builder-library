@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from 'react';
 
-import { TurnOnFullscreenSVG } from '../svg/turn-on-fullscreen';
-import { TurnOffFullscreenSVG } from '../svg/turn-off-fullscreen';
+import { TurnOnFullscreenIcon } from './icons';
+import { TurnOffFullscreenIcon } from './icons';
 
 export function FullscreenButton({ fullscreen, eventHandlers }) {
   const { onFullscreenClick } = eventHandlers;
@@ -9,25 +9,22 @@ export function FullscreenButton({ fullscreen, eventHandlers }) {
   const [currentFullscreen, setCurrentFullscreen] = useState(null);
 
   useEffect(() => {
-    if (fullscreen === true || fullscreen === false) {
+    if (fullscreen !== undefined) {
       setCurrentFullscreen(fullscreen);
     }
   }, [fullscreen]);
 
   const handleClick = useCallback(() => {
-    onFullscreenClick({
-      fullscreen: !currentFullscreen
-    });
+    onFullscreenClick({ fullscreen: !currentFullscreen });
   }, [currentFullscreen]);
+
+  const Icon = currentFullscreen ? TurnOffFullscreenIcon : TurnOnFullscreenIcon;
 
   return (
     <button
       className="control button fullscreen-button"
       onClick={ handleClick }>
-      { currentFullscreen
-        ? <TurnOffFullscreenSVG/>
-        : <TurnOnFullscreenSVG/>
-      }
+      <Icon/>
     </button>
   );
 }

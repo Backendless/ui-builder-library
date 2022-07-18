@@ -42,11 +42,11 @@ The component based on external [Leaflet](https://github.com/Leaflet/Leaflet) li
 <dt>Zoom Logic</dt>
 <dd>Used to specifies zoom on map in Backendless Logic.</dd>
 <dt>Markers Logic</dt>
-<dd>Used to specifies an array of markers to display on the map in Backendless Logic.</dd>
+<dd>Specifies an array of markers to display on the map in Backendless Logic. Signature of marker: {description, point}.</dd>
 <dt>Circles Logic</dt>
-<dd>Used to specifies an array of circles to display on the map in Backendless Logic.</dd>
+<dd>Specifies an array of circles to display on the map in Backendless Logic. Signature of circle: {description, point, radius}.</dd>
 <dt>Polygons Logic</dt>
-<dd>Used to specifies an array of markers to display on the map in Backendless Logic.</dd>
+<dd>Specifies an array of polygons to display on the map. Signature of polygon: {description, [points]}.</dd>
 <dt>Map Type Logic</dt>
 <dd>Used to specifies a map type in Backendless Logic.</dd>
 <dt>Zoom Control Logic</dt>

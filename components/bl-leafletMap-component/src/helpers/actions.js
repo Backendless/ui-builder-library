@@ -1,23 +1,25 @@
 import { toCoordinates } from './coordinates';
 
-export function makeActions(component, mapRef, markers, circles, polygons) {
+export function createActions(component, map) {
+  const { markers, circles, polygons } = component;
+
   component.mapCenteringAction = (coords) => {
     const currentCoords = toCoordinates(coords);
-    const currentZoom = mapRef.current.getZoom();
+    const currentZoom = map.getZoom();
 
-    mapRef.current.setView(currentCoords, currentZoom);
+    map.setView(currentCoords, currentZoom);
   };
 
   component.zoomControlAction = (value) => {
-    mapRef.current.setZoom(value);
+    map.setZoom(value);
   };
 
   component.getMapZoomAction = () => {
-    return mapRef.current.getZoom();
+    return map.getZoom();
   };
 
   component.getMapCenterAction = () => {
-    return mapRef.current.getCenter();
+    return map.getCenter();
   };
 
   component.getAllMarkers = () => {
