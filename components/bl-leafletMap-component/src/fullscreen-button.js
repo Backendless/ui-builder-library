@@ -14,7 +14,7 @@ export function FullscreenButton({ component, eventHandlers }) {
   }, [component.fullscreen]);
 
   const handleClick = useCallback(() => {
-    component.fullscreen = !currentFullscreen
+    component.fullscreen = !currentFullscreen;
 
     onFullscreenClick({ fullscreen: component.fullscreen });
   }, [currentFullscreen]);
