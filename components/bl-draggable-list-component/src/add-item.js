@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { AddIcon, DoneIcon } from './icons';
-import { prepareContext, ContextTypes } from './helpers/context';
+import { prepareOnAddContext } from './helpers/context';
 import { validate } from './helpers/validate';
 import { EditControl } from './edit-control';
 
@@ -20,7 +20,7 @@ export function AddItem({ isAdded, toggleIsAdded, component, eventHandlers }) {
 
   const handleDone = useCallback(() => {
     if (validate(newItem)) {
-      const onAddContext = prepareContext(ContextTypes.onAdd, [itemsList, newItem]);
+      const onAddContext = prepareOnAddContext(itemsList, newItem);
 
       onAdd(onAddContext);
       setNewItem(initialItemState);

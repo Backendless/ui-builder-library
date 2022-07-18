@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { DraggableIcon } from './icons';
-import { prepareContext, ContextTypes } from './helpers/context';
+import { prepareOnEditContext } from './helpers/context';
 import { ItemControls } from './item-controls';
 import { EditControl } from './edit-control';
 import { validate } from './helpers/validate';
@@ -9,7 +9,9 @@ import { validate } from './helpers/validate';
 export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, component, onDelete, eventHandlers }) {
   const { itemsList, allowEdit, allowDelete } = component;
   const { onEdit } = eventHandlers;
+
   const { label, value } = item;
+
   const [isEdit, setIsEdit] = useState(false);
   const [itemState, setItemState] = useState({ label, value });
 
@@ -25,7 +27,7 @@ export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, comp
 
   const handleDone = useCallback(() => {
     if (validate(itemState)) {
-      const onEditContext = prepareContext(ContextTypes.onEdit, [itemsList, index, itemState]);
+      const onEditContext = prepareOnEditContext(itemsList, index, itemState);
 
       onEdit(onEditContext);
     }
@@ -39,8 +41,7 @@ export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, comp
         className="content"
         draggable={ !isEdit }
         onDragStart={ e => onDragStart(e, index) }
-        onDragEnd={ onDragEnd }
-      >
+        onDragEnd={ onDragEnd }>
         <DraggableIcon/>
         { isEdit
           ? <EditControl item={ itemState } onChange={ handleChange }/>

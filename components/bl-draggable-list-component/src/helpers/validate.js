@@ -1,6 +1,1 @@
-export const validate = (item) => {
-  if (item.label.trim() && item.value.trim()) {
-    return true;
-  }
-  return false;
-};
+export const validate = (item) => !!(item.label.trim() && item.value.trim())

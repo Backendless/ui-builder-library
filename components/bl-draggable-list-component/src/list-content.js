@@ -7,20 +7,18 @@ export function ListContent({ data, onDragStart, onDragEnd, onDragOver, componen
     );
   }
 
-  return (
-    data.map((item, index) => (
-        <ListItem
-          key={ item.uid }
-          item={ item }
-          index={ index }
-          onDragStart={ onDragStart }
-          onDragEnd={ onDragEnd }
-          onDragOver={ onDragOver }
-          component={ component }
-          onDelete={ onDelete }
-          eventHandlers={ eventHandlers }
-        />
-      )
+  return data.map((item, index) => (
+      <ListItem
+        key={ item.uid }
+        item={ item }
+        index={ index }
+        onDragStart={ onDragStart }
+        onDragEnd={ onDragEnd }
+        onDragOver={ onDragOver }
+        component={ component }
+        onDelete={ onDelete }
+        eventHandlers={ eventHandlers }
+      />
     )
   );
 }

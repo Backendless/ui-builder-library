@@ -2,22 +2,21 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { ListContent } from './list-content';
 import { AddItem } from './add-item';
-import { prepareContext, ContextTypes } from './helpers/context';
+import { prepareOnDragContext, prepareOnDeleteContext } from './helpers/context';
 import { enrichWithUids } from './helpers/id';
 
 export function List({ component, eventHandlers }) {
   const { onDrag, onDelete } = eventHandlers;
   const { itemsList, allowAdd } = component;
+
   const draggedItem = useRef(null);
   const previousList = useRef(null);
+
   const [isAdded, setIsAdded] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (itemsList) {
-      const listWithUid = enrichWithUids(itemsList);
-      setData(listWithUid);
-    }
+    setData(enrichWithUids(itemsList || []));
   }, [itemsList]);
 
   const dragStartHandler = useCallback((e, index) => {
@@ -33,18 +32,16 @@ export function List({ component, eventHandlers }) {
     e.preventDefault();
     const draggedOverItem = data[index];
 
-    if (draggedItem.current.uid === draggedOverItem.uid) {
-      return;
+    if (draggedItem.current.uid !== draggedOverItem.uid) {
+      const items = data.filter(item => item.uid !== draggedItem.current.uid);
+      items.splice(index, 0, draggedItem.current);
+
+      setData(items);
     }
-
-    const items = data.filter(item => item.uid !== draggedItem.current.uid);
-    items.splice(index, 0, draggedItem.current);
-
-    setData(items);
   }, [data, draggedItem]);
 
   const dragEndHandler = useCallback(() => {
-    const onDragContext = prepareContext(ContextTypes.onDrag, [data, draggedItem.current, previousList.current]);
+    const onDragContext = prepareOnDragContext(data, draggedItem.current, previousList.current);
 
     onDrag(onDragContext);
 
@@ -53,7 +50,7 @@ export function List({ component, eventHandlers }) {
   }, [data, draggedItem, previousList]);
 
   const onDeleteHandler = useCallback(index => {
-    const onDeleteContext = prepareContext(ContextTypes.onDelete, [itemsList, index]);
+    const onDeleteContext = prepareOnDeleteContext(itemsList, index);
 
     onDelete(onDeleteContext);
   }, [itemsList]);
