@@ -3,8 +3,8 @@ import { toCoordinates } from './coordinates';
 export function createActions(component, map) {
   const { markers, circles, polygons } = component;
 
-  component.setMapCenter = (coords) => {
-    const currentCoords = toCoordinates(coords);
+  component.setMapCenter = (lat, lng) => {
+    const currentCoords = toCoordinates([lat, lng]);
     const currentZoom = map.getZoom();
 
     map.setView(currentCoords, currentZoom);

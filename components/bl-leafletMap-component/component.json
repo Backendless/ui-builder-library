@@ -257,8 +257,12 @@
       "label": "Set map center on",
       "inputs": [
         {
-          "id": "coords",
-          "label": "coordinates"
+          "id": "latitude",
+          "label": "lat"
+        },
+        {
+          "id": "longitude",
+          "label": "lng"
         }
       ],
       "color": "#f76c6c"
