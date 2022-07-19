@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { SimpleModalButton, SimpleModalContainer, SimpleModalTitle } from './subcomponents';
+import { Button, Container, Title } from './subcomponents';
 
 export default function SimpleModal({ component, eventHandlers }) {
   const {
     display,
     classList,
-    titleModal,
-    textModal,
-    typeSimpleModal,
-    placeholderText,
+    title,
+    content,
+    type,
+    placeholder,
     closeButtonLabel,
     submitButtonLabel,
     closingDuration,
@@ -19,7 +19,7 @@ export default function SimpleModal({ component, eventHandlers }) {
   const [isClosing, setIsClosing] = useState(true);
   const [inputValue, setInputValue] = useState('');
 
-  const simpleModalClasses = useSimpleModalClasses(isClosing);
+  const { rootClasses, modalClasses } = useClasses(classList, isClosing);
 
   component.closeModal = () => {
     setIsClosing(true);
@@ -41,7 +41,7 @@ export default function SimpleModal({ component, eventHandlers }) {
 
   useEffect(() => {
     if (isModalOpen) {
-      document.body.classList.add('active-modal');
+      document.body.classList.toggle('active-modal');
     } else {
       document.body.classList.remove('active-modal');
     }
@@ -52,23 +52,23 @@ export default function SimpleModal({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ 'bl-customComponent-simple-modal ' + classList.join(' ') }>
-      <div className={ simpleModalClasses } style={ { animationDuration: `${ closingDuration }ms` } }>
+    <div className={ rootClasses }>
+      <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms` } }>
         <div onClick={ onClose } className="overlay"></div>
         <div className="simple-modal__content">
-          { titleModal && (<SimpleModalTitle titleModal={ titleModal }/>) }
-          { (typeSimpleModal === 'prompt' || textModal) && (
-            <SimpleModalContainer
-              textModal={ textModal }
-              typeSimpleModal={ typeSimpleModal }
+          { title && (<Title title={ title }/>) }
+          { (type === 'prompt' || content) && (
+            <Container
+              content={ content }
+              type={ type }
               inputValue={ inputValue }
               setInputValue={ setInputValue }
-              placeholderText={ placeholderText }
+              placeholder={ placeholder }
             />
           ) }
 
-          <SimpleModalButton
-            typeSimpleModal={ typeSimpleModal }
+          <Button
+            type={ type }
             onClose={ onClose }
             onSubmit={ onSubmit }
             inputValue={ inputValue }
@@ -81,10 +81,11 @@ export default function SimpleModal({ component, eventHandlers }) {
   );
 }
 
-const useSimpleModalClasses = (isClosing) => {
-  const classes = ['simple-modal'];
+const useClasses = (classList, isClosing) => {
+  const rootClasses = 'bl-customComponent-simple-modal ' + classList.join(' ');
+  const modalClasses = ['simple-modal'];
 
-  classes.push(isClosing ? 'close-modal' : 'open-modal');
+  modalClasses.push(isClosing ? 'close-modal' : 'open-modal');
 
-  return classes.join(' ');
+  return { rootClasses, modalClasses: modalClasses.join(' ') };
 };

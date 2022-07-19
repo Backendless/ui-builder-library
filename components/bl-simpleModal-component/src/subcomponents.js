@@ -1,7 +1,7 @@
 function SimpleModalInput(props) {
   const {
     inputValue,
-    placeholderText,
+    placeholder,
     onInputValue,
   } = props;
 
@@ -17,7 +17,7 @@ function SimpleModalInput(props) {
           id="modal-input"
           className="form-input__input"
           autoComplete="off"
-          placeholder={ placeholderText }
+          placeholder={ placeholder }
           value={ inputValue }
           onChange={ onInputChange }
         />
@@ -25,54 +25,54 @@ function SimpleModalInput(props) {
           htmlFor="modal-input"
           className="form-input__placeholder"
         >
-          { placeholderText }
+          { placeholder }
         </label>
       </div>
     </div>
   );
-};
+}
 
-export function SimpleModalContainer(props) {
+export function Container(props) {
   const {
-    textModal,
-    typeSimpleModal,
+    content,
+    type,
     inputValue,
     setInputValue,
-    placeholderText,
+    placeholder,
   } = props;
 
   return (
     <div className="simple-modal__container">
-      { textModal && (
+      { content && (
         <p className="simple-modal__text">
-          { textModal }
+          { content }
         </p>
       ) }
 
-      { typeSimpleModal === 'prompt' && (
+      { type === 'prompt' && (
         <SimpleModalInput
           inputValue={ inputValue }
           onInputValue={ setInputValue }
-          placeholderText={ placeholderText }
+          placeholder={ placeholder }
         />
       ) }
     </div>
   );
-};
+}
 
-export function SimpleModalTitle(props) {
-  const { titleModal } = props;
+export function Title(props) {
+  const { title } = props;
 
   return (
     <h2 className="simple-modal__title">
-      { titleModal }
+      { title }
     </h2>
   );
 }
 
-export function SimpleModalButton(props) {
+export function Button(props) {
   const {
-    typeSimpleModal,
+    type,
     onClose,
     onSubmit,
     inputValue,
@@ -81,7 +81,7 @@ export function SimpleModalButton(props) {
   } = props;
 
   const handlerSubmitted = () => {
-    if (typeSimpleModal === 'confirm') {
+    if (type === 'confirm') {
       onSubmit();
     } else {
       onSubmit({ inputValue });
@@ -98,7 +98,7 @@ export function SimpleModalButton(props) {
         { closeButtonLabel }
       </button>
 
-      { (typeSimpleModal === 'prompt' || typeSimpleModal === 'confirm') && (
+      { (type === 'prompt' || type === 'confirm') && (
         <button
           type="button"
           className="simple-modal__button"
@@ -109,4 +109,4 @@ export function SimpleModalButton(props) {
       ) }
     </div>
   );
-};
+}

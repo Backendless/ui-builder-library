@@ -6,6 +6,10 @@
 @bl-customComponent-simple-modal-max-width: 600px;
 @bl-customComponent-simple-modal-min-width: 300px;
 
+@bl-customComponent-simple-modal-buttonColor: @bl-customComponent-simple-modal-themeColor;
+@bl-customComponent-simple-modal-button-backgroundColor: transparent;
+@bl-customComponent-simple-modal-button-backgroundColorHover: fade(@bl-customComponent-simple-modal-themeColor, 4%);
+@bl-customComponent-simple-modal-button-borderRadius: 4px;
 
 body.active-modal {
   overflow-y: hidden;
@@ -93,20 +97,20 @@ body.active-modal {
 
       font-weight: 500;
       font-size: 0.875rem;
-      color: @bl-customComponent-simple-modal-themeColor;
+      color: @bl-customComponent-simple-modal-buttonColor;
 
       line-height: 1.75;
       letter-spacing: 0.02857em;
 
       text-transform: uppercase;
 
-      background-color: transparent;
-      border-radius: 4px;
+      background-color: @bl-customComponent-simple-modal-button-backgroundColor;
+      border-radius: @bl-customComponent-simple-modal-button-borderRadius;
       transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
       &:hover {
         text-decoration: none;
-        background-color: fade(@bl-customComponent-simple-modal-themeColor, 4%);
+        background-color: @bl-customComponent-simple-modal-button-backgroundColorHover;
       }
     }
 
