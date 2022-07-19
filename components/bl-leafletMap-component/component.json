@@ -1,0 +1,312 @@
+{
+  "id": "c_fd8c99a633b33a236df39c4b2a76f8c2",
+  "name": "Leaflet map",
+  "description": "The component allows you to work with the map.",
+  "showInToolbox": true,
+  "faIcon": "map",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "center",
+      "label": "Center",
+      "defaultValue": "40.6893, -74.0444",
+      "handlerId": "centerHandler",
+      "handlerLabel": "Center Logic",
+      "dataBinding": true,
+      "handlerDescription": "Used to set center on map."
+    },
+    {
+      "type": "number",
+      "name": "zoom",
+      "label": "Zoom",
+      "defaultValue": "10",
+      "handlerId": "zoomHandler",
+      "handlerLabel": "Zoom Logic",
+      "dataBinding": true,
+      "handlerDescription": "Used to set zoom on map."
+    },
+    {
+      "type": "text",
+      "name": "markers",
+      "handlerId": "markersHandler",
+      "handlerDescription": "Specifies an array of markers to display on the map. Signature of marker: {description, point}.",
+      "dataBinding": true,
+      "handlerLabel": "Markers Logic"
+    },
+    {
+      "name": "circles",
+      "handlerId": "circlesHandler",
+      "dataBinding": true,
+      "handlerDescription": "Specifies an array of circles to display on the map. Signature of circle: {description, point, radius}.",
+      "handlerLabel": "Circles Logic",
+      "type": "text"
+    },
+    {
+      "name": "polygons",
+      "handlerId": "polygonsHandler",
+      "handlerDescription": "Specifies an array of polygons to display on the map. Signature of polygon: {description, [points]}.",
+      "handlerLabel": "Polygons Logic",
+      "dataBinding": true,
+      "type": "text"
+    },
+    {
+      "type": "select",
+      "name": "mapType",
+      "label": "Map type",
+      "defaultValue": "openStreet",
+      "options": [
+        {
+          "value": "carto",
+          "label": "Carto"
+        },
+        {
+          "value": "cartoDark",
+          "label": "Carto Dark"
+        },
+        {
+          "value": "openStreet",
+          "label": "Open Street"
+        },
+        {
+          "value": "cyclosm",
+          "label": "CyclOSM"
+        },
+        {
+          "value": "esriWorldStreet",
+          "label": "Esri World Street"
+        }
+      ],
+      "handlerId": "mapTypeHandler",
+      "handlerLabel": "Map Type Logic",
+      "dataBinding": true,
+      "handlerDescription": "Used to set map type. Possible: carto, cartoDark, openStreet, cyclosm, esriWorldStreet"
+    },
+    {
+      "type": "checkbox",
+      "name": "zoomControl",
+      "label": "Zoom Control",
+      "defaultValue": true,
+      "handlerId": "zoomControlHandler",
+      "handlerLabel": "Zoom Control Logic",
+      "handlerDescription": "This is a handler for the logic to determine if zooming is allowed.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "draggingControl",
+      "label": "Dragging Control",
+      "defaultValue": true,
+      "handlerId": "draggingControlHandler",
+      "handlerLabel": "Dragging Control Logic",
+      "handlerDescription": "This is a handler for the logic to determine if dragging is allowed.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "mapTypeControl",
+      "label": "Map Type Control",
+      "defaultValue": true,
+      "handlerId": "mapTypeControlHandler",
+      "handlerLabel": "Map Type Control Logic",
+      "handlerDescription": "This is a handler for the logic to determine if map type changing is allowed.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "geopositionControl",
+      "label": "Geoposition Control",
+      "defaultValue": true,
+      "handlerId": "geopositionControlHandler",
+      "handlerLabel": "Geoposition Control Logic",
+      "handlerDescription": "This is a handler for the logic to determine if geoposition controlling is allowed.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "fullscreenControl",
+      "label": "Fullscreen Control",
+      "defaultValue": true,
+      "handlerId": "fullscreenControlHandler",
+      "handlerLabel": "Fullscreen Control Logic",
+      "handlerDescription": "This is a handler for the logic to determine if fullscreen controlling is allowed.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "fullscreen",
+      "label": "Fullscreen",
+      "defaultValue": false,
+      "handlerId": "fullscreenHandler",
+      "handlerLabel": "Fullscreen Logic",
+      "handlerDescription": "This is a handler for the logic to determine fullscreen.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when the user click on map.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        }
+      ]
+    },
+    {
+      "name": "onMarkerClick",
+      "label": "On Marker Click Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when the user click on marker.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        },
+        {
+          "id": "description",
+          "label": "Descriptions"
+        }
+      ]
+    },
+    {
+      "name": "onCircleClick",
+      "label": "On Circle Click Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when the user click on circle.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinate"
+        },
+        {
+          "id": "radius",
+          "label": "Radius"
+        },
+        {
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "name": "onPolygonClick",
+      "label": "On Polygon Click Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when the user click on polygon.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinate"
+        },
+        {
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "name": "onMapTypeChange",
+      "label": "On Map Type Change Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when the user changed map type.",
+      "contextBlocks": [
+        {
+          "id": "previousType",
+          "label": "Previous Type"
+        },
+        {
+          "id": "currentType",
+          "label": "Current Type"
+        }
+      ]
+    },
+    {
+      "name": "onDeterminingGeoposition",
+      "label": "On Determining Geoposition Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when user determining geoposition.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        }
+      ]
+    },
+    {
+      "name": "onFullscreenClick",
+      "label": "On Fullscreen Button Click Event",
+      "dataBinding": true,
+      "handlerDescription": "This event triggered when the user click on fullscreen button.",
+      "contextBlocks": [
+        {
+          "id": "fullscreen",
+          "label": "Fullscreen"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "setMapCenter",
+      "label": "Set map center on",
+      "inputs": [
+        {
+          "id": "latitude",
+          "label": "lat"
+        },
+        {
+          "id": "longitude",
+          "label": "lng"
+        }
+      ],
+      "color": "#f76c6c"
+    },
+    {
+      "id": "setMapZoom",
+      "label": "Set zoom on ",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "value"
+        }
+      ],
+      "color": "#f76c6c"
+    },
+    {
+      "id": "getMapZoom",
+      "label": "Get map zoom of",
+      "color": "#f76c6c",
+      "hasReturn": true
+    },
+    {
+      "id": "getMapCenter",
+      "label": "Get map center of ",
+      "color": "#f76c6c",
+      "hasReturn": true
+    },
+    {
+      "id": "getMapMarkers ",
+      "label": "Get all markers of",
+      "hasReturn": true,
+      "color": "#f76c6c"
+    },
+    {
+      "id": "getMapCircles ",
+      "label": "Get all circles of",
+      "hasReturn": true,
+      "color": "#f76c6c"
+    },
+    {
+      "id": "getMapPolygons",
+      "label": "Get all polygons of",
+      "color": "#f76c6c",
+      "hasReturn": true
+    }
+  ]
+}
