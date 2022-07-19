@@ -1,7 +1,7 @@
 {
   "id": "c_25c90a88da567672578c1b7c8d4e44a9",
   "name": "Simple Modal",
-  "description": "",
+  "description": "This component makes it possible to display alert, get some information or confirm some action",
   "showInToolbox": true,
   "faIcon": "window-restore",
   "mainJS": "dist/index.js",
@@ -15,7 +15,7 @@
       "handlerId": "titleModalLogic",
       "handlerLabel": "Title Modal Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the title for SImple Modal."
+      "handlerDescription": "This is a handler for the logic to determine the title."
     },
     {
       "type": "text",
@@ -24,7 +24,7 @@
       "handlerId": "textModalLogic",
       "handlerLabel": "Text Modal Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the text for SImple Modal."
+      "handlerDescription": "This is a handler for the logic to determine the content."
     },
     {
       "type": "text",
@@ -79,16 +79,16 @@
       "type": "number",
       "name": "closingDuration",
       "label": "Closing Duration",
-      "defaultValue": "0.1"
+      "defaultValue": "100"
     }
   ],
   "eventHandlers": [
     {
-      "name": "onCloseButton",
+      "name": "onClose",
       "label": "On Close Button"
     },
     {
-      "name": "onSubmitButton",
+      "name": "onSubmit",
       "label": "On Submit Button",
       "contextBlocks": [
         {

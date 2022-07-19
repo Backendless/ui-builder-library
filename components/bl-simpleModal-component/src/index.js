@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { SimpleModalButton, SimpleModalContainer } from './subcomponents';
+import { SimpleModalButton, SimpleModalContainer, SimpleModalTitle } from './subcomponents';
 
-export default function MyCustomComponent({ component, eventHandlers }) {
+export default function SimpleModal({ component, eventHandlers }) {
   const {
     display,
     classList,
@@ -13,39 +13,39 @@ export default function MyCustomComponent({ component, eventHandlers }) {
     submitButtonLabel,
     closingDuration,
   } = component;
-  const { onCloseButton, onSubmitButton, onInputValueChange } = eventHandlers;
+  const { onClose, onSubmit, onInputValueChange } = eventHandlers;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [isClosing, setIsClosing] = useState(true);
   const [inputValue, setInputValue] = useState('');
+
   const simpleModalClasses = useSimpleModalClasses(isClosing);
 
   component.closeModal = () => {
-    setIsClosing(false);
+    setIsClosing(true);
 
     setTimeout(() => {
       setIsModalOpen(false);
       setInputValue('');
-    }, (closingDuration * 1000));
+    }, closingDuration);
   };
-
-  useEffect(() => {
-    setIsClosing(isModalOpen);
-  }, [isModalOpen]);
 
   component.openModal = () => {
     setIsModalOpen(true);
+    setIsClosing(false);
   };
 
   useEffect(() => {
     onInputValueChange({ inputValue });
   }, [inputValue]);
 
-  if (isModalOpen) {
-    document.body.classList.add('active-modal');
-  } else {
-    document.body.classList.remove('active-modal');
-  }
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('active-modal');
+    } else {
+      document.body.classList.remove('active-modal');
+    }
+  }, [isModalOpen]);
 
   if (!display || !isModalOpen) {
     return null;
@@ -53,14 +53,10 @@ export default function MyCustomComponent({ component, eventHandlers }) {
 
   return (
     <div className={ 'bl-customComponent-simple-modal ' + classList.join(' ') }>
-      <div className={ simpleModalClasses } style={ { animationDuration: `${ closingDuration }s` } }>
-        <div onClick={ onCloseButton } className="overlay"></div>
+      <div className={ simpleModalClasses } style={ { animationDuration: `${ closingDuration }ms` } }>
+        <div onClick={ onClose } className="overlay"></div>
         <div className="simple-modal__content">
-          { titleModal && (
-            <h2 className="simple-modal__title">
-              { titleModal }
-            </h2>
-          ) }
+          { titleModal && (<SimpleModalTitle titleModal={ titleModal }/>) }
           { (typeSimpleModal === 'prompt' || textModal) && (
             <SimpleModalContainer
               textModal={ textModal }
@@ -73,8 +69,8 @@ export default function MyCustomComponent({ component, eventHandlers }) {
 
           <SimpleModalButton
             typeSimpleModal={ typeSimpleModal }
-            onCloseButton={ onCloseButton }
-            onSubmitButton={ onSubmitButton }
+            onClose={ onClose }
+            onSubmit={ onSubmit }
             inputValue={ inputValue }
             submitButtonLabel={ submitButtonLabel }
             closeButtonLabel={ closeButtonLabel }
@@ -88,7 +84,7 @@ export default function MyCustomComponent({ component, eventHandlers }) {
 const useSimpleModalClasses = (isClosing) => {
   const classes = ['simple-modal'];
 
-  classes.push(isClosing ? 'open-modal' : 'close-modal');
+  classes.push(isClosing ? 'close-modal' : 'open-modal');
 
   return classes.join(' ');
 };

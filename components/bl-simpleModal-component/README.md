@@ -21,7 +21,7 @@ The component based on external [Simple Modal](https://mui.com/material-ui/react
 <dt>Submit Button Label</dt>
 <dd>Allows to write label for Submit Button. Default value "Submit"</dd>
 <dt>Closing Duration</dt>
-<dd>Allows to specify speed animation opening and closing for Simple Modal. Default value 0.1</dd>
+<dd>Allows to specify speed animation opening and closing for Simple Modal. Default value 100</dd>
 </dl>
 
 ### Event Handlers and Bindable Properties
