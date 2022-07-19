@@ -61,13 +61,13 @@ export function SimpleModalContainer(props) {
 };
 
 export function SimpleModalTitle(props) {
-  const { titleModal } = props
+  const { titleModal } = props;
 
   return (
     <h2 className="simple-modal__title">
       { titleModal }
     </h2>
-  )
+  );
 }
 
 export function SimpleModalButton(props) {
