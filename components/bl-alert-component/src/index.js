@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { AlertButton, AlertIcon, AlertTitle } from './subcomponents'
 
-export default function MyCustomComponent({ component, eventHandlers }) {
+export default function Alert({ component, eventHandlers }) {
   const {
     display,
     classList,
@@ -13,24 +13,21 @@ export default function MyCustomComponent({ component, eventHandlers }) {
     closeButtonVisibility,
     closingDuration,
   } = component
-  const { onCloseButton } = eventHandlers
+  const { onClose } = eventHandlers
 
   const [isAlertVisible, setIsAlertVisible] = useState(true)
   const [isClosing, setIsClosing] = useState(false)
+
   const classes = useAlertClasses(variant, messageType, isClosing)
   const classesTitle = useTextClass('alert__title', variant, messageType)
   const classesAlertText = useTextClass('alert__text', variant, messageType)
 
-  useEffect(() => {
-    setIsClosing(isAlertVisible)
-  }, [isAlertVisible])
-
-  component.closeButtonAction = () => {
-    setIsClosing(false)
+  component.close = () => {
+    setIsClosing(true)
 
     setTimeout(() => {
       setIsAlertVisible(false)
-    }, (closingDuration * 1000))
+    }, closingDuration)
   }
 
   if (!display || !isAlertVisible) {
@@ -39,10 +36,7 @@ export default function MyCustomComponent({ component, eventHandlers }) {
 
   return (
     <div className={ 'bl-customComponent-alert ' + classList.join(' ') }>
-      <div
-        className={ classes }
-        style={ { animationDuration: `${ closingDuration }s` } }
-      >
+      <div className={ classes } style={ { animationDuration: `${ closingDuration }ms` } }>
         { iconVisibility && (
           <div className="alert__icon">
             <AlertIcon
@@ -59,7 +53,7 @@ export default function MyCustomComponent({ component, eventHandlers }) {
 
         { closeButtonVisibility && (
           <AlertButton
-            onCloseButton={ onCloseButton }
+            onClose={ onClose }
             variant={ variant }
           />
         ) }
@@ -71,7 +65,7 @@ export default function MyCustomComponent({ component, eventHandlers }) {
 const useAlertClasses = (variant, messageType, isClosing) => {
   const classes = ['alert', variant, `${ variant }--${ messageType }`]
 
-  classes.push(isClosing ? 'alert-open' : 'alert-close')
+  classes.push(isClosing ? 'alert-close' : 'alert-open')
 
   return classes.join(' ')
 }

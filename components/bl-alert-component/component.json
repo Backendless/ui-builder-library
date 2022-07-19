@@ -100,14 +100,14 @@
   ],
   "eventHandlers": [
     {
-      "name": "onCloseButton",
+      "name": "onClose",
       "handlerDescription": "This handler is triggered when the user clicks on the close button.",
       "label": "On Close Button"
     }
   ],
   "actions": [
     {
-      "id": "closeButtonAction",
+      "id": "close",
       "label": "Close Alert"
     }
   ]
