@@ -3,14 +3,14 @@ import { toCoordinates } from './coordinates';
 export function createActions(component, map) {
   const { markers, circles, polygons } = component;
 
-  component.mapCentering = (coords) => {
+  component.setMapCenter = (coords) => {
     const currentCoords = toCoordinates(coords);
     const currentZoom = map.getZoom();
 
     map.setView(currentCoords, currentZoom);
   };
 
-  component.zoomControl = (value) => {
+  component.setMapZoom = (value) => {
     map.setZoom(value);
   };
 

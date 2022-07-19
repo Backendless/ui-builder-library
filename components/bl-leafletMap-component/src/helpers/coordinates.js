@@ -11,5 +11,5 @@ export function toCoordinates(coords) {
 
   console.error('Leaflet Map: not valid coordinates');
 
-  return [40.6893, -74.0444];
+  return [0, 0];
 }

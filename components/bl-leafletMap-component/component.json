@@ -10,11 +10,6 @@
   "properties": [
     {
       "type": "text",
-      "name": "id",
-      "label": "Component Id"
-    },
-    {
-      "type": "text",
       "name": "center",
       "label": "Center",
       "defaultValue": "40.6893, -74.0444",
@@ -258,7 +253,7 @@
   ],
   "actions": [
     {
-      "id": "mapCentering",
+      "id": "setMapCenter",
       "label": "Set map center on",
       "inputs": [
         {
@@ -269,7 +264,7 @@
       "color": "#f76c6c"
     },
     {
-      "id": "zoomControl",
+      "id": "setMapZoom",
       "label": "Set zoom on ",
       "inputs": [
         {
@@ -305,7 +300,7 @@
     },
     {
       "id": "getMapPolygons",
-      "label": "Get all polygons",
+      "label": "Get all polygons of",
       "color": "#f76c6c",
       "hasReturn": true
     }

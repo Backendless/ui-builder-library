@@ -14,6 +14,8 @@ export function GeopositionButton({ map, eventHandlers }) {
   }, [map]);
 
   return (
-    <button className="control button geo-button" onClick={ handleClick }><PositionIcon/></button>
+    <button className="control button geo-button" onClick={ handleClick }>
+      <PositionIcon/>
+    </button>
   );
 }

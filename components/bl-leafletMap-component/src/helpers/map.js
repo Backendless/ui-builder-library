@@ -9,7 +9,9 @@ export function changeMapType(map, currentLayer, component) {
     if (mapType in MapProviders) {
       map.current.removeLayer(currentLayer.current);
 
-      currentLayer.current = Leaflet.tileLayer(MapProviders[mapType].mapUrl, MapProviders[mapType].options).addTo(map.current);
+      currentLayer.current = Leaflet
+        .tileLayer(MapProviders[mapType].mapUrl, MapProviders[mapType].options)
+        .addTo(map.current);
     } else {
       console.error('Leaflet Map: not valid map type');
     }
@@ -39,19 +41,21 @@ export function getGeolocation(map, geoMarker, icon, eventHandlers) {
   );
 }
 
-export function initMap(component, eventHandlers, map, currentLayer) {
-  const { zoom, center, mapType, zoomControl , id} = component;
+export function initMap(component, eventHandlers, map, currentLayer, uid) {
+  const { zoom, center, mapType, zoomControl } = component;
   const { onClick } = eventHandlers;
 
   const centerCoords = toCoordinates(center);
 
-  map.current = Leaflet.map(id, {
+  map.current = Leaflet.map(uid, {
     zoom,
     center           : centerCoords,
     fullscreenControl: true
   });
 
-  currentLayer.current = Leaflet.tileLayer(MapProviders[mapType].mapUrl, MapProviders[mapType].options).addTo(map.current);
+  currentLayer.current = Leaflet
+    .tileLayer(MapProviders[mapType].mapUrl, MapProviders[mapType].options)
+    .addTo(map.current);
 
   if (!zoomControl) {
     removeZoomControl(map.current);

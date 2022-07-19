@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 
 import {
   initMap,
@@ -35,16 +35,16 @@ export default function LeafletMap({ component, eventHandlers }) {
     display,
     fullscreen,
     fullscreenControl,
-    id
   } = component;
 
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const currentLayer = useRef(null);
   const markerIcon = useIcon(IconOptions.marker);
+  const uid = useMemo(() => `uid_Backendless.UUID.short()`,[])
 
   useEffect(() => {
-    initMap(component, eventHandlers, mapRef, currentLayer);
+    initMap(component, eventHandlers, mapRef, currentLayer, uid);
     createActions(component, mapRef.current);
   }, []);
 
@@ -90,7 +90,7 @@ export default function LeafletMap({ component, eventHandlers }) {
 
   return (
     <div
-      id={ id }
+      id={ uid }
       className={ 'bl-customComponent-leafletMap ' + classList.join(' ') }
       ref={ containerRef }>
       { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }

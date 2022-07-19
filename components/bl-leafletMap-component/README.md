@@ -10,8 +10,6 @@ The component based on external [Leaflet](https://github.com/Leaflet/Leaflet) li
 ### Styles and Settings
 
 <dl>
-<dt>Component Id</dt>
-<dd>Specifies the unique component id.</dd>
 <dt>Center</dt>
 <dd>Specifies the default visible area. Defaults to "40.6893, -74.0444".</dd>
 <dt>Zoom</dt>
