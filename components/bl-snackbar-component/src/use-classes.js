@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-export const useClasses = (horizontalPosition, verticalPosition, type, visible) => {
+export function useClasses(horizontalPosition, verticalPosition, type, visible) {
   return useMemo(() => {
     const classes = ['bl-customComponent-snackbar']
 

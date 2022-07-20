@@ -1,4 +1,4 @@
-export const Info = () => {
+export function Info() {
   return (
     <svg
       version="1.1"

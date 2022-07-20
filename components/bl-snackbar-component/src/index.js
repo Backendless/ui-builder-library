@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useClasses } from './helpers/use-classes'
-import { Action } from './components/button'
-import { IconsMap } from './helpers/type'
-import { CloseIcon } from './components/icons'
+import { useClasses } from './use-classes'
+import { Action } from './button'
+import { CloseIcon, IconsMap } from './icons'
 
 const DEFAULT_HIDE_DURATION = 5000
 
@@ -60,20 +59,8 @@ export default function SnackbarComponent({ component, eventHandlers }) {
         </div>
       </div>
       <div className="buttons">
-        { showAction && (
-          <Action
-            className="action"
-            onClick={ onAction }>
-            { actionContent }
-          </Action>
-        ) }
-        { showClose && (
-          <Action
-            className="close"
-            onClick={ close }>
-            { CloseIcon() }
-          </Action>
-        ) }
+        { showAction && (<Action className="action" onClick={ onAction }> { actionContent } </Action>) }
+        { showClose && (<Action className="close" onClick={ close }> { CloseIcon() } </Action>) }
       </div>
     </div>
   )

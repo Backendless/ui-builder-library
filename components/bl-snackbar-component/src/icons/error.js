@@ -1,4 +1,4 @@
-export const Error = () => {
+export function Error() {
   return (
     <svg
       width="22px"

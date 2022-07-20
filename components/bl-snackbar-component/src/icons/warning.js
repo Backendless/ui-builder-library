@@ -1,4 +1,4 @@
-export const Warning = () => {
+export function Warning() {
   return (
     <svg
       className="icon"

@@ -1,4 +1,4 @@
-export const Success = () => {
+export function Success() {
   return (
     <svg
       className="icon"
