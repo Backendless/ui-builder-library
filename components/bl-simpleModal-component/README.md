@@ -15,7 +15,7 @@ The component based on external [Simple Modal](https://mui.com/material-ui/react
 <dt>Close Button Label</dt>
 <dd>Allows to write label for close button. Default value "Close"</dd>
 <dt>Type</dt>
-<dd>Allows select type of Simple Modal (Alert, Prompt, Confirm). Default value 'Alert'.</dd>
+<dd>Allows select type of Simple Modal ("alert", "prompt", "confirm"). Default value "alert".</dd>
 <dt>Placeholder</dt>
 <dd>Allows to write text for input placeholder.</dd>
 <dt>Submit Button Label</dt>

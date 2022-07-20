@@ -40,11 +40,7 @@ export default function SimpleModal({ component, eventHandlers }) {
   }, [inputValue]);
 
   useEffect(() => {
-    if (isModalOpen) {
-      document.body.classList.toggle('active-modal');
-    } else {
-      document.body.classList.remove('active-modal');
-    }
+    document.body.classList.toggle('active-modal', isModalOpen);
   }, [isModalOpen]);
 
   if (!display || !isModalOpen) {
@@ -56,7 +52,7 @@ export default function SimpleModal({ component, eventHandlers }) {
       <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms` } }>
         <div onClick={ onClose } className="overlay"></div>
         <div className="simple-modal__content">
-          { title && (<Title title={ title }/>) }
+          <Title title={ title }/>
           { (type === 'prompt' || content) && (
             <Container
               content={ content }

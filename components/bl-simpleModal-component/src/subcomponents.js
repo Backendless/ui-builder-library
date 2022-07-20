@@ -1,9 +1,5 @@
 function SimpleModalInput(props) {
-  const {
-    inputValue,
-    placeholder,
-    onInputValue,
-  } = props;
+  const { inputValue, placeholder, onInputValue } = props;
 
   const onInputChange = (event) => {
     onInputValue(event.target.value);
@@ -33,13 +29,7 @@ function SimpleModalInput(props) {
 }
 
 export function Container(props) {
-  const {
-    content,
-    type,
-    inputValue,
-    setInputValue,
-    placeholder,
-  } = props;
+  const { content, type, inputValue, setInputValue, placeholder } = props;
 
   return (
     <div className="simple-modal__container">
@@ -62,6 +52,10 @@ export function Container(props) {
 
 export function Title(props) {
   const { title } = props;
+
+  if (title) {
+    return null;
+  }
 
   return (
     <h2 className="simple-modal__title">
