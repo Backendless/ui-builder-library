@@ -1,4 +1,4 @@
-export const CloseIcon = () => {
+export function CloseIcon() {
   return (
     <svg
       width="22px"
