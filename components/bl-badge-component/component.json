@@ -15,22 +15,30 @@
       "handlerId": "badgeLabelLogic",
       "handlerLabel": "Badge Label Logic",
       "handlerDescription": "This is a handler for the logic to determine the label of the Badge. Value returned by the handler will be used as the label of the Badge.",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "color",
       "name": "badgeLabelColor",
-      "label": "Badge Label Color"
+      "label": "Badge Label Color",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "color",
       "name": "badgeBackgroundColor",
-      "label": "Badge Background Color"
+      "label": "Badge Background Color",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "badgeFontSize",
       "label": "Badge Font Size",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "select",
@@ -54,7 +62,9 @@
           "value": "bottom-right",
           "label": "bottom-right"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "badgeVisibility",
@@ -64,17 +74,23 @@
       "handlerLabel": "Badge Visibility Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine if Badge should be visible. If the handler returns 'true' Budge will be displayed.",
-      "defaultValue": true
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "name": "badgeWidth",
       "label": "Badge Width",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "badgeHeight",
       "label": "Badge Height",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "select",
@@ -94,37 +110,51 @@
           "value": "rectangle",
           "label": "rectangle"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
+      "type": "mui_icon",
       "name": "icon",
       "label": "Icon",
-      "type": "text"
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "textContent",
       "label": "Text Content",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "contentFontSize",
       "label": "Content Font Size",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "imageUrl",
       "label": "Image Url",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "imageWidth",
       "label": "Image Width",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "padding",
       "label": "Padding",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
