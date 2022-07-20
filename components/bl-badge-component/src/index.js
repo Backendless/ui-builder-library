@@ -4,7 +4,6 @@ import { Content } from './content';
 export default function BadgeComponent({ component, eventHandlers }) {
   const { display, classList, padding } = component;
 
-
   if (!display) {
     return null;
   }

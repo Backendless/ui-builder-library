@@ -44,7 +44,7 @@ export function Badge({ component, eventHandlers }) {
       onClick={ onBadgeClick }
       onMouseOver={ onBadgeMouseOver }
       onMouseOut={ onBadgeMouseOut }>
-      { badgeLabel}
+      { badgeLabel }
     </div>
   );
 }
