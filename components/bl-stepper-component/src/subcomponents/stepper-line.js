@@ -1,15 +1,11 @@
-export const StepperLine = (props) => {
-  const {
-    stepIndex,
-    steps,
-    stepperLineClass,
-  } = props;
+export function StepperLine(props) {
+  const { stepIndex, steps, stepperLineClass } = props
+
+  if (stepIndex === steps.length - 1) {
+    return null
+  }
 
   return (
-    <>
-      {stepIndex !== steps.length - 1 && (
-        <span className={stepperLineClass}></span>
-      )}
-    </>
-  );
-};
+    <span className={ stepperLineClass }></span>
+  )
+}

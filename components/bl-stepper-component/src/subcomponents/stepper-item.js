@@ -1,47 +1,37 @@
-import { StepTitle } from './step-title';
-import { CustomizedStepTitle } from './customized-step-title';
-import { StepperLine } from './stepper-line';
+import { StepTitle } from './step-title'
+import { CustomizedStepTitle } from './customized-step-title'
+import { StepperLine } from './stepper-line'
 
-export const StepperItem = ({
-  customized,
-  completedSteps,
-  currentStep,
-  steps,
-  stepIndex,
-  step,
-  stepperClassName,
-}) => {
-  let stepperLineClass = stepperClassName.line;
-
-  if (step.completed) {
-    stepperLineClass += ' ' + stepperClassName.lineActive;
-  }
+export function StepperItem(props) {
+  const { customized, currentStep, steps, stepIndex, step, stepperClassNames } = props
+  const classes = useLineClasses(stepperClassNames, step.completed, customized)
+  const Step = customized ? CustomizedStepTitle : StepTitle
 
   return (
-    <div className={stepperClassName.item}>
-      {customized ? (
-        <CustomizedStepTitle
-          stepperClassName={stepperClassName}
-          steps={steps}
-          currentStep={currentStep}
-          stepIndex={stepIndex}
-          step={step}
-        />
-      ) : (
-        <StepTitle
-          stepperClassName={stepperClassName}
-          steps={steps}
-          currentStep={currentStep}
-          stepIndex={stepIndex}
-          step={step}
-        />
-      )}
+    <div className={ stepperClassNames.item }>
+      <Step
+        stepperClassNames={ stepperClassNames }
+        steps={ steps }
+        currentStep={ currentStep }
+        stepIndex={ stepIndex }
+        step={ step }
+      />
 
       <StepperLine
-        stepIndex={stepIndex}
-        steps={steps}
-        stepperLineClass={customized ? stepperLineClass : stepperClassName.line}
+        stepIndex={ stepIndex }
+        steps={ steps }
+        stepperLineClass={ classes }
       />
     </div>
-  );
-};
+  )
+}
+
+const useLineClasses = (stepperClassNames, completed, customized) => {
+  const classes = [stepperClassNames.line]
+
+  if (completed && customized) {
+    classes.push(stepperClassNames.lineActive)
+  }
+
+  return classes.join(' ')
+}

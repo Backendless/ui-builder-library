@@ -12,7 +12,7 @@
 @bl-customComponent-stepper-lineColor: rgb(117, 117, 117);
 @bl-customComponent-stepper-lineBorderWidth: 1px;
 
-@bl-customComponent-stepper-alternative-label-titleTextMarginTop: 16px;
+@bl-customComponent-stepper-alternative-label-titleTextMargin: 16px 5px;
 
 @bl-customComponent-stepper-customized-lineBorderWidth: 3px;
 @bl-customComponent-stepper-customized-iconSize: 18px;
@@ -22,12 +22,11 @@
   display: flex;
   align-self: center;
   align-items: center;
-  width: 69%;
-  
-  &--alternative-label {
+  width: 77%;
+
+  &--fullwidth {
     width: 100%;
   }
-}
 
   .stepper {
     &__item {
@@ -54,8 +53,31 @@
       border-top-width: @bl-customComponent-stepper-lineBorderWidth;
     }
   }
-  
-  
+
+  .stepper-alternative-label {
+    &__item {
+      position: relative;
+
+      display: flex;
+      flex: 1;
+      justify-content: center;
+
+      height: 100%;
+    }
+
+    &__line {
+      display: block;
+
+      position: absolute;
+      top: 12px;
+      left: calc(50% + 20px);
+      right: calc(-50% + 20px);
+
+      border-color: @bl-customComponent-stepper-lineColor;
+      border-top-style: solid;
+      border-top-width: @bl-customComponent-stepper-lineBorderWidth;
+    }
+  }
 
   .step-title {
     display: flex;
@@ -101,29 +123,6 @@
     }
   }
 
-  .stepper-alternative-label {
-    &__item {
-      position: relative;
-
-      display: flex;
-      flex: 1;
-      justify-content: center;
-    }
-
-    &__line {
-      display: block;
-
-      position: absolute;
-      top: 12px;
-      left: calc(50% + 20px);
-      right: calc(-50% + 20px);
-
-      border-color: @bl-customComponent-stepper-lineColor;
-      border-top-style: solid;
-      border-top-width: @bl-customComponent-stepper-lineBorderWidth;
-    }
-  }
-
   .step-alternative-label-title {
     display: flex;
     align-items: center;
@@ -135,7 +134,7 @@
 
       text-align: center;
 
-      margin-top: @bl-customComponent-stepper-alternative-label-titleTextMarginTop;
+      margin: @bl-customComponent-stepper-alternative-label-titleTextMargin;
 
       transition: opacity @bl-customComponent-stepper-transition;
 
@@ -199,3 +198,4 @@
       }
     }
   }
+}

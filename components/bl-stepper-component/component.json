@@ -69,8 +69,8 @@
       "label": "Reset Current Step"
     },
     {
-      "id": "goStep",
-      "label": "Go to step",
+      "id": "setStep",
+      "label": "Set step",
       "inputs": [
         {
           "id": "step",

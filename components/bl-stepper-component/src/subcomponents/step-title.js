@@ -1,90 +1,81 @@
-import { useMemo } from 'react';
-import { useActiveClassName } from '../helpers/use-active-class-name';
+import { useMemo } from 'react'
+import { useActiveClassName } from '../helpers/use-active-class-name'
+import { StepTitleContent } from './step-title-content'
 
-export const StepTitle = (props) => {
-  const {
-    steps,
-    currentStep,
-    stepIndex,
-    step,
-    stepperClassName,
-  } = props;
+export function StepTitle(props) {
+  const { steps, currentStep, stepIndex, step, stepperClassNames } = props
 
   const { svgIconClass, titleTextClass } = useMemo(() => {
-    return useActiveClassName(currentStep, stepIndex, steps, stepperClassName);
-  }, [stepIndex, currentStep, steps]);
+    return useActiveClassName(currentStep, stepIndex, steps, stepperClassNames)
+  }, [stepIndex, currentStep, steps])
 
   return (
-    <div className={stepperClassName.stepTitle}>
-      {step.completed
+    <div className={ stepperClassNames.stepTitle }>
+      { step.completed
         ? <StepTitleItemCompleted
-            svgIconClass={svgIconClass}
-            titleTextClass={titleTextClass}
-            step={step}
-          />
+          svgIconClass={ svgIconClass }
+          titleTextClass={ titleTextClass }
+          step={ step }
+        />
         : <StepTitleItem
-            svgIconClass={svgIconClass}
-            titleTextClass={titleTextClass}
-            stepperClassName={stepperClassName}
-            step={step}
-            stepIndex={stepIndex}
-          />
+          svgIconClass={ svgIconClass }
+          titleTextClass={ titleTextClass }
+          stepperClassNames={ stepperClassNames }
+          step={ step }
+          stepIndex={ stepIndex }
+        />
       }
     </div>
-  );
-};
+  )
+}
 
-const StepTitleItem = (props) => {
-  const {
-    svgIconClass,
-    stepperClassName,
-    titleTextClass,
-    step,
-    stepIndex,
-  } = props;
+function StepTitleItem(props) {
+  const { svgIconClass, stepperClassNames, titleTextClass, step, stepIndex } = props
 
   return (
     <>
       <svg
-        className={svgIconClass}
+        className={ svgIconClass }
         focusable="false"
         aria-hidden="true"
         viewBox="0 0 24 24"
       >
         <circle cx="12" cy="12" r="12"></circle>
         <text
-          className={stepperClassName.titleIconText}
+          className={ stepperClassNames.titleIconText }
           x="12"
           y="12"
           text-anchor="middle"
           dominant-baseline="central"
         >
-          {stepIndex + 1}
+          { stepIndex + 1 }
         </text>
       </svg>
-      <span className={titleTextClass}>
-        {step.content}
-      </span>
+      <StepTitleContent
+        titleTextClass={ titleTextClass }
+        content={ step.content }
+      />
     </>
-  );
-};
+  )
+}
 
-const StepTitleItemCompleted = (props) => {
-  const { svgIconClass, titleTextClass, step } = props;
+function StepTitleItemCompleted(props) {
+  const { svgIconClass, titleTextClass, step } = props
 
   return (
     <>
       <svg
-        className={svgIconClass}
+        className={ svgIconClass }
         focusable="false"
         aria-hidden="true"
         viewBox="0 0 24 24"
       >
         <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"></path>
       </svg>
-      <span className={titleTextClass}>
-        {step.content}
-      </span>
+      <StepTitleContent
+        titleTextClass={ titleTextClass }
+        content={ step.content }
+      />
     </>
-  );
-};
+  )
+}

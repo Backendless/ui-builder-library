@@ -1,13 +1,11 @@
 export const useStepList = (stepList, countSteps) => {
-  let steps;
+  let steps
 
   if (!stepList) {
-    return new Array(countSteps).fill(' ');
+    steps = new Array(countSteps).fill('')
+  } else {
+    steps = stepList.split(',')
   }
 
-  if (typeof stepList === 'string') {
-    steps = stepList.split(',');
-  }
-
-  return steps.map(step => ({content: step, completed: false}));
-};
+  return steps.map(step => ({ content: step, completed: false }))
+}
