@@ -1,0 +1,148 @@
+@bl-customComponent-colorPicker-themeColor: @themePrimary;
+@bl-customComponent-colorPicker-backgroundColor: @appBackgroundColor;
+@bl-customComponent-colorPicker-textColor: @appTextColor;
+@bl-customComponent-colorPicker-shadowColor: @appComponentShadowColor;
+
+@bl-customComponent-colorPicker-fontSize: 12px;
+@bl-customComponent-colorPicker-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-colorPicker-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-colorPicker-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-colorPicker-shadowColor, 12%);
+
+@bl-customComponent-colorPicker-trigger-width: 50px;
+@bl-customComponent-colorPicker-trigger-height: 27px;
+@bl-customComponent-colorPicker-trigger-borderRadius: 4px;
+@bl-customComponent-colorPicker-trigger-border: 1px solid contrast(@bl-customComponent-colorPicker-backgroundColor);
+@bl-customComponent-colorPicker-trigger-margin: 3px;
+@bl-customComponent-colorPicker-trigger-padding: 5px;
+
+@bl-customComponent-colorPicker-container-border: 1px solid @bl-customComponent-colorPicker-themeColor;
+@bl-customComponent-colorPicker-container-borderRadius: 15px;
+@bl-customComponent-colorPicker-container-margin: 10px;
+
+@bl-customComponent-colorPicker-currentColor-width: 19px;
+@bl-customComponent-colorPicker-currentColor-height: 19px;
+@bl-customComponent-colorPicker-currentColor-margin: 0 2px;
+@bl-customComponent-colorPicker-currentColor-border: 1px solid lighten(@bl-customComponent-colorPicker-themeColor, 30%);
+@bl-customComponent-colorPicker-currentColor-borderRadius: 2px;
+
+@bl-customComponent-colorPicker-copyButton-fontSize: 20px;
+@bl-customComponent-colorPicker-hexInput-width: 58px;
+
+@bl-customComponent-colorPicker-input-width: 50px;
+@bl-customComponent-colorPicker-input-marginLeft: 5px;
+@bl-customComponent-colorPicker-input-border: 1px solid lighten(@bl-customComponent-colorPicker-themeColor, 30%);
+@bl-customComponent-colorPicker-input-borderRadius: 2px;
+@bl-customComponent-colorPicker-input-focus-borderColor: lighten(@bl-customComponent-colorPicker-themeColor, 10%);
+
+.bl-customComponent-color-picker {
+  width: max-content;
+
+  .picker-trigger {
+    display: block;
+    background-color: @bl-customComponent-colorPicker-backgroundColor;
+    width: @bl-customComponent-colorPicker-trigger-width;
+    height: @bl-customComponent-colorPicker-trigger-height;
+    border-radius: @bl-customComponent-colorPicker-trigger-borderRadius;
+    border: @bl-customComponent-colorPicker-trigger-border;
+    cursor: pointer;
+    margin: @bl-customComponent-colorPicker-trigger-margin;
+    padding: @bl-customComponent-colorPicker-trigger-padding;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: @bl-customComponent-colorPicker-trigger-borderRadius;
+      border-width: 0;
+    }
+
+    &:hover {
+      box-shadow: @bl-customComponent-colorPicker-shadowHover;
+    }
+  }
+
+  .picker-container {
+    color: @bl-customComponent-colorPicker-textColor;
+    background-color: @bl-customComponent-colorPicker-backgroundColor;
+    width: max-content;
+    border: @bl-customComponent-colorPicker-container-border;
+    border-radius: @bl-customComponent-colorPicker-container-borderRadius;
+    z-index: 99;
+
+    .wrapper {
+      margin: @bl-customComponent-colorPicker-container-margin;
+
+      .picker-handler {
+        display: none;
+      }
+    }
+
+    .selected-color {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: @bl-customComponent-colorPicker-fontSize;
+      margin: @bl-customComponent-colorPicker-container-margin;
+
+      .hex-type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        i {
+          font-size: @bl-customComponent-colorPicker-copyButton-fontSize;
+          cursor: pointer;
+
+          &:hover {
+            box-shadow: @bl-customComponent-colorPicker-shadowHover;
+          }
+        }
+
+        .current-color {
+          width: @bl-customComponent-colorPicker-currentColor-width;
+          height: @bl-customComponent-colorPicker-currentColor-height;
+          border: @bl-customComponent-colorPicker-currentColor-border;
+          border-radius: @bl-customComponent-colorPicker-currentColor-borderRadius;
+          margin: @bl-customComponent-colorPicker-currentColor-margin;
+        }
+
+        .hex-input {
+          width: @bl-customComponent-colorPicker-hexInput-width;
+        }
+      }
+
+      .color-types {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+
+        .hsl-type, .rgb-type {
+          display: flex;
+          flex-direction: column;
+          text-align: right;
+          gap: 10px;
+        }
+      }
+
+      .color-opacity {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
+
+      input {
+        width: @bl-customComponent-colorPicker-input-width;
+        margin-left: @bl-customComponent-colorPicker-input-marginLeft;
+        border: @bl-customComponent-colorPicker-input-border;
+        border-radius: @bl-customComponent-colorPicker-input-borderRadius;
+        color: @bl-customComponent-colorPicker-textColor;
+        background-color: @bl-customComponent-colorPicker-backgroundColor;
+
+        &:focus-visible {
+          border-color: @bl-customComponent-colorPicker-input-focus-borderColor;
+          outline: none;
+        }
+      }
+    }
+  }
+}
