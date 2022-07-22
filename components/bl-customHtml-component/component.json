@@ -3,7 +3,7 @@
   "name": "Custom HTML",
   "description": "This component allows writing your custom HTML.",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "code",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
