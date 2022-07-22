@@ -1,0 +1,189 @@
+{
+  "id": "c_82fae8bc221e0f6df00c363a12931989",
+  "name": "Snackbar",
+  "description": "Snackbars provide brief notifications.\nSnackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the corner of the screen. They shouldn't interrupt the user experience, and they don't require user input to disappear.",
+  "showInToolbox": true,
+  "faIcon": "window-maximize",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "showClose",
+      "label": "Show Close Button",
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "name": "showAction",
+      "label": "Show Action Button",
+      "type": "checkbox",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "defaultValue": false
+    },
+    {
+      "name": "actionContent",
+      "label": "Action Button Content",
+      "type": "text",
+      "defaultValue": "Action",
+      "handlerId": "actionContentLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to set the text of the action button.",
+      "handlerLabel": "Action Content Logic",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "name": "snackContent",
+      "label": "Snackbar Content",
+      "type": "text",
+      "defaultValue": "Snackbar Info",
+      "handlerId": "snackContentLogic",
+      "handlerLabel": "Snackbar Content Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to set the text of the snackbar.",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "autoHide",
+      "label": "Auto Hide",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "name": "autoHideDuration",
+      "label": "Auto Hide Duration",
+      "type": "number",
+      "defaultValue": "5000",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "select",
+      "name": "verticalPosition",
+      "label": "Vertical Position",
+      "defaultValue": "top",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "select",
+      "name": "horizontalPosition",
+      "label": "Horizontal Position",
+      "defaultValue": "right",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
+      "handlerLabel": "Type Logic",
+      "handlerDescription": "This is a handler to set the type of the snackbar.  There are 5 types of snack bars: \"info\", \"success\", \"warning\", \"error\" or empty.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClose",
+      "label": "On Close",
+      "handlerDescription": "This event is fired when the user clicks on the close button."
+    },
+    {
+      "name": "onAction",
+      "label": "On Action",
+      "handlerDescription": "This event is fired when the user clicks on the action button."
+    }
+  ],
+  "actions": [
+    {
+      "id": "visibility",
+      "inputs": [
+        {
+          "id": "show",
+          "label": "Show"
+        }
+      ],
+      "label": "Visibility"
+    },
+    {
+      "id": "options",
+      "label": "Options",
+      "inputs": [
+        {
+          "id": "showClose",
+          "label": "Show Close Button"
+        },
+        {
+          "id": "showAction",
+          "label": "Show Action Button"
+        },
+        {
+          "id": "actionContent",
+          "label": "Action Button Content"
+        },
+        {
+          "id": "snackContent",
+          "label": "Snackbar Content"
+        },
+        {
+          "id": "autoHide",
+          "label": "Auto Hide"
+        },
+        {
+          "id": "duration",
+          "label": "Auto Hide Duration"
+        },
+        {
+          "id": "vertical",
+          "label": "Vertical Position"
+        },
+        {
+          "id": "horizontal",
+          "label": "Horizontal Position"
+        },
+        {
+          "id": "type",
+          "label": "Type"
+        }
+      ]
+    }
+  ],
+  "blockUI": ""
+}
