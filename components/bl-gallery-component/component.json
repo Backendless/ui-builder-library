@@ -1,0 +1,83 @@
+{
+  "id": "c_817a95ccc1e3a5ab12495e5292359df2",
+  "name": "Gallery",
+  "description": "Gallery is a component of Backendless UI-Builder designer. It allows to conveniently view images and stay on the page.",
+  "showInToolbox": true,
+  "faIcon": "images",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "imagesData",
+      "label": "Images Data",
+      "type": "text",
+      "handlerId": "imagesDataLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for getting data for rendering images. Type of data is an array of objects, every object should have field \"url\" with image URL, optionally field \"title\" with text for every image and field \"height\" with height of current image.",
+      "handlerLabel": "Images Data Logic"
+    },
+    {
+      "name": "wrapAround",
+      "label": "Wrap Around",
+      "type": "checkbox",
+      "defaultValue": false
+    },
+    {
+      "name": "alwaysShowNavOnTouchDevices",
+      "label": "Nav On Mobile",
+      "type": "checkbox",
+      "defaultValue": false
+    },
+    {
+      "name": "disableScrolling",
+      "label": "Disable Scrolling",
+      "type": "checkbox",
+      "defaultValue": false
+    },
+    {
+      "name": "showImageCount",
+      "label": "Show Image Count",
+      "type": "checkbox",
+      "defaultValue": true
+    },
+    {
+      "name": "imageLabel",
+      "label": "Image Label",
+      "type": "text",
+      "defaultValue": "Image"
+    },
+    {
+      "name": "separator",
+      "label": "Separator",
+      "type": "text",
+      "defaultValue": "of"
+    },
+    {
+      "name": "fadeDuration",
+      "label": "Fade Duration(ms)",
+      "type": "number",
+      "defaultValue": "600"
+    },
+    {
+      "name": "imageFadeDuration",
+      "label": "Image Fade Duration(ms)",
+      "type": "number",
+      "defaultValue": "600"
+    },
+    {
+      "name": "resizeDuration",
+      "label": "Resize Duration(ms)",
+      "type": "number",
+      "defaultValue": "700"
+    },
+    {
+      "name": "positionFromTop",
+      "label": "Position From Top(px)",
+      "type": "number",
+      "defaultValue": "50"
+    }
+  ],
+  "eventHandlers": [],
+  "actions": []
+}
