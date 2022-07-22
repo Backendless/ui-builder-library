@@ -74,28 +74,6 @@ Default background color: #d84646
 ### Event Handlers and Bindable Properties
 
 <dl>
-<dt>Snackbar Content Logic</dt>
-<dd>This handler is to set the snackbar text.
-To set the value you can write in settings or use Snackbar Content Logic.
-If Snackbar Content Logic is used, settings value will not work.
-Defaults to "Snackbar Info"</dd>
-
-<dt>Type Logic</dt>
-<dd>This handler is to set the snackbar type.
-To set the value you can write in settings or use Type Logic.
-If Type Logic is used, settings value will not work.
-
-Available 5 types of snackbar: `"info"`, `"success"`, `"warning"`, `"error"` and `"default"`.</dd>
-
-<dt>Action Content Logic</dt>
-<dd>This handler is to set the snackbar action button content.
-To set the value you can write in settings or use Action Content Logic.
-If Action Content Logic is used, settings value will not work.
-Defaults to "Action"</dd>
-
-<dt>Show Logic</dt>
-<dd>This is a handler to show the snackbar. If true snackbar will appear.</dd>
-
 <dt>onClose Click</dt>
 <dd>This event triggering when user clicks on close button.</dd>
 
@@ -111,4 +89,14 @@ Defaults to "Action"</dd>
 
 Action has input `Show` which can receive logical value true or false. If `true` snackbar will appear if `false`
 snackbar will disappear.</dd>
+
+<dt>Options</dt>
+
+<dd>This action is to call Snackbar with different properties.
+
+Action has inputs to set all properties:  `Show Close Button`, `Show Action Button`, `Auto Hide`, `Auto Hide Duration`
+, `Vertical Position`, `Horizontal Position`, `Snackbar Content`, `Action Button Content`, `Type`. All inputs are
+optional, empty inputs will get data from properties or default. After calling the action, Snackbar will appear with the
+set parameters.
+</dd>
 </dl>

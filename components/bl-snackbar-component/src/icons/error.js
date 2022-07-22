@@ -21,5 +21,5 @@ export function Error() {
         r="1.5">
       </circle>
     </svg>
-  )
+  );
 }

@@ -1,33 +1,33 @@
-import { useMemo } from 'react'
+import { useMemo } from 'react';
 
 export function useClasses(horizontalPosition, verticalPosition, type, visible) {
   return useMemo(() => {
-    const classes = ['bl-customComponent-snackbar']
+    const classes = ['bl-customComponent-snackbar'];
 
     if (horizontalPosition === 'left') {
-      classes.push('bl-customComponent-snackbar_left')
+      classes.push('bl-customComponent-snackbar_left');
     } else if (horizontalPosition === 'center') {
-      classes.push('bl-customComponent-snackbar_centerX')
+      classes.push('bl-customComponent-snackbar_centerX');
     } else {
-      classes.push('bl-customComponent-snackbar_right')
+      classes.push('bl-customComponent-snackbar_right');
     }
 
     if (verticalPosition === 'bottom') {
-      classes.push('bl-customComponent-snackbar_bottom')
+      classes.push('bl-customComponent-snackbar_bottom');
     } else if (verticalPosition === 'center') {
-      classes.push('bl-customComponent-snackbar_centerY')
+      classes.push('bl-customComponent-snackbar_centerY');
     } else {
-      classes.push('bl-customComponent-snackbar_top')
+      classes.push('bl-customComponent-snackbar_top');
     }
 
     if (type) {
-      classes.push(`bl-customComponent-snackbar_${ type }`)
+      classes.push(`bl-customComponent-snackbar_${ type }`);
     }
 
     if (visible) {
-      classes.push('bl-customComponent-snackbar_show')
+      classes.push('bl-customComponent-snackbar_show');
     }
 
-    return classes.join(' ')
-  }, [horizontalPosition, verticalPosition, type, visible])
+    return classes.join(' ');
+  }, [horizontalPosition, verticalPosition, type, visible]);
 }

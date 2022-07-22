@@ -1,6 +1,6 @@
 {
   "id": "c_82fae8bc221e0f6df00c363a12931989",
-  "name": "SnackBar",
+  "name": "Snackbar",
   "description": "Snackbars provide brief notifications.\nSnackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the corner of the screen. They shouldn't interrupt the user experience, and they don't require user input to disappear.",
   "showInToolbox": true,
   "faIcon": "window-maximize",
@@ -12,12 +12,17 @@
       "type": "checkbox",
       "name": "showClose",
       "label": "Show Close Button",
-      "defaultValue": true
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "showAction",
       "label": "Show Action Button",
-      "type": "checkbox"
+      "type": "checkbox",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "defaultValue": false
     },
     {
       "name": "actionContent",
@@ -27,7 +32,9 @@
       "handlerId": "actionContentLogic",
       "dataBinding": true,
       "handlerDescription": "This is a handler to set the text of the action button.",
-      "handlerLabel": "Action Content Logic"
+      "handlerLabel": "Action Content Logic",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "snackContent",
@@ -37,18 +44,24 @@
       "handlerId": "snackContentLogic",
       "handlerLabel": "Snackbar Content Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler to set the text of the snackbar."
+      "handlerDescription": "This is a handler to set the text of the snackbar.",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "checkbox",
       "name": "autoHide",
-      "label": "Auto Hide"
+      "label": "Auto Hide",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "autoHideDuration",
       "label": "Auto Hide Duration",
       "type": "number",
-      "defaultValue": "5000"
+      "defaultValue": "5000",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "select",
@@ -68,7 +81,9 @@
           "value": "bottom",
           "label": "Bottom"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "select",
@@ -88,50 +103,31 @@
           "value": "left",
           "label": "Left"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "select",
       "name": "type",
       "label": "Type",
-      "defaultValue": "default",
-      "handlerId": "type Logic",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
       "handlerLabel": "Type Logic",
       "handlerDescription": "This is a handler to set the type of the snackbar.  There are 5 types of snack bars: \"info\", \"success\", \"warning\", \"error\" or empty.",
-      "dataBinding": true,
-      "options": [
-        {
-          "value": "default",
-          "label": "Default"
-        },
-        {
-          "value": "info",
-          "label": "Info"
-        },
-        {
-          "value": "success",
-          "label": "Success"
-        },
-        {
-          "value": "warning",
-          "label": "Warning"
-        },
-        {
-          "value": "error",
-          "label": "Error"
-        }
-      ]
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
     {
       "name": "onClose",
-      "label": "onClose Click",
+      "label": "On Close",
       "handlerDescription": "This event is fired when the user clicks on the close button."
     },
     {
       "name": "onAction",
-      "label": "onAction Click",
+      "label": "On Action",
       "handlerDescription": "This event is fired when the user clicks on the action button."
     }
   ],
@@ -145,6 +141,48 @@
         }
       ],
       "label": "Visibility"
+    },
+    {
+      "id": "options",
+      "label": "Options",
+      "inputs": [
+        {
+          "id": "showClose",
+          "label": "Show Close Button"
+        },
+        {
+          "id": "showAction",
+          "label": "Show Action Button"
+        },
+        {
+          "id": "actionContent",
+          "label": "Action Button Content"
+        },
+        {
+          "id": "snackContent",
+          "label": "Snackbar Content"
+        },
+        {
+          "id": "autoHide",
+          "label": "Auto Hide"
+        },
+        {
+          "id": "duration",
+          "label": "Auto Hide Duration"
+        },
+        {
+          "id": "vertical",
+          "label": "Vertical Position"
+        },
+        {
+          "id": "horizontal",
+          "label": "Horizontal Position"
+        },
+        {
+          "id": "type",
+          "label": "Type"
+        }
+      ]
     }
   ],
   "blockUI": ""
