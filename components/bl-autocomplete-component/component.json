@@ -21,14 +21,13 @@
       "label": "Placeholder",
       "defaultValue": "Placeholder",
       "handlerId": "placeholderLogic",
-      "handlerLabel": "Placeholder logic"
+      "handlerLabel": "Placeholder Logic"
     },
     {
       "type": "text",
       "name": "options",
-      "label": "Options",
       "handlerId": "optionsLogic",
-      "handlerLabel": "Options logic",
+      "handlerLabel": "Options Logic",
       "dataBinding": true
     },
     {
@@ -51,21 +50,11 @@
         }
       ],
       "handlerId": "autocompleteVariantLogic",
-      "handlerLabel": "Autocomplete Variant Logic"
+      "handlerLabel": "Autocomplete Variant Logic",
+      "handlerDescription": "Autocomplete has three variants, you can choose outlined, standart or filled variant."
     }
   ],
   "eventHandlers": [
-    {
-      "name": "onAutocompleteChange",
-      "label": "On Autocomplete Change",
-      "dataBinding": true,
-      "contextBlocks": [
-        {
-          "id": "autocompleteValue",
-          "label": "Autocomplete value"
-        }
-      ]
-    },
     {
       "name": "onButtonClearClick",
       "label": "On Button Clear Click",

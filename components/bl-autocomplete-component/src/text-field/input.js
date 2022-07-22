@@ -4,6 +4,7 @@ export const Input = forwardRef((props, ref) => {
   const {
     inputValue,
     disabled,
+    autocompleteId,
     autocompleteValue,
     isOptionsOpen,
     onChange,
@@ -24,7 +25,7 @@ export const Input = forwardRef((props, ref) => {
   const handleChange = ({ target: { value } }) => {
     setInputValue(value);
     setIsOptionsOpen(true);
-    
+
     if (onChange) {
       onChange({ inputValue: value });
     }
@@ -41,9 +42,9 @@ export const Input = forwardRef((props, ref) => {
       onClick={ handleClick }
       className="input__container">
       <input
+        id={ autocompleteId }
         ref={ ref }
         type="text"
-        id="autocomplete"
         autoComplete="off"
         value={ value }
         disabled={ disabled }
@@ -51,5 +52,5 @@ export const Input = forwardRef((props, ref) => {
         className="input__field"
       />
     </div>
-  );}
-);
+  );
+});

@@ -5,7 +5,7 @@ import { Option } from './option';
 
 export const Options = props => {
   const {
-    optionsList,
+    optionList,
     autocompleteHeight,
     setInputValue,
     setAutocompleteValue,
@@ -14,23 +14,31 @@ export const Options = props => {
   } = props;
   const optionsRef = useRef();
   const [optionsPlacement, setOptionsPlacement] = useState('bottom');
-  
+
   const useOptionsPlacementProps = {
     optionsRef,
     autocompleteHeight,
     setOptionsPlacement,
   };
-  
+
   useOptionsPlacement(useOptionsPlacementProps);
-  const optionsStyle = getOptionsStyle(optionsPlacement);
+
+  const optionsClasses = () => {
+    const classes = ['options'];
+
+    if (optionsPlacement === 'top') {
+      classes.push('options__placement-top');
+    }
+
+    return classes.join(' ');
+  };
 
   return (
     <div
       ref={ optionsRef }
-      style={ optionsStyle }
-      className="options">
-      {optionsList.length ? (
-        optionsList.map(item => (
+      className={ optionsClasses() }>
+      { optionList.length ? (
+        optionList.map(item => (
           <Option
             key={ item.label }
             item={ item }
@@ -44,18 +52,7 @@ export const Options = props => {
         <div className="option">
           No options
         </div>
-      )}
+      ) }
     </div>
   );
-};
-
-const getOptionsStyle = optionsPlacement => {
-  const margin = optionsPlacement === 'top' ? 'marginBottom' : 'marginTop';
-  
-  return {
-    inset: optionsPlacement === 'top'
-      ? 'auto auto 0 0'
-      : '0 auto auto 0',
-    [margin]: '55px',
-  };
 };

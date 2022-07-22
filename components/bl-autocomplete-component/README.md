@@ -21,8 +21,8 @@ Add a component to your page and add the items to the list.
  ---------------------|--------|-------------------|-------------------------------------------------------------------------------------
   Disabled            | bool   | False             | This property allows you to disable autocomplete.
   Placeholder         | string | Placeholder       | This property allows you to select a label of autocomplete component.
-  Options             | string |                   | This property allows you to add items to be displayed in the options list. In the text field, you need to enter text separated by commas and without spaces.
-  Autocomplete variant| string | Outlined          | This property allows you to select the variant of autocomplete.
+  Options             | array  |                   | This property allows you to add items to be displayed in the options list.
+  Autocomplete variant| string | outlined          | This property allows you to select the variant of autocomplete. Autocomplete has three variants: `outlined`, `standart`, `filled`.
 
 ### Events
 

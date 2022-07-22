@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useAutocompleteClassList, useOnClickOutside, validate } from './helpers';
 import { Options } from './options';
@@ -6,29 +6,31 @@ import { TextField } from './text-field';
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
   const { disabled, placeholder, options, autocompleteVariant, classList } = component;
-  const { onAutocompleteChange } = eventHandlers;
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
+  const [optionList, setOptionList] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [autocompleteValue, setAutocompleteValue] = useState(null);
   const [isAutocompleteActive, setIsAutocompleteActive] = useState(false);
+  
+  useEffect(() => {
+    setOptionList(validate(options));
+  }, [options]);
 
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
-  const optionsList = validate(options).filter(({ label }) => (
+  const filteredOptions = optionList.filter(({ label }) => (
     label.toLowerCase().includes(inputValue.toLowerCase())
   ));
 
-  const classesProps = {
+  const classes = useAutocompleteClassList({
     disabled,
     classList,
     autocompleteValue,
     autocompleteVariant,
     isAutocompleteActive,
-  };
-
-  const classes = useAutocompleteClassList(classesProps);
+  });
 
   const handleClickOutside = useCallback(() => {
     setIsOptionsOpen(false);
@@ -58,12 +60,11 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
       />
       {isOptionsOpen && (
         <Options
-          optionsList={ optionsList }
+          optionList={ filteredOptions }
           autocompleteHeight={ autocompleteHeight }
           setInputValue={ setInputValue }
           setIsOptionsOpen={ setIsOptionsOpen }
           setAutocompleteValue={ setAutocompleteValue }
-          onAutocompleteChange={ onAutocompleteChange }
         />
       )}
     </div>

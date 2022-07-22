@@ -1,11 +1,7 @@
 import { useLayoutEffect } from 'react';
 
 export const useOptionsPlacement = props => {
-  const {
-    optionsRef,
-    autocompleteHeight,
-    setOptionsPlacement,
-  } = props;
+  const { optionsRef, autocompleteHeight, setOptionsPlacement } = props;
   
   useLayoutEffect(() => {
     const handleScroll = () => {

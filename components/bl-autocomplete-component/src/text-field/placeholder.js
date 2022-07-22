@@ -1,22 +1,26 @@
 export const Placeholder = props => {
   const {
     placeholder,
+    autocompleteId,
     autocompleteValue,
     isAutocompleteActive,
   } = props;
 
-  const labelStyle = {
-    transform: isAutocompleteActive || autocompleteValue
-      ? 'translate(14px, -9px) scale(0.75)'
-      : 'translate(14px, 16px) scale(1)',
+  const classes = () => {
+    const classesList = ['placeholder'];
+
+    if (isAutocompleteActive || autocompleteValue) {
+      classesList.push('placeholder__move-up');
+    }
+
+    return classesList.join(' ');
   };
 
   return (
     <label
-      htmlFor="autocomplete"
-      style={ labelStyle }
-      className="placeholder">
-      {placeholder}
+      htmlFor={ autocompleteId }
+      className={ classes() }>
+      { placeholder }
     </label>
   );
 };

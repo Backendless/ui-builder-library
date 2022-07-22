@@ -1,15 +1,9 @@
 import { useMemo } from 'react';
 
 export const useAutocompleteClassList = props => {
-  const {
-    disabled,
-    classList,
-    autocompleteValue,
-    autocompleteVariant,
-    isAutocompleteActive,
-  } = props;
+  const { disabled, classList, autocompleteValue, autocompleteVariant, isAutocompleteActive } = props;
 
-  const classes = useMemo(() => {
+  return useMemo(() => {
     const listOfClasses = ['bl-customComponent-autocomplete', autocompleteVariant, ...classList];
 
     if (autocompleteValue) {
@@ -26,6 +20,4 @@ export const useAutocompleteClassList = props => {
 
     return listOfClasses.join(' ');
   }, [classList, autocompleteValue, isAutocompleteActive]);
-
-  return classes;
 };

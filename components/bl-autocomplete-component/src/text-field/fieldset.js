@@ -5,21 +5,20 @@ export const Fieldset = props => {
     isAutocompleteActive,
   } = props;
 
-  const legendStyle = {
-    maxWidth: isAutocompleteActive || autocompleteValue
-      ? '100%'
-      : '0',
-    transition: isAutocompleteActive || autocompleteValue
-      ? 'max-width 100ms cubic-bezier(0, 0, 0.2, 1) 0ms'
-      : 'max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms',
+  const legendClasses = () => {
+    const classList = ['legend'];
+
+    if (isAutocompleteActive || autocompleteValue) {
+      classList.push('legend__with-label');
+    }
+
+    return classList.join(' ');
   };
 
   return (
     <fieldset className="fieldset">
-      <legend
-        style={ legendStyle }
-        className="legend">
-        {placeholder}
+      <legend className={ legendClasses() }>
+        { placeholder }
       </legend>
     </fieldset>
   );
