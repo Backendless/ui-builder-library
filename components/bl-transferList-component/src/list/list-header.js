@@ -1,4 +1,4 @@
-import { getToggleAllIcon } from '../helpers/get-toggle-all-icon';
+// import { getToggleAllIcon } from '../helpers/get-toggle-all-icon';
 import { Checkbox } from './checkbox';
 
 export const ListHeader = props => {
@@ -23,9 +23,9 @@ export const ListHeader = props => {
     <div className="list__header">
       <Checkbox
         id="checkboxSelectAll"
-        checked={ isAllChecked }
+        isChecked={ isAllChecked }
         iconColor={ iconColor }
-        icon={ getToggleAllIcon(isAllChecked, isIndeterminated) }
+        isIndeterminated={ isIndeterminated }
         onChange={ handleToggleAll }
       />
       <div className="list__header-content">

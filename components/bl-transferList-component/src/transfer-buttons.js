@@ -1,11 +1,54 @@
 export const TransferButtons = props => {
+  const { left, right, leftSelected, rightSelected, enableMoveAll } = props;
+
+  const { moveAllToRight, moveAllToLeft, moveSelectedToLeft, moveSelectedToRight } = useTransferActions(props);
+
+  return (
+    <div className="control-buttons">
+      { enableMoveAll &&
+        <button
+          onClick={ moveAllToRight }
+          disabled={ !left.length }
+          className="control-buttons__item">
+          { MoveIcons.DOUBLE_RIGHT }
+        </button>
+      }
+      <button
+        onClick={ moveSelectedToRight }
+        disabled={ !leftSelected.length }
+        className="control-buttons__item">
+        { MoveIcons.RIGHT }
+      </button>
+      <button
+        onClick={ moveSelectedToLeft }
+        disabled={ !rightSelected.length }
+        className="control-buttons__item">
+        { MoveIcons.LEFT }
+      </button>
+      { enableMoveAll &&
+        <button
+          onClick={ moveAllToLeft }
+          disabled={ !right.length }
+          className="control-buttons__item">
+          { MoveIcons.DOUBLE_LEFT }
+        </button>
+      }
+    </div>
+  );
+};
+
+const MoveIcons = {
+  LEFT: '<',
+  DOUBLE_LEFT: '≪',
+  RIGHT: '>',
+  DOUBLE_RIGHT: '≫',
+};
+
+const useTransferActions = props => {
   const {
-    enableMoveAll,
     allSelected,
     left,
     right,
-    leftSelected,
-    rightSelected,
     setAllSelected,
     setLeft,
     setRight,
@@ -96,36 +139,10 @@ export const TransferButtons = props => {
     }
   };
 
-  return (
-    <div className="control-buttons">
-      { enableMoveAll &&
-        <button
-          onClick={ moveAllToRight }
-          disabled={ !left.length }
-          className="control-buttons__item">
-          ≫
-        </button>
-      }
-      <button
-        onClick={ moveSelectedToRight }
-        disabled={ !leftSelected.length }
-        className="control-buttons__item">
-        &gt;
-      </button>
-      <button
-        onClick={ moveSelectedToLeft }
-        disabled={ !rightSelected.length }
-        className="control-buttons__item">
-        &lt;
-      </button>
-      { enableMoveAll &&
-        <button
-          onClick={ moveAllToLeft }
-          disabled={ !right.length }
-          className="control-buttons__item">
-          ≪
-        </button>
-      }
-    </div>
-  );
+  return {
+    moveAllToRight,
+    moveAllToLeft,
+    moveSelectedToLeft,
+    moveSelectedToRight,
+  };
 };

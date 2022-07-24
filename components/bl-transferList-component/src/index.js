@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { validate } from './helpers/validate';
 import { List } from './list';
@@ -7,10 +7,15 @@ import { TransferButtons } from './transfer-buttons';
 export default function TransferListComponent({ component, eventHandlers }) {
   const { display, listType, leftItems, rightItems, iconColor, classList } = component;
 
-  const [left, setLeft] = useState(validate(leftItems));
-  const [right, setRight] = useState(validate(rightItems));
+  const [left, setLeft] = useState([]);
+  const [right, setRight] = useState([]);
   const [allSelected, setAllSelected] = useState([]);
   const classes = useTransferListClasses(classList);
+
+  useEffect(() => {
+    setLeft(validate(leftItems));
+    setRight(validate(rightItems));
+  }, [leftItems, rightItems]);
 
   const leftSelected = left.filter(item => allSelected.includes(item));
   const rightSelected = right.filter(item => allSelected.includes(item));

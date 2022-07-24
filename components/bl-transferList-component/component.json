@@ -25,7 +25,8 @@
           "value": "enhanced",
           "label": "Enhanced"
         }
-      ]
+      ],
+      "handlerDescription": "The List type property allows you to select the list type. The list type has two variants: basic and enhanced."
     },
     {
       "type": "text",
@@ -70,8 +71,5 @@
         }
       ]
     }
-  ],
-  "actions": [
-    {}
   ]
 }

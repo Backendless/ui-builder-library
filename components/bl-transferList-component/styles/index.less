@@ -44,126 +44,126 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  
+  .list {
+    background-color: @bl-customComponent-transferList-listBackgroundColor;
+    box-shadow: @bl-customComponent-transferList-boxShadow;
+    border-radius: @bl-customComponent-transferList-listBorderRadius;
+  
+    &__header {
+      position: sticky;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: @bl-customComponent-transferList-listHeaderHeight;
+      padding: @bl-customComponent-transferList-listHeaderPadding;
+      box-sizing: border-box;
+      border-bottom: @bl-customComponent-transferList-listHeaderBorderBottom;
+  
+      &-content {
+        flex: 1 1 auto;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        color: @bl-customComponent-transferList-listContentColor;
+        font-size: @bl-customComponent-transferList-listHeaderFontSize;
+        font-weight: 400;
+        line-height: 1.43;
+        letter-spacing: 0.17px;
+      }
+  
+      &-counter {
+        color: @bl-customComponent-transferList-listHeaderCounterColor;
+      }
+    }
+  
+    &__items {
+      width: @bl-customComponent-transferList-itemsWidth;
+      height: @bl-customComponent-transferList-itemsHeight;
+      overflow: auto;
+    }
+  }
 
-.list {
-  background-color: @bl-customComponent-transferList-listBackgroundColor;
-  box-shadow: @bl-customComponent-transferList-boxShadow;
-  border-radius: @bl-customComponent-transferList-listBorderRadius;
+  .control-buttons {
+    display: flex;
+    flex-direction: column;
+  
+    &__item {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 64px;
+      margin: 4px 15px;
+      line-height: 1.75;
+      color: @bl-customComponent-transferList-buttonColor;
+      border: @bl-customComponent-transferList-buttonBorder;
+      border-radius: @bl-customComponent-transferList-buttonBorderRadius;
+      background-color: @bl-customComponent-transferList-buttonBackgroundColor;
+      cursor: pointer;
+      transition: background-color .3s, border-color .3s;
+  
+      &:disabled {
+        cursor: default;
+        pointer-events: none;
+        color: @bl-customComponent-transferList-buttonDisabledColor;
+        border-color: @bl-customComponent-transferList-buttonDisabledBorderColor;
+      }
+  
+      &:hover {
+        text-decoration: none;
+        background-color: transparent;
+        border-color: @bl-customComponent-transferList-buttonHoverColor;
+        color: @bl-customComponent-transferList-buttonHoverColor;
+      }
+    }
+  }
 
-  &__header {
-    position: sticky;
+  .list-item {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: @bl-customComponent-transferList-listHeaderHeight;
-    padding: @bl-customComponent-transferList-listHeaderPadding;
+    padding: @bl-customComponent-transferList-itemPadding;
     box-sizing: border-box;
-    border-bottom: @bl-customComponent-transferList-listHeaderBorderBottom;
-
-    &-content {
+    cursor: pointer;
+  
+    &:hover {
+      background-color: @bl-customComponent-transferList-itemHoverBackgroundColor;
+    }
+  
+    &__content {
       flex: 1 1 auto;
       margin-top: 4px;
       margin-bottom: 4px;
       color: @bl-customComponent-transferList-listContentColor;
-      font-size: @bl-customComponent-transferList-listHeaderFontSize;
-      font-weight: 400;
-      line-height: 1.43;
-      letter-spacing: 0.17px;
-    }
-
-    &-counter {
-      color: @bl-customComponent-transferList-listHeaderCounterColor;
     }
   }
-
-  &__items {
-    width: @bl-customComponent-transferList-itemsWidth;
-    height: @bl-customComponent-transferList-itemsHeight;
-    overflow: auto;
-  }
-}
-
-.control-buttons {
-  display: flex;
-  flex-direction: column;
-
-  &__item {
+  
+  .checkbox {
+    position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-width: 64px;
-    margin: 4px 15px;
-    line-height: 1.75;
-    color: @bl-customComponent-transferList-buttonColor;
-    border: @bl-customComponent-transferList-buttonBorder;
-    border-radius: @bl-customComponent-transferList-buttonBorderRadius;
-    background-color: @bl-customComponent-transferList-buttonBackgroundColor;
-    cursor: pointer;
-    transition: background-color .3s, border-color .3s;
-
-    &:disabled {
-      cursor: default;
-      pointer-events: none;
-      color: @bl-customComponent-transferList-buttonDisabledColor;
-      border-color: @bl-customComponent-transferList-buttonDisabledBorderColor;
+    flex-shrink: 0;
+    width: @bl-customComponent-transferList-checkboxWidth;
+    height: @bl-customComponent-transferList-checkboxWidth;
+    margin-right: @bl-customComponent-transferList-checkboxMarginRight;
+  
+    &__icon {
+      width: @bl-customComponent-transferList-iconWidth;
     }
-
-    &:hover {
-      text-decoration: none;
-      background-color: transparent;
-      border-color: @bl-customComponent-transferList-buttonHoverColor;
-      color: @bl-customComponent-transferList-buttonHoverColor;
+  
+    &__input {
+      cursor: pointer;
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
     }
-  }
-}
-
-.list-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  padding: @bl-customComponent-transferList-itemPadding;
-  box-sizing: border-box;
-  cursor: pointer;
-
-  &:hover {
-    background-color: @bl-customComponent-transferList-itemHoverBackgroundColor;
-  }
-
-  &__content {
-    flex: 1 1 auto;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    color: @bl-customComponent-transferList-listContentColor;
-  }
-}
-
-.checkbox {
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  width: @bl-customComponent-transferList-checkboxWidth;
-  height: @bl-customComponent-transferList-checkboxWidth;
-  margin-right: @bl-customComponent-transferList-checkboxMarginRight;
-
-  &__icon {
-    width: @bl-customComponent-transferList-iconWidth;
-  }
-
-  &__input {
-    cursor: pointer;
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    z-index: 1;
   }
 }

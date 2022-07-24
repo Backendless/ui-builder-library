@@ -1,5 +1,9 @@
+import { getToggleAllIcon } from '../helpers/get-toggle-icon';
+
 export const Checkbox = props => {
-  const { id, icon, value, checked, iconColor, onChange } = props;
+  const { id, value, isChecked, isIndeterminated, iconColor, onChange } = props;
+  
+  const icon = getToggleAllIcon(isChecked, isIndeterminated);
 
   return (
     <div className="checkbox">
@@ -7,7 +11,7 @@ export const Checkbox = props => {
         id={ id }
         type="checkbox"
         value={ value }
-        checked={ checked }
+        checked={ isChecked }
         tabIndex="-1"
         className="checkbox__input"
         onChange={ onChange }

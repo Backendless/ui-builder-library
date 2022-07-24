@@ -2,7 +2,7 @@ export const validate = items => {
   if (!items) {
     return [];
   }
-  
+
   if (typeof items === 'string') {
     return items.split(',').map(item => ({
       objectId: item,
@@ -10,8 +10,10 @@ export const validate = items => {
       label: item,
     }));
   }
-    
+
   if (typeof items === 'object') {
     return Object.values(items);
   }
+
+  return [];
 };
