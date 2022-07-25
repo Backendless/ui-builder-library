@@ -7,22 +7,14 @@ const getIcon = (ratingValue, inputValue, icon) => {
 };
 
 export const RatingIcon = props => {
-  const {
-    icon,
-    iconColor,
-    index,
-    disabled,
-    ratingValue,
-    precision,
-    onChange,
-  } = props;
-  
+  const { icon, iconColor, index, disabled, ratingValue, precision, onChange } = props;
+
   const halfInputValue = index + 0.5;
   const inputValue = index + 1;
 
   return (
     <div className="rating-icon">
-      {precision === '0.5' && (
+      { precision === '0.5' && (
         <HalfPointControll
           icon={ getIcon(ratingValue, halfInputValue, icon) }
           iconColor={ iconColor }
@@ -31,7 +23,7 @@ export const RatingIcon = props => {
           inputValue={ halfInputValue }
           onChange={ onChange }
         />
-      )}
+      ) }
       <FullPointControll
         icon={ getIcon(ratingValue, inputValue, icon) }
         iconColor={ iconColor }

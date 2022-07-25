@@ -17,7 +17,7 @@ Add a component to your page and select the initial rating values.
   Name              | Default value     | Description
  -------------------|-------------------|-------------------------------------------------------------------------------------
   Disabled          | false             | If you need the rating to be disabled, you can click on the `Disabled` checkbox.
-  Icon              | Star              | You can select the icon to be displayed.
+  Icon              | 'star'            | You can select the icon to be displayed. This property has two icons: a `heart` and a `star`.
   Default value     | 0                 | You can select the initial value to be displayed.
   Icons amount      | 5                 | This option is to set the number of icons in the rating.
   Icon color        |                   | This property allows you to change the color of rating icon.

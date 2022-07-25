@@ -19,7 +19,7 @@ export const getIconHoverValue = (rootNode, iconsAmount, clientX, setHoverValue,
   const { width } = rootNode.firstChild.getBoundingClientRect();
   
   const ratingPrecision = Number(precision);
-  const percent = (event.clientX - left) / (width * iconsAmount);
+  const percent = (clientX - left) / (width * iconsAmount);
   const value = iconsAmount * percent + ratingPrecision / 2;
   
   setHoverValue(roundValueToPrecision(value, ratingPrecision).toString());

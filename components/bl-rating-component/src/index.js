@@ -6,16 +6,7 @@ import { RatingIcon } from './rating-icon';
 const iconsList = iconsAmount => new Array(iconsAmount).fill(1);
 
 export default function RatingComponent({ component, eventHandlers }) {
-  const {
-    display,
-    disabled,
-    icon,
-    defaultValue,
-    iconsAmount,
-    iconColor,
-    precision,
-    classList,
-  } = component;
+  const { display, disabled, icon, defaultValue, iconsAmount, iconColor, precision, classList } = component;
   const { onRatingChange } = eventHandlers;
 
   const rootRef = useRef();
@@ -27,22 +18,22 @@ export default function RatingComponent({ component, eventHandlers }) {
   const value = hoverValue || ratingValue;
 
   const handleRatingValue = useCallback(({ target: { value  } }) => {
-    setRatingValue(prevState => prevState === value ? 0: value);
+    setRatingValue(prevState => prevState === value ? 0 : value);
 
     if (onRatingChange) {
-      const requestParams = {
+      const eventContext = {
         curentRating: value,
       };
 
       if (Number(value) === iconsAmount) {
-        requestParams.maxRating = value;
+        eventContext.maxRating = value;
       }
 
       if (value === precision) {
-        requestParams.minRating = value;
+        eventContext.minRating = value;
       }
 
-      onRatingChange(requestParams);
+      onRatingChange(eventContext);
     }
   }, []);
 
