@@ -8,27 +8,39 @@ export const paginationStyle = {
 export const useControlButtonClass = (isDisabled, variant, paginationSize) => {
   const classes = ['pagination__control-button', variant];
 
-  classes.push(isDisabled ? 'pagination__control-button--disabled' : '');
-  classes.push(paginationSize ? `${ variant }--${ paginationSize }` : '');
+  if (isDisabled) {
+    classes.push('pagination__control-button--disabled');
+  }
 
-  return classes.join(' ').trim();
+  if (paginationSize) {
+    classes.push(`${ variant }--${ paginationSize }`);
+  }
+
+  return classes.join(' ');
 };
 
 export const useButtonSvgClass = (size) => {
   const classes = ['pagination__control-button-svg'];
 
-  classes.push(size ? `pagination__control-button-svg--${ size }` : '');
+  if (size) {
+    classes.push(`pagination__control-button-svg--${ size }`);
+  }
 
-  return classes.join(' ').trim();
+  return classes.join(' ');
 };
 
 export const usePageButtonListClass = (currentPage, page, variant, paginationSize) => {
   const classes = ['pagination__page-button', variant];
 
-  classes.push(currentPage === page ? `${ variant }--selected` : '');
-  classes.push(paginationSize ? `${ variant }--${ paginationSize }` : '');
+  if (currentPage === page) {
+    classes.push(`${ variant }--selected`);
+  }
 
-  return classes.join(' ').trim();
+  if (paginationSize) {
+    classes.push(`${ variant }--${ paginationSize }`);
+  }
+
+  return classes.join(' ');
 };
 
 export const usePaginationClasses = (classList) => {
@@ -42,7 +54,9 @@ export const usePaginationClasses = (classList) => {
 export const useDotsClasses = (paginationSize) => {
   const classes = ['pagination__page-dots'];
 
-  classes.push(paginationSize ? `pagination__page-dots--${ paginationSize }` : '');
+  if (paginationSize) {
+    classes.push(`pagination__page-dots--${ paginationSize }`);
+  }
 
-  return classes.join(' ').trim();
+  return classes.join(' ');
 };
