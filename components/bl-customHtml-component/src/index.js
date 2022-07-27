@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
 export default function CustomHtml({ component }) {
-  const { display, customerHtml, classList } = component;
+  const { display, html, classList } = component;
 
-  const [customHtml, setCustomHtml] = useState(customerHtml);
+  const [rawHtml, setRawHtml] = useState(html);
 
   const classes = useClasses(classList);
 
-  component.customerHtmlAction = (html) => {
-    setCustomHtml(html);
+  component.setHtml = (html) => {
+    setRawHtml(html);
   };
 
   if (!display) {
@@ -16,7 +16,7 @@ export default function CustomHtml({ component }) {
   }
 
   return (
-    <div className={ classes } dangerouslySetInnerHTML={ { __html: customHtml } }></div>
+    <div className={ classes } dangerouslySetInnerHTML={ { __html: rawHtml } }></div>
   );
 }
 

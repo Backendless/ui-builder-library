@@ -10,10 +10,10 @@
   "properties": [
     {
       "type": "text",
-      "name": "customerHtml",
+      "name": "html",
       "label": "HTML",
-      "handlerId": "customerHtmlLogic",
-      "handlerLabel": "Customer HTML Logic",
+      "handlerId": "htmlLogic",
+      "handlerLabel": "HTML Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the customer's HTML. "
     }
@@ -21,8 +21,8 @@
   "eventHandlers": [],
   "actions": [
     {
-      "id": "customerHtmlAction",
-      "label": "Customer HTML",
+      "id": "setHtml",
+      "label": "Set HTML",
       "inputs": [
         {
           "id": "html",

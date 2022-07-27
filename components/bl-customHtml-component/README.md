@@ -14,12 +14,12 @@ Custom HTML is a component of Backendless UI-Builder designer. This allows you w
 ### Event Handlers and Bindable Properties
 
 <dl>
-<dt>Customer HTML Logic</dt>
+<dt>HTML Logic</dt>
 <dd>Allows to specify your HTML in Backendless logic</dd>
 </dl>
 
 ### Action
 <dl>
-<dt>Customer HTML</dt>
+<dt>Set HTML</dt>
 <dd>An action that set your custom HTML</dd>
 </dl>
