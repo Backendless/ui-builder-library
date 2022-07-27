@@ -1,0 +1,97 @@
+{
+  "id": "c_65389a69154800d700914c23a6b82ba1",
+  "name": "Multiple Select",
+  "description": "The Multiple Select component can handle multiple selections.",
+  "showInToolbox": true,
+  "faIcon": "list",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disable",
+      "label": "Disable",
+      "handlerId": "disableLogic",
+      "handlerLabel": "Disable Logic",
+      "showInSettings": true,
+      "hasLogicHandler": true
+    },
+    {
+      "name": "options",
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "dataBinding": true,
+      "type": "text",
+      "showInSettings": false,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "label": "Placeholder",
+      "defaultValue": "Placeholder",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "select",
+      "name": "variant",
+      "label": "Variant",
+      "defaultValue": "outlined",
+      "options": [
+        {
+          "value": "outlined",
+          "label": "Outlined"
+        },
+        {
+          "value": "standart ",
+          "label": "Standart"
+        },
+        {
+          "value": "filled",
+          "label": "Filled"
+        }
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "select",
+      "name": "typeOfMultipleSelect",
+      "label": "Type of multiple select",
+      "showInSettings": true,
+      "defaultValue": "checkmark",
+      "hasLogicHandler": false,
+      "handlerId": "typeOfMultipleSelectLogic",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "checkmark",
+          "label": "Checkmark"
+        },
+        {
+          "value": "chip",
+          "label": "Chip"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onMultipleSelectValueChange",
+      "label": "On Multiple Select Value Change",
+      "dataBinding": true,
+      "contextBlocks": [
+        {
+          "id": "multipleSelectValue",
+          "label": "Multiple Select Value"
+        }
+      ]
+    }
+  ],
+  "actions": []
+}
