@@ -1,0 +1,149 @@
+{
+  "id": "c_1505076c978bd1a43a67369c0f255644",
+  "name": "Pagination",
+  "description": "Pagination is a component for switching between pages",
+  "showInToolbox": true,
+  "faIcon": "chevron-circle-right",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "number",
+      "name": "countPages",
+      "label": "Count Pages",
+      "handlerId": "CountPagesLogic",
+      "handlerLabel": "Count Pages Logic",
+      "handlerDescription": "This is a handler for the logic to determine the count of pages.",
+      "defaultValue": "10"
+    },
+    {
+      "type": "number",
+      "name": "siblingCount",
+      "label": "Sibling Count",
+      "defaultValue": "1",
+      "handlerId": "siblingCountLogic",
+      "handlerLabel": "Sibling Count Logic",
+      "handlerDescription": "This is a handler for the logic to determine how many digits to display either side of current page."
+    },
+    {
+      "type": "select",
+      "name": "variant",
+      "label": "Variant",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        },
+        {
+          "value": "rounded-outline",
+          "label": "Rounded-Outline"
+        }
+      ],
+      "defaultValue": "normal"
+    },
+    {
+      "type": "select",
+      "name": "size",
+      "label": "Size",
+      "defaultValue": "",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "",
+          "label": "Normal"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "isNextButton",
+      "label": "Next Button",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "isPrevButton",
+      "label": "Previous Button",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "isFirstPageButton",
+      "label": "First Page Button",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "isLastPageButton",
+      "label": "Last Page Button",
+      "defaultValue": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onCurrentPageChange",
+      "label": "On Current Page Change",
+      "contextBlocks": [
+        {
+          "id": "currentPage",
+          "label": "Current Page"
+        }
+      ],
+      "handlerDescription": "This handler is triggered when the current page changes."
+    },
+    {
+      "name": "onGoNext",
+      "label": "On Go Next",
+      "handlerDescription": "This handler is triggered when the user clicks on next button."
+    },
+    {
+      "name": "onGoBack",
+      "label": "On Go Back",
+      "handlerDescription": "This handler is triggered when the user clicks on back button."
+    },
+    {
+      "name": "onGoFirst",
+      "label": "On Go First",
+      "handlerDescription": "This handler is triggered when the user clicks on first-page button."
+    },
+    {
+      "name": "onGoLast",
+      "label": "On Go Last",
+      "handlerDescription": "This handler is triggered when the user clicks on last-page button."
+    }
+  ],
+  "actions": [
+    {
+      "id": "goNextPage",
+      "label": "Go Next Page"
+    },
+    {
+      "id": "goPreviousPage",
+      "label": "Go Previous Page"
+    },
+    {
+      "id": "goFirstPage",
+      "label": "Go First Page"
+    },
+    {
+      "id": "goLastPage",
+      "label": "Go Last Page"
+    }
+  ]
+}
