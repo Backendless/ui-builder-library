@@ -6,7 +6,7 @@ export const handleOptions = (component, defaultOptions) => {
     imageFadeDuration,
     positionFromTop,
     resizeDuration,
-  } = component
+  } = component;
 
   return {
     imageLabel       : imageLabel || defaultOptions.IMAGE_LABEL,
@@ -15,5 +15,5 @@ export const handleOptions = (component, defaultOptions) => {
     imageFadeDuration: imageFadeDuration || defaultOptions.IMAGE_FADE_DURATION,
     positionFromTop  : positionFromTop || defaultOptions.POSITION_FROM_TOP,
     resizeDuration   : resizeDuration || defaultOptions.RESIZE_DURATION,
-  }
-}
+  };
+};

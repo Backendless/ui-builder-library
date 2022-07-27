@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
-import LightBox from '../lib/lightbox'
-import { replaceArrowBrackets } from '../helpers/string'
-import { GalleryImage } from './gallery-image'
+import LightBox from '../lib/lightbox';
+import { replaceArrowBrackets } from '../helpers/string';
+import { GalleryImage } from './gallery-image';
 
 export function Gallery(props) {
   const {
@@ -18,7 +18,7 @@ export function Gallery(props) {
     imageLabel,
     alwaysShowNavOnTouchDevices,
     shortId,
-  } = props
+  } = props;
 
   useEffect(() => (
     LightBox.option({
@@ -32,14 +32,14 @@ export function Gallery(props) {
       'showImageNumberLabel'       : showImageCount,
       'wrapAround'                 : wrapAround,
     })
-  ), [])
+  ), []);
 
   return (
     <div className="bl-customComponent-lightBox">
       {
         images.map(image => {
-          const { title, url, height } = image
-          const escapedTitle = replaceArrowBrackets(title)
+          const { title, url, height } = image;
+          const escapedTitle = replaceArrowBrackets(title);
 
           return (
             <a
@@ -49,9 +49,9 @@ export function Gallery(props) {
               href={ url }>
               <GalleryImage url={ url } height={ height }/>
             </a>
-          )
+          );
         })
       }
     </div>
-  )
+  );
 }

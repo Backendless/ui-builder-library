@@ -5,5 +5,5 @@ export function GalleryImage({ url, height }) {
       style={ { height: height } }
       className="image"
     />
-  )
+  );
 }
