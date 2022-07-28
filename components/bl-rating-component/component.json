@@ -1,0 +1,106 @@
+{
+  "id": "c_eff6ce09bc06085eabf2b5547fa12404",
+  "name": "Rating",
+  "description": "Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own.",
+  "showInToolbox": true,
+  "faIcon": "star",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "disabled",
+      "label": "Disabled",
+      "type": "checkbox",
+      "defaultValue": false,
+      "handlerId": "disabled",
+      "handlerLabel": "Disabled",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "icon",
+      "label": "Icon",
+      "defaultValue": "star",
+      "handlerId": "icon",
+      "handlerLabel": "Icon",
+      "dataBinding": false,
+      "options": [
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "heart",
+          "label": "Heart"
+        }
+      ]
+    },
+    {
+      "name": "defaultValue",
+      "label": "Default value",
+      "type": "number",
+      "defaultValue": "0",
+      "handlerId": "defaultValue",
+      "dataBinding": true,
+      "handlerLabel": "Default value"
+    },
+    {
+      "name": "iconsAmount",
+      "label": "Icons amount",
+      "type": "number",
+      "defaultValue": "5",
+      "handlerId": "iconsAmount",
+      "handlerLabel": "Icons amont",
+      "dataBinding": true
+    },
+    {
+      "type": "color",
+      "name": "iconColor",
+      "label": "Icon color",
+      "handlerId": "iconColorLogic",
+      "handlerLabel": "Icon color logic",
+      "defaultValue": "#faaf00"
+    },
+    {
+      "type": "select",
+      "name": "precision",
+      "label": "Precision",
+      "defaultValue": "1",
+      "handlerId": "precision",
+      "handlerLabel": "Precision",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "0.5",
+          "label": "0.5"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onRatingChange",
+      "label": "On Rating change",
+      "dataBinding": true,
+      "contextBlocks": [
+        {
+          "label": "Curent Rating",
+          "id": "curentRating"
+        },
+        {
+          "id": "minRating",
+          "label": "Min Rating"
+        },
+        {
+          "id": "maxRating",
+          "label": "Max Rating"
+        }
+      ]
+    }
+  ]
+}
