@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button, Container, Title } from './subcomponents';
+import modalTypes from './modal-types';
 
 export default function SimpleModal({ component, eventHandlers }) {
   const {
@@ -52,8 +53,8 @@ export default function SimpleModal({ component, eventHandlers }) {
       <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms` } }>
         <div onClick={ onClose } className="overlay"></div>
         <div className="simple-modal__content">
-          <Title title={ title }/>
-          { (type === 'prompt' || content) && (
+          <Title content={ title }/>
+          { (type === modalTypes.prompt || content) && (
             <Container
               content={ content }
               type={ type }

@@ -1,8 +1,10 @@
-function SimpleModalInput(props) {
-  const { inputValue, placeholder, onInputValue } = props;
+import modalTypes from './modal-types';
 
-  const onInputChange = (event) => {
-    onInputValue(event.target.value);
+function SimpleModalInput(props) {
+  const { inputValue, placeholder, setInputValue } = props;
+
+  const onChange = (event) => {
+    setInputValue(event.target.value);
   };
 
   return (
@@ -15,7 +17,7 @@ function SimpleModalInput(props) {
           autoComplete="off"
           placeholder={ placeholder }
           value={ inputValue }
-          onChange={ onInputChange }
+          onChange={ onChange }
         />
         <label
           htmlFor="modal-input"
@@ -39,10 +41,10 @@ export function Container(props) {
         </p>
       ) }
 
-      { type === 'prompt' && (
+      { type === modalTypes.prompt && (
         <SimpleModalInput
           inputValue={ inputValue }
-          onInputValue={ setInputValue }
+          setInputValue={ setInputValue }
           placeholder={ placeholder }
         />
       ) }
@@ -50,32 +52,21 @@ export function Container(props) {
   );
 }
 
-export function Title(props) {
-  const { title } = props;
-
-  if (title) {
+export function Title({ content }) {
+  if (!content) {
     return null;
   }
 
   return (
-    <h2 className="simple-modal__title">
-      { title }
-    </h2>
+    <h2 className="simple-modal__title">{ content }</h2>
   );
 }
 
 export function Button(props) {
-  const {
-    type,
-    onClose,
-    onSubmit,
-    inputValue,
-    submitButtonLabel,
-    closeButtonLabel,
-  } = props;
+  const { type, onClose, onSubmit, inputValue, submitButtonLabel, closeButtonLabel } = props;
 
-  const handlerSubmitted = () => {
-    if (type === 'confirm') {
+  const onSubmitHandler = () => {
+    if (type === modalTypes.confirm) {
       onSubmit();
     } else {
       onSubmit({ inputValue });
@@ -92,11 +83,11 @@ export function Button(props) {
         { closeButtonLabel }
       </button>
 
-      { (type === 'prompt' || type === 'confirm') && (
+      { (type === modalTypes.prompt || type === modalTypes.confirm) && (
         <button
           type="button"
           className="simple-modal__button"
-          onClick={ handlerSubmitted }
+          onClick={ onSubmitHandler }
         >
           { submitButtonLabel }
         </button>
