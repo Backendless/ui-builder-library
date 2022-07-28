@@ -15,7 +15,7 @@
 
 @bl-customComponent-optionChip-backgroundColor: @bl-customComponent-optionSelected-backgroundColor;
 
-@boxShadowPrimary: 
+@boxShadowPrimary:
   0px 2px 1px -1px  @themePrimary,
   0px 1px 1px 0px  @themePrimary,
   0px 1px 3px 0px  @themePrimary;
@@ -101,7 +101,7 @@
       max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     z-index: 1;
     pointer-events: none;
-    
+
     &__move-up {
       transform: translate(14px, -9px) scale(0.75);
     }
@@ -159,7 +159,7 @@
       transition: max-width 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
     }
   }
-  
+
   .checkmark {
     position: relative;
     display: inline-flex;
@@ -170,7 +170,7 @@
     color: @bl-customComponent-optionCheckmark-color;
     background-color: transparent;
     user-select: none;
-  
+
     &__input {
       position: absolute;
       opacity: 0;
@@ -180,7 +180,7 @@
       left: 0px;
       z-index: 1;
     }
-  
+
     &__icon {
       display: inline-block;
       width: 24px;
@@ -190,7 +190,7 @@
       transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
   }
-  
+
   .options {
     position: absolute;
     width: 300px;
@@ -204,7 +204,7 @@
     overflow: auto;
     z-index: 100;
   }
-  
+
   .option {
     min-height: 40px;
     display: flex;
@@ -215,28 +215,28 @@
     box-sizing: border-box;
     outline: 0;
     padding: 6px 16px;
-  
+
     &:hover  {
       background: @bl-customComponent-option-backgroundColor-onHover;
     }
-  
+
     &__selected {
       font-weight: 500;
       background-color: @bl-customComponent-optionSelected-backgroundColor;
     }
   }
-  
+
   .option__selected.option:hover {
     background-color: @bl-customComponent-optionSelected-backgroundColor-onHover;
   }
-  
+
   .chip {
     &__items {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
     }
-    
+
     &-item {
       display: inline-flex;
       justify-content: center;
@@ -251,7 +251,7 @@
       box-sizing: border-box;
       cursor: default;
     }
-    
+
     &-item__label {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -269,32 +269,39 @@
 }
 
 .filled {
-  & .multiple-select {
+   & .bl-customComponent-multipleSelect {
     background-color: #4b4a4a7a;
+  }
+
+  & .multiple-select {
     border-bottom: 1px solid @bl-customComponent-multipleSelect-themeColor;
-  
+
     &:hover {
       background-color: #706d6d8e;
       transition: background-color .3s;
     }
   }
-  
+
   & .fieldset {
     border: 0;
   }
 }
-  
+
 .standart {
-  & .multiple-select {
+  &.bl-customComponent-multipleSelect {
     background-color: transparent;
-    border-bottom: 1px solid @bl-customComponent-multipleSelect-themeColor;
   }
-  
-  & .fieldset{
+
+  & .multiple-select {
+    border-bottom: 1px solid @bl-customComponent-multipleSelect-themeColor;
+
+    &:hover {
+      border-color: @bl-customComponent-multipleSelect-borderColor-onHover;
+      transition: border-color .2s;
+    }
+  }
+
+  & .fieldset {
     border: 0;
   }
-}
-
-.no-scroll {
-  overflow: hidden;
 }

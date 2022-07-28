@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
-import { useMultipleSelectClassList, useOnClickOutside, validate } from './helpers';
-import { MultipleSelectField } from './multiple-select-field';
 import { Options } from './options';
+import { MultipleSelectField } from './multiple-select-field';
+import { useOnClickOutside, useMultipleSelectClassList, validate } from './helpers';
 
 export default function MultipleSelectComponent({ component, eventHandlers }) {
   const { display, classList, disable, options, placeholder, variant, typeOfMultipleSelect } = component;
@@ -17,13 +17,7 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     setOptionsList(validate(options));
-
-    if (isOptionsOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-  }, [options, isOptionsOpen]);
+  }, [options])
 
   const handleClickOutside = useCallback(() => {
     if (!isOptionsOpen) {
@@ -40,9 +34,7 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div
-      ref={ rootRef }
-      className={ classes }>
+    <div ref={ rootRef } className={ classes }>
       <MultipleSelectField
         placeholder={ placeholder }
         isOptionsOpen={ isOptionsOpen }
@@ -63,4 +55,4 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
       }
     </div>
   );
-}
+};
