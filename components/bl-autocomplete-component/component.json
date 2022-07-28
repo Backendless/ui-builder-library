@@ -13,7 +13,9 @@
       "name": "disabled",
       "label": "Disabled",
       "handlerId": "disabledLogic",
-      "handlerLabel": "Disabled Logic"
+      "handlerLabel": "Disabled Logic",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
@@ -21,14 +23,18 @@
       "label": "Placeholder",
       "defaultValue": "Placeholder",
       "handlerId": "placeholderLogic",
-      "handlerLabel": "Placeholder Logic"
+      "handlerLabel": "Placeholder Logic",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
       "name": "options",
       "handlerId": "optionsLogic",
       "handlerLabel": "Options Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": false,
+      "hasLogicHandler": true
     },
     {
       "type": "select",
@@ -51,7 +57,9 @@
       ],
       "handlerId": "autocompleteVariantLogic",
       "handlerLabel": "Autocomplete Variant Logic",
-      "handlerDescription": "Autocomplete has three variants, you can choose outlined, standart or filled variant."
+      "handlerDescription": "Autocomplete has three variants, you can choose outlined, standart or filled variant.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     }
   ],
   "eventHandlers": [
@@ -76,6 +84,5 @@
       ],
       "dataBinding": true
     }
-  ],
-  "blockUI": ""
+  ]
 }
