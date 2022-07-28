@@ -26,7 +26,9 @@
           "label": "Enhanced"
         }
       ],
-      "handlerDescription": "The List type property allows you to select the list type. The list type has two variants: basic and enhanced."
+      "handlerDescription": "The List type property allows you to select the list type. The list type has two variants: basic and enhanced.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
@@ -35,7 +37,9 @@
       "handlerId": "leftItemsLogic",
       "handlerLabel": "Left items logic",
       "handlerDescription": "Please enter the items to be displayed on the left in a comma in this field.",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "name": "rightItems",
@@ -44,16 +48,9 @@
       "handlerLabel": "Right items logic",
       "dataBinding": true,
       "handlerDescription": "Please enter the items to be displayed on the right in a comma in this field.",
-      "type": "text"
-    },
-    {
-      "type": "color",
-      "name": "iconColor",
-      "label": "Icon color",
-      "defaultValue": "#28f5be",
-      "handlerId": "iconColorLogic",
-      "handlerLabel": "Icon color logic",
-      "dataBinding": true
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": true
     }
   ],
   "eventHandlers": [
@@ -71,5 +68,6 @@
         }
       ]
     }
-  ]
+  ],
+  "actions": []
 }

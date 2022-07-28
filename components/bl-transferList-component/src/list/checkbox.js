@@ -1,7 +1,7 @@
 import { getToggleAllIcon } from '../helpers/get-toggle-icon';
 
-export const Checkbox = props => {
-  const { id, value, isChecked, isIndeterminated, iconColor, onChange } = props;
+export function Checkbox(props) {
+  const { id, value, isChecked, isIndeterminated, onChange } = props;
   
   const icon = getToggleAllIcon(isChecked, isIndeterminated);
 
@@ -20,7 +20,6 @@ export const Checkbox = props => {
         focusable="false"
         aria-hidden="true"
         viewBox="0 0 24 24"
-        fill={ iconColor }
         className="checkbox__icon">
         <path d={ icon } />
       </svg>

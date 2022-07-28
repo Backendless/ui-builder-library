@@ -1,8 +1,7 @@
-// import { getToggleAllIcon } from '../helpers/get-toggle-all-icon';
 import { Checkbox } from './checkbox';
 
-export const ListHeader = props => {
-  const { items, title, selected, iconColor, setAllSelected } = props;
+export function ListHeader(props) {
+  const { items, title, selected, setAllSelected } = props;
 
   const isAllChecked = items.length > 0 && items.length === selected.length;
   const isIndeterminated = selected.length > 0 && !isAllChecked;
@@ -24,7 +23,6 @@ export const ListHeader = props => {
       <Checkbox
         id="checkboxSelectAll"
         isChecked={ isAllChecked }
-        iconColor={ iconColor }
         isIndeterminated={ isIndeterminated }
         onChange={ handleToggleAll }
       />

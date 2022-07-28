@@ -4,21 +4,23 @@ import { validate } from './helpers/validate';
 import { List } from './list';
 import { TransferButtons } from './transfer-buttons';
 
-export default function TransferListComponent({ component, eventHandlers }) {
-  const { display, listType, leftItems, rightItems, iconColor, classList } = component;
+const ENHANCED = 'enhanced';
 
+export default function TransferListComponent({ component, eventHandlers }) {
+  const { display, listType, leftItems, rightItems, classList } = component;
+  
   const [left, setLeft] = useState([]);
   const [right, setRight] = useState([]);
   const [allSelected, setAllSelected] = useState([]);
   const classes = useTransferListClasses(classList);
-
+  
   useEffect(() => {
     setLeft(validate(leftItems));
     setRight(validate(rightItems));
   }, [leftItems, rightItems]);
 
-  const leftSelected = left.filter(item => allSelected.includes(item));
-  const rightSelected = right.filter(item => allSelected.includes(item));
+  const leftSelected = useMemo(() => left.filter(item => allSelected.includes(item)), [allSelected]);
+  const rightSelected = useMemo(() => right.filter(item => allSelected.includes(item)), [allSelected]);
 
   if (!display) {
     return null;
@@ -28,15 +30,14 @@ export default function TransferListComponent({ component, eventHandlers }) {
     <div className={ classes }>
       <List
         title="Choices"
-        iconColor={ iconColor }
-        enableSelectAll={ listType === 'enhanced' }
+        enableSelectAll={ listType === ENHANCED }
         items={ left }
         selected={ leftSelected }
         allSelected={ allSelected }
         setAllSelected={ setAllSelected }
       />
       <TransferButtons
-        enableMoveAll={ listType !== 'enhanced' }
+        enableMoveAll={ listType !== ENHANCED }
         allSelected={ allSelected }
         left={ left }
         right={ right }
@@ -49,8 +50,7 @@ export default function TransferListComponent({ component, eventHandlers }) {
       />
       <List
         title="Chosen"
-        iconColor={ iconColor }
-        enableSelectAll={ listType === 'enhanced' }
+        enableSelectAll={ listType === ENHANCED }
         items={ right }
         selected={ rightSelected }
         allSelected={ allSelected }

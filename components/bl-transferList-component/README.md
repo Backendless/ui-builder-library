@@ -17,12 +17,12 @@ Add a component to your page and add the items to the list.
 
 ### Component Properties
 
-  Name              | Default value     | Description
- -------------------|-------------------|-------------------------------------------------------------------------------------
-  List type         | Basic             | This property allows you to select a list with or without a title.
-  Left items        |                   | You can add items to be displayed in the left list.
-  Right items       |                   | You can add items to be displayed in the right list.
-  Icon color        |                   | This property allows you to change the color of checkbox icon.
+  Name          | Type                | Default value    | Description
+ ---------------|---------------------|------------------|------------------------------------------------------------------------------
+  List type     | 'basic', 'enhanced' | 'basic'          | This property allows you to select a list with or without a title.
+  Left items    | array               |                  | You can add items to be displayed in the left list.
+  Right items   | array               |                  | You can add items to be displayed in the right list.
+  Icon color    | string              |                  | This property allows you to change the color of checkbox icon.
 
 ### Events
 
