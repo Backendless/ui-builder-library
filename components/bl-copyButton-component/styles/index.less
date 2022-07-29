@@ -1,0 +1,33 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+.copy-button {
+  background: @buttonContainedBackground;
+  color: @buttonContainedColor;
+  border-radius: @buttonContainedBorderRadius;
+  border: 0;
+  outline: 0;
+  padding: 6px 16px;
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  &:not(.copy-button--disabled) {
+    &:hover {
+      box-shadow: @buttonContainedShadowHover;
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: @buttonContainedShadowActive;
+    }
+  }
+
+  &--copied {
+    background: darken(@buttonContainedBackground, 15%);
+  }
+
+  &--disabled {
+    background: @buttonContainedDisabledBackground;
+    color: @buttonContainedDisabledColor;
+    cursor: auto;
+  }
+}
