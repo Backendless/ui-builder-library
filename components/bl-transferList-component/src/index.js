@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { validate } from './helpers/validate';
+import { getMapFromObjectsArray, validate } from './helpers';
 import { List } from './list';
 import { TransferButtons } from './transfer-buttons';
 
@@ -18,9 +18,10 @@ export default function TransferListComponent({ component, eventHandlers }) {
     setLeft(validate(leftItems));
     setRight(validate(rightItems));
   }, [leftItems, rightItems]);
-
-  const leftSelected = useMemo(() => left.filter(item => allSelected.includes(item)), [allSelected]);
-  const rightSelected = useMemo(() => right.filter(item => allSelected.includes(item)), [allSelected]);
+  
+  const allSelectedMap = getMapFromObjectsArray(allSelected);
+  const leftSelected = useMemo(() => left.filter(({ objectId }) => allSelectedMap[objectId]), [allSelected]);
+  const rightSelected = useMemo(() => right.filter(({ objectId }) => allSelectedMap[objectId]), [allSelected]);
 
   if (!display) {
     return null;

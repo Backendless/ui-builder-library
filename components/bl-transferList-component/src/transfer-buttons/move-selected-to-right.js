@@ -1,13 +1,16 @@
+import { getMapFromObjectsArray } from '../helpers';
+
 export function MoveSelectedToRight(props) {
   const { left, right, allSelected, leftSelected, setLeft, setRight, setAllSelected, onChange } = props;
   
   const moveSelectedToRight = () => {
     const newRightItems = right.concat(leftSelected);
-    const newLeftItems = left.filter(item => !leftSelected.includes(item));
+    const leftSelectedMap = getMapFromObjectsArray(leftSelected);
+    const newLeftItems = left.filter(({ objectId }) => !leftSelectedMap[objectId]);
 
     setRight(newRightItems);
     setLeft(newLeftItems);
-    setAllSelected(allSelected.filter(item => !leftSelected.includes(item)));
+    setAllSelected(allSelected.filter(({ objectId }) => !leftSelectedMap[objectId]));
 
     if (onChange) {
       onChange({

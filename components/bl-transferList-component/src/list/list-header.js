@@ -1,3 +1,4 @@
+import { getMapFromObjectsArray } from '../helpers';
 import { Checkbox } from './checkbox';
 
 export function ListHeader(props) {
@@ -9,12 +10,17 @@ export function ListHeader(props) {
   const handleToggleAll = ({ target: { checked } }) => {
     if (checked) {
       setAllSelected(prevState => {
-        const selectedItems = items.filter(item => !prevState.includes(item));
+        const prevStateMap = getMapFromObjectsArray(prevState);
+        const selectedItems = items.filter(({ objectId }) => !prevStateMap[objectId]);
 
         return prevState.concat(selectedItems);
       });
     } else {
-      setAllSelected(prevState => prevState.filter(item => !items.includes(item)));
+      setAllSelected(prevState => {         
+        const prevStateMap = getMapFromObjectsArray(prevState);
+
+        return prevState.filter(({ objectId }) => !prevStateMap[objectId]);
+      });
     }
   };
 

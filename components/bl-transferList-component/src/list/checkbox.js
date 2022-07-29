@@ -1,4 +1,4 @@
-import { getToggleAllIcon } from '../helpers/get-toggle-icon';
+import { getToggleAllIcon } from '../helpers';
 
 export function Checkbox(props) {
   const { id, value, isChecked, isIndeterminated, onChange } = props;

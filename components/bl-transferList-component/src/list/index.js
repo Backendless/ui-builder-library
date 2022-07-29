@@ -29,7 +29,7 @@ export function List(props) {
       <div className="list__items">
         { items.map(item => {
           const isChecked = allSelected.some(({ objectId }) => item.objectId === objectId);
-
+          
           return (
             <ListItem
               key={ item.objectId }
