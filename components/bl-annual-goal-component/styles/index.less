@@ -12,13 +12,13 @@
   color: @bl-customComponent-annualGoal-textColor;
   width: 100%;
   height: auto;
-  
+
   .gauge-chart {
     width: 100%;
     max-width: 301px;
     margin-right: auto;
     margin-left: auto;
-    
+
     &__wrap {
       position: relative;
       width: 100%;
@@ -28,15 +28,14 @@
       border-top-right-radius: 100% 200%;
       overflow: hidden;
     }
-    
+
     &__body {
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: #FFFFFF;
-      opacity: 0.25;
+      background-color: #3932323b;
     }
-    
+
     &__fill {
       position: absolute;
       top: 100%;
@@ -48,7 +47,7 @@
       transform: rotate(0.25turn);
       transition: transform .2s ease-out;
     }
-    
+
     &__cover {
       position: absolute;
       width: 65%;
@@ -58,7 +57,7 @@
       top: 33%;
       left: 50%;
       transform: translateX(-50%);
-    
+
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -66,7 +65,7 @@
       padding-bottom: 22%;
       box-sizing: border-box;
     }
-    
+
     &__progress {
       &-number {
         font-size: 34px;
@@ -74,14 +73,14 @@
         line-height: 37.5px;
         margin-bottom: 4px;
       }
-      
+
       &-percent {
         font-size: 13px;
         font-weight: 700;
         line-height: 16px;
       }
     }
-    
+
     &__info {
       width: auto;
       height: auto;
@@ -89,7 +88,7 @@
       justify-content: space-between;
       font-size: 15px;
       margin-top: 10px;
-      
+
       &-wrap {
         text-align: center;
         width: 18%;
@@ -104,7 +103,7 @@
     .gauge-chart {
       max-width: 450px;
     }
-    
+
     .header {
       margin-bottom: 104px;
     }
