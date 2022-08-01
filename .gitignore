@@ -1,2 +1,5 @@
-**/dist
-**/node_modules
+components/**/dist
+components/**/node_modules
+
+templates/**/dist
+templates/**/node_modules
