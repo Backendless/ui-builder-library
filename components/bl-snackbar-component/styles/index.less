@@ -12,74 +12,110 @@
 @bl-customComponent-snackBar-error-color-text: contrast(@themePrimary);
 
 .bl-customComponent-snackbar {
-  padding: 16px 6px;
-  border-radius: 4px;
-  color: @bl-customComponent-snackBar-text-color;
   position: absolute;
-  background: @bl-customComponent-snackBar-background-color;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0.3s linear, opacity 0.3s linear;
   display: flex;
-  word-break: break-word;
-  justify-content: space-between;
+  flex-direction: column;
   min-width: 300px;
   z-index: 1;
 
-  &_show {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .text {
-    padding: 0 5px;
+  .message {
     display: flex;
-
-    .content {
-      margin-left: 5px;
-      line-height: 24px;
-    }
-  }
-
-  .icon {
-    fill: @bl-customComponent-snackBar-text-color;
-    width: 22px;
-  }
-
-  .buttons {
-    display: flex;
-  }
-
-  .close {
-    padding: 0;
-    height: 24px;
-    width: 24px;
-    word-break: normal;
-    border-radius: 12px;
-    background-color: transparent;
+    padding: 16px 6px;
+    border-radius: 4px;
     color: @bl-customComponent-snackBar-text-color;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s;
+    background: @bl-customComponent-snackBar-background-color;
+    word-break: break-word;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    max-width: 500px;
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
+    .text {
+      padding: 0 5px;
+      display: flex;
+
+      .content {
+        max-width: 380px;
+        margin-left: 5px;
+        line-height: 24px;
+      }
     }
-  }
 
-  .action {
-    height: max-content;
-    word-break: normal;
-    align-self: center;
-    background-color: transparent;
-    border: none;
-    border-radius: 2px;
-    padding: 3px;
-    color: @bl-customComponent-snackBar-text-color;
+    .icon {
+      fill: @bl-customComponent-snackBar-text-color;
+      width: 22px;
+    }
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
+    .buttons {
+      display: flex;
+    }
+
+    .close {
+      padding: 0;
+      height: 24px;
+      width: 24px;
+      word-break: normal;
+      border-radius: 12px;
+      background-color: transparent;
+      color: @bl-customComponent-snackBar-text-color;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .action {
+      height: max-content;
+      word-break: normal;
+      align-self: center;
+      background-color: transparent;
+      border: none;
+      border-radius: 2px;
+      padding: 3px;
+      color: @bl-customComponent-snackBar-text-color;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &_success {
+      background-color: @bl-customComponent-snackBar-success-background-color;
+      color: @bl-customComponent-snackBar-success-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-success-color-text;
+      }
+    }
+
+    &_info {
+      background-color: @bl-customComponent-snackBar-info-background-color;
+      color: @bl-customComponent-snackBar-info-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-info-color-text;
+      }
+    }
+
+    &_warning {
+      background-color: @bl-customComponent-snackBar-warning-background-color;
+      color: @bl-customComponent-snackBar-warning-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-warning-color-text;
+      }
+    }
+
+    &_error {
+      background-color: @bl-customComponent-snackBar-error-background-color;
+      color: @bl-customComponent-snackBar-error-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-error-color-text;
+      }
     }
   }
 
@@ -107,41 +143,5 @@
   &_centerY {
     top: 50%;
     transform: translateY(-50%);
-  }
-
-  &_success {
-    background-color: @bl-customComponent-snackBar-success-background-color;
-    color: @bl-customComponent-snackBar-success-color-text;
-
-    .close {
-      color: @bl-customComponent-snackBar-success-color-text;
-    }
-  }
-
-  &_info {
-    background-color: @bl-customComponent-snackBar-info-background-color;
-    color: @bl-customComponent-snackBar-info-color-text;
-
-    .close {
-      color: @bl-customComponent-snackBar-info-color-text;
-    }
-  }
-
-  &_warning {
-    background-color: @bl-customComponent-snackBar-warning-background-color;
-    color: @bl-customComponent-snackBar-warning-color-text;
-
-    .close {
-      color: @bl-customComponent-snackBar-warning-color-text;
-    }
-  }
-
-  &_error {
-    background-color: @bl-customComponent-snackBar-error-background-color;
-    color: @bl-customComponent-snackBar-error-color-text;
-
-    .close {
-      color: @bl-customComponent-snackBar-error-color-text;
-    }
   }
 }

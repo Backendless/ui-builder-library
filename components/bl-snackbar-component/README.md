@@ -70,6 +70,7 @@ Default background color: #d84646
 | Snackbar Content        | "Snackbar info" | This option is to set the snackbar text. Value: String                                                                                                                                     |
 | Action Button Content   | "Action"        | This option is to set the action button text. Works only if "Show Action Button" is `true`. Value: String                                                                                  |
 | Type                    | Default         | This option is to set the type of snackbar. Available 5 types: `Info`, `Success`, `Warning`, `Error` and `Default`. Value: String ('info', 'success', 'warning', 'error' or '').           |
+| Max Snacks on Page      | 3               | This option is to set the number of maximum visible snackbars. Value: Number from 0.                                                                                                       |
 
 ### Event Handlers and Bindable Properties
 
@@ -84,18 +85,11 @@ Default background color: #d84646
 ### Actions
 
 <dl>
-<dt>Visibility</dt>
-<dd>This action is to toggle visibility of snackbar.
-
-Action has input `Show` which can receive logical value true or false. If `true` snackbar will appear if `false`
-snackbar will disappear.</dd>
-
-<dt>Options</dt>
+<dt>Create</dt>
 
 <dd>This action is to call Snackbar with different properties.
 
-Action has inputs to set all properties:  `Show Close Button`, `Show Action Button`, `Auto Hide`, `Auto Hide Duration`
-, `Vertical Position`, `Horizontal Position`, `Snackbar Content`, `Action Button Content`, `Type`. All inputs are
+Action has inputs to set all properties:  `Show Close Button`, `Show Action Button`, `Snackbar Content`, `Action Button Content`, `Type`. All inputs are
 optional, empty inputs will get data from properties or default. After calling the action, Snackbar will appear with the
 set parameters.
 </dd>

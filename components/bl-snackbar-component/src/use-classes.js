@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-export function useClasses(horizontalPosition, verticalPosition, type, visible) {
+export const useClasses = (horizontalPosition, verticalPosition) => {
   return useMemo(() => {
     const classes = ['bl-customComponent-snackbar'];
 
@@ -20,14 +20,6 @@ export function useClasses(horizontalPosition, verticalPosition, type, visible) 
       classes.push('bl-customComponent-snackbar_top');
     }
 
-    if (type) {
-      classes.push(`bl-customComponent-snackbar_${ type }`);
-    }
-
-    if (visible) {
-      classes.push('bl-customComponent-snackbar_show');
-    }
-
     return classes.join(' ');
-  }, [horizontalPosition, verticalPosition, type, visible]);
-}
+  }, [horizontalPosition, verticalPosition]);
+};
