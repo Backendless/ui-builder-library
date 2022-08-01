@@ -10,10 +10,10 @@ export const Options = props => {
     setMultipleSelectValue,
     onMultipleSelectValueChange,
   } = props;
-  
+
   const multipleSelectRef = useRef(null);
   const [margin, setMargin] = useState(0);
-  
+
   useEffect(() => {
     const viewPortHeight = window.innerHeight;
     const multipleSelectBottom = multipleSelectRef.current?.getBoundingClientRect()?.bottom;
@@ -22,23 +22,23 @@ export const Options = props => {
       setMargin(multipleSelectBottom - viewPortHeight);
     }
   }, [multipleSelectRef]);
-  
+
   const handleMultipleSelectValue = option => {
     let newMultipleSelectValue;
     const isOptionSelected = multipleSelectValue.find(({ objectId }) => objectId === option.objectId);
 
     if (!isOptionSelected) {
       const selectedItems = [...multipleSelectValue, option];
-      
+
       newMultipleSelectValue = typeOfMultipleSelect === 'default'
         ? options.filter(item => selectedItems.includes(item))
         : selectedItems;
     } else {
       newMultipleSelectValue = multipleSelectValue.filter(({ objectId }) => objectId !== isOptionSelected.objectId);
     }
-    
+
     setMultipleSelectValue(newMultipleSelectValue);
-    
+
     if (onMultipleSelectValueChange) {
       onMultipleSelectValueChange({ multipleSelectValue: newMultipleSelectValue });
     }
@@ -47,7 +47,7 @@ export const Options = props => {
   return (
     <div className="options" style={{ transform: `translateY(-${margin}px)` }} ref={ multipleSelectRef }>
       { options.map(option => {
-        const isOptionSelected = multipleSelectValue.find(({ objectId }) => objectId === option.objectId);
+        const isOptionSelected = multipleSelectValue.some(({ objectId }) => objectId === option.objectId);
 
         return (
           <Option
