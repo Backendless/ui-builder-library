@@ -1,0 +1,42 @@
+{
+  "id": "c_547e1646f25c0cb4174f73866622d7c7",
+  "name": "Annual Goal",
+  "description": "The annual goal component is a chart whose purpose is to show the goal and the progress that has already been made.",
+  "showInToolbox": true,
+  "faIcon": "chart-area",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disable",
+      "label": "Disable",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "disableLogic"
+    },
+    {
+      "type": "number",
+      "name": "goal",
+      "label": "Goal",
+      "showInSettings": true,
+      "defaultValue": "100000",
+      "hasLogicHandler": true,
+      "handlerId": "goalLogic",
+      "handlerLabel": "Goal Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "progress",
+      "label": "Progress",
+      "showInSettings": true,
+      "defaultValue": "50000",
+      "hasLogicHandler": true,
+      "handlerId": "progressLogic",
+      "handlerLabel": "Progress Logic",
+      "dataBinding": true
+    }
+  ]
+}
