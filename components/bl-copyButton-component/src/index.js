@@ -1,13 +1,12 @@
 import { useState, useMemo } from 'react';
 
+const { cn } = BackendlessUI.CSSUtils;
+
 export default function CopyButton({ component, eventHandlers }) {
   const { display, classList, isDisabled, content, copyLabel, copiedLabel, copiedDuration } = component;
   const { onCopy } = eventHandlers;
 
   const [isCopied, setIsCopied] = useState(false);
-
-  const classes = useClasses(classList);
-  const copyButtonClasses = useCopyButtonClasses(isCopied, isDisabled);
 
   component.copy = () => {
     navigator.clipboard.writeText(content).then(() => {
@@ -24,9 +23,9 @@ export default function CopyButton({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ classes }>
+    <div className={ cn('bl-customComponent-copyButton', classList) }>
       <button
-        className={ copyButtonClasses }
+        className={ cn('copy-button', { 'copy-button--disabled': isDisabled, 'copy-button--copied': isCopied }) }
         type="button"
         disabled={ isDisabled || isCopied }
         onClick={ onCopy }>
@@ -35,23 +34,3 @@ export default function CopyButton({ component, eventHandlers }) {
     </div>
   );
 }
-
-const useClasses = (classList) => useMemo(() => {
-  const classes = ['bl-customComponent-copyButton', ...classList];
-
-  return classes.join(' ');
-}, [classList]);
-
-const useCopyButtonClasses = (isCopied, isDisabled) => useMemo(() => {
-  const classes = ['copy-button'];
-
-  if (isDisabled) {
-    classes.push('copy-button--disabled');
-  }
-
-  if (isCopied) {
-    classes.push('copy-button--copied');
-  }
-
-  return classes.join(' ');
-}, [isCopied, isDisabled]);
