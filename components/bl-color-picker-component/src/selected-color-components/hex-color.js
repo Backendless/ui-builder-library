@@ -1,24 +1,19 @@
+const ValidHexLengths = [4, 7, 9];
+
 export function HexColor(props) {
   const {
     colorPickerRef,
     hexFormat,
     setHexFormat,
-    hexInputBorderColor,
+    borderColor,
     setHexInputBorderColor,
-    currentColor,
+    backgroundColor,
   } = props;
 
   const changeHex = e => {
-    let hexInputValue = e.target.value;
-    const validHexLengths = [4, 7, 9];
+    const hexInputValue = validate(e.target.value);
 
-    if (hexInputValue[0] === '#' && hexInputValue[1] === '#') {
-      hexInputValue = hexInputValue.slice(1);
-    } else if (hexInputValue[0] !== '#') {
-      hexInputValue = '#' + hexInputValue;
-    }
-
-    if (validHexLengths.includes(hexInputValue.length)) {
+    if (ValidHexLengths.includes(hexInputValue.length)) {
       colorPickerRef.current.color.hexString = hexInputValue;
     } else {
       setHexInputBorderColor('#ff0000');
@@ -31,24 +26,30 @@ export function HexColor(props) {
     navigator.clipboard.writeText(hexFormat);
   };
 
-  const styles = {
-    borderColor: hexInputBorderColor,
-  };
-
   return (
     <div className="hex-type">
       <label>
         <span>HEX:</span>
-        <input type="text" className="hex-input" style={ styles } value={ hexFormat } onChange={ changeHex }/>
+        <input type="text" className="hex-input" style={{ borderColor }} value={ hexFormat } onChange={ changeHex }/>
       </label>
-      <span className="current-color" style={{ backgroundColor: currentColor }}/>
-      <i
-        title="copy"
-        className="copy-button material-icons-round"
-        aria-hidden="true"
-        onClick={ copyColorValue }>
-        content_copy
-      </i>
+      <span className="current-color" style={{ backgroundColor }}/>
+      <CopyButton onClick={ copyColorValue }/>
     </div>
+  );
+}
+
+function validate(inputValue) {
+  return inputValue.replace(/#/g, '').replace(/(.*)/, '#$1');
+}
+
+function CopyButton({ onClick }) {
+  return (
+    <i
+      title="copy"
+      className="copy-button material-icons-round"
+      aria-hidden="true"
+      onClick={ onClick }>
+      content_copy
+    </i>
   );
 }

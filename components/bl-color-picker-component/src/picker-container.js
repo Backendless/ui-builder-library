@@ -1,85 +1,36 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
-import iro from './lib/iro.min';
+import { useIroLibrary } from './helpers/use-iro-library';
 import { SelectedColor } from './selected-color';
 
-export function PickerContainer(props) {
-  const { component, onChangeColor, currentColor, setCurrentColor, pickerVisibility } = props;
-  const {
-    selectedColor,
-    verticalColorPicker,
-    circleColorPicker,
-    opacitySliderVisibility,
-    pickerTriggerVisibility,
-  } = component;
+export function PickerContainer(options) {
+  const { component, currentColor, pickerVisibility } = options;
+  const { pickerTriggerVisibility, verticalColorPicker } = component;
 
   const elRef = useRef(null);
-  const colorPickerRef = useRef(null);
-  const [hexFormat, setHexFormat] = useState('');
-  const [rgbFormat, setRgbFormat] = useState({});
-  const [hslFormat, setHslFormat] = useState({});
-  const [alpha, setAlpha] = useState(1);
-  const [hexInputBorderColor, setHexInputBorderColor] = useState('');
-
-  useEffect(() => {
-    colorPickerRef.current = new iro.ColorPicker(elRef.current, {
-      width          : 150,
-      color          : selectedColor,
-      layoutDirection: !verticalColorPicker && 'horizontal',
-      handleSvg      : '#handle',
-      layout         : [
-        {
-          component: circleColorPicker ? iro.ui.Wheel : iro.ui.Box,
-          options  : {
-            wheelLightness: false,
-          },
-        },
-        {
-          component: !circleColorPicker && iro.ui.Slider,
-          options  : {
-            sliderType: 'hue',
-          },
-        },
-        {
-          component: circleColorPicker && iro.ui.Slider,
-          options  : {
-            sliderType: 'value',
-          },
-        },
-        {
-          component: opacitySliderVisibility && iro.ui.Slider,
-          options  : {
-            sliderType: 'alpha',
-          },
-        },
-      ],
-    });
-
-    colorPickerRef.current.on(['color:init', 'color:change'], function(color) {
-      setHexFormat(color.hexString);
-      setRgbFormat(color.rgb);
-      setHslFormat(color.hsl);
-      setAlpha(color.alpha);
-      setCurrentColor(color.hex8String);
-      setHexInputBorderColor('');
-
-      component.selectedColor = color.hex8String;
-
-      if (onChangeColor) {
-        const selectedColor = color.hex8String;
-        onChangeColor({ selectedColor });
-      }
-    });
-  }, []);
+  const {
+    colorPickerRef,
+    hexFormat,
+    setHexFormat,
+    hexInputBorderColor,
+    setHexInputBorderColor,
+    rgbFormat,
+    hslFormat,
+    alpha,
+  } = useIroLibrary(elRef, options);
 
   const styles = {
     display : pickerVisibility ? 'block' : 'none',
     position: pickerTriggerVisibility ? 'absolute' : 'relative',
   };
 
+  const pickerDirection = {
+    display: verticalColorPicker ? 'block' : 'flex',
+  };
+
   return (
     <div className="picker-container" style={ styles }>
-      <div style={{ display: verticalColorPicker ? 'block' : 'flex' }}>
+      <div style={ pickerDirection }>
         <div className="wrapper">
           <div className="picker" ref={ elRef }></div>
           <svg className="picker-handler">

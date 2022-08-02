@@ -21,24 +21,26 @@ export function SelectedColor(props) {
         colorPickerRef={ colorPickerRef }
         hexFormat={ hexFormat }
         setHexFormat={ setHexFormat }
-        hexInputBorderColor={ hexInputBorderColor }
+        borderColor={ hexInputBorderColor }
         setHexInputBorderColor={ setHexInputBorderColor }
-        currentColor={ currentColor }
+        backgroundColor={ currentColor }
       />
-      { colorFormatsVisibility && <div className="color-types">
-        <ColorType
-          colorPickerRef={ colorPickerRef }
-          colorFormat={ rgbFormat }
-          visibility={ rgbFormatVisibility }
-          type="rgb"
-        />
-        <ColorType
-          colorPickerRef={ colorPickerRef }
-          colorFormat={ hslFormat }
-          visibility={ hslFormatVisibility }
-          type="hsl"
-        />
-      </div> }
+      { colorFormatsVisibility && (
+        <div className="color-types">
+          <ColorType
+            colorPickerRef={ colorPickerRef }
+            colorFormat={ rgbFormat }
+            visibility={ rgbFormatVisibility }
+            type="rgb"
+          />
+          <ColorType
+            colorPickerRef={ colorPickerRef }
+            colorFormat={ hslFormat }
+            visibility={ hslFormatVisibility }
+            type="hsl"
+          />
+        </div> 
+      )}
       <ColorOpacity
         colorPickerRef={ colorPickerRef }
         alpha={ alpha }

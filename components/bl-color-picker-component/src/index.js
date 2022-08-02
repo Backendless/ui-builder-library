@@ -3,12 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { PickerContainer } from './picker-container';
 import { PickerTrigger } from './picker-trigger';
 
+const { cn } = BackendlessUI.CSSUtils;
+
 export default function ColorPickerComponent({ component, eventHandlers }) {
-  const { display, classList, pickerTriggerVisibility } = component;
+  const { display, classList, pickerTriggerVisibility, selectedColor } = component;
   const { onChangeColor } = eventHandlers;
 
   const pickerContainerRef = useRef(null);
-  const [currentColor, setCurrentColor] = useState('');
+  const [currentColor, setCurrentColor] = useState(selectedColor);
   const [pickerVisibility, setPickerVisibility] = useState(!pickerTriggerVisibility);
 
   const handleClickOutsidePicker = e => {
@@ -39,7 +41,7 @@ export default function ColorPickerComponent({ component, eventHandlers }) {
   return (
     <div
       ref={ pickerContainerRef }
-      className={ 'bl-customComponent-color-picker ' + classList.join(' ') }
+      className={ cn(classList, 'bl-customComponent-color-picker') }
       style={ styles }>
       <PickerTrigger
         pickerTriggerVisibility={ pickerTriggerVisibility }

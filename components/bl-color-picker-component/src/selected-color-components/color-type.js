@@ -9,21 +9,14 @@ export function ColorType(props) {
 
   return (
     <div className={ `${ type }-type` }>
-      <ColorCharacter
-        inputMarker={ type[0].toUpperCase() }
-        inputValue={ colorFormat[type[0]] }
-        onChange={ makeChangeHandler(colorPickerRef, type, type[0]) }
-      />
-      <ColorCharacter
-        inputMarker={ type[1].toUpperCase() }
-        inputValue={ colorFormat[type[1]] }
-        onChange={ makeChangeHandler(colorPickerRef, type, type[1]) }
-      />
-      <ColorCharacter
-        inputMarker={ type[2].toUpperCase() }
-        inputValue={ colorFormat[type[2]] }
-        onChange={ makeChangeHandler(colorPickerRef, type, type[2]) }
-      />
+      { type.split('').map((value, index) => (
+        <ColorCharacter
+          key={ index }
+          inputMarker={ value.toUpperCase() }
+          inputValue={ colorFormat[value] }
+          onChange={ makeChangeHandler(colorPickerRef, type, value) }
+        />
+      ))}
     </div>
   );
 }
