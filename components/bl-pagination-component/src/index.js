@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { usePagination } from './use-pagination';
-import { usePaginationClasses, paginationStyle } from './helpers';
+import { paginationStyle } from './helpers';
 import { BackButton, NextButton, FirstPageButton, LastPageButton, PageButtonList } from './subcomponents';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 export default function Pagination({ component, eventHandlers }) {
   const {
@@ -21,7 +23,6 @@ export default function Pagination({ component, eventHandlers }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const pages = usePagination(countPages, currentPage, siblingCount);
-  const paginationClasses = usePaginationClasses(classList);
 
   component.goNextPage = () => {
     if (currentPage !== countPages) {
@@ -52,7 +53,7 @@ export default function Pagination({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ paginationClasses }>
+    <div className={ cn('bl-customComponent-pagination', classList) }>
       <div className="pagination">
         <FirstPageButton
           isFirstPageButton={ isFirstPageButton }

@@ -1,6 +1,8 @@
 import { DOTS } from './use-pagination';
-import { useControlButtonClass, usePageButtonListClass, useDotsClasses } from './helpers';
+import { useControlButtonClass, usePageButtonListClass } from './helpers';
 import { FirstPageButtonSvg, LastPageButtonSvg, NextArrowSvg, BackArrowSvg } from './buttons-svg';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 export function BackButton(props) {
   const { onGoBack, isPrevButton, currentPage, paginationSize, variant } = props;
@@ -17,8 +19,7 @@ export function BackButton(props) {
       className={ classes }
       type="button"
       disabled={ isDisabled }
-      onClick={ onGoBack }
-    >
+      onClick={ onGoBack }>
       <BackArrowSvg size={ paginationSize }/>
     </button>
   );
@@ -39,8 +40,7 @@ export function NextButton(props) {
       className={ classes }
       type="button"
       disabled={ isDisabled }
-      onClick={ onGoNext }
-    >
+      onClick={ onGoNext }>
       <NextArrowSvg size={ paginationSize }/>
     </button>
   );
@@ -61,8 +61,7 @@ export function FirstPageButton(props) {
       className={ classes }
       type="button"
       disabled={ isDisabled }
-      onClick={ onGoFirst }
-    >
+      onClick={ onGoFirst }>
       <FirstPageButtonSvg size={ paginationSize }/>
     </button>
   );
@@ -83,8 +82,7 @@ export function LastPageButton(props) {
       className={ classes }
       type="button"
       disabled={ isDisabled }
-      onClick={ onGoLast }
-    >
+      onClick={ onGoLast }>
       <LastPageButtonSvg size={ paginationSize }/>
     </button>
   );
@@ -92,7 +90,6 @@ export function LastPageButton(props) {
 
 export function PageButtonList(props) {
   const { pages, currentPage, setCurrentPage, paginationSize, variant } = props;
-  const dotsClasses = useDotsClasses(paginationSize);
 
   return (
     <ul className="pagination__button-list">
@@ -100,7 +97,9 @@ export function PageButtonList(props) {
         if (page === DOTS) {
           return (
             <li>
-              <div className={ dotsClasses }>{ DOTS }</div>
+              <div className={ cn('pagination__dots', { [`pagination__dots--${ paginationSize }`]: paginationSize }) }>
+                { DOTS }
+              </div>
             </li>
           );
         }
@@ -110,8 +109,7 @@ export function PageButtonList(props) {
             <button
               type="button"
               className={ usePageButtonListClass(currentPage, page, variant, paginationSize) }
-              onClick={ () => setCurrentPage(page) }
-            >
+              onClick={ () => setCurrentPage(page) }>
               { page }
             </button>
           </li>
