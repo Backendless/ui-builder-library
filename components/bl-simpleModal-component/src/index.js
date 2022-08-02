@@ -17,7 +17,7 @@ export default function SimpleModal({ component, eventHandlers }) {
   const { onClose, onSubmit, onInputValueChange } = eventHandlers;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(true);
+  const [isClosing, setIsClosing] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   const { rootClasses, modalClasses } = useClasses(classList, isClosing);
@@ -27,13 +27,13 @@ export default function SimpleModal({ component, eventHandlers }) {
 
     setTimeout(() => {
       setIsOpen(false);
+      setIsClosing(false)
       setInputValue('');
     }, closingDuration);
   };
 
   component.openModal = () => {
     setIsOpen(true);
-    setIsClosing(false);
   };
 
   useEffect(() => {
