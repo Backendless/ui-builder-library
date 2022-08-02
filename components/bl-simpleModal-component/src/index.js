@@ -79,10 +79,10 @@ export default function SimpleModal({ component, eventHandlers }) {
 }
 
 const useClasses = (classList, isClosing) => {
-  const rootClasses = 'bl-customComponent-simple-modal ' + classList.join(' ');
+  const rootClasses = ['bl-customComponent-simple-modal ', ...classList];
   const modalClasses = ['simple-modal'];
 
   modalClasses.push(isClosing ? 'close-modal' : 'open-modal');
 
-  return { rootClasses, modalClasses: modalClasses.join(' ') };
+  return { rootClasses: rootClasses.join(' '), modalClasses: modalClasses.join(' ') };
 };
