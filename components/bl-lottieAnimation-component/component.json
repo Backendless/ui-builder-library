@@ -1,0 +1,87 @@
+{
+  "id": "c_504f59e174691c07414cf698d88cc7a5",
+  "name": "Lottie Animation",
+  "description": "This component allows you to upload and add animations",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "data",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dataLogic",
+      "dataBinding": true,
+      "label": "Data",
+      "handlerDescription": "This is a handler for the logic to determine the data for animation."
+    },
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "defaultValue": "svg",
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
+      "options": [
+        {
+          "value": "svg",
+          "label": "Svg"
+        },
+        {
+          "value": "canvas",
+          "label": "Canvas"
+        },
+        {
+          "value": "html",
+          "label": "HTML"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "isLoop",
+      "label": "Loop",
+      "handlerId": "isLoopLogic",
+      "handlerLabel": "Loop Logic",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerDescription": "This is a handler for the logic to determine the looping or non-looping animation."
+    },
+    {
+      "type": "checkbox",
+      "name": "isStopped",
+      "label": "Stopped",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "isStoppedLogic",
+      "handlerDescription": "This is a handler for the logic of determining whether the animation is stopped or not.",
+      "handlerLabel": "Stopped Logic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onHover",
+      "label": "On Hover",
+      "handlerDescription": "This handler is triggered when the user hovers on an animation."
+    },
+    {
+      "name": "onUnhover",
+      "label": "On Unhover",
+      "handlerDescription": "This handler is triggered when the user moves the cursor away from the animation."
+    }
+  ],
+  "actions": [
+    {
+      "id": "stopAnimation",
+      "label": "Stop Animation"
+    },
+    {
+      "id": "playAnimation",
+      "label": "Play Animation"
+    }
+  ]
+}
