@@ -1,11 +1,5 @@
 export const Option = props => {
-  const {
-    item,
-    setInputValue,
-    setAutocompleteValue,
-    setIsOptionsOpen,
-    onAutocompleteChange,
-  } = props;
+  const { item, setInputValue, setAutocompleteValue, setIsOptionsOpen, onAutocompleteChange } = props;
 
   const handleClick = () => {
     setInputValue('');
@@ -16,7 +10,7 @@ export const Option = props => {
       onAutocompleteChange({ autocompleteValue: item });
     }
   };
-
+  
   const onEnterClick = ({ key }) => {
     if (key === 'Enter') {
       handleClick();
@@ -30,7 +24,7 @@ export const Option = props => {
       <span
         tabIndex={ 1 }
         onKeyUp={ onEnterClick }>
-        { item.label }
+        {item.label}
       </span>
     </div>
   );

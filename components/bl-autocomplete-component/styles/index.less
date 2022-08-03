@@ -3,7 +3,7 @@
 @bl-customComponent-autocomplete-backgroundColor: @appBackgroundColor;
 @bl-customComponent-autocomplete-textColor: @appTextColor;
 @backgroundColorOnHoverPrimary: #28f5be0a;
-@boxShadowPrimary:
+@boxShadowPrimary: 
   0px 2px 1px -1px  @themePrimary,
   0px 1px 1px 0px  @themePrimary,
   0px 1px 3px 0px  @themePrimary;
@@ -24,7 +24,7 @@
   border-radius: @bl-customComponent-autocomplete-borderRadius;
   display: block;
   width: 300px;
-
+  
   .autocomplete {
     color: @bl-customComponent-autocomplete-textColor;
     position: relative;
@@ -36,7 +36,7 @@
     border: 0;
     vertical-align: top;
     width: 100%;
-
+  
     &__text-field {
       position: relative;
       display: inline-flex;
@@ -52,7 +52,7 @@
       border-radius: @bl-customComponent-autocomplete-borderRadius;
     }
   }
-
+  
   .options {
     position: absolute;
     width: 300px;
@@ -66,13 +66,13 @@
     color: @bl-customComponent-autocomplete-textColor;
     overflow: auto;
     z-index: 100;
-
+    
     &__placement-top {
       margin-bottom: 55px;
       inset: auto auto 0 0;
     }
   }
-
+  
   .option {
     min-height: 40px;
     display: flex;
@@ -83,12 +83,12 @@
     box-sizing: border-box;
     outline: 0;
     padding: @bl-customComponent-autocomplete-optionPadding;
-
+  
     &:hover  {
       background-color: @bl-customComponent-autocomplete-optionBackgroundColorOnHover;
     }
   }
-
+  
   .placeholder {
     position: absolute;
     display: block;
@@ -111,13 +111,13 @@
       max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     z-index: 1;
     pointer-events: none;
-
+    
     &__move-up {
       transform: translate(14px, -9px) scale(0.75);
     }
   }
-
-
+  
+  
   .button-container {
     position: absolute;
     right: 9px;
@@ -125,7 +125,7 @@
     height: 28px;
     transform: translateY(-45%);
   }
-
+  
   .button {
     position: relative;
     display: inline-flex;
@@ -140,19 +140,19 @@
     overflow: visible;
     padding: 2px;
     margin-right: -2px;
-
+  
     &__popup-up {
       transform: rotate(180deg);
     }
   }
-
+  
   .icon {
     display: inline-block;
     fill: @bl-customComponent-autocomplete-iconFill;
     width: 24px;
     height: 24px;
   }
-
+  
   .input {
     &__container {
       display: block;
@@ -164,7 +164,7 @@
       margin: 0;
       animation-duration: 10ms;
     }
-
+  
     &__field {
       font-size: 16px;
       max-width: 225px;
@@ -175,13 +175,13 @@
       opacity: 1;
       border: 0;
       flex-grow: 1;
-
+  
       &:focus {
         outline: 0;
       }
     }
   }
-
+  
   .fieldset {
     position: absolute;
     text-align: left;
@@ -192,7 +192,7 @@
     pointer-events: none;
     overflow: hidden;
   }
-
+  
   .legend {
     float: unset;
     overflow: hidden;
@@ -205,7 +205,7 @@
     visibility: hidden;
     transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     white-space: nowrap;
-
+    
     &__with-label {
       max-width: 100%;
       transition: max-width 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
@@ -223,32 +223,32 @@
   & .autocomplete {
     background-color: #4b4a4a7a;
     border-bottom: 1px solid @bl-customComponent-autocomplete-themeColor;
-
+  
     &:hover {
       background-color: #706d6d8e;
       transition: background-color .3s;
     }
   }
-
+  
   & .fieldset {
     border: 0;
   }
 }
-
+  
 .standart {
   &.bl-customComponent-autocomplete {
     background-color: transparent;
   }
-
+  
   & .autocomplete {
     border-bottom: 1px solid @bl-customComponent-autocomplete-themeColor;
     transition: border-bottom-color .2s;
-
+    
     &:hover {
       border-bottom-color: @bl-customComponent-autocomplete-borderColor-onHover;
     }
   }
-
+  
   & .fieldset {
     border: 0;
   }

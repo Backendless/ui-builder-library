@@ -27,8 +27,9 @@ export const TextField = forwardRef((props, ref) => {
 
   const handleClick = () => {
     inputRef.current.focus();
+    
     if (!disabled) {
-    setIsAutocompleteActive(true);
+      setIsAutocompleteActive(true);
     }
   };
 

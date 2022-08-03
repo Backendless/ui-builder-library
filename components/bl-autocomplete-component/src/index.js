@@ -1,36 +1,41 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { useAutocompleteClassList, useOnClickOutside, validate } from './helpers';
+import { useOnClickOutside, validate } from './helpers';
 import { Options } from './options';
 import { TextField } from './text-field';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
   const { disabled, placeholder, options, autocompleteVariant, classList } = component;
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
-  const [optionList, setOptionList] = useState([]);
+  const [optionsList, setOptionsList] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [autocompleteValue, setAutocompleteValue] = useState(null);
   const [isAutocompleteActive, setIsAutocompleteActive] = useState(false);
-  
+
   useEffect(() => {
-    setOptionList(validate(options));
+    setOptionsList(validate(options));
   }, [options]);
 
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
-  const filteredOptions = optionList.filter(({ label }) => (
+  const filteredOptions = optionsList.filter(({ label }) => (
     label.toLowerCase().includes(inputValue.toLowerCase())
   ));
 
-  const classes = useAutocompleteClassList({
-    disabled,
-    classList,
-    autocompleteValue,
+  const classes = cn(
+    'bl-customComponent-autocomplete',
     autocompleteVariant,
-    isAutocompleteActive,
-  });
+    ...classList,
+    {
+      disabled,
+      ['has-clear-button']: autocompleteValue,
+      ['autocomplete-focused']: isAutocompleteActive,
+    }
+  );
 
   const handleClickOutside = useCallback(() => {
     setIsOptionsOpen(false);

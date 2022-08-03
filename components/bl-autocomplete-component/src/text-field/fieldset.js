@@ -1,24 +1,12 @@
+const { cn } = BackendlessUI.CSSUtils;
+
 export const Fieldset = props => {
-  const {
-    placeholder,
-    autocompleteValue,
-    isAutocompleteActive,
-  } = props;
-
-  const legendClasses = () => {
-    const classList = ['legend'];
-
-    if (isAutocompleteActive || autocompleteValue) {
-      classList.push('legend__with-label');
-    }
-
-    return classList.join(' ');
-  };
+  const {  placeholder,  autocompleteValue, isAutocompleteActive } = props;
 
   return (
     <fieldset className="fieldset">
-      <legend className={ legendClasses() }>
-        { placeholder }
+      <legend className={ cn('legend', { ['legend__with-label']: isAutocompleteActive || autocompleteValue }) }>
+        {placeholder}
       </legend>
     </fieldset>
   );

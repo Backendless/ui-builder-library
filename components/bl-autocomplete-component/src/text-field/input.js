@@ -11,21 +11,13 @@ export const Input = forwardRef((props, ref) => {
     setInputValue,
     setIsOptionsOpen,
   } = props;
-
-  let value;
-
-  if (!autocompleteValue) {
-    value = inputValue;
-  } else if (!inputValue && autocompleteValue) {
-    value = autocompleteValue?.label;
-  } else {
-    value = inputValue;
-  }
+  
+  const value = validateValue(inputValue, autocompleteValue);
 
   const handleChange = ({ target: { value } }) => {
     setInputValue(value);
     setIsOptionsOpen(true);
-
+    
     if (onChange) {
       onChange({ inputValue: value });
     }
@@ -54,3 +46,13 @@ export const Input = forwardRef((props, ref) => {
     </div>
   );
 });
+
+const validateValue = (inputValue, autocompleteValue) => {
+  if (!autocompleteValue) {
+    return inputValue;
+  } else if (!inputValue && autocompleteValue) {
+    return autocompleteValue?.label;
+  }
+  
+  return inputValue;
+};
