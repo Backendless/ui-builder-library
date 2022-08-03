@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { usePagination } from './use-pagination';
-import { paginationStyle } from './helpers';
-import { BackButton, NextButton, FirstPageButton, LastPageButton, PageButtonList } from './subcomponents';
+import { BackButton, NextButton, FirstPageButton, LastPageButton, PageList } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -9,12 +7,12 @@ export default function Pagination({ component, eventHandlers }) {
   const {
     display,
     classList,
-    countPages,
+    pageCount,
     siblingCount,
-    isNextButton,
-    isPrevButton,
-    isFirstPageButton,
-    isLastPageButton,
+    isNextButtonVisible,
+    isPrevButtonVisible,
+    isFirstPageButtonVisible,
+    isLastPageButtonVisible,
     size,
     variant,
   } = component;
@@ -22,10 +20,8 @@ export default function Pagination({ component, eventHandlers }) {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const pages = usePagination(countPages, currentPage, siblingCount);
-
   component.goNextPage = () => {
-    if (currentPage !== countPages) {
+    if (currentPage !== pageCount) {
       setCurrentPage(state => state + 1);
     }
   };
@@ -37,11 +33,11 @@ export default function Pagination({ component, eventHandlers }) {
   };
 
   component.goFirstPage = () => {
-    setCurrentPage(pages[0]);
+    setCurrentPage(1);
   };
 
   component.goLastPage = () => {
-    setCurrentPage(pages[pages.length - 1]);
+    setCurrentPage(pageCount);
   };
 
   useEffect(() => {
@@ -56,45 +52,46 @@ export default function Pagination({ component, eventHandlers }) {
     <div className={ cn('bl-customComponent-pagination', classList) }>
       <div className="pagination">
         <FirstPageButton
-          isFirstPageButton={ isFirstPageButton }
+          isFirstPageButtonVisible={ isFirstPageButtonVisible }
           onGoFirst={ onGoFirst }
           currentPage={ currentPage }
           paginationSize={ size }
-          variant={ paginationStyle[variant] }
+          variant={ variant }
         />
 
         <BackButton
           onGoBack={ onGoBack }
-          isPrevButton={ isPrevButton }
+          isPrevButtonVisible={ isPrevButtonVisible }
           currentPage={ currentPage }
           paginationSize={ size }
-          variant={ paginationStyle[variant] }
+          variant={ variant }
         />
 
-        <PageButtonList
-          pages={ pages }
+        <PageList
+          pageCount={ pageCount }
           currentPage={ currentPage }
+          siblingCount={ siblingCount }
           setCurrentPage={ setCurrentPage }
           paginationSize={ size }
-          variant={ paginationStyle[variant] }
+          variant={ variant }
         />
 
         <NextButton
           onGoNext={ onGoNext }
-          isNextButton={ isNextButton }
+          isNextButtonVisible={ isNextButtonVisible }
           currentPage={ currentPage }
-          lastPage={ countPages }
+          lastPage={ pageCount }
           paginationSize={ size }
-          variant={ paginationStyle[variant] }
+          variant={ variant }
         />
 
         <LastPageButton
-          isLastPageButton={ isLastPageButton }
+          isLastPageButtonVisible={ isLastPageButtonVisible }
           onGoLast={ onGoLast }
           currentPage={ currentPage }
-          lastPage={ countPages }
+          lastPage={ pageCount }
           paginationSize={ size }
-          variant={ paginationStyle[variant] }
+          variant={ variant }
         />
       </div>
     </div>

@@ -8,7 +8,7 @@ The component based on external [pagination](https://mui.com/material-ui/react-p
 ### Styles and Settings
 
 <dl>
-<dt>Count Pages</dt>
+<dt>Page Count</dt>
 <dd>Allows determinate how many pages. Default value 10.</dd>
 <dt>Sibling Count</dt>
 <dd>Allows determinate how many digits to display either side of current page. Default value 1.</dd>
@@ -29,7 +29,7 @@ The component based on external [pagination](https://mui.com/material-ui/react-p
 ### Event Handlers and Bindable Properties
 
 <dl>
-<dt>Count Page Logic</dt>
+<dt>Page Count Logic</dt>
 <dd>Allows to specify count of pages for pagination in Backendless logic</dd>
 <dt>Sibling Count Logic</dt>
 <dd>Allows to specify sibling count for pagination in Backendless logic</dt>

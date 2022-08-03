@@ -1,16 +1,16 @@
-import { DOTS } from './use-pagination';
-import { useControlButtonClass, usePageButtonListClass } from './helpers';
-import { FirstPageButtonSvg, LastPageButtonSvg, NextArrowSvg, BackArrowSvg } from './buttons-svg';
+import { DOTS, usePagination } from './use-pagination';
+import { useControlButtonClasses, usePageListClasses } from './helpers';
+import { ArrowNextIcon, ArrowBackIcon, FirstPageIcon, LastPageIcon } from './buttons-svg';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function BackButton(props) {
-  const { onGoBack, isPrevButton, currentPage, paginationSize, variant } = props;
+  const { onGoBack, isPrevButtonVisible, currentPage, paginationSize, variant } = props;
   const isDisabled = currentPage === 1;
 
-  const classes = useControlButtonClass(isDisabled, variant, paginationSize);
+  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
 
-  if (!isPrevButton) {
+  if (!isPrevButtonVisible) {
     return null;
   }
 
@@ -20,18 +20,18 @@ export function BackButton(props) {
       type="button"
       disabled={ isDisabled }
       onClick={ onGoBack }>
-      <BackArrowSvg size={ paginationSize }/>
+      <ArrowBackIcon size={ paginationSize }/>
     </button>
   );
 }
 
 export function NextButton(props) {
-  const { onGoNext, isNextButton, currentPage, lastPage, paginationSize, variant } = props;
+  const { onGoNext, isNextButtonVisible, currentPage, lastPage, paginationSize, variant } = props;
   const isDisabled = currentPage === lastPage;
 
-  const classes = useControlButtonClass(isDisabled, variant, paginationSize);
+  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
 
-  if (!isNextButton) {
+  if (!isNextButtonVisible) {
     return null;
   }
 
@@ -41,18 +41,18 @@ export function NextButton(props) {
       type="button"
       disabled={ isDisabled }
       onClick={ onGoNext }>
-      <NextArrowSvg size={ paginationSize }/>
+      <ArrowNextIcon size={ paginationSize }/>
     </button>
   );
 }
 
 export function FirstPageButton(props) {
-  const { isFirstPageButton, onGoFirst, currentPage, paginationSize, variant } = props;
+  const { isFirstPageButtonVisible, onGoFirst, currentPage, paginationSize, variant } = props;
   const isDisabled = currentPage === 1;
 
-  const classes = useControlButtonClass(isDisabled, variant, paginationSize);
+  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
 
-  if (!isFirstPageButton) {
+  if (!isFirstPageButtonVisible) {
     return null;
   }
 
@@ -62,18 +62,18 @@ export function FirstPageButton(props) {
       type="button"
       disabled={ isDisabled }
       onClick={ onGoFirst }>
-      <FirstPageButtonSvg size={ paginationSize }/>
+      <FirstPageIcon size={ paginationSize }/>
     </button>
   );
 }
 
 export function LastPageButton(props) {
-  const { isLastPageButton, onGoLast, currentPage, lastPage, paginationSize, variant } = props;
+  const { isLastPageButtonVisible, onGoLast, currentPage, lastPage, paginationSize, variant } = props;
   const isDisabled = currentPage === lastPage;
 
-  const classes = useControlButtonClass(isDisabled, variant, paginationSize);
+  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
 
-  if (!isLastPageButton) {
+  if (!isLastPageButtonVisible) {
     return null;
   }
 
@@ -83,17 +83,20 @@ export function LastPageButton(props) {
       type="button"
       disabled={ isDisabled }
       onClick={ onGoLast }>
-      <LastPageButtonSvg size={ paginationSize }/>
+      <LastPageIcon size={ paginationSize }/>
     </button>
   );
 }
 
-export function PageButtonList(props) {
-  const { pages, currentPage, setCurrentPage, paginationSize, variant } = props;
+export function PageList(props) {
+  const { pageCount, siblingCount, currentPage, setCurrentPage, paginationSize, variant } = props;
+  const pages = usePagination(pageCount, currentPage, siblingCount);
 
   return (
     <ul className="pagination__button-list">
       { pages.map((page) => {
+        const classes = usePageListClasses(currentPage, page, variant, paginationSize);
+
         if (page === DOTS) {
           return (
             <li>
@@ -108,7 +111,7 @@ export function PageButtonList(props) {
           <li>
             <button
               type="button"
-              className={ usePageButtonListClass(currentPage, page, variant, paginationSize) }
+              className={ classes }
               onClick={ () => setCurrentPage(page) }>
               { page }
             </button>

@@ -1,13 +1,6 @@
 import { useMemo } from 'react';
 
-export const paginationStyle = {
-  'normal'         : 'button',
-  'outline'        : 'button-outline',
-  'rounded'        : 'button-rounded',
-  'rounded-outline': 'button-rounded-outline'
-};
-
-export const useControlButtonClass = (isDisabled, variant, paginationSize) => useMemo(() => {
+export const useControlButtonClasses = (isDisabled, variant, paginationSize) => useMemo(() => {
   const classes = ['pagination__control-button', variant];
 
   if (isDisabled) {
@@ -21,7 +14,7 @@ export const useControlButtonClass = (isDisabled, variant, paginationSize) => us
   return classes.join(' ');
 }, [isDisabled, variant, paginationSize]);
 
-export const usePageButtonListClass = (currentPage, page, variant, paginationSize) => useMemo(() => {
+export const usePageListClasses = (currentPage, page, variant, paginationSize) => useMemo(() => {
   const classes = ['pagination__page-button', variant];
 
   if (currentPage === page) {

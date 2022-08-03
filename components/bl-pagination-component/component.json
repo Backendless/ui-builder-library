@@ -10,10 +10,10 @@
   "properties": [
     {
       "type": "number",
-      "name": "countPages",
-      "label": "Count Pages",
-      "handlerId": "CountPagesLogic",
-      "handlerLabel": "Count Pages Logic",
+      "name": "pageCount",
+      "label": "Page Count",
+      "handlerId": "PageCountLogic",
+      "handlerLabel": "Page Count Logic",
       "handlerDescription": "This is a handler for the logic to determine the count of pages.",
       "defaultValue": "10"
     },
@@ -32,19 +32,19 @@
       "label": "Variant",
       "options": [
         {
-          "value": "normal",
+          "value": "button",
           "label": "Normal"
         },
         {
-          "value": "outline",
+          "value": "button-outline",
           "label": "Outline"
         },
         {
-          "value": "rounded",
+          "value": "button-rounded",
           "label": "Rounded"
         },
         {
-          "value": "rounded-outline",
+          "value": "button-rounded-outline",
           "label": "Rounded-Outline"
         }
       ],
@@ -72,25 +72,25 @@
     },
     {
       "type": "checkbox",
-      "name": "isNextButton",
+      "name": "isNextButtonVisible",
       "label": "Next Button",
       "defaultValue": true
     },
     {
       "type": "checkbox",
-      "name": "isPrevButton",
+      "name": "isPrevButtonVisible",
       "label": "Previous Button",
       "defaultValue": true
     },
     {
       "type": "checkbox",
-      "name": "isFirstPageButton",
+      "name": "isFirstPageButtonVisible",
       "label": "First Page Button",
       "defaultValue": true
     },
     {
       "type": "checkbox",
-      "name": "isLastPageButton",
+      "name": "isLastPageButtonVisible",
       "label": "Last Page Button",
       "defaultValue": true
     }
@@ -131,19 +131,19 @@
   "actions": [
     {
       "id": "goNextPage",
-      "label": "Go Next Page"
+      "label": "Go to Next Page"
     },
     {
       "id": "goPreviousPage",
-      "label": "Go Previous Page"
+      "label": "Go to Previous Page"
     },
     {
       "id": "goFirstPage",
-      "label": "Go First Page"
+      "label": "Go to First Page"
     },
     {
       "id": "goLastPage",
-      "label": "Go Last Page"
+      "label": "Go to Last Page"
     }
   ]
 }
