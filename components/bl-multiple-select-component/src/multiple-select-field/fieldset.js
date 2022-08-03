@@ -1,29 +1,15 @@
-export const Fieldset = ({ placeholder, multipleSelectValue, isMultipleSelectActive }) => {
-  const legendClasses = () => {
-    const classList = ['legend'];
+const { cn } = BackendlessUI.CSSUtils;
 
-    if (isMultipleSelectActive || multipleSelectValue.length > 0) {
-      classList.push('legend__with-label');
-    }
-
-    return classList.join(' ');
-  };
-
-  const fieldsetClasses = () => {
-    const classList = ['fieldset'];
-
-    if (isMultipleSelectActive) {
-      classList.push('fieldset__active');
-    }
-
-    return classList.join(' ');
-  };
-
+export function Fieldset({ placeholder, multipleSelectValue, isMultipleSelectActive }) {
   return (
-    <fieldset className={ fieldsetClasses() }>
-      <legend className={ legendClasses() }>
+    <fieldset className={ cn("fieldset", { ["fieldset__active"]: isMultipleSelectActive }) }>
+      <legend className={
+        cn(
+          "legend",
+          { ["legend__with-label"]: isMultipleSelectActive || multipleSelectValue.length > 0 }
+        ) }>
         { placeholder }
       </legend>
     </fieldset>
   );
-};
+}

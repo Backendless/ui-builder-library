@@ -61,7 +61,7 @@
       "name": "typeOfMultipleSelect",
       "label": "Type of multiple select",
       "showInSettings": true,
-      "defaultValue": "checkmark",
+      "defaultValue": "default",
       "hasLogicHandler": false,
       "handlerId": "typeOfMultipleSelectLogic",
       "options": [
@@ -92,6 +92,5 @@
         }
       ]
     }
-  ],
-  "actions": []
+  ]
 }

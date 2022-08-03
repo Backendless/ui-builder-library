@@ -1,14 +1,14 @@
 import { Chip } from './chip';
 
-export const Input = props => {
+export function Input(props) {
   const { multipleSelectId, multipleSelectValue, typeOfMultipleSelect } = props;
   const inputValue = multipleSelectValue.map(item => item.label).join(', ');
-
+  
   return (
     <>
       <div
         className="input__container">
-        { typeOfMultipleSelect === 'chip' ?
+        { typeOfMultipleSelect === "chip" ?
           <div className="chip__items">
             { multipleSelectValue.map(({ label, objectId }) => (
               <Chip key={ objectId } label={ label } />

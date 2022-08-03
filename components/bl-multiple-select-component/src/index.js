@@ -1,15 +1,16 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef  } from 'react';
 
 import { Options } from './options';
 import { MultipleSelectField } from './multiple-select-field';
-import { useOnClickOutside, useMultipleSelectClassList, validate } from './helpers';
+import { useOnClickOutside, validate } from './helpers';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleSelectComponent({ component, eventHandlers }) {
   const { display, classList, disable, options, placeholder, variant, typeOfMultipleSelect } = component;
   const { onMultipleSelectValueChange } = eventHandlers;
 
   const rootRef = useRef(null);
-  const classes = useMultipleSelectClassList({ disable, variant, classList });
   const [optionsList, setOptionsList] = useState([]);
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [multipleSelectValue, setMultipleSelectValue] = useState([]);
@@ -17,7 +18,7 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     setOptionsList(validate(options));
-  }, [options])
+  }, [options]);
 
   const handleClickOutside = useCallback(() => {
     if (!isOptionsOpen) {
@@ -34,7 +35,9 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div ref={ rootRef } className={ classes }>
+    <div
+      ref={ rootRef }
+      className={ cn("bl-customComponent-multipleSelect", variant, ...classList, { disable }) }>
       <MultipleSelectField
         placeholder={ placeholder }
         isOptionsOpen={ isOptionsOpen }

@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
-import { DropDownButton } from './drop-down-button';
-import { Fieldset } from './fieldset';
-import { Input } from './input';
-import { Label } from './label';
+import { Label } from "./label";
+import { Input } from "./input";
+import { Fieldset } from "./fieldset";
+import { DropDownButton } from "./drop-down-button";
 
-export const MultipleSelectField = props => {
+export function MultipleSelectField(props) {
   const {
     placeholder,
     isOptionsOpen,
@@ -13,7 +13,7 @@ export const MultipleSelectField = props => {
     typeOfMultipleSelect,
     isMultipleSelectActive,
     setIsOptionsOpen,
-    setIsMultipleSelectActive,
+    setIsMultipleSelectActive
   } = props;
 
   const multipleSelectId = useMemo(() => getId(), []);

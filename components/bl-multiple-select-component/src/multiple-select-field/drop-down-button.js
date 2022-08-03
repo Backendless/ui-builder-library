@@ -1,21 +1,13 @@
-export const DropDownButton = ({ isOptionsOpen }) => {
-  const dropDownButtonClasses = () => {
-    const classes = ['drop-down-button'];
+const { cn } = BackendlessUI.CSSUtils;
 
-    if (isOptionsOpen) {
-      classes.push('drop-down-button__up');
-    }
-
-    return classes.join(' ');
-  };
-
+export function DropDownButton({ isOptionsOpen }) {
   return (
     <svg
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className={ dropDownButtonClasses() }>
+      className={ cn("drop-down-button", { ["drop-down-button__up"]: isOptionsOpen }) }>
       <path d="M7 10l5 5 5-5z" />
     </svg>
   );
-};
+}
