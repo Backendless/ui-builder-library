@@ -1,6 +1,6 @@
 {
-  "id": "c_096885e51ff68c4dc84253b74b94a707",
-  "name": "Group Member Goal Progress",
+  "id": "c_dcc4fdab515612fe3a5bbfb97bae6dca",
+  "name": "Multiple Bar Chart",
   "description": "The Group Member Goal Progress component displays the progress of each member.",
   "showInToolbox": true,
   "faIcon": "chart-bar",
@@ -18,12 +18,12 @@
     },
     {
       "type": "json",
-      "name": "members",
-      "label": "Members",
+      "name": "data",
+      "label": "Chart data",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "membersLogic",
-      "handlerLabel": "Members Logic",
+      "handlerId": "dataLogic",
+      "handlerLabel": "Chart Data Logic",
       "dataBinding": true,
       "settingTooltip": "Each item must have the properties 'name', 'goal' and 'progress'.",
       "handlerDescription": "Each item must have the properties 'name', 'goal' and 'progress'."

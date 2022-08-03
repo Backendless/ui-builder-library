@@ -1,10 +1,11 @@
 import { decorateNumber } from './decorate-number';
 
-export function MemberProgressChartItem({ name, goal, progress }) {
-  const chartFillPercent = {
+export function Bar({ name, goal, progress }) {
+  const barFillPercent = {
     width: `${ (progress / (goal / 100)).toFixed(2) }%`,
   };
   
+  const decoratedGoal = decorateNumber(String(goal));
   const decoratedProgress = decorateNumber(String(progress));
   
   return (
@@ -13,12 +14,12 @@ export function MemberProgressChartItem({ name, goal, progress }) {
         <a className="chart__name" href="#">{ name }</a>
       </div>
       <div className="chart__bar">
-        <div className="chart__fill" style={ chartFillPercent }></div>
-        <div class="chart__shape-container">
-          <div class="chart__shape-triangle"></div>
-          <div class="chart__shape-rectangle">{ decoratedProgress }</div>
+        <div className="chart__bar-fill" style={ barFillPercent }></div>
+        <div class="chart__bar-info">
+          <div class="chart__bar-info-triangle" />
+          <div class="chart__bar-info-rectangle">{ `${decoratedProgress} / ${decoratedGoal}` }</div>
         </div>
       </div>
     </div>
   );
-};
+}
