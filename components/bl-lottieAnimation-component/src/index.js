@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { destroy, loadAnimation, play, stop } from './lib/lottie.min';
+import { destroy, loadAnimation, play, stop } from './lottie.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 
