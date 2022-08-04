@@ -1,14 +1,7 @@
 const ValidHexLengths = [4, 7, 9];
 
 export function HexColor(props) {
-  const {
-    colorPickerRef,
-    hexFormat,
-    setHexFormat,
-    borderColor,
-    setHexInputBorderColor,
-    backgroundColor,
-  } = props;
+  const { colorPickerRef, hexFormat, setHexFormat, borderColor, setHexInputBorderColor, backgroundColor } = props;
 
   const changeHex = e => {
     const hexInputValue = validate(e.target.value);

@@ -33,13 +33,7 @@ export function PickerContainer(options) {
       <div style={ pickerDirection }>
         <div className="wrapper">
           <div className="picker" ref={ elRef }></div>
-          <svg className="picker-handler">
-            <defs>
-              <g id="handle">
-                <circle cx="8" cy="8" r="6" fill="none" strokeWidth="2" stroke="#fff"></circle>
-              </g>
-            </defs>
-          </svg>
+          <PickerHandler/>
         </div>
 
         <SelectedColor
@@ -56,5 +50,17 @@ export function PickerContainer(options) {
         />
       </div>
     </div>
+  );
+}
+
+function PickerHandler() {
+  return (
+    <svg className="picker-handler">
+      <defs>
+        <g id="handle">
+          <circle cx="8" cy="8" r="6" fill="none" strokeWidth="2" stroke="#fff"></circle>
+        </g>
+      </defs>
+    </svg>
   );
 }
