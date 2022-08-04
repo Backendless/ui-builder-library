@@ -16,7 +16,7 @@ export default function Pagination({ component, eventHandlers }) {
     size,
     variant,
   } = component;
-  const { onCurrentPageChange, onGoNext, onGoBack, onGoFirst, onGoLast } = eventHandlers;
+  const { onPageChange, onGoNext, onGoBack, onGoFirst, onGoLast } = eventHandlers;
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -41,7 +41,7 @@ export default function Pagination({ component, eventHandlers }) {
   };
 
   useEffect(() => {
-    onCurrentPageChange({ currentPage });
+    onPageChange({ currentPage });
   }, [currentPage]);
 
   if (!display) {
@@ -51,21 +51,24 @@ export default function Pagination({ component, eventHandlers }) {
   return (
     <div className={ cn('bl-customComponent-pagination', classList) }>
       <div className="pagination">
-        <FirstPageButton
-          isFirstPageButtonVisible={ isFirstPageButtonVisible }
-          onGoFirst={ onGoFirst }
-          currentPage={ currentPage }
-          paginationSize={ size }
-          variant={ variant }
-        />
 
-        <BackButton
-          onGoBack={ onGoBack }
-          isPrevButtonVisible={ isPrevButtonVisible }
-          currentPage={ currentPage }
-          paginationSize={ size }
-          variant={ variant }
-        />
+        { isFirstPageButtonVisible && (
+          <FirstPageButton
+            onGoFirst={ onGoFirst }
+            currentPage={ currentPage }
+            paginationSize={ size }
+            variant={ variant }
+          />
+        )}
+
+        { isPrevButtonVisible && (
+          <BackButton
+            onGoBack={ onGoBack }
+            currentPage={ currentPage }
+            paginationSize={ size }
+            variant={ variant }
+          />
+        )}
 
         <PageList
           pageCount={ pageCount }
@@ -76,23 +79,25 @@ export default function Pagination({ component, eventHandlers }) {
           variant={ variant }
         />
 
-        <NextButton
-          onGoNext={ onGoNext }
-          isNextButtonVisible={ isNextButtonVisible }
-          currentPage={ currentPage }
-          lastPage={ pageCount }
-          paginationSize={ size }
-          variant={ variant }
-        />
+        { isNextButtonVisible && (
+          <NextButton
+            onGoNext={ onGoNext }
+            currentPage={ currentPage }
+            lastPage={ pageCount }
+            paginationSize={ size }
+            variant={ variant }
+          />
+        )}
 
-        <LastPageButton
-          isLastPageButtonVisible={ isLastPageButtonVisible }
-          onGoLast={ onGoLast }
-          currentPage={ currentPage }
-          lastPage={ pageCount }
-          paginationSize={ size }
-          variant={ variant }
-        />
+        { isLastPageButtonVisible && (
+          <LastPageButton
+            onGoLast={ onGoLast }
+            currentPage={ currentPage }
+            lastPage={ pageCount }
+            paginationSize={ size }
+            variant={ variant }
+          />
+        )}
       </div>
     </div>
   );

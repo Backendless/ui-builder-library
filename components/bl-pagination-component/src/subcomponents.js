@@ -5,14 +5,10 @@ import { ArrowNextIcon, ArrowBackIcon, FirstPageIcon, LastPageIcon } from './but
 const { cn } = BackendlessUI.CSSUtils;
 
 export function BackButton(props) {
-  const { onGoBack, isPrevButtonVisible, currentPage, paginationSize, variant } = props;
+  const { onGoBack, currentPage, paginationSize, variant } = props;
   const isDisabled = currentPage === 1;
 
   const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
-
-  if (!isPrevButtonVisible) {
-    return null;
-  }
 
   return (
     <button
@@ -26,14 +22,10 @@ export function BackButton(props) {
 }
 
 export function NextButton(props) {
-  const { onGoNext, isNextButtonVisible, currentPage, lastPage, paginationSize, variant } = props;
+  const { onGoNext, currentPage, lastPage, paginationSize, variant } = props;
   const isDisabled = currentPage === lastPage;
 
   const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
-
-  if (!isNextButtonVisible) {
-    return null;
-  }
 
   return (
     <button
@@ -47,14 +39,10 @@ export function NextButton(props) {
 }
 
 export function FirstPageButton(props) {
-  const { isFirstPageButtonVisible, onGoFirst, currentPage, paginationSize, variant } = props;
+  const { onGoFirst, currentPage, paginationSize, variant } = props;
   const isDisabled = currentPage === 1;
 
   const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
-
-  if (!isFirstPageButtonVisible) {
-    return null;
-  }
 
   return (
     <button
@@ -68,14 +56,10 @@ export function FirstPageButton(props) {
 }
 
 export function LastPageButton(props) {
-  const { isLastPageButtonVisible, onGoLast, currentPage, lastPage, paginationSize, variant } = props;
+  const { onGoLast, currentPage, lastPage, paginationSize, variant } = props;
   const isDisabled = currentPage === lastPage;
 
   const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
-
-  if (!isLastPageButtonVisible) {
-    return null;
-  }
 
   return (
     <button

@@ -33,7 +33,7 @@ The component based on external [pagination](https://mui.com/material-ui/react-p
 <dd>Allows to specify count of pages for pagination in Backendless logic</dd>
 <dt>Sibling Count Logic</dt>
 <dd>Allows to specify sibling count for pagination in Backendless logic</dt>
-<dt>On Current Page Change</dt>
+<dt>On Page Change</dt>
 <dd>Triggered when current page changed</dd>
 <dt>On Go Next</dt>
 <dd>Triggered when the user click on next button</dd>

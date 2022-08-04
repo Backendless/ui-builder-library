@@ -97,8 +97,8 @@
   ],
   "eventHandlers": [
     {
-      "name": "onCurrentPageChange",
-      "label": "On Current Page Change",
+      "name": "onPageChange",
+      "label": "On Page Change",
       "contextBlocks": [
         {
           "id": "currentPage",
