@@ -62,7 +62,7 @@ export function Title({ content }) {
   );
 }
 
-export function Button(props) {
+export function ModalButtons(props) {
   const { type, onClose, onSubmit, inputValue, submitButtonLabel, closeButtonLabel } = props;
 
   const onSubmitHandler = () => {
