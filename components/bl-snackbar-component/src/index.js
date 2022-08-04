@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { Snackbar } from './snackbar';
-import { useClasses } from './use-classes';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 const DEFAULT_HIDE_DURATION = 5000;
 
@@ -17,17 +18,12 @@ export default function SnackbarComponent({ component, eventHandlers }) {
     horizontalPosition,
     type,
     maxSnacks,
-    display,
+    display
   } = component;
 
-  const {
-    onClose,
-    onAction,
-  } = eventHandlers;
+  const { onClose, onAction } = eventHandlers;
 
   const [snackData, setSnackData] = useState([]);
-
-  const classes = useClasses(horizontalPosition, verticalPosition);
 
   const close = useCallback(id => {
     if (onClose) {
@@ -75,21 +71,38 @@ export default function SnackbarComponent({ component, eventHandlers }) {
     }
   }, [snackData]);
 
-  return display && (
-    <div className={ classes }>
-      { !!snackData.length &&
-      snackData.map(el => {
+  if (!display) {
+    return null;
+  }
+
+  return (
+    <div className={ cn('bl-customComponent-snackbar',
+      {
+        'bl-customComponent-snackbar_left'   : horizontalPosition === 'left',
+        'bl-customComponent-snackbar_centerX': horizontalPosition === 'center',
+        'bl-customComponent-snackbar_right'  : horizontalPosition === 'right',
+        'bl-customComponent-snackbar_bottom' : verticalPosition === 'bottom',
+        'bl-customComponent-snackbar_centerY': verticalPosition === 'center',
+        'bl-customComponent-snackbar_top'    : verticalPosition === 'top'
+      }) }>
+      { !!snackData.length && snackData.map(el => {
         const { showClose, showAction, actionContent, snackContent, type, id } = el;
 
         return (
           <div key={ id }>
-            {
-              Snackbar(showClose, showAction, actionContent, snackContent, type, onAction, close, id)
-            }
+            <Snackbar
+              showClose={ showClose }
+              showAction={ showAction }
+              actionContent={ actionContent }
+              snackContent={ snackContent }
+              type={ type }
+              onAction={ onAction }
+              onClose={ close }
+              id={ id }
+            />
           </div>
         );
-      })
-      }
+      }) }
     </div>
   );
 }
