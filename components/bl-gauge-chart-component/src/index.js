@@ -1,11 +1,9 @@
-import { useMemo } from 'react';
-
 import { decorateNumber } from './decorate-number';
 
-export default function AnnualGoalComponent({ component }) {
-  const { classList, display, disable, goal, progress } = component;
+const { cn } = BackendlessUI.CSSUtils;
 
-  const classes = useAnnualGoalClassList(classList, disable);
+export default function GaugeChartComponent({ component }) {
+  const { classList, display, disable, goal, progress } = component;
 
   const percentOfProgress = (progress / (goal / 100)).toFixed(2);
   const percentOfTurn = (percentOfProgress > 100 ? 100 : percentOfProgress) / 200;
@@ -17,11 +15,11 @@ export default function AnnualGoalComponent({ component }) {
   const decorationLetter = decoratedGoal.charAt(decoratedGoal.length - 1);
 
   if (!display) {
-    return;
+    return null;
   }
 
   return (
-    <div className={ classes }>
+    <div className={ cn('bl-customComponent-gaugeChart', ...classList, { disable }) }>
       <div className="gauge-chart">
         <div className="gauge-chart__wrap">
           <div className="gauge-chart__body"></div>
@@ -46,15 +44,3 @@ export default function AnnualGoalComponent({ component }) {
     </div>
   );
 }
-
-const useAnnualGoalClassList = (classList, disable) => {
-  return useMemo(() => {
-    const classes = ['bl-customComponent-annualGoal', ...classList];
-
-    if (disable) {
-      classes.push('disable');
-    }
-
-    return classes.join(' ');
-  }, [classList, disable]);
-};

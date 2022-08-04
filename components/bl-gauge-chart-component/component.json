@@ -1,7 +1,7 @@
 {
   "id": "c_547e1646f25c0cb4174f73866622d7c7",
-  "name": "Annual Goal",
-  "description": "The annual goal component is a chart whose purpose is to show the goal and the progress that has already been made.",
+  "name": "Gauge Chart",
+  "description": "The Gauge Chart component is a chart whose purpose is to show the goal and the progress that has already been made.",
   "showInToolbox": true,
   "faIcon": "chart-area",
   "mainJS": "dist/index.js",

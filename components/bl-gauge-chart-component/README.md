@@ -1,6 +1,6 @@
-# Annual Goal
+# Gauge Chart
 
-Annual Goal is a component of Backendless UI-Builder designer. This is a chart whose purpose is to show the goal and the progress that has already been made.
+Gauge Chart is a component of Backendless UI-Builder designer. This is a chart whose purpose is to show the goal and the progress that has already been made.
 
 ## Usage
 
