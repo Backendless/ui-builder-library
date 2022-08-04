@@ -27,13 +27,11 @@ export function Modal(props) {
 
   useEffect(() => {
     document.body.appendChild(root);
-  }, []);
 
-  useEffect(() => {
     return () => {
       document.body.removeChild(root);
     };
-  });
+  },[root]);
 
   useEffect(() => {
     onInputValueChange({ inputValue });
