@@ -15,6 +15,10 @@ Copy Button is a component of Backendless UI-Builder designer. This allows you c
 <dd>Allows write label for copy button.</dd>
 <dt>Copied Label</dt>
 <dd>Allows write label for copied button.</dd>
+<dt>Copy Button Visibility</dt>
+<dd>Allows display or not display copy icon</dd>
+<dt>Copied Button Visibility</dt>
+<dd>Allows display or not display copied icon</dd>
 <dt>Copied Duration</dt>
 <dd>Allows to specify duration copied button. Default value 1000</dd>
 </dl>

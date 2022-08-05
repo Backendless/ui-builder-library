@@ -1,7 +1,7 @@
 {
   "id": "c_085c78f4c41233294eed6707cb128d5d",
   "name": "Copy Button",
-  "description": "This component allows add copy to clipboard button",
+  "description": "",
   "showInToolbox": true,
   "faIcon": "copy",
   "mainJS": "dist/index.js",
@@ -14,7 +14,8 @@
       "label": "Disabled",
       "handlerId": "isDisabledLogic",
       "handlerLabel": "Disabled Logic",
-      "handlerDescription": "This is a handler for the logic to determine disabled or not disabled button"
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "name": "content",
@@ -23,7 +24,9 @@
       "handlerLabel": "Content Logic",
       "dataBinding": true,
       "type": "text",
-      "handlerDescription": "This is the handler for the logic of determining the content to be copied."
+      "handlerDescription": "This is the handler for the logic of determining the content to be copied.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
@@ -33,7 +36,9 @@
       "handlerId": "copyLabelLogic",
       "handlerLabel": "Copy Label Logic",
       "dataBinding": true,
-      "handlerDescription": "This is the handler for the logic to determine the label for copy button."
+      "handlerDescription": "This is the handler for the logic to determine the label for copy button.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
@@ -43,13 +48,35 @@
       "handlerId": "copiedLabelLogic",
       "handlerLabel": "Copied Label Logic",
       "dataBinding": true,
-      "handlerDescription": "This is the handler for the logic to determine the label for copied button."
+      "handlerDescription": "This is the handler for the logic to determine the label for copied button.",
+      "showInSettings": true,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "checkbox",
+      "name": "isCopyIcon",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "isCopyIconLogic",
+      "label": "Copy Icon Visibility"
+    },
+    {
+      "type": "checkbox",
+      "name": "isCopiedIcon",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "isCopiedIconLogic",
+      "label": "Copied Icon Visibility"
     },
     {
       "type": "number",
       "name": "copiedDuration",
       "label": "Copied Duration (ms)",
-      "defaultValue": "1000"
+      "defaultValue": "1000",
+      "showInSettings": true,
+      "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
