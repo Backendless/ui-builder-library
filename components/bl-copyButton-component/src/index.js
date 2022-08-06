@@ -6,13 +6,13 @@ export default function CopyButton({ component, eventHandlers }) {
   const {
     display,
     classList,
-    isDisabled,
+    disabled,
     content,
     copyLabel,
     copiedLabel,
     copiedDuration,
-    isCopiedIcon,
-    isCopyIcon
+    isCopiedIconVisible,
+    isCopyIconVisible
   } = component;
   const { onCopy } = eventHandlers;
 
@@ -33,14 +33,14 @@ export default function CopyButton({ component, eventHandlers }) {
   }
 
   const label = isCopied
-    ? <CopiedLabel isCopiedIcon={ isCopiedIcon } copiedLabel={ copiedLabel }/>
-    : <CopyLabel isCopyIcon={ isCopyIcon } copyLabel={ copyLabel }/>;
+    ? <CopiedLabel isCopiedIcon={ isCopiedIconVisible } copiedLabel={ copiedLabel }/>
+    : <CopyLabel isCopyIcon={ isCopyIconVisible } copyLabel={ copyLabel }/>;
 
   return (
     <button
-      className={ cn('bl-customComponent-copyButton', classList, { 'disabled': isDisabled, 'copied': isCopied }) }
+      className={ cn('bl-customComponent-copyButton', classList, { 'disabled': disabled, 'copied': isCopied }) }
       type="button"
-      disabled={ isDisabled || isCopied }
+      disabled={ disabled || isCopied }
       onClick={ onCopy }>
       { label }
     </button>

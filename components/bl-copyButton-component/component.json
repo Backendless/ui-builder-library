@@ -10,9 +10,9 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "isDisabled",
+      "name": "disabled",
       "label": "Disabled",
-      "handlerId": "isDisabledLogic",
+      "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
       "showInSettings": true,
       "hasLogicHandler": true
@@ -54,7 +54,7 @@
     },
     {
       "type": "checkbox",
-      "name": "isCopyIcon",
+      "name": "isCopyIconVisible",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
@@ -63,7 +63,7 @@
     },
     {
       "type": "checkbox",
-      "name": "isCopiedIcon",
+      "name": "isCopiedIconVisible",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
