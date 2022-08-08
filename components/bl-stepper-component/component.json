@@ -70,11 +70,11 @@
     },
     {
       "id": "setStep",
-      "label": "Set step",
+      "label": "Set Step",
       "inputs": [
         {
           "id": "step",
-          "label": "Step number"
+          "label": "Step Number"
         }
       ]
     }

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { StepperItem } from './subcomponents/stepper-item'
-import { useStepperClassName } from './helpers/use-stepper-class-name'
+import { classes } from './helpers/use-stepper-class-name'
 import { useStepList } from './helpers/use-step-list'
+
+const { cn } = BackendlessUI.CSSUtils
 
 export default function Stepper({ component, eventHandlers }) {
   const { display, classList, stepList, stepperType, countSteps } = component
@@ -10,8 +12,7 @@ export default function Stepper({ component, eventHandlers }) {
   const [steps, setSteps] = useState([])
   const [currentStep, setCurrentStep] = useState(0)
 
-  const stepperClassNames = useStepperClassName(stepperType)
-  const stepperClasses = useStepperClasses(stepperClassNames.stepper, classList)
+  const stepperClassNames = classes[stepperType]
 
   useEffect(() => {
     onStepChange({ currentStep: currentStep + 1 })
@@ -43,11 +44,9 @@ export default function Stepper({ component, eventHandlers }) {
   component.setStep = (stepNumber) => {
     setCurrentStep(stepNumber - 1)
     setSteps(steps.map((step, index) => {
-      if (index < stepNumber - 1) {
-        return { ...step, completed: true }
-      } else {
-        return { ...step, completed: false }
-      }
+      const completed = index < stepNumber - 1
+
+      return { ...step, completed }
     }))
   }
 
@@ -56,7 +55,7 @@ export default function Stepper({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ stepperClasses }>
+    <div className={ cn(stepperClassNames.stepper, classList) }>
       { steps.map((step, index) => (
         <StepperItem
           customized={ stepperType === 'customized' }
@@ -69,10 +68,4 @@ export default function Stepper({ component, eventHandlers }) {
       )) }
     </div>
   )
-};
-
-const useStepperClasses = (stepperClasses, classList) => {
-  const classes = [stepperClasses, ...classList]
-
-  return classes.join(' ')
 }

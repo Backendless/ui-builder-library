@@ -31,6 +31,6 @@ The component based on external [stepper](https://mui.com/material-ui/react-step
 <dd>An action that moves to the Previous step</dd>
 <dt>Reset Step</dt>
 <dd>An action that reset steps and return to first step</dd>
-<dt>Set step</dt>
+<dt>Set Step</dt>
 <dd>An action that sets the number of steps. Has an input "Step number"</dd>
 </dl>

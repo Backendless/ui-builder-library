@@ -24,7 +24,7 @@
   align-items: center;
   width: 77%;
 
-  &--fullwidth {
+  &.fullwidth {
     width: 100%;
   }
 
@@ -97,7 +97,7 @@
 
       transition: fill @bl-customComponent-stepper-transition;
 
-      &--active {
+      &.active {
         fill: @bl-customComponent-stepper-themeColor;
         opacity: 1;
       }
@@ -110,14 +110,17 @@
 
     &__text {
       display: block;
+
       opacity: 0.6;
+
       white-space: nowrap;
+      color: @bl-customComponent-stepper-textColor;
 
       margin-left: 5px;
 
       transition: opacity @bl-customComponent-stepper-transition;
 
-      &--active {
+      &.active {
         opacity: 1;
       }
     }
@@ -133,12 +136,13 @@
       opacity: 0.6;
 
       text-align: center;
+      color: @bl-customComponent-stepper-textColor;
 
       margin: @bl-customComponent-stepper-alternative-label-titleTextMargin;
 
       transition: opacity @bl-customComponent-stepper-transition;
 
-      &--active {
+      &.active {
         opacity: 1;
       }
     }
@@ -159,7 +163,7 @@
 
     transition: border-color @bl-customComponent-stepper-transition;
 
-    &--active {
+    &.active {
       border-color: @bl-customComponent-stepper-themeColor;
       opacity: 1;
     }
@@ -174,7 +178,7 @@
       opacity: 0.38;
       transition: background-color @bl-customComponent-stepper-transition;
 
-      &--active {
+      &.active {
         background-color: @bl-customComponent-stepper-themeColor;
         opacity: 1;
       }
