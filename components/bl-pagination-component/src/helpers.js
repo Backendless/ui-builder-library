@@ -1,29 +1,15 @@
-import { useMemo } from 'react';
+const { cn } = BackendlessUI.CSSUtils;
 
-export const useControlButtonClasses = (isDisabled, variant, paginationSize) => useMemo(() => {
-  const classes = ['pagination__control-button', variant];
+export const useControlButtonClasses = (isDisabled, variant, paginationSize) => {
+  return cn('pagination__control-button', variant, {
+    'pagination__control-button--disabled': isDisabled,
+    [`${ variant }--${ paginationSize }`] : paginationSize
+  });
+};
 
-  if (isDisabled) {
-    classes.push('pagination__control-button--disabled');
-  }
-
-  if (paginationSize) {
-    classes.push(`${ variant }--${ paginationSize }`);
-  }
-
-  return classes.join(' ');
-}, [isDisabled, variant, paginationSize]);
-
-export const usePageListClasses = (currentPage, page, variant, paginationSize) => useMemo(() => {
-  const classes = ['pagination__page-button', variant];
-
-  if (currentPage === page) {
-    classes.push(`${ variant }--selected`);
-  }
-
-  if (paginationSize) {
-    classes.push(`${ variant }--${ paginationSize }`);
-  }
-
-  return classes.join(' ');
-}, [currentPage, page, variant, paginationSize]);
+export const usePageListClasses = (currentPage, page, variant, paginationSize) => {
+  return cn('pagination__page-button', variant, {
+    [`${ variant }--selected`]           : currentPage === page,
+    [`${ variant }--${ paginationSize }`]: paginationSize
+  });
+};

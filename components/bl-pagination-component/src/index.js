@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BackButton, NextButton, FirstPageButton, LastPageButton, PageList } from './subcomponents';
+import { BackButton, NextButton, FirstPageButton, LastPageButton, PageList } from './buttons';
 
 const { cn } = BackendlessUI.CSSUtils;
 

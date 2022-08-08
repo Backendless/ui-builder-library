@@ -48,7 +48,7 @@
           "label": "Rounded-Outline"
         }
       ],
-      "defaultValue": "normal"
+      "defaultValue": "button"
     },
     {
       "type": "select",
