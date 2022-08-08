@@ -3,7 +3,7 @@ import { destroy, loadAnimation, play, stop } from './lottie.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function lottieAnimation({ component, eventHandlers }) {
+export default function LottieAnimation({ component, eventHandlers }) {
   const { display, classList, data, isLoop, type, isStopped } = component;
   const { onHover, onUnhover, onClick } = eventHandlers;
 
