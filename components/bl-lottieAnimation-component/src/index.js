@@ -5,12 +5,12 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function lottieAnimation({ component, eventHandlers }) {
   const { display, classList, data, isLoop, type, isStopped } = component;
-  const { onHover, onUnhover } = eventHandlers;
+  const { onHover, onUnhover, onClick } = eventHandlers;
 
   const container = useRef(null);
 
   useEffect(() => {
-    loadAnimationHandler(container, type, isLoop, data);
+    loadAnimationHandler(container, type, isLoop, isStopped, data);
 
     if (isStopped) {
       stop();
@@ -25,6 +25,10 @@ export default function lottieAnimation({ component, eventHandlers }) {
     stop();
   };
 
+  component.setAnimation = (data, isStopped, isLoop) => {
+    loadAnimationHandler(container, type, isLoop, isStopped, data);
+  };
+
   if (!display) {
     return null;
   }
@@ -33,12 +37,13 @@ export default function lottieAnimation({ component, eventHandlers }) {
     <div
       className={ cn('bl-customComponent-lottieAnimation', classList) }
       ref={ container }
+      onClick={ onClick }
       onMouseEnter={ onHover }
       onMouseLeave={ onUnhover }></div>
   );
 }
 
-const loadAnimationHandler = (container, type, isLoop, data) => {
+const loadAnimationHandler = (container, type, isLoop, isStepped, data) => {
   destroy();
 
   if (data) {
@@ -54,6 +59,7 @@ const loadAnimationHandler = (container, type, isLoop, data) => {
       container    : container.current,
       renderer     : type,
       loop         : isLoop,
+      autoplay     : !isStepped,
       animationData: animationJson
     });
   }

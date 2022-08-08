@@ -72,6 +72,11 @@
       "name": "onUnhover",
       "label": "On Unhover",
       "handlerDescription": "This handler is triggered when the user moves the cursor away from the animation."
+    },
+    {
+      "name": "onClick",
+      "label": "On Click",
+      "handlerDescription": "This handler is triggered when the user clicks on an animation"
     }
   ],
   "actions": [
@@ -82,6 +87,24 @@
     {
       "id": "playAnimation",
       "label": "Play Animation"
+    },
+    {
+      "id": "setAnimation",
+      "label": "Set Animation",
+      "inputs": [
+        {
+          "id": "data",
+          "label": "Data"
+        },
+        {
+          "id": "isStopped",
+          "label": "Is Stopped"
+        },
+        {
+          "id": "isLoop",
+          "label": "Is Loop"
+        }
+      ]
     }
   ]
 }
