@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { Snackbar } from './snackbar';
-
-const { cn } = BackendlessUI.CSSUtils;
+import { useClasses } from './use-classes';
 
 const DEFAULT_HIDE_DURATION = 5000;
 
@@ -40,7 +39,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
       actionContent: actionText,
       snackContent : text,
       type         : snackType,
-      id           : new Date().getTime(),
+      id           : Date.now(),
     };
 
     setSnackData(prev => [...prev, snackObject]);
@@ -52,10 +51,10 @@ export default function SnackbarComponent({ component, eventHandlers }) {
     }
   };
 
-  component.create = (isClose, isAction, actionText, text, snackType) => {
+  component.create = (closable, hasAction, actionText, text, snackType) => {
     handleSnackbar(
-      isClose !== undefined ? isClose : showClose,
-      isAction !== undefined ? isAction : showAction,
+      closable !== undefined ? closable : showClose,
+      hasAction !== undefined ? hasAction : showAction,
       actionText || actionContent,
       text || snackContent,
       snackType || type);
@@ -63,11 +62,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     if (snackData.length > maxSnacks) {
-      setSnackData(prev => {
-        const arr = [...prev];
-        arr.shift();
-        return arr;
-      });
+      setSnackData(prev => prev.slice(1));
     }
   }, [snackData]);
 
@@ -75,16 +70,10 @@ export default function SnackbarComponent({ component, eventHandlers }) {
     return null;
   }
 
+  const classes = useClasses(horizontalPosition, verticalPosition);
+
   return (
-    <div className={ cn('bl-customComponent-snackbar',
-      {
-        'bl-customComponent-snackbar_left'   : horizontalPosition === 'left',
-        'bl-customComponent-snackbar_centerX': horizontalPosition === 'center',
-        'bl-customComponent-snackbar_right'  : horizontalPosition === 'right',
-        'bl-customComponent-snackbar_bottom' : verticalPosition === 'bottom',
-        'bl-customComponent-snackbar_centerY': verticalPosition === 'center',
-        'bl-customComponent-snackbar_top'    : verticalPosition === 'top'
-      }) }>
+    <div className={ `bl-customComponent-snackbar' ${ classes }` }>
       { !!snackData.length && snackData.map(el => {
         const { showClose, showAction, actionContent, snackContent, type, id } = el;
 
