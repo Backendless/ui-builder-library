@@ -1,0 +1,48 @@
+{
+  "id": "c_77c399a94abeab643336805b91a3aefb",
+  "name": "Social Login Button",
+  "description": "The Social Login Button component is designed for quick user login.",
+  "showInToolbox": true,
+  "faIcon": "toggle-on",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "buttonOption",
+      "label": "Button option",
+      "showInSettings": true,
+      "defaultValue": "googleplus",
+      "hasLogicHandler": false,
+      "handlerId": "buttonOptionLogic",
+      "options": [
+        {
+          "value": "googleplus",
+          "label": "Google"
+        },
+        {
+          "value": "facebook",
+          "label": "Facebook"
+        },
+        {
+          "value": "twitter",
+          "label": "Twitter"
+        },
+        {
+          "value": "linkedin",
+          "label": "Linkedin"
+        },
+        {
+          "value": "github",
+          "label": "Github"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onSocialLoginButtonClick"
+    }
+  ]
+}
