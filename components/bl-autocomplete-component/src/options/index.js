@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
 
-import { useOptionsPlacement } from '../helpers';
 import { Option } from './option';
+
+import { generateId } from '../helpers';
+import { useOptionsPlacement } from '../helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -16,15 +18,9 @@ export const Options = props => {
   } = props;
   const optionsRef = useRef();
   const [optionsPlacement, setOptionsPlacement] = useState('bottom');
-  
-  const useOptionsPlacementProps = {
-    optionsRef,
-    autocompleteHeight,
-    setOptionsPlacement,
-  };
-  
-  useOptionsPlacement(useOptionsPlacementProps);
-  
+
+  useOptionsPlacement({ optionsRef, autocompleteHeight, setOptionsPlacement });
+
   if(!optionList.length) {
     return (
       <div className="options">
@@ -36,19 +32,21 @@ export const Options = props => {
   }
 
   return (
-    <div
-      ref={ optionsRef }
-      className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
-      { optionList.map(item => (
-        <Option
-          key={ item.label }
-          item={ item }
-          setInputValue={ setInputValue }
-          setIsOptionsOpen={ setIsOptionsOpen }
-          setAutocompleteValue={ setAutocompleteValue }
-          onAutocompleteChange={ onAutocompleteChange }
-        />
-      )) }
+    <div ref={ optionsRef } className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
+      { optionList.map(item => {
+        const optionId = useMemo(() => generateId(), []);
+
+        return (
+          <Option
+            key={ optionId }
+            item={ item }
+            setInputValue={ setInputValue }
+            setIsOptionsOpen={ setIsOptionsOpen }
+            setAutocompleteValue={ setAutocompleteValue }
+            onAutocompleteChange={ onAutocompleteChange }
+          />
+        );
+      }) }
     </div>
   );
 };

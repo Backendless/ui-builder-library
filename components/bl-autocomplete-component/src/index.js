@@ -29,7 +29,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
   const classes = cn(
     'bl-customComponent-autocomplete',
     autocompleteVariant,
-    ...classList,
+    classList,
     {
       disabled,
       ['has-clear-button']: autocompleteValue,
@@ -46,9 +46,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
   useOnClickOutside(rootRef, handleClickOutside);
 
   return (
-    <div
-      ref={ rootRef }
-      className={ classes }>
+    <div ref={ rootRef } className={ classes }>
       <TextField
         ref={ autocompleteRef }
         disabled={ disabled }

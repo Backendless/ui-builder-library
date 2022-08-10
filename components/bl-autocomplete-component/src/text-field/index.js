@@ -1,9 +1,11 @@
 import { forwardRef, useMemo, useRef } from 'react';
 
-import { Buttons } from './buttons';
+import { ButtonContainer } from './button-container';
 import { Fieldset } from './fieldset';
 import { Input } from './input';
 import { Placeholder } from './placeholder';
+
+import { generateId } from '../helpers';
 
 export const TextField = forwardRef((props, ref) => {
   const {
@@ -23,21 +25,18 @@ export const TextField = forwardRef((props, ref) => {
   const { onButtonClearClick, onChange } = eventHandlers;
 
   const inputRef = useRef(null);
-  const autocompleteId = useMemo(() => getId(), []);
+  const autocompleteId = useMemo(() => generateId(), []);
 
   const handleClick = () => {
     inputRef.current.focus();
-    
+
     if (!disabled) {
       setIsAutocompleteActive(true);
     }
   };
 
   return (
-    <div
-      ref={ ref }
-      onClick={ handleClick }
-      className="autocomplete">
+    <div ref={ ref } onClick={ handleClick } className="autocomplete">
       <Placeholder
         placeholder={ placeholder }
         autocompleteId={ autocompleteId }
@@ -56,7 +55,7 @@ export const TextField = forwardRef((props, ref) => {
           setInputValue={ setInputValue }
           setIsOptionsOpen={ setIsOptionsOpen }
         />
-        <Buttons
+        <ButtonContainer
           disabled={ disabled }
           isOptionsOpen={ isOptionsOpen }
           autocompleteValue={ autocompleteValue }
@@ -74,10 +73,3 @@ export const TextField = forwardRef((props, ref) => {
     </div>
   );
 });
-
-const getId = () => {
-  const chr4 = () => Math.random().toString(16).slice(-4);
-  const chr8 = () => `${chr4()}${chr4()}`;
-
-  return `${chr8()}${chr8()}`;
-};

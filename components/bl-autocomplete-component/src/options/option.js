@@ -10,7 +10,7 @@ export const Option = props => {
       onAutocompleteChange({ autocompleteValue: item });
     }
   };
-  
+
   const onEnterClick = ({ key }) => {
     if (key === 'Enter') {
       handleClick();
@@ -18,9 +18,7 @@ export const Option = props => {
   };
 
   return (
-    <div
-      onClick={ handleClick }
-      className="option">
+    <div onClick={ handleClick } className="option">
       <span
         tabIndex={ 1 }
         onKeyUp={ onEnterClick }>

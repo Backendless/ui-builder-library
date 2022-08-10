@@ -1,7 +1,7 @@
 import { ButtonClear } from './button-clear';
 import { ButtonPopup } from './button-popup';
 
-export function Buttons(props) {
+export function ButtonContainer(props) {
   const {
     disabled,
     isOptionsOpen,

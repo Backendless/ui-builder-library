@@ -38,8 +38,8 @@
     },
     {
       "type": "select",
-      "name": "autocompleteVariant",
-      "label": "Autocomplete Variant",
+      "name": "variant",
+      "label": "Variant",
       "defaultValue": "outlined",
       "options": [
         {
@@ -55,8 +55,8 @@
           "label": "Standart"
         }
       ],
-      "handlerId": "autocompleteVariantLogic",
-      "handlerLabel": "Autocomplete Variant Logic",
+      "handlerId": "variantLogic",
+      "handlerLabel": "Variant Logic",
       "handlerDescription": "Autocomplete has three variants, you can choose outlined, standart or filled variant.",
       "showInSettings": true,
       "hasLogicHandler": true
