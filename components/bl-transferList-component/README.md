@@ -30,4 +30,3 @@ Add a component to your page and add the items to the list.
 <dt>On change</dt>
 <dd>Triggers when the user clicks on the transfer button</dd>
 </dl>
-
