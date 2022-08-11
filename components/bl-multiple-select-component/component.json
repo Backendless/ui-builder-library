@@ -58,12 +58,12 @@
     },
     {
       "type": "select",
-      "name": "typeOfMultipleSelect",
-      "label": "Type of multiple select",
+      "name": "type",
+      "label": "Type",
       "showInSettings": true,
       "defaultValue": "default",
       "hasLogicHandler": false,
-      "handlerId": "typeOfMultipleSelectLogic",
+      "handlerId": "typeLogic",
       "options": [
         {
           "value": "default",
@@ -82,13 +82,13 @@
   ],
   "eventHandlers": [
     {
-      "name": "onMultipleSelectValueChange",
-      "label": "On Multiple Select Value Change",
+      "name": "onSelectValueChange",
+      "label": "On Select Value Change",
       "dataBinding": true,
       "contextBlocks": [
         {
-          "id": "multipleSelectValue",
-          "label": "Multiple Select Value"
+          "id": "selectValue",
+          "label": "Select Value"
         }
       ]
     }

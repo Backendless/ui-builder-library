@@ -2,15 +2,11 @@ export const validate = items => {
   if (!items) {
     return [];
   }
-  
+
   if (typeof items === 'string') {
-    return items.trim().split(',').map(item => ({
-      objectId: item.trim(),
-      value: item.trim(),
-      label: item.trim(),
-    }));
+    return items.split(',').map(i => i.trim()).map(i => ({ objectId: i, value: i, label: i }));
   }
-    
+
   if (typeof items === 'array') {
     if (!items[0].hasOwnProperty('objectId')) {
       return items.map(item => ({
@@ -18,10 +14,10 @@ export const validate = items => {
         objectId: getId(),
       }));
     }
-    
+
     return items;
   }
-  
+
   return items;
 };
 

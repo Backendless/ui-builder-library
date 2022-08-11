@@ -4,58 +4,58 @@ import { Option } from './option';
 
 export function Options(props) {
   const {
+    type,
     options,
-    multipleSelectValue,
-    typeOfMultipleSelect,
-    setMultipleSelectValue,
-    onMultipleSelectValueChange
+    selectValue,
+    setSelectValue,
+    onSelectValueChange,
   } = props;
-  
-  const multipleSelectRef = useRef(null);
+
+  const selectRef = useRef(null);
   const [margin, setMargin] = useState(0);
-  
+
   useEffect(() => {
     const viewPortHeight = window.innerHeight;
-    const multipleSelectBottom = multipleSelectRef.current?.getBoundingClientRect()?.bottom;
+    const selectBottom = selectRef.current?.getBoundingClientRect()?.bottom;
 
-    if (multipleSelectBottom > viewPortHeight) {
-      setMargin(multipleSelectBottom - viewPortHeight);
+    if (selectBottom > viewPortHeight) {
+      setMargin(selectBottom - viewPortHeight);
     }
-  }, [multipleSelectRef])
-  
-  const handleMultipleSelectValue = option => {
-    let newMultipleSelectValue;
-    const isOptionSelected = multipleSelectValue.find(({ objectId }) => objectId === option.objectId);
+  }, [selectRef])
+
+  const handleSelectValue = option => {
+    let newSelectValue;
+    const isOptionSelected = selectValue.find(({ objectId }) => objectId === option.objectId);
 
     if (!isOptionSelected) {
-      const selectedItems = [...multipleSelectValue, option];
-      
-      newMultipleSelectValue = typeOfMultipleSelect === 'default'
+      const selectedItems = [...selectValue, option];
+
+      newSelectValue = type === 'default'
         ? options.filter(item => selectedItems.includes(item))
         : selectedItems;
     } else {
-      newMultipleSelectValue = multipleSelectValue.filter(({ objectId }) => objectId !== isOptionSelected.objectId);
+      newSelectValue = selectValue.filter(({ objectId }) => objectId !== isOptionSelected.objectId);
     }
-    
-    setMultipleSelectValue(newMultipleSelectValue);
-    
-    if (onMultipleSelectValueChange) {
-      onMultipleSelectValueChange({ multipleSelectValue: newMultipleSelectValue });
+
+    setSelectValue(newSelectValue);
+
+    if (onSelectValueChange) {
+      onSelectValueChange({ selectValue: newSelectValue });
     }
   };
 
   return (
-    <div className="options" style={{ transform: `translateY(-${margin}px)` }} ref={ multipleSelectRef }>
+    <div className="options" style={{ transform: `translateY(-${ margin }px)` }} ref={ selectRef }>
       { options.map(option => {
-        const isOptionSelected = multipleSelectValue.some(({ objectId }) => objectId === option.objectId);
+        const isOptionSelected = selectValue.find(({ objectId }) => objectId === option.objectId);
 
         return (
           <Option
             key={ option.objectId }
+            type={ type }
             option={ option }
             isOptionSelected={ !!isOptionSelected }
-            typeOfMultipleSelect={ typeOfMultipleSelect }
-            handleMultipleSelectValue={ handleMultipleSelectValue }
+            handleSelectValue={ handleSelectValue }
           />
         );
       }) }

@@ -1,28 +1,28 @@
-import { useState, useEffect, useCallback, useRef  } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import { Options } from './options';
-import { MultipleSelectField } from './multiple-select-field';
+import { SelectField } from './select-field';
 import { useOnClickOutside, validate } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleSelectComponent({ component, eventHandlers }) {
-  const { display, classList, disable, options, placeholder, variant, typeOfMultipleSelect } = component;
-  const { onMultipleSelectValueChange } = eventHandlers;
+  const { display, classList, disable, options, placeholder, variant, type } = component;
+  const { onSelectValueChange } = eventHandlers;
 
   const rootRef = useRef(null);
   const [optionsList, setOptionsList] = useState([]);
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
-  const [multipleSelectValue, setMultipleSelectValue] = useState([]);
-  const [isMultipleSelectActive, setIsMultipleSelectActive] = useState(false);
+  const [selectValue, setSelectValue] = useState([]);
+  const [isSelectActive, setIsSelectActive] = useState(false);
 
   useEffect(() => {
     setOptionsList(validate(options));
-  }, [options]);
+  }, [options])
 
   const handleClickOutside = useCallback(() => {
     if (!isOptionsOpen) {
-      setIsMultipleSelectActive(false);
+      setIsSelectActive(false);
     } else {
       setIsOptionsOpen(false);
     }
@@ -37,23 +37,23 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   return (
     <div
       ref={ rootRef }
-      className={ cn("bl-customComponent-multipleSelect", variant, ...classList, { disable }) }>
-      <MultipleSelectField
+      className={ cn('bl-customComponent-multipleSelect', variant, ...classList, { disable }) }>
+      <SelectField
+        type={ type }
         placeholder={ placeholder }
+        selectValue={ selectValue }
         isOptionsOpen={ isOptionsOpen }
-        multipleSelectValue={ multipleSelectValue }
-        typeOfMultipleSelect={ typeOfMultipleSelect }
-        isMultipleSelectActive={ isMultipleSelectActive }
+        isSelectActive={ isSelectActive }
         setIsOptionsOpen={ setIsOptionsOpen }
-        setIsMultipleSelectActive={ setIsMultipleSelectActive }
+        setIsSelectActive={ setIsSelectActive }
       />
       { isOptionsOpen &&
         <Options
+          type={ type }
           options={ optionsList }
-          multipleSelectValue={ multipleSelectValue }
-          typeOfMultipleSelect={ typeOfMultipleSelect }
-          setMultipleSelectValue={ setMultipleSelectValue }
-          onMultipleSelectValueChange={ onMultipleSelectValueChange }
+          selectValue={ selectValue }
+          onSelectValueChange={ onSelectValueChange }
+          setSelectValue={ setSelectValue }
         />
       }
     </div>

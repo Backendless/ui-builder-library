@@ -3,13 +3,13 @@ import { Checkmark } from './checkmark';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Option(props) {
-  const { option, isOptionSelected, typeOfMultipleSelect, handleMultipleSelectValue } = props;
-  
+  const { type, option, isOptionSelected, handleSelectValue } = props;
+
   return (
     <div
-      onClick={ () => handleMultipleSelectValue(option) }
+      onClick={ () => handleSelectValue(option) }
       className={ cn("option", { ['option__selected']: isOptionSelected }) }>
-      { typeOfMultipleSelect === "checkmark" && <Checkmark isOptionSelected={ isOptionSelected } /> }
+      { type === "checkmark" && <Checkmark isOptionSelected={ isOptionSelected } /> }
       <span>{ option.label }</span>
     </div>
   );

@@ -5,45 +5,45 @@ import { Input } from "./input";
 import { Fieldset } from "./fieldset";
 import { DropDownButton } from "./drop-down-button";
 
-export function MultipleSelectField(props) {
+export function SelectField(props) {
   const {
+    type,
     placeholder,
+    selectValue,
     isOptionsOpen,
-    multipleSelectValue,
-    typeOfMultipleSelect,
-    isMultipleSelectActive,
+    isSelectActive,
     setIsOptionsOpen,
-    setIsMultipleSelectActive
+    setIsSelectActive
   } = props;
 
-  const multipleSelectId = useMemo(() => getId(), []);
+  const selectId = useMemo(() => getId(), []);
 
   const handleClick = () => {
     setIsOptionsOpen(!isOptionsOpen);
-    setIsMultipleSelectActive(true);
+    setIsSelectActive(true);
   };
 
   return (
     <div className="multiple-select" onClick={ handleClick }>
       <Label
+        selectId={ selectId }
         placeholder={ placeholder }
-        multipleSelectId={ multipleSelectId }
-        multipleSelectValue={ multipleSelectValue }
-        isMultipleSelectActive={ isMultipleSelectActive }
+        selectValue={ selectValue }
+        isSelectActive={ isSelectActive }
       />
       <div className="multiple-select__container">
         <Input
-          multipleSelectId={ multipleSelectId }
-          multipleSelectValue={ multipleSelectValue }
-          typeOfMultipleSelect={ typeOfMultipleSelect }
+          type={ type }
+          selectId={ selectId }
+          selectValue={ selectValue }
         />
         <DropDownButton
           isOptionsOpen={ isOptionsOpen }
         />
         <Fieldset
           placeholder={ placeholder }
-          multipleSelectValue={ multipleSelectValue }
-          isMultipleSelectActive={ isMultipleSelectActive }
+          selectValue={ selectValue }
+          isSelectActive={ isSelectActive }
         />
       </div>
     </div>
