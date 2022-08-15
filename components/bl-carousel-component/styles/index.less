@@ -1,0 +1,172 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+
+.bl-customComponent-carousel {
+  position: relative;
+
+  .carousel {
+    &__list {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    &__item {
+      display: none;
+      float: left;
+      width: 100%;
+      margin-right: -100%;
+
+      &.smooth {
+        z-index: 0;
+        opacity: 0;
+      }
+    }
+
+    &__image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &__prev-button,
+    &__next-button {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 15%;
+      padding: 0;
+      color: #fff;
+      background: 0 0;
+      border: 0;
+      opacity: 0.5;
+      transition: opacity 0.15s ease;
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+        outline: 0;
+        opacity: 0.9;
+      }
+    }
+
+    &__next-button {
+      right: 0;
+    }
+
+    &__prev-button {
+      left: 0;
+    }
+
+    &__next-icon,
+    &__prev-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &__indicator-list {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin-right: 15%;
+      margin-bottom: 1rem;
+      margin-left: 15%;
+    }
+
+    &__indicator-item {
+      box-sizing: content-box;
+      width: 30px;
+      height: 3px;
+      padding: 0;
+      margin-right: 3px;
+      margin-left: 3px;
+      cursor: pointer;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      opacity: 0.5;
+      transition: opacity 0.6s ease;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+
+    &__caption {
+      position: absolute;
+      right: 15%;
+      bottom: 1.25rem;
+      left: 15%;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+      color: #fff;
+      text-align: center;
+    }
+  }
+
+  .carousel__item.active,
+  .carousel-slide-item-next,
+  .carousel-slide-item-prev {
+    display: block;
+  }
+
+  .smooth.active,
+  .smooth.carousel-smooth-item-next,
+  .smooth.carousel-smooth-item-prev {
+    display: block;
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .active {
+    &.carousel-slide-item-end {
+      transform: translateX(100%);
+    }
+
+    &.carousel-slide-item-start {
+      transform: translateX(-100%);
+    }
+
+    &.carousel-smooth-item-end,
+    &.carousel-smooth-item-start {
+      z-index: 0;
+      opacity: 0;
+    }
+  }
+
+  .carousel-slide-item-next {
+    animation-name: next;
+    animation-timing-function: ease-in-out;
+  }
+
+  .carousel-slide-item-prev {
+    animation-name: prev;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes next {
+    0% {
+      transform: translateX(100%)
+    }
+    100% {
+      transform: translateX(0)
+    }
+  }
+
+  @keyframes prev {
+    0% {
+      transform: translateX(-100%)
+    }
+    100% {
+      transform: translateX(0)
+    }
+  }
+}
