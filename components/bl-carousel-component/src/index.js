@@ -108,14 +108,8 @@ export default function Carousel({ component, eventHandlers }) {
       onMouseOut={ onUnhover }>
       { isControlButtonsVisible && (
         <div className="carousel__controls-button">
-          <PrevButton
-            isDisabled={ isPrevAnimation || isNextAnimation }
-            onPrevButton={ onPrevButton }
-          />
-          <NextButton
-            isDisabled={ isPrevAnimation || isNextAnimation }
-            onNextButton={ onNextButton }
-          />
+          <PrevButton isDisabled={ isPrevAnimation || isNextAnimation } onPrevButton={ onPrevButton }/>
+          <NextButton isDisabled={ isPrevAnimation || isNextAnimation } onNextButton={ onNextButton }/>
         </div>
       ) }
 
