@@ -6,15 +6,7 @@ import { Fieldset } from "./fieldset";
 import { DropDownButton } from "./drop-down-button";
 
 export function SelectField(props) {
-  const {
-    type,
-    placeholder,
-    selectValue,
-    isOptionsOpen,
-    isSelectActive,
-    setIsOptionsOpen,
-    setIsSelectActive
-  } = props;
+  const { type, placeholder, selectValue, isOptionsOpen, isSelectActive, setIsOptionsOpen, setIsSelectActive } = props;
 
   const selectId = useMemo(() => getId(), []);
 

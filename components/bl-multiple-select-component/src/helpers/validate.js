@@ -7,7 +7,7 @@ export const validate = items => {
     return items.split(',').map(i => i.trim()).map(i => ({ objectId: i, value: i, label: i }));
   }
 
-  if (typeof items === 'array') {
+  if (Array.isArray(items)) {
     if (!items[0].hasOwnProperty('objectId')) {
       return items.map(item => ({
         ...item,
@@ -21,9 +21,4 @@ export const validate = items => {
   return items;
 };
 
-const getId = () => {
-  const chr4 = () => Math.random().toString(16).slice(-4);
-  const chr8 = () => `${chr4()}${chr4()}`;
-
-  return `${chr8()}${chr8()}`;
-};
+const getId = () => Math.random().toString(16).slice(-8);

@@ -37,7 +37,7 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   return (
     <div
       ref={ rootRef }
-      className={ cn('bl-customComponent-multipleSelect', variant, ...classList, { disable }) }>
+      className={ cn('bl-customComponent-multipleSelect', variant, classList, { disable }) }>
       <SelectField
         type={ type }
         placeholder={ placeholder }
