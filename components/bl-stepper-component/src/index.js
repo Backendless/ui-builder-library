@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { StepperItem } from './subcomponents/stepper-item'
-import { classes } from './helpers/use-stepper-class-name'
-import { useStepList } from './helpers/use-step-list'
+import { classes } from './helpers/class-names'
+import { createStepListArray } from './helpers/createStepListArray'
 
 const { cn } = BackendlessUI.CSSUtils
 
@@ -19,7 +19,7 @@ export default function Stepper({ component, eventHandlers }) {
   }, [currentStep])
 
   useEffect(() => {
-    setSteps(useStepList(stepList, countSteps))
+    setSteps(createStepListArray(stepList, countSteps))
   }, [stepList, countSteps])
 
   component.goNextStep = () => {

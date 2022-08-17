@@ -28,17 +28,20 @@ export function StepTitle(props) {
   )
 }
 
-const StepTitleIcon = ({ isActive, stepperClassNames, step, stepIndex }) => (
-  step.completed ? (
-    <svg
-      className={ cn(stepperClassNames.titleIcon, { 'active': isActive }) }
-      focusable="false"
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-    >
-      <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"></path>
-    </svg>
-  ) : (
+function StepTitleIcon({ isActive, stepperClassNames, step, stepIndex }) {
+  if (step.completed) {
+    return <IconComplete stepperClassNames={ stepperClassNames }/>
+  }
+
+  return <Icon
+    stepIndex={ stepIndex }
+    isActive={ isActive }
+    stepperClassNames={ stepperClassNames }
+  />
+}
+
+function Icon({ stepperClassNames, isActive, stepIndex }) {
+  return (
     <svg
       className={ cn(stepperClassNames.titleIcon, { 'active': isActive }) }
       focusable="false"
@@ -57,10 +60,35 @@ const StepTitleIcon = ({ isActive, stepperClassNames, step, stepIndex }) => (
       </text>
     </svg>
   )
-)
+}
 
-const StepCustomizedTitleIcon = ({ step, isActive }) => (
-  step.completed ? (
+function IconComplete({ stepperClassNames }) {
+  return (
+    <svg
+      className={ cn(stepperClassNames.titleIcon, 'active') }
+      focusable="false"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+    >
+      <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"></path>
+    </svg>
+  )
+}
+
+function StepCustomizedTitleIcon({ step, isActive }) {
+  if (step.completed) {
+    return <CurstomizedIconComplete/>
+  }
+
+  return (
+    <div className="step-customized-title__icon-mark-container">
+      <div className={ cn('step-customized-title__icon', { 'active': isActive }) }></div>
+    </div>
+  )
+}
+
+function CurstomizedIconComplete() {
+  return (
     <svg
       className="step-customized-title__icon-complete"
       focusable="false"
@@ -69,9 +97,5 @@ const StepCustomizedTitleIcon = ({ step, isActive }) => (
     >
       <path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
     </svg>
-  ) : (
-    <div className="step-customized-title__icon-mark-container">
-      <div className={ cn('step-customized-title__icon', { 'active': isActive }) }></div>
-    </div>
   )
-)
+}
