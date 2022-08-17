@@ -1,0 +1,111 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-annualGoal-themeColor: @themePrimary;
+@bl-customComponent-annualGoal-backgroundColor: @appBackgroundColor;
+@bl-customComponent-annualGoal-textColor: @appTextColor;
+
+@bl-customComponent-annualGoal-gaugeChartCover-backgroundColor: @bl-customComponent-annualGoal-backgroundColor;
+
+.bl-customComponent-gaugeChart {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  color: @bl-customComponent-annualGoal-textColor;
+  width: 100%;
+  height: auto;
+
+  .gauge-chart {
+    width: 100%;
+    max-width: 301px;
+    margin-right: auto;
+    margin-left: auto;
+
+    &__wrap {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 50%;
+      border-top-left-radius: 100% 200%;
+      border-top-right-radius: 100% 200%;
+      overflow: hidden;
+    }
+
+    &__body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #3932323b;
+    }
+
+    &__fill {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: inherit;
+      height: 100%;
+      background-color: @bl-customComponent-annualGoal-themeColor;
+      transform-origin: center top;
+      transform: rotate(0.25turn);
+      transition: transform .2s ease-out;
+    }
+
+    &__cover {
+      position: absolute;
+      width: 65%;
+      height: 125%;
+      background-color: @bl-customComponent-annualGoal-gaugeChartCover-backgroundColor;
+      border-radius: 50%;
+      top: 33%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 22%;
+      box-sizing: border-box;
+    }
+
+    &__progress {
+      &-number {
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 37.5px;
+        margin-bottom: 4px;
+      }
+
+      &-percent {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 16px;
+      }
+    }
+
+    &__info {
+      width: auto;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      margin-top: 10px;
+
+      &-wrap {
+        text-align: center;
+        width: 18%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media(min-width: 1201px) {
+  .bl-customComponent-annualGoal {
+    .gauge-chart {
+      max-width: 450px;
+    }
+
+    .header {
+      margin-bottom: 104px;
+    }
+  }
+}
