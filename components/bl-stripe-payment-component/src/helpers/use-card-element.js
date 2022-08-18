@@ -94,13 +94,5 @@ export function useCardElement(eventHandlers, setIsLoading, setTransactionDetail
     }
   };
 
-  return {
-    handleSubmit,
-    onCardChange,
-    onCardFocus,
-    onCardBlur,
-    errorMessage,
-    isDisabled,
-    elements,
-  };
+  return { handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, isDisabled, elements };
 }
