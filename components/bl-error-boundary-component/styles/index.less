@@ -1,0 +1,32 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+
+.error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+  border-radius: 5px;
+  gap: 20px;
+  padding: 0 15px;
+  
+  &-message {
+    color: #FFFFFF;
+    font-size: 20px;
+  }
+  
+  &-button {
+    height: 45px;
+    padding: 5px 15px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.15px;
+    background-color: #FFFFFF50;
+    border: none;
+    cursor: pointer;
+        
+    &:hover {
+      background-color: #FFFFFF;
+      transform: scale(0.95);
+      transition: background-color .3s transform .3s;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "c_07bcdd04aff4e39222acda632755674c",
+  "name": "Error Boundary",
+  "description": "The main goal of the component is to display an unhandled error.",
+  "showInToolbox": true,
+  "faIcon": "exclamation",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"31ceaaf6ccbacd865f69d673b8e5e54e\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;min-height:200px;min-width:200px;\"></div>"
+}
