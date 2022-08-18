@@ -1,0 +1,173 @@
+{
+  "id": "c_a84f4d5c9a95537ece1222943b1eee2f",
+  "name": "Stripe Payment",
+  "description": "Stripe Payment component enables secure processing of credit card transactions using Stripe.",
+  "showInToolbox": true,
+  "faIcon": "credit-card",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "number",
+      "name": "amount",
+      "label": "Amount",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "amountLogic",
+      "handlerLabel": "Amount Logic",
+      "dataBinding": true,
+      "defaultValue": "0.5",
+      "handlerDescription": "This is a handler for the logic to determine what amount should be applied for payment."
+    },
+    {
+      "type": "number",
+      "name": "minAmount",
+      "label": "Min Amount",
+      "showInSettings": true,
+      "defaultValue": "0.5",
+      "hasLogicHandler": false,
+      "handlerId": "minAmountLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "fixedAmount",
+      "label": "Fixed Amount",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "fixedAmountLogic"
+    },
+    {
+      "type": "text",
+      "name": "currency",
+      "label": "Currency",
+      "showInSettings": true,
+      "defaultValue": "USD",
+      "hasLogicHandler": false,
+      "handlerId": "currencyLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "nameVisibility",
+      "label": "Name Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "nameVisibilityLogic",
+      "defaultValue": false
+    },
+    {
+      "type": "checkbox",
+      "name": "addressVisibility",
+      "label": "Address Visibility",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "addressVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "cityVisibility",
+      "label": "City Visibility",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "cityVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "stateVisibility",
+      "label": "State Visibility",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "stateVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "countryVisibility",
+      "label": "Country Visibility",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "countryVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "zipVisibility",
+      "label": "ZIP Visibility",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "zipVisibilityLogic"
+    },
+    {
+      "type": "text",
+      "name": "publishableKey",
+      "label": "Publishable Key",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "publishableKeyLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onSuccessEvent",
+      "label": "On Success Event",
+      "handlerDescription": "This event is fired when the payment is complete.",
+      "contextBlocks": [
+        {
+          "id": "transaction",
+          "label": "Transaction"
+        }
+      ]
+    },
+    {
+      "name": "onRejectEvent",
+      "label": "On Reject Event",
+      "handlerDescription": "This event is fired when the payment fails.",
+      "contextBlocks": [
+        {
+          "id": "errorMessage",
+          "label": "Error Message"
+        }
+      ]
+    },
+    {
+      "name": "onFocusEvent",
+      "label": "On Focus Event",
+      "handlerDescription": "This event is fired when the Card Element gains focus."
+    },
+    {
+      "name": "onBlurEvent",
+      "label": "On Blur Event",
+      "handlerDescription": "This event is fired when the Card Element loses focus."
+    },
+    {
+      "name": "onChangeEvent",
+      "label": "On Change Event",
+      "handlerDescription": "This event is fired when the Card Element's value changes.",
+      "contextBlocks": [
+        {
+          "id": "cardCondition",
+          "label": "Card Condition"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "clearCard",
+      "label": "Clear Card"
+    },
+    {
+      "id": "blurCard",
+      "label": "Blur Card"
+    },
+    {
+      "id": "focusCard",
+      "label": "Focus Card"
+    }
+  ],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"acff8fb8153593183ee6c5a860e7b7ab\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:0 0 0 0;min-height:0;min-width:100px;\"><div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"cf74679691d6d0eff94260c3e4c85507\" style=\"display:flex;flex-shrink:0;padding:0 10px 0 10px;min-width:100px;flex-direction:row;align-items:center;justify-content:space-between;\"><i data-icon=\"credit_card\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"4c2bf12ca10afcd96a48dad57019e9b4\" style=\"margin:0 10px 4px 0;align-self:flex-end;\"></i><div data-label=\"\" data-variant=\"standard\" data-module-type=\"system\" data-module-id=\"input\" data-display data-uid=\"ed1f15d13f8b2736e855bd6bbbfdddc1\" data-value=\"\" data-placeholder=\"Card number\" data-readonly=\"false\" style=\"margin:0 0 0 0;width:100%;\"></div><div data-label=\"\" data-variant=\"standard\" data-module-type=\"system\" data-module-id=\"input\" data-display data-uid=\"369e4fde2c9c3b63ddfb4dd36d3a3174\" data-placeholder=\"MM/YY\" style=\"margin:0 0 0 0;\"></div><div data-label=\"\" data-variant=\"standard\" data-module-type=\"system\" data-module-id=\"input\" data-display data-uid=\"1e8b1b6e3d68ff0140dcc4bffdb24103\" data-placeholder=\"CVC\" style=\"margin:0 0 0 0;\"></div></div><button type=\"button\" data-label=\"Pay\" data-variant=\"contained\" data-size=\"medium\" data-module-type=\"system\" data-module-id=\"button\" data-display data-uid=\"6b9a68a23f21ca5734ed1f0ec55f24c9\" style=\"margin:10px 10px 10px 10px;\"></button></div>"
+}
