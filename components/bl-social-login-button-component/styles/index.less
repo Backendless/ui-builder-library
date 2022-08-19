@@ -13,10 +13,11 @@
   .social-button {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 50px;
     width: 100%;
     line-height: 50px;
+    margin-bottom: 10px;
     background-color: transparent;
     box-sizing: border-box;
 	  border-radius: 3px;
@@ -87,14 +88,16 @@
       align-items: center;
       justify-content: center;
       height: 100%;
-      width: 15%;
+      width: 100%;
+      max-width: 15%;
     }
 
     &__text-container {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 85%;
+      width: 100%;
+      max-width: 75%;
     }
 
     &__text {
@@ -125,6 +128,22 @@
       &__github {
         fill: @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
       }
+    }
+  }
+
+  .with-icon {
+    justify-content: space-between;
+  }
+
+  .with-icon .social-button__text-container {
+    justify-content: start;
+  }
+}
+
+@media(max-width: 450px) {
+  .bl-customComponent-socialLoginButton {
+    .social-button__text {
+      font-size: 14px;
     }
   }
 }

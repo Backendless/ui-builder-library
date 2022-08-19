@@ -1,4 +1,4 @@
-export const SocialIcon = ({ socialNet }) => {
+export const IconsMap = ({ socialNet }) => {
   if (socialNet === 'googleplus') {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" className="icon icon__googleplus">
@@ -40,7 +40,7 @@ export const SocialIcon = ({ socialNet }) => {
       </svg>
     );
   }
-  
+
   if (socialNet === 'linkedin') {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="icon icon__linkedin">
@@ -51,7 +51,7 @@ export const SocialIcon = ({ socialNet }) => {
       </svg>
     );
   }
-  
+
   if (socialNet === 'github') {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" className="icon icon__github">

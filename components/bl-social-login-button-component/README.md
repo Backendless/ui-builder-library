@@ -10,18 +10,25 @@ Add the component to your page and specify the social network in the component p
 
 <dl>
 <dt>Button</dt>
-<dd>The component consists of a button and an icon with text that is the content of the button. When you change the `Button option` property, the content of the button will change to the one you specify.</dd>
+<dd>The component consists of a button and an icon with text that is the content of the button.</dd>
+<dt>Icon</dt>
+<dd>The icon is located to the left of the button text, also using the `Show button icon` property you can choose whether the icon will be displayed or not.</dd>
 </dl>
 
 ### Component Properties
 
-  Name          | Type                                                      | Default value   | Description
- ---------------|-----------------------------------------------------------|-----------------|----------------------------------------------------------------
-  Button option | 'googleplus', 'facebook', 'twitter', 'linkedin', 'github' | 'googleplus'    | This property allows you to select a social network for login button.
+  Name             | Type     | Default value  | Description
+ ------------------|----------|----------------|----------------------------------------------------------------
+  Show button icon | boolean  | true           | This property allows you to select the mode for a button with an icon or without.
+  Google plus      | boolean  | true           | With this property you can choose whether to show the Google plus button or not.
+  Facebook         | boolean  | true           | With this property you can choose whether to show the Facebook button or not.
+  Twitter          | boolean  | true           | With this property you can choose whether to show the Twitter button or not.
+  Linkedin         | boolean  | true           | With this property you can choose whether to show the Linkedin button or not.
+  Github           | boolean  | true           | With this property you can choose whether to show the Github button or not.
 
 ### Events
 
 <dl>
-<dt>On Social Login Button Click</dt>
+<dt>On Click</dt>
 <dd>Triggers when the user clicks the Social Login Button</dd>
 </dl>
