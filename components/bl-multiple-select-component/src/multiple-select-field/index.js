@@ -24,19 +24,9 @@ export function SelectField(props) {
         isSelectActive={ isSelectActive }
       />
       <div className="multiple-select__container">
-        <Input
-          type={ type }
-          selectId={ selectId }
-          selectValue={ selectValue }
-        />
-        <DropDownButton
-          isOptionsOpen={ isOptionsOpen }
-        />
-        <Fieldset
-          placeholder={ placeholder }
-          selectValue={ selectValue }
-          isSelectActive={ isSelectActive }
-        />
+        <Input type={ type } selectId={ selectId } selectValue={ selectValue } />
+        <DropDownButton isOptionsOpen={ isOptionsOpen } />
+        <Fieldset placeholder={ placeholder } selectValue={ selectValue } isSelectActive={ isSelectActive } />
       </div>
     </div>
   );

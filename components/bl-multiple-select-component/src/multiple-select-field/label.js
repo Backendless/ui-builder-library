@@ -6,7 +6,7 @@ export function Label(props) {
   return (
     <label
       htmlFor={ selectId }
-      className={ cn("label", { ["label__move-up"]: isSelectActive || selectValue.length > 0 }) }>
+      className={ cn("label", { ["label__move-up"]: isSelectActive || selectValue.length }) }>
       { placeholder }
     </label>
   );

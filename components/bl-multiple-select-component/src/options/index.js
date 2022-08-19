@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Option } from './option';
 
 export function Options(props) {
-  const { type, options, selectValue, setSelectValue, onSelectValueChange } = props;
+  const { type, options, selectValue, onChange, setSelectValue } = props;
 
   const selectRef = useRef(null);
   const [margin, setMargin] = useState(0);
@@ -33,8 +33,8 @@ export function Options(props) {
 
     setSelectValue(newSelectValue);
 
-    if (onSelectValueChange) {
-      onSelectValueChange({ selectValue: newSelectValue });
+    if (onChange) {
+      onChange({ selectValue: newSelectValue });
     }
   };
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useMemo, useRef, useCallback } from 'react';
 
 import { Options } from './options';
 import { SelectField } from './select-field';
@@ -7,18 +7,15 @@ import { useOnClickOutside, validate } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleSelectComponent({ component, eventHandlers }) {
-  const { display, classList, disable, options, placeholder, variant, type } = component;
-  const { onSelectValueChange } = eventHandlers;
+  const { display, classList, disable, placeholder, variant, type, value, options } = component;
+  const { onChange } = eventHandlers;
 
   const rootRef = useRef(null);
-  const [optionsList, setOptionsList] = useState([]);
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [selectValue, setSelectValue] = useState([]);
   const [isSelectActive, setIsSelectActive] = useState(false);
 
-  useEffect(() => {
-    setOptionsList(validate(options));
-  }, [options])
+  const optionsList = useMemo(() => validate(options), [options]);
 
   const handleClickOutside = useCallback(() => {
     if (!isOptionsOpen) {
@@ -52,7 +49,7 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
           type={ type }
           options={ optionsList }
           selectValue={ selectValue }
-          onSelectValueChange={ onSelectValueChange }
+          onChange={ onChange }
           setSelectValue={ setSelectValue }
         />
       }
