@@ -32,35 +32,25 @@
       "handlerDescription": "This is a handler for the logic to determine image height."
     },
     {
-      "type": "checkbox",
-      "name": "hasAutoplay",
-      "label": "Has Autoplay",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "hasAutoplayLogic",
-      "handlerLabel": "Has Autoplay Logic",
-      "handlerDescription": "This is a handler for the logic to determine carousel autoplay or not autoplay."
-    },
-    {
       "type": "number",
       "name": "autoplayDelay",
-      "label": "autoplay Delay (ms)",
+      "label": "Autoplay Delay(ms)",
       "showInSettings": true,
       "defaultValue": "5000",
       "hasLogicHandler": true,
       "handlerId": "autoplayDelayLogic",
       "dataBinding": true,
       "handlerLabel": "Autoplay Delay Logic",
-      "handlerDescription": "This is a handler for the logic to determine the delay autoplay."
+      "handlerDescription": "This is a handler for the logic to determine the delay between automatically cycling an item. If this property doesn't set or equal 0, the carousel will not automatically cycle."
     },
     {
       "type": "select",
-      "name": "typeAnimation",
-      "label": "Type Animation",
+      "name": "animationType",
+      "label": "Animation Type",
       "showInSettings": true,
       "defaultValue": "slide",
       "hasLogicHandler": false,
-      "handlerId": "typeAnimationLogic",
+      "handlerId": "animationTypeLogic",
       "options": [
         {
           "value": "slide",
@@ -86,22 +76,22 @@
     },
     {
       "type": "checkbox",
-      "name": "isControlButtonsVisible",
-      "label": "Control Buttons Visible",
+      "name": "withControls",
+      "label": "With Controls",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "isControlButtonsVisibleLogic",
-      "handlerLabel": "Control Buttons Visible Logic",
+      "handlerId": "withControlsLogic",
+      "handlerLabel": "With Controls Logic",
       "handlerDescription": "This is a handler for the logic to determine whether the control buttons are visible or not visible. "
     },
     {
       "type": "checkbox",
-      "name": "isIndicatorsVisible",
-      "label": "Indicators Visible",
+      "name": "withIndicators",
+      "label": "With Indicators",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "isIndicatorsVisibleLogic",
-      "handlerLabel": "Indicators Visible Logic",
+      "handlerId": "withIndicatorsLogic",
+      "handlerLabel": "With Indicators Logic",
       "handlerDescription": "This is a handler for the logic to determine whether the indicators are visible or not visible. "
     }
   ],
@@ -117,23 +107,23 @@
       "handlerDescription": "This handler is triggered when the user clicks on the previous button"
     },
     {
-      "name": "onHover",
-      "label": "On Hover",
+      "name": "onMouseEnter",
+      "label": "On Mouse Enter",
       "handlerDescription": "This handler is triggered when the user hovers on component"
     },
     {
-      "name": "onUnhover",
-      "label": "On Unhover",
+      "name": "onMouseLeave",
+      "label": "On Mouse Leave",
       "handlerDescription": "This handler is triggered when the user unhovers on component"
     }
   ],
   "actions": [
     {
-      "id": "goNextImage",
+      "id": "goToNextImage",
       "label": "Go to Next Image"
     },
     {
-      "id": "goPrevImage",
+      "id": "goToPrevImage",
       "label": "Go to Previous Image"
     },
     {
@@ -147,12 +137,14 @@
       ]
     },
     {
-      "id": "stopAutoplay",
-      "label": "Stop Autoplay"
-    },
-    {
-      "id": "startAutoplay",
-      "label": "Start Autoplay"
+      "id": "autoplay",
+      "label": "Autoplay",
+      "inputs": [
+        {
+          "id": "boolean",
+          "label": "Boolean"
+        }
+      ]
     },
     {
       "id": "setImageData",
