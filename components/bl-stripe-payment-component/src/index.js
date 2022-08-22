@@ -23,7 +23,7 @@ export default function StripePaymentComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn(classList, 'bl-customComponent-stripe-payment') }>
+    <div className={ cn('bl-customComponent-stripe-payment', classList) }>
       <Elements stripe={ stripePromise }>
         <PaymentForm
           component={ component }

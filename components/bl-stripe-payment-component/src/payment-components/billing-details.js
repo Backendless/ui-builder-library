@@ -31,8 +31,8 @@ export function BillingDetails({ component }) {
     <div className="billing-details">
       { FormFields.map((field, index) => (
         <FormField
-          visibility={ fieldsVisibility[field.name] }
           key={ index }
+          visibility={ fieldsVisibility[field.name] }
           name={ field.name }
           label={ field.label }
           type={ field.type }
