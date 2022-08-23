@@ -1,0 +1,70 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-inputWithMask-themeColor: @themePrimary;
+@bl-customComponent-inputWithMask-backgroundColor: @appBackgroundColor;
+@bl-customComponent-inputWithMask-textColor: @appTextColor;
+
+.bl-customComponent-inputWithMask {
+  &.form-input {
+    position: relative;
+    width: 100%;
+    margin-top: calc(1.2em + 8px);
+
+    .form-input__input {
+      width: 100%;
+      height: 1.2em;
+
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: @bl-customComponent-inputWithMask-textColor;
+
+      padding: 0px;
+
+      outline: none;
+
+      border: 0;
+      border-bottom: 1px solid gray;
+      background: transparent;
+      transition: 0.3s;
+
+      &::placeholder {
+        opacity: 0;
+      }
+
+      &:focus {
+        border-bottom: 1px solid @bl-customComponent-inputWithMask-themeColor
+      }
+
+      &:hover {
+        border-width: 2px;
+      }
+    }
+
+    .form-input__placeholder {
+      position: absolute;
+      left: 0px;
+      top: 50%;
+
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.4375em;
+      letter-spacing: 0.00938em;
+      color: gray;
+
+      user-select: none;
+      z-index: 1;
+      transition: 0.3s;
+      transform: translateY(-50%);
+    }
+
+    .form-input__input:focus + .form-input__placeholder {
+      color: @bl-customComponent-inputWithMask-themeColor;
+    }
+
+    .form-input__input:focus + .form-input__placeholder,
+    .form-input__input:not(:placeholder-shown) + .form-input__placeholder {
+      top: 0;
+      font-size: 0.8rem;
+      transform: translateY(-130%);
+    }
+  }
+}
