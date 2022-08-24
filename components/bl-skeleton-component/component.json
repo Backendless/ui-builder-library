@@ -36,9 +36,9 @@
       ]
     },
     {
-      "type": "number",
+      "type": "text",
       "name": "width",
-      "label": "Width(px)",
+      "label": "Width",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
@@ -46,9 +46,9 @@
       "handlerDescription": "This is a handler for the logic to determine the width."
     },
     {
-      "type": "number",
+      "type": "text",
       "name": "height",
-      "label": "Height(px)",
+      "label": "Height",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
