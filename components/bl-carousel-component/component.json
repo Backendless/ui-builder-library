@@ -16,7 +16,7 @@
       "defaultValue": "[\n  {\n    \"url\": \"\",\n    \"title\": \"\",\n    \"content\": \"\"\n  }\n]",
       "hasLogicHandler": true,
       "handlerId": "imagesDataLogic",
-      "handlerLabel": "Image Data Logic",
+      "handlerLabel": "Images Data Logic",
       "handlerDescription": "This is a handler for the logic to determine data for images slide."
     },
     {
@@ -81,7 +81,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "withControlsLogic",
-      "handlerLabel": "With Controls Logic",
+      "handlerLabel": "Controls Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine whether the control buttons are visible or not visible. "
     },
     {
@@ -91,7 +91,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "withIndicatorsLogic",
-      "handlerLabel": "With Indicators Logic",
+      "handlerLabel": "Indicators Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine whether the indicators are visible or not visible. "
     }
   ],
@@ -109,12 +109,12 @@
     {
       "name": "onMouseEnter",
       "label": "On Mouse Enter",
-      "handlerDescription": "This handler is triggered when the user hovers on component"
+      "handlerDescription": "This event is triggered when the Mouse Enters the component."
     },
     {
       "name": "onMouseLeave",
       "label": "On Mouse Leave",
-      "handlerDescription": "This handler is triggered when the user unhovers on component"
+      "handlerDescription": "This event is triggered when the mouse leaves the component."
     }
   ],
   "actions": [
@@ -131,8 +131,8 @@
       "label": "Go to Image",
       "inputs": [
         {
-          "id": "indexImage",
-          "label": "Index Image"
+          "id": "index",
+          "label": "Index"
         }
       ]
     },
@@ -147,12 +147,12 @@
       ]
     },
     {
-      "id": "setImageData",
-      "label": "Set Image Data",
+      "id": "setImagesData",
+      "label": "Set Images Data",
       "inputs": [
         {
-          "id": "listImageData",
-          "label": "List of Image Data"
+          "id": "listImagesData",
+          "label": "List of Images Data"
         }
       ]
     }

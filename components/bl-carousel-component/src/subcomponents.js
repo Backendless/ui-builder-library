@@ -5,12 +5,11 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export function List(props) {
   const {
-    data,
+    imagesList,
     currentImg,
     nextCurrentImage,
     heightImage,
-    isNextAnimation,
-    isPrevAnimation,
+    animation,
     animationDuration,
     animationType
   } = props;
@@ -28,13 +27,12 @@ export function List(props) {
 
   return (
     <div className="carousel__list">
-      { data.map((image, index) => {
+      { imagesList.map((image, index) => {
         const classes = useClassNamesItem(
           index,
           currentImg,
           nextCurrentImage,
-          isNextAnimation,
-          isPrevAnimation,
+          animation,
           animationType
         );
         const { url, title, content } = image;
@@ -76,22 +74,18 @@ function CarouselCaption({ title, content }) {
 
   return (
     <div className="carousel__caption">
-      { title && (
-        <h3>{ title }</h3>
-      ) }
-      { content && (
-        <p>{ content }</p>
-      ) }
+      { title && (<h3>{ title }</h3>) }
+      { content && (<p>{ content }</p>) }
     </div>
   );
 }
 
 export function CarouselIndicators(props) {
-  const { data, currentImg, nextCurrentImage, isAnimation, goToImage } = props;
+  const { imagesList, currentImg, nextCurrentImage, isAnimation, goToImage } = props;
 
   return (
     <div className="carousel__indicator-list">
-      { data.map((_, index) => (
+      { imagesList.map((_, index) => (
         <button
           type="button"
           className={ cn('carousel__indicator-item', { 'active': index === nextCurrentImage }) }

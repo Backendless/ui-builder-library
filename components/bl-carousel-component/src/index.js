@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NextButton, PrevButton, List, CarouselIndicators } from './subcomponents';
-import { getPrevImg, getNextImg } from './helpers';
+import { getAdjacentImages } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -18,85 +18,71 @@ export default function Carousel({ component, eventHandlers }) {
   } = component;
   const { onNextButton, onPrevButton, onMouseEnter, onMouseLeave } = eventHandlers;
 
-  const [data, setData] = useState(imagesData);
+  const [imagesList, setImagesList] = useState(imagesData);
   const [currentImg, setCurrentImg] = useState(0);
-  const [isNextAnimation, setIsNextAnimation] = useState(false);
-  const [isPrevAnimation, setIsPrevAnimation] = useState(false);
+  const [animation, setAnimation] = useState(null);
   const [nextCurrentImage, setNextCurrentImage] = useState(0);
-  const [isAutoplay, setIsAutoplay] = useState(true);
-  const autoplayId = useRef();
+  const [autoplay, setAutoplay] = useState(true);
+  const autoplayRef = useRef();
 
-  const nextImg = getNextImg(currentImg, data.length);
-  const prevImg = getPrevImg(currentImg, data.length);
+  const { nextImg, prevImg } = getAdjacentImages(currentImg, imagesList.length);
 
   useEffect(() => {
-    if (autoplayDelay && isAutoplay) {
-      autoplayId.current = setTimeout(() => {
+    if (autoplayDelay && autoplay) {
+      autoplayRef.current = setTimeout(() => {
         component.goToNextImage();
       }, autoplayDelay);
-    } else if (!isAutoplay) {
-      clearTimeout(autoplayId.current);
+    } else if (!autoplay) {
+      clearTimeout(autoplayRef.current);
     }
-  }, [currentImg, autoplayDelay, isAutoplay]);
+  }, [currentImg, autoplayDelay, autoplay]);
 
   component.goToNextImage = () => {
-    setIsAutoplay(false);
+    clearTimeout(autoplayRef.current);
     setNextCurrentImage(nextImg);
-    setIsNextAnimation(true);
+    setAnimation('next');
 
     setTimeout(() => {
-      setIsNextAnimation(false);
+      setAnimation(null);
       setCurrentImg(nextImg);
-      setIsAutoplay(true)
     }, animationDuration);
   };
 
   component.goToPrevImage = () => {
-    setIsAutoplay(false);
+    clearTimeout(autoplayRef.current);
     setNextCurrentImage(prevImg);
-    setIsPrevAnimation(true);
+    setAnimation('prev');
 
     setTimeout(() => {
-      setIsPrevAnimation(false);
+      setAnimation(null);
       setCurrentImg(prevImg);
-      setIsAutoplay(true);
     }, animationDuration);
   };
 
-  component.goToImage = (indexImage) => {
-    setIsAutoplay(false);
-    setNextCurrentImage(indexImage);
-    if (indexImage > currentImg) {
-      setIsNextAnimation(true);
+  component.goToImage = (index) => {
+    clearTimeout(autoplayRef.current);
+    setNextCurrentImage(index);
 
-      setTimeout(() => {
-        setIsNextAnimation(false);
-        setCurrentImg(indexImage);
-        setIsAutoplay(true);
-      }, animationDuration);
-    } else {
-      setIsPrevAnimation(true);
+    setAnimation( index < currentImg ? 'prev' : 'next')
 
-      setTimeout(() => {
-        setIsPrevAnimation(false);
-        setCurrentImg(indexImage);
-        setIsAutoplay(true);
-      }, animationDuration);
-    }
+    setTimeout(() => {
+      setAnimation(null);
+      setCurrentImg(index);
+    }, animationDuration);
   };
 
   component.autoplay = (boolean) => {
-    setIsAutoplay(boolean);
+    setAutoplay(boolean);
   };
 
-  component.setImageData = (listImageData) => {
+  component.setImagesData = (listImagesData) => {
     setCurrentImg(0);
     setNextCurrentImage(0);
-    clearTimeout(autoplayId.current);
-    setData(listImageData);
+    clearTimeout(autoplayRef.current);
+    setImagesList(listImagesData);
   };
 
-  if (!display || !data.length) {
+  if (!display || !imagesList.length) {
     return null;
   }
 
@@ -107,28 +93,27 @@ export default function Carousel({ component, eventHandlers }) {
       onMouseLeave={ onMouseLeave }>
       { withControls && (
         <div className="carousel__controls-button">
-          <PrevButton disabled={ isPrevAnimation || isNextAnimation } onPrevButton={ onPrevButton }/>
-          <NextButton disabled={ isPrevAnimation || isNextAnimation } onNextButton={ onNextButton }/>
+          <PrevButton disabled={ !!animation } onPrevButton={ onPrevButton }/>
+          <NextButton disabled={ !!animation } onNextButton={ onNextButton }/>
         </div>
       ) }
 
       <List
-        data={ data }
+        imagesList={ imagesList }
         currentImg={ currentImg }
         nextCurrentImage={ nextCurrentImage }
         heightImage={ heightImage }
         animationType={ animationType }
-        isNextAnimation={ isNextAnimation }
-        isPrevAnimation={ isPrevAnimation }
+        animation={animation}
         animationDuration={ animationDuration }
       />
 
       { withIndicators && (
         <CarouselIndicators
-          data={ data }
+          imagesList={ imagesList }
           currentImg={ currentImg }
           nextCurrentImage={ nextCurrentImage }
-          isAnimation={ isPrevAnimation || isNextAnimation }
+          isAnimation={ !!animation }
           goToImage={ component.goToImage }
         />
       ) }
