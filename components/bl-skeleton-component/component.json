@@ -1,0 +1,85 @@
+{
+  "id": "c_a417144752bec3fa6fd4c18d804a1038",
+  "name": "Skeleton",
+  "description": "This component allows you to display the skeleton of an element when loading data",
+  "showInToolbox": true,
+  "faIcon": "bone",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "variant",
+      "label": "Variant",
+      "showInSettings": true,
+      "defaultValue": "text",
+      "hasLogicHandler": false,
+      "handlerId": "variantLogic",
+      "options": [
+        {
+          "value": "text",
+          "label": "Text"
+        },
+        {
+          "value": "circular",
+          "label": "Circular"
+        },
+        {
+          "value": "rectangular",
+          "label": "Rectangular"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "width",
+      "label": "Width(px)",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the width."
+    },
+    {
+      "type": "number",
+      "name": "height",
+      "label": "Height(px)",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the height."
+    },
+    {
+      "type": "select",
+      "name": "animation",
+      "label": "Animation",
+      "showInSettings": true,
+      "defaultValue": "default",
+      "hasLogicHandler": false,
+      "handlerId": "animationLogic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "wave",
+          "label": "Wave"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [],
+  "actions": []
+}
