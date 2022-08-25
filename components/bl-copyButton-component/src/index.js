@@ -4,6 +4,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function CopyButton({ component, eventHandlers }) {
   const {
+    style,
     display,
     classList,
     disabled,
@@ -41,6 +42,7 @@ export default function CopyButton({ component, eventHandlers }) {
       className={ cn('bl-customComponent-copyButton', classList, { 'disabled': disabled, 'copied': isCopied }) }
       type="button"
       disabled={ disabled || isCopied }
+      style={ style }
       onClick={ onCopy }>
       { label }
     </button>

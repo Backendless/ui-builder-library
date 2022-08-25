@@ -4,7 +4,7 @@ import { destroy, loadAnimation, play, stop } from './lottie.min';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function LottieAnimation({ component, eventHandlers }) {
-  const { display, classList, data, isLoop, type, isStopped } = component;
+  const { display, classList, data, isLoop, type, isStopped, style } = component;
   const { onHover, onUnhover, onClick } = eventHandlers;
 
   const container = useRef(null);
@@ -36,6 +36,7 @@ export default function LottieAnimation({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-lottieAnimation', classList) }
+      style={ style }
       ref={ container }
       onClick={ onClick }
       onMouseEnter={ onHover }

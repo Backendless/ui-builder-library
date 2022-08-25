@@ -5,6 +5,7 @@ import { Player } from './player';
 
 export default function AudioPlayer({ component }) {
   const {
+    style,
     display,
     audioUrl,
     audioTitle,
@@ -70,7 +71,7 @@ export default function AudioPlayer({ component }) {
   }
 
   return (
-    <div className={ 'bl-customComponent-audio-player ' + classList.join(' ') }>
+    <div className={ 'bl-customComponent-audio-player ' + classList.join(' ') } style={ style }>
       <audio
         autoPlay={ isPlaying }
         ref={ audioRef }
@@ -81,7 +82,7 @@ export default function AudioPlayer({ component }) {
         loop={ repeat }
         onEnded={ onEnded }>
       </audio>
-      
+
       <Player
         component={ component }
         audioRef={ audioRef }

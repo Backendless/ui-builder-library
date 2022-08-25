@@ -7,6 +7,7 @@ const DEFAULT_HIDE_DURATION = 5000;
 
 export default function SnackbarComponent({ component, eventHandlers }) {
   const {
+    style,
     showClose,
     showAction,
     actionContent,
@@ -73,7 +74,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
   const classes = useClasses(horizontalPosition, verticalPosition);
 
   return (
-    <div className={ `bl-customComponent-snackbar' ${ classes }` }>
+    <div className={ `bl-customComponent-snackbar' ${ classes }` } style={ style }>
       { !!snackData.length && snackData.map(el => {
         const { showClose, showAction, actionContent, snackContent, type, id } = el;
 

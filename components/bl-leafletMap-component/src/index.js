@@ -21,6 +21,7 @@ import { FullscreenButton } from './fullscreen-button';
 
 export default function LeafletMap({ component, eventHandlers }) {
   const {
+    style,
     markers,
     circles,
     polygons,
@@ -92,6 +93,7 @@ export default function LeafletMap({ component, eventHandlers }) {
     <div
       id={ uid }
       className={ 'bl-customComponent-leafletMap ' + classList.join(' ') }
+      style={ style }
       ref={ containerRef }>
       { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }
       { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers }/> }
