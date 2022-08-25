@@ -1,0 +1,134 @@
+{
+  "id": "c_0a91e19d5f9efe35cc737b8b39ab813d",
+  "name": "Accordion",
+  "description": "The accordion component allows the user to show and hide sections of related content on a page.",
+  "showInToolbox": true,
+  "faIcon": "stream",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "accordionData",
+      "label": "Accordion Data",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "accordionDataLogic",
+      "defaultValue": "[\n  {\n    \"title\": \"Collapsible Group Item #1\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.\"\n  },\n  {\n    \"title\": \"Collapsible Group Item #2\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.\"\n  },\n  {\n    \"title\": \"Collapsible Group Item #3\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.\"\n  }\n]",
+      "handlerDescription": "This is a handler for the logic to determine the data for the accordion. Array of objects returned by the handler will define the title and content of the accordion sections.",
+      "handlerLabel": "Accordion Data Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "controlledAccordion",
+      "label": "Controlled Accordion",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "controlledAccordionLogic"
+    },
+    {
+      "type": "color",
+      "name": "titleColor",
+      "label": "Title Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titleColorLogic"
+    },
+    {
+      "type": "color",
+      "name": "titleBackgroundColor",
+      "label": "Title Background Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titleBackgroundColorLogic"
+    },
+    {
+      "type": "text",
+      "name": "titleFontSize",
+      "label": "Title Font Size",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titleFontSizeLogic"
+    },
+    {
+      "type": "text",
+      "name": "titlePadding",
+      "label": "Title Padding",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titlePaddingLogic"
+    },
+    {
+      "type": "color",
+      "name": "contentColor",
+      "label": "Content Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentColorLogic"
+    },
+    {
+      "type": "color",
+      "name": "contentBackgroundColor",
+      "label": "Content Background Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentBackgroundColorLogic"
+    },
+    {
+      "type": "text",
+      "name": "contentFontSize",
+      "label": "Content Font Size",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentFontSizeLogic"
+    },
+    {
+      "type": "text",
+      "name": "contentPadding",
+      "label": "Content Padding",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentPaddingLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the title of the accordion section.",
+      "contextBlocks": [
+        {
+          "id": "item",
+          "label": "Item"
+        }
+      ]
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "handlerDescription": "The event is fired when the mouse pointer hovers over the accordion."
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "handlerDescription": "The event is fired when the mouse pointer leaves the accordion boundaries."
+    }
+  ],
+  "actions": [
+    {
+      "id": "openAll",
+      "label": "Open All"
+    },
+    {
+      "id": "closeAll",
+      "label": "Close All"
+    },
+    {
+      "id": "toggleAll",
+      "label": "Toggle All"
+    }
+  ],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"35b67b6244b8cb8d9fc2aeb8e8e363ee\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:0 0 0 0;min-height:100px;min-width:100px;\"><div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"277bd9d6f2d5f796e4560cc4aa77768d\" style=\"display:flex;flex-shrink:0;padding:10px;min-width:100px;align-items:center;flex-direction:row;width:100%;align-self:flex-start;border:#000000;\"><i data-icon=\"keyboard_arrow_right\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"c8a883eb867d041ad3848eaf4eff564f\"></i><span data-content=\"Collapsible Group Item #1\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"5f67b67d25d887ad678831ffa34757cb\" class=\"bl-text\" style=\"margin:0 0 0 11px;align-self:center;\"></span></div><div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"7754e14a81dc3b031c084884ed1e8d37\" style=\"display:flex;flex-shrink:0;padding:10px;min-width:100px;align-items:center;flex-direction:row;width:100%;align-self:flex-start;\"><i data-icon=\"keyboard_arrow_right\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"5cfde5c9a47bc947781fb6f14645469e\"></i><span data-content=\"Collapsible Group Item #2\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"bb0ec5ebe847954a4adfaf89db0f0bfa\" class=\"bl-text\" style=\"margin:0 0 0 11px;align-self:center;\"></span></div><div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"979a2c18d0d3be9990847d45af98b504\" style=\"display:flex;flex-shrink:0;padding:10px;min-width:100px;align-items:center;flex-direction:row;width:100%;align-self:flex-start;\"><i data-icon=\"keyboard_arrow_right\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"399ec5a9b33c7b69fe2d02e3383e894f\"></i><span data-content=\"Collapsible Group Item #3\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"36ff4195d58c546efbd4f906c1e5e609\" class=\"bl-text\" style=\"margin:0 0 0 11px;align-self:center;\"></span></div></div>"
+}
