@@ -1,0 +1,55 @@
+{
+  "id": "c_db2815530f723ada517f543ee38eadde",
+  "name": "Parallax",
+  "description": "This component allows to add image and content with parallax effect",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "image",
+      "label": "Image",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "imageLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine image URL"
+    },
+    {
+      "type": "number",
+      "name": "strength",
+      "label": "Strength",
+      "showInSettings": true,
+      "defaultValue": "200",
+      "hasLogicHandler": true,
+      "handlerId": "strengthLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the strength of parallax"
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "titleLogic",
+      "dataBinding": true,
+      "label": "Title",
+      "handlerDescription": "This is a handler for the logic to determine title of content"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "textLogic",
+      "dataBinding": true,
+      "label": "Text",
+      "handlerDescription": "This is a handler for the logic to determine text of content"
+    }
+  ],
+  "eventHandlers": [],
+  "actions": []
+}
