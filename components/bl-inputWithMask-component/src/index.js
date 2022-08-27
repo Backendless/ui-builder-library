@@ -4,7 +4,7 @@ import { useIMask } from './lib/react-imask.min';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function InputWithMask({ component, eventHandlers }) {
-  const { display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
+  const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
   const { onChangeValue, onValidate } = eventHandlers;
 
   const options = {
@@ -24,7 +24,7 @@ export default function InputWithMask({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-inputWithMask', 'form-input', classList) }>
+    <div className={ cn('bl-customComponent-inputWithMask', 'form-input', classList) } style={style}>
       <input
         type="text"
         ref={ ref }
@@ -32,7 +32,6 @@ export default function InputWithMask({ component, eventHandlers }) {
         placeholder={ placeholder }
         className="form-input__input"
       />
-
       { placeholder && (
         <label htmlFor="input-with-mask" className="form-input__placeholder">{ placeholder }</label>
       ) }
