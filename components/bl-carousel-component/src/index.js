@@ -6,6 +6,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function Carousel({ component, eventHandlers }) {
   const {
+    style,
     display,
     classList,
     imagesData,
@@ -89,6 +90,7 @@ export default function Carousel({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-carousel', classList) }
+      style={style}
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
       { withControls && (
