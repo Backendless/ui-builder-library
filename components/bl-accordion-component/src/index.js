@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import { useItemsState } from './helpers';
 import { Item } from './item';
@@ -8,8 +8,8 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function AccordionComponent({ component, eventHandlers }) {
   const { classList, display, accordionData, controlledAccordion, style } = component;
   const { onClick, onMouseOver, onMouseOut } = eventHandlers;
-
-  const [accordionId, setAccordionId] = useState(() => Math.random().toString(16).slice(-8));
+  
+  const accordionId = useMemo(() => BackendlessUI.UUID.short(), []);
 
   const { stateStore, handleToggle, updateItemsState } = useItemsState(accordionData, onClick, controlledAccordion);
 
