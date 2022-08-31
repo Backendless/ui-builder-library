@@ -3,6 +3,12 @@ import { useIMask } from './lib/react-imask.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const MaskTypes = {
+  NUMBER: 'Number',
+  STRING: 'String',
+  REGEX: 'RegExp'
+}
+
 export default function InputWithMask({ component, eventHandlers }) {
   const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
   const { onChangeValue, onValidate } = eventHandlers;
@@ -40,11 +46,11 @@ export default function InputWithMask({ component, eventHandlers }) {
 }
 
 const preparedMask = (maskType, mask) => {
-  if ((maskType === 'String' || maskType === 'Number') && mask) {
+  if ((maskType === MaskTypes.STRING || maskType === MaskTypes.NUMBER) && mask) {
     return mask;
   }
 
-  if (maskType === 'RegExp') {
+  if (maskType === MaskTypes.REGEX) {
     return new RegExp(mask);
   }
 

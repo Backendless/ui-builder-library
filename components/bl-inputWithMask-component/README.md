@@ -20,24 +20,24 @@ Example:
 <dt>Placeholder Char</dt>
 <dd>Allows to specify placeholder char. Default value "_"</dd>
 <dt>Lazy</dt>
-<dd>Allows to specify lazy or not lazy. Default value "unchecked"</dd>
+<dd>Allows to specify lazy or not lazy. Default value "false"</dd>
 </dl>
 
 ### Event Handlers and Bindable Properties
 
 <dl>
 <dt>Mask Type Logic</dt>
-<dd>Allows to specify mask type in Backendless logic</dd>
+<dd>Allows to specify mask type.</dd>
 <dt>Mask Logic</dt>
-<dd>Allows to specify mask logic for in Backendless logic</dt>
+<dd>Allows to specify mask.</dt>
 <dt>Placeholder Logic</dt>
-<dd>Allows to specify placeholder in Backendless logic</dd>
+<dd>Allows to specify placeholder.</dd>
 <dt>Placeholder Char Logic</dt>
-<dd>Allows to specify placeholder char in Backendless logic</dd>
+<dd>Allows to specify placeholder char.</dd>
 <dt>Lazy Logic</dt>
-<dd>Allows to specify lazy or not lazy in Backendless logic</dd>
+<dd>Allows to specify lazy or not lazy. If lazy is true mask is not visible, and if lazy is false mask visible, but if the mask is visible, the input value includes the mask.</dd>
 <dt>On Change Value</dt>
-<dd>Triggered when input value change.</dd>
+<dd>This event is triggered when the component's state (value) changes.</dd>
 <dt>On Validate</dt>
-<dd>Triggered when value changes but before set in value. Returns boolean. True — sets value, False — don't set value.</dd>
+<dd>This event is triggered before the component value changes. Using returned value(boolean) we could decide - apply changes(true) or not(false).</dd>
 </dl>

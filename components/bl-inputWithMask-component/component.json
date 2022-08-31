@@ -31,7 +31,7 @@
           "label": "RegExp"
         }
       ],
-      "handlerDescription": "This is a handler for the logic to determine dafault mask."
+      "handlerDescription": "This is a handler for the logic to determine type of mask(Number, String, RegExp)."
     },
     {
       "type": "text",
@@ -72,7 +72,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "lazyLogic",
-      "handlerDescription": "This is a handler for the logic to determine a lazy."
+      "handlerDescription": "This is a handler for the logic to determine a lazy. If lazy is true mask is not visible, and if lazy is false mask visible, but if the mask is visible, the input value includes the mask."
     }
   ],
   "eventHandlers": [
@@ -85,7 +85,7 @@
           "label": "Value"
         }
       ],
-      "handlerDescription": "Triggered when input value change."
+      "handlerDescription": "This event is triggered when the component's state (value) changes."
     },
     {
       "name": "onValidate",
@@ -101,7 +101,7 @@
           "label": "Mask"
         }
       ],
-      "handlerDescription": "Triggered when value changes but before set in value. Returns boolean. True — sets value, False — don't set value."
+      "handlerDescription": "This event is triggered before the component value changes. Using returned value(boolean) we could decide - apply changes(true) or not(false)."
     }
   ],
   "actions": []
