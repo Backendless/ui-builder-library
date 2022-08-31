@@ -19,23 +19,11 @@ export function PaymentForm(props) {
     onCardFocus,
     onCardBlur,
     errorMessage,
-    isDisabled,
+    disabled,
     elements,
   } = useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef);
 
-  const cardElementStyles = {
-    base: {
-      fontSize       : '16px',
-      backgroundColor: 'transparent',
-      color          : cardElementColor,
-    },
-  };
-
-  const cardElementOptions = {
-    iconStyle     : 'solid',
-    style         : cardElementStyles,
-    hidePostalCode: true,
-  };
+  const cardElementOptions = getCardElementOptions(cardElementColor);
 
   useEffect(() => {
     const color = getComputedStyle(cardElementRef.current).color;
@@ -61,8 +49,24 @@ export function PaymentForm(props) {
         />
       </div>
       <PaymentAmount component={ component }/>
-      <button type="submit" disabled={ isDisabled }>{ `Pay ${ amount || 0 } ${ currency || '' }` }</button>
+      <button type="submit" disabled={ disabled }>{ `Pay ${ amount || 0 } ${ currency || '' }` }</button>
       { errorMessage && <span className="payment-error">{ errorMessage }</span> }
     </form>
   );
+}
+
+function getCardElementOptions(cardElementColor) {
+  const cardElementStyles = {
+    base: {
+      fontSize       : '16px',
+      backgroundColor: 'transparent',
+      color          : cardElementColor,
+    },
+  };
+
+  return {
+    iconStyle     : 'solid',
+    style         : cardElementStyles,
+    hidePostalCode: true,
+  };
 }

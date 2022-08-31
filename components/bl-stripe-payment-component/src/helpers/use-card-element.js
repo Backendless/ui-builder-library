@@ -10,7 +10,7 @@ export function useCardElement(eventHandlers, setIsLoading, setTransactionDetail
   const stripe = useStripe();
   const elements = useElements();
 
-  const isDisabled = !stripe || !elements || !isCardValid;
+  const disabled = !stripe || !elements || !isCardValid;
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -23,12 +23,12 @@ export function useCardElement(eventHandlers, setIsLoading, setTransactionDetail
 
     const formField = event.target;
     const billingDetails = {
-      'address_city'   : formField.city ? formField.city.value : undefined,
-      'address_country': formField.country ? formField.country.value : undefined,
-      'address_line1'  : formField.address ? formField.address.value : undefined,
-      'address_zip'    : formField.zip ? formField.zip.value : undefined,
-      'address_state'  : formField.state ? formField.state.value : undefined,
-      'name'           : formField.name ? formField.name.value : undefined,
+      'address_city'   : formField?.city?.value,
+      'address_country': formField?.country?.value,
+      'address_line1'  : formField?.address?.value,
+      'address_zip'    : formField?.zip?.value,
+      'address_state'  : formField?.state?.value,
+      'name'           : formField?.name?.value,
     };
 
     const cardElement = elements.getElement('card');
@@ -94,5 +94,5 @@ export function useCardElement(eventHandlers, setIsLoading, setTransactionDetail
     }
   };
 
-  return { handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, isDisabled, elements };
+  return { handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, disabled, elements };
 }
