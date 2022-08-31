@@ -6,7 +6,7 @@ import { validate } from './validate';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleBarChartComponent({ component }) {
-  const { classList, display, disable, data, displayGrid, gridMarks } = component;
+  const { classList, display, disable, data, displayGrid, gridMarks, style } = component;
 
   const [chartData, setChartData] = useState([]);
 
@@ -21,7 +21,7 @@ export default function MultipleBarChartComponent({ component }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-multipleBarChart', ...classList, { disable }) }>
+    <div className={ cn('bl-customComponent-multipleBarChart', ...classList, { disable }) } style={ style }>
       <div className="chart">
         <div className="chart__items">
           { displayGrid &&
