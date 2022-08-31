@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { LoadersMap } from './loaders';
 
 export default function BackdropSpinner({ component, eventHandlers }) {
-  const { backdropVisibility, loaderType, display } = component;
+  const { backdropVisibility, loaderType, display, style } = component;
   const { onClick, onOpen, onClose } = eventHandlers;
 
   useEffect(() => {
@@ -19,7 +19,10 @@ export default function BackdropSpinner({ component, eventHandlers }) {
   const Loader = LoadersMap[loaderType];
 
   return (
-    <div onClick={ onClick } className={ 'bl-customComponent-backdrop ' + component.classList.join(' ') }>
+    <div
+      onClick={ onClick }
+      className={ 'bl-customComponent-backdrop ' + component.classList.join(' ') }
+      style={ style }>
       <Loader/>
     </div>
   );

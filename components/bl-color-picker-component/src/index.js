@@ -6,7 +6,7 @@ import { PickerTrigger } from './picker-trigger';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function ColorPickerComponent({ component, eventHandlers }) {
-  const { display, classList, pickerTriggerVisibility, selectedColor } = component;
+  const { display, classList, pickerTriggerVisibility, selectedColor, style } = component;
   const { onChangeColor } = eventHandlers;
 
   const pickerContainerRef = useRef(null);
@@ -36,6 +36,7 @@ export default function ColorPickerComponent({ component, eventHandlers }) {
 
   const styles = {
     display: display ? 'block' : 'none',
+    ...style,
   };
 
   return (

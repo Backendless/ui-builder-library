@@ -8,7 +8,7 @@ import { Modal } from './modal';
 const isMobile = checkMobile();
 
 export default function WebcamPhoto({ component, eventHandlers }) {
-  const { uploadButtonLabel, makePhotoButtonLabel, buttonDisabled } = component;
+  const { uploadButtonLabel, makePhotoButtonLabel, buttonDisabled, style } = component;
   const { onSaveImage } = eventHandlers;
 
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -30,7 +30,7 @@ export default function WebcamPhoto({ component, eventHandlers }) {
   }, []);
 
   return (
-    <div className="bl-customComponent-webcamPhoto">
+    <div className="bl-customComponent-webcamPhoto" style={ style }>
       { isMobile
         ? <UploadButton
           onChange={ handleChange }

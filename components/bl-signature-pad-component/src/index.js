@@ -5,12 +5,13 @@ import { resizeCanvas } from './utils/canvas';
 import { ActionButtons } from './action-buttons';
 
 export default function SignaturePadComponent({ component, eventHandlers }) {
-  const { penColor, classList, display, description } = component;
+  const { penColor, classList, display, description, style } = component;
   const { onMouseOver, onMouseOut } = eventHandlers;
   const elRef = useRef(null);
   const signaturePadRef = useRef(null);
   const styles = {
     display: display ? 'flex' : 'none',
+    ...style,
   };
 
   useEffect(() => {

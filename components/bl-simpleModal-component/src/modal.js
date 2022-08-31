@@ -7,6 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export function Modal(props) {
   const { component, eventHandlers, inputValue, isOpen, setInputValue, isClosing } = props;
   const {
+    style,
     title,
     content,
     classList,
@@ -42,7 +43,7 @@ export function Modal(props) {
   }, [isOpen]);
 
   return ReactDOM.createPortal(
-    <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms` } }>
+    <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms`, ...style } }>
       <div onClick={ onClose } className="overlay"></div>
       <div className="simple-modal__content">
         <Title content={ title }/>

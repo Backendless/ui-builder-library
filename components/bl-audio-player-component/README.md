@@ -9,6 +9,10 @@ While the player can be configured with multiple settings it is easy in use and 
 ### Styles and Settings
 
 <dl>
+<dt>Audio Url</dt>
+<dd>Value from this field will be used as the audio url of the player. Can be determined by Audio Url Logic as an array of urls or as a single url.</dd>
+<dt>Audio Title</dt>
+<dd>Value from this field will be used as the audio title of the player. Can be determined by Audio Title Logic as an array of titles or as a single title.</dd>
 <dt>Player Visibility</dt>
 <dd>Checkbox for determining whether the Audio Player is visible to the user or not. Checked by default.</dd>
 <dt>Track Navigation Visibility</dt>
@@ -26,10 +30,10 @@ While the player can be configured with multiple settings it is easy in use and 
 ### Event Handlers and Bindable Properties
 
 <dl>
-<dt>Audio Url</dt>
-<dd>Value from this field will be used as the audio url of the player. Can be determined by Audio Url Logic as an array of urls or as a single url.</dd>
-<dt>Audio Title</dt>
-<dd>Value from this field will be used as the audio title of the player. Can be determined by Audio Title Logic as an array of titles or as a single title.</dd>
+<dt>Audio Url Logic</dt>
+<dd>This is the handler for the logic to determine the audio url or the list of urls. Array of values returned by the handler will be used as the component playlist.</dd>
+<dt>Audio Title Logic</dt>
+<dd>This is the handler for the logic to determine the track title or the list of titles. Values from the array returned by the handler will be used as track titles of the playlist.</dd>
 </dl>
 
 ### Actions
@@ -40,5 +44,5 @@ While the player can be configured with multiple settings it is easy in use and 
 <dt>Stop Audio</dt>
 <dd>Action which stops playing the audio.</dd>
 <dt>Replace Audio</dt>
-<dd>Action which replaces the audio. Value from Audio Url and Audio Title properties will be used as the current track of Audio Player.</dd>
+<dd>Action which replaces the audio. Values of the Audio Url and Audio Title properties from the action block will be used as the current track of Audio Player.</dd>
 </dl>

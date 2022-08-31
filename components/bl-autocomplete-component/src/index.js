@@ -7,7 +7,7 @@ import { TextField } from './text-field';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
-  const { disabled, placeholder, options, autocompleteVariant, classList } = component;
+  const { disabled, placeholder, options, autocompleteVariant, classList, style } = component;
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
@@ -46,7 +46,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
   useOnClickOutside(rootRef, handleClickOutside);
 
   return (
-    <div ref={ rootRef } className={ classes }>
+    <div ref={ rootRef } className={ classes } style={ style }>
       <TextField
         ref={ autocompleteRef }
         disabled={ disabled }
