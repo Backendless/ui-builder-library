@@ -1,0 +1,103 @@
+{
+  "id": "c_12ec3e28d67c26fda2698217cfde1e93",
+  "name": "Data Grid",
+  "description": "The main purpose of the component is to display data, and this data can be sorted and filtered.",
+  "showInToolbox": true,
+  "faIcon": "table",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disable",
+      "label": "Disable",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disableLogic",
+      "handlerLabel": "Disable Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "sortable",
+      "label": "Sortable",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "sortableLogic",
+      "handlerLabel": "Sortable Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "filter",
+      "label": "Filter",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "filterLogic",
+      "handlerLabel": "Filter Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "floatingFilter",
+      "label": "Floating filter",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "floatingFilterLogic"
+    },
+    {
+      "type": "json",
+      "name": "columnDefs",
+      "label": "Column definition",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "columnDefsLogic",
+      "handlerLabel": "Column definition Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "rowData",
+      "label": "Row data",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "rowDataLogic",
+      "handlerLabel": "Row data Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "settingTooltip": "The height must be specified in pixels or percentages",
+      "showInSettings": true,
+      "defaultValue": "500px",
+      "hasLogicHandler": false,
+      "handlerId": "heightLogic"
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "settingTooltip": "The width must be specified in pixels or percentages",
+      "showInSettings": true,
+      "defaultValue": "750px",
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onCellClick",
+      "label": "On Cell Click",
+      "contextBlocks": [
+        {
+          "id": "cellParams",
+          "label": "Cell Params"
+        }
+      ]
+    }
+  ],
+  "blockUI": "<div alt=\"Screenshot 2022-08-26 at 15.33.02.png\" data-display data-uid=\"c9cc31835246124df964ba97dba93565\"></div><div alt=\"Screenshot 2022-08-26 at 15.33.02.png\" data-display data-uid=\"5678e891f52565ee542dfcdebe033b62\"></div><img data-url=\"/ui-builder/containers/default/components/custom/Screenshot+2022-08-26+at+16.27.09.png\" data-module-type=\"system\" data-module-id=\"image\" data-display data-uid=\"d1f5503fb64b1d5bb3482877cc2f3779\" style=\"width:550px;\"/>"
+}
