@@ -81,11 +81,11 @@
       "dataBinding": true,
       "options": [
         {
-          "value": "yana",
-          "label": "Yana"
+          "value": "",
+          "label": ""
         }
       ],
-      "defaultValue": "yana"
+      "defaultValue": ""
     },
     {
       "type": "json",

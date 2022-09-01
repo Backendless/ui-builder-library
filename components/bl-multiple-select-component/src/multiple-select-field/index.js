@@ -8,7 +8,7 @@ import { DropDownButton } from "./drop-down-button";
 export function SelectField(props) {
   const { type, placeholder, selectValue, isOptionsOpen, isSelectActive, setIsOptionsOpen, setIsSelectActive } = props;
 
-  const selectId = useMemo(() => getId(), []);
+  const selectId = useMemo(() => BackendlessUI.UUID.short(), []);
 
   const handleClick = () => {
     setIsOptionsOpen(!isOptionsOpen);
@@ -30,11 +30,4 @@ export function SelectField(props) {
       </div>
     </div>
   );
-};
-
-const getId = () => {
-  const chr4 = () => Math.random().toString(16).slice(-4);
-  const chr8 = () => `${chr4()}${chr4()}`;
-
-  return `${chr8()}${chr8()}`;
 };

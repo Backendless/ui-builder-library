@@ -18,10 +18,10 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   const optionsList = useMemo(() => validate(options), [options]);
 
   const handleClickOutside = useCallback(() => {
-    if (!isOptionsOpen) {
-      setIsSelectActive(false);
-    } else {
+    if (isOptionsOpen) {
       setIsOptionsOpen(false);
+    } else {
+      setIsSelectActive(false);
     }
   }, [isOptionsOpen]);
 
