@@ -4,7 +4,7 @@ const { cn } = BackendlessUI.CSSUtils
 
 export default function SocialLoginButtonComponent({ component, eventHandlers }) {
   const { display, classList, disable, showButtonIcon, googleplus, facebook, twitter, linkedin, github } = component;
-  const { onClick } = eventHandlers;
+  const { onLogin } = eventHandlers;
 
   if (!display) {
     return null;
@@ -12,11 +12,11 @@ export default function SocialLoginButtonComponent({ component, eventHandlers })
 
   return (
     <div className={ cn('bl-customComponent-socialLoginButton', classList, { disable }) }>
-      { googleplus && <Button socialNet={ "googleplus" } showButtonIcon={ showButtonIcon } onClick={ onClick } /> }
-      { facebook && <Button socialNet={ "facebook" } showButtonIcon={ showButtonIcon } onClick={ onClick } /> }
-      { twitter && <Button socialNet={ "twitter" } showButtonIcon={ showButtonIcon } onClick={ onClick } /> }
-      { linkedin && <Button socialNet={ "linkedin" } showButtonIcon={ showButtonIcon } onClick={ onClick } /> }
-      { github && <Button socialNet={ "github" } showButtonIcon={ showButtonIcon } onClick={ onClick } /> }
+      { googleplus && <Button provider={ "googleplus" } showButtonIcon={ showButtonIcon } onLogin={ onLogin } /> }
+      { facebook && <Button provider={ "facebook" } showButtonIcon={ showButtonIcon } onLogin={ onLogin } /> }
+      { twitter && <Button provider={ "twitter" } showButtonIcon={ showButtonIcon } onLogin={ onLogin } /> }
+      { linkedin && <Button provider={ "linkedin" } showButtonIcon={ showButtonIcon } onLogin={ onLogin } /> }
+      { github && <Button provider={ "github" } showButtonIcon={ showButtonIcon } onLogin={ onLogin } /> }
     </div>
   );
 }
