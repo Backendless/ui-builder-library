@@ -1,13 +1,12 @@
 import { useRef } from 'react';
 
+import { Title } from './title';
+
 export function Item(props) {
-  const { index, onToggle, active, accordionId } = props;
-  const { title, content } = props.item;
+  const { index, active, accordionId } = props;
+  const { content } = props.item;
   const {
     titleBackgroundColor,
-    titleColor,
-    titleFontSize,
-    titlePadding,
     contentBackgroundColor,
     contentColor,
     contentFontSize,
@@ -18,12 +17,6 @@ export function Item(props) {
 
   const itemBackgroundColor = {
     backgroundColor: titleBackgroundColor,
-  };
-
-  const titleStyles = {
-    color   : titleColor,
-    fontSize: titleFontSize,
-    padding : titlePadding,
   };
 
   const contentHeight = {
@@ -39,18 +32,7 @@ export function Item(props) {
 
   return (
     <div className={ `item ${ active ? 'active' : '' }` } style={ itemBackgroundColor }>
-      <div
-        className="title"
-        id={ `item-${ accordionId }-${ index }-title` }
-        style={ titleStyles }
-        onClick={ onToggle }
-        aria-expanded={ active }
-        aria-controls={ `item-${ accordionId }-${ index }-content` }
-        role="button"
-        tabIndex="0">
-        <i className="material-icons-round" aria-hidden="true">keyboard_arrow_right</i>
-        { title }
-      </div>
+      <Title options={ props }/>
       <div
         ref={ contentRef }
         className={ `content-wrapper ${ active ? 'open' : '' }` }

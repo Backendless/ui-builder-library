@@ -1,58 +1,91 @@
 # Accordion
 
-Accordion is a component of Backendless UI-Builder designer. It allows the user to show and hide sections of related content on a page. The component supports basic and controlled type of accordion.
+This is a component of Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer. It allows the user to show and hide sections of related content on a page. The component supports basic and controlled type of accordion.
 
 Customizations include adjustments of font size, color, background color and padding for both title and content.
 
-## Usage
+<img src="./thumbnail.png" alt="main thumbnail" width="643"/>
+
+## Configuration
 
 After adding the component to the page, specify the accordion data. This can be done in UI-Builder designer or using codeless logic.
 
-### Styles and Settings
+## Properties
 
-<dl>
-<dt>Accordion Data</dt>
-<dd>Array of objects that define the title and content of the accordion sections. Can be determined by Accordion Data Logic.</dd>
-<dt>Controlled Accordion</dt>
-<dd>Checkbox for determining whether multiple accordion sections can be expanded at the same time. If property returns true, only one section content can be visible at a time. Unchecked by default.</dd>
-<dt>Title Font Size</dt>
-<dd>Value from this field will be used as the font size of the accordion section title.</dd>
-<dt>Title Color</dt>
-<dd>Color used for the accordion section title. Default depends on the selected theme.</dd>
-<dt>Title Background Color</dt>
-<dd>Color used as the background of the accordion section title. Default depends on the selected theme.</dd>
-<dt>Title Padding</dt>
-<dd>Value from this field will be used as the padding for the accordion section title.</dd>
-<dt>Content Font Size</dt>
-<dd>Value from this field will be used as the font size of the accordion section content.</dd>
-<dt>Content Color</dt>
-<dd>Color used for the accordion section content. Default depends on the selected theme.</dd>
-<dt>Content Background Color</dt>
-<dd>Color used as the background of the accordion section content. Default depends on the selected theme.</dd>
-<dt>Content Padding</dt>
-<dd>Value from this field will be used as the padding for the accordion section content.</dd>
-</dl>
+| Property                 | Type       | Default value                                                                                                    | Logic                 | Data Binding | UI Setting | Description                                                                                             |
+|--------------------------|------------|------------------------------------------------------------------------------------------------------------------|-----------------------|--------------|------------|---------------------------------------------------------------------------------------------------------|
+| Accordion Data           | *JSON*     | `[{"title": "Collapsible Group Item #1","content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}]` | Accordion Data Logic  | NO           | YES        | Specifies an array of accordion sections. Signature of section: `{title: <string>, content: <string>}`. |
+| Controlled Accordion     | *Checkbox* | false                                                                                                            |                       | NO           | YES        | enables expand only one section at the same time                                                        |
+| Title Font Size          | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the font size of the accordion section title                                                   |
+| Title Color              | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the color of the accordion section title                                                       |
+| Title Background Color   | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the background color of the accordion section title                                            |
+| Title Padding            | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the padding of the accordion section title                                                     |
+| Content Font Size        | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the font size of the accordion section content                                                 |
+| Content Color            | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the color of the accordion section content                                                     |
+| Content Background Color | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the background color of the accordion section content                                          |
+| Content Padding          | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the padding of the accordion section content                                                   |
 
-### Event Handlers and Bindable Properties
+## Events
 
-<dl>
-<dt>Accordion Data Logic</dt>
-<dd>This is the handler for the logic to determine the title and content of the accordion sections. Array of objects returned by the handler will define the data for the accordion.</dd>
-<dt>On Click Event</dt>
-<dd>Triggered when the user clicks the mouse or taps the title of the accordion section.</dd>
-<dt>On Mouse Over Event</dt>
-<dd>Triggered when the mouse pointer hovers over the accordion.</dd>
-<dt>On Mouse Out Event</dt>
-<dd>Triggered when the mouse pointer leaves the accordion boundaries.</dd>
-</dl>
+| Name                      | Triggers                                               | Context Blocks |
+|---------------------------|--------------------------------------------------------|----------------|
+| On Open Item Event        | when the user opens the accordion section              | `Item`         |
+| On Close Item Event       | when the user closes the accordion section             | `Item`         |
+| On Mouse Over Event       | when the mouse pointer hovers over the accordion       |                |
+| On Mouse Out Event        | when the mouse pointer leaves the accordion boundaries |                |
 
-### Actions
+## Actions
 
-<dl>
-<dt>Open All</dt>
-<dd>Action which show content of all accordion sections.</dd>
-<dt>Close All</dt>
-<dd>Action which hide content of all accordion sections.</dd>
-<dt>Toggle All</dt>
-<dd>Action which toggle the content visibility of each accordion section.</dd>
-</dl>
+| Action     | Inputs | Returns |
+|------------|--------|---------|
+| Open All   |        |         |
+| Close All  |        |         |
+| Toggle All |        |         |
+
+## Styles
+
+**Theme**
+
+````
+@bl-customComponent-accordion-themeColor: @themePrimary;
+@bl-customComponent-accordion-backgroundColor: @appBackgroundColor;
+@bl-customComponent-accordion-textColor: @appTextColor;
+````
+
+**Background**
+
+````
+@bl-customComponent-accordion-content-backgroundColor: @bl-customComponent-accordion-backgroundColor;
+````
+
+**Dimensions**
+
+````
+@bl-customComponent-accordion-width: 100%;
+@bl-customComponent-accordion-title-padding: 12px 16px 12px 10px;
+@bl-customComponent-accordion-title-width: 100%;
+@bl-customComponent-accordion-content-padding: 16px;
+@bl-customComponent-accordion-content-width: 100%;
+````
+
+**Typography**
+
+````
+@bl-customComponent-accordion-fontSize: 16px;
+@bl-customComponent-accordion-lineHeight: 1.5;
+@bl-customComponent-accordion-title-icon-fontSize: 26px;
+
+````
+
+**Decoration**
+
+````
+@bl-customComponent-accordion-borderRadius: 4px;
+@bl-customComponent-accordion-border: 1px solid @bl-customComponent-accordion-themeColor;
+@bl-customComponent-accordion-item-firstChild-borderRadius: 4px 4px 0 0;
+@bl-customComponent-accordion-item-lastChild-borderRadius: 0 0 4px 4px;
+@bl-customComponent-accordion-title-icon-transition: all 0.2s ease-in-out;
+@bl-customComponent-accordion-title-icon-transform: rotateZ(90deg);
+@bl-customComponent-accordion-content-transition: height ease 0.2s;
+@bl-customComponent-accordion-content-shadow: 0px 1px 6px 1px fade(@bl-customComponent-accordion-textColor, 30%) inset;
+````

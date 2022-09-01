@@ -1,14 +1,12 @@
 import { useState } from 'react';
 
-export function useItemsState(accordionData, onClick, controlledAccordion) {
+export function useItemsState(data, controlledAccordion, eventHandlers) {
+  const { onOpenItem, onCloseItem } = eventHandlers;
+
   const [stateStore, setStateStore] = useState(() => {
     const stateStore = {};
 
-    if (!Array.isArray(accordionData)) {
-      return stateStore;
-    }
-
-    accordionData.forEach((item, index) => stateStore[index] = false);
+    data?.forEach((item, index) => stateStore[index] = false);
 
     return stateStore;
   });
@@ -16,16 +14,18 @@ export function useItemsState(accordionData, onClick, controlledAccordion) {
   const handleToggle = (item, index) => {
     const newStore = { ...stateStore };
 
+    if (stateStore[index]) {
+      onCloseItem({ item });
+    } else {
+      onOpenItem({ item });
+    }
+
     if (controlledAccordion) {
       Object.keys(newStore).forEach(index => newStore[index] = false);
     }
 
     newStore[index] = !stateStore[index];
     setStateStore(newStore);
-
-    if (onClick) {
-      onClick({ item });
-    }
   };
 
   const updateItemsState = valueCallback => {
