@@ -64,7 +64,7 @@ export default function Carousel({ component, eventHandlers }) {
     clearTimeout(autoplayRef.current);
     setNextCurrentImage(index);
 
-    setAnimation( index < currentImg ? 'prev' : 'next')
+    setAnimation(index > currentImg ? 'next' : 'prev');
 
     setTimeout(() => {
       setAnimation(null);
@@ -90,7 +90,7 @@ export default function Carousel({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-carousel', classList) }
-      style={style}
+      style={ style }
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
       { withControls && (
@@ -106,7 +106,7 @@ export default function Carousel({ component, eventHandlers }) {
         nextCurrentImage={ nextCurrentImage }
         heightImage={ heightImage }
         animationType={ animationType }
-        animation={animation}
+        animation={ animation }
         animationDuration={ animationDuration }
       />
 
@@ -115,7 +115,7 @@ export default function Carousel({ component, eventHandlers }) {
           imagesList={ imagesList }
           currentImg={ currentImg }
           nextCurrentImage={ nextCurrentImage }
-          isAnimation={ !!animation }
+          isAnimated={ !!animation }
           goToImage={ component.goToImage }
         />
       ) }

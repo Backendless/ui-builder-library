@@ -82,7 +82,7 @@
       "hasLogicHandler": true,
       "handlerId": "withControlsLogic",
       "handlerLabel": "Controls Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine whether the control buttons are visible or not visible. "
+      "handlerDescription": "This is a handler for the logic to determine if the control buttons should be visible. If the handler returns true, the component will be visible."
     },
     {
       "type": "checkbox",
@@ -92,7 +92,7 @@
       "hasLogicHandler": true,
       "handlerId": "withIndicatorsLogic",
       "handlerLabel": "Indicators Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine whether the indicators are visible or not visible. "
+      "handlerDescription": "This is a handler for the logic to determine if the indicators should be visible. If the handler returns true, the component will be visible."
     }
   ],
   "eventHandlers": [

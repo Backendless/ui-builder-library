@@ -81,7 +81,7 @@ function CarouselCaption({ title, content }) {
 }
 
 export function CarouselIndicators(props) {
-  const { imagesList, currentImg, nextCurrentImage, isAnimation, goToImage } = props;
+  const { imagesList, currentImg, nextCurrentImage, isAnimated, goToImage } = props;
 
   return (
     <div className="carousel__indicator-list">
@@ -90,7 +90,7 @@ export function CarouselIndicators(props) {
           type="button"
           className={ cn('carousel__indicator-item', { 'active': index === nextCurrentImage }) }
           onClick={ () => goToImage(index) }
-          disabled={ isAnimation || index === currentImg }>
+          disabled={ isAnimated || index === currentImg }>
         </button>
       )) }
     </div>
