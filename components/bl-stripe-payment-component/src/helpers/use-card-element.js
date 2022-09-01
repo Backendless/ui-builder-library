@@ -53,45 +53,26 @@ export function useCardElement(eventHandlers, setIsLoading, setTransactionDetail
         cardElement.clear();
         formRef.current.reset();
         setIsLoading(false);
-
-        if (onSuccessEvent) {
-          onSuccessEvent({ transaction });
-        }
+        onSuccessEvent({ transaction });
       })
       .catch(error => {
         const errorMessage = error.message;
 
         setErrorMessage(errorMessage);
         setIsLoading(false);
-
-        if (onRejectEvent) {
-          onRejectEvent({ errorMessage });
-        }
+        onRejectEvent({ errorMessage });
       });
   };
 
+  const onCardFocus = () => onFocusEvent();
+  const onCardBlur = () => onBlurEvent();
   const onCardChange = event => {
     const cardCondition = event;
     const error = cardCondition.error;
 
     setErrorMessage(error ? error.message : '');
     setIsCardValid(cardCondition.complete);
-
-    if (onChangeEvent) {
-      onChangeEvent({ cardCondition });
-    }
-  };
-
-  const onCardFocus = () => {
-    if (onFocusEvent) {
-      onFocusEvent();
-    }
-  };
-
-  const onCardBlur = () => {
-    if (onBlurEvent) {
-      onBlurEvent();
-    }
+    onChangeEvent({ cardCondition });
   };
 
   return { handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, disabled, elements };

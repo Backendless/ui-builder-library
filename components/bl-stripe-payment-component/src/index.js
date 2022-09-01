@@ -8,7 +8,7 @@ import { PaymentForm } from './payment-form';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function StripePaymentComponent({ component, eventHandlers }) {
-  const { display, classList, publishableKey } = component;
+  const { display, classList, publishableKey, style } = component;
 
   const [transactionDetails, setTransactionDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +23,7 @@ export default function StripePaymentComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-stripe-payment', classList) }>
+    <div className={ cn('bl-customComponent-stripe-payment', classList) } style={ style }>
       <Elements stripe={ stripePromise }>
         <PaymentForm
           component={ component }
