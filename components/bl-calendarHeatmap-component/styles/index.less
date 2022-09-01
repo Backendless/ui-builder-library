@@ -1,0 +1,63 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+
+@bl-customComponent-calendarHeatmap-themeColor: @themePrimary;
+@bl-customComponent-calendarHeatmap-textColor: #aaa;
+
+.bl-customComponent-calendarHeatmap {
+  .legend {
+    display: flex;
+    color: @bl-customComponent-calendarHeatmap-textColor;
+    font-size: 70%;
+
+    .space {
+      padding-left: 4.9%;
+    }
+
+    .legend-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin: 1em 0 1em auto;
+    }
+
+    .legend-color-gradation {
+      height: 10px;
+      width: 70px;
+    }
+  }
+
+  .react-calendar-heatmap text {
+    font-size: 10px;
+    fill: @bl-customComponent-calendarHeatmap-textColor;
+  }
+
+  .react-calendar-heatmap rect:hover {
+    stroke: #555;
+    stroke-width: 1px;
+  }
+
+  .color-filled {
+    fill: #8cc665;
+  }
+
+  .color-cell-0,
+  .color-empty {
+    fill: #eeeeee;
+  }
+
+  .color-cell-1 {
+    fill: lighten(@bl-customComponent-calendarHeatmap-themeColor, 25%);
+  }
+
+  .color-cell-2 {
+    fill: lighten(@bl-customComponent-calendarHeatmap-themeColor, 5%);
+  }
+
+  .color-cell-3 {
+    fill: darken(@bl-customComponent-calendarHeatmap-themeColor, 10%);
+  }
+
+  .color-cell-4 {
+    fill: darken(@bl-customComponent-calendarHeatmap-themeColor, 20%);
+  }
+}
