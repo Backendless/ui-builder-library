@@ -8,7 +8,7 @@ The component based on external [lightbox2](https://lokeshdhakar.com/projects/li
 
  Add component on your page and add codeless logic, which loading images.
  Use ImagesUrl handler to load images in the component.
- ImagesUrl type is an array of objects, where every object should have field "URL" with image URL and optionally field 'title' with text for every image.
+ ImagesUrl type is an array of objects, where every object should have field "url" with image URL and optionally field "title" with text for every image.
  All images have the same height and stretch according to the sides, but it is possible to set the height of each image separately. To do this, add the 'height' value to the object.
  The Value must contain px, %, etc...
 
