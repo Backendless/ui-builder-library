@@ -44,16 +44,16 @@ export default function DataGridComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn("bl-customComponent-dataGrid", classList, { disable }) }>
-      <div className="ag-theme-alpine" style={{ height, width }}>
-        <AgGridReact
-          ref={ gridRef }
-          rowData={ tableData }
-          columnDefs={ columns }
-          defaultColDef={ defaultColDef }
-          onCellClicked={ handleCellClick }
-        />
-      </div>
+    <div
+      style={{ height, width, flexShrink: 0 }}
+      className={ cn("bl-customComponent-dataGrid", "ag-theme-alpine", classList, { disable }) }>
+      <AgGridReact
+        ref={gridRef}
+        rowData={tableData}
+        columnDefs={columns}
+        defaultColDef={defaultColDef}
+        onCellClicked={ handleCellClick }
+      />
     </div>
   );
 }
