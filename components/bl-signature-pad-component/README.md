@@ -4,7 +4,9 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 The component allows to draw smooth signatures and save them for later usage. A user can pick up any color for a drawing pen. Also, the component has features for exporting signatures as images in different formats. The action buttons are configurable, and thus you can adjust their visibility and labels.
 
-<img src="./thumbnail.png" alt="main thumbnail" width="420" style="display: block; margin: 0 auto"/>
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="420"/>
+</p>
 
 ## Properties
 
