@@ -14,6 +14,7 @@ The component allows to draw smooth signatures and save them for later usage. A 
 |----------------------------------|------------|----------------|----------------------------------------|--------------|------------|-----------------------------------------------------|
 | Pen Color                        | *Color*    |                | Pen Color Logic                        | YES          | YES        | controls the color used to draw the lines           |
 | Description                      | *Text*     | Sign Above     | Description Logic                      | YES          | YES        | controls the description for the signature pad      |
+| Change Color Button Visibility   | *Checkbox* | true           |                                        | NO           | YES        | enables the visibility of the Change Color button   |
 | Save PNG Button Visibility       | *Checkbox* | true           | Save PNG Button Visibility Logic       | YES          | YES        | enables the visibility of the Save PNG button       |
 | Save JPG Button Visibility       | *Checkbox* | true           | Save JPG Button Visibility Logic       | YES          | YES        | enables the visibility of the Save JPG button       |
 | Save SVG Button Visibility       | *Checkbox* | true           | Save SVG Button Visibility Logic       | YES          | YES        | enables the visibility of the Save SVG button       |
