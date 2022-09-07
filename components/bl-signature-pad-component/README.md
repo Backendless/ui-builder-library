@@ -28,15 +28,15 @@ The component allows to draw smooth signatures and save them for later usage. A 
 
 ## Events
 
-| Name                          | Triggers                                                       | Context Blocks |
-|-------------------------------|----------------------------------------------------------------|----------------|
-| On Clear Click Event          | when a user click on the Clear button                          |                |
-| On Undo Click Event           | when a user click on the Undo button                           |                |
-| On Change Color Event         | when a user change the pen color                               | Color          |
-| On Save Click Event           | when a user click on the Save PNG, Save JPG or Save SVG button |                |
-| On Save Signature Click Event | when a user click on the Save Signature button                 | Signature Blob |
-| On Mouse Over Event           | when the mouse pointer hovers over the drawing area            |                |
-| On Mouse Out Event            | when the mouse pointer leaves the drawing area boundaries      |                |
+| Name                          | Triggers                                                                                      | Context Blocks |
+|-------------------------------|-----------------------------------------------------------------------------------------------|----------------|
+| On Clear Click Event          | when a user click on the Clear button                                                         |                |
+| On Undo Click Event           | when a user click on the Undo button                                                          |                |
+| On Change Color Event         | when a user change the pen color                                                              | Color          |
+| On Save Click Event           | when a user click on the Save PNG, Save JPG or Save SVG button                                |                |
+| On Save Signature Click Event | when a user click on the Save Signature button, watch [Codeless Examples](#codeless-examples) | Signature      |
+| On Mouse Over Event           | when the mouse pointer hovers over the drawing area                                           |                |
+| On Mouse Out Event            | when the mouse pointer leaves the drawing area boundaries                                     |                |
 
 ## Styles
 
@@ -128,3 +128,9 @@ The component allows to draw smooth signatures and save them for later usage. A 
 @bl-customComponent-signaturePad-button-saveSvgButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
 @bl-customComponent-signaturePad-button-saveSignatureButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
 ````
+
+## Codeless Examples
+
+Addition of On Save Signature Click Event using codeless logic:
+
+![signature example](./example-images/signature-example.png)

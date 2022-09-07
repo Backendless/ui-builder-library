@@ -143,8 +143,8 @@
       "handlerDescription": "This event is fired when the user clicks the mouse or taps Save Signature button.",
       "contextBlocks": [
         {
-          "id": "signatureBlob",
-          "label": "Signature Blob"
+          "id": "signature",
+          "label": "Signature"
         }
       ]
     },
