@@ -1,0 +1,295 @@
+@bl-customComponent-stripePayment-themeColor: @themePrimary;
+@bl-customComponent-stripePayment-backgroundColor: @appBackgroundColor;
+@bl-customComponent-stripePayment-textColor: @appTextColor;
+@bl-customComponent-stripePayment-ShadowColor: @appComponentShadowColor;
+@bl-customComponent-stripePayment-disabledColor: @disabledColor;
+@bl-customComponent-stripePayment-borderRadius: @appComponentBorderRadius;
+
+@bl-customComponent-stripePayment-fontSize: 16px;
+@bl-customComponent-stripePayment-border: 1px solid @bl-customComponent-stripePayment-themeColor;
+@bl-customComponent-stripePayment-width: 100%;
+@bl-customComponent-stripePayment-minWidth: 264px;
+@bl-customComponent-stripePayment-padding: 15px;
+
+@bl-customComponent-stripePayment-formField-width: 100%;
+
+@bl-customComponent-stripePayment-button-padding: 6px 16px;
+@bl-customComponent-stripePayment-button-backgroundColor: @bl-customComponent-stripePayment-themeColor;
+@bl-customComponent-stripePayment-button-color: contrast(@bl-customComponent-stripePayment-button-backgroundColor);
+@bl-customComponent-stripePayment-button-lineHeight: 1.75;
+@bl-customComponent-stripePayment-button-fontWeight: 600;
+@bl-customComponent-stripePayment-button-fontSize: @bl-customComponent-stripePayment-fontSize;
+@bl-customComponent-stripePayment-button-width: @bl-customComponent-stripePayment-formField-width;
+@bl-customComponent-stripePayment-button-borderWidth: 0;
+@bl-customComponent-stripePayment-button-borderRadius: @bl-customComponent-stripePayment-borderRadius;
+@bl-customComponent-stripePayment-button-shadowColor: @bl-customComponent-stripePayment-ShadowColor;
+@bl-customComponent-stripePayment-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-stripePayment-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-stripePayment-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-stripePayment-button-shadowColor, 12%);
+@bl-customComponent-stripePayment-button-shadowDisabled: none;
+@bl-customComponent-stripePayment-button-disabledBackground: @bl-customComponent-stripePayment-disabledColor;
+@bl-customComponent-stripePayment-button-disabledColor: contrast(@bl-customComponent-stripePayment-button-disabledBackground);
+
+@bl-customComponent-stripePayment-label-color: @bl-customComponent-stripePayment-textColor;
+@bl-customComponent-stripePayment-label-fontSize: 13px;
+@bl-customComponent-stripePayment-label-padding: 11px 0;
+
+@bl-customComponent-stripePayment-input-color: @bl-customComponent-stripePayment-textColor;
+@bl-customComponent-stripePayment-input-backgroundColor: transparent;
+@bl-customComponent-stripePayment-input-fontSize: @bl-customComponent-stripePayment-fontSize;
+@bl-customComponent-stripePayment-input-padding: 11px 8px;
+@bl-customComponent-stripePayment-input-width: 100%;
+@bl-customComponent-stripePayment-input-border: 1px solid @bl-customComponent-stripePayment-textColor;
+@bl-customComponent-stripePayment-input-focus-borderColor: @bl-customComponent-stripePayment-themeColor;
+
+@bl-customComponent-stripePayment-cardElement-minHeight: 42.2px;
+@bl-customComponent-stripePayment-cardElement-width: @bl-customComponent-stripePayment-formField-width;
+@bl-customComponent-stripePayment-cardElement-padding: 11px 0;
+
+@bl-customComponent-stripePayment-paymentAmount-width: @bl-customComponent-stripePayment-formField-width;
+@bl-customComponent-stripePayment-paymentAmount-fontSize: @bl-customComponent-stripePayment-fontSize;
+@bl-customComponent-stripePayment-paymentAmount-currency-padding: 11px 11px 11px 0;
+@bl-customComponent-stripePayment-paymentAmount-input-width: 100%;
+@bl-customComponent-stripePayment-paymentAmount-input-maxWidth: 145px;
+
+@bl-customComponent-stripePayment-paymentError-color: #ff0000;
+@bl-customComponent-stripePayment-paymentError-textAlign: center;
+
+@bl-customComponent-stripePayment-completedPayment-backgroundColor: @bl-customComponent-stripePayment-backgroundColor;
+@bl-customComponent-stripePayment-completedPayment-fontSize: @bl-customComponent-stripePayment-fontSize;
+@bl-customComponent-stripePayment-completedPayment-transactionId-fontSize: 13px;
+
+@bl-customComponent-stripePayment-spinner-fontSize: 10px;
+@bl-customComponent-stripePayment-spinner-borderRadius: 50%;
+@bl-customComponent-stripePayment-spinner-animation: spinner 1.1s infinite ease;
+
+.bl-customComponent-stripe-payment {
+  position: relative;
+  width: @bl-customComponent-stripePayment-width;
+  min-width: @bl-customComponent-stripePayment-minWidth;
+  border: @bl-customComponent-stripePayment-border;
+  border-radius: @bl-customComponent-stripePayment-borderRadius;
+  font-size: @bl-customComponent-stripePayment-fontSize;
+  padding: @bl-customComponent-stripePayment-padding;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .billing-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .form-field {
+        width: @bl-customComponent-stripePayment-formField-width;
+
+        label {
+          font-size: @bl-customComponent-stripePayment-label-fontSize;
+          padding: @bl-customComponent-stripePayment-label-padding;
+          color: @bl-customComponent-stripePayment-label-color;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        input {
+          font-size: @bl-customComponent-stripePayment-input-fontSize;
+          width: @bl-customComponent-stripePayment-input-width;
+          padding: @bl-customComponent-stripePayment-input-padding;
+          color: @bl-customComponent-stripePayment-input-color;
+          background-color: @bl-customComponent-stripePayment-input-backgroundColor;
+          border-width: 0;
+          border-bottom: @bl-customComponent-stripePayment-input-border;
+          outline: none;
+
+          &:focus {
+            border-color: @bl-customComponent-stripePayment-input-focus-borderColor;
+          }
+        }
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      color: @bl-customComponent-stripePayment-textColor;
+      width: @bl-customComponent-stripePayment-cardElement-width;
+
+      span {
+        color: @bl-customComponent-stripePayment-label-color;
+        font-size: @bl-customComponent-stripePayment-label-fontSize;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      #card-element {
+        width: @bl-customComponent-stripePayment-input-width;
+        min-height: @bl-customComponent-stripePayment-cardElement-minHeight;
+        background-color: @bl-customComponent-stripePayment-input-backgroundColor;
+        padding: @bl-customComponent-stripePayment-cardElement-padding;
+        border-bottom: @bl-customComponent-stripePayment-input-border;
+
+        &.StripeElement--focus {
+          border-color: @bl-customComponent-stripePayment-input-focus-borderColor;
+        }
+      }
+    }
+
+    .payment-amount {
+      display: flex;
+      justify-content: space-between;
+      font-size: @bl-customComponent-stripePayment-paymentAmount-fontSize;
+      width: @bl-customComponent-stripePayment-paymentAmount-width;
+      align-items: center;
+
+      .amount {
+        display: contents;
+        width: 100%;
+      }
+
+      label {
+        width: 100%;
+        min-width: max-content;
+        padding: @bl-customComponent-stripePayment-label-padding;
+      }
+
+      span {
+        padding: @bl-customComponent-stripePayment-paymentAmount-currency-padding;
+      }
+
+      input {
+        font-size: @bl-customComponent-stripePayment-input-fontSize;
+        text-align: center;
+        color: @bl-customComponent-stripePayment-input-color;
+        background-color: @bl-customComponent-stripePayment-input-backgroundColor;
+        width: @bl-customComponent-stripePayment-paymentAmount-input-width;
+        max-width: @bl-customComponent-stripePayment-paymentAmount-input-maxWidth;
+        padding: @bl-customComponent-stripePayment-input-padding;
+        border-width: 0;
+        border-bottom: @bl-customComponent-stripePayment-input-border;
+        outline: none;
+
+        &:focus {
+          border-color: @bl-customComponent-stripePayment-input-focus-borderColor;
+        }
+      }
+    }
+
+    button {
+      width: @bl-customComponent-stripePayment-button-width;
+      font-size: @bl-customComponent-stripePayment-button-fontSize;
+      font-weight: @bl-customComponent-stripePayment-button-fontWeight;
+      line-height: @bl-customComponent-stripePayment-button-lineHeight;
+      color: @bl-customComponent-stripePayment-button-color;
+      background-color: @bl-customComponent-stripePayment-button-backgroundColor;
+      padding: @bl-customComponent-stripePayment-button-padding;
+      border-width: @bl-customComponent-stripePayment-button-borderWidth;
+      border-radius: @bl-customComponent-stripePayment-button-borderRadius;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: @bl-customComponent-stripePayment-button-shadowHover;
+      }
+
+      &:disabled {
+        color: @bl-customComponent-stripePayment-button-disabledColor;
+        background: @bl-customComponent-stripePayment-button-disabledBackground;
+        cursor: default;
+
+        &:hover {
+          box-shadow: @bl-customComponent-stripePayment-button-shadowDisabled;
+        }
+      }
+    }
+
+    .payment-error {
+      text-align: @bl-customComponent-stripePayment-paymentError-textAlign;
+      color: @bl-customComponent-stripePayment-paymentError-color;
+    }
+  }
+
+  .payment-status {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: @bl-customComponent-stripePayment-completedPayment-backgroundColor;
+    font-size: @bl-customComponent-stripePayment-completedPayment-fontSize;
+    border-radius: @bl-customComponent-stripePayment-borderRadius;
+
+    .completed-payment {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .transaction-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+
+        .transaction-id {
+          font-size: @bl-customComponent-stripePayment-completedPayment-transactionId-fontSize;
+          word-break: break-word;
+        }
+
+        span {
+          text-align: center;
+        }
+      }
+
+      button {
+        color: @bl-customComponent-stripePayment-button-color;
+        background-color: @bl-customComponent-stripePayment-button-backgroundColor;
+        font-size: @bl-customComponent-stripePayment-button-fontSize;
+        padding: @bl-customComponent-stripePayment-button-padding;
+        border-width: @bl-customComponent-stripePayment-button-borderWidth;
+        cursor: pointer;
+      }
+    }
+
+    .spinner {
+      font-size: @bl-customComponent-stripePayment-spinner-fontSize;
+      width: 1em;
+      height: 1em;
+      border-radius: @bl-customComponent-stripePayment-spinner-borderRadius;
+      position: relative;
+      text-indent: -9999em;
+      animation: @bl-customComponent-stripePayment-spinner-animation;
+      transform: translateZ(0);
+    }
+
+    @keyframes spinner {
+      0%,
+      100% {
+        box-shadow: 0em -2.6em 0em 0em @bl-customComponent-stripePayment-themeColor, 1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 2.5em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.75em 1.75em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 0em 2.5em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em 1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -2.6em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 50%), -1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 70%);
+      }
+      12.5% {
+        box-shadow: 0em -2.6em 0em 0em fade(@bl-customComponent-stripePayment-themeColor, 70%), 1.8em -1.8em 0 0em @bl-customComponent-stripePayment-themeColor, 2.5em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.75em 1.75em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 0em 2.5em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em 1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -2.6em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 50%);
+      }
+      25% {
+        box-shadow: 0em -2.6em 0em 0em fade(@bl-customComponent-stripePayment-themeColor, 50%), 1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 70%), 2.5em 0em 0 0em @bl-customComponent-stripePayment-themeColor, 1.75em 1.75em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 0em 2.5em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em 1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -2.6em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%);
+      }
+      37.5% {
+        box-shadow: 0em -2.6em 0em 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 50%), 2.5em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 70%), 1.75em 1.75em 0 0em @bl-customComponent-stripePayment-themeColor, 0em 2.5em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em 1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -2.6em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%);
+      }
+      50% {
+        box-shadow: 0em -2.6em 0em 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 2.5em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 50%), 1.75em 1.75em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 70%), 0em 2.5em 0 0em @bl-customComponent-stripePayment-themeColor, -1.8em 1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -2.6em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%);
+      }
+      62.5% {
+        box-shadow: 0em -2.6em 0em 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 2.5em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.75em 1.75em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 50%), 0em 2.5em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 70%), -1.8em 1.8em 0 0em @bl-customComponent-stripePayment-themeColor, -2.6em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%);
+      }
+      75% {
+        box-shadow: 0em -2.6em 0em 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 2.5em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.75em 1.75em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 0em 2.5em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 50%), -1.8em 1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 70%), -2.6em 0em 0 0em @bl-customComponent-stripePayment-themeColor, -1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%);
+      }
+      87.5% {
+        box-shadow: 0em -2.6em 0em 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.8em -1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 2.5em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 1.75em 1.75em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), 0em 2.5em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 20%), -1.8em 1.8em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 50%), -2.6em 0em 0 0em fade(@bl-customComponent-stripePayment-themeColor, 70%), -1.8em -1.8em 0 0em @bl-customComponent-stripePayment-themeColor;
+      }
+    }
+  }
+}
