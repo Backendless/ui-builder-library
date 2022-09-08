@@ -21,7 +21,9 @@ export function useItemsState(data, controlledAccordion, eventHandlers) {
     }
 
     if (controlledAccordion) {
-      Object.keys(newStore).forEach(index => newStore[index] = false);
+      for (const key in newStore) {
+        newStore[key] = false;
+      }
     }
 
     newStore[index] = !stateStore[index];
@@ -31,7 +33,10 @@ export function useItemsState(data, controlledAccordion, eventHandlers) {
   const updateItemsState = valueCallback => {
     const newStore = { ...stateStore };
 
-    Object.keys(newStore).forEach(index => newStore[index] = valueCallback(newStore[index]));
+    for (const key in newStore) {
+      newStore[key] = valueCallback(newStore[key]);
+    }
+
     setStateStore(newStore);
   };
 
