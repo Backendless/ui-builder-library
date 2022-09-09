@@ -27,6 +27,10 @@ export default function SignaturePadComponent({ component, eventHandlers }) {
     resizeCanvas(elRef.current, signaturePadRef.current);
   }, []);
 
+  useEffect(() => {
+    signaturePadRef.current.penColor = penColor;
+  }, [penColor]);
+
   return (
     <div className={ 'bl-customComponent-signature-pad ' + classList.join(' ') } style={ styles }>
         <div className="wrapper">

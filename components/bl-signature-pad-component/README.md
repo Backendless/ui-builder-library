@@ -12,7 +12,7 @@ The component allows to draw smooth signatures and save them for later usage. A 
 
 | Property                         | Type       | Default value  | Logic                                  | Data Binding | UI Setting | Description                                         |
 |----------------------------------|------------|----------------|----------------------------------------|--------------|------------|-----------------------------------------------------|
-| Pen Color                        | *Color*    |                | Pen Color Logic                        | YES          | YES        | controls the color used to draw the lines           |
+| Pen Color                        | *Color*    | #000000        | Pen Color Logic                        | YES          | YES        | controls the color used to draw the lines           |
 | Description                      | *Text*     | Sign Above     | Description Logic                      | YES          | YES        | controls the description for the signature pad      |
 | Save PNG Button Visibility       | *Checkbox* | true           | Save PNG Button Visibility Logic       | YES          | YES        | enables the visibility of the Save PNG button       |
 | Save JPG Button Visibility       | *Checkbox* | true           | Save JPG Button Visibility Logic       | YES          | YES        | enables the visibility of the Save JPG button       |
