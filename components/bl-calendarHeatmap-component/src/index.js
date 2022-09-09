@@ -45,7 +45,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     }
   }, [color]);
 
-  const handlerClassFroValue = (value) => value ? `color-cell-${ value.count }` : 'color-empty';
+  const handlerClassForValue = (value) => value ? `color-cell-${ value.count }` : 'color-empty';
 
   const handlerTooltipDataAttrs = (value) => {
     return { 'data-tip': `${ value.date.toISOString().slice(0, 10) } has count: ${ value.count }`, };
@@ -65,7 +65,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         showWeekdayLabels={ showWeekdayLabels }
         monthLabels={ month }
         weekdayLabels={ weeks }
-        classForValue={ handlerClassFroValue }
+        classForValue={ handlerClassForValue }
         tooltipDataAttrs={ handlerTooltipDataAttrs }
         onClick={ (value) => onClick({ value }) }
       />
