@@ -31,19 +31,20 @@ export default function WebcamPhoto({ component, eventHandlers }) {
 
   return (
     <div className="bl-customComponent-webcamPhoto" style={ style }>
-      { isMobile
-        ? <UploadButton
-          onChange={ handleChange }
-          text={ uploadButtonLabel }
-          inputRef={ fileInputRef }
-          disabled={ buttonDisabled }
-        />
-        : <MakePhotoButton
+      <UploadButton
+        onChange={ handleChange }
+        text={ uploadButtonLabel }
+        inputRef={ fileInputRef }
+        disabled={ buttonDisabled }
+      />
+
+      { !isMobile && (
+        <MakePhotoButton
           onClick={ handleClick }
           text={ makePhotoButtonLabel }
           disabled={ buttonDisabled }
         />
-      }
+      ) }
 
       { modalVisibility && (
         <Modal
