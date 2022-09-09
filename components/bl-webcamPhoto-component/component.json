@@ -3,7 +3,7 @@
   "name": "Webcam photo",
   "description": "This component allows you to take a picture on the webcam and save it.",
   "showInToolbox": true,
-  "faIcon": "camera-polaroid",
+  "faIcon": "camera-retro",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -83,5 +83,6 @@
         }
       ]
     }
-  ]
+  ],
+  "actions": []
 }
