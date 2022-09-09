@@ -33,6 +33,15 @@
       "hasLogicHandler": true
     },
     {
+      "type": "checkbox",
+      "name": "changeColorButtonVisibility",
+      "label": "Change Color Button Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "changeColorButtonVisibilityLogic",
+      "defaultValue": true
+    },
+    {
       "name": "savePNGButtonVisibility",
       "label": "Save PNG Button Visibility",
       "type": "checkbox",
