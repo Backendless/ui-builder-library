@@ -6,6 +6,7 @@
 @bl-customComponent-webcamPhoto-borderRadius: @appComponentBorderRadius;
 @bl-customComponent-webcamPhoto-fontSize: 12px;
 @bl-customComponent-webcamPhoto-margin: 20px;
+@bl-customComponent-webcamPhoto-justify-content: center;
 
 @bl-customComponent-webcamPhoto-button-margin: 2px;
 @bl-customComponent-webcamPhoto-button-padding: 6px 16px;
@@ -68,7 +69,7 @@
 .bl-customComponent-webcamPhoto {
   margin: @bl-customComponent-webcamPhoto-margin;
   display: flex;
-  justify-content: center;
+  justify-content: @bl-customComponent-webcamPhoto-justify-content;
 
   .modal {
     position: fixed;
