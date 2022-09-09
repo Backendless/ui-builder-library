@@ -10,10 +10,19 @@ export default function BadgeComponent({ component, eventHandlers }) {
     return null;
   }
 
+  const styles = {
+    padding: validate(padding),
+    ...style,
+  };
+
   return (
-    <div className={ cn(classList, 'bl-customComponent-badge') } style={{ padding, ...style }}>
+    <div className={ cn(classList, 'bl-customComponent-badge') } style={ styles }>
       <Content component={ component } eventHandlers={ eventHandlers }/>
       <Badge component={ component } eventHandlers={ eventHandlers }/>
     </div>
   );
+}
+
+export function validate(dimension) {
+  return String(Number(dimension)) === dimension ? dimension + 'px' : dimension;
 }
