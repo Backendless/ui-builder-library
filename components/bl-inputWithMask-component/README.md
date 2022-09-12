@@ -2,42 +2,28 @@
 
 Input with Mask is a component of Backendless UI-Builder designer. This allows you to add input with mask.
 
-## Usage
+## Properties
 
-### Styles and Settings
+| Property        | Type                                  | Default Value | Logic                  | Data Binding | UI Setting | Description                                                                                   |
+|-----------------|---------------------------------------|---------------|------------------------|--------------|------------|-----------------------------------------------------------------------------------------------|
+| maskType        | Select ["Number", "String", "RegExp"] | "Number"      | Mask Type Logic        | NO           | YES        | Allows select type of mask(Number, String, RegExp).                                           |
+| mask            | String                                |               | Mask Logic             | YES          | YES        | Allows to specify mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp. |
+| placeholder     | String                                |               | Placeholder Logic      | YES          | YES        | Allows to specify placeholder.                                                                |
+| placeholderChar | String                                | "_"           | Placeholder Char Logic | YES          | YES        | Allows to specify placeholder char.                                                           |
+| lazy            | Boolean                               | `false`       | Lazy Logic             | NO           | YES        | Allows to specify lazy or not lazy.                                                           |
 
-<dl>
-<dt>Mask Type</dt>
-<dd>Allows select type of mask(Number, String, RegExp). Default value "Number".</dd>
-<dt>Mask</dt>
-<dd>Allows to specify mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp.</dd>
-Example:
-<dd>mask: 0000-0000-0000, input: 1234-5678-9012</dd>
-<dd>mask: 38\0 00 000 0000, input: 380 45 345 5435</dd>
-<dd>mask: ^[1-6]\d{0,5}$, input: 234533</dd>
-<dt>placeholder</dt>
-<dd>Allows to specify placeholder.</dd>
-<dt>Placeholder Char</dt>
-<dd>Allows to specify placeholder char. Default value "_"</dd>
-<dt>Lazy</dt>
-<dd>Allows to specify lazy or not lazy. Default value "false"</dd>
-</dl>
+## Events
 
-### Event Handlers and Bindable Properties
+| Name            | Triggers                                                                                                                       | Context Blocks  |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| On Change Value | when the component's state (value) changes.                                                                                    | `value: string` |
+| On Validate     | before the component value changes. Using returned `value: boolean` we could decide - apply changes (`true`) or not (`false`). | `value: string` |
 
-<dl>
-<dt>Mask Type Logic</dt>
-<dd>Allows to specify mask type.</dd>
-<dt>Mask Logic</dt>
-<dd>Allows to specify mask.</dt>
-<dt>Placeholder Logic</dt>
-<dd>Allows to specify placeholder.</dd>
-<dt>Placeholder Char Logic</dt>
-<dd>Allows to specify placeholder char.</dd>
-<dt>Lazy Logic</dt>
-<dd>Allows to specify lazy or not lazy. If lazy is true mask is not visible, and if lazy is false mask visible, but if the mask is visible, the input value includes the mask.</dd>
-<dt>On Change Value</dt>
-<dd>This event is triggered when the component's state (value) changes.</dd>
-<dt>On Validate</dt>
-<dd>This event is triggered before the component value changes. Using returned value(boolean) we could decide - apply changes(true) or not(false).</dd>
-</dl>
+## Styles
+
+**Theme**
+````
+@bl-customComponent-inputWithMask-themeColor: @themePrimary;
+@bl-customComponent-inputWithMask-backgroundColor: @appBackgroundColor;
+@bl-customComponent-inputWithMask-textColor: @appTextColor;
+````
