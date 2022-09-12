@@ -6,8 +6,9 @@ import { RatingIcon } from './rating-icon';
 const iconsList = iconsAmount => new Array(iconsAmount).fill(1);
 
 export default function RatingComponent({ component, eventHandlers }) {
+
   const { display, disabled, icon, defaultValue, iconsAmount, iconColor, precision, classList } = component;
-  const { onRatingChange }  = eventHandlers;
+  const { onRatingChange } = eventHandlers;
 
   const rootRef = useRef();
   const classes = useRatingClassList(disabled, classList);
@@ -62,7 +63,7 @@ export default function RatingComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ classes }>
+    <div className={ classes } style={ style }>
       <div
         ref={ rootRef }
         onMouseMove={ handleMouseMove }
