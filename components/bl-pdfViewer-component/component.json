@@ -1,0 +1,81 @@
+{
+  "id": "c_922ad4981c2ee5613687e21c9ceee144",
+  "name": "PDF Viewer",
+  "description": "PDF Viewer is a component for reading and displaying PDF files.",
+  "showInToolbox": true,
+  "faIcon": "file-pdf",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "pdfUrl",
+      "label": "PDF URL",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "pdfUrlLogic",
+      "handlerLabel": "PDF URL Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is the handler for the logic to determine the PDF URL."
+    },
+    {
+      "type": "select",
+      "name": "renderType",
+      "label": "Render Type",
+      "showInSettings": true,
+      "defaultValue": "canvas",
+      "hasLogicHandler": true,
+      "handlerId": "renderTypeLogic",
+      "handlerLabel": "Render Type Logic",
+      "options": [
+        {
+          "value": "canvas",
+          "label": "Canvas"
+        },
+        {
+          "value": "svg",
+          "label": "Svg"
+        }
+      ],
+      "handlerDescription": "This is the handler for the logic to determine the type of render."
+    },
+    {
+      "type": "select",
+      "name": "size",
+      "label": "Size",
+      "showInSettings": true,
+      "defaultValue": "normal",
+      "hasLogicHandler": true,
+      "handlerId": "sizeLogic",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "handlerDescription": "This is the handler for the logic to determine the size of  PDF Viewer."
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [
+    {
+      "id": "goPage",
+      "label": "Go to Page",
+      "inputs": [
+        {
+          "id": "page",
+          "label": "Page"
+        }
+      ]
+    }
+  ]
+}

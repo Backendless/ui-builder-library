@@ -1,0 +1,69 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-pdfViewer-themeColor: @themePrimary;
+@bl-customComponent-pdfViewer-themeTextColor: @appTextColor;
+
+@bl-customComponent-pdfViewer-input-background-color: if(@isLightTheme, darken(#fff, 10%), lighten(#000, 15%));
+@bl-customComponent-pdfViewer-button-icon-size: 16px;
+
+.bl-customComponent-pdfViewer {
+  color: @bl-customComponent-pdfViewer-themeTextColor;
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .controls-button {
+    padding: 0;
+    border: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 20px;
+    width: 60px;
+
+    fill: #fff;
+
+    border-radius: 4px;
+    background-color: @bl-customComponent-pdfViewer-themeColor;
+
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  .pdf-viewer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: auto;
+
+    margin-bottom: 10px;
+  }
+
+  .page-input {
+    outline: 0;
+    border: 0;
+    padding: 0;
+
+    min-width: 20px;
+    max-width: 100%;
+
+    text-align: center;
+
+    color: @bl-customComponent-pdfViewer-themeTextColor;
+
+    background-color: @bl-customComponent-pdfViewer-input-background-color;
+  }
+
+  .controls-button-icon {
+    height: @bl-customComponent-pdfViewer-button-icon-size;
+    width: @bl-customComponent-pdfViewer-button-icon-size;
+  }
+}
