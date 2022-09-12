@@ -8,7 +8,7 @@ export function List(props) {
     imagesList,
     currentImg,
     nextCurrentImage,
-    heightImage,
+    height,
     animation,
     animationDuration,
     animationType
@@ -20,6 +20,7 @@ export function List(props) {
     }
 
     return {
+      height: height,
       animationDuration: `${ animationDuration }ms`,
       transition       : `transform ${ animationDuration }ms ease-in-out`
     };
@@ -44,7 +45,7 @@ export function List(props) {
             style={ style }
             url={ url }
             classes={ classes }
-            heightImage={ heightImage }
+            height={ height }
           />
         );
       }) }
@@ -52,7 +53,7 @@ export function List(props) {
   );
 }
 
-function Item({ classes, style, heightImage, url, title, content }) {
+function Item({ classes, style, height, url, title, content }) {
   return (
     <div
       className={ classes }
@@ -60,7 +61,7 @@ function Item({ classes, style, heightImage, url, title, content }) {
       <img
         src={ url }
         className="carousel__image"
-        style={ { height: `${ heightImage }px` } }
+        style={ { height: height } }
       />
       <CarouselCaption title={ title } content={ content }/>
     </div>
@@ -68,7 +69,7 @@ function Item({ classes, style, heightImage, url, title, content }) {
 }
 
 function CarouselCaption({ title, content }) {
-  if (!title || !content) {
+  if (!title && !content) {
     return null;
   }
 

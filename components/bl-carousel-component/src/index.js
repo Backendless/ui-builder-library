@@ -9,8 +9,9 @@ export default function Carousel({ component, eventHandlers }) {
     style,
     display,
     classList,
+    width,
     imagesData,
-    heightImage,
+    height,
     autoplayDelay,
     animationDuration,
     withControls,
@@ -90,7 +91,7 @@ export default function Carousel({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-carousel', classList) }
-      style={ style }
+      style={ { ...style, height: height, width: width} }
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
       { withControls && (
@@ -104,7 +105,7 @@ export default function Carousel({ component, eventHandlers }) {
         imagesList={ imagesList }
         currentImg={ currentImg }
         nextCurrentImage={ nextCurrentImage }
-        heightImage={ heightImage }
+        height={ height }
         animationType={ animationType }
         animation={ animation }
         animationDuration={ animationDuration }

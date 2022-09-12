@@ -20,16 +20,27 @@
       "handlerDescription": "This is a handler for the logic to determine data for images slide."
     },
     {
-      "type": "number",
-      "name": "heightImage",
-      "label": "Height Image",
+      "type": "text",
+      "name": "height",
+      "label": "Height",
       "showInSettings": true,
-      "defaultValue": "300",
+      "defaultValue": "400px",
       "hasLogicHandler": true,
-      "handlerId": "heightImageLogic",
-      "handlerLabel": "Height Image Logic",
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "handlerDescription": "This is a handler for the logic to determine image height.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "700px",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine image height."
+      "handlerDescription": "This is a handler for the logic to determine image width."
     },
     {
       "type": "number",
