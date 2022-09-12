@@ -6,15 +6,15 @@ The component based on external [alert](https://mui.com/material-ui/react-alert/
 
 ## Properties
 
-| Property              | Type     | Default Value | Logic                         | Data Binding | UI Setting | Description                                                              |
-|-----------------------|----------|---------------|-------------------------------|--------------|------------|--------------------------------------------------------------------------|
-| messageTitle          | Text     |               | Message Title Logic           | YES          | YES        | Allows writing the title of message.                                     |
-| messageText           | Text     |               | Message Text Logic            | YES          | YES        | Allows writing the text of message.                                      |                                |
-| messageType           | Select   | `error`       | Message Type Logic            | NO           | YES        | Allows select type of alert (error, warning, info, success).             |
-| iconVisibility        | Checkbox | `true`        | Icon Visibility Logic         | NO           | YES        | Allows making alerts with or without icon.                               |
-| closeButtonVisibility | Checkbox | `true`        | Close Button Visibility Logic | NO           | YES        | Allows making alerts with or without a close button.                     |
-| variant               | Select   | `alert root`  |                               | NO           | YES        | Allows select style for alert (alert root, alert outline, alert filled). |
-| closingDuration       | Number   | `200`         | Closing Duration Logic        | NO           | YES        | Allows specifying speed animation closing (ms) for the alert.            |
+| Property              | Type                                                   | Default Value | Logic                         | Data Binding | UI Setting | Description                                                              |
+|-----------------------|--------------------------------------------------------|---------------|-------------------------------|--------------|------------|--------------------------------------------------------------------------|
+| messageTitle          | String                                                 |               | Message Title Logic           | YES          | YES        | Allows writing the title of message.                                     |
+| messageText           | String                                                 |               | Message Text Logic            | YES          | YES        | Allows writing the text of message.                                      |
+| messageType           | Select ["foo", "bar", "buz"]                           | "error"       | Message Type Logic            | NO           | YES        | Allows select type of alert (error, warning, info, success).             |
+| iconVisibility        | Boolean                                                | `true`        | Icon Visibility Logic         | NO           | YES        | Allows making alerts with or without icon.                               |
+| closeButtonVisibility | Boolean                                                | `true`        | Close Button Visibility Logic | NO           | YES        | Allows making alerts with or without a close button.                     |
+| variant               | Select ["alert root", "alert outline", "alert filled"] | "alert root"  |                               | NO           | YES        | Allows select style for alert (alert root, alert outline, alert filled). |
+| closingDuration       | Number                                                 | 200           | Closing Duration Logic        | NO           | YES        | Allows specifying speed animation closing (ms) for the alert.            |
 
 ## Events
 
