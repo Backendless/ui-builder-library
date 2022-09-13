@@ -12,7 +12,7 @@ export default function BackdropSpinner({ component, eventHandlers }) {
     return onClose;
   }, []);
 
-  if (!backdropVisibility && !display) {
+  if (!backdropVisibility || !display) {
     return null;
   }
 

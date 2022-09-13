@@ -1,3 +1,5 @@
+import { validate } from './index';
+
 const BadgeForms = {
   DEFAULT  : 'roundedRectangle',
   CIRCLE   : 'circle',
@@ -28,9 +30,9 @@ export function Badge({ component, eventHandlers }) {
     color       : badgeLabelColor,
     background  : badgeBackgroundColor,
     borderRadius: BadgeRadiusMap[badgeForm],
-    fontSize    : badgeFontSize,
-    width       : badgeWidth,
-    height      : badgeHeight,
+    fontSize    : validate(badgeFontSize),
+    width       : validate(badgeWidth),
+    height      : validate(badgeHeight),
   };
 
   if (!badgeVisibility) {
