@@ -20,8 +20,8 @@ The component based on external [alert](https://mui.com/material-ui/react-alert/
 <dd>Allows make alert with or without close button. Default value 'checked'.</dd>
 <dt>Style Variants</dt>
 <dd>Allows select style for alert (alert root, alert outline, alert filled). Default value 'alert root'.</dd>
-<dt>Closing Duration</dt>
-<dd>Allows to specify speed animation closing for alert. Default value 0.1</dd>
+<dt>Closing Duration(ms)</dt>
+<dd>Allows to specify speed animation closing for alert. Default value 200</dd>
 </dl>
 
 ### Event Handlers and Bindable Properties
