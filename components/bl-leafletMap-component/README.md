@@ -1,93 +1,79 @@
 # Leaflet Map
 
-Leaflet Map is a component of Backendless UI-Builder designer. It is an interactive map. The component is configurable,
-you can start point, default zoom and map type.
+This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer based on the [Leaflet](https://github.com/Leaflet/Leaflet) library.
 
-The component based on external [Leaflet](https://github.com/Leaflet/Leaflet) library.
+The component covers all the main features of the library and allows you in a couple click render an interactive map in your UI-Builder application.
 
-## Usage
+<p align="center">
+  <img alt="main thumbnail" height="263" src="./thumbnail.png" width="420"/>
+</p>
 
-### Styles and Settings
+## Properties
 
-<dl>
-<dt>Center</dt>
-<dd>Specifies the default visible area. Defaults to "40.6893, -74.0444".</dd>
-<dt>Zoom</dt>
-<dd>Specifies the default zoom. Defaults to "10".</dd>
-<dt>Map Type</dt>
-<dd>Specifies the type of map. Defaults to "Open Street"</dd>
-<dt>Zoom Control</dt>
-<dd>Specifies whether the zoom is allowed. Defaults to "true".</dd>
-<dt>Dragging Control</dt>
-<dd>Specifies whether the dragging is allowed. Defaults to "true".</dd>
-<dt>Map Type Control</dt>
-<dd>Specifies whether the map type control is allowed. Defaults to "true".</dd>
-<dt>Geoposition Control</dt>
-<dd>Specifies whether the geoposition control is allowed. Defaults to "true".</dd>
-<dt>Fullscreen Control</dt>
-<dd>Specifies whether the fullscreen control is allowed. Defaults to "true".</dd>
-<dt>Fullscreen</dt>
-<dd>Specifies whether your map will be fullscreen. Defaults to "false".</dd>
-</dl>
+| Property           | Type                                                                             | Default value          | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                                     |
+|--------------------|----------------------------------------------------------------------------------|------------------------|---------------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| mapType            | *Select* <br/>[`carto`, `cartoDark`, `openStreet`, `cyclosm`, `esriWorldStreet`] | openStreet             | Map Type Logic            | YES          | YES        | controls the map type.                                                                                                                                                          |
+| mapTypeControl     | *Checkbox*                                                                       | true                   | Map Type Control Logic    | YES          | YES        | enables switching the map type                                                                                                                                                  |
+| center             | *Text*                                                                           | 40.6893, <br/>-74.0444 | Center Logic              | YES          | YES        | controls the map center. `'lat, lng'`                                                                                                                                           |
+| zoom               | *Number*                                                                         | 10                     | Zoom Logic                | YES          | YES        | controls the map zoom.                                                                                                                                                          |
+| zoomControl        | *Checkbox*                                                                       | true                   | Zoom Control Logic        | YES          | YES        | enables zoom controls on the map                                                                                                                                                |
+| Fullscreen         | *Checkbox*                                                                       | false                  | Fullscreen Control Logic  | YES          | YES        | enables fullscreen mode for the map type                                                                                                                                        |
+| fullscreenControl  | *Checkbox*                                                                       | true                   | Fullscreen Control Logic  | YES          | YES        | enables toggling fullscreen for the map                                                                                                                                         |
+| draggingControl    | *Checkbox*                                                                       | true                   | Dragging Control Logic    | YES          | YES        | enables dragging on the map                                                                                                                                                     |
+| geopositionControl | *Checkbox*                                                                       | true                   | Geoposition Control Logic | YES          | YES        | enables geoposition controls on the map                                                                                                                                         |
+| markers            | *JSON*                                                                           |                        | Markers Logic             | YES          | YES        | Specifies an array of markers to display on the map. Watch [Codeless Examples](#Examples). Signature of marker: `{description, point: {lat, lng}}`.                             |
+| circles            | *JSON*                                                                           |                        | Circles Logic             | YES          | YES        | Specifies an array of circles to display on the map. Watch [Codeless Examples](#Examples). Signature of circle: `{description, point: {lat, lng}, radius}`.                     |
+| polygons           | *JSON*                                                                           |                        | Polygons Logic            | YES          | YES        | Specifies an array of polygons to display on the map. Watch [Codeless Examples](#Examples). Signature of polygon: `{description, polygon: {boundary: {points: [{lat, lng}]}}}`. |
 
-### Event Handlers and Bindable Properties
 
-<dl>
-<dt>Center Logic</dt>
-<dd>Used to specifies center on map in Backendless Logic.</dd>
-<dt>Zoom Logic</dt>
-<dd>Used to specifies zoom on map in Backendless Logic.</dd>
-<dt>Markers Logic</dt>
-<dd>Specifies an array of markers to display on the map in Backendless Logic. Signature of marker: {description, point}.</dd>
-<dt>Circles Logic</dt>
-<dd>Specifies an array of circles to display on the map in Backendless Logic. Signature of circle: {description, point, radius}.</dd>
-<dt>Polygons Logic</dt>
-<dd>Specifies an array of polygons to display on the map. Signature of polygon: {description, [points]}.</dd>
-<dt>Map Type Logic</dt>
-<dd>Used to specifies a map type in Backendless Logic.</dd>
-<dt>Zoom Control Logic</dt>
-<dd>Used to enable or disable zoom control in Backendless Logic.</dd>
-<dt>Dragging Control Logic</dt>
-<dd>Used to enable or disable dragging control in Backendless Logic.</dd>
-<dt>Map Type Control Logic</dt>
-<dd>Used to enable or disable map type control in Backendless Logic.</dd>
-<dt>Geoposition Control Logic</dt>
-<dd>Used to enable or disable geoposition control in Backendless Logic.</dd>
-<dt>Fullscreen Control Logic</dt>
-<dd>Used to enable or disable fullscreen control in Backendless Logic.</dd>
-<dt>Fullscreen Logic</dt>
-<dd>Used to specifies fullscreen value in Backendless Logic.</dd>
-<dt>On Click Event</dt>
-<dd>Triggered when the user click on the map.</dd>
-<dt>On Marker Click Event</dt>
-<dd>This event triggered when the user click on marker.</dd>
-<dt>On Circle Click Event</dt>
-<dd>This event triggered when the user click on circle.</dd>
-<dt>On Polygon Click Event</dt>
-<dd>This event triggered when the user click on polygon.</dd>
-<dt>On Map Type Change Event</dt>
-<dd>This event triggered when the user changed map type.</dd>
-<dt>On Determining Geoposition Event</dt>
-<dd>This event triggered when user determining geoposition.</dd>
-<dt>On Fullscreen Button Click Event</dt>
-<dd>This event triggered when the user click on fullscreen button.</dd>
-</dl>
+## Events
 
-### Actions
+| Name                       | Triggers                               | Context Blocks                                                                 |
+|----------------------------|----------------------------------------|--------------------------------------------------------------------------------|
+| On Click                   | when a user click on map               | `Coordinates: [lat: number, lng: number]`                                      |
+| On Marker Click            | when a user click on a marker          | `Coordinates: [lat: number, lng: number], Description: string`                 |
+| On Circle Click            | when a user click on a circle          | `Coordinates: [lat: number, lng: number], Radius: number, Description: string` |
+| On Polygon Click           | when a user click on a polygon         | `Coordinates: [lat: number, lng: number], Description: string`                 |
+| On Map Type Change         | when a user changed the map type       | `Previous Type: string, Current Type: string`                                  |
+| On Determining Geoposition | when a user determining geoposition    | `Coordinates: [lat: number, lng: number]`                                      |
+| On Fullscreen Button Click | when a user click on fullscreen button | `Fullscreen: boolean`                                                          |
 
-<dl>
-<dt>Set map center</dt>
-<dd>Allows you to set the center on the map by coordinates in Backendless Logic.</dd>
-<dt>Set zoom</dt>
-<dd>Allows you to set the zoom on the map in Backendless Logic.</dd>
-<dt>Get map center</dt>
-<dd>Allows you to get the center coordinates on the map in Backendless Logic.</dd>
-<dt>Get map zoom</dt>
-<dd>Allows you to get the zoom on the map in Backendless Logic.</dd>
-<dt>Get all markers</dt>
-<dd>Allows you to get the all markers on the map in Backendless Logic.</dd>
-<dt>Get all circles</dt>
-<dd>Allows you to get the all circles on the map in Backendless Logic.</dd>
-<dt>Get all polygons</dt>
-<dd>Allows you to get the all polygons on the map in Backendless Logic.</dd>
-</dl>
+
+## Actions
+
+| Action           | Inputs                                | Returns                            |
+|------------------|---------------------------------------|------------------------------------|
+| Set map center   | `latitude:Number`, `longitude:Number` |                                    |
+| Set map zoom     | `value:Number`                        |                                    |
+| Get map zoom     |                                       | `Number`: current map zoom         |
+| Get map center   |                                       | `Number`: current map center       |
+| Get all markers  |                                       | `List`: of all markers on the map  |
+| Get all circles  |                                       | `List`: of all circles on the map  |
+| Get all polygons |                                       | `List`: of all polygons on the map |
+
+## Styles
+
+**Theme**
+````
+@bl-customComponent-leafletMap-themeColor: @themePrimary;
+````
+
+**Dimensions**
+````
+@bl-customComponent-leafletMap-width: 500px;
+@bl-customComponent-leafletMap-height: 400px;
+@bl-customComponent-leafletMap-margin: 0;
+````
+## <a name="Examples"></a> Codeless Examples
+
+Addition of markers on map:
+
+![markers example](./example-images/markers-example.png)
+
+Addition of circles on map:
+
+![circles example](./example-images/circles-example.png)
+
+Addition of polygons on map:
+
+![polygons example](./example-images/polygons-example.png)

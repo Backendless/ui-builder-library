@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function CustomHtml({ component }) {
-  const { display, html, classList } = component;
+  const { display, html, classList, style } = component;
 
   const [rawHtml, setRawHtml] = useState(html);
 
@@ -16,7 +16,7 @@ export default function CustomHtml({ component }) {
   }
 
   return (
-    <div className={ classes } dangerouslySetInnerHTML={ { __html: rawHtml } }></div>
+    <div className={ classes } dangerouslySetInnerHTML={ { __html: rawHtml } } style={ style }></div>
   );
 }
 

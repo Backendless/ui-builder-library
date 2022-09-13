@@ -3,7 +3,7 @@ import { MapProviders } from './maps';
 
 const MapProvidersOptions = Object.keys(MapProviders).map(item => ({ label: MapProviders[item].label, value: item }));
 
-export function MapTypeSelect({ selected, eventHandlers }) {
+export function MapTypeSelect({ selected, eventHandlers, component }) {
   const { onMapTypeChange } = eventHandlers;
 
   const [currentSelected, setCurrentSelected] = useState(null);
@@ -15,9 +15,12 @@ export function MapTypeSelect({ selected, eventHandlers }) {
   }, [selected]);
 
   const handleChange = useCallback((event) => {
+    const value = event.target.value;
+    component.mapType = value;
+
     onMapTypeChange({
       previousType: selected,
-      currentType : event.target.value
+      currentType : value
     });
   }, [selected]);
 

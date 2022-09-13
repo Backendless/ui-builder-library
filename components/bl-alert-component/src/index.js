@@ -3,6 +3,7 @@ import { AlertButton, AlertIcon, AlertTitle } from './subcomponents'
 
 export default function Alert({ component, eventHandlers }) {
   const {
+    style,
     display,
     classList,
     iconVisibility,
@@ -35,7 +36,7 @@ export default function Alert({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ 'bl-customComponent-alert ' + classList.join(' ') }>
+    <div className={ 'bl-customComponent-alert ' + classList.join(' ') } style={ style }>
       <div className={ classes } style={ { animationDuration: `${ closingDuration }ms` } }>
         { iconVisibility && (
           <div className="alert__icon">

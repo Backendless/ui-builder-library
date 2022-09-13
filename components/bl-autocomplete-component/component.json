@@ -1,0 +1,88 @@
+{
+  "id": "c_d533daff580a0f6e5aeacfcff24adfab",
+  "name": "Autocomplete",
+  "description": "The autocomplete is a normal text input enhanced by a panel of suggested options.",
+  "showInToolbox": true,
+  "faIcon": "keyboard",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "showInSettings": true,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "label": "Placeholder",
+      "defaultValue": "Placeholder",
+      "handlerId": "placeholderLogic",
+      "handlerLabel": "Placeholder Logic",
+      "showInSettings": true,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "text",
+      "name": "options",
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "dataBinding": true,
+      "showInSettings": false,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "select",
+      "name": "variant",
+      "label": "Variant",
+      "defaultValue": "outlined",
+      "options": [
+        {
+          "value": "outlined",
+          "label": "Outlined"
+        },
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "standart",
+          "label": "Standart"
+        }
+      ],
+      "handlerId": "variantLogic",
+      "handlerLabel": "Variant Logic",
+      "handlerDescription": "Autocomplete has three variants, you can choose outlined, standart or filled variant.",
+      "showInSettings": true,
+      "hasLogicHandler": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onButtonClearClick",
+      "label": "On Button Clear Click",
+      "dataBinding": true,
+      "contextBlocks": [
+        {
+          "id": "autocompleteValue"
+        }
+      ]
+    },
+    {
+      "name": "onChange",
+      "label": "On Change",
+      "contextBlocks": [
+        {
+          "id": "inputValue",
+          "label": "Input value"
+        }
+      ],
+      "dataBinding": true
+    }
+  ]
+}

@@ -57,8 +57,8 @@ export function ActionButtons({ signaturePadRef, component, eventHandlers }) {
 
       const dataURL = signaturePadRef.current.toDataURL();
 
-      dataURLToBlob(dataURL).then(signatureBlob => {
-        onSaveSignatureClick({ signatureBlob });
+      dataURLToBlob(dataURL).then(signature => {
+        onSaveSignatureClick({ signature });
       });
     },
   });

@@ -1,0 +1,121 @@
+{
+  "id": "c_3a7b023248c6395590ae7a2eb9275d5e",
+  "name": "Simple Modal",
+  "description": "This component makes it possible to display alert, get some information or confirm some action",
+  "showInToolbox": true,
+  "faIcon": "window-restore",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "handlerId": "titleLogic",
+      "handlerLabel": "Title Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the title."
+    },
+    {
+      "type": "text",
+      "name": "content",
+      "label": "Content",
+      "handlerId": "contentLogic",
+      "handlerLabel": "Content Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the text content of modal window."
+    },
+    {
+      "type": "text",
+      "name": "submitButtonLabel",
+      "label": "Submit Button Label",
+      "defaultValue": "Submit",
+      "handlerId": "submitButtonLogic",
+      "handlerLabel": "Submit Button Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label for Submit Button."
+    },
+    {
+      "type": "text",
+      "name": "closeButtonLabel",
+      "label": "Close Button Label",
+      "defaultValue": "Close",
+      "handlerId": "closeButtonLabelLogic",
+      "handlerLabel": "Close Button Label Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label for Close Button."
+    },
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "defaultValue": "alert",
+      "options": [
+        {
+          "value": "alert",
+          "label": "Alert"
+        },
+        {
+          "value": "prompt",
+          "label": "Prompt"
+        },
+        {
+          "value": "confirm",
+          "label": "Confirm"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "label": "Placeholder",
+      "handlerId": "placeholderLogic",
+      "handlerLabel": "PlaceholderLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the text for input placeholder."
+    },
+    {
+      "type": "number",
+      "name": "closingDuration",
+      "label": "Closing Duration(ms)",
+      "defaultValue": "100"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClose",
+      "label": "On Close Button"
+    },
+    {
+      "name": "onSubmit",
+      "label": "On Submit Button",
+      "contextBlocks": [
+        {
+          "id": "inputValue",
+          "label": "Input Value"
+        }
+      ]
+    },
+    {
+      "name": "onInputValueChange",
+      "label": "On Input Value Change",
+      "contextBlocks": [
+        {
+          "id": "inputValue",
+          "label": "Input Value"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "openModal",
+      "label": "Open Modal"
+    },
+    {
+      "id": "closeModal",
+      "label": "Close Modal"
+    }
+  ]
+}

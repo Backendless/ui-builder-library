@@ -108,7 +108,7 @@
   "actions": [
     {
       "id": "close",
-      "label": "Close Alert"
+      "label": "Close"
     }
   ]
 }

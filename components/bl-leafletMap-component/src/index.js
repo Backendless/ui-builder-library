@@ -21,6 +21,7 @@ import { FullscreenButton } from './fullscreen-button';
 
 export default function LeafletMap({ component, eventHandlers }) {
   const {
+    style,
     markers,
     circles,
     polygons,
@@ -41,7 +42,7 @@ export default function LeafletMap({ component, eventHandlers }) {
   const mapRef = useRef(null);
   const currentLayer = useRef(null);
   const markerIcon = useIcon(IconOptions.marker);
-  const uid = useMemo(() => `uid_Backendless.UUID.short()`,[])
+  const uid = useMemo(() => BackendlessUI.UUID.short(),[])
 
   useEffect(() => {
     initMap(component, eventHandlers, mapRef, currentLayer, uid);
@@ -92,9 +93,10 @@ export default function LeafletMap({ component, eventHandlers }) {
     <div
       id={ uid }
       className={ 'bl-customComponent-leafletMap ' + classList.join(' ') }
+      style={ style }
       ref={ containerRef }>
       { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }
-      { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers }/> }
+      { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers } component={component}/> }
       { fullscreenControl && <FullscreenButton component={ component } eventHandlers={ eventHandlers }/> }
     </div>
   );
