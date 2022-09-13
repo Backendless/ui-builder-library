@@ -12,25 +12,17 @@
       "name": "uploadButtonLabel",
       "label": "Upload button label",
       "type": "text",
-      "defaultValue": "Upload"
+      "defaultValue": "Upload",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "makePhotoButtonLabel",
       "label": "Make photo button label",
       "type": "text",
-      "defaultValue": "Make photo"
-    },
-    {
-      "name": "makeSnapshotButtonLabel",
-      "label": "Snapshot button label",
-      "type": "text",
-      "defaultValue": "Snapshot"
-    },
-    {
-      "name": "doneButtonLabel",
-      "label": "Done button label",
-      "type": "text",
-      "defaultValue": "Done"
+      "defaultValue": "Make photo",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "buttonDisabled",
@@ -38,38 +30,67 @@
       "handlerId": "buttonDisabledHandler",
       "dataBinding": true,
       "type": "checkbox",
-      "label": "Default disabled",
-      "defaultValue": true
+      "label": "Make photo button disabled",
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerDescription": "This handler controls if the button is disabled."
+    },
+    {
+      "name": "makeSnapshotButtonLabel",
+      "label": "Snapshot button label",
+      "type": "text",
+      "defaultValue": "Snapshot",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "name": "doneButtonLabel",
+      "label": "Done button label",
+      "type": "text",
+      "defaultValue": "Done",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "text",
       "name": "popupLinkLabel",
       "label": "Popup link label",
-      "defaultValue": "Info..."
+      "defaultValue": "Info...",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "text",
       "name": "noYetPermissionPopupTitle",
       "label": "No yet  permission popup title",
-      "defaultValue": "Give access to the camera"
+      "defaultValue": "Give access to the camera",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "text",
       "name": "noYetPermissionPopupDescription",
       "label": "No yet permission popup description",
-      "defaultValue": "To work properly, you must allow the app to access the camera."
+      "defaultValue": "To work properly, you must allow the app to access the camera.",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "text",
       "name": "noPermissionPopupTitle",
       "label": "No permission popup title",
-      "defaultValue": "No camera access"
+      "defaultValue": "No camera access",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "text",
       "name": "noPermissionPopupDescription",
       "label": "No yet permission popup description",
-      "defaultValue": "Blocked app access to the camera. Follow the link for detailed information on how to grant access."
+      "defaultValue": "Blocked app access to the camera. Follow the link for detailed information on how to grant access.",
+      "showInSettings": true,
+      "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
@@ -79,7 +100,8 @@
       "handlerDescription": "This event is fired when the user clicks on the 'Done' button.",
       "contextBlocks": [
         {
-          "id": "imageBlob"
+          "id": "imageBlob",
+          "label": "Image Blob"
         }
       ]
     }
