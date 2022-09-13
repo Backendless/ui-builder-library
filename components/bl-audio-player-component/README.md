@@ -1,48 +1,88 @@
 # Audio Player
 
-Audio Player is a component of Backendless UI-Builder designer. You will have a styled player with the set of your tracks. It supports one or multiple audio sources and has all functions you can think of.
+This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer. You will have a styled player with the set of your tracks. It supports one or multiple audio sources and has all functions you can think of.
 
 While the player can be configured with multiple settings it is easy in use and provides users with smooth experience.
 
-## Usage
+<p align="center">
+  <img alt="main thumbnail" src="./thumbnail.png" width="321"/>
+</p>
 
-### Styles and Settings
+## Properties
 
-<dl>
-<dt>Audio Url</dt>
-<dd>Value from this field will be used as the audio url of the player. Can be determined by Audio Url Logic as an array of urls or as a single url.</dd>
-<dt>Audio Title</dt>
-<dd>Value from this field will be used as the audio title of the player. Can be determined by Audio Title Logic as an array of titles or as a single title.</dd>
-<dt>Player Visibility</dt>
-<dd>Checkbox for determining whether the Audio Player is visible to the user or not. Checked by default.</dd>
-<dt>Track Navigation Visibility</dt>
-<dd>Checkbox for determining whether the track navigation is visible to the user or not. Checked by default.</dd>
-<dt>Title Visibility</dt>
-<dd>Checkbox for determining whether the title of the track is visible to the user or not. Checked by default.</dd>
-<dt>Default Volume</dt>
-<dd>Value from this field will be used as the default volume of Audio Player. Can be defined from 0 to 100. Defaults to 50.</dd>
-<dt>Auto Play</dt>
-<dd>Checkbox for determining whether the player will play automatically after loading the page. Unchecked by default.</dd>
-<dt>Repeat</dt>
-<dd>Checkbox for determining whether the player will repeat one track over and over again. Unchecked by default.</dd>
-</dl>
+| Property                    | Type       | Default value | Logic             | Data Binding | UI Setting | Description                                                      |
+|-----------------------------|------------|---------------|-------------------|--------------|------------|------------------------------------------------------------------|
+| Audio Url                   | *Text*     |               | Audio Url Logic   | YES          | YES        | specifies the url of the audio or the list of audio urls         |
+| Audio Title                 | *Text*     |               | Audio Title Logic | YES          | YES        | specifies the title of the audio or the list of audio titles     |
+| Player Visibility           | *Checkbox* | `true`        |                   | NO           | YES        | enables the visibility of the audio player                       |
+| Track Navigation Visibility | *Checkbox* | `true`        |                   | NO           | YES        | enables the visibility of the track navigation                   |
+| Title Visibility            | *Checkbox* | `true`        |                   | NO           | YES        | enables the visibility of the track title                        |
+| Default Volume              | *Range*    | 50            |                   | NO           | YES        | controls the default volume of the player                        |
+| Auto Play                   | *Checkbox* | `false`       |                   | NO           | YES        | enables automatic playback of the track after the page is loaded |
+| Repeat                      | *Checkbox* | `false`       |                   | NO           | YES        | enables repeating one track over and over again                  |
 
-### Event Handlers and Bindable Properties
+## Actions
 
-<dl>
-<dt>Audio Url Logic</dt>
-<dd>This is the handler for the logic to determine the audio url or the list of urls. Array of values returned by the handler will be used as the component playlist.</dd>
-<dt>Audio Title Logic</dt>
-<dd>This is the handler for the logic to determine the track title or the list of titles. Values from the array returned by the handler will be used as track titles of the playlist.</dd>
-</dl>
+| Action        | Inputs                                     | Returns |
+|---------------|--------------------------------------------|---------|
+| Play Audio    |                                            |         |
+| Stop Audio    |                                            |         |
+| Replace Audio | `Audio Url: String`, `Audio Title: String` |         |
 
-### Actions
+## Styles
 
-<dl>
-<dt>Play Audio</dt>
-<dd>Action which starts playing the audio.</dd>
-<dt>Stop Audio</dt>
-<dd>Action which stops playing the audio.</dd>
-<dt>Replace Audio</dt>
-<dd>Action which replaces the audio. Values of the Audio Url and Audio Title properties from the action block will be used as the current track of Audio Player.</dd>
-</dl>
+**Theme**
+
+````
+@bl-customComponent-audioPlayer-themeColor: @themePrimary;
+@bl-customComponent-audioPlayer-backgroundColor: @appBackgroundColor;
+@bl-customComponent-audioPlayer-textColor: @appTextColor;
+@bl-customComponent-audioPlayer-ShadowColor: @appComponentShadowColor;
+@bl-customComponent-audioPlayer-disabledColor: @disabledColor;
+````
+
+**General**
+
+````
+@bl-customComponent-audioPlayer-button-disabledBackground: @bl-customComponent-audioPlayer-disabledColor;
+@bl-customComponent-audioPlayer-button-disabledColor: contrast(@bl-customComponent-audioPlayer-button-disabledBackground);
+@bl-customComponent-audioPlayer-button-backgroundColor: @bl-customComponent-audioPlayer-themeColor;
+@bl-customComponent-audioPlayer-button-color: contrast(@bl-customComponent-audioPlayer-button-backgroundColor);
+@bl-customComponent-audioPlayer-icon-color: @bl-customComponent-audioPlayer-themeColor;
+````
+
+**Dimensions**
+
+````
+@bl-customComponent-audioPlayer-width: 100%;
+@bl-customComponent-audioPlayer-padding: 10px;
+@bl-customComponent-audioPlayer-trackNavigation-width: @bl-customComponent-audioPlayer-width;
+@bl-customComponent-audioPlayer-trackNavigation-height: 5px;
+@bl-customComponent-audioPlayer-trackNavigation-margin: 5px 0;
+@bl-customComponent-audioPlayer-controls-width: @bl-customComponent-audioPlayer-width;
+@bl-customComponent-audioPlayer-button-margin: 2px;
+@bl-customComponent-audioPlayer-input-maxWidth: 85px;
+@bl-customComponent-audioPlayer-input-height: 7px;
+@bl-customComponent-audioPlayer-input-thumb-height: 15px;
+@bl-customComponent-audioPlayer-input-thumb-width: 15px;
+````
+
+**Typography**
+
+````
+@bl-customComponent-audioPlayer-fontSize: 14px;
+````
+
+**Decoration**
+
+````
+@bl-customComponent-audioPlayer-border: 3px solid @bl-customComponent-audioPlayer-themeColor;
+@bl-customComponent-audioPlayer-borderRadius: 10px;
+@bl-customComponent-audioPlayer-trackNavigation-border: 1px solid @bl-customComponent-audioPlayer-themeColor;
+@bl-customComponent-audioPlayer-button-shadowColor: @bl-customComponent-audioPlayer-ShadowColor;
+@bl-customComponent-audioPlayer-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-audioPlayer-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-audioPlayer-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-audioPlayer-button-shadowColor, 12%);
+@bl-customComponent-audioPlayer-button-shadowDisabled: none;
+@bl-customComponent-audioPlayer-input-border: 1px solid @bl-customComponent-audioPlayer-themeColor;
+@bl-customComponent-audioPlayer-input-borderRadius: 5px;
+@bl-customComponent-audioPlayer-input-thumb-borderRadius: 50%;
+````
