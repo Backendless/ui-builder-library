@@ -7,7 +7,7 @@ const iconsList = iconsAmount => new Array(iconsAmount).fill(1);
 
 export default function RatingComponent({ component, eventHandlers }) {
 
-  const { display, disabled, icon, defaultValue, iconsAmount, iconColor, precision, classList } = component;
+  const { classList, display, disabled, style, icon, defaultValue, iconsAmount, iconColor, precision } = component;
   const { onRatingChange } = eventHandlers;
 
   const rootRef = useRef();
