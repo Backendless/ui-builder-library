@@ -13,8 +13,8 @@ you can choose the visibility, background color, as well as the color and type o
 
 | Property           | Type                                                                                                          | Default value          | Logic                     | Data Binding | UI Setting | Description                              |
 |--------------------|---------------------------------------------------------------------------------------------------------------|------------------------|---------------------------|--------------|------------|------------------------------------------|
-| backdropVisibility | *Checkbox*                                                                                                    | false                  | Backdrop Visibility Logic | YES          | YES        | controls the visibility of a component.  |
-| loaderType         | *Select* <br/>[`bar`,`doted circle`,`doted horizon`,`doted line circle`,`doted square`,`line circle`,`radar`] | bar                    | Loader Type Logic         | NO           | YES        | controls the loader type of a component. |
+| backdropVisibility | *Checkbox*                                                                                                    | `false`                | Backdrop Visibility Logic | YES          | YES        | controls the visibility of a component.  |
+| loaderType         | *Select* <br/>[`bar`,`doted circle`,`doted horizon`,`doted line circle`,`doted square`,`line circle`,`radar`] | "bar"                  | Loader Type Logic         | NO           | YES        | controls the loader type of a component. |
 
 ## Events
 
