@@ -6,7 +6,6 @@ import { RatingIcon } from './rating-icon';
 const iconsList = iconsAmount => new Array(iconsAmount).fill(1);
 
 export default function RatingComponent({ component, eventHandlers }) {
-
   const { classList, display, disabled, style, icon, defaultValue, iconsAmount, iconColor, precision } = component;
   const { onRatingChange } = eventHandlers;
 
