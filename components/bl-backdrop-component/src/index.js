@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useUpdateEffect } from "./use-update-effect";
 
 import { LoadersMap } from './loaders';
 
@@ -6,11 +7,17 @@ export default function BackdropSpinner({ component, eventHandlers }) {
   const { backdropVisibility, loaderType, display, style } = component;
   const { onClick, onOpen, onClose } = eventHandlers;
 
-  useEffect(() => {
-    onOpen();
+  useUpdateEffect(() => {
+    if (!backdropVisibility || !display) {
+      onClose();
+    }
+  }, [backdropVisibility, display]);
 
-    return onClose;
-  }, []);
+  useEffect(() => {
+    if (backdropVisibility && display) {
+      onOpen();
+    }
+  }, [display, backdropVisibility]);
 
   if (!backdropVisibility || !display) {
     return null;
