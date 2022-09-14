@@ -1,63 +1,92 @@
 # Badge
 
-Badge is a component of Backendless UI-Builder designer. It generates a small badge to the corner of its child(ren). Any text, custom image or Material icon can be as a content of the component. It is also possible to combine them.
+This is a component of Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer. It generates a small badge to the corner of its child(ren). Any text, custom image or Material icon can be as a content of the component. It is also possible to combine them.
 
 Customizations include adjustments of position, size, form, visibility, background color, label color and font size.
 
-## Usage
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="323"/>
+</p>
+
+## Configuration
 
 After adding the component to the page, specify the label of the badge. This can be done in UI-Builder designer or using codeless logic.
 
 Then it is necessary to determine the contents of the component. Go to UI-Builder designer and specify one of the content field or combine them if you need. The component will be displayed with default properties. If you need even more flexibility, make other changes to its appearance in UI-Builder designer or by codeless logic.
 
-### Styles and Settings
+## Properties
 
-<dl>
-<dt>Badge Label Color</dt>
-<dd>Color used for badge label. Default depends on the selected theme.</dd>
-<dt>Badge Background Color</dt>
-<dd>Color used as the background of the badge. Default depends on the selected theme.</dd>
-<dt>Badge Font Size</dt>
-<dd>Value from this field will be used as the font size for the badge's label.</dd>
-<dt>Badge Alignment</dt>
-<dd>Value from this field will be used as the position of the badge. Defaults to top-right corner. Available values: top-right, top-left, bottom-left, bottom-right.</dd>
-<dt>Badge Width</dt>
-<dd>Value from this field will be used as the width of the badge. Default depends on the size of the badge label.</dd>
-<dt>Badge Height</dt>
-<dd>Value from this field will be used as the height of the badge. Default depends on the size of the badge label.</dd>
-<dt>Badge Form</dt>
-<dd>Value from this field will be used as the form of the badge. Defaults to rounded rectangle. Available values: rounded rectangle, circle, rectangle.</dd>
-<dt>Icon</dt>
-<dd>Icon from the Material library specified in this field will be used as the content of the component.</dd>
-<dt>Text</dt>
-<dd>Value from this field will be used as the content of the component.</dd>
-<dt>Content Font Size</dt>
-<dd>Value from this field will be used as the font size for the text content and Material icon.</dd>
-<dt>Image Url</dt>
-<dd>Custom image from the URL in this field will be used as the content of the component.</dd>
-<dt>Image Width</dt>
-<dd>Width of the custom image used as the content of the component.</dd>
-<dt>Padding</dt>
-<dd>Value from this field will be used as the distance from the badge to the component content.</dd>
-</dl>
+| Property               | Type                                                                             | Default value                                | Logic                           | Data Binding      | UI Setting | Description                                                   |
+|------------------------|----------------------------------------------------------------------------------|----------------------------------------------|---------------------------------|-------------------|------------|---------------------------------------------------------------|
+| Badge Label            | *Text*                                                                           |                                              | Badge Label Logic               | YES               | YES        | controls the label of the badge                               |
+| Badge Label Color      | *Color*                                                                          |                                              |                                 | NO                | YES        | controls the color of the badge label                         |
+| Badge Background Color | *Color*                                                                          |                                              |                                 | NO                | YES        | controls the background color of the badge                    |
+| Badge Font Size        | *Text*                                                                           |                                              |                                 | NO                | YES        | controls the font size of the badge label                     |
+| Badge Alignment        | *Select* <br/> "top-right" \|  "top-left" \|  "bottom-left" \| "bottom-right"    | "top-right"                                  |                                 | NO                | YES        | controls the position of the badge                            |
+| Badge Visibility       | *Checkbox*                                                                       | `true`                                       | Badge Visibility Logic          | YES               | YES        | enables the visibility of the badge                           |
+| Badge Width            | *Text*                                                                           |                                              |                                 | NO                | YES        | controls the width of the badge                               |
+| Badge Height           | *Text*                                                                           |                                              |                                 | NO                | YES        | controls the height of the badge                              |
+| Badge Form             | *Select* <br/> "rounded rectangle" \| "circle" \| "rectangle"                    | "rounded rectangle"                          |                                 | NO                | YES        | controls the form of the badge                                |
+| Icon                   | *MUI Icon*                                                                       |                                              |                                 | NO                | YES        | specifies the icon content of the component                   |
+| Text Content           | *Text*                                                                           |                                              |                                 | NO                | YES        | specifies the text content of the component                   |
+| Content Font Size      | *Text*                                                                           |                                              |                                 | NO                | YES        | controls the font size of the content                         |
+| Image Url              | *Text*                                                                           |                                              |                                 | NO                | YES        | specifies the image content of the component                  |
+| Image Width            | *Text*                                                                           |                                              |                                 | NO                | YES        | controls the width of the image content                       |
+| Padding                | *Text*                                                                           |                                              |                                 | NO                | YES        | controls the distance from the badge to the component content |
 
-### Event Handlers and Bindable Properties
 
-<dl>
-<dt>Badge Label</dt>
-<dd>Value from this field will be used as the badge label. Can be defined by Badge Label Logic.</dd>
-<dt>Badge Visibility</dt>
-<dd>Checkbox for determining whether the badge is visible to the user or not. Can be defined by Badge Visibility Logic. Checked by default.</dd>
-<dt>On Badge Click Event</dt>
-<dd>Triggered when the user clicks the mouse or taps the badge.</dd>
-<dt>On Badge Mouse Over Event</dt>
-<dd>Triggered when the mouse pointer hovers over the badge.</dd>
-<dt>On Badge Mouse Out Event</dt>
-<dd>Triggered when the mouse pointer leaves the badge boundaries.</dd>
-<dt>On Content Click Event</dt>
-<dd>Triggered when the user clicks the mouse or taps the component content.</dd>
-<dt>On Content Mouse Over Event</dt>
-<dd>Triggered when the mouse pointer hovers over the component content.</dd>
-<dt>On Content Mouse Out Event</dt>
-<dd>Triggered when the mouse pointer leaves the component content boundaries.</dd>
-</dl>
+## Events
+
+| Name                        | Triggers                                                       | Context Blocks |
+|-----------------------------|----------------------------------------------------------------|----------------|
+| On Badge Click Event        | when a user click on the badge                                 |                |
+| On Badge Mouse Over Event   | when the mouse pointer hovers over the badge                   |                |
+| On Badge Mouse Out Event    | when the mouse pointer leaves the badge boundaries             |                |
+| On Content Click Event      | when a user click on the component content                     |                |
+| On Content Mouse Over Event | when the mouse pointer hovers over the component content       |                |
+| On Content Mouse Out Event  | when the mouse pointer leaves the component content boundaries |                |
+
+## Styles
+
+**Theme**
+
+````
+@bl-customComponent-badge-themeColor: @themePrimary;
+@bl-customComponent-badge-backgroundColor: @appBackgroundColor;
+@bl-customComponent-badge-textColor: @appTextColor;
+````
+
+**General**
+
+````
+@bl-customComponent-badge-badgeBackgroundColor: @bl-customComponent-badge-themeColor;
+@bl-customComponent-badge-badgeTextColor: contrast(@bl-customComponent-badge-badgeBackgroundColor);
+@bl-customComponent-badge-content-color: @bl-customComponent-badge-textColor;
+@bl-customComponent-badge-content-backgroundColor: @bl-customComponent-badge-backgroundColor;
+@bl-customComponent-badge-content-iconColor: @bl-customComponent-badge-content-color;
+@bl-customComponent-badge-content-iconBackgroundColor: @bl-customComponent-badge-content-backgroundColor;
+@bl-customComponent-badge-content-textColor: @bl-customComponent-badge-content-color;
+@bl-customComponent-badge-content-textBackgroundColor: @bl-customComponent-badge-content-backgroundColor;
+````
+
+**Dimensions**
+
+````
+@bl-customComponent-badge-padding: 14px;
+@bl-customComponent-badge-badgePadding: 4px;
+@bl-customComponent-badge-content-padding: 0;
+@bl-customComponent-badge-content-iconPadding: @bl-customComponent-badge-content-padding;
+@bl-customComponent-badge-content-textPadding: @bl-customComponent-badge-content-padding;
+@bl-customComponent-badge-content-imagePadding: @bl-customComponent-badge-content-padding;
+@bl-customComponent-badge-content-imageWidth: 24px;
+@bl-customComponent-badge-content-imageHeight: auto;
+````
+
+**Typography**
+
+````
+@bl-customComponent-badge-badgeFontSize: 12px;
+@bl-customComponent-badge-content-fontSize: 24px;
+@bl-customComponent-badge-content-iconFontSize: @bl-customComponent-badge-content-fontSize;
+@bl-customComponent-badge-content-textFontSize: @bl-customComponent-badge-content-fontSize;
+````

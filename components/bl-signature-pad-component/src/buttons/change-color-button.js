@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 export function ChangeColorButton({ signaturePadRef, component, eventHandlers }) {
-  const { penColor, changeColorButtonLabel } = component;
+  const { changeColorButtonVisibility, changeColorButtonLabel } = component;
   const { onChangeColor } = eventHandlers;
 
   const changeColor = useCallback(e => {
@@ -14,7 +14,7 @@ export function ChangeColorButton({ signaturePadRef, component, eventHandlers })
     }
   }, [onChangeColor, signaturePadRef]);
 
-  if (!!penColor) {
+  if (!changeColorButtonVisibility) {
     return null;
   }
 

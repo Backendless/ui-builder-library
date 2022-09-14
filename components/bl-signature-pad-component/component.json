@@ -15,7 +15,10 @@
       "handlerId": "penColorLogic",
       "handlerLabel": "Pen Color Logic",
       "handlerDescription": "This is a handler for the logic to determine what color should be applied to pen.",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "defaultValue": "#000000"
     },
     {
       "name": "description",
@@ -25,7 +28,18 @@
       "handlerId": "descriptionLogic",
       "handlerLabel": "Description Logic",
       "handlerDescription": "This is a handler for the logic to determine the description of the Signature Pad. Value returned by the handler will be used as the description of the Signature Pad.",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "checkbox",
+      "name": "changeColorButtonVisibility",
+      "label": "Change Color Button Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "changeColorButtonVisibilityLogic",
+      "defaultValue": true
     },
     {
       "name": "savePNGButtonVisibility",
@@ -35,7 +49,9 @@
       "handlerLabel": "Save PNG Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the Save PNG button should be visible. If the handler returns 'true' the button will be displayed.",
       "defaultValue": true,
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "name": "saveJPGButtonVisibility",
@@ -45,7 +61,9 @@
       "handlerLabel": "Save JPG Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the Save JPG button should be visible. If the handler returns 'true' the button will be displayed.",
       "defaultValue": true,
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "name": "saveSVGButtonVisibility",
@@ -55,7 +73,9 @@
       "type": "checkbox",
       "defaultValue": true,
       "handlerDescription": "This is a handler for the logic to determine if the Save SVG button should be visible. If the handler returns 'true' the button will be displayed.",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "name": "saveSignatureButtonVisibility",
@@ -65,49 +85,65 @@
       "handlerId": "saveSignatureButtonVisibilityLogic",
       "handlerLabel": "Save Signature Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the Save Signature button should be visible. If the handler returns 'true' the button will be displayed.",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "name": "clearButtonLabel",
       "label": "Clear Button Label",
       "defaultValue": "Clear",
-      "type": "text"
+      "type": "text",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "changeColorButtonLabel",
       "label": "Change Color Button Label",
       "type": "text",
-      "defaultValue": "Change Color"
+      "defaultValue": "Change Color",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "undoButtonLabel",
       "label": "Undo Button Label",
       "type": "text",
-      "defaultValue": "Undo"
+      "defaultValue": "Undo",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "savePNGButtonLabel",
       "label": "Save PNG Button Label",
       "type": "text",
-      "defaultValue": "Save as PNG"
+      "defaultValue": "Save as PNG",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "saveJPGButtonLabel",
       "label": "Save JPG Button Label",
       "type": "text",
-      "defaultValue": "Save as JPG"
+      "defaultValue": "Save as JPG",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "saveSVGButtonLabel",
       "label": "Save SVG Button Label",
       "type": "text",
-      "defaultValue": "Save as SVG"
+      "defaultValue": "Save as SVG",
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "name": "saveSignatureButtonLabel",
       "label": "Save Signature Button Label",
       "type": "text",
-      "defaultValue": "Save Signature"
+      "defaultValue": "Save Signature",
+      "showInSettings": true,
+      "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
@@ -143,8 +179,8 @@
       "handlerDescription": "This event is fired when the user clicks the mouse or taps Save Signature button.",
       "contextBlocks": [
         {
-          "id": "signatureBlob",
-          "label": "Signature Blob"
+          "id": "signature",
+          "label": "Signature"
         }
       ]
     },
