@@ -6,10 +6,8 @@ export function useUpdateEffect(callback, dependencies) {
   useEffect(() => {
     if (firstRenderRef.current) {
       firstRenderRef.current = false;
-
-      return;
+    } else {
+      callback();
     }
-
-    return callback();
   }, dependencies);
 }
