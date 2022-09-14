@@ -66,7 +66,7 @@
     {
       "name": "onOpen",
       "label": "On Open Event",
-      "handlerDescription": "This event is fired when the component appears on the screen"
+      "handlerDescription": "This event is fired when the component appears on the screen."
     },
     {
       "name": "onClose",
