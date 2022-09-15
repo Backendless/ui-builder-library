@@ -9,11 +9,13 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "text",
       "name": "itemsList",
+      "showInSettings": false,
+      "hasLogicHandler": true,
+      "handlerId": "itemsListHandler",
       "handlerLabel": "Items List Logic",
       "handlerDescription": "This is a handler for the logic to determine items list.",
-      "handlerId": "itemsListHandler",
-      "type": "text",
       "dataBinding": true
     },
     {
@@ -24,7 +26,9 @@
       "handlerId": "titleHandler",
       "handlerLabel": "Title Logic",
       "handlerDescription": "This is a handler for the logic to determine title.",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "checkbox",
@@ -34,7 +38,9 @@
       "handlerLabel": "Allow Delete Logic",
       "handlerDescription": "This is a handler for the logic to determine if the item is allowed to delete.",
       "handlerId": "allowDeleteHandler",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "checkbox",
@@ -44,7 +50,9 @@
       "handlerLabel": "Allow Edit Logic",
       "handlerDescription": "This is a handler for the logic to determine if the item is allowed to edit.",
       "handlerId": "allowEditHandler",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "checkbox",
@@ -52,9 +60,11 @@
       "label": "Allow Add Item",
       "defaultValue": true,
       "handlerLabel": "Allow Add Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the item is allowed to add",
+      "handlerDescription": "This is a handler for the logic to determine if the item is allowed to add.",
       "handlerId": "allowAddItemHandler",
-      "dataBinding": true
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true
     }
   ],
   "eventHandlers": [
@@ -126,5 +136,6 @@
         }
       ]
     }
-  ]
+  ],
+  "actions": []
 }
