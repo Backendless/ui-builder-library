@@ -13,9 +13,10 @@
       "name": "disable",
       "label": "Disable",
       "handlerId": "disableLogic",
-      "handlerLabel": "Disable Logic",
+      "handlerLabel": "Disable logic",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "dataBinding": true
     },
     {
       "type": "text",
@@ -94,7 +95,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "optionsLogic",
-      "handlerLabel": "Options Logic",
+      "handlerLabel": "Options logic",
       "dataBinding": true
     }
   ],
@@ -110,5 +111,6 @@
         }
       ]
     }
-  ]
+  ],
+  "actions": []
 }

@@ -1,9 +1,8 @@
 import { ChipList } from './chip-list';
 
-export function Input(props) {
-  const { type, selectId, selectValue } = props;
+export function Input({ type, selectId, selectValue }) {
   const inputValue = selectValue.map(item => item.label).join(', ');
-
+  
   return (
     <>
       <div className="input__container">

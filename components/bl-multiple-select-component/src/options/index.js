@@ -1,22 +1,20 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 import { Option } from './option';
 
-export function Options(props) {
-  const { type, options, selectValue, onChange, setSelectValue } = props;
-
+export function Options({ type, options, selectValue, setSelectValue, onChange }) {
   const selectRef = useRef(null);
   const [margin, setMargin] = useState(0);
-
+  
   useEffect(() => {
     const viewPortHeight = window.innerHeight;
     const selectBottom = selectRef.current?.getBoundingClientRect()?.bottom;
-
+    
     if (selectBottom > viewPortHeight) {
       setMargin(selectBottom - viewPortHeight);
     }
-  }, [selectRef])
-
+  }, [])
+  
   const handleSelectValue = option => {
     let newSelectValue;
     const isOptionSelected = selectValue.find(({ objectId }) => objectId === option.objectId);
@@ -25,34 +23,34 @@ export function Options(props) {
       newSelectValue = selectValue.filter(({ objectId }) => objectId !== isOptionSelected.objectId);
     } else {
       const selectedItems = [...selectValue, option];
-
+      
       newSelectValue = type === 'default'
         ? options.filter(item => selectedItems.includes(item))
         : selectedItems;
     }
-
+    
     setSelectValue(newSelectValue);
-
+    
     if (onChange) {
       onChange({ selectValue: newSelectValue });
     }
   };
+  
+  const selectedValuesMap = useMemo(() => {
+    return selectValue.reduce((m, { objectId }) => ({...m, [objectId]: 1 }), {});
+  }, [selectValue]);
 
   return (
-    <div className="options" style={{ transform: `translateY(-${ margin }px)` }} ref={ selectRef }>
-      { options.map(option => {
-        const isOptionSelected = !!selectValue.find(({ objectId }) => objectId === option.objectId);
-
-        return (
-          <Option
-            key={ option.objectId }
-            type={ type }
-            option={ option }
-            isOptionSelected={ isOptionSelected }
-            handleSelectValue={ handleSelectValue }
-          />
-        );
-      }) }
+    <div style={{ transform: `translateY(-${ margin }px)` }} className="options" ref={ selectRef }>
+      { options.map(option => (
+        <Option
+          key={ option.objectId }
+          type={ type }
+          option={ option }
+          isOptionSelected={ selectedValuesMap[option.objectId] }
+          handleSelectValue={ handleSelectValue }
+        />
+      )) }
     </div>
   );
 };

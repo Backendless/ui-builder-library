@@ -9,12 +9,12 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function MultipleSelectComponent({ component, eventHandlers }) {
   const { display, classList, disable, placeholder, variant, type, value, options } = component;
   const { onChange } = eventHandlers;
-
+  
   const rootRef = useRef(null);
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [selectValue, setSelectValue] = useState([]);
   const [isSelectActive, setIsSelectActive] = useState(false);
-
+  
   const optionsList = useMemo(() => validate(options), [options]);
 
   const handleClickOutside = useCallback(() => {
@@ -26,11 +26,11 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   }, [isOptionsOpen]);
 
   useOnClickOutside(rootRef, handleClickOutside);
-
+  
   if (!display) {
     return null;
   }
-
+  
   return (
     <div
       ref={ rootRef }
