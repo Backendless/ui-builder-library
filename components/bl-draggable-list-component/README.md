@@ -11,13 +11,13 @@ The component is customizable, you can enable or disable actions with it.
 
 ## Properties
 
-| Property    | Type       | Default value | Logic              | Data Binding | UI Setting | Description                                                                   |
-|-------------|------------|---------------|--------------------|--------------|------------|-------------------------------------------------------------------------------|
-| itemsList   | *text*     |               | Items List Logic   | YES          | NO         | This is a handler for the logic to determine items list                       |
-| title       | *text*     | "List"        | Title Logic        | YES          | YES        | This is a handler for the logic to determine title                            |
-| allowDelete | *checkbox* | `true`        | Allow Delete Logic | YES          | YES        | This is a handler for the logic to determine if the item is allowed to delete |
-| allowEdit   | *checkbox* | `true`        | Allow Edit Logic   | YES          | YES        | This is a handler for the logic to determine if the item is allowed to edit   |
-| allowAdd    | *checkbox* | `true`        | Allow Add Logic    | YES          | YES        | This is a handler for the logic to determine if the item is allowed to add|
+| Property    | Type       | Default value | Logic              | Data Binding | UI Setting | Description                                                                                                        |
+|-------------|------------|---------------|--------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------|
+| itemsList   | *text*     |               | Items List Logic   | YES          | NO         | This is a handler for the logic to determine items list. Signature of list item: `{label: string, value: string}`. |
+| title       | *text*     | "List"        | Title Logic        | YES          | YES        | This is a handler for the logic to determine title.                                                                |
+| allowDelete | *checkbox* | `true`        | Allow Delete Logic | YES          | YES        | This is a handler for the logic to determine if the item is allowed to delete.                                     |
+| allowEdit   | *checkbox* | `true`        | Allow Edit Logic   | YES          | YES        | This is a handler for the logic to determine if the item is allowed to edit.                                       |
+| allowAdd    | *checkbox* | `true`        | Allow Add Logic    | YES          | YES        | This is a handler for the logic to determine if the item is allowed to add.                                        |
 
 ## Events
 
