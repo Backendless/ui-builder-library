@@ -1,29 +1,30 @@
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Controls(props) {
-  const { pageNumber, setPageNumber, inputRef, handlerPageChange, numPages } = props;
+  const { pageIndex, setPageIndex, inputRef, handlerPageChange, numPages, disabled } = props;
 
   return (
-    <div className="controls">
+    <div className={ cn('controls', { 'disabled': disabled }) }>
       <button
-        className={ cn('controls-button', { disabled: pageNumber === 1 }) }
-        onClick={ () => setPageNumber(state => state - 1) }
-        disabled={ pageNumber === 1 }>
+        className="controls-button"
+        onClick={ () => setPageIndex(state => state - 1) }
+        disabled={ pageIndex === 1 || disabled }>
         <PrevButtonIcon/>
       </button>
       <div className="pages-info">
         <input
           ref={ inputRef }
           className="page-input"
-          value={ pageNumber }
+          disabled={ disabled }
+          value={ pageIndex }
           onChange={ handlerPageChange }
         />
         <span>/{ numPages }</span>
       </div>
       <button
-        className={ cn('controls-button', { disabled: pageNumber === numPages }) }
-        onClick={ () => setPageNumber(state => state + 1) }
-        disabled={ pageNumber === numPages }>
+        className="controls-button"
+        onClick={ () => setPageIndex(state => state + 1) }
+        disabled={ pageIndex === numPages || disabled }>
         <NextButtonIcon/>
       </button>
     </div>

@@ -65,7 +65,32 @@
       "handlerDescription": "This is the handler for the logic to determine the size of  PDF Viewer."
     }
   ],
-  "eventHandlers": [],
+  "eventHandlers": [
+    {
+      "name": "onLoadSuccess",
+      "label": "On Load Success",
+      "contextBlocks": [
+        {
+          "id": "numPages",
+          "label": "Num Pages"
+        }
+      ],
+      "output": false,
+      "handlerDescription": "This event is triggered when the PDF file is successfully downloaded"
+    },
+    {
+      "name": "onLoadError",
+      "label": "On Load Error",
+      "output": false,
+      "contextBlocks": [
+        {
+          "id": "message",
+          "label": "Message"
+        }
+      ],
+      "handlerDescription": "This event is triggered when a PDF download error"
+    }
+  ],
   "actions": [
     {
       "id": "goPage",

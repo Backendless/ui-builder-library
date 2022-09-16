@@ -12,6 +12,14 @@ The component allows you to add a pdf viewer to your UI-Builder application
 | renderType | Select ["canvas","svg"]            | "canvas"      | Render Type Logic | NO           | YES        | Allows select type of render(`canvas`, `svg`).                       |
 | size       | Select ["small","normal", "large"] | "normal"      | Size Logic        | NO           | YES        | Allows select size of PDF Viewer(`small`, `normal`, `large`).        |
 
+## Events
+
+| Name            | Triggers                                     | Context Blocks      |
+|-----------------|----------------------------------------------|---------------------|
+| On Load Success | when the PDF file is successfully downloaded | `Num Pages: number` |
+| On Load Error   | when a PDF download error                    | `Message: string`   |
+
+
 ## Action
 
 | Action     | Inputs         | Returns |
@@ -30,4 +38,5 @@ The component allows you to add a pdf viewer to your UI-Builder application
 ````
 @bl-customComponent-pdfViewer-input-background-color: if(@isLightTheme, darken(#fff, 10%), lighten(#000, 15%));
 @bl-customComponent-pdfViewer-button-icon-size: 16px;
+@bl-customComponent-pdfViewer-no-data-icon-size: 40px;
 ````
