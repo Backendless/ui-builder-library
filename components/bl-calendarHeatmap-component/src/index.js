@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef } from 'react';
+import { useMemo, useEffect, useRef, useState } from 'react';
 import CalendarHeatmap from './lib/react-calendar-heatmap.umd.min';
 import ReactTooltip from './lib/react-tooltip.min';
 import { Legend } from './subcomponents';
@@ -25,6 +25,8 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
   const ref = useRef();
 
+  const [legendWidth, setLegendWidth] = useState(0);
+
   const month = useMemo(() => validate(monthLabels), [monthLabels]);
   const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
 
@@ -44,6 +46,17 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
       });
     }
   }, [color]);
+
+  const handleResize = () => {
+    setLegendWidth(ref.current.querySelector('.react-calendar-heatmap-all-weeks').getBoundingClientRect().width);
+  };
+
+  useEffect(() => {
+    if (ref.current) {
+      handleResize();
+      window.addEventListener('resize', handleResize, false);
+    }
+  }, [ref.current]);
 
   const handlerClassForValue = (value) => value ? `color-cell-${ value.count }` : 'color-empty';
 
@@ -70,7 +83,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         onClick={ (value) => onClick({ value }) }
       />
       <ReactTooltip/>
-      <Legend space={ showWeekdayLabels } legend={ legend }/>
+      <Legend legend={ legend } width={ legendWidth }/>
     </div>
   );
 }

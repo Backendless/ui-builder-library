@@ -1,10 +1,8 @@
-const { cn } = BackendlessUI.CSSUtils;
-
-export function Legend({ legend, space }) {
+export function Legend({ legend, width }) {
   return (
-    <div className="legend">
+    <div className="legend" style={ { width: `${ width }px` } }>
       { legend && (
-        <p className={ cn('legend-text', { 'space': space }) }>{ legend }</p>
+        <p className="legend-text">{ legend }</p>
       ) }
       <div className="legend-container">
         <span>None</span>
