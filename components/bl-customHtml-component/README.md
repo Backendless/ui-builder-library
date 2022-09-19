@@ -2,24 +2,14 @@
 
 Custom HTML is a component of Backendless UI-Builder designer. This allows you writing your custom HTML.
 
-## Usage
+## Properties
 
-### Styles and Settings
+| Property | Type   | Default Value | Logic      | Data Binding | UI Setting | Description            |
+|----------|--------|---------------|------------|--------------|------------|------------------------|
+| html     | String |               | HTML Logic | YES          | YES        | Allows write your HTML |
 
-<dl>
-<dt>HTML</dt>
-<dd>Allows write your HTML</dd>
-</dl>
+## Actions
 
-### Event Handlers and Bindable Properties
-
-<dl>
-<dt>HTML Logic</dt>
-<dd>Allows to specify your HTML in Backendless logic</dd>
-</dl>
-
-### Action
-<dl>
-<dt>Set HTML</dt>
-<dd>An action that set your custom HTML</dd>
-</dl>
+| Action   | Inputs         | Returns |
+|----------|----------------|---------|
+| Set HTML | `HTML: string` |         |
