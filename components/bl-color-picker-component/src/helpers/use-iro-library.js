@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import iro from '../lib/iro.min';
 
+export const ValidHexLengths = [4, 7, 9];
+
 export function useIroLibrary(elRef, options) {
   const { component, setCurrentColor, onChangeColor } = options;
   const { selectedColor, verticalColorPicker, circleColorPicker, opacitySliderVisibility } = component;
@@ -16,7 +18,7 @@ export function useIroLibrary(elRef, options) {
   useEffect(() => {
     colorPickerRef.current = new iro.ColorPicker(elRef.current, {
       width          : 150,
-      color          : selectedColor,
+      color          : selectedColor || '#ff0000',
       layoutDirection: !verticalColorPicker && 'horizontal',
       handleSvg      : '#handle',
       layout         : [
@@ -59,11 +61,23 @@ export function useIroLibrary(elRef, options) {
 
       if (onChangeColor) {
         const selectedColor = color.hex8String;
-        
+
         onChangeColor({ selectedColor });
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (!selectedColor) {
+      return;
+    }
+
+    const selectedColorValue = validate(selectedColor);
+
+    if (ValidHexLengths.includes(selectedColorValue.length)) {
+      colorPickerRef.current.color.hexString = selectedColorValue;
+    }
+  }, [selectedColor]);
 
   return {
     colorPickerRef,
@@ -75,4 +89,8 @@ export function useIroLibrary(elRef, options) {
     hslFormat,
     alpha,
   };
+}
+
+export function validate(value) {
+  return value.replace(/#/g, '').replace(/(.*)/, '#$1');
 }

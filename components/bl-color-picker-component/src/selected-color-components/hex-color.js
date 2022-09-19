@@ -1,4 +1,4 @@
-const ValidHexLengths = [4, 7, 9];
+import { validate, ValidHexLengths } from '../helpers/use-iro-library';
 
 export function HexColor(props) {
   const { colorPickerRef, hexFormat, setHexFormat, borderColor, setHexInputBorderColor, backgroundColor } = props;
@@ -29,10 +29,6 @@ export function HexColor(props) {
       <CopyButton onClick={ copyColorValue }/>
     </div>
   );
-}
-
-function validate(inputValue) {
-  return inputValue.replace(/#/g, '').replace(/(.*)/, '#$1');
 }
 
 function CopyButton({ onClick }) {
