@@ -71,10 +71,10 @@ export function createCircles(circles, map, eventHandlers) {
     const { onCircleClick } = eventHandlers;
 
     circles.forEach(item => {
-      Leaflet.circle([item.point.y, item.point.x], { radius: item.radius })
+      Leaflet.circle([item.point.lat, item.point.lng], { radius: item.radius })
         .on('click', () => {
           onCircleClick({
-            coordinates: [item.point.y, item.point.x],
+            coordinates: [item.point.lat, item.point.lng],
             radius     : item.radius,
             description: item.description
           });
@@ -90,9 +90,9 @@ export function createMarkers(markers, icon, map, eventHandlers) {
     const { onMarkerClick } = eventHandlers;
 
     markers.forEach(item => {
-      Leaflet.marker([item.point.y, item.point.x], { icon })
+      Leaflet.marker([item.point.lat, item.point.lng], { icon })
         .on('click', () => {
-          onMarkerClick({ coordinates: [item.point.y, item.point.x], description: item.description });
+          onMarkerClick({ coordinates: [item.point.lat, item.point.lng], description: item.description });
         })
         .addTo(map)
         .bindPopup(item.description);
@@ -105,7 +105,7 @@ export function createPolygons(polygons, map, eventHandlers) {
     const { onPolygonClick } = eventHandlers;
 
     polygons.forEach(item => {
-      const coordinates = item.polygon.boundary.points.map(point => [point.y, point.x]);
+      const coordinates = item.polygon.boundary.points.map(point => [point.lat, point.lng]);
 
       Leaflet.polygon(coordinates)
         .on('click', () => {
