@@ -21,12 +21,12 @@ The component is customizable, you can enable or disable actions with it.
 
 ## Events
 
-| Name            | Triggers                          | Context Blocks                                                                                                                                                          |
-|-----------------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| On Drag Event   | when the user drags a list item   | `Current list: [{label: string, value: string}, {...}, ...], Dragged item: {label: string, value: string}, Previous list: [{label: string, value: string}, {...}, ...]` |
-| On Delete Event | when the user deletes a list item | `Current list: [{label: string, value: string}, {...}, ...], Deleted item: {label: string, value: string}`                                                              |
-| On Edit Event   | when the user edites a list item  | `Current list: [{label: string, value: string}, {...}, ...], Current item: {label: string, value: string}, Previous list: [{label: string, value: string}, {...}, ...]` |
-| On Add Event    | when the user adds a list item    | `Current list: [{label: string, value: string}, {...}, ...], Added item: {label: string, value: string}`                                                                |
+| Name            | Triggers                          | Context Blocks                                                                                                                                                                        |
+|-----------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| On Drag Event   | when the user drags a list item   | Current list: `[{label: string, value: string}, {...}, ...]` <br/> Dragged item: `{label: string, value: string}` <br/>Previous list: `[{label: string, value: string}, {...}, ...]`  |
+| On Delete Event | when the user deletes a list item | Current list: `[{label: string, value: string}, {...}, ...]` <br/> Deleted item: `{label: string, value: string}`                                                                     |
+| On Edit Event   | when the user edits a list item   | Current list: `[{label: string, value: string}, {...}, ...]` <br/> Current item: `{label: string, value: string}` <br/> Previous list: `[{label: string, value: string}, {...}, ...]` |
+| On Add Event    | when the user adds a list item    | Current list: `[{label: string, value: string}, {...}, ...]` <br/> Added item: `{label: string, value: string}`                                                                       |
 
 ## Styles
 
