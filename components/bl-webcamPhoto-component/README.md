@@ -9,24 +9,24 @@ The component allows taking a picture using a webcam on both mobile devices and 
 
 ## Properties
 
-| Property                        | Type       | Default value                                                                                      | Logic                 | Data Binding | UI Setting | Description                                                                           |
-|---------------------------------|------------|----------------------------------------------------------------------------------------------------|-----------------------|--------------|------------|---------------------------------------------------------------------------------------|
-| uploadButtonLabel               | *text*     | Upload                                                                                             |                       | NO           | YES        | controls label on the Upload button.                                                  |                                                                                                        |
-| makePhotoButtonLabel            | *text*     | Make photo                                                                                         |                       | NO           | YES        | controls label on the Make photo button.                                              |
-| buttonDisabled                  | *checkbox* | true                                                                                               | Button Disabled Logic | YES          | YES        | controls if the button is disabled.                                                   |
-| makeSnapshotButtonLabel         | *text*     | Snapshot                                                                                           |                       | NO           | YES        | controls label on the Make snapshot button.                                           |
-| doneButtonLabel                 | *text*     | Done                                                                                               |                       | NO           | YES        | controls label on the Done button.                                                    |
-| popupLinkLabel                  | *text*     | Info...                                                                                            |                       | NO           | YES        | controls link label in popup.                                                         |
-| noYetPermissionPopupTitle       | *text*     | Give access to the camera                                                                          |                       | NO           | YES        | controls title in popup when the user has not yet allowed the use of the camera.      |
-| noYetPermissionPopupDescription | *text*     | To work properly, you must allow the app to access the camera.                                     |                       | NO           | YES        | controls description in popup when the user has not yet allowed the use of the camera.|
-| noPermissionPopupTitle          | *text*     | No camera access                                                                                   |                       | NO           | YES        | controls title in popup when the user did not allow the use of the camera.            |
-| noPermissionPopupDescription    | *text*     | Blocked app access to the camera. Follow the link for detailed information on how to grant access. |                       | NO           | YES        | controls description in popup when the user did not allow the use of the camera.      |
+| Property                        | Type       | Default value                                                                                        | Logic                 | Data Binding | UI Setting | Description                                                                           |
+|---------------------------------|------------|------------------------------------------------------------------------------------------------------|-----------------------|--------------|------------|---------------------------------------------------------------------------------------|
+| uploadButtonLabel               | *text*     | "Upload"                                                                                             |                       | NO           | YES        | controls label on the Upload button.                                                  |                                                                                                        |
+| makePhotoButtonLabel            | *text*     | "Make photo"                                                                                         |                       | NO           | YES        | controls label on the Make photo button.                                              |
+| buttonDisabled                  | *checkbox* | `true`                                                                                               | Button Disabled Logic | YES          | YES        | controls if the button is disabled.                                                   |
+| makeSnapshotButtonLabel         | *text*     | "Snapshot"                                                                                           |                       | NO           | YES        | controls label on the Make snapshot button.                                           |
+| doneButtonLabel                 | *text*     | "Done"                                                                                               |                       | NO           | YES        | controls label on the Done button.                                                    |
+| popupLinkLabel                  | *text*     | "Info..."                                                                                            |                       | NO           | YES        | controls link label in popup.                                                         |
+| noYetPermissionPopupTitle       | *text*     | "Give access to the camera"                                                                          |                       | NO           | YES        | controls title in popup when the user has not yet allowed the use of the camera.      |
+| noYetPermissionPopupDescription | *text*     | "To work properly, you must allow the app to access the camera."                                     |                       | NO           | YES        | controls description in popup when the user has not yet allowed the use of the camera.|
+| noPermissionPopupTitle          | *text*     | "No camera access"                                                                                   |                       | NO           | YES        | controls title in popup when the user did not allow the use of the camera.            |
+| noPermissionPopupDescription    | *text*     | "Blocked app access to the camera. Follow the link for detailed information on how to grant access." |                       | NO           | YES        | controls description in popup when the user did not allow the use of the camera.      |
 
 ## Events
 
-| Name                | Triggers                                  | Context Blocks                           |
-|---------------------|-------------------------------------------|------------------------------------------|
-| On Save Image Event | when the user clicks on the 'Done' button | `Image Blob: {size: number, type: text}` |
+| Name                | Triggers                                  | Context Blocks                             |
+|---------------------|-------------------------------------------|--------------------------------------------|
+| On Save Image Event | when the user clicks on the 'Done' button | Image Blob: `{size: Number, type: String}` |
 
 
 ## Styles
@@ -47,8 +47,8 @@ The component allows taking a picture using a webcam on both mobile devices and 
 ````
 @bl-customComponent-webcamPhoto-justify-content: center;
 ````
-**Buttons**
 
+**Buttons**
 ````
 
 @bl-customComponent-webcamPhoto-button-margin: 2px;
@@ -56,7 +56,10 @@ The component allows taking a picture using a webcam on both mobile devices and 
 @bl-customComponent-webcamPhoto-button-background: @bl-customComponent-webcamPhoto-themeColor;
 @bl-customComponent-webcamPhoto-button-color: contrast(@bl-customComponent-webcamPhoto-button-background);
 @bl-customComponent-webcamPhoto-button-shadowColor: @appComponentShadowColor;
-@bl-customComponent-webcamPhoto-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 12%);
+@bl-customComponent-webcamPhoto-button-shadowHover:
+    0px 2px 4px -1px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 20%),
+    0px 4px 5px 0px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 14%),
+    0px 1px 10px 0px fade(@bl-customComponent-webcamPhoto-button-shadowColor, 12%);
 @bl-customComponent-webcamPhoto-button-shadowDisabled: none;
 @bl-customComponent-webcamPhoto-button-disabledBackground: @bl-customComponent-webcamPhoto-disabledColor;
 @bl-customComponent-webcamPhoto-button-disabledColor: contrast(@bl-customComponent-webcamPhoto-button-disabledBackground);
@@ -87,7 +90,6 @@ The component allows taking a picture using a webcam on both mobile devices and 
 ````
 
 **Modal**
-
 ````
 @bl-customComponent-webcamPhoto-modal-backgroundColor: fade(@bl-customComponent-webcamPhoto-disabledColor, 40%);
 @bl-customComponent-webcamPhoto-modal-padding: 20px;
@@ -104,7 +106,6 @@ The component allows taking a picture using a webcam on both mobile devices and 
 ````
 
 **Popup**
-
 ````
 @bl-customComponent-webcamPhoto-popup-backgroundColor: @bl-customComponent-webcamPhoto-backgroundColor;
 @bl-customComponent-webcamPhoto-popup-border: @bl-customComponent-webcamPhoto-blockBorder;
