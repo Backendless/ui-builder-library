@@ -1,0 +1,129 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+
+@bl-customComponent-popover-border-width: 1px;
+@bl-customComponent-popover-max-width: 276px;
+@bl-customComponent-popover-arrow-size: 10px;
+
+@bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid rgba(0, 0, 0, 0.175);
+
+@bl-customComponent-popover-title-background-color: #f0f0f0;
+@bl-customComponent-popover-text-background-color: #fff;
+
+.bl-customComponent-popover {
+  .popover-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+
+    color: @buttonContainedColor;
+
+    background: @buttonContainedBackground;
+    border-radius: @buttonContainedBorderRadius;
+
+    border: 0;
+    outline: 0;
+
+    padding: 6px 16px;
+
+    transition: 0.3s;
+
+    &:not(.disabled) {
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: @buttonContainedShadowHover;
+      }
+
+      &:active,
+      &:focus {
+        box-shadow: @buttonContainedShadowActive;
+      }
+    }
+
+    &:disabled {
+      background: @buttonContainedDisabledBackground;
+      color: @buttonContainedDisabledColor;
+    }
+  }
+
+  &.popover {
+    position: absolute;
+    max-width: @bl-customComponent-popover-max-width;
+    font-size: 0.875rem;
+
+    background-clip: padding-box;
+    border: @bl-customComponent-popover-border;
+    border-radius: 0.5rem;
+
+    .popover-title {
+      margin: 0;
+      padding: 0.5rem 1rem;
+
+      font-size: 1rem;
+
+      border-top-left-radius: calc(0.5rem - @bl-customComponent-popover-border-width);
+      border-top-right-radius: calc(0.5rem - @bl-customComponent-popover-border-width);
+
+      background-color: @bl-customComponent-popover-title-background-color;
+      border-bottom: @bl-customComponent-popover-border;;
+    }
+
+    .popover-text {
+      margin: 0;
+      font-size: 0.875rem;
+      padding: 1rem;
+
+      border-bottom-left-radius: calc(0.5rem - @bl-customComponent-popover-border-width);
+      border-bottom-right-radius: calc(0.5rem - @bl-customComponent-popover-border-width);
+
+      background-color: @bl-customComponent-popover-text-background-color;
+    }
+
+    .popover-arrow {
+      position: absolute;
+
+      height: @bl-customComponent-popover-arrow-size;
+      width: @bl-customComponent-popover-arrow-size;
+
+      background-clip: padding-box;
+      background-color: @bl-customComponent-popover-text-background-color;
+
+      transform: translate(-50%, -50%) rotate(45deg);
+
+      &--top {
+        bottom: calc(-@bl-customComponent-popover-arrow-size - 1px);
+        left: 50%;
+
+        border-bottom: @bl-customComponent-popover-border;
+        border-right: @bl-customComponent-popover-border;
+      }
+
+      &--right {
+        left: -1px;
+        top: 50%;
+
+        border-bottom: @bl-customComponent-popover-border;
+        border-left: @bl-customComponent-popover-border;
+      }
+
+      &--left {
+        right: -1px;
+        top: 50%;
+
+        border-right: @bl-customComponent-popover-border;
+        border-top: @bl-customComponent-popover-border;
+        transform: translate(50%, -50%) rotate(45deg);
+      }
+
+      &--bottom {
+        left: 50%;
+        top: -1px;
+
+        background-color: @bl-customComponent-popover-title-background-color;
+        border-left: @bl-customComponent-popover-border;
+        border-top: @bl-customComponent-popover-border;
+      }
+    }
+  }
+}

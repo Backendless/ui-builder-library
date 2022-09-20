@@ -1,0 +1,105 @@
+{
+  "id": "c_55a489f6d36c41ec17a39e038228a56f",
+  "name": "Popover",
+  "description": "Popover is a component to display some content when the user clicks a button",
+  "showInToolbox": true,
+  "faIcon": "comment-alt",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerDescription": "This is a handler for the logic of determining whether a button is disabled or not."
+    },
+    {
+      "type": "text",
+      "name": "buttonLabel",
+      "label": "Button Label",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "buttonLabelLogic",
+      "handlerLabel": "Button Label Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label of button."
+    },
+    {
+      "type": "select",
+      "name": "position",
+      "label": "Position",
+      "showInSettings": true,
+      "defaultValue": "top",
+      "hasLogicHandler": true,
+      "handlerId": "positionLogic",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the position of the popover relative to the button"
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "titleLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the title of popover."
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "label": "Text",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "textLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the text of popover."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click",
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks on the button."
+    }
+  ],
+  "actions": [
+    {
+      "id": "setIsOpen",
+      "label": "Set Is Open",
+      "inputs": [
+        {
+          "id": "boolean",
+          "label": "Boolean"
+        }
+      ]
+    }
+  ]
+}
