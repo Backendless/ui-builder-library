@@ -3,26 +3,21 @@
 Skeleton is a designer component of Backendless UI-Builder. This allows you to add a skeleton element to display that data loading.
 
 The component based on external [Skeleton](https://mui.com/material-ui/react-skeleton/).
-## Usage
 
-### Styles and Settings
+## Properties
 
-<dl>
-<dt>Variant</dt>
-<dd>Allows select variant of skeleton ("text", "circular", "rectangular", "rounded"). Default value "text".</dd>
-<dt>Height</dt>
-<dd>Allows determinate height for skeleton.</dd>
-<dt>Width</dt>
-<dd>Allows to determinate width for skeleton.</dd>
-<dt>Animation</dt>
-<dd>Allows select animation of skeleton ("default", "wave", "none"). Default value "default".</dd>
-</dl>
+| Property  | Type   | Defautl Value | Logic        | Data Binding | UI Setting | Description                                                                       |
+|-----------|--------|---------------|--------------|--------------|------------|-----------------------------------------------------------------------------------|
+| Variant   | Select | `text`        |              | NO           | YES        | Allows select variant of skeleton ("text", "circular", "rectangular", "rounded"). |
+| Height    | String |               | Height Logic | YES          | YES        | Allows determinate height for skeleton.                                           |
+| Width     | String |               | Width Logic  | YES          | YES        | Allows to determinate width for skeleton.                                         |
+| Animation | Select | `default`     |              | NO           | YES        | Allows select animation of skeleton ("default", "wave", "none").                  |
 
-### Event Handlers and Bindable Properties
 
-<dl>
-<dt>Height Logic</dt>
-<dd>Allows to specify height for skeleton in Backendless logic.</dd>
-<dt>Width Logic</dt>
-<dd>Allows to specify width for skeleton in Backendless logic.</dd>
-</dl>
+## Styles
+
+**Colors**
+````
+@bl-customComponent-skeleton-background-color: if((luma(@appBackgroundColor) > 50%), rgba(0, 0, 0, 0.11), rgba(255, 255, 255, 0.11));
+@bl-customComponent-skeleton-background-color-wave: if((luma(@appBackgroundColor) > 50%), rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+````

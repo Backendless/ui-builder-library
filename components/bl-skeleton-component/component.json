@@ -63,7 +63,6 @@
       "defaultValue": "default",
       "hasLogicHandler": false,
       "handlerId": "animationLogic",
-      "dataBinding": true,
       "options": [
         {
           "value": "default",
