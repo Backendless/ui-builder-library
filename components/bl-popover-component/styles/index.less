@@ -4,10 +4,12 @@
 @bl-customComponent-popover-max-width: 276px;
 @bl-customComponent-popover-arrow-size: 10px;
 
-@bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid rgba(0, 0, 0, 0.175);
+@bl-customComponent-popover-textColor: @appTextColor;
+@bl-customComponent-popover-title-background-color: if(@isLightTheme,#f0f0f0,#0f0f0f);
+@bl-customComponent-popover-text-background-color: @appBackgroundColor;
+@bl-customComponent-popover-border-color: if(@isLightTheme,rgba(0, 0, 0, 0.175),rgba(255, 255, 255, 0.175));
 
-@bl-customComponent-popover-title-background-color: #f0f0f0;
-@bl-customComponent-popover-text-background-color: #fff;
+@bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid @bl-customComponent-popover-border-color;
 
 .bl-customComponent-popover {
   .popover-button {
@@ -51,6 +53,7 @@
     position: absolute;
     max-width: @bl-customComponent-popover-max-width;
     font-size: 0.875rem;
+    color: @bl-customComponent-popover-textColor;
 
     background-clip: padding-box;
     border: @bl-customComponent-popover-border;

@@ -37,11 +37,13 @@ The component allows you to render a popup window in your UI-Builder application
 
 **Colors**
 ```
-@bl-customComponent-popover-title-background-color: #f0f0f0;
-@bl-customComponent-popover-text-background-color: #fff;
+@bl-customComponent-popover-textColor: @appTextColor;
+@bl-customComponent-popover-title-background-color: if(@isLightTheme,#f0f0f0,#0f0f0f);
+@bl-customComponent-popover-text-background-color: @appBackgroundColor;
+@bl-customComponent-popover-border-color: if(@isLightTheme,rgba(0, 0, 0, 0.175),rgba(255, 255, 255, 0.175));
 ```
 
 **Others**
 ```
-@bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid rgba(0, 0, 0, 0.175);
+@bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid @bl-customComponent-popover-border-color;
 ```
