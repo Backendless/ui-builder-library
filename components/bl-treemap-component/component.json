@@ -1,0 +1,87 @@
+{
+  "id": "c_eaf14153f39378780d6967c7ecfa90ff",
+  "name": "Treemap",
+  "description": "The main purpose of the component is proportional display of data.",
+  "showInToolbox": true,
+  "faIcon": "chart-bar",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true,
+      "settingTooltip": "This handler allows you to disable the component.",
+      "handlerDescription": "This handler allows you to disable the component."
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "label": "Label",
+      "showInSettings": true,
+      "defaultValue": "Treemap",
+      "hasLogicHandler": false,
+      "handlerId": "labelLogic",
+      "settingTooltip": "This handler allows you to specify a label for the component."
+    },
+    {
+      "type": "text",
+      "name": "valueUnit",
+      "label": " Value Unit",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "valueUnitLogic",
+      "handlerLabel": " Value Unit Logic",
+      "dataBinding": true,
+      "settingTooltip": "This handler allows you to specify a unit of value for the data.",
+      "handlerDescription": "This handler allows you to specify a unit of value for the data."
+    },
+    {
+      "type": "number",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "500",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "dataBinding": true,
+      "settingTooltip": "This handler allows you to specify the width of the component.",
+      "handlerDescription": "This handler allows you to specify the width of the component."
+    },
+    {
+      "type": "number",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "400",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify the width of the component.",
+      "settingTooltip": "This handler allows you to specify the width of the component."
+    },
+    {
+      "type": "json",
+      "name": "data",
+      "label": "Data",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dataLogic",
+      "handlerLabel": "Data Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to add data to display.",
+      "settingTooltip": "This handler allows you to add data to display."
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [],
+  "blockUI": "<img data-url=\"/ui-builder/containers/default/components/custom/c_eaf14153f39378780d6967c7ecfa90ff/thumbnail.png\" data-module-type=\"system\" data-module-id=\"image\" data-display data-uid=\"2c2f2eecef89b95e7b47516aae560c6d\" style=\"width:500px;height:400px;\"/>"
+}
