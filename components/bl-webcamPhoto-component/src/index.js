@@ -14,8 +14,8 @@ export default function WebcamPhoto({ component, eventHandlers }) {
     style,
     uploadButtonDisabled,
     uploadButtonVisible,
-    photoButtonDisabled,
-    photoButtonVisible
+    makePhotoButtonDisabled,
+    makePhotoButtonVisible
   } = component;
   const { onSaveImage } = eventHandlers;
 
@@ -49,11 +49,11 @@ export default function WebcamPhoto({ component, eventHandlers }) {
         />
       ) }
 
-      { !isMobile && photoButtonVisible && (
+      { !isMobile && makePhotoButtonVisible && (
         <MakePhotoButton
           onClick={ handleClick }
           text={ makePhotoButtonLabel }
-          disabled={ photoButtonDisabled }
+          disabled={ makePhotoButtonDisabled }
         />
       ) }
 
