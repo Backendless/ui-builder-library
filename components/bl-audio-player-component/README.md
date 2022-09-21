@@ -5,7 +5,7 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 While the player can be configured with multiple settings it is easy in use and provides users with smooth experience.
 
 <p align="center">
-  <img alt="main thumbnail" src="./thumbnail.png" width="321"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties

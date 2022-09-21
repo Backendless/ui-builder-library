@@ -4,7 +4,7 @@ WebcamPhoto is a component of Backendless [UI-Builder](https://backendless.com/d
 The component allows taking a picture using a webcam on both mobile devices and desktops.
 
 <p align="center">
-  ![main thumbnail](./thumbnail.png)
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties

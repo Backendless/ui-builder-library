@@ -4,6 +4,10 @@ Alert is a component of Backendless UI-Builder designer. This allows you to noti
 
 The component based on external [alert](https://mui.com/material-ui/react-alert/).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property              | Type                                                   | Default Value | Logic                         | Data Binding | UI Setting | Description                                                              |

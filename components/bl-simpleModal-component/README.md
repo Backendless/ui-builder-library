@@ -3,6 +3,11 @@
 Simple Modal is a designer component of Backendless UI-Builder. This allows you to add a modal dialog box. You can add "Alert" to notify you about certain information. You can add "Prompt" to get information from the user. You can add "Confirm" to get confirmation at user for some actions.
 
 The component based on external [Simple Modal](https://mui.com/material-ui/react-dialog/).
+
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 ### Styles and Settings

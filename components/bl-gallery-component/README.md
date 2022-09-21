@@ -4,6 +4,10 @@ The Gallery is a component of Backendless UI-Builder designer. It allows you to 
 
 The component based on external [lightbox2](https://lokeshdhakar.com/projects/lightbox2/) library post by [Lokesh Dhakar](https://github.com/lokesh).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
  Add component on your page and add codeless logic, which loading images.
