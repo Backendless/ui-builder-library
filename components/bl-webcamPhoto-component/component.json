@@ -33,7 +33,8 @@
       "label": "Make photo button disabled",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "handlerDescription": "This handler controls if the button is disabled."
     },
     {
       "name": "makeSnapshotButtonLabel",
@@ -99,7 +100,8 @@
       "handlerDescription": "This event is fired when the user clicks on the 'Done' button.",
       "contextBlocks": [
         {
-          "id": "imageBlob"
+          "id": "imageBlob",
+          "label": "Image Blob"
         }
       ]
     }
