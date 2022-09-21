@@ -1,0 +1,108 @@
+{
+  "id": "c_641f41b2f5632a22749fc992d3ca410e",
+  "name": "Input with Mask",
+  "description": "This component allows you add input with mask",
+  "showInToolbox": true,
+  "faIcon": "mask",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "maskType",
+      "label": "Mask Type",
+      "showInSettings": true,
+      "defaultValue": "Number",
+      "hasLogicHandler": true,
+      "handlerId": "maskTypeLogic",
+      "handlerLabel": "Mask Type Logic",
+      "options": [
+        {
+          "value": "Number",
+          "label": "Number"
+        },
+        {
+          "value": "String",
+          "label": "String"
+        },
+        {
+          "value": "RegExp",
+          "label": "RegExp"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to determine type of mask(Number, String, RegExp)."
+    },
+    {
+      "type": "text",
+      "name": "mask",
+      "label": "Mask",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maskLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine mask."
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "placeholderLogic",
+      "dataBinding": true,
+      "label": "Placeholder",
+      "handlerDescription": "This is a handler for the logic to determine a placeholder."
+    },
+    {
+      "type": "text",
+      "name": "placeholderChar",
+      "label": "Placeholder Char",
+      "showInSettings": true,
+      "defaultValue": "_",
+      "hasLogicHandler": true,
+      "handlerId": "placeholderCharLogic",
+      "handlerLabel": "Placeholder Char Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine a placeholder character."
+    },
+    {
+      "type": "checkbox",
+      "name": "lazy",
+      "label": "Lazy",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "lazyLogic",
+      "handlerDescription": "This is a handler for the logic to determine a lazy. If lazy is true mask is not visible, and if lazy is false mask visible, but if the mask is visible, the input value includes the mask."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChangeValue",
+      "label": "On Change Value",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the component's state (value) changes."
+    },
+    {
+      "name": "onValidate",
+      "label": "On Validate",
+      "output": true,
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "id": "mask",
+          "label": "Mask"
+        }
+      ],
+      "handlerDescription": "This event is triggered before the component value changes. Using returned value(boolean) we could decide - apply changes(true) or not(false)."
+    }
+  ],
+  "actions": []
+}
