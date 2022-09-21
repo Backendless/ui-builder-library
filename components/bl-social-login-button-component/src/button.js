@@ -2,33 +2,36 @@ import { iconsMap } from './icons-map';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export function Button({ provider, showButtonIcon, onLogin }) {
+export function Button({ provider, showButtonIcon, onLogin, onLoginFail }) {
   const handleClick = async () => {
-    async function socialLogin(providerCode, fieldsMappings, scope, options, redirectToPage, callbackUrlDomain) {
-      if (BackendlessUI.DeviceAPI.isMobile()) {
-        const user = await BackendlessUI.DeviceAPI
-          .socialLogin(providerCode, fieldsMappings, scope, options, callbackUrlDomain)
+    try {
+      async function socialLogin(providerCode, fieldsMappings, scope, options, redirectToPage, callbackUrlDomain) {
+        if (BackendlessUI.DeviceAPI.isMobile()) {
+          const user = await BackendlessUI.DeviceAPI
+            .socialLogin(providerCode, fieldsMappings, scope, options, callbackUrlDomain)
 
-        Backendless.UserService.setCurrentUser(user, true)
+          Backendless.UserService.setCurrentUser(user, true)
 
-        if (redirectToPage) {
-          BackendlessUI.Navigator.goToPage(redirectToPage)
+          if (redirectToPage) {
+            BackendlessUI.Navigator.goToPage(redirectToPage)
+          }
+        } else {
+          const redirectAfterLoginUrl = redirectToPage
+            ? window.location.href.split('?')[0] + `?page=${ redirectToPage }`
+            : window.location.href
+
+          window.location = await Backendless.UserService
+            .getAuthorizationUrlLink(providerCode, fieldsMappings, scope, false, redirectAfterLoginUrl, callbackUrlDomain)
         }
-      } else {
-        const redirectAfterLoginUrl = redirectToPage
-          ? window.location.href.split('?')[0] + `?page=${ redirectToPage }`
-          : window.location.href
-
-        window.location = await Backendless.UserService.getAuthorizationUrlLink(
-          providerCode, fieldsMappings, scope, false, redirectAfterLoginUrl, callbackUrlDomain
-        )
       }
-    }
 
-    await socialLogin(provider);
+      await socialLogin(provider);
 
-    if (onLogin) {
-      onLogin({ loginType: provider });
+      if (onLogin) {
+        onLogin({ loginType: provider });
+      }
+    } catch (error) {
+      onLoginFail({ error });
     }
   };
 

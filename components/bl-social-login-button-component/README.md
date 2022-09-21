@@ -1,34 +1,37 @@
 # Social Login Button
 
-Social Login Button is a component of Backendless UI-Builder designer. The component is designed for quick login.
+Social Login Button is a component of Backendless UI-Builder designer. The component is designed for quick login. For the correct work of the component, you need to configure the social network provider, you can do this by going to Backend => Users => Login Providers. Also, if you want to watch the tutorial, you can [follow the link,](https://www.youtube.com/watch?v=PVmXcQn-FxA&t=842s&ab_channel=Backendless) or go to [the documentation.](https://backendless.com/docs/js/users_oauth2.html)
 
-## Usage
+<p align="center">
+  <img alt="main thumbnail" height="290" src="./thumbnail.png" width="370"/>
+</p>
 
-Add the component to your page and specify the social network in the component properties. Also, for the correct work of the component, you need to configure the social network provider, you can do this by going to Backend => Users => Login Providers. Also, if you want to watch the tutorial, you can [follow the link,](https://www.youtube.com/watch?v=PVmXcQn-FxA&t=842s&ab_channel=Backendless) or go to [the documentation.](https://backendless.com/docs/js/users_oauth2.html)
+## Properties
 
-### Component Elements
+| Property         | Type       | Default value | Logic                  | Data Binding | UI Setting | Description
+|------------------|------------|---------------|------------------------|--------------|------------|-----------------------------------------------------------
+| Disabled         | *Checkbox* | false         | Disabled logic         | YES          | YES        | This handler allows you to disable the component.
+| Show Button Icon | *Checkbox* | true          | Show Button Icon Logic | YES          | YES        | This handler allows you to select the mode for a button with an icon or without.
+| Google Plus      | *Checkbox* | true          | Google Plus Logic      | YES          | YES        | This handler allows you to choose whether to show the Google Plus button or not.
+| Facebook         | *Checkbox* | true          | Facebook Logic         | YES          | YES        | This handler allows you to choose whether to show the Facebook button or not.
+| Twitter          | *Checkbox* | true          | Twitter Logic          | YES          | YES        | This handler allows you to choose whether to show the Twitter button or not.
+| Linkedin         | *Checkbox* | true          | Linkedin Logic         | YES          | YES        | This handler allows you to choose whether to show the Linkedin button or not.
+| Github           | *Checkbox* | true          | Github Logic           | YES          | YES        | This handler allows you to choose whether to show the Github button or not.
 
-<dl>
-<dt>Button</dt>
-<dd>The component consists of a button and an icon with text that is the content of the button.</dd>
-<dt>Icon</dt>
-<dd>The icon is located to the left of the button text, also using the `Show button icon` property you can choose whether the icon will be displayed or not.</dd>
-</dl>
+## Events
 
-### Component Properties
+| Name                 | Triggers                                           | Context Blocks                        |
+|----------------------|----------------------------------------------------|---------------------------------------|
+| On Click Event       | when the user clicks the Social Login Button       | `Login Type: string`                    |
+| On Login Fail        | when a login request returns an error              | `Error: string`                       |
 
-  Name             | Type     | Default value  | Description
- ------------------|----------|----------------|----------------------------------------------------------------
-  Show button icon | boolean  | true           | This property allows you to select the mode for a button with an icon or without.
-  Google plus      | boolean  | true           | With this property you can choose whether to show the Google plus button or not.
-  Facebook         | boolean  | true           | With this property you can choose whether to show the Facebook button or not.
-  Twitter          | boolean  | true           | With this property you can choose whether to show the Twitter button or not.
-  Linkedin         | boolean  | true           | With this property you can choose whether to show the Linkedin button or not.
-  Github           | boolean  | true           | With this property you can choose whether to show the Github button or not.
+## Styles
 
-### Events
-
-<dl>
-<dt>On Click</dt>
-<dd>Triggers when the user clicks the Social Login Button</dd>
-</dl>
+**Colors**
+````
+@bl-customComponent-socialLoginButton-iconGoogle-colorPrimary: #DC4A3D;
+@bl-customComponent-socialLoginButton-iconFacebook-colorPrimary: #3C5A9A;
+@bl-customComponent-socialLoginButton-iconTwitter-colorPrimary: #55ACEE;
+@bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary: #0A66C2;
+@bl-customComponent-socialLoginButton-iconGithub-colorPrimary: #000000;
+````
