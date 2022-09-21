@@ -2,6 +2,10 @@
 
 Gauge Chart is a component of Backendless UI-Builder designer. This is a chart whose purpose is to show the goal and the progress that has already been made.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 Add a component to your page and add goal and progress properties to the component.
