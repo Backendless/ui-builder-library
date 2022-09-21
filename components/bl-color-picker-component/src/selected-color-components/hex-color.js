@@ -1,4 +1,6 @@
-const ValidHexLengths = [4, 7, 9];
+import { validate, ValidHexLengths } from '../helpers/use-iro-library';
+
+const HEX_INPUT_BORDER_COLOR = '#ff0000';
 
 export function HexColor(props) {
   const { colorPickerRef, hexFormat, setHexFormat, borderColor, setHexInputBorderColor, backgroundColor } = props;
@@ -6,10 +8,10 @@ export function HexColor(props) {
   const changeHex = e => {
     const hexInputValue = validate(e.target.value);
 
-    if (ValidHexLengths.includes(hexInputValue.length)) {
+    if (ValidHexLengths[hexInputValue.length]) {
       colorPickerRef.current.color.hexString = hexInputValue;
     } else {
-      setHexInputBorderColor('#ff0000');
+      setHexInputBorderColor(HEX_INPUT_BORDER_COLOR);
     }
 
     setHexFormat(hexInputValue);
@@ -29,10 +31,6 @@ export function HexColor(props) {
       <CopyButton onClick={ copyColorValue }/>
     </div>
   );
-}
-
-function validate(inputValue) {
-  return inputValue.replace(/#/g, '').replace(/(.*)/, '#$1');
 }
 
 function CopyButton({ onClick }) {
