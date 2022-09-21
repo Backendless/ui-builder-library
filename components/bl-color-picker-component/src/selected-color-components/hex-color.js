@@ -6,7 +6,7 @@ export function HexColor(props) {
   const changeHex = e => {
     const hexInputValue = validate(e.target.value);
 
-    if (ValidHexLengths.includes(hexInputValue.length)) {
+    if (ValidHexLengths[hexInputValue.length]) {
       colorPickerRef.current.color.hexString = hexInputValue;
     } else {
       setHexInputBorderColor('#ff0000');

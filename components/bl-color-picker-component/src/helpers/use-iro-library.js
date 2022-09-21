@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import iro from '../lib/iro.min';
 
-export const ValidHexLengths = [4, 7, 9];
+const DEFAULT_COLOR = '#ff0000';
+
+export const ValidHexLengths = { 4: true, 7: true, 9: true };
 
 export function useIroLibrary(elRef, options) {
   const { component, setCurrentColor, onChangeColor } = options;
@@ -18,7 +20,7 @@ export function useIroLibrary(elRef, options) {
   useEffect(() => {
     colorPickerRef.current = new iro.ColorPicker(elRef.current, {
       width          : 150,
-      color          : selectedColor || '#ff0000',
+      color          : selectedColor || DEFAULT_COLOR,
       layoutDirection: !verticalColorPicker && 'horizontal',
       handleSvg      : '#handle',
       layout         : [
@@ -74,7 +76,7 @@ export function useIroLibrary(elRef, options) {
 
     const selectedColorValue = validate(selectedColor);
 
-    if (ValidHexLengths.includes(selectedColorValue.length)) {
+    if (ValidHexLengths[selectedColorValue.length]) {
       colorPickerRef.current.color.hexString = selectedColorValue;
     }
   }, [selectedColor]);
