@@ -5,7 +5,7 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 The component covers all the main features of the library and allows you in a couple click render an interactive map in your UI-Builder application.
 
 <p align="center">
-  <img alt="main thumbnail" height="480" src="./thumbnail.png" width="780"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties
