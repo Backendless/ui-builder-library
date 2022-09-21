@@ -1,11 +1,13 @@
-export const HalfPointControll = ({ icon, iconColor, disabled, checked, inputValue, onChange }) => {
-  const id = BackendlessUI.UUID.short();
+import { useMemo } from 'react';
+
+export const FullPointControll = ({ icon, iconColor, disabled, checked, inputValue, onChange }) => {
+  const id = useMemo(() => BackendlessUI.UUID.short(), []);
 
   return (
     <>
       <label
         htmlFor={ id }
-        className="rating-icon__label half-icon">
+        className="rating-icon__label">
         <span className="rating-icon__span">
           <svg
             focusable="false"

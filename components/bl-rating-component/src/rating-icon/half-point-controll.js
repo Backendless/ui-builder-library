@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
+
 export const HalfPointControll = ({ icon, iconColor, disabled, checked, inputValue, onChange }) => {
-  const id = BackendlessUI.UUID.short();
+  const id = useMemo(() => BackendlessUI.UUID.short(), []);
 
   return (
     <>
