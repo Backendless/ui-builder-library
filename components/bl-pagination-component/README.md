@@ -3,6 +3,11 @@
 Pagination is a component of Backendless UI-Builder designer. This allows you to create pages with a control panel for switching between pages.
 
 The component based on external [pagination](https://mui.com/material-ui/react-pagination/).
+
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 ### Styles and Settings
