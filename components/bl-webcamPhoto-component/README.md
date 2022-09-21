@@ -3,6 +3,10 @@
 WebcamPhoto is a component of Backendless UI-Builder designer. Allows you to take a picture using a webcam on both
 mobile devices and desktops.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 ### Styles and Settings
