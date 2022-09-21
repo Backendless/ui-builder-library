@@ -2,6 +2,10 @@
 
 Autocomplete is a component of Backendless UI-Builder designer. This allows you to select an item from a list of options.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 Add a component to your page and add the items to the list.
