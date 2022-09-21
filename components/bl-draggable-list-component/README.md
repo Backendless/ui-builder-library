@@ -6,7 +6,7 @@ This allows the list to be displayed. List items can also be dragged, modified, 
 The component is customizable, you can enable or disable actions with it.
 
 <p align="center">
-  <img alt="main thumbnail" height="220" src="./thumbnail.png" width="358"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties
