@@ -11,6 +11,10 @@ elements and the picker as a whole.
 The component based on external [iro.js](https://github.com/jaames/iro.js) library post
 by [James](https://github.com/jaames).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 ### Styles and Settings
