@@ -2,6 +2,10 @@
 
 Transfer list is a component of Backendless UI-Builder designer. It allows you to move one or more list items between lists.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 Add a component to your page and add the items to the list.
