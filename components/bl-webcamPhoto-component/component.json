@@ -24,7 +24,8 @@
       "hasLogicHandler": true,
       "handlerId": "uploadButtonDisabledLogic",
       "handlerDescription": "This handler controls if the upload button is disabled.",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerLabel": "Upload Button Disabled Logic"
     },
     {
       "type": "checkbox",
@@ -35,7 +36,8 @@
       "hasLogicHandler": true,
       "handlerId": "uploadButtonVisibleLogic",
       "handlerDescription": "This handler controls if the upload button is visible.",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerLabel": "Upload Button Visibility Logic"
     },
     {
       "name": "makePhotoButtonLabel",
