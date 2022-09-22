@@ -6,7 +6,7 @@ The component represents a background with a loader in the center of it. The com
 you can choose the visibility, background color, as well as the color and type of the loader.
 
 <p align="center">
-  <img alt="main thumbnail" height="265" src="./thumbnail.png" width="420"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties

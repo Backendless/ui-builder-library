@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 
 import iro from '../lib/iro.min';
 
+const DEFAULT_COLOR = '#ff0000';
+
+export const ValidHexLengths = { 4: true, 7: true, 9: true };
+
 export function useIroLibrary(elRef, options) {
   const { component, setCurrentColor, onChangeColor } = options;
   const { selectedColor, verticalColorPicker, circleColorPicker, opacitySliderVisibility } = component;
@@ -16,7 +20,7 @@ export function useIroLibrary(elRef, options) {
   useEffect(() => {
     colorPickerRef.current = new iro.ColorPicker(elRef.current, {
       width          : 150,
-      color          : selectedColor,
+      color          : selectedColor || DEFAULT_COLOR,
       layoutDirection: !verticalColorPicker && 'horizontal',
       handleSvg      : '#handle',
       layout         : [
@@ -59,11 +63,23 @@ export function useIroLibrary(elRef, options) {
 
       if (onChangeColor) {
         const selectedColor = color.hex8String;
-        
+
         onChangeColor({ selectedColor });
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (!selectedColor) {
+      return;
+    }
+
+    const selectedColorValue = validate(selectedColor);
+
+    if (ValidHexLengths[selectedColorValue.length]) {
+      colorPickerRef.current.color.hexString = selectedColorValue;
+    }
+  }, [selectedColor]);
 
   return {
     colorPickerRef,
@@ -75,4 +91,8 @@ export function useIroLibrary(elRef, options) {
     hslFormat,
     alpha,
   };
+}
+
+export function validate(value) {
+  return value.replace(/#/g, '').replace(/(.*)/, '#$1');
 }

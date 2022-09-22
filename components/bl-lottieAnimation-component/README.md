@@ -4,6 +4,10 @@ Lottie Animation is a component of Backendless UI-Builder designer. This allows 
 
 The component based on external [Lottie Animation](https://github.com/airbnb/lottie-web).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 ### Styles and Settings

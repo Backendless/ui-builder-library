@@ -1,6 +1,10 @@
 # Rating
 Rating is a component of Backendless UI-Builder designer. It allows you to rate anything, or see the rating of a particular item.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property      | Type                            | Default value | Logic               | Data Binding | UI Setting | Description

@@ -2,6 +2,10 @@
 
 Multiple Bar Chart is a component of Backendless UI-Builder designer. This is a bar chart whose purpose is to show the progress of each item.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 Add a component to your page and add data (array of objects) to the property `Chart data`. Each element of the array must contain the properties "goal", "progress" and "name".
