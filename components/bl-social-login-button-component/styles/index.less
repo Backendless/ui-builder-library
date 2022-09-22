@@ -1,4 +1,8 @@
 // you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-socialLoginButton-maxWidth: 375px;
+@bl-customComponent-socialLoginButton-minWidth: 300px;
+@bl-customComponent-socialLoginButton-colorOnHover: #FFFFFF;
+
 @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary: #DC4A3D;
 @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary: #3C5A9A;
 @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary: #55ACEE;
@@ -6,10 +10,10 @@
 @bl-customComponent-socialLoginButton-iconGithub-colorPrimary: #000000;
 
 .bl-customComponent-socialLoginButton {
-  max-width: 375px;
-  min-width: 300px;
+  max-width: @bl-customComponent-socialLoginButton-maxWidth;
+  min-width: @bl-customComponent-socialLoginButton-minWidth;
   width: 100%;
-
+  
   .social-button {
     display: inline-flex;
     align-items: center;
@@ -20,69 +24,69 @@
     margin-bottom: 10px;
     background-color: transparent;
     box-sizing: border-box;
-	  border-radius: 3px;
+    border-radius: 3px;
     cursor: pointer;
-
+    
     &:hover {
-      color: #FFFFFF;
+      color: @bl-customComponent-socialLoginButton-colorOnHover;
       transition: color .3s;
-
+      
       & .icon {
-        fill: #FFFFFF;
+        fill: @bl-customComponent-socialLoginButton-colorOnHover;
         transition: fill .3s;
       }
     }
-
+    
     &__googleplus {
       color: @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
       border: 1px solid @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
-
+      
       &:hover {
         background-color: @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
         transition: background-color .3s;
       }
     }
-
+    
     &__facebook {
       color: @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
       border: 1px solid @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
-
+      
       &:hover {
         background-color: @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
         transition: background-color .3s;
       }
     }
-
+    
     &__twitter {
       color: @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
       border: 1px solid @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
-
+      
       &:hover {
         background-color: @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
         transition: background-color .3s;
       }
     }
-
+    
     &__linkedin {
       color: @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
       border: 1px solid @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
-
+      
       &:hover {
         background-color: @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
         transition: background-color .3s;
       }
     }
-
+    
     &__github {
       color: @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
       border: 1px solid @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
-
+      
       &:hover {
         background-color: @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
         transition: background-color .3s;
       }
     }
-
+    
     &__icon-container {
       display: flex;
       align-items: center;
@@ -91,7 +95,7 @@
       width: 100%;
       max-width: 15%;
     }
-
+    
     &__text-container {
       display: flex;
       align-items: center;
@@ -99,42 +103,42 @@
       width: 100%;
       max-width: 75%;
     }
-
+    
     &__text {
       font-size: 15px;
       text-transform: uppercase;
     }
-
+    
     .icon {
       width: 22px;
       height: 22px;
-
+      
       &__googleplus {
         fill: @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
       }
-
+      
       &__facebook {
         fill: @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
       }
-
+      
       &__twitter {
         fill: @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
       }
-
+      
       &__linkedin {
         fill: @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
       }
-
+      
       &__github {
         fill: @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
       }
     }
   }
-
+  
   .with-icon {
     justify-content: space-between;
   }
-
+  
   .with-icon .social-button__text-container {
     justify-content: start;
   }

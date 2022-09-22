@@ -8,27 +8,34 @@ Social Login Button is a component of Backendless UI-Builder designer. The compo
 
 ## Properties
 
-| Property         | Type       | Default value | Logic                  | Data Binding | UI Setting | Description
-|------------------|------------|---------------|------------------------|--------------|------------|-----------------------------------------------------------
-| Disabled         | *Checkbox* | false         | Disabled logic         | YES          | YES        | This handler allows you to disable the component.
-| Show Button Icon | *Checkbox* | true          | Show Button Icon Logic | YES          | YES        | This handler allows you to select the mode for a button with an icon or without.
-| Google Plus      | *Checkbox* | true          | Google Plus Logic      | YES          | YES        | This handler allows you to choose whether to show the Google Plus button or not.
-| Facebook         | *Checkbox* | true          | Facebook Logic         | YES          | YES        | This handler allows you to choose whether to show the Facebook button or not.
-| Twitter          | *Checkbox* | true          | Twitter Logic          | YES          | YES        | This handler allows you to choose whether to show the Twitter button or not.
-| Linkedin         | *Checkbox* | true          | Linkedin Logic         | YES          | YES        | This handler allows you to choose whether to show the Linkedin button or not.
-| Github           | *Checkbox* | true          | Github Logic           | YES          | YES        | This handler allows you to choose whether to show the Github button or not.
+| Property               | Type       | Default value | Logic                             | Data Binding | UI Setting | Description                                                                      |
+|------------------------|------------|---------------|-----------------------------------|--------------|------------|----------------------------------------------------------------------------------|
+| Disabled               | *Checkbox* | `false`       | Disabled logic                    | YES          | YES        | This handler allows you to disable the component.                                |
+| Icons Visibility       | *Checkbox* | `true`        | Icons Visibility Visibility Logic | YES          | YES        | This handler allows you to select the mode for a button with an icon or without. |
+| Google Plus Visibility | *Checkbox* | `true`        | Google Plus Visibility Logic      | YES          | YES        | This handler allows you to choose whether to show the Google Plus button or not. |
+| Facebook Visibility    | *Checkbox* | `true`        | Facebook Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Facebook button or not.    |
+| Twitter Visibility     | *Checkbox* | `true`        | Twitter Visibility Logic          | YES          | YES        | This handler allows you to choose whether to show the Twitter button or not.     |
+| Linkedin Visibility    | *Checkbox* | `true`        | Linkedin Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Linkedin button or not.    |
+| Github Visibility      | *Checkbox* | `true`        | Github Visibility Logic           | YES          | YES        | This handler allows you to choose whether to show the Github button or not.      |
 
 ## Events
 
 | Name                 | Triggers                                           | Context Blocks                        |
 |----------------------|----------------------------------------------------|---------------------------------------|
-| On Click Event       | when the user clicks the Social Login Button       | `Login Type: string`                    |
-| On Login Fail        | when a login request returns an error              | `Error: string`                       |
+| On Click Event       | when the user clicks the Social Login Button       | Login Type: `String`                  |
+| On Login Fail        | when a login request returns an error              | Error: `String`                       |
 
 ## Styles
 
+**Size**
+````
+@bl-customComponent-socialLoginButton-maxWidth: 375px;
+@bl-customComponent-socialLoginButton-minWidth: 300px;
+````
+
 **Colors**
 ````
+@bl-customComponent-socialLoginButton-colorOnHover: #FFFFFF;
 @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary: #DC4A3D;
 @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary: #3C5A9A;
 @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary: #55ACEE;
