@@ -23,8 +23,6 @@ export default function RichEditor({ component, eventHandlers }) {
   const quillRef = useRef(null);
   const toolbarRef = useRef(null);
   const editorRef = useQuillLibrary(quillRef, toolbarRef, component, onTextChange);
-  
-  console.log('render')
 
   const focus = () => {
     if (!fixedToolbar) {
