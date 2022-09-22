@@ -4,14 +4,18 @@ Skeleton is a designer component of Backendless UI-Builder. This allows you to a
 
 The component based on external [Skeleton](https://mui.com/material-ui/react-skeleton/).
 
+<p align="center">
+ <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
-| Property  | Type   | Defautl Value | Logic        | Data Binding | UI Setting | Description                                                                       |
+| Property  | Type   | Default Value | Logic        | Data Binding | UI Setting | Description                                                                       |
 |-----------|--------|---------------|--------------|--------------|------------|-----------------------------------------------------------------------------------|
-| Variant   | Select | `text`        |              | NO           | YES        | Allows select variant of skeleton ("text", "circular", "rectangular", "rounded"). |
-| Height    | String |               | Height Logic | YES          | YES        | Allows determinate height for skeleton.                                           |
-| Width     | String |               | Width Logic  | YES          | YES        | Allows to determinate width for skeleton.                                         |
-| Animation | Select | `default`     |              | NO           | YES        | Allows select animation of skeleton ("default", "wave", "none").                  |
+| Variant   | Select | "text"        |              | NO           | YES        | Allows select variant of skeleton ("text", "circular", "rectangular", "rounded"). |
+| Height    | String | "0px"         | Height Logic | YES          | YES        | Allows determinate height for skeleton.                                           |
+| Width     | String | "0px"         | Width Logic  | YES          | YES        | Allows to determinate width for skeleton.                                         |
+| Animation | Select | "default"     |              | NO           | YES        | Allows select animation of skeleton ("default", "wave", "none").                  |
 
 
 ## Styles
