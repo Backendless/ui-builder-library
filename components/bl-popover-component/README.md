@@ -18,13 +18,13 @@ The component allows you to render a popup window in your UI-Builder application
 
 | Name     | Triggers                   | Context Blocks     |
 |----------|----------------------------|--------------------|
-| On Click | when user clicks on button | `Is Open: boolean` |
+| On Click | when user clicks on button | Is Open: `Boolean` |
 
 ## Actions
 
 | Action      | Inputs             | Returns |
 |-------------|--------------------|---------|
-| Set Is Open | `boolean: boolean` |         |
+| Set Is Open | Boolean: `Boolean` |         |
 
 ## Styles
 
