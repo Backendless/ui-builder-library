@@ -37,7 +37,7 @@
       "handlerId": "uploadButtonVisibleLogic",
       "handlerDescription": "This handler controls if the upload button is visible.",
       "dataBinding": true,
-      "handlerLabel": "Upload Button Visible Logic"
+      "handlerLabel": "Upload Button Visibility Logic"
     },
     {
       "name": "makePhotoButtonLabel",
