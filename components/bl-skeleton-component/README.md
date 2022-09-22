@@ -15,7 +15,7 @@ The component based on external [Skeleton](https://mui.com/material-ui/react-ske
 | Variant   | Select | "text"        |              | NO           | YES        | Allows select variant of skeleton ("text", "circular", "rectangular", "rounded"). |
 | Height    | String | "0px"         | Height Logic | YES          | YES        | Allows determinate height for skeleton.                                           |
 | Width     | String | "0px"         | Width Logic  | YES          | YES        | Allows to determinate width for skeleton.                                         |
-| Animation | Select | `default`     |              | NO           | YES        | Allows select animation of skeleton ("default", "wave", "none").                  |
+| Animation | Select | "default"     |              | NO           | YES        | Allows select animation of skeleton ("default", "wave", "none").                  |
 
 
 ## Styles
