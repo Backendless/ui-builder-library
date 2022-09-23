@@ -4,6 +4,7 @@
 
 @bl-customComponent-pdfViewer-input-background-color: if(@isLightTheme, darken(#fff, 10%), lighten(#000, 15%));
 @bl-customComponent-pdfViewer-button-icon-size: 16px;
+@bl-customComponent-pdfViewer-button-icon-color: contrast(@buttonContainedBackground);
 
 @bl-customComponent-pdfViewer-no-data-icon-size: 40px;
 
@@ -31,7 +32,7 @@
     height: 20px;
     width: 60px;
 
-    fill: #fff;
+    fill: @bl-customComponent-pdfViewer-button-icon-color;
 
     border-radius: 4px;
     background-color: @bl-customComponent-pdfViewer-themeColor;
@@ -66,6 +67,11 @@
 
     color: @bl-customComponent-pdfViewer-themeTextColor;
 
+    height: 15px;
+    font-size: 14px;
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    border-radius: 3px;
     background-color: @bl-customComponent-pdfViewer-input-background-color;
 
     &:disabled {
