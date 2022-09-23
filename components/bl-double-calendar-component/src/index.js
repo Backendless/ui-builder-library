@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import { DateRange } from './date-range';
 import { SpecificDateRange } from './specific-date-range';
 
@@ -9,38 +7,34 @@ export default function MyCustomComponent({ component, eventHandlers }) {
   const {
     classList,
     display,
-    disable,
+    disabled,
     style,
     specificDateRange,
     selectionRange,
     selectedDate,
-    displayHeader,
-    dateFrom,
-    dateTo,
+    headerVisibility,
+    fromDate,
+    toDate,
   } = component;
   const { onStartDateChange, onEndDateChange, onDateSelect, onDateReset } = eventHandlers;
-  
-  const dayFrom = useMemo(() => dateFrom, [dateFrom]);
-  const dayTo = useMemo(() => dateTo, [dateTo]);
-  const defaultSelectedDate = useMemo(() => selectedDate, [selectedDate]);
-  
+
   if (!display) {
     return null;
   }
 
   return (
-    <div className={ cn("bl-customComponent-doubleCalendar", { disable }, classList) } style={ style }>
+    <div className={ cn("bl-customComponent-doubleCalendar", { disabled }, classList) } style={ style }>
       { specificDateRange ?
         <SpecificDateRange
           selectionRange={ selectionRange }
-          defaultSelectedDate={ defaultSelectedDate }
+          defaultSelectedDate={ selectedDate }
           onDateSelect={ onDateSelect }
         />
         :
         <DateRange
-          dayTo={ dayTo }
-          dayFrom={ dayFrom }
-          displayHeader={ displayHeader }
+          toDate={ toDate }
+          fromDate={ fromDate }
+          headerVisibility={ headerVisibility }
           onDateReset={ onDateReset }
           onEndDateChange={ onEndDateChange }
           onStartDateChange={ onStartDateChange }

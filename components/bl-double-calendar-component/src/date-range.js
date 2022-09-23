@@ -1,18 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
-export function DateRange({ dayFrom, dayTo, displayHeader, onStartDateChange, onEndDateChange, onDateReset }) {
-  const [startDate, setStartDate] = useState(new Date(dayFrom));
-  const [endDate, setEndDate] = useState(new Date(dayTo));
+export function DateRange({ fromDate, toDate, headerVisibility, onStartDateChange, onEndDateChange, onDateReset }) {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
-  const daysAmount = getNumberOfDays(startDate, endDate);
+  useEffect(() => {
+    setStartDate(() => fromDate ? new Date(fromDate) : new Date("0"));
+    setEndDate(() => toDate ? new Date(toDate) : new Date("0"));
+  }, [fromDate, toDate])
+
+  const daysAmount = differenceInDays(startDate, endDate);
 
   const handleStartDateChange = date => {
     setStartDate(date);
 
     if (onStartDateChange) {
-      onStartDateChange({ startDate: date, daysAmount: getNumberOfDays(date, endDate) });
+      onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
     }
   };
 
@@ -20,7 +25,7 @@ export function DateRange({ dayFrom, dayTo, displayHeader, onStartDateChange, on
     setEndDate(date);
 
     if (onEndDateChange) {
-      onEndDateChange({ endDate: date, daysAmount: getNumberOfDays(startDate, date) });
+      onEndDateChange({ endDate: date, daysAmount: differenceInDays(startDate, date) });
     }
   };
 
@@ -35,7 +40,7 @@ export function DateRange({ dayFrom, dayTo, displayHeader, onStartDateChange, on
 
   return (
     <>
-      { displayHeader &&
+      { headerVisibility &&
         <div className="info">
           <span className="info__days-amount">Days amount: { daysAmount }</span>
           <button onClick={ handleReset } className="info__button-reset">Reset</button>
@@ -64,12 +69,13 @@ export function DateRange({ dayFrom, dayTo, displayHeader, onStartDateChange, on
   );
 }
 
-function getNumberOfDays(start, end) {
+const ONE_DAY = 86400000;
+
+function differenceInDays(start, end) {
   if (!start || !end) {
     return 0;
   }
 
-  const ONE_DAY = 86400000;
   const diffInTime = end.getTime() - start.getTime();
 
   return Math.round(diffInTime / ONE_DAY) + 1;

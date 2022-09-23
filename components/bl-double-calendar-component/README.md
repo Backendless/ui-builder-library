@@ -9,19 +9,19 @@ Double Calendar is a component of Backendless UI-Builder designer. The component
 
 | Property            | Type       | Default value | Logic                     | Data Binding | UI Setting | Description
 |---------------------|------------|---------------|---------------------------|--------------|------------|-----------------------------------------------------------
-| Disable             | *Checkbox* | false         | Disable logic             | YES          | YES        | This handler allows you to disable the component.
-| Specific date range | *Checkbox* | false         | Specific date range logic | YES          | YES        | The `Specific date range` handler allows you to select the date selection mode in a range.
-| Selection range     | *Number*   | 7             | Selection range logic     | YES          | YES        | This handler allows you to specify a date selection range. This will work if you select a 'Specific date range' mode.
-| Selected date       | *Text*     |               | Selected date logic       | YES          | YES        | This handler allows you to specify the default selected date. Date format to be specified "year/month/day".
-| Display header      | *Checkbox* | true          | Display header logic      | NO           | YES        | This handler allows you to control the display of the header.
-| Date from           | *Text*     |               | Date from logic           | YES          | YES        | This handler allows you to specify a start date. Date format to be specified "year/month/day".
-| Date to             | *Text*     |               | Date to logic             | YES          | YES        | This handler allows you to specify an end date. Date format to be specified "year/month/day".
+| Disabled            | *Checkbox* | false         | Disabled Logic            | YES          | YES        | This handler allows you to disable the component.
+| Specific Date Range | *Checkbox* | false         | Specific Date Range Logic | YES          | YES        | This handler allows you to select the date selection mode in a range.
+| Selection Range     | *Number*   | 7             | Selection Range Logic     | YES          | YES        | This handler allows you to specify a date selection range. This will work if you select a `Specific Date Range` mode.
+| Selected Date       | *Text*     |               | Selected Date Logic       | YES          | YES        | This handler allows you to specify the default selected date. Date format to be specified `year/month/day`.
+| Header Visibility   | *Checkbox* | true          | Header Visibility Logic   | YES          | YES        | This handler allows you to control the display of the header.
+| From Date           | *Text*     |               | From Date Logic           | YES          | YES        | This handler allows you to specify a start date. Date format to be specified "year/month/day".
+| To Date             | *Text*     |               | To Date Logic             | YES          | YES        | This handler allows you to specify an end date. Date format to be specified "year/month/day".
 
 ## Events
 
-| Name                 | Triggers                                           | Context Blocks                            |
-|----------------------|----------------------------------------------------|-------------------------------------------|
-| On start date change | when the user selects a start date                 | `Start date: string, Days amount: number` |
-| On end date change   | when the user selects an end date                  | `End date: string, Days amount: number`   |
-| On date select       | when the user selects a specific date in the range | `Selected date: string`                   |
-| On date reset        | when the user clicks the reset button              |                                           |
+| Name                 | Triggers                                           | Context Blocks                              |
+|----------------------|----------------------------------------------------|---------------------------------------------|
+| On Start Date Change | when the user selects a start date                 | Start Date: `String`, Days Amount: `Number` |
+| On End Date Change   | when the user selects an end date                  | End Date: `String`, Days Amount: `Number`   |
+| On Date Select       | when the user selects a specific date in the range | Selected Date: `String`                     |
+| On Date Reset        | when the user clicks the reset button              |                                             |

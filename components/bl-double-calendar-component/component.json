@@ -10,86 +10,87 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "disable",
-      "label": "Disable",
+      "name": "disabled",
+      "label": "Disabled",
       "settingTooltip": "This is the handler to disable the component.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "disableLogic",
-      "handlerLabel": "Disable logic",
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
       "handlerDescription": "This is the handler to disable the component.",
       "dataBinding": true
     },
     {
       "type": "checkbox",
       "name": "specificDateRange",
-      "label": "Specific date range",
+      "label": "Specific Date Range",
       "settingTooltip": "This handler allows you to select the date selection mode in a range.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "specificDateRangeLogic",
-      "handlerLabel": "Specific date range logic",
+      "handlerLabel": "Specific Date Range Logic",
       "handlerDescription": "This handler allows you to select the date selection mode in a range.",
       "dataBinding": true
     },
     {
       "type": "number",
       "name": "selectionRange",
-      "label": "Selection range",
+      "label": "Selection Range",
       "settingTooltip": "This handler allows you to specify a date selection range. This will work if you select a 'Specific date range' mode.",
       "showInSettings": true,
       "defaultValue": "7",
       "hasLogicHandler": true,
       "handlerId": "selectionRangeLogic",
-      "handlerLabel": "Selection range logic",
+      "handlerLabel": "Selection Range Logic",
       "handlerDescription": "This handler allows you to specify a date selection range. This will work if you select a 'Specific date range' mode.",
       "dataBinding": true
     },
     {
       "type": "text",
       "name": "selectedDate",
-      "label": "Selected date",
+      "label": "Selected Date",
       "settingTooltip": "This handler allows you to specify the default selected date. Date format to be specified \"year/month/day\".",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "selectedDateLogic",
-      "handlerLabel": "Selected date logic",
+      "handlerLabel": "Selected Date Logic",
       "handlerDescription": "This handler allows you to specify the default selected date. Date format to be specified \"year/month/day\".",
       "dataBinding": true
     },
     {
       "type": "checkbox",
-      "name": "displayHeader",
-      "label": "Display header",
+      "name": "headerVisibility",
+      "label": "Header Visibility ",
       "settingTooltip": "This handler allows you to control the display of the header.",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": true,
-      "handlerId": "displayHeaderLogic",
-      "handlerLabel": "Display header logic",
-      "handlerDescription": "This handler allows you to control the display of the header."
+      "handlerId": "headerVisibilityLogic",
+      "handlerLabel": "Header Visibility Logic",
+      "handlerDescription": "This handler allows you to control the display of the header.",
+      "dataBinding": true
     },
     {
       "type": "text",
-      "name": "dateFrom",
-      "label": "Date from",
+      "name": "fromDate",
+      "label": "From Date",
       "settingTooltip": "This handler allows you to specify a start date. Date format to be specified \"year/month/day\".",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "dateFromLogic",
-      "handlerLabel": "Date from logic",
+      "handlerId": "fromDateLogic",
+      "handlerLabel": "From Date Logic",
       "handlerDescription": "This handler allows you to specify a start date. Date format to be specified \"year/month/day\".",
       "dataBinding": true
     },
     {
       "type": "text",
-      "name": "dateTo",
-      "label": "Date to",
+      "name": "toDate",
+      "label": "To Date",
       "settingTooltip": "This handler allows you to specify an end date. Date format to be specified \"year/month/day\".",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "dateToLogic",
-      "handlerLabel": "Date to logic",
+      "handlerId": "toDateLogic",
+      "handlerLabel": "To Date Logic",
       "handlerDescription": "This handler allows you to specify an end date. Date format to be specified \"year/month/day\".",
       "dataBinding": true
     }
@@ -97,45 +98,45 @@
   "eventHandlers": [
     {
       "name": "onStartDateChange",
-      "label": "On start date change event",
+      "label": "On Start Date Change Event",
       "contextBlocks": [
         {
           "id": "startDate",
-          "label": "Start date"
+          "label": "Start Date"
         },
         {
           "id": "daysAmount",
-          "label": "Days amount"
+          "label": "Days Amount"
         }
       ]
     },
     {
       "name": "onEndDateChange",
-      "label": "On end date change event",
+      "label": "On End Date Change Event",
       "contextBlocks": [
         {
           "id": "endDate",
-          "label": "End date"
+          "label": "End Date"
         },
         {
           "id": "daysAmount",
-          "label": "Days amount"
+          "label": "Days Amount"
         }
       ]
     },
     {
       "name": "onDateSelect",
-      "label": "On date select event",
+      "label": "On Date Select Event",
       "contextBlocks": [
         {
           "id": "selectedDate",
-          "label": "Selected date"
+          "label": "Selected Date"
         }
       ]
     },
     {
       "name": "onDateReset",
-      "label": "On date reset event",
+      "label": "On Date Reset Event",
       "contextBlocks": []
     }
   ],
