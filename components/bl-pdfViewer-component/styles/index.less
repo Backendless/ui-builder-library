@@ -70,7 +70,7 @@
     height: 15px;
     font-size: 14px;
 
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 3px;
     background-color: @bl-customComponent-pdfViewer-input-background-color;
 
@@ -83,6 +83,15 @@
   .controls-button-icon {
     height: @bl-customComponent-pdfViewer-button-icon-size;
     width: @bl-customComponent-pdfViewer-button-icon-size;
+  }
+
+  .react-pdf__Page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
   }
 
   .react-pdf__message--no-data {
@@ -98,6 +107,7 @@
   }
 
   .no-data-icon {
+    fill: @bl-customComponent-pdfViewer-themeTextColor;
     width: @bl-customComponent-pdfViewer-no-data-icon-size;
     height: @bl-customComponent-pdfViewer-no-data-icon-size;
   }
