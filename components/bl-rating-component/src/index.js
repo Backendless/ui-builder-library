@@ -25,19 +25,7 @@ export default function RatingComponent({ component, eventHandlers }) {
     setRatingValue(prevState => prevState === value ? 0 : value);
 
     if (onRatingChange) {
-      const eventContext = {
-        curentRating: value,
-      };
-
-      if (Number(value) === iconsAmount) {
-        eventContext.maxRating = value;
-      }
-
-      if (value === precision) {
-        eventContext.minRating = value;
-      }
-
-      onRatingChange(eventContext);
+      onRatingChange({ curentRating: value });
     }
   }, []);
 

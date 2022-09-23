@@ -20,4 +20,4 @@ Rating is a component of Backendless UI-Builder designer. It allows you to rate 
 
 | Name                    | Triggers                         | Context Blocks                                                                 |
 |-------------------------|----------------------------------|--------------------------------------------------------------------------------|
-| On Rating Change Event  | when the user clicks on the icon | `Rating value: [curentRating: number, minRating: number, maxRating: number]`   |
+| On Rating Change Event  | when the user clicks on the icon | Curent Rating: `Number`                                                        |

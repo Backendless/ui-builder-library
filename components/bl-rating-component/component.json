@@ -115,14 +115,6 @@
         {
           "label": "Curent Rating",
           "id": "curentRating"
-        },
-        {
-          "id": "minRating",
-          "label": "Min Rating"
-        },
-        {
-          "id": "maxRating",
-          "label": "Max Rating"
         }
       ]
     }
