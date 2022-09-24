@@ -111,11 +111,11 @@
   "actions": [
     {
       "id": "openModal",
-      "label": "Open Modal"
+      "label": "Open"
     },
     {
       "id": "closeModal",
-      "label": "Close Modal"
+      "label": "Close"
     }
   ]
 }
