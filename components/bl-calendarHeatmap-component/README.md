@@ -6,21 +6,21 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 
 ## Properties
 
-| Property          | Type    | Default value                                     | Logic                     | Data Binding | UI Setting | Description                                                                                                                                              |
-|-------------------|---------|---------------------------------------------------|---------------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| calendarData      | Object  | `[ { "date": "", "count": 0 } ]`                  | Calendar Data Logic       | NO           | YES        | Specifies an array of date and count for calendar. Watch [Codeless Examples](#Examples). Signature of Calendar Data: `{"data": string, "count": number}` |
-| showMonthLabels   | Boolean | `true`                                            | Show Month Labels Logic   | NO           | YES        | Enables chose show or not show month labels                                                                                                              |
-| monthLabels       | String  | "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | Month Labels Logic        | YES          | YES        | Enables write month labels                                                                                                                               |
-| showWeekdayLabels | Boolean | `true`                                            | Show Weekday Labels Logic | NO           | YES        | Enables chose show or not show month labels                                                                                                              |
-| weekdayLabels     | String  | "Sun,Mon,Tues,Wed,Thurs,Fri,Sat"                  | Weekday Labels Logic      | YES          | YES        | Enables write Weekday labels                                                                                                                             |
-| color             | String  |                                                   | Color Logic               | YES          | YES        | Allows selected color                                                                                                                                    |
-| legend            | String  |                                                   | Legend Logic              | Yes          | YES        | Enables write legend                                                                                                                                     |
+| Property          | Type    | Default value                                     | Logic                           | Data Binding | UI Setting | Description                                                                                                                                              |
+|-------------------|---------|---------------------------------------------------|---------------------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| calendarData      | Object  | `[ { "date": "", "count": 0 } ]`                  | Calendar Data Logic             | NO           | YES        | Specifies an array of date and count for calendar. Watch [Codeless Examples](#Examples). Signature of Calendar Data: `{"data": string, "count": number}` |
+| showMonthLabels   | Boolean | `true`                                            | Month Labels Visibility Logic   | NO           | YES        | Enables chose show or not show month labels                                                                                                              |
+| monthLabels       | String  | "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | Month Labels Logic              | YES          | YES        | Enables write month labels                                                                                                                               |
+| showWeekdayLabels | Boolean | `true`                                            | Weekday Labels Visibility Logic | NO           | YES        | Enables chose show or not show month labels                                                                                                              |
+| weekdayLabels     | String  | "Sun,Mon,Tues,Wed,Thurs,Fri,Sat"                  | Weekday Labels Logic            | YES          | YES        | Enables write Weekday labels                                                                                                                             |
+| color             | String  |                                                   | Color Logic                     | YES          | YES        | Allows selected color                                                                                                                                    |
+| legend            | String  |                                                   | Legend Logic                    | Yes          | YES        | Enables write legend                                                                                                                                     |
 
 ## Events
 
 | Name     | Triggers                  | Context Blocks  |
 |----------|---------------------------|-----------------|
-| On Click | when user clicks on cell  | `Value: number` |
+| On Click | when user clicks on cell  | Value: `Number` |
 
 ## Styles
 

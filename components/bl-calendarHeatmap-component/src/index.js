@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef, useState } from 'react';
+import { useMemo, useEffect, useRef, useState, useCallback } from 'react';
 import CalendarHeatmap from './lib/react-calendar-heatmap.umd.min';
 import ReactTooltip from './lib/react-tooltip.min';
 import { Legend } from './subcomponents';
@@ -30,39 +30,35 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const month = useMemo(() => validate(monthLabels), [monthLabels]);
   const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
 
+  const colors = useMemo(() => ({
+    'color-cell-1': shadeColor(color, 120),
+    'color-cell-2': shadeColor(color, 80),
+    'color-cell-3': shadeColor(color, 40),
+    'color-cell-4': color
+  }), [])
+
   useEffect(() => {
     if (color) {
-      ref.current.querySelectorAll('.color-cell-1').forEach((element) => {
-        element.style.fill = shadeColor(color, 120);
-      });
-      ref.current.querySelectorAll('.color-cell-2').forEach((element) => {
-        element.style.fill = shadeColor(color, 80);
-      });
-      ref.current.querySelectorAll('.color-cell-3').forEach((element) => {
-        element.style.fill = shadeColor(color, 40);
-      });
-      ref.current.querySelectorAll('.color-cell-4').forEach((element) => {
-        element.style.fill = color;
+      ref.current.querySelectorAll('.color-cell-1, .color-cell-2, .color-cell-3, .color-cell-4').forEach((element, index) => {
+        element.style.fill = colors[element.classList[0]];
       });
     }
   }, [color]);
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     setLegendWidth(ref.current.querySelector('.react-calendar-heatmap-all-weeks').getBoundingClientRect().width);
-  };
+  }, []);
 
   useEffect(() => {
     if (ref.current) {
       handleResize();
       window.addEventListener('resize', handleResize, false);
     }
+
+    return () => {
+      window.removeEventListener('resize', handleResize, false);
+    }
   }, [ref.current]);
-
-  const handlerClassForValue = (value) => value ? `color-cell-${ value.count }` : 'color-empty';
-
-  const handlerTooltipDataAttrs = (value) => {
-    return { 'data-tip': `${ value.date.toISOString().slice(0, 10) } has count: ${ value.count }`, };
-  };
 
   if (!display || !calendarData) {
     return null;
@@ -78,8 +74,8 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         showWeekdayLabels={ showWeekdayLabels }
         monthLabels={ month }
         weekdayLabels={ weeks }
-        classForValue={ handlerClassForValue }
-        tooltipDataAttrs={ handlerTooltipDataAttrs }
+        classForValue={ getClassForValue }
+        tooltipDataAttrs={ getTooltipData }
         onClick={ (value) => onClick({ value }) }
       />
       <ReactTooltip/>
@@ -87,3 +83,9 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     </div>
   );
 }
+
+const getClassForValue = (value) => value ? `color-cell-${ value.count }` : 'color-empty';
+
+const getTooltipData = (value) => {
+  return { 'data-tip': `${ value.date.toISOString().slice(0, 10) } has count: ${ value.count }`, };
+};

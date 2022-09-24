@@ -26,8 +26,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": true,
-      "handlerId": "showMonthLabelsLogic",
-      "handlerLabel": "Show Month Labels Logic",
+      "handlerId": "monthLabelsVisibilityLogic",
+      "handlerLabel": "Month Labels Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the month labels should be visible."
     },
     {
@@ -49,8 +49,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": true,
-      "handlerId": "showWeekdayLabelsLogic",
-      "handlerLabel": "Show Weekday Labels Logic",
+      "handlerId": "weekdayLabelsVisibilityLogic",
+      "handlerLabel": "Weekday Labels Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the weekday labels should be visible."
     },
     {
@@ -82,7 +82,8 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "legendLogic",
-      "handlerDescription": "This is a handler for the logic to determine the legend for calendar."
+      "handlerDescription": "This is a handler for the logic to determine the legend for calendar.",
+      "label": "Legend"
     }
   ],
   "eventHandlers": [
