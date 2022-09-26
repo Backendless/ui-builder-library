@@ -4,7 +4,7 @@ import TreeMap from "./lib/treemap.min.js";
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MyCustomComponent({ component }) {
-  const { classList, display, disabled, label, valueUnit, width, height, data } = component;
+  const { classList, style, display, disabled, label, valueUnit, width, height, data } = component;
 
   const treemapId = useMemo(() => BackendlessUI.UUID.short(), []);
 
@@ -13,7 +13,7 @@ export default function MyCustomComponent({ component }) {
   }
 
   return (
-    <div className={ cn("bl-customComponent-treemap", classList, { disabled }) }>
+    <div className={ cn("bl-customComponent-treemap", classList, { disabled }) } style={ style }>
       <TreeMap
         id={ treemapId }
         width={ width }
