@@ -9,6 +9,10 @@ export function toCoordinates(coords) {
     return coords.split(',');
   }
 
+  if (typeof coords === 'object' && regEx.test(`${ coords.center.lat },${ coords.center.lng }`)) {
+    return [coords.center.lat, coords.center.lng];
+  }
+
   console.error('Leaflet Map: not valid coordinates');
 
   return [0, 0];
