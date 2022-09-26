@@ -89,7 +89,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "readOnlyLogic",
-      "handlerLabel": "Read Only",
+      "handlerLabel": "Read Only Logic",
       "handlerDescription": "This is a handler for the logic to determine if the editor content should be editable. If the handler returns 'true' the content will be read-only."
     },
     {
