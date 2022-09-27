@@ -1,6 +1,7 @@
 import Leaflet from '../lib/leaflet';
 import { toCoordinates } from './coordinates';
 import { MapProviders } from '../maps';
+import { defaultValues } from './default-values';
 
 export function changeMapType(map, currentLayer, component) {
   const { mapType } = component;
@@ -44,17 +45,20 @@ export function getGeolocation(map, geoMarker, icon, eventHandlers) {
 export function initMap(component, eventHandlers, map, currentLayer, uid) {
   const { zoom, center, mapType, zoomControl } = component;
   const { onClick } = eventHandlers;
+  const { TYPE, ZOOM, CENTER } = defaultValues;
 
-  const centerCoords = toCoordinates(center);
+  const type = mapType || TYPE;
+
+  const centerCoords = toCoordinates(center || CENTER);
 
   map.current = Leaflet.map(uid, {
-    zoom,
+    zoom             : zoom || ZOOM,
     center           : centerCoords,
     fullscreenControl: true
   });
 
   currentLayer.current = Leaflet
-    .tileLayer(MapProviders[mapType].mapUrl, MapProviders[mapType].options)
+    .tileLayer(MapProviders[type].mapUrl, MapProviders[type].options)
     .addTo(map.current);
 
   if (!zoomControl) {
