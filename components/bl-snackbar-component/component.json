@@ -1,0 +1,192 @@
+{
+  "id": "c_82fae8bc221e0f6df00c363a12931989",
+  "name": "Snackbar",
+  "description": "Snackbars provide brief notifications.\nSnackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the corner of the screen. They shouldn't interrupt the user experience, and they don't require user input to disappear.",
+  "showInToolbox": true,
+  "faIcon": "window-maximize",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "showClose",
+      "label": "Show Close",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "showCloseLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "showAction",
+      "label": "Show Action",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "showActionLogic"
+    },
+    {
+      "type": "text",
+      "name": "actionContent",
+      "label": "Action Content",
+      "showInSettings": true,
+      "defaultValue": "Action",
+      "hasLogicHandler": false,
+      "handlerId": "actionContentLogic"
+    },
+    {
+      "type": "text",
+      "name": "snackContent",
+      "label": "Snackbar Content",
+      "showInSettings": true,
+      "defaultValue": "Snackbar Content",
+      "hasLogicHandler": false,
+      "handlerId": "snackContentLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "autoHide",
+      "label": "Auto Hide",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "autoHideLogic"
+    },
+    {
+      "type": "number",
+      "name": "autoHideDuration",
+      "label": "Auto Hide Duration",
+      "showInSettings": true,
+      "defaultValue": "5000",
+      "hasLogicHandler": false,
+      "handlerId": "autoHideDurationLogic"
+    },
+    {
+      "type": "select",
+      "name": "verticalPosition",
+      "label": "Vertical Position",
+      "showInSettings": true,
+      "defaultValue": "top",
+      "hasLogicHandler": false,
+      "handlerId": "verticalPositionLogic",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "horizontalPosition",
+      "label": "Horizontal Position",
+      "showInSettings": true,
+      "defaultValue": "right",
+      "hasLogicHandler": false,
+      "handlerId": "horizontalPositionLogic",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "defaultValue": "default",
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "info",
+          "label": "Info"
+        },
+        {
+          "value": "success",
+          "label": "Success"
+        },
+        {
+          "value": "warning",
+          "label": "Warning"
+        },
+        {
+          "value": "error",
+          "label": "Error"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "maxSnacks",
+      "label": "Max Snacks on Page",
+      "showInSettings": true,
+      "defaultValue": "3",
+      "hasLogicHandler": false,
+      "handlerId": "maxSnacksLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClose",
+      "label": "On Close",
+      "handlerDescription": "This event is fired when the user clicks on the close button."
+    },
+    {
+      "name": "onAction",
+      "label": "On Action",
+      "handlerDescription": "This event is fired when the user clicks on the action button."
+    }
+  ],
+  "actions": [
+    {
+      "id": "create",
+      "label": "Create",
+      "inputs": [
+        {
+          "id": "isClose",
+          "label": "Show Close Button"
+        },
+        {
+          "id": "isAction",
+          "label": "Show Action Button"
+        },
+        {
+          "id": "actionText",
+          "label": "Action Button Content"
+        },
+        {
+          "id": "text",
+          "label": "Snackbar Content"
+        },
+        {
+          "id": "snackType",
+          "label": "Type"
+        }
+      ]
+    }
+  ],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"dfcf0578974677854a9c365bc2e25239\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:0 0 0 0;background-position:left top;align-self:center;width:100%;justify-content:space-around;align-items:flex-start;\"><img data-url=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAA4CAYAAABHTcVMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAjwSURBVHhe7Z1PaFxFHMd/TQ2bQjYoSQguQZs1SEqLIGlUTC9NLkUPhUAPQm4JFW8L3iwLQuhRyE0syS3goVAIYu3F9GJE3daDpDZITarESMjGajbYLLHG+c3Meztv9r3sbvZt3KHfDyy8P/N2582f7+/Pm8ce2xfcX9+mmYUH9M2DLSruPSEAAGgGEq3H6Y3+Tpoc6adTqQ469uNvf+1PXvsWQgUAaFpYuGYuv07HE69e+vDnjR19GAAAmo8n/+7THztFauEwEAAAmh3WqhaEggAAF2CtatHbAADQ9ECwAADOAMECADgDBAsA4AwQLACAM0CwAADOAMECADgDBAsA4AwQLACAM0CwAADOAMECADgDBAsA4AwQLACAM0CwAADOAMECADgDBAsA4AzHBj/4Yl9v10U2c4EudusdzerdW3Tpht45Ms7Q9au91LWyTOdnH+pjJpXON47xiVHKpFv1HrND81e+oim9Fy/iPrMnaH4qR3P6SFxkM6OUyn1J7y3qAwAIkm2t9M6bL9KnX/9Chd09fTScWsqaxOBhnaSPs0Kskls0feUWnfU+N7eoa/AC3Z44qcs9zbBIXqBMajvQRtMrCboojl8f08ViJJvppT69HStj58oME2gkauzcyZzR+4dA9Nmdq+coq3cbxeXRfvn5ZHJIClIUfI7LeOVroX7BGu6mgbY9yi1YlnwxR7Mre5RM9za8oZodKR67QtAtb2du9kua3yTqG2z8YAKOMvYs9W3u0Gr3szWMESVyjTCEB/HZ97/Rzu4/9PLzHZGi5YkVl+GyfE0t1B8SsnoPJih3s3KIIEMi4WXMr3fQRT80EmJnXVsWXoZMdju8KvghXnnI55VVZdr1+S3Kpzt9L6R0vQd7jgM01KZ3mc01Oju9pHf4d3oov1KkoXS72C+/D8nwEN1+q5PyUeHx2BnK3lgKhIXR98aoeg2sr9FyqrdUP7+N7Hob9dJ1SaoT1v1U7p+D6wXiR/Vl171lyp/mPq+2vdUcoP8hJcNCdG3yNWpve4Z++n2b3p3J+SGfLVaXZ76TZWqhfg/rxp+0Sq009FaV4V9bpwgfN3RYtEy5XXHtyBCN69NSrALh5RqtimsyhkvMZTLpIs0bZfLpgdDf9yYZ59PMzk4KseIOldeL8JUC1+tJXxAT2vsNUabQ3Wv9hqh7mnQ9IgS7JyEEYod+iBo4llipeyMhElF1U7Dn2nXPqJtoowlZ5iG9N3VLem5SxLx6abEiITLqnkTbJ3vpTrbU9pID+oc9wrN3+S/hWMSC7QkagIxeeOw8pMV1Ea2kuoN9JeDxcodDRj9s5LGr0gF9g9rLskNCHgveNVdH6eNh8/goXc+MWt9ZPSxALES2pxWHWDEx5LCW6BKLithKionl32hkzLxD875VF5PrnpgAbR00LBvtDL0iPKvVe6Y3tUQ/8ORLntCdpcvcNZPVXIeQCSQ6yhOrMksjvAv/mB2+emFuruR90OImLe+KaiTZmypRWFkLCI7N+HMJvVUFYsCMyHszxC8qtLbqvyDaKGxAe2SHhGclBGzWbyPR9gtK6C4GQoeD+gccJeMDHZTc/FOOr7nZDWG4g/3Axrhk3JUBuj1BwmCp+Rj+0Et4X9rjZ6M0vULC2TDnaqsQO22wtJGuNbQME604xIqJaVmDEgx5k9ICM+0yoVym0LtF2ZjhqO9RjazicBa/QHjIMb2w8PkNvR9F6iURqrbLsKW800Rn/mqIkWBueZsKlKAUDwghAOdNz0TWwwoPNflHMXoZ0hsrvzdVt3Z6xRg4hUItf36rRL6wvmnlGZUIdz1neG8H9g84Ok7ScEp42r7RZMPdSgMDpShgONVq9KnyrCt6vXL+lDx+KYSBsWUY6sXHlFdbNWOLVhxixcQkWAY3vlLCJT4yLOnuKbmcVVBycXWi2vueAEVaDwu/DNgF5dg5mX6ppt9XsFut68E5H871yPBIn66BuUdFvVUtle/tsAQ9YP6EizBoAsY4P6lSLV5/seEuedrt1CX6rlaDKT3+IzJKvz96TOuP/tZ7JLf5WD3EL1gGUznhUgoXs6tHH6iEHxJpby1yDZH2hA5AJoSnfi7LkUUivRuNHCwqTyPrYSSma2ajWOYdBdAeXMntjrq3KrzKCnCbeMbE/CAX1XxkX1DRQbCvONTzxtIO5W3vuAqkAW1L+A+bGoWdszLDQz53WOoWLOkR2YnbADVMtNAEtQpnfKQAVCuCXg7GztOUd7TKNSnvRlmhbVo0PR2Z19LbtaDzS32nw9tI5pa8e464N5nLqMvzUoPbzr95YfdRP/4GleAxv0fLy7YhUfncvhc4zVKeiJdzsVKSXD4kKxnQ8YmeQIgYB2EJdjundVjRqluwpBdlPcXzkJNxcyP86VkY2hsZMZ6I+QsgPavgCUBg7ZIO4cI6S4SoYWudODzyJ6rwcibSvOxBJdCVFTJFTnz/iF4O4Cf/q2dqWj/ptIRdJk2lR6kfIPj3FnxyY9btcOgEu/WU01sfNh/jYAX1I0XENpiaqV+FAdZpFrmOryDGlRcycgJeRgNa2EIXbi/RpZtqUTdfo55Ix/e2RZhYcc4qLBF/GNGK6dUcvQzA8kDspxTeOp/Amip7HZfcNzyBzTWaLvTohi09PbPXBJXWFKk1KIFXbzjs8nJR06TXqKwRDWoxFITW1fh+ds8XkgNCYLzXaWpf68IWMLhKPPzVHPu3g3VTbW2vyZHfzQPWa1vvnsWmf71xTOKv3VJU1T9mX/ttDkC0WJnwuah1WtUQ27uEAICnm/ffPiXfD4wSKw9TtPhdwo8+v6/PVKahSXcAwNMDv2bz/eofB4oV44WHXPboX80BAIAjAh4WAMAZIFgAAGeAYAEAnAGCBQBwBggWAMAZIFgAAGeAYAEAnAGCBQBwBggWAMAZIFgAAGeAYAEAnAGCBQBwBggWAMAZIFgAAGeAYAEAnAGCBQBwhpZE63G9CQAAzQtrVcsb/Z16FwAAmhfWqpbJkX6pXAAA0KywRrFWHdsX3F/fppmFB/TNgy0q7j3RRQAA4P+FhYo9KxarU6kO+g+czsIpcmpcrwAAAABJRU5ErkJggg==\" data-module-type=\"system\" data-module-id=\"image\" data-display data-uid=\"1f4591c6b6d411937f61540d72b40b9c\" style=\"width:300px;height:56px;\"/></div>"
+}

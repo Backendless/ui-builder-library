@@ -1,0 +1,16 @@
+{
+  "name": "custom-ui-components-templates",
+  "version": "1.0.0",
+  "description": "Storage for Custom UI Components for Backendless UI-Builder",
+  "main": "",
+  "scripts": {
+    "zip": "node ./zipper.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "info@backendless.com",
+  "license": "ISC",
+  "devDependencies": {
+    "fs-extra": "^10.1.0",
+    "zip-a-folder": "^1.1.5"
+  }
+}

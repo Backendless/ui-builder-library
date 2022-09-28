@@ -1,0 +1,245 @@
+@bl-customComponent-signaturePad-themeColor: @themePrimary;
+@bl-customComponent-signaturePad-backgroundColor: @appBackgroundColor;
+@bl-customComponent-signaturePad-textColor: @appTextColor;
+@bl-customComponent-signaturePad-disabledColor: @disabledColor;
+@bl-customComponent-signaturePad-blockBorder: @appBlockBorder;
+
+@bl-customComponent-signaturePad-borderWidth: @appComponentBorderWidth/2;
+@bl-customComponent-signaturePad-borderType: solid;
+@bl-customComponent-signaturePad-borderRadius: @appComponentBorderRadius;
+@bl-customComponent-signaturePad-borderColor: contrast(@bl-customComponent-signaturePad-backgroundColor);
+
+@bl-customComponent-signaturePad-fontSize: 12px;
+@bl-customComponent-signaturePad-width: 100%;
+@bl-customComponent-signaturePad-height: 100%;
+
+@bl-customComponent-signaturePad-canvas-width: 100%;
+@bl-customComponent-signaturePad-canvas-height: 100%;
+
+@bl-customComponent-signaturePad-description-margin: 8px 0;
+
+@bl-customComponent-signaturePad-button-margin: 2px;
+@bl-customComponent-signaturePad-button-padding: 6px 16px;
+@bl-customComponent-signaturePad-button-background: @bl-customComponent-signaturePad-themeColor;
+@bl-customComponent-signaturePad-button-color: contrast(@bl-customComponent-signaturePad-button-background);
+@bl-customComponent-signaturePad-button-shadowColor: @appComponentShadowColor;
+@bl-customComponent-signaturePad-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-signaturePad-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-signaturePad-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-signaturePad-button-shadowColor, 12%);
+@bl-customComponent-signaturePad-button-shadowDisabled: none;
+@bl-customComponent-signaturePad-button-disabledBackground: @bl-customComponent-signaturePad-disabledColor;
+@bl-customComponent-signaturePad-button-disabledColor: contrast(@bl-customComponent-signaturePad-button-disabledBackground);
+
+@bl-customComponent-signaturePad-button-clearButton-color: @bl-customComponent-signaturePad-button-color;
+@bl-customComponent-signaturePad-button-clearButton-background: @bl-customComponent-signaturePad-button-background;
+@bl-customComponent-signaturePad-button-clearButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
+@bl-customComponent-signaturePad-button-clearButton-disabledBackground: @bl-customComponent-signaturePad-button-disabledBackground;
+@bl-customComponent-signaturePad-button-clearButton-disabledColor: @bl-customComponent-signaturePad-button-disabledColor;
+
+@bl-customComponent-signaturePad-button-changeColorButton-color: @bl-customComponent-signaturePad-button-color;
+@bl-customComponent-signaturePad-button-changeColorButton-background: @bl-customComponent-signaturePad-button-background;
+@bl-customComponent-signaturePad-button-changeColorButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
+@bl-customComponent-signaturePad-button-changeColorButton-disabledBackground: @bl-customComponent-signaturePad-button-disabledBackground;
+@bl-customComponent-signaturePad-button-changeColorButton-disabledColor: @bl-customComponent-signaturePad-button-disabledColor;
+
+@bl-customComponent-signaturePad-button-undoButton-color: @bl-customComponent-signaturePad-button-color;
+@bl-customComponent-signaturePad-button-undoButton-background: @bl-customComponent-signaturePad-button-background;
+@bl-customComponent-signaturePad-button-undoButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
+@bl-customComponent-signaturePad-button-undoButton-disabledBackground: @bl-customComponent-signaturePad-button-disabledBackground;
+@bl-customComponent-signaturePad-button-undoButton-disabledColor: @bl-customComponent-signaturePad-button-disabledColor;
+
+@bl-customComponent-signaturePad-button-saveJpgButton-color: @bl-customComponent-signaturePad-button-color;
+@bl-customComponent-signaturePad-button-saveJpgButton-background: @bl-customComponent-signaturePad-button-background;
+@bl-customComponent-signaturePad-button-saveJpgButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
+@bl-customComponent-signaturePad-button-saveJpgButton-disabledBackground: @bl-customComponent-signaturePad-button-disabledBackground;
+@bl-customComponent-signaturePad-button-saveJpgButton-disabledColor: @bl-customComponent-signaturePad-button-disabledColor;
+
+@bl-customComponent-signaturePad-button-savePngButton-color: @bl-customComponent-signaturePad-button-color;
+@bl-customComponent-signaturePad-button-savePngButton-background: @bl-customComponent-signaturePad-button-background;
+@bl-customComponent-signaturePad-button-savePngButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
+@bl-customComponent-signaturePad-button-savePngButton-disabledBackground: @bl-customComponent-signaturePad-button-disabledBackground;
+@bl-customComponent-signaturePad-button-savePngButton-disabledColor: @bl-customComponent-signaturePad-button-disabledColor;
+
+@bl-customComponent-signaturePad-button-saveSvgButton-color: @bl-customComponent-signaturePad-button-color;
+@bl-customComponent-signaturePad-button-saveSvgButton-background: @bl-customComponent-signaturePad-button-background;
+@bl-customComponent-signaturePad-button-saveSvgButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
+@bl-customComponent-signaturePad-button-saveSvgButton-disabledBackground: @bl-customComponent-signaturePad-button-disabledBackground;
+@bl-customComponent-signaturePad-button-saveSvgButton-disabledColor: @bl-customComponent-signaturePad-button-disabledColor;
+
+@bl-customComponent-signaturePad-button-saveSignatureButton-color: @bl-customComponent-signaturePad-button-color;
+@bl-customComponent-signaturePad-button-saveSignatureButton-background: @bl-customComponent-signaturePad-button-background;
+@bl-customComponent-signaturePad-button-saveSignatureButton-shadowHover: @bl-customComponent-signaturePad-button-shadowHover;
+@bl-customComponent-signaturePad-button-saveSignatureButton-disabledBackground: @bl-customComponent-signaturePad-button-disabledBackground;
+@bl-customComponent-signaturePad-button-saveSignatureButton-disabledColor: @bl-customComponent-signaturePad-button-disabledColor;
+
+.bl-customComponent-signature-pad {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: @bl-customComponent-signaturePad-width;
+  height: @bl-customComponent-signaturePad-height;
+  border: @bl-customComponent-signaturePad-borderWidth @bl-customComponent-signaturePad-borderType @bl-customComponent-signaturePad-borderColor;
+  padding: 15px;
+  border-radius: @bl-customComponent-signaturePad-borderRadius;
+  
+  .action-buttons-block {
+    display: flex;
+    justify-content: space-between;
+    
+    .action-save-buttons {
+      text-align: end;
+    }
+    
+    button, label {
+      display: inline-block;
+      font-size: @bl-customComponent-signaturePad-fontSize;
+      border-width: 0;
+      cursor: pointer;
+      padding: @bl-customComponent-signaturePad-button-padding;
+      margin: @bl-customComponent-signaturePad-button-margin;
+      border-radius: @bl-customComponent-signaturePad-borderRadius;
+      
+      &.clear-button {
+        &:not(:disabled) {
+          background: @bl-customComponent-signaturePad-button-clearButton-background;
+          color: @bl-customComponent-signaturePad-button-clearButton-color;
+        
+          &:hover {
+            box-shadow: @bl-customComponent-signaturePad-button-clearButton-shadowHover;
+          }
+        }
+        
+        &:disabled {
+          background: @bl-customComponent-signaturePad-button-clearButton-disabledBackground;
+          color: @bl-customComponent-signaturePad-button-clearButton-disabledColor;
+        }
+      }
+      
+      &.change-color-button {
+        position: relative;
+        background: @bl-customComponent-signaturePad-button-changeColorButton-background;
+        color: @bl-customComponent-signaturePad-button-changeColorButton-color;
+    
+        &:hover {
+          box-shadow: @bl-customComponent-signaturePad-button-changeColorButton-shadowHover;
+        }
+        
+        &[aria-disabled='true'] {
+          background: @bl-customComponent-signaturePad-button-changeColorButton-disabledBackground;
+          color: @bl-customComponent-signaturePad-button-changeColorButton-disabledColor;
+          box-shadow: @bl-customComponent-signaturePad-button-shadowDisabled;
+        }
+        
+        input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          width: 100%;
+          cursor: pointer;
+        }
+      }
+      
+      &.undo-button {
+        &:not(:disabled) {
+          background: @bl-customComponent-signaturePad-button-undoButton-background;
+          color: @bl-customComponent-signaturePad-button-undoButton-color;
+        
+          &:hover {
+            box-shadow: @bl-customComponent-signaturePad-button-undoButton-shadowHover;
+          }
+        }
+        
+        &:disabled {
+          background: @bl-customComponent-signaturePad-button-undoButton-disabledBackground;
+          color: @bl-customComponent-signaturePad-button-undoButton-disabledColor;
+        }
+      }
+      
+      &.save-jpg-button {
+        &:not(:disabled) {
+          background: @bl-customComponent-signaturePad-button-saveJpgButton-background;
+          color: @bl-customComponent-signaturePad-button-saveJpgButton-color;
+        
+          &:hover {
+            box-shadow: @bl-customComponent-signaturePad-button-saveJpgButton-shadowHover;
+          }
+        }
+        
+        &:disabled {
+          background: @bl-customComponent-signaturePad-button-saveJpgButton-disabledBackground;
+          color: @bl-customComponent-signaturePad-button-saveJpgButton-disabledColor;
+        }
+      }
+      
+      &.save-png-button {
+        &:not(:disabled) {
+          background: @bl-customComponent-signaturePad-button-savePngButton-background;
+          color: @bl-customComponent-signaturePad-button-savePngButton-color;
+        
+          &:hover {
+            box-shadow: @bl-customComponent-signaturePad-button-savePngButton-shadowHover;
+          }
+        }
+        
+        &:disabled {
+          background: @bl-customComponent-signaturePad-button-savePngButton-disabledBackground;
+          color: @bl-customComponent-signaturePad-button-savePngButton-disabledColor;
+        }
+      }
+      
+      &.save-svg-button {
+        &:not(:disabled) {
+          background: @bl-customComponent-signaturePad-button-saveSvgButton-background;
+          color: @bl-customComponent-signaturePad-button-saveSvgButton-color;
+        
+          &:hover {
+            box-shadow: @bl-customComponent-signaturePad-button-saveSvgButton-shadowHover;
+          }
+        }
+        
+        &:disabled {
+          background: @bl-customComponent-signaturePad-button-saveSvgButton-disabledBackground;
+          color: @bl-customComponent-signaturePad-button-saveSvgButton-disabledColor;
+        }
+      }
+      
+      &.save-signature-button {
+        &:not(:disabled) {
+          background: @bl-customComponent-signaturePad-button-saveSignatureButton-background;
+          color: @bl-customComponent-signaturePad-button-saveSignatureButton-color;
+        
+          &:hover {
+            box-shadow: @bl-customComponent-signaturePad-button-saveSignatureButton-shadowHover;
+          }
+        }
+        
+        &:disabled {
+          background: @bl-customComponent-signaturePad-button-saveSignatureButton-disabledBackground;
+          color: @bl-customComponent-signaturePad-button-saveSignatureButton-disabledColor;
+        }
+      }
+    }
+  }
+    
+  .description {
+    color: lighten(@bl-customComponent-signaturePad-textColor, 60%);
+    text-align: center;
+    font-size: @bl-customComponent-signaturePad-fontSize;
+    margin: @bl-customComponent-signaturePad-description-margin;
+  }  
+  
+  .wrapper {
+    position: relative;
+    flex: 1;
+    border: @bl-customComponent-signaturePad-blockBorder;
+    border-radius: @bl-customComponent-signaturePad-borderRadius;
+    
+    canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: @bl-customComponent-signaturePad-canvas-width;
+      height: @bl-customComponent-signaturePad-canvas-height;
+      border-radius: @bl-customComponent-signaturePad-borderRadius;
+    }
+  }
+}

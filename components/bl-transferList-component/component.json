@@ -84,7 +84,5 @@
       ]
     }
   ],
-  "actions": [],
-  "pods": {},
   "blockUI": "<button type=\"button\" data-label=\"Button\" data-variant=\"contained\" data-size=\"medium\" data-module-type=\"system\" data-module-id=\"button\" data-display data-uid=\"9b0bf4d383d738242ff6d3ca2f36a1b1\" style=\"margin:20px 10px;\"></button>"
 }

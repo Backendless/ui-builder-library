@@ -1,0 +1,234 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-alert-fontFamily: "Roboto", "Helvetica", "Arial", sans-serif;
+@bl-customComponent-alert-fontSize: 12.8px;
+@bl-customComponent-alert-textColor: @appTextColor;
+@bl-customComponent-alert-titleSize: 16px;
+
+@bl-customComponent-alert-closeButtonSize: 18px;
+@bl-customComponent-alert-borderRadius: 4px;
+@bl-customComponent-alert-iconSize: 22px;
+
+@bl-customComponent-alert-errorBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#fdeded, 90%), #fdeded);
+@bl-customComponent-alert-warningBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#fff4e5, 90%), #fff4e5);
+@bl-customComponent-alert-infoBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#e5f6fd, 90%), #e5f6fd);
+@bl-customComponent-alert-successBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#edf7ed, 90%), #edf7ed);
+
+@bl-customComponent-alert-errorTextColor: if(luma(@appBackgroundColor) > 50%, darken(#ef5350, 40%), lighten(#ef5350, 28%));
+@bl-customComponent-alert-warningTextColor: if(luma(@appBackgroundColor) > 50%, darken(#ff9800, 30%), lighten(#ff9800, 28%));
+@bl-customComponent-alert-infoTextColor: if(luma(@appBackgroundColor) > 50%, darken(#03a9f4, 30%), lighten(#03a9f4, 28%));
+@bl-customComponent-alert-successTextColor: if(luma(@appBackgroundColor) > 50%, darken(#4caf50, 30%), lighten(#4caf50, 28%));
+
+@bl-customComponent-alert-errorPrimaryColor: #ef5350;
+@bl-customComponent-alert-warningPrimaryColor: #ff9800;
+@bl-customComponent-alert-infoPrimaryColor: #03a9f4;
+@bl-customComponent-alert-successPrimaryColor: #4caf50;
+
+.text-types-mixin() {
+  &--error {
+    color: @bl-customComponent-alert-errorTextColor;
+  }
+  &--warning {
+    color: @bl-customComponent-alert-warningTextColor;
+  }
+  &--info {
+    color: @bl-customComponent-alert-infoTextColor;
+  }
+  &--success {
+    color: @bl-customComponent-alert-successTextColor;
+  }
+}
+
+.button-icon-mixin(@size, @color) {
+  height: @size;
+  width: @size;
+  fill: @color;
+}
+
+.bl-customComponent-alert {
+  .alert {
+    display: flex;
+    border-radius: @bl-customComponent-alert-borderRadius;
+
+    padding: 6px 16px;
+
+    font-family: @bl-customComponent-alert-fontFamily;
+    font-weight: 400;
+    font-size: @bl-customComponent-alert-fontSize;
+
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+
+    &__icon {
+      display: flex;
+
+      margin-right: 12px;
+      padding: 7px 0;
+
+      opacity: 0.9;
+
+      &-svg {
+        height: @bl-customComponent-alert-iconSize;
+        width: @bl-customComponent-alert-iconSize;
+      }
+    }
+
+    &__content {
+      padding: 8px 0;
+    }
+
+    &__title {
+      display: inline-block;
+
+      font-weight: 600;
+      font-size: @bl-customComponent-alert-titleSize;
+
+      line-height: 1.5;
+
+      margin-top: -2px;
+      margin-bottom: 8px;
+
+      .text-types-mixin()
+    }
+
+    &__text {
+      display: block;
+      min-width: 0;
+      overflow: auto;
+      font-weight: 500;
+
+      .text-types-mixin()
+    }
+
+    &__close-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: transparent;
+      border-radius: 50%;
+
+      outline: 0;
+      border: 0;
+
+      margin: 0;
+      padding: 5px;
+
+      transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+
+      &-icon {
+        .button-icon-mixin(@bl-customComponent-alert-closeButtonSize, @bl-customComponent-alert-textColor)
+      }
+    }
+
+    &--error {
+      background-color: @bl-customComponent-alert-errorBackgroundColor;
+    }
+
+    &--warning {
+      background-color: @bl-customComponent-alert-warningBackgroundColor;
+    }
+
+    &--info {
+      background-color: @bl-customComponent-alert-infoBackgroundColor;
+    }
+
+    &--success {
+      background-color: @bl-customComponent-alert-successBackgroundColor;
+    }
+  }
+
+  .alert-filled {
+    color: #fff;
+
+    &--error {
+      background-color: @bl-customComponent-alert-errorPrimaryColor;
+    }
+
+    &--warning {
+      background-color: @bl-customComponent-alert-warningPrimaryColor;
+    }
+
+    &--info {
+      background-color: @bl-customComponent-alert-infoPrimaryColor;
+    }
+
+    &--success {
+      background-color: @bl-customComponent-alert-successPrimaryColor;
+    }
+
+    &__icon-svg {
+      fill: #fff;
+    }
+
+    &__close-button-icon {
+      .button-icon-mixin(@bl-customComponent-alert-closeButtonSize, #fff)
+    }
+  }
+
+  .alert-outline {
+    border: 1px solid;
+    background-color: transparent;
+
+    &__close-button-icon {
+      .button-icon-mixin(@bl-customComponent-alert-closeButtonSize, @bl-customComponent-alert-textColor)
+    }
+
+    &--error {
+      border-color: @bl-customComponent-alert-errorPrimaryColor;
+    }
+
+    &--warning {
+      border-color: @bl-customComponent-alert-warningPrimaryColor;
+    }
+
+    &--info {
+      border-color: @bl-customComponent-alert-infoPrimaryColor;
+    }
+
+    &--success {
+      border-color: @bl-customComponent-alert-successPrimaryColor;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    padding: 4px 0 0 16px;
+    margin-left: auto;
+    margin-right: -8px;
+  }
+
+  .alert-open {
+    overflow: hidden;
+    animation: alert-open linear forwards;
+  }
+
+  @keyframes alert-open {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 100%;
+    }
+  }
+
+  .alert-close {
+    overflow: hidden;
+    animation: alert-close linear forwards;
+  }
+
+  @keyframes alert-close {
+    0% {
+      height: 100%;
+    }
+    100% {
+      height: 0;
+      padding: 0 16px;
+      border: 0 solid inherit;
+    }
+  }
+}

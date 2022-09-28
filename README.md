@@ -1,2 +1,2 @@
 # ui-builder-library
-this is repository for containing difference elements for Backendless UI-Builder designer  
+this is a repository for custom Backendless UI-Builder components  
