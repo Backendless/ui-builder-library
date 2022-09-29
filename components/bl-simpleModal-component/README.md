@@ -8,52 +8,52 @@ The component based on external [Simple Modal](https://mui.com/material-ui/react
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-## Usage
+## Properties
 
-### Styles and Settings
+| Property          | Type                                  | Default Value | Logic               | Data Binding | UI Setting | Description                                                             |
+|-------------------|---------------------------------------|---------------|---------------------|--------------|------------|-------------------------------------------------------------------------|
+| title             | Text                                  |               | Title Logic         | YES          | YES        | Allows write title for Simple Modal.                                    |
+| content           | Text                                  |               | Content Logic       | YES          | YES        | Allows write content for Simple Modal.                                  |
+| closeButtonLabel  | Text                                  | "Close"       | Close Button Label  | YES          | YES        | Allows to write label for close button. Default value "Close".          |
+| submitButtonLabel | Text                                  | "Submit"      | Submit Button Label | YES          | YES        | Allows to write label for Submit Button. Default value "Submit".        |
+| type              | Select ["alert", "prompt", "confirm"] | "alert"       |                     | NO           | YES        | Allows select type of Simple Modal ("alert", "prompt", "confirm").      |
+| placeholder       | Text                                  |               | Placeholder Logic   | YES          | YES        | Allows to write text for input placeholder.                             |
+| closingDuration   | Number                                | 100           |                     | NO           | YES        | Allows to specify speed animation opening and closing for Simple Modal. |
 
-<dl>
-<dt>Title</dt>
-<dd>Allows write title for Simple Modal.</dd>
-<dt>Content</dt>
-<dd>Allows write content for Simple Modal</dd>
-<dt>Close Button Label</dt>
-<dd>Allows to write label for close button. Default value "Close"</dd>
-<dt>Type</dt>
-<dd>Allows select type of Simple Modal ("alert", "prompt", "confirm"). Default value "alert".</dd>
-<dt>Placeholder</dt>
-<dd>Allows to write text for input placeholder.</dd>
-<dt>Submit Button Label</dt>
-<dd>Allows to write label for Submit Button. Default value "Submit"</dd>
-<dt>Closing Duration</dt>
-<dd>Allows to specify speed animation opening and closing for Simple Modal. Default value 100</dd>
-</dl>
+## Events
 
-### Event Handlers and Bindable Properties
+| Name                  | Triggers                             | Context Blocks        |
+|-----------------------|--------------------------------------|-----------------------|
+| On Close              | when the user click on close button  |                       |
+| On Submit             | when the user click on submit button | Input Value: `String` |
+| On Input Value Change | when the input value change          | Input Value: `String` |
 
-<dl>
-<dt>Title Logic</dt>
-<dd>Allows to specify title for Simple Modal in Backendless logic</dd>
-<dt>Content Logic</dt>
-<dd>Allows to specify text for Simple Modal in Backendless logic</dd>
-<dt>Close Button Label Logic</dt>
-<dd>Allows to specify label for Close Button in Backendless logic</dd>
-<dt>Placeholder Logic</dt>
-<dd>Allows to specify text for input placeholder for Simple Modal in Backendless logic</dd>
-<dt>Submit Button Label Logic</dt>
-<dd>Allows to specify label for Submit Button in Backend logic</dd>
-<dt>On Close</dt>
-<dd>Triggered when the user click on close button </dd>
-<dt>On Submit</dt>
-<dd>Triggered when the user click on submit button</dd>
-<dt>On Input Value Change</dt>
-<dd>Triggered when the input value change</dd>
-</dl>
+## Actions
 
-### Action
-<dl>
-<dt>Open Modal</dt>
-<dd>An action that open Simple Modal</dd>
-<dt>Close Modal</dt>
-<dd>An action that close Simple Modal</dd>
-</dl>
+| Action | Inputs | Returns |
+|--------|--------|---------|
+| Open   |        |         |
+| Close  |        |         |
+
+## Styles
+
+**Theme**
+```
+@bl-customComponent-simple-modal-themeColor: @themePrimary;
+@bl-customComponent-simple-modal-backgroundColor: @appBackgroundColor;
+@bl-customComponent-simple-modal-textColor: @appTextColor;
+```
+
+**Dimensions**
+```
+@bl-customComponent-simple-modal-max-width: 600px;
+@bl-customComponent-simple-modal-min-width: 300px;
+@bl-customComponent-simple-modal-button-borderRadius: 4px;
+```
+
+**Colors**
+```
+@bl-customComponent-simple-modal-buttonColor: @bl-customComponent-simple-modal-themeColor;
+@bl-customComponent-simple-modal-button-backgroundColor: transparent;
+@bl-customComponent-simple-modal-button-backgroundColorHover: fade(@bl-customComponent-simple-modal-themeColor, 4%);
+```
