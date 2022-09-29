@@ -8,7 +8,7 @@ const ENHANCED = 'enhanced';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TransferListComponent({ component, eventHandlers }) {
-  const { display, listType, leftItems, rightItems, classList, style } = component;
+  const { display, classList, style, disabled, listType, leftItems, rightItems } = component;
 
   const [left, setLeft] = useState([]);
   const [right, setRight] = useState([]);
@@ -34,7 +34,7 @@ export default function TransferListComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-transferList', classList) } style={ style }>
+    <div className={ cn('bl-customComponent-transferList', classList, { disabled }) } style={ style }>
       <List
         title="Choices"
         enableSelectAll={ listType === ENHANCED }

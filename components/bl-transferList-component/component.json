@@ -9,12 +9,24 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "settingTooltip": "This handler allows you to disable a component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This handler allows you to disable a component.",
+      "dataBinding": true
+    },
+    {
       "type": "select",
       "name": "listType",
-      "label": "List type",
+      "label": "List Type",
       "defaultValue": "basic",
       "handlerId": "listType",
-      "handlerLabel": "List type",
+      "handlerLabel": "List Type Logic",
       "dataBinding": true,
       "options": [
         {
@@ -26,47 +38,51 @@
           "label": "Enhanced"
         }
       ],
-      "handlerDescription": "The List type property allows you to select the list type. The list type has two variants: basic and enhanced.",
+      "handlerDescription": "This property allows you to select a list type of Basic or Enhanced.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "This property allows you to select a list type of Basic or Enhanced."
     },
     {
-      "type": "text",
+      "type": "json",
       "name": "leftItems",
-      "label": "Left items",
+      "label": "Left Items",
       "handlerId": "leftItemsLogic",
-      "handlerLabel": "Left items logic",
+      "handlerLabel": "Left Items Logic",
       "handlerDescription": "Please enter the items to be displayed on the left in a comma in this field.",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Please enter the items to be displayed on the left in a comma in this field."
     },
     {
       "name": "rightItems",
-      "label": "Right items",
+      "label": "Right Items",
       "handlerId": "rightItemsLogic",
-      "handlerLabel": "Right items logic",
+      "handlerLabel": "Right Items Logic",
       "dataBinding": true,
       "handlerDescription": "Please enter the items to be displayed on the right in a comma in this field.",
-      "type": "text",
+      "type": "json",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Please enter the items to be displayed on the right in a comma in this field."
     }
   ],
   "eventHandlers": [
     {
       "name": "onChange",
-      "label": "On Change",
+      "label": "On Change Event",
       "contextBlocks": [
         {
           "id": "leftItems",
-          "label": "Left items"
+          "label": "Left Items"
         },
         {
           "id": "rightItems",
-          "label": "Right items"
+          "label": "Right Items"
         }
       ]
     }
-  ]
+  ],
+  "blockUI": "<button type=\"button\" data-label=\"Button\" data-variant=\"contained\" data-size=\"medium\" data-module-type=\"system\" data-module-id=\"button\" data-display data-uid=\"9b0bf4d383d738242ff6d3ca2f36a1b1\" style=\"margin:20px 10px;\"></button>"
 }
