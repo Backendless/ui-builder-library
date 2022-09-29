@@ -16,9 +16,9 @@ Copy Button is a component of Backendless UI-Builder designer. This allows you c
 
 ## Events
 
-| Name    | Triggers                           | Context Blocks |
-|---------|------------------------------------|----------------|
-| On Copy | when the user click on copy button |                |
+| Name          | Triggers                           | Context Blocks |
+|---------------|------------------------------------|----------------|
+| On Copy Event | when the user click on copy button |                |
 
 ## Action
 
