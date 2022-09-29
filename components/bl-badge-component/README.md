@@ -5,7 +5,7 @@ This is a component of Backendless [UI-Builder](https://backendless.com/develope
 Customizations include adjustments of position, size, form, visibility, background color, label color and font size.
 
 <p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="607"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Configuration

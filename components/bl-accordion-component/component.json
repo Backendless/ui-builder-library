@@ -1,0 +1,144 @@
+{
+  "id": "c_0a91e19d5f9efe35cc737b8b39ab813d",
+  "name": "Accordion",
+  "description": "The accordion component allows the user to show and hide sections of related content on a page.",
+  "showInToolbox": true,
+  "faIcon": "stream",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "accordionData",
+      "label": "Accordion Data",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "accordionDataLogic",
+      "defaultValue": "[{\"title\": \"Collapsible Group Item #1\", \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"}]",
+      "handlerDescription": "This is a handler for the logic to determine the data for the accordion. Array of objects returned by the handler will define the title and content of the accordion sections.",
+      "handlerLabel": "Accordion Data Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "controlledAccordion",
+      "label": "Controlled Accordion",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "controlledAccordionLogic"
+    },
+    {
+      "type": "color",
+      "name": "titleColor",
+      "label": "Title Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titleColorLogic"
+    },
+    {
+      "type": "color",
+      "name": "titleBackgroundColor",
+      "label": "Title Background Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titleBackgroundColorLogic"
+    },
+    {
+      "type": "text",
+      "name": "titleFontSize",
+      "label": "Title Font Size",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titleFontSizeLogic"
+    },
+    {
+      "type": "text",
+      "name": "titlePadding",
+      "label": "Title Padding",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "titlePaddingLogic"
+    },
+    {
+      "type": "color",
+      "name": "contentColor",
+      "label": "Content Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentColorLogic"
+    },
+    {
+      "type": "color",
+      "name": "contentBackgroundColor",
+      "label": "Content Background Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentBackgroundColorLogic"
+    },
+    {
+      "type": "text",
+      "name": "contentFontSize",
+      "label": "Content Font Size",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentFontSizeLogic"
+    },
+    {
+      "type": "text",
+      "name": "contentPadding",
+      "label": "Content Padding",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "contentPaddingLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onOpenItem",
+      "label": "On Open Item Event",
+      "handlerDescription": "This event is fired when the user opens the accordion section.",
+      "contextBlocks": [
+        {
+          "id": "item",
+          "label": "Item"
+        }
+      ]
+    },
+    {
+      "name": "onCloseItem",
+      "label": "On Close Item Event",
+      "handlerDescription": "This event is fired when the user closes the accordion section.",
+      "contextBlocks": [
+        {
+          "id": "item",
+          "label": "Item"
+        }
+      ]
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "handlerDescription": "The event is fired when the mouse pointer hovers over the accordion."
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "handlerDescription": "The event is fired when the mouse pointer leaves the accordion boundaries."
+    }
+  ],
+  "actions": [
+    {
+      "id": "openAll",
+      "label": "Open All"
+    },
+    {
+      "id": "closeAll",
+      "label": "Close All"
+    },
+    {
+      "id": "toggleAll",
+      "label": "Toggle All"
+    }
+  ]
+}

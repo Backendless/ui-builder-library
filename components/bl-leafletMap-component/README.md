@@ -5,7 +5,7 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 The component covers all the main features of the library and allows you in a couple click render an interactive map in your UI-Builder application.
 
 <p align="center">
-  <img alt="main thumbnail" height="263" src="./thumbnail.png" width="420"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties
@@ -28,28 +28,27 @@ The component covers all the main features of the library and allows you in a co
 
 ## Events
 
-| Name                       | Triggers                               | Context Blocks                                                                 |
-|----------------------------|----------------------------------------|--------------------------------------------------------------------------------|
-| On Click                   | when a user click on map               | `Coordinates: [lat: number, lng: number]`                                      |
-| On Marker Click            | when a user click on a marker          | `Coordinates: [lat: number, lng: number], Description: string`                 |
-| On Circle Click            | when a user click on a circle          | `Coordinates: [lat: number, lng: number], Radius: number, Description: string` |
-| On Polygon Click           | when a user click on a polygon         | `Coordinates: [lat: number, lng: number], Description: string`                 |
-| On Map Type Change         | when a user changed the map type       | `Previous Type: string, Current Type: string`                                  |
-| On Determining Geoposition | when a user determining geoposition    | `Coordinates: [lat: number, lng: number]`                                      |
-| On Fullscreen Button Click | when a user click on fullscreen button | `Fullscreen: boolean`                                                          |
-
+| Name                       | Triggers                               | Context Blocks                                                                               |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------------------------------|
+| On Click                   | when a user click on map               | Coordinates: `[lat: Number, lng: Number]`                                                    |
+| On Marker Click            | when a user click on a marker          | Coordinates: `[lat: Number, lng: Number]` <br/> Description: `String`                        |
+| On Circle Click            | when a user click on a circle          | Coordinates: `[lat: Number, lng: Number]` <br/> Radius: `Number` <br/> Description: `String` |
+| On Polygon Click           | when a user click on a polygon         | Coordinates: `[lat: Number, lng: Number]` <br/> Description: `String`                        |
+| On Map Type Change         | when a user changed the map type       | Previous Type: `String` <br/> Current Type: `String`                                         |
+| On Determining Geoposition | when a user determining geoposition    | Coordinates: `[lat: Number, lng: Number]`                                                    |
+| On Fullscreen Button Click | when a user click on fullscreen button | Fullscreen: `Boolean`                                                                        |
 
 ## Actions
 
-| Action           | Inputs                                | Returns                            |
-|------------------|---------------------------------------|------------------------------------|
-| Set map center   | `latitude:Number`, `longitude:Number` |                                    |
-| Set map zoom     | `value:Number`                        |                                    |
-| Get map zoom     |                                       | `Number`: current map zoom         |
-| Get map center   |                                       | `Number`: current map center       |
-| Get all markers  |                                       | `List`: of all markers on the map  |
-| Get all circles  |                                       | `List`: of all circles on the map  |
-| Get all polygons |                                       | `List`: of all polygons on the map |
+| Action           | Inputs                                       | Returns                            |
+|------------------|----------------------------------------------|------------------------------------|
+| Set map center   | latitude: `Number` <br/> longitude: `Number` |                                    |
+| Set map zoom     | value: `Number`                              |                                    |
+| Get map zoom     |                                              | `Number`: current map zoom         |
+| Get map center   |                                              | `Number`: current map center       |
+| Get all markers  |                                              | `List`: of all markers on the map  |
+| Get all circles  |                                              | `List`: of all circles on the map  |
+| Get all polygons |                                              | `List`: of all polygons on the map |
 
 ## Styles
 

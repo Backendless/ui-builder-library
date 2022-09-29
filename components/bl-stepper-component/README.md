@@ -3,6 +3,11 @@
 Stepper is a component of Backendless UI-Builder designer. This allows you to show the steps of a process. Go to the next step, return to the previous step and reset all steps.
 
 The component based on external [stepper](https://mui.com/material-ui/react-stepper/).
+
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 ### Styles and Settings

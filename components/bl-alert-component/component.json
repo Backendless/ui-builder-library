@@ -12,7 +12,7 @@
       "type": "text",
       "name": "messageTitle",
       "label": "Message Title",
-      "handlerId": "messgeTitleLogic",
+      "handlerId": "messageTitleLogic",
       "handlerLabel": "Message Title Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the title for alert."
@@ -94,8 +94,8 @@
     {
       "type": "number",
       "name": "closingDuration",
-      "label": "Closing Duration",
-      "defaultValue": "0.1"
+      "label": "Closing Duration(ms)",
+      "defaultValue": "200"
     }
   ],
   "eventHandlers": [

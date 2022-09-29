@@ -14,8 +14,12 @@
       "type": "checkbox",
       "defaultValue": false,
       "handlerId": "disabled",
-      "handlerLabel": "Disabled",
-      "dataBinding": true
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This is the handler to disable the component.",
+      "handlerDescription": "This is the handler to disable the component."
     },
     {
       "type": "select",
@@ -23,7 +27,7 @@
       "label": "Icon",
       "defaultValue": "star",
       "handlerId": "icon",
-      "handlerLabel": "Icon",
+      "handlerLabel": "Icon Logic",
       "dataBinding": false,
       "options": [
         {
@@ -34,33 +38,49 @@
           "value": "heart",
           "label": "Heart"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This is a handler for selecting the icon that will display the rating.",
+      "handlerDescription": "This is a handler for selecting the icon that will display the rating."
     },
     {
       "name": "defaultValue",
-      "label": "Default value",
+      "label": "Default Value",
       "type": "number",
       "defaultValue": "0",
       "handlerId": "defaultValue",
       "dataBinding": true,
-      "handlerLabel": "Default value"
+      "handlerLabel": "Default Value Logic",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This handler allows you to specify a default rating.",
+      "handlerDescription": "This handler allows you to specify a default rating."
     },
     {
       "name": "iconsAmount",
-      "label": "Icons amount",
+      "label": "Icons Amount",
       "type": "number",
       "defaultValue": "5",
       "handlerId": "iconsAmount",
-      "handlerLabel": "Icons amont",
-      "dataBinding": true
+      "handlerLabel": "Icons Amont Logic",
+      "dataBinding": true,
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This handler allows you to specify the number of icons to be displayed.",
+      "handlerDescription": "This handler allows you to specify the number of icons to be displayed."
     },
     {
       "type": "color",
       "name": "iconColor",
-      "label": "Icon color",
+      "label": "Icon Color",
       "handlerId": "iconColorLogic",
-      "handlerLabel": "Icon color logic",
-      "defaultValue": "#faaf00"
+      "handlerLabel": "Icon Color Logic",
+      "defaultValue": "#faaf00",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This handler allows you to specify a color for icons.",
+      "handlerDescription": "This handler allows you to specify a color for icons."
     },
     {
       "type": "select",
@@ -68,7 +88,7 @@
       "label": "Precision",
       "defaultValue": "1",
       "handlerId": "precision",
-      "handlerLabel": "Precision",
+      "handlerLabel": "Precision Logic",
       "dataBinding": true,
       "options": [
         {
@@ -79,28 +99,25 @@
           "value": "0.5",
           "label": "0.5"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This handler allows you to specify the precision of rating evaluation.",
+      "handlerDescription": "This handler allows you to specify the precision of rating evaluation."
     }
   ],
   "eventHandlers": [
     {
       "name": "onRatingChange",
-      "label": "On Rating change",
+      "label": "On Rating Change Event",
       "dataBinding": true,
       "contextBlocks": [
         {
           "label": "Curent Rating",
           "id": "curentRating"
-        },
-        {
-          "id": "minRating",
-          "label": "Min Rating"
-        },
-        {
-          "id": "maxRating",
-          "label": "Max Rating"
         }
       ]
     }
-  ]
+  ],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"cf27ad950eeab6429d7781b89eaf006c\" style=\"display:flex;flex-shrink:0;padding:10px;flex-direction:row;max-width:auto;width:150px;\"><i data-icon=\"star\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"56cbe3db80ecf0aaa20da3683adfb8b6\" style=\"color:#faaf00;\"></i><i data-icon=\"star\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"4bbf85b388627298ec820a8ac9a7c07c\" style=\"color:#faaf00;\"></i><i data-icon=\"star\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"395d919b3802429779f50e271bdd2b86\" style=\"color:#faaf00;\"></i><i data-icon=\"star\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"f3fcb24bb0aa32ae5c78b07fce538612\" style=\"color:#faaf00;\"></i><i data-icon=\"star\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"8b7c319a8f49cd3e6898ca836243aaea\" style=\"color:#faaf00;\"></i></div>"
 }

@@ -1,31 +1,23 @@
 # Rating
 Rating is a component of Backendless UI-Builder designer. It allows you to rate anything, or see the rating of a particular item.
 
-## Usage
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
 
-Add a component to your page and select the initial rating values.
+## Properties
 
-### Component Elements
+| Property      | Type                            | Default value | Logic               | Data Binding | UI Setting | Description
+|---------------|---------------------------------|---------------|---------------------|--------------|------------|-----------------------------------------------------------
+| Disabled      | *Checkbox*                      | false         | Disabled Logic      | YES          | YES        | If you need the rating to be disabled, you can click on the `Disabled` checkbox.
+| Icon          | *Select* <br/>[`star`, `heart`] | 'star'        | Icon Logic          | NO           | YES        | You can select the icon to be displayed. This property has two icons: a `heart` and a `star`.
+| Default Value | *Number*                        | 0             | Default Value Logic | YES          | YES        | You can select the initial value to be displayed.
+| Icons Amount  | *Number*                        | 5             | Icons Amont Logic   | YES          | YES        | This option is to set the number of icons in the rating.
+| Icon Color    | *Color*                         | `#FAAF00`     | Icon Color Logic    | NO           | YES        | This property allows you to change the color of rating icon.
+| Precision     | *Select* <br/>[`0.5`, `1`]      | 1             | Precision Logic     | YES          | YES        | This handler allows you to specify the precision of the rating evaluation.
 
-<dl>
-<dt>Icon</dt>
-<dd>Each icon has its own rating, when you click on it, the rating will change depending on the value of a particular icon.</dd>
-</dl>
+## Events
 
-### Component Properties
-
-  Name              | Default value     | Description
- -------------------|-------------------|-------------------------------------------------------------------------------------
-  Disabled          | false             | If you need the rating to be disabled, you can click on the `Disabled` checkbox.
-  Icon              | 'star'            | You can select the icon to be displayed. This property has two icons: a `heart` and a `star`.
-  Default value     | 0                 | You can select the initial value to be displayed.
-  Icons amount      | 5                 | This option is to set the number of icons in the rating.
-  Icon color        |                   | This property allows you to change the color of rating icon.
-
-
-### Events
-
-<dl>
-<dt>On Rating change</dt>
-<dd>Triggers when the user clicks on the icon.</dd>
-</dl>
+| Name                    | Triggers                         | Context Blocks                                                                 |
+|-------------------------|----------------------------------|--------------------------------------------------------------------------------|
+| On Rating Change Event  | when the user clicks on the icon | Curent Rating: `Number`                                                        |

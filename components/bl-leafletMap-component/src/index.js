@@ -46,8 +46,11 @@ export default function LeafletMap({ component, eventHandlers }) {
 
   useEffect(() => {
     initMap(component, eventHandlers, mapRef, currentLayer, uid);
-    createActions(component, mapRef.current);
   }, []);
+
+  useEffect(()=>{
+    createActions(component, mapRef.current);
+  },[markers, circles,polygons]);
 
   useEffect(() => {
     changeMapType(mapRef, currentLayer, component);

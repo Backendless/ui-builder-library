@@ -2,6 +2,10 @@
 
 Copy Button is a component of Backendless UI-Builder designer. This allows you click on button and copied content.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property            | Type    | Default Value | Logic                | Data Binding | UI Setting | Description                                   |

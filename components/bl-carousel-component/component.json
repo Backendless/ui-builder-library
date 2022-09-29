@@ -1,0 +1,172 @@
+{
+  "id": "c_3b923b8e94ec8a5fd503145ded9b028f",
+  "name": "Carousel",
+  "description": "Carousel is a component for switch between slides",
+  "showInToolbox": true,
+  "faIcon": "images",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "imagesData",
+      "label": "Images Data",
+      "showInSettings": true,
+      "defaultValue": "[\n  {\n    \"url\": \"\",\n    \"title\": \"\",\n    \"content\": \"\"\n  }\n]",
+      "hasLogicHandler": true,
+      "handlerId": "imagesDataLogic",
+      "handlerLabel": "Images Data Logic",
+      "handlerDescription": "This is a handler for the logic to determine data for images slide."
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "400px",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "handlerDescription": "This is a handler for the logic to determine image height.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "700px",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine image width."
+    },
+    {
+      "type": "number",
+      "name": "autoplayDelay",
+      "label": "Autoplay Delay(ms)",
+      "showInSettings": true,
+      "defaultValue": "5000",
+      "hasLogicHandler": true,
+      "handlerId": "autoplayDelayLogic",
+      "dataBinding": true,
+      "handlerLabel": "Autoplay Delay Logic",
+      "handlerDescription": "This is a handler for the logic to determine the delay between automatically cycling an item. If this property doesn't set or equal 0, the carousel will not automatically cycle."
+    },
+    {
+      "type": "select",
+      "name": "animationType",
+      "label": "Animation Type",
+      "showInSettings": true,
+      "defaultValue": "slide",
+      "hasLogicHandler": false,
+      "handlerId": "animationTypeLogic",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "smooth",
+          "label": "Smooth Transition"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "animationDuration",
+      "label": "Animation Duration (ms)",
+      "showInSettings": true,
+      "defaultValue": "600",
+      "hasLogicHandler": true,
+      "handlerId": "animationDurationLogic",
+      "dataBinding": true,
+      "handlerLabel": "Animation Duration Logic",
+      "handlerDescription": "This is a handler for the logic to determine the duration of animation. "
+    },
+    {
+      "type": "checkbox",
+      "name": "withControls",
+      "label": "With Controls",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "withControlsLogic",
+      "handlerLabel": "Controls Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the control buttons should be visible. If the handler returns true, the component will be visible."
+    },
+    {
+      "type": "checkbox",
+      "name": "withIndicators",
+      "label": "With Indicators",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "withIndicatorsLogic",
+      "handlerLabel": "Indicators Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the indicators should be visible. If the handler returns true, the component will be visible."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onNextButton",
+      "label": "On Next Button",
+      "handlerDescription": "This handler is triggered when the user clicks on the next button"
+    },
+    {
+      "name": "onPrevButton",
+      "label": "On Previous Button",
+      "handlerDescription": "This handler is triggered when the user clicks on the previous button"
+    },
+    {
+      "name": "onMouseEnter",
+      "label": "On Mouse Enter",
+      "handlerDescription": "This event is triggered when the Mouse Enters the component."
+    },
+    {
+      "name": "onMouseLeave",
+      "label": "On Mouse Leave",
+      "handlerDescription": "This event is triggered when the mouse leaves the component."
+    }
+  ],
+  "actions": [
+    {
+      "id": "goToNextImage",
+      "label": "Go to Next Image"
+    },
+    {
+      "id": "goToPrevImage",
+      "label": "Go to Previous Image"
+    },
+    {
+      "id": "goToImage",
+      "label": "Go to Image",
+      "inputs": [
+        {
+          "id": "index",
+          "label": "Index"
+        }
+      ]
+    },
+    {
+      "id": "autoplay",
+      "label": "Autoplay",
+      "inputs": [
+        {
+          "id": "boolean",
+          "label": "Boolean"
+        }
+      ]
+    },
+    {
+      "id": "setImagesData",
+      "label": "Set Images Data",
+      "inputs": [
+        {
+          "id": "listImagesData",
+          "label": "List of Images Data"
+        }
+      ]
+    }
+  ],
+  "blockUI": ""
+}

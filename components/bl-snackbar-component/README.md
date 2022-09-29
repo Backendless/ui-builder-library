@@ -4,6 +4,10 @@ Snackbars provide brief notifications. Snackbars inform users of a process that 
 They appear temporarily, towards the edge or corner of the screen. They shouldn't interrupt the user experience, and
 they don't require user input to disappear.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Usage
 
 Add component on your page and add codeless logic. Use Visibility Action to show snackbar.
