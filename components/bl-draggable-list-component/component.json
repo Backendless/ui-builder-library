@@ -65,6 +65,18 @@
       "dataBinding": true,
       "showInSettings": true,
       "hasLogicHandler": true
+    },
+    {
+      "type": "checkbox",
+      "name": "showValues",
+      "label": "Show Values",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "showValuesLogic",
+      "handlerLabel": "Show Values Logic",
+      "handlerDescription": "This is a handler for the logic to determine if shows the value of the item.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
