@@ -2,6 +2,12 @@ import Leaflet from '../lib/leaflet';
 import { toCoordinates } from './coordinates';
 import { MapProviders } from '../maps';
 
+const DefaultValues = {
+  ZOOM  : 10,
+  CENTER: '40.6893, -74.0444',
+  TYPE  : 'openStreet'
+};
+
 export function changeMapType(map, currentLayer, component) {
   const { mapType } = component;
 
@@ -45,16 +51,18 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
   const { zoom, center, mapType, zoomControl } = component;
   const { onClick } = eventHandlers;
 
-  const centerCoords = toCoordinates(center);
+  const type = mapType || DefaultValues.TYPE;
+
+  const centerPoint = toCoordinates(center || DefaultValues.CENTER);
 
   map.current = Leaflet.map(uid, {
-    zoom,
-    center           : centerCoords,
+    zoom             : zoom || DefaultValues.ZOOM,
+    center           : centerPoint,
     fullscreenControl: true
   });
 
   currentLayer.current = Leaflet
-    .tileLayer(MapProviders[mapType].mapUrl, MapProviders[mapType].options)
+    .tileLayer(MapProviders[type].mapUrl, MapProviders[type].options)
     .addTo(map.current);
 
   if (!zoomControl) {
