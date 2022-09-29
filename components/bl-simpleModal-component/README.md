@@ -22,11 +22,11 @@ The component based on external [Simple Modal](https://mui.com/material-ui/react
 
 ## Events
 
-| Name                  | Triggers                             | Context Blocks                       |
-|-----------------------|--------------------------------------|--------------------------------------|
-| On Close              | when the user click on close button  |                                      |
-| On Submit             | when the user click on submit button | Input Value: `String` or `Undefined` |
-| On Input Value Change | when the input value change          | Input Value: `String`                |
+| Name                  | Triggers                             | Context Blocks        |
+|-----------------------|--------------------------------------|-----------------------|
+| On Close              | when the user click on close button  |                       |
+| On Submit             | when the user click on submit button | Input Value: `String` |
+| On Input Value Change | when the input value change          | Input Value: `String` |
 
 ## Actions
 
