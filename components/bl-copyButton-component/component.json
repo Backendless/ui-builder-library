@@ -1,4 +1,4 @@
-{
+  {
   "id": "c_085c78f4c41233294eed6707cb128d5d",
   "name": "Copy Button",
   "description": "",
@@ -82,8 +82,8 @@
   "eventHandlers": [
     {
       "name": "onCopy",
-      "label": "On Copy",
-      "handlerDescription": "This handler is triggered when the user clicks on the copy button."
+      "label": "On Copy Event",
+      "handlerDescription": "This event is triggered when the user clicks on the copy button."
     }
   ],
   "actions": [
