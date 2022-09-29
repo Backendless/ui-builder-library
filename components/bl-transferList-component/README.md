@@ -34,4 +34,4 @@ Transfer list is a component of Backendless UI-Builder designer. It allows you t
 
 Adding of items to list:
 
-<img alt="main thumbnail" height="600" src="./example-images/adding-items-to-list.png" width="620" />
+<img alt="main thumbnail" height="180" src="./example-images/adding-items-to-list.png" width="620" />
