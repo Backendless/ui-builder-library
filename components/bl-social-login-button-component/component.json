@@ -1,7 +1,7 @@
 {
   "id": "c_77c399a94abeab643336805b91a3aefb",
-  "name": "Social Login Button",
-  "description": "The Social Login Button component is designed for quick user login.",
+  "name": "Social Login Buttons",
+  "description": "The Social Login Buttons component is designed for quick user login.",
   "showInToolbox": true,
   "faIcon": "toggle-on",
   "mainJS": "dist/index.js",

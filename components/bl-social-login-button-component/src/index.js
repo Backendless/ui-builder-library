@@ -4,7 +4,7 @@ const { cn } = BackendlessUI.CSSUtils
 
 const providersList = ['googleplus', 'facebook', 'twitter', 'linkedin', 'github'];
 
-export default function SocialLoginButtonComponent({ component, eventHandlers }) {
+export default function SocialLoginButtonsComponent({ component, eventHandlers }) {
   const { display, classList, disabled, redirectToPage, extraQueryParams, iconsVisibility } = component;
   const { onLogin, onLoginFail } = eventHandlers;
 
