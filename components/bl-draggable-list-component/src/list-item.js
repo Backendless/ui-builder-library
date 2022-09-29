@@ -7,7 +7,7 @@ import { EditControl } from './edit-control';
 import { validate } from './helpers/validate';
 
 export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, component, onDelete, eventHandlers }) {
-  const { itemsList, allowEdit, allowDelete } = component;
+  const { itemsList, allowEdit, allowDelete, showValues } = component;
   const { onEdit } = eventHandlers;
 
   const { label, value } = item;
