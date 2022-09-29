@@ -1,0 +1,68 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-radioButtonsList-themeColor: @themePrimary;
+@bl-customComponent-radioButtonsList-backgroundColor: @appBackgroundColor;
+@bl-customComponent-radioButtonsList-textColor: @appTextColor;
+
+@bl-customComponent-radioButtonsList-inputRadio-width: 42px;
+
+@bl-customComponent-radioButtonsList-radioButtonIcon-width: 24px;
+@bl-customComponent-radioButtonsList-radioButtonIcon-fill: @bl-customComponent-radioButtonsList-themeColor;
+@bl-customComponent-radioButtonsList-radioButtonIcon-backgroundColor-onHover: rgba(@themePrimary, 0.04);
+
+.bl-customComponent-radioButtonsList {
+  display: flex;
+  flex-direction: column;
+
+  .radio-button {
+    display: inline-flex;
+    align-items: center;
+    margin-left: -11px;
+    margin-right: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &__label {
+      font-size: 16px;
+      letter-spacing: 0.15px;
+    }
+  }
+  
+  .input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px;
+    border-radius: 50%;
+    
+    &:hover {
+      transition: background-color 0.3s;
+      background-color: @bl-customComponent-radioButtonsList-radioButtonIcon-backgroundColor-onHover;
+    }
+
+    &__radio {
+      width: @bl-customComponent-radioButtonsList-inputRadio-width;
+      height: @bl-customComponent-radioButtonsList-inputRadio-width;
+      z-index: 1;
+      opacity: 0;
+      position: absolute;
+      margin: unset;
+      cursor: inherit;
+    }
+
+    &__icon {
+      position: relative;
+      width: @bl-customComponent-radioButtonsList-radioButtonIcon-width;
+      height: @bl-customComponent-radioButtonsList-radioButtonIcon-width;
+      fill: @bl-customComponent-radioButtonsList-radioButtonIcon-fill;
+      
+      &-filling {
+        position: absolute;
+      }
+      
+      &-ring {
+        position: absolute;
+      }
+    }
+  }
+}

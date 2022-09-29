@@ -1,0 +1,48 @@
+{
+  "id": "c_bbfe448ecd3e2a52206799950f880c89",
+  "name": "Radio Buttons List",
+  "description": "The main goal of this component is to display radio buttons.",
+  "showInToolbox": true,
+  "faIcon": "circle",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "settingTooltip": "This handler allows you to disable the component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This handler allows you to disable the component.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "buttonsList",
+      "label": "Buttons List",
+      "settingTooltip": "This handler allows you to add radio buttons to the component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "buttonsListLogic",
+      "handlerLabel": "Buttons List Logic",
+      "handlerDescription": "This handler allows you to add radio buttons to the component.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "label": "On Change Event",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    }
+  ]
+}
