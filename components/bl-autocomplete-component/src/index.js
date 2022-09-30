@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { useOnClickOutside, validate } from './helpers';
 import { Options } from './options';
@@ -7,7 +7,7 @@ import { TextField } from './text-field';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
-  const { disabled, placeholder, options, autocompleteVariant, classList, style } = component;
+  const { classList, disabled, placeholder, options, autocompleteVariant, style } = component;
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
@@ -19,7 +19,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     setOptionsList(validate(options));
-  }, [options]);
+  }, [options])
 
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
   const filteredOptions = optionsList.filter(({ label }) => (

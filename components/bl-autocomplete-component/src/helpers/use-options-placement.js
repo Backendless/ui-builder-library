@@ -6,7 +6,7 @@ export const useOptionsPlacement = props => {
   useLayoutEffect(() => {
     const handleScroll = () => {
       const viewPortHeight = window.innerHeight;
-      const { bottom, height } = optionsRef.current.getBoundingClientRect();
+      const { bottom, height } = optionsRef.current?.getBoundingClientRect();
 
       setOptionsPlacement(placement => {
         const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height  : bottom;

@@ -15,7 +15,10 @@
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "handlerDescription": "This handler allows you to disable component.",
+      "settingTooltip": "This handler allows you to disable component.",
+      "dataBinding": true
     },
     {
       "type": "text",
@@ -25,16 +28,10 @@
       "handlerId": "placeholderLogic",
       "handlerLabel": "Placeholder Logic",
       "showInSettings": true,
-      "hasLogicHandler": true
-    },
-    {
-      "type": "text",
-      "name": "options",
-      "handlerId": "optionsLogic",
-      "handlerLabel": "Options Logic",
-      "dataBinding": true,
-      "showInSettings": false,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "This handler allows you to specify a placeholder.",
+      "handlerDescription": "This handler allows you to specify a placeholder.",
+      "dataBinding": true
     },
     {
       "type": "select",
@@ -57,32 +54,43 @@
       ],
       "handlerId": "variantLogic",
       "handlerLabel": "Variant Logic",
-      "handlerDescription": "Autocomplete has three variants, you can choose outlined, standart or filled variant.",
+      "handlerDescription": "This handler allows you to choose one of three variants - outlined, standard or filled.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "This handler allows you to choose one of three variants - outlined, standard or filled.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "options",
+      "label": "Options",
+      "settingTooltip": "This handler allows you to add options to a component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "handlerDescription": "This handler allows you to add options to a component.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
     {
       "name": "onButtonClearClick",
-      "label": "On Button Clear Click",
+      "label": "On Button Clear Click Event",
       "dataBinding": true,
-      "contextBlocks": [
-        {
-          "id": "autocompleteValue"
-        }
-      ]
+      "contextBlocks": []
     },
     {
       "name": "onChange",
-      "label": "On Change",
+      "label": "On Change Event",
       "contextBlocks": [
         {
           "id": "inputValue",
-          "label": "Input value"
+          "label": "Input Value"
         }
       ],
       "dataBinding": true
     }
-  ]
+  ],
+  "blockUI": "<div data-options=\"value-1:Option 1;value-2:Option 2;value-3:Option 3\" data-label=\"Autocomplete\" data-size=\"medium\" data-module-type=\"system\" data-module-id=\"select\" data-display id=\"Select-b92b\" data-uid=\"6a9f84cfc92e7569aace968cfead1e77\" data-value=\"\" style=\"margin:0 0  0;\"></div>"
 }

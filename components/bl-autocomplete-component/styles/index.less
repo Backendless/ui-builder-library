@@ -8,6 +8,8 @@
   0px 1px 1px 0px  @themePrimary,
   0px 1px 3px 0px  @themePrimary;
 
+@bl-customComponent-autocomplete-width: 300px;
+
 @bl-customComponent-autocomplete-boxShadow: @boxShadowPrimary;
 @bl-customComponent-autocomplete-iconFill: @bl-customComponent-autocomplete-themeColor;
 @bl-customComponent-autocomplete-borderRadius: 4px;
@@ -23,7 +25,7 @@
   background-color: @bl-customComponent-autocomplete-backgroundColor;
   border-radius: @bl-customComponent-autocomplete-borderRadius;
   display: block;
-  width: 300px;
+  width: @bl-customComponent-autocomplete-width;
 
   .autocomplete {
     color: @bl-customComponent-autocomplete-textColor;

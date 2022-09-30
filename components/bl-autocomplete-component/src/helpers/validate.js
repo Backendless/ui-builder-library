@@ -5,13 +5,20 @@ export const validate = items => {
   
   if (typeof items === 'string') {
     return items.split(',').map(item => ({
-      objectId: item,
+      objectId: BackendlessUI.UUID.short(),
       value: item,
       label: item,
     }));
   }
     
-  if (typeof items === 'object') {
-    return Object.values(items);
+  if (Array.isArray(items)) {
+    if (!items[0].hasOwnProperty('objectId')) {
+      return items.map(item => ({
+        ...item,
+        objectId: BackendlessUI.UUID.short()
+      }))
+    }
+    
+    return items;
   }
 };
