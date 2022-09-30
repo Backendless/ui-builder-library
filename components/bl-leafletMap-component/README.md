@@ -28,15 +28,16 @@ The component covers all the main features of the library and allows you in a co
 
 ## Events
 
-| Name                       | Triggers                               | Context Blocks                                                                               |
-|----------------------------|----------------------------------------|----------------------------------------------------------------------------------------------|
-| On Click                   | when a user click on map               | Coordinates: `[lat: Number, lng: Number]`                                                    |
-| On Marker Click            | when a user click on a marker          | Coordinates: `[lat: Number, lng: Number]` <br/> Description: `String`                        |
-| On Circle Click            | when a user click on a circle          | Coordinates: `[lat: Number, lng: Number]` <br/> Radius: `Number` <br/> Description: `String` |
-| On Polygon Click           | when a user click on a polygon         | Coordinates: `[lat: Number, lng: Number]` <br/> Description: `String`                        |
-| On Map Type Change         | when a user changed the map type       | Previous Type: `String` <br/> Current Type: `String`                                         |
-| On Determining Geoposition | when a user determining geoposition    | Coordinates: `[lat: Number, lng: Number]`                                                    |
-| On Fullscreen Button Click | when a user click on fullscreen button | Fullscreen: `Boolean`                                                                        |
+| Name                       | Triggers                               | Context Blocks                                                                                                                                                                     |
+|----------------------------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| On Click                   | when a user click on map               | Coordinates: `[lat: Number, lng: Number]`                                                                                                                                          |
+| On Marker Click            | when a user click on a marker          | Coordinates: `[lat: Number, lng: Number]` <br/> Description: `String`                                                                                                              |
+| On Circle Click            | when a user click on a circle          | Coordinates: `[lat: Number, lng: Number]` <br/> Radius: `Number` <br/> Description: `String`                                                                                       |
+| On Polygon Click           | when a user click on a polygon         | Coordinates: `[lat: Number, lng: Number]` <br/> Description: `String`                                                                                                              |
+| On Map Type Change         | when a user changed the map type       | Previous Type: `String` <br/> Current Type: `String`                                                                                                                               |
+| On Determining Geoposition | when a user determining geoposition    | Coordinates: `[lat: Number, lng: Number]`                                                                                                                                          |
+| On Fullscreen Button Click | when a user click on fullscreen button | Fullscreen: `Boolean`                                                                                                                                                              |
+| On Pan Event               | when the user moves the map around     | Changed Center Position: `{lat: Number, lng: Number}` <br/> Changed NorthEast Position: `{lat: Number, lng: Number}` <br/> Changed SouthWest Position: `{lat: Number, lng: Number}`|
 
 ## Actions
 

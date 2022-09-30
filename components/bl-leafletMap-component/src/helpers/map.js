@@ -49,7 +49,7 @@ export function getGeolocation(map, geoMarker, icon, eventHandlers) {
 
 export function initMap(component, eventHandlers, map, currentLayer, uid) {
   const { zoom, center, mapType, zoomControl } = component;
-  const { onClick } = eventHandlers;
+  const { onClick, onPan } = eventHandlers;
 
   const type = mapType || DefaultValues.TYPE;
 
@@ -68,6 +68,16 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
   if (!zoomControl) {
     removeZoomControl(map.current);
   }
+
+  map.current.on('move', event => {
+    const bounds = map.current.getBounds();
+
+    onPan({
+      center   : bounds.getCenter(),
+      northEast: bounds.getNorthEast(),
+      southWest: bounds.getSouthWest()
+    });
+  });
 
   map.current.on('click', event => {
     onClick({ coordinates: [event.latlng.lat, event.latlng.lng] });

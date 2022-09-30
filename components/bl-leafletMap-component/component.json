@@ -278,6 +278,25 @@
           "label": "Fullscreen"
         }
       ]
+    },
+    {
+      "name": "onPan",
+      "label": "On Pan Event",
+      "contextBlocks": [
+        {
+          "id": "center",
+          "label": "Changed Center Position"
+        },
+        {
+          "id": "northEast",
+          "label": "Changed NorthEast Position"
+        },
+        {
+          "id": "southWest",
+          "label": "Changed SouthWest Position"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user moves the map around."
     }
   ],
   "actions": [
