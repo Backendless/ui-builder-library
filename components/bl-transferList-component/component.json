@@ -44,28 +44,54 @@
       "settingTooltip": "This property allows you to select a list type of Basic or Enhanced."
     },
     {
-      "type": "json",
-      "name": "leftItems",
-      "label": "Left Items",
-      "handlerId": "leftItemsLogic",
-      "handlerLabel": "Left Items Logic",
-      "handlerDescription": "Please enter the items to be displayed on the left in a comma in this field.",
-      "dataBinding": true,
+      "type": "text",
+      "name": "leftListTitle",
+      "label": "Left List Title",
+      "settingTooltip": "This handler allows you to specify the title of the list to the left.",
       "showInSettings": true,
+      "defaultValue": "Choices",
       "hasLogicHandler": true,
-      "settingTooltip": "Please enter the items to be displayed on the left in a comma in this field."
+      "handlerId": "leftListTitleLogic",
+      "handlerLabel": "Left List Title Logic",
+      "handlerDescription": "This handler allows you to specify the title of the list to the left.",
+      "dataBinding": true
     },
     {
-      "name": "rightItems",
-      "label": "Right Items",
-      "handlerId": "rightItemsLogic",
-      "handlerLabel": "Right Items Logic",
-      "dataBinding": true,
-      "handlerDescription": "Please enter the items to be displayed on the right in a comma in this field.",
+      "type": "text",
+      "name": "rightListTitle",
+      "label": "Right List Title",
+      "settingTooltip": "This handler allows you to specify the title of the list to the right.",
+      "showInSettings": true,
+      "defaultValue": "Chosen",
+      "hasLogicHandler": true,
+      "handlerId": "rightListTitleLogic",
+      "handlerLabel": "Right List Title Logic",
+      "handlerDescription": "This handler allows you to specify the title of the list to the right.",
+      "dataBinding": true
+    },
+    {
       "type": "json",
+      "name": "leftListItems",
+      "label": "Left List Items",
+      "settingTooltip": "This handler allows you to add items to the list to the left.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "Please enter the items to be displayed on the right in a comma in this field."
+      "handlerId": "leftListItemsLogic",
+      "handlerLabel": "Left List Items Logic",
+      "handlerDescription": "This handler allows you to add items to the list to the left.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "rightListItems",
+      "label": "Right List Items",
+      "settingTooltip": "This handler allows you to add items to the list to the right.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "rightListItemsLogic",
+      "handlerLabel": "Right List Items Logic",
+      "handlerDescription": "This handler allows you to add items to the list to the right.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
@@ -83,6 +109,5 @@
         }
       ]
     }
-  ],
-  "blockUI": "<button type=\"button\" data-label=\"Button\" data-variant=\"contained\" data-size=\"medium\" data-module-type=\"system\" data-module-id=\"button\" data-display data-uid=\"9b0bf4d383d738242ff6d3ca2f36a1b1\" style=\"margin:20px 10px;\"></button>"
+  ]
 }

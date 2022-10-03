@@ -1,8 +1,12 @@
+import { useMemo } from 'react';
+
 import { ListHeader } from './list-header';
 import { ListItem } from './list-item';
 
 export function List(props) {
-  const { title, enableSelectAll, items, selected, allSelected, setAllSelected } = props;
+  const { enableSelectAll, items, title, selected, allSelected, setAllSelected } = props;
+  
+  const componentId = useMemo(() => BackendlessUI.UUID.short(), []);
 
   const handleToggleItem = ({ target: { value, checked } }) => {
     const item = items.find(item => item.value === value);
@@ -33,7 +37,7 @@ export function List(props) {
           return (
             <ListItem
               key={ item.objectId }
-              id={ item.objectId }
+              id={ `${ item.objectId }-transfer-list-item-${ componentId }` }
               value={ item.value }
               label={ item.label }
               isChecked={ isChecked }

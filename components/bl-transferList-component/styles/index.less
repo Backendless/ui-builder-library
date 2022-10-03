@@ -22,8 +22,8 @@
 @bl-customComponent-transferList-checkboxWidth: 42px;
 @bl-customComponent-transferList-checkboxMarginRight: 14px;
 
-@bl-customComponent-transferList-itemsWidth: 200px;
-@bl-customComponent-transferList-itemsHeight: 230px;
+@bl-customComponent-transferList-width: 200px;
+@bl-customComponent-transferList-height: 230px;
 
 @bl-customComponent-transferList-itemPadding: 4px 16px;
 @bl-customComponent-transferList-itemHoverBackgroundColor: #0000000a;
@@ -40,16 +40,19 @@
 @bl-customComponent-transferList-buttonHoverColor: #1976d2;
 
 .bl-customComponent-transferList {
-  width: 100%;
+  width: @bl-customComponent-transferList-width;
   height: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   
   .list {
+    width: 100%;
     background-color: @bl-customComponent-transferList-listBackgroundColor;
     box-shadow: @bl-customComponent-transferList-boxShadow;
     border-radius: @bl-customComponent-transferList-listBorderRadius;
+    flex-shrink: 0;
   
     &__header {
       position: sticky;
@@ -71,6 +74,11 @@
         font-weight: 400;
         line-height: 1.43;
         letter-spacing: 0.17px;
+        overflow: auto;
+      }
+      
+      &-title {
+        white-space: nowrap;
       }
   
       &-counter {
@@ -79,8 +87,8 @@
     }
   
     &__items {
-      width: @bl-customComponent-transferList-itemsWidth;
-      height: @bl-customComponent-transferList-itemsHeight;
+      width: 100%;
+      height: @bl-customComponent-transferList-height;
       overflow: auto;
     }
   }
@@ -167,5 +175,11 @@
       padding: 0;
       z-index: 1;
     }
+  }
+}
+
+@media(max-width: 540px) {
+  .bl-customComponent-transferList {
+    flex-direction: column;
   }
 }
