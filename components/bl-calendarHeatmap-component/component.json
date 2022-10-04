@@ -83,7 +83,8 @@
       "hasLogicHandler": true,
       "handlerId": "legendLogic",
       "handlerDescription": "This is a handler for the logic to determine the legend for calendar.",
-      "label": "Legend"
+      "label": "Legend",
+      "handlerLabel": "Legend Logic"
     }
   ],
   "eventHandlers": [

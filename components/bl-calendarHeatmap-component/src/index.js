@@ -10,16 +10,8 @@ const today = new Date();
 
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const {
-    style,
-    display,
-    classList,
-    calendarData,
-    monthLabels,
-    weekdayLabels,
-    color,
-    legend,
-    showMonthLabels,
-    showWeekdayLabels
+    style, display, classList, calendarData, monthLabels,
+    weekdayLabels, color, legend, showMonthLabels, showWeekdayLabels
   } = component;
   const { onClick } = eventHandlers;
 
@@ -35,7 +27,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     'color-cell-2': shadeColor(color, 80),
     'color-cell-3': shadeColor(color, 40),
     'color-cell-4': color
-  }), [])
+  }), []);
 
   useEffect(() => {
     if (color) {
@@ -57,7 +49,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
     return () => {
       window.removeEventListener('resize', handleResize, false);
-    }
+    };
   }, [ref.current]);
 
   if (!display || !calendarData) {
@@ -68,7 +60,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ { style } }>
       <CalendarHeatmap
         values={ calendarData }
-        startDate={ shiftDate(today, -calendarData.length) }
+        startDate={ shiftDate(today, calendarData.length) }
         endDate={ today }
         showMonthLabels={ showMonthLabels }
         showWeekdayLabels={ showWeekdayLabels }
