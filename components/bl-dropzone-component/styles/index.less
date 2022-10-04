@@ -1,0 +1,32 @@
+@bl-customComponent-dropzone-backgroundColor: @appBackgroundColor;
+@bl-customComponent-dropzone-textColor: @appTextColor;
+
+@bl-customComponent-dropzone-color: fade(@bl-customComponent-dropzone-textColor, 85%);
+@bl-customComponent-dropzone-labelColor: fade(@bl-customComponent-dropzone-textColor, 60%);
+@bl-customComponent-dropzone-fileName-color: @bl-customComponent-dropzone-textColor;
+@bl-customComponent-dropzone-minWidth: 436px; 
+
+
+.bl-customComponent-dropzone {
+  .dropzone-ui {
+    color: @bl-customComponent-dropzone-color;
+    background-color: @bl-customComponent-dropzone-backgroundColor;
+    min-width: @bl-customComponent-dropzone-minWidth;
+    
+    .dz-ui-header span svg {
+      fill: @bl-customComponent-dropzone-color;
+      
+      path:not(:last-child) {
+        opacity: 0;
+      }
+    }
+    
+    .dz-ui-label {
+      color: @bl-customComponent-dropzone-labelColor;
+    }
+    
+    .file-item-full-container-container .file-item-name {
+      color: @bl-customComponent-dropzone-fileName-color;
+    }
+  }
+}
