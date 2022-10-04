@@ -11,18 +11,21 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 
 ## Properties
 
-| Property            | Type                               | Default value        | Logic           | Data Binding | UI Setting | Description                                 |
-|---------------------|------------------------------------|----------------------|-----------------|--------------|------------|---------------------------------------------|
-| Content             | *Text*                             |                      | Content Logic   | YES          | YES        | controls the content of the editor          |
-| Placeholder         | *Text*                             | "Compose an epic..." |                 | NO           | YES        | controls the placeholder of the editor      |
-| Toolbar Position    | *Select*  <br/> "top" \| "bottom"  | "top"                |                 | NO           | YES        | controls the position of the editor toolbar |
-| Fixed Toolbar       | *Checkbox*                         | `true`               |                 | NO           | YES        | enables fixing the toolbar                  |
-| Link Insert Button  | *Checkbox*                         | `true`               |                 | NO           | YES        | enables inserting a link in the editor      |
-| Image Insert Button | *Checkbox*                         | `false`              |                 | NO           | YES        | enables inserting an image in the editor    |
-| Video Insert Button | *Checkbox*                         | `false`              |                 | NO           | YES        | enables inserting a video in the editor     |
-| Read Only           | *Checkbox*                         | `false`              | Read Only Logic | NO           | YES        | enables read-only content in the editor     |
-| Editor Height       | *Text*                             |                      |                 | NO           | YES        | controls the height of the editor           |
-| Editor Min Height   | *Text*                             |                      |                 | NO           | YES        | controls the minimal height of the editor   |
+| Property            | Type                                                                                                                 | Default value        | Logic           | Data Binding | UI Setting | Description                                 |
+|---------------------|----------------------------------------------------------------------------------------------------------------------|----------------------|-----------------|--------------|------------|---------------------------------------------|
+| Content             | *Text*                                                                                                               |                      | Content Logic   | YES          | YES        | controls the content of the editor          |
+| Placeholder         | *Text*                                                                                                               | "Compose an epic..." |                 | NO           | YES        | controls the placeholder of the editor      |
+| Toolbar Position    | *Select*  <br/> "top" \| "bottom"                                                                                    | "top"                |                 | NO           | YES        | controls the position of the editor toolbar |
+| Fixed Toolbar       | *Checkbox*                                                                                                           | `true`               |                 | NO           | YES        | enables fixing the toolbar                  |
+| Link Insert Button  | *Checkbox*                                                                                                           | `true`               |                 | NO           | YES        | enables inserting a link in the editor      |
+| Image Insert Button | *Checkbox*                                                                                                           | `false`              |                 | NO           | YES        | enables inserting an image in the editor    |
+| Video Insert Button | *Checkbox*                                                                                                           | `false`              |                 | NO           | YES        | enables inserting a video in the editor     |
+| Read Only           | *Checkbox*                                                                                                           | `false`              | Read Only Logic | NO           | YES        | enables read-only content in the editor     |
+| Editor Height       | *Text*                                                                                                               |                      |                 | NO           | YES        | controls the height of the editor           |
+| Editor Min Height   | *Text*                                                                                                               |                      |                 | NO           | YES        | controls the minimal height of the editor   |
+| Border Width        | *Text*                                                                                                               | "1px"                |                 | NO           | YES        | controls the width of the editor border     |
+| Border Style        | *Select* <br/> "none" \| "solid" \| "dotted" \| "dashed" \| "double" \| "groove" \| "ridge" \| "inset" \| "outset"   | "solid"              |                 | NO           | YES        | controls the style of the editor border     |
+| Border Color        | *Color*                                                                                                              |                      |                 | NO           | YES        | controls the color of the editor border     |
 
 ## Events
 
