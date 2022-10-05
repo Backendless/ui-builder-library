@@ -1,15 +1,11 @@
 import { validate } from './index';
 import { Font, Size } from './use-quill-library';
 
+const { cn } = BackendlessUI.CSSUtils;
+
 export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
   const {
-    linkInsertButton,
-    imageInsertButton,
-    videoInsertButton,
-    toolbarPosition,
-    borderWidth,
-    borderColor,
-    borderStyle,
+    linkInsertButton, imageInsertButton, videoInsertButton, toolbarPosition, borderWidth, borderColor, borderStyle,
   } = component;
 
   const styles = {
@@ -45,69 +41,51 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
   );
 }
 
-function Button({ className, value, label }) {
-  return (
-    <button type="button" className={ className } value={ value }>{ label }</button>
-  );
-}
+const Button = React.memo(({ className, value, label }) => (
+  <button type="button" className={ className } value={ value }>{ label }</button>
+))
 
-function InlineFormattingButtons() {
-  const inlineFormattingClasses = ['ql-bold', 'ql-italic', 'ql-underline', 'ql-strike'];
+const InlineFormattingButtons = React.memo(() => (
+  <span className="ql-formats">
+    { inlineFormattingClasses.map((className, index) => (
+      <Button className={ className } key={ index }/>
+    )) }
+  </span>
+));
 
-  return (
-    <span className="ql-formats">
-      { inlineFormattingClasses.map((className, index) => (
-        <Button className={ className } key={ index }/>
-      )) }
-    </span>
-  );
-}
-
-function FontSelect() {
-  return (
-    <span className="ql-formats">
-      <select className="ql-font" defaultValue="arial">
-        { Font.whitelist.map((font, index) => {
-          const fontLabel = font.replace(/-/g, ' ').replace(/(^|\s)\S/g, letter => letter.toUpperCase());
-
-          return (
-            <option value={ font } key={ index }>{ fontLabel }</option>
-          );
-        }) }
-      </select>
-    </span>
-  );
-}
-
-function SizeSelect() {
-  return (
-    <span className="ql-formats">
-      <select className="ql-size" defaultValue="14">
-        { Size.whitelist.map((size, index) => (
-          <option value={ size } key={ index }>{ size }px</option>
-        )) }
-      </select>
-    </span>
-  );
-}
-
-function AlignButtons() {
-  const alignValues = ['', 'center', 'right', 'justify'];
-
-  return (
-    <span className="ql-formats">
-      { alignValues.map((value, index) => {
-        const className = !value ? 'ql-align ql-active' : 'ql-align';
+const FontSelect = React.memo(() => (
+  <span className="ql-formats">
+    <select className="ql-font" defaultValue="arial">
+      { Font.whitelist.map((font, index) => {
+        const fontLabel = font.replace(/-/g, ' ').replace(/(^|\s)\S/g, letter => letter.toUpperCase());
 
         return (
-          <Button className={ className } value={ value } key={ index }/>
+          <option value={ font } key={ index }>{ fontLabel }</option>
         );
       }) }
-    </span>
-  );
-}
+    </select>
+  </span>
+));
 
-function EmbedsButtons({ linkInsertButton, imageInsertButton, videoInsertButton }) {
+const SizeSelect = React.memo(() => (
+  <span className="ql-formats">
+    <select className="ql-size" defaultValue="14">
+      { Size.whitelist.map((size, index) => (
+        <option value={ size } key={ index }>{ size }px</option>
+      )) }
+    </select>
+  </span>
+));
+
+const AlignButtons = React.memo(() => (
+  <span className="ql-formats">
+    { alignValues.map((value, index) => (
+        <Button className={ cn('ql-align', { 'ql-active': !value }) } value={ value } key={ index }/>
+    )) }
+  </span>
+));
+
+const EmbedsButtons = React.memo(({ linkInsertButton, imageInsertButton, videoInsertButton }) => {
   const visibility = linkInsertButton || imageInsertButton || videoInsertButton;
   
   if (!visibility) {
@@ -121,20 +99,22 @@ function EmbedsButtons({ linkInsertButton, imageInsertButton, videoInsertButton 
       { videoInsertButton && <Button className="ql-video"/> }
     </span>
   );
-}
+});
 
-function AdditionalFormattingButtons() {
-  return (
-    <span>
-      { additionalFormats.map((button, index) => (
-        <span className="ql-formats" key={ index }>
-          <Button className={ button[0].className } value={ button[0].value }/>
-          <Button className={ button[1].className } value={ button[1].value }/>
-        </span>
-      )) }
-    </span>
-  );
-}
+const AdditionalFormattingButtons = React.memo(() => (
+  <span>
+    { additionalFormats.map((button, index) => (
+      <span className="ql-formats" key={ index }>
+        <Button className={ button[0].className } value={ button[0].value }/>
+        <Button className={ button[1].className } value={ button[1].value }/>
+      </span>
+    )) }
+  </span>
+));
+
+const inlineFormattingClasses = ['ql-bold', 'ql-italic', 'ql-underline', 'ql-strike'];
+
+const alignValues = ['', 'center', 'right', 'justify'];
 
 const additionalFormats = [
   [

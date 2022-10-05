@@ -2,28 +2,17 @@ import { useEffect, useRef } from 'react';
 
 import Quill from './lib/quil.min';
 
-export const Font = Quill.import('formats/font');
-Font.whitelist = [
-  'arial',
-  'comic-sans',
-  'courier-new',
-  'georgia',
-  'helvetica',
-  'lucida',
-  'andale-mono',
-  'book-antiqua',
-  'impact',
-  'tahoma',
-  'terminal',
-  'times-new-roman',
-  'trebuchet-ms',
-  'verdana',
-];
-Quill.register(Font, true);
-
 export const Size = Quill.import('formats/size');
+export const Font = Quill.import('formats/font');
+
 Size.whitelist = ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '26', '28', '36', '48'];
+Font.whitelist = [
+  'arial', 'comic-sans', 'courier-new', 'georgia', 'helvetica', 'lucida', 'andale-mono',
+  'book-antiqua', 'impact', 'tahoma', 'terminal', 'times-new-roman', 'trebuchet-ms', 'verdana',
+];
+
 Quill.register(Size, true);
+Quill.register(Font, true);
 
 export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
   const { placeholder, readOnly, content } = component;
@@ -44,7 +33,7 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
       theme      : 'snow',
     });
 
-    editorRef.current.on('text-change', function() {
+    editorRef.current.on('text-change', () => {
       setTimeout(() => component.content = editorRef.current.root.innerHTML);
       onTextChange();
     });

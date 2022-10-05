@@ -7,15 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function RichEditor({ component, eventHandlers }) {
   const {
-    display,
-    classList,
-    style,
-    fixedToolbar,
-    editorHeight,
-    editorMinHeight,
-    borderWidth,
-    borderStyle,
-    borderColor,
+    display, classList, style, fixedToolbar, editorHeight, editorMinHeight, borderWidth, borderStyle, borderColor,
   } = component;
   const { onBlur, onFocus, onTextChange } = eventHandlers;
 
