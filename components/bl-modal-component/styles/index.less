@@ -1,0 +1,28 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-modal-width: 100%;
+@bl-customComponent-modal-height: 100%;
+
+@bl-customComponent-modal-backdrop-color: rgba(0, 0, 0, 0.5);
+
+.bl-customComponent-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: @bl-customComponent-modal-width;
+  height: @bl-customComponent-modal-height;
+  z-index: 100;
+
+  .modal-content {
+    position: absolute;
+    z-index: 2;
+  }
+
+  .backdrop {
+    position: absolute;
+    width: @bl-customComponent-modal-width;
+    height: @bl-customComponent-modal-height;
+    background-color: @bl-customComponent-modal-backdrop-color;
+    z-index: 1;
+  }
+}

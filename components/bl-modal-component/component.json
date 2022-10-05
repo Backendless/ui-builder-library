@@ -1,0 +1,45 @@
+{
+  "id": "c_af2e9bc5f615f693cf07f4cd05249b37",
+  "name": "Modal",
+  "description": "This component is a Modal content of which you can add by dragging the components into this component.",
+  "showInToolbox": true,
+  "faIcon": "square",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "modalVisibility",
+      "label": "Modal Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "modalVisibilityLogic",
+      "handlerLabel": "Modal Visibility Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to control the display of the component.",
+      "settingTooltip": "This handler allows you to control the display of the component."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClose",
+      "label": "On Close Event",
+      "contextBlocks": [
+        {
+          "id": "modalVisibility",
+          "label": "Modal Visibility"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks on the backdrop or Escape button."
+    }
+  ],
+  "actions": [],
+  "pods": {
+    "6b6d2b798c040e21fdcbde3fe11b859f": {
+      "id": "modalContent",
+      "dataContainer": true
+    }
+  },
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"modalContent\" data-uid=\"6b6d2b798c040e21fdcbde3fe11b859f\" data-pod-container=\"true\" data-data-container=\"true\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;min-height:100px;min-width:100px;\"></div>"
+}
