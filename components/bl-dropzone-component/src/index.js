@@ -7,31 +7,9 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function DropzoneComponent({ component, eventHandlers }) {
   const {
-    display,
-    classList,
-    style,
-    acceptedFileTypes,
-    onDropBehaviour,
-    clickable,
-    footerVisibility,
-    headerVisibility,
-    label,
-    language,
-    maxFiles,
-    maxFileSize,
-    minHeight,
-    maxHeight,
-    viewMode,
-    disableScrollbar,
-    uploadOnDrop,
-    themeColor,
-    cleanButtonVisibility,
-    showInfoLayer,
-    activeItems,
-    preview,
-    borderWidth,
-    borderStyle,
-    borderColor,
+    display, classList, style, acceptedFileTypes, onDropBehaviour, clickable, footerVisibility, headerVisibility, label,
+    language, maxFiles, maxFileSize, minHeight, maxHeight, viewMode, disableScrollbar, uploadOnDrop, themeColor,
+    cleanButtonVisibility, showInfoLayer, activeItems, preview, borderWidth, borderStyle, borderColor,
   } = component;
   const { onDrop, onChangeView, onClean } = eventHandlers;
 
@@ -42,7 +20,7 @@ export default function DropzoneComponent({ component, eventHandlers }) {
   const handleSee = imageSource => setImageSrc(imageSource);
   const handleWatch = videoSource => setVideoSrc(videoSource);
   const handleClean = validatedFiles => onClean({ validatedFiles });
-  
+
   const borderStyles = {
     borderWidth: validate(borderWidth),
     borderStyle,
