@@ -1,5 +1,5 @@
-import { Document, Page } from './react-pdf.min.js';
 import { useState, useEffect, useRef } from 'react';
+import { Document, Page } from './react-pdf.min.js';
 import { Controls, NoData } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -11,13 +11,10 @@ export default function PdfViewer({ component, eventHandlers }) {
   const [numPages, setNumPages] = useState(null);
   const [pageIndex, setPageIndex] = useState(1);
   const [documentRef, setDocumentRef] = useState();
+  const [pageRef, setPageRef] = useState();
   const [controlsDisabled, setControlsDisabled] = useState(false);
 
   const inputRef = useRef();
-
-  useEffect(() => {
-    inputRef.current.style.width = ((inputRef.current.value.length + 1) * 9) + 'px';
-  }, [`${ pageIndex }`.length]);
 
   useEffect(() => {
     if (documentRef) {
@@ -36,8 +33,8 @@ export default function PdfViewer({ component, eventHandlers }) {
   };
 
   const onPageLoadSuccess = () => {
-    documentRef.firstChild.firstChild.style.width = width;
-    documentRef.firstChild.firstChild.style.height = height;
+    pageRef.firstChild.style.width = width;
+    pageRef.firstChild.style.height = height;
   };
 
   const onNoData = () => {
@@ -51,16 +48,10 @@ export default function PdfViewer({ component, eventHandlers }) {
       setPageIndex(1);
     }
 
-    if (/^\d+$/.test(target.value)) {
-      let page = Number(target.value);
+    if (Number(target.value)) {
+      const ensureRange = (v, {min, max}) => Math.max(min, Math.min(v, max));
 
-      if (page > numPages) {
-        page = numPages;
-      }
-
-      if (page < 1) {
-        page = 1;
-      }
+      const page = ensureRange(target.value, {min: 1, max: numPages})
 
       setPageIndex(page);
     }
@@ -87,6 +78,7 @@ export default function PdfViewer({ component, eventHandlers }) {
         onLoadError={ onDocumentLoadError }
         onLoadSuccess={ onDocumentLoadSuccess }>
         <Page
+          inputRef={(ref) => setPageRef(ref)}
           renderTextLayer={ false }
           onLoadSuccess={ onPageLoadSuccess }
           pageNumber={ pageIndex }
