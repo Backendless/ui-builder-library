@@ -14,6 +14,7 @@ export const shiftDate = (date, numDays) => {
   return newDate;
 };
 
+// https://css-tricks.com/snippets/javascript/lighten-darken-color/
 export const shadeColor = (col, amt) => {
   let usePound = false;
 
