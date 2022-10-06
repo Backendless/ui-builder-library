@@ -19,7 +19,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     setOptionsList(validate(options));
-  }, [options])
+  }, [options]);
 
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
   const filteredOptions = optionsList.filter(({ label }) => (

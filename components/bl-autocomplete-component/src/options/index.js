@@ -7,18 +7,18 @@ import { useOptionsPlacement } from '../helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Options(props) {
-  const { optionList, autocompleteHeight,
-    setInputValue, setAutocompleteValue, setIsOptionsOpen, onAutocompleteChange
+  const {
+    optionList, autocompleteHeight, setInputValue, setAutocompleteValue, setIsOptionsOpen, onAutocompleteChange
   } = props;
 
-  const optionsRef = useRef(null);
+  const optionsContainerRef = useRef(null);
   const [optionsPlacement, setOptionsPlacement] = useState('bottom');
 
-  useOptionsPlacement({ optionsRef, autocompleteHeight, setOptionsPlacement });
+  useOptionsPlacement({ optionsContainerRef, autocompleteHeight, setOptionsPlacement });
 
   if(!optionList.length) {
     return (
-      <div className="options" ref={ optionsRef }>
+      <div className="options" ref={ optionsContainerRef }>
         <div className="option">
           No options
         </div>
@@ -27,10 +27,12 @@ export function Options(props) {
   }
 
   return (
-    <div ref={ optionsRef } className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
+    <div
+      ref={ optionsContainerRef }
+      className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
       { optionList.map(item => (
         <Option
-          key={ item.objectId }
+          key={ item.value }
           item={ item }
           setInputValue={ setInputValue }
           setIsOptionsOpen={ setIsOptionsOpen }

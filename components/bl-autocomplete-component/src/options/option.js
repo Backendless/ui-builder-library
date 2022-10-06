@@ -22,7 +22,7 @@ export const Option = props => {
       <span
         tabIndex={ 1 }
         onKeyUp={ onEnterClick }>
-        {item.label}
+        { item.label }
       </span>
     </div>
   );
