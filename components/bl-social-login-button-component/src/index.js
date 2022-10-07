@@ -13,7 +13,7 @@ export default function SocialLoginButtonsComponent({ component, eventHandlers }
   }
 
   return (
-    <div className={ cn('bl-customComponent-socialLoginButton', classList, { disabled }) }>
+    <div className={ cn('bl-customComponent-socialLoginButtons', classList, { disabled }) }>
       { providersList.map(provider => (
         component[provider] &&
           <Button

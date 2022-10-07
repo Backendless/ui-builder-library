@@ -1,19 +1,19 @@
 // you can use LESS variables from the current Theme and app extensions of the UI-Container
-@bl-customComponent-socialLoginButton-maxWidth: 375px;
-@bl-customComponent-socialLoginButton-minWidth: 300px;
-@bl-customComponent-socialLoginButton-colorOnHover: #FFFFFF;
+@bl-customComponent-socialLoginButtons-maxWidth: 375px;
+@bl-customComponent-socialLoginButtons-minWidth: 300px;
+@bl-customComponent-socialLoginButtons-colorOnHover: #FFFFFF;
 
-@bl-customComponent-socialLoginButton-iconGoogle-colorPrimary: #DC4A3D;
-@bl-customComponent-socialLoginButton-iconFacebook-colorPrimary: #3C5A9A;
-@bl-customComponent-socialLoginButton-iconTwitter-colorPrimary: #55ACEE;
-@bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary: #0A66C2;
-@bl-customComponent-socialLoginButton-iconGithub-colorPrimary: #000000;
+@bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary: #DC4A3D;
+@bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary: #3C5A9A;
+@bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary: #55ACEE;
+@bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary: #0A66C2;
+@bl-customComponent-socialLoginButtons-iconGithub-colorPrimary: #000000;
 
-.bl-customComponent-socialLoginButton {
-  max-width: @bl-customComponent-socialLoginButton-maxWidth;
-  min-width: @bl-customComponent-socialLoginButton-minWidth;
+.bl-customComponent-socialLoginButtons {
+  max-width: @bl-customComponent-socialLoginButtons-maxWidth;
+  min-width: @bl-customComponent-socialLoginButtons-minWidth;
   width: 100%;
-  
+
   .social-button {
     display: inline-flex;
     align-items: center;
@@ -26,67 +26,67 @@
     box-sizing: border-box;
     border-radius: 3px;
     cursor: pointer;
-    
+
     &:hover {
-      color: @bl-customComponent-socialLoginButton-colorOnHover;
+      color: @bl-customComponent-socialLoginButtons-colorOnHover;
       transition: color .3s;
-      
+
       & .icon {
-        fill: @bl-customComponent-socialLoginButton-colorOnHover;
+        fill: @bl-customComponent-socialLoginButtons-colorOnHover;
         transition: fill .3s;
       }
     }
-    
+
     &__googleplus {
-      color: @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
-      border: 1px solid @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
-      
+      color: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
+
       &:hover {
-        background-color: @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
+        background-color: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
         transition: background-color .3s;
       }
     }
-    
+
     &__facebook {
-      color: @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
-      border: 1px solid @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
-      
+      color: @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
+
       &:hover {
-        background-color: @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
+        background-color: @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
         transition: background-color .3s;
       }
     }
-    
+
     &__twitter {
-      color: @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
-      border: 1px solid @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
-      
+      color: @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
+
       &:hover {
-        background-color: @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
+        background-color: @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
         transition: background-color .3s;
       }
     }
-    
+
     &__linkedin {
-      color: @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
-      border: 1px solid @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
-      
+      color: @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
+
       &:hover {
-        background-color: @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
+        background-color: @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
         transition: background-color .3s;
       }
     }
-    
+
     &__github {
-      color: @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
-      border: 1px solid @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
-      
+      color: @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
+
       &:hover {
-        background-color: @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
+        background-color: @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
         transition: background-color .3s;
       }
     }
-    
+
     &__icon-container {
       display: flex;
       align-items: center;
@@ -95,7 +95,7 @@
       width: 100%;
       max-width: 15%;
     }
-    
+
     &__text-container {
       display: flex;
       align-items: center;
@@ -103,49 +103,49 @@
       width: 100%;
       max-width: 75%;
     }
-    
+
     &__text {
       font-size: 15px;
       text-transform: uppercase;
     }
-    
+
     .icon {
       width: 22px;
       height: 22px;
-      
+
       &__googleplus {
-        fill: @bl-customComponent-socialLoginButton-iconGoogle-colorPrimary;
+        fill: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
       }
-      
+
       &__facebook {
-        fill: @bl-customComponent-socialLoginButton-iconFacebook-colorPrimary;
+        fill: @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
       }
-      
+
       &__twitter {
-        fill: @bl-customComponent-socialLoginButton-iconTwitter-colorPrimary;
+        fill: @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
       }
-      
+
       &__linkedin {
-        fill: @bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary;
+        fill: @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
       }
-      
+
       &__github {
-        fill: @bl-customComponent-socialLoginButton-iconGithub-colorPrimary;
+        fill: @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
       }
     }
   }
-  
+
   .with-icon {
     justify-content: space-between;
   }
-  
+
   .with-icon .social-button__text-container {
     justify-content: start;
   }
 }
 
 @media(max-width: 450px) {
-  .bl-customComponent-socialLoginButton {
+  .bl-customComponent-socialLoginButtons {
     .social-button__text {
       font-size: 14px;
     }
