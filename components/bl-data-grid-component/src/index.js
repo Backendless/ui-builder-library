@@ -9,29 +9,18 @@ function CellComponent(params) {
 
 export default function DataGridComponent({ component, eventHandlers }) {
   const {
-    classList,
-    display,
-    disable,
-    sortable,
-    filter,
-    floatingFilter,
-    height,
-    width,
-    columnDefs,
-    rowData
+    classList, display, disabled, sortable, filter, floatingFilter, height, width, columnDefs, rowData, theme
   } = component;
   const { onCellClick } = eventHandlers;
 
   const gridRef = useRef();
-  const tableData = useMemo(() => rowData, [rowData]);
-  const columns = useMemo(() => columnDefs, [columnDefs]);
   const defaultColDef = useMemo(() => ({
     filter,
     sortable,
     floatingFilter,
     cellRenderer: memo(CellComponent),
     filterParams: { buttons: ['apply', 'reset'] }
-  }));
+  }), []);
 
   const handleCellClick = useCallback( params => {
     if (onCellClick) {
@@ -45,13 +34,13 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   return (
     <div
-      style={{ height, width, flexShrink: 0 }}
-      className={ cn("bl-customComponent-dataGrid", "ag-theme-alpine", classList, { disable }) }>
+      style={{ height: `${ height }px`, width: `${ width }px`, flexShrink: 0 }}
+      className={ cn("bl-customComponent-dataGrid", `ag-theme-${ theme }`, classList, { disabled }) }>
       <AgGridReact
-        ref={gridRef}
-        rowData={tableData}
-        columnDefs={columns}
-        defaultColDef={defaultColDef}
+        ref={ gridRef }
+        rowData={ rowData }
+        columnDefs={ columnDefs }
+        defaultColDef={ defaultColDef }
         onCellClicked={ handleCellClick }
       />
     </div>
