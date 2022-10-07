@@ -10,6 +10,18 @@
   "properties": [
     {
       "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "settingTooltip": "This handler allows you to disable a component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This handler allows you to disable a component.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
       "name": "modalVisibility",
       "label": "Modal Visibility",
       "showInSettings": true,
@@ -34,7 +46,6 @@
       "handlerDescription": "This event is triggered when the user clicks on the backdrop or Escape button."
     }
   ],
-  "actions": [],
   "pods": {
     "6b6d2b798c040e21fdcbde3fe11b859f": {
       "id": "modalContent",

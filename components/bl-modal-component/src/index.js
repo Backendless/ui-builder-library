@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 
+const { cn } = BackendlessUI.CSSUtils;
+
 export default function ModalComponent({ component, eventHandlers, pods }) {
-  const { modalVisibility } = component;
+  const { display, classList, style, disabled, modalVisibility } = component;
   const { onClose } = eventHandlers;
 
   const modalContentPod = pods['modalContent'];
@@ -33,7 +35,7 @@ export default function ModalComponent({ component, eventHandlers, pods }) {
   return (
     <>
       { modalVisibility &&
-        <div className="bl-customComponent-modal">
+        <div className={ cn("bl-customComponent-modal", classList, { disabled }) } style={ style }>
           <div className="backdrop" onClick={ handleClick } />
           <div className="modal-content">
             { modalContentPod.render() }
