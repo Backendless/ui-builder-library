@@ -22,14 +22,26 @@
     },
     {
       "type": "json",
-      "name": "buttonsList",
-      "label": "Buttons List",
-      "settingTooltip": "This handler allows you to add radio buttons to the component.",
+      "name": "options",
+      "label": "Options",
+      "settingTooltip": "This handler allows you to add options to the component.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "buttonsListLogic",
-      "handlerLabel": "Buttons List Logic",
-      "handlerDescription": "This handler allows you to add radio buttons to the component.",
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "handlerDescription": "This handler allows you to add options to the component.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "checkedValue",
+      "label": "Checked Value",
+      "settingTooltip": "This handler allows you to select value by default.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "checkedValueLogic",
+      "handlerLabel": "Checked Value Logic",
+      "handlerDescription": "This handler allows you to select value by default.",
       "dataBinding": true
     }
   ],
@@ -44,5 +56,38 @@
         }
       ]
     }
-  ]
+  ],
+  "actions": [
+    {
+      "id": "getValue",
+      "label": "Get Value",
+      "hasReturn": true
+    },
+    {
+      "id": "setValue",
+      "label": "Set Value",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    },
+    {
+      "id": "getOptions",
+      "label": "Get Options",
+      "hasReturn": true
+    },
+    {
+      "inputs": [
+        {
+          "id": "options",
+          "label": "Options"
+        }
+      ],
+      "id": "setOptions",
+      "label": "Set Options"
+    }
+  ],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"radio-buttons-group\" data-display data-uid=\"6f91abaacebca8e25f0d1f6815af1c0d\" style=\"display:flex;flex-direction:column;margin:0 0  0;\"><div data-module-type=\"radio-button\" data-checked=\"false\" data-value=\"radio1\" data-label=\"Radio 1\" data-name=\"radios\" data-display data-uid=\"e4578c11328be9c41b9e3eb7b2864147\"></div><div data-module-type=\"radio-button\" data-checked=\"false\" data-value=\"radio2\" data-label=\"Radio 2\" data-name=\"radios\" data-display data-uid=\"ea8523af60f709fc175dd4834b435f03\"></div><div data-module-type=\"radio-button\" data-checked=\"false\" data-value=\"radio3\" data-label=\"Radio 3\" data-name=\"radios\" data-display data-uid=\"0a0fdb61c1c73f78ac6b167581887247\"></div></div>"
 }

@@ -1,16 +1,16 @@
-export function Input({ id, value, isSelected, handleChange }) {
+export function Input({ value, isChecked, handleChange }) {
   return (
     <div className="input">
       <input
-        id={ id }
+        id={ `${ value }-radio-button` }
         type="radio"
         value={ value }
-        checked={ isSelected }
-        onChange={() => handleChange(id) }
+        checked={ isChecked }
+        onChange={ () => handleChange(value) }
         className="input__radio"
       />
       <div class="input__icon">
-        { isSelected &&
+        { isChecked &&
           <svg class="input__icon-filling" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"></path>
           </svg>
