@@ -1,0 +1,150 @@
+{
+  "id": "c_77c399a94abeab643336805b91a3aefb",
+  "name": "Social Login Buttons",
+  "description": "The Social Login Buttons component is designed for quick user login.",
+  "showInToolbox": true,
+  "faIcon": "toggle-on",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "settingTooltip": "This is the handler to disable the component.",
+      "dataBinding": true,
+      "handlerDescription": "This is the handler to disable the component.",
+      "handlerLabel": "Disabled Logic"
+    },
+    {
+      "type": "text",
+      "name": "redirectToPage",
+      "label": "Redirect To Page",
+      "settingTooltip": "This handler allows you to specify which page to go to after login.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "redirectToPageLogic",
+      "handlerLabel": "Redirect To Page Logic",
+      "handlerDescription": "This handler allows you to specify which page to go to after login.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "extraQueryParams",
+      "label": "Extra Query Params",
+      "settingTooltip": "This handler allows you to add extra query parameters that will be added to the URL address.",
+      "showInSettings": true,
+      "defaultValue": "",
+      "hasLogicHandler": true,
+      "handlerId": "extraQueryParamsLogic",
+      "handlerLabel": "Extra Query Params Logic",
+      "handlerDescription": "This handler allows you to add extra query parameters that will be added to the URL address.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "iconsVisibility",
+      "label": "Icons Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "iconsVisibilityLogic",
+      "handlerLabel": "Icons Visibility Logic",
+      "dataBinding": true,
+      "settingTooltip": "This handler allows you to control the visibility of the button icon.",
+      "handlerDescription": "This handler allows you to control the visibility of the button icon."
+    },
+    {
+      "type": "checkbox",
+      "name": "googleplus",
+      "label": "Google Plus Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "googleplusLogic",
+      "handlerLabel": "Google Plus Visibility Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to control the visibility of the Google Plus button.",
+      "settingTooltip": "This handler allows you to control the visibility of the Google Plus button."
+    },
+    {
+      "type": "checkbox",
+      "name": "facebook",
+      "label": "Facebook Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "facebookLogic",
+      "dataBinding": true,
+      "handlerLabel": "Facebook Visibility  Logic",
+      "settingTooltip": "This handler allows you to control the visibility of the Facebook button.",
+      "handlerDescription": "This handler allows you to control the visibility of the Facebook button."
+    },
+    {
+      "type": "checkbox",
+      "name": "twitter",
+      "label": "Twitter Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "twitterLogic",
+      "dataBinding": true,
+      "handlerLabel": "Twitter Visibility  Logic",
+      "handlerDescription": "This handler allows you to control the visibility of the Twitter button.",
+      "settingTooltip": "This handler allows you to control the visibility of the Twitter button."
+    },
+    {
+      "type": "checkbox",
+      "name": "linkedin",
+      "label": "Linkedin Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "linkedinLogic",
+      "handlerLabel": "Linkedin Visibility Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to control the visibility of the Linkedin button.",
+      "settingTooltip": "This handler allows you to control the visibility of the Linkedin button."
+    },
+    {
+      "type": "checkbox",
+      "name": "github",
+      "label": "Github Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "githubLogic",
+      "handlerLabel": "Github Visibility Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to control the visibility of the Github button.",
+      "settingTooltip": "This handler allows you to control the visibility of the Github button."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onLogin",
+      "contextBlocks": [
+        {
+          "id": "loginType",
+          "label": "Login Type"
+        }
+      ],
+      "label": "On Login Event"
+    },
+    {
+      "name": "onLoginFail",
+      "label": "On Login Fail Event",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ]
+    }
+  ],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"b73fd2da9e2106e1c2d2d2ea2b22d798\" style=\"display:flex;flex-shrink:0;padding:10px;min-width:100px;width:400px;height:50px;border:1px solid rgb(66, 103, 178);border-radius:3px 3px 3px 3px;margin:0 0;flex-direction:row;justify-content:space-around;\"><i data-icon=\"login\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"b4bcffd262d61591fc1a7ebc1777d4cb\"></i><span data-content=\"SOCIAL LOGIN BUTTON\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"4d577f94b2a467b3642c3a9cd573d655\" class=\"bl-text\" style=\"text-decoration:none;text-align:center;align-self:center;\"></span></div>"
+}
