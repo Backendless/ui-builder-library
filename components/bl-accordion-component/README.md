@@ -1,6 +1,6 @@
 # Accordion
 
-Accordion is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows displaying structured content through progressive disclosure. Accordion is divided into two logical sections: 
+Accordion is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows displaying structured content through progressive disclosure. This component is divided into two logical sections: 
 
 	1. The title that provides a high level overview of the content.
 	2. The section that contains the actual content.
