@@ -1,8 +1,18 @@
 # Alert
 
-Alert is a component of Backendless UI-Builder designer. This allows you to notify the user of some error, danger, information, or success.
+Alert is a component of the Backendless UI-Builder. It allows notifying a user when a specific event happens. This component supports 4 different notification types:
 
-The component based on external [alert](https://mui.com/material-ui/react-alert/).
+    1. Error
+    2. Warning
+    3. Info
+    4. Success
+
+Every notification type has different appearance:
+
+![message_types](https://user-images.githubusercontent.com/115621450/195350227-3356e00e-bb69-4322-83c6-e10ade596f86.png)
+
+
+
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
