@@ -23,11 +23,9 @@ Every notification has a close button located in the top right corner, and it is
 
 ![message_add_id](https://user-images.githubusercontent.com/115621450/195363670-59c3706d-15ef-4ead-bc82-7d644c164ba4.png)
 
-
-Then navigate to the Logic section of the selected component, and in the Alert :
+Then navigate to the **Logic** section of the selected component, and in the **UI Library** click the Alert, and from the appeared menu select the **Close Alert** block and connect it to the **On Close Button** event:
 
 ![message_add_codeless_block](https://user-images.githubusercontent.com/115621450/195363381-09d4b9ff-3d72-4ecb-9144-81721b3b2ccc.png)
-
 
 
 
