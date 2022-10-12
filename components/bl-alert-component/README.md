@@ -9,14 +9,27 @@ Alert is a component of the Backendless [UI-Builder](https://backendless.com/dev
 
 Every notification type has different appearance:
 
-![message_types](https://user-images.githubusercontent.com/115621450/195350227-3356e00e-bb69-4322-83c6-e10ade596f86.png)
+![message_types](https://user-images.githubusercontent.com/115621450/195358575-0eada315-be09-40f8-94c3-e53759f89c30.png)
 
-You can specify the title and the description in the UI-Builder. 
+The appearance of notifications can be easily configured in the UI-Builder. At the moment, there are 3 graphical variants of these messages:
+
+![message_graphical_variants](https://user-images.githubusercontent.com/115621450/195362219-9e16708a-4d9d-4022-9c0e-f74e95f2b1dd.png)
+
+You can also specify the title and the description of the notification in the settings:
+
+![message_configuration](https://user-images.githubusercontent.com/115621450/195361003-ba6a90e4-6362-4c0a-8b08-85037b385a88.png)
+
+Every notification has a close button located in the top right corner, and it is disabled by default. To enable the close button, select the component and enter the desired ID:
+
+![message_add_id](https://user-images.githubusercontent.com/115621450/195363670-59c3706d-15ef-4ead-bc82-7d644c164ba4.png)
 
 
-<p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
-</p>
+Then navigate to the Logic section of the selected component, and in the Alert :
+
+![message_add_codeless_block](https://user-images.githubusercontent.com/115621450/195363381-09d4b9ff-3d72-4ecb-9144-81721b3b2ccc.png)
+
+
+
 
 ## Properties
 
