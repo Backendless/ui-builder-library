@@ -1,10 +1,13 @@
 # Accordion
 
-This is a component of Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer. It allows the
-user to show and hide sections of related content on a page. The component supports basic and controlled type of
-accordion.
+Accordion is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows displaying structured content through progressive disclosure. Accordion is divided into two logical sections: 
 
-Customizations include adjustments of font size, color, background color and padding for both title and content.
+	1. The title that provides a high level overview of the content.
+	2. The section that contains the actual content.
+
+To save extra space in the application, the section with content remains hidden and only the title is visible. To disclose the hidden content of the section, a user must click the title.
+
+Additional properties allow customizing the font size, background color, text color, padding and behavior of the component. Refer to the Properties section below.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="643"/>
@@ -12,23 +15,22 @@ Customizations include adjustments of font size, color, background color and pad
 
 ## Configuration
 
-After adding the component to the page, specify the accordion data. This can be done in UI-Builder designer or using
-codeless logic.
+Configuration can be done in the UI Builder or using the Codeless Logic. You have to specify the data that will be displyed in the title and the section of the component. 
 
 ## Properties
 
-| Property                 | Type       | Default value                                                                                                    | Logic                 | Data Binding | UI Setting | Description                                                                                                                                        |
-|--------------------------|------------|------------------------------------------------------------------------------------------------------------------|-----------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Accordion Data           | *JSON*     | `[{"title": "Collapsible Group Item #1","content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}]` | Accordion Data Logic  | NO           | YES        | Specifies an array of accordion sections. Signature of section: `{title: string, content: string}`. Watch [Codeless Examples](#codeless-examples). |
-| Controlled Accordion     | *Checkbox* | false                                                                                                            |                       | NO           | YES        | enables expand only one section at the same time                                                                                                   |
-| Title Font Size          | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the font size of the accordion section title                                                                                              |
-| Title Color              | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the color of the accordion section title                                                                                                  |
-| Title Background Color   | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the background color of the accordion section title                                                                                       |
-| Title Padding            | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the padding of the accordion section title                                                                                                |
-| Content Font Size        | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the font size of the accordion section content                                                                                            |
-| Content Color            | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the color of the accordion section content                                                                                                |
-| Content Background Color | *Color*    |                                                                                                                  |                       | NO           | YES        | controls the background color of the accordion section content                                                                                     |
-| Content Padding          | *Text*     |                                                                                                                  |                       | NO           | YES        | controls the padding of the accordion section content                                                                                              |
+| Property                 | Type       | Default value                                                                                                    | Logic                | Data Binding | UI Setting | Description                                                                                                                                               |
+|--------------------------|------------|------------------------------------------------------------------------------------------------------------------|----------------------|--------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Accordion Data           | *JSON*     | `[{"title": "Collapsible Group Item #1","content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}]` | Accordion Data Logic | NO           | YES        | Specifies a JSON array containing data for the title and the section : `{title: string, content: string}`. Watch [Codeless Examples](#codeless-examples). |
+| Controlled Accordion     | *Checkbox* | false                                                                                                            |                      | NO           | YES        | when set to true, only one section expands at a time.                                                                                                     |
+| Title Font Size          | *Text*     |                                                                                                                  |                      | NO           | YES        | controls the font size of the title.                                                                                                                      |
+| Title Color              | *Color*    |                                                                                                                  |                      | NO           | YES        | controls the color of the title.                                                                                                                          |
+| Title Background Color   | *Color*    |                                                                                                                  |                      | NO           | YES        | controls the background color of the title.                                                                                                               |
+| Title Padding            | *Text*     |                                                                                                                  |                      | NO           | YES        | controls the padding of the title.                                                                                                                        |
+| Content Font Size        | *Text*     |                                                                                                                  |                      | NO           | YES        | controls the font size of the section's content.                                                                                                          |
+| Content Color            | *Color*    |                                                                                                                  |                      | NO           | YES        | controls the color of the section's content.                                                                                                              |
+| Content Background Color | *Color*    |                                                                                                                  |                      | NO           | YES        | controls the background color of the section's content.                                                                                                   |
+| Content Padding          | *Text*     |                                                                                                                  |                      | NO           | YES        | controls the padding of the section's content.                                                                                                            |
 
 ## Events
 
@@ -97,6 +99,6 @@ codeless logic.
 
 ## Codeless Examples
 
-Addition of accordion data using codeless logic:
+Below is a Codeless Example highlighting how to use the Accordion component:
 
 ![accordion data example](example-images/accordion-data-example.png)
