@@ -35,15 +35,15 @@ Then navigate to the **Logic** section of the selected component, and in the **U
 
 ## Properties
 
-| Property              | Type                                                   | Default Value | Logic                         | Data Binding | UI Setting | Description                                                              |
-|-----------------------|--------------------------------------------------------|---------------|-------------------------------|--------------|------------|--------------------------------------------------------------------------|
-| messageTitle          | String                                                 |               | Message Title Logic           | YES          | YES        | Allows writing the title of message.                                     |
-| messageText           | String                                                 |               | Message Text Logic            | YES          | YES        | Allows writing the text of message.                                      |
-| messageType           | Select ["error", "warning", "info", "success"]         | "error"       | Message Type Logic            | NO           | YES        | Allows select type of alert (error, warning, info, success).             |
-| iconVisibility        | Boolean                                                | `true`        | Icon Visibility Logic         | NO           | YES        | Allows making alerts with or without icon.                               |
-| closeButtonVisibility | Boolean                                                | `true`        | Close Button Visibility Logic | NO           | YES        | Allows making alerts with or without a close button.                     |
-| variant               | Select ["alert root", "alert outline", "alert filled"] | "alert root"  |                               | NO           | YES        | Allows select style for alert (alert root, alert outline, alert filled). |
-| closingDuration       | Number                                                 | 200           | Closing Duration Logic        | NO           | YES        | Allows specifying speed animation closing (ms) for the alert.            |
+| Property              | Type                                                   | Default Value | Logic                         | Data Binding | UI Setting | Description                                                                                          |
+|-----------------------|--------------------------------------------------------|---------------|-------------------------------|--------------|------------|------------------------------------------------------------------------------------------------------|
+| messageTitle          | String                                                 |               | Message Title Logic           | YES          | YES        | the title of an alert message.                                                                       |
+| messageText           | String                                                 |               | Message Text Logic            | YES          | YES        | the content of an alert message.                                                                     |
+| messageType           | Select ["error", "warning", "info", "success"]         | "error"       | Message Type Logic            | NO           | YES        | this property allows selecting the alert type: error, warning, info, success.                        |
+| iconVisibility        | Boolean                                                | `true`        | Icon Visibility Logic         | NO           | YES        | when enabled, the alert icon is displayed in the message.                                            |
+| closeButtonVisibility | Boolean                                                | `true`        | Close Button Visibility Logic | NO           | YES        | when enabled, the alert message appears without the close button.                                    |
+| variant               | Select ["alert root", "alert outline", "alert filled"] | "alert root"  |                               | NO           | YES        | this property allows selecting the graphical variant of an alert: root, alert outline, alert filled. |
+| closingDuration       | Number                                                 | 200           | Closing Duration Logic        | NO           | YES        | allows specifying the animation speed in milliseconds when closing the alert.                        |
 
 ## Events
 
