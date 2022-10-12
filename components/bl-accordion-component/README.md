@@ -7,11 +7,11 @@ Accordion is the component that can be used in Backendless [UI-Builder](https://
 
 To save extra space in the application, the section with content remains hidden and only the title is visible. To disclose the hidden content of the section, a user must click the title.
 
-Additional properties allow customizing the font size, background color, text color, padding and behavior of the component. Refer to the Properties section below.
-
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="643"/>
 </p>
+
+Additional properties allow customizing the font size, background color, text color, padding and behavior of the component. Refer to the Properties section below.
 
 ## Configuration
 
