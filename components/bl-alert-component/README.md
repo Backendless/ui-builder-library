@@ -19,7 +19,7 @@ You can also specify the title and the description of the notification in the se
 
 ![message_configuration](https://user-images.githubusercontent.com/115621450/195361003-ba6a90e4-6362-4c0a-8b08-85037b385a88.png)
 
-Every notification has a close button located in the top right corner, and it is disabled by default:
+Every notification has a close button located in the top right corner, but it is disabled by default:
 
 ![message_disabled_exit_button](https://user-images.githubusercontent.com/115621450/195366932-d4780a93-d6ee-4ab1-a541-2d4a07ff77a4.png)
 
