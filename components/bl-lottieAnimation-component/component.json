@@ -3,7 +3,7 @@
   "name": "Lottie Animation",
   "description": "This component allows you to upload and add animations",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "film",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
