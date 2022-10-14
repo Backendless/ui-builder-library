@@ -1,6 +1,6 @@
 {
   "id": "c_8e48c663806c2985ad6ae76724284745",
-  "name": "Double calendar",
+  "name": "Double Calendar",
   "description": "The component is designed to select a start date and an end date. And you can also choose `Specific date range` mode to select a specific date.",
   "showInToolbox": true,
   "faIcon": "calendar",
@@ -12,12 +12,12 @@
       "type": "checkbox",
       "name": "disabled",
       "label": "Disabled",
-      "settingTooltip": "This is the handler to disable the component.",
+      "settingTooltip": "This handler allows you to disable the component.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
-      "handlerDescription": "This is the handler to disable the component.",
+      "handlerDescription": "This handler allows you to disable the component.",
       "dataBinding": true
     },
     {
@@ -108,7 +108,8 @@
           "id": "daysAmount",
           "label": "Days Amount"
         }
-      ]
+      ],
+      "handlerDescription": "This event triggered when the user selects a start date."
     },
     {
       "name": "onEndDateChange",
@@ -122,7 +123,8 @@
           "id": "daysAmount",
           "label": "Days Amount"
         }
-      ]
+      ],
+      "handlerDescription": "This event triggered when the user selects an end date."
     },
     {
       "name": "onDateSelect",
@@ -132,13 +134,14 @@
           "id": "selectedDate",
           "label": "Selected Date"
         }
-      ]
+      ],
+      "handlerDescription": "This event triggered when the user selects a specific date in the range."
     },
     {
       "name": "onDateReset",
       "label": "On Date Reset Event",
-      "contextBlocks": []
+      "contextBlocks": [],
+      "handlerDescription": "This event triggered when the user clicks the reset button."
     }
-  ],
-  "blockUI": "<img data-url=\"/ui-builder/containers/default/components/custom/c_8e48c663806c2985ad6ae76724284745/thumbnail.png\" data-module-type=\"system\" data-module-id=\"image\" data-display data-uid=\"af544e1386eb07369daf1a79f73f5a33\" style=\"width:450px;\"/>"
+  ]
 }
