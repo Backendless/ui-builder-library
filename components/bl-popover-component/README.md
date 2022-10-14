@@ -8,11 +8,7 @@ The component allows you to render a popup window in your UI-Builder application
 
 | Property    | Type                                    | Default Value | Logic              | Data Binding | UI Setting | Description                                                            |
 |-------------|-----------------------------------------|---------------|--------------------|--------------|------------|------------------------------------------------------------------------|
-| title       | String                                  |               | Title Logic        | YES          | YES        | Allows to determine the title of popover                               |
-| text        | String                                  |               | Text Logic         | YES          | YES        | Allows to determine the text of popover                                |
-| buttonLabel | String                                  |               | Button Label Logic | YES          | YES        | Allows to determine the label of button                                |
 | position    | Select ["Top", "Right","Bottom","Left"] | "Top"         | Position Logic     | NO           | YES        | Allows to determine the position of the popover relative to the button |
-| disabled    | Boolean                                 | `false`       | Disabled Logic     | NO           | YES        | Allows determining whether a button is disabled or not                 |
 
 ## Events
 
@@ -37,10 +33,8 @@ The component allows you to render a popup window in your UI-Builder application
 
 **Colors**
 ```
-@bl-customComponent-popover-textColor: @appTextColor;
-@bl-customComponent-popover-title-background-color: if(@isLightTheme,#f0f0f0,#0f0f0f);
-@bl-customComponent-popover-text-background-color: @appBackgroundColor;
-@bl-customComponent-popover-border-color: if(@isLightTheme,rgba(0, 0, 0, 0.175),rgba(255, 255, 255, 0.175));
+@bl-customComponent-popover-background-color: @appBackgroundColor;
+@bl-customComponent-popover-border-color: if(@isLightTheme, rgba(0, 0, 0, 0.175), rgba(255, 255, 255, 0.175));
 ```
 
 **Others**

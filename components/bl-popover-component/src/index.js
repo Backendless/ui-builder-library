@@ -3,12 +3,15 @@ import { Tooltip } from './Tooltip';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function Popover({ component, eventHandlers }) {
-  const { display, style, classList, title, text, buttonLabel, position, disabled } = component;
+export default function Popover({ component, eventHandlers, pods }) {
+  const { display, style, classList, position } = component;
   const { onClick } = eventHandlers;
 
+  const popoverButton = pods['popoverButton'];
+  const popoverContent = pods['popoverContent'];
+
   const [isOpen, setIsOpen] = useState(false);
-  const buttonRef = useRef();
+  const contentContainer = useRef();
 
   component.setIsOpen = (boolean) => {
     setIsOpen(boolean);
@@ -20,20 +23,18 @@ export default function Popover({ component, eventHandlers }) {
 
   return (
     <div className={ cn('bl-customComponent-popover', classList) } style={ style }>
-      <button
-        ref={ buttonRef }
-        type="button"
-        className={ cn('popover-button', { disabled: disabled }) }
-        onClick={ () => onClick({ isOpen }) } disabled={ disabled }>
-        { buttonLabel }
-      </button>
+      <div
+        ref={ contentContainer }
+        className="content-container"
+        onClick={ () => onClick({ isOpen }) }>
+        { popoverButton.render() }
+      </div>
 
       { isOpen && (
         <Tooltip
-          buttonElement={ buttonRef.current }
-          title={ title }
-          text={ text }
+          contentContainerElement={ contentContainer.current }
           position={ position }
+          popoverContent={ popoverContent }
         />
       ) }
     </div>
