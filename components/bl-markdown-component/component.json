@@ -38,7 +38,8 @@
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine height for component"
+      "handlerDescription": "This is a handler for the logic to determine height for component",
+      "handlerLabel": "Height Logic"
     },
     {
       "type": "text",
@@ -48,10 +49,32 @@
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine width for component"
+      "handlerDescription": "This is a handler for the logic to determine width for component",
+      "handlerLabel": "Width Logic"
     }
   ],
   "eventHandlers": [],
-  "actions": [],
+  "actions": [
+    {
+      "id": "setContent",
+      "label": "Set Content",
+      "inputs": [
+        {
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "id": "setUrl",
+      "label": "Set URL",
+      "inputs": [
+        {
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
   "blockUI": "<span data-content=\"Markdown\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"fda5d2e3b79f8b58282af3ae0da9fd3b\" class=\"bl-text\" style=\"text-align:center;font-size:24px;padding:10px 10px 10px 10px;\"></span>"
 }
