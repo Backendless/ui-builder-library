@@ -1,1 +1,35 @@
 // you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-treemap-themeColor: @themePrimary;
+@bl-customComponent-treemap-backgroundColor: @appBackgroundColor;
+@bl-customComponent-treemap-textColor: @appTextColor;
+
+.bl-customComponent-treemap {
+  .TreeMap__breadcrumb {
+    display: flex;
+    padding-bottom: 10px;
+  }
+
+  .TreeMap__breadcrumbItem {
+    text-decoration: none;
+    outline: none;
+    font-size: 14px;
+    color: @bl-customComponent-treemap-textColor;
+    background-color: @bl-customComponent-treemap-backgroundColor;
+  }
+
+  .TreeMap__breadcrumbSeparator {
+    position: relative;
+    padding: 0 10px;
+
+    &::after {
+      content: ">";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 20px;
+      transform: translate(-50%, -50%);
+      background-color: @bl-customComponent-treemap-backgroundColor;
+      color: @bl-customComponent-treemap-themeColor;
+    }
+  }
+}
