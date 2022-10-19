@@ -4,43 +4,39 @@ import MarkdownIt from './markdown-it.min.js';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function MyCustomComponent({ component }) {
+export default function Markdown({ component }) {
   const { classList, style, display, url, markdownText, height, width } = component;
 
   const [markdown, setMarkdown] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const mdUrl = useMemo(() => url, [url]);
-
   const md = useMemo(() => new MarkdownIt(), []);
 
   component.setUrl = (url) => {
-    loadMd(url);
+    setContent(url);
   };
 
   component.setContent = (text) => {
-    loadMd(mdUrl, text);
+    setContent(url, text);
   };
 
   useEffect(() => {
-    loadMd(mdUrl, markdownText);
-  }, [markdownText, mdUrl]);
+    setContent(url, markdownText);
+  }, [markdownText, url]);
 
-  const loadMd = (url, text) => {
+  const setContent = (url, text) => {
     if (!text && url) {
       setIsLoading(true);
 
-      fetch(url)
-        .then(response => response.text())
+      fetchContent(url)
         .then((data) => {
           setMarkdown(md.render(data));
-          setIsLoading(false);
         })
         .catch((error) => {
           setErrorMessage(error.message);
-          setIsLoading(false);
-        });
+        })
+        .finally(() => setIsLoading(false));
     } else if (text) {
       setMarkdown(md.render(text));
     } else {
@@ -56,12 +52,12 @@ export default function MyCustomComponent({ component }) {
     <div
       className={ cn('bl-customComponent-markdown markdown-body', classList) }
       style={ { ...style, height: height || '100%', width: width || '100%' } }>
-      <MdComponent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown }/>
+      <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown }/>
     </div>
   );
 }
 
-function MdComponent({ isLoading, errorMessage, markdown }) {
+function MdContent({ isLoading, errorMessage, markdown }) {
   if (isLoading) {
     return <Loader/>;
   }
@@ -83,3 +79,9 @@ function Loader() {
     </div>
   );
 }
+
+const fetchContent = async (url) => {
+  const response = await fetch(url);
+
+  return await response.text();
+};
