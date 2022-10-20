@@ -6,35 +6,38 @@ Autocomplete is a component of Backendless UI-Builder designer. This allows you 
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-## Usage
+## Properties
 
-Add a component to your page and add the items to the list.
+| Property             | Type                                                | Default value | Logic                      | Data Binding | UI Setting | Description                                                   |
+|----------------------|-----------------------------------------------------|---------------|----------------------------|--------------|------------|--------------------------------------------------------------|
+| Disabled             | *Checkbox*                                          | `false`       | Disabled Logic             | YES          | YES        | This handler allows you to disable a component.                                                    |
+| Placeholder          | *Text*                                              | "Placeholder" | Placeholder Logic          | YES          | YES        | This handler allows you to select a label of autocomplete component.                                                    |
+| Autocomplete Variant | *Select* <br/> "outlined" \| "standart" \| "filled" | "outlined"    | Autocomplete Variant Logic | YES          | YES        | This handler allows you to select the variant of autocomplete.                                                 |
+| Options              | *JSON*                                              |               | Options Logic              | YES          | YES        | This handler allows you to add options to be displayed in the options list. Watch [Codeless Examples](#Examples).       |
 
-### Component Elements
+## Events
 
-<dl>
-<dt>Text field</dt>
-<dd>The component has a text field for filtering items from the list. When the user enters text, only those elements that match the entered value remain in the list.</dd>
-<dt>List of options</dt>
-<dd>A list that displays all the options that you specify in the `Options` propertie.</dd>
-</dl>
+| Name                        | Triggers                                    | Context Blocks                             |
+|-----------------------------|---------------------------------------------|--------------------------------------------|
+| On Change Event             | when the user enters text into a text field | Input Value: `String`                      |
+| On Button Clear Click Event | when the user clicks the clear button       |                                            |
 
-### Component Properties
+## Styles
 
-  Name                | Type   | Default value     | Description
- ---------------------|--------|-------------------|-------------------------------------------------------------------------------------
-  Disabled            | bool   | False             | This property allows you to disable autocomplete.
-  Placeholder         | string | Placeholder       | This property allows you to select a label of autocomplete component.
-  Options             | array  |                   | This property allows you to add items to be displayed in the options list.
-  Autocomplete variant| string | outlined          | This property allows you to select the variant of autocomplete. Autocomplete has three variants: `outlined`, `standart`, `filled`.
+**Theme**
+````
+@bl-customComponent-autocomplete-themeColor: @themePrimary;
+@bl-customComponent-autocomplete-backgroundColor: @appBackgroundColor;
+@bl-customComponent-autocomplete-textColor: @appTextColor;
+````
 
-### Events
+**Dimensions**
+````
+@bl-customComponent-autocomplete-width: 300px;
+````
 
-<dl>
-<dt>On autocomplete change</dt>
-<dd>Triggered when the user select an item from the options.</dd>
-<dt>On button clear click</dt>
-<dd>Triggered when the user clicks the clear button.</dd>
-<dt>On change</dt>
-<dd>Triggered when the user enters text into a text field.</dd>
-</dl>
+## <a name="Examples"></a> Codeless Examples
+
+Adding options to options list:
+
+<img alt="adding options" src="./example-images/adding-options.png" width="720" />
