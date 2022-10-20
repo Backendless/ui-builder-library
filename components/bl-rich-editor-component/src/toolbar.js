@@ -1,4 +1,4 @@
-import { validate } from './index';
+import { ensureMeasure } from './index';
 import { Font, Size } from './use-quill-library';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -10,8 +10,8 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
 
   const styles = {
     display          : toolbarVisibility ? 'block' : 'none',
-    borderBottomWidth: toolbarPosition === 'top' ? validate(borderWidth) : '0',
-    borderTopWidth   : toolbarPosition === 'bottom' ? validate(borderWidth) : '0',
+    borderBottomWidth: toolbarPosition === 'top' ? ensureMeasure(borderWidth) : '0',
+    borderTopWidth   : toolbarPosition === 'bottom' ? ensureMeasure(borderWidth) : '0',
     order            : toolbarPosition === 'bottom' ? '2' : '0',
     borderColor,
     borderStyle,
@@ -43,7 +43,7 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
 
 const Button = React.memo(({ className, value, label }) => (
   <button type="button" className={ className } value={ value }>{ label }</button>
-))
+));
 
 const InlineFormattingButtons = React.memo(() => (
   <span className="ql-formats">
@@ -80,18 +80,18 @@ const SizeSelect = React.memo(() => (
 const AlignButtons = React.memo(() => (
   <span className="ql-formats">
     { alignValues.map((value, index) => (
-        <Button className={ cn('ql-align', { 'ql-active': !value }) } value={ value } key={ index }/>
+      <Button className={ cn('ql-align', { 'ql-active': !value }) } value={ value } key={ index }/>
     )) }
   </span>
 ));
 
 const EmbedsButtons = React.memo(({ linkInsertButton, imageInsertButton, videoInsertButton }) => {
   const visibility = linkInsertButton || imageInsertButton || videoInsertButton;
-  
+
   if (!visibility) {
     return null;
   }
-  
+
   return (
     <span className="ql-formats">
       { linkInsertButton && <Button className="ql-link"/> }

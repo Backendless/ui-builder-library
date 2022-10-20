@@ -16,6 +16,8 @@ export default function RichEditor({ component, eventHandlers }) {
   const toolbarRef = useRef(null);
   const editorRef = useQuillLibrary(quillRef, toolbarRef, component, onTextChange);
 
+  useComponentActions(component, editorRef);
+
   const focus = () => {
     if (!fixedToolbar) {
       setToolbarVisibility(true);
@@ -32,39 +34,43 @@ export default function RichEditor({ component, eventHandlers }) {
     onBlur();
   };
 
-  component.getText = (index, length) => editorRef.current.getText(index, length);
-  component.setText = data => editorRef.current.setText(data);
-  component.getHTML = () => editorRef.current.root.innerHTML;
-  component.setHTML = data => editorRef.current.root.innerHTML = data;
-  component.getLength = () => editorRef.current.getLength();
-  component.deleteText = (index, length) => editorRef.current.deleteText(index, length);
-  component.format = (property, value) => editorRef.current.format(property, value);
-  component.blur = () => editorRef.current.blur();
-  component.focus = () => editorRef.current.focus();
-  component.setSelection = (index, length) => editorRef.current.setSelection(index, length);
-  component.getSelection = () => editorRef.current.getSelection();
-
   const styles = {
     display: display ? 'flex' : 'none',
-    borderWidth: validate(borderWidth),
+    borderWidth: ensureMeasure(borderWidth),
     borderStyle,
     borderColor,
     ...style,
   };
 
-  const editorHeightStyles = {
-    height   : validate(editorHeight),
-    minHeight: validate(editorMinHeight),
+  const editorStyles = {
+    height   : ensureMeasure(editorHeight),
+    minHeight: ensureMeasure(editorMinHeight),
   };
 
   return (
     <div className={ cn('bl-customComponent-rich-editor', classList) } style={ styles }>
       <Toolbar component={ component } toolbarRef={ toolbarRef } toolbarVisibility={ toolbarVisibility }/>
-      <div ref={ quillRef } id="editor" style={ editorHeightStyles } onBlur={ blur } onFocus={ focus }></div>
+      <div ref={ quillRef } id="editor" style={ editorStyles } onBlur={ blur } onFocus={ focus }></div>
     </div>
   );
 }
 
-export function validate(dimension) {
+export function ensureMeasure(dimension) {
   return String(Number(dimension)) === dimension ? dimension + 'px' : dimension;
+}
+
+function useComponentActions(component, editorRef) {
+  Object.assign(component, {
+    getText: (index, length) => editorRef.current.getText(index, length),
+    setText: data => editorRef.current.setText(data),
+    getHTML: () => editorRef.current.root.innerHTML,
+    setHTML: data => editorRef.current.root.innerHTML = data,
+    getLength: () => editorRef.current.getLength(),
+    deleteText: (index, length) => editorRef.current.deleteText(index, length),
+    format: (property, value) => editorRef.current.format(property, value),
+    blur: () => editorRef.current.blur(),
+    focus: () => editorRef.current.focus(),
+    setSelection: (index, length) => editorRef.current.setSelection(index, length),
+    getSelection: () => editorRef.current.getSelection(),
+  });
 }
