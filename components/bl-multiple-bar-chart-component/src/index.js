@@ -6,7 +6,7 @@ import { validate } from './validate';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleBarChartComponent({ component }) {
-  const { classList, display, disable, data, displayGrid, gridMarks, style } = component;
+  const { classList, display, disable, data, gridVisibility, gridMarks, style } = component;
 
   const [chartData, setChartData] = useState([]);
 
@@ -24,7 +24,7 @@ export default function MultipleBarChartComponent({ component }) {
     <div className={ cn('bl-customComponent-multipleBarChart', ...classList, { disable }) } style={ style }>
       <div className="chart">
         <div className="chart__items">
-          { displayGrid &&
+          { gridVisibility &&
             <div className="chart__grids">
               { marksList.map(item => (
                 <div className="chart__y-grid-line" style={{ left: `${ item }%`}} />
@@ -40,7 +40,7 @@ export default function MultipleBarChartComponent({ component }) {
             />
           )) }
         </div>
-        { displayGrid &&
+        { gridVisibility &&
           <div className="chart__percentage-marks">
             { marksList.map(item => (
               <div className="chart__percentage-marks-item" style={{ left: `${ item }%`}}>{ `${ item }%` }</div>
