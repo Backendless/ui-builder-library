@@ -42,6 +42,7 @@ The component covers all the main features of the library and provides a way to 
 
 | Name                 | Triggers                                                                | Context Blocks           |
 |----------------------|-------------------------------------------------------------------------|--------------------------|
+| File Name Logic      | when the user upload file to the server                                 | File: `Object`           |
 | On Change Event      | when the value of the file list is changed                              | Files List: `Array`      |
 | On Drop Event        | when files are dropped inside the dropzone or selected from file dialog | Files List: `Array`      |
 | On Change View Event | when view mode is changed                                               | View Mode: `String`      |
@@ -69,4 +70,8 @@ The component covers all the main features of the library and provides a way to 
 
 ````
 @bl-customComponent-dropzone-minWidth: 436px;
+@bl-customComponent-dropzone-header-gap: 3px;
+@bl-customComponent-dropzone-header-paddingRight: 0;
+@bl-customComponent-dropzone-header-paddingTop: 5px;
+@bl-customComponent-dropzone-footer-width: 100%;
 ````

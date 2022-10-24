@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Dropzone, FileItem, FullScreenPreview, VideoPreview } from './lib/dropzone-ui.min';
-import { useDropzone, validate } from './helpers';
+import { ensureMeasure, useDropzone } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -22,7 +22,7 @@ export default function DropzoneComponent({ component, eventHandlers }) {
   const handleClean = validatedFiles => onClean({ validatedFiles });
 
   const borderStyles = {
-    borderWidth: validate(borderWidth),
+    borderWidth: ensureMeasure(borderWidth),
     borderStyle,
     borderColor,
   };
@@ -43,8 +43,8 @@ export default function DropzoneComponent({ component, eventHandlers }) {
         maxFileSize={ maxFileSize }
         maxFiles={ maxFiles }
         label={ label }
-        minHeight={ validate(minHeight) }
-        maxHeight={ validate(maxHeight) }
+        minHeight={ ensureMeasure(minHeight) }
+        maxHeight={ ensureMeasure(maxHeight) }
         localization={ language }
         view={ viewMode === 'unset' ? false : viewMode }
         footer={ footerVisibility }

@@ -298,6 +298,18 @@
   ],
   "eventHandlers": [
     {
+      "name": "fileNameLogic",
+      "label": "File Name Logic",
+      "contextBlocks": [
+        {
+          "id": "file",
+          "label": "File"
+        }
+      ],
+      "output": true,
+      "handlerDescription": "This is a handler where you can determine the name of the file which it will be saved with."
+    },
+    {
       "name": "onChange",
       "label": "On Change Event",
       "handlerDescription": "This event is fired when the value of the file list is changed.",

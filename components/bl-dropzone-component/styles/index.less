@@ -6,18 +6,34 @@
 @bl-customComponent-dropzone-fileName-color: @bl-customComponent-dropzone-textColor;
 @bl-customComponent-dropzone-minWidth: 436px;
 
+@bl-customComponent-dropzone-header-gap: 3px;
+@bl-customComponent-dropzone-header-paddingRight: 0;
+@bl-customComponent-dropzone-header-paddingTop: 5px;
+
+@bl-customComponent-dropzone-footer-width: 100%;
+
 .bl-customComponent-dropzone {
   .dropzone-ui {
     color: @bl-customComponent-dropzone-color;
     background-color: @bl-customComponent-dropzone-backgroundColor;
     min-width: @bl-customComponent-dropzone-minWidth;
 
-    .dz-ui-header span svg {
-      fill: @bl-customComponent-dropzone-color;
+    .dz-ui-header {
+      gap: @bl-customComponent-dropzone-header-gap;
+      padding-right: @bl-customComponent-dropzone-header-paddingRight;
+      padding-top: @bl-customComponent-dropzone-header-paddingTop;
 
-      path:not(:last-child) {
-        opacity: 0;
+      span svg {
+        fill: @bl-customComponent-dropzone-color;
+
+        path:not(:last-child) {
+          opacity: 0;
+        }
       }
+    }
+
+    .dz-ui-footer {
+      width: @bl-customComponent-dropzone-footer-width;
     }
 
     .dz-ui-label {
