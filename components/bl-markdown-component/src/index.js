@@ -14,31 +14,35 @@ export default function Markdown({ component }) {
   const md = useMemo(() => new MarkdownIt(), []);
 
   component.setUrl = (url) => {
-    setContent(url);
+    fetchContent(url);
   };
 
   component.setContent = (text) => {
-    setContent(url, text);
+    setMarkdown(md.render(text));
   };
 
   useEffect(() => {
-    setContent(url, markdownText);
+    loadMd(url, markdownText);
   }, [markdownText, url]);
 
-  const setContent = (url, text) => {
-    if (!text && url) {
-      setIsLoading(true);
+  const fetchContent = (url) => {
+    setIsLoading(true);
+    fetch(url)
+      .then(response => response.text())
+      .then((data) => {
+        component.setContent(data);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      })
+      .finally(() => setIsLoading(false));
+  }
 
+  const loadMd = (url, text) => {
+    if (text) {
+      component.setContent(text);
+    } else if (url) {
       fetchContent(url)
-        .then((data) => {
-          setMarkdown(md.render(data));
-        })
-        .catch((error) => {
-          setErrorMessage(error.message);
-        })
-        .finally(() => setIsLoading(false));
-    } else if (text) {
-      setMarkdown(md.render(text));
     } else {
       setMarkdown('<h1>No specified markdown text</h1>');
     }
@@ -79,9 +83,3 @@ function Loader() {
     </div>
   );
 }
-
-const fetchContent = async (url) => {
-  const response = await fetch(url);
-
-  return await response.text();
-};
