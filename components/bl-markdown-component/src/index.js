@@ -18,7 +18,7 @@ export default function Markdown({ component }) {
   };
 
   component.setContent = (text) => {
-    setMarkdown(md.render(text));
+    setContent(text);
   };
 
   useEffect(() => {
@@ -30,19 +30,23 @@ export default function Markdown({ component }) {
     fetch(url)
       .then(response => response.text())
       .then((data) => {
-        component.setContent(data);
+        setContent(data);
       })
       .catch((error) => {
         setErrorMessage(error.message);
       })
       .finally(() => setIsLoading(false));
-  }
+  };
+
+  const setContent = (text) => {
+    setMarkdown(md.render(text));
+  };
 
   const loadMd = (url, text) => {
     if (text) {
-      component.setContent(text);
+      setContent(text);
     } else if (url) {
-      fetchContent(url)
+      fetchContent(url);
     } else {
       setMarkdown('<h1>No specified markdown text</h1>');
     }
