@@ -7,11 +7,11 @@ export default function Popover({ component, eventHandlers, pods }) {
   const { display, style, classList, position } = component;
   const { onClick } = eventHandlers;
 
-  const popoverButton = pods['popoverButton'];
+  const popoverTrigger = pods['popoverTrigger'];
   const popoverContent = pods['popoverContent'];
 
   const [isOpen, setIsOpen] = useState(false);
-  const contentContainer = useRef();
+  const contentElement = useRef();
 
   component.setIsOpen = (boolean) => {
     setIsOpen(boolean);
@@ -24,15 +24,15 @@ export default function Popover({ component, eventHandlers, pods }) {
   return (
     <div className={ cn('bl-customComponent-popover', classList) } style={ style }>
       <div
-        ref={ contentContainer }
+        ref={ contentElement }
         className="content-container"
         onClick={ () => onClick({ isOpen }) }>
-        { popoverButton.render() }
+        { popoverTrigger.render() }
       </div>
 
       { isOpen && (
         <Tooltip
-          contentContainerElement={ contentContainer.current }
+          contentElement={ contentElement.current }
           position={ position }
           popoverContent={ popoverContent }
         />

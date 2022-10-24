@@ -5,48 +5,41 @@ const Position = {
   LEFT  : 'left',
 };
 
-export const translatePopover = (contentContainerElement, root, position) => {
-  let rootTranslateTop, rootTranslateLeft;
-
+export const translatePopover = (contentElement, root, position) => {
   const rootOffset = getOffset(root);
-  const contentContainerOffset = getOffset(contentContainerElement);
+  const contentOffset = getOffset(contentElement);
 
-  if (position === Position.RIGHT || position === Position.LEFT) {
-    const contentContainerHorizontalCenter = contentContainerElement.clientHeight / 2;
-    const rootHorizontalCenter = root.clientHeight / 2;
+  const contentHorizontalCenter = contentElement.clientHeight / 2;
+  const rootHorizontalCenter = root.clientHeight / 2;
+  const contentContainerVerticalCenter = contentElement.clientWidth / 2;
+  const rootVerticalCenter = root.clientWidth / 2;
 
-    rootTranslateTop = contentContainerOffset.top - rootOffset.top
-      + contentContainerHorizontalCenter - rootHorizontalCenter;
+  const horizontalTopShift = contentOffset.top - rootOffset.top + contentHorizontalCenter - rootHorizontalCenter;
+  const verticalLeftShift = contentOffset.left + contentContainerVerticalCenter - rootVerticalCenter;
 
-    if (position === Position.RIGHT) {
-      rootTranslateLeft = contentContainerOffset.left + contentContainerElement.getBoundingClientRect().width
-        + root.firstChild.clientHeight + rootOffset.left;
+  const { width: contentWidth, height: contentHeight } = contentElement.getBoundingClientRect();
+  const { width: rootWidth, height: rootHeight } = root.getBoundingClientRect();
+
+  const ShiftHandler = {
+    [Position.RIGHT] : {
+      topShift : horizontalTopShift,
+      leftShift: contentOffset.left + contentWidth + root.firstChild.clientHeight + rootOffset.left
+    },
+    [Position.LEFT]  : {
+      topShift : horizontalTopShift,
+      leftShift: contentOffset.left - rootWidth - root.firstChild.clientHeight + rootOffset.left
+    },
+    [Position.TOP]   : {
+      topShift : contentOffset.top - rootOffset.top - rootHeight - root.firstChild.clientHeight,
+      leftShift: verticalLeftShift
+    },
+    [Position.BOTTOM]: {
+      topShift : contentOffset.top + contentHeight - rootOffset.top + root.firstChild.clientHeight,
+      leftShift: verticalLeftShift
     }
+  };
 
-    if (position === Position.LEFT) {
-      rootTranslateLeft = contentContainerOffset.left - root.getBoundingClientRect().width
-        - root.firstChild.clientHeight + rootOffset.left;
-    }
-  }
-
-  if (position === Position.TOP || position === Position.BOTTOM) {
-    const contentContainerVerticalCenter = contentContainerElement.clientWidth / 2;
-    const rootVerticalCenter = root.clientWidth / 2;
-
-    rootTranslateLeft = contentContainerOffset.left + contentContainerVerticalCenter - rootVerticalCenter;
-
-    if (position === Position.TOP) {
-      rootTranslateTop = contentContainerOffset.top - rootOffset.top - root.getBoundingClientRect().height
-        - root.firstChild.clientHeight;
-    }
-
-    if (position === Position.BOTTOM) {
-      rootTranslateTop = contentContainerOffset.top + contentContainerElement.getBoundingClientRect().height
-        - rootOffset.top + root.firstChild.clientHeight;
-    }
-  }
-
-  return { rootTranslateTop, rootTranslateLeft };
+  return ShiftHandler[position];
 };
 
 const getOffset = (el) => {
