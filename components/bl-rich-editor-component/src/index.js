@@ -35,7 +35,7 @@ export default function RichEditor({ component, eventHandlers }) {
   };
 
   const styles = {
-    display: display ? 'flex' : 'none',
+    display    : display ? 'flex' : 'none',
     borderWidth: ensureMeasure(borderWidth),
     borderStyle,
     borderColor,
@@ -61,15 +61,15 @@ export function ensureMeasure(dimension) {
 
 function useComponentActions(component, editorRef) {
   Object.assign(component, {
-    getText: (index, length) => editorRef.current.getText(index, length),
-    setText: data => editorRef.current.setText(data),
-    getHTML: () => editorRef.current.root.innerHTML,
-    setHTML: data => editorRef.current.root.innerHTML = data,
-    getLength: () => editorRef.current.getLength(),
-    deleteText: (index, length) => editorRef.current.deleteText(index, length),
-    format: (property, value) => editorRef.current.format(property, value),
-    blur: () => editorRef.current.blur(),
-    focus: () => editorRef.current.focus(),
+    getText     : (index, length) => editorRef.current.getText(index, length),
+    setText     : data => editorRef.current.setText(data),
+    getHTML     : () => editorRef.current.root.innerHTML,
+    setHTML     : data => editorRef.current.root.innerHTML = data,
+    getLength   : () => editorRef.current.getLength(),
+    deleteText  : (index, length) => editorRef.current.deleteText(index, length),
+    format      : (property, value) => editorRef.current.format(property, value),
+    blur        : () => editorRef.current.blur(),
+    focus       : () => editorRef.current.focus(),
     setSelection: (index, length) => editorRef.current.setSelection(index, length),
     getSelection: () => editorRef.current.getSelection(),
   });
