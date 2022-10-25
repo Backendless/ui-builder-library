@@ -1,0 +1,728 @@
+{
+  "id": "c_8742f14bae0de4b46c59cd430a8d5ca4",
+  "name": "Cropper",
+  "description": "This is a component for cropping image.",
+  "showInToolbox": true,
+  "faIcon": "crop",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "name": "imageUrl",
+      "handlerId": "imageUrlLogic",
+      "type": "text",
+      "label": "Image Url",
+      "defaultValue": "",
+      "handlerLabel": "Image Url Logic",
+      "handlerDescription": "This is a handler for the logic to determine the image of the cropper."
+    },
+    {
+      "type": "text",
+      "name": "initialLabel",
+      "label": "Initial Label",
+      "showInSettings": true,
+      "defaultValue": "Drop image here or click to select",
+      "hasLogicHandler": false,
+      "handlerId": "initialLabelLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "toolbarVisibility",
+      "label": "Toolbar Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "toolbarVisibilityLogic",
+      "handlerLabel": "Toolbar Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the toolbar should be visible."
+    },
+    {
+      "type": "checkbox",
+      "name": "addImageButtonVisibility",
+      "label": "Add Image Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "addImageButtonVisibilityLogic",
+      "handlerLabel": "Add Image Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the Add Image button should be visible."
+    },
+    {
+      "type": "checkbox",
+      "name": "cleanButtonVisibility",
+      "label": "Clean Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "cleanButtonVisibilityLogic",
+      "handlerLabel": "Clean Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the Clean button should be visible."
+    },
+    {
+      "type": "checkbox",
+      "name": "saveButtonVisibility",
+      "label": "Save Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "saveButtonVisibilityLogic",
+      "handlerLabel": "Save Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the Save button should be visible."
+    },
+    {
+      "type": "checkbox",
+      "name": "downloadButtonVisibility",
+      "label": "Download Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "downloadButtonVisibilityLogic",
+      "handlerLabel": "Download Button Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the Download button should be visible."
+    },
+    {
+      "type": "select",
+      "name": "aspectRatio",
+      "label": "Aspect Ratio",
+      "showInSettings": true,
+      "defaultValue": "NaN",
+      "hasLogicHandler": false,
+      "handlerId": "aspectRatioLogic",
+      "options": [
+        {
+          "value": "NaN",
+          "label": "free"
+        },
+        {
+          "value": "16/9",
+          "label": "16:9"
+        },
+        {
+          "value": "4/3",
+          "label": "4:3"
+        },
+        {
+          "value": "1/1",
+          "label": "1:1"
+        },
+        {
+          "value": "2/3",
+          "label": "2:3"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "dragMode",
+      "label": "Drag Mode",
+      "showInSettings": true,
+      "defaultValue": "move",
+      "hasLogicHandler": false,
+      "handlerId": "dragModeLogic",
+      "options": [
+        {
+          "value": "crop",
+          "label": "crop"
+        },
+        {
+          "value": "move",
+          "label": "move"
+        },
+        {
+          "value": "none",
+          "label": "none"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "cropBoxModal",
+      "label": "Crop Box Modal",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cropBoxModalLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "cropBoxGuides",
+      "label": "Crop Box Guides",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cropBoxGuidesLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "centerIndicator",
+      "label": "Center Indicator",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "centerIndicatorLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "cropBoxHighlight",
+      "label": "Crop Box Highlight",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cropBoxHighlightLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "backgroundGrid",
+      "label": "Background Grid",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "backgroundGridLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "autoCrop",
+      "label": "Auto Crop",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "autoCropLogic"
+    },
+    {
+      "type": "select",
+      "name": "autoCropArea",
+      "label": "Auto Crop Area",
+      "showInSettings": true,
+      "defaultValue": "0.8",
+      "hasLogicHandler": false,
+      "handlerId": "autoCropAreaLogic",
+      "options": [
+        {
+          "value": "0.1",
+          "label": "10%"
+        },
+        {
+          "value": "0.2",
+          "label": "20%"
+        },
+        {
+          "value": "0.3",
+          "label": "30%"
+        },
+        {
+          "value": "0.4",
+          "label": "40%"
+        },
+        {
+          "value": "0.5",
+          "label": "50%"
+        },
+        {
+          "value": "0.6",
+          "label": "60%"
+        },
+        {
+          "value": "0.7",
+          "label": "70%"
+        },
+        {
+          "value": "0.8",
+          "label": "80%"
+        },
+        {
+          "value": "0.9",
+          "label": "90%"
+        },
+        {
+          "value": "1",
+          "label": "100%"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "movableImage",
+      "label": "Movable Image",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "movableImageLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "rotatableImage",
+      "label": "Rotatable Image",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "rotatableImageLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "scalableImage",
+      "label": "Scalable Image",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "scalableImageLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "zoomableImage",
+      "label": "Zoomable Image",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "zoomableImageLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "zoomOnTouch",
+      "label": "Zoom On Touch",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "zoomOnTouchLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "zoomOnWheel",
+      "label": "Zoom On Wheel",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "zoomOnWheelLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "cropBoxMovable",
+      "label": "Crop Box Movable",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cropBoxMovableLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "cropBoxResizable",
+      "label": "Crop Box Resizable",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cropBoxResizableLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "toggleDragModeOnDblclick",
+      "label": "Toggle Drag Mode On Dblclick",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "toggleDragModeOnDblclickLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "number",
+      "name": "minContainerWidth",
+      "label": "Min Container Width",
+      "showInSettings": true,
+      "defaultValue": "200",
+      "hasLogicHandler": false,
+      "handlerId": "minContainerWidthLogic"
+    },
+    {
+      "type": "number",
+      "name": "minContainerHeight",
+      "label": "Min Container Height",
+      "showInSettings": true,
+      "defaultValue": "100",
+      "hasLogicHandler": false,
+      "handlerId": "minContainerHeightLogic"
+    },
+    {
+      "type": "number",
+      "name": "minCanvasWidth",
+      "label": "Min Canvas Width",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "minCanvasWidthLogic"
+    },
+    {
+      "type": "number",
+      "name": "minCanvasHeight",
+      "label": "Min Canvas Height",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "minCanvasHeightLogic"
+    },
+    {
+      "type": "number",
+      "name": "minCropBoxWidth",
+      "label": "Min Crop Box Width",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "minCropBoxWidthLogic"
+    },
+    {
+      "type": "number",
+      "name": "minCropBoxHeight",
+      "label": "Min Crop Box Height",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "minCropBoxHeightLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onReady",
+      "label": "On Ready Event",
+      "handlerDescription": "This event is fired when the cropper is fully rendered."
+    },
+    {
+      "name": "onCrop",
+      "label": "On Crop Event",
+      "contextBlocks": [
+        {
+          "id": "details",
+          "label": "Details"
+        }
+      ],
+      "handlerDescription": "This event is fired when the crop area is changed."
+    },
+    {
+      "name": "onCropStart",
+      "label": "On Crop Start Event",
+      "handlerDescription": "This event is fired when the user starts cropping the image."
+    },
+    {
+      "name": "onCropMove",
+      "label": "On Crop Move Event",
+      "handlerDescription": "This event is fired when the user moves the crop area."
+    },
+    {
+      "name": "onCropEnd",
+      "label": "On Crop End Event",
+      "handlerDescription": "This event is fired when the user finishes cropping the image."
+    },
+    {
+      "name": "onZoom",
+      "label": "On Zoom Event",
+      "handlerDescription": "This event is fired when the user zooms the image."
+    },
+    {
+      "name": "onSave",
+      "label": "On Save Event",
+      "contextBlocks": [
+        {
+          "id": "fileContent",
+          "label": "File Content"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps \"Save\" button."
+    }
+  ],
+  "actions": [
+    {
+      "id": "crop",
+      "label": "Crop"
+    },
+    {
+      "id": "reset",
+      "label": "Reset"
+    },
+    {
+      "id": "clear",
+      "label": "Clear"
+    },
+    {
+      "id": "replace",
+      "inputs": [
+        {
+          "id": "url",
+          "label": "url"
+        }
+      ],
+      "label": "Replace"
+    },
+    {
+      "id": "enableCropper",
+      "label": "Enable Cropper"
+    },
+    {
+      "id": "disableCropper",
+      "label": "Disable Cropper"
+    },
+    {
+      "id": "destroy",
+      "label": "Destroy"
+    },
+    {
+      "id": "move",
+      "label": "Move",
+      "inputs": [
+        {
+          "id": "offsetX",
+          "label": "offsetX"
+        },
+        {
+          "id": "offsetY",
+          "label": "offsetY"
+        }
+      ]
+    },
+    {
+      "id": "moveTo",
+      "label": "Move To",
+      "inputs": [
+        {
+          "id": "x",
+          "label": "x"
+        },
+        {
+          "id": "y",
+          "label": "y"
+        }
+      ]
+    },
+    {
+      "id": "zoom",
+      "label": "Zoom",
+      "inputs": [
+        {
+          "id": "ratio",
+          "label": "ratio"
+        }
+      ]
+    },
+    {
+      "id": "zoomTo",
+      "label": "Zoom To",
+      "inputs": [
+        {
+          "id": "ratio",
+          "label": "ratio"
+        },
+        {
+          "id": "x",
+          "label": "x"
+        },
+        {
+          "id": "y",
+          "label": "y"
+        }
+      ]
+    },
+    {
+      "id": "rotate",
+      "label": "Rotate",
+      "inputs": [
+        {
+          "id": "degree",
+          "label": "degree"
+        }
+      ]
+    },
+    {
+      "id": "rotateTo",
+      "label": "Rotate To",
+      "inputs": [
+        {
+          "id": "degree",
+          "label": "degree"
+        }
+      ]
+    },
+    {
+      "id": "scale",
+      "inputs": [
+        {
+          "id": "scaleX",
+          "label": "scaleX"
+        },
+        {
+          "id": "scaleY",
+          "label": "scaleY"
+        }
+      ],
+      "label": "Scale"
+    },
+    {
+      "id": "getData",
+      "label": "Get Data",
+      "hasReturn": true,
+      "inputs": [
+        {
+          "id": "rounded ",
+          "label": "rounded"
+        }
+      ]
+    },
+    {
+      "id": "setData",
+      "label": "Set Data",
+      "inputs": [
+        {
+          "id": "x",
+          "label": "x"
+        },
+        {
+          "id": "y",
+          "label": "y"
+        },
+        {
+          "id": "width",
+          "label": "width"
+        },
+        {
+          "id": "height",
+          "label": "height"
+        },
+        {
+          "id": "rotate",
+          "label": "rotate"
+        },
+        {
+          "id": "scaleX",
+          "label": "scaleX"
+        },
+        {
+          "id": "scaleY",
+          "label": "scaleY"
+        }
+      ]
+    },
+    {
+      "id": "getContainerData",
+      "label": "Get Container Data",
+      "hasReturn": true
+    },
+    {
+      "id": "getImageData",
+      "hasReturn": true,
+      "label": "Get Image Data"
+    },
+    {
+      "id": "getCanvasData",
+      "label": "Get Canvas Data",
+      "hasReturn": true
+    },
+    {
+      "id": "setCanvasData",
+      "label": "Set Canvas Data",
+      "inputs": [
+        {
+          "id": "left",
+          "label": "left"
+        },
+        {
+          "id": "top",
+          "label": "top"
+        },
+        {
+          "id": "width",
+          "label": "width"
+        },
+        {
+          "id": "height",
+          "label": "height"
+        }
+      ]
+    },
+    {
+      "id": "getCropBoxData",
+      "label": "Get Crop Box Data",
+      "hasReturn": true
+    },
+    {
+      "id": "setCropBoxData",
+      "label": "Set Crop Box Data",
+      "inputs": [
+        {
+          "id": "left",
+          "label": "left"
+        },
+        {
+          "id": "top",
+          "label": "top"
+        },
+        {
+          "id": "width",
+          "label": "width"
+        },
+        {
+          "id": "height",
+          "label": "height"
+        }
+      ]
+    },
+    {
+      "id": "getCroppedCanvas",
+      "label": "Get Cropped Canvas",
+      "hasReturn": true,
+      "inputs": [
+        {
+          "id": "width",
+          "label": "width"
+        },
+        {
+          "id": "height",
+          "label": "height"
+        },
+        {
+          "id": "minWidth",
+          "label": "minWidth"
+        },
+        {
+          "id": "minHeight",
+          "label": "minHeight"
+        },
+        {
+          "id": "maxWidth",
+          "label": "maxWidth"
+        },
+        {
+          "id": "maxHeight",
+          "label": "maxHeight"
+        },
+        {
+          "id": "fillColor",
+          "label": "fillColor"
+        },
+        {
+          "id": "imageSmoothingEnabled",
+          "label": "imageSmoothingEnabled"
+        },
+        {
+          "id": "imageSmoothingQuality",
+          "label": "imageSmoothingQuality"
+        }
+      ]
+    },
+    {
+      "id": "setAspectRatio",
+      "inputs": [
+        {
+          "id": "ratio",
+          "label": "ratio"
+        }
+      ],
+      "label": "Set Aspect Ratio"
+    },
+    {
+      "id": "setDragMode",
+      "label": "Set Drag Mode",
+      "inputs": [
+        {
+          "id": "model",
+          "label": "model"
+        }
+      ]
+    }
+  ]
+}
