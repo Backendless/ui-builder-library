@@ -15,7 +15,6 @@
       "handlerId": "imageUrlLogic",
       "type": "text",
       "label": "Image Url",
-      "defaultValue": "",
       "handlerLabel": "Image Url Logic",
       "handlerDescription": "This is a handler for the logic to determine the image of the cropper."
     },
