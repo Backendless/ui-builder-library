@@ -34,13 +34,13 @@
     },
     {
       "type": "text",
-      "name": "checkedValue",
-      "label": "Checked Value",
+      "name": "value",
+      "label": "Value",
       "settingTooltip": "This handler allows you to select value by default.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "checkedValueLogic",
-      "handlerLabel": "Checked Value Logic",
+      "handlerId": "valueLogic",
+      "handlerLabel": "Value Logic",
       "handlerDescription": "This handler allows you to select value by default.",
       "dataBinding": true
     }

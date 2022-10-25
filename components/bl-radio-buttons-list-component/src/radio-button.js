@@ -1,9 +1,9 @@
 import { Input } from './input';
 
-export function RadioButton({ isChecked, label, value, handleChange }) {
+export function RadioButton({ checked, label, value, handleChange }) {
   return (
     <label className="radio-button">
-      <Input isChecked={ isChecked } value={ value } handleChange={ handleChange } />
+      <Input checked={ checked } value={ value } handleChange={ handleChange } />
       <span className="radio-button__label">
         { label }
       </span>

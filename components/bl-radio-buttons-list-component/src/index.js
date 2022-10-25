@@ -4,7 +4,7 @@ import { RadioButton } from './radio-button';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function RadioButtonsListComponent({ component, eventHandlers }) {
-  const { classList, style, display, disabled, options, checkedValue } = component;
+  const { classList, style, display, disabled, options, value } = component;
   const { onChange } = eventHandlers;
 
   const [optionsList, setOptionsList] = useState([]);
@@ -17,8 +17,8 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
 
   useEffect(() => {
     setOptionsList(validate(options));
-    setSelectedValue(checkedValue);
-  }, [options, checkedValue]);
+    setSelectedValue(value);
+  }, [options, value]);
 
   const handleChange = value => {
     const newSelectedValue = optionsList.find(item => item.value === value);
@@ -39,7 +39,7 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
       { optionsList.map(({ label, value }) => (
         <RadioButton
           key={ value }
-          isChecked={ value === selectedValue }
+          checked={ value === selectedValue }
           label={ label }
           value={ value }
           handleChange={ handleChange }

@@ -7,11 +7,11 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 
 ## Properties
 
-| Property      | Type         | Default value | Logic               | Data Binding | UI Setting | Description                                                                                        |
-|---------------|--------------|---------------|---------------------|--------------|------------|----------------------------------------------------------------------------------------------------|
-| Disabled      | *Checkbox*   | `false`       | Disabled Logic      | YES          | YES        | This handler allows you to disable component.                                                      |
-| Options       | *JSON*       |               | Options Logic       | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of option: {Value: `String`, Label: `String`} |
-| Checked Value | *Text*       |               | Checked Value Logic | YES          | YES        | This handler allows you to select value by default.                                                |
+| Property | Type       | Default value | Logic          | Data Binding | UI Setting | Description                                                                                                                                                            |
+|----------|------------|---------------|----------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                                        |
+| Options  | *JSON*     | []            | Options Logic  | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: List of object {value: `String`, vabel: `String`} |
+| Value    | *Text*     |               | Value Logic    | YES          | YES        | This handler allows you to select value by default.                                                                                                                    |
 
 ## Events
 
@@ -21,12 +21,12 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 
 ## Actions
 
-| Action           | Inputs                                | Returns                                 |
-|------------------|---------------------------------------|-----------------------------------------|
-| Set value        | Value: `String`                       |                                         |
-| Get value        |                                       | `String`: current selected value        |
-| Set options      | Value: `String`, Label: `String`      |                                         |
-| Get options      |                                       | Label: `String`, Value: `String`        |
+| Action           | Inputs                                          | Returns                                         |
+|------------------|-------------------------------------------------|-------------------------------------------------|
+| Set value        | Value: `String`                                 |                                                 |
+| Get value        |                                                 | `String`: current selected value                |
+| Set options      | Options: [{label: `String`, value: `String`}]   |                                                 |
+| Get options      |                                                 | Options: [{label: `String`, value: `String`}]   |
 
 ## Styles
 
