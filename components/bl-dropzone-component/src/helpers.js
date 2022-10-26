@@ -9,7 +9,7 @@ const UploadStatus = {
 
 export function useDropzone(component, eventHandlers) {
   const { overwriteFiles, targetDirectory, uploadOnDrop } = component;
-  const { onDelete, onChange, fileNameLogic } = eventHandlers;
+  const { onDelete, onChange, fileNameLogic, onUpload, available } = eventHandlers;
 
   const [files, setFiles] = useState([]);
 
@@ -22,12 +22,18 @@ export function useDropzone(component, eventHandlers) {
 
         try {
           const file = item.file;
-          const fileName = await fileNameLogic({ file });
-          const validFileName = ensureExtension(fileName, file);
-          const directory = targetDirectory?.replace(/\/$/g, '').replace(/(.*)/, '$1/') || '';
-          const path = directory + validFileName;
+          const hasUploadHandler = available('onUpload');
 
-          await Backendless.Files.upload(file, path, overwriteFiles);
+          if (hasUploadHandler) {
+            await onUpload({ file });
+          } else {
+            const fileName = await fileNameLogic({ file });
+            const validFileName = ensureExtension(fileName, file);
+            const directory = targetDirectory?.replace(/\/$/g, '').replace(/(.*)/, '$1/') || '';
+            const path = directory + validFileName;
+
+            await Backendless.Files.upload(file, path, overwriteFiles);
+          }
 
           item.uploadStatus = UploadStatus.success;
         } catch (error) {

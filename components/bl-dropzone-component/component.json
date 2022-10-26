@@ -363,6 +363,18 @@
           "label": "Validated Files"
         }
       ]
+    },
+    {
+      "name": "onUpload",
+      "label": "On Upload Event",
+      "output": false,
+      "contextBlocks": [
+        {
+          "id": "file",
+          "label": "File"
+        }
+      ],
+      "handlerDescription": "This is a handler where you can define the logic for uploading files. If the handler contains no logic, the files upload operation delivers a files in the Backendless file storage of your application."
     }
   ],
   "actions": []

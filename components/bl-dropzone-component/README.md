@@ -48,6 +48,7 @@ The component covers all the main features of the library and provides a way to 
 | On Change View Event | when view mode is changed                                               | View Mode: `String`      |
 | On Delete Event      | when the user clicks the mouse or taps the Close button                 | File ID: `Number`        |
 | On Clean Event       | when the user clicks the mouse or taps the Clean button                 | Validated Files: `Array` |
+| On Upload Event      | when the user starts uploading files                                    | File: `Object`           |
 
 ## Styles
 
