@@ -13,8 +13,8 @@ export default function DropzoneComponent({ component, eventHandlers }) {
   } = component;
   const { onDrop, onChangeView, onClean } = eventHandlers;
 
-  const [imageSrc, setImageSrc] = useState(undefined);
-  const [videoSrc, setVideoSrc] = useState(undefined);
+  const [imageSrc, setImageSrc] = useState();
+  const [videoSrc, setVideoSrc] = useState();
   const { files, updateFiles, onUploadFinish, handleDelete } = useDropzone(component, eventHandlers);
 
   const handleSee = imageSource => setImageSrc(imageSource);
