@@ -1,5 +1,5 @@
 {
-  "id": "c_db2815530f723ada517f543ee38eadde",
+  "id": "c_4aa6596e5dd2c08bb76ad949b838a5de",
   "name": "Parallax",
   "description": "This component allows to add image and content with parallax effect",
   "showInToolbox": true,
@@ -28,28 +28,14 @@
       "handlerId": "strengthLogic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the strength of parallax"
-    },
-    {
-      "type": "text",
-      "name": "title",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "titleLogic",
-      "dataBinding": true,
-      "label": "Title",
-      "handlerDescription": "This is a handler for the logic to determine title of content"
-    },
-    {
-      "type": "text",
-      "name": "text",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "textLogic",
-      "dataBinding": true,
-      "label": "Text",
-      "handlerDescription": "This is a handler for the logic to determine text of content"
     }
   ],
   "eventHandlers": [],
-  "actions": []
+  "actions": [],
+  "pods": {
+    "77750461d397def2dea7debb71050b68": {
+      "id": "parallaxContent",
+      "dataContainer": true
+    }
+  }
 }

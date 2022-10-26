@@ -1,27 +1,26 @@
 // you can use LESS variables from the current Theme and app extensions of the UI-Container
 
 .bl-customComponent-parallax {
-  &.parallax {
-    width: 100%;
-    height: 100%;
+  position: relative;
 
-    .parallax__image {
-      min-width: 100%;
-      min-height: 100%;
-    }
+  width: 100%;
+  height: 100%;
 
-    .parallax__content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  overflow: hidden;
 
-      height: 100%;
+  .parallax-background-img {
+    width: auto;
 
-      color: #fff;
-      text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 
-      padding: 24px;
-    }
+  .parallax-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 }
