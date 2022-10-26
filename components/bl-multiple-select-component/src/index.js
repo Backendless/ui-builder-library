@@ -7,15 +7,19 @@ import { useOnClickOutside, validate } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleSelectComponent({ component, eventHandlers }) {
-  const { display, classList, disable, placeholder, variant, type, value, options } = component;
+  const { display, classList, disabled, placeholder, variant, type, value, options } = component;
   const { onChange } = eventHandlers;
-  
+
   const rootRef = useRef(null);
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [selectValue, setSelectValue] = useState([]);
   const [isSelectActive, setIsSelectActive] = useState(false);
-  
+
   const optionsList = useMemo(() => validate(options), [options]);
+  const classes = cn(
+    'bl-customComponent-multipleSelect', variant, classList,
+    { "bl-customComponent-multipleSelect--disabled": disabled }
+  );
 
   const handleClickOutside = useCallback(() => {
     if (isOptionsOpen) {
@@ -26,15 +30,15 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   }, [isOptionsOpen]);
 
   useOnClickOutside(rootRef, handleClickOutside);
-  
+
   if (!display) {
     return null;
   }
-  
+
   return (
     <div
       ref={ rootRef }
-      className={ cn('bl-customComponent-multipleSelect', variant, classList, { disable }) }>
+      className={ classes }>
       <SelectField
         type={ type }
         placeholder={ placeholder }
