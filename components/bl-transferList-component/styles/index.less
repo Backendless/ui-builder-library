@@ -46,6 +46,12 @@
   justify-content: center;
   align-items: center;
 
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
   .list {
     width: @bl-customComponent-transferList-list-width;
     background-color: @bl-customComponent-transferList-listBackgroundColor;
