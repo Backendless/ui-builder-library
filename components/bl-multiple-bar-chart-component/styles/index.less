@@ -12,6 +12,12 @@
 @bl-customComponent-multipleBarChart-labelWidthWithOffset: @bl-customComponent-multipleBarChart-labelWidth + @bl-customComponent-multipleBarChart-labelMarginRight;
 
 .bl-customComponent-multipleBarChart {
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
   .chart {
     &__items {
       position: relative;
@@ -22,26 +28,26 @@
       width: 100%;
       margin-bottom: 5.5px;
     }
-    
+
     &__item {
       position: relative;
       display: flex;
       align-items: center;
       margin-bottom: 16px;
     }
-    
+
     &__name-wrap {
       width: @bl-customComponent-multipleBarChart-labelWidth;
       margin-right: @bl-customComponent-multipleBarChart-labelMarginRight;
       flex-shrink: 0;
     }
-      
+
     &__name {
       color: @bl-customComponent-multipleBarChart-chartNameColor;
       font-size: 15px;
       line-height: 18px;
     }
-    
+
     &__bar {
       position: relative;
       background-color: @bl-customComponent-multipleBarChart-chartBarColor;
@@ -49,13 +55,13 @@
       height: 20px;
       cursor: pointer;
       flex-shrink: 0;
-      
+
       &:hover {
         .chart__bar-info {
           display: block;
         }
       }
-      
+
       &-fill {
         position: absolute;
         left: 0;
@@ -64,7 +70,7 @@
         background-color: @bl-customComponent-multipleBarChart-chartFillColor;
       }
     }
-    
+
     &__bar-info {
       display: none;
       position: relative;
@@ -73,18 +79,18 @@
       margin-left: auto;
       margin-right: auto;
       z-index: 2;
-          
+
       &-triangle {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
         border-left: 22px solid transparent;
         border-right: 22px solid transparent;
         border-bottom: 22px solid #121212;
       }
-          
+
       &-rectangle {
         display: flex;
         justify-content: center;
@@ -98,7 +104,7 @@
         border-radius: 10px;
       }
     }
-    
+
     &__grids {
       position: absolute;
       top: 0;
@@ -107,7 +113,7 @@
       width: calc(100% - @bl-customComponent-multipleBarChart-labelWidthWithOffset);
       z-index: 0;
     }
-    
+
     &__y-grid-line {
       position: absolute;
       top: 0;
@@ -116,14 +122,14 @@
       border-left: 1px dashed #525252;
       transform: translateX(-50%);
     }
-    
+
     &__percentage-marks {
       position: relative;
       display: flex;
       justify-content: space-between;
       width: calc(100% - @bl-customComponent-multipleBarChart-labelWidthWithOffset);
       margin-left: auto;
-      
+
       &-item {
         position: absolute;
         color: @bl-customComponent-multipleBarChart-chartNameColor;
@@ -140,22 +146,22 @@
   @bl-customComponent-multipleBarChart-labelWidth: 105px;
   @bl-customComponent-multipleBarChart-labelMarginRight: 26px;
   @bl-customComponent-multipleBarChart-labelWidthWithOffset: @bl-customComponent-multipleBarChart-labelWidth + @bl-customComponent-multipleBarChart-labelMarginRight;
-  
+
   .bl-customComponent-multipleBarChart {
     .chart {
       &__name-wrap {
         width: @bl-customComponent-multipleBarChart-labelWidth;
         margin-right: @bl-customComponent-multipleBarChart-labelMarginRight;
       }
-      
+
       &__bar {
         width: calc(100% - @bl-customComponent-multipleBarChart-labelWidthWithOffset);
       }
-      
+
       &__grids {
         width: calc(100% - @bl-customComponent-multipleBarChart-labelWidthWithOffset);
       }
-      
+
       &__percentage-marks {
         width: calc(100% - @bl-customComponent-multipleBarChart-labelWidthWithOffset);
       }

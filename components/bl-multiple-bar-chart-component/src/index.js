@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 
 import { Bar } from './bar';
 import { validate } from './validate';
+import { useGridMarks } from './hooks/use-grid-marks';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleBarChartComponent({ component }) {
-  const { classList, display, disable, data, gridVisibility, gridMarks, style } = component;
+  const { classList, style, display, disabled, data, visibility, gridMarks } = component;
 
   const [chartData, setChartData] = useState([]);
-
-  const marksList = gridMarks.split(', ');
+  const marksList = useGridMarks(gridMarks);
 
   useEffect(() => {
     setChartData(validate(data));
@@ -21,10 +21,18 @@ export default function MultipleBarChartComponent({ component }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-multipleBarChart', ...classList, { disable }) } style={ style }>
+    <div
+      style={ style }
+      className={
+        cn(
+          "bl-customComponent-multipleBarChart",
+          classList,
+          { "bl-customComponent-multipleBarChart--disabled": disabled }
+        )
+      }>
       <div className="chart">
         <div className="chart__items">
-          { gridVisibility &&
+          { visibility &&
             <div className="chart__grids">
               { marksList.map(item => (
                 <div className="chart__y-grid-line" style={{ left: `${ item }%`}} />
@@ -40,7 +48,7 @@ export default function MultipleBarChartComponent({ component }) {
             />
           )) }
         </div>
-        { gridVisibility &&
+        { visibility &&
           <div className="chart__percentage-marks">
             { marksList.map(item => (
               <div className="chart__percentage-marks-item" style={{ left: `${ item }%`}}>{ `${ item }%` }</div>
