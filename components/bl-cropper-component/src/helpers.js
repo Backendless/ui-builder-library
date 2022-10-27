@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import Cropper from './lib/cropper.min';
 
-export function UseCropperLibrary(component, eventHandlers, imageRef, image) {
+export function useCropperLibrary(component, eventHandlers, imageRef, image) {
   const {
     aspectRatio, dragMode, cropBoxModal, cropBoxGuides, centerIndicator, cropBoxHighlight, backgroundGrid, autoCrop,
     autoCropArea, movableImage, rotatableImage, scalableImage, zoomableImage, zoomOnTouch, zoomOnWheel, cropBoxMovable,
@@ -42,25 +42,15 @@ export function UseCropperLibrary(component, eventHandlers, imageRef, image) {
       minCanvasHeight,
       minCropBoxWidth,
       minCropBoxHeight,
-      ready() {
-        onReady();
-      },
-      crop(event) {
+      ready      : () => onReady(),
+      cropstart  : () => onCropStart(),
+      cropmove   : () => onCropMove(),
+      cropend    : () => onCropEnd(),
+      zoom       : () => onZoom(),
+      crop       : event => {
         const details = event.detail;
 
         onCrop({ details });
-      },
-      cropstart() {
-        onCropStart();
-      },
-      cropmove() {
-        onCropMove();
-      },
-      cropend() {
-        onCropEnd();
-      },
-      zoom() {
-        onZoom();
       },
     });
 

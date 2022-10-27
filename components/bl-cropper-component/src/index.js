@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { DropImageArea, FooterToolbar, HeaderToolbar } from './cropper-components';
-import { UseCropperLibrary } from './helpers';
+import { useCropperLibrary } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -13,7 +13,7 @@ export default function CropperComponent({ component, eventHandlers }) {
 
   const [image, setImage] = useState(imageUrl);
   const imageRef = useRef(null);
-  const cropperRef = UseCropperLibrary(component, eventHandlers, imageRef, image);
+  const cropperRef = useCropperLibrary(component, eventHandlers, imageRef, image);
 
   useComponentActions(component, cropperRef);
 

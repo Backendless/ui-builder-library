@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import { dataURLToBlob, download, upload } from './helpers';
 
 export function DropImageArea({ image, setImage, initialLabel }) {
@@ -64,26 +66,28 @@ export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }
 }
 
 export function FooterToolbar({ cropperRef, image, toolbarVisibility }) {
-  const zoomIn = () => cropperRef.current.zoom(0.1);
-  const zoomOut = () => cropperRef.current.zoom(-0.1);
-  const rotateLeft = () => cropperRef.current.rotate(-45);
-  const rotateRight = () => cropperRef.current.rotate(45);
-  const scaleX = () => {
-    const newScaleX = -cropperRef.current.getImageData().scaleX;
+  const toolbar = useMemo(() => {
+    const zoomIn = () => cropperRef.current.zoom(0.1);
+    const zoomOut = () => cropperRef.current.zoom(-0.1);
+    const rotateLeft = () => cropperRef.current.rotate(-45);
+    const rotateRight = () => cropperRef.current.rotate(45);
+    const scaleX = () => {
+      const newScaleX = -cropperRef.current.getImageData().scaleX;
 
-    cropperRef.current.scaleX(newScaleX || -1);
-  };
-  const scaleY = () => {
-    const newScaleY = -cropperRef.current.getImageData().scaleY;
+      cropperRef.current.scaleX(newScaleX || -1);
+    };
+    const scaleY = () => {
+      const newScaleY = -cropperRef.current.getImageData().scaleY;
 
-    cropperRef.current.scaleY(newScaleY || -1);
-  };
+      cropperRef.current.scaleY(newScaleY || -1);
+    };
 
-  const toolbar = [
-    [{ label: 'zoom_in', onClick: zoomIn }, { label: 'zoom_out', onClick: zoomOut }],
-    [{ label: 'rotate_left', onClick: rotateLeft }, { label: 'rotate_right', onClick: rotateRight }],
-    [{ label: 'swap_horiz', onClick: scaleX }, { label: 'swap_vert', onClick: scaleY }],
-  ];
+    return [
+      [{ label: 'zoom_in', onClick: zoomIn }, { label: 'zoom_out', onClick: zoomOut }],
+      [{ label: 'rotate_left', onClick: rotateLeft }, { label: 'rotate_right', onClick: rotateRight }],
+      [{ label: 'swap_horiz', onClick: scaleX }, { label: 'swap_vert', onClick: scaleY }],
+    ];
+  }, [cropperRef]);
 
   if (!toolbarVisibility || !image) {
     return null;
