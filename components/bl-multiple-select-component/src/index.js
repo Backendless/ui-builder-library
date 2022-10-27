@@ -18,7 +18,7 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   const optionsList = useMemo(() => validate(options), [options]);
   const classes = cn(
     'bl-customComponent-multipleSelect', variant, classList,
-    { "bl-customComponent-multipleSelect--disabled": disabled }
+    { 'bl-customComponent-multipleSelect--disabled': disabled }
   );
 
   const handleClickOutside = useCallback(() => {
