@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { RadioButton } from './radio-button';
+
+import { RadioButton } from './components';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -21,12 +22,10 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
   }, [options, value]);
 
   const handleChange = value => {
-    const newSelectedValue = optionsList.find(item => item.value === value);
-
     setSelectedValue(value);
 
     if (onChange) {
-      onChange({ value: newSelectedValue });
+      onChange({ value });
     }
   };
 
@@ -35,7 +34,14 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
   }
 
   return (
-    <div className={ cn("bl-customComponent-radioButtonsList", classList, { disabled }) } style={ style }>
+    <div
+      style={ style }
+      className={
+        cn(
+          "bl-customComponent-radioButtonsList", classList,
+          { "bl-customComponent-radioButtonsList--disabled": disabled }
+        )
+      }>
       { optionsList.map(({ label, value }) => (
         <RadioButton
           key={ value }
@@ -49,10 +55,4 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
   );
 }
 
-const validate = arr => {
-  if (!arr || !Array.isArray(arr)) {
-    return [];
-  }
-
-  return arr;
-};
+const validate = arr => Array.isArray(arr) ? arr : [];

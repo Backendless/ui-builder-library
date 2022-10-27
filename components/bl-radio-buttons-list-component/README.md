@@ -7,17 +7,17 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 
 ## Properties
 
-| Property | Type       | Default value | Logic          | Data Binding | UI Setting | Description                                                                                                                                                            |
-|----------|------------|---------------|----------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                                        |
-| Options  | *JSON*     | []            | Options Logic  | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: List of object {value: `String`, vabel: `String`} |
-| Value    | *Text*     |               | Value Logic    | YES          | YES        | This handler allows you to select value by default.                                                                                                                    |
+| Property | Type       | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                                             |
+|----------|------------|---------------|----------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                                         |
+| Options  | *JSON*     | `[]`          | Options Logic  | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: List of object {value: `String`, label: `String`}. |
+| Value    | *Text*     |               | Value Logic    | YES          | YES        | This handler allows you to select value by default.                                                                                                                     |
 
 ## Events
 
-| Name                    | Triggers                                 | Context Blocks                                                         |
-|-------------------------|------------------------------------------|------------------------------------------------------------------------|
-| On Change Event         | when the user clicks on the radio button | Value: `Object`                                                        |
+| Name                    | Triggers                                 | Context Blocks                                  |
+|-------------------------|------------------------------------------|-------------------------------------------------|
+| On Change Event         | when the user clicks on the radio button | Value: `String`                                 |
 
 ## Actions
 
