@@ -1,0 +1,52 @@
+{
+  "id": "c_0096eff988521f4ba6d75137546fc6c4",
+  "name": "Tree view",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "data",
+      "label": "Data",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dataLogic",
+      "handlerLabel": "Data Logic"
+    },
+    {
+      "type": "number",
+      "name": "space",
+      "showInSettings": true,
+      "defaultValue": "10",
+      "hasLogicHandler": true,
+      "handlerId": "spaceLogic",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click",
+      "contextBlocks": [
+        {
+          "id": "action",
+          "label": "Action"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "closeAll",
+      "label": "Close All"
+    },
+    {
+      "id": "openAll",
+      "label": "Open All"
+    }
+  ]
+}
