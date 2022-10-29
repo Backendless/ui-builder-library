@@ -8,56 +8,55 @@ The component based on external [pagination](https://mui.com/material-ui/react-p
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-## Usage
+## Properties
 
-### Styles and Settings
+| Property                 | Type                                                       | Default Value | Loigc               | Data Binding | UI Setting | Description                                                                |
+|--------------------------|------------------------------------------------------------|---------------|---------------------|--------------|------------|----------------------------------------------------------------------------|
+| pageCount                | Number                                                     | 10            | Page Count Loigc    | YES          | YES        | Allows to determine the count of pages                                     |
+| siblingCount             | Number                                                     | 1             | Sibling Count Logic | NO           | YES        | Allows to determine how many digits to display either side of current page |
+| variant                  | Select ["normal", "outline", "rounded", "rounded-outline"] | normal        |                     | NO           | YES        | Allows to determine the variant of pagination style                        |
+| size                     | Select ["small", "normal", "large"]                        | normal        |                     | NO           | YES        | Allows to determine the size for pagination                                |
+| isNextButtonVisible      | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visibel "Next" button               |
+| isPrevButtonVisible      | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visible "Previous" button           |
+| isFirstPageButtonVisible | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visible "First Page" button         |
+| isLastPageButtonVisible  | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visible "Last Page" button          |
 
-<dl>
-<dt>Page Count</dt>
-<dd>Allows determinate how many pages. Default value 10.</dd>
-<dt>Sibling Count</dt>
-<dd>Allows determinate how many digits to display either side of current page. Default value 1.</dd>
-<dt>Variant</dt>
-<dd>Allows selected variant of style (normal, outline, rounded, rounded-outline). Default value 'normal'.</dd>
-<dt>Size</dt>
-<dd>Allows selected size of pagination (small, normal, large). Default value 'normal'.</dd>
-<dt>Next Button</dt>
-<dd>Allows make pagination with or without next button. Default value 'checked'</dd>
-<dt>Back Button</dt>
-<dd>Allows make pagination with or without back button. Default value 'checked'</dd>
-<dt>First Page Button</dt>
-<dd>Allows make pagination with or without first page button. Default value 'checked'</dd>
-<dt>Last Page Button</dt>
-<dd>Allows make pagination with or without last page button. Default value 'checked'</dd>
-</dl>
+## Events
 
-### Event Handlers and Bindable Properties
+| Name           | Triggered                                 | Context Block         |
+|----------------|-------------------------------------------|-----------------------|
+| On Page Change | when the current page change              | currentPage: `Number` |
+| On Go Next     | when the user clicks on next button       |                       |
+| On Go Back     | when the user clicks on back button       |                       |
+| On Go First    | when the user clicks on first-page button |                       |
+| On Go Last     | when the user clicks on last-page button  |                       |
 
-<dl>
-<dt>Page Count Logic</dt>
-<dd>Allows to specify count of pages for pagination in Backendless logic</dd>
-<dt>Sibling Count Logic</dt>
-<dd>Allows to specify sibling count for pagination in Backendless logic</dt>
-<dt>On Page Change</dt>
-<dd>Triggered when current page changed</dd>
-<dt>On Go Next</dt>
-<dd>Triggered when the user click on next button</dd>
-<dt>On Go Back</dt>
-<dd>Triggered when the user click on back button</dd>
-<dt>On Go First</dt>
-<dd>Triggered when the user click on first page button</dd>
-<dt>On Go Last</dt>
-<dd>Triggered when the user click on last page button</dd>
-</dl>
+## Actions
 
-### Action
-<dl>
-<dt>Go Next Page</dt>
-<dd>An action that switching to next page</dd>
-<dt>Go Previous Page</dt>
-<dd>An action that switching to previous page</dd>
-<dt>Go First Page</dt>
-<dd>An action that switching to first page</dd>
-<dt>Go Last Page</dt>
-<dd>An action that switching to last page</dd>
-</dl>
+| Action              | Inputs | Return |
+|---------------------|--------|--------|
+| Go to Next Page     |        |        |
+| Go to Previous Page |        |        |
+| Go to First Page    |        |        |
+| Go to Last Page     |        |        |
+
+## Styles
+**Theme**
+```
+@bl-customComponent-pagination-themeColor: @themePrimary;
+@bl-customComponent-pagination-backgroundColor: @appBackgroundColor;
+@bl-customComponent-pagination-textColor: @appTextColor;
+```
+
+**Colors**
+```
+@bl-customComponent-pagination-buttonColor: fade(@bl-customComponent-pagination-textColor, 87%);
+@bl-customComponent-pagination-buttonColorSelected: if(luma(@bl-customComponent-pagination-textColor) < 50%, #ffffff, #000000);
+```
+
+**Dimensions**
+```
+@bl-customComponent-pagination-button-smallSize: 26px;
+@bl-customComponent-pagination-button-normalSize: 32px;
+@bl-customComponent-pagination-button-largeSize: 40px;
+```
