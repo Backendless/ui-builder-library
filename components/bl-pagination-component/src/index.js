@@ -41,6 +41,12 @@ export default function Pagination({ component, eventHandlers }) {
   };
 
   useEffect(() => {
+    if (pageCount <= 0) {
+      throw new Error('The page count cannot be less or equal to 0');
+    }
+  }, [pageCount]);
+
+  useEffect(() => {
     onPageChange({ currentPage });
   }, [currentPage]);
 
