@@ -1,14 +1,14 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import mapboxgl from './lib/mapbox';
-import MapboxGeocoder from './lib/mapbox-geocoder';
 import MapboxDirections from './lib/mapbox-directions';
+import MapboxGeocoder from './lib/mapbox-geocoder';
 import { createActions } from './actions';
 
+const { cn } = BackendlessUI.CSSUtils;
+
 const defaultValues = {
-  START_POS           : {
-    lat: 0,
-    lng: 0
-  },
+  START_POS           : { lat: 0, lng: 0 },
   MAP_STYLE           : 'mapbox://styles/mapbox/streets-v11',
   ZOOM                : 10,
   PROJECTION          : 'mercator',
@@ -16,11 +16,11 @@ const defaultValues = {
   UPPER_ATMOSPHERE    : '#245CDF',
   ATMOSPHERE_THICKNESS: 0.2,
   SPACE_COLOR         : '#0B0B19',
-  STAR_INTENSITY      : 0.2
+  STAR_INTENSITY      : 0.2,
 };
 
 export default function Mapbox({ component, eventHandlers }) {
-  const mapContainer = useRef(null);
+  const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
 
   const [polygonsObject, setPolygonsObject] = useState([]);
@@ -28,23 +28,9 @@ export default function Mapbox({ component, eventHandlers }) {
   const { onClick, onMarkerClick, onPolygonClick, onDeterminingGeoposition } = eventHandlers;
 
   const {
-    markers,
-    polygons,
-    startPos,
-    zoom,
-    fullScreen,
-    accessToken,
-    projection,
-    lowerAtmosphere,
-    upperAtmosphere,
-    atmosphereThickness,
-    spaceColor,
-    starIntensity,
-    mapStyle,
-    navigation,
-    searchBar,
-    geolocation,
-    directions
+    markers, polygons, center, zoom, fullScreen, accessToken, projection, lowerAtmosphere, upperAtmosphere,
+    atmosphereThickness, spaceColor, starIntensity, mapStyle, navigation, searchBar, geolocation, directions,
+    display, classList,
   } = component;
 
   if (!display) {
@@ -55,21 +41,21 @@ export default function Mapbox({ component, eventHandlers }) {
     if (polygons) {
       if (polygons.length) {
         mapRef.current.on('load', () => {
-          polygonsObject.map(el => {
-            if (mapRef.current.getSource(el.id)) {
-              mapRef.current.removeLayer(`${ el.id }-layer`);
-              mapRef.current.removeSource(el.id);
+          polygonsObject.forEach(polygon => {
+            if (mapRef.current.getSource(polygon)) {
+              mapRef.current.removeLayer(`${ polygon.id }-layer`);
+              mapRef.current.removeSource(polygon.id);
             }
           });
         });
 
-        setPolygonsObject(polygons.map(el => ({
+        setPolygonsObject(polygons.map(polygon => ({
           id         : BackendlessUI.UUID.short(),
-          color      : el.color,
-          coordinates: el.polygon.boundary.points.map(coordinate => [coordinate.lng, coordinate.lat]),
-          name       : el.name,
-          opacity    : el.opacity,
-          description: el.description
+          color      : polygon.color,
+          coordinates: polygon.polygon.boundary.points.map(coordinate => [coordinate.lng, coordinate.lat]),
+          name       : polygon.name,
+          opacity    : polygon.opacity,
+          description: polygon.description,
         })));
       }
     }
@@ -79,17 +65,17 @@ export default function Mapbox({ component, eventHandlers }) {
     mapboxgl.accessToken = accessToken;
     if (mapRef.current) return; // initialize map only once
     mapRef.current = new mapboxgl.Map({
-      container : mapContainer.current,
+      container : mapContainerRef.current,
       style     : mapStyle || defaultValues.MAP_STYLE,
       center    : defaultValues.START_POS,
       zoom      : zoom || defaultValues.ZOOM,
-      projection: projection || defaultValues.PROJECTION
+      projection: projection || defaultValues.PROJECTION,
     });
 
     if (directions) {
       mapRef.current.addControl(
         new MapboxDirections({
-          accessToken: mapboxgl.accessToken
+          accessToken: mapboxgl.accessToken,
         }),
         'top-left'
       );
@@ -97,10 +83,11 @@ export default function Mapbox({ component, eventHandlers }) {
   });
 
   useEffect(() => {
-    if (mapRef.current && startPos) {
-      mapRef.current.setCenter([startPos.lng, startPos.lat]);
+    if (mapRef.current && center) {
+
+      mapRef.current.setCenter([center.lng, center.lat]);
     }
-  }, [startPos]);
+  }, [center]);
 
   useEffect(() => {
     mapRef.current.on('load', () => {
@@ -112,7 +99,7 @@ export default function Mapbox({ component, eventHandlers }) {
         'star-intensity': starIntensity || defaultValues.STAR_INTENSITY,
       });
 
-      mapRef.current.on('click', (e) => {
+      mapRef.current.on('click', e => {
         const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
         onClick({ coordinates: coordinates });
       });
@@ -137,10 +124,10 @@ export default function Mapbox({ component, eventHandlers }) {
       if (geolocation) {
         const geolocate = new mapboxgl.GeolocateControl({
           positionOptions  : {
-            enableHighAccuracy: true
+            enableHighAccuracy: true,
           },
           trackUserLocation: true,
-          showUserHeading  : true
+          showUserHeading  : true,
         });
         mapRef.current.addControl(geolocate);
         geolocate.on('trackuserlocationstart', () => {
@@ -158,22 +145,22 @@ export default function Mapbox({ component, eventHandlers }) {
   useEffect(() => {
     if (markers) {
       if (markers.length) {
-        markers.forEach(el => {
-          const marker = new mapboxgl.Marker({ color: el.color })
-            .setLngLat([el.coordinates.lng, el.coordinates.lat])
+        markers.forEach(markerItem => {
+          const marker = new mapboxgl.Marker({ color: markerItem.color })
+            .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
             .addTo(mapRef.current);
 
-          if (el.description) {
+          if (markerItem.description) {
             const popup = new mapboxgl.Popup()
-              .setText(el.description);
+              .setText(markerItem.description);
 
             marker.setPopup(popup);
           }
 
           marker.getElement().addEventListener('click', () => {
-            const coordinates = { lat: el.coordinates.lat, lng: el.coordinates.lng };
+            const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
 
-            onMarkerClick({ coordinates: coordinates, description: el.description });
+            onMarkerClick({ coordinates: coordinates, description: markerItem.description });
           });
         });
       }
@@ -182,16 +169,16 @@ export default function Mapbox({ component, eventHandlers }) {
 
   useEffect(() => {
     mapRef.current.on('load', () => {
-      polygonsObject.map(polygon => {
+      polygonsObject.forEach(polygon => {
         mapRef.current.addSource(polygon.id, {
           'type': 'geojson',
           'data': {
             'type'    : 'Feature',
             'geometry': {
               'type'       : 'Polygon',
-              'coordinates': [[...polygon.coordinates]]
-            }
-          }
+              'coordinates': [[...polygon.coordinates]],
+            },
+          },
         });
 
         mapRef.current.addLayer({
@@ -201,12 +188,12 @@ export default function Mapbox({ component, eventHandlers }) {
           'layout': {},
           'paint' : {
             'fill-color'  : polygon.color,
-            'fill-opacity': polygon.opacity
-          }
+            'fill-opacity': polygon.opacity,
+          },
         });
 
         if (polygon.description) {
-          mapRef.current.on('click', `${ polygon.id }-layer`, (e) => {
+          mapRef.current.on('click', `${ polygon.id }-layer`, e => {
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
               .setHTML(polygon.description)
@@ -224,7 +211,7 @@ export default function Mapbox({ component, eventHandlers }) {
 
   return (
     <div>
-      <div ref={ mapContainer } className={ 'bl-customComponent-mapbox' + component.classList.join(' ') }></div>
+      <div ref={ mapContainerRef } className={ cn('bl-customComponent-mapbox', classList) }/>
     </div>
   );
 }
