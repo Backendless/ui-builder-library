@@ -8,6 +8,12 @@
 @bl-customComponent-tabs-backgroundColor: rgba(@themePrimary, 0.15);
 
 .bl-customComponent-tabs {
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
   .tabs {
     display: flex;
     justify-content: center;
@@ -18,14 +24,14 @@
     padding: @bl-customComponent-tabs-padding;
     text-transform: uppercase;
     background-color: transparent;
-    color: @bl-customComponent-autocomplete-textColor;
+    color: @bl-customComponent-tabs-textColor;
     border: none;
     cursor: pointer;
 
     &-active {
       background-color: @bl-customComponent-tabs-backgroundColor;
-      border-bottom: 1px solid @bl-customComponent-autocomplete-themeColor;
-      transition: background-color .3s;
+      border-bottom: 1px solid @bl-customComponent-tabs-themeColor;
+      transition: background-color .3s, border-bottom .3s;
     }
   }
 }

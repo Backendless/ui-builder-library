@@ -35,8 +35,8 @@
   ],
   "eventHandlers": [
     {
-      "name": "onTabChange",
-      "label": "On Tab Change Event",
+      "name": "onChange",
+      "label": "On Change Event",
       "contextBlocks": [
         {
           "id": "currentTabId",

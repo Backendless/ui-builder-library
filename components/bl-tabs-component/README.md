@@ -8,16 +8,16 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
 
 ## Properties
 
-| Property | Type       | Default value | Logic          | Data Binding | UI Setting | Description                                                                                                                                     |
-|----------|------------|---------------|----------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                 |
-| Tabs     | *JSON*     | []            | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: `{id: String, label: String}` |
+| Property | Type       | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |
+|----------|------------|---------------|----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
+| Tabs     | *JSON*     | `[]`          | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: {id: `String`, label: `String`}. |
 
 ## Events
 
-| Name                       | Triggers                               | Context Blocks                   |
-|----------------------------|----------------------------------------|----------------------------------|
-| On Tab Change Event        | triggered when a tab is changed        | Current Tab Id: `String`         |
+| Name                   | Triggers                               | Context Blocks               |
+|------------------------|----------------------------------------|------------------------------|
+| On Change Event        | triggered when a tab is changed        | Current Tab Id: `String`     |
 
 ## Actions
 

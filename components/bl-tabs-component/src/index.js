@@ -1,45 +1,44 @@
 import { useState, useEffect, useMemo } from 'react';
 
-import { Tab } from './tab';
+import { TabControl } from './tab-control';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TabsComponent({ component, eventHandlers, appData, pageData, parentDataModel, pods }) {
   const { classList, style, display, disabled, tabs } = component;
-  const { onTabChange } = eventHandlers;
+  const { onChange } = eventHandlers;
 
   const [currentTabId, setCurrentTabId] = useState(null);
 
+  component.getCurrentTabId = () => currentTabId;
   component.setCurrentTabId = id => {
     setCurrentTabId(id);
-
-    if (onTabChange) {
-      onTabChange({ currentTabId: id });
-    }
-  };
-  component.getCurrentTabId = () => currentTabId;
+    onChange({ currentTabId: id });
+  }
 
   const podsContent = pods["Tabs Content"];
 
   const tabsList = useMemo(() => {
-    const result = [];
-
-    if(Array.isArray(tabs)){
-      tabs.forEach(tab => {
-        if(tab.id && tab.label) {
-          result.push({ id: tab.id, label: tab.label });
+    if (Array.isArray(tabs)) {
+      return tabs.filter((tab, index) => {
+        if (tab.id && tab.label) {
+          return true;
         }
+
+        console.log(`Invalid tab item ${++index}`);
+
+        return false;
       });
     }
 
-    return result;
+    return [];
   }, [tabs]);
 
   useEffect(() => {
     const currentTab = tabsList.find(tab => tab.id === currentTabId);
 
     if (!currentTab) {
-      setCurrentTabId(tabsList[0] && tabsList[0].id || null);
+      setCurrentTabId(tabsList[0]?.id || null);
     }
   }, [currentTabId, tabsList]);
 
@@ -47,31 +46,22 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
     podsContent.dataModel.currentTabId = currentTabId;
   }, [currentTabId]);
 
-  const handleClickTab = id => {
-    setCurrentTabId(id);
-
-    if (onTabChange) {
-      onTabChange({ currentTabId: id });
-    }
-  };
-
   if (!display) {
     return null;
   }
 
   return (
-    <div className={ cn("bl-customComponent-tabs", classList, { disabled }) } style={ style }>
-      <div className="tabs">
-        { tabsList.map(({ id, label }) => (
-          <Tab
-            key={ id }
-            id={ id }
-            label={ label }
-            isActive={ currentTabId === id }
-            handleClick={ handleClickTab }
-          />
-        )) }
-      </div>
+    <div
+      style={ style }
+      className={ cn(
+        "bl-customComponent-tabs", classList, { "bl-customComponent-tabs--disabled": disabled }
+      ) }>
+      <TabControl
+        tabs={ tabsList }
+        currentTabId={ currentTabId }
+        onChange={ onChange }
+        setCurrentTabId={ setCurrentTabId }
+      />
 
       <div className="tabs-content">
         { podsContent.render() }
