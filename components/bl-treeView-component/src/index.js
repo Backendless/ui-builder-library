@@ -43,13 +43,16 @@ export default function TreeView({ component, eventHandlers }) {
   };
 
   useEffect(() => {
-    setValidData(dataValidate(data));
-  }, []);
+    if (data) {
+      setValidData(dataValidate(data));
+    }
+  }, [data]);
 
   const openHandler = useCallback(isOpenItem => {
     setSelectedItemId(isOpenItem.id);
     setIsOpenItems(state => state.map(item => item.id === isOpenItem.id ? { ...item, isOpen: !item.isOpen } : item));
   }, []);
+
   const handlerItemClick = useCallback((id, action) => {
     onClick({ action });
     setSelectedItemId(id);
@@ -65,7 +68,6 @@ export default function TreeView({ component, eventHandlers }) {
         validData={ validData }
         space={ space }
         isOpenItems={ isOpenItems }
-        setIsOpenItems={ setIsOpenItems }
         selectedItemId={ selectedItemId }
         openHandler={ openHandler }
         handlerItemClick={ handlerItemClick }
@@ -76,8 +78,8 @@ export default function TreeView({ component, eventHandlers }) {
 
 function Item(props) {
   const {
-    validData, setIsOpenItems, isOpenItems, space,
-    handlerItemClick, selectedItemId, openHandler
+    validData, isOpenItems, space, selectedItemId,
+    handlerItemClick, openHandler
   } = props;
 
   return (
@@ -86,7 +88,7 @@ function Item(props) {
         const { id, label, children, levelOfNesting, action } = item;
         const nestingStyle = { marginLeft: space * levelOfNesting + 'px' };
 
-        if (item.children) {
+        if (children) {
           const isOpenItem = isOpenItems.find(element => element.id === id);
 
           return (
@@ -95,7 +97,7 @@ function Item(props) {
                 tabIndex={ selectedItemId === id ? 0 : -1 }
                 className={ cn('list__button', { selected: selectedItemId === id, open: isOpenItem.isOpen }) }
                 onClick={ () => openHandler(isOpenItem) }
-                style={ { ...nestingStyle } }>
+                style={ nestingStyle }>
                 <ButtonIcon/>
                 { label }
               </div>
@@ -105,7 +107,6 @@ function Item(props) {
                   validData={ children }
                   space={ space }
                   isOpenItems={ isOpenItems }
-                  setIsOpenItems={ setIsOpenItems }
                   selectedItemId={ selectedItemId }
                   openHandler={ openHandler }
                   handlerItemClick={ handlerItemClick }

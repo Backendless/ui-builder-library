@@ -1,9 +1,9 @@
 {
   "id": "c_0096eff988521f4ba6d75137546fc6c4",
   "name": "Tree view",
-  "description": "",
+  "description": "This component allows you to display a tree of folders and files",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "tree",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -15,7 +15,9 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "dataLogic",
-      "handlerLabel": "Data Logic"
+      "handlerLabel": "Data Logic",
+      "handlerDescription": "This is a handler for the logic to determine data for the tree view.",
+      "dataBinding": true
     },
     {
       "type": "number",
@@ -24,7 +26,10 @@
       "defaultValue": "10",
       "hasLogicHandler": true,
       "handlerId": "spaceLogic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This a handler for the logic to determine space for every nested element",
+      "label": "Space",
+      "handlerLabel": "Space Logic"
     }
   ],
   "eventHandlers": [
@@ -36,7 +41,8 @@
           "id": "action",
           "label": "Action"
         }
-      ]
+      ],
+      "handlerDescription": "This event is triggered when the user clicks on some file"
     }
   ],
   "actions": [
