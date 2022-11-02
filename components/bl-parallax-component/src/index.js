@@ -9,9 +9,13 @@ export default function Parallax({ component, pods }) {
   const backgroundImageElement = useRef();
   const containerElement = useRef();
 
-  const parallax = useCallback((containerElementCenterOffset) => {
+  const parallax = useCallback(() => {
+    const containerElementTop = containerElement.current.getBoundingClientRect().top + window.pageYOffset;
+    const containerElementCenter = containerElement.current.getBoundingClientRect().height / 2;
+    const containerElementCenterOffset = containerElementTop + containerElementCenter;
+
     const backgroundHeight = backgroundImageElement.current.getBoundingClientRect().height;
-    const screenCenter = window.innerWidth / 2;
+    const screenCenter = window.innerHeight / 2;
     const distanceToCenterOfScreen = containerElementCenterOffset - screenCenter - window.pageYOffset;
     const translateY = (distanceToCenterOfScreen / backgroundHeight * -100) * strength * 0.001;
 
@@ -21,15 +25,14 @@ export default function Parallax({ component, pods }) {
   useEffect(() => {
     backgroundImageElement.current.style.height = `calc(100% + ${ strength }px)`;
 
-    const containerElementTop = containerElement.current.getBoundingClientRect().top;
-    const containerElementCenter = containerElement.current.getBoundingClientRect().height / 2;
-    const containerElementCenterOffset = containerElementTop + containerElementCenter;
+    parallax();
 
-    parallax(containerElementCenterOffset);
-    document.addEventListener('scroll', () => parallax(containerElementCenterOffset));
+    document.addEventListener('scroll', parallax)
+    window.addEventListener('resize', parallax, false);
 
     return () => {
       document.removeEventListener('scroll', parallax);
+      window.removeEventListener('resize', parallax, false);
     };
   }, []);
 
