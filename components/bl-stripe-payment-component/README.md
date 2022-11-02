@@ -45,11 +45,11 @@ Then add the component to the page and specify the Publishable key in UI-Builder
 
 ## Actions
 
-| Action       | Inputs | Returns |
-|--------------|--------|---------|
-| Clear Card   |        |         |
-| Blur Card    |        |         |
-| Focus Card   |        |         |
+| Action       | Inputs | Returns | Description                             |
+|--------------|--------|---------|-----------------------------------------|
+| Clear Card   |        |         | clears the value(s) of the Card Element |
+| Blur Card    |        |         | blurs the Card Element                  |
+| Focus Card   |        |         | focuses the Card Element                |
 
 ## Styles
 
