@@ -375,6 +375,17 @@
         }
       ],
       "handlerDescription": "This is a handler where you can define the logic for uploading files. If the handler contains no logic, the files upload operation delivers a files in the Backendless file storage of your application."
+    },
+    {
+      "name": "onUploadFailed",
+      "label": "On Upload Failed Event",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ],
+      "handlerDescription": "This event is triggered if the upload of the file(s) results in an error."
     }
   ],
   "actions": []

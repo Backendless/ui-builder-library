@@ -40,15 +40,16 @@ The component covers all the main features of the library and provides a way to 
 
 ## Events
 
-| Name                 | Triggers                                                                | Context Blocks           |
-|----------------------|-------------------------------------------------------------------------|--------------------------|
-| File Name Logic      | when the user upload file to the server                                 | File: `Object`           |
-| On Change Event      | when the value of the file list is changed                              | Files List: `Array`      |
-| On Drop Event        | when files are dropped inside the dropzone or selected from file dialog | Files List: `Array`      |
-| On Change View Event | when view mode is changed                                               | View Mode: `String`      |
-| On Delete Event      | when the user clicks the mouse or taps the Close button                 | File ID: `Number`        |
-| On Clean Event       | when the user clicks the mouse or taps the Clean button                 | Validated Files: `Array` |
-| On Upload Event      | when the user starts uploading files                                    | File: `Object`           |
+| Name                   | Triggers                                                                | Context Blocks           |
+|------------------------|-------------------------------------------------------------------------|--------------------------|
+| File Name Logic        | when the user upload file to the server                                 | File: `Object`           |
+| On Change Event        | when the value of the file list is changed                              | Files List: `Array`      |
+| On Drop Event          | when files are dropped inside the dropzone or selected from file dialog | Files List: `Array`      |
+| On Change View Event   | when view mode is changed                                               | View Mode: `String`      |
+| On Delete Event        | when the user clicks the mouse or taps the Close button                 | File ID: `Number`        |
+| On Clean Event         | when the user clicks the mouse or taps the Clean button                 | Validated Files: `Array` |
+| On Upload Event        | when the user starts uploading files                                    | File: `Object`           |
+| On Upload Failed Event | when the upload of the file(s) results in an error                      | Error: `Object`          |
 
 ## Styles
 

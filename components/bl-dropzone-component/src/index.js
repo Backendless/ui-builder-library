@@ -6,11 +6,11 @@ import { ensureMeasure, useDropzone } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DropzoneComponent({ component, eventHandlers }) {
-  const {
-    display, classList, style, acceptedFileTypes, onDropBehaviour, clickable, footerVisibility, headerVisibility, label,
-    language, maxFiles, maxFileSize, minHeight, maxHeight, viewMode, disableScrollbar, uploadOnDrop, themeColor,
-    cleanButtonVisibility, showInfoLayer, activeItems, preview, borderWidth, borderStyle, borderColor,
-  } = component;
+  const { display, classList, style, acceptedFileTypes, onDropBehaviour, clickable, footerVisibility } = component;
+  const { headerVisibility, label, language, maxFiles, maxFileSize, minHeight, maxHeight, viewMode } = component;
+  const { disableScrollbar, uploadOnDrop, themeColor, cleanButtonVisibility, showInfoLayer } = component;
+  const { activeItems, preview, borderWidth, borderStyle, borderColor } = component;
+
   const { onDrop, onChangeView, onClean } = eventHandlers;
 
   const [imageSrc, setImageSrc] = useState();

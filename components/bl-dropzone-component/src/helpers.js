@@ -9,7 +9,7 @@ const UploadStatus = {
 
 export function useDropzone(component, eventHandlers) {
   const { overwriteFiles, targetDirectory, uploadOnDrop } = component;
-  const { onDelete, onChange, fileNameLogic, onUpload, available } = eventHandlers;
+  const { onDelete, onChange, fileNameLogic, onUpload, onUploadFailed } = eventHandlers;
 
   const [files, setFiles] = useState([]);
 
@@ -22,9 +22,8 @@ export function useDropzone(component, eventHandlers) {
 
         try {
           const file = item.file;
-          const hasUploadHandler = available('onUpload');
 
-          if (hasUploadHandler) {
+          if (onUpload.hasLogic) {
             await onUpload({ file });
           } else {
             const fileName = await fileNameLogic({ file });
@@ -38,7 +37,7 @@ export function useDropzone(component, eventHandlers) {
           item.uploadStatus = UploadStatus.success;
         } catch (error) {
           item.uploadStatus = UploadStatus.error;
-          console.error(error.message);
+          onUploadFailed({ error });
         }
       }
 
