@@ -25,13 +25,23 @@
     text-transform: uppercase;
     background-color: transparent;
     color: @bl-customComponent-tabs-textColor;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
 
     &-active {
-      background-color: @bl-customComponent-tabs-backgroundColor;
-      border-bottom: 1px solid @bl-customComponent-tabs-themeColor;
-      transition: background-color .3s, border-bottom .3s;
+      transition: background-color .3s, border-color .3s, border-bottom .3s;
     }
+  }
+
+  &--standart .tab-active {
+    border-bottom: 1px solid @bl-customComponent-tabs-themeColor;
+  }
+
+  &--filled .tab-active {
+    background-color: @bl-customComponent-tabs-backgroundColor;
+  }
+
+  &--outlined .tab-active {
+    border-color: @bl-customComponent-tabs-themeColor;
   }
 }

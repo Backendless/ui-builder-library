@@ -8,11 +8,11 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
 
 ## Properties
 
-| Property | Type       | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |
-|----------|------------|---------------|----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
-| Tabs     | *JSON*     | `[]`          | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: {id: `String`, label: `String`}. |
-
+| Property | Type                                                | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |
+|----------|-----------------------------------------------------|---------------|----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled | *Checkbox*                                          | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
+| Tabs     | *JSON*                                              | `[]`          | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: {id: `String`, label: `String`}. |
+| Variant  | *Select* <br/> "standart" \| "filled" \| "outlined" | "standart"    | Variant Logic  | YES          | YES        | This handler allows you to select variant of tab.                                                                                                  |
 ## Events
 
 | Name                   | Triggers                               | Context Blocks               |

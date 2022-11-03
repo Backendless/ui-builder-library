@@ -5,7 +5,7 @@ import { TabControl } from './tab-control';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TabsComponent({ component, eventHandlers, appData, pageData, parentDataModel, pods }) {
-  const { classList, style, display, disabled, tabs } = component;
+  const { classList, style, display, disabled, variant, tabs } = component;
   const { onChange } = eventHandlers;
 
   const [currentTabId, setCurrentTabId] = useState(null);
@@ -54,7 +54,8 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
     <div
       style={ style }
       className={ cn(
-        "bl-customComponent-tabs", classList, { "bl-customComponent-tabs--disabled": disabled }
+        "bl-customComponent-tabs", classList,
+        `bl-customComponent-tabs--${variant}`, { "bl-customComponent-tabs--disabled": disabled }
       ) }>
       <TabControl
         tabs={ tabsList }

@@ -21,6 +21,33 @@
       "dataBinding": true
     },
     {
+      "type": "select",
+      "name": "variant",
+      "label": "Variant",
+      "settingTooltip": "This handler allows you to select variant of tab.",
+      "showInSettings": true,
+      "defaultValue": "standart",
+      "hasLogicHandler": true,
+      "handlerId": "variantLogic",
+      "handlerLabel": "Variant Logic",
+      "handlerDescription": "This handler allows you to select variant of tab.",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "standart",
+          "label": "Standart"
+        },
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "outlined",
+          "label": "Outlined"
+        }
+      ]
+    },
+    {
       "type": "json",
       "name": "tabs",
       "label": "Tabs",
