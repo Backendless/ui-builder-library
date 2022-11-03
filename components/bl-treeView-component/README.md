@@ -4,16 +4,16 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 
 ## Properties
 
-| Property | Type   | Default Value | Logic       | Data Binding | UI Setting | Description                                                                                                        |
-|----------|--------|---------------|-------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------|
-| data     | JSON   |               | Data Logic  | YES          | YES        | Allows to determine data. Signature of data: `[{label, ?action, ?children}]`. Watch [Codeless Examples](#Examples) |
-| space    | Number | 10            | Space Logic | YES          | YES        | Allows to determine space for every nested element                                                                 |
+| Property | Type     | Default Value | Logic       | Data Binding | UI Setting | Description                                                                                                        |
+|----------|----------|---------------|-------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------|
+| data     | *JSON*   |               | Data Logic  | YES          | YES        | Allows to determine data. Signature of data: `[{label, ?action, ?children}]`. Watch [Codeless Examples](#Examples) |
+| space    | *Number* | 10            | Space Logic | YES          | YES        | Allows to determine space for every nested element                                                                 |
 
 ## Events
 
 | Name     | Triggers                                       | Context Blocks   |
 |----------|------------------------------------------------|------------------|
-| On Click | when a user click on tree element (not folder) | action: `String` |
+| On Click | when a user click on tree element (not folder) | Action: `String` |
 
 
 ## Actions
