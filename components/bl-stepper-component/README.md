@@ -8,34 +8,57 @@ The component based on external [stepper](https://mui.com/material-ui/react-step
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-## Usage
+## Properties
 
-### Styles and Settings
+| Property    | Type                                            | Default Value | Logic             | Data Binding | UI Setting | Description                                   |
+|-------------|-------------------------------------------------|---------------|-------------------|--------------|------------|-----------------------------------------------|
+| stepList    | Text                                            |               | Step List Logic   | NO           | YES        | Allows to determine the list of steps         |
+| countSteps  | Number                                          | 2             | Count Steps Logic | YES          | YES        | Allows to determine the count steps           |
+| stepperType | Select [`root`,`alternativeLabel`,`customized`] | root          |                   | NO           | YES        | Allows to determine the type of stepper style |
 
-<dl>
-<dt>Type Stepper Style selector</dt>
-<dd>Selector for choose kind Stepper. Defaults to "root"</dd>
-</dl>
+## Events
 
-### Event Handlers and Bindable Properties
+| Name           | Triggers                 | Context Blocks |
+|----------------|--------------------------|----------------|
+| On Step Change | when current step change |                |
 
-<dl>
-<dt>Step List</dt>
-<dd>User can input list of title steps. Can be determined by Step List Logic.</dd>
-<dt>Count Steps</dt>
-<dd>It allows for user input count steps without step title. If Step List is inputted, Count Step will not be working. Can be determined by Count Step Logic. Defaults to 2.</dd>
-<dt>On Step Change</dt>
-<dd>Triggered when current step change</dd>
-</dl>
+## Actions
 
-### Action
-<dl>
-<dt>Go Next Step</dt>
-<dd>An action that moves to the next step</dd>
-<dt>Go Previous Step</dt>
-<dd>An action that moves to the Previous step</dd>
-<dt>Reset Step</dt>
-<dd>An action that reset steps and return to first step</dd>
-<dt>Set Step</dt>
-<dd>An action that sets the number of steps. Has an input "Step number"</dd>
-</dl>
+| Action           | Inputs        | Returns |
+|------------------|---------------|---------|
+| Go Next Step     |               |         |
+| Go Previous Step |               |         |
+| Reset Step       |               |         |
+| Set Step         | step:`Number` |         |
+
+## Styles
+
+**Theme**
+```
+@bl-customComponent-stepper-themeColor: @themePrimary;
+@bl-customComponent-stepper-backgroundColor: @appBackgroundColor;
+@bl-customComponent-stepper-textColor: @appTextColor;
+```
+
+**Colors**
+```
+@bl-customComponent-stepper-lineColor: rgb(117, 117, 117);
+```
+
+**Dimensions**
+```
+@bl-customComponent-stepper-iconSize: 24px;
+@bl-customComponent-stepper-iconBorderRadius: 50%;
+@bl-customComponent-stepper-itemWidth: 100%;
+@bl-customComponent-stepper-lineWidth: 100%;
+@bl-customComponent-stepper-lineBorderWidth: 1px;
+@bl-customComponent-stepper-alternative-label-titleTextMargin: 16px 5px;
+@bl-customComponent-stepper-customized-lineBorderWidth: 3px;
+@bl-customComponent-stepper-customized-iconSize: 18px;
+@bl-customComponent-stepper-customized-iconMarkSize: 8px;
+```
+
+**Others**
+```
+@bl-customComponent-stepper-transition: 0.3s;
+```

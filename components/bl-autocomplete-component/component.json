@@ -78,6 +78,7 @@
       "name": "onButtonClearClick",
       "label": "On Button Clear Click Event",
       "dataBinding": true,
+      "contextBlocks": [],
       "handlerDescription": "This event triggered on button clear click."
     },
     {

@@ -29,6 +29,12 @@
   display: block;
   width: @bl-customComponent-multipleSelect-width;
 
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
   .multiple-select {
     position: relative;
     display: inline-flex;
@@ -263,12 +269,6 @@
       white-space: nowrap;
     }
   }
-}
-
-.disable {
-  opacity: 0.38;
-  pointer-events: none;
-  cursor: default;
 }
 
 .filled {

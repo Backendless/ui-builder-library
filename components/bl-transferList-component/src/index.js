@@ -36,7 +36,11 @@ export default function TransferListComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-transferList', classList, { disabled }) } style={ style }>
+    <div
+      className={
+        cn('bl-customComponent-transferList', classList, { 'bl-customComponent-transferList--disabled': disabled })
+      }
+      style={ style }>
       <List
         enableSelectAll={ listType === ENHANCED }
         items={ left }
