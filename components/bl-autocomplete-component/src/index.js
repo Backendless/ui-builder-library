@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { useOnClickOutside, validate } from './helpers';
 import { Options } from './options';
@@ -7,7 +7,7 @@ import { TextField } from './text-field';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
-  const { disabled, placeholder, options, autocompleteVariant, classList, style } = component;
+  const { classList, style, display, disabled, placeholder, variant, options } = component;
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
@@ -26,17 +26,6 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
     label.toLowerCase().includes(inputValue.toLowerCase())
   ));
 
-  const classes = cn(
-    'bl-customComponent-autocomplete',
-    autocompleteVariant,
-    classList,
-    {
-      disabled,
-      ['has-clear-button']: autocompleteValue,
-      ['autocomplete-focused']: isAutocompleteActive,
-    }
-  );
-
   const handleClickOutside = useCallback(() => {
     setIsOptionsOpen(false);
     setIsAutocompleteActive(false);
@@ -45,8 +34,24 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   useOnClickOutside(rootRef, handleClickOutside);
 
+  if (!display) {
+    return null;
+  }
+
   return (
-    <div ref={ rootRef } className={ classes } style={ style }>
+    <div
+      ref={ rootRef }
+      style={ style }
+      className={
+        cn(
+          'bl-customComponent-autocomplete', `bl-customComponent-autocomplete--${variant}`, classList,
+          {
+            'bl-customComponent-autocomplete--disabled': disabled,
+            'has-clear-button': autocompleteValue,
+            'autocomplete-focused': isAutocompleteActive,
+          }
+        )
+      }>
       <TextField
         ref={ autocompleteRef }
         disabled={ disabled }

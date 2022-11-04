@@ -5,8 +5,6 @@ import { Fieldset } from './fieldset';
 import { Input } from './input';
 import { Placeholder } from './placeholder';
 
-import { generateId } from '../helpers';
-
 export const TextField = forwardRef((props, ref) => {
   const {
     inputValue,
@@ -25,7 +23,7 @@ export const TextField = forwardRef((props, ref) => {
   const { onButtonClearClick, onChange } = eventHandlers;
 
   const inputRef = useRef(null);
-  const autocompleteId = useMemo(() => generateId(), []);
+  const autocompleteId = useMemo(() => BackendlessUI.UUID.short(), []);
 
   const handleClick = () => {
     inputRef.current.focus();

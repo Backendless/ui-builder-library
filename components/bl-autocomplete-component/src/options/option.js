@@ -5,10 +5,7 @@ export const Option = props => {
     setInputValue('');
     setAutocompleteValue(item);
     setIsOptionsOpen(false);
-
-    if (onAutocompleteChange) {
-      onAutocompleteChange({ autocompleteValue: item });
-    }
+    onAutocompleteChange({ autocompleteValue: item });
   };
 
   const onEnterClick = ({ key }) => {
@@ -22,7 +19,7 @@ export const Option = props => {
       <span
         tabIndex={ 1 }
         onKeyUp={ onEnterClick }>
-        {item.label}
+        { item.label }
       </span>
     </div>
   );
