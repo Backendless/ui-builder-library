@@ -22,10 +22,8 @@ export default function DataGridComponent({ component, eventHandlers }) {
     filterParams: { buttons: ['apply', 'reset'] }
   }), []);
 
-  const handleCellClick = useCallback( params => {
-    if (onCellClick) {
-      onCellClick({ cellParams: params })
-    }
+  const handleCellClick = useCallback(params => {
+    onCellClick({ cellParams: params });
   }, []);
 
   if (!display) {
@@ -35,7 +33,12 @@ export default function DataGridComponent({ component, eventHandlers }) {
   return (
     <div
       style={{ height: `${ height }px`, width: `${ width }px`, flexShrink: 0 }}
-      className={ cn("bl-customComponent-dataGrid", `ag-theme-${ theme }`, classList, { disabled }) }>
+      className={
+        cn(
+          "bl-customComponent-dataGrid", `ag-theme-${ theme }`, classList,
+          { "bl-customComponent-dataGrid--disabled": disabled }
+        )
+      }>
       <AgGridReact
         ref={ gridRef }
         rowData={ rowData }
