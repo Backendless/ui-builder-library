@@ -17,6 +17,12 @@
   height: @bl-customComponent-modal-height;
   z-index: @bl-customComponent-modal-component-z-index;
 
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
   .modal-content {
     position: absolute;
     z-index: @bl-customComponent-modal-content-z-index;

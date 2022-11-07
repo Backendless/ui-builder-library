@@ -27,7 +27,9 @@ export default function ModalComponent({ component, eventHandlers, pods }) {
   return (
     <>
       { visibility &&
-        <div className={ cn("bl-customComponent-modal", classList, { disabled }) } style={ style }>
+        <div
+          style={ style }
+          className={ cn("bl-customComponent-modal", classList, { "bl-customComponent-modal--disabled": disabled }) }>
           <div className="backdrop" onClick={ handleClick } />
           <div className="modal-content">
             { modalContentPod.render() }
