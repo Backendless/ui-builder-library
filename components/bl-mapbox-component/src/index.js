@@ -25,7 +25,7 @@ export default function Mapbox({ component, eventHandlers }) {
 
   const [polygonsObject, setPolygonsObject] = useState([]);
 
-  const { onClick, onMarkerClick, onPolygonClick, onDeterminingGeoposition } = eventHandlers;
+  const { onClick, onMarkerClick, onPolygonClick, onDeterminingGeoposition, onPan } = eventHandlers;
 
   const {
     markers, polygons, center, zoom, fullScreen, accessToken, projection, lowerAtmosphere, upperAtmosphere,
@@ -102,6 +102,13 @@ export default function Mapbox({ component, eventHandlers }) {
       mapRef.current.on('click', e => {
         const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
         onClick({ coordinates: coordinates });
+      });
+
+      mapRef.current.on('move', () => {
+        const center = mapRef.current.getCenter();
+        const southWest = mapRef.current.getBounds().getSouthWest();
+        const northEast = mapRef.current.getBounds().getNorthEast();
+        onPan({ center: center, southWest: southWest, northEast: northEast });
       });
 
       if (searchBar) {

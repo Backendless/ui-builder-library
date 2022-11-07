@@ -240,6 +240,25 @@
           "label": "Coordinates"
         }
       ]
+    },
+    {
+      "name": "onPan",
+      "label": "On Pan Event",
+      "contextBlocks": [
+        {
+          "id": "center",
+          "label": "Center"
+        },
+        {
+          "id": "northEast",
+          "label": "North East"
+        },
+        {
+          "id": "southWest",
+          "label": "South West"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user moves the map around."
     }
   ],
   "actions": [
