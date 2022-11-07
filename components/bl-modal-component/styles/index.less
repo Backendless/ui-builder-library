@@ -2,6 +2,10 @@
 @bl-customComponent-modal-width: 100%;
 @bl-customComponent-modal-height: 100%;
 
+@bl-customComponent-modal-backdrop-z-index: 1;
+@bl-customComponent-modal-content-z-index: 2;
+@bl-customComponent-modal-component-z-index: 100;
+
 @bl-customComponent-modal-backdrop-color: rgba(0, 0, 0, 0.5);
 
 .bl-customComponent-modal {
@@ -11,11 +15,11 @@
   align-items: center;
   width: @bl-customComponent-modal-width;
   height: @bl-customComponent-modal-height;
-  z-index: 100;
+  z-index: @bl-customComponent-modal-component-z-index;
 
   .modal-content {
     position: absolute;
-    z-index: 2;
+    z-index: @bl-customComponent-modal-content-z-index;
   }
 
   .backdrop {
@@ -23,6 +27,6 @@
     width: @bl-customComponent-modal-width;
     height: @bl-customComponent-modal-height;
     background-color: @bl-customComponent-modal-backdrop-color;
-    z-index: 1;
+    z-index: @bl-customComponent-modal-backdrop-z-index;
   }
 }

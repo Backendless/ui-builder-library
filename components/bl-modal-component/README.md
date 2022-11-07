@@ -20,13 +20,16 @@ Modal is a component of Backendless UI-Builder designer. This component allows y
 
 ## Styles
 
-**Theme**
-````
-@bl-customComponent-modal-backdrop-color: rgba(0, 0, 0, 0.5);
-````
-
 **Dimensions**
 ````
 @bl-customComponent-modal-width: 100%;
 @bl-customComponent-modal-height: 100%;
+@bl-customComponent-modal-backdrop-z-index: 1;
+@bl-customComponent-modal-content-z-index: 2;
+@bl-customComponent-modal-component-z-index: 100;
+````
+
+**Colors**
+````
+@bl-customComponent-modal-backdrop-color: rgba(0, 0, 0, 0.5);
 ````
