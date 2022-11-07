@@ -203,7 +203,8 @@
       "label": "Upload On Drop",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "uploadOnDropLogic"
+      "handlerId": "uploadOnDropLogic",
+      "defaultValue": true
     },
     {
       "type": "checkbox",
@@ -388,5 +389,10 @@
       "handlerDescription": "This event is triggered if the upload of the file(s) results in an error."
     }
   ],
-  "actions": []
+  "actions": [
+    {
+      "id": "uploadFiles",
+      "label": "Upload Files"
+    }
+  ]
 }

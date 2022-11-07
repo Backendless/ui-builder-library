@@ -8,14 +8,14 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function DropzoneComponent({ component, eventHandlers }) {
   const { display, classList, style, acceptedFileTypes, onDropBehaviour, clickable, footerVisibility } = component;
   const { headerVisibility, label, language, maxFiles, maxFileSize, minHeight, maxHeight, viewMode } = component;
-  const { disableScrollbar, uploadOnDrop, themeColor, cleanButtonVisibility, showInfoLayer } = component;
+  const { disableScrollbar, themeColor, cleanButtonVisibility, showInfoLayer } = component;
   const { activeItems, preview, borderWidth, borderStyle, borderColor } = component;
 
   const { onDrop, onChangeView, onClean } = eventHandlers;
 
   const [imageSrc, setImageSrc] = useState();
   const [videoSrc, setVideoSrc] = useState();
-  const { files, updateFiles, onUploadFinish, handleDelete } = useDropzone(component, eventHandlers);
+  const { files, updateFiles, handleDelete } = useDropzone(component, eventHandlers);
 
   const handleSee = imageSource => setImageSrc(imageSource);
   const handleWatch = videoSource => setVideoSrc(videoSource);
@@ -49,14 +49,11 @@ export default function DropzoneComponent({ component, eventHandlers }) {
         view={ viewMode === 'unset' ? false : viewMode }
         footer={ footerVisibility }
         header={ headerVisibility }
-        url
         behaviour={ onDropBehaviour }
-        uploadOnDrop={ uploadOnDrop }
         color={ themeColor }
         disableScroll={ disableScrollbar }
         onDrop={ filesList => onDrop({ filesList }) }
         onChangeView={ viewMode => onChangeView({ viewMode }) }
-        onUploadFinish={ onUploadFinish }
       >
         { files?.map(file => (
           <FileItem

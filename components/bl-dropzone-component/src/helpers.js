@@ -3,7 +3,6 @@ import { useState } from 'react';
 const UploadStatus = {
   success  : 'success',
   uploading: 'uploading',
-  undefined: 'undefined',
   error    : 'error',
 };
 
@@ -13,15 +12,21 @@ export function useDropzone(component, eventHandlers) {
 
   const [files, setFiles] = useState([]);
 
-  const updateFiles = filesList => {
+  const uploadFiles = async files => {
     const updatedFiles = [];
 
-    filesList.forEach(async item => {
-      if (item.uploadStatus === UploadStatus.uploading) {
-        item.uploadStatus = UploadStatus.undefined;
+    const filesList = files.map(fileItem => {
+      const shouldUpload = fileItem.valid === true && fileItem.uploadStatus !== UploadStatus.success;
 
+      return shouldUpload ? { ...fileItem, uploadStatus: UploadStatus.uploading } : fileItem;
+    });
+
+    setFiles(filesList);
+
+    for (const fileItem of filesList) {
+      if (fileItem.uploadStatus === UploadStatus.uploading) {
         try {
-          const file = item.file;
+          const file = fileItem.file;
 
           if (onUpload.hasLogic) {
             await onUpload({ file });
@@ -34,39 +39,26 @@ export function useDropzone(component, eventHandlers) {
             await Backendless.Files.upload(file, path, overwriteFiles);
           }
 
-          item.uploadStatus = UploadStatus.success;
+          fileItem.uploadStatus = UploadStatus.success;
         } catch (error) {
-          item.uploadStatus = UploadStatus.error;
+          fileItem.uploadStatus = UploadStatus.error;
           onUploadFailed({ error });
         }
       }
 
-      updatedFiles.push(item);
-
-      if (updatedFiles.length === filesList.length) {
-        setFiles(updatedFiles);
-      }
-    });
-
-    onChange({ filesList });
-  };
-
-  const onUploadFinish = () => {
-    if (uploadOnDrop) {
-      return;
+      updatedFiles.push(fileItem);
     }
 
-    const updatedFiles = [];
-
-    files.forEach(file => {
-      if (file.uploadStatus === UploadStatus.success || file.valid === false) {
-        updatedFiles.push(file);
-      } else {
-        updatedFiles.push({ ...file, uploadStatus: UploadStatus.uploading });
-      }
-    });
-
     setFiles(updatedFiles);
+  };
+
+  const updateFiles = filesList => {
+    setFiles(filesList);
+    onChange({ filesList });
+
+    if (uploadOnDrop) {
+      uploadFiles(filesList);
+    }
   };
 
   const handleDelete = fileID => {
@@ -74,7 +66,9 @@ export function useDropzone(component, eventHandlers) {
     onDelete({ fileID });
   };
 
-  return { files, updateFiles, onUploadFinish, handleDelete };
+  component.uploadFiles = () => uploadFiles(files);
+
+  return { files, updateFiles, handleDelete };
 }
 
 export function ensureMeasure(dimension) {

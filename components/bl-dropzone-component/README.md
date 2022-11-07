@@ -51,6 +51,12 @@ The component covers all the main features of the library and provides a way to 
 | On Upload Event        | when the user starts uploading files                                    | File: `Object`           |
 | On Upload Failed Event | when the upload of the file(s) results in an error                      | Error: `Object`          |
 
+## Actions
+
+| Action       | Inputs | Returns |
+|--------------|--------|---------|
+| Upload Files |        |         |
+
 ## Styles
 
 **Theme**
