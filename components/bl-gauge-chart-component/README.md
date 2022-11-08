@@ -14,6 +14,15 @@ Gauge Chart is a component of Backendless UI-Builder designer. This is a chart w
 | Goal     | *Number*   |               | Goal Logic     | YES          | YES        | This handler allows you to specify a goal.      |
 | Progress | *Number*   |               | Progress Logic | YES          | YES        | This handler allows you to specify a progress.  |
 
+## Actions
+
+| Action                  | Inputs                             | Returns                             |
+|-------------------------|------------------------------------|-------------------------------------|
+| Set Goal                | Goal: `Number`                     |                                     |
+| Get Goal                |                                    | `Number`: current goal              |
+| Set Progress            | Progress: `Number`                 |                                     |
+| Get Progress            |                                    | `Number`: current progress          |
+
 ## Styles
 
 **Theme**
