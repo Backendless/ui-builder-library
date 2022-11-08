@@ -1,0 +1,188 @@
+{
+  "id": "c_4a2fcd39f0611209c57905f4c0cdfddf",
+  "name": "Knob",
+  "description": "This is a component to define number inputs with a dial.",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "number",
+      "name": "initialValue",
+      "label": "Initial Value",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": true,
+      "handlerId": "initialValueLogic",
+      "handlerLabel": "Initial Value Logic",
+      "handlerDescription": "This is a handler to control the initial value.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "readOnly",
+      "label": "Read Only",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "readOnlyLogic",
+      "handlerLabel": "Read Only Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler that controls the readOnly property."
+    },
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This is a handler to control the disabled property.",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "setMax",
+      "label": "Set Max Value",
+      "showInSettings": true,
+      "defaultValue": "100",
+      "hasLogicHandler": true,
+      "handlerId": "setMaxLogic",
+      "handlerLabel": "Set Max Logic",
+      "handlerDescription": "This is a handler to control the max value.",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "setMin",
+      "label": "Set Min Value",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": true,
+      "handlerId": "setMinLogic",
+      "handlerLabel": "Set Min Logic",
+      "handlerDescription": "This is a handler to control the min value.",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "step",
+      "label": "Step",
+      "showInSettings": true,
+      "defaultValue": "1",
+      "hasLogicHandler": true,
+      "handlerId": "stepLogic",
+      "handlerLabel": "Step Logic",
+      "handlerDescription": "This is a handler to control the step of the Knob.",
+      "dataBinding": true
+    },
+    {
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "name": "dial",
+      "handlerId": "dialLogic",
+      "label": "Dial Width",
+      "handlerLabel": "Dial Width Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to control the dial width of the Knob.",
+      "type": "text",
+      "defaultValue": "14"
+    },
+    {
+      "type": "text",
+      "name": "valueTemplate",
+      "label": "Value Template",
+      "showInSettings": true,
+      "defaultValue": "{value}",
+      "hasLogicHandler": true,
+      "handlerId": "valueTemplateLogic",
+      "handlerLabel": "Value Template Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to control the value template of the Knob."
+    },
+    {
+      "type": "number",
+      "name": "size",
+      "label": "Size",
+      "showInSettings": true,
+      "defaultValue": "100",
+      "hasLogicHandler": true,
+      "handlerId": "sizeLogic",
+      "handlerLabel": "Size Logic",
+      "handlerDescription": "This is a handler to control the size of the Knob.",
+      "dataBinding": true
+    },
+    {
+      "type": "color",
+      "name": "valueColor",
+      "label": "Value Color",
+      "showInSettings": true,
+      "defaultValue": "#6366f1",
+      "hasLogicHandler": true,
+      "handlerId": "valueColorLogic",
+      "handlerLabel": "Value Color Logic",
+      "handlerDescription": "This is a handler to control the value color of the Knob.",
+      "dataBinding": true
+    },
+    {
+      "type": "color",
+      "name": "rangeColor",
+      "label": "Range Color",
+      "showInSettings": true,
+      "defaultValue": "#dfe7ef",
+      "hasLogicHandler": true,
+      "handlerId": "rangeColorLogic",
+      "handlerLabel": "Range Color Logic",
+      "handlerDescription": "This is a handler to control the range color of the Knob.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "output": false,
+      "contextBlocks": [
+        {
+          "id": "data",
+          "label": "Data"
+        }
+      ],
+      "label": "On Change",
+      "handlerDescription": "The event is triggered when the user changes the knob value."
+    }
+  ],
+  "actions": [
+    {
+      "id": "setValue",
+      "label": "Set Value",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    },
+    {
+      "id": "setReadOnly",
+      "label": "Set Read Only",
+      "inputs": [
+        {
+          "id": "readOnly",
+          "label": "Read Only"
+        }
+      ]
+    },
+    {
+      "id": "setDisabled",
+      "label": "Set Disabled",
+      "inputs": [
+        {
+          "id": "disabled",
+          "label": "Disabled"
+        }
+      ]
+    }
+  ]
+}
