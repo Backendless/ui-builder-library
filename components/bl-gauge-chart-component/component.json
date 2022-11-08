@@ -38,5 +38,41 @@
       "handlerLabel": "Progress Logic",
       "dataBinding": true
     }
+  ],
+  "actions": [
+    {
+      "id": "getGoal",
+      "label": "Get Goal",
+      "hasReturn": true,
+      "color": "#244d9a"
+    },
+    {
+      "id": "setGoal",
+      "label": "Set Goal",
+      "inputs": [
+        {
+          "id": "goal",
+          "label": "Goal"
+        }
+      ],
+      "color": "#244d9a"
+    },
+    {
+      "id": "getProgress",
+      "label": "Get Progress",
+      "hasReturn": true,
+      "color": "#379a1b"
+    },
+    {
+      "id": "setProgress",
+      "color": "#379a1b",
+      "label": "Set Progress",
+      "inputs": [
+        {
+          "id": "progress",
+          "label": "Progress"
+        }
+      ]
+    }
   ]
 }
