@@ -1,21 +1,12 @@
 export const validate = items => {
-  if (!items) {
-    return [];
-  }
-  
-  if (!items[0].hasOwnProperty('objectId')) {
-    return items.map(item => ({
-      ...item,
-      objectId: getId(),
+  if (Array.isArray(items)) {
+    return items.map(({ name, goal, progress }) => ({
+      id: name,
+      name: name,
+      goal: goal > 0 ? goal : 1,
+      progress: progress < 0 ? 0 : progress,
     }));
   }
-    
-  return items;
-};
 
-const getId = () => {
-  const chr4 = () => Math.random().toString(16).slice(-4);
-  const chr8 = () => `${chr4()}${chr4()}`;
-
-  return `${chr8()}${chr8()}`;
+  return [];
 };

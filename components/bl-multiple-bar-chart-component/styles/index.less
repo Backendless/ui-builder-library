@@ -3,6 +3,8 @@
 @bl-customComponent-multipleBarChart-backgroundColor: @appBackgroundColor;
 @bl-customComponent-multipleBarChart-textColor: @appTextColor;
 
+@bl-customComponent-multipleBarChart-width: 100%;
+
 @bl-customComponent-multipleBarChart-chartBarColor: #212121;
 @bl-customComponent-multipleBarChart-chartNameColor: @bl-customComponent-multipleBarChart-textColor;
 @bl-customComponent-multipleBarChart-chartFillColor: @bl-customComponent-multipleBarChart-themeColor;
@@ -12,6 +14,8 @@
 @bl-customComponent-multipleBarChart-labelWidthWithOffset: @bl-customComponent-multipleBarChart-labelWidth + @bl-customComponent-multipleBarChart-labelMarginRight;
 
 .bl-customComponent-multipleBarChart {
+  width: @bl-customComponent-multipleBarChart-width;
+
   .chart {
     &__items {
       position: relative;
