@@ -10,11 +10,13 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "disable",
-      "label": "Disable",
+      "name": "disabled",
+      "label": "Disabled",
       "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "disableLogic"
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true
     },
     {
       "type": "number",
