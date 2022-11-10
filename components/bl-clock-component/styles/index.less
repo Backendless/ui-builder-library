@@ -1,0 +1,48 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-clock-font-size: 16px;
+
+.bl-customComponent-clock {
+  display: flex;
+
+  font-size: @bl-customComponent-clock-font-size;
+
+  .digital {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    width: 14px;
+    text-align: center;
+  }
+
+  .remove {
+    position: absolute;
+    animation: remove 0.5s ease-in-out;
+  }
+
+  .added {
+    position: absolute;
+    animation: added 0.5s ease-in-out;
+  }
+}
+
+@keyframes added {
+  from {
+    transform: translate(0, @bl-customComponent-clock-font-size + 2px);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes remove {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(0, calc((@bl-customComponent-clock-font-size + 2px)  * -1));
+  }
+}
