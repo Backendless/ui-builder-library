@@ -9,29 +9,35 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
   const { onChange } = eventHandlers;
 
   const [currentTabId, setCurrentTabId] = useState(null);
+  const classes = useMemo(() => (
+    cn(
+      'bl-customComponent-tabs', classList,
+      `bl-customComponent-tabs--${variant}`, { 'bl-customComponent-tabs--disabled': disabled }
+    )
+  ), [classList, disabled, variant]);
 
   component.getCurrentTabId = () => currentTabId;
   component.setCurrentTabId = id => {
     setCurrentTabId(id);
     onChange({ currentTabId: id });
-  }
+  };
 
-  const podsContent = pods["Tabs Content"];
+  const podsContent = pods['Tabs Content'];
 
   const tabsList = useMemo(() => {
-    if (Array.isArray(tabs)) {
-      return tabs.filter((tab, index) => {
-        if (tab.id && tab.label) {
-          return true;
-        }
-
-        console.log(`Invalid tab item ${++index}`);
-
-        return false;
-      });
+    if (!Array.isArray(tabs)) {
+      return []
     }
 
-    return [];
+    return tabs.filter(({ id, label, value }) => {
+      if (id) {
+        return true;
+      }
+
+      console.error(`Invalid tab item: {label: ${label}, value: ${value}}`);
+
+      return false;
+    });
   }, [tabs]);
 
   useEffect(() => {
@@ -53,10 +59,7 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
   return (
     <div
       style={ style }
-      className={ cn(
-        "bl-customComponent-tabs", classList,
-        `bl-customComponent-tabs--${variant}`, { "bl-customComponent-tabs--disabled": disabled }
-      ) }>
+      className={ classes }>
       <TabControl
         tabs={ tabsList }
         currentTabId={ currentTabId }
