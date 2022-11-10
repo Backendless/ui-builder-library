@@ -31,10 +31,10 @@ export default function SimpleModal({ component, eventHandlers }) {
 
 
   useEffect(() => {
-    if (!display) {
-      component.closeModal();
-    } else {
+    if (display) {
       setIsOpen(true)
+    } else {
+      component.closeModal();
     }
   }, [display])
 
