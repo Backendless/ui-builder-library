@@ -12,6 +12,11 @@ export default function MultipleBarChartComponent({ component }) {
   const [chartData, setChartData] = useState([]);
   const marksList = useGridMarks(gridMarks);
 
+  const classes = cn(
+    'bl-customComponent-multipleBarChart', classList,
+    { 'bl-customComponent-multipleBarChart--disabled': disabled }
+  );
+
   useEffect(() => {
     setChartData(validate(data));
   }, [data])
@@ -23,13 +28,7 @@ export default function MultipleBarChartComponent({ component }) {
   return (
     <div
       style={ style }
-      className={
-        cn(
-          "bl-customComponent-multipleBarChart",
-          classList,
-          { "bl-customComponent-multipleBarChart--disabled": disabled }
-        )
-      }>
+      className={ classes }>
       <div className="chart">
         <div className="chart__items">
           { visibility &&

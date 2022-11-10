@@ -43,19 +43,19 @@
       "options": [
         {
           "value": "2",
-          "label": "2 columns"
+          "label": "2"
         },
         {
           "value": "4",
-          "label": "4 columns"
+          "label": "4"
         },
         {
           "value": "5",
-          "label": "5 columns"
+          "label": "5"
         },
         {
           "value": "10",
-          "label": "10 columns"
+          "label": "10"
         }
       ],
       "defaultValue": "4",
