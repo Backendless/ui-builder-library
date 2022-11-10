@@ -3,6 +3,10 @@ import { useMemo } from 'react';
 export const DOTS = '...';
 
 export const usePagination = (pageCount, currentPage, siblingCount) => {
+  if (pageCount <= 0) {
+    throw new Error('The page count must be greater than 0');
+  }
+
   const paginationRange = useMemo(() => {
     const countMainElements = 5;
     const totalPageNumbers = siblingCount + countMainElements;
