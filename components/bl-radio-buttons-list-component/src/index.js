@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import { RadioButton } from './components';
 
@@ -10,11 +10,17 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
 
   const [optionsList, setOptionsList] = useState([]);
   const [selectedValue, setSelectedValue] = useState(null);
+  const classes = useMemo(() => (
+    cn(
+      "bl-customComponent-radioButtonsList", classList,
+      { "bl-customComponent-radioButtonsList--disabled": disabled }
+    )
+  ), [classList, disabled]);
 
   component.getValue = () => selectedValue;
-  component.setValue = value => { setSelectedValue(value) };
+  component.setValue = value => setSelectedValue(value);
   component.getOptions = () => optionsList;
-  component.setOptions = options => { setOptionsList(options) };
+  component.setOptions = options => setOptionsList(options);
 
   useEffect(() => {
     setOptionsList(validate(options));
@@ -23,10 +29,7 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
 
   const handleChange = value => {
     setSelectedValue(value);
-
-    if (onChange) {
-      onChange({ value });
-    }
+    onChange({ value });
   };
 
   if (!display) {
@@ -36,12 +39,7 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
   return (
     <div
       style={ style }
-      className={
-        cn(
-          "bl-customComponent-radioButtonsList", classList,
-          { "bl-customComponent-radioButtonsList--disabled": disabled }
-        )
-      }>
+      className={ classes }>
       { optionsList.map(({ label, value }) => (
         <RadioButton
           key={ value }

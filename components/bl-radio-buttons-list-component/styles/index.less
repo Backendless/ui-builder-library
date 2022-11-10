@@ -5,6 +5,7 @@
 
 @bl-customComponent-radioButtonsList-inputRadio-width: 42px;
 
+@bl-customComponent-radioButtonsList-radioButtonLabel-fontSize: 16px;
 @bl-customComponent-radioButtonsList-radioButtonIcon-width: 24px;
 @bl-customComponent-radioButtonsList-radioButtonIcon-fill: @bl-customComponent-radioButtonsList-themeColor;
 @bl-customComponent-radioButtonsList-radioButtonIcon-backgroundColor-onHover: rgba(@themePrimary, 0.04);
@@ -22,11 +23,12 @@
     cursor: pointer;
 
     &__label {
-      font-size: 16px;
+      font-size: @bl-customComponent-radioButtonsList-radioButtonLabel-fontSize;
+      color: @bl-customComponent-radioButtonsList-textColor;
       letter-spacing: 0.15px;
     }
   }
-  
+
   .input {
     position: relative;
     display: flex;
@@ -34,7 +36,7 @@
     align-items: center;
     padding: 9px;
     border-radius: 50%;
-    
+
     &:hover {
       transition: background-color 0.3s;
       background-color: @bl-customComponent-radioButtonsList-radioButtonIcon-backgroundColor-onHover;
@@ -55,11 +57,11 @@
       width: @bl-customComponent-radioButtonsList-radioButtonIcon-width;
       height: @bl-customComponent-radioButtonsList-radioButtonIcon-width;
       fill: @bl-customComponent-radioButtonsList-radioButtonIcon-fill;
-      
+
       &-filling {
         position: absolute;
       }
-      
+
       &-ring {
         position: absolute;
       }

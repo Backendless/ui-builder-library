@@ -41,6 +41,7 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 ````
 @bl-customComponent-radioButtonsList-inputRadio-width: 42px;
 @bl-customComponent-radioButtonsList-radioButtonIcon-width: 24px;
+@bl-customComponent-radioButtonsList-radioButtonLabel-fontSize: 16px;
 ````
 
 ## <a name="Examples"></a> Codeless Examples
