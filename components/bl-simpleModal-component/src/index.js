@@ -1,7 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from './modal';
-
-const { cn } = BackendlessUI.CSSUtils;
 
 export default function SimpleModal({ component, eventHandlers }) {
   const {
@@ -27,7 +25,20 @@ export default function SimpleModal({ component, eventHandlers }) {
     setIsOpen(true);
   };
 
-  if (!display || !isOpen) {
+  useEffect(() => {
+    document.body.classList.toggle('active-modal', isOpen);
+  }, [isOpen]);
+
+
+  useEffect(() => {
+    if (!display) {
+      component.closeModal();
+    } else {
+      setIsOpen(true)
+    }
+  }, [display])
+
+  if (!isOpen) {
     return null;
   }
 
