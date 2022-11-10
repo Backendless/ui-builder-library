@@ -60,3 +60,9 @@ The component based on external [pagination](https://mui.com/material-ui/react-p
 @bl-customComponent-pagination-button-normalSize: 32px;
 @bl-customComponent-pagination-button-largeSize: 40px;
 ```
+
+## <a name="Examples"></a> Codeless Examples
+
+Addition of current page to Page Data:
+
+![on page change example](./example-images/on-page-change-example.png)
