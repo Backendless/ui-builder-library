@@ -4,6 +4,10 @@ export const DOTS = '...';
 
 export const usePagination = (pageCount, currentPage, siblingCount) => {
   const paginationRange = useMemo(() => {
+    if (siblingCount < 0) {
+      throw new Error('The sibling count cannot be less than 0');
+    }
+
     const countMainElements = 5;
     const totalPageNumbers = siblingCount + countMainElements;
 

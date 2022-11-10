@@ -41,12 +41,6 @@ export default function Pagination({ component, eventHandlers }) {
   };
 
   useEffect(() => {
-    if (siblingCount < 0) {
-      throw new Error('The sibling count cannot be less than 0');
-    }
-  }, [siblingCount]);
-
-  useEffect(() => {
     onPageChange({ currentPage });
   }, [currentPage]);
 
