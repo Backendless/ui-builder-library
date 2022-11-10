@@ -60,12 +60,12 @@
   "actions": [
     {
       "id": "getValue",
-      "label": "Get Value",
+      "label": "Get Value of",
       "hasReturn": true
     },
     {
       "id": "setValue",
-      "label": "Set Value",
+      "label": "Set Value to",
       "inputs": [
         {
           "id": "value",
@@ -75,7 +75,7 @@
     },
     {
       "id": "getOptions",
-      "label": "Get Options",
+      "label": "Get Options of",
       "hasReturn": true
     },
     {
@@ -86,7 +86,7 @@
         }
       ],
       "id": "setOptions",
-      "label": "Set Options"
+      "label": "Set Options to"
     }
   ],
   "blockUI": "<div data-module-type=\"system\" data-module-id=\"radio-buttons-group\" data-display data-uid=\"6f91abaacebca8e25f0d1f6815af1c0d\" style=\"display:flex;flex-direction:column;margin:0 0  0;\"><div data-module-type=\"radio-button\" data-checked=\"false\" data-value=\"radio1\" data-label=\"Radio 1\" data-name=\"radios\" data-display data-uid=\"e4578c11328be9c41b9e3eb7b2864147\"></div><div data-module-type=\"radio-button\" data-checked=\"false\" data-value=\"radio2\" data-label=\"Radio 2\" data-name=\"radios\" data-display data-uid=\"ea8523af60f709fc175dd4834b435f03\"></div><div data-module-type=\"radio-button\" data-checked=\"false\" data-value=\"radio3\" data-label=\"Radio 3\" data-name=\"radios\" data-display data-uid=\"0a0fdb61c1c73f78ac6b167581887247\"></div></div>"
