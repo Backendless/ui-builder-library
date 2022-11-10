@@ -9,12 +9,6 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
   const { onChange } = eventHandlers;
 
   const [currentTabId, setCurrentTabId] = useState(null);
-  const classes = useMemo(() => (
-    cn(
-      'bl-customComponent-tabs', classList,
-      `bl-customComponent-tabs--${variant}`, { 'bl-customComponent-tabs--disabled': disabled }
-    )
-  ), [classList, disabled, variant]);
 
   component.getCurrentTabId = () => currentTabId;
   component.setCurrentTabId = id => {
@@ -23,6 +17,11 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
   };
 
   const podsContent = pods['Tabs Content'];
+
+  const classes = cn(
+    'bl-customComponent-tabs', classList,
+    `bl-customComponent-tabs--${variant}`, { 'bl-customComponent-tabs--disabled': disabled }
+  );
 
   const tabsList = useMemo(() => {
     if (!Array.isArray(tabs)) {
