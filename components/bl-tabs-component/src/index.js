@@ -28,12 +28,12 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
       return []
     }
 
-    return tabs.filter(({ id, label, value }) => {
+    return tabs.filter(({ id, label }) => {
       if (id) {
         return true;
       }
 
-      console.error(`Invalid tab item: {label: ${label}, value: ${value}}`);
+      console.error(`Tab ID must be provided. Invalid tab item: {id: ${id}, label: ${label}}`);
 
       return false;
     });
