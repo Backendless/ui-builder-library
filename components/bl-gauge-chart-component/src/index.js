@@ -1,27 +1,13 @@
-import { useState, useEffect } from 'react';
-
 import { useChartData } from './use-chart-data';
 
 const { cn } = BackendlessUI.CSSUtils;
-const GOAL = 'GOAL';
 
 export default function GaugeChartComponent({ component }) {
   const { classList, display, disable, goal, progress, style } = component;
 
-  const [validateGoal, setValidateGoal] = useState(1);
-  const [validateProgress, setValidateProgress] = useState(0);
-
-  component.getGoal = () => validateGoal;
-  component.setGoal = goal => setValidateGoal(validate(goal, 'GOAL'));
-  component.getProgress = () => validateProgress;
-  component.setProgress = progress => setValidateProgress(validate(progress));
-
-  useEffect(() => {
-    setValidateGoal(validate(goal, 'GOAL'));
-    setValidateProgress(validate(progress));
-  }, [goal, progress]);
-
-  const { shownGoal, shownProgress, angleFillStyle, progressPercentage } = useChartData(validateGoal, validateProgress);
+  const {
+    shownGoal, shownProgress, angleFillStyle, progressPercentage, decorationLetter
+  } = useChartData(goal, progress, component);
 
   const decorationLetter = validateGoal >= 1000 ? shownGoal.charAt(shownGoal.length - 1) : '';
 
@@ -61,11 +47,3 @@ function GaugeChartInfo({ decorationLetter, shownGoal }) {
     </div>
   );
 }
-
-const validate = (item, type) => {
-  if (type === GOAL) {
-    return item <= 0 ? 1 : item;
-  }
-
-  return item < 0 ? 0 : item;
-};
