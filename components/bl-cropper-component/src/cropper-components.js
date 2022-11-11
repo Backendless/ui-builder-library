@@ -11,8 +11,8 @@ export function DropImageArea({ image, setImage, initialLabel }) {
   };
 
   const onDragEnter = e => {
-    e.preventDefault();
     e.stopPropagation();
+    e.preventDefault();
   };
 
   if (image) {

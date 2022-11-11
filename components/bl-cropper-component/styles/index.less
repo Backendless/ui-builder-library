@@ -70,7 +70,7 @@
     .drop-image-area {
       width: @bl-customComponent-cropper-dropImageArea-width;
       height: @bl-customComponent-cropper-dropImageArea-height;
-      
+
       label {
         display: flex;
         justify-content: center;
@@ -79,11 +79,11 @@
         width: @bl-customComponent-cropper-browseButton-width;
         height: @bl-customComponent-cropper-browseButton-height;
         cursor: pointer;
-  
+
         &:hover {
           text-decoration: underline;
         }
-  
+
         input {
           display: none;
         }
@@ -104,12 +104,24 @@
     align-items: center;
 
     .buttons-group {
+      display: flex;
+      gap: 1px;
       margin: @bl-customComponent-cropper-buttonsGroup-margin;
 
       button {
         font-size: @bl-customComponent-cropper-icon-fontSize;
         margin: @bl-customComponent-cropper-icon-margin;
         padding: @bl-customComponent-cropper-icon-padding;
+
+        &:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
       }
     }
   }
