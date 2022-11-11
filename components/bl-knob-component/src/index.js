@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react';
 
 import primereact from './lib/core';
 
-const Knob = primereact.knob.Knob;
+const { Knob } = primereact.knob;
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function MyCustomComponent({ component, eventHandlers, appData, pageData, parentDataModel }) {
+export default function KnobComponent({ component, eventHandlers }) {
   const {
-    initialValue, readOnly, disabled, setMax, setMin, step, dial, valueTemplate, size, valueColor,
-    rangeColor, display, classList, setValue, setReadOnly, setDisabled
+    initialValue, readOnly, disabled, setMax, setMin, step, dial, valueTemplate, size, valueColor, rangeColor, display,
+    classList, setValue, setReadOnly, setDisabled, style
   } = component;
+  const { onChange } = eventHandlers;
 
   const [knobValue, setKnobValue] = useState(0);
   const [knobReadOnly, setKnobReadOnly] = useState(!!readOnly);
@@ -23,15 +24,16 @@ export default function MyCustomComponent({ component, eventHandlers, appData, p
   }, [initialValue]);
 
   Object.assign(component, {
-    setValue   : (value) => setKnobValue(value),
-    setReadOnly: (readOnly) => setKnobReadOnly(readOnly),
-    setDisabled: (disabled) => setKnobDisabled(disabled),
+    setValue   : value => setKnobValue(value),
+    setReadOnly: readOnly => setKnobReadOnly(readOnly),
+    setDisabled: disabled => setKnobDisabled(disabled),
   });
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const value = e.value;
+
     setKnobValue(value);
-    eventHandlers.onChange({ data: value });
+    onChange({ data: value });
   };
 
   if (!display) {
@@ -39,7 +41,7 @@ export default function MyCustomComponent({ component, eventHandlers, appData, p
   }
 
   return (
-    <div className={ cn('bl-customComponent-Knob', classList) }>
+    <div className={ cn('bl-customComponent-Knob', classList) } style={ style }>
       <Knob
         value={ knobValue }
         readOnly={ knobReadOnly }
