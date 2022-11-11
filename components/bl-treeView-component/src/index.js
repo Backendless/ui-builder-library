@@ -6,23 +6,22 @@ export default function TreeView({ component, eventHandlers }) {
   const { display, style, classList, data, space } = component;
   const { onClick } = eventHandlers;
 
-  const [validData, setValidData] = useState([]);
+  const [itemsTree, setItemsTree] = useState([]);
   const [isOpenItems, setIsOpenItems] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState('');
 
   component.closeAll = () => setIsOpenItems(state => state.map(item => ({ ...item, isOpen: false })));
   component.openAll = () => setIsOpenItems(state => state.map(item => ({ ...item, isOpen: true })));
 
-  const dataValidate = data => {
-    let levelOfNesting = -1;
+  const validateTree = data => {
+    let levelOfNesting = 0;
 
     const validate = (data) => {
-      levelOfNesting++;
-
       const validData = data.map(item => {
         let validItem = { ...item, id: BackendlessUI.UUID.short(), levelOfNesting };
 
         if (item.children) {
+          levelOfNesting++;
           validItem = {
             ...validItem,
             children: validate(item.children)
@@ -44,7 +43,7 @@ export default function TreeView({ component, eventHandlers }) {
 
   useEffect(() => {
     if (data) {
-      setValidData(dataValidate(data));
+      setItemsTree(validateTree(data));
     }
   }, [data]);
 
@@ -65,7 +64,7 @@ export default function TreeView({ component, eventHandlers }) {
   return (
     <div className={ cn('bl-customComponent-treeView', classList) } style={ style }>
       <Item
-        validData={ validData }
+        itemsTree={ itemsTree }
         space={ space }
         isOpenItems={ isOpenItems }
         selectedItemId={ selectedItemId }
@@ -78,13 +77,13 @@ export default function TreeView({ component, eventHandlers }) {
 
 function Item(props) {
   const {
-    validData, isOpenItems, space, selectedItemId,
+    itemsTree, isOpenItems, space, selectedItemId,
     handlerItemClick, openHandler
   } = props;
 
   return (
     <ul className="list">
-      { validData.map(item => {
+      { itemsTree.map(item => {
         const { id, label, children, levelOfNesting, action } = item;
         const nestingStyle = { marginLeft: space * levelOfNesting + 'px' };
 
