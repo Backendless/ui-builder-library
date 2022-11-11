@@ -9,8 +9,6 @@ export default function GaugeChartComponent({ component }) {
     shownGoal, shownProgress, angleFillStyle, progressPercentage, decorationLetter
   } = useChartData(goal, progress, component);
 
-  const decorationLetter = validateGoal >= 1000 ? shownGoal.charAt(shownGoal.length - 1) : '';
-
   if (!display) {
     return null;
   }
