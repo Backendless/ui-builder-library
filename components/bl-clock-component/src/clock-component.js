@@ -21,13 +21,13 @@ export function ClockComponent({ timeVariant }) {
       <Time timeTens={ time.hourTens } timeUnits={ time.hourUnits }/>
       { (timeVariant === 'all' || timeVariant === 'hoursMinutes') && (
         <>
-          <div className="digital">:</div>
+          <div className="clock__item">:</div>
           <Time timeTens={ time.minuteTens } timeUnits={ time.minuteUnits }/>
         </>
       ) }
       { timeVariant === 'all' && (
         <>
-          <div className="digital">:</div>
+          <div className="clock__item">:</div>
           <Time timeTens={ time.secondTens } timeUnits={ time.secondUnits }/>
         </>
       ) }

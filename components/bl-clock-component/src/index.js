@@ -13,7 +13,7 @@ export default function Clock({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-clock', classList) } style={ style }>
+    <div className={ cn('bl-customComponent-clock clock', classList) } style={ style }>
       { type === 'clock' && (
         <ClockComponent timeVariant={ timeVariant }/>
       ) }

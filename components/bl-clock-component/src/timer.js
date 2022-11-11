@@ -37,21 +37,21 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
       { daysVisibility && (
         <>
           <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits }/>
-          <div className="digital">:</div>
+          <div className="clock__item">:</div>
         </>
       ) }
 
       { hoursVisibility && (
         <>
           <Time timeTens={ time.hourTens } timeUnits={ time.hourUnits }/>
-          <div className="digital">:</div>
+          <div className="clock__item">:</div>
         </>
       ) }
 
       { minutesVisibility && (
         <>
           <Time timeTens={ time.minuteTens } timeUnits={ time.minuteUnits }/>
-          <div className="digital">:</div>
+          <div className="clock__item">:</div>
         </>
       ) }
 

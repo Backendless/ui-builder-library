@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+const animationDuration = 400;
+
 export const useLogic = (time, element) => {
   useEffect(() => {
     if (element.current.children.length > 1) {
@@ -12,13 +14,15 @@ export const useLogic = (time, element) => {
       const oldValue = element.current.firstElementChild;
 
       if (oldValue) {
-        oldValue.className = 'remove';
-        setTimeout(() => oldValue.remove(), 450);
+        oldValue.className = 'clock__number old';
+        oldValue.style.animationDuration = animationDuration + 'ms';
+        setTimeout(() => oldValue.remove(), animationDuration - 50);
       }
 
       const newValue = document.createElement('div');
 
-      newValue.className = 'added';
+      newValue.className = 'clock__number new';
+      newValue.style.animationDuration = animationDuration + 'ms';
       newValue.innerHTML = time;
       element.current.appendChild(newValue);
     }

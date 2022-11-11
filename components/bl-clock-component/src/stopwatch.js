@@ -6,8 +6,11 @@ export function Stopwatch({ component }) {
 
   component.startStopwatch = () => {
     if (!update) {
+      const startDate = new Date();
       setUpdate(setInterval(() => {
-        setStopwatch(state => Number((state + 0.01).toFixed(2)));
+        const currentDate = new Date();
+        const gap = currentDate.getTime() - startDate.getTime();
+        setStopwatch(state => (gap / 1000).toFixed(2));
       }, 10));
     }
   };

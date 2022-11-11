@@ -10,8 +10,8 @@ export function Time({ timeTens, timeUnits }) {
 
   return (
     <>
-      <div className="digital" ref={ secondTensRef }></div>
-      <div className="digital" ref={ secondUnitsRef }></div>
+      <div className="clock__item" ref={ secondTensRef }></div>
+      <div className="clock__item" ref={ secondUnitsRef }></div>
     </>
   );
 }
