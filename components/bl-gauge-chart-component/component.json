@@ -10,13 +10,15 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "disable",
-      "label": "Disable",
+      "name": "disabled",
+      "label": "Disabled",
       "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "disableLogic",
+      "hasLogicHandler": true,
       "handlerDescription": "This handler allows you to disable a component.",
-      "settingTooltip": "This handler allows you to disable a component."
+      "settingTooltip": "This handler allows you to disable a component.",
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true
     },
     {
       "type": "number",

@@ -5,7 +5,7 @@ import modalTypes from './modal-types';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Modal(props) {
-  const { component, eventHandlers, inputValue, isOpen, setInputValue, isClosing } = props;
+  const { component, eventHandlers, inputValue, setInputValue, isClosing } = props;
   const {
     style,
     title,
@@ -37,10 +37,6 @@ export function Modal(props) {
   useEffect(() => {
     onInputValueChange({ inputValue });
   }, [inputValue]);
-
-  useEffect(() => {
-    document.body.classList.toggle('active-modal', isOpen);
-  }, [isOpen]);
 
   return ReactDOM.createPortal(
     <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms`, ...style } }>
