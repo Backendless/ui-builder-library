@@ -6,7 +6,7 @@ The component based on external [parallax](https://vuetifyjs.com/en/components/p
 
 ## Properties
 
-| Property | Type   | Default Value | Logic          | Data Binding | UI Setting | Description                                  |
-|----------|--------|---------------|----------------|--------------|------------|----------------------------------------------|
-| image    | Text   |               | Image Logic    | YES          | YES        | Allows to determine image URL                |
-| strength | Number | 200           | Strength Logic | YES          | YES        | Allows to determine the strength of parallax |
+| Property | Type   | Default Value | Logic           | Data Binding | UI Setting | Description                                  |
+|----------|--------|---------------|-----------------|--------------|------------|----------------------------------------------|
+| imageUrl | Text   |               | Image URl Logic | YES          | YES        | Allows to determine image URL                |
+| strength | Number | 200           | Strength Logic  | YES          | YES        | Allows to determine the strength of parallax |

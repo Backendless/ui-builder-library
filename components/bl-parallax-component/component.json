@@ -10,11 +10,12 @@
   "properties": [
     {
       "type": "text",
-      "name": "image",
-      "label": "Image",
+      "name": "imageUrl",
+      "label": "Image URL",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "imageLogic",
+      "handlerId": "imageUrlLogic",
+      "handlerLabel": "Image URL Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine image URL"
     },
@@ -26,6 +27,7 @@
       "defaultValue": "200",
       "hasLogicHandler": true,
       "handlerId": "strengthLogic",
+      "handlerLabel": "Strength Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the strength of parallax"
     }
