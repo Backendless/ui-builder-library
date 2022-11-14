@@ -1,6 +1,6 @@
 # Clock
 
-This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows display clock, use stopwatch and timer.
+This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows display time, use stopwatch and timer.
 
 ## Properties
 
