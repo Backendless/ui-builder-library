@@ -10,13 +10,13 @@
   "properties": [
     {
       "type": "json",
-      "name": "data",
-      "label": "Data",
+      "name": "unprocessedTree",
+      "label": "Tree Items",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "dataLogic",
-      "handlerLabel": "Data Logic",
-      "handlerDescription": "This is a handler for the logic to determine data for the tree view.",
+      "handlerId": "unprocessedTreeLogic",
+      "handlerLabel": "Tree Items Logic",
+      "handlerDescription": "This is a handler for the logic to determine tree items for the tree view.",
       "dataBinding": true
     },
     {
@@ -38,8 +38,12 @@
       "label": "On Click",
       "contextBlocks": [
         {
-          "id": "action",
-          "label": "Action"
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "id": "label",
+          "label": "Label"
         }
       ],
       "handlerDescription": "This event is triggered when the user clicks on some file"
@@ -54,5 +58,6 @@
       "id": "openAll",
       "label": "Open All"
     }
-  ]
+  ],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"8137e88b12524bcf8061be9600ef48ca\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;min-height:100px;min-width:100px;\"><div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"74ab3857586d06ca91c90992eb46b68e\" style=\"display:flex;flex-shrink:0;flex-direction:row;\"><i data-icon=\"keyboard_arrow_down\" data-size=\"small\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"b076e503339c6a0df40d758858f63b82\" style=\"color:rgb(40, 245, 190);\"></i><span data-content=\"Applications\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"a56dc2edb5a66f8f17c977861f23ed2d\" class=\"bl-text\"></span></div><span data-content=\"Calendar\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"02b182c518bf29980a6b8f7a32240a83\" class=\"bl-text\" style=\"margin:0 0 0 30px;\"></span><span data-content=\"Chrome\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"b1c6201fe78cf392951e33154dda8c86\" class=\"bl-text\" style=\"margin:0 0 0 30px;\"></span><span data-content=\"Webstorm\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"bd1bcb5d0c714fdec56e65ff81afc7fb\" class=\"bl-text\" style=\"margin:0 0 0 30px;\"></span><div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"8c3d68ea6118ff4b261db20d6a396917\" style=\"display:flex;flex-shrink:0;flex-direction:row;\"><i data-icon=\"keyboard_arrow_right\" data-size=\"small\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"6a974e0be05274e6584858d3c0744e9b\" style=\"color:rgb(40, 245, 190);\"></i><span data-content=\"Documents\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"f337c761b67605076bf14d5a9bd1a66c\" class=\"bl-text\"></span></div><span data-content=\"Readme.md\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"4d03364fa7deb8091b4aeea286eefa8e\" class=\"bl-text\" style=\"margin:0 0 0 20px;\"></span></div>"
 }

@@ -4,16 +4,16 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 
 ## Properties
 
-| Property | Type     | Default Value | Logic       | Data Binding | UI Setting | Description                                                                                                        |
-|----------|----------|---------------|-------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------|
-| data     | *JSON*   |               | Data Logic  | YES          | YES        | Allows to determine data. Signature of data: `[{label, ?action, ?children}]`. Watch [Codeless Examples](#Examples) |
-| space    | *Number* | 10            | Space Logic | YES          | YES        | Allows to determine space for every nested element                                                                 |
+| Property  | Type     | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                            |
+|-----------|----------|---------------|------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------|
+| treeItems | *JSON*   |               | Tree Items Logic | YES          | YES        | Allows to determine tree items. Signature of data: `[{label, value, ?children}]`. Watch [Codeless Examples](#Examples) |
+| space     | *Number* | 10            | Space Logic      | YES          | YES        | Allows to determine space for every nested element                                                                     |
 
 ## Events
 
-| Name     | Triggers                                       | Context Blocks   |
-|----------|------------------------------------------------|------------------|
-| On Click | when a user click on tree element (not folder) | Action: `String` |
+| Name     | Triggers                                       | Context Blocks                   |
+|----------|------------------------------------------------|----------------------------------|
+| On Click | when a user click on tree element (not folder) | Label: `String`, Value: `String` |
 
 
 ## Actions
@@ -51,10 +51,6 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 
 ## <a name="Examples"></a> Codeless Examples
 
-Addition of files and folders in data:
+Addition of files and folders in tree items:
 
-![data example](./example-images/data_example.png)
-
-How to use onClick events example:
-
-![onClick example](./example-images/onClick_example.png)
+![tree items example](./example-images/tree_items_example.png)
