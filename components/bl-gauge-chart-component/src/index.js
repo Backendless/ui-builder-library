@@ -5,9 +5,9 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function GaugeChartComponent({ component }) {
   const { classList, style, display, disabled, goal, progress } = component;
 
-  const { shownGoal, shownProgress, angleFillStyle, progressPercentage } = useChartData(goal, progress);
-
-  const decorationLetter = shownGoal.charAt(shownGoal.length - 1);
+  const {
+    shownGoal, shownProgress, angleFillStyle, progressPercentage, decorationLetter
+  } = useChartData(goal, progress, component);
 
   if (!display) {
     return null;
