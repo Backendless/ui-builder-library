@@ -21,9 +21,13 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
   }, []);
 
   useEffect(() => {
-    setDaysVisibility(time.dayTens + time.dayUnits > 0);
-    setHoursVisibility(time.hourTens + time.hourUnits + time.dayTens + time.dayUnits > 0);
-    setMinutesVisibility(time.hourTens + time.hourUnits + time.minuteTens + time.minuteUnits > 0);
+    const isDays = time.dayTens + time.dayUnits > 0;
+    const isHours = time.hourTens + time.hourUnits > 0 || isDays;
+    const isMinutes = time.minuteTens + time.minuteUnits > 0 || isDays || isHours;
+
+    setDaysVisibility(isDays);
+    setHoursVisibility(isHours);
+    setMinutesVisibility(isMinutes);
   }, [time, timeVariant]);
 
   if (!time.all) {
