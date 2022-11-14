@@ -10,33 +10,41 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "disable",
-      "label": "Disable",
+      "name": "disabled",
+      "label": "Disabled",
       "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "disableLogic"
+      "hasLogicHandler": true,
+      "handlerDescription": "This handler allows you to disable a component.",
+      "settingTooltip": "This handler allows you to disable a component.",
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true
     },
     {
       "type": "number",
       "name": "goal",
       "label": "Goal",
       "showInSettings": true,
-      "defaultValue": "100000",
+      "defaultValue": "",
       "hasLogicHandler": true,
       "handlerId": "goalLogic",
       "handlerLabel": "Goal Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify a goal.",
+      "settingTooltip": "This handler allows you to specify a goal."
     },
     {
       "type": "number",
       "name": "progress",
       "label": "Progress",
       "showInSettings": true,
-      "defaultValue": "50000",
+      "defaultValue": "",
       "hasLogicHandler": true,
       "handlerId": "progressLogic",
       "handlerLabel": "Progress Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify a progress.",
+      "settingTooltip": "This handler allows you to specify a progress."
     }
   ],
   "actions": [

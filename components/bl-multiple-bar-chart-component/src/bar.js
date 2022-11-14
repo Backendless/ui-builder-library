@@ -1,4 +1,4 @@
-import { useChartData } from './use-chart-data';
+import { useChartData } from './hooks/use-chart-data';
 
 export function Bar({ name, goal, progress }) {
   const { shownGoal, barFillStyle, shownProgress } = useChartData(goal, progress);
