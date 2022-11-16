@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TreeView({ component, eventHandlers }) {
-  const { display, style, classList, unprocessedTree, space } = component;
+  const { display, style, classList, unprocessedTree, gap } = component;
   const { onClick } = eventHandlers;
 
   const [itemsTree, setItemsTree] = useState([]);
@@ -13,7 +13,7 @@ export default function TreeView({ component, eventHandlers }) {
   component.closeAll = () => setParentItems(state => state.map(item => ({ ...item, isOpen: false })));
   component.openAll = () => setParentItems(state => state.map(item => ({ ...item, isOpen: true })));
 
-  const validateTree = unprocessedTree => {
+  const validateTree = useCallback(unprocessedTree => {
     let levelOfNesting = 0;
 
     const validate = (unprocessedTree) => {
@@ -39,7 +39,7 @@ export default function TreeView({ component, eventHandlers }) {
     };
 
     return validate(unprocessedTree);
-  };
+  }, []);
 
   useEffect(() => {
     if (unprocessedTree) {
@@ -63,9 +63,9 @@ export default function TreeView({ component, eventHandlers }) {
 
   return (
     <div className={ cn('bl-customComponent-treeView', classList) } style={ style }>
-      <Item
+      <Branch
         itemsTree={ itemsTree }
-        space={ space }
+        gap={ gap }
         parentItems={ parentItems }
         selectedItemId={ selectedItemId }
         openHandler={ openHandler }
@@ -75,36 +75,33 @@ export default function TreeView({ component, eventHandlers }) {
   );
 }
 
-function Item(props) {
-  const {
-    itemsTree, parentItems, space, selectedItemId,
-    handlerItemClick, openHandler
-  } = props;
+function Branch(props) {
+  const { itemsTree, parentItems, gap, selectedItemId, handlerItemClick, openHandler } = props;
 
   return (
     <ul className="list">
       { itemsTree.map(item => {
         const { value, label, children, levelOfNesting } = item;
-        const nestingStyle = { marginLeft: space * levelOfNesting + 'px' };
+        const nestingStyle = { marginLeft: gap * levelOfNesting + 'px' };
 
         if (children) {
-          const parentItem = parentItems.find(element => element.value === value);
+          const { isOpen } = parentItems.find(element => element.value === value);
 
           return (
             <li className="container">
-              <div
-                tabIndex={ selectedItemId === value ? 0 : -1 }
-                className={ cn('list__button', { selected: selectedItemId === value, open: parentItem.isOpen }) }
-                onClick={ () => openHandler(value, label) }
-                style={ nestingStyle }>
-                <ButtonIcon/>
-                { label }
-              </div>
+              <ParentItem
+                selectedItemId={ selectedItemId }
+                openHandler={ openHandler }
+                nestingStyle={ nestingStyle }
+                value={ value }
+                label={ label }
+                isOpen={ isOpen }
+              />
 
-              { parentItem.isOpen && (
-                <Item
+              { isOpen && (
+                <Branch
                   itemsTree={ children }
-                  space={ space }
+                  gap={ gap }
                   parentItems={ parentItems }
                   selectedItemId={ selectedItemId }
                   openHandler={ openHandler }
@@ -116,16 +113,41 @@ function Item(props) {
         }
 
         return (
-          <li
-            tabIndex={ selectedItemId === value ? 0 : -1 }
-            className={ cn('list__item', { selected: selectedItemId === value }) }
-            onClick={ () => handlerItemClick(value, label) }
-            style={ nestingStyle }>
-            { label }
-          </li>
+          <Item
+            selectedItemId={ selectedItemId }
+            handlerItemClick={ handlerItemClick }
+            nestingStyle={ nestingStyle }
+            value={ value }
+            label={ label }
+          />
         );
       }) }
     </ul>
+  );
+}
+
+function Item({ selectedItemId, handlerItemClick, nestingStyle, value, label }) {
+  return (
+    <li
+      tabIndex={ selectedItemId === value ? 0 : -1 }
+      className={ cn('list__item', { selected: selectedItemId === value }) }
+      onClick={ () => handlerItemClick(value, label) }
+      style={ nestingStyle }>
+      { label }
+    </li>
+  );
+}
+
+function ParentItem({ selectedItemId, openHandler, nestingStyle, value, label, isOpen }) {
+  return (
+    <div
+      tabIndex={ selectedItemId === value ? 0 : -1 }
+      className={ cn('list__button', { selected: selectedItemId === value, open: isOpen }) }
+      onClick={ () => openHandler(value, label) }
+      style={ nestingStyle }>
+      <ButtonIcon/>
+      { label }
+    </div>
   );
 }
 

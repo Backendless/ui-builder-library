@@ -7,7 +7,7 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 | Property  | Type     | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                            |
 |-----------|----------|---------------|------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------|
 | treeItems | *JSON*   |               | Tree Items Logic | YES          | YES        | Allows to determine tree items. Signature of data: `[{label, value, ?children}]`. Watch [Codeless Examples](#Examples) |
-| space     | *Number* | 10            | Space Logic      | YES          | YES        | Allows to determine space for every nested element                                                                     |
+| gap       | *Number* | 10            | Gap Logic        | YES          | YES        | Allows to determine gap for every nested element                                                                       |
 
 ## Events
 

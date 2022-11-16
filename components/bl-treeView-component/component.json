@@ -21,15 +21,15 @@
     },
     {
       "type": "number",
-      "name": "space",
+      "name": "gap",
       "showInSettings": true,
       "defaultValue": "10",
       "hasLogicHandler": true,
-      "handlerId": "spaceLogic",
+      "handlerId": "gapLogic",
       "dataBinding": true,
-      "handlerDescription": "This a handler for the logic to determine space for every nested element",
-      "label": "Space",
-      "handlerLabel": "Space Logic"
+      "handlerDescription": "This a handler for the logic to determine gap for every nested element",
+      "label": "Gap",
+      "handlerLabel": "Gap Logic"
     }
   ],
   "eventHandlers": [
