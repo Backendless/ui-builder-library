@@ -1,7 +1,7 @@
 {
   "id": "c_e2eac1c619c3b43ab3b3ee1ec971538e",
   "name": "Clock",
-  "description": "This component allows you to add on page clock or stopwatch or timer",
+  "description": "This component allows you to add on page clock, stopwatch or timer.",
   "showInToolbox": true,
   "faIcon": "clock",
   "mainJS": "dist/index.js",
