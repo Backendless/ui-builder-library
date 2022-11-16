@@ -3,7 +3,7 @@
   "name": "Dashlet",
   "description": "",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "window-restore",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
