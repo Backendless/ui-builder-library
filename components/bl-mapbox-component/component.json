@@ -93,14 +93,6 @@
       "handlerLabel": "Geolocation Button Logic"
     },
     {
-      "type": "text",
-      "name": "accessToken",
-      "label": "Access Token",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "accessTokenLogic"
-    },
-    {
       "type": "select",
       "name": "projection",
       "label": "Projection",
@@ -403,6 +395,15 @@
           "label": "Event Data"
         }
       ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "name": "accessToken",
+      "title": "Access Token",
+      "description": "It is an Access Token needed to use Mapbox",
+      "required": true
     }
   ]
 }

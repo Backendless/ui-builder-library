@@ -7,7 +7,7 @@ export function createActions(mapRef, component) {
     isRotating: () => map?.isRotating(),
     setStyle  : (style, options) => map?.setStyle(style, options),
     getStyle  : () => map?.getStyle(),
-    setFog    : (fog) => map?.setFog(fog),
+    setFog    : fog => map?.setFog(fog),
     getFog    : () => map?.getFog(),
     loaded    : () => map?.loaded(),
     getCenter : () => map?.getCenter(),
@@ -16,6 +16,6 @@ export function createActions(mapRef, component) {
     panTo     : (lnglat, options, eventData) => map?.panTo(lnglat, options, eventData),
     getZoom   : () => map?.getZoom(),
     setZoom   : (zoom, eventData) => map?.setZoom(zoom, eventData),
-    flyTo     : (options, eventData) => map?.flyTo(options, eventData)
+    flyTo     : (options, eventData) => map?.flyTo(options, eventData),
   });
 }
