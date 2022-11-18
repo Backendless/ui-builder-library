@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTimer } from './helpers';
-import { Time } from './subcomponents';
+import { Time, Delimeter } from './subcomponents';
 
 export function Timer({ timerDate, timeVariant, onTimerEnd }) {
   const [update, setUpdate] = useState();
@@ -41,25 +41,34 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
       { daysVisibility && (
         <>
           <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits }/>
-          <div className="clock__item">:</div>
         </>
       ) }
 
       { hoursVisibility && (
         <>
-          <Time timeTens={ time.hourTens } timeUnits={ time.hourUnits }/>
-          <div className="clock__item">:</div>
+          <Time
+            timeTens={ time.hourTens }
+            timeUnits={ time.hourUnits }
+            withDelimeter={ true }
+          />
         </>
       ) }
 
       { minutesVisibility && (
         <>
-          <Time timeTens={ time.minuteTens } timeUnits={ time.minuteUnits }/>
-          <div className="clock__item">:</div>
+          <Time
+            timeTens={ time.minuteTens }
+            timeUnits={ time.minuteUnits }
+            withDelimeter={ true }
+          />
         </>
       ) }
 
-      <Time timeTens={ time.secondTens } timeUnits={ time.secondUnits }/>
+      <Time
+        imeTens={ time.secondTens }
+        timeUnits={ time.secondUnits }
+        withDelimeter={ minutesVisibility }
+      />
     </>
   );
 }

@@ -7,7 +7,7 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 | Property    | Type                                   | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                       |
 |-------------|----------------------------------------|---------------|------------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------|
 | Type        | Select [`clock`, `stopwatch`, `timer`] | `clock`       |                  | NO           | YES        | Allows to determine the function of the component                                                                 |
-| timeVariant | Select [`hms`, `hm`, `h`]              | `hms`         |                  | NO           | YES        | Allows to determine variant of displaying time                                                                    |
+| timeVariant | Select [`hhmmss`, `hhmm`, `hh`]        | `hhmmss`      |                  | NO           | YES        | Allows to determine variant of displaying time                                                                    |
 | timerDate   | Text                                   |               | Timer Data Logic | YES          | YES        | Allows you to specify the date, time, and time zone when the timer will expire. Signature `MM.DD.YY HH:MM:SS UTC` |
 
 ## Events

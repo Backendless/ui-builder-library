@@ -7,10 +7,12 @@ export function Stopwatch({ component }) {
   component.startStopwatch = () => {
     if (!update) {
       const startDate = new Date();
+
       setUpdate(setInterval(() => {
         const currentDate = new Date();
-        const gap = stopwatch * 1000 + currentDate.getTime() - startDate.getTime()
-        setStopwatch(state => (gap / 1000).toFixed(2));
+        const gap = stopwatch * 1000 + currentDate.getTime() - startDate.getTime();
+
+        setStopwatch((gap / 1000).toFixed(2));
       }, 10));
     }
   };

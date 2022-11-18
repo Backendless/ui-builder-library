@@ -1,17 +1,27 @@
 import { useRef } from 'react';
-import { useLogic } from './helpers';
+import { useAnimation } from './helpers';
 
-export function Time({ timeTens, timeUnits }) {
+export function Time({ timeTens, timeUnits, withDelimeter }) {
   const secondTensRef = useRef();
   const secondUnitsRef = useRef();
 
-  useLogic(timeTens, secondTensRef);
-  useLogic(timeUnits, secondUnitsRef);
+  useAnimation(timeTens, secondTensRef);
+  useAnimation(timeUnits, secondUnitsRef);
 
   return (
     <>
+      { withDelimeter && (
+        <Delimeter />
+      )}
       <div className="clock__item" ref={ secondTensRef }></div>
       <div className="clock__item" ref={ secondUnitsRef }></div>
     </>
   );
+}
+
+function Delimeter() {
+
+  return (
+    <div className="clock__item">:</div>
+  )
 }

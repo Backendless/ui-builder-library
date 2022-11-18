@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 
 const animationDuration = 400;
 
-export const useLogic = (time, element) => {
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+
+export const useAnimation = (time, element) => {
   useEffect(() => {
     if (element.current.children.length > 1) {
       [...element.current.children].slice(0, -1).forEach((child) => {
@@ -43,17 +48,17 @@ export const getTime = () => {
 };
 
 export const getTimer = (timerDate) => {
-  const gap = timerDate - new Date();
+  const gap = timerDate - Date.now();
 
-  let days = String(Math.floor(gap / 1000 / 60 / 60 / 24));
-  let hours = String(Math.floor(gap / 1000 / 60 / 60) % 24);
-  let minutes = String(Math.floor(gap / 1000 / 60) % 60);
-  let seconds = String(Math.floor(gap / 1000) % 60);
+  let days = String(Math.floor(gap / DAY));
+  let hours = String(Math.floor(gap / HOUR) % 24);
+  let minutes = String(Math.floor(gap / MINUTE) % 60);
+  let seconds = String(Math.floor(gap / SECOND) % 60);
 
-  days = days.length < 2 ? '0' + days : days;
-  hours = hours.length < 2 ? '0' + hours : hours;
-  minutes = minutes.length < 2 ? '0' + minutes : minutes;
-  seconds = seconds.length < 2 ? '0' + seconds : seconds;
+  days = days.length === 1 ? '0' + days : days;
+  hours = hours.length === 1 ? '0' + hours : hours;
+  minutes = minutes.length === 1 ? '0' + minutes : minutes;
+  seconds = seconds.length === 1 ? '0' + seconds : seconds;
 
   return {
     dayTens    : days[0],

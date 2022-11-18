@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react';
 import { getTime } from './helpers';
 import { Time } from './subcomponents';
 
+const TIME_VARIANT = {
+  hhmmss: 'hhmmss',
+  hhmm: 'hhmm',
+  hh: 'hh'
+};
+
 export function ClockComponent({ timeVariant }) {
   const [update, setUpdate] = useState();
   const [time, setTime] = useState(getTime());
@@ -19,16 +25,22 @@ export function ClockComponent({ timeVariant }) {
   return (
     <>
       <Time timeTens={ time.hourTens } timeUnits={ time.hourUnits }/>
-      { (timeVariant === 'all' || timeVariant === 'hoursMinutes') && (
+      { (timeVariant === TIME_VARIANT.hhmmss || timeVariant === TIME_VARIANT.hhmm) && (
         <>
-          <div className="clock__item">:</div>
-          <Time timeTens={ time.minuteTens } timeUnits={ time.minuteUnits }/>
+          <Time
+            timeTens={ time.minuteTens }
+            timeUnits={ time.minuteUnits }
+            withDelimeter={ true }
+          />
         </>
       ) }
-      { timeVariant === 'all' && (
+      { timeVariant === TIME_VARIANT.hhmmss && (
         <>
-          <div className="clock__item">:</div>
-          <Time timeTens={ time.secondTens } timeUnits={ time.secondUnits }/>
+          <Time
+            timeTens={ time.secondTens }
+            timeUnits={ time.secondUnits }
+            withDelimeter={ true }
+          />
         </>
       ) }
     </>

@@ -39,15 +39,15 @@
       "hasLogicHandler": false,
       "options": [
         {
-          "value": "all",
+          "value": "hhmmss",
           "label": "HH:MM:SS"
         },
         {
-          "value": "hoursMinutes",
+          "value": "hhmm",
           "label": "HH:MM"
         },
         {
-          "value": "hours",
+          "value": "hh",
           "label": "HH"
         }
       ]
@@ -60,7 +60,7 @@
       "hasLogicHandler": true,
       "handlerId": "timerDateLogic",
       "handlerLabel": "Timer Date Logic",
-      "handlerDescription": "This is a handler for the logic to determine date and time to timer end.",
+      "handlerDescription": "This is a handler for the logic to determine the date and time when the timer will be stopped.",
       "dataBinding": true
     }
   ],
