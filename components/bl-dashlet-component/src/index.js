@@ -1,19 +1,39 @@
 import { useRef, useState, useMemo, useCallback, useEffect } from 'react';
 import { ResizableBox } from './react-resizable.min';
-import { Dashlet } from './subcomponents';
+import { Dashlet } from './dashlet';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function DashletComponent({ component, eventHandlers, pods }) {
+export default function DashletComponent({ component, eventHandlers, pods, instanceId }) {
   const {
     display, classList, style, title, height, width, resizing,
     contextBlock, minWidth, maxWidth, minHeight, maxHeight, dragging
   } = component;
   const { contextBlockHandler } = eventHandlers;
 
-  const [isOpen, setIsOpen] = useState(true);
-  const [position, setPosition] = useState({});
-  const [size, setSize] = useState({ height: height, width: width });
+  const [isOpen, setIsOpen] = useState(() => {
+    if (localStorage.getItem(instanceId + ' isOpen')) {
+      return setIsOpen(localStorage.getItem(instanceId + ' isOpen') === 'true');
+    }
+
+    return true;
+  });
+
+  const [position, setPosition] = useState(() => {
+    if (localStorage.getItem(instanceId + ' position')) {
+      return JSON.parse(localStorage.getItem(instanceId + ' position'));
+    }
+
+    return { x: 0, y: 0 };
+  });
+
+  const [size, setSize] = useState(() => {
+    if (localStorage.getItem(instanceId + ' size')) {
+      return setSize(JSON.parse(localStorage.getItem(instanceId + ' size')));
+    }
+
+    return { height: height, width: width };
+  });
 
   const rootRef = useRef();
 
@@ -44,26 +64,15 @@ export default function DashletComponent({ component, eventHandlers, pods }) {
   };
 
   useEffect(() => {
-    setPosition(JSON.parse(localStorage.getItem('position')));
-    if (localStorage.getItem('size')) {
-      setSize(JSON.parse(localStorage.getItem('size')));
-    }
-
-    if (localStorage.getItem('isOpen')) {
-      setIsOpen(localStorage.getItem('isOpen') === 'true');
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('position', JSON.stringify(position));
+    localStorage.setItem(instanceId + ' position', JSON.stringify(position));
   }, [position]);
 
   useEffect(() => {
-    localStorage.setItem('size', JSON.stringify(size));
+    localStorage.setItem(instanceId + ' size', JSON.stringify(size));
   }, [size]);
 
   useEffect(() => {
-    localStorage.setItem('isOpen', String(isOpen));
+    localStorage.setItem(instanceId + ' isOpen', String(isOpen));
   }, [isOpen]);
 
   const dashletSize = useMemo(() => ({
@@ -86,7 +95,7 @@ export default function DashletComponent({ component, eventHandlers, pods }) {
     <div
       ref={ rootRef }
       className={ cn('bl-customComponent-dashlet', classList) }
-      style={ style }>
+      style={ { ...style } }>
       { resizing && isOpen ? (
         <ResizableBox
           onResizeStop={ onResizeStop }
