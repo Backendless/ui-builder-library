@@ -59,7 +59,7 @@ The component covers basic features of the library and allows you in a couple cl
 | Set Zoom    | Zoom: `Number` <br/> Event Data: `Object`                                   |                                        |
 | Fly To      | Options: `Object` <br/> Event Data: `Object`                                |                                        |
 
-## Setings
+## Settings
 
 | Name         | Type   | Default Value | Required | Description                                                                             |
 |--------------|--------|---------------|----------|-----------------------------------------------------------------------------------------|
