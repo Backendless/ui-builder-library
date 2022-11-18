@@ -21,7 +21,6 @@ The component covers basic features of the library and allows you in a couple cl
 | Navigation Button    | *Checkbox*                                                                                                                      | `true`                               |                | NO           | YES        | Adds navigation button to the map.                                                                                                                                                             |
 | Search Bar           | *Checkbox*                                                                                                                      | `false`                              |                | NO           | YES        | Adds search bar to the map.                                                                                                                                                                    |
 | Geolocation Button   | *Checkbox*                                                                                                                      | `false`                              |                | NO           | YES        | Adds geolocation button to the map.                                                                                                                                                            |
-| Access Token         | *Text*                                                                                                                          |                                      |                | NO           | YES        | Required token to load map.                                                                                                                                                                    |
 | Projection           | *Select* <br/>[`mercator`, `globe`, `equalEarth`, `naturalEarth`, `winkelTripel`, `lambertConformalConic`, `equirectangular`]   | 'mercator'                           |                | NO           | YES        | Controls the map type.                                                                                                                                                                         |
 | Lower Atmosphere     | *Color*                                                                                                                         | '#BAD2EB'                            |                | NO           | YES        | Sets lower atmosphere color.                                                                                                                                                                   |
 | Upper Atmosphere     | *Color*                                                                                                                         | '#245CDF'                            |                | NO           | YES        | Sets upper atmosphere color.                                                                                                                                                                   |
@@ -59,6 +58,12 @@ The component covers basic features of the library and allows you in a couple cl
 | Get Zoom    |                                                                             | `Number`: current map zoom             |
 | Set Zoom    | Zoom: `Number` <br/> Event Data: `Object`                                   |                                        |
 | Fly To      | Options: `Object` <br/> Event Data: `Object`                                |                                        |
+
+## Setings
+
+| Name         | Type   | Default Value | Required | Description                                                                             |
+|--------------|--------|---------------|----------|-----------------------------------------------------------------------------------------|
+| Access Token | *Text* |               | YES      | Access Token needed to use Mapbox. You can get it on [Mapbox](https://www.mapbox.com/). |
 
 ## Styles
 
