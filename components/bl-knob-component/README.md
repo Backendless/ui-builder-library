@@ -5,7 +5,7 @@ Knob is a component of Backendless UI-Builder designer. This allows you to defin
 The component based on external [Knob](https://www.primefaces.org/primereact/knob/).
 
 <p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="400"/>
 </p>
 
 ## Properties

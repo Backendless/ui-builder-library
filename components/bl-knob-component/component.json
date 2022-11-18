@@ -44,25 +44,25 @@
     },
     {
       "type": "number",
-      "name": "setMax",
-      "label": "Set Max Value",
+      "name": "maxValue",
+      "label": "Max Value",
       "showInSettings": true,
       "defaultValue": "100",
       "hasLogicHandler": true,
-      "handlerId": "setMaxLogic",
-      "handlerLabel": "Set Max Logic",
+      "handlerId": "maxValueLogic",
+      "handlerLabel": "Max Value Logic",
       "handlerDescription": "This is a handler to control the max value.",
       "dataBinding": true
     },
     {
       "type": "number",
-      "name": "setMin",
-      "label": "Set Min Value",
+      "name": "minValue",
+      "label": "Min Value",
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": true,
-      "handlerId": "setMinLogic",
-      "handlerLabel": "Set Min Logic",
+      "handlerId": "minValueLogic",
+      "handlerLabel": "Min Value Logic",
       "handlerDescription": "This is a handler to control the min value.",
       "dataBinding": true
     },
@@ -145,8 +145,8 @@
       "output": false,
       "contextBlocks": [
         {
-          "id": "data",
-          "label": "Data"
+          "id": "value",
+          "label": "Changed Value"
         }
       ],
       "label": "On Change",
