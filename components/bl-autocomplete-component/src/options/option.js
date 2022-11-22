@@ -1,11 +1,11 @@
-export const Option = props => {
-  const { item, setInputValue, setAutocompleteValue, setIsOptionsOpen, onAutocompleteChange } = props;
+export function Option(props) {
+  const { item, setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange } = props;
 
   const handleClick = () => {
     setInputValue('');
     setAutocompleteValue(item);
     setIsOptionsOpen(false);
-    onAutocompleteChange({ autocompleteValue: item });
+    onChange({ inputValue: "" });
   };
 
   const onEnterClick = ({ key }) => {

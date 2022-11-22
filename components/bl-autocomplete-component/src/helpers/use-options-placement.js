@@ -5,14 +5,16 @@ export const useOptionsPlacement = props => {
 
   useLayoutEffect(() => {
     const handleScroll = () => {
-      const viewPortHeight = window.innerHeight;
-      const { bottom, height } = optionsContainerRef.current?.getBoundingClientRect();
+      if (optionsContainerRef.current) {
+        const viewPortHeight = window.innerHeight;
+        const { bottom, height } = optionsContainerRef.current.getBoundingClientRect();
 
-      setOptionsPlacement(placement => {
-        const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height  : bottom;
+        setOptionsPlacement(placement => {
+          const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height  : bottom;
 
-        return (viewPortHeight - bottomCoordinate) > 0 ? 'bottom' : 'top';
-      });
+          return (viewPortHeight - bottomCoordinate) > 0 ? 'bottom' : 'top';
+        });
+      }
     };
 
     handleScroll();

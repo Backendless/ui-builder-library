@@ -8,7 +8,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export function Options(props) {
   const {
-    optionList, autocompleteHeight, setInputValue, setAutocompleteValue, setIsOptionsOpen, onAutocompleteChange
+    optionList, emptyOptionsLabel, autocompleteHeight, setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange
   } = props;
 
   const optionsContainerRef = useRef(null);
@@ -20,14 +20,16 @@ export function Options(props) {
     return (
       <div className="options" ref={ optionsContainerRef }>
         <div className="option">
-          No options
+          { emptyOptionsLabel }
         </div>
       </div>
     );
   }
 
   return (
-    <div ref={ optionsContainerRef } className={ cn('options', { 'options__placement-top': optionsPlacement === 'top' }) }>
+    <div
+      ref={ optionsContainerRef }
+      className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
       { optionList.map(item => (
         <Option
           key={ item.value }
@@ -35,7 +37,7 @@ export function Options(props) {
           setInputValue={ setInputValue }
           setIsOptionsOpen={ setIsOptionsOpen }
           setAutocompleteValue={ setAutocompleteValue }
-          onAutocompleteChange={ onAutocompleteChange }
+          onChange={ onChange }
         />
       )) }
     </div>
