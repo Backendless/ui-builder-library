@@ -3,18 +3,22 @@ import { useChartData } from './use-chart-data';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function GaugeChartComponent({ component }) {
-  const { classList, display, disable, goal, progress, style } = component;
+  const { classList, style, display, disabled, goal, progress } = component;
 
-  const { shownGoal, shownProgress, angleFillStyle, progressPercentage } = useChartData(goal, progress);
-
-  const decorationLetter = shownGoal.charAt(shownGoal.length - 1);
+  const {
+    shownGoal, shownProgress, angleFillStyle, progressPercentage, decorationLetter
+  } = useChartData(goal, progress, component);
 
   if (!display) {
     return null;
   }
 
   return (
-    <div className={ cn('bl-customComponent-gaugeChart', ...classList, { disable }) } style={ style }>
+    <div
+      style={ style }
+      className={
+        cn("bl-customComponent-gaugeChart", classList, { "bl-customComponent-gaugeChart--disabled": disabled })
+      }>
       <div className="gauge-chart">
         <div className="gauge-chart__wrap">
           <div className="gauge-chart__body"></div>

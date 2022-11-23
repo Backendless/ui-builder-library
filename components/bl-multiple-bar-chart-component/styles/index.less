@@ -16,6 +16,12 @@
 .bl-customComponent-multipleBarChart {
   width: @bl-customComponent-multipleBarChart-width;
 
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
   .chart {
     &__items {
       position: relative;
