@@ -1,5 +1,9 @@
 @import "react-datepicker";
 
+@bl-customComponent-doubleCalendar-info-width: 100%;
+@bl-customComponent-doubleCalendar-info-color: #000000;
+@bl-customComponent-doubleCalendar-info-backgroundColor: #FFFFFF;
+
 .bl-customComponent-doubleCalendar {
   display: flex;
   flex-direction: column;
@@ -10,9 +14,9 @@
   .info {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    background-color: #FFFFFF;
-    color: #000000;
+    width: @bl-customComponent-doubleCalendar-info-width;
+    background-color: @bl-customComponent-doubleCalendar-info-backgroundColor;
+    color: @bl-customComponent-doubleCalendar-info-color;
     padding: 5px 10px;
     margin-bottom: 10px;
     border-radius: 5px;
