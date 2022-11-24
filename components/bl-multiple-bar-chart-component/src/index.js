@@ -38,12 +38,12 @@ export default function MultipleBarChartComponent({ component }) {
               )) }
             </div>
           }
-          { chartData.length > 0 && chartData.map(({ objectId, name, goal, progress }) => (
+          { chartData.length > 0 && chartData.map(({ id, name, goal, progress }) => (
             <Bar
-              key={ objectId }
-              name={ name || 'Name' }
-              goal={ goal ? goal : 1 }
-              progress={ progress || 0 }
+              key={ id }
+              name={ name }
+              goal={ goal }
+              progress={ progress }
             />
           )) }
         </div>
