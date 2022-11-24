@@ -34,6 +34,19 @@
       "dataBinding": true
     },
     {
+      "type": "text",
+      "name": "emptyOptionsLabel",
+      "label": "Empty Options Label",
+      "settingTooltip": "This handler allows you to add a label that will be displayed when the dropdown menu is empty.",
+      "showInSettings": true,
+      "defaultValue": "No options",
+      "hasLogicHandler": true,
+      "handlerId": "emptyOptionsLabelLogic",
+      "handlerLabel": "Empty Options Label Logic",
+      "handlerDescription": "This handler allows you to add a label that will be displayed when the dropdown menu is empty.",
+      "dataBinding": true
+    },
+    {
       "type": "select",
       "name": "variant",
       "label": "Variant",

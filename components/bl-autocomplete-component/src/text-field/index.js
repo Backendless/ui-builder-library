@@ -1,31 +1,20 @@
-import { forwardRef, useMemo, useRef } from 'react';
+import { forwardRef, useRef, useMemo } from 'react';
 
 import { ButtonContainer } from './button-container';
 import { Fieldset } from './fieldset';
 import { Input } from './input';
 import { Placeholder } from './placeholder';
 
-import { generateId } from '../helpers';
-
 export const TextField = forwardRef((props, ref) => {
   const {
-    inputValue,
-    disabled,
-    placeholder,
-    autocompleteValue,
-    isOptionsOpen,
-    isAutocompleteActive,
-    setInputValue,
-    setIsOptionsOpen,
-    setAutocompleteValue,
-    setIsAutocompleteActive,
-    eventHandlers,
+    inputValue, disabled, placeholder, autocompleteValue, isOptionsOpen, isAutocompleteActive,
+    setInputValue, setIsOptionsOpen, setAutocompleteValue, setIsAutocompleteActive, eventHandlers
   } = props;
 
   const { onButtonClearClick, onChange } = eventHandlers;
 
   const inputRef = useRef(null);
-  const autocompleteId = useMemo(() => generateId(), []);
+  const autocompleteId = useMemo(() => BackendlessUI.UUID.short(), []);
 
   const handleClick = () => {
     inputRef.current.focus();
