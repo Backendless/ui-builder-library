@@ -84,6 +84,8 @@ TreeSelect is a component for Backendless [UI-Builder](https://backendless.com/d
 @bl-customComponent-treeSelect-content-highlight-background: fade(@bl-customComponent-treeSelect-themeColor, 5%);
 @bl-customComponent-treeSelect-content-hover-color: @bl-customComponent-treeSelect-textColor;
 @bl-customComponent-treeSelect-content-hover-background: @bl-customComponent-treeSelect-content-highlight-background;
+@bl-customComponent-treeSelect-chip-token-background: #dee2e6;
+@bl-customComponent-treeSelect-chip-token-color: #495057;
 ````
 
 **Dimensions**
@@ -111,6 +113,9 @@ TreeSelect is a component for Backendless [UI-Builder](https://backendless.com/d
 @bl-customComponent-treeSelect-input-padding: 12px;
 @bl-customComponent-treeSelect-label-padding: 17px 14px;
 @bl-customComponent-treeSelect-trigger-width: 48px;
+@bl-customComponent-treeSelect-chip-label-padding: 11px 14px;
+@bl-customComponent-treeSelect-chip-token-padding: 6px 12px;
+@bl-customComponent-treeSelect-chip-token-marginRight: 8px;
 ````
 
 **Typography**
@@ -149,6 +154,7 @@ TreeSelect is a component for Backendless [UI-Builder](https://backendless.com/d
 @bl-customComponent-treeSelect-input-hover-boxShadow: 0 0 0 0.1rem fade(@bl-customComponent-treeSelect-themeColor, 60%);
 @bl-customComponent-treeSelect-input-border: 1px solid fade(@bl-customComponent-treeSelect-color, 20%);
 @bl-customComponent-treeSelect-input-transition: border-color 0.2s, box-shadow 0.2s;
+@bl-customComponent-treeSelect-chip-token-borderRadius: 16px;
 ````
 
 ## Codeless Examples

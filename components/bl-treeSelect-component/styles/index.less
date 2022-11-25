@@ -85,6 +85,12 @@
 @bl-customComponent-treeSelect-input-transition: border-color 0.2s, box-shadow 0.2s;
 
 @bl-customComponent-treeSelect-label-padding: 17px 14px;
+@bl-customComponent-treeSelect-chip-label-padding: 11px 14px;
+@bl-customComponent-treeSelect-chip-token-padding: 6px 12px;
+@bl-customComponent-treeSelect-chip-token-marginRight: 8px;
+@bl-customComponent-treeSelect-chip-token-background: #dee2e6;
+@bl-customComponent-treeSelect-chip-token-color: #495057;
+@bl-customComponent-treeSelect-chip-token-borderRadius: 16px;
 
 @bl-customComponent-treeSelect-toggler-hover-background: fade(@bl-customComponent-treeSelect-themeColor, 10%);
 @bl-customComponent-treeSelect-trigger-width: 48px;
@@ -103,6 +109,18 @@
   border-radius: @bl-customComponent-treeSelect-borderRadius;
   color: @bl-customComponent-treeSelect-color;
   background: @bl-customComponent-treeSelect-backgroundColor;
+
+  &.p-treeselect-chip .p-treeselect-label:not(.p-placeholder) {
+    padding: @bl-customComponent-treeSelect-chip-label-padding;
+
+    .p-treeselect-token {
+      padding: @bl-customComponent-treeSelect-chip-token-padding;
+      margin-right: @bl-customComponent-treeSelect-chip-token-marginRight;
+      background: @bl-customComponent-treeSelect-chip-token-background;
+      color: @bl-customComponent-treeSelect-chip-token-color;
+      border-radius: @bl-customComponent-treeSelect-chip-token-borderRadius;
+    }
+  }
 
   .p-treeselect-label {
     padding: @bl-customComponent-treeSelect-label-padding;

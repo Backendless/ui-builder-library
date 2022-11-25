@@ -18,7 +18,7 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
   const {
     expandAll, collapseAll, onSelectedNodeChange, onToggle, onNodeSelect,
     onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys,
-  } = useNodes(nodes, eventHandlers, setSelectedNodeKey);
+  } = useNodeActions(nodes, eventHandlers, setSelectedNodeKey);
 
   useEffect(() => {
     setNodes(options);
@@ -68,7 +68,7 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
   );
 }
 
-function useNodes(nodes, eventHandlers, setSelectedNodeKey) {
+function useNodeActions(nodes, eventHandlers, setSelectedNodeKey) {
   const { onChange, onItemSelect, onItemUnselect, onItemExpand, onItemCollapse } = eventHandlers;
 
   const [expandedKeys, setExpandedKeys] = useState({});
