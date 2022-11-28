@@ -19,18 +19,6 @@
       "handlerLabel": "Disabled Logic",
       "handlerDescription": "This handler allows you to disable a component.",
       "dataBinding": true
-    },
-    {
-      "type": "checkbox",
-      "name": "modalVisibility",
-      "label": "Modal Visibility",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "modalVisibilityLogic",
-      "handlerLabel": "Modal Visibility Logic",
-      "dataBinding": true,
-      "handlerDescription": "This handler allows you to control the display of the component.",
-      "settingTooltip": "This handler allows you to control the display of the component."
     }
   ],
   "eventHandlers": [
@@ -39,11 +27,23 @@
       "label": "On Close Event",
       "contextBlocks": [
         {
-          "id": "modalVisibility",
-          "label": "Modal Visibility"
+          "id": "visibility",
+          "label": "Visibility"
         }
       ],
       "handlerDescription": "This event is triggered when the user clicks on the backdrop or Escape button."
+    }
+  ],
+  "actions": [
+    {
+      "id": "openModal",
+      "color": "#224b98",
+      "label": "Open Modal"
+    },
+    {
+      "id": "closeModal",
+      "label": "Close Modal",
+      "color": "#982230"
     }
   ],
   "pods": {

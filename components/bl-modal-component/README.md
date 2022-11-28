@@ -7,16 +7,23 @@ Modal is a component of Backendless UI-Builder designer. This component allows y
 
 ## Properties
 
-| Property         | Type           | Default value | Logic                  | Data Binding | UI Setting | Description                                                      |
-|------------------|----------------|---------------|------------------------|--------------|------------|------------------------------------------------------------------|
-| Disabled         | *Checkbox*     | false         | Disabled Logic         | YES          | YES        | This handler allows you to disable the component.                |
-| Modal Visibility | *Checkbox*     | false         | Modal Visibility Logic | YES          | YES        | This handler allows you to control the display of the component. |
+| Property | Type       | Default value | Logic            | Data Binding | UI Setting | Description                                                      |
+|----------|------------|---------------|------------------|--------------|------------|------------------------------------------------------------------|
+| Disabled | *Checkbox* | false         | Disabled Logic   | YES          | YES        | This handler allows you to disable the component.                |
+| Display  | *Checkbox* | false         | Visibility Logic | YES          | YES        | This handler allows you to control the display of the component. |
 
 ## Events
 
-| Name              | Triggers                                                             | Context Blocks                                                                 |
-|-------------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| On Close Event    | triggered when the user clicks on the backdrop or Escape button      | Modal Visibility: `false`                                                      |
+| Name              | Triggers                                                             | Context Blocks                                               |
+|-------------------|----------------------------------------------------------------------|--------------------------------------------------------------|
+| On Close Event    | triggered when the user clicks on the backdrop or Escape button      | Visibility: `false`                                          |
+
+## Actions
+
+| Action         | Inputs        | Returns        |
+|----------------|---------------|----------------|
+| Open Modal     |               |                |
+| Close Modal    |               |                |
 
 ## Styles
 

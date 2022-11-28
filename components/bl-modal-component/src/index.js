@@ -4,12 +4,20 @@ const { cn } = BackendlessUI.CSSUtils;
 const ESCAPE_KEY_CODE = 27;
 
 export default function ModalComponent({ component, eventHandlers, pods }) {
-  const { display, classList, style, disabled, modalVisibility } = component;
+  const { display, classList, style, disabled } = component;
   const { onClose } = eventHandlers;
 
-  const [visibility, setVisibility] = useState(modalVisibility);
+  const [visibility, setVisibility] = useState(display);
 
-  component.setModalVisibility = visibility => setVisibility(visibility);
+  component.openModal = () => setVisibility(true);
+  component.closeModal = () => {
+    setVisibility(false);
+    onClose({ visibility: false });
+  };
+
+  useEffect(() => {
+    setVisibility(display);
+  }, [display]);
 
   const modalContentPod = pods['modalContent'];
 
@@ -17,26 +25,22 @@ export default function ModalComponent({ component, eventHandlers, pods }) {
 
   const handleClick = () => {
     setVisibility(false);
-    onClose({ modalVisibility: false });
+    onClose({ visibility: false });
   };
 
-  if (!display) {
+  if (!visibility) {
     return null;
   }
 
   return (
-    <>
-      { visibility &&
-        <div
-          style={ style }
-          className={ cn("bl-customComponent-modal", classList, { "bl-customComponent-modal--disabled": disabled }) }>
-          <div className="backdrop" onClick={ handleClick } />
-          <div className="modal-content">
-            { modalContentPod.render() }
-          </div>
-        </div>
-      }
-    </>
+    <div
+      style={ style }
+      className={ cn("bl-customComponent-modal", classList, { "bl-customComponent-modal--disabled": disabled }) }>
+      <div className="backdrop" onClick={ handleClick } />
+      <div className="modal-content">
+        { modalContentPod.render() }
+      </div>
+    </div>
   );
 }
 
@@ -45,7 +49,7 @@ const useCloseOnEscape = (onClose, setVisibility) => {
     const handleEscClick = e => {
       if (e.keyCode === ESCAPE_KEY_CODE) {
         setVisibility(false);
-        onClose({ modalVisibility: false });
+        onClose({ visibility: false });
       }
     };
 
