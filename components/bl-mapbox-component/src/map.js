@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import mapboxgl from './lib/mapbox';
-import MapboxGeocoder from './lib/mapbox-geocoder';
-import { createActions } from './actions';
-import { applyFog, initMapboxLibrary, useEvents, useGeolocation, useMarkers, usePolygons } from './helpers';
+import { initMapboxLibrary, useMarkers, usePolygons } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -16,43 +14,14 @@ export default function Map({ component, eventHandlers, settings }) {
 
   const { accessToken } = settings;
 
-  const { onMarkerClick, onPolygonClick, onDeterminingGeoposition } = eventHandlers;
+  const { onMarkerClick, onPolygonClick } = eventHandlers;
 
-  const { markers, polygons, center, fullScreen, navigation, searchBar, geolocation, classList } = component;
+  const { markers, polygons, center, classList } = component;
 
   useEffect(() => {
     mapboxgl.accessToken = accessToken;
 
-    initMapboxLibrary(mapRef, mapContainerRef, component);
-
-    mapRef.current.on('load', () => {
-      applyFog(mapRef, component);
-
-      useEvents(mapRef, eventHandlers);
-
-      if (searchBar) {
-        mapRef.current.addControl(
-          new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl   : mapboxgl,
-          })
-        );
-      }
-
-      if (fullScreen) {
-        mapRef.current.addControl(new mapboxgl.FullscreenControl());
-      }
-
-      if (navigation) {
-        mapRef.current.addControl(new mapboxgl.NavigationControl());
-      }
-
-      if (geolocation) {
-        useGeolocation(mapRef, onDeterminingGeoposition);
-      }
-
-      createActions(mapRef, component);
-    });
+    initMapboxLibrary(mapRef, mapContainerRef, component, eventHandlers);
   }, []);
 
   useEffect(() => {

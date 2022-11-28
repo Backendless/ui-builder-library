@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import mapboxgl from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
+import { createActions } from './actions';
 
 export const preparePolygons = polygons => {
   return polygons.map(polygon => ({
@@ -31,12 +32,13 @@ export const applyFog = (mapRef, component) => {
   });
 };
 
-export const initMapboxLibrary = (mapRef, mapContainerRef, component) => {
+export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers) => {
   const START_POS = { lat: 0, lng: 0 };
   const MAP_STYLE = 'mapbox://styles/mapbox/streets-v11';
   const ZOOM = 10;
   const PROJECTION = 'mercator';
-  const { mapStyle, center, zoom, projection, directions } = component;
+  const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
+  const { onDeterminingGeoposition } = eventHandlers;
 
   mapRef.current = new mapboxgl.Map({
     container : mapContainerRef.current,
@@ -54,6 +56,35 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component) => {
       'top-left'
     );
   }
+
+  mapRef.current.on('load', () => {
+    applyFog(mapRef, component);
+
+    useEvents(mapRef, eventHandlers);
+
+    if (searchBar) {
+      mapRef.current.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl   : mapboxgl,
+        })
+      );
+    }
+
+    if (fullScreen) {
+      mapRef.current.addControl(new mapboxgl.FullscreenControl());
+    }
+
+    if (navigation) {
+      mapRef.current.addControl(new mapboxgl.NavigationControl());
+    }
+
+    if (geolocation) {
+      useGeolocation(mapRef, onDeterminingGeoposition);
+    }
+
+    createActions(mapRef, component);
+  });
 };
 
 export const useMarkers = (markers, markersArray, setMarkersArray, mapRef, onMarkerClick) => {
