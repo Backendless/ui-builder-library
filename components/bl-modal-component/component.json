@@ -10,14 +10,15 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "disabled",
-      "label": "Disabled",
-      "settingTooltip": "This handler allows you to disable a component.",
+      "name": "closeOnEscape",
+      "label": "Close On Escape",
+      "settingTooltip": "This handler allows you to add the close of the modal window by pressing Escape or Backdrop.",
       "showInSettings": true,
+      "defaultValue": true,
       "hasLogicHandler": true,
-      "handlerId": "disabledLogic",
-      "handlerLabel": "Disabled Logic",
-      "handlerDescription": "This handler allows you to disable a component.",
+      "handlerId": "closeOnEscapeLogic",
+      "handlerLabel": "Close On Escape Logic",
+      "handlerDescription": "This handler allows you to add the close of the modal window by pressing Escape or Backdrop.",
       "dataBinding": true
     }
   ],
