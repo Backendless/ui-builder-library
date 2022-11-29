@@ -69,7 +69,7 @@ export function Modal(props) {
 
 const useClasses = (classList, isClosing) => {
   const rootClasses = cn('bl-customComponent-simple-modal', classList);
-  const modalClasses = cn('simple-modal', { 'close-modal': isClosing, 'open-modal': !isClosing });
+  const modalClasses = cn('simple-modal', isClosing ? 'close-modal' : 'open-modal');
 
   return { rootClasses, modalClasses };
 };
