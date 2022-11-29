@@ -19,12 +19,12 @@ export function Modal(props) {
   } = component;
   const { onInputValueChange, onClose, onSubmit } = eventHandlers;
 
-  const { modalClasses } = useClasses(classList, isClosing);
+  const { modalClasses, rootClasses } = useClasses(classList, isClosing);
 
   const root = useMemo(() => {
     return document.createElement('div');
-  }, [])
-  root.classList.add(cn('bl-customComponent-simple-modal', classList));
+  }, []);
+  root.className = rootClasses;
 
   useEffect(() => {
     document.body.appendChild(root);
@@ -32,7 +32,7 @@ export function Modal(props) {
     return () => {
       document.body.removeChild(root);
     };
-  },[root]);
+  }, [root]);
 
   useEffect(() => {
     onInputValueChange({ inputValue });
@@ -68,10 +68,8 @@ export function Modal(props) {
 }
 
 const useClasses = (classList, isClosing) => {
-  const rootClasses = ['bl-customComponent-simple-modal ', ...classList];
-  const modalClasses = ['simple-modal'];
+  const rootClasses = cn('bl-customComponent-simple-modal', classList);
+  const modalClasses = cn('simple-modal', isClosing ? 'close-modal' : 'open-modal');
 
-  modalClasses.push(isClosing ? 'close-modal' : 'open-modal');
-
-  return { rootClasses: rootClasses.join(' '), modalClasses: modalClasses.join(' ') };
+  return { rootClasses, modalClasses };
 };
