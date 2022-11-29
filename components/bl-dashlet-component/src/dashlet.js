@@ -1,6 +1,6 @@
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useMemo, useEffect, useCallback } from 'react';
 import { useDraggable } from './helpers';
-import { CollapseButtonIcon, ContextMenu, ContextBlockButtonIcon } from './subcomponents';
+import { CollapseButtonIcon, ContextMenu } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -10,8 +10,6 @@ export function Dashlet(props) {
     dragging, contextBlock, contextBlockHandler, dashletContentPod
   } = props;
 
-  const [isContextOpen, setIsContextOpen] = useState(false);
-
   const style = useMemo(() => ({
     height: isOpen ? height + 'px' : 'auto',
     width : width + 'px',
@@ -19,10 +17,6 @@ export function Dashlet(props) {
 
   const onCollapseButtonClick = () => {
     setIsOpen(state => !state);
-  };
-
-  const onContextBlockButtonClick = () => {
-    setIsContextOpen(state => !state);
   };
 
   useEffect(() => {
@@ -41,8 +35,14 @@ export function Dashlet(props) {
 
   const handleDrag = useCallback(({ x, y }) => {
     const position = {
-      x: Math.max(0, Math.min(rootRef.current.parentElement.clientWidth - rootRef.current.clientWidth, x)),
-      y: Math.max((0 - rootOffsetTop), Math.min(rootRef.current.parentElement.clientHeight - rootRef.current.clientHeight, y))
+      x: Math.max(
+        0,
+        Math.min(rootRef.current.parentElement.clientWidth - rootRef.current.clientWidth, x)
+      ),
+      y: Math.max(
+        (0 - rootOffsetTop),
+        Math.min(rootRef.current.parentElement.clientHeight - rootRef.current.clientHeight, y)
+      )
     };
 
     setPosition(position);
@@ -54,6 +54,7 @@ export function Dashlet(props) {
     onDrag         : handleDrag,
     rootRef        : rootRef,
     initialPosition: position,
+    dragging
   });
 
   return (
@@ -67,12 +68,7 @@ export function Dashlet(props) {
         </button>
         <h4 className="dashlet__title">{ title }</h4>
         { contextBlock && (
-          <button className="dashlet__context-block-button" onClick={ onContextBlockButtonClick }>
-            <ContextBlockButtonIcon/>
-            { isContextOpen && (
-              <ContextMenu contextBlock={ contextBlock } contextBlockHandler={ contextBlockHandler }/>
-            ) }
-          </button>
+          <ContextMenu contextBlock={ contextBlock } contextBlockHandler={ contextBlockHandler }/>
         ) }
       </div>
       { isOpen && (

@@ -1,80 +1,95 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 
-export const useDraggable = ({ onDrag, rootRef, initialPosition } = {}) => {
+export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => {
+  if (dragging) {
+    const [pressed, setPressed] = useState(false);
 
-  const [pressed, setPressed] = useState(false);
+    const position = useRef({ x: initialPosition.x, y: initialPosition.y });
+    const ref = useRef();
 
-  const position = useRef({ x: initialPosition.x, y: initialPosition.y });
-  const ref = useRef();
+    const unsubscribe = useRef();
+    const legacyRef = useCallback((elem) => {
+      ref.current = elem;
 
-  const unsubscribe = useRef();
-  const legacyRef = useCallback((elem) => {
+      if (unsubscribe.current) {
+        unsubscribe.current();
+      }
 
-    ref.current = elem;
-    if (unsubscribe.current) {
-      unsubscribe.current();
-    }
-    if (!elem) {
-      return;
-    }
-    const handleMouseDown = (e) => {
-      e.target.style.userSelect = 'none';
-      setPressed(true);
-    };
-    elem.addEventListener('mousedown', handleMouseDown);
-    unsubscribe.current = () => {
-      elem.removeEventListener('mousedown', handleMouseDown);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!pressed) {
-      return;
-    }
-
-    const handleMouseMove = throttle((event) => {
-      if (!rootRef.current || !position.current) {
+      if (!elem) {
         return;
       }
-      const pos = position.current;
-      const elem = rootRef.current;
-      position.current = onDrag({
-        x: pos.x + event.movementX,
-        y: pos.y + event.movementY
+
+      const handleMouseDown = (e) => {
+        e.target.style.userSelect = 'none';
+        setPressed(true);
+      };
+
+      elem.addEventListener('mousedown', handleMouseDown);
+      unsubscribe.current = () => {
+        elem.removeEventListener('mousedown', handleMouseDown);
+      };
+    }, []);
+
+    useEffect(() => {
+      if (!pressed) {
+        return;
+      }
+
+      const handleMouseMove = throttle((event) => {
+        if (!rootRef.current || !position.current) {
+          return;
+        }
+
+        const pos = position.current;
+        const elem = rootRef.current;
+
+        position.current = onDrag({
+          x: pos.x + event.movementX,
+          y: pos.y + event.movementY
+        });
+
+        elem.style.transform = `translate(${ pos.x }px, ${ pos.y }px)`;
       });
-      elem.style.transform = `translate(${ pos.x }px, ${ pos.y }px)`;
-    });
-    const handleMouseUp = (e) => {
-      e.target.style.userSelect = 'auto';
-      setPressed(false);
-    };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-    return () => {
-      handleMouseMove.cancel();
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
+      const handleMouseUp = (e) => {
+        e.target.style.userSelect = 'auto';
+        setPressed(false);
+      };
 
-  }, [pressed, onDrag]);
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
 
-  return [legacyRef, pressed];
+      return () => {
+        handleMouseMove.cancel();
+
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }, [pressed, onDrag]);
+
+    return [legacyRef, pressed];
+  }
+
+  return [null];
 };
 
 const throttle = (f) => {
-  let token = null,
-    lastArgs = null;
+  let token = null, lastArgs = null;
+
   const invoke = () => {
     f(...lastArgs);
     token = null;
   };
+
   const result = (...args) => {
     lastArgs = args;
+
     if (!token) {
       token = requestAnimationFrame(invoke);
     }
   };
+
   result.cancel = () => token && cancelAnimationFrame(token);
+
   return result;
 };

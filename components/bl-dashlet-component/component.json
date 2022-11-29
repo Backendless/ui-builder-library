@@ -73,7 +73,8 @@
       "hasLogicHandler": true,
       "handlerId": "contextBlockLogic",
       "handlerLabel": "Context Block Logic",
-      "handlerDescription": "This is a handler for the logic of determining context block for dashlet"
+      "handlerDescription": "This is a handler for the logic of determining context block for dashlet",
+      "dataBinding": true
     },
     {
       "type": "number",

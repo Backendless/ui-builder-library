@@ -1,26 +1,41 @@
+import { useState } from 'react';
+
 export function ContextMenu({ contextBlock, contextBlockHandler }) {
+  const [isContextOpen, setIsContextOpen] = useState(false);
+
+  const onContextBlockButtonClick = () => {
+    setIsContextOpen(state => !state);
+  };
+
   return (
-    <div className="dashlet__context-block">
-      <ul className="dashlet__context-block-list">
-        { contextBlock.map(({ label, type, content }) => {
-          if (type === 'link') {
-            return <ContextBlockLink content={ content } label={ label }/>;
-          } else if (type === 'action') {
-            return (
-              <ContextBlockAction
-                content={ content }
-                label={ label }
-                contextBlockHandler={ contextBlockHandler }
-              />
-            );
-          }
-        }) }
-      </ul>
+    <div className="dashlet__context-block-container">
+      <button className="dashlet__context-block-button" onClick={ onContextBlockButtonClick }>
+        <ContextBlockButtonIcon/>
+      </button>
+      { isContextOpen && (
+        <div className="dashlet__context-block">
+          <ul className="dashlet__context-block-list">
+            { contextBlock.map(({ label, type, content }) => {
+              if (type === 'link') {
+                return <ContextBlockLink content={ content } label={ label }/>;
+              } else if (type === 'action') {
+                return (
+                  <ContextBlockAction
+                    content={ content }
+                    label={ label }
+                    contextBlockHandler={ contextBlockHandler }
+                  />
+                );
+              }
+            }) }
+          </ul>
+        </div>
+      ) }
     </div>
   );
 }
 
-export function ContextBlockLink({ content, label }) {
+function ContextBlockLink({ content, label }) {
   return (
     <li>
       <a className="dashlet__context-block-item link" href={ content } target="_blank">
@@ -31,13 +46,13 @@ export function ContextBlockLink({ content, label }) {
   );
 }
 
-export function ContextBlockAction({ content, label, contextBlockHandler }) {
+function ContextBlockAction({ content, label, contextBlockHandler }) {
   return (
     <li>
       <button
         className="dashlet__context-block-item action"
         type="button"
-        onClick={ () => contextBlockHandler({ content }) }>
+        onClick={ () => contextBlockHandler({ action: content }) }>
         <ContextBlockItemIcon/>
         { label }
       </button>
@@ -45,7 +60,7 @@ export function ContextBlockAction({ content, label, contextBlockHandler }) {
   );
 }
 
-export function ContextBlockButtonIcon() {
+function ContextBlockButtonIcon() {
   return (
     <svg className="dashlet__context-block-button-icon" viewBox="0 0 24 24">
       <path
