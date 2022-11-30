@@ -1,14 +1,11 @@
-export const Option = props => {
-  const { item, setInputValue, setAutocompleteValue, setIsOptionsOpen, onAutocompleteChange } = props;
+export function Option(props) {
+  const { item, setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange } = props;
 
   const handleClick = () => {
     setInputValue('');
     setAutocompleteValue(item);
     setIsOptionsOpen(false);
-
-    if (onAutocompleteChange) {
-      onAutocompleteChange({ autocompleteValue: item });
-    }
+    onChange({ inputValue: "" });
   };
 
   const onEnterClick = ({ key }) => {
@@ -22,7 +19,7 @@ export const Option = props => {
       <span
         tabIndex={ 1 }
         onKeyUp={ onEnterClick }>
-        {item.label}
+        { item.label }
       </span>
     </div>
   );

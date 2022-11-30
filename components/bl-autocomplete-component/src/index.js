@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { useOnClickOutside, validate } from './helpers';
 import { Options } from './options';
@@ -7,7 +7,7 @@ import { TextField } from './text-field';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function AutocompleteComponent({ component, eventHandlers }) {
-  const { disabled, placeholder, options, autocompleteVariant, classList, style } = component;
+  const { classList, style, display, disabled, placeholder, emptyOptionsLabel, variant, options } = component;
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
@@ -27,13 +27,11 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
   ));
 
   const classes = cn(
-    'bl-customComponent-autocomplete',
-    autocompleteVariant,
-    classList,
+    'bl-customComponent-autocomplete', `bl-customComponent-autocomplete--${variant}`, classList,
     {
-      disabled,
-      ['has-clear-button']: autocompleteValue,
-      ['autocomplete-focused']: isAutocompleteActive,
+      'bl-customComponent-autocomplete--disabled': disabled,
+      'has-clear-button': autocompleteValue,
+      'autocomplete-focused': isAutocompleteActive,
     }
   );
 
@@ -45,8 +43,15 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   useOnClickOutside(rootRef, handleClickOutside);
 
+  if (!display) {
+    return null;
+  }
+
   return (
-    <div ref={ rootRef } className={ classes } style={ style }>
+    <div
+      ref={ rootRef }
+      style={ style }
+      className={ classes }>
       <TextField
         ref={ autocompleteRef }
         disabled={ disabled }
@@ -64,10 +69,12 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
       {isOptionsOpen && (
         <Options
           optionList={ filteredOptions }
+          emptyOptionsLabel={ emptyOptionsLabel }
           autocompleteHeight={ autocompleteHeight }
           setInputValue={ setInputValue }
           setIsOptionsOpen={ setIsOptionsOpen }
           setAutocompleteValue={ setAutocompleteValue }
+          onChange={ eventHandlers.onChange }
         />
       )}
     </div>

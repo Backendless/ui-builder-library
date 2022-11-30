@@ -7,7 +7,7 @@ export const Placeholder = props => {
     <label
       htmlFor={ autocompleteId }
       className={ cn('placeholder', { ['placeholder__move-up']: isAutocompleteActive || autocompleteValue }) }>
-      {placeholder}
+      { placeholder }
     </label>
   );
 };
