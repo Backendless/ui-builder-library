@@ -1,0 +1,80 @@
+{
+  "id": "c_24bbdb352375979895e858da5782ad01",
+  "name": "Markdown",
+  "description": "This component allows display markdown file or text.",
+  "showInToolbox": true,
+  "faIcon": "file-alt",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "url",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "urlLogic",
+      "label": "URL",
+      "handlerLabel": "URL Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine URL of markdown file"
+    },
+    {
+      "type": "text",
+      "name": "markdownText",
+      "label": "Markdown Text",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "markdownTextLogic",
+      "handlerLabel": "Markdown Text Logic",
+      "handlerDescription": "This is a handler for the logic to determine text of markdown",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine height for component",
+      "handlerLabel": "Height Logic"
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine width for component",
+      "handlerLabel": "Width Logic"
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [
+    {
+      "id": "setContent",
+      "label": "Set Content",
+      "inputs": [
+        {
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "id": "setUrl",
+      "label": "Set URL",
+      "inputs": [
+        {
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "blockUI": "<span data-content=\"Markdown\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"fda5d2e3b79f8b58282af3ae0da9fd3b\" class=\"bl-text\" style=\"text-align:center;font-size:24px;padding:10px 10px 10px 10px;\"></span>"
+}

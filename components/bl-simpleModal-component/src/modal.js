@@ -5,7 +5,7 @@ import modalTypes from './modal-types';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Modal(props) {
-  const { component, eventHandlers, inputValue, isOpen, setInputValue, isClosing } = props;
+  const { component, eventHandlers, inputValue, setInputValue, isClosing } = props;
   const {
     style,
     title,
@@ -19,12 +19,12 @@ export function Modal(props) {
   } = component;
   const { onInputValueChange, onClose, onSubmit } = eventHandlers;
 
-  const { modalClasses } = useClasses(classList, isClosing);
+  const { modalClasses, rootClasses } = useClasses(classList, isClosing);
 
   const root = useMemo(() => {
     return document.createElement('div');
-  }, [])
-  root.classList.add(cn('bl-customComponent-simple-modal', classList));
+  }, []);
+  root.className = rootClasses;
 
   useEffect(() => {
     document.body.appendChild(root);
@@ -32,15 +32,11 @@ export function Modal(props) {
     return () => {
       document.body.removeChild(root);
     };
-  },[root]);
+  }, [root]);
 
   useEffect(() => {
     onInputValueChange({ inputValue });
   }, [inputValue]);
-
-  useEffect(() => {
-    document.body.classList.toggle('active-modal', isOpen);
-  }, [isOpen]);
 
   return ReactDOM.createPortal(
     <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms`, ...style } }>
@@ -72,10 +68,8 @@ export function Modal(props) {
 }
 
 const useClasses = (classList, isClosing) => {
-  const rootClasses = ['bl-customComponent-simple-modal ', ...classList];
-  const modalClasses = ['simple-modal'];
+  const rootClasses = cn('bl-customComponent-simple-modal', classList);
+  const modalClasses = cn('simple-modal', isClosing ? 'close-modal' : 'open-modal');
 
-  modalClasses.push(isClosing ? 'close-modal' : 'open-modal');
-
-  return { rootClasses: rootClasses.join(' '), modalClasses: modalClasses.join(' ') };
+  return { rootClasses, modalClasses };
 };

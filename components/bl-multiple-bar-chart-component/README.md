@@ -6,22 +6,40 @@ Multiple Bar Chart is a component of Backendless UI-Builder designer. This is a 
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-## Usage
+## Properties
 
-Add a component to your page and add data (array of objects) to the property `Chart data`. Each element of the array must contain the properties "goal", "progress" and "name".
+| Property        | Type                                              | Default Value | Logic                 | Data Binding | UI Setting | Description                                                                                                                                                                     |
+|-----------------|---------------------------------------------------|---------------|-----------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled        | *Checkbox*                                        | `false`       | Disabled Logic        | YES          | YES        | This handler allows you to disable a component.                                                                                                                                 |
+| Grid Visibility | *Checkbox*                                        | `true`        | Grid Visibility Logic | YES          | YES        | This handler allows you to control the visibility of the grid.                                                                                                                  |
+| Chart Data      | *JSON*                                            | `[]`          | Chart Data Logic      | YES          | YES        | This handler allows you to add chart items to the component. Watch [Codeless Examples](#Examples). Signature of the item: {name: `String`, goal: `Number`, progress: `Number`}. |
+| Grid Marks      | *Select* <br/> "2" <br/> "4" <br/> "5" <br/> "10" | "4"           | Grid Marks Logic      | YES          | YES        | This handler allows you to specify the number of marks.                                                                                                                         |
 
-### Component Elements
+## Styles
 
-<dl>
-<dt>Name</dt>
-<dd>To the left of the bar is the name of the bar.</dd>
-<dt>Bar</dt>
-<dd>The bar is to the right of the name and it shows the member's progress.</dd>
-</dl>
+**Theme**
+````
+@bl-customComponent-multipleBarChart-themeColor: @themePrimary;
+@bl-customComponent-multipleBarChart-backgroundColor: @appBackgroundColor;
+@bl-customComponent-multipleBarChart-textColor: @appTextColor;
+````
 
-### Component Properties
+**Dimensions**
+````
+@bl-customComponent-multipleBarChart-width: 100%;
+@bl-customComponent-multipleBarChart-labelWidth: 60px;
+@bl-customComponent-multipleBarChart-labelMarginRight: 16px;
+````
 
-  Name               | Type       | Default value      | Description
- --------------------|------------|--------------------|-------------------------------------------------------------------------------------
-  Disable            | bool       | false              | This property allows you to disable component.
-  Chart data         | array      |                    | You can enter an array of objects in the `Chart data` property. Each element of the array must contain the properties "goal", "progress" and "name", if you do not specify these properties, the component will display its data.
+**Colors**
+````
+@bl-customComponent-multipleBarChart-chartBarColor: #212121;
+@bl-customComponent-multipleBarChart-chartNameColor: @bl-customComponent-multipleBarChart-textColor;
+@bl-customComponent-multipleBarChart-chartFillColor: @bl-customComponent-multipleBarChart-themeColor;
+````
+
+## <a name="Examples"></a> Codeless Examples
+
+Adding of chart items to component:
+
+<img alt="adding data" src="./example-images/adding-data-to-chart.png" width="620" />

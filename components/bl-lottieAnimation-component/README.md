@@ -8,49 +8,28 @@ The component based on external [Lottie Animation](https://github.com/airbnb/lot
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-## Usage
+## Properties
 
-### Styles and Settings
+| Property  | Type                             | Default Value | Logic         | Data Binding | UI Setting | Description                                                                                                                                                                                                                                                          |
+|-----------|----------------------------------|---------------|---------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| data      | JSON                             |               | Data Logic    | YES          | YES        | Allows writing JSON for animation. You can get JSON with animation by creating animation in After Effects with the plugin [Lottie](https://airbnb.io/lottie/#/after-effects)  or you can get completed animation in [Lottie Files](https://lottiefiles.com/featured) |
+| type      | Select [`svg`, `canvas`, `html`] | svg           | Type logic    | NO           | YES        | Allows select type of animation (svg, canvas, html)                                                                                                                                                                                                                  |
+| isLoop    | Checkbox                         | `false`       | Loop Logic    | NO           | YES        | Allows to specify looping or non-looping animation                                                                                                                                                                                                                   |
+| isStopped | Checkbox                         | `false`       | Stopped Logic | NO           | YES        | Allows to specify stopped or not stopped animation                                                                                                                                                                                                                   |
 
-<dl>
-<dt>Data</dt>
-<dd>Allows write json for animation.</dd>
+## Events
 
-You can get JSON with animation by creating animation in After Effects with the plugin [Lottie](https://airbnb.io/lottie/#/after-effects) or you can get completed animation in [Lottie Files](https://lottiefiles.com/featured).
+| Name       | Triggered                                              | Context Block |
+|------------|--------------------------------------------------------|---------------|
+| On Hover   | when the user hovers on the animation                  |               |
+| On Unhover | when the user moves the cursor away from the animation |               |
+| On Click   | when the user clicks on the animation                  |               |
 
-<dt>Type</dt>
-<dd>Allows select type of animation (svg, canvas, Html). Default value 'svg'.</dd>
-<dt>Loop</dt>
-<dd>Allows to specify looping or non-looping animation. Default value 'true'</dd>
-<dt>Stopped</dt>
-<dd>Allows to specify stopped or not stopped animation.</dd>
-</dl>
+## Action
 
-### Event Handlers and Bindable Properties
-
-<dl>
-<dt>Data Logic</dt>
-<dd>Allows to specify data for animation in Backendless logic</dd>
-<dt>Loop Logic</dt>
-<dd>Allows to specify looping or non-looping animation for in Backendless logic</dt>
-<dt>Stopped Logic</dt>
-<dd>Allows to specify stopped or not stopped animation in Backendless logic</dd>
-<dt>On Hover</dt>
-<dd>Triggered when the user hovers on the animation.</dd>
-<dt>On Unhover</dt>
-<dd>Triggered when the user moves the cursor away from the animation.</dd>
-<dt>On Click</dt>
-<dd>Triggered when the user clicks on the animation.</dd>
-</dl>
-
-### Action
-
-<dl>
-<dt>Stop Animation</dt>
-<dd>An action that stop animation</dd>
-<dt>Play Animation</dt>
-<dd>An action that play animation</dd>
-<dt>Set Animation</dt>
-<dd>An action that set Animation</dd>
-</dl>
+| Action         | Inputs                                                  | Return |
+|----------------|---------------------------------------------------------|--------|
+| Stop Animation |                                                         |        |
+| Play Animation |                                                         |        |
+| Set Animation  | Data: `Object` Is Stopped: `Boolean` Is Loop: `Boolean` |        |
 
