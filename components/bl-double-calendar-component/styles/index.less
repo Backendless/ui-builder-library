@@ -1,0 +1,71 @@
+@import "react-datepicker";
+
+@bl-customComponent-doubleCalendar-info-width: 100%;
+@bl-customComponent-doubleCalendar-info-color: #000000;
+@bl-customComponent-doubleCalendar-info-backgroundColor: #FFFFFF;
+
+.bl-customComponent-doubleCalendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 496px;
+  width: 100%;
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    width: @bl-customComponent-doubleCalendar-info-width;
+    background-color: @bl-customComponent-doubleCalendar-info-backgroundColor;
+    color: @bl-customComponent-doubleCalendar-info-color;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    &__days-amount {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    &__button-reset {
+      font-size: 16px;
+      background-color: #0f0f0f20;
+      border-radius: 3px;
+      padding: 7px 20px;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0f0f0f30;
+        transform: scale(1.1);
+        transition: background-color .3s transform .3s;
+      }
+    }
+  }
+
+  .date-picker {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media(max-width: 570px) {
+  .bl-customComponent-doubleCalendar {
+    max-width: 243px;
+
+    .info {
+      flex-direction: column;
+    }
+
+    .date-picker {
+      flex-direction: column;
+    }
+  }
+}
