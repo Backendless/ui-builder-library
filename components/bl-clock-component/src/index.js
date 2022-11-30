@@ -4,6 +4,12 @@ import { Timer } from './timer.js';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const ClockType = {
+  DEFAULT: 'clock',
+  STOPWATCH: 'stopwatch',
+  TIMER: 'timer'
+};
+
 export default function Clock({ component, eventHandlers }) {
   const { display, classList, style, timeVariant, type, timerDate } = component;
   const { onTimerEnd } = eventHandlers;
@@ -14,13 +20,13 @@ export default function Clock({ component, eventHandlers }) {
 
   return (
     <div className={ cn('bl-customComponent-clock clock', classList) } style={ style }>
-      { type === 'clock' && (
+      { type === ClockType.DEFAULT && (
         <ClockComponent timeVariant={ timeVariant }/>
       ) }
-      { type === 'stopwatch' && (
+      { type === ClockType.STOPWATCH && (
         <Stopwatch component={ component }/>
       ) }
-      { type === 'timer' && (
+      { type === ClockType.TIMER && (
         <Timer
           timerDate={ timerDate }
           timeVariant={ timeVariant }

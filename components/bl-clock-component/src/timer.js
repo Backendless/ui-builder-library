@@ -40,7 +40,7 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
     <>
       { daysVisibility && (
         <>
-          <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits }/>
+          <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits } />
         </>
       ) }
 
@@ -65,7 +65,7 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
       ) }
 
       <Time
-        imeTens={ time.secondTens }
+        timeTens={ time.secondTens }
         timeUnits={ time.secondUnits }
         withDelimeter={ minutesVisibility }
       />

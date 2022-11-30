@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { getTime } from './helpers';
 import { Time } from './subcomponents';
 
-const TIME_VARIANT = {
-  hhmmss: 'hhmmss',
-  hhmm: 'hhmm',
-  hh: 'hh'
+const TimeVariant = {
+  HHMMSS: 'hhmmss',
+  HHMM: 'hhmm',
+  HH: 'hh'
 };
 
 export function ClockComponent({ timeVariant }) {
@@ -25,7 +25,7 @@ export function ClockComponent({ timeVariant }) {
   return (
     <>
       <Time timeTens={ time.hourTens } timeUnits={ time.hourUnits }/>
-      { (timeVariant === TIME_VARIANT.hhmmss || timeVariant === TIME_VARIANT.hhmm) && (
+      { (timeVariant === TimeVariant.HHMMSS || timeVariant === TimeVariant.HHMM) && (
         <>
           <Time
             timeTens={ time.minuteTens }
@@ -34,7 +34,7 @@ export function ClockComponent({ timeVariant }) {
           />
         </>
       ) }
-      { timeVariant === TIME_VARIANT.hhmmss && (
+      { timeVariant === TimeVariant.HHMMSS && (
         <>
           <Time
             timeTens={ time.secondTens }
