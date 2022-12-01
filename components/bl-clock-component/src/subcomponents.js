@@ -1,12 +1,12 @@
 import { useRef } from 'react';
 import { useAnimation } from './helpers';
 
-export function Time({ timeTens, timeUnits, withDelimeter }) {
+export function Time({ timeTens, timeUnits, animationDuration, withDelimeter }) {
   const secondTensRef = useRef();
   const secondUnitsRef = useRef();
 
-  useAnimation(timeTens, secondTensRef);
-  useAnimation(timeUnits, secondUnitsRef);
+  useAnimation(timeTens, secondTensRef, animationDuration);
+  useAnimation(timeUnits, secondUnitsRef, animationDuration);
 
   return (
     <>

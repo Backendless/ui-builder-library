@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getTimer } from './helpers';
 import { Time, Delimeter } from './subcomponents';
 
-export function Timer({ timerDate, timeVariant, onTimerEnd }) {
+export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration }) {
   const [update, setUpdate] = useState();
   const [time, setTime] = useState(getTimer(new Date(timerDate)));
 
@@ -40,7 +40,7 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
     <>
       { daysVisibility && (
         <>
-          <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits } />
+          <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits } animationDuration={ animationDuration }/>
         </>
       ) }
 
@@ -49,6 +49,7 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
           <Time
             timeTens={ time.hourTens }
             timeUnits={ time.hourUnits }
+            animationDuration={ animationDuration }
             withDelimeter={ true }
           />
         </>
@@ -59,6 +60,7 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
           <Time
             timeTens={ time.minuteTens }
             timeUnits={ time.minuteUnits }
+            animationDuration={ animationDuration }
             withDelimeter={ true }
           />
         </>
@@ -67,6 +69,7 @@ export function Timer({ timerDate, timeVariant, onTimerEnd }) {
       <Time
         timeTens={ time.secondTens }
         timeUnits={ time.secondUnits }
+        animationDuration={ animationDuration }
         withDelimeter={ minutesVisibility }
       />
     </>

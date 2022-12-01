@@ -62,6 +62,18 @@
       "handlerLabel": "Timer Date Logic",
       "handlerDescription": "This is a handler for the logic to determine the date and time when the timer will be stopped.",
       "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "animationDuration",
+      "label": "Animation Duration (ms)",
+      "showInSettings": true,
+      "defaultValue": "400",
+      "hasLogicHandler": true,
+      "handlerId": "animationDurationLogic",
+      "handlerLabel": "Animation Duration Logic",
+      "handlerDescription": "This is a handler for the logic to determine the duration of the animation to change the time",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [

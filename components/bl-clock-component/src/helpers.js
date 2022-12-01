@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
 
-const animationDuration = 400;
-
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
-export const useAnimation = (time, element) => {
+export const useAnimation = (time, element, animationDuration) => {
   useEffect(() => {
     if (element.current.children.length > 1) {
       [...element.current.children].slice(0, -1).forEach((child) => {

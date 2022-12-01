@@ -11,7 +11,7 @@ const ClockType = {
 };
 
 export default function Clock({ component, eventHandlers }) {
-  const { display, classList, style, timeVariant, type, timerDate } = component;
+  const { display, classList, style, timeVariant, type, timerDate, animationDuration } = component;
   const { onTimerEnd } = eventHandlers;
 
   if (!display) {
@@ -21,7 +21,7 @@ export default function Clock({ component, eventHandlers }) {
   return (
     <div className={ cn('bl-customComponent-clock clock', classList) } style={ style }>
       { type === ClockType.DEFAULT && (
-        <ClockComponent timeVariant={ timeVariant }/>
+        <ClockComponent timeVariant={ timeVariant } animationDuration={animationDuration}/>
       ) }
       { type === ClockType.STOPWATCH && (
         <Stopwatch component={ component }/>
@@ -31,6 +31,7 @@ export default function Clock({ component, eventHandlers }) {
           timerDate={ timerDate }
           timeVariant={ timeVariant }
           onTimerEnd={ onTimerEnd }
+          animationDuration={ animationDuration }
         />
       ) }
     </div>
