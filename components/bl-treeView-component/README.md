@@ -11,9 +11,9 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 
 ## Events
 
-| Name     | Triggers                                       | Context Blocks                   |
-|----------|------------------------------------------------|----------------------------------|
-| On Click | when a user click on tree element (not folder) | Label: `String`, Value: `String` |
+| Name     | Triggers                          | Context Blocks                   |
+|----------|-----------------------------------|----------------------------------|
+| On Click | when a user click on tree element | Label: `String`, Value: `String` |
 
 
 ## Actions

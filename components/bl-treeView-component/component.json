@@ -10,11 +10,11 @@
   "properties": [
     {
       "type": "json",
-      "name": "unprocessedTree",
+      "name": "treeItems",
       "label": "Tree Items",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "unprocessedTreeLogic",
+      "handlerId": "treeItemsLogic",
       "handlerLabel": "Tree Items Logic",
       "handlerDescription": "This is a handler for the logic to determine tree items for the tree view.",
       "dataBinding": true
@@ -29,7 +29,7 @@
       "dataBinding": true,
       "handlerDescription": "This a handler for the logic to determine gap for every nested element",
       "label": "Gap",
-      "handlerLabel": "Gap Logic"
+      "handlerLabel": "Gap  Logic"
     }
   ],
   "eventHandlers": [
@@ -46,7 +46,7 @@
           "label": "Label"
         }
       ],
-      "handlerDescription": "This event is triggered when the user clicks on some file"
+      "handlerDescription": "This event is triggered when the user clicks on the tree items"
     }
   ],
   "actions": [
