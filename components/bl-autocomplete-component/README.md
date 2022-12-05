@@ -8,13 +8,13 @@ Autocomplete is a component of Backendless UI-Builder designer. This allows you 
 
 ## Properties
 
-| Property            | Type                                                | Default Value | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                                                 |
-|---------------------|-----------------------------------------------------|---------------|---------------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled            | *Checkbox*                                          | `false`       | Disabled Logic            | YES          | YES        | This handler allows you to disable a component.                                                                                                                                             |
-| Placeholder         | *Text*                                              | "Placeholder" | Placeholder Logic         | YES          | YES        | This handler allows you to specify a label of autocomplete component.                                                                                                                       |
-| Empty Options Label | *Text*                                              | "No options"  | Empty Options Label Logic | YES          | YES        | This handler allows you to add a label that will be displayed when the dropdown menu is empty.                                                                                              |
-| Variant             | *Select* <br/> "outlined" \| "standart" \| "filled" | "outlined"    | Variant Logic             | YES          | YES        | This handler allows you to specify the variant of autocomplete.                                                                                                                             |
-| Options             | *JSON*                                              | `[]`          | Options Logic             | YES          | YES        | This handler allows you to add options to be displayed in the options list. Watch [Codeless Examples](#Examples). Signature of options: List of objects {value: `String`, label: `String`}. |
+| Property            | Type                                               | Default Value | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                                                                                                                                                                                     |
+|---------------------|----------------------------------------------------|---------------|---------------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled            | *Checkbox*                                         | `false`       | Disabled Logic            | YES          | YES        | This handler allows you to disable a component.                                                                                                                                                                                                                                                                                 |
+| Placeholder         | *Text*                                             | "Placeholder" | Placeholder Logic         | YES          | YES        | This handler allows you to specify a label of autocomplete component.                                                                                                                                                                                                                                                           |
+| Empty Options Label | *Text*                                             | "No options"  | Empty Options Label Logic | YES          | YES        | This handler allows you to add a label that will be displayed when the dropdown menu is empty.                                                                                                                                                                                                                                  |
+| Variant             | *Select* <br/>"outlined" \| "standart" \| "filled" | "outlined"    | Variant Logic             | YES          | YES        | This handler allows you to specify the variant of autocomplete.                                                                                                                                                                                                                                                                 |
+| Options             | *JSON*                                             | `[]`          | Options Logic             | YES          | YES        | This handler allows you to add options to be displayed in the options list. Watch [Codeless Examples](#Examples). Signature of options: list of objects {value: `String`, label: `String`}. Signature of grouped options: list of objects {groupLabel:  `String`, children: list of objects {value: `String`, label: `String`}} |
 
 ## Events
 
@@ -35,6 +35,19 @@ Autocomplete is a component of Backendless UI-Builder designer. This allows you 
 **Dimensions**
 ````
 @bl-customComponent-autocomplete-width: 300px;
+@bl-customComponent-autocomplete-options-maxHeight: 40vh;
+@bl-customComponent-autocomplete-option-padding: 6px 16px;
+@bl-customComponent-autocomplete-groupLabel-padding: 6px 10px;
+@bl-customComponent-autocomplete-borderRadius: 4px;
+````
+
+**Colors**
+````
+@bl-customComponent-autocomplete-boxShadow: @boxShadowPrimary;
+@bl-customComponent-autocomplete-iconFill: @bl-customComponent-autocomplete-themeColor;
+@bl-customComponent-autocomplete-groupLabel-color: @bl-customComponent-autocomplete-textColor;
+@bl-customComponent-autocomplete-groupLabel-backgroundColor: rgba(@themePrimary, 0.5);
+@bl-customComponent-autocomplete-option-backgroundColorOnHover: @backgroundColorOnHoverPrimary;
 ````
 
 ## <a name="Examples"></a> Codeless Examples
@@ -42,3 +55,7 @@ Autocomplete is a component of Backendless UI-Builder designer. This allows you 
 Adding options to the component:
 
 <img alt="adding options" src="./example-images/adding-options.png" width="720" />
+
+Adding grouped options to the component:
+
+<img alt="adding options" src="./example-images/adding-grouped-options.png" width="780" />

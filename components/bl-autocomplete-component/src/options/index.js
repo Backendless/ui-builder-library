@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 
 import { Option } from './option';
+import { GroupedOptions } from './grouped-options';
 
 import { useOptionsPlacement } from '../helpers';
 
@@ -8,7 +9,8 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export function Options(props) {
   const {
-    optionList, emptyOptionsLabel, autocompleteHeight, setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange
+    hasGroup, optionsList, emptyOptionsLabel, autocompleteHeight,
+    setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange
   } = props;
 
   const optionsContainerRef = useRef(null);
@@ -16,7 +18,7 @@ export function Options(props) {
 
   useOptionsPlacement({ optionsContainerRef, autocompleteHeight, setOptionsPlacement });
 
-  if(!optionList.length) {
+  if(!optionsList.length) {
     return (
       <div className="options" ref={ optionsContainerRef }>
         <div className="option">
@@ -30,15 +32,24 @@ export function Options(props) {
     <div
       ref={ optionsContainerRef }
       className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
-      { optionList.map(item => (
-        <Option
-          key={ item.value }
-          item={ item }
-          setInputValue={ setInputValue }
-          setIsOptionsOpen={ setIsOptionsOpen }
-          setAutocompleteValue={ setAutocompleteValue }
-          onChange={ onChange }
-        />
+      { optionsList.map(item => (
+        hasGroup
+          ? <GroupedOptions
+              key={ item.value }
+              item={ item }
+              setInputValue={ setInputValue }
+              setIsOptionsOpen={ setIsOptionsOpen }
+              setAutocompleteValue={ setAutocompleteValue }
+              onChange={ onChange }
+            />
+          : <Option
+              key={ item.value }
+              item={ item }
+              setInputValue={ setInputValue }
+              setIsOptionsOpen={ setIsOptionsOpen }
+              setAutocompleteValue={ setAutocompleteValue }
+              onChange={ onChange }
+            />
       )) }
     </div>
   );

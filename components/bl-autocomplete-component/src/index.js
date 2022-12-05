@@ -21,10 +21,20 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
     setOptionsList(validate(options));
   }, [options]);
 
+  const hasGroup = optionsList[0]?.hasOwnProperty("groupLabel");
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
-  const filteredOptions = optionsList.filter(({ label }) => (
-    label.toLowerCase().includes(inputValue.toLowerCase())
-  ));
+
+  const filteredOptions = optionsList.reduce((acc, item) => {
+    const isMatched = label => label.toLowerCase().includes(inputValue.toLowerCase());
+
+    if (hasGroup) {
+      const filteredChildren = item.children.filter(child => isMatched(child.label));
+
+      return filteredChildren.length ? [...acc, { ...item, children: filteredChildren }] : acc;
+    }
+
+    return isMatched(item.label) ? [...acc, item] : acc;
+  }, []);
 
   const classes = cn(
     'bl-customComponent-autocomplete', `bl-customComponent-autocomplete--${variant}`, classList,
@@ -66,9 +76,10 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
         setIsAutocompleteActive={ setIsAutocompleteActive }
         eventHandlers={ eventHandlers }
       />
-      {isOptionsOpen && (
+      { isOptionsOpen && (
         <Options
-          optionList={ filteredOptions }
+          hasGroup={ hasGroup }
+          optionsList={ filteredOptions }
           emptyOptionsLabel={ emptyOptionsLabel }
           autocompleteHeight={ autocompleteHeight }
           setInputValue={ setInputValue }
@@ -76,7 +87,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
           setAutocompleteValue={ setAutocompleteValue }
           onChange={ eventHandlers.onChange }
         />
-      )}
+      ) }
     </div>
   );
 };
