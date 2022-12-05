@@ -44,7 +44,7 @@ export default function Pagination({ component, eventHandlers }) {
     onPageChange({ currentPage });
   }, [currentPage]);
 
-  if (!display) {
+  if (!display || !pageCount) {
     return null;
   }
 
