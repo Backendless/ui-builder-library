@@ -10,13 +10,14 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "disable",
-      "label": "Disable",
-      "handlerId": "disableLogic",
-      "handlerLabel": "Disable logic",
+      "name": "disabled",
+      "label": "Disabled",
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "This handler allows you to disable component."
     },
     {
       "type": "text",
@@ -25,6 +26,32 @@
       "defaultValue": "Placeholder",
       "showInSettings": true,
       "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "selectAllCheckbox",
+      "label": "Select All Checkbox",
+      "settingTooltip": "This handler allows you to add a checkbox to select all options.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "selectAllCheckboxLogic",
+      "handlerLabel": "Select All Checkbox Logic",
+      "handlerDescription": "This handler allows you to add a checkbox to select all options.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "selectAllLabel",
+      "label": "Select All Label",
+      "settingTooltip": "This handler allows you to specify label for \"Select All Checkbox\".",
+      "showInSettings": true,
+      "defaultValue": "Select all options",
+      "hasLogicHandler": true,
+      "handlerId": "selectAllLabelLogic",
+      "handlerLabel": "Select All Label Logic",
+      "handlerDescription": "This handler allows you to specify label for \"Select All Checkbox\".",
+      "dataBinding": true
     },
     {
       "type": "select",
@@ -111,6 +138,5 @@
         }
       ]
     }
-  ],
-  "actions": []
+  ]
 }

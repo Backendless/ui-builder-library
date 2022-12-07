@@ -7,7 +7,9 @@ import { useOnClickOutside, validate } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function MultipleSelectComponent({ component, eventHandlers }) {
-  const { display, classList, disabled, placeholder, variant, type, value, options } = component;
+  const {
+    display, classList, disabled, placeholder, selectAllCheckbox, selectAllLabel, variant, type, value, options
+  } = component;
   const { onChange } = eventHandlers;
 
   const rootRef = useRef(null);
@@ -53,6 +55,8 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
           type={ type }
           options={ optionsList }
           selectValue={ selectValue }
+          selectAllLabel={ selectAllLabel }
+          selectAllCheckbox={ selectAllCheckbox }
           onChange={ onChange }
           setSelectValue={ setSelectValue }
         />
