@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
+
 const ESCAPE_KEY_CODE = 27;
 
 export default function ModalComponent({ component, eventHandlers, pods }) {
@@ -35,9 +36,7 @@ export default function ModalComponent({ component, eventHandlers, pods }) {
   }
 
   return (
-    <div
-      style={ style }
-      className={ cn("bl-customComponent-modal", classList) }>
+    <div style={ style } className={ cn("bl-customComponent-modal", classList) }>
       <div className="backdrop" onClick={ handleClick } />
       <div className="modal-content">
         { modalContentPod.render() }
@@ -58,5 +57,5 @@ const useCloseOnEscape = (onClose, setVisibility, closeOnEscape) => {
     document.addEventListener('keydown', handleEscClick);
 
     return () => document.removeEventListener('keydown', handleEscClick);
-  }, []);
+  }, [closeOnEscape]);
 };
