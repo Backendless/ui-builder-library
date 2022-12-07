@@ -16,6 +16,7 @@
 @bl-customComponent-richEditor-toolbar-borderWidth: 0px;
 @bl-customComponent-richEditor-toolbar-defaultContent-fontSize: "14px";
 @bl-customComponent-richEditor-toolbar-defaultContent-font: "Arial";
+@bl-customComponent-richEditor-toolbar-fontPicker-width: 140px;
 
 @bl-customComponent-richEditor-borderWidth: 0px;
 @bl-customComponent-richEditor-borderStyle: solid;
@@ -66,6 +67,10 @@
 
     .ql-picker {
       color: @bl-customComponent-richEditor-textColor;
+
+      &.ql-font {
+        width: @bl-customComponent-richEditor-toolbar-fontPicker-width;
+      }
 
       .ql-picker-options {
         background-color: @bl-customComponent-richEditor-backgroundColor;
