@@ -1,0 +1,104 @@
+{
+  "id": "c_51cc8db35ed3da1f70c142ff2ab9dd9e",
+  "name": "Calendar Heatmap",
+  "description": "This component allows you add calendar heatmaps to your application",
+  "showInToolbox": true,
+  "faIcon": "calendar-alt",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "calendarData",
+      "label": "Calendar Data",
+      "showInSettings": true,
+      "defaultValue": "[\n  {\n    \"date\": \"\",\n    \"count\": 0\n  }\n]",
+      "hasLogicHandler": true,
+      "handlerId": "calendarDataLogic",
+      "handlerLabel": "Calendar Data Logic",
+      "handlerDescription": "This is a handler for the logic to determine the data array of the calendar(date, count)."
+    },
+    {
+      "type": "checkbox",
+      "name": "showMonthLabels",
+      "label": "Show Month Labels",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "monthLabelsVisibilityLogic",
+      "handlerLabel": "Month Labels Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the month labels should be visible."
+    },
+    {
+      "type": "text",
+      "name": "monthLabels",
+      "label": "Month Labels",
+      "showInSettings": true,
+      "defaultValue": "January,February,March,April,May,June,July,August,September,October,November,December",
+      "hasLogicHandler": true,
+      "handlerId": "monthLabelsLogic",
+      "handlerLabel": "Month Labels Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the list of the month labels."
+    },
+    {
+      "type": "checkbox",
+      "name": "showWeekdayLabels",
+      "label": "Show Weekday Labels",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "weekdayLabelsVisibilityLogic",
+      "handlerLabel": "Weekday Labels Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the weekday labels should be visible."
+    },
+    {
+      "type": "text",
+      "name": "weekdayLabels",
+      "label": "Weekday Labels",
+      "showInSettings": true,
+      "defaultValue": "Sun,Mon,Tues,Wed,Thurs,Fri,Sat",
+      "hasLogicHandler": true,
+      "handlerId": "weekdayLabelsLogic",
+      "handlerLabel": "Weekday Labels Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the list of the weekday labels."
+    },
+    {
+      "type": "color",
+      "name": "color",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "colorLogic",
+      "handlerDescription": "This is a handler for the logic to determine the color of cells.",
+      "label": "Color",
+      "dataBinding": true,
+      "handlerLabel": "Color Logic"
+    },
+    {
+      "type": "text",
+      "name": "legend",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "legendLogic",
+      "handlerDescription": "This is a handler for the logic to determine the legend for calendar.",
+      "label": "Legend",
+      "handlerLabel": "Legend Logic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click",
+      "handlerDescription": "This event is fired when the user clicks on the cell.",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    }
+  ],
+  "actions": []
+}

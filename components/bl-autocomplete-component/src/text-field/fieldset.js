@@ -6,7 +6,7 @@ export const Fieldset = props => {
   return (
     <fieldset className="fieldset">
       <legend className={ cn('legend', { ['legend__with-label']: isAutocompleteActive || autocompleteValue }) }>
-        {placeholder}
+        { placeholder }
       </legend>
     </fieldset>
   );

@@ -1,0 +1,43 @@
+{
+  "id": "c_4aa6596e5dd2c08bb76ad949b838a5de",
+  "name": "Parallax",
+  "description": "This component allows to add image and content with parallax effect",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "imageUrl",
+      "label": "Image URL",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "imageUrlLogic",
+      "handlerLabel": "Image URL Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine image URL"
+    },
+    {
+      "type": "number",
+      "name": "strength",
+      "label": "Strength",
+      "showInSettings": true,
+      "defaultValue": "200",
+      "hasLogicHandler": true,
+      "handlerId": "strengthLogic",
+      "handlerLabel": "Strength Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the strength of parallax"
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [],
+  "pods": {
+    "77750461d397def2dea7debb71050b68": {
+      "id": "parallaxContent",
+      "dataContainer": true
+    }
+  }
+}

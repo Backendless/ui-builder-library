@@ -1,0 +1,112 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-pdfViewer-themeColor: @themePrimary;
+@bl-customComponent-pdfViewer-themeTextColor: @appTextColor;
+
+@bl-customComponent-pdfViewer-input-background-color: if(@isLightTheme, darken(#fff, 10%), lighten(#000, 15%));
+@bl-customComponent-pdfViewer-button-icon-size: 16px;
+@bl-customComponent-pdfViewer-button-icon-color: contrast(@buttonContainedBackground);
+
+@bl-customComponent-pdfViewer-no-data-icon-size: 40px;
+
+.bl-customComponent-pdfViewer {
+  color: @bl-customComponent-pdfViewer-themeTextColor;
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  .controls-button {
+    padding: 0;
+    border: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 20px;
+    width: 60px;
+
+    fill: @bl-customComponent-pdfViewer-button-icon-color;
+
+    border-radius: 4px;
+    background-color: @bl-customComponent-pdfViewer-themeColor;
+
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  .pdf-viewer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: auto;
+
+    margin-bottom: 10px;
+  }
+
+  .page-input {
+    outline: 0;
+    border: 0;
+
+    width: 40px;
+    max-width: 100%;
+
+    text-align: end;
+
+    color: @bl-customComponent-pdfViewer-themeTextColor;
+
+    padding: 0 1px 0 0;
+
+    height: 15px;
+    font-size: 16px;
+
+    background-color: transparent;
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  .controls-button-icon {
+    height: @bl-customComponent-pdfViewer-button-icon-size;
+    width: @bl-customComponent-pdfViewer-button-icon-size;
+  }
+
+  .react-pdf__Page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  .react-pdf__message--no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: #aaa;
+  }
+
+  .no-data-icon {
+    fill: @bl-customComponent-pdfViewer-themeTextColor;
+    width: @bl-customComponent-pdfViewer-no-data-icon-size;
+    height: @bl-customComponent-pdfViewer-no-data-icon-size;
+  }
+}

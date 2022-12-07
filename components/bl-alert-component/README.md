@@ -1,24 +1,49 @@
 # Alert
 
-Alert is a component of Backendless UI-Builder designer. This allows you to notify the user of some error, danger, information, or success.
+Alert is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows notifying a user when a specific event happens. This component supports 4 different notification types:
 
-The component based on external [alert](https://mui.com/material-ui/react-alert/).
+    1. Error
+    2. Warning
+    3. Info
+    4. Success
 
-<p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
-</p>
+Every notification type has different appearance:
+
+![message_types](https://user-images.githubusercontent.com/115621450/195358575-0eada315-be09-40f8-94c3-e53759f89c30.png)
+
+The appearance of notifications can be easily configured in the UI-Builder. At the moment, there are 3 graphical variants of these messages:
+
+![message_graphical_variants](https://user-images.githubusercontent.com/115621450/195362219-9e16708a-4d9d-4022-9c0e-f74e95f2b1dd.png)
+
+You can also specify the title and the description of the notification in the settings:
+
+![message_configuration](https://user-images.githubusercontent.com/115621450/195361003-ba6a90e4-6362-4c0a-8b08-85037b385a88.png)
+
+Every notification has a close button located in the top right corner, but it is disabled by default:
+
+![message_disabled_exit_button](https://user-images.githubusercontent.com/115621450/195366932-d4780a93-d6ee-4ab1-a541-2d4a07ff77a4.png)
+
+To enable the close button, select the component and enter the desired ID:
+
+![message_add_id](https://user-images.githubusercontent.com/115621450/195363670-59c3706d-15ef-4ead-bc82-7d644c164ba4.png)
+
+Then navigate to the **Logic** section of the selected component, and in the **UI Library** click the Alert, and from the appeared menu select the **Close Alert** action item and connect it to the **On Close Button** event:
+
+![message_add_codeless_block](https://user-images.githubusercontent.com/115621450/195363381-09d4b9ff-3d72-4ecb-9144-81721b3b2ccc.png)
+
+
 
 ## Properties
 
-| Property              | Type                                                   | Default Value | Logic                         | Data Binding | UI Setting | Description                                                              |
-|-----------------------|--------------------------------------------------------|---------------|-------------------------------|--------------|------------|--------------------------------------------------------------------------|
-| messageTitle          | String                                                 |               | Message Title Logic           | YES          | YES        | Allows writing the title of message.                                     |
-| messageText           | String                                                 |               | Message Text Logic            | YES          | YES        | Allows writing the text of message.                                      |
-| messageType           | Select ["error", "warning", "info", "success"]         | "error"       | Message Type Logic            | NO           | YES        | Allows select type of alert (error, warning, info, success).             |
-| iconVisibility        | Boolean                                                | `true`        | Icon Visibility Logic         | NO           | YES        | Allows making alerts with or without icon.                               |
-| closeButtonVisibility | Boolean                                                | `true`        | Close Button Visibility Logic | NO           | YES        | Allows making alerts with or without a close button.                     |
-| variant               | Select ["alert root", "alert outline", "alert filled"] | "alert root"  |                               | NO           | YES        | Allows select style for alert (alert root, alert outline, alert filled). |
-| closingDuration       | Number                                                 | 200           | Closing Duration Logic        | NO           | YES        | Allows specifying speed animation closing (ms) for the alert.            |
+| Property              | Type                                                   | Default Value | Logic                         | Data Binding | UI Setting | Description                                                                                          |
+|-----------------------|--------------------------------------------------------|---------------|-------------------------------|--------------|------------|------------------------------------------------------------------------------------------------------|
+| messageTitle          | String                                                 |               | Message Title Logic           | YES          | YES        | the title of an alert message.                                                                       |
+| messageText           | String                                                 |               | Message Text Logic            | YES          | YES        | the content of an alert message.                                                                     |
+| messageType           | Select ["error", "warning", "info", "success"]         | "error"       | Message Type Logic            | NO           | YES        | this property allows selecting the alert type: error, warning, info, success.                        |
+| iconVisibility        | Boolean                                                | `true`        | Icon Visibility Logic         | NO           | YES        | when enabled, the alert icon is displayed in the message.                                            |
+| closeButtonVisibility | Boolean                                                | `true`        | Close Button Visibility Logic | NO           | YES        | when enabled, the alert message appears without the close button.                                    |
+| variant               | Select ["alert root", "alert outline", "alert filled"] | "alert root"  |                               | NO           | YES        | this property allows selecting the graphical variant of an alert: root, alert outline, alert filled. |
+| closingDuration       | Number                                                 | 200           | Closing Duration Logic        | NO           | YES        | allows specifying the animation speed in milliseconds when closing the alert.                        |
 
 ## Events
 

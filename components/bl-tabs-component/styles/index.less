@@ -1,0 +1,47 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-tabs-themeColor: @themePrimary;
+@bl-customComponent-tabs-backgroundColor: @appBackgroundColor;
+@bl-customComponent-tabs-textColor: @appTextColor;
+
+@bl-customComponent-tabs-fontSize: 14px;
+@bl-customComponent-tabs-padding: 12px 16px;
+@bl-customComponent-tabs-backgroundColor: rgba(@themePrimary, 0.15);
+
+.bl-customComponent-tabs {
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tab {
+    font-size: @bl-customComponent-tabs-fontSize;
+    padding: @bl-customComponent-tabs-padding;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: @bl-customComponent-tabs-textColor;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &-active {
+      transition: background-color .3s, border-color .3s, border-bottom .3s;
+    }
+  }
+
+  &--standart .tab-active {
+    border-bottom: 1px solid @bl-customComponent-tabs-themeColor;
+  }
+
+  &--filled .tab-active {
+    background-color: @bl-customComponent-tabs-backgroundColor;
+  }
+
+  &--outlined .tab-active {
+    border-color: @bl-customComponent-tabs-themeColor;
+  }
+}
