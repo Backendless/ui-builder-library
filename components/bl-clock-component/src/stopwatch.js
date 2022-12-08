@@ -1,33 +1,37 @@
 import { useState } from 'react';
 
 export function Stopwatch({ component }) {
-  const [update, setUpdate] = useState();
-  const [stopwatch, setStopwatch] = useState(0);
+  const [updateInterval, setUpdateInterval] = useState();
+  const [remainingSecond, setRemainingSecond] = useState(0);
 
   component.startStopwatch = () => {
-    if (!update) {
-      const startDate = new Date();
+    if (!updateInterval) {
+      const startDate = Date.now();
 
-      setUpdate(setInterval(() => {
-        const currentDate = new Date();
-        const gap = stopwatch * 1000 + currentDate.getTime() - startDate.getTime();
+      setUpdateInterval(setInterval(() => {
+        const currentDate = Date.now();
+        const gap = getRemainingSeconds(startDate, currentDate, remainingSecond);
 
-        setStopwatch((gap / 1000).toFixed(2));
+        setRemainingSecond((gap / 1000).toFixed(2));
       }, 10));
     }
   };
 
   component.stopStopwatch = () => {
-    clearInterval(update);
-    setUpdate(null);
+    clearInterval(updateInterval);
+    setUpdateInterval(null);
   };
 
   component.resetStopwatch = () => {
-    setStopwatch(0);
+    setRemainingSecond(0);
     component.stopStopwatch();
   };
 
   return (
-    <div className="stopwatch"> { stopwatch } </div>
+    <div className="stopwatch"> { remainingSecond } </div>
   );
+}
+
+const getRemainingSeconds = (startDate, currentDate, stopwatch) => {
+  return stopwatch * 1000 + currentDate - startDate;
 }

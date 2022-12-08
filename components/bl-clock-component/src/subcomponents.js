@@ -10,9 +10,7 @@ export function Time({ timeTens, timeUnits, animationDuration, withDelimeter }) 
 
   return (
     <>
-      { withDelimeter && (
-        <Delimeter />
-      )}
+      { withDelimeter && <Delimeter/> }
       <div className="clock__item" ref={ secondTensRef }></div>
       <div className="clock__item" ref={ secondUnitsRef }></div>
     </>
@@ -20,8 +18,7 @@ export function Time({ timeTens, timeUnits, animationDuration, withDelimeter }) 
 }
 
 function Delimeter() {
-
   return (
     <div className="clock__item">:</div>
-  )
+  );
 }

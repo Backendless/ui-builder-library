@@ -3,7 +3,7 @@ import { getTimer } from './helpers';
 import { Time, Delimeter } from './subcomponents';
 
 export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration }) {
-  const [update, setUpdate] = useState();
+  const [updateInterval, setUpdateInterval] = useState();
   const [time, setTime] = useState(getTimer(new Date(timerDate)));
 
   const [daysVisibility, setDaysVisibility] = useState(false);
@@ -11,13 +11,11 @@ export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration })
   const [minutesVisibility, setMinutesVisibility] = useState(false);
 
   useEffect(() => {
-    setUpdate(setInterval(() => {
+    setUpdateInterval(setInterval(() => {
       setTime(getTimer(new Date(timerDate)));
     }, 1000));
 
-    return () => {
-      clearInterval(update);
-    };
+    return () => clearInterval(updateInterval);
   }, []);
 
   useEffect(() => {
@@ -39,31 +37,25 @@ export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration })
   return (
     <>
       { daysVisibility && (
-        <>
-          <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits } animationDuration={ animationDuration }/>
-        </>
+        <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits } animationDuration={ animationDuration }/>
       ) }
 
       { hoursVisibility && (
-        <>
-          <Time
-            timeTens={ time.hourTens }
-            timeUnits={ time.hourUnits }
-            animationDuration={ animationDuration }
-            withDelimeter={ true }
-          />
-        </>
+        <Time
+          timeTens={ time.hourTens }
+          timeUnits={ time.hourUnits }
+          animationDuration={ animationDuration }
+          withDelimeter={ true }
+        />
       ) }
 
       { minutesVisibility && (
-        <>
-          <Time
-            timeTens={ time.minuteTens }
-            timeUnits={ time.minuteUnits }
-            animationDuration={ animationDuration }
-            withDelimeter={ true }
-          />
-        </>
+        <Time
+          timeTens={ time.minuteTens }
+          timeUnits={ time.minuteUnits }
+          animationDuration={ animationDuration }
+          withDelimeter={ true }
+        />
       ) }
 
       <Time

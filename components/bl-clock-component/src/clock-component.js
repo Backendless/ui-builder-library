@@ -9,16 +9,16 @@ const TimeVariant = {
 };
 
 export function ClockComponent({ timeVariant, animationDuration }) {
-  const [update, setUpdate] = useState();
+  const [updateInterval, setUpdateInterval] = useState();
   const [time, setTime] = useState(getTime());
 
   useEffect(() => {
-    setUpdate(setInterval(() => {
+    setUpdateInterval(setInterval(() => {
       setTime(getTime());
     }, 1000));
 
     return () => {
-      clearInterval(update);
+      clearInterval(updateInterval);
     };
   }, []);
 
