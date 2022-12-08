@@ -14,6 +14,14 @@ export default function TreeView({ component, eventHandlers }) {
   component.closeAll = () => setParentItems(state => state.map(item => ({ ...item, isOpen: false })));
   component.openAll = () => setParentItems(state => state.map(item => ({ ...item, isOpen: true })));
 
+  useEffect(() => {
+    const [detected, l2] = isCyclic(treeItems);
+
+    if (detected) {
+      throw new Error('treeItems have cycling object in ' + l2);
+    }
+  }, [treeItems])
+
   const prepareTree = useCallback(treeItems => {
     let levelOfNesting = 0;
 
@@ -76,4 +84,45 @@ export default function TreeView({ component, eventHandlers }) {
       />
     </div>
   );
+}
+
+function isCyclic(obj) {
+  const keys = [];
+  const stack = [];
+  const stackSet = new Set();
+  let detected = false;
+  let l1;
+
+  function detect(obj, key) {
+    if (obj && typeof obj != 'object') {
+      return;
+    }
+
+    if (stackSet.has(obj)) {
+      l1 = keys.join('.') + '.' + key;
+      detected = true;
+
+      return;
+    }
+
+    keys.push(key);
+    stack.push(obj);
+    stackSet.add(obj);
+
+    for (const k in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, k)) {
+        detect(obj[k], k);
+      }
+    }
+
+    keys.pop();
+    stack.pop();
+    stackSet.delete(obj);
+
+    return;
+  }
+
+  detect(obj, 'obj');
+
+  return [detected, l1];
 }
