@@ -1,13 +1,18 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 export const useChartData = (goal, progress, component) => {
-  const [validGoal, setValidGoal] = useState(validator.goal(goal));
-  const [validProgress, setValidProgress] = useState(validator.progress(progress));
+  const [validGoal, setValidGoal] = useState(1);
+  const [validProgress, setValidProgress] = useState(0);
 
   component.getGoal = () => validGoal;
   component.setGoal = goal => setValidGoal(validator.goal(goal));
   component.getProgress = () => validProgress;
   component.setProgress = progress => setValidProgress(validator.progress(progress));
+
+  useEffect(() => {
+    setValidGoal(validator.goal(goal))
+    setValidProgress(validator.progress(progress))
+  }, [goal, progress])
 
   return useMemo(() => {
     const progressPercentage = (validProgress / (validGoal / 100)).toFixed(2);

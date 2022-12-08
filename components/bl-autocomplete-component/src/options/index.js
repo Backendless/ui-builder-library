@@ -1,52 +1,45 @@
-import { useRef, useState } from 'react';
+import { useState, useRef } from 'react';
 
 import { Option } from './option';
 
-import { generateId } from '../helpers';
 import { useOptionsPlacement } from '../helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export const Options = props => {
+export function Options(props) {
   const {
-    optionList,
-    autocompleteHeight,
-    setInputValue,
-    setAutocompleteValue,
-    setIsOptionsOpen,
-    onAutocompleteChange,
+    optionList, emptyOptionsLabel, autocompleteHeight, setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange
   } = props;
-  const optionsRef = useRef();
+
+  const optionsContainerRef = useRef(null);
   const [optionsPlacement, setOptionsPlacement] = useState('bottom');
 
-  useOptionsPlacement({ optionsRef, autocompleteHeight, setOptionsPlacement });
+  useOptionsPlacement({ optionsContainerRef, autocompleteHeight, setOptionsPlacement });
 
   if(!optionList.length) {
     return (
-      <div className="options">
+      <div className="options" ref={ optionsContainerRef }>
         <div className="option">
-          No options
+          { emptyOptionsLabel }
         </div>
       </div>
     );
   }
 
   return (
-    <div ref={ optionsRef } className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
-      { optionList.map(item => {
-        const optionId = useMemo(() => generateId(), []);
-
-        return (
-          <Option
-            key={ optionId }
-            item={ item }
-            setInputValue={ setInputValue }
-            setIsOptionsOpen={ setIsOptionsOpen }
-            setAutocompleteValue={ setAutocompleteValue }
-            onAutocompleteChange={ onAutocompleteChange }
-          />
-        );
-      }) }
+    <div
+      ref={ optionsContainerRef }
+      className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
+      { optionList.map(item => (
+        <Option
+          key={ item.value }
+          item={ item }
+          setInputValue={ setInputValue }
+          setIsOptionsOpen={ setIsOptionsOpen }
+          setAutocompleteValue={ setAutocompleteValue }
+          onChange={ onChange }
+        />
+      )) }
     </div>
   );
 };

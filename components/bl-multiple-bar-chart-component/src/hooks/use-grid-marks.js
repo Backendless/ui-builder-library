@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 export const useGridMarks = gridMarks => useMemo(() => {
   const marks = [0];
-  const spredNumber = 100 / b;
+  const spredNumber = 100 / Number(gridMarks);
   let currentNumber = spredNumber;
 
   while(currentNumber <= 100) {
