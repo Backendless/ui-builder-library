@@ -73,6 +73,7 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 
 ````
 @bl-customComponent-richEditor-editor-height: auto;
+@bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight: 18px;
 ````
 
 **Typography**
