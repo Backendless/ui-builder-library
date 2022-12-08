@@ -40,14 +40,14 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 | Action        | Inputs                            | Returns                               | Description                                                             |
 |---------------|-----------------------------------|---------------------------------------|-------------------------------------------------------------------------|
 | Get Text      | Index: `Number`, Length: `Number` | `String`                              | retrieves the string contents of the editor                             |
-| Set Text      | Data: `String`                    |                                       | sets contents of editor with given text                                 |
+| Set Text      | Data: `String`                    |                                       | sets the contents of an editor with the given text                      |
 | Get HTML      |                                   | `String`                              | retrieves the full HTML contents of the editor                          |
 | Set HTML      | Data: `String`                    |                                       | inserts content represented by HTML snippet                             |
 | Get Selection |                                   | { Index: `Number`, Length: `Number` } | returns the current selection range, or null if the editor is unfocused |
-| Set Selection | Index: `Number`, Length: `Number` |                                       | sets user selection to given range                                      |
+| Set Selection | Index: `Number`, Length: `Number` |                                       | sets the user selection to the given range                              |
 | Get Length    |                                   | `Number`                              | retrieves the length of the editor contents                             |
 | Delete Text   | Index: `Number`, Length: `Number` |                                       | deletes text from the editor                                            |
-| Format        | Property: `String`, Value: any    |                                       | format text at user’s current selection                                 |
+| Format        | Property: `String`, Value: any    |                                       | format text in the user’s current selection                             |
 | Blur          |                                   |                                       | removes focus from the editor                                           |
 | Focus         |                                   |                                       | focuses the editor and restores its last range                          |
 
