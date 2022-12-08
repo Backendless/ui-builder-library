@@ -1,5 +1,15 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 
+export const StyleVariants = {
+  'default'    : '',
+  'alternative': 'alternative'
+};
+
+export const ContextBlockItemTypes = {
+  LINK  : 'link',
+  ACTION: 'action'
+};
+
 export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => {
   if (dragging) {
     const [pressed, setPressed] = useState(false);
@@ -92,4 +102,19 @@ const throttle = (f) => {
   result.cancel = () => token && cancelAnimationFrame(token);
 
   return result;
+};
+
+export const getPosition = (ref, coords) => {
+  const rootOffsetTop = ref.current.clientTop;
+
+  return {
+    x: Math.max(
+      0,
+      Math.min(ref.current.parentElement.clientWidth - ref.current.clientWidth, coords.x)
+    ),
+    y: Math.max(
+      (0 - rootOffsetTop),
+      Math.min(ref.current.parentElement.clientHeight - ref.current.clientHeight, coords.y)
+    )
+  };
 };

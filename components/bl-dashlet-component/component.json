@@ -20,6 +20,26 @@
       "handlerLabel": "Title Logic"
     },
     {
+      "type": "select",
+      "name": "styleVariant",
+      "label": "Style Variant",
+      "showInSettings": true,
+      "defaultValue": "default",
+      "hasLogicHandler": false,
+      "handlerId": "styleVariantLogic",
+      "handlerLabel": "Style Variant Logic",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "alternative",
+          "label": "Alternative"
+        }
+      ]
+    },
+    {
       "type": "number",
       "name": "height",
       "label": "Height",
@@ -67,13 +87,13 @@
     },
     {
       "type": "json",
-      "name": "contextBlock",
-      "label": "Context Block",
+      "name": "contextBlocks",
+      "label": "Context Blocks",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "contextBlockLogic",
-      "handlerLabel": "Context Block Logic",
-      "handlerDescription": "This is a handler for the logic of determining context block for dashlet",
+      "handlerId": "contextBlocksLogic",
+      "handlerLabel": "Context Blocks Logic",
+      "handlerDescription": "This is a handler for the logic of determining context blocks for dashlet",
       "dataBinding": true
     },
     {
@@ -127,8 +147,8 @@
   ],
   "eventHandlers": [
     {
-      "name": "contextBlockHandler",
-      "label": "Context Block Handler",
+      "name": "contextBlocksHandler",
+      "label": "Context Blocks Handler",
       "contextBlocks": [
         {
           "id": "action",

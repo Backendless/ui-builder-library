@@ -1,19 +1,33 @@
-import { useMemo, useEffect, useCallback } from 'react';
-import { useDraggable } from './helpers';
+import { useMemo, useEffect, useCallback, useState } from 'react';
+import { useDraggable, getPosition, StyleVariants } from './helpers';
 import { CollapseButtonIcon, ContextMenu } from './subcomponents';
+import { ResizableBox } from './react-resizable.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Dashlet(props) {
   const {
-    title, rootRef, isOpen, height, width, setIsOpen, setPosition, position,
-    dragging, contextBlock, contextBlockHandler, dashletContentPod
+    rootRef, isOpen, height, width, setIsOpen, setPosition, setSize,
+    position, contextBlocksHandler, dashletContentPod, component
   } = props;
+  const {
+    title, resizing, contextBlocks, minWidth, maxWidth,
+    minHeight, maxHeight, dragging, styleVariant
+  } = component;
 
-  const style = useMemo(() => ({
-    height: isOpen ? height + 'px' : 'auto',
-    width : width + 'px',
-  }), [height, width, isOpen]);
+  const [resizeMaxWidth, setResizeMaxWidth] = useState(maxWidth);
+  const [resizeMaxHeight, setResizeMaxHeight] = useState(maxHeight);
+
+  const style = useMemo(() => {
+    if (!resizing || !isOpen) {
+      return {
+        height: isOpen ? height + 'px' : 'auto',
+        width : width + 'px',
+      };
+    }
+
+    return {};
+  }, [height, width, isOpen]);
 
   const onCollapseButtonClick = () => {
     setIsOpen(state => !state);
@@ -25,25 +39,8 @@ export function Dashlet(props) {
     }
   }, [position]);
 
-  const rootOffsetTop = useMemo(() => {
-    if (rootRef.current) {
-      return rootRef.current.clientTop;
-    }
-
-    return 0;
-  }, [rootRef.current]);
-
-  const handleDrag = useCallback(({ x, y }) => {
-    const position = {
-      x: Math.max(
-        0,
-        Math.min(rootRef.current.parentElement.clientWidth - rootRef.current.clientWidth, x)
-      ),
-      y: Math.max(
-        (0 - rootOffsetTop),
-        Math.min(rootRef.current.parentElement.clientHeight - rootRef.current.clientHeight, y)
-      )
-    };
+  const handleDrag = useCallback((coords) => {
+    const position = getPosition(rootRef, coords);
 
     setPosition(position);
 
@@ -57,18 +54,42 @@ export function Dashlet(props) {
     dragging
   });
 
-  return (
-    <div className={ cn('dashlet', { 'close': !isOpen }) } style={ style }>
+  const onResizeStop = useCallback((e, data) => {
+    setResizeMaxWidth(maxWidth);
+    setResizeMaxHeight(maxHeight);
+    setSize({ width: data.size.width, height: data.size.height });
+  }, []);
+
+  const onResize = useCallback((e, data) => {
+    const { top, left, width, height } = rootRef.current.parentElement.getBoundingClientRect();
+
+    const parentElementOffsetLeft = left + window.pageXOffset;
+    const parentElementOffsetTop = top + window.pageYOffset;
+
+    const resizingRestrictionsInParentX = e.pageX >= width + parentElementOffsetLeft;
+    const resizingRestrictionsInParentY = e.pageY >= height + parentElementOffsetTop;
+
+    if (resizingRestrictionsInParentX) {
+      setResizeMaxWidth(data.size.width);
+    }
+
+    if (resizingRestrictionsInParentY) {
+      setResizeMaxHeight(data.size.height);
+    }
+  }, []);
+
+  const DashletComponent = (
+    <div className={ cn('dashlet', StyleVariants[styleVariant], { 'close': !isOpen }) } style={ style }>
       <div
         ref={ ref }
-        className="dashlet__header"
+        className={ cn('dashlet__header', StyleVariants[styleVariant]) }
         style={ { cursor: dragging ? 'move' : 'auto' } }>
         <button type="button" className="dashlet__collapse-button" onClick={ onCollapseButtonClick }>
-          <CollapseButtonIcon isOpen={ isOpen }/>
+          <CollapseButtonIcon isOpen={ isOpen } styleVariant={ styleVariant }/>
         </button>
-        <h4 className="dashlet__title">{ title }</h4>
-        { contextBlock && (
-          <ContextMenu contextBlock={ contextBlock } contextBlockHandler={ contextBlockHandler }/>
+        <h4 className={ cn('dashlet__title', StyleVariants[styleVariant]) }>{ title }</h4>
+        { contextBlocks && (
+          <ContextMenu contextBlocks={ contextBlocks } contextBlocksHandler={ contextBlocksHandler }/>
         ) }
       </div>
       { isOpen && (
@@ -77,5 +98,25 @@ export function Dashlet(props) {
         </div>
       ) }
     </div>
+  );
+
+  return (
+    <>
+      { resizing && isOpen ? (
+        <ResizableBox
+          onResizeStop={ onResizeStop }
+          onResize={ onResize }
+          height={ height }
+          width={ width }
+          minConstraints={ [minWidth, minHeight] }
+          maxConstraints={ [resizeMaxWidth, resizeMaxHeight] }>
+          { DashletComponent }
+        </ResizableBox>
+      ) : (
+        <>
+          { DashletComponent }
+        </>
+      ) }
+    </>
   );
 }

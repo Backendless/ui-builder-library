@@ -1,102 +1,47 @@
-import { useRef, useState, useCallback, useEffect } from 'react';
-import { ResizableBox } from './react-resizable.min';
+import { useRef, useState, useEffect } from 'react';
 import { Dashlet } from './dashlet';
+import { LocalSettings } from './local-settings';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DashletComponent({ component, eventHandlers, pods, instanceId }) {
-  const {
-    display, classList, style, title, height, width, resizing,
-    contextBlock, minWidth, maxWidth, minHeight, maxHeight, dragging
-  } = component;
-  const { contextBlockHandler } = eventHandlers;
+  const { display, classList, style, height, width } = component;
+  const { contextBlocksHandler } = eventHandlers;
   const dashletContentPod = pods['dashletContent'];
 
   const rootRef = useRef();
 
-  const [resizeMaxWidth, setResizeMaxWidth] = useState(maxWidth);
-  const [resizeMaxHeight, setResizeMaxHeight] = useState(maxHeight);
+  const localSettings = new LocalSettings(instanceId);
 
-  const [isOpen, setIsOpen] = useState(() => {
-    if (localStorage.getItem(instanceId + ' isOpen')) {
-      return localStorage.getItem(instanceId + ' isOpen') === 'true';
-    }
+  const [isOpen, setIsOpen] = useState(localSettings.isOpen);
 
-    return true;
-  });
+  const [position, setPosition] = useState(localSettings.position);
 
-  const [position, setPosition] = useState(() => {
-    if (localStorage.getItem(instanceId + ' position')) {
-      return JSON.parse(localStorage.getItem(instanceId + ' position'));
-    }
+  const [size, setSize] = useState(localSettings.size || { height, width });
 
-    return { x: 0, y: 0 };
-  });
+  component.setSize = size => setSize(size);
 
-  const [size, setSize] = useState(() => {
-    if (localStorage.getItem(instanceId + ' size')) {
-      return JSON.parse(localStorage.getItem(instanceId + ' size'));
-    }
+  component.getSize = () => size;
 
-    return { height: height, width: width };
-  });
+  component.setPosition = position => setPosition(position);
 
-  component.setSize = (size) => {
-    setSize(size);
-  };
+  component.getPosition = () => position;
 
-  component.getSize = () => {
-    return size;
-  };
+  component.setIsOpen = isOpen => setIsOpen(isOpen);
 
-  component.setPosition = (position) => {
-    setPosition(position);
-  };
-
-  component.getPosition = () => {
-    return position;
-  };
-
-  component.setIsOpen = (isOpen) => {
-    setIsOpen(isOpen);
-  };
-
-  component.getIsOpen = () => {
-    return isOpen;
-  };
+  component.getIsOpen = () => isOpen;
 
   useEffect(() => {
-    localStorage.setItem(instanceId + ' position', JSON.stringify(position));
+    localSettings.position = position;
   }, [position]);
 
   useEffect(() => {
-    localStorage.setItem(instanceId + ' size', JSON.stringify(size));
+    localSettings.size = size;
   }, [size]);
 
   useEffect(() => {
-    localStorage.setItem(instanceId + ' isOpen', String(isOpen));
+    localSettings.isOpen = isOpen;
   }, [isOpen]);
-
-  const onResizeStop = useCallback((e, data) => {
-    setResizeMaxWidth(maxWidth);
-    setResizeMaxHeight(maxHeight);
-    setSize({ width: data.size.width, height: data.size.height });
-  }, []);
-
-  const onResize = useCallback((e, data) => {
-    const parentElementOffsetLeft = rootRef.current.parentElement.getBoundingClientRect().left + window.pageXOffset;
-    const parentElementWidth = rootRef.current.parentElement.getBoundingClientRect().width;
-    const parentElementOffsetTop = rootRef.current.parentElement.getBoundingClientRect().top + window.pageYOffset;
-    const parentElementHeight = rootRef.current.parentElement.getBoundingClientRect().height;
-
-    if (e.pageX >= parentElementWidth + parentElementOffsetLeft) {
-      setResizeMaxWidth(data.size.width);
-    }
-
-    if (e.pageY >= parentElementHeight + parentElementOffsetTop) {
-      setResizeMaxHeight(data.size.height);
-    }
-  }, []);
 
   if (!display) {
     return null;
@@ -107,43 +52,19 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
       ref={ rootRef }
       className={ cn('bl-customComponent-dashlet', classList) }
       style={ { ...style } }>
-      { resizing && isOpen ? (
-        <ResizableBox
-          onResizeStop={ onResizeStop }
-          onResize={ onResize }
-          height={ size.height }
-          width={ size.width }
-          minConstraints={ [minWidth, minHeight] }
-          maxConstraints={ [resizeMaxWidth, resizeMaxHeight] }>
-          <Dashlet
-            rootRef={ rootRef }
-            title={ title }
-            contextBlock={ contextBlock }
-            contextBlockHandler={ contextBlockHandler }
-            dashletContentPod={ dashletContentPod }
-            isOpen={ isOpen }
-            setIsOpen={ setIsOpen }
-            position={ position }
-            setPosition={ setPosition }
-            dragging={ dragging }
-          />
-        </ResizableBox>
-      ) : (
-        <Dashlet
-          rootRef={ rootRef }
-          title={ title }
-          contextBlock={ contextBlock }
-          contextBlockHandler={ contextBlockHandler }
-          dashletContentPod={ dashletContentPod }
-          width={ size.width }
-          height={ size.height }
-          isOpen={ isOpen }
-          setIsOpen={ setIsOpen }
-          position={ position }
-          setPosition={ setPosition }
-          dragging={ dragging }
-        />
-      ) }
+      <Dashlet
+        rootRef={ rootRef }
+        component={ component }
+        contextBlocksHandler={ contextBlocksHandler }
+        dashletContentPod={ dashletContentPod }
+        width={ size.width }
+        height={ size.height }
+        isOpen={ isOpen }
+        setIsOpen={ setIsOpen }
+        position={ position }
+        setPosition={ setPosition }
+        setSize={ setSize }
+      />
     </div>
   );
 }
