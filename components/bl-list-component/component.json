@@ -1,0 +1,54 @@
+{
+  "id": "c_15da71753b4ad7ccfe9d02f3f93406d5",
+  "name": "List",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "defaultValue": "ul",
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
+      "options": [
+        {
+          "value": "ul",
+          "label": "Unordered"
+        },
+        {
+          "value": "ol",
+          "label": "Ordered"
+        }
+      ],
+      "handlerLabel": "Type Logic"
+    },
+    {
+      "type": "json",
+      "name": "listItems",
+      "showInSettings": false,
+      "hasLogicHandler": true,
+      "handlerId": "listItemsLogic",
+      "handlerLabel": "ListItems Logic",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClickListItem",
+      "label": "onClick ListItem",
+      "contextBlocks": [
+        {
+          "id": "item",
+          "label": "List Item"
+        }
+      ]
+    }
+  ],
+  "actions": []
+}
