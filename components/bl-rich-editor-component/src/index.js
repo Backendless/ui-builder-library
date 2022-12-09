@@ -66,7 +66,7 @@ function useComponentActions(component, editorRef) {
     getHTML     : () => editorRef.current.root.innerHTML,
     setHTML     : data => editorRef.current.root.innerHTML = data,
     getLength   : () => editorRef.current.getLength(),
-    deleteText  : (index, length) => editorRef.current.deleteText(index, length),
+    deleteText  : (index = 0, length) => editorRef.current.deleteText(index, length),
     format      : (property, value) => editorRef.current.format(property, value),
     blur        : () => editorRef.current.blur(),
     focus       : () => editorRef.current.focus(),
