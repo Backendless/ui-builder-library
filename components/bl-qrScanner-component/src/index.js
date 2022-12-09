@@ -10,10 +10,7 @@ export default function QrScannerComponent({ component, eventHandlers }) {
   const [scannerVisibility, setScannerVisibility] = useState(false);
   const qrScannerRef = useRef(null);
 
-  const styles = {
-    flexDirection: direction,
-    ...style,
-  };
+  const styles = { flexDirection: direction, ...style };
 
   useComponentActions(component, qrScannerRef, setScannerVisibility);
 
@@ -48,7 +45,7 @@ function UploadButton({ component, eventHandlers }) {
   }
 
   return (
-    <label>
+    <label className="upload-button">
       <span>{ uploadButtonLabel }</span>
       <input type="file" onChange={ onChange }/>
     </label>
@@ -65,7 +62,7 @@ function ScanButton({ component, setScannerVisibility }) {
   }
 
   return (
-    <button type="button" onClick={ openScanner }>{ scanButtonLabel }</button>
+    <button type="button" className="scan-button" onClick={ openScanner }>{ scanButtonLabel }</button>
   );
 }
 

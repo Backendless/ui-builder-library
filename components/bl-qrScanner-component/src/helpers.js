@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import QrScanner from './lib/qr-scanner.min';
 
@@ -6,7 +6,7 @@ export function useQRScannerLibrary(qrScannerRef, videoElemRef, component, event
   const { highlightScanRegion, highlightCodeOutline, hideAfterScan, maxScansPerSecond, flashOn } = component;
   const { onDecodeError, onDecodeSuccess } = eventHandlers;
 
-  const updateFlash = () => {
+  const updateFlash = useCallback(() => {
     if (!flashOn) {
       return;
     }
@@ -16,7 +16,7 @@ export function useQRScannerLibrary(qrScannerRef, videoElemRef, component, event
         qrScannerRef.current.turnFlashOn();
       }
     });
-  };
+  }, [flashOn, qrScannerRef]);
 
   const updateScanner = () => {
     qrScannerRef.current.stop();
@@ -80,6 +80,6 @@ export function scanImage(event, eventHandlers) {
   }
 
   QrScanner.scanImage(file, { returnDetailedScanResult: true })
-    .then(result => onDecodeSuccess({ decodedQRCode: result.data }))
+    .then(({ data }) => onDecodeSuccess({ decodedQRCode: data }))
     .catch(error => onDecodeError({ error }));
 }

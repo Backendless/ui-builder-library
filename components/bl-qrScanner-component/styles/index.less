@@ -36,7 +36,8 @@
   gap: @bl-customComponent-qrScanner-gap;
   width: @bl-customComponent-qrScanner-width;
 
-  button, label {
+  .scan-button, .upload-button {
+    position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -55,14 +56,20 @@
     user-select: none;
 
     input[type="file"] {
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     span {
       text-align: center;
     }
 
-    &:hover {
+    &:hover, &:focus-within {
       box-shadow: @bl-customComponent-qrScanner-button-shadowHover;
     }
 
