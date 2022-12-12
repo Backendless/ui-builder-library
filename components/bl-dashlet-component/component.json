@@ -161,22 +161,22 @@
   "actions": [
     {
       "id": "getPosition",
-      "label": "Get Position",
+      "label": "Get Position of",
       "hasReturn": true
     },
     {
       "id": "getSize",
-      "label": "Get Size",
+      "label": "Get Size of",
       "hasReturn": true
     },
     {
       "id": "getIsOpen",
-      "label": "Get Is Open",
+      "label": "Get Is Open of",
       "hasReturn": true
     },
     {
       "id": "setPosition",
-      "label": "Set Position",
+      "label": "Set Position to",
       "inputs": [
         {
           "id": "position",
@@ -186,7 +186,7 @@
     },
     {
       "id": "setSize",
-      "label": "Set Size",
+      "label": "Set Size to",
       "inputs": [
         {
           "id": "size",
@@ -196,7 +196,7 @@
     },
     {
       "id": "setIsOpen",
-      "label": "Set Is Open",
+      "label": "Set Is Open to",
       "inputs": [
         {
           "id": "isOpen",
