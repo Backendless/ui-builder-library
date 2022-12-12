@@ -89,7 +89,11 @@ export function Dashlet(props) {
         </button>
         <h4 className={ cn('dashlet__title', StyleVariants[styleVariant]) }>{ title }</h4>
         { contextBlocks && (
-          <ContextMenu contextBlocks={ contextBlocks } contextBlocksHandler={ contextBlocksHandler }/>
+          <ContextMenu
+            contextBlocks={ contextBlocks }
+            contextBlocksHandler={ contextBlocksHandler }
+            styleVariant={ styleVariant }
+          />
         ) }
       </div>
       { isOpen && (
