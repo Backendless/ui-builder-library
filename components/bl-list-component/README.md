@@ -14,5 +14,19 @@ The configuration can be done in the UI Builder or using the Codeless Logic. You
 
 ## Properties
 
-| Property                 | Type       | Default value                                                                                                    | Logic                | Data Binding | UI Setting | Description                                                                                                                                               |
-|--------------------------|------------|------------------------------------------------------------------------------------------------------------------|----------------------|--------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Property                 | Type       | Default value | Logic              | Data Binding | UI Setting | Description                                                        |
+|--------------------------|------------|---------------|--------------------|--------------|------------|-------------------------------------------------------------------|
+| Type                     | *Select*   | `"Unordered"` | Type Logic         | NO           | YES        | Controls the type of list(ul/ol).                                                               |
+| List Items               | JSON*      |               | ListItems Logic    | YES          | NO         | Specifies a JSON array containing data for the list items. Watch [Codeless Examples] #codeless-examples). |
+
+## Events
+
+| Name                      | Triggers                                               | Context Blocks |
+|---------------------------|--------------------------------------------------------|----------------|
+| On Click List Item        | when the user click any item of the list               | `List Item`    |
+
+## Codeless Examples
+
+Below is a Codeless Example highlighting how to use the List component:
+
+![list data example](example-images/list-data-example.png)
