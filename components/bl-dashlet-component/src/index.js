@@ -19,17 +19,7 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
 
   const [size, setSize] = useState(localSettings.size || { height, width });
 
-  component.setSize = size => setSize(size);
-
-  component.getSize = () => size;
-
-  component.setPosition = position => setPosition(position);
-
-  component.getPosition = () => position;
-
-  component.setIsOpen = isOpen => setIsOpen(isOpen);
-
-  component.getIsOpen = () => isOpen;
+  useComponentActions(component, size, setSize, position, setPosition, isOpen, setIsOpen);
 
   useEffect(() => {
     localSettings.position = position;
@@ -68,3 +58,14 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
     </div>
   );
 }
+
+const useComponentActions = (component, size, setSize, position, setPosition, isOpen, setIsOpen) => {
+  Object.assign(component, {
+    setSize    : size => setSize(size),
+    getSize    : () => size,
+    setPosition: position => setPosition(position),
+    getPosition: () => position,
+    setIsOpen  : isOpen => setIsOpen(isOpen),
+    getIsOpen  : () => isOpen
+  });
+};

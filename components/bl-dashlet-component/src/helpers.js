@@ -106,15 +106,17 @@ const throttle = (f) => {
 
 export const getPosition = (ref, coords) => {
   const rootOffsetTop = ref.current.clientTop;
+  const { clientWidth: refClientWidth, clientHeight: refClientHeight } = ref.current;
+  const { clientWidth: parentClientWidth, clientHeight: parentClientHeight } = ref.current.parentElement;
 
   return {
     x: Math.max(
       0,
-      Math.min(ref.current.parentElement.clientWidth - ref.current.clientWidth, coords.x)
+      Math.min(parentClientWidth - refClientWidth, coords.x)
     ),
     y: Math.max(
       (0 - rootOffsetTop),
-      Math.min(ref.current.parentElement.clientHeight - ref.current.clientHeight, coords.y)
+      Math.min(parentClientHeight - refClientHeight, coords.y)
     )
   };
 };

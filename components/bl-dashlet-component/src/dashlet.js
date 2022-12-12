@@ -104,23 +104,19 @@ export function Dashlet(props) {
     </div>
   );
 
-  return (
-    <>
-      { resizing && isOpen ? (
-        <ResizableBox
-          onResizeStop={ onResizeStop }
-          onResize={ onResize }
-          height={ height }
-          width={ width }
-          minConstraints={ [minWidth, minHeight] }
-          maxConstraints={ [resizeMaxWidth, resizeMaxHeight] }>
-          { DashletComponent }
-        </ResizableBox>
-      ) : (
-        <>
-          { DashletComponent }
-        </>
-      ) }
-    </>
-  );
+  if (resizing && isOpen) {
+    return (
+      <ResizableBox
+        onResizeStop={ onResizeStop }
+        onResize={ onResize }
+        height={ height }
+        width={ width }
+        minConstraints={ [minWidth, minHeight] }
+        maxConstraints={ [resizeMaxWidth, resizeMaxHeight] }>
+        { DashletComponent }
+      </ResizableBox>
+    );
+  }
+
+  return DashletComponent;
 }
