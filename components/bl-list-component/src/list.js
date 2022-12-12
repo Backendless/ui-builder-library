@@ -1,22 +1,22 @@
 import { ListContent } from './list-content';
 
 export function List ({
-  component, eventHandlers, appData, pageData, parentDataModel, pods, settings, definition, instanceId
+  component, eventHandlers
 }) {
-  
+
   const listType = (type) => {
     if(type && type === 'ol') {
       return (
-        <ol>
-          <ListContent 
+        <ol className="list">
+          <ListContent
           component={component}
           eventHandlers={eventHandlers} />
         </ol>
       )
     } else {
       return (
-        <ul>
-          <ListContent 
+        <ul className="list">
+          <ListContent
           component={component}
           eventHandlers={eventHandlers} />
         </ul>

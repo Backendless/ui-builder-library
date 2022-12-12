@@ -1,14 +1,21 @@
 export function ListContent({
-  component, eventHandlers, appData, pageData, parentDataModel, pods, settings, definition, instanceId
+  component, eventHandlers
 }) {
-  
-  const onClickItemHandler = (key) => {
+
+  const itemStyles = {
+    color   : component.color,
+    fontSize: component.fontSize
+  };
+
+  const onItemClick = (key) => {
     eventHandlers.onClickListItem({item: key})
   }
-  
+
   const listItems = (component.listItems || []).map((item, i) =>
     <li key={i.toString()}
-        onClick={() => onClickItemHandler(item)}
+        className="list__item"
+        style = {itemStyles}
+        onClick={() => onItemClick(item)}
     >
       {item}
     </li>

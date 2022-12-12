@@ -1,7 +1,7 @@
 {
   "id": "c_15da71753b4ad7ccfe9d02f3f93406d5",
   "name": "List",
-  "description": "",
+  "description": "The List component allows the user to add a standard list to an application.",
   "showInToolbox": true,
   "faIcon": "pencil-ruler",
   "mainJS": "dist/index.js",
@@ -34,14 +34,46 @@
       "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "listItemsLogic",
-      "handlerLabel": "ListItems Logic",
+      "handlerLabel": "List Items Logic",
       "dataBinding": true
+    },
+    {
+      "type": "color",
+      "name": "backgroundColor",
+      "label": "Background",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "backgroundColorLogic"
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic"
+    },
+    {
+      "type": "color",
+      "name": "color",
+      "label": "Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "colorLogic"
+    },
+    {
+      "type": "text",
+      "name": "fontSize",
+      "label": "Font Size",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "fontSizeLogic"
     }
   ],
   "eventHandlers": [
     {
       "name": "onClickListItem",
-      "label": "onClick ListItem",
+      "label": "On Click List Item Event",
       "contextBlocks": [
         {
           "id": "item",
@@ -50,5 +82,7 @@
       ]
     }
   ],
-  "actions": []
+  "actions": [],
+  "settings": [],
+  "pods": {}
 }

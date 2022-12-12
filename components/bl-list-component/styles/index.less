@@ -1,1 +1,25 @@
-// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-list-theme: @themePrimary;
+@bl-customComponent-list-themeTextColor: @appTextColor;
+
+@bl-customComponent-list-item-hover-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+
+@bl-customComponent-list-item-size: 20px;
+
+.bl-customComponent-list {
+  color: @bl-customComponent-list-themeTextColor;
+  user-select: none;
+
+  .list {
+    margin: @bl-customComponent-list-item-size;
+  }
+
+  .list__item {
+    padding: @bl-customComponent-list-item-size / 2;
+    line-height: 1.3;
+    cursor: pointer;
+
+    &:hover {
+      background-color: @bl-customComponent-list-item-hover-background-color;
+    }
+  }
+}
