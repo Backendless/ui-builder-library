@@ -52,3 +52,4 @@ The configuration can be done in the UI Builder or using the Codeless Logic. You
 Below is a Codeless Example highlighting how to use the List component:
 
 ![list data example](example-images/list-data-example.png)
+![list data example view](example-images/list-data-example-view.png)

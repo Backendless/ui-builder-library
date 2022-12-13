@@ -1,7 +1,7 @@
 import { ListContent } from './list-content';
 
 export function List ({
-  component, eventHandlers
+  component, eventHandlers, child
 }) {
 
   const listType = (type) => {
@@ -10,6 +10,7 @@ export function List ({
         <ol className="list">
           <ListContent
           component={component}
+          child={child}
           eventHandlers={eventHandlers} />
         </ol>
       )
@@ -18,6 +19,7 @@ export function List ({
         <ul className="list">
           <ListContent
           component={component}
+          child={child}
           eventHandlers={eventHandlers} />
         </ul>
       )
