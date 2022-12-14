@@ -2,35 +2,43 @@
 
 Autocomplete is a component of Backendless UI-Builder designer. This allows you to select an item from a list of options.
 
-## Usage
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
 
-Add a component to your page and add the items to the list.
+## Properties
 
-### Component Elements
+| Property            | Type                                                | Default Value | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                                                 |
+|---------------------|-----------------------------------------------------|---------------|---------------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled            | *Checkbox*                                          | `false`       | Disabled Logic            | YES          | YES        | This handler allows you to disable a component.                                                                                                                                             |
+| Placeholder         | *Text*                                              | "Placeholder" | Placeholder Logic         | YES          | YES        | This handler allows you to specify a label of autocomplete component.                                                                                                                       |
+| Empty Options Label | *Text*                                              | "No options"  | Empty Options Label Logic | YES          | YES        | This handler allows you to add a label that will be displayed when the dropdown menu is empty.                                                                                              |
+| Variant             | *Select* <br/> "outlined" \| "standart" \| "filled" | "outlined"    | Variant Logic             | YES          | YES        | This handler allows you to specify the variant of autocomplete.                                                                                                                             |
+| Options             | *JSON*                                              | `[]`          | Options Logic             | YES          | YES        | This handler allows you to add options to be displayed in the options list. Watch [Codeless Examples](#Examples). Signature of options: List of objects {value: `String`, label: `String`}. |
 
-<dl>
-<dt>Text field</dt>
-<dd>The component has a text field for filtering items from the list. When the user enters text, only those elements that match the entered value remain in the list.</dd>
-<dt>List of options</dt>
-<dd>A list that displays all the options that you specify in the `Options` propertie.</dd>
-</dl>
+## Events
 
-### Component Properties
+| Name                        | Triggers                                    | Context Blocks                             |
+|-----------------------------|---------------------------------------------|--------------------------------------------|
+| On Change Event             | when the user enters text into a text field | Input Value: `String`                      |
+| On Button Clear Click Event | when the user clicks the clear button       |                                            |
 
-  Name                | Type   | Default value     | Description
- ---------------------|--------|-------------------|-------------------------------------------------------------------------------------
-  Disabled            | bool   | False             | This property allows you to disable autocomplete.
-  Placeholder         | string | Placeholder       | This property allows you to select a label of autocomplete component.
-  Options             | array  |                   | This property allows you to add items to be displayed in the options list.
-  Autocomplete variant| string | outlined          | This property allows you to select the variant of autocomplete. Autocomplete has three variants: `outlined`, `standart`, `filled`.
+## Styles
 
-### Events
+**Theme**
+````
+@bl-customComponent-autocomplete-themeColor: @themePrimary;
+@bl-customComponent-autocomplete-backgroundColor: @appBackgroundColor;
+@bl-customComponent-autocomplete-textColor: @appTextColor;
+````
 
-<dl>
-<dt>On autocomplete change</dt>
-<dd>Triggered when the user select an item from the options.</dd>
-<dt>On button clear click</dt>
-<dd>Triggered when the user clicks the clear button.</dd>
-<dt>On change</dt>
-<dd>Triggered when the user enters text into a text field.</dd>
-</dl>
+**Dimensions**
+````
+@bl-customComponent-autocomplete-width: 300px;
+````
+
+## <a name="Examples"></a> Codeless Examples
+
+Adding options to the component:
+
+<img alt="adding options" src="./example-images/adding-options.png" width="720" />

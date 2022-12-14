@@ -8,16 +8,18 @@ const ENHANCED = 'enhanced';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TransferListComponent({ component, eventHandlers }) {
-  const { display, listType, leftItems, rightItems, classList, style } = component;
+  const { display, classList, style, disabled, listType,
+    leftListItems, rightListItems, leftListTitle, rightListTitle
+  } = component;
 
   const [left, setLeft] = useState([]);
   const [right, setRight] = useState([]);
   const [allSelected, setAllSelected] = useState([]);
 
   useEffect(() => {
-    setLeft(validate(leftItems));
-    setRight(validate(rightItems));
-  }, [leftItems, rightItems])
+    setLeft(validate(leftListItems));
+    setRight(validate(rightListItems));
+  }, [leftListItems, rightListItems])
 
   const allSelectedMap = useMemo(() => getMapFromObjectsArray(allSelected), [allSelected]);
 
@@ -34,11 +36,15 @@ export default function TransferListComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-transferList', classList) } style={ style }>
+    <div
+      className={
+        cn('bl-customComponent-transferList', classList, { 'bl-customComponent-transferList--disabled': disabled })
+      }
+      style={ style }>
       <List
-        title="Choices"
         enableSelectAll={ listType === ENHANCED }
         items={ left }
+        title={ leftListTitle }
         selected={ leftSelected }
         allSelected={ allSelected }
         setAllSelected={ setAllSelected }
@@ -56,9 +62,9 @@ export default function TransferListComponent({ component, eventHandlers }) {
         eventHandlers={ eventHandlers }
       />
       <List
-        title="Chosen"
         enableSelectAll={ listType === ENHANCED }
         items={ right }
+        title={ rightListTitle }
         selected={ rightSelected }
         allSelected={ allSelected }
         setAllSelected={ setAllSelected }

@@ -7,7 +7,7 @@ import { EditControl } from './edit-control';
 import { validate } from './helpers/validate';
 
 export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, component, onDelete, eventHandlers }) {
-  const { itemsList, allowEdit, allowDelete } = component;
+  const { itemsList, allowEdit, allowDelete, showValues } = component;
   const { onEdit } = eventHandlers;
 
   const { label, value } = item;
@@ -45,7 +45,12 @@ export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, comp
         <DraggableIcon/>
         { isEdit
           ? <EditControl item={ itemState } onChange={ handleChange }/>
-          : <span>{ item.label }</span>
+          : <div>
+              <span style={ { 'display': 'inline-block', 'min-width': '100px' } }>{ item.label }</span>
+              { showValues && (
+                <span style={ { 'margin-left': '10px' } }>{ item.value }</span>
+              ) }
+            </div>
         }
       </div>
       <ItemControls

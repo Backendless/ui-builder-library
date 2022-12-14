@@ -1,0 +1,205 @@
+@import 'snow';
+
+@bl-customComponent-richEditor-themeColor: @themePrimary;
+@bl-customComponent-richEditor-backgroundColor: @appBackgroundColor;
+@bl-customComponent-richEditor-textColor: @appTextColor;
+@bl-customComponent-richEditor-disabledColor: @disabledColor;
+
+@bl-customComponent-richEditor-button-color: @bl-customComponent-richEditor-themeColor;
+
+@bl-customComponent-richEditor-editor-fontSize: 14px;
+@bl-customComponent-richEditor-editor-fontFamily: Arial, sans-serif;
+@bl-customComponent-richEditor-editor-borderWidth: 0px;
+@bl-customComponent-richEditor-editor-height: auto;
+@bl-customComponent-richEditor-editor-placeholder-color: fade(@bl-customComponent-richEditor-textColor, 60%);
+
+@bl-customComponent-richEditor-toolbar-borderWidth: 0px;
+@bl-customComponent-richEditor-toolbar-defaultContent-fontSize: "14px";
+@bl-customComponent-richEditor-toolbar-defaultContent-font: "Arial";
+@bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight: 18px;
+
+@bl-customComponent-richEditor-borderWidth: 0px;
+@bl-customComponent-richEditor-borderStyle: solid;
+@bl-customComponent-richEditor-borderColor: #ccc;
+@bl-customComponent-richEditor-border: @bl-customComponent-richEditor-borderWidth @bl-customComponent-richEditor-borderStyle @bl-customComponent-richEditor-borderColor;
+
+.bl-customComponent-rich-editor {
+  display: flex;
+  flex-direction: column;
+  border: @bl-customComponent-richEditor-border;
+
+  #editor {
+    font-family: @bl-customComponent-richEditor-editor-fontFamily;
+    font-size: @bl-customComponent-richEditor-editor-fontSize;
+    border-width: @bl-customComponent-richEditor-editor-borderWidth;
+    height: @bl-customComponent-richEditor-editor-height;
+
+    pre {
+      background: @bl-customComponent-richEditor-disabledColor;
+      color: contrast(@bl-customComponent-richEditor-disabledColor);
+    }
+
+    .ql-editor.ql-blank::before {
+      color: @bl-customComponent-richEditor-editor-placeholder-color;
+    }
+  }
+
+  #toolbar-container {
+    border-color: @bl-customComponent-richEditor-borderColor;
+    border-style: @bl-customComponent-richEditor-borderStyle;
+    border-width: @bl-customComponent-richEditor-toolbar-borderWidth;
+
+    .ql-picker.ql-size .ql-picker-label:not([data-value])::before {
+      content: @bl-customComponent-richEditor-toolbar-defaultContent-fontSize;
+    }
+
+    .ql-picker.ql-font .ql-picker-label {
+      padding-right: @bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight;
+
+      &::before {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &:not([data-value])::before {
+        content: @bl-customComponent-richEditor-toolbar-defaultContent-font;
+      }
+    }
+
+    .ql-stroke {
+      stroke: @bl-customComponent-richEditor-textColor;
+    }
+
+    .ql-fill {
+      fill: @bl-customComponent-richEditor-textColor;
+    }
+
+    .ql-picker {
+      color: @bl-customComponent-richEditor-textColor;
+
+      .ql-picker-options {
+        background-color: @bl-customComponent-richEditor-backgroundColor;
+      }
+
+      .ql-picker-item {
+        color: @bl-customComponent-richEditor-textColor;
+      }
+    }
+
+    .ql-undo, .ql-redo {
+      display: flex;
+      align-items: center;
+      color: @bl-customComponent-richEditor-textColor;
+    }
+
+    button:hover,
+    button:focus,
+    button.ql-active,
+    .ql-picker-label:hover,
+    .ql-picker-label.ql-active,
+    .ql-picker-item:hover,
+    .ql-picker-item.ql-selected {
+      color: @bl-customComponent-richEditor-button-color;
+    }
+
+    button:hover .ql-fill,
+    button:focus .ql-fill,
+    button.ql-active .ql-fill,
+    .ql-picker-label:hover .ql-fill,
+    .ql-picker-label.ql-active .ql-fill,
+    .ql-picker-item:hover .ql-fill,
+    .ql-picker-item.ql-selected .ql-fill {
+      fill: @bl-customComponent-richEditor-button-color;
+    }
+
+    button:hover .ql-stroke,
+    button:focus .ql-stroke,
+    button.ql-active .ql-stroke,
+    .ql-picker-label:hover .ql-stroke,
+    .ql-picker-label.ql-active .ql-stroke,
+    .ql-picker-item:hover .ql-stroke,
+    .ql-picker-item.ql-selected .ql-stroke {
+      stroke: @bl-customComponent-richEditor-button-color;
+    }
+  }
+
+  .ql-font-arial,
+  .ql-font span[data-value="arial"]::before {
+    font-family: arial, helvetica, sans-serif;
+  }
+
+  .ql-font-comic-sans,
+  .ql-font span[data-value="comic-sans"]::before {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+
+  .ql-font-courier-new,
+  .ql-font span[data-value="courier-new"]::before {
+    font-family: "courier new", courier, monospace;
+  }
+
+  .ql-font-georgia,
+  .ql-font span[data-value="georgia"]::before {
+    font-family: georgia, palatino, serif;
+  }
+
+  .ql-font-helvetica,
+  .ql-font span[data-value="helvetica"]::before {
+    font-family: helvetica, arial, sans-serif
+  }
+
+  .ql-font-lucida,
+  .ql-font span[data-value="lucida"]::before {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+
+  .ql-font-andale-mono,
+  .ql-font span[data-value="andale-mono"]::before {
+    font-family: "andale mono", monospace;
+  }
+
+  .ql-font-book-antiqua,
+  .ql-font span[data-value="book-antiqua"]::before {
+    font-family: "book antiqua", palatino, serif;
+  }
+
+  .ql-font-impact,
+  .ql-font span[data-value="impact"]::before {
+    font-family: impact, sans-serif;
+  }
+
+  .ql-font-tahoma,
+  .ql-font span[data-value="tahoma"]::before {
+    font-family: tahoma, arial, helvetica, sans-serif;
+  }
+
+  .ql-font-terminal,
+  .ql-font span[data-value="terminal"]::before {
+    font-family: terminal, monaco, monospace;
+  }
+
+  .ql-font-times-new-roman,
+  .ql-font span[data-value="times-new-roman"]::before {
+    font-family: "times new roman", times, serif;
+  }
+
+  .ql-font-trebuchet-ms,
+  .ql-font span[data-value="trebuchet-ms"]::before {
+    font-family: "trebuchet ms", geneva, sans-serif
+  }
+
+  .ql-font-verdana,
+  .ql-font span[data-value="verdana"]::before {
+    font-family: verdana, geneva, sans-serif;
+  }
+
+  @fonts: 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48;
+
+  each(@fonts, {
+    .ql-size-@{value} {
+      font-size: @value * 1px;
+    }
+  });
+}

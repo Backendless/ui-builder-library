@@ -8,7 +8,15 @@ import { Modal } from './modal';
 const isMobile = checkMobile();
 
 export default function WebcamPhoto({ component, eventHandlers }) {
-  const { uploadButtonLabel, makePhotoButtonLabel, buttonDisabled, style } = component;
+  const {
+    uploadButtonLabel,
+    makePhotoButtonLabel,
+    style,
+    uploadButtonDisabled,
+    uploadButtonVisible,
+    makePhotoButtonDisabled,
+    makePhotoButtonVisible
+  } = component;
   const { onSaveImage } = eventHandlers;
 
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -21,6 +29,7 @@ export default function WebcamPhoto({ component, eventHandlers }) {
   const handleChange = useCallback(async () => {
     try {
       const dataURL = await toBase64(fileInputRef.current.files[0]);
+
       const imageBlob = dataURLToBlob(dataURL);
 
       onSaveImage({ imageBlob });
@@ -31,18 +40,20 @@ export default function WebcamPhoto({ component, eventHandlers }) {
 
   return (
     <div className="bl-customComponent-webcamPhoto" style={ style }>
-      <UploadButton
-        onChange={ handleChange }
-        text={ uploadButtonLabel }
-        inputRef={ fileInputRef }
-        disabled={ buttonDisabled }
-      />
+      { uploadButtonVisible && (
+        <UploadButton
+          onChange={ handleChange }
+          text={ uploadButtonLabel }
+          inputRef={ fileInputRef }
+          disabled={ uploadButtonDisabled }
+        />
+      ) }
 
-      { !isMobile && (
+      { !isMobile && makePhotoButtonVisible && (
         <MakePhotoButton
           onClick={ handleClick }
           text={ makePhotoButtonLabel }
-          disabled={ buttonDisabled }
+          disabled={ makePhotoButtonDisabled }
         />
       ) }
 

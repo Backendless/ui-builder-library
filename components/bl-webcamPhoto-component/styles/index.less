@@ -196,7 +196,7 @@
     }
 
     &.upload-button {
-      &:not(:disabled) {
+      &:has(input:not(:disabled)) {
         background: @bl-customComponent-webcamPhoto-button-uploadButton-background;
         color: @bl-customComponent-webcamPhoto-button-uploadButton-color;
 
@@ -205,7 +205,7 @@
         }
       }
 
-      &:disabled {
+      &:has(input:disabled) {
         background: @bl-customComponent-webcamPhoto-button-uploadButton-disabledBackground;
         color: @bl-customComponent-webcamPhoto-button-uploadButton-disabledColor;
       }

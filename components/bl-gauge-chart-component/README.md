@@ -2,23 +2,39 @@
 
 Gauge Chart is a component of Backendless UI-Builder designer. This is a chart whose purpose is to show the goal and the progress that has already been made.
 
-## Usage
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
 
-Add a component to your page and add goal and progress properties to the component.
+## Properties
 
-### Component Elements
+| Property | Type       | Default Value | Logic          | Data Binding | UI Setting | Description                                     |
+|----------|------------|---------------|----------------|--------------|------------|-------------------------------------------------|
+| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component. |
+| Goal     | *Number*   |               | Goal Logic     | YES          | YES        | This handler allows you to specify a goal.      |
+| Progress | *Number*   |               | Progress Logic | YES          | YES        | This handler allows you to specify a progress.  |
 
-<dl>
-<dt>Goal Line</dt>
-<dd>The Goal Line is on background.</dd>
-<dt>Progress Line</dt>
-<dd>The Progress Line covers the Goal Line.</dd>
-</dl>
+## Actions
 
-### Component Properties
+| Action                  | Inputs                             | Returns                             |
+|-------------------------|------------------------------------|-------------------------------------|
+| Set Goal                | Goal: `Number`                     |                                     |
+| Get Goal                |                                    | `Number`: current goal              |
+| Set Progress            | Progress: `Number`                 |                                     |
+| Get Progress            |                                    | `Number`: current progress          |
 
-  Name                     | Type       | Default value        | Description
- --------------------------|------------|----------------------|-------------------------------------------------------------------------------------
-  Disable                  | bool       | false                | This property allows you to disable component.
-  Goal                     | number     | 100000               | The `Goal` property allows you to select a target number.
-  Progress                 | number     | 50000                | The `Progress` property displays a filled row, the length of which depends on the percentage ratio of the number of this property to the number of the `Goal` property.
+## Styles
+
+**Theme**
+````
+@bl-customComponent-gaugeChart-themeColor: @themePrimary;
+@bl-customComponent-gaugeChart-backgroundColor: @appBackgroundColor;
+@bl-customComponent-gaugeChart-textColor: @appTextColor;
+@bl-customComponent-gaugeChart-gaugeChartCover-backgroundColor: @bl-customComponent-gaugeChart-backgroundColor;
+````
+
+**Dimensions**
+````
+@bl-customComponent-gaugeChart-width: 100%;
+@bl-customComponent-gaugeChart-maxWidth: 301px;
+````

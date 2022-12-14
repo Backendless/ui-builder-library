@@ -9,12 +9,24 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "settingTooltip": "This handler allows you to disable a component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This handler allows you to disable a component.",
+      "dataBinding": true
+    },
+    {
       "type": "select",
       "name": "listType",
-      "label": "List type",
+      "label": "List Type",
       "defaultValue": "basic",
       "handlerId": "listType",
-      "handlerLabel": "List type",
+      "handlerLabel": "List Type Logic",
       "dataBinding": true,
       "options": [
         {
@@ -26,45 +38,74 @@
           "label": "Enhanced"
         }
       ],
-      "handlerDescription": "The List type property allows you to select the list type. The list type has two variants: basic and enhanced.",
+      "handlerDescription": "This property allows you to select a list type of Basic or Enhanced.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "This property allows you to select a list type of Basic or Enhanced."
     },
     {
       "type": "text",
-      "name": "leftItems",
-      "label": "Left items",
-      "handlerId": "leftItemsLogic",
-      "handlerLabel": "Left items logic",
-      "handlerDescription": "Please enter the items to be displayed on the left in a comma in this field.",
-      "dataBinding": true,
+      "name": "leftListTitle",
+      "label": "Left List Title",
+      "settingTooltip": "This handler allows you to specify the title of the list to the left.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "defaultValue": "Choices",
+      "hasLogicHandler": true,
+      "handlerId": "leftListTitleLogic",
+      "handlerLabel": "Left List Title Logic",
+      "handlerDescription": "This handler allows you to specify the title of the list to the left.",
+      "dataBinding": true
     },
     {
-      "name": "rightItems",
-      "label": "Right items",
-      "handlerId": "rightItemsLogic",
-      "handlerLabel": "Right items logic",
-      "dataBinding": true,
-      "handlerDescription": "Please enter the items to be displayed on the right in a comma in this field.",
       "type": "text",
+      "name": "rightListTitle",
+      "label": "Right List Title",
+      "settingTooltip": "This handler allows you to specify the title of the list to the right.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "defaultValue": "Chosen",
+      "hasLogicHandler": true,
+      "handlerId": "rightListTitleLogic",
+      "handlerLabel": "Right List Title Logic",
+      "handlerDescription": "This handler allows you to specify the title of the list to the right.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "leftListItems",
+      "label": "Left List Items",
+      "settingTooltip": "This handler allows you to add items to the list to the left.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "leftListItemsLogic",
+      "handlerLabel": "Left List Items Logic",
+      "handlerDescription": "This handler allows you to add items to the list to the left.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "rightListItems",
+      "label": "Right List Items",
+      "settingTooltip": "This handler allows you to add items to the list to the right.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "rightListItemsLogic",
+      "handlerLabel": "Right List Items Logic",
+      "handlerDescription": "This handler allows you to add items to the list to the right.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
     {
       "name": "onChange",
-      "label": "On Change",
+      "label": "On Change Event",
       "contextBlocks": [
         {
           "id": "leftItems",
-          "label": "Left items"
+          "label": "Left Items"
         },
         {
           "id": "rightItems",
-          "label": "Right items"
+          "label": "Right Items"
         }
       ]
     }

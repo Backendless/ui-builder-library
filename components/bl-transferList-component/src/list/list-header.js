@@ -1,5 +1,5 @@
-import { getMapFromObjectsArray } from '../helpers';
 import { Checkbox } from './checkbox';
+import { getMapFromObjectsArray } from '../helpers';
 
 export function ListHeader(props) {
   const { items, title, selected, setAllSelected } = props;

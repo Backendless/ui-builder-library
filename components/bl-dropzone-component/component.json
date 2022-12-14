@@ -1,0 +1,398 @@
+{
+  "id": "c_9bb3eff8567bbe42d33531f628ad51f7",
+  "name": "Dropzone",
+  "description": "This component provides a way to upload files to a server.",
+  "showInToolbox": true,
+  "faIcon": "file-upload",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "acceptedFileTypes",
+      "label": "Accepted File Types",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "acceptedFileTypesLogic",
+      "defaultValue": "image/*"
+    },
+    {
+      "type": "text",
+      "name": "targetDirectory",
+      "label": "Target Directory",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "targetDirectoryLogic",
+      "handlerLabel": "Target Directory Logic",
+      "handlerDescription": "This is a handler where you can determine the path of the directory where the file(s) will be uploaded to."
+    },
+    {
+      "type": "number",
+      "name": "maxFiles",
+      "label": "Max Files",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "maxFilesLogic",
+      "defaultValue": "5"
+    },
+    {
+      "type": "number",
+      "name": "maxFileSize",
+      "label": "Max File Size",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "maxFileSizeLogic",
+      "defaultValue": "102400"
+    },
+    {
+      "type": "checkbox",
+      "name": "overwriteFiles",
+      "label": "Overwrite Files",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "overwriteFilesLogic"
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "label": "Label",
+      "showInSettings": true,
+      "defaultValue": "Drop Files here or click to browse",
+      "hasLogicHandler": false,
+      "handlerId": "labelLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "headerVisibility",
+      "label": "Header Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "headerVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "footerVisibility",
+      "label": "Footer Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "footerVisibilityLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "select",
+      "name": "language",
+      "label": "Language",
+      "showInSettings": true,
+      "defaultValue": "EN-en",
+      "hasLogicHandler": false,
+      "handlerId": "languageLogic",
+      "options": [
+        {
+          "value": "EN-en",
+          "label": "English"
+        },
+        {
+          "value": "PT-pt",
+          "label": "Portuguese"
+        },
+        {
+          "value": "FR-fr",
+          "label": "French"
+        },
+        {
+          "value": "RU-ru",
+          "label": "Russian"
+        },
+        {
+          "value": "ZH-cn",
+          "label": "Chinese (simplified)"
+        },
+        {
+          "value": "ZH-hk",
+          "label": "Chinese (traditional)"
+        },
+        {
+          "value": "ES-es",
+          "label": "Spanish"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "onDropBehaviour",
+      "label": "On Drop Behaviour",
+      "showInSettings": true,
+      "defaultValue": "add",
+      "hasLogicHandler": false,
+      "handlerId": "onDropBehaviourLogic",
+      "options": [
+        {
+          "value": "add",
+          "label": "add"
+        },
+        {
+          "value": "replace",
+          "label": "replace"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "clickable",
+      "label": "Clickable",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "clickableLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "text",
+      "name": "minHeight",
+      "label": "Min Height",
+      "showInSettings": true,
+      "defaultValue": "280px",
+      "hasLogicHandler": false,
+      "handlerId": "minHeightLogic"
+    },
+    {
+      "type": "text",
+      "name": "maxHeight",
+      "label": "Max Height",
+      "showInSettings": true,
+      "defaultValue": "450px",
+      "hasLogicHandler": false,
+      "handlerId": "maxHeightLogic"
+    },
+    {
+      "type": "select",
+      "name": "viewMode",
+      "label": "View Mode",
+      "showInSettings": true,
+      "defaultValue": "unset",
+      "hasLogicHandler": false,
+      "handlerId": "viewModeLogic",
+      "options": [
+        {
+          "value": "unset",
+          "label": "unset"
+        },
+        {
+          "value": "grid",
+          "label": "grid"
+        },
+        {
+          "value": "list",
+          "label": "list"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "cleanButtonVisibility",
+      "label": "Clean Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cleanButtonVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "uploadOnDrop",
+      "label": "Upload On Drop",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "uploadOnDropLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "disableScrollbar",
+      "label": "Disable Scrollbar",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "disableScrollbarLogic"
+    },
+    {
+      "type": "color",
+      "name": "themeColor",
+      "label": "Theme Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "themeColorLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "showInfoLayer",
+      "label": "Show Info Layer",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "showInfoLayerLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "activeItems",
+      "label": "Always Active Items",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "activeItemsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "preview",
+      "label": "Preview",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "previewLogic"
+    },
+    {
+      "type": "text",
+      "name": "borderWidth",
+      "label": "Border Width",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "borderWidthLogic",
+      "defaultValue": "1px"
+    },
+    {
+      "type": "select",
+      "name": "borderStyle",
+      "label": "Border Style",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "borderStyleLogic",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "solid",
+          "label": "solid"
+        },
+        {
+          "value": "dotted",
+          "label": "dotted"
+        },
+        {
+          "value": "dashed",
+          "label": "dashed"
+        },
+        {
+          "value": "double",
+          "label": "double"
+        }
+      ],
+      "defaultValue": "dashed"
+    },
+    {
+      "type": "color",
+      "name": "borderColor",
+      "label": "Border Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "borderColorLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "fileNameLogic",
+      "label": "File Name Logic",
+      "contextBlocks": [
+        {
+          "id": "file",
+          "label": "File"
+        }
+      ],
+      "output": true,
+      "handlerDescription": "This is a handler where you can determine the name of the file which it will be saved with."
+    },
+    {
+      "name": "onChange",
+      "label": "On Change Event",
+      "handlerDescription": "This event is fired when the value of the file list is changed.",
+      "contextBlocks": [
+        {
+          "id": "filesList",
+          "label": "Files List"
+        }
+      ]
+    },
+    {
+      "name": "onDrop",
+      "label": "On Drop Event",
+      "contextBlocks": [
+        {
+          "id": "filesList",
+          "label": "Files List"
+        }
+      ],
+      "handlerDescription": "This event is fired when files are dropped inside the dropzone or selected from file dialog."
+    },
+    {
+      "name": "onChangeView",
+      "label": "On Change View Event",
+      "handlerDescription": "This event is fired when view mode is changed.",
+      "contextBlocks": [
+        {
+          "id": "viewMode",
+          "label": "View Mode"
+        }
+      ]
+    },
+    {
+      "name": "onDelete",
+      "label": "On Delete Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the Close button.",
+      "contextBlocks": [
+        {
+          "id": "fileID",
+          "label": "File ID"
+        }
+      ]
+    },
+    {
+      "name": "onClean",
+      "label": "On Clean Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the Clean button.",
+      "contextBlocks": [
+        {
+          "id": "validatedFiles",
+          "label": "Validated Files"
+        }
+      ]
+    },
+    {
+      "name": "onUpload",
+      "label": "On Upload Event",
+      "output": false,
+      "contextBlocks": [
+        {
+          "id": "file",
+          "label": "File"
+        }
+      ],
+      "handlerDescription": "This is a handler where you can define the logic for uploading files. If the handler contains no logic, the files upload operation delivers a files in the Backendless file storage of your application."
+    },
+    {
+      "name": "onUploadFailed",
+      "label": "On Upload Failed Event",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ],
+      "handlerDescription": "This event is triggered if the upload of the file(s) results in an error."
+    }
+  ],
+  "actions": [
+    {
+      "id": "uploadFiles",
+      "label": "Upload Files"
+    }
+  ]
+}

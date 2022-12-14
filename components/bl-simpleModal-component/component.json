@@ -1,5 +1,5 @@
 {
-  "id": "c_3a7b023248c6395590ae7a2eb9275d5e",
+  "id": "c_b60ed8c83a23382c94eb71bfbfa6b6a7",
   "name": "Simple Modal",
   "description": "This component makes it possible to display alert, get some information or confirm some action",
   "showInToolbox": true,
@@ -15,7 +15,9 @@
       "handlerId": "titleLogic",
       "handlerLabel": "Title Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the title."
+      "handlerDescription": "This is a handler for the logic to determine the title.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
@@ -24,7 +26,9 @@
       "handlerId": "contentLogic",
       "handlerLabel": "Content Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the text content of modal window."
+      "handlerDescription": "This is a handler for the logic to determine the text content of modal window.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
@@ -34,7 +38,9 @@
       "handlerId": "submitButtonLogic",
       "handlerLabel": "Submit Button Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the label for Submit Button."
+      "handlerDescription": "This is a handler for the logic to determine the label for Submit Button.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "text",
@@ -44,7 +50,9 @@
       "handlerId": "closeButtonLabelLogic",
       "handlerLabel": "Close Button Label Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the label for Close Button."
+      "handlerDescription": "This is a handler for the logic to determine the label for Close Button.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "select",
@@ -64,7 +72,9 @@
           "value": "confirm",
           "label": "Confirm"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
     },
     {
       "type": "text",
@@ -73,19 +83,24 @@
       "handlerId": "placeholderLogic",
       "handlerLabel": "PlaceholderLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the text for input placeholder."
+      "handlerDescription": "This is a handler for the logic to determine the text for input placeholder.",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "number",
       "name": "closingDuration",
       "label": "Closing Duration(ms)",
-      "defaultValue": "100"
+      "defaultValue": "100",
+      "showInSettings": true,
+      "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
     {
       "name": "onClose",
-      "label": "On Close Button"
+      "label": "On Close Button",
+      "handlerDescription": "This event triggers when the user clicks on the close button."
     },
     {
       "name": "onSubmit",
@@ -95,7 +110,8 @@
           "id": "inputValue",
           "label": "Input Value"
         }
-      ]
+      ],
+      "handlerDescription": "This event triggers when the user clicks on the submit button."
     },
     {
       "name": "onInputValueChange",
@@ -105,17 +121,18 @@
           "id": "inputValue",
           "label": "Input Value"
         }
-      ]
+      ],
+      "handlerDescription": "This event triggers when the user changes the input value."
     }
   ],
   "actions": [
     {
       "id": "openModal",
-      "label": "Open Modal"
+      "label": "Open"
     },
     {
       "id": "closeModal",
-      "label": "Close Modal"
+      "label": "Close"
     }
   ]
 }

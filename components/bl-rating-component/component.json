@@ -14,7 +14,7 @@
       "type": "checkbox",
       "defaultValue": false,
       "handlerId": "disabled",
-      "handlerLabel": "Disabled logic",
+      "handlerLabel": "Disabled Logic",
       "dataBinding": true,
       "showInSettings": true,
       "hasLogicHandler": true,
@@ -27,7 +27,7 @@
       "label": "Icon",
       "defaultValue": "star",
       "handlerId": "icon",
-      "handlerLabel": "Icon logic",
+      "handlerLabel": "Icon Logic",
       "dataBinding": false,
       "options": [
         {
@@ -46,24 +46,24 @@
     },
     {
       "name": "defaultValue",
-      "label": "Default value",
+      "label": "Default Value",
       "type": "number",
       "defaultValue": "0",
       "handlerId": "defaultValue",
       "dataBinding": true,
-      "handlerLabel": "Default value logic",
+      "handlerLabel": "Default Value Logic",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "With this handler, you can specify a default rating.",
-      "handlerDescription": "With this handler, you can specify a default rating."
+      "settingTooltip": "This handler allows you to specify a default rating.",
+      "handlerDescription": "This handler allows you to specify a default rating."
     },
     {
       "name": "iconsAmount",
-      "label": "Icons amount",
+      "label": "Icons Amount",
       "type": "number",
       "defaultValue": "5",
       "handlerId": "iconsAmount",
-      "handlerLabel": "Icons amont logic",
+      "handlerLabel": "Icons Amont Logic",
       "dataBinding": true,
       "showInSettings": true,
       "hasLogicHandler": true,
@@ -73,9 +73,9 @@
     {
       "type": "color",
       "name": "iconColor",
-      "label": "Icon color",
+      "label": "Icon Color",
       "handlerId": "iconColorLogic",
-      "handlerLabel": "Icon color logic",
+      "handlerLabel": "Icon Color Logic",
       "defaultValue": "#faaf00",
       "showInSettings": true,
       "hasLogicHandler": true,
@@ -88,7 +88,7 @@
       "label": "Precision",
       "defaultValue": "1",
       "handlerId": "precision",
-      "handlerLabel": "Precision logic",
+      "handlerLabel": "Precision Logic",
       "dataBinding": true,
       "options": [
         {
@@ -102,27 +102,19 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "With this handler you can specify the precision of rating evaluation.",
-      "handlerDescription": "With this handler you can specify the precision of rating evaluation."
+      "settingTooltip": "This handler allows you to specify the precision of rating evaluation.",
+      "handlerDescription": "This handler allows you to specify the precision of rating evaluation."
     }
   ],
   "eventHandlers": [
     {
       "name": "onRatingChange",
-      "label": "On Rating change event",
+      "label": "On Rating Change Event",
       "dataBinding": true,
       "contextBlocks": [
         {
           "label": "Curent Rating",
           "id": "curentRating"
-        },
-        {
-          "id": "minRating",
-          "label": "Min Rating"
-        },
-        {
-          "id": "maxRating",
-          "label": "Max Rating"
         }
       ]
     }

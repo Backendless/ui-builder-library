@@ -6,7 +6,7 @@ This allows the list to be displayed. List items can also be dragged, modified, 
 The component is customizable, you can enable or disable actions with it.
 
 <p align="center">
-  <img alt="main thumbnail" height="220" src="./thumbnail.png" width="358"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties
@@ -18,6 +18,7 @@ The component is customizable, you can enable or disable actions with it.
 | allowDelete | *checkbox* | `true`        | Allow Delete Logic | YES          | YES        | This is a handler for the logic to determine if the item is allowed to delete.                                     |
 | allowEdit   | *checkbox* | `true`        | Allow Edit Logic   | YES          | YES        | This is a handler for the logic to determine if the item is allowed to edit.                                       |
 | allowAdd    | *checkbox* | `true`        | Allow Add Logic    | YES          | YES        | This is a handler for the logic to determine if the item is allowed to add.                                        |
+| showValues  | *checkbox* | `true`        | Show Values Logic  | YES          | YES        | This is a handler for the logic to determine if show the value of the item.                                        |
 
 ## Events
 
