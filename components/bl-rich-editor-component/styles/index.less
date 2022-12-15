@@ -16,6 +16,7 @@
 @bl-customComponent-richEditor-toolbar-borderWidth: 0px;
 @bl-customComponent-richEditor-toolbar-defaultContent-fontSize: "14px";
 @bl-customComponent-richEditor-toolbar-defaultContent-font: "Arial";
+@bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight: 18px;
 
 @bl-customComponent-richEditor-borderWidth: 0px;
 @bl-customComponent-richEditor-borderStyle: solid;
@@ -52,8 +53,19 @@
       content: @bl-customComponent-richEditor-toolbar-defaultContent-fontSize;
     }
 
-    .ql-picker.ql-font .ql-picker-label:not([data-value])::before {
-      content: @bl-customComponent-richEditor-toolbar-defaultContent-font;
+    .ql-picker.ql-font .ql-picker-label {
+      padding-right: @bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight;
+
+      &::before {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &:not([data-value])::before {
+        content: @bl-customComponent-richEditor-toolbar-defaultContent-font;
+      }
     }
 
     .ql-stroke {

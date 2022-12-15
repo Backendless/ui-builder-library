@@ -45,9 +45,13 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
     if (content === undefined || content === innerHTML) {
       return;
     }
-    
+
     editorRef.current.root.innerHTML = content;
   }, [content]);
+
+  useEffect(() => {
+    editorRef.current.enable(!readOnly);
+  }, [readOnly]);
 
   const undo = () => editorRef.current.history.undo();
   const redo = () => editorRef.current.history.redo();

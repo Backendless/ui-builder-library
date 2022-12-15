@@ -1,0 +1,72 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+
+@bl-customComponent-treeView-theme: @themePrimary;
+@bl-customComponent-treeView-themeTextColor: @appTextColor;
+
+@bl-customComponent-treeView-list-item-button-selected-background-color: fade(@bl-customComponent-treeView-theme, 8%);
+@bl-customComponent-treeView-list-item-button-focus-background-color: fade(@bl-customComponent-treeView-theme, 20%);
+@bl-customComponent-treeView-list-item-button-hover-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+
+@bl-customComponent-treeView-list-button-icon-size: 25px;
+@bl-customComponent-treeView-list-item-button-border-radius: 3px;
+
+@bl-customComponent-treeView-button-transition: background-color 0.3s;
+
+.bl-customComponent-treeView {
+  color: @bl-customComponent-treeView-themeTextColor;
+  user-select: none;
+
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .list__button, .list__item {
+    transition: @bl-customComponent-treeView-button-transition;
+    border-radius: @bl-customComponent-treeView-list-item-button-border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: @bl-customComponent-treeView-list-item-button-hover-background-color;
+    }
+
+    &.selected {
+      background-color: @bl-customComponent-treeView-list-item-button-selected-background-color;
+
+      &:focus {
+        background-color: @bl-customComponent-treeView-list-item-button-focus-background-color;
+        border: 0;
+        outline: 0;
+      }
+    }
+  }
+
+  .list__icon {
+    height: @bl-customComponent-treeView-list-button-icon-size;
+    width: @bl-customComponent-treeView-list-button-icon-size;
+    padding: 0 5px;
+
+    fill: @bl-customComponent-treeView-themeTextColor;
+  }
+
+  .list__button {
+    display: flex;
+    align-items: center;
+
+    svg {
+      transform: rotate(-90deg);
+    }
+
+    &.open {
+      svg {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  .list__item {
+    padding-left: @bl-customComponent-treeView-list-button-icon-size;
+    line-height: 1.3;
+  }
+}
