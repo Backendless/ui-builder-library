@@ -1,0 +1,172 @@
+{
+  "id": "c_9caa572d06d9006e2afa63415a71193c",
+  "name": "Mention",
+  "description": "Mention component is used to refer someone or something.",
+  "showInToolbox": true,
+  "faIcon": "comment-alt",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "trigger",
+      "label": "Trigger",
+      "showInSettings": true,
+      "defaultValue": "@",
+      "hasLogicHandler": true,
+      "handlerId": "triggerLogic",
+      "handlerLabel": "Trigger Logic",
+      "handlerDescription": "It is a handler to set trigger keywords.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "suggestions",
+      "label": "Suggestions",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "suggestionsLogic",
+      "handlerLabel": "Suggestions Logic",
+      "handlerDescription": "It is a handler to set an array of suggestions to display.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "field",
+      "label": "Field",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "fieldLogic",
+      "handlerLabel": "Field Logic",
+      "handlerDescription": "It is a handler to set a field of a suggested object to resolve and display.",
+      "dataBinding": true,
+      "defaultValue": "nickname"
+    },
+    {
+      "type": "text",
+      "name": "scrollHeight",
+      "label": "Scroll Height",
+      "showInSettings": true,
+      "defaultValue": "200px",
+      "hasLogicHandler": true,
+      "handlerId": "scrollHeightLogic",
+      "handlerLabel": "Scroll Height Logic",
+      "handlerDescription": "It is a handler to set the maximum height of the suggestions panel.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "autoHighlight",
+      "label": "Auto Highlight",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "autoHighlightLogic",
+      "handlerLabel": "Auto Highlight Logic",
+      "handlerDescription": "It is a handler to set auto-highlighting. When enabled, it highlights the first item in the list by default.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "label": "Placeholder",
+      "showInSettings": true,
+      "defaultValue": "Please enter @ to mention",
+      "hasLogicHandler": false,
+      "handlerId": "placeholderLogic"
+    },
+    {
+      "type": "number",
+      "name": "delay",
+      "label": "Delay",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "delayLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "autoresize",
+      "label": "Autoresize",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "autoresizeLogic"
+    },
+    {
+      "type": "number",
+      "name": "rows",
+      "label": "Rows",
+      "showInSettings": true,
+      "defaultValue": "5",
+      "hasLogicHandler": false,
+      "handlerId": "rowsLogic"
+    },
+    {
+      "type": "number",
+      "name": "cols",
+      "label": "Cols",
+      "showInSettings": true,
+      "defaultValue": "40",
+      "hasLogicHandler": false,
+      "handlerId": "colsLogic"
+    },
+    {
+      "type": "text",
+      "name": "hideField",
+      "label": "Hide Filed",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "hideFieldLogic",
+      "handlerLabel": "Hide Field Logic",
+      "handlerDescription": "It is a handler to determine which fields will not showed in suggestions.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "label": "On Change Event",
+      "output": false,
+      "handlerDescription": "This event is triggered when the value changes.",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    },
+    {
+      "name": "onFocus",
+      "label": "On Focus Event",
+      "handlerDescription": "This event is triggered when the element receives focus.",
+      "contextBlocks": []
+    },
+    {
+      "name": "onBlur",
+      "label": "On Bulr Event",
+      "handlerDescription": "This event is triggered when the element loses focus.",
+      "contextBlocks": []
+    },
+    {
+      "name": "onShow",
+      "label": "On Show Event",
+      "handlerDescription": "This event is triggered when overlay panel becomes visible.",
+      "contextBlocks": [
+        {
+          "id": "suggestions",
+          "label": "Suggestions"
+        }
+      ]
+    },
+    {
+      "name": "onHide",
+      "label": "On Hide Event",
+      "handlerDescription": "This event is triggered when overlay panel becomes hidden.",
+      "contextBlocks": []
+    }
+  ],
+  "actions": [],
+  "pods": {}
+}
