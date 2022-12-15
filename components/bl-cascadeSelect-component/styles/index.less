@@ -1,0 +1,73 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+
+.bl-cascadeSelect-component {
+  position: relative;
+  width: 200px;
+
+  .cascade-select {
+    &__input {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 10px;
+
+      cursor: pointer;
+
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+
+      color: #6c757d;
+
+      transition: border-color 0.3s;
+
+      &--selected {
+        color: @appTextColor;
+      }
+
+      &:hover {
+        border-color: @themePrimary;
+      }
+    }
+
+    &__list {
+      margin: 0;
+      min-width: 200px;
+      position: absolute;
+      top: 100%;
+      padding: 10px 0;
+      list-style: none;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 17px;
+
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #e9ecef;
+      }
+
+      &--open {
+        background-color: lighten(@themePrimary, 30%);
+      }
+    }
+
+    &__collapse-button-icon {
+      width: 30px;
+      height: 30px;
+      fill: #aaa;
+    }
+
+    &__collapse-icon {
+      height: 15px;
+      width: 15px;
+      transform: rotate(-90deg);
+    }
+  }
+}

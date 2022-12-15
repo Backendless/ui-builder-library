@@ -1,0 +1,24 @@
+{
+  "id": "c_4709a015328b307e652d915fc3f36fb7",
+  "name": "Cascade Select",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "cascade",
+      "label": "Cascade",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "cascadeLogic",
+      "handlerLabel": "Cascade Logic",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [],
+  "actions": []
+}
