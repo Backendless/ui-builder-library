@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getTimer } from './helpers';
-import { Time, Delimeter } from './subcomponents';
+import { Time } from './subcomponents';
 
-export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration }) {
-  const [updateInterval, setUpdateInterval] = useState();
+export function Timer({ component, eventHandlers }) {
+  const { timerDate, timeVariant, animationDuration } = component;
+  const { onTimerEnd } = eventHandlers;
+
   const [time, setTime] = useState(getTimer(new Date(timerDate)));
 
   const [daysVisibility, setDaysVisibility] = useState(false);
@@ -11,11 +13,11 @@ export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration })
   const [minutesVisibility, setMinutesVisibility] = useState(false);
 
   useEffect(() => {
-    setUpdateInterval(setInterval(() => {
+    const timer = setInterval(() => {
       setTime(getTimer(new Date(timerDate)));
-    }, 1000));
+    }, 1000);
 
-    return () => clearInterval(updateInterval);
+    return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
@@ -37,7 +39,12 @@ export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration })
   return (
     <>
       { daysVisibility && (
-        <Time timeTens={ time.dayTens } timeUnits={ time.dayUnits } animationDuration={ animationDuration }/>
+        <Time
+          timeTens={ time.dayTens }
+          timeUnits={ time.dayUnits }
+          animationDuration={ animationDuration }
+          withDelimeter={ true }
+        />
       ) }
 
       { hoursVisibility && (
@@ -62,7 +69,6 @@ export function Timer({ timerDate, timeVariant, onTimerEnd, animationDuration })
         timeTens={ time.secondTens }
         timeUnits={ time.secondUnits }
         animationDuration={ animationDuration }
-        withDelimeter={ minutesVisibility }
       />
     </>
   );

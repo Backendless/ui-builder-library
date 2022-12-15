@@ -4,15 +4,22 @@ import { Timer } from './timer.js';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const ClockType = {
+const ClockTypes = {
   DEFAULT: 'clock',
   STOPWATCH: 'stopwatch',
   TIMER: 'timer'
 };
 
+const ClockViews = {
+  [ClockTypes.DEFAULT]: ClockComponent,
+  [ClockTypes.STOPWATCH]: Stopwatch,
+  [ClockTypes.TIMER]: Timer,
+}
+
 export default function Clock({ component, eventHandlers }) {
-  const { display, classList, style, timeVariant, type, timerDate, animationDuration } = component;
-  const { onTimerEnd } = eventHandlers;
+  const { display, classList, style, type } = component;
+
+  const Clock = ClockViews[type]
 
   if (!display) {
     return null;
@@ -20,20 +27,9 @@ export default function Clock({ component, eventHandlers }) {
 
   return (
     <div className={ cn('bl-customComponent-clock clock', classList) } style={ style }>
-      { type === ClockType.DEFAULT && (
-        <ClockComponent timeVariant={ timeVariant } animationDuration={animationDuration}/>
-      ) }
-      { type === ClockType.STOPWATCH && (
-        <Stopwatch component={ component }/>
-      ) }
-      { type === ClockType.TIMER && (
-        <Timer
-          timerDate={ timerDate }
-          timeVariant={ timeVariant }
-          onTimerEnd={ onTimerEnd }
-          animationDuration={ animationDuration }
-        />
-      ) }
+      {Clock && (
+        <Clock component={component} eventHandlers={ eventHandlers }/>
+      )}
     </div>
   );
 }

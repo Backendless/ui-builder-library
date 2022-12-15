@@ -1,31 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export function Stopwatch({ component }) {
-  const [updateInterval, setUpdateInterval] = useState();
   const [remainingSecond, setRemainingSecond] = useState(0);
 
+  const timerRef = useRef();
+
   component.startStopwatch = () => {
-    if (!updateInterval) {
+    if (!timerRef.current) {
       const startDate = Date.now();
 
-      setUpdateInterval(setInterval(() => {
+      timerRef.current = setInterval(() => {
         const currentDate = Date.now();
         const gap = getRemainingSeconds(startDate, currentDate, remainingSecond);
 
         setRemainingSecond((gap / 1000).toFixed(2));
-      }, 10));
+      }, 100);
     }
   };
 
   component.stopStopwatch = () => {
-    clearInterval(updateInterval);
-    setUpdateInterval(null);
+    clearInterval(timerRef.current);
+    timerRef.current = null;
   };
 
   component.resetStopwatch = () => {
     setRemainingSecond(0);
     component.stopStopwatch();
   };
+
+  useEffect(() => {
+    return () => {
+      component.stopStopwatch();
+    };
+  }, []);
 
   return (
     <div className="stopwatch"> { remainingSecond } </div>
@@ -34,4 +41,4 @@ export function Stopwatch({ component }) {
 
 const getRemainingSeconds = (startDate, currentDate, stopwatch) => {
   return stopwatch * 1000 + currentDate - startDate;
-}
+};

@@ -5,16 +5,16 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
-export const useAnimation = (time, element, animationDuration) => {
+export const useAnimation = (time, elementRef, animationDuration) => {
   useEffect(() => {
-    if (element.current.children.length > 1) {
-      [...element.current.children].slice(0, -1).forEach((child) => {
+    if (elementRef.current.children.length > 1) {
+      [...elementRef.current.children].slice(0, -1).forEach((child) => {
         child.remove();
       });
     }
 
     if (time) {
-      const oldValue = element.current.firstElementChild;
+      const oldValue = elementRef.current.firstElementChild;
 
       if (oldValue) {
         oldValue.className = 'clock__number old';
@@ -27,7 +27,7 @@ export const useAnimation = (time, element, animationDuration) => {
       newValue.className = 'clock__number new';
       newValue.style.animationDuration = animationDuration + 'ms';
       newValue.innerHTML = time;
-      element.current.appendChild(newValue);
+      elementRef.current.appendChild(newValue);
     }
   }, [time]);
 };

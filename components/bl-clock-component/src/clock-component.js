@@ -8,42 +8,43 @@ const TimeVariant = {
   HH    : 'hh'
 };
 
-export function ClockComponent({ timeVariant, animationDuration }) {
-  const [updateInterval, setUpdateInterval] = useState();
+export function ClockComponent({ component }) {
+  const { timeVariant, animationDuration } = component;
+
   const [time, setTime] = useState(getTime());
 
   useEffect(() => {
-    setUpdateInterval(setInterval(() => {
+    const timer = setInterval(() => {
       setTime(getTime());
-    }, 1000));
+    }, 1000);
 
     return () => {
-      clearInterval(updateInterval);
+      clearInterval(timer);
     };
   }, []);
 
   return (
     <>
-      <Time timeTens={ time.hourTens } timeUnits={ time.hourUnits } animationDuration={ animationDuration }/>
+      <Time
+        timeTens={ time.hourTens }
+        timeUnits={ time.hourUnits }
+        animationDuration={ animationDuration }
+        withDelimeter={true}
+      />
       { (timeVariant === TimeVariant.HHMMSS || timeVariant === TimeVariant.HHMM) && (
-        <>
-          <Time
-            timeTens={ time.minuteTens }
-            timeUnits={ time.minuteUnits }
-            animationDuration={ animationDuration }
-            withDelimeter={ true }
-          />
-        </>
+        <Time
+          timeTens={ time.minuteTens }
+          timeUnits={ time.minuteUnits }
+          animationDuration={ animationDuration }
+          withDelimeter={ true }
+        />
       ) }
       { timeVariant === TimeVariant.HHMMSS && (
-        <>
-          <Time
-            timeTens={ time.secondTens }
-            timeUnits={ time.secondUnits }
-            animationDuration={ animationDuration }
-            withDelimeter={ true }
-          />
-        </>
+        <Time
+          timeTens={ time.secondTens }
+          timeUnits={ time.secondUnits }
+          animationDuration={ animationDuration }
+        />
       ) }
     </>
   );
