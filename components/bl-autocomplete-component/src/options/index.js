@@ -18,7 +18,7 @@ export function Options(props) {
 
   useOptionsPlacement({ optionsContainerRef, autocompleteHeight, setOptionsPlacement });
 
-  if(!optionsList.length) {
+  if (!optionsList.length) {
     return (
       <div className="options" ref={ optionsContainerRef }>
         <div className="option">
@@ -28,28 +28,21 @@ export function Options(props) {
     );
   }
 
+  const OptionComponent = hasGroup ? GroupedOptions : Option;
+
   return (
     <div
       ref={ optionsContainerRef }
       className={ cn('options', { ['options__placement-top']: optionsPlacement === 'top' }) }>
       { optionsList.map(item => (
-        hasGroup
-          ? <GroupedOptions
-              key={ item.value }
-              item={ item }
-              setInputValue={ setInputValue }
-              setIsOptionsOpen={ setIsOptionsOpen }
-              setAutocompleteValue={ setAutocompleteValue }
-              onChange={ onChange }
-            />
-          : <Option
-              key={ item.value }
-              item={ item }
-              setInputValue={ setInputValue }
-              setIsOptionsOpen={ setIsOptionsOpen }
-              setAutocompleteValue={ setAutocompleteValue }
-              onChange={ onChange }
-            />
+        <OptionComponent
+          key={ item.value }
+          item={ item }
+          setInputValue={ setInputValue }
+          setIsOptionsOpen={ setIsOptionsOpen }
+          setAutocompleteValue={ setAutocompleteValue }
+          onChange={ onChange }
+        />
       )) }
     </div>
   );

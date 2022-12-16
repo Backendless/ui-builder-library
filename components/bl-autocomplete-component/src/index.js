@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-import { useOnClickOutside, validate } from './helpers';
+import { useOnClickOutside, useFilteredOptions, validate } from './helpers';
 import { Options } from './options';
 import { TextField } from './text-field';
 
@@ -11,7 +11,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
-  const [optionsList, setOptionsList] = useState([]);
+  const [optionsList, setOptionsList] = useState(validate(options));
   const [inputValue, setInputValue] = useState('');
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [autocompleteValue, setAutocompleteValue] = useState(null);
@@ -24,17 +24,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
   const hasGroup = optionsList[0]?.hasOwnProperty("groupLabel");
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
 
-  const filteredOptions = optionsList.reduce((acc, item) => {
-    const isMatched = label => label.toLowerCase().includes(inputValue.toLowerCase());
-
-    if (hasGroup) {
-      const filteredChildren = item.children.filter(child => isMatched(child.label));
-
-      return filteredChildren.length ? [...acc, { ...item, children: filteredChildren }] : acc;
-    }
-
-    return isMatched(item.label) ? [...acc, item] : acc;
-  }, []);
+  const filteredOptions = useFilteredOptions(optionsList, inputValue, hasGroup);
 
   const classes = cn(
     'bl-customComponent-autocomplete', `bl-customComponent-autocomplete--${variant}`, classList,
