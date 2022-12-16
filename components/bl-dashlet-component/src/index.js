@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import { Dashlet } from './dashlet';
-import { LocalSettings } from './local-settings';
+import { Storage } from './storage';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -11,27 +11,14 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
 
   const rootRef = useRef();
 
-  const localSettings = new LocalSettings(instanceId);
+  const storage = useMemo(() => new Storage(instanceId), []);
 
-  const [isOpen, setIsOpen] = useState(localSettings.isOpen);
-
-  const [position, setPosition] = useState(localSettings.position);
-
-  const [size, setSize] = useState(localSettings.size || { height, width });
+  const [isOpen, setIsOpen] = useState(storage.isOpen);
+  const [position, setPosition] = useState(storage.position || { x: 0, y: 0 });
+  const [size, setSize] = useState(storage.size || { height, width });
 
   useComponentActions(component, size, setSize, position, setPosition, isOpen, setIsOpen);
-
-  useEffect(() => {
-    localSettings.position = position;
-  }, [position]);
-
-  useEffect(() => {
-    localSettings.size = size;
-  }, [size]);
-
-  useEffect(() => {
-    localSettings.isOpen = isOpen;
-  }, [isOpen]);
+  useLocalSettings(storage, position, size, isOpen);
 
   if (!display) {
     return null;
@@ -68,4 +55,18 @@ const useComponentActions = (component, size, setSize, position, setPosition, is
     setIsOpen  : isOpen => setIsOpen(isOpen),
     getIsOpen  : () => isOpen
   });
+};
+
+const useLocalSettings = (storage, position, size, isOpen) => {
+  useEffect(() => {
+    storage.position = position;
+  }, [position]);
+
+  useEffect(() => {
+    storage.size = size;
+  }, [size]);
+
+  useEffect(() => {
+    storage.isOpen = isOpen;
+  }, [isOpen]);
 };

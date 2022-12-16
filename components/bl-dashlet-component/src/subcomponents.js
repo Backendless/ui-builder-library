@@ -15,9 +15,11 @@ export function ContextMenu({ contextBlocks, contextBlocksHandler, styleVariant 
       <button className="context-menu__button" onClick={ onContextBlockButtonClick }>
         <ContextBlockButtonIcon styleVariant={ styleVariant }/>
       </button>
+
       { isContextOpen && (
         <div className="context-menu__container">
           <ul className="context-menu__list">
+
             { contextBlocks.map(({ label, type, content }) => (
               <ContextBlockItem
                 label={ label }
@@ -26,9 +28,11 @@ export function ContextMenu({ contextBlocks, contextBlocksHandler, styleVariant 
                 contextBlocksHandler={ contextBlocksHandler }
               />
             )) }
+
           </ul>
         </div>
       ) }
+
     </div>
   );
 }
@@ -47,6 +51,8 @@ function ContextBlockItem({ content, label, type, contextBlocksHandler }) {
       />
     );
   }
+
+  return null;
 }
 
 function ContextBlockLink({ content, label }) {

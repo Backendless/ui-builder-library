@@ -88,6 +88,7 @@ export function Dashlet(props) {
           <CollapseButtonIcon isOpen={ isOpen } styleVariant={ styleVariant }/>
         </button>
         <h4 className={ cn('dashlet__title', StyleVariants[styleVariant]) }>{ title }</h4>
+
         { contextBlocks && (
           <ContextMenu
             contextBlocks={ contextBlocks }
@@ -95,12 +96,15 @@ export function Dashlet(props) {
             styleVariant={ styleVariant }
           />
         ) }
+
       </div>
+
       { isOpen && (
         <div className="dashlet__body">
           { dashletContentPod.render() }
         </div>
       ) }
+
     </div>
   );
 
