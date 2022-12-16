@@ -55,6 +55,11 @@ export default function MentionComponent({ component, eventHandlers }) {
       }
     }
 
+    if (fields.indexOf('img') > 0) {
+      const index = fields.indexOf('img');
+      [fields[0], fields[index]] = [fields[index], fields[0]];
+    }
+
     if (triggers.some(availableTrigger => availableTrigger === trigger)) {
       return (<div className="content">
         {

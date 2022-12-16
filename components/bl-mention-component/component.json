@@ -145,7 +145,7 @@
     },
     {
       "name": "onBlur",
-      "label": "On Bulr Event",
+      "label": "On Blur Event",
       "handlerDescription": "This event is triggered when the element loses focus.",
       "contextBlocks": []
     },
