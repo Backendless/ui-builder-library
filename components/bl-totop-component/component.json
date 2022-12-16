@@ -1,0 +1,87 @@
+{
+  "id": "c_dca5da031d259c02ce75e8719e2cc2db",
+  "name": "Totop",
+  "description": "The Totop component allows the user to scroll to top of a page.",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "element",
+      "showInSettings": false,
+      "hasLogicHandler": true,
+      "handlerId": "elementLogic",
+      "handlerLabel": "Element To Scroll To Logic"
+    },
+    {
+      "type": "number",
+      "name": "offset",
+      "label": "Offset",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "offsetLogic"
+    },
+    {
+      "type": "select",
+      "name": "position",
+      "label": "Position",
+      "showInSettings": true,
+      "defaultValue": "bottom-right",
+      "hasLogicHandler": false,
+      "handlerId": "positionLogic",
+      "options": [
+        {
+          "value": "bottom-right",
+          "label": "bottom-right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "bottom-left"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "name": "backgroundColor",
+      "label": "Background",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "backgroundColorLogic"
+    },
+    {
+      "type": "color",
+      "name": "color",
+      "label": "Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "colorLogic"
+    },
+    {
+      "type": "text",
+      "name": "size",
+      "label": "Icon Size",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "sizeLogic",
+      "defaultValue": "24px"
+    },
+    {
+      "type": "text",
+      "name": "padding",
+      "label": "Padding",
+      "showInSettings": true,
+      "defaultValue": "10px",
+      "hasLogicHandler": false,
+      "handlerId": "paddingLogic"
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [],
+  "settings": [],
+  "pods": {},
+  "blockUI": ""
+}

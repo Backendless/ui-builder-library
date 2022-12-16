@@ -1,0 +1,29 @@
+@bl-customComponent-totop-theme: @themePrimary;
+@bl-customComponent-totop-themeTextColor: @appTextColor;
+
+@bl-customComponent-totop-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+@bl-customComponent-totop-hover-background-color: fade(@bl-customComponent-totop-background-color, 20%);
+
+@bl-customComponent-totop-size: 20px;
+
+.bl-customComponent-totop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  color: @bl-customComponent-totop-themeTextColor;
+  background-color: @bl-customComponent-totop-background-color;
+  border-radius: 50%;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: @bl-customComponent-totop-hover-background-color;
+  }
+
+  .totop__icon {
+    fill: @bl-customComponent-totop-themeTextColor;
+  }
+}
