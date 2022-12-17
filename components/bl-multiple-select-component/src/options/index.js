@@ -3,6 +3,8 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { Option } from './option';
 import { SelectAllCheckbox } from './select-all-checkbox';
 
+const DEFAULT = 'default';
+
 export function Options(props) {
   const { type, options, selectValue, selectAllCheckbox, selectAllLabel, setSelectValue, onChange } = props;
   const selectRef = useRef(null);
@@ -18,29 +20,23 @@ export function Options(props) {
   }, []);
 
   const selectedValuesMap = useMemo(() => {
-    return selectValue.reduce((m, { objectId }) => ({ ...m, [objectId]: 1 }), {});
+    return selectValue.reduce((m, { value }) => ({ ...m, [value]: 1 }), {});
   }, [selectValue]);
 
   const isAllOptionsSelected = useMemo(() => options.length === Object.keys(selectedValuesMap).length, [selectedValuesMap]);
 
-  const handleSelectAll = () => {
-    const newSelectValue = isAllOptionsSelected ? [] : options;
-
-    setSelectValue(newSelectValue);
-    onChange({ selectValue: newSelectValue });
-  };
-
   const handleSelectValue = option => {
     let newSelectValue;
-    const isOptionSelected = selectValue.find(({ objectId }) => objectId === option.objectId);
+    const isOptionSelected = selectValue.find(({ value }) => value === option.value);
 
     if (isOptionSelected) {
-      newSelectValue = selectValue.filter(({ objectId }) => objectId !== isOptionSelected.objectId);
+      newSelectValue = selectValue.filter(({ value }) => value !== isOptionSelected.value);
     } else {
       const selectedItems = [...selectValue, option];
+      const selectedItemsMap = selectedItems.reduce((acc, item) => ({ ...acc, [item.value]: 1 }), {});
 
-      newSelectValue = type === 'default'
-        ? options.filter(item => selectedItems.includes(item))
+      newSelectValue = type === DEFAULT
+        ? options.filter(item => selectedItemsMap[item.value])
         : selectedItems;
     }
 
@@ -53,16 +49,18 @@ export function Options(props) {
       { selectAllCheckbox &&
         <SelectAllCheckbox
           label={ selectAllLabel }
+          options={ options }
           isAllOptionsSelected={ isAllOptionsSelected }
-          handleSelectAll={ handleSelectAll }
+          setSelectValue={ setSelectValue }
+          onChange={ onChange }
         />
       }
       { options.map(option => (
         <Option
-          key={ option.objectId }
+          key={ option.value }
           type={ type }
           option={ option }
-          isOptionSelected={ selectedValuesMap[option.objectId] }
+          isOptionSelected={ selectedValuesMap[option.value] }
           handleSelectValue={ handleSelectValue }
         />
       )) }
