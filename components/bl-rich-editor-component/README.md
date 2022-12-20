@@ -72,6 +72,10 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 **Dimensions**
 
 ````
+@bl-customComponent-richEditor-editor-image-width: auto;
+@bl-customComponent-richEditor-editor-image-height: auto;
+@bl-customComponent-richEditor-editor-video-width: auto;
+@bl-customComponent-richEditor-editor-video-height: auto;
 @bl-customComponent-richEditor-editor-height: auto;
 @bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight: 18px;
 ````

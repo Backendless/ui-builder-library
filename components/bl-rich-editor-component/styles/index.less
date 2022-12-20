@@ -12,6 +12,10 @@
 @bl-customComponent-richEditor-editor-borderWidth: 0px;
 @bl-customComponent-richEditor-editor-height: auto;
 @bl-customComponent-richEditor-editor-placeholder-color: fade(@bl-customComponent-richEditor-textColor, 60%);
+@bl-customComponent-richEditor-editor-image-width: auto;
+@bl-customComponent-richEditor-editor-image-height: auto;
+@bl-customComponent-richEditor-editor-video-width: auto;
+@bl-customComponent-richEditor-editor-video-height: auto;
 
 @bl-customComponent-richEditor-toolbar-borderWidth: 0px;
 @bl-customComponent-richEditor-toolbar-defaultContent-fontSize: "14px";
@@ -39,8 +43,20 @@
       color: contrast(@bl-customComponent-richEditor-disabledColor);
     }
 
-    .ql-editor.ql-blank::before {
-      color: @bl-customComponent-richEditor-editor-placeholder-color;
+    .ql-editor {
+      img {
+        width: @bl-customComponent-richEditor-editor-image-width;
+        height: @bl-customComponent-richEditor-editor-image-height;
+      }
+
+      .ql-video {
+        width: @bl-customComponent-richEditor-editor-video-width;
+        height: @bl-customComponent-richEditor-editor-video-height;
+      }
+
+      &.ql-blank::before {
+        color: @bl-customComponent-richEditor-editor-placeholder-color;
+      }
     }
   }
 
