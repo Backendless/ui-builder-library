@@ -1,19 +1,18 @@
+import { useMemo } from 'react';
+
 import { List } from './list';
 
-export default function ListComponent ({
-  component, eventHandlers
-}) {
+const { cn } = BackendlessUI.CSSUtils;
 
-  const { cn } = BackendlessUI.CSSUtils;
+export default function ListComponent ({ component, eventHandlers }) {
+
   const { style, classList, width, backgroundColor } = component;
 
-  style.width = width;
-  style.backgroundColor = backgroundColor;
+  const styles = useMemo(() => ({ ...style, width, backgroundColor }), [style, width, backgroundColor]);
 
   return (
-    <div className={ cn('bl-customComponent-list', classList) } style={ style }>
-      <List component={component}
-            eventHandlers={eventHandlers}/>
+    <div className={ cn('bl-customComponent-list', classList) } style={ styles }>
+      <List as={ component.type } component={ component } eventHandlers={ eventHandlers }/>
     </div>
   )
 }

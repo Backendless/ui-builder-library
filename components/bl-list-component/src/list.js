@@ -1,30 +1,15 @@
 import { ListContent } from './list-content';
 
-export function List ({
-  component, eventHandlers, child
-}) {
+export function List ({ component, eventHandlers, children, as=component.type }) {
 
-  const listType = (type) => {
-    if(type && type === 'ol') {
-      return (
-        <ol className="list">
-          <ListContent
-          component={component}
-          child={child}
-          eventHandlers={eventHandlers} />
-        </ol>
-      )
-    } else {
-      return (
-        <ul className="list">
-          <ListContent
-          component={component}
-          child={child}
-          eventHandlers={eventHandlers} />
-        </ul>
-      )
-    }
-  };
+  const Component = as;
 
-  return (listType(component.type))
+  return (
+    <Component className="list">
+      <ListContent
+        component={ component }
+        children={ children }
+        eventHandlers={ eventHandlers } />
+    </Component>
+  );
 }
