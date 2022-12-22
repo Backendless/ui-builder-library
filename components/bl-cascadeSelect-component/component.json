@@ -1,9 +1,9 @@
 {
   "id": "c_4709a015328b307e652d915fc3f36fb7",
   "name": "Cascade Select",
-  "description": "",
+  "description": "Cascade Select is a component to select a value from a nested structure of options.",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "check-double",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -16,9 +16,39 @@
       "hasLogicHandler": true,
       "handlerId": "cascadeLogic",
       "handlerLabel": "Cascade Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine an array of select items to display as the available options."
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "label": "Placeholder",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "placeholderLogic",
+      "handlerLabel": "Placeholder Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the default text to display when no option is selected."
     }
   ],
-  "eventHandlers": [],
-  "actions": []
+  "eventHandlers": [
+    {
+      "name": "onClickItem",
+      "label": "On Click Item",
+      "contextBlocks": [
+        {
+          "id": "item",
+          "label": "Item"
+        }
+      ],
+      "handlerDescription": "This event is triggered when user select item"
+    }
+  ],
+  "actions": [
+    {
+      "id": "getSelected",
+      "label": "Get Selected in",
+      "hasReturn": true
+    }
+  ]
 }

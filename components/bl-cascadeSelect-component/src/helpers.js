@@ -41,6 +41,8 @@ export function isCyclic(obj) {
 
 export const prepareCascade = (cascade, setParentItems) => {
   let levelOfNesting = 0;
+  const parentItems = [];
+  const groupParentItems = [];
 
   const prepare = (cascade) => {
     const validCascade = cascade.map(item => {
@@ -53,7 +55,7 @@ export const prepareCascade = (cascade, setParentItems) => {
           children: prepare(item.children)
         };
 
-        setParentItems(state => [...state, { code: item.code, isOpen: false, levelOfNesting }]);
+        parentItems.push({ code: item.code, isOpen: false, levelOfNesting });
       }
 
       return validItem;
@@ -64,5 +66,25 @@ export const prepareCascade = (cascade, setParentItems) => {
     return validCascade;
   };
 
-  return prepare(cascade);
+  const preparedCascade = prepare(cascade);
+
+  for (let i = 0; i <= levelOfNesting * -1; i++) {
+    groupParentItems.push(parentItems.filter(item => {
+      return item.levelOfNesting === i;
+    }));
+  }
+
+  setParentItems(groupParentItems);
+
+  return preparedCascade;
+};
+
+export const findParentItem = (parentItems, item) => {
+  for (let i = 0; i < parentItems.length; i++) {
+    for (let j = 0; j < parentItems[i].length; j++) {
+      if (parentItems[i][j].code === item.code) {
+        return parentItems[i][j];
+      }
+    }
+  }
 };

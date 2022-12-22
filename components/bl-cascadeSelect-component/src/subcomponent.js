@@ -1,3 +1,5 @@
+import { findParentItem } from './helpers';
+
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Cascade(props) {
@@ -10,14 +12,14 @@ export function Cascade(props) {
   return (
     <ul
       className="cascade-select__list"
-      style={ { top: levelOfNesting ? 0 : '100%', left: levelOfNesting ? 100 + '%' : 0 } }>
+      style={ { top: levelOfNesting ? 0 : '100%', left: levelOfNesting ? '100%' : 0 } }>
       { itemsCascade.map(item => (
         <CascadeItem
           item={ item }
           openCascadeHandler={ openCascadeHandler }
           parentItems={ parentItems }
           openItemHandler={ openItemHandler }
-          selected={selected}
+          selected={ selected }
         />
       )) }
     </ul>
@@ -26,18 +28,17 @@ export function Cascade(props) {
 
 export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHandler, selected }) {
   if (item.children) {
-    const { isOpen } = parentItems.find(parent => parent.code === item.code);
+    const { isOpen } = findParentItem(parentItems, item);
 
     return (
       <li>
         <div
-          className={cn('cascade-select__item', {'cascade-select__item--open': isOpen})}
+          tabIndex={ 0 }
+          className={ cn('cascade-select__item', { open: isOpen }) }
           onClick={ () => openCascadeHandler(item) }>
           { item.name }
-          <svg
-            className="cascade-select__collapse-icon"
-            viewBox="0 0 24 24">
-            <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+          <svg className="cascade-select__collapse-icon" viewBox="0 0 24 24">
+            <path d="M13.83,19a1,1,0,0,1-.78-.37l-4.83-6a1,1,0,0,1,0-1.27l5-6a1,1,0,0,1,1.54,1.28L10.29,12l4.32,5.36A1,1,0,0,1,13.83,19Z"/>
           </svg>
         </div>
 
@@ -49,7 +50,7 @@ export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHan
             openCascadeHandler={ openCascadeHandler }
             openItemHandler={ openItemHandler }
             levelOfNesting={ item.levelOfNesting + 1 }
-            selected={selected}
+            selected={ selected }
           />
         ) }
       </li>
@@ -58,7 +59,8 @@ export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHan
 
   return (
     <li
-      className={cn('cascade-select__item', {'cascade-select__item--open': item.code === selected.code})}
+      tabIndex={ 0 }
+      className={ cn('cascade-select__item', { open: item.code === selected.code }) }
       onClick={ () => openItemHandler(item) }>
       { item.name }
     </li>
@@ -67,10 +69,8 @@ export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHan
 
 export function CollapseButtonIcon() {
   return (
-    <svg
-      className="cascade-select__collapse-button-icon"
-      viewBox="0 0 24 24">
-      <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+    <svg className="cascade-select__collapse-input-icon" viewBox="0 0 24 24">
+      <path d="M13.83,19a1,1,0,0,1-.78-.37l-4.83-6a1,1,0,0,1,0-1.27l5-6a1,1,0,0,1,1.54,1.28L10.29,12l4.32,5.36A1,1,0,0,1,13.83,19Z"/>
     </svg>
   );
 }

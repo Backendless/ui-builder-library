@@ -4,15 +4,14 @@ import { prepareCascade, isCyclic } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function CascadeSelect({ component, eventHandlers, settings, instanceId }) {
-  const { display, classList, style, cascade } = component;
+export default function CascadeSelect({ component, eventHandlers }) {
+  const { display, classList, style, cascade, placeholder } = component;
+  const { onClickItem } = eventHandlers;
 
-  const [selected, setSelected] = useState({ name: 'Select a...' });
   const [itemsCascade, setItemsCascade] = useState();
   const [parentItems, setParentItems] = useState([]);
+  const [selected, setSelected] = useState({ name: placeholder });
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log(parentItems);
 
   useEffect(() => {
     const [detected, locate] = isCyclic(cascade);
@@ -26,17 +25,34 @@ export default function CascadeSelect({ component, eventHandlers, settings, inst
     }
   }, [cascade]);
 
-  const openCascadeHandler = (item) => {
-    setParentItems(state => state.map(parentItem => (
-      item.code === parentItem.code ? { ...parentItem, isOpen: !item.isOpen } : parentItem
-    )));
-  };
+  const openCascadeHandler = useCallback((item) => {
+    const { code, levelOfNesting } = item;
 
-  const openItemHandler = (item) => {
+    setParentItems(state => {
+      const currentParentItems = [...state];
+
+      for (let i = 0; i < currentParentItems[levelOfNesting].length; i++) {
+        if (currentParentItems[levelOfNesting][i].code === code) {
+          currentParentItems[levelOfNesting][i].isOpen = !currentParentItems[levelOfNesting][i].isOpen;
+        } else {
+          currentParentItems[levelOfNesting][i].isOpen = false;
+        }
+      }
+
+      return currentParentItems;
+    });
+  }, []);
+
+  const openItemHandler = useCallback((item) => {
     setSelected(item);
     setIsOpen(false);
-    // setParentItems(state => state.map(parentItem => ({ ...parentItem, isOpen: false })));
-  };
+
+    onClickItem({ item });
+  }, []);
+
+  const onClickInput = () => setIsOpen(state => !state);
+
+  component.getSelected = () => selected;
 
   if (!display) {
     return null;
@@ -44,18 +60,19 @@ export default function CascadeSelect({ component, eventHandlers, settings, inst
 
   return (
     <div className={ cn('bl-cascadeSelect-component', ...classList) } style={ style }>
-      <div className={ cn('cascade-select__input', { 'cascade-select__input--selected': selected.code }) }
-           onClick={ () => setIsOpen(state => !state) }>
+      <div
+        className={ cn('cascade-select__input', { 'cascade-select__input--selected': selected.code }) }
+        onClick={ onClickInput }>
         <span>{ selected.name }</span>
         <CollapseButtonIcon/>
       </div>
       <Cascade
         isOpen={ isOpen }
+        selected={ selected }
         itemsCascade={ itemsCascade }
         parentItems={ parentItems }
         openCascadeHandler={ openCascadeHandler }
         openItemHandler={ openItemHandler }
-        selected={selected}
       />
     </div>
   );

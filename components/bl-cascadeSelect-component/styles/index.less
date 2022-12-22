@@ -1,8 +1,38 @@
-// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-cascadeSelect-component-themePrimary: @themePrimary;
+@bl-cascadeSelect-component-themeBackgroundColor: @appBackgroundColor;
+@bl-cascadeSelect-component-themeTextColor: @appTextColor;
+
+@bl-cascadeSelect-component-collapse-icon-size: 15px;
+
+@bl-cascadeSelect-component-input-icon-size: 20px;
+@bl-cascadeSelect-component-input-min-width: 200px;
+@bl-cascadeSelect-component-input-border-color: if(@isLightTheme, rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+@bl-cascadeSelect-component-input-color: #6c757d;
+
+@bl-cascadeSelect-component-list-z-index: 1;
+@bl-cascadeSelect-component-list: if(
+        @isLightTheme,
+        @bl-cascadeSelect-component-themeBackgroundColor,
+        lighten(@bl-cascadeSelect-component-themeBackgroundColor, 5%)
+);
+
+@bl-cascadeSelect-component-item-backround-color: if(@isLightTheme, rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+@bl-cascadeSelect-component-item-color-open: lighten(@bl-cascadeSelect-component-themePrimary, 10%);
+@bl-cascadeSelect-component-item-backround-color-open: if(
+        @isLightTheme,
+        lighten(@bl-cascadeSelect-component-themePrimary, 40%),
+        darken(@bl-cascadeSelect-component-themePrimary, 55%)
+);
+
+@bl-cascadeSelect-component-item-border-focus: if(
+        @isLightTheme,
+        lighten(@bl-cascadeSelect-component-themePrimary, 30%),
+        darken(@bl-cascadeSelect-component-themePrimary, 40%)
+);
 
 .bl-cascadeSelect-component {
   position: relative;
-  width: 200px;
+  user-select: none;
 
   .cascade-select {
     &__input {
@@ -14,32 +44,52 @@
 
       cursor: pointer;
 
-      border: 1px solid #ced4da;
+      border: 1px solid @bl-cascadeSelect-component-input-border-color;
       border-radius: 6px;
 
-      color: #6c757d;
+      background-color: @bl-cascadeSelect-component-themeBackgroundColor;
+      color: @bl-cascadeSelect-component-input-color;
 
       transition: border-color 0.3s;
 
-      &--selected {
-        color: @appTextColor;
+      &:hover {
+        border-color: @bl-cascadeSelect-component-themePrimary;
       }
 
-      &:hover {
-        border-color: @themePrimary;
+      &--selected {
+        color: @bl-cascadeSelect-component-themeTextColor;
       }
     }
 
     &__list {
-      margin: 0;
-      min-width: 200px;
       position: absolute;
       top: 100%;
+      z-index: @bl-cascadeSelect-component-list-z-index;
+
+      min-width: 100%;
+
+      margin: 0;
       padding: 10px 0;
+
       list-style: none;
-      background: #fff;
+
+      background: @bl-cascadeSelect-component-list;
       border-radius: 6px;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+      animation: 0.1s linear list-open;
+    }
+
+    @keyframes list-open {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     &__item {
@@ -47,27 +97,38 @@
       justify-content: space-between;
       padding: 10px 17px;
 
-      transition: background-color 0.3s;
+      transition: background-color, color 0.2s;
 
       &:hover {
-        background-color: #e9ecef;
+        background-color: @bl-cascadeSelect-component-item-backround-color;
       }
 
-      &--open {
-        background-color: lighten(@themePrimary, 30%);
+      &.open {
+        background-color: @bl-cascadeSelect-component-item-backround-color-open;
+        color: @bl-cascadeSelect-component-item-color-open;
+      }
+
+      &:focus {
+        border: 2px solid @bl-cascadeSelect-component-item-border-focus;
       }
     }
 
-    &__collapse-button-icon {
-      width: 30px;
-      height: 30px;
+    &__collapse-input-icon {
+      width: @bl-cascadeSelect-component-input-icon-size;
+      height: @bl-cascadeSelect-component-input-icon-size;
+
       fill: #aaa;
+
+      transform: rotate(-90deg);
     }
 
     &__collapse-icon {
-      height: 15px;
-      width: 15px;
-      transform: rotate(-90deg);
+      height: @bl-cascadeSelect-component-collapse-icon-size;
+      width: @bl-cascadeSelect-component-collapse-icon-size;
+
+      fill: #aaa;
+
+      transform: rotate(-180deg);
     }
   }
 }
