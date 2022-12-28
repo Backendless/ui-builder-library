@@ -86,15 +86,15 @@
   "actions": [
     {
       "id": "playAudio",
-      "label": "Play Audio"
+      "label": "Play Audio in"
     },
     {
       "id": "stopAudio",
-      "label": "Stop Audio"
+      "label": "Stop Audio in"
     },
     {
       "id": "replaceAudio",
-      "label": "Replace Audio",
+      "label": "Replace Audio in",
       "inputs": [
         {
           "id": "audioUrl",

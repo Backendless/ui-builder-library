@@ -14,6 +14,6 @@ Custom HTML is a component of Backendless UI-Builder designer. This allows you w
 
 ## Actions
 
-| Action   | Inputs         | Returns |
-|----------|----------------|---------|
-| Set HTML | `HTML: string` |         |
+| Action                   | Inputs         | Returns |
+|--------------------------|----------------|---------|
+| Set HTML for Custom HTML | `HTML: string` |         |
