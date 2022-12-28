@@ -193,7 +193,7 @@
   "actions": [
     {
       "id": "getText",
-      "label": "Get Text",
+      "label": "Get Text from",
       "hasReturn": true,
       "inputs": [
         {
@@ -208,37 +208,37 @@
     },
     {
       "id": "setText",
-      "label": "Set Text",
+      "label": "Set Text for",
       "inputs": [
         {
-          "id": "data",
-          "label": "Data"
+          "id": "text",
+          "label": "Text"
         }
       ]
     },
     {
       "id": "getHTML",
-      "label": "Get HTML",
+      "label": "Get HTML from",
       "hasReturn": true
     },
     {
       "id": "setHTML",
-      "label": "Set HTML",
+      "label": "Set HTML for",
       "inputs": [
         {
-          "id": "data",
-          "label": "Data"
+          "id": "content",
+          "label": "Content"
         }
       ]
     },
     {
       "id": "getSelection",
-      "label": "Get Selection",
+      "label": "Get Selection Range from",
       "hasReturn": true
     },
     {
       "id": "setSelection",
-      "label": "Set Selection",
+      "label": "Set Selection Range in",
       "inputs": [
         {
           "id": "index",
@@ -252,12 +252,12 @@
     },
     {
       "id": "getLength",
-      "label": "Get Length",
+      "label": "Get Length Property from",
       "hasReturn": true
     },
     {
       "id": "deleteText",
-      "label": "Delete Text",
+      "label": "Delete Text from",
       "inputs": [
         {
           "label": "Index",
