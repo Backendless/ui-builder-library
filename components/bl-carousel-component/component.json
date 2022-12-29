@@ -131,15 +131,15 @@
   "actions": [
     {
       "id": "goToNextImage",
-      "label": "Go to Next Image"
+      "label": "Go to Next Image in"
     },
     {
       "id": "goToPrevImage",
-      "label": "Go to Previous Image"
+      "label": "Go to Previous Image in"
     },
     {
       "id": "goToImage",
-      "label": "Go to Image",
+      "label": "Go to Image in",
       "inputs": [
         {
           "id": "index",
@@ -159,7 +159,7 @@
     },
     {
       "id": "setImagesData",
-      "label": "Set Images Data",
+      "label": "Set Images Data for",
       "inputs": [
         {
           "id": "listImagesData",
