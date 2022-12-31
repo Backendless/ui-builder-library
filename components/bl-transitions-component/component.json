@@ -1,0 +1,79 @@
+{
+  "id": "c_d6d2fd01824b4d2f7f24aec9e4caa66c",
+  "name": "Transitions",
+  "description": "This component allows the animate mounting and unmounting of page elements",
+  "showInToolbox": true,
+  "faIcon": "pencil-ruler",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "variants",
+      "label": "Variants",
+      "showInSettings": true,
+      "defaultValue": "collapse-top",
+      "hasLogicHandler": false,
+      "handlerId": "variantsLogic",
+      "handlerLabel": "Variants Logic",
+      "options": [
+        {
+          "value": "collapse-top",
+          "label": "Collapse Top"
+        },
+        {
+          "value": "collapse-left",
+          "label": "Collapse Left"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "grow",
+          "label": "Grow"
+        },
+        {
+          "value": "zoom",
+          "label": "Zoom"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "animationDuration",
+      "label": "Animation Duration (ms)",
+      "showInSettings": true,
+      "defaultValue": "300",
+      "hasLogicHandler": false,
+      "handlerId": "animationDurationLogic",
+      "handlerLabel": "Animation Duration Logic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onMounted",
+      "label": "On Mounted",
+      "handlerDescription": "This event is triggered after the component is mounted and appeared on the page"
+    },
+    {
+      "name": "onUnmounted",
+      "label": "On Unmounted",
+      "handlerDescription": "This event is triggered before the component is unmounted and destroyed"
+    },
+    {
+      "name": "onEndAnimation",
+      "label": "On End Animation",
+      "handlerDescription": "This event is triggered after the animation finishes"
+    }
+  ],
+  "actions": [],
+  "pods": {
+    "d562eaea8fcc85660b2f4124a92456d2": {
+      "id": "transitionsContainer",
+      "dataContainer": true
+    }
+  },
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"transitionsContainer\" data-uid=\"d562eaea8fcc85660b2f4124a92456d2\" data-pod-container=\"true\" data-data-container=\"true\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;\"></div>"
+}
