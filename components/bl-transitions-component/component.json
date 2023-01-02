@@ -3,7 +3,7 @@
   "name": "Transitions",
   "description": "This component allows the animate mounting and unmounting of page elements",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "reply-all",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
