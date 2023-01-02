@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 
+import { useStyles } from './use-styles';
+
 import { IgrTreemap } from './lib/igr-treemap.umd.js';
 import { IgrTreemapModule } from './lib/igr-treemap.umd.js';
 
@@ -9,17 +11,15 @@ IgrTreemapModule.register();
 
 export default function TreemapComponent({ component }) {
   const {
-    classList, style, display, disabled, label, width, height,
+    classList, style, display, disabled, title, width, height,
     fillBrushes, fillScaleLogarithmic, headerDisplayMode, data
   } = component;
 
+  const rootRef = useRef();
   const treemapRef = useRef();
+  const styles = useStyles(style, width, height);
 
-  const styles = {
-    ...style,
-    width: `${width}px`,
-    height: `${height}px`,
-  };
+  component.el = rootRef.current;
 
   if (!display) {
     return null;
@@ -27,17 +27,17 @@ export default function TreemapComponent({ component }) {
 
   return (
     <div
+      ref={ rootRef }
       style={ styles }
       className={ cn("bl-customComponent-treemap", classList, { "bl-customComponent-treemap--disabled": disabled }) }>
       <IgrTreemap
         ref={ treemapRef }
         height="100%"
         width="100%"
-        rootTitle={ label }
+        rootTitle={ title }
         valueMemberPath="value"
         parentIdMemberPath="parent"
         labelMemberPath="label"
-        idMemberPath="label"
         dataSource={ data }
         fillBrushes={ fillBrushes }
         headerDisplayMode={ headerDisplayMode }
