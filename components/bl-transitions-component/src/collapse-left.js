@@ -14,13 +14,14 @@ export function CollapseLeft({ component, eventHandlers, transitionsContainerPod
     setWidth(rootRef.current.clientWidth);
     setIsOpen(false);
 
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setIsOpen(true);
     }, 0);
 
     onMounted();
 
     return () => {
+      clearTimeout(timeout);
       onUnmounted();
     };
   }, []);
