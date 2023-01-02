@@ -1,0 +1,126 @@
+import { useMemo, useEffect, useCallback, useState } from 'react';
+import { useDraggable, getPosition, StyleVariants } from './helpers';
+import { CollapseButtonIcon, ContextMenu } from './subcomponents';
+import { ResizableBox } from './react-resizable.min';
+
+const { cn } = BackendlessUI.CSSUtils;
+
+export function Dashlet(props) {
+  const {
+    rootRef, isOpen, height, width, setIsOpen, setPosition, setSize,
+    position, contextBlocksHandler, dashletContentPod, component
+  } = props;
+  const {
+    title, resizing, contextBlocks, minWidth, maxWidth,
+    minHeight, maxHeight, dragging, styleVariant
+  } = component;
+
+  const [resizeMaxWidth, setResizeMaxWidth] = useState(maxWidth);
+  const [resizeMaxHeight, setResizeMaxHeight] = useState(maxHeight);
+
+  const style = useMemo(() => {
+    if (!resizing || !isOpen) {
+      return {
+        height: isOpen ? height + 'px' : 'auto',
+        width : width + 'px',
+      };
+    }
+
+    return {};
+  }, [height, width, isOpen]);
+
+  const onCollapseButtonClick = () => {
+    setIsOpen(state => !state);
+  };
+
+  useEffect(() => {
+    if (position) {
+      rootRef.current.style.transform = `translate(${ position.x }px, ${ position.y }px)`;
+    }
+  }, [position]);
+
+  const handleDrag = useCallback((coords) => {
+    const position = getPosition(rootRef, coords);
+
+    setPosition(position);
+
+    return position;
+  }, []);
+
+  const [ref] = useDraggable({
+    onDrag         : handleDrag,
+    rootRef        : rootRef,
+    initialPosition: position,
+    dragging
+  });
+
+  const onResizeStop = useCallback((e, data) => {
+    setResizeMaxWidth(maxWidth);
+    setResizeMaxHeight(maxHeight);
+    setSize({ width: data.size.width, height: data.size.height });
+  }, []);
+
+  const onResize = useCallback((e, data) => {
+    const { top, left, width, height } = rootRef.current.parentElement.getBoundingClientRect();
+
+    const parentElementOffsetLeft = left + window.pageXOffset;
+    const parentElementOffsetTop = top + window.pageYOffset;
+
+    const resizingRestrictionsInParentX = e.pageX >= width + parentElementOffsetLeft;
+    const resizingRestrictionsInParentY = e.pageY >= height + parentElementOffsetTop;
+
+    if (resizingRestrictionsInParentX) {
+      setResizeMaxWidth(data.size.width);
+    }
+
+    if (resizingRestrictionsInParentY) {
+      setResizeMaxHeight(data.size.height);
+    }
+  }, []);
+
+  const DashletComponent = (
+    <div className={ cn('dashlet', StyleVariants[styleVariant], { 'close': !isOpen }) } style={ style }>
+      <div
+        ref={ ref }
+        className={ cn('dashlet__header', StyleVariants[styleVariant]) }
+        style={ { cursor: dragging ? 'move' : 'auto' } }>
+        <button type="button" className="dashlet__collapse-button" onClick={ onCollapseButtonClick }>
+          <CollapseButtonIcon isOpen={ isOpen } styleVariant={ styleVariant }/>
+        </button>
+        <h4 className={ cn('dashlet__title', StyleVariants[styleVariant]) }>{ title }</h4>
+
+        { contextBlocks && (
+          <ContextMenu
+            contextBlocks={ contextBlocks }
+            contextBlocksHandler={ contextBlocksHandler }
+            styleVariant={ styleVariant }
+          />
+        ) }
+
+      </div>
+
+      { isOpen && (
+        <div className="dashlet__body">
+          { dashletContentPod.render() }
+        </div>
+      ) }
+
+    </div>
+  );
+
+  if (resizing && isOpen) {
+    return (
+      <ResizableBox
+        onResizeStop={ onResizeStop }
+        onResize={ onResize }
+        height={ height }
+        width={ width }
+        minConstraints={ [minWidth, minHeight] }
+        maxConstraints={ [resizeMaxWidth, resizeMaxHeight] }>
+        { DashletComponent }
+      </ResizableBox>
+    );
+  }
+
+  return DashletComponent;
+}
