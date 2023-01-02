@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 
 import { Option } from './option';
 import { SelectAllCheckbox } from './select-all-checkbox';
@@ -25,7 +25,7 @@ export function Options(props) {
 
   const isAllOptionsSelected = useMemo(() => options.length === Object.keys(selectedValuesMap).length, [selectedValuesMap]);
 
-  const handleSelectValue = option => {
+  const handleSelectValue = useCallback((option) => {
     let newSelectValue;
     const isOptionSelected = selectValue.find(({ value }) => value === option.value);
 
@@ -42,7 +42,7 @@ export function Options(props) {
 
     setSelectValue(newSelectValue);
     onChange({ selectValue: newSelectValue });
-  };
+  }, [selectValue]);
 
   return (
     <div style={{ transform: `translateY(-${ margin }px)` }} className="options" ref={ selectRef }>
