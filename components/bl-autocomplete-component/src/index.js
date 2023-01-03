@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback, useRef } from 'react';
 
-import { useOnClickOutside, validate } from './helpers';
+import { useOnClickOutside, useFilteredOptions, validate } from './helpers';
 import { Options } from './options';
 import { TextField } from './text-field';
 
@@ -11,20 +11,17 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
-  const [optionsList, setOptionsList] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [autocompleteValue, setAutocompleteValue] = useState(null);
   const [isAutocompleteActive, setIsAutocompleteActive] = useState(false);
 
-  useEffect(() => {
-    setOptionsList(validate(options));
-  }, [options]);
+  const optionsList = useMemo(() => validate(options), [options]);
 
+  const hasGroup = !!optionsList[0]?.groupLabel;
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
-  const filteredOptions = optionsList.filter(({ label }) => (
-    label.toLowerCase().includes(inputValue.toLowerCase())
-  ));
+
+  const filteredOptions = useFilteredOptions(optionsList, inputValue, hasGroup);
 
   const classes = cn(
     'bl-customComponent-autocomplete', `bl-customComponent-autocomplete--${variant}`, classList,
@@ -66,9 +63,10 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
         setIsAutocompleteActive={ setIsAutocompleteActive }
         eventHandlers={ eventHandlers }
       />
-      {isOptionsOpen && (
+      { isOptionsOpen && (
         <Options
-          optionList={ filteredOptions }
+          hasGroup={ hasGroup }
+          optionsList={ filteredOptions }
           emptyOptionsLabel={ emptyOptionsLabel }
           autocompleteHeight={ autocompleteHeight }
           setInputValue={ setInputValue }
@@ -76,7 +74,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
           setAutocompleteValue={ setAutocompleteValue }
           onChange={ eventHandlers.onChange }
         />
-      )}
+      ) }
     </div>
   );
 };

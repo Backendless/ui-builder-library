@@ -1,4 +1,3 @@
-// you can use LESS variables from the current Theme and app extensions of the UI-Container
 @bl-customComponent-autocomplete-themeColor: @themePrimary;
 @bl-customComponent-autocomplete-backgroundColor: @appBackgroundColor;
 @bl-customComponent-autocomplete-textColor: @appTextColor;
@@ -14,11 +13,15 @@
 @bl-customComponent-autocomplete-iconFill: @bl-customComponent-autocomplete-themeColor;
 @bl-customComponent-autocomplete-borderRadius: 4px;
 
-@bl-customComponent-autocomplete-optionPadding: 6px 16px;
-@bl-customComponent-autocomplete-optionBackgroundColorOnHover: @backgroundColorOnHoverPrimary;
-@bl-customComponent-autocomplete-optionsHeight: 40vh;
+@bl-customComponent-autocomplete-option-padding: 6px 16px;
+@bl-customComponent-autocomplete-option-backgroundColorOnHover: @backgroundColorOnHoverPrimary;
+@bl-customComponent-autocomplete-options-maxHeight: 40vh;
 
 @bl-customComponent-autocomplete-borderColor-onHover: rgba(@themePrimary, 0.75);
+
+@bl-customComponent-autocomplete-groupLabel-padding: 6px 10px;
+@bl-customComponent-autocomplete-groupLabel-color: @bl-customComponent-autocomplete-textColor;
+@bl-customComponent-autocomplete-groupLabel-backgroundColor: rgba(@themePrimary, 0.5);
 
 .bl-customComponent-autocomplete {
   position: relative;
@@ -58,11 +61,10 @@
   .options {
     position: absolute;
     width: 300px;
-    max-height: @bl-customComponent-autocomplete-optionsHeight;
+    max-height: @bl-customComponent-autocomplete-options-maxHeight;
     box-shadow: @bl-customComponent-autocomplete-boxShadow;
     border-radius: @bl-customComponent-autocomplete-borderRadius;
     margin-top: 55px;
-    padding: 8px 0;
     inset: 0 auto auto 0;
     background-color: @bl-customComponent-autocomplete-backgroundColor;
     color: @bl-customComponent-autocomplete-textColor;
@@ -84,10 +86,10 @@
     cursor: pointer;
     box-sizing: border-box;
     outline: 0;
-    padding: @bl-customComponent-autocomplete-optionPadding;
+    padding: @bl-customComponent-autocomplete-option-padding;
 
     &:hover  {
-      background-color: @bl-customComponent-autocomplete-optionBackgroundColorOnHover;
+      background-color: @bl-customComponent-autocomplete-option-backgroundColorOnHover;
     }
   }
 
@@ -119,6 +121,18 @@
     }
   }
 
+  .groupe-label {
+    min-height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 700;
+    padding: @bl-customComponent-autocomplete-groupLabel-padding;
+    color: @bl-customComponent-autocomplete-groupLabel-color;
+    background-color: @bl-customComponent-autocomplete-groupLabel-backgroundColor;
+    overflow: hidden;
+    text-transform: uppercase;
+  }
 
   .button-container {
     position: absolute;
