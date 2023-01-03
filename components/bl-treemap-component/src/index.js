@@ -2,8 +2,7 @@ import { useRef } from 'react';
 
 import { useStyles } from './use-styles';
 
-import { IgrTreemap } from './lib/igr-treemap.umd.js';
-import { IgrTreemapModule } from './lib/igr-treemap.umd.js';
+import { IgrTreemap, IgrTreemapModule } from './lib/igr-treemap.umd.js';
 
 const { cn } = BackendlessUI.CSSUtils;
 
