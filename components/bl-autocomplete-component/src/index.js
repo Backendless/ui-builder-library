@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback, useRef } from 'react';
 
 import { useOnClickOutside, useFilteredOptions, validate } from './helpers';
 import { Options } from './options';
@@ -11,17 +11,14 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   const rootRef = useRef();
   const autocompleteRef = useRef();
-  const [optionsList, setOptionsList] = useState(validate(options));
   const [inputValue, setInputValue] = useState('');
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [autocompleteValue, setAutocompleteValue] = useState(null);
   const [isAutocompleteActive, setIsAutocompleteActive] = useState(false);
 
-  useEffect(() => {
-    setOptionsList(validate(options));
-  }, [options]);
+  const optionsList = useMemo(() => validate(options), [options]);
 
-  const hasGroup = optionsList[0]?.hasOwnProperty("groupLabel");
+  const hasGroup = !!optionsList[0]?.groupLabel;
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
 
   const filteredOptions = useFilteredOptions(optionsList, inputValue, hasGroup);
