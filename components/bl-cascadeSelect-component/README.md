@@ -8,8 +8,8 @@ The component based on external [Cascade Select](https://www.primefaces.org/prim
 
 | Property          | Type    | Default Value       | Logic                       | Data Binding | UI Setting | Description                                                                                                                                                              |
 |-------------------|---------|---------------------|-----------------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| cascade           | JSON    |                     | Cascade Logic               | YES          | YES        | Allows determinate an array of select items to display as the available options. Watch [Codeless Examples](#Examples). Signature of polygon: `[{name, code, ?children}]` |
-| placeholder       | String  |                     | Placeholder  Logic          | YES          | YES        | Allows determinate placeholder for input                                                                                                                                 |
+| Cascade           | JSON    |                     | Cascade Logic               | YES          | YES        | Allows determinate an array of select items to display as the available options. Watch [Codeless Examples](#Examples). Signature of polygon: `[{name, code, ?children}]` |
+| Placeholder       | String  |                     | Placeholder  Logic          | YES          | YES        | Allows determinate placeholder for input                                                                                                                                 |
 
 ## Events
 

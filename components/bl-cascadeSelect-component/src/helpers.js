@@ -68,7 +68,7 @@ export const prepareCascade = (cascade, setParentItems) => {
 
   const preparedCascade = prepare(cascade);
 
-  for (let i = 0; i <= levelOfNesting * -1; i++) {
+  for (let i = 0; i <= -levelOfNesting; i++) {
     groupParentItems.push(parentItems.filter(item => {
       return item.levelOfNesting === i;
     }));
