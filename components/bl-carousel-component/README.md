@@ -28,13 +28,13 @@ The component based on external [Carousel](https://getbootstrap.com/docs/5.2/com
 
 ## Action
 
-| Action               | Inputs                                | Returns |
-|----------------------|---------------------------------------|---------|
-| Go to Next Image     |                                       |         |
-| Go to Previous Image |                                       |         |
-| Go to Image          | `Index: number`                       |         |
-| Autoplay             | `Boolean: boolean`                    |         |
-| Set Images Data      | `List of Images Data: array[objects]` |         |
+| Action                           | Inputs                                | Returns |
+|----------------------------------|---------------------------------------|---------|
+| Go to Next Image in Carousel     |                                       |         |
+| Go to Previous Image in Carousel |                                       |         |
+| Go to Image in Carousel          | `Index: number`                       |         |
+| Autoplay Carousel                | `Boolean: boolean`                    |         |
+| Set Images Data for Carousel     | `List of Images Data: array[objects]` |         |
 
 ## <a name="Examples"></a> Codeless Examples
 

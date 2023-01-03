@@ -50,7 +50,8 @@
       "label": "Title Font Size",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "titleFontSizeLogic"
+      "handlerId": "titleFontSizeLogic",
+      "defaultValue": "16px"
     },
     {
       "type": "text",
@@ -58,7 +59,8 @@
       "label": "Title Padding",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "titlePaddingLogic"
+      "handlerId": "titlePaddingLogic",
+      "defaultValue": "12px 16px 12px 10px"
     },
     {
       "type": "color",
@@ -82,7 +84,8 @@
       "label": "Content Font Size",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "contentFontSizeLogic"
+      "handlerId": "contentFontSizeLogic",
+      "defaultValue": "16px"
     },
     {
       "type": "text",
@@ -90,7 +93,8 @@
       "label": "Content Padding",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "contentPaddingLogic"
+      "handlerId": "contentPaddingLogic",
+      "defaultValue": "16px"
     }
   ],
   "eventHandlers": [

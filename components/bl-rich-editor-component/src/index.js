@@ -62,9 +62,9 @@ export function ensureMeasure(dimension) {
 function useComponentActions(component, editorRef) {
   Object.assign(component, {
     getText     : (index, length) => editorRef.current.getText(index, length),
-    setText     : data => editorRef.current.setText(data),
+    setText     : text => editorRef.current.setText(text),
     getHTML     : () => editorRef.current.root.innerHTML,
-    setHTML     : data => editorRef.current.root.innerHTML = data,
+    setHTML     : content => editorRef.current.root.innerHTML = content,
     getLength   : () => editorRef.current.getLength(),
     deleteText  : (index = 0, length) => editorRef.current.deleteText(index, length),
     format      : (property, value) => editorRef.current.format(property, value),

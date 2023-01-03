@@ -37,19 +37,19 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 
 ## Actions
 
-| Action        | Inputs                            | Returns                               | Description                                                             |
-|---------------|-----------------------------------|---------------------------------------|-------------------------------------------------------------------------|
-| Get Text      | Index: `Number`, Length: `Number` | `String`                              | retrieves the string contents of the editor                             |
-| Set Text      | Data: `String`                    |                                       | sets the contents of an editor with the given text                      |
-| Get HTML      |                                   | `String`                              | retrieves the full HTML contents of the editor                          |
-| Set HTML      | Data: `String`                    |                                       | inserts content represented by HTML snippet                             |
-| Get Selection |                                   | { Index: `Number`, Length: `Number` } | returns the current selection range, or null if the editor is unfocused |
-| Set Selection | Index: `Number`, Length: `Number` |                                       | sets the user selection to the given range                              |
-| Get Length    |                                   | `Number`                              | retrieves the length of the editor contents                             |
-| Delete Text   | Index: `Number`, Length: `Number` |                                       | deletes text from the editor                                            |
-| Format        | Property: `String`, Value: any    |                                       | format text in the user’s current selection                             |
-| Blur          |                                   |                                       | removes focus from the editor                                           |
-| Focus         |                                   |                                       | focuses the editor and restores its last range                          |
+| Action                               | Inputs                            | Returns                               | Description                                                             |
+|--------------------------------------|-----------------------------------|---------------------------------------|-------------------------------------------------------------------------|
+| Get Text from Rich Editor            | Index: `Number`, Length: `Number` | `String`                              | retrieves the string contents of the editor                             |
+| Set Text for Rich Editor             | Text: `String`                    |                                       | sets the contents of an editor with the given text                      |
+| Get HTML from Rich Editor            |                                   | `String`                              | retrieves the full HTML contents of the editor                          |
+| Set HTML for Rich Editor             | Content: `String`                 |                                       | inserts content represented by HTML snippet                             |
+| Get Selection Range from Rich Editor |                                   | { Index: `Number`, Length: `Number` } | returns the current selection range, or null if the editor is unfocused |
+| Set Selection Range in Rich Editor   | Index: `Number`, Length: `Number` |                                       | sets the user selection to the given range                              |
+| Get Length Property from Rich Editor |                                   | `Number`                              | retrieves the length of the editor contents                             |
+| Delete Text from Rich Editor         | Index: `Number`, Length: `Number` |                                       | deletes text from the editor                                            |
+| Format Rich Editor                   | Property: `String`, Value: any    |                                       | format text in the user’s current selection                             |
+| Blur Rich Editor                     |                                   |                                       | removes focus from the editor                                           |
+| Focus Rich Editor                    |                                   |                                       | focuses the editor and restores its last range                          |
 
 ## Styles
 
@@ -72,6 +72,10 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 **Dimensions**
 
 ````
+@bl-customComponent-richEditor-editor-image-width: auto;
+@bl-customComponent-richEditor-editor-image-height: auto;
+@bl-customComponent-richEditor-editor-video-width: auto;
+@bl-customComponent-richEditor-editor-video-height: auto;
 @bl-customComponent-richEditor-editor-height: auto;
 @bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight: 18px;
 ````
