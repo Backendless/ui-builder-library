@@ -1,6 +1,6 @@
 # Mention
 
-Knob is a component of Backendless UI-Builder designer. This allows you to define number inputs with a dial.
+Mention is a component of Backendless UI-Builder designer. This allows referring someone or something.
 
 The component based on external [Mention](https://www.primefaces.org/primereact/mention/).
 

@@ -10,7 +10,7 @@ const DEFAULT_FIELD_BLACK_LIST = ['created', '___class', 'ownerId', 'updated', '
 export default function MentionComponent({ component, eventHandlers }) {
   const {
     trigger, suggestions, field, scrollHeight, autoHighlight, placeholder, delay, autoresize, rows, cols,
-    hideField, classList, style, display
+    hideField, classList, style, display,
   } = component;
   const { onChange, onFocus, onBlur, onShow, onHide } = eventHandlers;
 
@@ -29,19 +29,22 @@ export default function MentionComponent({ component, eventHandlers }) {
     const eventTrigger = event.trigger;
 
     for (const trigger of triggers) {
-      if (trigger === eventTrigger) {
-        const query = event.query;
-        const orderedSuggestions = suggestions.filter(suggestion => suggestion.trigger === eventTrigger)[0].suggestions;
-        let finalSuggestions;
-
-        if (!query.trim().length) {
-          finalSuggestions = orderedSuggestions;
-        } else {
-          finalSuggestions = orderedSuggestions
-            .filter(suggestion => suggestion.field.toLowerCase().startsWith(query.toLowerCase()));
-        }
-        setProcessedSuggestions(finalSuggestions);
+      if (trigger !== eventTrigger) {
+        continue;
       }
+
+      const query = event.query;
+      const orderedSuggestions = suggestions.filter(suggestion => suggestion.trigger === eventTrigger)[0].suggestions;
+      let finalSuggestions;
+
+      if (!query.trim().length) {
+        finalSuggestions = orderedSuggestions;
+      } else {
+        finalSuggestions = orderedSuggestions
+          .filter(suggestion => suggestion.field.toLowerCase().startsWith(query.toLowerCase()));
+      }
+
+      setProcessedSuggestions(finalSuggestions);
     }
   };
 
@@ -60,10 +63,12 @@ export default function MentionComponent({ component, eventHandlers }) {
       [fields[0], fields[index]] = [fields[index], fields[0]];
     }
 
-    if (triggers.some(availableTrigger => availableTrigger === trigger)) {
-      return (<div className="content">
-        {
-          fields.map(field => {
+    const availableTrigger = triggers.some(availableTrigger => availableTrigger === trigger);
+
+    if (availableTrigger) {
+      return (
+        <div className="content">
+          { fields.map(field => {
             if (field === 'img' && suggestion.img) {
               return (<img src={ suggestion[field] } className="img"/>);
             } else if (suggestion[field]) {
@@ -71,10 +76,11 @@ export default function MentionComponent({ component, eventHandlers }) {
             }
 
             return null;
-          })
-        }
-      </div>);
+          }) }
+        </div>
+      );
     }
+
     setProcessedSuggestions([]);
 
     return null;
