@@ -25,7 +25,7 @@ export default function CascadeSelect({ component, eventHandlers }) {
     }
   }, [cascade]);
 
-  const openCascadeHandler = useCallback((item) => {
+  const openCascadeHandler = useCallback(item => {
     const { code, levelOfNesting } = item;
 
     setParentItems(state => {
@@ -43,7 +43,7 @@ export default function CascadeSelect({ component, eventHandlers }) {
     });
   }, []);
 
-  const openItemHandler = useCallback((item) => {
+  const openItemHandler = useCallback(item => {
     setSelected(item);
     setIsOpen(false);
 

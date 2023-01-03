@@ -44,7 +44,7 @@ export const prepareCascade = (cascade, setParentItems) => {
   const parentItems = [];
   const groupParentItems = [];
 
-  const prepare = (cascade) => {
+  const prepare = cascade => {
     const validCascade = cascade.map(item => {
       let validItem = { ...item, levelOfNesting };
 
@@ -52,7 +52,7 @@ export const prepareCascade = (cascade, setParentItems) => {
         levelOfNesting++;
         validItem = {
           ...validItem,
-          children: prepare(item.children)
+          children: prepare(item.children),
         };
 
         parentItems.push({ code: item.code, isOpen: false, levelOfNesting });
