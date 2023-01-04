@@ -1,10 +1,10 @@
 # Color Picker
 
-This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer based on the 
+This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer based on the
 [iro.js](https://github.com/jaames/iro.js) library.
 
-It allows to specify a color, either by using a visual color picker interface or by entering the color into a text field 
-in hexadecimal format. A user can change any character of rgb or hsl format. The picker also allows to use an alpha 
+It allows to specify a color, either by using a visual color picker interface or by entering the color into a text field
+in hexadecimal format. A user can change any character of rgb or hsl format. The picker also allows to use an alpha
 channel, which could be modified by the slider visual interface or by the input field.
 
 Customizations include adjustments of color picker type, stacking direction, default color value, visibility of separate
@@ -31,10 +31,10 @@ elements and the picker as a whole.
 
 ## Actions
 
-| Action       | Inputs | Returns |
-|--------------|--------|---------|
-| Open Picker  |        |         |
-| Close Picker |        |         |
+| Action             | Inputs | Returns |
+|--------------------|--------|---------|
+| Open Color Picker  |        |         |
+| Close Color Picker |        |         |
 
 ## Styles
 

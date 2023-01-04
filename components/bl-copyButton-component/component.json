@@ -89,7 +89,7 @@
   "actions": [
     {
       "id": "copy",
-      "label": "Copy"
+      "label": "Copy content from"
     }
   ]
 }

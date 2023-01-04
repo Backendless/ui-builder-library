@@ -50,13 +50,13 @@
   "actions": [
     {
       "id": "getGoal",
-      "label": "Get Goal",
+      "label": "Get Goal from",
       "hasReturn": true,
       "color": "#244d9a"
     },
     {
       "id": "setGoal",
-      "label": "Set Goal",
+      "label": "Set Goal for",
       "inputs": [
         {
           "id": "goal",
@@ -67,14 +67,14 @@
     },
     {
       "id": "getProgress",
-      "label": "Get Progress",
+      "label": "Get Progress from",
       "hasReturn": true,
       "color": "#379a1b"
     },
     {
       "id": "setProgress",
       "color": "#379a1b",
-      "label": "Set Progress",
+      "label": "Set Progress for",
       "inputs": [
         {
           "id": "progress",
