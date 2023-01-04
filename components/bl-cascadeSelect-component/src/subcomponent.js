@@ -27,7 +27,9 @@ export function Cascade(props) {
 }
 
 export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHandler, selected }) {
-  if (item.children) {
+  const { name, levelOfNesting, children, code } = item;
+
+  if (children) {
     const { isOpen } = findParentItem(parentItems, item);
 
     return (
@@ -36,20 +38,18 @@ export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHan
           tabIndex={ 0 }
           className={ cn('cascade-select__item', { open: isOpen }) }
           onClick={ () => openCascadeHandler(item) }>
-          { item.name }
-          <svg className="cascade-select__collapse-icon" viewBox="0 0 24 24">
-            <path d="M13.83,19a1,1,0,0,1-.78-.37l-4.83-6a1,1,0,0,1,0-1.27l5-6a1,1,0,0,1,1.54,1.28L10.29,12l4.32,5.36A1,1,0,0,1,13.83,19Z"/>
-          </svg>
+          { name }
+          <CollapseParentIcon/>
         </div>
 
         { isOpen && (
           <Cascade
             isOpen={ isOpen }
-            itemsCascade={ item.children }
+            itemsCascade={ children }
             parentItems={ parentItems }
             openCascadeHandler={ openCascadeHandler }
             openItemHandler={ openItemHandler }
-            levelOfNesting={ item.levelOfNesting + 1 }
+            levelOfNesting={ levelOfNesting + 1 }
             selected={ selected }
           />
         ) }
@@ -60,9 +60,9 @@ export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHan
   return (
     <li
       tabIndex={ 0 }
-      className={ cn('cascade-select__item', { open: item.code === selected.code }) }
+      className={ cn('cascade-select__item', { open: code === selected.code }) }
       onClick={ () => openItemHandler(item) }>
-      { item.name }
+      { name }
     </li>
   );
 }
@@ -70,7 +70,17 @@ export function CascadeItem({ item, parentItems, openItemHandler, openCascadeHan
 export function CollapseButtonIcon() {
   return (
     <svg className="cascade-select__collapse-input-icon" viewBox="0 0 24 24">
-      <path d="M13.83,19a1,1,0,0,1-.78-.37l-4.83-6a1,1,0,0,1,0-1.27l5-6a1,1,0,0,1,1.54,1.28L10.29,12l4.32,5.36A1,1,0,0,1,13.83,19Z"/>
+      <path
+        d="M13.83,19a1,1,0,0,1-.78-.37l-4.83-6a1,1,0,0,1,0-1.27l5-6a1,1,0,0,1,1.54,1.28L10.29,12l4.32,5.36A1,1,0,0,1,13.83,19Z"/>
+    </svg>
+  );
+}
+
+function CollapseParentIcon() {
+  return (
+    <svg className="cascade-select__collapse-icon" viewBox="0 0 24 24">
+      <path
+        d="M13.83,19a1,1,0,0,1-.78-.37l-4.83-6a1,1,0,0,1,0-1.27l5-6a1,1,0,0,1,1.54,1.28L10.29,12l4.32,5.36A1,1,0,0,1,13.83,19Z"/>
     </svg>
   );
 }

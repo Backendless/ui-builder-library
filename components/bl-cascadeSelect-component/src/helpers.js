@@ -1,9 +1,9 @@
-export function isCyclic(obj) {
+export function analyzeCircularDependencies(obj) {
   const keys = [];
   const stack = [];
   const stackSet = new Set();
-  let detected = false;
-  let locate;
+  let isCircular = false;
+  let cycleLocation;
 
   function detect(obj, key) {
     if (obj && typeof obj != 'object') {
@@ -11,8 +11,8 @@ export function isCyclic(obj) {
     }
 
     if (stackSet.has(obj)) {
-      locate = keys.join('.') + '.' + key;
-      detected = true;
+      cycleLocation = keys.join('.') + '.' + key;
+      isCircular = true;
 
       return;
     }
@@ -36,13 +36,35 @@ export function isCyclic(obj) {
 
   detect(obj, 'obj');
 
-  return [detected, locate];
+  return { isCircular, cycleLocation };
 }
+
+export const openCascade = (state, item) => {
+  const currentParentItems = [...state];
+  const { code, levelOfNesting } = item;
+
+  for (let i = 0; i < currentParentItems[levelOfNesting].length; i++) {
+    const { code: parentItemCode, isOpen } = currentParentItems[levelOfNesting][i];
+
+    currentParentItems[levelOfNesting][i].isOpen = parentItemCode === code ? !isOpen : false;
+  }
+
+  return currentParentItems;
+};
+
+export const findParentItem = (parentItems, item) => {
+  for (let i = 0; i < parentItems.length; i++) {
+    for (let j = 0; j < parentItems[i].length; j++) {
+      if (parentItems[i][j].code === item.code) {
+        return parentItems[i][j];
+      }
+    }
+  }
+};
 
 export const prepareCascade = (cascade, setParentItems) => {
   let levelOfNesting = 0;
   const parentItems = [];
-  const groupParentItems = [];
 
   const prepare = cascade => {
     const validCascade = cascade.map(item => {
@@ -68,23 +90,17 @@ export const prepareCascade = (cascade, setParentItems) => {
 
   const preparedCascade = prepare(cascade);
 
-  for (let i = 0; i <= -levelOfNesting; i++) {
-    groupParentItems.push(parentItems.filter(item => {
-      return item.levelOfNesting === i;
-    }));
-  }
-
-  setParentItems(groupParentItems);
+  setParentItems(getNestedItems(parentItems, levelOfNesting));
 
   return preparedCascade;
 };
 
-export const findParentItem = (parentItems, item) => {
-  for (let i = 0; i < parentItems.length; i++) {
-    for (let j = 0; j < parentItems[i].length; j++) {
-      if (parentItems[i][j].code === item.code) {
-        return parentItems[i][j];
-      }
-    }
+const getNestedItems = (items, levelOfNesting) => {
+  const groupParentItems = [];
+
+  for (let i = 0; i <= -levelOfNesting; i++) {
+    groupParentItems.push(items.filter(({ levelOfNesting }) => levelOfNesting === i));
   }
+
+  return groupParentItems;
 };
