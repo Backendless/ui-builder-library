@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { CollapseButtonIcon, Cascade } from './subcomponent';
-import { prepareCascade, analyzeCircularDependencies, openCascade } from './helpers';
+import { openCascade, validate } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -10,19 +10,12 @@ export default function CascadeSelect({ component, eventHandlers }) {
 
   const [itemsCascade, setItemsCascade] = useState();
   const [parentItems, setParentItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [selected, setSelected] = useState({ name: placeholder });
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const { isCircular, cycleLocation } = analyzeCircularDependencies(cascade);
-
-    if (isCircular) {
-      throw new Error('cascade have cycling object in ' + cycleLocation);
-    }
-
-    if (cascade) {
-      setItemsCascade(prepareCascade(cascade, setParentItems));
-    }
+    validate(cascade, setItemsCascade, setParentItems, setItems);
   }, [cascade]);
 
   const openCascadeHandler = useCallback(item => {
@@ -39,6 +32,12 @@ export default function CascadeSelect({ component, eventHandlers }) {
   const onClickInput = () => setIsOpen(state => !state);
 
   component.getSelected = () => selected;
+
+  component.setCode = (code) => setSelected(state => items.find(item => item.code === code) || state);
+  component.getCode = () => selected.code || '';
+
+  component.getCascade = () => itemsCascade;
+  component.setCascade = (cascade) => validate(cascade, setItemsCascade, setParentItems, setItems);
 
   if (!display) {
     return null;
