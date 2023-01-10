@@ -14,7 +14,8 @@
       "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "elementLogic",
-      "handlerLabel": "Element To Scroll To Logic"
+      "handlerLabel": "Element To Scroll To Logic",
+      "handlerDescription": "The logic for selecting the element to which the scroll will be"
     },
     {
       "type": "number",
@@ -23,7 +24,8 @@
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
-      "handlerId": "offsetLogic"
+      "handlerId": "offsetLogic",
+      "settingTooltip": "Scroll offset"
     },
     {
       "type": "select",
@@ -42,7 +44,8 @@
           "value": "bottom-left",
           "label": "bottom-left"
         }
-      ]
+      ],
+      "settingTooltip": "The position of the up button on the page"
     },
     {
       "type": "color",
@@ -50,7 +53,8 @@
       "label": "Background",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "backgroundColorLogic"
+      "handlerId": "backgroundColorLogic",
+      "settingTooltip": "Up button background"
     },
     {
       "type": "color",
@@ -58,7 +62,8 @@
       "label": "Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "colorLogic"
+      "handlerId": "colorLogic",
+      "settingTooltip": "The color of the icon inside the up button"
     },
     {
       "type": "text",
@@ -67,7 +72,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "sizeLogic",
-      "defaultValue": "24px"
+      "defaultValue": "24px",
+      "settingTooltip": "The size(width/heigth) of the icon inside the up button"
     },
     {
       "type": "text",
@@ -76,12 +82,23 @@
       "showInSettings": true,
       "defaultValue": "10px",
       "hasLogicHandler": false,
-      "handlerId": "paddingLogic"
+      "handlerId": "paddingLogic",
+      "settingTooltip": "Indent inside the up button."
+    },
+    {
+      "type": "text",
+      "name": "indent",
+      "label": "Indent",
+      "showInSettings": true,
+      "defaultValue": "30px",
+      "hasLogicHandler": false,
+      "handlerId": "indentLogic",
+      "settingTooltip": "Indent of the up button from the edge of the page"
     }
   ],
   "eventHandlers": [],
   "actions": [],
   "settings": [],
   "pods": {},
-  "blockUI": ""
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"0873a6cb49c2b2671934fa8baffe9ea1\" data-pod-container=\"false\" data-data-container=\"false\" style=\"width:50px;height:50px;z-index:999;cursor:pointer;background-color:rgba(171,191,227,0.51);border-radius:50% 50% 50% 50%;flex-direction:column;justify-content:center;align-items:center;position:fixed;bottom:0;right:0;\"><i data-icon=\"keyboard_arrow_up\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"8cce3537e3ad27793d1bb2843e21dce3\" style=\"font-size:30px;\"></i></div>"
 }
