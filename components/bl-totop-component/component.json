@@ -3,7 +3,7 @@
   "name": "Totop",
   "description": "The Totop component allows the user to scroll to top of a page.",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "chevron-circle-up",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
