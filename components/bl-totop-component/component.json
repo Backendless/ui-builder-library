@@ -15,7 +15,7 @@
       "hasLogicHandler": true,
       "handlerId": "elementLogic",
       "handlerLabel": "Element To Scroll To Logic",
-      "handlerDescription": "The logic for selecting the element to which the scroll will be"
+      "handlerDescription": "This is a handler for the logic to determine the element to which the scroll will be."
     },
     {
       "type": "number",
@@ -73,7 +73,7 @@
       "hasLogicHandler": false,
       "handlerId": "sizeLogic",
       "defaultValue": "24px",
-      "settingTooltip": "The size(width/heigth) of the icon inside the up button"
+      "settingTooltip": "The size(width/height) of the icon inside the up button"
     },
     {
       "type": "text",
@@ -83,7 +83,7 @@
       "defaultValue": "10px",
       "hasLogicHandler": false,
       "handlerId": "paddingLogic",
-      "settingTooltip": "Indent inside the up button."
+      "settingTooltip": "Indent inside the up button"
     },
     {
       "type": "text",
