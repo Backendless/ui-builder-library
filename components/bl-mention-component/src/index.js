@@ -1,90 +1,67 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import primereact from './lib/core';
+import { filterSuggestions, orderFields, stringToList, useTriggers } from './helpers.js';
+import { SuggestionCard } from './suggestion-card.js';
 
 const { Mention } = primereact.mention;
 const { cn } = BackendlessUI.CSSUtils;
 
-const DEFAULT_FIELD_BLACK_LIST = ['created', '___class', 'ownerId', 'updated', 'objectId'];
+const DEFAULT_FIELD_BLACKLIST = ['created', '___class', 'ownerId', 'updated', 'objectId'];
 
 export default function MentionComponent({ component, eventHandlers }) {
   const {
     trigger, suggestions, field, scrollHeight, autoHighlight, placeholder, delay, autoresize, rows, cols,
-    hideField, classList, style, display,
+    hideField, classList, style, display
   } = component;
   const { onChange, onFocus, onBlur, onShow, onHide } = eventHandlers;
 
+  const [suggestionsMap, setSuggestionsMap] = useState(new Map());
   const [processedSuggestions, setProcessedSuggestions] = useState([]);
   const triggers = useTriggers(trigger);
-  const [fieldBlackList, setFieldBlackList] = useState(DEFAULT_FIELD_BLACK_LIST);
+  const [fieldsBlacklistSet, setFieldsBlacklistSet] = useState(new Set(DEFAULT_FIELD_BLACKLIST));
+
+  useEffect(() => {
+    suggestions?.forEach(el => setSuggestionsMap(prev => prev.set(el.trigger, el.suggestions)));
+  }, [suggestions]);
 
   useEffect(() => {
     if (hideField?.length) {
-      const hideValues = hideField.split(',').map(el => el.trim());
-      setFieldBlackList(prev => [...prev, ...hideValues]);
+      const hidenFields = stringToList(hideField);
+      setFieldsBlacklistSet(new Set([...DEFAULT_FIELD_BLACKLIST, ...hidenFields]));
     }
   }, [hideField]);
 
-  const searchHandler = event => {
-    const eventTrigger = event.trigger;
+  const searchHandler = useCallback(event => {
+    const { trigger: eventTrigger, query } = event;
 
     for (const trigger of triggers) {
       if (trigger !== eventTrigger) {
         continue;
       }
 
-      const query = event.query;
-      const orderedSuggestions = suggestions.filter(suggestion => suggestion.trigger === eventTrigger)[0].suggestions;
-      let finalSuggestions;
+      const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
 
-      if (!query.trim().length) {
-        finalSuggestions = orderedSuggestions;
-      } else {
-        finalSuggestions = orderedSuggestions
-          .filter(suggestion => suggestion.field.toLowerCase().startsWith(query.toLowerCase()));
-      }
-
-      setProcessedSuggestions(finalSuggestions);
+      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query));
     }
-  };
+  }, [triggers, suggestionsMap]);
 
-  const itemTemplate = (suggestion, options) => {
+  const itemRenderer = useCallback((suggestion, options) => {
+
     const trigger = options.trigger;
-    const fields = [];
 
-    for (const field in suggestion) {
-      if (!fieldBlackList.includes(field)) {
-        fields.push(field);
-      }
-    }
+    const orderedFields = orderFields(suggestion, fieldsBlacklistSet);
 
-    if (fields.indexOf('img') > 0) {
-      const index = fields.indexOf('img');
-      [fields[0], fields[index]] = [fields[index], fields[0]];
-    }
+    const hasAvailableTrigger = triggers.some(availableTrigger => availableTrigger === trigger);
 
-    const availableTrigger = triggers.some(availableTrigger => availableTrigger === trigger);
-
-    if (availableTrigger) {
-      return (
-        <div className="content">
-          { fields.map(field => {
-            if (field === 'img' && suggestion.img) {
-              return (<img src={ suggestion[field] } className="img"/>);
-            } else if (suggestion[field]) {
-              return (<span className="text"> { suggestion[field] } </span>);
-            }
-
-            return null;
-          }) }
-        </div>
-      );
+    if (hasAvailableTrigger) {
+      return (<SuggestionCard fields={ orderedFields } suggestion={ suggestion }/>);
     }
 
     setProcessedSuggestions([]);
 
     return null;
-  };
+  }, [fieldsBlacklistSet, triggers]);
 
   const onShowHandler = () => {
     if (processedSuggestions.length) {
@@ -101,7 +78,7 @@ export default function MentionComponent({ component, eventHandlers }) {
       trigger={ triggers }
       suggestions={ processedSuggestions }
       field={ field }
-      itemTemplate={ itemTemplate }
+      itemTemplate={ itemRenderer }
       onSearch={ searchHandler }
       style={ style }
       className={ cn('bl-customComponent-Mention', classList) }
@@ -120,5 +97,3 @@ export default function MentionComponent({ component, eventHandlers }) {
     />
   );
 };
-
-const useTriggers = trigger => (trigger ? trigger.split(',').map(el => el.trim()) : ['@']);
