@@ -1,16 +1,11 @@
-import { ListContent } from './list-content'
+import { ListContent } from "./list-content";
 
-export function List ({ component, eventHandlers, children, as=component.type }) {
-
-  const Component = as
+export function List({ props, items }) {
+  const ComponentType = props.type;
 
   return (
-    <Component className="list">
-      <ListContent
-        component={ component }
-        children={ children }
-        eventHandlers={ eventHandlers }
-      />
-    </Component>
-  )
+    <ComponentType className="list">
+      <ListContent props={props} items={items} />
+    </ComponentType>
+  );
 }

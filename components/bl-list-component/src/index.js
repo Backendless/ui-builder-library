@@ -1,18 +1,28 @@
-import { useMemo } from 'react'
+import { List } from "./list";
 
-import { List } from './list'
+const { cn } = BackendlessUI.CSSUtils;
 
-const { cn } = BackendlessUI.CSSUtils
+export default function ListComponent({ component, eventHandlers }) {
+  const { classList, width, backgroundColor, type, listItems, color, fontSize } = component;
 
-export default function ListComponent ({ component, eventHandlers }) {
+  const onClickHandler = (e, key) => {
+    e.stopPropagation();
+    eventHandlers.onClickListItem({ item: key });
+  };
 
-  const { style, classList, width, backgroundColor } = component
-
-  const styles = useMemo(() => ({ style, width, backgroundColor }), [style, width, backgroundColor])
+  const props = {
+    type: type && type === "ol" ? "ol" : "ul",
+    color: color,
+    fontSize: fontSize,
+    onClickHandler: onClickHandler,
+  };
 
   return (
-    <div className={ cn('bl-customComponent-list', classList) } style={ styles }>
-      <List as={ component.type } component={ component } eventHandlers={ eventHandlers }/>
+    <div
+      className={cn("bl-customComponent-list", classList)}
+      style={{ width: width, backgroundColor: backgroundColor }}
+    >
+      <List props={props} items={listItems} />
     </div>
-  )
+  );
 }

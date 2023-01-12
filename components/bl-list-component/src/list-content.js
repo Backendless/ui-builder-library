@@ -1,29 +1,15 @@
-import { List } from './list'
+import { List } from "./list";
 
-export function ListContent({ component, eventHandlers, children }) {
-
-  const { color, fontSize, listItems } = component
-
-  const onItemClick = (e, key) => {
-    e.stopPropagation()
-    eventHandlers.onClickListItem({ item: key })
-  }
-
-  return (children || listItems || []).map((item, i) => (
+export function ListContent({ props, items }) {
+  return (items || []).map((item, i) => (
     <li
-      key={ i }
+      key={i}
       className="list__item"
-      style={{ color: color, fontSize: fontSize }}
-      onClick={ e => onItemClick(e, item) }
+      style={{ color: props.color, fontSize: props.fontSize }}
+      onClick={(e) => props.onClickHandler(e, item)}
     >
-      { item.content }
-      { item.children && (
-        <List
-          component={ component }
-          children={ item.children }
-          eventHandlers={ eventHandlers }
-        />
-      ) }
+      {item.content}
+      {item.children && <List props={props} items={item.children} />}
     </li>
-  ))
+  ));
 }
