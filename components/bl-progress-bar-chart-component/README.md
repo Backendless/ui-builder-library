@@ -36,6 +36,7 @@ Progress Bar Chart is a component of Backendless UI-Builder designer. This is a 
 
 **Colors**
 ````
+@bl-customComponent-progressBarChart-shapeColor: #121212;
 @bl-customComponent-progressBarChart-chartBarColor: #212121;
 @bl-customComponent-progressBarChart-chartNameColor: @bl-customComponent-progressBarChart-textColor;
 @bl-customComponent-progressBarChart-chartFillColor: @bl-customComponent-progressBarChart-themeColor;
