@@ -59,9 +59,10 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-accordion-textColor: @appTextColor;
 ````
 
-**Background**
+**General**
 
 ````
+@bl-customComponent-accordion-title-icon-color: @bl-customComponent-accordion-textColor;
 @bl-customComponent-accordion-content-backgroundColor: @bl-customComponent-accordion-backgroundColor;
 ````
 
@@ -71,6 +72,8 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-accordion-width: 100%;
 @bl-customComponent-accordion-title-padding: 12px 16px 12px 10px;
 @bl-customComponent-accordion-title-width: 100%;
+@bl-customComponent-accordion-title-icon-width: 1em;
+@bl-customComponent-accordion-title-icon-height: 1em;
 @bl-customComponent-accordion-content-padding: 16px;
 @bl-customComponent-accordion-content-width: 100%;
 ````
@@ -80,8 +83,6 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 ````
 @bl-customComponent-accordion-fontSize: 16px;
 @bl-customComponent-accordion-lineHeight: 1.5;
-@bl-customComponent-accordion-title-icon-fontSize: 26px;
-
 ````
 
 **Decoration**
