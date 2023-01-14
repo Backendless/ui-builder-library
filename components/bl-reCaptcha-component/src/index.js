@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { ReCaptcha } from './re-captcha';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -37,7 +37,7 @@ function CaptchaComponent({ component, siteKey }) {
     setToken(value);
   };
 
-  const onExpired = () => setIsPassed(false);
+  const onExpired = () => useCallback(() => setIsPassed(false), []);
 
   component.getIsPassed = () => isPassed;
   component.getToken = () => {

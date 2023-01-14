@@ -1,6 +1,6 @@
 # ReCaptcha
 
-ComponentName is a component of Backendless UI-Builder designer. This allows you to upgrade your security from bots when need to send some form
+ReCaptcha is a component of Backendless UI-Builder designer. This allows you to upgrade your security from bots when need to send some form
 
 In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/).
 
@@ -13,12 +13,18 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 | Badge    | Select ["bottom-right", "bottom-left", "inline"] | "bottom-right" |             | NO           | YES        | Allows to determine the position. Work when Size is inline.     |
 | Theme    | Select ["light", "dark"]                         | "light"        | Theme Color | YES          | YES        | Allows to determine the theme.                                  |
 
-## Action
+## Actions
 
 | Action        | Inputs | Return                                         |
 |---------------|--------|------------------------------------------------|
 | Get Token     |        | `String`: can get when the user passed captcha |
 | Get Is Passed |        | `Boolean`: `true` when the user passed captcha |
+
+## Settings
+
+| Name     | Type   | Default Value | Required | Description                       |
+|----------|--------|---------------|----------|-----------------------------------|
+| Site-key | *Text* |               | YES      | Site-key needed to use reCaptcha. |
 
 ## Before Usage
 Before usage, you need:
