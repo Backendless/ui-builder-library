@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useVisibility } from './use-visibility';
 import { CollapseLeft } from './collapse-left';
 import { CollapseTop } from './collapse-top';
@@ -14,16 +14,24 @@ const transitionsViews = {
 
 export default function Transitions({ component, eventHandlers, pods }) {
   const { variants, display, animationDuration } = component;
-  const transitionsContainerPod = pods['transitionsContainer'];
 
+  const [transitionsContainerPod, setTransitionsContainerPod] = useState()
   const [visibility, setVisibility] = useState(display);
   const [isOpen, setIsOpen] = useState(display);
+
+  useEffect(() => {
+    try {
+      setTransitionsContainerPod(pods['transitionsContainer']);
+    } catch {
+      console.warn('add content into pod for component "Transitions"');
+    }
+  }, []);
 
   const Transitions = transitionsViews[variants];
 
   useVisibility(display, setIsOpen, setVisibility, animationDuration);
 
-  if (!visibility) {
+  if (!visibility || !transitionsContainerPod) {
     return null;
   }
 
