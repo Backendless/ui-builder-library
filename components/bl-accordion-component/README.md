@@ -73,6 +73,7 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-accordion-title-width: 100%;
 @bl-customComponent-accordion-content-padding: 16px;
 @bl-customComponent-accordion-content-width: 100%;
+@bl-customComponent-accordion-content-open-maxHeight: 500px;
 ````
 
 **Typography**
@@ -93,7 +94,7 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-accordion-item-lastChild-borderRadius: 0 0 4px 4px;
 @bl-customComponent-accordion-title-icon-transition: all 0.2s ease-in-out;
 @bl-customComponent-accordion-title-icon-transform: rotateZ(90deg);
-@bl-customComponent-accordion-content-transition: height ease 0.2s;
+@bl-customComponent-accordion-content-transition: max-height 0.2s ease-in-out;
 @bl-customComponent-accordion-content-shadow: 0px 1px 6px 1px fade(@bl-customComponent-accordion-textColor, 30%) inset;
 ````
 
