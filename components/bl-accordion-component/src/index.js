@@ -31,13 +31,10 @@ export default function AccordionComponent({ component, eventHandlers }) {
   }
 
   useEffect(() => {
-    component.el = accordionRef.current;
-  }, []);
-
-  useEffect(() => {
     setIsLoaded(true);
   }, []);
 
+  component.el = accordionRef.current;
   component.closeAll = () => updateItemsState(() => false);
   component.openAll = () => updateItemsState(() => true);
   component.toggleAll = () => updateItemsState(oldState => !oldState);
