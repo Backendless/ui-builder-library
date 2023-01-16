@@ -19,8 +19,16 @@ export function Title({ options }) {
       aria-controls={ `item-${ accordionId }-${ index }-content` }
       role="button"
       tabIndex="0">
-      <i className="material-icons-round" aria-hidden="true">keyboard_arrow_right</i>
+      <CollapseIcon/>
       { title }
     </div>
+  );
+}
+
+function CollapseIcon() {
+  return (
+    <svg className="collapse-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+      <path d="M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z"></path>
+    </svg>
   );
 }

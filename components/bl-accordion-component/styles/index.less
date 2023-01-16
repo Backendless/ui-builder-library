@@ -13,7 +13,9 @@
 
 @bl-customComponent-accordion-title-padding: 12px 16px 12px 10px;
 @bl-customComponent-accordion-title-width: 100%;
-@bl-customComponent-accordion-title-icon-fontSize: 26px;
+@bl-customComponent-accordion-title-icon-width: 1em;
+@bl-customComponent-accordion-title-icon-height: 1em;
+@bl-customComponent-accordion-title-icon-color: @bl-customComponent-accordion-textColor;
 @bl-customComponent-accordion-title-icon-transition: all 0.2s ease-in-out;
 @bl-customComponent-accordion-title-icon-transform: rotateZ(90deg);
 
@@ -57,8 +59,10 @@
       background: transparent;
       cursor: pointer;
 
-      i {
-        font-size: @bl-customComponent-accordion-title-icon-fontSize;
+      .collapse-icon {
+        width: @bl-customComponent-accordion-title-icon-width;
+        height: @bl-customComponent-accordion-title-icon-height;
+        fill: @bl-customComponent-accordion-title-icon-color;
         transition: @bl-customComponent-accordion-title-icon-transition;
         user-select: none;
       }
@@ -81,7 +85,7 @@
       }
     }
 
-    &.active i {
+    &.active .collapse-icon {
       transform: @bl-customComponent-accordion-title-icon-transform;
     }
   }
