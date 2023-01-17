@@ -1,8 +1,8 @@
-# Transition
+# Transitions
 
-Transition is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). Transition allows you to add a smooth component mounting animation.
+Transitions is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). This component allows you to add a smooth component mounting animation.
 
-The component based on external [Transition](https://mui.com/material-ui/transitions/).
+The component based on external [Transitions](https://mui.com/material-ui/transitions/).
 
 ## Properties
 
