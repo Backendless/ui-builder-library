@@ -110,32 +110,43 @@
       color: @bl-customComponent-richEditor-textColor;
     }
 
-    button:hover,
+    @media (hover: hover) {
+      button:hover,
+      .ql-picker-label:hover,
+      .ql-picker-item:hover {
+        color: @bl-customComponent-richEditor-button-color;
+      }
+
+      button:hover .ql-fill,
+      .ql-picker-label:hover .ql-fill,
+      .ql-picker-item:hover .ql-fill {
+        fill: @bl-customComponent-richEditor-button-color;
+      }
+
+      button:hover .ql-stroke,
+      .ql-picker-label:hover .ql-stroke,
+      .ql-picker-item:hover .ql-stroke {
+        stroke: @bl-customComponent-richEditor-button-color;
+      }
+    }
+
     button:focus,
     button.ql-active,
-    .ql-picker-label:hover,
     .ql-picker-label.ql-active,
-    .ql-picker-item:hover,
     .ql-picker-item.ql-selected {
       color: @bl-customComponent-richEditor-button-color;
     }
 
-    button:hover .ql-fill,
     button:focus .ql-fill,
     button.ql-active .ql-fill,
-    .ql-picker-label:hover .ql-fill,
     .ql-picker-label.ql-active .ql-fill,
-    .ql-picker-item:hover .ql-fill,
     .ql-picker-item.ql-selected .ql-fill {
       fill: @bl-customComponent-richEditor-button-color;
     }
 
-    button:hover .ql-stroke,
     button:focus .ql-stroke,
     button.ql-active .ql-stroke,
-    .ql-picker-label:hover .ql-stroke,
     .ql-picker-label.ql-active .ql-stroke,
-    .ql-picker-item:hover .ql-stroke,
     .ql-picker-item.ql-selected .ql-stroke {
       stroke: @bl-customComponent-richEditor-button-color;
     }
