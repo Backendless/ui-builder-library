@@ -33,3 +33,24 @@ The component based on external [Lottie Animation](https://github.com/airbnb/lot
 | Play Animation |                                                         |        |
 | Set Animation  | Data: `Object` Is Stopped: `Boolean` Is Loop: `Boolean` |        |
 
+## Usage
+If you want to create a custom animation, you can do it following this [instruction](https://airbnb.io/lottie/#/after-effects?id=advanced-illustrator-to-lottie-workflow) and after add json to component.
+
+If you want to find a ready-made solution, you can find it on the [Lottie Files](https://lottiefiles.com/featured).
+
+You need:
+1. Sign up account.
+
+2. Choose animation.
+   ![choose animation example](./example-images/choose_animation.jpg)
+
+
+3. You can copy Lottie Animation URL and in Lottie Animation Data Logic do https request.
+   ![copy URL Animation example](./example-images/get_url_animation.jpg)
+   ![Data Logic example](./example-images/data_logic.jpg)
+
+
+   Another way is to download a JSON file, copy the file content, and paste it into the Data property in the Lottie Animation component.
+   ![download animation example](./example-images/download_animation.jpg)
+   ![copy json animation example](./example-images/copy_json_animation.jpg)
+   ![past json animation example](./example-images/past_json_in_data.jpg)
