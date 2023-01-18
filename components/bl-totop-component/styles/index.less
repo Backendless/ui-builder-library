@@ -5,6 +5,11 @@
 @bl-customComponent-totop-hover-background-color: fade(@bl-customComponent-totop-background-color, 20%);
 
 @bl-customComponent-totop-size: 20px;
+@bl-customComponent-totop-padding: 10px;
+@bl-customComponent-totop-border-radius: 50%;
+@bl-customComponent-totop-z-index: 999;
+
+@bl-customComponent-totop-cursor: pointer;
 
 .bl-customComponent-totop {
   display: flex;
@@ -12,18 +17,23 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 999;
-  color: @bl-customComponent-totop-themeTextColor;
+  z-index: @bl-customComponent-totop-z-index;
+  bottom: @bl-customComponent-totop-size;
+  right: @bl-customComponent-totop-size;
   background-color: @bl-customComponent-totop-background-color;
-  border-radius: 50%;
+  color: @bl-customComponent-totop-themeTextColor;
+  padding: @bl-customComponent-totop-padding;
+  border-radius: @bl-customComponent-totop-border-radius;
+  cursor: @bl-customComponent-totop-cursor;
   user-select: none;
-  cursor: pointer;
 
   &:hover {
     background-color: @bl-customComponent-totop-hover-background-color;
   }
 
   .totop__icon {
+    width: @bl-customComponent-totop-size;
+    height: @bl-customComponent-totop-size;
     fill: @bl-customComponent-totop-themeTextColor;
   }
 }
