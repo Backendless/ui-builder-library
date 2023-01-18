@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { CollapseButtonIcon, Cascade } from './subcomponent';
 import { openCascade, validate } from './helpers';
 
@@ -13,6 +13,8 @@ export default function CascadeSelect({ component, eventHandlers }) {
   const [items, setItems] = useState([]);
   const [selected, setSelected] = useState({ name: placeholder });
   const [isOpen, setIsOpen] = useState(false);
+
+  const cascadeSelectRef = useRef();
 
   useEffect(() => {
     validate(cascade, setItemsCascade, setParentItems, setItems);
@@ -39,12 +41,14 @@ export default function CascadeSelect({ component, eventHandlers }) {
   component.getCascade = () => itemsCascade;
   component.setCascade = (cascade) => validate(cascade, setItemsCascade, setParentItems, setItems);
 
+  component.el = cascadeSelectRef.current;
+
   if (!display) {
     return null;
   }
 
   return (
-    <div className={ cn('bl-cascadeSelect-component', ...classList) } style={ style }>
+    <div ref={ cascadeSelectRef } className={ cn('bl-cascadeSelect-component', ...classList) } style={ style }>
       <div
         className={ cn('cascade-select__input', { 'cascade-select__input--selected': selected.code }) }
         onClick={ onClickInput }>
