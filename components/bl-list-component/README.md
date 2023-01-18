@@ -9,14 +9,15 @@ More information about list you can find [here](https://developer.mozilla.org/en
 
 ## Properties
 
-| Property   | Type                                          | Default value | Logic           | Data Binding | UI Setting | Description                                                                                      |
-|------------|-----------------------------------------------|---------------|-----------------|--------------|------------|--------------------------------------------------------------------------------------------------|
-| Type       | *Select* <br> `'Unordered'` <br> `'Ordered'`  | `Unordered`   | Type Logic      | NO           | YES        | Controls the type of list(ul/ol).                                                                |
-| List Items | *JSON* <br> `[...{content:'', ?children:[]}]` | `[]`          | ListItems Logic | YES          | NO         | Specifies a JSON array containing data of the list items. Watch [Codeless Examples] (#Examples). |
-| Background | *Color*                                       |               |                 | NO           | YES        | Controls the background color of the main block.                                                 |
-| Width      | *Text*                                        |               |                 | NO           | YES        | Controls the width of the main block.                                                            |
-| Color      | *Color*                                       |               |                 | NO           | YES        | Controls the color of the list items.                                                            |
-| Font Size  | *Text*                                        |               |                 | NO           | YES        | Controls the font size of the list items.                                                        |
+| Property   | Type                       | Default value | Logic           | Data Binding | UI Setting | Description                                                                                                                                                                                         |
+|------------|----------------------------|---------------|-----------------|--------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Type       | *Select* <br> [`ul`, `ol`] | `ul`          | Type Logic      | NO           | YES        | Controls the type of list(ul/ol).                                                                                                                                                                   |
+| Items List | *JSON*                     | `[]`          | ListItems Logic | YES          | NO         | Specifies a JSON array containing data of the list items. Watch [Codeless Examples] (#Examples). Signature of items list: [ <Item> ]. Signature of item: { content: String, children: [ <Item> ] }. |
+| Background | *Color*                    |               |                 | NO           | YES        | Controls the background color of the main block.                                                                                                                                                    |
+| Width      | *Text*                     |               |                 | NO           | YES        | Controls the width of the main block.                                                                                                                                                               |
+| Color      | *Color*                    |               |                 | NO           | YES        | Controls the color of the list items.                                                                                                                                                               |
+| Font Size  | *Text*                     |               |                 | NO           | YES        | Controls the font size of the list items.                                                                                                                                                           |
+| Padding    | *Text*                     |               |                 | NO           | YES        | Controls the padding of the list items.                                                                                                                                                             |
 
 ## Events
 
@@ -34,13 +35,8 @@ More information about list you can find [here](https://developer.mozilla.org/en
 
 **Dimensions**
 ```
-@bl-customComponent-list-item-size: 20px;
+@bl-customComponent-list-item-fontSize: 1rem;
 ```
-
-**Colors**
-````
-@bl-customComponent-list-item-hover-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
-````
 
 ## Examples
 
