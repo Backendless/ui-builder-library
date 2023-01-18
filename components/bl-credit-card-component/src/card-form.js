@@ -5,7 +5,7 @@ import {
 } from './helpers';
 
 export function CardForm(props) {
-  const { cardNumber, cardholderName, expiry, cvc, setFocus } = props;
+  const { cardNumber, cardholderName, expiry, cvc, cvcVisibility, setFocus } = props;
   const {
     submitButtonLabel, cardNumberFieldPlaceholder, cardholderNameFieldPlaceholder,
     expiryFieldPlaceholder, cvcFieldPlaceholder, labelsVisibility,
@@ -46,7 +46,7 @@ export function CardForm(props) {
     },
     {
       label      : 'CVC:',
-      type       : 'tel',
+      type       : cvcVisibility ? 'tel' : 'password',
       name       : 'cvc',
       placeholder: cvcFieldPlaceholder,
       pattern    : '\\d{3,4}',
@@ -55,7 +55,8 @@ export function CardForm(props) {
     },
   ], [
     cardNumber, cardNumberFieldPlaceholder, cardholderName, cardholderNameFieldPlaceholder, cvc, cvcFieldPlaceholder,
-    expiry, expiryFieldPlaceholder, handleCVCChange, handleCardholderNameChange, handleExpiryChange, handleNumberChange,
+    cvcVisibility, expiry, expiryFieldPlaceholder, handleCVCChange, handleCardholderNameChange, handleExpiryChange,
+    handleNumberChange,
   ]);
 
   return (
@@ -68,9 +69,8 @@ export function CardForm(props) {
   );
 }
 
-function FormField(props) {
-  const { labelsVisibility, setFocus } = props;
-  const { label, type, name, placeholder, pattern, value, onChange } = props.field;
+function FormField({ labelsVisibility, field, setFocus }) {
+  const { label, type, name, placeholder, pattern, value, onChange } = field;
 
   const handleInputFocus = event => setFocus(event.target.name);
 

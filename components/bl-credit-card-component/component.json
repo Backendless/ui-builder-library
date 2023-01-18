@@ -18,6 +18,15 @@
       "defaultValue": true
     },
     {
+      "type": "checkbox",
+      "name": "cvcVisibility",
+      "label": "CVC Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cvcVisibilityLogic"
+    },
+    {
       "type": "select",
       "name": "direction",
       "label": "Direction",
@@ -232,6 +241,5 @@
       "label": "Validate CVC of",
       "hasReturn": true
     }
-  ],
-  "pods": {}
+  ]
 }

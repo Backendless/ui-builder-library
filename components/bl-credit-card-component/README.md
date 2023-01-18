@@ -10,17 +10,18 @@ Credit Card is the component that can be used in Backendless [UI-Builder](https:
 
 | Property                          | Type                                                                  | Default value     | Logic | Data Binding | UI Setting | Description                                                   |
 |-----------------------------------|-----------------------------------------------------------------------|-------------------|-------|--------------|------------|---------------------------------------------------------------|
-| Card Preview Visibility           | *Checkbox*                                                            | `true`            |       | NO           | YES        | enables showing preview of the credit card.                   |
-| Direction                         | *Select* <br/> "Row" \| "Row reverse" \| "Column" \| "Column reverse" | "Column"          |       | NO           | YES        | controls the direction of the component.                      |
-| Labels Visibility                 | *Checkbox*                                                            | `true`            |       | NO           | YES        | enables showing labels of the form fields.                    |
-| Submit Button Label               | *Text*                                                                | "Pay"             |       | NO           | YES        | controls the label of the submit button.                      |
-| Card Number Field Placeholder     | *Text*                                                                | "Card Number"     |       | NO           | YES        | controls the placeholder for the card number entry field.     |
-| Cardholder Name Field Placeholder | *Text*                                                                | "Cardholder Name" |       | NO           | YES        | controls the placeholder for the cardholder name entry field. |
-| Expiry Field Placeholder          | *Text*                                                                | "MM / YY"         |       | NO           | YES        | controls the placeholder for the card expiration entry field. |
-| CVC Field Placeholder             | *Text*                                                                | "CVC"             |       | NO           | YES        | controls the placeholder for the CVC entry field.             |
-| Border Width                      | *Text*                                                                | "1px"             |       | NO           | YES        | controls the width of the component's border.                 |
-| Border Style                      | *Select* <br/> "none" \| "solid" \| "dotted" \| "dashed" \| "double"  | "solid"           |       | NO           | YES        | controls the style of the component's border.                 |
-| Border Color                      | *Color*                                                               |                   |       | NO           | YES        | controls the color of the component's border.                 |
+| Card Preview Visibility           | *Checkbox*                                                            | `true`            |       | NO           | YES        | Enables showing preview of the credit card.                   |
+| CVC Visibility                    | *Checkbox*                                                            | `true`            |       | NO           | YES        | Enables showing CVC numbers of the credit card.               |
+| Direction                         | *Select* <br/> "Row" \| "Row reverse" \| "Column" \| "Column reverse" | "Column"          |       | NO           | YES        | Controls the direction of the component.                      |
+| Labels Visibility                 | *Checkbox*                                                            | `true`            |       | NO           | YES        | Enables showing labels of the form fields.                    |
+| Submit Button Label               | *Text*                                                                | "Pay"             |       | NO           | YES        | Controls the label of the submit button.                      |
+| Card Number Field Placeholder     | *Text*                                                                | "Card Number"     |       | NO           | YES        | Controls the placeholder for the card number entry field.     |
+| Cardholder Name Field Placeholder | *Text*                                                                | "Cardholder Name" |       | NO           | YES        | Controls the placeholder for the cardholder name entry field. |
+| Expiry Field Placeholder          | *Text*                                                                | "MM / YY"         |       | NO           | YES        | Controls the placeholder for the card expiration entry field. |
+| CVC Field Placeholder             | *Text*                                                                | "CVC"             |       | NO           | YES        | Controls the placeholder for the CVC entry field.             |
+| Border Width                      | *Text*                                                                | "1px"             |       | NO           | YES        | Controls the width of the component's border.                 |
+| Border Style                      | *Select* <br/> "none" \| "solid" \| "dotted" \| "dashed" \| "double"  | "solid"           |       | NO           | YES        | Controls the style of the component's border.                 |
+| Border Color                      | *Color*                                                               |                   |       | NO           | YES        | Controls the color of the component's border.                 |
 
 ## Events
 

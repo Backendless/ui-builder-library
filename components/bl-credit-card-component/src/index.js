@@ -10,7 +10,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function CreditCardComponent({ component, eventHandlers }) {
   const {
-    display, classList, style, direction, borderWidth, borderStyle, borderColor, cardPreviewVisibility,
+    display, classList, style, direction, borderWidth, borderStyle, borderColor, cardPreviewVisibility, cvcVisibility,
   } = component;
 
   const [cardNumber, setCardNumber] = useState('');
@@ -21,10 +21,6 @@ export default function CreditCardComponent({ component, eventHandlers }) {
   const [card, setCard] = useState();
 
   const creditCardRef = useRef(null);
-
-  useEffect(() => {
-    component.el = creditCardRef.current;
-  }, []);
 
   useEffect(() => {
     const card = getCardByNumber(cardNumber);
@@ -49,6 +45,7 @@ export default function CreditCardComponent({ component, eventHandlers }) {
   };
 
   Object.assign(component, {
+    el            : creditCardRef.current,
     clearForm     : () => clearCardForm(setCardNumber, setExpiry, setCVC, setCardholderName),
     validateNumber: () => validateCardNumber(cardNumber, card),
     validateExpiry: () => validateCardExpiry(expiry),
@@ -61,15 +58,17 @@ export default function CreditCardComponent({ component, eventHandlers }) {
 
   return (
     <div ref={ creditCardRef } className={ cn('bl-customComponent-creditCard', classList) } style={ styles }>
-      <CardPreview
-        cardNumber={ cardNumber }
-        expiry={ expiry }
-        cvc={ cvc }
-        focused={ focus }
-        name={ cardholderName }
-        visibility={ cardPreviewVisibility }
-        card={ card }
-      />
+      { cardPreviewVisibility && (
+        <CardPreview
+          cardNumber={ cardNumber }
+          expiry={ expiry }
+          cvc={ cvc }
+          focused={ focus }
+          name={ cardholderName }
+          card={ card }
+          cvcVisibility={ cvcVisibility }
+        />
+      ) }
       <CardForm
         component={ component }
         eventHandlers={ eventHandlers }
@@ -83,6 +82,7 @@ export default function CreditCardComponent({ component, eventHandlers }) {
         setCardholderName={ setCardholderName }
         setFocus={ setFocus }
         card={ card }
+        cvcVisibility={ cvcVisibility }
       />
     </div>
   );

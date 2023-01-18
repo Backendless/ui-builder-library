@@ -13,13 +13,11 @@ const NumberSpaces = { shortFormat: [4, 11], defaultFormat: [4, 9, 14] };
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CardPreview(props) {
-  const { cardNumber, expiry, cvc, focused, name, visibility, card } = props;
+  const { cardNumber, expiry, cvc, focused, name, card, cvcVisibility } = props;
 
   const { creditCardNumber, expirationDate, issuer } = useCardPreview(cardNumber, expiry, card);
 
-  if (!visibility) {
-    return null;
-  }
+  const currentCVC = useMemo(() => cvcVisibility ? cvc : cvc.replace(/\d/g, '*'), [cvc, cvcVisibility]);
 
   return (
     <div className="card-container">
@@ -27,7 +25,7 @@ export function CardPreview(props) {
         <div className="card-front">
           <div className="card-background"/>
           <div className="issuer"/>
-          <div className={ cn('cvc-front', { 'focused': focused === 'cvc' }) }>{ cvc }</div>
+          <div className={ cn('cvc-front', { 'focused': focused === 'cvc' }) }>{ currentCVC }</div>
           <div
             className={ cn('card-number', {
               'focused'     : focused === 'number',
@@ -52,7 +50,7 @@ export function CardPreview(props) {
           <div className="card-background"/>
           <div className="card-stripe"/>
           <div className="card-signature"/>
-          <div className={ cn('card-cvc', { 'focused': focused === 'cvc' }) }>{ cvc }</div>
+          <div className={ cn('card-cvc', { 'focused': focused === 'cvc' }) }>{ currentCVC }</div>
           <div className="issuer"/>
         </div>
       </div>
