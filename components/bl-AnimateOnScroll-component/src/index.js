@@ -1,36 +1,42 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Aos } from './aos';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const disableType = {
+const DevicesMap = {
   mobile: 'mobile',
   tablet: 'tablet',
-  true  : true,
-  false : false,
+  all   : true,
+  none  : false,
 };
 
 export default function AnimateOnScroll({ component, eventHandlers, pods }) {
   const {
     display, classList, style, animationType, easing, side,
-    duration, offset, disable, delay, mirror, once, anchor,
+    duration, offset, disableFor, delay, mirror, once, anchor,
   } = component;
-  const { animatedIn, animatedOut } = eventHandlers;
+  const { onAnimationEnter, onAnimationOut } = eventHandlers;
   const elementPod = pods['animationPod'];
 
+  const animationOnScrollRef = useRef(null);
+
+  const animationName = useMemo(() => {
+    return animationType + (side === 'none' ? '' : `-${ side }`);
+  }, [animationType, side]);
+
   useEffect(() => {
-    Aos.init({
-      disable: disableType[disable],
-    });
+    Aos.init({ disable: DevicesMap[disableFor] });
 
-    document.addEventListener('aos:in', () => {
-      animatedIn();
-    });
+    document.addEventListener('aos:in', () => onAnimationEnter());
+    document.addEventListener('aos:out', () => onAnimationOut());
 
-    document.addEventListener('aos:out', () => {
-      animatedOut();
-    });
+    return () => {
+      document.removeEventListener('aos:in', () => onAnimationEnter());
+      document.removeEventListener('aos:out', () => onAnimationOut());
+    }
   }, []);
+
+  component.el = animationOnScrollRef.current;
 
   if (!display) {
     return null;
@@ -38,9 +44,10 @@ export default function AnimateOnScroll({ component, eventHandlers, pods }) {
 
   return (
     <div
+      ref={ animationOnScrollRef }
       className={ cn('bl-customComponent-animateOnScroll', classList) }
       style={ style }
-      data-aos={ animationType + (side === 'none' ? '' : `-${ side }`) }
+      data-aos={ animationName }
       data-aos-easing={ easing }
       data-aos-duration={ duration }
       data-aos-delay={ delay }
@@ -53,4 +60,3 @@ export default function AnimateOnScroll({ component, eventHandlers, pods }) {
     </div>
   );
 }
-

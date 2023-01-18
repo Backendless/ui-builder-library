@@ -10,14 +10,11 @@
   "properties": [
     {
       "type": "select",
-      "name": "disable",
-      "label": "Disable",
+      "name": "disableFor",
+      "label": "Disable For",
       "showInSettings": true,
-      "defaultValue": "false",
-      "hasLogicHandler": true,
-      "handlerId": "disableLogic",
-      "handlerLabel": "Disable Logic",
-      "dataBinding": true,
+      "defaultValue": "none",
+      "hasLogicHandler": false,
       "options": [
         {
           "value": "mobile",
@@ -28,12 +25,12 @@
           "label": "Tablet"
         },
         {
-          "value": "true",
-          "label": "True"
+          "value": "all",
+          "label": "All"
         },
         {
-          "value": "false",
-          "label": "False"
+          "value": "none",
+          "label": "None"
         }
       ],
       "handlerDescription": "This handler allows determining to disable or not animation."
@@ -223,31 +220,32 @@
       "label": "Offset",
       "showInSettings": true,
       "defaultValue": "0",
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "offset(px) from the original trigger point"
     },
     {
       "type": "checkbox",
       "name": "mirror",
-      "label": "Mirror",
+      "label": "Mirrored",
       "showInSettings": true,
       "hasLogicHandler": false
     },
     {
       "type": "checkbox",
       "name": "once",
-      "label": "Once",
+      "label": "Play Once",
       "showInSettings": true,
       "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
     {
-      "name": "animatedIn",
-      "label": "Animated In"
+      "name": "onAnimationEnter",
+      "label": "On Animation Enter"
     },
     {
-      "name": "animatedOut",
-      "label": "Animated Out"
+      "name": "onAnimationOut",
+      "label": "On Animation Out"
     }
   ],
   "actions": [],
