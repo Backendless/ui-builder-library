@@ -8,7 +8,7 @@ The component based on external [Carousel](https://getbootstrap.com/docs/5.2/com
 
 | Property          | Type    | Default Value                                | Logic                       | Data Binding | UI Setting | Description                                                                                                                                              |
 |-------------------|---------|----------------------------------------------|-----------------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| imagesData        | Object  | `[{ "url": "", "title": "", "content": ""}]` | Image Data Logic            | NO           | YES        | Allows determinate data for carousel. Watch [Codeless Examples](#Examples). Signature of polygon: `{"url": string, "title": string, "content": string }` |
+| imagesData        | Object  | `[{ "url": "", "title": "", "content": ""}]` | Image Data Logic            | NO           | YES        | Allows determinate data for carousel. Watch [Codeless Examples](#examples). Signature of polygon: `{"url": string, "title": string, "content": string }` |
 | height            | String  | "400px"                                      | Height Logic                | YES          | YES        | Allows determinate height for images.                                                                                                                    |
 | width             | String  | "700px"                                      | Width Logic                 | YES          | YES        | Allows determinate width for images.                                                                                                                     |
 | autoplayDelay     | Number  | 5000                                         | Autoplay Delay              | YES          | YES        | Allows determinate delay(ms) for autoplay.                                                                                                               |
@@ -36,7 +36,7 @@ The component based on external [Carousel](https://getbootstrap.com/docs/5.2/com
 | Autoplay Carousel                | `Boolean: boolean`                    |         |
 | Set Images Data for Carousel     | `List of Images Data: array[objects]` |         |
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a>Codeless Examples
 
 Addition of Images Data
 
