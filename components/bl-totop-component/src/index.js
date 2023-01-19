@@ -36,7 +36,9 @@ export default function TotopComponent({ component }) {
     fill: color,
   };
 
-  const handleScroll = () => window.scrollTo({ top: element?.el ? offset : offset, behavior: "smooth" });
+  const handleScroll = () => {
+    window.scrollTo({ top:  element?.el ? element.el.offsetTop + offset : offset, behavior: 'smooth' });
+  };
 
   return (
     <div className={cn("bl-customComponent-totop", classList)} style={styles} onClick={handleScroll}>
