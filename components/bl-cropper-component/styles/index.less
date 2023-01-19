@@ -48,13 +48,20 @@
   padding: @bl-customComponent-cropper-padding;
   border: @bl-customComponent-cropper-border;
   border-radius: @bl-customComponent-cropper-borderRadius;
+  max-height: 80vh;
 
   .header-toolbar {
     display: flex;
     justify-content: space-between;
+    min-width: min-content;
 
     .buttons-wrapper {
       display: flex;
+      flex-wrap: wrap;
+
+      &:last-child {
+        justify-content: end;
+      }
 
       input {
         display: none;
