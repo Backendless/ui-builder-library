@@ -4,8 +4,8 @@
 @bl-customComponent-totop-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
 @bl-customComponent-totop-hover-background-color: fade(@bl-customComponent-totop-background-color, 20%);
 
-@bl-customComponent-totop-size: 20px;
-@bl-customComponent-totop-padding: 10px;
+@bl-customComponent-totop-size: 40px;
+@bl-customComponent-totop-icon-size: 20px;
 @bl-customComponent-totop-border-radius: 50%;
 @bl-customComponent-totop-z-index: 999;
 
@@ -16,13 +16,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: @bl-customComponent-totop-size;
+  height: @bl-customComponent-totop-size;
   position: fixed;
   z-index: @bl-customComponent-totop-z-index;
-  bottom: @bl-customComponent-totop-size;
-  right: @bl-customComponent-totop-size;
   background-color: @bl-customComponent-totop-background-color;
   color: @bl-customComponent-totop-themeTextColor;
-  padding: @bl-customComponent-totop-padding;
   border-radius: @bl-customComponent-totop-border-radius;
   cursor: @bl-customComponent-totop-cursor;
   user-select: none;
@@ -32,8 +31,9 @@
   }
 
   .totop__icon {
-    width: @bl-customComponent-totop-size;
-    height: @bl-customComponent-totop-size;
+    display: flex;
+    width: @bl-customComponent-totop-icon-size;
+    height: @bl-customComponent-totop-icon-size;
     fill: @bl-customComponent-totop-themeTextColor;
   }
 }
