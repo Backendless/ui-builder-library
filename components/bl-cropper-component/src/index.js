@@ -13,6 +13,7 @@ export default function CropperComponent({ component, eventHandlers }) {
 
   const [image, setImage] = useState(imageUrl);
   const imageRef = useRef(null);
+  const cropperComponentRef = useRef(null);
   const cropperRef = useCropperLibrary(component, eventHandlers, imageRef, image);
 
   useComponentActions(component, cropperRef);
@@ -31,8 +32,10 @@ export default function CropperComponent({ component, eventHandlers }) {
     ...style,
   };
 
+  component.el = cropperComponentRef.current;
+
   return (
-    <div className={ cn('bl-customComponent-cropper', classList) } style={ styles }>
+    <div ref={ cropperComponentRef } className={ cn('bl-customComponent-cropper', classList) } style={ styles }>
       <HeaderToolbar
         component={ component }
         cropperRef={ cropperRef }
