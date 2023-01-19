@@ -212,11 +212,11 @@
   "actions": [
     {
       "id": "expandAll",
-      "label": "Expand All"
+      "label": "Expand All Options for"
     },
     {
       "id": "collapseAll",
-      "label": "Collapse All"
+      "label": "Collapse All Options for"
     }
   ]
 }
