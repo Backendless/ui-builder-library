@@ -113,9 +113,10 @@ The component allows you to select any area of the image and then download it as
 
 ````
 @bl-customComponent-cropper-width: 100%;
+@bl-customComponent-cropper-maxHeight: 80vh;
 @bl-customComponent-cropper-padding: 5px;
-@bl-customComponent-cropper-maxWidth: 100%;
-@bl-customComponent-cropper-maxHeight: 100%;
+@bl-customComponent-cropper-image-maxWidth: 100%;
+@bl-customComponent-cropper-image-maxHeight: 100%;
 @bl-customComponent-cropper-buttonsGroup-margin: 2px;
 @bl-customComponent-cropper-button-margin: 2px;
 @bl-customComponent-cropper-button-padding: 6px 16px;
