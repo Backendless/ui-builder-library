@@ -10,12 +10,11 @@ export const filterSuggestions = (suggestions, query) => {
     : suggestions.filter(suggestion => compareCaseInsensitive(suggestion, query));
 };
 
-export const stringToList = text => (text.split(',').map(el => el.trim()));
+export const stringToList = text => text.split(',').map(el => el.trim());
 
 export const orderFields = (suggestion, fieldsBlacklistSet) => {
   const fields = Object.keys(suggestion).filter(field => !fieldsBlacklistSet.has(field));
-  const img = 'img';
-  const imgIndex = fields.indexOf(img);
+  const imgIndex = fields.indexOf('img');
 
   if (imgIndex > 0) {
     [fields[0], fields[imgIndex]] = [fields[imgIndex], fields[0]];

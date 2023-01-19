@@ -7,7 +7,7 @@ import { SuggestionCard } from './suggestion-card.js';
 const { Mention } = primereact.mention;
 const { cn } = BackendlessUI.CSSUtils;
 
-const DEFAULT_FIELD_BLACKLIST = ['created', '___class', 'ownerId', 'updated', 'objectId'];
+const BLACKLISTED_FIELDS = new Set(['created', '___class', 'ownerId', 'updated', 'objectId']);
 
 export default function MentionComponent({ component, eventHandlers }) {
   const {
@@ -19,7 +19,7 @@ export default function MentionComponent({ component, eventHandlers }) {
   const [suggestionsMap, setSuggestionsMap] = useState(new Map());
   const [processedSuggestions, setProcessedSuggestions] = useState([]);
   const triggers = useTriggers(trigger);
-  const [fieldsBlacklistSet, setFieldsBlacklistSet] = useState(new Set(DEFAULT_FIELD_BLACKLIST));
+  const [blacklistedFields, setBlacklistedFields] = useState(BLACKLISTED_FIELDS);
 
   useEffect(() => {
     suggestions?.forEach(el => setSuggestionsMap(prev => prev.set(el.trigger, el.suggestions)));
@@ -28,7 +28,7 @@ export default function MentionComponent({ component, eventHandlers }) {
   useEffect(() => {
     if (hideField?.length) {
       const hidenFields = stringToList(hideField);
-      setFieldsBlacklistSet(new Set([...DEFAULT_FIELD_BLACKLIST, ...hidenFields]));
+      setBlacklistedFields(new Set([...BLACKLISTED_FIELDS, ...hidenFields]));
     }
   }, [hideField]);
 
@@ -50,7 +50,7 @@ export default function MentionComponent({ component, eventHandlers }) {
 
     const trigger = options.trigger;
 
-    const orderedFields = orderFields(suggestion, fieldsBlacklistSet);
+    const orderedFields = orderFields(suggestion, blacklistedFields);
 
     const hasAvailableTrigger = triggers.some(availableTrigger => availableTrigger === trigger);
 
@@ -61,7 +61,7 @@ export default function MentionComponent({ component, eventHandlers }) {
     setProcessedSuggestions([]);
 
     return null;
-  }, [fieldsBlacklistSet, triggers]);
+  }, [blacklistedFields, triggers]);
 
   const onShowHandler = () => {
     if (processedSuggestions.length) {
