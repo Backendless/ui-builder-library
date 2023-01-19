@@ -22,7 +22,7 @@
       "name": "offset",
       "label": "Offset",
       "showInSettings": true,
-      "defaultValue": "0",
+      "defaultValue": "",
       "hasLogicHandler": false,
       "handlerId": "offsetLogic",
       "settingTooltip": "Scroll offset"
@@ -43,6 +43,30 @@
         {
           "value": "bottom-left",
           "label": "bottom-left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "bottom-center"
+        },
+        {
+          "value": "top-right",
+          "label": "top-right"
+        },
+        {
+          "value": "top-left",
+          "label": "top-left"
+        },
+        {
+          "value": "top-center",
+          "label": "top-center"
+        },
+        {
+          "value": "center-right",
+          "label": "center-right"
+        },
+        {
+          "value": "center-left",
+          "label": "center-left"
         }
       ],
       "settingTooltip": "The position of the up button on the page"
@@ -68,29 +92,28 @@
     {
       "type": "text",
       "name": "size",
-      "label": "Icon Size",
+      "label": "Button Size",
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "sizeLogic",
-      "defaultValue": "24px",
-      "settingTooltip": "The size(width/height) of the icon inside the up button"
+      "defaultValue": "",
+      "settingTooltip": "The size(width/height) of the up button"
     },
     {
       "type": "text",
-      "name": "padding",
-      "label": "Padding",
+      "name": "iconSize",
+      "label": "Icon Size",
+      "settingTooltip": "The size(width/height) of the icon inside the up button",
       "showInSettings": true,
-      "defaultValue": "10px",
       "hasLogicHandler": false,
-      "handlerId": "paddingLogic",
-      "settingTooltip": "Indent inside the up button"
+      "handlerId": "iconSizeLogic"
     },
     {
       "type": "text",
       "name": "indent",
       "label": "Indent",
       "showInSettings": true,
-      "defaultValue": "30px",
+      "defaultValue": "",
       "hasLogicHandler": false,
       "handlerId": "indentLogic",
       "settingTooltip": "Indent of the up button from the edge of the page"
