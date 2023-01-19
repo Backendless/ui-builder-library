@@ -1,33 +1,42 @@
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import { ReCaptcha } from './re-captcha';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const SizeCaptcha = {
+const TypeCaptcha = {
   compact  : CaptchaComponent,
   normal   : CaptchaComponent,
   invisible: InvisibleCaptcha
 };
 
-export default function Captcha({ component, settings }) {
-  const { display, style, classList, size } = component;
+export default function Captcha({ component, eventHandlers, settings }) {
+  const { display, style, classList, type } = component;
+  const { onErrored } = eventHandlers;
   const { siteKey } = settings;
 
-  const Captcha = SizeCaptcha[size];
+  const reCaptchaRef = useRef();
+
+  const Captcha = TypeCaptcha[type];
+
+  useEffect(() => {
+    if (type !== 'invisible') {
+      component.el = reCaptchaRef.current;
+    }
+  }, [reCaptchaRef]);
 
   if (!display) {
     return null;
   }
 
   return (
-    <div className={ cn('bl-customComponent-reCaptcha', classList) } style={ style }>
-      <Captcha component={ component } siteKey={ siteKey }/>
+    <div ref={ reCaptchaRef } className={ cn('bl-customComponent-reCaptcha', classList) } style={ style }>
+      <Captcha component={ component } siteKey={ siteKey } onErrored={ onErrored }/>
     </div>
   );
 }
 
-function CaptchaComponent({ component, siteKey }) {
-  const { theme, type, size } = component;
+function CaptchaComponent({ component, onErrored, siteKey }) {
+  const { theme, verificationType, type } = component;
 
   const [isPassed, setIsPassed] = useState(false);
   const [token, setToken] = useState(null);
@@ -39,8 +48,8 @@ function CaptchaComponent({ component, siteKey }) {
 
   const onExpired = () => useCallback(() => setIsPassed(false), []);
 
-  component.getIsPassed = () => isPassed;
-  component.getToken = () => {
+  component.onPassed = () => isPassed;
+  component.onTokenSent = () => {
     setIsPassed(false);
 
     return token;
@@ -51,15 +60,16 @@ function CaptchaComponent({ component, siteKey }) {
       sitekey={ siteKey }
       onChange={ onChange }
       onExpired={ onExpired }
-      type={ type }
-      size={ size }
+      onErrored={ () => onErrored() }
+      type={ verificationType }
+      size={ type }
       theme={ theme }
     />
   );
 }
 
-function InvisibleCaptcha({ component, siteKey }) {
-  const { theme, type, size, badge } = component;
+function InvisibleCaptcha({ component, siteKey, onErrored }) {
+  const { theme, verificationType, type, badge } = component;
 
   const captchaRef = useRef();
 
@@ -70,8 +80,9 @@ function InvisibleCaptcha({ component, siteKey }) {
     <ReCaptcha
       ref={ captchaRef }
       sitekey={ siteKey }
-      type={ type }
-      size={ size }
+      type={ verificationType }
+      onErrored={ () => onErrored() }
+      size={ type }
       badge={ badge }
       theme={ theme }
     />

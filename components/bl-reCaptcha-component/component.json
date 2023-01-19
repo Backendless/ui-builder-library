@@ -10,12 +10,11 @@
   "properties": [
     {
       "type": "select",
-      "name": "type",
-      "label": "Type",
+      "name": "verificationType",
+      "label": "Verification Type",
       "showInSettings": true,
       "defaultValue": "image",
       "hasLogicHandler": false,
-      "handlerId": "typeLogic",
       "options": [
         {
           "value": "image",
@@ -29,13 +28,13 @@
     },
     {
       "type": "select",
-      "name": "size",
-      "label": "Size",
+      "name": "type",
+      "label": "Type",
       "showInSettings": true,
       "defaultValue": "normal",
       "hasLogicHandler": true,
-      "handlerId": "sizeLogic",
-      "handlerLabel": "Size Logic",
+      "handlerId": "typeLogic",
+      "handlerLabel": "Type Logic",
       "dataBinding": true,
       "options": [
         {
@@ -99,16 +98,22 @@
       "handlerDescription": "This handler allows determining the style theme"
     }
   ],
-  "eventHandlers": [],
+  "eventHandlers": [
+    {
+      "name": "onErrored",
+      "label": "On Errored",
+      "handlerDescription": "This event is triggered when the challenge errored, most likely due to network issues."
+    }
+  ],
   "actions": [
     {
-      "id": "getToken",
-      "label": "Get Token",
+      "id": "onTokenSent",
+      "label": "On Token Sent",
       "hasReturn": true
     },
     {
-      "id": "getIsPassed",
-      "label": "Get is Passed",
+      "id": "onPassed",
+      "label": "On Pass(ed)",
       "hasReturn": true
     }
   ],

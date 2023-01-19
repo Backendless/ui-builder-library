@@ -1,7 +1,6 @@
 # ReCaptcha
 
-ReCaptcha is a component of Backendless UI-Builder designer. This allows you to upgrade your security from bots when need to send some form
-
+ReCaptcha is a component of Backendless UI-Builder designer. reCAPTCHA is a free service that protects your website from spam and abuse. reCAPTCHA uses an advanced risk analysis engine and adaptive CAPTCHAs to keep automated software from engaging in abusive activities on your site. It does this while letting your valid users pass through with ease.
 In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/).
 
 ## Properties
@@ -17,8 +16,8 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 
 | Action        | Inputs | Return                                         |
 |---------------|--------|------------------------------------------------|
-| Get Token     |        | `String`: can get when the user passed captcha |
-| Get Is Passed |        | `Boolean`: `true` when the user passed captcha |
+| On Token Sent |        | `String`: can get when the user passed captcha |
+| On Pass(ed)   |        | `Boolean`: `true` when the user passed captcha |
 
 ## Settings
 
