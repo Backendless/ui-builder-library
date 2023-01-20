@@ -38,10 +38,10 @@ TreeSelect is a component for Backendless [UI-Builder](https://backendless.com/d
 
 ## Actions
 
-| Action       | Inputs | Returns |
-|--------------|--------|---------|
-| Expand All   |        |         |
-| Collapse All |        |         |
+| Action                              | Inputs | Returns |
+|-------------------------------------|--------|---------|
+| Expand All Options for TreeSelect   |        |         |
+| Collapse All Options for TreeSelect |        |         |
 
 ## Styles
 

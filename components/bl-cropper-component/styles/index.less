@@ -7,13 +7,14 @@
 @bl-customComponent-cropper-shadowColor: @appComponentShadowColor;
 
 @bl-customComponent-cropper-width: 100%;
+@bl-customComponent-cropper-maxHeight: 80vh;
 @bl-customComponent-cropper-padding: 5px;
-@bl-customComponent-cropper-maxWidth: 100%;
-@bl-customComponent-cropper-maxHeight: 100%;
 @bl-customComponent-cropper-border: 1px solid fade(@bl-customComponent-cropper-textColor, 60%);
 @bl-customComponent-cropper-borderRadius: 4px;
 @bl-customComponent-cropper-gap: 5px;
 
+@bl-customComponent-cropper-image-maxWidth: 100%;
+@bl-customComponent-cropper-image-maxHeight: 100%;
 @bl-customComponent-cropper-buttonsGroup-margin: 2px;
 
 @bl-customComponent-cropper-button-fontSize: 14px;
@@ -48,13 +49,20 @@
   padding: @bl-customComponent-cropper-padding;
   border: @bl-customComponent-cropper-border;
   border-radius: @bl-customComponent-cropper-borderRadius;
+  max-height: @bl-customComponent-cropper-maxHeight;
 
   .header-toolbar {
     display: flex;
     justify-content: space-between;
+    min-width: min-content;
 
     .buttons-wrapper {
       display: flex;
+      flex-wrap: wrap;
+
+      &:last-child {
+        justify-content: end;
+      }
 
       input {
         display: none;
@@ -92,8 +100,8 @@
 
     img {
       display: block;
-      max-width: @bl-customComponent-cropper-maxWidth;
-      max-height: @bl-customComponent-cropper-maxHeight;
+      max-width: @bl-customComponent-cropper-image-maxWidth;
+      max-height: @bl-customComponent-cropper-image-maxHeight;
     }
   }
 
