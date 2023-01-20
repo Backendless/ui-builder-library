@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -6,10 +6,20 @@ export default function Parallax({ component, pods }) {
   const { display, style, classList, imageUrl, strength } = component;
   const parallaxContentPod = pods['parallaxContent'];
 
+  const [power, setPower] = useState(0);
+
   const backdropRef = useRef();
   const containerRef = useRef();
 
-  useAnimation(backdropRef, containerRef, strength);
+  useEffect(() => {
+    if (typeof strength === 'number') {
+      setPower(strength)
+    } else {
+      setPower(0)
+    }
+  }, [strength]);
+
+  useAnimation(backdropRef, containerRef, power);
 
   if (!display) {
     return null;
@@ -26,7 +36,7 @@ export default function Parallax({ component, pods }) {
   );
 }
 
-const useAnimation = (backdropRef, containerRef, strength) => {
+const useAnimation = (backdropRef, containerRef, power) => {
   const animate = useCallback(() => {
     const containerTopOffset = containerRef.current.getBoundingClientRect().top + window.pageYOffset;
     const containerElementCenter = containerRef.current.getBoundingClientRect().height / 2;
@@ -35,13 +45,13 @@ const useAnimation = (backdropRef, containerRef, strength) => {
     const backgroundHeight = backdropRef.current.getBoundingClientRect().height;
     const screenCenter = window.innerHeight / 2;
     const distanceToCenterOfScreen = containerElementCenterOffset - screenCenter - window.pageYOffset;
-    const translateY = (distanceToCenterOfScreen / backgroundHeight * -100) * strength * 0.001;
+    const translateY = (distanceToCenterOfScreen / backgroundHeight * -100) * power * 0.001;
 
-    backdropRef.current.style.transform = `translate(0, calc(${ translateY }% - ${ strength / 2 }px))`;
-  }, []);
+    backdropRef.current.style.transform = `translate(0, calc(${ translateY }% - ${ power / 2 }px))`;
+  }, [power]);
 
   useEffect(() => {
-    backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
+    backdropRef.current.style.height = `calc(100% + ${ power }px)`;
 
     animate();
 
@@ -52,5 +62,5 @@ const useAnimation = (backdropRef, containerRef, strength) => {
       document.removeEventListener('scroll', animate);
       window.removeEventListener('resize', animate, false);
     };
-  }, []);
+  }, [power]);
 }
