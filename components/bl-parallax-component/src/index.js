@@ -11,6 +11,10 @@ export default function Parallax({ component, pods }) {
 
   useAnimation(backdropRef, containerRef, strength);
 
+  useEffect(() => {
+    component.el = containerRef.current;
+  }, [containerRef]);
+
   if (!display) {
     return null;
   }
@@ -45,7 +49,7 @@ const useAnimation = (backdropRef, containerRef, strength) => {
 
     animate();
 
-    document.addEventListener('scroll', animate)
+    document.addEventListener('scroll', animate);
     window.addEventListener('resize', animate, false);
 
     return () => {
@@ -53,4 +57,4 @@ const useAnimation = (backdropRef, containerRef, strength) => {
       window.removeEventListener('resize', animate, false);
     };
   }, []);
-}
+};
