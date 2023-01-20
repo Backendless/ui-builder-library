@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 const { cn } = BackendlessUI.CSSUtils;
 
 const Transform = {
@@ -7,17 +9,7 @@ const Transform = {
 };
 
 export default function TotopComponent({ component }) {
-  const {
-    classList,
-    offset,
-    position,
-    backgroundColor,
-    color,
-    size,
-    iconSize,
-    indent = component.indent ? component.indent : "20px",
-    element,
-  } = component;
+  const { classList, offset, position, backgroundColor, color, size, iconSize, indent = "20px", element } = component;
 
   const styles = {
     backgroundColor,
@@ -37,11 +29,15 @@ export default function TotopComponent({ component }) {
   };
 
   const handleScroll = () => {
-    window.scrollTo({ top:  element?.el ? element.el.offsetTop + offset : offset, behavior: 'smooth' });
+    window.scrollTo({ top: (element?.el?.offsetTop || 0) + offset, behavior: "smooth" });
   };
 
+  const totopRef = useRef();
+
+  component.el = totopRef.current;
+
   return (
-    <div className={cn("bl-customComponent-totop", classList)} style={styles} onClick={handleScroll}>
+    <div ref={totopRef} className={cn("bl-customComponent-totop", classList)} style={styles} onClick={handleScroll}>
       <TotopIcon iconStyles={iconStyles} />
     </div>
   );

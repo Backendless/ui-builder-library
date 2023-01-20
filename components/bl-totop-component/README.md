@@ -50,6 +50,14 @@ Totop is the component that can be used in Backendless [UI-Builder](https://back
 
 Below is a Codeless Example highlighting how to use the Totop component:
 
-![totop data example](example-images/totop-data-example.png)
-![totop data example2](example-images/totop-data-example2.png)
-![totop data example3](example-images/totop-data-example3.png)
+<p align="center">
+  <img src="./example-images/totop-data-example.png" alt="totop data example" width="500"/>
+</p>
+
+<p align="center">
+  <img src="./example-images/totop-data-example2.png" alt="totop data example2" width="780"/>
+</p>
+
+<p align="center">
+  <img src="./example-images/totop-data-example3.png" alt="totop data example3" width="500"/>
+</p>
