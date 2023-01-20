@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import { List } from "./list";
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -13,15 +15,19 @@ export default function ListComponent({ component, eventHandlers }) {
   const options = {
     type: type && type === "ol" ? "ol" : "ul",
     style: {
-      color: color,
-      fontSize: fontSize,
-      padding: padding,
+      color,
+      fontSize,
+      padding,
     },
     onClickHandler: onClickHandler,
   };
 
+  const listRef = useRef();
+
+  component.el = listRef.current;
+
   return (
-    <div className={cn("bl-customComponent-list", classList)} style={{ width, backgroundColor }}>
+    <div ref={listRef} className={cn("bl-customComponent-list", classList)} style={{ width, backgroundColor }}>
       <List options={options} items={listItems} />
     </div>
   );
