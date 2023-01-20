@@ -1,15 +1,21 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function Parallax({ component, pods }) {
   const { display, style, classList, imageUrl, strength } = component;
-  const parallaxContentPod = pods['parallaxContent'];
+  const [parallaxContentPod, setParallaxContentPod] = useState();
 
   const backdropRef = useRef();
   const containerRef = useRef();
 
   useAnimation(backdropRef, containerRef, strength);
+
+  useEffect(() => {
+    try {
+      setParallaxContentPod(pods['parallaxContent']);
+    } catch {}
+  }, []);
 
   if (!display) {
     return null;
@@ -20,7 +26,7 @@ export default function Parallax({ component, pods }) {
       <div ref={ backdropRef } className="parallax-background-img"
            style={ { backgroundImage: `url(${ imageUrl })` } }></div>
       <div className="parallax-content">
-        { parallaxContentPod.render() }
+        { parallaxContentPod && parallaxContentPod.render() }
       </div>
     </div>
   );
