@@ -30,7 +30,11 @@ export default function KnobComponent({ component, eventHandlers }) {
   });
 
   const handleChange = e => {
-    const value = e.value;
+    let value = e.value;
+
+    if (value > maxValue) {
+      value = maxValue;
+    }
 
     setKnobValue(value);
     onChange({ value });
