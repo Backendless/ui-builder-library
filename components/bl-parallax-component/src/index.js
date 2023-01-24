@@ -4,18 +4,11 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function Parallax({ component, pods }) {
   const { display, style, classList, imageUrl, strength } = component;
-  const [parallaxContentPod, setParallaxContentPod] = useState();
 
   const backdropRef = useRef();
   const containerRef = useRef();
 
   useAnimation(backdropRef, containerRef, strength);
-
-  useEffect(() => {
-    try {
-      setParallaxContentPod(pods['parallaxContent']);
-    } catch {}
-  }, []);
 
   if (!display) {
     return null;
@@ -26,7 +19,7 @@ export default function Parallax({ component, pods }) {
       <div ref={ backdropRef } className="parallax-background-img"
            style={ { backgroundImage: `url(${ imageUrl })` } }></div>
       <div className="parallax-content">
-        { parallaxContentPod && parallaxContentPod.render() }
+        { pods['parallaxContent']?.render() }
       </div>
     </div>
   );
