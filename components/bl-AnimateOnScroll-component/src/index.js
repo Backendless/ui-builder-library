@@ -33,10 +33,10 @@ export default function AnimateOnScroll({ component, eventHandlers, pods }) {
     return () => {
       document.removeEventListener('aos:in', () => onAnimationEnter());
       document.removeEventListener('aos:out', () => onAnimationOut());
-    }
+    };
   }, []);
 
-  component.el = animationOnScrollRef.current;
+  useEffect(() => component.el = animationOnScrollRef.current, []);
 
   if (!display) {
     return null;
