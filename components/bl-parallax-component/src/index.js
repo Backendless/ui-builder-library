@@ -6,20 +6,16 @@ export default function Parallax({ component, pods }) {
   const { display, style, classList, imageUrl, strength } = component;
   const parallaxContentPod = pods['parallaxContent'];
 
-  const [power, setPower] = useState(0);
+  const [validStrength, setValidStrength] = useState(0);
 
   const backdropRef = useRef();
   const containerRef = useRef();
 
   useEffect(() => {
-    if (typeof strength === 'number') {
-      setPower(strength)
-    } else {
-      setPower(0)
-    }
+    setValidStrength(typeof strength === 'number' ? strength : 0);
   }, [strength]);
 
-  useAnimation(backdropRef, containerRef, power);
+  useAnimation(backdropRef, containerRef, validStrength);
 
   if (!display) {
     return null;
@@ -55,7 +51,7 @@ const useAnimation = (backdropRef, containerRef, power) => {
 
     animate();
 
-    document.addEventListener('scroll', animate)
+    document.addEventListener('scroll', animate);
     window.addEventListener('resize', animate, false);
 
     return () => {
@@ -63,4 +59,4 @@ const useAnimation = (backdropRef, containerRef, power) => {
       window.removeEventListener('resize', animate, false);
     };
   }, [power]);
-}
+};
