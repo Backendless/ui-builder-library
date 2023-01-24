@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useItemsState } from './helpers';
 import { Item } from './item';
@@ -9,6 +9,7 @@ export default function AccordionComponent({ component, eventHandlers }) {
   const { classList, display, accordionData, controlledAccordion, style } = component;
   const { onMouseOver, onMouseOut } = eventHandlers;
 
+  const accordionRef = useRef(null);
   const accordionId = useMemo(() => BackendlessUI.UUID.short(), []);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -33,6 +34,7 @@ export default function AccordionComponent({ component, eventHandlers }) {
     setIsLoaded(true);
   }, []);
 
+  component.el = accordionRef.current;
   component.closeAll = () => updateItemsState(() => false);
   component.openAll = () => updateItemsState(() => true);
   component.toggleAll = () => updateItemsState(oldState => !oldState);
@@ -43,6 +45,7 @@ export default function AccordionComponent({ component, eventHandlers }) {
 
   return (
     <div
+      ref={ accordionRef }
       className={ cn('bl-customComponent-accordion', classList) }
       onMouseOver={ onMouseOver }
       onMouseOut={ onMouseOut }

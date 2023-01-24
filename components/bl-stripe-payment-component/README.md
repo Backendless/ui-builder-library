@@ -8,7 +8,7 @@ The component enables secure processing of credit card transactions using Stripe
 amount, minimal amount and currency label. The payment form is configurable, and thus you can set visibility of separate
 fields. Also, you have an option to make the amount field editable by the user.
 
-<img src="./thumbnail.png" alt="main thumbnail" width="634"/>
+<img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 
 ## Configuration
 
@@ -50,6 +50,12 @@ Then add the component to the page and specify the Publishable key in UI-Builder
 | Clear Card   |        |         | clears the value(s) of the Card Element |
 | Blur Card    |        |         | blurs the Card Element                  |
 | Focus Card   |        |         | focuses the Card Element                |
+
+## Settings
+
+| Name            | Type   | Default Value | Required | Description                           |
+|-----------------|--------|---------------|----------|---------------------------------------|
+| Publishable Key | *Text* |               | YES      | your Stripe account’s Publishable Key |
 
 ## Styles
 

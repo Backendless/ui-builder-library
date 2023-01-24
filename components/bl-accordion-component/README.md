@@ -59,9 +59,10 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-accordion-textColor: @appTextColor;
 ````
 
-**Background**
+**General**
 
 ````
+@bl-customComponent-accordion-title-icon-color: @bl-customComponent-accordion-textColor;
 @bl-customComponent-accordion-content-backgroundColor: @bl-customComponent-accordion-backgroundColor;
 ````
 
@@ -71,8 +72,11 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-accordion-width: 100%;
 @bl-customComponent-accordion-title-padding: 12px 16px 12px 10px;
 @bl-customComponent-accordion-title-width: 100%;
+@bl-customComponent-accordion-title-icon-width: 1em;
+@bl-customComponent-accordion-title-icon-height: 1em;
 @bl-customComponent-accordion-content-padding: 16px;
 @bl-customComponent-accordion-content-width: 100%;
+@bl-customComponent-accordion-content-open-maxHeight: 500px;
 ````
 
 **Typography**
@@ -80,8 +84,6 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 ````
 @bl-customComponent-accordion-fontSize: 16px;
 @bl-customComponent-accordion-lineHeight: 1.5;
-@bl-customComponent-accordion-title-icon-fontSize: 26px;
-
 ````
 
 **Decoration**
@@ -93,7 +95,7 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-accordion-item-lastChild-borderRadius: 0 0 4px 4px;
 @bl-customComponent-accordion-title-icon-transition: all 0.2s ease-in-out;
 @bl-customComponent-accordion-title-icon-transform: rotateZ(90deg);
-@bl-customComponent-accordion-content-transition: height ease 0.2s;
+@bl-customComponent-accordion-content-transition: max-height 0.2s ease-in-out;
 @bl-customComponent-accordion-content-shadow: 0px 1px 6px 1px fade(@bl-customComponent-accordion-textColor, 30%) inset;
 ````
 

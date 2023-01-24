@@ -100,14 +100,6 @@
       "defaultValue": false,
       "hasLogicHandler": false,
       "handlerId": "zipVisibilityLogic"
-    },
-    {
-      "type": "text",
-      "name": "publishableKey",
-      "label": "Publishable Key",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "publishableKeyLogic"
     }
   ],
   "eventHandlers": [
@@ -167,6 +159,15 @@
     {
       "id": "focusCard",
       "label": "Focus Card"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "name": "publishableKey",
+      "title": "Publishable Key",
+      "required": true,
+      "description": "This is your Stripe account’s Publishable Key."
     }
   ]
 }
