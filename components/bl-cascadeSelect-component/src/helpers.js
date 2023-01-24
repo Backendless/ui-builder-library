@@ -8,7 +8,8 @@ export const validate = (cascade, setItemsCascade, setParentItems, setItems) => 
   if (cascade) {
     setItemsCascade(prepareCascade(cascade, setParentItems, setItems));
   }
-}
+};
+
 function analyzeCircularDependencies(obj) {
   const keys = [];
   const stack = [];
@@ -41,8 +42,6 @@ function analyzeCircularDependencies(obj) {
     keys.pop();
     stack.pop();
     stackSet.delete(obj);
-
-    return;
   }
 
   detect(obj, 'obj');
@@ -111,11 +110,7 @@ export const openCascade = (state, item) => {
 };
 
 export const findParentItem = (parentItems, item) => {
-  for (let i = 0; i < parentItems.length; i++) {
-    for (let j = 0; j < parentItems[i].length; j++) {
-      if (parentItems[i][j].code === item.code) {
-        return parentItems[i][j];
-      }
-    }
-  }
+  const { levelOfNesting, code } = item;
+
+  return parentItems[levelOfNesting].find(item => item.code === code);
 };

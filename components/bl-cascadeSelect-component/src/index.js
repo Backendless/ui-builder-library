@@ -17,7 +17,7 @@ export default function CascadeSelect({ component, eventHandlers }) {
   const cascadeSelectRef = useRef();
 
   useEffect(() => {
-    validate(cascade, setItemsCascade, setParentItems, setItems);
+    component.setCascade(cascade);
   }, [cascade]);
 
   const openCascadeHandler = useCallback(item => {
@@ -41,7 +41,7 @@ export default function CascadeSelect({ component, eventHandlers }) {
   component.getCascade = () => itemsCascade;
   component.setCascade = (cascade) => validate(cascade, setItemsCascade, setParentItems, setItems);
 
-  component.el = cascadeSelectRef.current;
+  useEffect(() => component.el = cascadeSelectRef.current, []);
 
   if (!display) {
     return null;

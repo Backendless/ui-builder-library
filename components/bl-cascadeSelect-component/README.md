@@ -2,8 +2,6 @@
 
 Cascade Select is a component of Backendless UI-Builder designer. This allows you to select a value from a nested structure of options.
 
-The component based on external [Cascade Select](https://www.primefaces.org/primereact/cascadeselect/).
-
 ## Properties
 
 | Property          | Type    | Default Value       | Logic                       | Data Binding | UI Setting | Description                                                                                                                                                              |
