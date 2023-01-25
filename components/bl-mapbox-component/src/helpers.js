@@ -121,64 +121,77 @@ export const useMarkers = (markers, markersArray, setMarkersArray, mapRef, onMar
   }, [markers]);
 };
 
-export const usePolygons = (polygons, polygonsArray, setPolygonsArray, mapRef, onPolygonClick) => {
-  useEffect(() => {
-    if (polygons?.length && mapRef.current) {
-      mapRef.current.on('load', () => {
-        polygonsArray.forEach(polygon => {
-          if (mapRef.current.getSource(polygon)) {
-            mapRef.current.removeLayer(`${ polygon.id }-layer`);
-            mapRef.current.removeSource(polygon.id);
-          }
-        });
-      });
-
-      setPolygonsArray(preparePolygons(polygons));
-
+const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray) => {
+  if (polygons?.length && mapRef.current) {
+    mapRef.current.on('load', () => {
       polygonsArray.forEach(polygon => {
-        mapRef.current.addSource(polygon.id, {
-          'type': 'geojson',
-          'data': {
-            'type'    : 'Feature',
-            'geometry': {
-              'type'       : 'Polygon',
-              'coordinates': [[...polygon.coordinates]],
-            },
-          },
-        });
-
-        mapRef.current.addLayer({
-          'id'    : `${ polygon.id }-layer`,
-          'type'  : 'fill',
-          'source': polygon.id,
-          'layout': {},
-          'paint' : {
-            'fill-color'  : polygon.color,
-            'fill-opacity': polygon.opacity,
-          },
-        });
-
-        if (polygon.description) {
-          mapRef.current.on('click', `${ polygon.id }-layer`, e => {
-            new mapboxgl.Popup()
-              .setLngLat(e.lngLat)
-              .setHTML(polygon.description)
-              .addTo(mapRef.current);
-
-            const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
-
-            onPolygonClick({ coordinates: coordinates, description: polygon.description });
-          });
-        } else {
-          mapRef.current.on('click', `${ polygon.id }-layer`, e => {
-            const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
-
-            onPolygonClick({ coordinates: coordinates, description: '' });
-          });
+        if (mapRef.current.getSource(polygon)) {
+          mapRef.current.removeLayer(`${ polygon.id }-layer`);
+          mapRef.current.removeSource(polygon.id);
         }
       });
-    }
+    });
+
+    setPolygonsArray(preparePolygons(polygons));
+  }
+};
+
+const addPolygons = (mapRef, polygonsArray, onPolygonClick) => {
+  mapRef.current.on('load', () => {
+    polygonsArray.forEach(polygon => {
+      mapRef.current.addSource(polygon.id, {
+        'type': 'geojson',
+        'data': {
+          'type'    : 'Feature',
+          'geometry': {
+            'type'       : 'Polygon',
+            'coordinates': [[...polygon.coordinates]],
+          },
+        },
+      });
+
+      mapRef.current.addLayer({
+        'id'    : `${ polygon.id }-layer`,
+        'type'  : 'fill',
+        'source': polygon.id,
+        'layout': {},
+        'paint' : {
+          'fill-color'  : polygon.color,
+          'fill-opacity': polygon.opacity,
+        },
+      });
+
+      if (polygon.description) {
+        mapRef.current.on('click', `${ polygon.id }-layer`, e => {
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(polygon.description)
+            .addTo(mapRef.current);
+
+          const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
+
+          onPolygonClick({ coordinates: coordinates, description: polygon.description });
+        });
+      } else {
+        mapRef.current.on('click', `${ polygon.id }-layer`, e => {
+          const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
+
+          onPolygonClick({ coordinates: coordinates, description: '' });
+        });
+      }
+
+    });
+  });
+};
+
+export const usePolygons = (polygons, polygonsArray, setPolygonsArray, mapRef, onPolygonClick) => {
+  useEffect(() => {
+    updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray);
   }, [polygons]);
+
+  useEffect(() => {
+    addPolygons(mapRef, polygonsArray, onPolygonClick);
+  }, [polygonsArray]);
 };
 
 export const useEvents = (mapRef, eventHandlers) => {
