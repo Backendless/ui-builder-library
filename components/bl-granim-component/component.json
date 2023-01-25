@@ -1,0 +1,358 @@
+{
+  "id": "c_035c0cdcf668f2a3ea71c991caea3e59",
+  "name": "Granim",
+  "description": "The Granim component allows the user to create fluid and interactive gradient animations.",
+  "showInToolbox": true,
+  "faIcon": "paint-roller",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "direction",
+      "label": "Direction",
+      "showInSettings": true,
+      "defaultValue": "left-right",
+      "hasLogicHandler": false,
+      "handlerId": "directionLogic",
+      "options": [
+        {
+          "value": "left-right",
+          "label": "left-right"
+        },
+        {
+          "value": "diagonal",
+          "label": "diagonal"
+        },
+        {
+          "value": "top-bottom",
+          "label": "top-bottom"
+        },
+        {
+          "value": "radial",
+          "label": "radial"
+        },
+        {
+          "value": "custom",
+          "label": "custom"
+        }
+      ],
+      "settingTooltip": "The orientation of the gradient"
+    },
+    {
+      "type": "text",
+      "name": "x0",
+      "label": "x0",
+      "settingTooltip": "Starting x-coordinate for custom direction",
+      "showInSettings": true,
+      "defaultValue": "10%",
+      "hasLogicHandler": false,
+      "handlerId": "x0Logic"
+    },
+    {
+      "type": "text",
+      "name": "y0",
+      "label": "y0",
+      "showInSettings": true,
+      "defaultValue": "25px",
+      "hasLogicHandler": false,
+      "handlerId": "y0Logic",
+      "settingTooltip": "Starting y-coordinate for custom direction"
+    },
+    {
+      "type": "text",
+      "name": "x1",
+      "label": "x1",
+      "showInSettings": true,
+      "defaultValue": "30%",
+      "hasLogicHandler": false,
+      "handlerId": "x1Logic",
+      "settingTooltip": "End x-coordinate for custom direction"
+    },
+    {
+      "type": "text",
+      "name": "y1",
+      "label": "y1",
+      "showInSettings": true,
+      "defaultValue": "322px",
+      "hasLogicHandler": false,
+      "handlerId": "y1Logic",
+      "settingTooltip": "End y-coordinate for custom direction"
+    },
+    {
+      "type": "json",
+      "name": "colors",
+      "label": "Colors",
+      "settingTooltip": "Set the colors for the gradient",
+      "showInSettings": true,
+      "defaultValue": "[]",
+      "hasLogicHandler": false,
+      "handlerId": "colorsLogic"
+    },
+    {
+      "type": "text",
+      "name": "imageSource",
+      "label": "Image Source",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "imageSourceLogic",
+      "settingTooltip": "The source of the image(URL)"
+    },
+    {
+      "type": "select",
+      "name": "imagePosX",
+      "label": "Image Pos X",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": false,
+      "handlerId": "imagePosXLogic",
+      "options": [
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "settingTooltip": "The x-position of the image in the canvas"
+    },
+    {
+      "type": "select",
+      "name": "imagePosY",
+      "label": "Image Pos Y",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": false,
+      "handlerId": "imagePosYLogic",
+      "options": [
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "top",
+          "label": "top"
+        },
+        {
+          "value": "bottom",
+          "label": "bottom"
+        }
+      ],
+      "settingTooltip": "The y-position of the image in the canvas"
+    },
+    {
+      "type": "select",
+      "name": "stretchModeX",
+      "label": "Stretch Mode X",
+      "showInSettings": true,
+      "defaultValue": "none",
+      "hasLogicHandler": false,
+      "handlerId": "stretchModeXLogic",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "stretch",
+          "label": "stretch"
+        },
+        {
+          "value": "stretch-if-smaller",
+          "label": "stretch-if-smaller"
+        },
+        {
+          "value": "stretch-if-bigger",
+          "label": "stretch-if-bigger"
+        }
+      ],
+      "settingTooltip": "Stretching the image horizontally"
+    },
+    {
+      "type": "select",
+      "name": "stretchModeY",
+      "label": "Stretch Mode Y",
+      "showInSettings": true,
+      "defaultValue": "none",
+      "hasLogicHandler": false,
+      "handlerId": "stretchModeYLogic",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "stretch",
+          "label": "stretch"
+        },
+        {
+          "value": "stretch-if-smaller",
+          "label": "stretch-if-smaller"
+        },
+        {
+          "value": "stretch-if-bigger",
+          "label": "stretch-if-bigger"
+        }
+      ],
+      "settingTooltip": "Stretching the image vertically"
+    },
+    {
+      "type": "select",
+      "name": "blendingMode",
+      "label": "Blending Mode",
+      "showInSettings": true,
+      "defaultValue": "multiply",
+      "hasLogicHandler": false,
+      "handlerId": "blendingModeLogic",
+      "options": [
+        {
+          "value": "multiply",
+          "label": "multiply"
+        },
+        {
+          "value": "screen",
+          "label": "screen"
+        },
+        {
+          "value": "normal",
+          "label": "normal"
+        },
+        {
+          "value": "overlay",
+          "label": "overlay"
+        },
+        {
+          "value": "darken",
+          "label": "darken"
+        },
+        {
+          "value": "lighten",
+          "label": "lighten"
+        },
+        {
+          "value": "lighter",
+          "label": "lighter"
+        },
+        {
+          "value": "color-dodge",
+          "label": "color-dodge"
+        },
+        {
+          "value": "color-burn",
+          "label": "color-burn"
+        },
+        {
+          "value": "hard-light",
+          "label": "hard-light"
+        },
+        {
+          "value": "soft-light",
+          "label": "soft-light"
+        },
+        {
+          "value": "difference",
+          "label": "difference"
+        },
+        {
+          "value": "exclusion",
+          "label": "exclusion"
+        },
+        {
+          "value": "hue",
+          "label": "hue"
+        },
+        {
+          "value": "saturation",
+          "label": "saturation"
+        },
+        {
+          "value": "color",
+          "label": "color"
+        },
+        {
+          "value": "luminosity",
+          "label": "luminosity"
+        }
+      ],
+      "settingTooltip": "Options for blending images with a gradient"
+    },
+    {
+      "type": "checkbox",
+      "name": "isPausedWhenNotInView",
+      "label": "Paused if not in view",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "isPausedWhenNotInViewLogic",
+      "settingTooltip": "Stop the animation when it's not in window view"
+    },
+    {
+      "type": "number",
+      "name": "scrollDebounceThreshold",
+      "label": "Scroll Debounce Threshold",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "scrollDebounceThresholdLogic",
+      "settingTooltip": "The scroll debounce threshold (in ms)"
+    },
+    {
+      "type": "number",
+      "name": "transitionSpeed",
+      "label": "Transition speed",
+      "settingTooltip": "Transition duration between each gradient (in ms)",
+      "showInSettings": true,
+      "defaultValue": "",
+      "hasLogicHandler": false,
+      "handlerId": "transitionSpeedLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "loop",
+      "label": "Loop",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "loopLogic",
+      "settingTooltip": "The animation loop"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onStart",
+      "label": "On Start",
+      "handlerDescription": "Triggered when the animation start."
+    },
+    {
+      "name": "onGradientChange",
+      "label": "On Gradient Change",
+      "handlerDescription": "Triggered when a gradient change and loop.",
+      "output": false,
+      "contextBlocks": [
+        {
+          "id": "colorDetails",
+          "label": "Color Details"
+        }
+      ]
+    },
+    {
+      "name": "onEnd",
+      "label": "On End",
+      "handlerDescription": "Triggered when the animation end."
+    }
+  ],
+  "actions": [],
+  "settings": [],
+  "pods": {
+    "b8828219095d33ecaffe9d3c6ba4e2ae": {
+      "id": "granimContent",
+      "dataContainer": true
+    }
+  },
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"granimContent\" data-uid=\"b8828219095d33ecaffe9d3c6ba4e2ae\" data-pod-container=\"true\" data-data-container=\"true\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;min-height:100px;min-width:100px;background-color:#b6cdf8;\"></div>"
+}
