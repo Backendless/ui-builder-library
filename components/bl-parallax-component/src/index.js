@@ -32,7 +32,7 @@ export default function Parallax({ component, pods }) {
   );
 }
 
-const useAnimation = (backdropRef, containerRef, power) => {
+const useAnimation = (backdropRef, containerRef, strength) => {
   const animate = useCallback(() => {
     const containerTopOffset = containerRef.current.getBoundingClientRect().top + window.pageYOffset;
     const containerElementCenter = containerRef.current.getBoundingClientRect().height / 2;
@@ -41,13 +41,13 @@ const useAnimation = (backdropRef, containerRef, power) => {
     const backgroundHeight = backdropRef.current.getBoundingClientRect().height;
     const screenCenter = window.innerHeight / 2;
     const distanceToCenterOfScreen = containerElementCenterOffset - screenCenter - window.pageYOffset;
-    const translateY = (distanceToCenterOfScreen / backgroundHeight * -100) * power * 0.001;
+    const translateY = (distanceToCenterOfScreen / backgroundHeight * -100) * strength * 0.001;
 
-    backdropRef.current.style.transform = `translate(0, calc(${ translateY }% - ${ power / 2 }px))`;
-  }, [power]);
+    backdropRef.current.style.transform = `translate(0, calc(${ translateY }% - ${ strength / 2 }px))`;
+  }, [strength]);
 
   useEffect(() => {
-    backdropRef.current.style.height = `calc(100% + ${ power }px)`;
+    backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
 
     animate();
 
@@ -58,5 +58,5 @@ const useAnimation = (backdropRef, containerRef, power) => {
       document.removeEventListener('scroll', animate);
       window.removeEventListener('resize', animate, false);
     };
-  }, [power]);
+  }, [strength]);
 };
