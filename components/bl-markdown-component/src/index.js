@@ -32,7 +32,7 @@ export default function Markdown({ component }) {
       .finally(() => setIsLoading(false));
   };
 
-  const setContent = text => setMarkdown(md.render(text));
+  const setContent = text => setMarkdown(text ? md.render(text) : NO_MARKDOWN);
 
   if (!display) {
     return null;
@@ -42,7 +42,7 @@ export default function Markdown({ component }) {
     <div
       className={ cn('bl-customComponent-markdown markdown-body', classList) }
       style={ { ...style, height: height || '100%', width: width || '100%' } }>
-      <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown || NO_MARKDOWN }/>
+      <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown }/>
     </div>
   );
 }
