@@ -39,6 +39,16 @@ export default function GranimComponent({ component, eventHandlers, pods }) {
   const canvasRef = useRef(null);
   const canvasId = useMemo(() => BackendlessUI.UUID.short(), []);
 
+  const customDirection =
+    direction === "custom"
+      ? {
+          x0: x0 || "0px",
+          y0: y0 || "0px",
+          x1: x1 || "100%",
+          y1: y1 || "100%",
+        }
+      : {};
+
   useEffect(() => {
     canvasRef.current = new Granim({
       element: ".granim-canvas",
@@ -55,7 +65,7 @@ export default function GranimComponent({ component, eventHandlers, pods }) {
           }
         : undefined,
       direction,
-      customDirection: direction === "custom" && x0 && y0 && x1 && y1 ? { x0: x0, y0: y0, x1: x1, y1: y1 } : {},
+      customDirection,
       states: {
         "default-state": {
           gradients: colors ? colors : COLORS_DEFAULT,
@@ -76,9 +86,9 @@ export default function GranimComponent({ component, eventHandlers, pods }) {
   }, []);
 
   return (
-    <div className={ cn("bl-customComponent-granim", ...classList) } style={ style } ref={ granimRef }>
-      <canvas className="granim-canvas" ref={ canvasRef } id={ canvasId } />
-      <div className="granim-content">{ granimContentPod.render() }</div>
+    <div className={cn("bl-customComponent-granim", ...classList)} style={style} ref={granimRef}>
+      <canvas className="granim-canvas" ref={canvasRef} id={canvasId} />
+      <div className="granim-content">{granimContentPod.render()}</div>
     </div>
   );
 }

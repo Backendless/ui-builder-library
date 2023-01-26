@@ -46,7 +46,7 @@
       "label": "x0",
       "settingTooltip": "Starting x-coordinate for custom direction",
       "showInSettings": true,
-      "defaultValue": "10%",
+      "defaultValue": "",
       "hasLogicHandler": false,
       "handlerId": "x0Logic"
     },
@@ -55,7 +55,7 @@
       "name": "y0",
       "label": "y0",
       "showInSettings": true,
-      "defaultValue": "25px",
+      "defaultValue": "",
       "hasLogicHandler": false,
       "handlerId": "y0Logic",
       "settingTooltip": "Starting y-coordinate for custom direction"
@@ -65,7 +65,7 @@
       "name": "x1",
       "label": "x1",
       "showInSettings": true,
-      "defaultValue": "30%",
+      "defaultValue": "",
       "hasLogicHandler": false,
       "handlerId": "x1Logic",
       "settingTooltip": "End x-coordinate for custom direction"
@@ -75,7 +75,7 @@
       "name": "y1",
       "label": "y1",
       "showInSettings": true,
-      "defaultValue": "322px",
+      "defaultValue": "",
       "hasLogicHandler": false,
       "handlerId": "y1Logic",
       "settingTooltip": "End y-coordinate for custom direction"
