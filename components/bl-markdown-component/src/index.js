@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 
 import MarkdownIt from './markdown-it.min.js';
 
@@ -12,6 +12,8 @@ export default function Markdown({ component }) {
   const [markdown, setMarkdown] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const markdownRef = useRef(null);
 
   const md = useMemo(() => new MarkdownIt(), []);
 
@@ -34,12 +36,17 @@ export default function Markdown({ component }) {
 
   const setContent = text => setMarkdown(md.render(text));
 
+  useEffect(() => {
+    component.el = markdownRef.current;
+  }, []);
+
   if (!display) {
     return null;
   }
 
   return (
     <div
+      ref={ markdownRef }
       className={ cn('bl-customComponent-markdown markdown-body', classList) }
       style={ { ...style, height: height || '100%', width: width || '100%' } }>
       <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown || NO_MARKDOWN }/>
