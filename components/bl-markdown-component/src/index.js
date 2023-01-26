@@ -7,7 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 const NO_MARKDOWN = '<h1>No specified markdown text</h1>';
 
 export default function Markdown({ component }) {
-  const { classList, style, display, url, markdownText, height, width } = component;
+  const { classList, style, display, url, text, height, width } = component;
 
   const [markdown, setMarkdown] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function Markdown({ component }) {
   component.setContent = text => setContent(text);
 
   useEffect(() => fetchContent(url), [url]);
-  useEffect(() => setContent(markdownText), [markdownText]);
+  useEffect(() => setContent(text), [text]);
 
   const fetchContent = url => {
     setIsLoading(true);
