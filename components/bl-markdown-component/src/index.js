@@ -18,7 +18,12 @@ export default function Markdown({ component }) {
   component.setUrl = url => fetchContent(url);
   component.setContent = text => setContent(text);
 
-  useEffect(() => fetchContent(url), [url]);
+  useEffect(() => {
+    if (url) {
+      fetchContent(url);
+    }
+  }, [url]);
+
   useEffect(() => setContent(markdownText), [markdownText]);
 
   const fetchContent = url => {
