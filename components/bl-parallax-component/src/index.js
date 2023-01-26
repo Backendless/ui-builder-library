@@ -11,6 +11,10 @@ export default function Parallax({ component, pods }) {
 
   useAnimation(backdropRef, containerRef, strength, display);
 
+  useEffect(() => {
+    component.el = containerRef.current;
+  }, [containerRef]);
+
   if (!display) {
     return null;
   }
