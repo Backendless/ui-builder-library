@@ -13,7 +13,7 @@
       "name": "imagesData",
       "label": "Images Data",
       "showInSettings": true,
-      "defaultValue": "[\n  {\n    \"url\": \"\",\n    \"title\": \"\",\n    \"content\": \"\"\n  }\n]",
+      "defaultValue": "[\n  {\n    \"url\": \"https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=2000\",\n    \"title\": \"Title 1\",\n    \"content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry.\"\n  },\n  {\n    \"url\": \"https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111.jpg\",\n    \"title\": \"Title 2\",\n    \"content\": \"It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\"\n  },\n  {\n    \"url\": \"https://images.unsplash.com/photo-1585817486920-2b7e50bd2494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&w=1000&q=80\",\n    \"title\": \"Title 3\",\n    \"content\": \"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.\"\n  }\n]",
       "hasLogicHandler": true,
       "handlerId": "imagesDataLogic",
       "handlerLabel": "Images Data Logic",
@@ -167,6 +167,5 @@
         }
       ]
     }
-  ],
-  "blockUI": ""
+  ]
 }
