@@ -5,7 +5,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function Popover({ component, eventHandlers, pods }) {
   const { display, style, classList, position } = component;
-  const { onClick } = eventHandlers;
+  const { onButtonClick } = eventHandlers;
 
   const popoverTrigger = pods['popoverTrigger'];
   const popoverContent = pods['popoverContent'];
@@ -26,7 +26,7 @@ export default function Popover({ component, eventHandlers, pods }) {
       <div
         ref={ contentElement }
         className="content-container"
-        onClick={ () => onClick({ isOpen }) }>
+        onClick={ () => onButtonClick({ isOpen }) }>
         { popoverTrigger.render() }
       </div>
 

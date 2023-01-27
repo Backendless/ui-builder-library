@@ -12,9 +12,9 @@ The component allows you to render a popup window in your UI-Builder application
 
 ## Events
 
-| Name     | Triggers                   | Context Blocks     |
-|----------|----------------------------|--------------------|
-| On Click | when user clicks on button | Is Open: `Boolean` |
+| Name            | Triggers                   | Context Blocks     |
+|-----------------|----------------------------|--------------------|
+| On Button Click | when user clicks on button | Is Open: `Boolean` |
 
 ## Actions
 
