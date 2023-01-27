@@ -8,7 +8,7 @@ const AxisClassesMap = {
 };
 
 export default function TotopComponent({ component }) {
-  const { classList, offset, position, backgroundColor, color, size, iconSize, indentX, indentY, element } = component;
+  const { classList, display, offset, position, backgroundColor, color, size, iconSize, indentX, indentY, element } = component;
 
   const axisPositions = position.split("-");
 
@@ -43,6 +43,10 @@ export default function TotopComponent({ component }) {
   useEffect(() => {
     component.el = totopRef.current;
   }, []);
+
+  if (!display) {
+    return null;
+  }
 
   return (
     <div ref={totopRef} className={cn("bl-customComponent-totop", classes)} style={styles} onClick={handleScroll}>
