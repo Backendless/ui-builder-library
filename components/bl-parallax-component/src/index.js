@@ -9,7 +9,7 @@ export default function Parallax({ component, pods }) {
   const backdropRef = useRef();
   const containerRef = useRef();
 
-  useAnimation(backdropRef, containerRef, strength, display);
+  useAnimation(backdropRef, containerRef, Math.min(strength, 2000), display);
 
   useEffect(() => {
     component.el = containerRef.current;
