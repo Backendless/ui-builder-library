@@ -18,7 +18,7 @@ export default function Carousel({ component, eventHandlers }) {
     withIndicators,
     animationType
   } = component;
-  const { onNextButton, onPrevButton, onMouseEnter, onMouseLeave } = eventHandlers;
+  const { onNextButtonClick, onPrevButtonClick, onMouseEnter, onMouseLeave } = eventHandlers;
 
   const [imagesList, setImagesList] = useState([]);
   const [currentImg, setCurrentImg] = useState(0);
@@ -102,8 +102,8 @@ export default function Carousel({ component, eventHandlers }) {
       onMouseLeave={ onMouseLeave }>
       { withControls && (
         <div className="carousel__controls-button">
-          <PrevButton disabled={ !!animation } onPrevButton={ onPrevButton }/>
-          <NextButton disabled={ !!animation } onNextButton={ onNextButton }/>
+          <PrevButton disabled={ !!animation } onPrevButtonClick={ onPrevButtonClick }/>
+          <NextButton disabled={ !!animation } onNextButtonClick={ onNextButtonClick }/>
         </div>
       ) }
 

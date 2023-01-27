@@ -108,13 +108,13 @@
   ],
   "eventHandlers": [
     {
-      "name": "onNextButton",
-      "label": "On Next Button",
+      "name": "onNextButtonClick",
+      "label": "On Next Button Click",
       "handlerDescription": "This handler is triggered when the user clicks on the next button"
     },
     {
-      "name": "onPrevButton",
-      "label": "On Previous Button",
+      "name": "onPrevButtonClick",
+      "label": "On Previous Button Click",
       "handlerDescription": "This handler is triggered when the user clicks on the previous button"
     },
     {

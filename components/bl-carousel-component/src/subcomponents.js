@@ -98,24 +98,24 @@ export function CarouselIndicators(props) {
   );
 }
 
-export function NextButton({ disabled, onNextButton }) {
+export function NextButton({ disabled, onNextButtonClick }) {
   return (
     <button
       type="button"
       className="carousel__next-button"
-      onClick={ onNextButton }
+      onClick={ onNextButtonClick }
       style={ { pointerEvents: disabled ? 'none' : 'auto' } }>
       <NextButtonIcon/>
     </button>
   );
 }
 
-export function PrevButton({ disabled, onPrevButton }) {
+export function PrevButton({ disabled, onPrevButtonClick }) {
   return (
     <button
       type="button"
       className="carousel__prev-button"
-      onClick={ onPrevButton }
+      onClick={ onPrevButtonClick }
       style={ { pointerEvents: disabled ? 'none' : 'auto' } }>
       <PrevButtonIcon/>
     </button>
