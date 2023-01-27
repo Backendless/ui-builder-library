@@ -20,7 +20,7 @@ The component allows you to render a popup window in your UI-Builder application
 
 | Action      | Inputs             | Returns |
 |-------------|--------------------|---------|
-| Set Is Open | Boolean: `Boolean` |         |
+| Set Is Open | Is Open: `Boolean` |         |
 
 ## Styles
 
