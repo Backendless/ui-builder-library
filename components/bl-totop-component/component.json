@@ -14,7 +14,7 @@
       "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "elementLogic",
-      "handlerLabel": "Element To Scroll To Logic",
+      "handlerLabel": "Scroll To Component Logic",
       "handlerDescription": "This is a handler for the logic to determine the element to which the scroll will be."
     },
     {
@@ -110,13 +110,22 @@
     },
     {
       "type": "text",
-      "name": "indent",
-      "label": "Indent",
+      "name": "indentX",
+      "label": "Indent X",
       "showInSettings": true,
       "defaultValue": "",
       "hasLogicHandler": false,
-      "handlerId": "indentLogic",
-      "settingTooltip": "Indent of the up button from the edge of the page"
+      "handlerId": "indentXLogic",
+      "settingTooltip": "Indent of the up button from the edge of the page horizontally"
+    },
+    {
+      "type": "text",
+      "name": "indentY",
+      "label": "Indent Y",
+      "settingTooltip": "Indent of the up button from the edge of the page vertically",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "indentYLogic"
     }
   ],
   "eventHandlers": [],

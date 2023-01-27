@@ -8,16 +8,17 @@ Totop is the component that can be used in Backendless [UI-Builder](https://back
 
 ## Properties
 
-| Property    | Type                                                                                                                                 | Default value  | Logic                      | Data Binding | UI Setting | Description                                                                                           |
-|-------------|--------------------------------------------------------------------------------------------------------------------------------------|----------------|----------------------------|--------------|------------|-------------------------------------------------------------------------------------------------------|
-| Position    | *Select* <br> [`bottom-right`, `bottom-left`, `bottom-center`, `top-right`, `top-left`, `top-center`, `center-right`, `center-left`] | `bottom-right` | Type Logic                 | NO           | YES        | Controls the position of the up button on the page.                                                   |
-| Element     |                                                                                                                                      |                | Element To Scroll To Logic | NO           | NO         | The logic to determine the element to which the scroll will be. Watch [Codeless Examples](#Examples). |
-| Offset      | *Number*                                                                                                                             |                |                            | NO           | YES        | Controls the scroll offset.                                                                           |
-| Background  | *Color*                                                                                                                              |                |                            | NO           | YES        | Controls the up button background.                                                                    |
-| Color       | *Color*                                                                                                                              |                |                            | NO           | YES        | Controls the color of the icon inside the up button.                                                  |
-| Button Size | *Text*                                                                                                                               |                |                            | NO           | YES        | Controls the size(width/height) of the up button.                                                     |
-| Icon Size   | *Text*                                                                                                                               |                |                            | NO           | YES        | Controls the size(width/height) of the icon inside the up button.                                     |
-| Indent      | *Text*                                                                                                                               |                |                            | NO           | YES        | Controls the indent of the up button from the edge of the page.                                       |
+| Property        | Type                                                                                                                                 | Default value  | Logic                     | Data Binding | UI Setting | Description                                                                                           |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------|----------------|---------------------------|--------------|------------|-------------------------------------------------------------------------------------------------------|
+| position        | *Select* <br> [`bottom-right`, `bottom-left`, `bottom-center`, `top-right`, `top-left`, `top-center`, `center-right`, `center-left`] | `bottom-right` | Type Logic                | NO           | YES        | Controls the position of the up button on the page.                                                   |
+| element         |                                                                                                                                      |                | Scroll To Component Logic | NO           | NO         | The logic to determine the element to which the scroll will be. Watch [Codeless Examples](#Examples). |
+| offset          | *Number*                                                                                                                             |                |                           | NO           | YES        | Controls the scroll offset.                                                                           |
+| backgroundColor | *Color*                                                                                                                              |                |                           | NO           | YES        | Controls the up button background.                                                                    |
+| color           | *Color*                                                                                                                              |                |                           | NO           | YES        | Controls the color of the icon inside the up button.                                                  |
+| size            | *Text*                                                                                                                               |                |                           | NO           | YES        | Controls the size(width/height) of the up button.                                                     |
+| iconSize        | *Text*                                                                                                                               |                |                           | NO           | YES        | Controls the size(width/height) of the icon inside the up button.                                     |
+| indentX         | *Text*                                                                                                                               |                |                           | NO           | YES        | Controls the indent of the up button from the edge of the page horizontally.                          |
+| indentY         | *Text*                                                                                                                               |                |                           | NO           | YES        | Controls the indent of the up button from the edge of the page vertically.                            |
 
 ## Styles
 
@@ -31,6 +32,7 @@ Totop is the component that can be used in Backendless [UI-Builder](https://back
 ```
 @bl-customComponent-totop-size: 40px;
 @bl-customComponent-totop-icon-size: 20px;
+@bl-customComponent-totop-indent: 20px;
 @bl-customComponent-totop-border-radius: 50%;
 @bl-customComponent-totop-z-index: 999;
 ```
@@ -52,12 +54,4 @@ Below is a Codeless Example highlighting how to use the Totop component:
 
 <p align="center">
   <img src="./example-images/totop-data-example.png" alt="totop data example" width="500"/>
-</p>
-
-<p align="center">
-  <img src="./example-images/totop-data-example2.png" alt="totop data example2" width="780"/>
-</p>
-
-<p align="center">
-  <img src="./example-images/totop-data-example3.png" alt="totop data example3" width="500"/>
 </p>
