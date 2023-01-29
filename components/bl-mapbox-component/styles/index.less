@@ -11,6 +11,6 @@
 
   .map-dimensions {
     width: 100%;
-    height: inherit;
+    height: if(@bl-customComponent-mapbox-height < 100%, 100%, inherit);
   }
 }
