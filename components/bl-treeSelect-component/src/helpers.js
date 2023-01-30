@@ -103,3 +103,44 @@ export function validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMa
     }
   }
 }
+
+function updateSelectedItems(node, selectedNodes, selectionMode) {
+  if (!node) {
+    return;
+  }
+
+  if (selectedNodes[node.key]) {
+    const { label, data } = node;
+
+    if (selectionMode === SelectionMode.checkbox) {
+      selectedNodes[node.key].data = data;
+      selectedNodes[node.key].label = label;
+    } else {
+      selectedNodes[node.key] = { data, label };
+    }
+  }
+
+  if (node.children) {
+    for (const childNode of node.children) {
+      updateSelectedItems(childNode, selectedNodes, selectionMode);
+    }
+  }
+}
+
+export function getSelectedItems(selectedNodeKeys, nodes, selectionMode) {
+  if (!selectedNodeKeys) {
+    return null;
+  }
+
+  const selectedItems = selectionMode === SelectionMode.single ? {
+    [`${ selectedNodeKeys }`]: true,
+  } : { ...selectedNodeKeys };
+
+  if (Object.keys(selectedItems).length) {
+    for (const childNode of nodes) {
+      updateSelectedItems(childNode, selectedItems, selectionMode);
+    }
+  }
+
+  return selectedItems;
+}

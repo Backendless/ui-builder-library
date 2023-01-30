@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import primereact from './lib/primereact.min';
 import {
-  ensureMeasure, findNodes, findNodesInCheckboxMode, getSelectedKeys, validateSelectedNodeKeys,
+  ensureMeasure, findNodes, findNodesInCheckboxMode, getSelectedItems, getSelectedKeys, validateSelectedNodeKeys,
 } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -119,10 +119,10 @@ function useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode)
   };
 
   const onSelectedNodeChange = e => {
-    const changedValue = e.value;
+    const selectedItems = getSelectedItems(e.value, nodes, selectionMode);
 
-    setSelectedNodeKey(changedValue);
-    onChange({ changedValue });
+    setSelectedNodeKey(e.value);
+    onChange({ selectedItems });
   };
 
   const updateNodesState = selectedNodeKeys => {
