@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import primereact from './lib/primereact.min';
 import { ensureMeasure, findNodes, findNodesInCheckboxMode, getSelectedKeys } from './helpers';
@@ -12,6 +12,8 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
   const { filterPlaceholder, selectedOptionKey, emptyMessage } = component;
 
   const { onShow, onHide } = eventHandlers;
+
+  const treeSelectRef = useRef(null);
 
   const [nodes, setNodes] = useState(options);
   const [selectedNodeKey, setSelectedNodeKey] = useState(selectedOptionKey);
@@ -35,6 +37,10 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
     setNodes(options);
   }, [options]);
 
+  useEffect(() => {
+    component.el = treeSelectRef.current?.getElement() || null;
+  }, []);
+
   Object.assign(component, {
     expandAll  : () => expandAll(),
     collapseAll: () => collapseAll(),
@@ -46,6 +52,7 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
 
   return (
     <TreeSelect
+      ref={ treeSelectRef }
       className={ cn('bl-customComponent-treeSelect', classList) }
       style={ style }
       value={ selectedNodeKey }
