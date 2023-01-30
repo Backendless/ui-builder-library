@@ -8,12 +8,12 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
 
 ## Properties
 
-| Property         | Type                                                | Default Value | Logic                  | Data Binding | UI Setting | Description                                                                                                                                        |
-|------------------|-----------------------------------------------------|---------------|------------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled         | *Checkbox*                                          | `false`       | Disabled Logic         | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
-| Variant          | *Select* <br/> "Standart" \| "Filled" \| "Outlined" | "Standart"    | Variant Logic          | YES          | YES        | This handler allows you to select variant of tab.                                                                                                  |
-| Tabs Orientation | *Select* <br/>"Left" \| "Center" \| "Right"         | "Center"      | Tabs Orientation Logic | YES          | YES        | This handler allows you to specify the orientation of the tabs.                                                                                    |
-| Tabs             | *JSON*                                              |               | Tabs Logic             | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: {id: `String`, label: `String`}. |
+| Property         | Type                                               | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |
+|------------------|----------------------------------------------------|---------------|----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled         | *Checkbox*                                         | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
+| Variant          | *Select* <br/>"Standart" \| "Filled" \| "Outlined" | "Standart"    | Variant Logic  | YES          | YES        | This handler allows you to select variant of tab.                                                                                                  |
+| Tabs Orientation | *Select* <br/>"Left" \| "Center" \| "Right"        | "Center"      |                | NO           | YES        | This handler allows you to specify the orientation of the tabs.                                                                                    |
+| Tabs             | *JSON*                                             |               | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: {id: `String`, label: `String`}. |
 
 ## Events
 

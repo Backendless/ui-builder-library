@@ -53,11 +53,8 @@
       "label": "Tabs Orientation",
       "showInSettings": true,
       "defaultValue": "center",
-      "hasLogicHandler": true,
+      "hasLogicHandler": false,
       "handlerId": "tabsOrientationLogic",
-      "handlerLabel": "Tabs Orientation Logic",
-      "handlerDescription": "This handler allows you to specify the orientation of the tabs.",
-      "dataBinding": true,
       "options": [
         {
           "value": "left",
