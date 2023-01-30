@@ -14,18 +14,19 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
 | Variant          | *Select* <br/> "Standart" \| "Filled" \| "Outlined" | "Standart"    | Variant Logic          | YES          | YES        | This handler allows you to select variant of tab.                                                                                                  |
 | Tabs Orientation | *Select* <br/>"Left" \| "Center" \| "Right"         | "Center"      | Tabs Orientation Logic | YES          | YES        | This handler allows you to specify the orientation of the tabs.                                                                                    |
 | Tabs             | *JSON*                                              |               | Tabs Logic             | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: {id: `String`, label: `String`}. |
+
 ## Events
 
-| Name                   | Triggers                               | Context Blocks               |
-|------------------------|----------------------------------------|------------------------------|
-| On Change Event        | triggered when a tab is changed        | Current Tab Id: `String`     |
+| Name                  | Triggers                        | Context Blocks               |
+|-----------------------|---------------------------------|------------------------------|
+| On Change Event       | triggered when a tab is changed | Current Tab Id: `String`     |
 
 ## Actions
 
-| Action                | Inputs                               | Returns                                 |
-|-----------------------|--------------------------------------|-----------------------------------------|
-| Set Current Tab Id    | Id: `String`                         |                                         |
-| Get Current Tab Id    |                                      | `String`: current tab id                |
+| Action                | Inputs                          | Returns                      |
+|-----------------------|---------------------------------|------------------------------|
+| Set Current Tab Id    | Id: `String`                    |                              |
+| Get Current Tab Id    |                                 | `String`: current tab id     |
 
 ## Styles
 
