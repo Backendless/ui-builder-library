@@ -21,6 +21,9 @@ export default function KnobComponent({ component, eventHandlers }) {
     setKnobReadOnly(!!readOnly);
   },[readOnly]);
 
+    setKnobDisabled(!!readOnly);
+  }, [disabled]);
+
   useEffect(() => {
     if (!isNaN(initialValue)) {
       setKnobValue(initialValue);
