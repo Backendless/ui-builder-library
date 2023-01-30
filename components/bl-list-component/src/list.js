@@ -1,23 +1,25 @@
 export function List({ options, items, type }) {
-  const ComponentType = type || options.type;
+  const ListElement = type || options.type;
 
   return (
-    <ComponentType className="list">
-      {items?.map((item, i) => (
-        <Item listItem={item} key={i} options={options} />
-      ))}
-    </ComponentType>
+    <ListElement className="list">
+      { items.map((item, i) => {
+        const { content, children, type } = item;
+
+        return <Item key={ i } content={ content } children={ children } type={ type } options={ options } />;
+      }) }
+    </ListElement>
   );
 }
 
 function Item(props) {
-  const { options, listItem, key } = props;
+  const { options, key, content, children, type } = props;
   const { style, onClickHandler } = options;
 
   return (
-    <li key={key} className="list__item" style={style} onClick={(e) => onClickHandler(e, listItem)}>
-      {listItem.content}
-      <List items={listItem.children} options={options} type={listItem.typeOfList} />
+    <li key={ key } className="list__item" style={ style } onClick={ (e) => onClickHandler(e, content, children) }>
+      { content }
+      { children && <List items={ children } type={ type } options={ options } /> }
     </li>
   );
 }

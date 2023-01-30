@@ -37,8 +37,8 @@
       "handlerId": "listItemsLogic",
       "handlerLabel": "List Items Logic",
       "dataBinding": true,
-      "defaultValue": "[]",
-      "handlerDescription": "Specifies a JSON array containing data of the list items. Signature of items list: [ <Item> ]. Signature of item: { content: String, children: [ <Item> ] }."
+      "defaultValue": "",
+      "handlerDescription": "Specifies a JSON array containing data of the list items. Signature of items list: [ <Item> ]. Signature of item: { content: String, children: [ <Item> ], type: String }."
     },
     {
       "type": "color",
@@ -92,8 +92,12 @@
       "label": "On Click List Item Event",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "List Item"
+          "id": "itemContent",
+          "label": "List Item Content"
+        },
+        {
+          "id": "itemChildren",
+          "label": "List Item Children"
         }
       ],
       "handlerDescription": "This event is fired when the user clicks the mouse or taps the item of the list."
