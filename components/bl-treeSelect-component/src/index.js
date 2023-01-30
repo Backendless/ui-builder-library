@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 import primereact from './lib/primereact.min';
-import { ensureMeasure, findNodes, findNodesInCheckboxMode, getSelectedKeys } from './helpers';
+import {
+  ensureMeasure, findNodes, findNodesInCheckboxMode, getSelectedKeys, validateSelectedNodeKeys,
+} from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 const { TreeSelect } = primereact.treeselect;
@@ -63,7 +65,7 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
       expandedKeys={ expandedKeys }
       selectionMode={ selectionMode }
       metaKeySelection={ metaKeySelection }
-      placeholder={ label }
+      placeholder={ label || ' ' }
       filter={ filterVisibility }
       resetFilterOnHide={ resetFilterOnHide }
       filterInputAutoFocus={ filterInputAutoFocus }
@@ -138,6 +140,7 @@ function useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode)
       }
     }
 
+    validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMap);
     setSelectedNodeKey(selectedNodeKeys);
     setExpandedKeys(expandedKeysState);
   };
