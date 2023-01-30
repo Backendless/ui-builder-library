@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import primereact from './lib/primereact.min';
+import { ensureMeasure, findNodes, findNodesInCheckboxMode, getSelectedKeys } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 const { TreeSelect } = primereact.treeselect;
 
 export default function TreeSelectComponent({ component, eventHandlers }) {
-  const { display, classList, style, options, label, selectionMode, filterVisibility, chipsDisplay } = component;
-  const { metaKeySelection, scrollHeight, disabled, resetFilterOnHide, filterInputAutoFocus } = component;
+  const { display, classList, style, options, label, selectionMode, filterVisibility, chipsVisibility } = component;
+  const { metaKeySelection, optionsPanelHeight, disabled, resetFilterOnHide, filterInputAutoFocus } = component;
   const { filterPlaceholder, selectedOptionKey, emptyMessage } = component;
 
   const { onShow, onHide } = eventHandlers;
@@ -17,16 +18,22 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
 
   const {
     expandAll, collapseAll, onSelectedNodeChange, onToggle, onNodeSelect,
-    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys,
-  } = useNodeActions(nodes, eventHandlers, setSelectedNodeKey);
+    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys, updateNodesState,
+  } = useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode);
+
+  useEffect(() => {
+    if (!selectedOptionKey || !nodes?.length) {
+      return;
+    }
+
+    const selectedNodeKeys = getSelectedKeys(selectedOptionKey, selectionMode);
+
+    updateNodesState(selectedNodeKeys);
+  }, [selectedOptionKey]);
 
   useEffect(() => {
     setNodes(options);
   }, [options]);
-
-  useEffect(() => {
-    setSelectedNodeKey(selectedOptionKey);
-  }, [selectedOptionKey]);
 
   Object.assign(component, {
     expandAll  : () => expandAll(),
@@ -43,9 +50,9 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
       style={ style }
       value={ selectedNodeKey }
       options={ nodes }
-      display={ chipsDisplay ? 'chip' : 'comma' }
+      display={ chipsVisibility ? 'chip' : 'comma' }
       panelClassName="bl-customComponent-treeSelect-options"
-      scrollHeight={ ensureMeasure(scrollHeight) }
+      scrollHeight={ ensureMeasure('max-height', optionsPanelHeight) }
       expandedKeys={ expandedKeys }
       selectionMode={ selectionMode }
       metaKeySelection={ metaKeySelection }
@@ -68,16 +75,16 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
   );
 }
 
-function useNodeActions(nodes, eventHandlers, setSelectedNodeKey) {
-  const { onChange, onItemSelect, onItemUnselect, onItemExpand, onItemCollapse } = eventHandlers;
+function useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode) {
+  const { onChange, onSelect, onUnselect, onExpand, onCollapse } = eventHandlers;
 
   const [expandedKeys, setExpandedKeys] = useState({});
 
   const onToggle = e => setExpandedKeys(e.value);
-  const onNodeSelect = e => onItemSelect({ item: e.node });
-  const onNodeUnselect = e => onItemUnselect({ item: e.node });
-  const onNodeExpand = e => onItemExpand({ item: e.node });
-  const onNodeCollapse = e => onItemCollapse({ item: e.node });
+  const onNodeSelect = e => onSelect({ selectedItem: e.node });
+  const onNodeUnselect = e => onUnselect({ unselectedItem: e.node });
+  const onNodeExpand = e => onExpand({ expandedItem: e.node });
+  const onNodeCollapse = e => onCollapse({ collapsedItem: e.node });
   const collapseAll = () => setExpandedKeys({});
 
   const expandAll = () => {
@@ -109,12 +116,27 @@ function useNodeActions(nodes, eventHandlers, setSelectedNodeKey) {
     onChange({ changedValue });
   };
 
+  const updateNodesState = selectedNodeKeys => {
+    const keysMap = {};
+    const expandedKeysState = { ...expandedKeys };
+    const options = [...nodes];
+
+    if (selectionMode === 'checkbox') {
+      for (const childNode of options) {
+        findNodesInCheckboxMode(childNode, null, selectedNodeKeys, expandedKeysState, keysMap);
+      }
+    } else {
+      for (const childNode of options) {
+        findNodes(childNode, null, selectedNodeKeys, expandedKeysState, keysMap, selectionMode);
+      }
+    }
+
+    setSelectedNodeKey(selectedNodeKeys);
+    setExpandedKeys(expandedKeysState);
+  };
+
   return {
     expandAll, collapseAll, onSelectedNodeChange, onToggle, onNodeSelect,
-    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys,
+    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys, updateNodesState,
   };
-}
-
-function ensureMeasure(dimension) {
-  return String(Number(dimension)) === dimension ? dimension + 'px' : dimension;
 }
