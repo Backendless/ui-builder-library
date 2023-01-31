@@ -93,3 +93,13 @@ export function findNodesInCheckboxMode(node, parent, selectedNodes, expandedKey
     }
   }
 }
+
+export function validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMap) {
+  const keys = selectionMode === SelectionMode.single ? { [selectedNodeKeys]: true } : { ...selectedNodeKeys };
+
+  Object.keys(keys).forEach(key => {
+    if (!keysMap[key]) {
+      console.error('Can't select a non existed option with key:`${ key }`.');
+    }
+  });
+}
