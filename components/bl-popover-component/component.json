@@ -39,8 +39,8 @@
   ],
   "eventHandlers": [
     {
-      "name": "onClick",
-      "label": "On Click",
+      "name": "onButtonClick",
+      "label": "On Button Click",
       "contextBlocks": [
         {
           "id": "isOpen",
