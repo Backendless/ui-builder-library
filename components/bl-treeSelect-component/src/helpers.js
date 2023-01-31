@@ -99,7 +99,7 @@ export function validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMa
 
   Object.keys(keys).forEach(key => {
     if (!keysMap[key]) {
-      console.error('Error: trying to select non existed option.');
+      console.error('Can't select a non existed option with key:`${ key }`.');
     }
   });
 }
