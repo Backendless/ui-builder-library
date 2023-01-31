@@ -132,9 +132,7 @@ export function getSelectedItems(selectedNodeKeys, nodes, selectionMode) {
     return null;
   }
 
-  const selectedItems = selectionMode === SelectionMode.single ? {
-    [`${ selectedNodeKeys }`]: true,
-  } : { ...selectedNodeKeys };
+  const selectedItems = selectionMode === SelectionMode.single ? { [selectedNodeKeys]: true } : { ...selectedNodeKeys };
 
   if (Object.keys(selectedItems).length) {
     for (const childNode of nodes) {
