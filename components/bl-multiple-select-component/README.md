@@ -3,7 +3,7 @@
 Multiple Select is a component of Backendless UI-Builder designer. This component allows you to handle multiple selections.
 
 <p align="center">
-  <img alt="main thumbnail" height="290" src="./thumbnail.png" width="320"/>
+  <img alt="main thumbnail" src="./thumbnail.png" width="780"/>
 </p>
 
 ## Properties
