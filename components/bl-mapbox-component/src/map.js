@@ -35,8 +35,8 @@ export default function Map({ component, eventHandlers, settings }) {
   usePolygons(polygons, polygonsArray, setPolygonsArray, mapRef, onPolygonClick);
 
   return (
-    <div>
-      <div ref={ mapContainerRef } className={ cn('bl-customComponent-mapbox', classList) }/>
+    <div className={ cn('bl-customComponent-mapbox', classList) }>
+      <div ref={ mapContainerRef } className={ 'map-dimensions' }/>
     </div>
   );
 }
