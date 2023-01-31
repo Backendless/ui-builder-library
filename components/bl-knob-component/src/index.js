@@ -18,6 +18,10 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
 
   useEffect(() => {
+    setKnobDisabled(!!readOnly);
+  }, [disabled]);
+
+  useEffect(() => {
     if (!isNaN(initialValue)) {
       setKnobValue(initialValue);
     }
@@ -30,7 +34,7 @@ export default function KnobComponent({ component, eventHandlers }) {
   });
 
   const handleChange = e => {
-    const value = e.value;
+    const value = Math.min(e.value, maxValue);
 
     setKnobValue(value);
     onChange({ value });

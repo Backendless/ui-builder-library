@@ -20,7 +20,7 @@ export default function Carousel({ component, eventHandlers }) {
   } = component;
   const { onNextButton, onPrevButton, onMouseEnter, onMouseLeave } = eventHandlers;
 
-  const [imagesList, setImagesList] = useState(imagesData);
+  const [imagesList, setImagesList] = useState([]);
   const [currentImg, setCurrentImg] = useState(0);
   const [animation, setAnimation] = useState(null);
   const [nextCurrentImage, setNextCurrentImage] = useState(0);
@@ -28,6 +28,12 @@ export default function Carousel({ component, eventHandlers }) {
   const autoplayRef = useRef();
 
   const { nextImg, prevImg } = getAdjacentImages(currentImg, imagesList.length);
+
+  useEffect(() => {
+    if (imagesData) {
+      setImagesList(imagesData);
+    }
+  }, [imagesData]);
 
   useEffect(() => {
     if (autoplayDelay && autoplay) {
@@ -91,7 +97,7 @@ export default function Carousel({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-carousel', classList) }
-      style={ { ...style, height: height, width: width} }
+      style={ { ...style, height: height, width: width } }
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
       { withControls && (

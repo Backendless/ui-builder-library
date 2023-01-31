@@ -4,18 +4,21 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function Parallax({ component, pods }) {
   const { display, style, classList, imageUrl, strength } = component;
-  const parallaxContentPod = pods['parallaxContent'];
 
   const [validStrength, setValidStrength] = useState(0);
 
   const backdropRef = useRef();
   const containerRef = useRef();
-
+  
   useEffect(() => {
     setValidStrength(typeof strength === 'number' ? strength : 0);
   }, [strength]);
 
-  useAnimation(backdropRef, containerRef, validStrength);
+  useAnimation(backdropRef, containerRef, validStrength, display);
+
+  useEffect(() => {
+    component.el = containerRef.current;
+  }, [containerRef]);
 
   if (!display) {
     return null;
@@ -26,13 +29,13 @@ export default function Parallax({ component, pods }) {
       <div ref={ backdropRef } className="parallax-background-img"
            style={ { backgroundImage: `url(${ imageUrl })` } }></div>
       <div className="parallax-content">
-        { parallaxContentPod.render() }
+        { pods['parallaxContent']?.render() }
       </div>
     </div>
   );
 }
 
-const useAnimation = (backdropRef, containerRef, strength) => {
+const useAnimation = (backdropRef, containerRef, strength, display) => {
   const animate = useCallback(() => {
     const containerTopOffset = containerRef.current.getBoundingClientRect().top + window.pageYOffset;
     const containerElementCenter = containerRef.current.getBoundingClientRect().height / 2;
@@ -47,16 +50,18 @@ const useAnimation = (backdropRef, containerRef, strength) => {
   }, [strength]);
 
   useEffect(() => {
-    backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
+    if (display) {
+      backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
 
-    animate();
+      animate();
 
-    document.addEventListener('scroll', animate);
-    window.addEventListener('resize', animate, false);
+      document.addEventListener('scroll', animate)
+      window.addEventListener('resize', animate, false);
+    }
 
     return () => {
       document.removeEventListener('scroll', animate);
       window.removeEventListener('resize', animate, false);
     };
-  }, [strength]);
+  }, [display]);
 };
