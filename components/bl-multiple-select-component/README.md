@@ -3,7 +3,7 @@
 Multiple Select is a component of Backendless UI-Builder designer. This component allows you to handle multiple selections.
 
 <p align="center">
-  <img alt="main thumbnail" height="290" src="./thumbnail.png" width="320"/>
+  <img alt="main thumbnail" src="./thumbnail.png" width="780"/>
 </p>
 
 ## Properties
@@ -20,9 +20,9 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 
 ## Events
 
-| Name             | Triggers                                      | Context Blocks                                    |
-|------------------|-----------------------------------------------|---------------------------------------------------|
-| On Change        | when the user select an item from the options | `Select Value: string`                            |
+| Name             | Triggers                                      | Context Blocks                                                      |
+|------------------|-----------------------------------------------|---------------------------------------------------------------------|
+| On Change        | when the user select an item from the options | Select Value: list of objects { label: `String`, value: `String` }  |
 
 ## Styles
 

@@ -3,7 +3,7 @@
   "name": "Parallax",
   "description": "This component allows to add image and content with parallax effect",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "sort",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",

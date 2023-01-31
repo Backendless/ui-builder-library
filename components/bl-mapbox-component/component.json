@@ -395,6 +395,24 @@
           "label": "Event Data"
         }
       ]
+    },
+    {
+      "id": "rotateTo",
+      "label": "Rotate To",
+      "inputs": [
+        {
+          "id": "bearing",
+          "label": "Bearing"
+        },
+        {
+          "id": "options",
+          "label": "Options"
+        },
+        {
+          "id": "eventData",
+          "label": "Event Data"
+        }
+      ]
     }
   ],
   "settings": [

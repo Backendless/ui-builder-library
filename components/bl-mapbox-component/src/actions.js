@@ -17,5 +17,6 @@ export function createActions(mapRef, component) {
     getZoom   : () => map?.getZoom(),
     setZoom   : (zoom, eventData) => map?.setZoom(zoom, eventData),
     flyTo     : (options, eventData) => map?.flyTo(options, eventData),
+    rotateTo  : (bearing, options, eventData) => map?.rotateTo(bearing, options, eventData),
   });
 }
