@@ -2,6 +2,8 @@ import { useRef, useEffect, useCallback } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const maxStrength = 2000;
+
 export default function Parallax({ component, pods }) {
   const { display, style, classList, imageUrl, strength } = component;
   const parallaxContentPod = pods['parallaxContent'];
@@ -9,7 +11,7 @@ export default function Parallax({ component, pods }) {
   const backdropRef = useRef();
   const containerRef = useRef();
 
-  useAnimation(backdropRef, containerRef, Math.min(strength, 2000), display);
+  useAnimation(backdropRef, containerRef, Math.min(strength, maxStrength), display);
 
   useEffect(() => {
     component.el = containerRef.current;
