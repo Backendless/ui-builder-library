@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Toolbar } from './toolbar';
 import { useQuillLibrary } from './use-quill-library';
@@ -12,11 +12,16 @@ export default function RichEditor({ component, eventHandlers }) {
   const { onBlur, onFocus, onTextChange } = eventHandlers;
 
   const [toolbarVisibility, setToolbarVisibility] = useState(fixedToolbar);
+  const richEditorRef = useRef(null);
   const quillRef = useRef(null);
   const toolbarRef = useRef(null);
   const editorRef = useQuillLibrary(quillRef, toolbarRef, component, onTextChange);
 
   useComponentActions(component, editorRef);
+
+  useEffect(() => {
+    component.el = richEditorRef.current;
+  }, []);
 
   const focus = () => {
     if (!fixedToolbar) {
@@ -48,7 +53,7 @@ export default function RichEditor({ component, eventHandlers }) {
   };
 
   return (
-    <div className={ cn('bl-customComponent-rich-editor', classList) } style={ styles }>
+    <div ref={ richEditorRef } className={ cn('bl-customComponent-rich-editor', classList) } style={ styles }>
       <Toolbar component={ component } toolbarRef={ toolbarRef } toolbarVisibility={ toolbarVisibility }/>
       <div ref={ quillRef } id="editor" style={ editorStyles } onBlur={ blur } onFocus={ focus }></div>
     </div>
