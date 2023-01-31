@@ -18,6 +18,13 @@ The component based on external [markdown-it](https://github.com/markdown-it/mar
 | height       | Text | "0px"         | Height Logic        | YES          | YES        | Allows determine height of markdown component |
 | width        | Text | "0px"         | Width Logic         | YES          | YES        | Allows determine width of markdown component  |
 
+## Actions
+
+| Action      | Inputs         | Returns |
+|-------------|----------------|---------|
+| Set Content | text: `String` |         |
+| Set URL     | url: `String`  |         |
+
 ## Styles
 
 **Dimensions**
