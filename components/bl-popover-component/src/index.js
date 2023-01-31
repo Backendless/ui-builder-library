@@ -13,9 +13,7 @@ export default function Popover({ component, eventHandlers, pods }) {
   const [isOpen, setIsOpen] = useState(false);
   const contentElement = useRef();
 
-  component.setIsOpen = (boolean) => {
-    setIsOpen(boolean);
-  };
+  component.setIsOpen = setIsOpen;
 
   if (!display) {
     return null;

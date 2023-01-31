@@ -56,8 +56,8 @@
       "label": "Set Is Open",
       "inputs": [
         {
-          "id": "boolean",
-          "label": "Boolean"
+          "id": "isOpen",
+          "label": "Is Open"
         }
       ]
     }
