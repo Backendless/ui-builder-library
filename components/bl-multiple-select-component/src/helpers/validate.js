@@ -1,9 +1,13 @@
-export const validate = items => {
-  if (!Array.isArray(items)) {
-    console.error("Options should be a list");
+export const validateOptions = options => {
+  if (!Array.isArray(options)) {
+    console.error('Options should be a list');
 
     return [];
   }
 
-  return items;
+  return options;
+};
+
+export const validateValue = (value, options) => {
+  return options.filter(item => value.toLowerCase().includes(item.value.toLowerCase()));
 };

@@ -1,8 +1,8 @@
-import { useState, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 
 import { Options } from './options';
 import { SelectField } from './select-field';
-import { useOnClickOutside, validate } from './helpers';
+import { useOnClickOutside, validateOptions, validateValue } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -13,11 +13,20 @@ export default function MultipleSelectComponent({ component, eventHandlers }) {
   const { onChange } = eventHandlers;
 
   const rootRef = useRef(null);
+  const optionsList = useMemo(() => validateOptions(options), [options]);
+
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
-  const [selectValue, setSelectValue] = useState([]);
+  const [selectValue, setSelectValue] = useState(validateValue(value, optionsList));
   const [isSelectActive, setIsSelectActive] = useState(false);
 
-  const optionsList = useMemo(() => validate(options), [options]);
+  useEffect(() => {
+    setSelectValue(validateValue(value, optionsList));
+  }, [value, options]);
+
+  useEffect(() => {
+    component.el = rootRef.current;
+  }, [rootRef]);
+
   const classes = cn(
     'bl-customComponent-multipleSelect', variant, classList,
     { 'bl-customComponent-multipleSelect--disabled': disabled }
