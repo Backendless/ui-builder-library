@@ -37,7 +37,7 @@
       "handlerId": "listItemsLogic",
       "handlerLabel": "List Items Logic",
       "dataBinding": true,
-      "defaultValue": "",
+      "defaultValue": "[]",
       "handlerDescription": "Specifies a JSON array containing data of the list items. Signature of items list: [ <Item> ]. Signature of item: { content: String, children: [ <Item> ], type: String }."
     },
     {
@@ -88,7 +88,7 @@
   ],
   "eventHandlers": [
     {
-      "name": "onClickListItem",
+      "name": "onItemClick",
       "label": "On Click List Item Event",
       "contextBlocks": [
         {

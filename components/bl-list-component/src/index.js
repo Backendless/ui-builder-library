@@ -11,20 +11,20 @@ export default function ListComponent({ component, eventHandlers }) {
 
   const onClickHandler = (e, itemContent, itemChildren) => {
     e.stopPropagation();
-    eventHandlers.onClickListItem({ itemContent, itemChildren });
+    eventHandlers.onItemClick({ itemContent, itemChildren });
   };
 
   const options = {
-    type: type && type === "ol" ? "ol" : "ul",
+    type: type === "ol" ? "ol" : "ul",
     style: { color, fontSize, padding },
-    onClickHandler: onClickHandler,
+    onClickHandler,
   };
 
   const listRef = useRef();
 
   useEffect(() => {
     component.el = listRef.current;
-  }, []);
+  }, [listRef]);
 
   if (!display) {
     return null;
