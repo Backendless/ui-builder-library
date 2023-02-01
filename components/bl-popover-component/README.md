@@ -8,7 +8,7 @@ The component allows you to render a popup window in your UI-Builder application
 
 | Property    | Type                                    | Default Value | Logic              | Data Binding | UI Setting | Description                                                            |
 |-------------|-----------------------------------------|---------------|--------------------|--------------|------------|------------------------------------------------------------------------|
-| position    | Select ["Top", "Right","Bottom","Left"] | "Top"         | Position Logic     | NO           | YES        | Allows to determine the position of the popover relative to the button |
+| position    | Select ["top", "right","bottom","left"] | "top"         | Position Logic     | NO           | YES        | Allows to determine the position of the popover relative to the button |
 
 ## Events
 
