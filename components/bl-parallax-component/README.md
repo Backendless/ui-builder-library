@@ -12,4 +12,4 @@ Parallax is a component of Backendless UI-Builder designer. This allows you to a
 | Property | Type   | Default Value | Logic           | Data Binding | UI Setting | Description                                                                         |
 | -------- | ------ | ------------- | --------------- | ------------ | ---------- | ----------------------------------------------------------------------------------- |
 | imageUrl | Text   |               | Image URl Logic | YES          | YES        | Allows to determine image URL                                                       |
-| strength | Number | 200           | Strength Logic  | YES          | YES        | Allows to determine the strength of parallax. Low value is 100. Height value is 800 |
+| strength | Number | 200           | Strength Logic  | YES          | YES        | Allows to determine the strength of parallax. The value should be between 100(low) and 2000(high) |
