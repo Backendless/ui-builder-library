@@ -1,5 +1,5 @@
 {
-  "id": "c_24bbdb352375979895e858da5782ad01",
+  "id": "c_a9ab9bd27f5c555ec235e974bb4f8203",
   "name": "Markdown",
   "description": "This component allows display markdown file or text.",
   "showInToolbox": true,
@@ -17,11 +17,12 @@
       "label": "URL",
       "handlerLabel": "URL Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine URL of markdown file"
+      "handlerDescription": "This is a handler for the logic to determine URL of markdown file",
+      "defaultValue": "https://raw.githubusercontent.com/Backendless/ui-builder-library/main/components/bl-markdown-component/README.md"
     },
     {
       "type": "text",
-      "name": "markdownText",
+      "name": "text",
       "label": "Markdown Text",
       "showInSettings": true,
       "hasLogicHandler": true,

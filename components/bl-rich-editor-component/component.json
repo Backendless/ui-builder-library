@@ -70,7 +70,7 @@
       "name": "imageInsertButton",
       "label": "Image Insert Button",
       "showInSettings": true,
-      "defaultValue": false,
+      "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "imageInsertButtonLogic"
     },
@@ -80,7 +80,8 @@
       "label": "Video Insert Button",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "videoInsertButtonLogic"
+      "handlerId": "videoInsertButtonLogic",
+      "defaultValue": true
     },
     {
       "type": "checkbox",
