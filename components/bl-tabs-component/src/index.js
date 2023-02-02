@@ -5,10 +5,15 @@ import { TabControl } from './tab-control';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TabsComponent({ component, eventHandlers, appData, pageData, parentDataModel, pods }) {
-  const { classList, style, display, disabled, variant, tabs } = component;
+  const { classList, style, display, disabled, variant, tabsOrientation, tabs } = component;
   const { onChange } = eventHandlers;
 
   const [currentTabId, setCurrentTabId] = useState(null);
+
+  const classes = cn(
+    'bl-customComponent-tabs', classList, `bl-customComponent-tabs--${tabsOrientation}`,
+    `bl-customComponent-tabs--${variant}`, { 'bl-customComponent-tabs--disabled': disabled }
+  );
 
   component.getCurrentTabId = () => currentTabId;
   component.setCurrentTabId = id => {
@@ -16,12 +21,7 @@ export default function TabsComponent({ component, eventHandlers, appData, pageD
     onChange({ currentTabId: id });
   };
 
-  const podsContent = pods['Tabs Content'];
-
-  const classes = cn(
-    'bl-customComponent-tabs', classList,
-    `bl-customComponent-tabs--${variant}`, { 'bl-customComponent-tabs--disabled': disabled }
-  );
+  const podsContent = pods["Tabs Content"];
 
   const tabsList = useMemo(() => {
     if (!Array.isArray(tabs)) {

@@ -34,13 +34,7 @@ export default function KnobComponent({ component, eventHandlers }) {
   });
 
   const handleChange = useCallback(e => {
-    let value = e.value;
-
-    if (value > maxValue) {
-      value = maxValue;
-    }
-
-    value = parseFloat(value.toFixed(2));
+    const value = parseFloat(Math.min(e.value, maxValue).toFixed(2));
 
     setKnobValue(value);
     onChange({ value });
