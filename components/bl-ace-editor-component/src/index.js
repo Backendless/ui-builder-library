@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { AceEditor } from './lib/react-ace.umd';
 import './lib/ace-builds.umd';
