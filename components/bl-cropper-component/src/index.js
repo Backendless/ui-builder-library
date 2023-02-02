@@ -11,11 +11,12 @@ export default function CropperComponent({ component, eventHandlers, elRef }) {
   } = component;
   const { onSave } = eventHandlers;
 
+  const [toolbarDisabled, setToolbarDisabled] = useState(false);
   const [image, setImage] = useState(imageUrl);
   const imageRef = useRef(null);
   const cropperRef = useCropperLibrary(component, eventHandlers, imageRef, image);
 
-  useComponentActions(component, cropperRef);
+  useComponentActions(component, cropperRef, setToolbarDisabled);
 
   useEffect(() => {
     setImage(imageUrl);
@@ -47,19 +48,30 @@ export default function CropperComponent({ component, eventHandlers, elRef }) {
         <img ref={ imageRef } src={ image }/>
       </div>
 
-      <FooterToolbar cropperRef={ cropperRef } toolbarVisibility={ toolbarVisibility } image={ image }/>
+      <FooterToolbar
+        cropperRef={ cropperRef }
+        toolbarVisibility={ toolbarVisibility }
+        image={ image }
+        disabled={ toolbarDisabled }
+      />
     </div>
   );
 }
 
-function useComponentActions(component, cropperRef) {
+function useComponentActions(component, cropperRef, setToolbarDisabled) {
   Object.assign(component, {
     crop            : () => cropperRef.current.crop(),
     reset           : () => cropperRef.current.reset(),
     clear           : () => cropperRef.current.clear(),
     replace         : url => cropperRef.current.replace(url),
-    enableCropper   : () => cropperRef.current.enable(),
-    disableCropper  : () => cropperRef.current.disable(),
+    enableCropper   : () => {
+      cropperRef.current.enable();
+      setToolbarDisabled(false);
+    },
+    disableCropper  : () => {
+      cropperRef.current.disable();
+      setToolbarDisabled(true);
+    },
     destroy         : () => cropperRef.current.destroy(),
     move            : (offsetX, offsetY) => cropperRef.current.move(offsetX, offsetY),
     moveTo          : (x, y) => cropperRef.current.moveTo(x, y),
