@@ -5,7 +5,7 @@ import './lib/ace-builds.umd';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function AceEditorComponent({ component, eventHandlers }) {
+export default function AceEditorComponent({ component, elRef, eventHandlers }) {
   const {
     classList, display, style, disabled, name, value, mode, theme,
     foldStyle, placeholder, width, height, fontSize, tabSize, printMarginColumn,
@@ -13,7 +13,6 @@ export default function AceEditorComponent({ component, eventHandlers }) {
   } = component;
   const { onChange } = eventHandlers;
 
-  const rootRef = useRef();
   const [editorValue, setEditorValue] = useState('');
 
   component.getValue = () => editorValue;
@@ -22,10 +21,6 @@ export default function AceEditorComponent({ component, eventHandlers }) {
   useEffect(() => {
     setEditorValue(value);
   }, [value]);
-
-  useEffect(() => {
-    component.el = rootRef.current;
-  }, [rootRef]);
 
   const handleValueChange = useCallback((newValue) => {
     setEditorValue(newValue);
@@ -37,7 +32,7 @@ export default function AceEditorComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div ref={ rootRef } className={ cn("bl-customComponent-aceEditor", classList) } style={ style }>
+    <div ref={ elRef } className={ cn("bl-customComponent-aceEditor", classList) } style={ style }>
       <AceEditor
         value={ editorValue }
         mode={ mode }
