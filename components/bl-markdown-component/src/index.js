@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import MarkdownIt from './markdown-it.min.js';
 
@@ -6,14 +6,12 @@ const { cn } = BackendlessUI.CSSUtils;
 
 const NO_MARKDOWN = '<h1>No specified markdown text</h1>';
 
-export default function Markdown({ component }) {
+export default function Markdown({ component, elRef }) {
   const { classList, style, display, url, markdownText, height, width } = component;
 
   const [markdown, setMarkdown] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
-  const markdownRef = useRef(null);
 
   const md = useMemo(() => new MarkdownIt(), []);
 
@@ -36,17 +34,13 @@ export default function Markdown({ component }) {
 
   const setContent = text => setMarkdown(md.render(text));
 
-  useEffect(() => {
-    component.el = markdownRef.current;
-  }, []);
-
   if (!display) {
     return null;
   }
 
   return (
     <div
-      ref={ markdownRef }
+      ref={ elRef }
       className={ cn('bl-customComponent-markdown markdown-body', classList) }
       style={ { ...style, height: height || '100%', width: width || '100%' } }>
       <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown || NO_MARKDOWN }/>
