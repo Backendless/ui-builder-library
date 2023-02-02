@@ -6,7 +6,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 const NO_MARKDOWN = '<h1>No specified markdown text</h1>';
 
-export default function Markdown({ component }) {
+export default function Markdown({ component, elRef }) {
   const { classList, style, display, url, text, height, width } = component;
 
   const [markdown, setMarkdown] = useState('');
@@ -44,6 +44,7 @@ export default function Markdown({ component }) {
 
   return (
     <div
+      ref={ elRef }
       className={ cn('bl-customComponent-markdown markdown-body', classList) }
       style={ { ...style, height: height || '100%', width: width || '100%' } }>
       <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown }/>
