@@ -5,7 +5,7 @@ import { useCropperLibrary } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function CropperComponent({ component, eventHandlers }) {
+export default function CropperComponent({ component, eventHandlers, elRef }) {
   const {
     display, style, classList, imageUrl, minContainerWidth, minContainerHeight, toolbarVisibility, initialLabel,
   } = component;
@@ -13,7 +13,6 @@ export default function CropperComponent({ component, eventHandlers }) {
 
   const [image, setImage] = useState(imageUrl);
   const imageRef = useRef(null);
-  const cropperComponentRef = useRef(null);
   const cropperRef = useCropperLibrary(component, eventHandlers, imageRef, image);
 
   useComponentActions(component, cropperRef);
@@ -32,10 +31,8 @@ export default function CropperComponent({ component, eventHandlers }) {
     ...style,
   };
 
-  component.el = cropperComponentRef.current;
-
   return (
-    <div ref={ cropperComponentRef } className={ cn('bl-customComponent-cropper', classList) } style={ styles }>
+    <div ref={ elRef } className={ cn('bl-customComponent-cropper', classList) } style={ styles }>
       <HeaderToolbar
         component={ component }
         cropperRef={ cropperRef }
@@ -46,6 +43,7 @@ export default function CropperComponent({ component, eventHandlers }) {
 
       <div className="container" style={ containerDimensions }>
         <DropImageArea image={ image } setImage={ setImage } initialLabel={ initialLabel }/>
+
         <img ref={ imageRef } src={ image }/>
       </div>
 
