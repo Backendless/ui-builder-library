@@ -39,8 +39,8 @@
   ],
   "eventHandlers": [
     {
-      "name": "onClick",
-      "label": "On Click",
+      "name": "onButtonClick",
+      "label": "On Button Click",
       "contextBlocks": [
         {
           "id": "isOpen",
@@ -56,8 +56,8 @@
       "label": "Set Is Open",
       "inputs": [
         {
-          "id": "boolean",
-          "label": "Boolean"
+          "id": "isOpen",
+          "label": "Is Open"
         }
       ]
     }
