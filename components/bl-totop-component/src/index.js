@@ -1,4 +1,4 @@
-import { useRef, useMemo, useEffect, useCallback, useState } from "react";
+import { useMemo, useCallback, useState } from "react";
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -7,26 +7,18 @@ const AxisClassesMap = {
   Y: { top: "top-0", bottom: "bottom-0", center: "top-50  translate-middle-y" },
 };
 
-export default function TotopComponent({ component }) {
+export default function TotopComponent({ component, elRef }) {
   const {
     classList, display, offset, position, backgroundColor, color, size, iconSize, indentX, indentY, element
   } = component;
 
   const [isTotopVisible, setIsTotopVisible] = useState(true);
 
-  component.hide = () => {
-    setIsTotopVisible(false);
-  };
-
-  component.show = () => {
-    setIsTotopVisible(true);
-  };
-
   const axisPositions = position.split("-");
 
   const classes = useMemo(() => {
     return [...classList, AxisClassesMap.X[axisPositions[1]], AxisClassesMap.Y[axisPositions[0]]];
-  }, [axisPositions]);
+  }, [axisPositions, classList]);
 
   const styles = useMemo(() => {
     return {
@@ -48,18 +40,15 @@ export default function TotopComponent({ component }) {
     window.scrollTo({ top: offsetTop + offset, behavior: "smooth" });
   }, [offsetTop, offset]);
 
-  const totopRef = useRef();
-
-  useEffect(() => {
-    component.el = totopRef.current;
-  }, [totopRef]);
+  component.hide = () => { setIsTotopVisible(false) };
+  component.show = () => { setIsTotopVisible(true) };
 
   if (!display || !isTotopVisible) {
     return null;
   }
 
   return (
-    <div ref={ totopRef } className={ cn("bl-customComponent-totop", classes) } style={ styles } onClick={ handleScroll }>
+    <div ref={ elRef } className={ cn("bl-customComponent-totop", classes) } style={ styles } onClick={ handleScroll }>
       <TotopIcon styles={ iconStyles } />
     </div>
   );
