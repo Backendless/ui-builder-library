@@ -48,6 +48,29 @@
       ]
     },
     {
+      "type": "select",
+      "name": "tabsOrientation",
+      "label": "Tabs Orientation",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": false,
+      "handlerId": "tabsOrientationLogic",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
       "type": "json",
       "name": "tabs",
       "label": "Tabs",
@@ -57,7 +80,8 @@
       "handlerId": "tabsLogic",
       "handlerLabel": "Tabs Logic",
       "handlerDescription": "This handler allows you to add data to the component.",
-      "dataBinding": true
+      "dataBinding": true,
+      "defaultValue": "[\n  { \"id\":\"tab1\", \"label\":\"Tab 1\" },\n  { \"id\":\"tab2\", \"label\":\"Tab 2\" },\n  { \"id\":\"tab3\", \"label\":\"Tab 3\" }\n]"
     }
   ],
   "eventHandlers": [
@@ -97,6 +121,5 @@
       "id": "Tabs Content",
       "dataContainer": true
     }
-  },
-  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"Tabs Content\" data-uid=\"6f6d1e1d04ad62b8b51fe8aab11534d9\" data-pod-container=\"true\" data-data-container=\"true\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;min-height:100px;min-width:100px;\"></div>"
+  }
 }
