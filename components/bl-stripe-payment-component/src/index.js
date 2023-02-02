@@ -11,25 +11,21 @@ function useStripeAPI(publishableKey) {
   return useMemo(() => loadStripe(publishableKey), [publishableKey]);
 }
 
-export default function StripePaymentComponent({ component, eventHandlers, settings }) {
+export default function StripePaymentComponent({ component, eventHandlers, settings, elRef }) {
   const { display, classList, style } = component;
   const { publishableKey } = settings;
 
   const [transactionDetails, setTransactionDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const stripePaymentRef = useRef(null);
-
   const stripePromise = useStripeAPI(publishableKey);
-
-  component.el = stripePaymentRef.current;
 
   if (!display) {
     return null;
   }
 
   return (
-    <div ref={ stripePaymentRef } className={ cn('bl-customComponent-stripe-payment', classList) } style={ style }>
+    <div ref={ elRef } className={ cn('bl-customComponent-stripe-payment', classList) } style={ style }>
       <Elements stripe={ stripePromise }>
         <PaymentForm
           component={ component }
@@ -38,6 +34,7 @@ export default function StripePaymentComponent({ component, eventHandlers, setti
           setTransactionDetails={ setTransactionDetails }
         />
       </Elements>
+
       <PaymentStatus
         transactionDetails={ transactionDetails }
         setTransactionDetails={ setTransactionDetails }

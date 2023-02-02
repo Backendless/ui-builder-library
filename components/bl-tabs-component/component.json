@@ -48,6 +48,29 @@
       ]
     },
     {
+      "type": "select",
+      "name": "tabsOrientation",
+      "label": "Tabs Orientation",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": false,
+      "handlerId": "tabsOrientationLogic",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
       "type": "json",
       "name": "tabs",
       "label": "Tabs",

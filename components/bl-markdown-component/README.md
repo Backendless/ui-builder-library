@@ -11,12 +11,12 @@ The component based on external [markdown-it](https://github.com/markdown-it/mar
 
 ## Properties
 
-| Property     | Type | Default Value | Logic               | Data Binding | UI Setting | Descrioption                                  |
-|--------------|------|---------------|---------------------|--------------|------------|-----------------------------------------------|
-| url          | Text |               | URL Logic           | YES          | YES        | Allows determine url of markdown file         |
-| markdownText | Text |               | Markdown Text Logic | YES          | YES        | Allows determine text of markdown             |
-| height       | Text | "0px"         | Height Logic        | YES          | YES        | Allows determine height of markdown component |
-| width        | Text | "0px"         | Width Logic         | YES          | YES        | Allows determine width of markdown component  |
+| Property | Type | Default Value | Logic               | Data Binding | UI Setting | Descrioption                                  |
+|----------|------|---------------|---------------------|--------------|------------|-----------------------------------------------|
+| url      | Text |               | URL Logic           | YES          | YES        | Allows determine url of markdown file         |
+| text     | Text |               | Markdown Text Logic | YES          | YES        | Allows determine text of markdown             |
+| height   | Text | "0px"         | Height Logic        | YES          | YES        | Allows determine height of markdown component |
+| width    | Text | "0px"         | Width Logic         | YES          | YES        | Allows determine width of markdown component  |
 
 ## Actions
 

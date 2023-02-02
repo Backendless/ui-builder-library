@@ -23,7 +23,7 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 
 | Name             | Triggers                                      | Context Blocks                                                      |
 |------------------|-----------------------------------------------|---------------------------------------------------------------------|
-| On Change        | when the user select an item from the options | Select Value: list of objects { label: `String`, value: `String` }  |
+| On Change Event  | when the user select an item from the options | Select Value: list of objects { label: `String`, value: `String` }  |
 
 ## Styles
 

@@ -2,32 +2,29 @@ import { useRef, useEffect, useCallback, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function Parallax({ component, pods }) {
+const MAX_STRENGTH = 2000;
+
+export default function Parallax({ component, pods, elRef }) {
   const { display, style, classList, imageUrl, strength } = component;
 
   const [validStrength, setValidStrength] = useState(0);
 
   const backdropRef = useRef();
-  const containerRef = useRef();
-  
+
   useEffect(() => {
     setValidStrength(typeof strength === 'number' ? strength : 0);
   }, [strength]);
 
-  useAnimation(backdropRef, containerRef, validStrength, display);
-
-  useEffect(() => {
-    component.el = containerRef.current;
-  }, [containerRef]);
+  useAnimation(backdropRef, elRef, Math.min(validStrength, MAX_STRENGTH), display);
 
   if (!display) {
     return null;
   }
 
   return (
-    <div ref={ containerRef } className={ cn('bl-customComponent-parallax', classList) } style={ style }>
-      <div ref={ backdropRef } className="parallax-background-img"
-           style={ { backgroundImage: `url(${ imageUrl })` } }></div>
+    <div ref={ elRef } className={ cn('bl-customComponent-parallax', classList) } style={ style }>
+      <div ref={ backdropRef } className="parallax-background-img" style={ { backgroundImage: `url(${ imageUrl })` } }/>
+
       <div className="parallax-content">
         { pods['parallaxContent']?.render() }
       </div>
@@ -63,5 +60,5 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
       document.removeEventListener('scroll', animate);
       window.removeEventListener('resize', animate, false);
     };
-  }, [display]);
+  }, [display, strength]);
 };

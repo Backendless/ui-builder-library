@@ -22,7 +22,7 @@
     },
     {
       "type": "text",
-      "name": "markdownText",
+      "name": "text",
       "label": "Markdown Text",
       "showInSettings": true,
       "hasLogicHandler": true,

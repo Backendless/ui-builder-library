@@ -5,11 +5,10 @@ import { Item } from './item';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function AccordionComponent({ component, eventHandlers }) {
+export default function AccordionComponent({ component, eventHandlers, elRef }) {
   const { classList, display, accordionData, controlledAccordion, style } = component;
   const { onMouseOver, onMouseOut } = eventHandlers;
 
-  const accordionRef = useRef(null);
   const accordionId = useMemo(() => BackendlessUI.UUID.short(), []);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -34,7 +33,6 @@ export default function AccordionComponent({ component, eventHandlers }) {
     setIsLoaded(true);
   }, []);
 
-  component.el = accordionRef.current;
   component.closeAll = () => updateItemsState(() => false);
   component.openAll = () => updateItemsState(() => true);
   component.toggleAll = () => updateItemsState(oldState => !oldState);
@@ -45,11 +43,12 @@ export default function AccordionComponent({ component, eventHandlers }) {
 
   return (
     <div
-      ref={ accordionRef }
+      ref={ elRef }
       className={ cn('bl-customComponent-accordion', classList) }
       onMouseOver={ onMouseOver }
       onMouseOut={ onMouseOut }
       style={ style }>
+
       { data?.map((item, index) => (
         <Item
           key={ index }
