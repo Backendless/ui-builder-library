@@ -19,12 +19,12 @@ The component based on external [Carousel](https://getbootstrap.com/docs/5.2/com
 
 ## Events
 
-| Name               | Triggers                            | Context Blocks |
-|--------------------|-------------------------------------|----------------|
-| On Next Button     | when user click on next button      |                |
-| On Previous Button | when user click on previous button  |                |
-| On Mouse Enter     | when the mouse enters the component |                |
-| On Mouse Leave     | when the mouse leaves the component |                |
+| Name                     | Triggers                            | Context Blocks |
+|--------------------------|-------------------------------------|----------------|
+| On Next Button Click     | when user click on next button      |                |
+| On Previous Button Click | when user click on previous button  |                |
+| On Mouse Enter           | when the mouse enters the component |                |
+| On Mouse Leave           | when the mouse leaves the component |                |
 
 ## Action
 

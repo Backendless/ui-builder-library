@@ -60,5 +60,5 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
       document.removeEventListener('scroll', animate);
       window.removeEventListener('resize', animate, false);
     };
-  }, [display]);
+  }, [display, strength]);
 };
