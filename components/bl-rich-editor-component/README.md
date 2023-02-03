@@ -17,6 +17,7 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 | Placeholder         | *Text*                                                                                                               | "Compose an epic..." |                 | NO           | YES        | controls the placeholder of the editor      |
 | Toolbar Position    | *Select*  <br/> "top" \| "bottom"                                                                                    | "top"                |                 | NO           | YES        | controls the position of the editor toolbar |
 | Fixed Toolbar       | *Checkbox*                                                                                                           | `true`               |                 | NO           | YES        | enables fixing the toolbar                  |
+| Show Tooltips       | *Checkbox*                                                                                                           | `true`               |                 | NO           | YES        | enables tooltips on the toolbar buttons     |
 | Link Insert Button  | *Checkbox*                                                                                                           | `true`               |                 | NO           | YES        | enables inserting a link in the editor      |
 | Image Insert Button | *Checkbox*                                                                                                           | `true`               |                 | NO           | YES        | enables inserting an image in the editor    |
 | Video Insert Button | *Checkbox*                                                                                                           | `true`               |                 | NO           | YES        | enables inserting a video in the editor     |
@@ -67,6 +68,11 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 ````
 @bl-customComponent-richEditor-button-color: @bl-customComponent-richEditor-themeColor;
 @bl-customComponent-richEditor-editor-placeholder-color: fade(@bl-customComponent-richEditor-textColor, 60%);
+@bl-customComponent-richEditor-toolbar-tooltip-backgroundColor: #000000;
+@bl-customComponent-richEditor-toolbar-tooltip-textColor: #ffffff;
+@bl-customComponent-richEditor-toolbar-tooltip-position-bottom: -120%;
+@bl-customComponent-richEditor-toolbar-tooltip-position-left: -5px;
+@bl-customComponent-richEditor-toolbar-tooltip-zIndex: 9999;
 ````
 
 **Dimensions**
@@ -78,6 +84,7 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 @bl-customComponent-richEditor-editor-video-height: auto;
 @bl-customComponent-richEditor-editor-height: auto;
 @bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight: 18px;
+@bl-customComponent-richEditor-toolbar-tooltip-padding: 0.5em;
 ````
 
 **Typography**
@@ -85,6 +92,7 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 ````
 @bl-customComponent-richEditor-editor-fontSize: 14px;
 @bl-customComponent-richEditor-editor-fontFamily: Arial, sans-serif;
+@bl-customComponent-richEditor-toolbar-tooltip-fontSize: 12px;
 ````
 
 **Decoration**
@@ -98,4 +106,37 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 @bl-customComponent-richEditor-border: @bl-customComponent-richEditor-borderWidth @bl-customComponent-richEditor-borderStyle @bl-customComponent-richEditor-borderColor;
 @bl-customComponent-richEditor-toolbar-defaultContent-fontSize: "14px";
 @bl-customComponent-richEditor-toolbar-defaultContent-font: "Arial";
+@bl-customComponent-richEditor-toolbar-tooltip-borderRadius: 0.4em;
+````
+
+**Tooltips**
+
+````
+@bl-customComponent-richEditor-toolbar-tooltip-bold: "Bold";
+@bl-customComponent-richEditor-toolbar-tooltip-italic: "Italic";
+@bl-customComponent-richEditor-toolbar-tooltip-underline: "Underline";
+@bl-customComponent-richEditor-toolbar-tooltip-strike: "Strikethrough";
+@bl-customComponent-richEditor-toolbar-tooltip-redo: "Redo";
+@bl-customComponent-richEditor-toolbar-tooltip-undo: "Undo";
+@bl-customComponent-richEditor-toolbar-tooltip-font: "Font";
+@bl-customComponent-richEditor-toolbar-tooltip-size: "Font size";
+@bl-customComponent-richEditor-toolbar-tooltip-color: "Text color";
+@bl-customComponent-richEditor-toolbar-tooltip-background: "Background color";
+@bl-customComponent-richEditor-toolbar-tooltip-left: "Left align";
+@bl-customComponent-richEditor-toolbar-tooltip-center: "Center align";
+@bl-customComponent-richEditor-toolbar-tooltip-right: "Right align";
+@bl-customComponent-richEditor-toolbar-tooltip-justify: "Justify";
+@bl-customComponent-richEditor-toolbar-tooltip-link: "Insert link";
+@bl-customComponent-richEditor-toolbar-tooltip-image: "Insert image";
+@bl-customComponent-richEditor-toolbar-tooltip-video: "Insert video";
+@bl-customComponent-richEditor-toolbar-tooltip-list-ordered: "Numbered list";
+@bl-customComponent-richEditor-toolbar-tooltip-list-bullet: "Bulleted list";
+@bl-customComponent-richEditor-toolbar-tooltip-heading-1: "Heading 1";
+@bl-customComponent-richEditor-toolbar-tooltip-heading-2: "Heading 2";
+@bl-customComponent-richEditor-toolbar-tooltip-blockquote: "Quote";
+@bl-customComponent-richEditor-toolbar-tooltip-code-block: "Code";
+@bl-customComponent-richEditor-toolbar-tooltip-script-sub: "Subscript";
+@bl-customComponent-richEditor-toolbar-tooltip-script-super: "Superscript";
+@bl-customComponent-richEditor-toolbar-tooltip-direction: "Text direction";
+@bl-customComponent-richEditor-toolbar-tooltip-clean: "Clear formatting";
 ````

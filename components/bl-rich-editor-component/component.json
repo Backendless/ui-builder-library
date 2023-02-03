@@ -58,6 +58,14 @@
     },
     {
       "type": "checkbox",
+      "name": "showTooltips",
+      "label": "Show Tooltips",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "showTooltipsLogic"
+    },
+    {
+      "type": "checkbox",
       "name": "linkInsertButton",
       "label": "Link Insert Button",
       "showInSettings": true,
