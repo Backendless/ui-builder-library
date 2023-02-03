@@ -8,23 +8,25 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
 
 ## Properties
 
-| Property | Type                                                | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |
-|----------|-----------------------------------------------------|---------------|----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled | *Checkbox*                                          | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
-| Tabs     | *JSON*                                              | `[]`          | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Codeless Examples](#Examples). Signature of tab: {id: `String`, label: `String`}. |
-| Variant  | *Select* <br/> "standart" \| "filled" \| "outlined" | "standart"    | Variant Logic  | YES          | YES        | This handler allows you to select variant of tab.                                                                                                  |
+| Property         | Type                                               | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |
+|------------------|----------------------------------------------------|---------------|----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled         | *Checkbox*                                         | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
+| Variant          | *Select* <br/>"Standart" \| "Filled" \| "Outlined" | "Standart"    | Variant Logic  | YES          | YES        | This handler allows you to select variant of tab.                                                                                                  |
+| Tabs Orientation | *Select* <br/>"Left" \| "Center" \| "Right"        | "Center"      |                | NO           | YES        | This handler allows you to specify the orientation of the tabs.                                                                                    |
+| Tabs             | *JSON*                                             |               | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Usage Guide](#Examples). Signature of tab: {id: `String`, label: `String`}. |
+
 ## Events
 
-| Name                   | Triggers                               | Context Blocks               |
-|------------------------|----------------------------------------|------------------------------|
-| On Change Event        | triggered when a tab is changed        | Current Tab Id: `String`     |
+| Name                  | Triggers                        | Context Blocks               |
+|-----------------------|---------------------------------|------------------------------|
+| On Change Event       | triggered when a tab is changed | Current Tab Id: `String`     |
 
 ## Actions
 
-| Action                | Inputs                               | Returns                                 |
-|-----------------------|--------------------------------------|-----------------------------------------|
-| Set Current Tab Id    | Id: `String`                         |                                         |
-| Get Current Tab Id    |                                      | `String`: current tab id                |
+| Action                | Inputs                          | Returns                      |
+|-----------------------|---------------------------------|------------------------------|
+| Set Current Tab Id    | Id: `String`                    |                              |
+| Get Current Tab Id    |                                 | `String`: current tab id     |
 
 ## Styles
 
@@ -45,16 +47,24 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
 @bl-customComponent-tabs-backgroundColor: rgba(@themePrimary, 0.15);
 ````
 
-## <a name="Examples"></a> Codeless Examples
+## <a name="Examples"></a> Usage Guide
 
-Adding of tabs to the component:
+Add tabs to the component. You can add tabs using component logic:
 
-<img alt="main thumbnail" src="./example-images/adding-tabs.png" width="720" />
+<img alt="tabs" src="./example-images/add-tabs-via-logic.png" width="720" />
 
-Adding of tabs content to component:
+Or using JSON:
 
-<img alt="main thumbnail" src="./example-images/adding-tabs-content.png" width="720" />
+<img alt="tabs" src="./example-images/add-tabs-via-JSON.png" width="720" />
 
-Controlling the visibility of the tab's content:
+Add a content block for each tab:
 
-<img alt="main thumbnail" src="./example-images/tab-visibility-control.png" width="720" />
+<img alt="tab content" src="./example-images/add-tab-content.png" width="720" />
+
+Specify for each content block the ID that you specified for the tab:
+
+<img alt="tab content id" src="./example-images/add-id-for-the-content-block.png" width="720" />
+
+In the logic of each content block in the "Visibility Logic" tab, check whether the block Id matches "currentTabId":
+
+<img alt="control visibility" src="./example-images/tab-visibility-logic.png" width="720" />

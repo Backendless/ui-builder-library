@@ -5,7 +5,8 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
   const {
-    linkInsertButton, imageInsertButton, videoInsertButton, toolbarPosition, borderWidth, borderColor, borderStyle,
+    linkInsertButton, imageInsertButton, videoInsertButton, toolbarPosition,
+    borderWidth, borderColor, borderStyle, showTooltips,
   } = component;
 
   const styles = {
@@ -18,7 +19,11 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
   };
 
   return (
-    <div ref={ toolbarRef } id="toolbar-container" style={ styles }>
+    <div
+      ref={ toolbarRef }
+      id="toolbar-container"
+      className={ cn({ 'active-tooltips': showTooltips }) }
+      style={ styles }>
       <InlineFormattingButtons/>
       <span className="ql-formats">
         <Button className="ql-undo material-icons-round" label="undo"/>

@@ -3,7 +3,7 @@
 Multiple Select is a component of Backendless UI-Builder designer. This component allows you to handle multiple selections.
 
 <p align="center">
-  <img alt="main thumbnail" height="290" src="./thumbnail.png" width="320"/>
+  <img alt="main thumbnail" src="./thumbnail.png" width="780"/>
 </p>
 
 ## Properties
@@ -14,15 +14,16 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 | Placeholder         | *Text*                                                       | 'Placeholder'        |                           | NO           | YES        | This handler allows you to specify a placeholder for a component.                                                                                                        |
 | Select All Checkbox | *Checkbox*                                                   | `true`               | Select All Checkbox Logic | YES          | YES        | This handler allows you to add a checkbox to select all options.                                                                                                         |
 | Select All Label    | *Text*                                                       | 'Select all options' | Select All Label Logic    | YES          | YES        | This handler allows you to specify label for "Select All Checkbox".                                                                                                      |
-| Variant             | *Select* <br/>'outlined' \| <br/>'filled' \| <br/>'standart' | 'outlined'           |                           | NO           | YES        | This handler allows you to select a variant of the component.                                                                                                            |
-| Type                | *Select* <br/>'default' \| <br/>'checkmark' \| <br/>'chip'   | 'checkmark'          |                           | NO           | YES        | This handler allows you to select a type of the component.                                                                                                               |
-| Options             | *JSON*                                                       | `[]`                 | Options Logic             | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: list of objects { label: `String`, value: `String`} |
+| Variant             | *Select* <br/>'outlined' <br/>\| 'filled' <br/>\| 'standart' | 'outlined'           |                           | NO           | YES        | This handler allows you to select a variant of the component.                                                                                                            |
+| Type                | *Select* <br/>'default' <br/>\| 'checkmark' <br/>\| 'chip'   | 'checkmark'          |                           | NO           | YES        | This handler allows you to select a type of the component.                                                                                                               |
+| Value               | *Text*                                                       | ''                   | Value Logic               | YES          | YES        | This handler allows you to add value by default. Enter the value separated by a comma. Signature of value: '`String`, `String`'.                                         |
+| Options             | *JSON*                                                       |                      | Options Logic             | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: list of objects { label: `String`, value: `String`} |
 
 ## Events
 
-| Name             | Triggers                                      | Context Blocks                                    |
-|------------------|-----------------------------------------------|---------------------------------------------------|
-| On Change        | when the user select an item from the options | `Select Value: string`                            |
+| Name             | Triggers                                      | Context Blocks                                                      |
+|------------------|-----------------------------------------------|---------------------------------------------------------------------|
+| On Change Event  | when the user select an item from the options | Select Value: list of objects { label: `String`, value: `String` }  |
 
 ## Styles
 

@@ -58,6 +58,14 @@
     },
     {
       "type": "checkbox",
+      "name": "showTooltips",
+      "label": "Show Tooltips",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "showTooltipsLogic"
+    },
+    {
+      "type": "checkbox",
       "name": "linkInsertButton",
       "label": "Link Insert Button",
       "showInSettings": true,
@@ -70,7 +78,7 @@
       "name": "imageInsertButton",
       "label": "Image Insert Button",
       "showInSettings": true,
-      "defaultValue": false,
+      "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "imageInsertButtonLogic"
     },
@@ -80,7 +88,8 @@
       "label": "Video Insert Button",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "videoInsertButtonLogic"
+      "handlerId": "videoInsertButtonLogic",
+      "defaultValue": true
     },
     {
       "type": "checkbox",
