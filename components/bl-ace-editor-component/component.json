@@ -10,14 +10,14 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "disabled",
-      "label": "Disabled",
+      "name": "readOnly",
+      "label": "Read Only",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "disabledLogic",
-      "handlerLabel": "Disabled Logic",
+      "handlerId": "readOnlyLogic",
+      "handlerLabel": "Read Only Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to disable a component."
+      "handlerDescription": "This handler allows you to disable editing of the component value."
     },
     {
       "type": "text",

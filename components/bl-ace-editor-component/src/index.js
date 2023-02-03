@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 
 import { AceEditor } from './lib/react-ace.umd';
 import './lib/ace-builds.umd';
@@ -7,13 +7,13 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function AceEditorComponent({ component, elRef, eventHandlers }) {
   const {
-    classList, display, style, disabled, name, value, mode, theme,
+    classList, display, style, readOnly, name, value, mode, theme,
     foldStyle, placeholder, width, height, fontSize, tabSize, printMarginColumn,
     printMarginVisibility, gutterVisibility, autocompletion, highlightActiveLine, showInvisibles
   } = component;
   const { onChange } = eventHandlers;
 
-  const [editorValue, setEditorValue] = useState('');
+  const [editorValue, setEditorValue] = useState(value);
 
   component.getValue = () => editorValue;
   component.setValue = value => setEditorValue(value);
@@ -22,9 +22,17 @@ export default function AceEditorComponent({ component, elRef, eventHandlers }) 
     setEditorValue(value);
   }, [value]);
 
-  const handleValueChange = useCallback((newValue) => {
-    setEditorValue(newValue);
-    onChange({ value: newValue });
+  const options = useMemo(() => ({
+    printMarginColumn,
+    showInvisibles,
+    enableLiveAutocompletion: autocompletion,
+    enableBasicAutocompletion: autocompletion,
+    foldStyle,
+  }), [printMarginColumn, showInvisibles, autocompletion, foldStyle]);
+
+  const onChangeHandler = useCallback((value) => {
+    setEditorValue(value);
+    onChange({ value });
   }, []);
 
   if (!display) {
@@ -39,7 +47,7 @@ export default function AceEditorComponent({ component, elRef, eventHandlers }) 
         theme={ theme }
         width={ width }
         height={ height }
-        readOnly={ disabled }
+        readOnly={ readOnly }
         placeholder={ placeholder }
         name={ name }
         fontSize={ fontSize }
@@ -47,14 +55,8 @@ export default function AceEditorComponent({ component, elRef, eventHandlers }) 
         highlightActiveLine={ highlightActiveLine }
         tabSize={ tabSize }
         showPrintMargin={ printMarginVisibility }
-        setOptions={ {
-          printMarginColumn,
-          showInvisibles,
-          enableLiveAutocompletion: autocompletion,
-          enableBasicAutocompletion: autocompletion,
-          foldStyle,
-        } }
-        onChange={ handleValueChange }
+        setOptions={ options }
+        onChange={ onChangeHandler }
       />
     </div>
   );
