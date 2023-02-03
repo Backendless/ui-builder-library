@@ -18,6 +18,10 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
 
   useEffect(() => {
+    setKnobReadOnly(!!readOnly);
+  },[readOnly]);
+
+  useEffect(() => {
     setKnobDisabled(!!readOnly);
   }, [disabled]);
 
