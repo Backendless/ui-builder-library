@@ -98,18 +98,6 @@ export function CarouselIndicators(props) {
   );
 }
 
-export function Button({ disabled, onClick, type, Icon }) {
-  return (
-    <button
-      type="button"
-      className={ `carousel__${type}-button` }
-      onClick={ onClick }
-      style={ { pointerEvents: disabled ? "none" : "auto" } }>
-      <Icon/>
-    </button>
-  );
-}
-
 export const NextButtonIcon = () => (
   <svg className="carousel__next-icon" viewBox="0 0 16 16" fill="#fff">
     <path
@@ -123,3 +111,20 @@ export const PrevButtonIcon = () => (
       d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
   </svg>
 );
+
+const ButtonIcons = {
+  next: <NextButtonIcon />,
+  prev: <PrevButtonIcon />,
+}
+
+export function Button({ disabled, onClick, type }) {
+  return (
+    <button
+      type="button"
+      className={ `carousel__${type}-button` }
+      onClick={ onClick }
+      style={ { pointerEvents: disabled ? "none" : "auto" } }>
+      { ButtonIcons[type] }
+    </button>
+  );
+}

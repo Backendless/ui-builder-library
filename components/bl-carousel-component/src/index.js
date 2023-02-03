@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Button, List, CarouselIndicators, PrevButtonIcon, NextButtonIcon } from './subcomponents';
+import { Button, List, CarouselIndicators } from './subcomponents';
 import { getAdjacentImages } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -102,8 +102,8 @@ export default function Carousel({ component, eventHandlers }) {
       onMouseLeave={ onMouseLeave }>
       { withControls && (
         <div className="carousel__controls-button">
-          <Button disabled={ !!animation } onClick={ onPrevButtonClick } type="prev" Icon={ PrevButtonIcon }/>
-          <Button disabled={ !!animation } onClick={ onNextButtonClick } type="next" Icon={ NextButtonIcon }/>
+          <Button disabled={ !!animation } onClick={ onPrevButtonClick } type="prev"/>
+          <Button disabled={ !!animation } onClick={ onNextButtonClick } type="next"/>
         </div>
       ) }
 
