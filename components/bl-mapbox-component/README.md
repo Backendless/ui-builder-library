@@ -5,7 +5,7 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 The component covers basic features of the library and allows you in a couple click render an interactive map in your UI-Builder application.
 
 <p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="600"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties
@@ -58,6 +58,7 @@ The component covers basic features of the library and allows you in a couple cl
 | Get Zoom    |                                                                             | `Number`: current map zoom             |
 | Set Zoom    | Zoom: `Number` <br/> Event Data: `Object`                                   |                                        |
 | Fly To      | Options: `Object` <br/> Event Data: `Object`                                |                                        |
+| Rotate To   | Bearing: `Number` <br/> Options: `Object` <br/> Event Data: `Object`        |                                        |
 
 ## Settings
 
