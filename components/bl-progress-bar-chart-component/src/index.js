@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Bar } from './bar';
 
@@ -7,18 +7,16 @@ import { validate, useGridMarks } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 const HORIZONTAL = 'horizontal-bars';
 
-export default function ProgressBarChartComponent({ component }) {
+export default function ProgressBarChartComponent({ component, elRef }) {
   const {
-    classList, style, display, disabled, visibility, chartOrientation, gridMarks, height, width, data
+    classList, style, display, disabled, gridVisibility, chartOrientation, gridMarks, height, width, data
   } = component;
 
-  const rootRef = useRef();
   const [chartData, setChartData] = useState([]);
   const marksList = useGridMarks(gridMarks);
-  const isHorizontal = useMemo(() => chartOrientation === HORIZONTAL, [chartOrientation]);
+  const isHorizontal = chartOrientation === HORIZONTAL;
 
   useEffect(() => { setChartData(validate(data)); }, [data]);
-  useEffect(() => { component.el = rootRef.current; }, [rootRef]);
 
   const classes = cn(
     'bl-customComponent-progressBarChart', classList,
@@ -33,10 +31,10 @@ export default function ProgressBarChartComponent({ component }) {
   }
 
   return (
-    <div ref={ rootRef } style={ styles } className={ classes }>
+    <div ref={ elRef } style={ styles } className={ classes }>
       <div className="chart">
         <div className="chart__items">
-          { visibility && <Grids marksList={ marksList } isHorizontal={ isHorizontal } />}
+          { gridVisibility && <Grids marksList={ marksList } isHorizontal={ isHorizontal } />}
           { chartData.map(({ id, name, goal, progress }) => (
             <Bar
               key={ id }
@@ -48,7 +46,7 @@ export default function ProgressBarChartComponent({ component }) {
             />
           )) }
         </div>
-        { visibility && <PercentageMarks marksList={ marksList } isHorizontal={ isHorizontal } /> }
+        { gridVisibility && <PercentageMarks marksList={ marksList } isHorizontal={ isHorizontal } /> }
       </div>
     </div>
   );
@@ -65,12 +63,12 @@ function Grids({ marksList, isHorizontal }) {
 }
 
 function PercentageMarks({ marksList, isHorizontal }) {
+  const side = isHorizontal ? 'left' : 'bottom';
+
   return (
     <div className="chart__percentage-marks">
       { marksList.map(item => (
-        <div
-          className="chart__percentage-marks-item"
-          style={{ [isHorizontal ? 'left' : 'bottom']: `${ item }%`}}>
+        <div className="chart__percentage-marks-item" style={{ [side]: `${ item }%` }}>
           { `${ item }%` }
         </div>
       )) }
