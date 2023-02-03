@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Toolbar } from './toolbar';
 import { useQuillLibrary } from './use-quill-library';
