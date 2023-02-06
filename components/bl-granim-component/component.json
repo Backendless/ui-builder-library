@@ -9,6 +9,17 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "json",
+      "name": "states",
+      "showInSettings": false,
+      "defaultValue": "{}",
+      "hasLogicHandler": true,
+      "handlerId": "statesLogic",
+      "handlerLabel": "States Logic",
+      "handlerDescription": "This is a handler for the logic to determine the object containing all the states. Signature of states: {}. Signature of state: { gradients: [...[...String]] || [...{color: String, pos: Number}], transitionSpeed: Number, loop: Boolean}.",
+      "dataBinding": true
+    },
+    {
       "type": "select",
       "name": "direction",
       "label": "Direction",
@@ -41,63 +52,54 @@
       "settingTooltip": "The orientation of the gradient"
     },
     {
-      "type": "text",
-      "name": "x0",
-      "label": "x0",
-      "settingTooltip": "Starting x-coordinate for custom direction",
-      "showInSettings": true,
-      "defaultValue": "",
-      "hasLogicHandler": false,
-      "handlerId": "x0Logic"
-    },
-    {
-      "type": "text",
-      "name": "y0",
-      "label": "y0",
-      "showInSettings": true,
-      "defaultValue": "",
-      "hasLogicHandler": false,
-      "handlerId": "y0Logic",
-      "settingTooltip": "Starting y-coordinate for custom direction"
-    },
-    {
-      "type": "text",
-      "name": "x1",
-      "label": "x1",
-      "showInSettings": true,
-      "defaultValue": "",
-      "hasLogicHandler": false,
-      "handlerId": "x1Logic",
-      "settingTooltip": "End x-coordinate for custom direction"
-    },
-    {
-      "type": "text",
-      "name": "y1",
-      "label": "y1",
-      "showInSettings": true,
-      "defaultValue": "",
-      "hasLogicHandler": false,
-      "handlerId": "y1Logic",
-      "settingTooltip": "End y-coordinate for custom direction"
-    },
-    {
       "type": "json",
-      "name": "colors",
-      "label": "Colors",
-      "settingTooltip": "Set the colors for the gradient",
+      "name": "customDirection",
+      "showInSettings": false,
+      "hasLogicHandler": true,
+      "handlerId": "customDirectionLogic",
+      "handlerLabel": "Custom Direction Logic",
+      "handlerDescription": "This is a handler for the logic to determine the custom direction of the gradient. Signature of custom direction with pixels or percentage values: {x0: String, y0: String, x1: String, y1: String}",
+      "defaultValue": "{}",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "stateTransitionSpeed",
+      "label": "State Transition Speed",
+      "settingTooltip": "Duration of the animation when changing state (in ms)",
       "showInSettings": true,
-      "defaultValue": "[]",
       "hasLogicHandler": false,
-      "handlerId": "colorsLogic"
+      "handlerId": "stateTransitionSpeedLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "isPausedWhenNotInView",
+      "label": "Offscreen Pause",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "isPausedWhenNotInViewLogic",
+      "settingTooltip": "Stop the animation when it's not in window view"
+    },
+    {
+      "type": "number",
+      "name": "scrollDebounceThreshold",
+      "label": "Scroll Debounce Threshold",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "scrollDebounceThresholdLogic",
+      "settingTooltip": "The scroll debounce threshold (in ms)"
     },
     {
       "type": "text",
       "name": "imageSource",
       "label": "Image Source",
       "showInSettings": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "imageSourceLogic",
-      "settingTooltip": "The source of the image(URL)"
+      "settingTooltip": "The source of the image(URL)",
+      "handlerLabel": "Image Source Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the image source."
     },
     {
       "type": "select",
@@ -282,44 +284,6 @@
         }
       ],
       "settingTooltip": "Options for blending images with a gradient"
-    },
-    {
-      "type": "checkbox",
-      "name": "isPausedWhenNotInView",
-      "label": "Paused if not in view",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "isPausedWhenNotInViewLogic",
-      "settingTooltip": "Stop the animation when it's not in window view"
-    },
-    {
-      "type": "number",
-      "name": "scrollDebounceThreshold",
-      "label": "Scroll Debounce Threshold",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "scrollDebounceThresholdLogic",
-      "settingTooltip": "The scroll debounce threshold (in ms)"
-    },
-    {
-      "type": "number",
-      "name": "transitionSpeed",
-      "label": "Transition speed",
-      "settingTooltip": "Transition duration between each gradient (in ms)",
-      "showInSettings": true,
-      "defaultValue": "",
-      "hasLogicHandler": false,
-      "handlerId": "transitionSpeedLogic"
-    },
-    {
-      "type": "checkbox",
-      "name": "loop",
-      "label": "Loop",
-      "showInSettings": true,
-      "defaultValue": true,
-      "hasLogicHandler": false,
-      "handlerId": "loopLogic",
-      "settingTooltip": "The animation loop"
     }
   ],
   "eventHandlers": [
@@ -333,12 +297,7 @@
       "label": "On Gradient Change",
       "handlerDescription": "Triggered when a gradient change and loop.",
       "output": false,
-      "contextBlocks": [
-        {
-          "id": "colorDetails",
-          "label": "Color Details"
-        }
-      ]
+      "contextBlocks": []
     },
     {
       "name": "onEnd",
@@ -346,7 +305,51 @@
       "handlerDescription": "Triggered when the animation end."
     }
   ],
-  "actions": [],
+  "actions": [
+    {
+      "inputs": [
+        {
+          "id": "stateName"
+        }
+      ],
+      "id": "changeState",
+      "label": "Change State"
+    },
+    {
+      "inputs": [
+        {
+          "id": "blendingModeName"
+        }
+      ],
+      "id": "changeBlendingMode",
+      "label": "Change Blending Mode"
+    },
+    {
+      "id": "changeDirection",
+      "inputs": [
+        {
+          "id": "directionName"
+        }
+      ],
+      "label": "Change Direction"
+    },
+    {
+      "id": "play",
+      "label": "Play"
+    },
+    {
+      "id": "pause",
+      "label": "Pause"
+    },
+    {
+      "id": "clear",
+      "label": "Clear"
+    },
+    {
+      "id": "destroy",
+      "label": "Destroy"
+    }
+  ],
   "settings": [],
   "pods": {
     "b8828219095d33ecaffe9d3c6ba4e2ae": {

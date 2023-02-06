@@ -1,61 +1,44 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-import s from "./lib/granim.min";
+import { s } from "./lib/granim.min";
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const COLORS_DEFAULT = [
-  ["#ff9966", "#ff5e62"],
-  ["#00F260", "#0575E6"],
-  ["#e1eec3", "#f05053"],
+const DIRECTIONS = ["left-right", "diagonal", "top-bottom", "radial", "custom"];
+const BLENDING_MODE = [
+  "multiply", "screen", "normal", "overlay", "darken", "lighten", "lighter", "color-dodge", "color-burn",
+  "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity",
 ];
 
-export default function GranimComponent({ component, eventHandlers, pods }) {
+export default function GranimComponent({ component, elRef, eventHandlers, pods }) {
   const {
-    style,
-    classList,
-    direction,
-    x0,
-    y0,
-    x1,
-    y1,
-    colors,
-    imageSource,
-    imagePosX,
-    imagePosY,
-    stretchModeX,
-    stretchModeY,
-    blendingMode,
-    isPausedWhenNotInView,
-    scrollDebounceThreshold,
-    transitionSpeed,
-    loop,
+    style, classList, display, direction, customDirection, states, isPausedWhenNotInView, scrollDebounceThreshold,
+    stateTransitionSpeed, imageSource, imagePosX, imagePosY, stretchModeX, stretchModeY, blendingMode,
   } = component;
-
   const { onStart, onGradientChange, onEnd } = eventHandlers;
 
   const granimContentPod = pods["granimContent"];
 
+  const canvasInstRef = useRef(null);
   const canvasRef = useRef(null);
-  const canvasId = useMemo(() => BackendlessUI.UUID.short(), []);
-
-  const customDirection =
-    direction === "custom"
-      ? {
-          x0: x0 || "0px",
-          y0: y0 || "0px",
-          x1: x1 || "100%",
-          y1: y1 || "100%",
-        }
-      : {};
 
   useEffect(() => {
-    canvasRef.current = new Granim({
-      element: ".granim-canvas",
+    if (direction === "custom" && !customDirection) {
+      return;
+    }
+
+    if (!states) {
+      return;
+    }
+
+    canvasInstRef.current = new Granim({
+      element: canvasRef.current,
       name: "granim",
-      opacity: [1, 1],
       isPausedWhenNotInView,
       scrollDebounceThreshold,
+      stateTransitionSpeed,
+      direction,
+      customDirection: direction === "custom" ? customDirection : {},
       image: imageSource
         ? {
             source: imageSource,
@@ -64,31 +47,47 @@ export default function GranimComponent({ component, eventHandlers, pods }) {
             blendingMode,
           }
         : undefined,
-      direction,
-      customDirection,
-      states: {
-        "default-state": {
-          gradients: colors ? colors : COLORS_DEFAULT,
-          transitionSpeed,
-          loop,
-        },
-      },
+      states,
       onStart,
-      onGradientChange: (colorDetails) => onGradientChange({ colorDetails: colorDetails }),
+      onGradientChange,
       onEnd,
     });
-  }, []);
+  }, [
+    direction, customDirection, states, isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed,
+    imageSource, imagePosX, imagePosY, stretchModeX, stretchModeY, blendingMode,
+  ]);
 
-  const granimRef = useRef(null);
+  component.changeState = (stateName) => {
+    if (states && states.hasOwnProperty(stateName)) {
+      canvasInstRef.current.changeState(stateName);
+    }
+  };
 
-  useEffect(() => {
-    component.el = granimRef.current;
-  }, []);
+  component.changeDirection = (directionName) => {
+    if (DIRECTIONS.includes(directionName)) {
+      canvasInstRef.current.changeDirection(directionName);
+    }
+  };
+
+  component.changeBlendingMode = (blendingModeName) => {
+    if (BLENDING_MODE.includes(blendingModeName)) {
+      canvasInstRef.current.changeBlendingMode(blendingModeName);
+    }
+  };
+
+  component.play = () => canvasInstRef.current.play();
+  component.pause = () => canvasInstRef.current.pause();
+  component.clear = () => canvasInstRef.current.clear();
+  component.destroy = () => canvasInstRef.current.destroy();
+
+  if (!display) {
+    return null;
+  }
 
   return (
-    <div className={cn("bl-customComponent-granim", ...classList)} style={style} ref={granimRef}>
-      <canvas className="granim-canvas" ref={canvasRef} id={canvasId} />
-      <div className="granim-content">{granimContentPod.render()}</div>
+    <div className={ cn("bl-customComponent-granim", ...classList) } style={ style } ref={ elRef }>
+      <canvas className="granim-canvas" ref={ canvasRef } />
+      <div className="granim-content">{ granimContentPod.render() }</div>
     </div>
   );
 }
