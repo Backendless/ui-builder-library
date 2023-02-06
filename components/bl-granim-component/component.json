@@ -295,9 +295,7 @@
     {
       "name": "onGradientChange",
       "label": "On Gradient Change",
-      "handlerDescription": "Triggered when a gradient change and loop.",
-      "output": false,
-      "contextBlocks": []
+      "handlerDescription": "Triggered when a gradient change and loop."
     },
     {
       "name": "onEnd",
