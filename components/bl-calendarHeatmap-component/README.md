@@ -18,9 +18,9 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 
 ## Events
 
-| Name                | Triggers                                                   | Context Blocks                 |
-| ------------------- | ---------------------------------------------------------- | ------------------------------ |
-| On Cell Click Event | when the user clicks the mouse or taps the heat pamp cell. | count: `Number` date: `String` |
+| Name                | Triggers                                                 | Context Blocks                 |
+| ------------------- | -------------------------------------------------------- | ------------------------------ |
+| On Cell Click Event | when the user clicks the mouse or taps the heatmap cell. | count: `Number` date: `String` |
 
 ## Styles
 

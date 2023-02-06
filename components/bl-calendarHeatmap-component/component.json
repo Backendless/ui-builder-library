@@ -93,7 +93,7 @@
     {
       "name": "onCellClick",
       "label": "On Cell Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the heat pamp cell.",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the heatmap cell.",
       "contextBlocks": [
         {
           "id": "date",
