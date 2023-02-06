@@ -91,13 +91,17 @@
   ],
   "eventHandlers": [
     {
-      "name": "onClick",
-      "label": "On Click",
-      "handlerDescription": "This event is fired when the user clicks on the cell.",
+      "name": "onCellClick",
+      "label": "On Cell Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the heat pamp cell.",
       "contextBlocks": [
         {
-          "id": "value",
-          "label": "Value"
+          "id": "date",
+          "label": "Date"
+        },
+        {
+          "id": "count",
+          "label": "Count"
         }
       ]
     }
