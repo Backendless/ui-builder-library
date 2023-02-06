@@ -68,7 +68,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         weekdayLabels={ weeks }
         classForValue={ getClassForValue }
         tooltipDataAttrs={ getTooltipData }
-        onClick={({ date, count }) => onCellClick({ date, count })}
+        onClick={ ({ date, count }) => onCellClick({ date, count }) }
       />
       <ReactTooltip/>
       <Legend legend={ legend } width={ legendWidth }/>
