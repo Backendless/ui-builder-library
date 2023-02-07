@@ -62,7 +62,8 @@
       "label": "Show Tooltips",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "showTooltipsLogic"
+      "handlerId": "showTooltipsLogic",
+      "defaultValue": true
     },
     {
       "type": "checkbox",
