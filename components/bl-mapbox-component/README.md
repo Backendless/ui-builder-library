@@ -41,24 +41,24 @@ The component covers basic features of the library and allows you in a couple cl
 
 ## Actions
 
-| Action      | Inputs                                                                      | Returns                                |
-|-------------|-----------------------------------------------------------------------------|----------------------------------------|
-| Is Moving   |                                                                             | `Boolean`: map is moving               |
-| Is Zooming  |                                                                             | `Boolean`: map is zooming              |
-| Is Rotating |                                                                             | `Boolean`: map is rotating             |
-| Set Style   | Style: `Object`, `String` or `Null ` <br/> Options: `Object`                |                                        |
-| Get Style   |                                                                             | `Object`: the map's style JSON object  |
-| Set Fog     | Fog: `Object`                                                               |                                        |
-| Get Fog     |                                                                             | `Object`: Fog object                   |
-| Loaded      |                                                                             | `Boolean`: map is loaded               |
-| Get Center  |                                                                             | `Object`: `{lng: Number, lat: Number}` |
-| Set Center  | Center: `Object` <br/> Event Data: `Object`                                 |                                        |
-| Pan By      | Offset: `Point`, `Array` <br/> Options: `Object` <br/> Event Data: `Object` |                                        |
-| Pan To      | LngLat: `Object` <br/> Options: `Object` <br/> Event Data: `Object`         |                                        |
-| Get Zoom    |                                                                             | `Number`: current map zoom             |
-| Set Zoom    | Zoom: `Number` <br/> Event Data: `Object`                                   |                                        |
-| Fly To      | Options: `Object` <br/> Event Data: `Object`                                |                                        |
-| Rotate To   | Bearing: `Number` <br/> Options: `Object` <br/> Event Data: `Object`        |                                        |
+| Action        | Inputs                                                                      | Returns                                |
+|---------------|-----------------------------------------------------------------------------|----------------------------------------|
+| Is Moving     |                                                                             | `Boolean`: map is moving               |
+| Is Zooming    |                                                                             | `Boolean`: map is zooming              |
+| Is Rotating   |                                                                             | `Boolean`: map is rotating             |
+| Set Style     | Style: `Object`, `String` or `Null ` <br/> Options: `Object`                |                                        |
+| Get Style     |                                                                             | `Object`: the map's style JSON object  |
+| Set Fog       | Fog: `Object`                                                               |                                        |
+| Get Fog       |                                                                             | `Object`: Fog object                   |
+| Is Map Loaded |                                                                             | `Boolean`: map is loaded               |
+| Get Center    |                                                                             | `Object`: `{lng: Number, lat: Number}` |
+| Set Center    | Center: `Object` <br/> Event Data: `Object`                                 |                                        |
+| Pan By        | Offset: `Point`, `Array` <br/> Options: `Object` <br/> Event Data: `Object` |                                        |
+| Pan To        | LngLat: `Object` <br/> Options: `Object` <br/> Event Data: `Object`         |                                        |
+| Get Zoom      |                                                                             | `Number`: current map zoom             |
+| Set Zoom      | Zoom: `Number` <br/> Event Data: `Object`                                   |                                        |
+| Fly To        | Options: `Object` <br/> Event Data: `Object`                                |                                        |
+| Rotate To     | Bearing: `Number` <br/> Options: `Object` <br/> Event Data: `Object`        |                                        |
 
 ## Settings
 

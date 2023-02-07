@@ -305,7 +305,7 @@
     },
     {
       "id": "loaded",
-      "label": "Loaded",
+      "label": "Is Map Loaded",
       "hasReturn": true
     },
     {
