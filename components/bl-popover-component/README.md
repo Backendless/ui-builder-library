@@ -6,20 +6,22 @@ The component allows you to render a popup window in your UI-Builder application
 
 ## Properties
 
-| Property    | Type                                    | Default Value | Logic              | Data Binding | UI Setting | Description                                                            |
-|-------------|-----------------------------------------|---------------|--------------------|--------------|------------|------------------------------------------------------------------------|
-| position    | Select ["top", "right","bottom","left"] | "top"         | Position Logic     | NO           | YES        | Allows to determine the position of the popover relative to the button |
+| Property | Type                                    | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
+| -------- | --------------------------------------- | ------------- | -------------- | ------------ | ---------- | ---------------------------------------------------------------------- |
+| position | Select ["top", "right","bottom","left"] | "top"         | Position Logic | NO           | YES        | Allows to determine the position of the popover relative to the button |
 
 ## Events
 
-| Name            | Triggers                   | Context Blocks     |
-|-----------------|----------------------------|--------------------|
-| On Button Click | when user clicks on button | Is Open: `Boolean` |
+| Name            | Triggers                                             | Context Blocks     |
+| --------------- | ---------------------------------------------------- | ------------------ |
+| On Button Click | when user clicks on button                           | Is Open: `Boolean` |
+| On Mouse In     | when the mouse pointer is entered into the component |                    |
+| On Mouse Out    | when the mouse pointer leaves the component          |                    |
 
 ## Actions
 
 | Action      | Inputs             | Returns |
-|-------------|--------------------|---------|
+| ----------- | ------------------ | ------- |
 | Set Is Open | Is Open: `Boolean` |         |
 
 ## Styles
