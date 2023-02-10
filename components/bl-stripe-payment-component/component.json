@@ -150,15 +150,15 @@
   "actions": [
     {
       "id": "clearCard",
-      "label": "Clear Card"
+      "label": "Clear Card in"
     },
     {
       "id": "blurCard",
-      "label": "Blur Card"
+      "label": "Blur Card in"
     },
     {
       "id": "focusCard",
-      "label": "Focus Card"
+      "label": "Focus Card in"
     }
   ],
   "settings": [
