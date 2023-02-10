@@ -1,8 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import mapboxgl from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
 import { createActions } from './actions';
+
+const mapOnLoad = (mapRef, listener) => {
+  mapRef.current.on('load', listener);
+};
+
+const mapOnClick = (mapRef, layerId, listener) => {
+  if (layerId) {
+    mapRef.current.on('click', layerId, listener);
+  } else {
+    mapRef.current.on('click', listener);
+  }
+};
+
+const mapAddSource = (mapRef, id, source) => {
+  mapRef.current.addSource(id, source);
+};
+
+const mapAddLayer = (mapRef, layer) => {
+  mapRef.current.addLayer(layer);
+};
 
 export const preparePolygons = polygons => {
   return polygons.map(polygon => ({
@@ -48,6 +68,8 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     projection: projection || PROJECTION,
   });
 
+  createActions(mapRef, component);
+
   if (directions) {
     mapRef.current.addControl(
       new MapboxDirections({
@@ -57,7 +79,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     );
   }
 
-  mapRef.current.on('load', () => {
+  mapOnLoad(mapRef, () => {
     applyFog(mapRef, component);
 
     useEvents(mapRef, eventHandlers);
@@ -82,12 +104,12 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     if (geolocation) {
       useGeolocation(mapRef, onDeterminingGeoposition);
     }
-
-    createActions(mapRef, component);
   });
 };
 
-export const useMarkers = (markers, markersArray, setMarkersArray, mapRef, onMarkerClick) => {
+export const useMarkers = (markers, mapRef, onMarkerClick) => {
+  const [markersArray, setMarkersArray] = useState([]);
+
   useEffect(() => {
     if (markers?.length) {
       markersArray.forEach(marker => {
@@ -97,7 +119,9 @@ export const useMarkers = (markers, markersArray, setMarkersArray, mapRef, onMar
       setMarkersArray([]);
 
       markers.forEach(markerItem => {
-        const marker = new mapboxgl.Marker({ color: markerItem.color })
+        const { color, description } = markerItem;
+
+        const marker = new mapboxgl.Marker({ color })
           .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
           .addTo(mapRef.current);
 
@@ -106,11 +130,11 @@ export const useMarkers = (markers, markersArray, setMarkersArray, mapRef, onMar
         popup.on('open', () => {
           const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
 
-          onMarkerClick({ coordinates: coordinates, description: markerItem.description || '' });
+          onMarkerClick({ coordinates, description: description || '' });
         });
 
-        if (markerItem.description) {
-          popup.setText(markerItem.description);
+        if (description) {
+          popup.setText(description);
         }
 
         setMarkersArray(prev => [...prev, marker]);
@@ -122,71 +146,80 @@ export const useMarkers = (markers, markersArray, setMarkersArray, mapRef, onMar
 };
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray) => {
-  if (polygons?.length && mapRef.current) {
-    mapRef.current.on('load', () => {
-      polygonsArray.forEach(polygon => {
-        if (mapRef.current.getSource(polygon)) {
-          mapRef.current.removeLayer(`${ polygon.id }-layer`);
-          mapRef.current.removeSource(polygon.id);
-        }
-      });
+  mapOnLoad(mapRef, () => {
+    polygonsArray.forEach(polygon => {
+      if (mapRef.current.getSource(polygon)) {
+        mapRef.current.removeLayer(`${ polygon.id }-layer`);
+        mapRef.current.removeSource(polygon.id);
+      }
     });
+  });
 
-    setPolygonsArray(preparePolygons(polygons));
+  setPolygonsArray(preparePolygons(polygons));
+};
+
+const createPopup = (polygon, mapRef, onPolygonClick) => {
+  const { description, id } = polygon;
+
+  if (description) {
+    mapOnClick(mapRef, `${ id }-layer`, e => {
+      new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(mapRef.current);
+
+      const coordinates = { ...e.lngLat };
+
+      onPolygonClick({ coordinates, description });
+    });
+  } else {
+    mapOnClick(mapRef, `${ polygon.id }-layer`, e => {
+      const coordinates = { ...e.lngLat };
+
+      onPolygonClick({ coordinates, description: '' });
+    });
   }
 };
 
 const addPolygons = (mapRef, polygonsArray, onPolygonClick) => {
-  mapRef.current.on('load', () => {
+  mapOnLoad(mapRef, () => {
     polygonsArray.forEach(polygon => {
-      mapRef.current.addSource(polygon.id, {
+      const { id, coordinates, color, opacity } = polygon;
+
+      mapAddSource(mapRef, id, {
         'type': 'geojson',
         'data': {
           'type'    : 'Feature',
           'geometry': {
             'type'       : 'Polygon',
-            'coordinates': [[...polygon.coordinates]],
+            'coordinates': [coordinates],
           },
         },
       });
 
-      mapRef.current.addLayer({
-        'id'    : `${ polygon.id }-layer`,
+      mapAddLayer(mapRef, {
+        'id'    : `${ id }-layer`,
         'type'  : 'fill',
-        'source': polygon.id,
+        'source': id,
         'layout': {},
         'paint' : {
-          'fill-color'  : polygon.color,
-          'fill-opacity': polygon.opacity,
+          'fill-color'  : color,
+          'fill-opacity': opacity,
         },
       });
 
-      if (polygon.description) {
-        mapRef.current.on('click', `${ polygon.id }-layer`, e => {
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(polygon.description)
-            .addTo(mapRef.current);
-
-          const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
-
-          onPolygonClick({ coordinates: coordinates, description: polygon.description });
-        });
-      } else {
-        mapRef.current.on('click', `${ polygon.id }-layer`, e => {
-          const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
-
-          onPolygonClick({ coordinates: coordinates, description: '' });
-        });
-      }
-
+      createPopup(polygon, mapRef, onPolygonClick);
     });
   });
 };
 
-export const usePolygons = (polygons, polygonsArray, setPolygonsArray, mapRef, onPolygonClick) => {
+export const usePolygons = (polygons, mapRef, onPolygonClick) => {
+  const [polygonsArray, setPolygonsArray] = useState([]);
+
   useEffect(() => {
-    updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray);
+    if (polygons?.length && mapRef.current) {
+      updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray);
+    }
   }, [polygons]);
 
   useEffect(() => {
@@ -197,7 +230,7 @@ export const usePolygons = (polygons, polygonsArray, setPolygonsArray, mapRef, o
 export const useEvents = (mapRef, eventHandlers) => {
   const { onClick, onPan } = eventHandlers;
 
-  mapRef.current.on('click', e => {
+  mapOnClick(mapRef, undefined, e => {
     const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
 
     onClick({ coordinates: coordinates });
