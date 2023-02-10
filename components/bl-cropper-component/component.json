@@ -429,7 +429,7 @@
   "actions": [
     {
       "id": "crop",
-      "label": "Crop"
+      "label": "Crop in"
     },
     {
       "id": "reset",
@@ -447,15 +447,15 @@
           "label": "url"
         }
       ],
-      "label": "Replace"
+      "label": "Replace Image in"
     },
     {
       "id": "enableCropper",
-      "label": "Enable Cropper"
+      "label": "Enable"
     },
     {
       "id": "disableCropper",
-      "label": "Disable Cropper"
+      "label": "Disable"
     },
     {
       "id": "destroy",
@@ -463,7 +463,7 @@
     },
     {
       "id": "move",
-      "label": "Move",
+      "label": "Move Canvas in",
       "inputs": [
         {
           "id": "offsetX",
@@ -477,7 +477,7 @@
     },
     {
       "id": "moveTo",
-      "label": "Move To",
+      "label": "Move Canvas to Point in",
       "inputs": [
         {
           "id": "x",
@@ -491,7 +491,7 @@
     },
     {
       "id": "zoom",
-      "label": "Zoom",
+      "label": "Zoom Canvas in",
       "inputs": [
         {
           "id": "ratio",
@@ -501,7 +501,7 @@
     },
     {
       "id": "zoomTo",
-      "label": "Zoom To",
+      "label": "Zoom Canvas to Ratio in",
       "inputs": [
         {
           "id": "ratio",
@@ -519,7 +519,7 @@
     },
     {
       "id": "rotate",
-      "label": "Rotate",
+      "label": "Rotate Image in",
       "inputs": [
         {
           "id": "degree",
@@ -529,7 +529,7 @@
     },
     {
       "id": "rotateTo",
-      "label": "Rotate To",
+      "label": "Rotate Image to Degree in",
       "inputs": [
         {
           "id": "degree",
@@ -549,11 +549,11 @@
           "label": "scaleY"
         }
       ],
-      "label": "Scale"
+      "label": "Scale Image in"
     },
     {
       "id": "getData",
-      "label": "Get Data",
+      "label": "Get Data from",
       "hasReturn": true,
       "inputs": [
         {
@@ -564,7 +564,7 @@
     },
     {
       "id": "setData",
-      "label": "Set Data",
+      "label": "Set Data for",
       "inputs": [
         {
           "id": "x",
@@ -598,22 +598,22 @@
     },
     {
       "id": "getContainerData",
-      "label": "Get Container Data",
+      "label": "Get Container Data from",
       "hasReturn": true
     },
     {
       "id": "getImageData",
       "hasReturn": true,
-      "label": "Get Image Data"
+      "label": "Get Image Data from"
     },
     {
       "id": "getCanvasData",
-      "label": "Get Canvas Data",
+      "label": "Get Canvas Data from",
       "hasReturn": true
     },
     {
       "id": "setCanvasData",
-      "label": "Set Canvas Data",
+      "label": "Set Canvas Data for",
       "inputs": [
         {
           "id": "left",
@@ -635,12 +635,12 @@
     },
     {
       "id": "getCropBoxData",
-      "label": "Get Crop Box Data",
+      "label": "Get Crop Box Data from",
       "hasReturn": true
     },
     {
       "id": "setCropBoxData",
-      "label": "Set Crop Box Data",
+      "label": "Set Crop Box Data for",
       "inputs": [
         {
           "id": "left",
@@ -662,7 +662,7 @@
     },
     {
       "id": "getCroppedCanvas",
-      "label": "Get Cropped Canvas",
+      "label": "Get Cropped Canvas from",
       "hasReturn": true,
       "inputs": [
         {
@@ -711,11 +711,11 @@
           "label": "ratio"
         }
       ],
-      "label": "Set Aspect Ratio"
+      "label": "Set Aspect Ratio for"
     },
     {
       "id": "setDragMode",
-      "label": "Set Drag Mode",
+      "label": "Set Drag Mode for",
       "inputs": [
         {
           "id": "model",
