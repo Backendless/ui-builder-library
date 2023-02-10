@@ -42,8 +42,8 @@
       "hasLogicHandler": true,
       "handlerId": "filterLogic",
       "handlerLabel": "Filter Logic",
-      "handlerDescription": "This property allows you to specify a filter option for all grid columns.",
-      "settingTooltip": "This property allows you to specify a filter option for all grid columns.",
+      "handlerDescription": "This handler allows you to add filtering capability to all grid columns. ",
+      "settingTooltip": "This handler allows you to add filtering capability to all grid columns. ",
       "dataBinding": true
     },
     {
@@ -68,8 +68,8 @@
       "handlerId": "columnDefsLogic",
       "handlerLabel": "Column Definition Logic",
       "dataBinding": true,
-      "settingTooltip": "This handler allows you to add columns to the component.",
-      "handlerDescription": "This handler allows you to add columns to the component."
+      "settingTooltip": "This handler allows you to define columns for the component.",
+      "handlerDescription": "This handler allows you to define columns for the component."
     },
     {
       "type": "json",
@@ -80,46 +80,46 @@
       "handlerId": "rowDataLogic",
       "handlerLabel": "Row Data Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to add data to the component.",
-      "settingTooltip": "This handler allows you to add data to the component."
+      "handlerDescription": "This handler allows you to set data to the component.",
+      "settingTooltip": "This handler allows you to set data to the component."
     },
     {
       "type": "number",
       "name": "height",
       "label": "Height",
-      "settingTooltip": "This handler allows you to specify the height of the component.",
+      "settingTooltip": "This handler allows you to specify the height of the component in pixels.",
       "showInSettings": true,
       "defaultValue": "500",
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
-      "handlerDescription": "This handler allows you to specify the height of the component.",
+      "handlerDescription": "This handler allows you to specify the height of the component in pixels.",
       "dataBinding": true
     },
     {
       "type": "number",
       "name": "width",
       "label": "Width",
-      "settingTooltip": "This handler allows you to specify the width of the component.",
+      "settingTooltip": "This handler allows you to specify the width of the component in pixels.",
       "showInSettings": true,
       "defaultValue": "750",
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
       "handlerLabel": "Width Logic",
-      "handlerDescription": "This handler allows you to specify the width of the component.",
+      "handlerDescription": "This handler allows you to specify the width of the component in pixels.",
       "dataBinding": true
     },
     {
       "type": "select",
       "name": "theme",
       "label": "Theme",
-      "settingTooltip": "This handler allows you to specify a component theme.",
+      "settingTooltip": "This handler allows you to specify the theme of the component.",
       "showInSettings": true,
       "defaultValue": "alpine",
       "hasLogicHandler": true,
       "handlerId": "themeLogic",
       "handlerLabel": "Theme Logic",
-      "handlerDescription": "This handler allows you to specify a component theme.",
+      "handlerDescription": "This handler allows you to specify the theme of the component.",
       "dataBinding": true,
       "options": [
         {
@@ -154,8 +154,8 @@
           "id": "cellParams",
           "label": "Cell Params"
         }
-      ]
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the grid cell."
     }
-  ],
-  "blockUI": "<div alt=\"Screenshot 2022-08-26 at 15.33.02.png\" data-display=\"\" data-uid=\"c9cc31835246124df964ba97dba93565\"></div><div alt=\"Screenshot 2022-08-26 at 15.33.02.png\" data-display=\"\" data-uid=\"5678e891f52565ee542dfcdebe033b62\"></div><img data-url=\"https://www.ag-grid.com/static/04463eecacf1cb21a3977ba5fa684977/row-grouping-still.png\" data-module-type=\"system\" data-module-id=\"image\" data-display data-uid=\"d1f5503fb64b1d5bb3482877cc2f3779\" style=\"width:550px;\"/>"
+  ]
 }

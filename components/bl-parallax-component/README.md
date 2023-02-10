@@ -1,12 +1,20 @@
 # Parallax
 
-Parallax is a component of Backendless UI-Builder designer. This allows you to add image with content and parallax effect
+Parallax is a component of Backendless UI-Builder designer. This allows you to add image with content and parallax effect.
 
-The component based on external [parallax](https://vuetifyjs.com/en/components/parallax/).
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780" />
+</p>
 
 ## Properties
 
-| Property | Type   | Default Value | Logic           | Data Binding | UI Setting | Description                                  |
-|----------|--------|---------------|-----------------|--------------|------------|----------------------------------------------|
-| imageUrl | Text   |               | Image URl Logic | YES          | YES        | Allows to determine image URL                |
-| strength | Number | 200           | Strength Logic  | YES          | YES        | Allows to determine the strength of parallax |
+| Property | Type   | Default Value | Logic           | Data Binding | UI Setting | Description                                                                                       |
+|----------|--------|---------------|-----------------|--------------|------------|---------------------------------------------------------------------------------------------------|
+| imageUrl | Text   |               | Image URl Logic | YES          | YES        | Allows to determine image URL                                                                     |
+| strength | Number | 200           | Strength Logic  | YES          | YES        | Allows to determine the strength of parallax. The value should be between 100(low) and 2000(high) |
+
+## Example
+
+<p align="center">
+  <img src="./image-examples/parallax-example.gif" width="480" />
+</p>

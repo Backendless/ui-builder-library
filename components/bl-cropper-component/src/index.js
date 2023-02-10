@@ -5,18 +5,18 @@ import { useCropperLibrary } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function CropperComponent({ component, eventHandlers }) {
+export default function CropperComponent({ component, eventHandlers, elRef }) {
   const {
     display, style, classList, imageUrl, minContainerWidth, minContainerHeight, toolbarVisibility, initialLabel,
   } = component;
   const { onSave } = eventHandlers;
 
+  const [toolbarDisabled, setToolbarDisabled] = useState(false);
   const [image, setImage] = useState(imageUrl);
   const imageRef = useRef(null);
-  const cropperComponentRef = useRef(null);
   const cropperRef = useCropperLibrary(component, eventHandlers, imageRef, image);
 
-  useComponentActions(component, cropperRef);
+  useComponentActions(component, cropperRef, setToolbarDisabled);
 
   useEffect(() => {
     setImage(imageUrl);
@@ -32,10 +32,8 @@ export default function CropperComponent({ component, eventHandlers }) {
     ...style,
   };
 
-  component.el = cropperComponentRef.current;
-
   return (
-    <div ref={ cropperComponentRef } className={ cn('bl-customComponent-cropper', classList) } style={ styles }>
+    <div ref={ elRef } className={ cn('bl-customComponent-cropper', classList) } style={ styles }>
       <HeaderToolbar
         component={ component }
         cropperRef={ cropperRef }
@@ -46,22 +44,34 @@ export default function CropperComponent({ component, eventHandlers }) {
 
       <div className="container" style={ containerDimensions }>
         <DropImageArea image={ image } setImage={ setImage } initialLabel={ initialLabel }/>
+
         <img ref={ imageRef } src={ image }/>
       </div>
 
-      <FooterToolbar cropperRef={ cropperRef } toolbarVisibility={ toolbarVisibility } image={ image }/>
+      <FooterToolbar
+        cropperRef={ cropperRef }
+        toolbarVisibility={ toolbarVisibility }
+        image={ image }
+        disabled={ toolbarDisabled }
+      />
     </div>
   );
 }
 
-function useComponentActions(component, cropperRef) {
+function useComponentActions(component, cropperRef, setToolbarDisabled) {
   Object.assign(component, {
     crop            : () => cropperRef.current.crop(),
     reset           : () => cropperRef.current.reset(),
     clear           : () => cropperRef.current.clear(),
     replace         : url => cropperRef.current.replace(url),
-    enableCropper   : () => cropperRef.current.enable(),
-    disableCropper  : () => cropperRef.current.disable(),
+    enableCropper   : () => {
+      cropperRef.current.enable();
+      setToolbarDisabled(false);
+    },
+    disableCropper  : () => {
+      cropperRef.current.disable();
+      setToolbarDisabled(true);
+    },
     destroy         : () => cropperRef.current.destroy(),
     move            : (offsetX, offsetY) => cropperRef.current.move(offsetX, offsetY),
     moveTo          : (x, y) => cropperRef.current.moveTo(x, y),

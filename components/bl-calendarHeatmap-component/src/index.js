@@ -13,7 +13,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     style, display, classList, calendarData, monthLabels,
     weekdayLabels, color, legend, showMonthLabels, showWeekdayLabels
   } = component;
-  const { onClick } = eventHandlers;
+  const { onCellClick } = eventHandlers;
 
   const ref = useRef();
 
@@ -30,7 +30,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   }), []);
 
   useEffect(() => {
-    if (color) {
+    if (color && ref.current) {
       ref.current.querySelectorAll('.color-cell-1, .color-cell-2, .color-cell-3, .color-cell-4').forEach((element, index) => {
         element.style.fill = colors[element.classList[0]];
       });
@@ -68,7 +68,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         weekdayLabels={ weeks }
         classForValue={ getClassForValue }
         tooltipDataAttrs={ getTooltipData }
-        onClick={ (value) => onClick({ value }) }
+        onClick={ ({ date, count }) => onCellClick({ date, count }) }
       />
       <ReactTooltip/>
       <Legend legend={ legend } width={ legendWidth }/>
@@ -79,5 +79,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 const getClassForValue = (value) => value ? `color-cell-${ value.count }` : 'color-empty';
 
 const getTooltipData = (value) => {
-  return { 'data-tip': `${ value.date.toISOString().slice(0, 10) } has count: ${ value.count }`, };
+  const date = new Date(value.date)
+
+  return { 'data-tip': `${ date.toISOString().slice(0, 10) } has count: ${ value.count }`, };
 };
