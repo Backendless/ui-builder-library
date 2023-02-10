@@ -54,7 +54,7 @@ const preparedMask = (maskType, mask) => useMemo(() => {
     try {
       return new RegExp(mask);
     } catch(err) {
-      console.warn(err);
+      console.error(err);
     }
   }
 
