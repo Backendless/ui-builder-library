@@ -17,7 +17,7 @@ export default function InputWithMask({ component, eventHandlers }) {
     mask    : preparedMask(maskType, mask),
     placeholderChar,
     lazy,
-    validate: (value, mask) => onValidate({ value, mask })
+    prepare: (value, mask) => onValidate({ value, mask })
   };
   const { ref, value } = useIMask(options);
 
