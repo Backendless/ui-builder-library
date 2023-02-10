@@ -8,19 +8,19 @@ The component allows you to render a popup window in your UI-Builder application
 
 | Property    | Type                                    | Default Value | Logic              | Data Binding | UI Setting | Description                                                            |
 |-------------|-----------------------------------------|---------------|--------------------|--------------|------------|------------------------------------------------------------------------|
-| position    | Select ["Top", "Right","Bottom","Left"] | "Top"         | Position Logic     | NO           | YES        | Allows to determine the position of the popover relative to the button |
+| position    | Select ["top", "right","bottom","left"] | "top"         | Position Logic     | NO           | YES        | Allows to determine the position of the popover relative to the button |
 
 ## Events
 
-| Name     | Triggers                   | Context Blocks     |
-|----------|----------------------------|--------------------|
-| On Click | when user clicks on button | Is Open: `Boolean` |
+| Name            | Triggers                   | Context Blocks     |
+|-----------------|----------------------------|--------------------|
+| On Button Click | when user clicks on button | Is Open: `Boolean` |
 
 ## Actions
 
 | Action      | Inputs             | Returns |
 |-------------|--------------------|---------|
-| Set Is Open | Boolean: `Boolean` |         |
+| Set Is Open | Is Open: `Boolean` |         |
 
 ## Styles
 
@@ -41,3 +41,17 @@ The component allows you to render a popup window in your UI-Builder application
 ```
 @bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid @bl-customComponent-popover-border-color;
 ```
+
+## Usage
+
+1. Add component Popover in page
+    ![add component in page](./example-images/add-in-page.jpg)
+
+2. Add in popover trigger and content
+    ![add trigger and content](./example-images/add-triger-and-content.jpg)
+
+3. Add logic for Popover "On Button Click" event
+    ![add logic for on button click](./example-images/on-button-click-event.jpg)
+
+4. Get result
+    ![result](./example-images/result.jpg)

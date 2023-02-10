@@ -5,7 +5,7 @@ Input with Mask is a component of Backendless UI-Builder designer. This allows y
 ## Properties
 
 | Property        | Type                                  | Default Value | Logic                  | Data Binding | UI Setting | Description                                                                                   |
-|-----------------|---------------------------------------|---------------|------------------------|--------------|------------|-----------------------------------------------------------------------------------------------|
+| --------------- | ------------------------------------- | ------------- | ---------------------- | ------------ | ---------- | --------------------------------------------------------------------------------------------- |
 | maskType        | Select ["Number", "String", "RegExp"] | "Number"      | Mask Type Logic        | NO           | YES        | Allows select type of mask(Number, String, RegExp).                                           |
 | mask            | String                                |               | Mask Logic             | YES          | YES        | Allows to specify mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp. |
 | placeholder     | String                                |               | Placeholder Logic      | YES          | YES        | Allows to specify placeholder.                                                                |
@@ -14,10 +14,10 @@ Input with Mask is a component of Backendless UI-Builder designer. This allows y
 
 ## Events
 
-| Name            | Triggers                                                                                                                       | Context Blocks  |
-|-----------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| On Change Value | when the component's state (value) changes.                                                                                    | `value: string` |
-| On Validate     | before the component value changes. Using returned `value: boolean` we could decide - apply changes (`true`) or not (`false`). | `value: string` |
+| Name            | Triggers                                                                                                                     | Context Blocks  | Return   |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------- | -------- |
+| On Change Value | when the component's state (value) changes.                                                                                  | `value: string` |          |
+| On Validate     | before the component value changes. Using this event we can additionally ourself check and modify each symbol that we input. | `value: string` | `string` |
 
 ## Styles
 

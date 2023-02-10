@@ -65,7 +65,7 @@ export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }
   );
 }
 
-export function FooterToolbar({ cropperRef, image, toolbarVisibility }) {
+export function FooterToolbar({ cropperRef, image, toolbarVisibility, disabled }) {
   const toolbar = useMemo(() => {
     const zoomIn = () => cropperRef.current.zoom(0.1);
     const zoomOut = () => cropperRef.current.zoom(-0.1);
@@ -96,13 +96,13 @@ export function FooterToolbar({ cropperRef, image, toolbarVisibility }) {
   return (
     <div className="footer-toolbar">
       { toolbar.map((buttons, index) => (
-        <ButtonsGroup buttons={ buttons } key={ index }/>
+        <ButtonsGroup buttons={ buttons } key={ index } disabled={ disabled }/>
       )) }
     </div>
   );
 }
 
-function ButtonsGroup({ buttons }) {
+function ButtonsGroup({ buttons, disabled }) {
   return (
     <div className="buttons-group">
       { buttons.map((button, index) => (
@@ -111,6 +111,7 @@ function ButtonsGroup({ buttons }) {
           onClick={ button.onClick }
           label={ button.label }
           visibility={ true }
+          disabled={ disabled }
           key={ index }
         />
       )) }
@@ -118,13 +119,13 @@ function ButtonsGroup({ buttons }) {
   );
 }
 
-function Button({ className, label, onClick, visibility }) {
+function Button({ className, label, onClick, visibility, disabled }) {
   if (!visibility) {
     return null;
   }
 
   return (
-    <button type="button" className={ className } onClick={ onClick }>{ label }</button>
+    <button type="button" className={ className } onClick={ onClick } disabled={ disabled }>{ label }</button>
   );
 }
 

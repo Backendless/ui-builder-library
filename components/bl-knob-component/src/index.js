@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import primereact from './lib/core';
 
@@ -18,6 +18,10 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
 
   useEffect(() => {
+    setKnobReadOnly(!!readOnly);
+  },[readOnly]);
+
+  useEffect(() => {
     setKnobDisabled(!!readOnly);
   }, [disabled]);
 
@@ -33,12 +37,12 @@ export default function KnobComponent({ component, eventHandlers }) {
     setDisabled: disabled => setKnobDisabled(disabled),
   });
 
-  const handleChange = e => {
-    const value = e.value;
+  const handleChange = useCallback(e => {
+    const value = parseFloat(Math.min(e.value, maxValue).toFixed(2));
 
     setKnobValue(value);
     onChange({ value });
-  };
+  }, [maxValue]);
 
   if (!display) {
     return null;

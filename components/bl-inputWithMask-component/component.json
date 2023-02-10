@@ -101,7 +101,7 @@
           "label": "Mask"
         }
       ],
-      "handlerDescription": "This event is triggered before the component value changes. Using returned value(boolean) we could decide - apply changes(true) or not(false)."
+      "handlerDescription": "This event is triggered before the component value changes. Using this event we can additionally ourself check and modify each symbol that we input."
     }
   ],
   "actions": []

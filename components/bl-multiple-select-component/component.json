@@ -97,21 +97,16 @@
       ]
     },
     {
-      "type": "select",
+      "type": "text",
       "name": "value",
       "label": "Value",
+      "settingTooltip": "Enter the value separated by a comma.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "valueLogic",
       "handlerLabel": "Value Logic",
-      "dataBinding": true,
-      "options": [
-        {
-          "value": "",
-          "label": ""
-        }
-      ],
-      "defaultValue": ""
+      "handlerDescription": "This handler allows you to add value by default.",
+      "dataBinding": true
     },
     {
       "type": "json",
@@ -127,7 +122,7 @@
   "eventHandlers": [
     {
       "name": "onChange",
-      "label": "On Change",
+      "label": "On Change Event",
       "dataBinding": true,
       "contextBlocks": [
         {

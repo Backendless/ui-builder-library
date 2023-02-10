@@ -48,6 +48,8 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     projection: projection || PROJECTION,
   });
 
+  createActions(mapRef, component);
+
   if (directions) {
     mapRef.current.addControl(
       new MapboxDirections({
@@ -82,8 +84,6 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     if (geolocation) {
       useGeolocation(mapRef, onDeterminingGeoposition);
     }
-
-    createActions(mapRef, component);
   });
 };
 
