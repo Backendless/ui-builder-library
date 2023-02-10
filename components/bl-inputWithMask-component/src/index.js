@@ -51,7 +51,11 @@ const preparedMask = (maskType, mask) => useMemo(() => {
   }
 
   if (maskType === MaskTypes.REGEX) {
-    return new RegExp(mask);
+    try {
+      return new RegExp(mask);
+    } catch(err) {
+      console.error(err);
+    }
   }
 
   return eval(maskType);
