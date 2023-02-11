@@ -50,14 +50,14 @@
       "handlerDescription": "This event is triggered when the user clicks on the button."
     },
     {
-      "name": "onMouseIn",
-      "label": "On Mouse In",
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
       "contextBlocks": [],
-      "handlerDescription": "This event is triggered when the mouse pointer is entered into the component."
+      "handlerDescription": "This event is triggered when the mouse pointer hovers over the component."
     },
     {
       "name": "onMouseOut",
-      "label": "On Mouse Out",
+      "label": "On Mouse Out Event",
       "contextBlocks": [],
       "handlerDescription": "This event is triggered when the mouse pointer leaves the component."
     }
