@@ -22,7 +22,7 @@ export default function KnobComponent({ component, eventHandlers }) {
   },[readOnly]);
 
   useEffect(() => {
-    setKnobDisabled(!!readOnly);
+    setKnobDisabled(!!disabled);
   }, [disabled]);
 
   useEffect(() => {
