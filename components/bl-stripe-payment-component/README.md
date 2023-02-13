@@ -20,18 +20,18 @@ Then add the component to the page and specify the Publishable key in UI-Builder
 
 ## Properties
 
-| Property           | Type       | Default value | Logic        | Data Binding   | UI Setting | Description                                                  |
-|--------------------|------------|---------------|--------------|----------------|------------|--------------------------------------------------------------|
-| Amount             | *Number*   | 0.5           | Amount Logic | YES            | YES        | controls the payment amount                                  |
-| Min Amount         | *Number*   | 0.5           |              | NO             | YES        | controls the minimum amount that can be charged              |
-| Fixed Amount       | *Checkbox* | true          |              | NO             | YES        | enables to fix the payment amount                            |
-| Currency           | *Text*     | USD           |              | NO             | YES        | controls the currency label                                  |
-| Name Visibility    | *Checkbox* | false         |              | NO             | YES        | enables the visibility of the cardholder name field          |
-| Address Visibility | *Checkbox* | false         |              | NO             | YES        | enables the visibility of the address field                  |
-| City Visibility    | *Checkbox* | false         |              | NO             | YES        | enables the visibility of the city name field                |
-| State Visibility   | *Checkbox* | false         |              | NO             | YES        | enables the visibility of the state name field               |
-| Country Visibility | *Checkbox* | false         |              | NO             | YES        | enables the visibility of the state name field               |
-| ZIP Visibility     | *Checkbox* | false         |              | NO             | YES        | enables the visibility of the postal code or ZIP value field |
+| Property           | Type       | Default value | Logic        | Data Binding | UI Setting | Description                                                  |
+|--------------------|------------|---------------|--------------|--------------|------------|--------------------------------------------------------------|
+| Amount             | *Number*   | 0.5           | Amount Logic | YES          | YES        | controls the payment amount                                  |
+| Min Amount         | *Number*   | 0.5           |              | NO           | YES        | controls the minimum amount that can be charged              |
+| Fixed Amount       | *Checkbox* | `true`        |              | NO           | YES        | enables to fix the payment amount                            |
+| Currency           | *Text*     | "USD"         |              | NO           | YES        | controls the currency label                                  |
+| Name Visibility    | *Checkbox* | `false`       |              | NO           | YES        | enables the visibility of the cardholder name field          |
+| Address Visibility | *Checkbox* | `false`       |              | NO           | YES        | enables the visibility of the address field                  |
+| City Visibility    | *Checkbox* | `false`       |              | NO           | YES        | enables the visibility of the city name field                |
+| State Visibility   | *Checkbox* | `false`       |              | NO           | YES        | enables the visibility of the state name field               |
+| Country Visibility | *Checkbox* | `false`       |              | NO           | YES        | enables the visibility of the state name field               |
+| ZIP Visibility     | *Checkbox* | `false`       |              | NO           | YES        | enables the visibility of the postal code or ZIP value field |
 
 ## Events
 
@@ -45,11 +45,11 @@ Then add the component to the page and specify the Publishable key in UI-Builder
 
 ## Actions
 
-| Action       | Inputs | Returns | Description                             |
-|--------------|--------|---------|-----------------------------------------|
-| Clear Card   |        |         | clears the value(s) of the Card Element |
-| Blur Card    |        |         | blurs the Card Element                  |
-| Focus Card   |        |         | focuses the Card Element                |
+| Action                       | Inputs | Returns | Description                             |
+|------------------------------|--------|---------|-----------------------------------------|
+| Clear Card in Stripe Payment |        |         | clears the value(s) of the Card Element |
+| Blur Card in Stripe Payment  |        |         | blurs the Card Element                  |
+| Focus Card in Stripe Payment |        |         | focuses the Card Element                |
 
 ## Settings
 

@@ -9,7 +9,7 @@ function CellComponent(params) {
 
 export default function DataGridComponent({ component, eventHandlers }) {
   const {
-    classList, display, disabled, sortable, filter, floatingFilter, height, width, columnDefs, rowData, theme
+    classList, display, style, disabled, sortable, filter, floatingFilter, height, width, columnDefs, rowData, theme
   } = component;
   const { onCellClick } = eventHandlers;
 
@@ -26,13 +26,15 @@ export default function DataGridComponent({ component, eventHandlers }) {
     onCellClick({ cellParams: params });
   }, []);
 
+  const styles = { ...style, height: `${ height }px`, width: `${ width }px`, flexShrink: 0 };
+
   if (!display) {
     return null;
   }
 
   return (
     <div
-      style={{ height: `${ height }px`, width: `${ width }px`, flexShrink: 0 }}
+      style={ styles }
       className={
         cn(
           "bl-customComponent-dataGrid", `ag-theme-${ theme }`, classList,

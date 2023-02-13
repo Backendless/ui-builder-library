@@ -17,7 +17,7 @@ export default function InputWithMask({ component, eventHandlers }) {
     mask    : preparedMask(maskType, mask),
     placeholderChar,
     lazy,
-    validate: (value, mask) => onValidate({ value, mask })
+    prepare: (value, mask) => onValidate({ value, mask })
   };
   const { ref, value } = useIMask(options);
 
@@ -51,7 +51,11 @@ const preparedMask = (maskType, mask) => useMemo(() => {
   }
 
   if (maskType === MaskTypes.REGEX) {
-    return new RegExp(mask);
+    try {
+      return new RegExp(mask);
+    } catch(err) {
+      console.error(err);
+    }
   }
 
   return eval(maskType);
