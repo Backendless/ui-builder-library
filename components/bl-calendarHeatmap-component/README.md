@@ -8,7 +8,7 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 
 | Property          | Type    | Default value                                     | Logic                           | Data Binding | UI Setting | Description                                                                                                                                                            |
 | ----------------- | ------- | ------------------------------------------------- | ------------------------------- | ------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| calendarData      | JSON    | `[ { "date": "", "count": 0 } ]`                  | Calendar Data Logic             | NO           | YES        | Allows you to specifies an array of date and count for calendar. Watch [Codeless Examples](#Examples). Signature of Calendar Data: `{"data": string, "count": number}` |
+| calendarData      | JSON    | `[ { "date": "", "count": 0 } ]`                  | Calendar Data Logic             | NO           | YES        | Allows you to specifies an array of date and count for calendar. Watch [Codeless Examples](#examples). Signature of Calendar Data: `{"data": string, "count": number}` |
 | showMonthLabels   | Boolean | `true`                                            | Month Labels Visibility Logic   | NO           | YES        | Allows you to choose whether or not to show month labels                                                                                                               |
 | monthLabels       | String  | "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | Month Labels Logic              | YES          | YES        | Allows you to write month labels                                                                                                                                       |
 | showWeekdayLabels | Boolean | `true`                                            | Weekday Labels Visibility Logic | NO           | YES        | Allows you to choose whether or not to show weekday labels                                                                                                             |
@@ -34,7 +34,7 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 @bl-customComponent-calendarHeatmap-textColor: #aaa;
 ````
 
-## <a id="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Addition  calendar data:
 
