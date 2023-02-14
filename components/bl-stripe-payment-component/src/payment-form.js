@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useCardElement } from './helpers/use-card-element';
 import { CardElement } from './lib/react-stripe.umd.min';
@@ -7,20 +7,18 @@ import { PaymentAmount } from './payment-components/payment-amount';
 
 export function PaymentForm(props) {
   const { component, eventHandlers, setIsLoading, setTransactionDetails } = props;
-  const { amount, currency } = component;
+  const { amount, currency, amountDecimalPlaces } = component;
 
   const [cardElementColor, setCardElementColor] = useState('inherit');
+
   const cardElementRef = useRef(null);
   const formRef = useRef(null);
+  const paymentAmount = useMemo(() => (
+    validatePaymentAmount(amount, amountDecimalPlaces)
+  ), [amount, amountDecimalPlaces]);
 
   const {
-    handleSubmit,
-    onCardChange,
-    onCardFocus,
-    onCardBlur,
-    errorMessage,
-    disabled,
-    elements,
+    handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, disabled, elements,
   } = useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef);
 
   const cardElementOptions = getCardElementOptions(cardElementColor);
@@ -48,8 +46,8 @@ export function PaymentForm(props) {
           onChange={ onCardChange }
         />
       </div>
-      <PaymentAmount component={ component }/>
-      <button type="submit" disabled={ disabled }>{ `Pay ${ amount || 0 } ${ currency || '' }` }</button>
+      <PaymentAmount component={ component } amount={ paymentAmount }/>
+      <button type="submit" disabled={ disabled }>{ `Pay ${ paymentAmount || 0 } ${ currency || '' }` }</button>
       { errorMessage && <span className="payment-error">{ errorMessage }</span> }
     </form>
   );
@@ -69,4 +67,10 @@ function getCardElementOptions(cardElementColor) {
     style         : cardElementStyles,
     hidePostalCode: true,
   };
+}
+
+export function validatePaymentAmount(amount, decimalPlaces) {
+  const amountPattern = new RegExp('\\.(\\d{' + decimalPlaces + '}).*$');
+
+  return Number(String(amount).replace(amountPattern, '.$1'));
 }
