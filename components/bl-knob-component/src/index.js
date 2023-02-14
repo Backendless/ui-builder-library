@@ -16,10 +16,11 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobValue, setKnobValue] = useState(0);
   const [knobReadOnly, setKnobReadOnly] = useState(!!readOnly);
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
+  const [template, setTemplate] = useState('{value}');
 
   useEffect(() => {
     setKnobReadOnly(!!readOnly);
-  },[readOnly]);
+  }, [readOnly]);
 
   useEffect(() => {
     setKnobDisabled(!!readOnly);
@@ -30,6 +31,10 @@ export default function KnobComponent({ component, eventHandlers }) {
       setKnobValue(initialValue);
     }
   }, [initialValue]);
+
+  useEffect(() => {
+    setTemplate(templateHandler(valueTemplate));
+  }, [valueTemplate]);
 
   Object.assign(component, {
     setValue   : value => setKnobValue(value),
@@ -58,7 +63,7 @@ export default function KnobComponent({ component, eventHandlers }) {
         min={ minValue }
         step={ step }
         strokeWidth={ dial }
-        valueTemplate={ valueTemplate }
+        valueTemplate={ template }
         size={ size }
         valueColor={ valueColor }
         rangeColor={ rangeColor }
@@ -66,3 +71,13 @@ export default function KnobComponent({ component, eventHandlers }) {
     </div>
   );
 }
+
+const templateHandler = template => {
+  if (!template?.includes('{value}')) {
+    console.error('Wrong template pattern!');
+
+    return '{value}';
+  }
+
+  return template;
+};
