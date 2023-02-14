@@ -103,11 +103,11 @@
   "actions": [
     {
       "id": "show",
-      "label": "Show Content"
+      "label": "Show Content of"
     },
     {
       "id": "hide",
-      "label": "Hide Content"
+      "label": "Hide Content of"
     }
   ],
   "settings": [],
@@ -116,6 +116,5 @@
       "id": "panelContent",
       "dataContainer": true
     }
-  },
-  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"f70453891eb7d1edd2180d630de25af5\" style=\"display:flex;flex-shrink:0;flex-direction:column;min-height:100px;min-width:100px;\"><div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"54a60ba1b04451ba25f840b8016a4001\" style=\"justify-content:space-between;padding:10px 14px 10px 14px;align-items:center;cursor:pointer;background-color:rgba(0,0,0,0.04);\"><span data-content=\"Panel Title\" data-module-type=\"system\" data-module-id=\"text\" data-display data-uid=\"9e63cd02adb25481a49a2871cf599cff\" class=\"bl-text\" style=\"font-weight:700;font-size:26px;\"></span><i data-icon=\"keyboard_arrow_down\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"274c74d2b2385e5a2836a3c28d8f13da\" style=\"color:#000000;\"></i></div><div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"panelContent\" data-uid=\"b8828219095d33ecaffe9d3c6ba4e2ae\" data-pod-container=\"true\" data-data-container=\"true\"></div></div>"
+  }
 }

@@ -28,10 +28,10 @@ CollapsiblePanel is the component that can be used in Backendless [UI-Builder](h
 
 ## Actions
 
-| Action       | Inputs | Returns |
-|--------------|--------|---------|
-| Show Content |        |         |
-| Hide Content |        |         |
+| Action                           | Inputs | Returns |
+|----------------------------------|--------|---------|
+| Show Content Of CollapsiblePanel |        |         |
+| Hide Content Of CollapsiblePanel |        |         |
 
 ## Styles
 
@@ -70,7 +70,7 @@ CollapsiblePanel is the component that can be used in Backendless [UI-Builder](h
 
 ## Examples
 
-Below is a Codeless Example highlighting how to use the CollapsiblePanel component:
+Below is an Example highlighting how to use the CollapsiblePanel component:
 
 <p align="center">
   <img src="./example-images/example.png" alt="collapsiblePanel example" width="780"/>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -10,23 +10,14 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   const [active, setActive] = useState(null);
 
-  const panelContentPod = pods["panelContent"];
+  const panelContentPod = pods['panelContent'];
 
-  const titleStyles = {
-    background,
-    color,
-    fontSize,
-    padding,
-  };
+  const titleStyles = { background, color, fontSize, padding };
 
-  const changeActive = () => setActive(active ? false : true);
+  const changeActive = () => setActive(!active);
 
   useEffect(() => {
-    if (active) {
-      onOpen();
-    } else {
-      onClose();
-    }
+    active ? onOpen() : active===false ? onClose() : null;
   }, [active]);
 
   const title = useMemo(() => {
@@ -46,10 +37,9 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   return (
     <div
-      className={ cn("bl-customComponent-collapsiblePanel", ...classList) }
+      className={ cn('bl-customComponent-collapsiblePanel', ...classList) }
       style={{ ...style, width }}
-      ref={ elRef }
-    >
+      ref={ elRef }>
       <PanelTitle
         styles={ titleStyles }
         onClickFunction={ changeActive }
@@ -57,11 +47,7 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
         isActive={ active }
         iconColor={ iconColor }
       />
-      <div
-        className={ `panel-content ${active ? "open" : active !== null ? "close" : ""}` }
-        onOpen={ onOpen }
-        onClose={ onClose }
-      >
+      <div className={ cn('panel-content', { 'open': active, 'close': active === false }) }>
         { panelContentPod.render() }
       </div>
     </div>
@@ -84,12 +70,11 @@ export function PanelTitle(props) {
 function CollapseIcon({ active, fill }) {
   return (
     <svg
-      className={ `collapse-icon ${active ? "active" : ""}` }
+      className={ cn('collapse-icon', { 'active': active }) }
       focusable="false"
       aria-hidden="true"
       stroke-width="1.5"
-      viewBox="0 0 24 24"
-    >
+      viewBox="0 0 24 24">
       <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill={ fill }></path>
       <path fill="none" d="M0 0h24v24H0V0z"></path>
     </svg>
