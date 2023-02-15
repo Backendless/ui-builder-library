@@ -1,105 +1,114 @@
 const SelectionMode = {
-  single  : 'single',
-  multiple: 'multiple',
-  checkbox: 'checkbox',
+  SINGLE  : 'single',
+  MULTIPLE: 'multiple',
+  CHECKBOX: 'checkbox',
 };
 
-export function ensureMeasure(propertyName, value) {
-  return CSS.supports(propertyName, value) ? value : value + 'px';
-}
+const SelectedNodesState = {
+  FULL   : { checked: true, partialChecked: false },
+  PARTIAL: { checked: false, partialChecked: true },
+};
 
-export function getSelectedKeys(selectedOptionKey, selectionMode) {
-  if (selectionMode === SelectionMode.single) {
-    return selectedOptionKey;
-  } else if (selectionMode === SelectionMode.multiple) {
+const KeysSelector = {
+  [SelectionMode.SINGLE]  : selectedOptionKey => selectedOptionKey,
+  [SelectionMode.MULTIPLE]: selectedOptionKey => {
     const selectedOptions = {};
 
     selectedOptionKey.split(',').forEach(option => selectedOptions[option.trim()] = true);
 
     return selectedOptions;
-  } else {
+  },
+  [SelectionMode.CHECKBOX]: selectedOptionKey => {
     const selectedOptions = {};
 
     selectedOptionKey.split(',').forEach(option => {
-      selectedOptions[option.trim()] = { checked: true, partialChecked: false };
+      selectedOptions[option.trim()] = SelectedNodesState.FULL;
     });
 
     return selectedOptions;
-  }
+  },
+};
+
+export function getSelectedKeys(selectedOptionKey, selectionMode) {
+  return KeysSelector[selectionMode](selectedOptionKey);
 }
 
-function updateNodeKeys(keysMap, node, parent) {
-  keysMap[node.key] = true;
+export function updateNode(node, parent, selectedNodes, expandedKeysMap, selectionMode) {
+  const isSelected = selectedNodes[node.key] || selectedNodes === node.key;
 
   if (parent) {
-    node.parents = parent.parents ? [...parent.parents, parent.key] : [parent.key];
+    addParentsInstance(node, parent);
   }
-}
-
-export function findNodes(node, parent, selectedNodes, expandedKeysState, keysMap, selectionMode) {
-  if (!node) {
-    return;
-  }
-
-  const isSelected = selectionMode === SelectionMode.single ? selectedNodes === node.key : selectedNodes[node.key];
-
-  updateNodeKeys(keysMap, node, parent);
 
   if (isSelected && node.parents) {
-    node.parents.forEach(parent => expandedKeysState[parent] = true);
+    updateParentNodes(node, selectedNodes, expandedKeysMap, selectionMode);
   }
 
   if (node.children) {
-    for (const childNode of node.children) {
-      findNodes(childNode, node, selectedNodes, expandedKeysState, keysMap, selectionMode);
-    }
+    updateChildNodes(node, selectedNodes, expandedKeysMap, selectionMode);
   }
 }
 
-export function findNodesInCheckboxMode(node, parent, selectedNodes, expandedKeysState, keysMap) {
-  if (!node) {
-    return;
-  }
+function addParentsInstance(node, parent) {
+  node.parents = parent.parents ? [...parent.parents, parent.key] : [parent.key];
+}
 
-  updateNodeKeys(keysMap, node, parent);
+function updateParentNodes(node, selectedNodes, expandedKeysMap, selectionMode) {
+  node.parents.forEach(parent => {
+    expandedKeysMap[parent] = true;
 
-  if (selectedNodes[node.key] && node.parents) {
-    node.parents.forEach(parent => {
-      expandedKeysState[parent] = true;
+    if (selectionMode === SelectionMode.CHECKBOX && !selectedNodes[parent]) {
+      selectedNodes[parent] = SelectedNodesState.PARTIAL;
+    }
+  });
+}
 
-      if (!selectedNodes[parent]) {
-        selectedNodes[parent] = { checked: false, partialChecked: true };
-      }
-    });
-  }
+function updateChildNodes(node, selectedNodes, expandedKeysMap, selectionMode) {
+  let count = 0;
 
-  if (node.children) {
-    let count = 0;
-
-    for (const childNode of node.children) {
-      if (selectedNodes[childNode.key]?.checked) {
-        count++;
-      }
-
-      if (selectedNodes[node.key]?.checked) {
-        selectedNodes[childNode.key] = { checked: true, partialChecked: false };
-      }
-
-      findNodesInCheckboxMode(childNode, node, selectedNodes, expandedKeysState, keysMap);
+  for (const childNode of node.children) {
+    if (selectedNodes[childNode.key]?.checked) {
+      count++;
     }
 
-    if (count === Object.keys(node.children).length) {
-      selectedNodes[node.key] = { checked: true, partialChecked: false };
+    if (selectedNodes[node.key]?.checked) {
+      selectedNodes[childNode.key] = SelectedNodesState.FULL;
     }
+
+    updateNode(childNode, node, selectedNodes, expandedKeysMap, selectionMode);
+  }
+
+  if (count === Object.keys(node.children).length) {
+    selectedNodes[node.key] = SelectedNodesState.FULL;
   }
 }
 
 export function validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMap) {
-  const keys = selectionMode === SelectionMode.single ? { [selectedNodeKeys]: true } : { ...selectedNodeKeys };
+  const keys = selectionMode === SelectionMode.SINGLE ? { [selectedNodeKeys]: true } : { ...selectedNodeKeys };
 
   Object.keys(keys).forEach(key => {
     if (!keysMap[key]) {
-      console.error('Can't select a non existed option with key:`${ key }`.');
+      console.error(`Can't select a non existed option with key: ${ key }.`);
     }
   });
+}
+
+export function updateKeysMap(node, keys) {
+  if (!node) {
+    return;
+  }
+
+  keys[node.key] = true;
+
+  if (!node.children) {
+    return;
+  }
+
+  for (const childNode of node.children) {
+    updateKeysMap(childNode, keys);
+  }
+}
+
+export function ensureMeasure(propertyName, value) {
+  return CSS.supports(propertyName, value) ? value : value + 'px';
 }
