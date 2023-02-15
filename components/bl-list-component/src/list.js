@@ -1,25 +1,23 @@
-export function List({ options, items, type }) {
-  const ListElement = type || options.type;
+export function List({ type, items, onItemClick }) {
+  const ListElement = type === 'ol' ? 'ol' : 'ul';
 
   return (
     <ListElement className="list">
-      { items.map((item, i) => {
-        const { content, children, type } = item;
-
-        return <Item key={ i } content={ content } children={ children } type={ type } options={ options } />;
-      }) }
+      { items.map((item, i) => (
+        <Item key={ i } item={ item } listType={ item.type || type } onClick={ onItemClick } />
+      )) }
     </ListElement>
   );
 }
 
-function Item(props) {
-  const { options, key, content, children, type } = props;
-  const { style, onClickHandler } = options;
-
+function Item({ key, item, listType, onClick }) {
   return (
-    <li key={ key } className="list__item" style={ style } onClick={ (e) => onClickHandler(e, content, children) }>
-      { content }
-      { children && <List items={ children } type={ type } options={ options } /> }
+    <li key={ key } className="list__item" onClick={ (e) => onClick(e, item) }>
+      { item.content }
+
+      { item.children && (
+        <List type={ listType } items={ item.children } onItemClick={ onClick } />
+      )}
     </li>
   );
 }

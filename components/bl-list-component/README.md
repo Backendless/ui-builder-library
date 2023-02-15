@@ -9,21 +9,16 @@ More information about list you can find [here](https://developer.mozilla.org/en
 
 ## Properties
 
-| Property                          | Type                                         | Default value  | Logic           | Data Binding | UI Setting | Description                                                                                                                                                                                                          |
-|-----------------------------------|----------------------------------------------|----------------|-----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Type <br> `type`                  | *Select* <br> [Unordered:`ul`, Ordered:`ol`] | Unordered:`ul` | Type Logic      | NO           | YES        | Controls the type of list(ul/ol).                                                                                                                                                                                    |
-| Items List <br> `listItems`       | *JSON*                                       | `[]`           | ListItems Logic | YES          | NO         | Specifies a JSON array containing data of the list items. Watch [Codeless Examples](#Examples). Signature of items list: `[ <Item> ]`. Signature of item: `{ content: String, children: [ <Item> ], type: String }`. |
-| Background <br> `backgroundColor` | *Color*                                      |                |                 | NO           | YES        | Controls the background color of the main block.                                                                                                                                                                     |
-| Width <br> `width`                | *Text*                                       |                |                 | NO           | YES        | Controls the width of the main block.                                                                                                                                                                                |
-| Color <br> `color`                | *Color*                                      |                |                 | NO           | YES        | Controls the color of the list items.                                                                                                                                                                                |
-| Font Size <br> `fontSize`         | *Text*                                       |                |                 | NO           | YES        | Controls the font size of the list items.                                                                                                                                                                            |
-| Padding <br> `padding`            | *Text*                                       |                |                 | NO           | YES        | Controls the padding of the list items.                                                                                                                                                                              |
+| Property                    | Type                                         | Default value  | Logic           | Data Binding | UI Setting | Description                                                                                                                                                                                                          |
+|-----------------------------|----------------------------------------------|----------------|-----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Type <br> `type`            | *Select* <br> [Unordered:`ul`, Ordered:`ol`] | Unordered:`ul` | Type Logic      | NO           | YES        | Controls the type of list(ul/ol).                                                                                                                                                                                    |
+| List Items <br> `listItems` | *JSON*                                       |                | ListItems Logic | YES          | YES        | Specifies a JSON array containing data of the list items. Watch [Codeless Examples](#Examples). Signature of items list: `[ <Item> ]`. Signature of item: `{ content: String, children: [ <Item> ], type: String }`. |
 
 ## Events
 
-| Name               | Triggers                                 | Context Blocks                               |
-|--------------------|------------------------------------------|----------------------------------------------|
-| On Click List Item | when the user click any item of the list | `{itemContent: String, itemChildren: Array}` |
+| Name                     | Triggers                                           | Context Blocks                  |
+|--------------------------|----------------------------------------------------|---------------------------------|
+| On Click List Item Event | Triggered when the user click any item of the list | `{event: Object, item: Object}` |
 
 ## Styles
 

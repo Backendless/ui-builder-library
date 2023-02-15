@@ -32,58 +32,15 @@
     {
       "type": "json",
       "name": "listItems",
-      "showInSettings": false,
+      "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "listItemsLogic",
       "handlerLabel": "List Items Logic",
       "dataBinding": true,
-      "defaultValue": "[]",
-      "handlerDescription": "Specifies a JSON array containing data of the list items. Signature of items list: [ <Item> ]. Signature of item: { content: String, children: [ <Item> ], type: String }."
-    },
-    {
-      "type": "color",
-      "name": "backgroundColor",
-      "label": "Background",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "backgroundColorLogic",
-      "settingTooltip": "Choose a background for the list"
-    },
-    {
-      "type": "text",
-      "name": "width",
-      "label": "Width",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "widthLogic",
-      "settingTooltip": "Choose the width of the list"
-    },
-    {
-      "type": "color",
-      "name": "color",
-      "label": "Color",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "colorLogic",
-      "settingTooltip": "Select the text color of the list items"
-    },
-    {
-      "type": "text",
-      "name": "fontSize",
-      "label": "Font Size",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "fontSizeLogic",
-      "settingTooltip": "Select the font size of the list items"
-    },
-    {
-      "type": "text",
-      "name": "padding",
-      "label": "Padding",
-      "settingTooltip": "Select the padding for list items",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "paddingLogic"
+      "defaultValue": "[{\n  \"content\": \"first item\"\n},\n  {\n    \"content\": \"second item\",\n    \"children\": [{\n      \"content\": \"second item first subitem\"\n    },\n      {\n        \"content\": \"second item second subitem\"\n      },\n      {\n        \"content\": \"second item third subitem\"\n      }],\n    \"type\": \"ol\"\n  },\n  {\n    \"content\": \"third item\",\n    \"children\": [{\n      \"content\": \"third item first subitem\"\n    },\n      {\n        \"content\": \"third item second subitem\"\n      }]\n  }]",
+      "handlerDescription": "Specifies a JSON array containing data of the list items. Signature of items list: [ <Item> ]. Signature of item: { content: String, children: [ <Item> ], type: String }.",
+      "label": "List Items",
+      "settingTooltip": "List Items Data"
     }
   ],
   "eventHandlers": [
@@ -92,12 +49,12 @@
       "label": "On Click List Item Event",
       "contextBlocks": [
         {
-          "id": "itemContent",
-          "label": "List Item Content"
+          "id": "event",
+          "label": "Click Event"
         },
         {
-          "id": "itemChildren",
-          "label": "List Item Children"
+          "id": "item",
+          "label": "List Item"
         }
       ],
       "handlerDescription": "This event is fired when the user clicks the mouse or taps the item of the list."
@@ -105,6 +62,5 @@
   ],
   "actions": [],
   "settings": [],
-  "pods": {},
-  "blockUI": "<div data-module-type=\"system\" data-module-id=\"paragraph\" data-display data-uid=\"26ee0bea5794136c571887825e151d79\"><ul><li data-display=\"\" style=\"margin-bottom:10px;\">unordered lists ( ul ) - the list items are marked with bullets</li><li data-display=\"\">ordered lists ( ol ) - the list items are marked with numbers or letters</li></ul></div>"
+  "pods": {}
 }
