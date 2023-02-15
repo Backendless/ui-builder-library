@@ -93,6 +93,45 @@ export function validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMa
   });
 }
 
+export function getSelectedItems(selectedNodeKeys, nodes, selectionMode) {
+  if (!selectedNodeKeys || !Object.keys(selectedNodeKeys).length) {
+    return null;
+  }
+
+  const selectedItems = selectionMode === SelectionMode.SINGLE ? { [selectedNodeKeys]: true } : { ...selectedNodeKeys };
+
+  for (const childNode of nodes) {
+    handleNode(childNode, selectedItems, selectionMode);
+  }
+
+  return selectedItems;
+}
+
+function handleNode(node, selectedItems, selectionMode) {
+  if (selectedItems[node.key]) {
+    updateSelectedItems(node, selectedItems, selectionMode);
+  }
+
+  if (!node.children) {
+    return;
+  }
+
+  for (const childNode of node.children) {
+    handleNode(childNode, selectedItems, selectionMode);
+  }
+}
+
+function updateSelectedItems(node, selectedItems, selectionMode) {
+  const { label, data } = node;
+
+  if (selectionMode === SelectionMode.CHECKBOX) {
+    selectedItems[node.key].data = data;
+    selectedItems[node.key].label = label;
+  } else {
+    selectedItems[node.key] = { data, label };
+  }
+}
+
 export function updateKeysMap(node, keys) {
   if (!node) {
     return;
