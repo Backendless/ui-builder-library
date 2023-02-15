@@ -39,6 +39,15 @@
       "handlerId": "fixedAmountLogic"
     },
     {
+      "type": "number",
+      "name": "amountDecimalPlaces",
+      "label": "Amount Decimal Places",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": false,
+      "handlerId": "amountDecimalPlacesLogic"
+    },
+    {
       "type": "text",
       "name": "currency",
       "label": "Currency",

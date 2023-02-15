@@ -53,9 +53,9 @@ The component covers all the main features of the library and provides a way to 
 
 ## Actions
 
-| Action       | Inputs | Returns |
-|--------------|--------|---------|
-| Upload Files |        |         |
+| Action                     | Inputs | Returns |
+|----------------------------|--------|---------|
+| Upload Files from Dropzone |        |         |
 
 ## Styles
 
