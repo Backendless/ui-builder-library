@@ -73,11 +73,13 @@ export default function KnobComponent({ component, eventHandlers }) {
 }
 
 const templateHandler = template => {
-  if (!template?.includes('{value}')) {
-    console.error('Wrong template pattern!');
-
-    return '{value}';
+  if (typeof template == 'string') {
+    if (template.includes('{value}')) {
+      return template;
+    }
   }
 
-  return template;
+  console.error('Wrong template pattern!');
+
+  return '{value}';
 };
