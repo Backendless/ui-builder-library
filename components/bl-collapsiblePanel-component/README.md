@@ -77,7 +77,7 @@ Below is an Example highlighting how to use the CollapsiblePanel component:
 </p>
 
 <p align="center">
-  <img src="./example-images/example-view.png" alt="example" width="780"/>
+  <img src="./example-images/example-view.png" alt="example view" width="780"/>
   <br>
   <img src="./example-images/example-view-opened.png" alt="example view opened" width="780"/>
 </p>
