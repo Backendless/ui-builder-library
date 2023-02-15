@@ -1,0 +1,109 @@
+{
+  "id": "c_c4f766d585f372396136476db06960af",
+  "name": "Line Chart",
+  "description": "The Line Chart component allows you to display data in the form of charts. You can also choose a chart type.",
+  "showInToolbox": true,
+  "faIcon": "chart-line",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to disable a component."
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "400px",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "handlerDescription": "This handler allows you to specify the height of a component.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "500px",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "handlerDescription": "This handler allows you to specify the width of a component.",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "defaultValue": "line",
+      "hasLogicHandler": true,
+      "handlerId": "typeLogic",
+      "handlerLabel": "Type Logic",
+      "handlerDescription": "This handler allows you to specify the chart type.",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "bar",
+          "label": "Bar"
+        },
+        {
+          "value": "line",
+          "label": "Line"
+        },
+        {
+          "value": "pie",
+          "label": "Pie"
+        }
+      ]
+    },
+    {
+      "type": "json",
+      "name": "labels",
+      "label": "Labels",
+      "showInSettings": true,
+      "defaultValue": "[\"A\", \"B\", \"C\", \"D\"]",
+      "hasLogicHandler": true,
+      "handlerId": "labelsLogic",
+      "handlerLabel": "Labels Logic",
+      "handlerDescription": "This handler allows you to set chart elements.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "datasets",
+      "label": "Datasets",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "datasetsLogic",
+      "handlerLabel": "Datasets Logic",
+      "handlerDescription": "This handler allows you to set datasets to the component.",
+      "dataBinding": true,
+      "defaultValue": "[\n  {\n    \"label\": \"Results for 2021\",\n    \"data\": [2, 2, 3, 4],\n    \"borderColor\": \"#36A2EB\",\n    \"backgroundColor\": \"#9BD0F5\"\n  },\n  {\n    \"label\": \"Results for 2022\",\n    \"data\": [6, 8, 7, 10],\n    \"borderColor\": \"#FF6384\",\n    \"backgroundColor\": \"#FFB1C1\"\n  }\n]"
+    },
+    {
+      "type": "json",
+      "name": "options",
+      "label": "Options",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "handlerDescription": "This handler allows you to set options for a component.",
+      "dataBinding": true,
+      "defaultValue": "{ \"indexAxis\": \"x\" }"
+    }
+  ]
+}
