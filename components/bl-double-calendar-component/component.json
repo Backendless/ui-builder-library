@@ -143,5 +143,73 @@
       "contextBlocks": [],
       "handlerDescription": "This event triggered when the user clicks the reset button."
     }
+  ],
+  "actions": [
+    {
+      "id": "getFromDate",
+      "label": "Get From Date",
+      "color": "#214790",
+      "hasReturn": true
+    },
+    {
+      "id": "getToDate",
+      "label": "Get To Date",
+      "color": "#214790",
+      "hasReturn": true
+    },
+    {
+      "id": "getDaysAmount ",
+      "label": "Get Days Amount ",
+      "hasReturn": true,
+      "color": "#214790"
+    },
+    {
+      "id": "getFromAndToDate",
+      "hasReturn": true,
+      "label": "Get From And To Date",
+      "color": "#214790"
+    },
+    {
+      "id": "setFromDate",
+      "label": "Set From Date",
+      "inputs": [
+        {
+          "id": "fromDate",
+          "label": "From Date"
+        }
+      ],
+      "color": "#983b22"
+    },
+    {
+      "id": "setToDate",
+      "label": "Set To Date",
+      "color": "#983b22",
+      "inputs": [
+        {
+          "id": "toDate",
+          "label": "To Date"
+        }
+      ]
+    },
+    {
+      "id": "setFromAndToDate",
+      "label": "Set To Date And From Date ",
+      "color": "#983b22",
+      "inputs": [
+        {
+          "label": "To Date",
+          "id": "toDate"
+        },
+        {
+          "id": "fromDate",
+          "label": "From Date"
+        }
+      ]
+    },
+    {
+      "id": "resetDataInTheCalendar ",
+      "label": "Reset Data In The Calendar ",
+      "color": "#983b22"
+    }
   ]
 }

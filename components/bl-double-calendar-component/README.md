@@ -26,6 +26,19 @@ Double Calendar is a component of Backendless UI-Builder designer. The component
 | On Date Select       | when the user selects a specific date in the range | Selected Date: `String`                     |
 | On Date Reset        | when the user clicks the reset button              |                                             |
 
+## Actions
+
+| Action                     | Inputs                                 | Returns                                           |
+|----------------------------|----------------------------------------|---------------------------------------------------|
+| Get From Date              |                                        | `String`: current From Date                       |
+| Set From Date              | From Date: `String`                    |                                                   |
+| Get To Date                |                                        | `String`: current To Date                         |
+| Set To Date                | To Date: `String`                      |                                                   |
+| Get From And To Date       |                                        | `Object`: {fromDate: `String`, toDate: `String`}  |
+| Set From And To Date       | From Date: `String`, To Date: `String` |                                                   |
+| Get Days Amount            |                                        | `Number`: the calculated number of days           |
+| Reset Data In The Calendar |                                        |                                                   |
+
 ## Styles
 
 **Dimensions**

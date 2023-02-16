@@ -2,16 +2,31 @@ import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
-export function DateRange({ fromDate, toDate, headerVisibility, onStartDateChange, onEndDateChange, onDateReset }) {
+export function DateRange(props) {
+  const { fromDate, toDate, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset } = props;
+
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  useEffect(() => {
-    setStartDate(() => fromDate ? new Date(fromDate) : new Date("0"));
-    setEndDate(() => toDate ? new Date(toDate) : new Date("0"));
-  }, [fromDate, toDate])
-
   const daysAmount = differenceInDays(startDate, endDate);
+
+  component.getFromDate = () => startDate;
+  component.setFromDate = fromDate => { setStartDate(new Date(fromDate)) };
+  component.getToDate = () => endDate;
+  component.setToDate = toDate => { setEndDate(new Date(toDate)) };
+  component.getFromAndToDate = () => ({ fromDate: startDate, toDate: endDate });
+  component.setFromAndToDate = (fromDate, toDate) => {
+    setStartDate(new Date(fromDate));
+    setEndDate(new Date(toDate));
+  };
+  component.getDaysAmount = () => daysAmount;
+  component.resetDataInTheCalendar = () => {
+    setStartDate(new Date());
+    setEndDate(new Date());
+  };
+
+  useEffect(() => { setStartDate(() => fromDate ? new Date(fromDate) : new Date('0')) }, [fromDate]);
+  useEffect(() => { setEndDate(() => toDate ? new Date(toDate) : new Date('0')) }, [toDate]);
 
   const handleStartDateChange = date => {
     setStartDate(date);
