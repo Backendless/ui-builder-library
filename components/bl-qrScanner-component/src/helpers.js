@@ -4,7 +4,7 @@ import QrScanner from './lib/qr-scanner.min';
 
 export function useQRScannerLibrary(qrScannerRef, videoElemRef, component, eventHandlers, setScannerVisibility) {
   const { highlightScanRegion, highlightCodeOutline, hideAfterScan, maxScansPerSecond, flashOn } = component;
-  const { onDecodeError, onDecodeSuccess } = eventHandlers;
+  const { onDecodeError, onDecodeSuccess, onStartScanFailed } = eventHandlers;
 
   const updateFlash = useCallback(() => {
     if (!flashOn) {
@@ -44,7 +44,7 @@ export function useQRScannerLibrary(qrScannerRef, videoElemRef, component, event
     );
 
     qrScannerRef.current.$canvas.getContext('2d', { willReadFrequently: true });
-    qrScannerRef.current.start().then(() => updateFlash());
+    qrScannerRef.current.start().then(() => updateFlash()).catch(error => onStartScanFailed({ error }));
     window.addEventListener('resize', updateScanner);
 
     return () => {

@@ -29,6 +29,7 @@ external [QR Scanner](https://github.com/nimiq/qr-scanner) library. It allows sc
 | On Decode Error Event   | when decoding returns an error                     | Error: `String`           |
 | On Decode Success Event | when the decode is successful                      | Decoded QR Code: `String` |
 | On Scanner Click Event  | when the user clicks the mouse on the scanner area |                           |
+| On Start Scan Failed    | when an error occurs while starting the scan       | Error: `String`           |
 
 ## Actions
 
