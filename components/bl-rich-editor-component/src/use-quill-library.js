@@ -27,13 +27,11 @@ const BlockquoteStyles = {
 };
 
 const CodeStyles = {
-  whiteSpace  : 'pre-wrap',
-  marginBottom: '5px',
-  marginTop   : '5px',
-  padding     : '5px 10px',
-  borderRadius: '3px',
-  background  : '#808080',
-  color       : '#ffffff',
+  padding        : '3px 5px',
+  margin         : '2px 4px',
+  borderRadius   : '3px',
+  letterSpacing  : '1px',
+  backgroundImage: 'linear-gradient(rgba(209, 209, 209, 0.5), rgba(209, 209, 209, 0.5))',
 };
 
 export const Size = Quill.import('formats/size');
@@ -43,7 +41,7 @@ const DirectionStyle = Quill.import('attributors/style/direction');
 const FontStyle = Quill.import('attributors/style/font');
 const SizeStyle = Quill.import('attributors/style/size');
 const Blockquote = Quill.import('formats/blockquote');
-const CodeBlock = Quill.import('formats/code-block');
+const CodeBlock = Quill.import('formats/code');
 const BlockPrototype = Quill.import('blots/block');
 
 Size.whitelist = FontSize;
