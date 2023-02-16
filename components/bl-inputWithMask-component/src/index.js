@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useIMask } from './lib/react-imask.min';
+import { useEffect, useMemo } from 'react';
+import useIMask from './react-imask';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -17,7 +17,7 @@ export default function InputWithMask({ component, eventHandlers }) {
     mask    : preparedMask(maskType, mask),
     placeholderChar,
     lazy,
-    validate: (value, mask) => onValidate({ value, mask })
+    prepare: (value, mask) => onValidate({ value, mask })
   };
   const { ref, value } = useIMask(options);
 
@@ -45,14 +45,18 @@ export default function InputWithMask({ component, eventHandlers }) {
   );
 }
 
-const preparedMask = (maskType, mask) => {
+const preparedMask = (maskType, mask) => useMemo(() => {
   if ((maskType === MaskTypes.STRING || maskType === MaskTypes.NUMBER) && mask) {
     return mask;
   }
 
   if (maskType === MaskTypes.REGEX) {
-    return new RegExp(mask);
+    try {
+      return new RegExp(mask);
+    } catch(err) {
+      console.error(err);
+    }
   }
 
   return eval(maskType);
-};
+}, [mask, maskType]);

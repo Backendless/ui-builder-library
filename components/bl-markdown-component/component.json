@@ -23,11 +23,11 @@
     {
       "type": "text",
       "name": "text",
-      "label": "Markdown Text",
+      "label": "Text",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "markdownTextLogic",
-      "handlerLabel": "Markdown Text Logic",
+      "handlerId": "textLogic",
+      "handlerLabel": "Text Logic",
       "handlerDescription": "This is a handler for the logic to determine text of markdown",
       "dataBinding": true
     },
