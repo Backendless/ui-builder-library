@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
-export const useChartData = (goal, progress) => useMemo(() => {
+export const useChartData = (goal, progress, isHorizontal) => useMemo(() => {
   const fillPercentage = (progress / (goal / 100)).toFixed(2);
-  const barFillStyle = { width: `${ Math.min(fillPercentage, 100) }%` };
+  const barFillStyle = { [isHorizontal ? 'width' : 'height']: `${ Math.min(fillPercentage, 100) }%` };
 
   const shownGoal = window.Intl.NumberFormat('en', { maximumFractionDigits: 3, notation: 'compact' })
     .format(goal);
