@@ -104,8 +104,6 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 @bl-customComponent-richEditor-borderStyle: solid;
 @bl-customComponent-richEditor-borderColor: #ccc;
 @bl-customComponent-richEditor-border: @bl-customComponent-richEditor-borderWidth @bl-customComponent-richEditor-borderStyle @bl-customComponent-richEditor-borderColor;
-@bl-customComponent-richEditor-toolbar-defaultContent-fontSize: "14px";
-@bl-customComponent-richEditor-toolbar-defaultContent-font: "Arial";
 @bl-customComponent-richEditor-toolbar-tooltip-borderRadius: 0.4em;
 ````
 

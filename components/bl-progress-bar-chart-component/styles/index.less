@@ -1,0 +1,245 @@
+@bl-customComponent-progressBarChart-themeColor: @themePrimary;
+@bl-customComponent-progressBarChart-backgroundColor: @appBackgroundColor;
+@bl-customComponent-progressBarChart-textColor: @appTextColor;
+
+@bl-customComponent-progressBarChart-chartBarColor: #212121;
+@bl-customComponent-progressBarChart-chartNameColor: @bl-customComponent-progressBarChart-textColor;
+@bl-customComponent-progressBarChart-chartFillColor: @bl-customComponent-progressBarChart-themeColor;
+
+@bl-customComponent-progressBarChart-shapeColor: #121212;
+
+@bl-customComponent-progressBarChart-labelWidth: 60px;
+@bl-customComponent-progressBarChart-labelMarginRight: 16px;
+@bl-customComponent-progressBarChart-labelWidthWithOffset: @bl-customComponent-progressBarChart-labelWidth + @bl-customComponent-progressBarChart-labelMarginRight;
+
+.bl-customComponent-progressBarChart {
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .chart {
+    height: 100%;
+    width: 100%;
+
+    &__items {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      margin-bottom: 5.5px;
+    }
+
+    &__item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    &__name-wrap {
+      width: @bl-customComponent-progressBarChart-labelWidth;
+      margin-right: @bl-customComponent-progressBarChart-labelMarginRight;
+      flex-shrink: 0;
+    }
+
+    &__name {
+      color: @bl-customComponent-progressBarChart-chartNameColor;
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    &__bar {
+      position: relative;
+      background-color: @bl-customComponent-progressBarChart-chartBarColor;
+      width: calc(100% - @bl-customComponent-progressBarChart-labelWidthWithOffset);
+      height: 20px;
+      cursor: pointer;
+      flex-shrink: 0;
+
+      &:hover {
+        .chart__bar-info {
+          display: block;
+        }
+      }
+
+      &-fill {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 50%;
+        background-color: @bl-customComponent-progressBarChart-chartFillColor;
+      }
+    }
+
+    &__bar-info {
+      display: none;
+      position: relative;
+      top: 50%;
+      width: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 2;
+
+      &-triangle {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 22px solid transparent;
+        border-right: 22px solid transparent;
+        border-bottom: 22px solid @bl-customComponent-progressBarChart-shapeColor;
+      }
+
+      &-rectangle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 16px;
+        width: 100%;
+        height: 47px;
+        color: #FFFFFF;
+        background-color: @bl-customComponent-progressBarChart-shapeColor;
+        border-radius: 10px;
+      }
+    }
+
+    &__grids {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: calc(100% - @bl-customComponent-progressBarChart-labelWidthWithOffset);
+      z-index: 0;
+    }
+
+    &__y-grid-line {
+      position: absolute;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      border-left: 1px dashed #525252;
+      transform: translateX(-50%);
+    }
+
+    &__percentage-marks {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      width: calc(100% - @bl-customComponent-progressBarChart-labelWidthWithOffset);
+      margin-left: auto;
+
+      &-item {
+        position: absolute;
+        color: @bl-customComponent-progressBarChart-chartNameColor;
+        font-size: 10px;
+        line-height: 11px;
+        transform: translateX(-50%);
+
+        &:last-child {
+          transform: translateX(-100%);
+        }
+
+        &:first-child {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}
+
+.bl-customComponent-progressBarChart--vertical-bars {
+  .chart {
+    display: flex;
+    flex-direction: row-reverse;
+
+    &__items {
+      flex-direction: row;
+      min-width: unset;
+      height: calc(100% - @bl-customComponent-progressBarChart-labelWidthWithOffset);
+      padding-left: 25px;
+    }
+
+    &__item {
+      height: 100%;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+    }
+
+    &__name-wrap {
+      position: absolute;
+      text-align: center;
+      bottom: -45px;
+      margin-right: unset;
+    }
+
+    &__name {
+      text-align: center;
+    }
+
+    &__bar {
+      height: 100%;
+      width: 20px;
+
+      &-fill {
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+      }
+    }
+
+    &__bar-info {
+      &-triangle {
+        transform: translate(-170%, -50%);
+        border-left: unset;
+        border-top: 22px solid transparent;
+        border-right: 22px solid @bl-customComponent-progressBarChart-shapeColor;
+        border-bottom: 22px solid transparent;
+      }
+
+      &-rectangle {
+        text-align: center;
+        transform: translate(31%, -84%);
+        border-radius: 8px;
+      }
+    }
+
+    &__grids {
+      width: 100%;
+      top: unset;
+      bottom: 0;
+      left: 0;
+    }
+
+    &__y-grid-line {
+      bottom: 0;
+      top: unset;
+      height: 1px;
+      width: 100%;
+      border-bottom: 1px dashed #525252;
+      transform: translateY(-50%);
+    }
+
+    &__percentage-marks {
+      width: 30px;
+      height: calc(100% - @bl-customComponent-progressBarChart-labelWidthWithOffset);
+
+      &-item {
+        transform: translateY(35%);
+
+        &:last-child {
+          transform: translateY(80%);
+        }
+
+        &:first-child {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
