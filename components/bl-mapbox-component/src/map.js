@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 import mapboxgl from './lib/mapbox';
-import { initMapboxLibrary, useMarkers, usePolygons } from './helpers';
+import { initMapboxLibrary, useMarkers, usePolygons, Map } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function Map({ component, eventHandlers, settings }) {
+export default function Mapbox({ component, eventHandlers, settings }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
 
@@ -15,10 +15,12 @@ export default function Map({ component, eventHandlers, settings }) {
 
   const { markers, polygons, center, classList } = component;
 
+  const map = new Map(mapRef);
+
   useEffect(() => {
     mapboxgl.accessToken = accessToken;
 
-    initMapboxLibrary(mapRef, mapContainerRef, component, eventHandlers);
+    initMapboxLibrary(mapRef, mapContainerRef, component, eventHandlers, map);
   }, []);
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function Map({ component, eventHandlers, settings }) {
 
   useMarkers(markers, mapRef, onMarkerClick);
 
-  usePolygons(polygons, mapRef, onPolygonClick);
+  usePolygons(polygons, mapRef, onPolygonClick, map);
 
   return (
     <div className={ cn('bl-customComponent-mapbox', classList) }>

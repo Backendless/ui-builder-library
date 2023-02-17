@@ -2,27 +2,52 @@ import { useEffect, useState } from 'react';
 
 import mapboxgl from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
+import MapboxGeocoder from './lib/mapbox-geocoder';
 import { createActions } from './actions';
 
-const mapOnLoad = (mapRef, listener) => {
-  mapRef.current.on('load', listener);
-};
-
-const mapOnClick = (mapRef, layerId, listener) => {
-  if (layerId) {
-    mapRef.current.on('click', layerId, listener);
-  } else {
-    mapRef.current.on('click', listener);
+export class Map {
+  constructor(mapRef) {
+    this.mapRef = mapRef;
   }
-};
 
-const mapAddSource = (mapRef, id, source) => {
-  mapRef.current.addSource(id, source);
-};
+  onLoad(listener) {
+    this.mapRef.current.on('load', listener);
+  }
 
-const mapAddLayer = (mapRef, layer) => {
-  mapRef.current.addLayer(layer);
-};
+  onMove(listener) {
+    this.mapRef.current.on('move', listener);
+  }
+
+  addLayer(layer) {
+    this.mapRef.current.addLayer(layer);
+  }
+
+  onClick(layerId, listener) {
+    const handlerPayload = layerId ? [layerId, listener] : [listener];
+
+    this.mapRef.current.on('click', ...handlerPayload);
+  }
+
+  addSource(id, source) {
+    this.mapRef.current.addSource(id, source);
+  }
+
+  setFog(fog) {
+    this.mapRef.current.setFog(fog);
+  }
+
+  addControl(control, position) {
+    this.mapRef.current.addControl(control, position);
+  }
+
+  removeLayer(id) {
+    this.mapRef.current.removeLayer(id);
+  }
+
+  removeSource(id) {
+    this.mapRef.current.removeSource(id);
+  }
+}
 
 export const preparePolygons = polygons => {
   return polygons.map(polygon => ({
@@ -35,7 +60,7 @@ export const preparePolygons = polygons => {
   }));
 };
 
-export const applyFog = (mapRef, component) => {
+export const applyFog = (mapRef, component, map) => {
   const LOWER_ATMOSPHERE = '#BAD2EB';
   const UPPER_ATMOSPHERE = '#245CDF';
   const ATMOSPHERE_THICKNESS = 0.2;
@@ -43,7 +68,7 @@ export const applyFog = (mapRef, component) => {
   const STAR_INTENSITY = 0.2;
   const { lowerAtmosphere, upperAtmosphere, atmosphereThickness, spaceColor, starIntensity } = component;
 
-  mapRef.current.setFog({
+  map.setFog({
     color           : lowerAtmosphere || LOWER_ATMOSPHERE,
     'high-color'    : upperAtmosphere || UPPER_ATMOSPHERE,
     'horizon-blend' : atmosphereThickness || ATMOSPHERE_THICKNESS,
@@ -52,7 +77,7 @@ export const applyFog = (mapRef, component) => {
   });
 };
 
-export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers) => {
+export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers, map) => {
   const START_POS = { lat: 0, lng: 0 };
   const MAP_STYLE = 'mapbox://styles/mapbox/streets-v11';
   const ZOOM = 10;
@@ -71,7 +96,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
   createActions(mapRef, component);
 
   if (directions) {
-    mapRef.current.addControl(
+    map.addControl(
       new MapboxDirections({
         accessToken: mapboxgl.accessToken,
       }),
@@ -79,13 +104,13 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     );
   }
 
-  mapOnLoad(mapRef, () => {
-    applyFog(mapRef, component);
+  map.onLoad(() => {
+    applyFog(mapRef, component, map);
 
-    useEvents(mapRef, eventHandlers);
+    useEvents(mapRef, eventHandlers, map);
 
     if (searchBar) {
-      mapRef.current.addControl(
+      map.addControl(
         new MapboxGeocoder({
           accessToken: mapboxgl.accessToken,
           mapboxgl   : mapboxgl,
@@ -94,17 +119,18 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     }
 
     if (fullScreen) {
-      mapRef.current.addControl(new mapboxgl.FullscreenControl());
+      map.addControl(new mapboxgl.FullscreenControl());
     }
 
     if (navigation) {
-      mapRef.current.addControl(new mapboxgl.NavigationControl());
+      map.addControl(new mapboxgl.NavigationControl());
     }
 
     if (geolocation) {
-      useGeolocation(mapRef, onDeterminingGeoposition);
+      useGeolocation(mapRef, onDeterminingGeoposition, map);
     }
   });
+
 };
 
 export const useMarkers = (markers, mapRef, onMarkerClick) => {
@@ -145,12 +171,12 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
   }, [markers]);
 };
 
-const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray) => {
-  mapOnLoad(mapRef, () => {
+const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
+  map.onLoad(() => {
     polygonsArray.forEach(polygon => {
       if (mapRef.current.getSource(polygon)) {
-        mapRef.current.removeLayer(`${ polygon.id }-layer`);
-        mapRef.current.removeSource(polygon.id);
+        map.removeLayer(`${ polygon.id }-layer`);
+        map.removeSource(polygon.id);
       }
     });
   });
@@ -158,11 +184,11 @@ const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray) 
   setPolygonsArray(preparePolygons(polygons));
 };
 
-const createPopup = (polygon, mapRef, onPolygonClick) => {
+const createPopup = (polygon, mapRef, onPolygonClick, map) => {
   const { description, id } = polygon;
 
   if (description) {
-    mapOnClick(mapRef, `${ id }-layer`, e => {
+    map.onClick(`${ id }-layer`, e => {
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
         .setHTML(description)
@@ -173,7 +199,7 @@ const createPopup = (polygon, mapRef, onPolygonClick) => {
       onPolygonClick({ coordinates, description });
     });
   } else {
-    mapOnClick(mapRef, `${ polygon.id }-layer`, e => {
+    map.onClick(`${ polygon.id }-layer`, e => {
       const coordinates = { ...e.lngLat };
 
       onPolygonClick({ coordinates, description: '' });
@@ -181,62 +207,62 @@ const createPopup = (polygon, mapRef, onPolygonClick) => {
   }
 };
 
-const addPolygons = (mapRef, polygonsArray, onPolygonClick) => {
-  mapOnLoad(mapRef, () => {
+const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
+  map.onLoad(() => {
     polygonsArray.forEach(polygon => {
       const { id, coordinates, color, opacity } = polygon;
 
-      mapAddSource(mapRef, id, {
-        'type': 'geojson',
-        'data': {
-          'type'    : 'Feature',
-          'geometry': {
-            'type'       : 'Polygon',
-            'coordinates': [coordinates],
+      map.addSource(id, {
+        type: 'geojson',
+        data: {
+          type    : 'Feature',
+          geometry: {
+            type       : 'Polygon',
+            coordinates: [coordinates],
           },
         },
       });
 
-      mapAddLayer(mapRef, {
-        'id'    : `${ id }-layer`,
-        'type'  : 'fill',
-        'source': id,
-        'layout': {},
-        'paint' : {
+      map.addLayer({
+        id    : `${ id }-layer`,
+        type  : 'fill',
+        source: id,
+        layout: {},
+        paint : {
           'fill-color'  : color,
           'fill-opacity': opacity,
         },
       });
 
-      createPopup(polygon, mapRef, onPolygonClick);
+      createPopup(polygon, mapRef, onPolygonClick, map);
     });
   });
 };
 
-export const usePolygons = (polygons, mapRef, onPolygonClick) => {
+export const usePolygons = (polygons, mapRef, onPolygonClick, map) => {
   const [polygonsArray, setPolygonsArray] = useState([]);
 
   useEffect(() => {
     if (polygons?.length && mapRef.current) {
-      updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray);
+      updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray, map);
     }
   }, [polygons]);
 
   useEffect(() => {
-    addPolygons(mapRef, polygonsArray, onPolygonClick);
+    addPolygons(mapRef, polygonsArray, onPolygonClick, map);
   }, [polygonsArray]);
 };
 
-export const useEvents = (mapRef, eventHandlers) => {
+export const useEvents = (mapRef, eventHandlers, map) => {
   const { onClick, onPan } = eventHandlers;
 
-  mapOnClick(mapRef, undefined, e => {
+  map.onClick(undefined, e => {
     const coordinates = { lat: e.lngLat.lat, lng: e.lngLat.lng };
 
     onClick({ coordinates: coordinates });
   });
 
-  mapRef.current.on('move', () => {
+  map.onMove(() => {
     const center = mapRef.current.getCenter();
     const southWest = mapRef.current.getBounds().getSouthWest();
     const northEast = mapRef.current.getBounds().getNorthEast();
@@ -245,7 +271,7 @@ export const useEvents = (mapRef, eventHandlers) => {
   });
 };
 
-export const useGeolocation = (mapRef, onDeterminingGeoposition) => {
+export const useGeolocation = (mapRef, onDeterminingGeoposition, map) => {
   const geolocate = new mapboxgl.GeolocateControl({
     positionOptions  : {
       enableHighAccuracy: true,
@@ -254,7 +280,7 @@ export const useGeolocation = (mapRef, onDeterminingGeoposition) => {
     showUserHeading  : true,
   });
 
-  mapRef.current.addControl(geolocate);
+  map.addControl(geolocate);
 
   geolocate.on('trackuserlocationstart', () => {
     navigator.geolocation.getCurrentPosition(function success(pos) {
