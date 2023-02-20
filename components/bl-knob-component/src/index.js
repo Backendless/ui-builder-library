@@ -16,6 +16,16 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobValue, setKnobValue] = useState(0);
   const [knobReadOnly, setKnobReadOnly] = useState(!!readOnly);
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
+  const [knobMaxValue, setKnobMaxValue] = useState(maxValue);
+
+  useEffect(() => {
+    if (maxValue < 0) {
+      setKnobMaxValue(0);
+      console.error('Wrong Max Value');
+    } else {
+      setKnobMaxValue(maxValue);
+    }
+  }, [maxValue]);
 
   useEffect(() => {
     setKnobReadOnly(!!readOnly);
@@ -54,7 +64,7 @@ export default function KnobComponent({ component, eventHandlers }) {
         value={ knobValue }
         readOnly={ knobReadOnly }
         disabled={ knobDisabled }
-        max={ maxValue }
+        max={ knobMaxValue }
         min={ minValue }
         step={ step }
         strokeWidth={ dial }
