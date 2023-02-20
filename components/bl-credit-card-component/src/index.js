@@ -1,26 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import { CardForm } from './card-form';
 import { CardPreview } from './card-preview';
 import {
-  clearCardForm, ensureMeasure, formatCVC, getCardByNumber, validateCardCVC, validateCardExpiry, validateCardNumber,
+  ensureMeasure, formatCVC, getCardByNumber, validateCardCVC, validateCardExpiry, validateCardNumber,
 } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function CreditCardComponent({ component, eventHandlers }) {
+export default function CreditCardComponent({ component, eventHandlers, elRef }) {
   const {
     display, classList, style, direction, borderWidth, borderStyle, borderColor, cardPreviewVisibility, cvcVisibility,
   } = component;
 
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiry, setExpiry] = useState('');
-  const [cvc, setCVC] = useState('');
-  const [cardholderName, setCardholderName] = useState('');
-  const [focus, setFocus] = useState('');
-  const [card, setCard] = useState();
+  const initialFormState = { cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: '' };
 
-  const creditCardRef = useRef(null);
+  const [card, setCard] = useState();
+  const [formState, setFormState] = useObjectState(initialFormState);
+
+  const { cardNumber, expiry, cvc, cardholderName, focusedField } = formState;
 
   useEffect(() => {
     const card = getCardByNumber(cardNumber);
@@ -32,7 +30,7 @@ export default function CreditCardComponent({ component, eventHandlers }) {
     if (cvc) {
       const value = formatCVC(cvc, card);
 
-      setCVC(value);
+      setFormState({ cvc: value });
     }
   }, [card]);
 
@@ -45,8 +43,7 @@ export default function CreditCardComponent({ component, eventHandlers }) {
   };
 
   Object.assign(component, {
-    el            : creditCardRef.current,
-    clearForm     : () => clearCardForm(setCardNumber, setExpiry, setCVC, setCardholderName),
+    clearForm     : () => setFormState(initialFormState),
     validateNumber: () => validateCardNumber(cardNumber, card),
     validateExpiry: () => validateCardExpiry(expiry),
     validateCVC   : () => validateCardCVC(cvc, card),
@@ -57,13 +54,13 @@ export default function CreditCardComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div ref={ creditCardRef } className={ cn('bl-customComponent-creditCard', classList) } style={ styles }>
+    <div ref={ elRef } className={ cn('bl-customComponent-creditCard', classList) } style={ styles }>
       { cardPreviewVisibility && (
         <CardPreview
           cardNumber={ cardNumber }
           expiry={ expiry }
           cvc={ cvc }
-          focused={ focus }
+          focusedField={ focusedField }
           name={ cardholderName }
           card={ card }
           cvcVisibility={ cvcVisibility }
@@ -76,14 +73,22 @@ export default function CreditCardComponent({ component, eventHandlers }) {
         cardholderName={ cardholderName }
         expiry={ expiry }
         cvc={ cvc }
-        setCardNumber={ setCardNumber }
-        setExpiry={ setExpiry }
-        setCVC={ setCVC }
-        setCardholderName={ setCardholderName }
-        setFocus={ setFocus }
+        setFormState={ setFormState }
         card={ card }
         cvcVisibility={ cvcVisibility }
       />
     </div>
   );
+}
+
+function useObjectState(initialState) {
+  initialState = useState(initialState)[0];
+
+  return useReducer((state, patch) => {
+    const changes = patch instanceof Function ? patch(state) : patch;
+
+    const changed = Object.entries(changes).some(([key, value]) => state[key] !== value);
+
+    return changed ? { ...state, ...changes } : state;
+  }, initialState || {});
 }

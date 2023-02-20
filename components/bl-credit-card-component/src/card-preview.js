@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 
+import { RegexPatterns } from './helpers';
+
 const InitialCardProps = {
   expirationLocaleHeader: 'valid thru',
   namePlaceholder       : 'YOUR NAME HERE',
@@ -13,32 +15,35 @@ const NumberSpaces = { shortFormat: [4, 11], defaultFormat: [4, 9, 14] };
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CardPreview(props) {
-  const { cardNumber, expiry, cvc, focused, name, card, cvcVisibility } = props;
+  const { cardNumber, expiry, cvc, focusedField, name, card, cvcVisibility } = props;
 
   const { creditCardNumber, expirationDate, issuer } = useCardPreview(cardNumber, expiry, card);
 
-  const currentCVC = useMemo(() => cvcVisibility ? cvc : cvc.replace(/\d/g, '*'), [cvc, cvcVisibility]);
+  const currentCVC = useMemo(() => {
+    return cvcVisibility ? cvc : cvc.replace(RegexPatterns.ALL_DIGITS, '*');
+  }, [cvc, cvcVisibility]);
 
   return (
     <div className="card-container">
-      <div className={ cn('card', `card-${ issuer }`, { 'card-flipped': focused === 'cvc' && issuer !== 'amex' }) }>
+      <div
+        className={ cn('card', `card-${ issuer }`, { 'card-flipped': focusedField === 'cvc' && issuer !== 'amex' }) }>
         <div className="card-front">
           <div className="card-background"/>
           <div className="issuer"/>
-          <div className={ cn('cvc-front', { 'focused': focused === 'cvc' }) }>{ currentCVC }</div>
+          <div className={ cn('cvc-front', { 'focused': focusedField === 'cvc' }) }>{ currentCVC }</div>
           <div
             className={ cn('card-number', {
-              'focused'     : focused === 'number',
+              'focused'     : focusedField === 'number',
               'filled'      : creditCardNumber[0] !== '•',
-              'number-large': creditCardNumber.replace(/ /g, '').length > 16,
+              'number-large': creditCardNumber.replace(RegexPatterns.ALL_SPACES, '').length > 16,
             }) }>
             { creditCardNumber }
           </div>
-          <div className={ cn('card-name', { 'focused': focused === 'name', 'filled': !!name }) }>
+          <div className={ cn('card-name', { 'focused': focusedField === 'name', 'filled': !!name }) }>
             { name || InitialCardProps.namePlaceholder }
           </div>
           <div className={ cn('card-expiry', {
-            'focused': focused === 'expiry',
+            'focused': focusedField === 'expiry',
             'filled' : expirationDate[0] !== '•',
           }) }>
             <div className="card-expiry-valid">{ InitialCardProps.expirationLocaleHeader }</div>
@@ -50,7 +55,7 @@ export function CardPreview(props) {
           <div className="card-background"/>
           <div className="card-stripe"/>
           <div className="card-signature"/>
-          <div className={ cn('card-cvc', { 'focused': focused === 'cvc' }) }>{ currentCVC }</div>
+          <div className={ cn('card-cvc', { 'focused': focusedField === 'cvc' }) }>{ currentCVC }</div>
           <div className="issuer"/>
         </div>
       </div>
@@ -86,7 +91,7 @@ function useCardPreview(cardNumber, expiry, card) {
 
   const creditCardNumber = useMemo(() => {
     let maxLength = card?.length[card.length.length - 1] || InitialCardProps.numberMaxLength;
-    let nextNumber = cardNumber.replace(/ /g, '');
+    let nextNumber = cardNumber.replace(RegexPatterns.ALL_SPACES, '');
     const initialNumberLength = InitialCardProps.numberLength;
 
     if (maxLength > initialNumberLength) {

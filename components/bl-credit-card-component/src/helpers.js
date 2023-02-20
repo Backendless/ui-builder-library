@@ -7,6 +7,7 @@ const eloStringPattern = '^401178|^401179|^431274|^438935|^451416|^457393|^45763
 const eloPattern = new RegExp(eloStringPattern);
 const defaultNumberFormat = /(\d{1,4})(\d{1,4})?(\d{1,4})?(\d{1,4})?/;
 const longNumberFormat = /(\d{1,4})(\d{1,4})?(\d{1,4})?(\d{1,7})?/;
+const expiryFormat = /^\D*(\d{1,2})(\D+)?(\d{1,2})?/;
 
 const Cards = [
   {
@@ -130,17 +131,15 @@ const ValidationErrorMessages = {
   cvc       : 'Invalid CVC',
 };
 
+export const RegexPatterns = {
+  ALL_DIGITS    : /\d/g,
+  ALL_NON_DIGITS: /\D+/g,
+  ALL_SPACES    : / /g,
+  ONLY_DIGITS   : /^\d+$/,
+};
+
 function clearNumber(value = '') {
-  return value.replace(/\D+/g, '');
-}
-
-export function clearCardForm(setCardNumber, setExpiry, setCVC, setCardholderName) {
-  const clearValue = '';
-
-  setCardNumber(clearValue);
-  setExpiry(clearValue);
-  setCVC(clearValue);
-  setCardholderName(clearValue);
+  return value.replace(RegexPatterns.ALL_NON_DIGITS, '');
 }
 
 export function getCardByNumber(value) {
@@ -185,7 +184,7 @@ export function formatCVC(value, card) {
 }
 
 export function formatExpirationDate(expiry) {
-  const parts = expiry.match(/^\D*(\d{1,2})(\D+)?(\d{1,2})?/);
+  const parts = expiry.match(expiryFormat);
 
   if (!parts) {
     return '';
@@ -276,9 +275,9 @@ export function validateCardCVC(cvc, card) {
 }
 
 export function validateCardNumber(value = '', card) {
-  const cardNumber = value.replace(/\s+|-/g, '');
+  const cardNumber = value.replace(RegexPatterns.ALL_SPACES, '');
 
-  if (!/^\d+$/.test(cardNumber) || !card) {
+  if (!RegexPatterns.ONLY_DIGITS.test(cardNumber) || !card) {
     return false;
   }
 
