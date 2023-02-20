@@ -12,17 +12,17 @@ export default function InnerImageZoomComponent({ component, elRef, eventHandler
   const [zoomPosition, setZoomPosition] = useState('0% 0%');
 
   const figureStyle = useMemo(() => ({
-    backgroundImage: `url(${src})`,
+    backgroundImage   : `url(${ src })`,
     backgroundPosition: zoomPosition,
-    backgroundSize: `${zoom * 100}% ${zoom * 100}%`,
+    backgroundSize    : `${ zoom * 100 }% ${ zoom * 100 }%`,
   }), [src, zoomPosition, zoom]);
 
   const handleMouseMove = event => {
     const { left, top, width, height } = event.target.getBoundingClientRect();
-    const x = (event.pageX - left - window.pageXOffset) / width * 100;
-    const y = (event.pageY - top - window.pageYOffset) / height * 100;
+    const x = (event.pageX - left - window.scrollX) / width * 100;
+    const y = (event.pageY - top - window.scrollY) / height * 100;
 
-    setZoomPosition(`${x}% ${y}%`);
+    setZoomPosition(`${ x }% ${ y }%`);
     onMouseMove({ event });
   };
 

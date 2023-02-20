@@ -40,7 +40,7 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 
 ````
 @bl-customComponent-innerImageZoom-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
-@bl-customComponent-innerImageZoom-cursor: zoom-in;
+@bl-customComponent-innerImageZoom-cursor: crosshair;
 ````
 
 **Dimensions**
