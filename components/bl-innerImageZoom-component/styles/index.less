@@ -5,8 +5,10 @@
 
 @bl-customComponent-innerImageZoom-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
 
-@bl-customComponent-innerImageZoom-width: 50%;
+@bl-customComponent-innerImageZoom-width: fit-content;
 @bl-customComponent-innerImageZoom-margin: 10px;
+
+@bl-customComponent-innerImageZoom-cursor: zoom-in;
 
 .bl-customComponent-innerImageZoom {
   display: flex;
@@ -24,6 +26,7 @@
     margin: 0;
     background-repeat: no-repeat;
     border-radius: @bl-customComponent-innerImageZoom-border-radius;
+    cursor: @bl-customComponent-innerImageZoom-cursor;
 
     &:hover .img {
       opacity: 0;

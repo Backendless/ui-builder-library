@@ -3,27 +3,26 @@ import { useMemo, useState } from 'react';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function InnerImageZoomComponent({ component, elRef, eventHandlers }) {
-  const { classList, display, source } = component;
+  const { classList, style, display, source, zoomIn } = component;
   const { onMouseOver, onMouseOut, onMouseMove } = eventHandlers;
 
-  const src = useMemo(() => {
-    return source;
-  }, [source]);
+  const src = useMemo(() => source, [source]);
+  const zoom = useMemo(() => Math.max(1, zoomIn), [zoomIn]);
 
-  const [state, setState] = useState('0% 0%');
+  const [zoomPosition, setZoomPosition] = useState('0% 0%');
 
-  const style = useMemo(() => {
-    return {
-      backgroundImage: `url(${src})`,
-      backgroundPosition: state,
-    };
-  }, [src, state]);
+  const figureStyle = useMemo(() => ({
+    backgroundImage: `url(${src})`,
+    backgroundPosition: zoomPosition,
+    backgroundSize: `${zoom * 100}% ${zoom * 100}%`,
+  }), [src, zoomPosition, zoom]);
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = event => {
     const { left, top, width, height } = event.target.getBoundingClientRect();
-    const x = ((event.pageX - left - window.pageXOffset) / width) * 100;
-    const y = ((event.pageY - top - window.pageYOffset) / height) * 100;
-    setState(`${x}% ${y}%`);
+    const x = (event.pageX - left - window.pageXOffset) / width * 100;
+    const y = (event.pageY - top - window.pageYOffset) / height * 100;
+
+    setZoomPosition(`${x}% ${y}%`);
     onMouseMove({ event });
   };
 
@@ -32,10 +31,10 @@ export default function InnerImageZoomComponent({ component, elRef, eventHandler
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-innerImageZoom', ...classList) }>
+    <div ref={ elRef } className={ cn('bl-customComponent-innerImageZoom', ...classList) } style={ style }>
       <figure
         className="zoom-content"
-        style={ style }
+        style={ figureStyle }
         onMouseOver={ onMouseOver }
         onMouseMove={ handleMouseMove }
         onMouseOut={ onMouseOut }>

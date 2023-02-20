@@ -20,6 +20,16 @@
       "handlerDescription": "The logic to determine the image source to zoom.",
       "dataBinding": true,
       "defaultValue": "https://content.r9cdn.net/rimg/dimg/6d/56/5bd0abd4-city-26896-1670df92320.jpg?width=1366&height=768&xhint=1567&yhint=925&crop=true"
+    },
+    {
+      "type": "number",
+      "name": "zoomIn",
+      "label": "Zoom",
+      "settingTooltip": "Select zoom to enlarge the image.",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": false,
+      "handlerId": "zoomInLogic"
     }
   ],
   "eventHandlers": [

@@ -12,17 +12,18 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 
 ## Properties
 
-| Property                   | Type   | Default value                                                                                                                        | Logic              | Data Binding | UI Setting | Description                         |
-|----------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|------------|-------------------------------------|
-| Image Source <br> `source` | *Text* | `https://content.r9cdn.net/rimg/dimg/6d/56/5bd0abd4-city-26896-1670df92320.jpg?width=1366&height=768&xhint=1567&yhint=925&crop=true` | Image Source Logic | YES          | YES        | Specifies the image source to zoom. |
+| Property                   | Type     | Default value                                                                                                                        | Logic              | Data Binding | UI Setting | Description                           |
+|----------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|------------|---------------------------------------|
+| Image Source <br> `source` | *Text*   | `https://content.r9cdn.net/rimg/dimg/6d/56/5bd0abd4-city-26896-1670df92320.jpg?width=1366&height=768&xhint=1567&yhint=925&crop=true` | Image Source Logic | YES          | YES        | Specifies the image source to zoom.   |
+| Zoom <br> `zoomIn`         | *Number* | 2                                                                                                                                    |                    | NO           | YES        | Controlled zoom to enlarge the image. |
 
 ## Events
 
-| Name                | Triggers                                                           | Context Blocks    |
-|---------------------|--------------------------------------------------------------------|-------------------|
-| On Mouse Move Event | Triggered when the user moves the mouse over or touches the image. | `{event: Object}` |
-| On Mouse Over Event | Triggered when the mouse pointer hovers over the image.            |                   |
-| On Mouse Out Event  | Triggered when the mouse pointer leaves the image.                 |                   |
+| Name                | Triggers                                                           | Context Blocks  |
+|---------------------|--------------------------------------------------------------------|-----------------|
+| On Mouse Move Event | Triggered when the user moves the mouse over or touches the image. | Event: `Object` |
+| On Mouse Over Event | Triggered when the mouse pointer hovers over the image.            |                 |
+| On Mouse Out Event  | Triggered when the mouse pointer leaves the image.                 |                 |
 
 ## Styles
 
@@ -39,11 +40,12 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 
 ````
 @bl-customComponent-innerImageZoom-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+@bl-customComponent-innerImageZoom-cursor: zoom-in;
 ````
 
 **Dimensions**
 
 ````
-@bl-customComponent-innerImageZoom-width: 50%;
+@bl-customComponent-innerImageZoom-width: fit-content;
 @bl-customComponent-innerImageZoom-margin: 10px;
 ````
