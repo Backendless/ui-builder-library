@@ -28,22 +28,22 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 ## Before Usage
 Before usage, you need:
 
-1. Create google account if you doesnt have.
-2. Register your site in [Google Recaptcha](https://www.google.com/recaptcha/admin/create). Chose reCaptcha v2 "I'm not a robot" Checkbox ( invisible captcha not be working ) or Invisible reCaptcha badge.
+1. Create google account if you don't have.
+2. Register your site in [Google Recaptcha](https://www.google.com/recaptcha/admin/create). Choose reCaptcha v2 "I'm not a robot" (invisible captcha mode will not work in this case) or Invisible reCaptcha badge.
 3. Get your site-key and secret-key
 
 ## Usage
-Let's look at an example
+Let's look at example
 
-We have some form where we put reCaptcha and reCaptcha must have id
+We have some form where we put reCaptcha and reCaptcha must have an `id`
 
 ![](example-images/form-example.jpg)
 
-In SETTINGS we input site-key.
+In SETTINGS we set site-key.
 
 ![](example-images/settings-example.jpg)
 
-We need to create in [Cloud Code](https://eu-develop.backendless.com/app/test/bl/services) new API service with POST method on reCaptcha API https://www.google.com/recaptcha/api/siteverify and send secret-key and token. In answer, we get the object:
+We need to create in [Cloud Code](https://eu-develop.backendless.com/app/test/bl/services) new API service with POST method on reCaptcha API https://www.google.com/recaptcha/api/siteverify and send secret-key and token. In response, we get the following object:
 ```
 {
     "success": true|false,
@@ -55,7 +55,7 @@ We need to create in [Cloud Code](https://eu-develop.backendless.com/app/test/bl
 ![](example-images/create-method-example.jpg)
 ![](example-images/api-service-captcha-codeless.jpg)
 
-After that, we create an API service to save the form data to the database. We need to make conditions, if the captcha is successful, we save the data, otherwise nothing
+After that, we create an API service to save the form data to the database. We need to make conditions, if the captcha is successful, we save the data, otherwise nothing (or you might want to return an error)
 
 ![](example-images/api-service-form-data-codeless-example.jpg)
 
