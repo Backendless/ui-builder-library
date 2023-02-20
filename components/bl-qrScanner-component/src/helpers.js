@@ -44,7 +44,7 @@ export function useQRScannerLibrary(qrScannerRef, videoElemRef, component, event
     );
 
     qrScannerRef.current.$canvas.getContext('2d', { willReadFrequently: true });
-    qrScannerRef.current.start().then(() => updateFlash()).catch(error => onStartScanFailed({ error }));
+    qrScannerRef.current.start().catch(error => onStartScanFailed({ error }));
     window.addEventListener('resize', updateScanner);
 
     return () => {
