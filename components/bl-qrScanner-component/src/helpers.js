@@ -1,22 +1,10 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import QrScanner from './lib/qr-scanner.min';
 
 export function useQRScannerLibrary(qrScannerRef, videoElemRef, component, eventHandlers, setScannerVisibility) {
-  const { highlightScanRegion, highlightCodeOutline, hideAfterScan, maxScansPerSecond, flashOn } = component;
+  const { highlightScanRegion, highlightCodeOutline, hideAfterScan, maxScansPerSecond } = component;
   const { onDecodeError, onDecodeSuccess, onStartScanFailed } = eventHandlers;
-
-  const updateFlash = useCallback(() => {
-    if (!flashOn) {
-      return;
-    }
-
-    qrScannerRef.current.hasFlash().then(hasFlash => {
-      if (hasFlash) {
-        qrScannerRef.current.turnFlashOn();
-      }
-    });
-  }, [flashOn, qrScannerRef]);
 
   const updateScanner = () => {
     qrScannerRef.current.stop();
@@ -61,10 +49,6 @@ export function useComponentActions(component, qrScannerRef, setScannerVisibilit
     hasCamera     : () => QrScanner.hasCamera(),
     getCamerasList: () => QrScanner.listCameras(true),
     setCamera     : camera => qrScannerRef.current?.setCamera(camera),
-    hasFlash      : () => qrScannerRef.current?.hasFlash(),
-    turnFlashOn   : () => qrScannerRef.current?.turnFlashOn(),
-    turnFlashOff  : () => qrScannerRef.current?.turnFlashOff(),
-    toggleFlash   : () => qrScannerRef.current?.toggleFlash(),
   });
 }
 

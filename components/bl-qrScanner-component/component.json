@@ -81,14 +81,6 @@
       "handlerId": "uploadButtonLabelLogic"
     },
     {
-      "type": "checkbox",
-      "name": "flashOn",
-      "label": "Flash On",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "flashOnLogic"
-    },
-    {
       "type": "select",
       "name": "direction",
       "label": "Direction",
@@ -177,11 +169,6 @@
       "hasReturn": true
     },
     {
-      "id": "hasFlash",
-      "label": "Has Flash",
-      "hasReturn": true
-    },
-    {
       "id": "setCamera",
       "label": "Set Camera",
       "inputs": [
@@ -190,18 +177,6 @@
           "label": "camera"
         }
       ]
-    },
-    {
-      "id": "turnFlashOn",
-      "label": "Turn Flash On"
-    },
-    {
-      "id": "turnFlashOff",
-      "label": "Turn Flash Off"
-    },
-    {
-      "id": "toggleFlash",
-      "label": "Toggle Flash"
     }
   ]
 }
