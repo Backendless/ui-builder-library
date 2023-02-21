@@ -19,7 +19,6 @@ external [QR Scanner](https://github.com/nimiq/qr-scanner) library. It allows sc
 | Scan Button Label        | *Text*                                                                | "Scan QR Code"   |       | NO           | YES        | controls the label of the scan button                                 |
 | Upload Button Visibility | *Checkbox*                                                            | `true`           |       | NO           | YES        | enables showing the Upload QR Code button                             |
 | Upload Button Label      | *Text*                                                                | "Upload QR Code" |       | NO           | YES        | controls the label of the upload button                               |
-| Flash On                 | *Checkbox*                                                            | `false`          |       | NO           | YES        | enables the flash to turn on after starting the scanner               |
 | Direction                | *Select* <br/> "Row" \| "Row reverse" \| "Column" \| "Column reverse" | "Row"            |       | NO           | YES        | controls the direction of the buttons                                 |
 
 ## Events
@@ -29,6 +28,7 @@ external [QR Scanner](https://github.com/nimiq/qr-scanner) library. It allows sc
 | On Decode Error Event   | when decoding returns an error                     | Error: `String`           |
 | On Decode Success Event | when the decode is successful                      | Decoded QR Code: `String` |
 | On Scanner Click Event  | when the user clicks the mouse on the scanner area |                           |
+| On Start Scan Failed    | when an error occurs while starting the scan       | Error: `String`           |
 
 ## Actions
 
@@ -38,11 +38,7 @@ external [QR Scanner](https://github.com/nimiq/qr-scanner) library. It allows sc
 | Stop Scan          |                                         |                                                                             |
 | Get Cameras List   |                                         | `Array`: a list of the device's cameras, defined via their `id` and `label` |
 | Has Camera         |                                         | `Boolean`: the presence of a camera in the device                           |
-| Has Flash          |                                         | `Boolean`: whether the browser and used camera support turning the flash on |
 | Set Camera         | camera: "environment" \| "user" \| `id` |                                                                             |
-| Turn Flash On      |                                         |                                                                             |
-| Turn Flash Off     |                                         |                                                                             |
-| Toggle Flash       |                                         |                                                                             |
 
 ## Styles
 
