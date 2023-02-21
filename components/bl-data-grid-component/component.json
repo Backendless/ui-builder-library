@@ -61,14 +61,14 @@
     },
     {
       "type": "checkbox",
-      "name": "resizableColumns",
-      "label": "Resizable Columns",
+      "name": "resizable",
+      "label": "Resizable",
       "settingTooltip": "Users will be able to change the width of the columns by dragging them.",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": true,
-      "handlerId": "resizableColumnsLogic",
-      "handlerLabel": "Resizable Columns Logic",
+      "handlerId": "resizableLogic",
+      "handlerLabel": "Resizable Logic",
       "handlerDescription": "This handler allows you to add the ability to change column widths."
     },
     {
