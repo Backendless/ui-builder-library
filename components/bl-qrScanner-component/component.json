@@ -136,6 +136,17 @@
       "name": "onScannerClick",
       "label": "On Scanner Click Event",
       "handlerDescription": "This event is fired when the user clicks the mouse or taps the scanner area."
+    },
+    {
+      "name": "onStartScanFailed",
+      "label": "On Start Scan Failed",
+      "handlerDescription": "This event is triggered if an error occurs during the start of the scan.",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ]
     }
   ],
   "actions": [
