@@ -42,8 +42,8 @@
       "hasLogicHandler": true,
       "handlerId": "filterLogic",
       "handlerLabel": "Filter Logic",
-      "handlerDescription": "This handler allows you to add filtering capability to all grid columns. ",
-      "settingTooltip": "This handler allows you to add filtering capability to all grid columns. ",
+      "handlerDescription": "This handler allows you to add filtering capability to all grid columns.",
+      "settingTooltip": "This handler allows you to add filtering capability to all grid columns.",
       "dataBinding": true
     },
     {
@@ -69,7 +69,8 @@
       "handlerLabel": "Column Definition Logic",
       "dataBinding": true,
       "settingTooltip": "This handler allows you to define columns for the component.",
-      "handlerDescription": "This handler allows you to define columns for the component."
+      "handlerDescription": "This handler allows you to define columns for the component.",
+      "defaultValue": "[\n  {\"field\": \"name\", \"flex\": 1},\n  {\"field\": \"age\", \"sortable\": true, \"flex\": 1},\n  {\"field\": \"city\", \"flex\": 1}\n]"
     },
     {
       "type": "json",
@@ -81,7 +82,8 @@
       "handlerLabel": "Row Data Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to set data to the component.",
-      "settingTooltip": "This handler allows you to set data to the component."
+      "settingTooltip": "This handler allows you to set data to the component.",
+      "defaultValue": "[\n  {\"name\": \"Jack\", \"age\": 26, \"city\": \"London\"},\n  {\"name\": \"Kate\", \"age\": 22, \"city\": \"New York\"},\n  {\"name\": \"Nick\", \"age\": 28, \"city\": \"Kyiv\"}\n]"
     },
     {
       "type": "number",
