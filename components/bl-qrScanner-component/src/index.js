@@ -4,7 +4,7 @@ import { scanImage, useComponentActions, useQRScannerLibrary } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function QrScannerComponent({ component, eventHandlers }) {
+export default function QrScannerComponent({ component, eventHandlers, elRef }) {
   const { display, classList, style, direction } = component;
 
   const [scannerVisibility, setScannerVisibility] = useState(false);
@@ -19,7 +19,7 @@ export default function QrScannerComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-qrScanner', classList) } style={ styles }>
+    <div ref={ elRef } className={ cn('bl-customComponent-qrScanner', classList) } style={ styles }>
       <ScanButton component={ component } setScannerVisibility={ setScannerVisibility }/>
       <UploadButton component={ component } eventHandlers={ eventHandlers }/>
 
