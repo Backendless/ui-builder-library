@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { RegexPatterns } from './helpers';
 
-const InitialCardProps = {
+const defaultState = {
   expirationLocaleHeader: 'valid thru',
   namePlaceholder       : 'YOUR NAME HERE',
   issuer                : 'unknown',
@@ -40,13 +40,13 @@ export function CardPreview(props) {
             { creditCardNumber }
           </div>
           <div className={ cn('card-name', { 'focused': focusedField === 'name', 'filled': !!name }) }>
-            { name || InitialCardProps.namePlaceholder }
+            { name || defaultState.namePlaceholder }
           </div>
           <div className={ cn('card-expiry', {
             'focused': focusedField === 'expiry',
             'filled' : expirationDate[0] !== '•',
           }) }>
-            <div className="card-expiry-valid">{ InitialCardProps.expirationLocaleHeader }</div>
+            <div className="card-expiry-valid">{ defaultState.expirationLocaleHeader }</div>
             <div className="card-expiry-value">{ expirationDate }</div>
           </div>
           <div className="card-chip"/>
@@ -87,12 +87,12 @@ function useCardPreview(cardNumber, expiry, card) {
     return `${ month } / ${ year }`;
   }, [expiry]);
 
-  const issuer = useMemo(() => card?.type || InitialCardProps.issuer, [card]);
+  const issuer = useMemo(() => card?.type || defaultState.issuer, [card]);
 
   const creditCardNumber = useMemo(() => {
-    let maxLength = card?.length[card.length.length - 1] || InitialCardProps.numberMaxLength;
+    let maxLength = card?.length[card.length.length - 1] || defaultState.numberMaxLength;
     let nextNumber = cardNumber.replace(RegexPatterns.ALL_SPACES, '');
-    const initialNumberLength = InitialCardProps.numberLength;
+    const initialNumberLength = defaultState.numberLength;
 
     if (maxLength > initialNumberLength) {
       maxLength = nextNumber.length <= initialNumberLength ? initialNumberLength : maxLength;

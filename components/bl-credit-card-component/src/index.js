@@ -13,7 +13,7 @@ export default function CreditCardComponent({ component, eventHandlers, elRef })
     display, classList, style, direction, borderWidth, borderStyle, borderColor, cardPreviewVisibility, cvcVisibility,
   } = component;
 
-  const initialFormState = { cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: '' };
+  const initialFormState = { cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: null };
 
   const [card, setCard] = useState();
   const [formState, setFormState] = useObjectState(initialFormState);
@@ -69,13 +69,9 @@ export default function CreditCardComponent({ component, eventHandlers, elRef })
       <CardForm
         component={ component }
         eventHandlers={ eventHandlers }
-        cardNumber={ cardNumber }
-        cardholderName={ cardholderName }
-        expiry={ expiry }
-        cvc={ cvc }
+        formState={ formState }
         setFormState={ setFormState }
         card={ card }
-        cvcVisibility={ cvcVisibility }
       />
     </div>
   );

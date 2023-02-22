@@ -5,12 +5,12 @@ import {
 } from './helpers';
 
 export function CardForm(props) {
-  const { setFormState } = props;
-  const { submitButtonLabel, labelsVisibility } = props.component;
+  const { card, formState, setFormState, component, eventHandlers } = props;
+  const { submitButtonLabel, labelsVisibility } = component;
 
-  const { handleSubmit, onCardFocus, onCardBlur } = useFormActions(props);
+  const { handleSubmit, onCardFocus, onCardBlur } = useFormActions(formState, setFormState, card, eventHandlers);
 
-  const formFields = useFormFields(props);
+  const formFields = useFormFields(formState, setFormState, card, component, eventHandlers);
 
   return (
     <form className="payment-form" onSubmit={ handleSubmit } onFocus={ onCardFocus } onBlur={ onCardBlur }>
@@ -52,13 +52,16 @@ function FormField({ labelsVisibility, field, setFormState }) {
   );
 }
 
-function useFormFields(props) {
-  const { cardNumber, cardholderName, expiry, cvc, cvcVisibility } = props;
+function useFormFields(formState, setFormState, card, component, eventHandlers) {
+  const { cardNumber, cardholderName, expiry, cvc } = formState;
   const {
-    cardNumberFieldPlaceholder, cardholderNameFieldPlaceholder, expiryFieldPlaceholder, cvcFieldPlaceholder,
-  } = props.component;
+    cardNumberFieldPlaceholder, cardholderNameFieldPlaceholder,
+    expiryFieldPlaceholder, cvcFieldPlaceholder, cvcVisibility,
+  } = component;
 
-  const { handleNumberChange, handleCardholderNameChange, handleExpiryChange, handleCVCChange } = useFormActions(props);
+  const {
+    handleNumberChange, handleCardholderNameChange, handleExpiryChange, handleCVCChange,
+  } = useFormActions(formState, setFormState, card, eventHandlers);
 
   const cardNumberField = useMemo(() => ({
     label      : 'Card Number:',
@@ -103,9 +106,9 @@ function useFormFields(props) {
   return [cardNumberField, cardholderNameField, expiryField, cvcField];
 }
 
-function useFormActions(props) {
-  const { onSubmit, onSuccess, onReject, onFocus, onBlur } = props.eventHandlers;
-  const { setFormState, card, cardNumber, cardholderName, expiry, cvc } = props;
+function useFormActions(formState, setFormState, card, eventHandlers) {
+  const { onSubmit, onSuccess, onReject, onFocus, onBlur } = eventHandlers;
+  const { cardNumber, cardholderName, expiry, cvc } = formState;
 
   const formData = useMemo(() => (
     { cardNumber, cardholderName, expiry, cvc }
@@ -157,7 +160,7 @@ function useFormActions(props) {
   const onCardFocus = event => onFocus({ event, formData });
   const onCardBlur = event => {
     onBlur({ event, formData });
-    setFormState({ focusedField: '' });
+    setFormState({ focusedField: null });
   };
 
   return {
