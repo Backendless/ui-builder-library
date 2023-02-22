@@ -81,14 +81,6 @@
       "handlerId": "uploadButtonLabelLogic"
     },
     {
-      "type": "checkbox",
-      "name": "flashOn",
-      "label": "Flash On",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "flashOnLogic"
-    },
-    {
       "type": "select",
       "name": "direction",
       "label": "Direction",
@@ -144,6 +136,17 @@
       "name": "onScannerClick",
       "label": "On Scanner Click Event",
       "handlerDescription": "This event is fired when the user clicks the mouse or taps the scanner area."
+    },
+    {
+      "name": "onStartScanFailed",
+      "label": "On Start Scan Failed",
+      "handlerDescription": "This event is triggered if an error occurs during the start of the scan.",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ]
     }
   ],
   "actions": [
@@ -166,11 +169,6 @@
       "hasReturn": true
     },
     {
-      "id": "hasFlash",
-      "label": "Has Flash",
-      "hasReturn": true
-    },
-    {
       "id": "setCamera",
       "label": "Set Camera",
       "inputs": [
@@ -179,18 +177,6 @@
           "label": "camera"
         }
       ]
-    },
-    {
-      "id": "turnFlashOn",
-      "label": "Turn Flash On"
-    },
-    {
-      "id": "turnFlashOff",
-      "label": "Turn Flash Off"
-    },
-    {
-      "id": "toggleFlash",
-      "label": "Toggle Flash"
     }
   ]
 }
