@@ -22,7 +22,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     resizable,
     cellRenderer: memo(CellComponent),
     filterParams: { buttons: ['apply', 'reset'] }
-  }), []);
+  }), [sortable, filter, floatingFilter, resizable]);
 
   const handleCellClick = useCallback(params => {
     onCellClick({ cellParams: params });
