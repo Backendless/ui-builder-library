@@ -16,7 +16,6 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobValue, setKnobValue] = useState(0);
   const [knobReadOnly, setKnobReadOnly] = useState(!!readOnly);
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
-  const [template, setTemplate] = useState('{value}');
 
   useEffect(() => {
     setKnobReadOnly(!!readOnly);
@@ -31,10 +30,6 @@ export default function KnobComponent({ component, eventHandlers }) {
       setKnobValue(initialValue);
     }
   }, [initialValue]);
-
-  useEffect(() => {
-    setTemplate(templateHandler(valueTemplate));
-  }, [valueTemplate]);
 
   Object.assign(component, {
     setValue   : value => setKnobValue(value),
@@ -63,7 +58,7 @@ export default function KnobComponent({ component, eventHandlers }) {
         min={ minValue }
         step={ step }
         strokeWidth={ dial }
-        valueTemplate={ template }
+        valueTemplate={ validateTemplate(valueTemplate) }
         size={ size }
         valueColor={ valueColor }
         rangeColor={ rangeColor }
@@ -72,14 +67,12 @@ export default function KnobComponent({ component, eventHandlers }) {
   );
 }
 
-const templateHandler = template => {
-  if (typeof template == 'string') {
-    if (template.includes('{value}')) {
-      return template;
-    }
+const validateTemplate = template => {
+  if (typeof template === 'string' && template.includes('{value}')) {
+    return template;
   }
 
-  console.error('Wrong template pattern!');
+  console.error(`Invalid template pattern: ${template}.`);
 
   return '{value}';
 };
