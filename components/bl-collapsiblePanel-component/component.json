@@ -10,20 +10,11 @@
   "properties": [
     {
       "type": "text",
-      "name": "width",
-      "label": "Width",
-      "settingTooltip": "Width of the panel",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "widthLogic"
-    },
-    {
-      "type": "text",
-      "name": "titleDefault",
+      "name": "title",
       "label": "Title",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "titleDefaultLogic",
+      "handlerId": "titleLogic",
       "dataBinding": true,
       "settingTooltip": "Default title of the panel",
       "handlerLabel": "Title Logic",
@@ -32,60 +23,15 @@
     },
     {
       "type": "text",
-      "name": "titleOpen",
-      "label": "Title On Open",
+      "name": "activeTitle",
+      "label": "Active Title",
       "settingTooltip": "Title on opened the panel",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "titleOpenLogic",
+      "handlerId": "activeTitleLogic",
       "handlerDescription": "This is a handler for the logic to determine the title on opened the panel.",
       "dataBinding": true,
-      "handlerLabel": "On Open The Panel Title Logic"
-    },
-    {
-      "type": "color",
-      "name": "background",
-      "label": "Title Background",
-      "settingTooltip": "Background color of the panel title",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "backgroundLogic"
-    },
-    {
-      "type": "color",
-      "name": "color",
-      "label": "Title Color",
-      "settingTooltip": "Color of the panel title",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "colorLogic"
-    },
-    {
-      "type": "text",
-      "name": "fontSize",
-      "label": "Title Font Size",
-      "settingTooltip": "Font-size of the panel title",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "fontSizeLogic"
-    },
-    {
-      "type": "text",
-      "name": "padding",
-      "label": "Title Padding",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "paddingLogic",
-      "settingTooltip": "Padding of the panel title"
-    },
-    {
-      "type": "color",
-      "name": "iconColor",
-      "label": "Icon Color",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "iconColorLogic",
-      "settingTooltip": "Color of the panel title icon"
+      "handlerLabel": "Active Title Logic"
     }
   ],
   "eventHandlers": [

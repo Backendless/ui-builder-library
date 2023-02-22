@@ -1,73 +1,64 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function CollapsiblePanelComponent({ component, elRef, eventHandlers, pods }) {
-  const {
-    style, classList, display, width, titleOpen, titleDefault, background, color, iconColor, fontSize, padding
-  } = component;
+  const { classList, style, display, title, activeTitle } = component;
   const { onOpen, onClose } = eventHandlers;
 
-  const [active, setActive] = useState(null);
+  const [isActive, setIsActive] = useState(false);
+  const [podClass, setPodClass] = useState('');
 
-  const panelContentPod = pods['panelContent'];
+  const changeActive = currentIsActive => {
+    if(currentIsActive) {
+      setIsActive(false);
+      setPodClass('close');
+      onClose();
+    } else {
+      setIsActive(true);
+      setPodClass('open');
+      onOpen();
+    }
+  };
 
-  const titleStyles = { background, color, fontSize, padding };
-
-  const changeActive = () => setActive(!active);
-
-  useEffect(() => {
-    active ? onOpen() : active===false ? onClose() : null;
-  }, [active]);
-
-  const title = useMemo(() => {
-    if (!titleDefault) {
-      return;
+  const titleToShow = useMemo(() => {
+    if (!title) {
+      return null;
     }
 
-    return active ? titleOpen || titleDefault : titleDefault;
-  }, [active, titleOpen, titleDefault]);
+    return isActive ? activeTitle || title : title;
+  }, [isActive, activeTitle, title]);
 
-  component.show = () => setActive(true);
-  component.hide = () => setActive(false);
+  component.show = () => changeActive();
+  component.hide = () => changeActive(true);
 
   if (!display) {
     return null;
   }
 
   return (
-    <div
-      className={ cn('bl-customComponent-collapsiblePanel', ...classList) }
-      style={{ ...style, width }}
-      ref={ elRef }>
-      <PanelTitle
-        styles={ titleStyles }
-        onClickFunction={ changeActive }
-        title={ title }
-        isActive={ active }
-        iconColor={ iconColor }
-      />
-      <div className={ cn('panel-content', { 'open': active, 'close': active === false }) }>
-        { panelContentPod.render() }
+    <div ref={ elRef } className={ cn('bl-customComponent-collapsiblePanel', ...classList) } style={ style }>
+      <PanelTitle title={ titleToShow } isActive={ isActive } onClick={ changeActive } />
+      <div className={ cn('panel-content', podClass) }>
+        { pods['panelContent'].render() }
       </div>
     </div>
   );
 }
 
-export function PanelTitle(props) {
-  const { styles, title, isActive, onClickFunction, iconColor } = props;
+export function PanelTitle({ title, isActive, onClick }) {
 
-  const handleClick = () => onClickFunction(isActive);
+  const handleClick = () => onClick(isActive);
 
   return (
-    <div className="panel-title" style={ styles } aria-expanded={ isActive } role="button" onClick={ handleClick }>
-      { title }
-      <CollapseIcon active={ isActive } fill={ iconColor } />
+    <div className="panel-title" aria-expanded={ isActive } role="button" onClick={ handleClick }>
+      <span className="panel-title-text">{ title }</span>
+      <CollapseIcon active={ isActive } />
     </div>
   );
 }
 
-function CollapseIcon({ active, fill }) {
+function CollapseIcon({ active }) {
   return (
     <svg
       className={ cn('collapse-icon', { 'active': active }) }
@@ -75,7 +66,7 @@ function CollapseIcon({ active, fill }) {
       aria-hidden="true"
       stroke-width="1.5"
       viewBox="0 0 24 24">
-      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill={ fill }></path>
+      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
       <path fill="none" d="M0 0h24v24H0V0z"></path>
     </svg>
   );
