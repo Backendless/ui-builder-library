@@ -10,23 +10,10 @@ export function DateRange(props) {
 
   const daysAmount = differenceInDays(startDate, endDate);
 
-  component.getFromDate = () => startDate;
-  component.setFromDate = fromDate => { setStartDate(new Date(fromDate)) };
-  component.getToDate = () => endDate;
-  component.setToDate = toDate => { setEndDate(new Date(toDate)) };
-  component.getFromAndToDate = () => ({ fromDate: startDate, toDate: endDate });
-  component.setFromAndToDate = (fromDate, toDate) => {
-    setStartDate(new Date(fromDate));
-    setEndDate(new Date(toDate));
-  };
-  component.getDaysAmount = () => daysAmount;
-  component.resetDataInTheCalendar = () => {
-    setStartDate(new Date());
-    setEndDate(new Date());
-  };
+  useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
-  useEffect(() => { setStartDate(() => fromDate ? new Date(fromDate) : new Date('0')) }, [fromDate]);
-  useEffect(() => { setEndDate(() => toDate ? new Date(toDate) : new Date('0')) }, [toDate]);
+  useEffect(() => { setStartDate(new Date(fromDate || 0)) }, [fromDate]);
+  useEffect(() => { setEndDate(new Date(toDate || 0)) }, [toDate]);
 
   const handleStartDateChange = date => {
     setStartDate(date);
@@ -85,6 +72,25 @@ export function DateRange(props) {
 }
 
 const ONE_DAY = 86400000;
+
+function useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
+  Object.assign(component, {
+    getFromDate           : () => startDate,
+    setFromDate           : fromDate => { setStartDate(new Date(fromDate)) },
+    getToDate             : () => endDate,
+    setToDate             : toDate => { setEndDate(new Date(toDate)) },
+    getFromAndToDate      : () => ({ fromDate: startDate, toDate: endDate }),
+    setFromAndToDate      : (fromDate, toDate) => {
+      setStartDate(new Date(fromDate));
+      setEndDate(new Date(toDate));
+    },
+    getDaysAmount         : () => daysAmount,
+    resetDataInTheCalendar: () => {
+      setStartDate(new Date());
+      setEndDate(new Date());
+    }
+  })
+}
 
 function differenceInDays(start, end) {
   if (!start || !end) {
