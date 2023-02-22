@@ -60,6 +60,18 @@
       "handlerLabel": "Floating Filter Logic"
     },
     {
+      "type": "checkbox",
+      "name": "resizable",
+      "label": "Resizable",
+      "settingTooltip": "Users will be able to change the width of the columns by dragging them.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "resizableLogic",
+      "handlerLabel": "Resizable Logic",
+      "handlerDescription": "This handler allows you to add the ability to change column widths."
+    },
+    {
       "type": "json",
       "name": "columnDefs",
       "label": "Column Definition",
