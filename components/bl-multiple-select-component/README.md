@@ -17,7 +17,7 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 | Variant             | *Select* <br/>'outlined' <br/>\| 'filled' <br/>\| 'standart' | 'outlined'           |                           | NO           | YES        | This handler allows you to select a variant of the component.                                                                                                            |
 | Type                | *Select* <br/>'default' <br/>\| 'checkmark' <br/>\| 'chip'   | 'checkmark'          |                           | NO           | YES        | This handler allows you to select a type of the component.                                                                                                               |
 | Value               | *Text*                                                       | ''                   | Value Logic               | YES          | YES        | This handler allows you to add value by default. Enter the value separated by a comma. Signature of value: '`String`, `String`'.                                         |
-| Options             | *JSON*                                                       |                      | Options Logic             | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: list of objects { label: `String`, value: `String`} |
+| Options             | *JSON*                                                       |                      | Options Logic             | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#examples). Signature of options: list of objects { label: `String`, value: `String`} |
 
 ## Events
 
@@ -49,7 +49,7 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 @bl-customComponent-optionChip-backgroundColor: @bl-customComponent-optionSelected-backgroundColor;
 ````
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Adding options to the component:
 
