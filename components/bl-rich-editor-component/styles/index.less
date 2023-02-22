@@ -56,7 +56,7 @@
 @bl-customComponent-richEditor-toolbar-tooltip-heading-1: "Heading 1";
 @bl-customComponent-richEditor-toolbar-tooltip-heading-2: "Heading 2";
 @bl-customComponent-richEditor-toolbar-tooltip-blockquote: "Quote";
-@bl-customComponent-richEditor-toolbar-tooltip-code-block: "Code";
+@bl-customComponent-richEditor-toolbar-tooltip-code: "Code";
 @bl-customComponent-richEditor-toolbar-tooltip-script-sub: "Subscript";
 @bl-customComponent-richEditor-toolbar-tooltip-script-super: "Superscript";
 @bl-customComponent-richEditor-toolbar-tooltip-direction: "Text direction";
@@ -73,9 +73,8 @@
     border-width: @bl-customComponent-richEditor-editor-borderWidth;
     height: @bl-customComponent-richEditor-editor-height;
 
-    pre {
-      background: @bl-customComponent-richEditor-disabledColor;
-      color: contrast(@bl-customComponent-richEditor-disabledColor);
+    code {
+      background: @bl-customComponent-richEditor-backgroundColor;
     }
 
     .ql-editor {
@@ -121,7 +120,7 @@
         }
       }
 
-      @common-tooltips: bold, italic, underline, strike, undo, redo, link, image, video, blockquote, code-block, direction, clean;
+      @common-tooltips: bold, italic, underline, strike, undo, redo, link, image, video, blockquote, code, direction, clean;
       @picker-tooltips: font, size, color, background;
       @list-tooltips: ordered, bullet;
       @header-tooltips: "1", "2";
