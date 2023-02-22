@@ -19,7 +19,7 @@ export default function KnobComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     setKnobReadOnly(!!readOnly);
-  },[readOnly]);
+  }, [readOnly]);
 
   useEffect(() => {
     setKnobDisabled(!!disabled);
@@ -58,7 +58,7 @@ export default function KnobComponent({ component, eventHandlers }) {
         min={ minValue }
         step={ step }
         strokeWidth={ dial }
-        valueTemplate={ valueTemplate }
+        valueTemplate={ validateTemplate(valueTemplate) }
         size={ size }
         valueColor={ valueColor }
         rangeColor={ rangeColor }
@@ -66,3 +66,13 @@ export default function KnobComponent({ component, eventHandlers }) {
     </div>
   );
 }
+
+const validateTemplate = template => {
+  if (typeof template === 'string' && template.includes('{value}')) {
+    return template;
+  }
+
+  console.error(`Invalid template pattern: ${template}.`);
+
+  return '{value}';
+};
