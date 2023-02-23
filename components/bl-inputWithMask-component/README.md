@@ -36,10 +36,7 @@ This component is based on an external library [imask.js](https://github.com/uNm
 `a` - any letter
 `*` - any char
 
-Other chars which is not in custom definitions supposed to be fixed
 `[]` - make input optional
-`{}` - include fixed part in unmasked value
-``` ` ``` - prevent symbols shift back
 
 | Mask                | Input               |
 | ------------------- | ------------------- |
@@ -51,20 +48,22 @@ Other chars which is not in custom definitions supposed to be fixed
 
 1. Add component Input with Mask to page:
 
-    <img src="./image-examples/add-parallax-on-page.jpg" alt="add parallax on page" />
+    <img src="./example-images/add-on-page.jpg" alt="add on page" />
 
 2. In the "On Validate" event, we can further validate each character before changing the value of the component. Just return a valid value or nothing. If you don't need additional validation, you can simply return the "Value" that is in the context block:
 
-    <img src="./image-examples/add-parallax-on-page.jpg" alt="add parallax on page" />
+    <img src="./example-images/on-validate-logic.jpg" alt="onValidate logic" />
 
 3. Now you can see result in the preview. You can input only Number:
 
-    <img src="./image-examples/add-parallax-on-page.jpg" alt="add parallax on page" />
+    <img src="./example-images/first-result.jpg" alt="first result" />
 
-4. Also you can add custom mask to the UI Setting property Mask:
+4. Also, you can add a custom mask to the UI Setting property Mask:
 
-    <img src="./image-examples/add-parallax-on-page.jpg" alt="add parallax on page" />
+    <img src="./example-images/phone-number-mask.jpg" alt="phone number mask" />
+    <img src="./example-images/phone-number-mask-result.jpg" alt="phone number mask result" />
 
 5. And you can create a mask with RegExp:
 
-   <img src="./image-examples/add-parallax-on-page.jpg" alt="add parallax on page" />
+   <img src="./example-images/regexp-mask.jpg" alt="regExp mask" />
+   <img src="./example-images/regexp-mask-result.jpg" alt="regExp mask result" />
