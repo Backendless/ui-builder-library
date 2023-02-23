@@ -18,11 +18,17 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
 
   useEffect(() => {
-    setKnobReadOnly(!!readOnly);
-  },[readOnly]);
+    if (maxValue < 0) {
+      console.error('Maximum value must be greater than zero.');
+    }
+  }, [maxValue]);
 
   useEffect(() => {
-    setKnobDisabled(!!readOnly);
+    setKnobReadOnly(!!readOnly);
+  }, [readOnly]);
+
+  useEffect(() => {
+    setKnobDisabled(!!disabled);
   }, [disabled]);
 
   useEffect(() => {
@@ -54,11 +60,11 @@ export default function KnobComponent({ component, eventHandlers }) {
         value={ knobValue }
         readOnly={ knobReadOnly }
         disabled={ knobDisabled }
-        max={ maxValue }
+        max={ Math.max(maxValue, 0) }
         min={ minValue }
         step={ step }
         strokeWidth={ dial }
-        valueTemplate={ valueTemplate }
+        valueTemplate={ validateTemplate(valueTemplate) }
         size={ size }
         valueColor={ valueColor }
         rangeColor={ rangeColor }
@@ -66,3 +72,13 @@ export default function KnobComponent({ component, eventHandlers }) {
     </div>
   );
 }
+
+const validateTemplate = template => {
+  if (typeof template === 'string' && template.includes('{value}')) {
+    return template;
+  }
+
+  console.error(`Invalid template pattern: ${template}.`);
+
+  return '{value}';
+};

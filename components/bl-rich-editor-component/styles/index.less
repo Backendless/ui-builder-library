@@ -18,8 +18,6 @@
 @bl-customComponent-richEditor-editor-video-height: auto;
 
 @bl-customComponent-richEditor-toolbar-borderWidth: 0px;
-@bl-customComponent-richEditor-toolbar-defaultContent-fontSize: "14px";
-@bl-customComponent-richEditor-toolbar-defaultContent-font: "Arial";
 @bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight: 18px;
 
 @bl-customComponent-richEditor-borderWidth: 0px;
@@ -58,7 +56,7 @@
 @bl-customComponent-richEditor-toolbar-tooltip-heading-1: "Heading 1";
 @bl-customComponent-richEditor-toolbar-tooltip-heading-2: "Heading 2";
 @bl-customComponent-richEditor-toolbar-tooltip-blockquote: "Quote";
-@bl-customComponent-richEditor-toolbar-tooltip-code-block: "Code";
+@bl-customComponent-richEditor-toolbar-tooltip-code: "Code";
 @bl-customComponent-richEditor-toolbar-tooltip-script-sub: "Subscript";
 @bl-customComponent-richEditor-toolbar-tooltip-script-super: "Superscript";
 @bl-customComponent-richEditor-toolbar-tooltip-direction: "Text direction";
@@ -75,9 +73,8 @@
     border-width: @bl-customComponent-richEditor-editor-borderWidth;
     height: @bl-customComponent-richEditor-editor-height;
 
-    pre {
-      background: @bl-customComponent-richEditor-disabledColor;
-      color: contrast(@bl-customComponent-richEditor-disabledColor);
+    code {
+      background: @bl-customComponent-richEditor-backgroundColor;
     }
 
     .ql-editor {
@@ -123,7 +120,7 @@
         }
       }
 
-      @common-tooltips: bold, italic, underline, strike, undo, redo, link, image, video, blockquote, code-block, direction, clean;
+      @common-tooltips: bold, italic, underline, strike, undo, redo, link, image, video, blockquote, code, direction, clean;
       @picker-tooltips: font, size, color, background;
       @list-tooltips: ordered, bullet;
       @header-tooltips: "1", "2";
@@ -184,10 +181,6 @@
       });
     }
 
-    .ql-picker.ql-size .ql-picker-label:not([data-value])::before {
-      content: @bl-customComponent-richEditor-toolbar-defaultContent-fontSize;
-    }
-
     .ql-picker.ql-font .ql-picker-label {
       padding-right: @bl-customComponent-richEditor-toolbar-fontPicker-label-paddingRight;
 
@@ -196,10 +189,6 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-      }
-
-      &:not([data-value])::before {
-        content: @bl-customComponent-richEditor-toolbar-defaultContent-font;
       }
     }
 
@@ -271,81 +260,17 @@
     }
   }
 
-  .ql-font-arial,
-  .ql-font span[data-value="arial"]::before {
-    font-family: arial, helvetica, sans-serif;
-  }
-
-  .ql-font-comic-sans,
-  .ql-font span[data-value="comic-sans"]::before {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-  }
-
-  .ql-font-courier-new,
-  .ql-font span[data-value="courier-new"]::before {
-    font-family: "courier new", courier, monospace;
-  }
-
-  .ql-font-georgia,
-  .ql-font span[data-value="georgia"]::before {
-    font-family: georgia, palatino, serif;
-  }
-
-  .ql-font-helvetica,
-  .ql-font span[data-value="helvetica"]::before {
-    font-family: helvetica, arial, sans-serif
-  }
-
-  .ql-font-lucida,
-  .ql-font span[data-value="lucida"]::before {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  }
-
-  .ql-font-andale-mono,
-  .ql-font span[data-value="andale-mono"]::before {
-    font-family: "andale mono", monospace;
-  }
-
-  .ql-font-book-antiqua,
-  .ql-font span[data-value="book-antiqua"]::before {
-    font-family: "book antiqua", palatino, serif;
-  }
-
-  .ql-font-impact,
-  .ql-font span[data-value="impact"]::before {
-    font-family: impact, sans-serif;
-  }
-
-  .ql-font-tahoma,
-  .ql-font span[data-value="tahoma"]::before {
-    font-family: tahoma, arial, helvetica, sans-serif;
-  }
-
-  .ql-font-terminal,
-  .ql-font span[data-value="terminal"]::before {
-    font-family: terminal, monaco, monospace;
-  }
-
-  .ql-font-times-new-roman,
-  .ql-font span[data-value="times-new-roman"]::before {
-    font-family: "times new roman", times, serif;
-  }
-
-  .ql-font-trebuchet-ms,
-  .ql-font span[data-value="trebuchet-ms"]::before {
-    font-family: "trebuchet ms", geneva, sans-serif
-  }
-
-  .ql-font-verdana,
-  .ql-font span[data-value="verdana"]::before {
-    font-family: verdana, geneva, sans-serif;
-  }
-
-  @fonts: 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48;
+  @fonts: "arial, helvetica, sans-serif", "Comic Sans MS, cursive, sans-serif", "courier new, courier, monospace",
+  "georgia, palatino, serif", "helvetica, arial, sans-serif", "Lucida Sans Unicode, Lucida Grande, sans-serif",
+  "andale mono, monospace", "book antiqua, palatino, serif", "impact, sans-serif",
+  "tahoma, arial, helvetica, sans-serif", "terminal, monaco, monospace", "times new roman, times, serif",
+  "trebuchet ms, geneva, sans-serif", "verdana, geneva, sans-serif";
 
   each(@fonts, {
-    .ql-size-@{value} {
-      font-size: @value * 1px;
+    .ql-font span[data-value=@{value}]::before {
+      @fontFamily: @{value};
+
+      font-family: @fontFamily;
     }
   });
 }

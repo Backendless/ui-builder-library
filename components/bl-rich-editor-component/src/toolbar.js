@@ -1,5 +1,5 @@
 import { ensureMeasure } from './index';
-import { Font, Size } from './use-quill-library';
+import { DefaultStyles, Font, Size } from './use-quill-library';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -60,9 +60,9 @@ const InlineFormattingButtons = React.memo(() => (
 
 const FontSelect = React.memo(() => (
   <span className="ql-formats">
-    <select className="ql-font" defaultValue="arial">
+    <select className="ql-font" defaultValue={ DefaultStyles.fontFamily }>
       { Font.whitelist.map((font, index) => {
-        const fontLabel = font.replace(/-/g, ' ').replace(/(^|\s)\S/g, letter => letter.toUpperCase());
+        const fontLabel = font.split(',')[0].trim().replace(/(^|\s)\S/g, letter => letter.toUpperCase());
 
         return (
           <option value={ font } key={ index }>{ fontLabel }</option>
@@ -74,9 +74,9 @@ const FontSelect = React.memo(() => (
 
 const SizeSelect = React.memo(() => (
   <span className="ql-formats">
-    <select className="ql-size" defaultValue="14">
+    <select className="ql-size" defaultValue={ DefaultStyles.fontSize }>
       { Size.whitelist.map((size, index) => (
-        <option value={ size } key={ index }>{ size }px</option>
+        <option value={ size } key={ index }>{ size }</option>
       )) }
     </select>
   </span>
@@ -132,7 +132,7 @@ const additionalFormats = [
   ],
   [
     { className: 'ql-blockquote' },
-    { className: 'ql-code-block' },
+    { className: 'ql-code' },
   ],
   [
     { className: 'ql-script', value: 'sub' },
