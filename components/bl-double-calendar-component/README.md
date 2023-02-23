@@ -28,16 +28,16 @@ Double Calendar is a component of Backendless UI-Builder designer. The component
 
 ## Actions
 
-| Action                     | Inputs                                 | Returns                                           |
-|----------------------------|----------------------------------------|---------------------------------------------------|
-| Get From Date              |                                        | `String`: current From Date                       |
-| Set From Date              | From Date: `String`                    |                                                   |
-| Get To Date                |                                        | `String`: current To Date                         |
-| Set To Date                | To Date: `String`                      |                                                   |
-| Get From And To Date       |                                        | `Object`: {fromDate: `String`, toDate: `String`}  |
-| Set From And To Date       | From Date: `String`, To Date: `String` |                                                   |
-| Get Days Amount            |                                        | `Number`: the calculated number of days           |
-| Reset Data In The Calendar |                                        |                                                   |
+| Action                                   | Inputs                                 | Returns                                          |
+|------------------------------------------|----------------------------------------|--------------------------------------------------|
+| Get From Date Of Double Calendar         |                                        | `String`: current From Date                      |
+| Set From Date For Double Calendar        | From Date: `String`                    |                                                  |
+| Get To Date Of Double Calendar           |                                        | `String`: current To Date                        |
+| Set To Date For Double Calendar          | To Date: `String`                      |                                                  |
+| Get From And To Date Of Double Calendar  |                                        | `Object`: {fromDate: `String`, toDate: `String`} |
+| Set From And To Date For Double Calendar | From Date: `String`, To Date: `String` |                                                  |
+| Get Days Amount Of Double Calendar       |                                        | `Number`: the calculated number of days          |
+| Reset Date Of Double Calendar            |                                        |                                                  |
 
 ## Styles
 

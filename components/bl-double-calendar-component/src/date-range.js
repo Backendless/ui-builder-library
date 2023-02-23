@@ -12,8 +12,21 @@ export function DateRange(props) {
 
   useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
-  useEffect(() => { setStartDate(new Date(fromDate || 0)) }, [fromDate]);
-  useEffect(() => { setEndDate(new Date(toDate || 0)) }, [toDate]);
+  useEffect(() => {
+    if (!fromDate) {
+      console.error("From Date is not provided!")
+    }
+
+    setStartDate(new Date(fromDate || 0));
+  }, [fromDate]);
+
+  useEffect(() => {
+    if (!toDate) {
+      console.error("To Date is not provided!")
+    }
+
+    setEndDate(new Date(toDate || 0));
+  }, [toDate]);
 
   const handleStartDateChange = date => {
     setStartDate(date);
@@ -75,17 +88,17 @@ const ONE_DAY = 86400000;
 
 function useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
   Object.assign(component, {
-    getFromDate           : () => startDate,
-    setFromDate           : fromDate => { setStartDate(new Date(fromDate)) },
-    getToDate             : () => endDate,
-    setToDate             : toDate => { setEndDate(new Date(toDate)) },
-    getFromAndToDate      : () => ({ fromDate: startDate, toDate: endDate }),
-    setFromAndToDate      : (fromDate, toDate) => {
+    getFromDate     : () => startDate,
+    setFromDate     : fromDate => setStartDate(new Date(fromDate)),
+    getToDate       : () => endDate,
+    setToDate       : toDate => setEndDate(new Date(toDate)),
+    getFromAndToDate: () => ({ fromDate: startDate, toDate: endDate }),
+    setFromAndToDate: (fromDate, toDate) => {
       setStartDate(new Date(fromDate));
       setEndDate(new Date(toDate));
     },
-    getDaysAmount         : () => daysAmount,
-    resetDataInTheCalendar: () => {
+    getDaysAmount   : () => daysAmount,
+    resetDate       : () => {
       setStartDate(new Date());
       setEndDate(new Date());
     }
