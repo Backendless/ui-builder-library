@@ -8,22 +8,22 @@ InnerImageZoom is the component that can be used in Backendless [UI-Builder](htt
 
 ## Configuration
 
-Configuration can be done in the UI Builder or using the Codeless Logic. You have to specify the source of the image that will be displayed in the component and to which the zoom effect will be applied.
+Configuration can be done in the UI Builder or using the Codeless Logic. You have to specify the URL of the image that will be displayed in the component and to which the zoom effect will be applied.
 
 ## Properties
 
-| Property                   | Type     | Default value                                                                                                                        | Logic              | Data Binding | UI Setting | Description                           |
-|----------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|------------|---------------------------------------|
-| Image Source <br> `source` | *Text*   | `https://content.r9cdn.net/rimg/dimg/6d/56/5bd0abd4-city-26896-1670df92320.jpg?width=1366&height=768&xhint=1567&yhint=925&crop=true` | Image Source Logic | YES          | YES        | Specifies the image source to zoom.   |
-| Zoom <br> `zoomIn`         | *Number* | 2                                                                                                                                    |                    | NO           | YES        | Controlled zoom to enlarge the image. |
+| Property           | Type     | Default value                                     | Logic     | Data Binding | UI Setting | Description                                         |
+|--------------------|----------|---------------------------------------------------|-----------|--------------|------------|-----------------------------------------------------|
+| URL <br> `source`  | *Text*   | `https://via.placeholder.com/300x150.png/09f/fff` | URL Logic | YES          | YES        | Specifies the image source to zoom.                 |
+| Zoom <br> `zoomIn` | *Number* | 200                                               |           | NO           | YES        | Controlled zoom in percent(%) to enlarge the image. |
 
 ## Events
 
-| Name                | Triggers                                                           | Context Blocks  |
-|---------------------|--------------------------------------------------------------------|-----------------|
-| On Mouse Move Event | Triggered when the user moves the mouse over or touches the image. | Event: `Object` |
-| On Mouse Over Event | Triggered when the mouse pointer hovers over the image.            |                 |
-| On Mouse Out Event  | Triggered when the mouse pointer leaves the image.                 |                 |
+| Name                | Triggers                                                 | Context Blocks  |
+|---------------------|----------------------------------------------------------|-----------------|
+| On Mouse Move Event | when the user moves the mouse over or touches the image. | Event: `Object` |
+| On Mouse Over Event | when the mouse pointer hovers over the image.            |                 |
+| On Mouse Out Event  | when the mouse pointer leaves the image.                 |                 |
 
 ## Styles
 

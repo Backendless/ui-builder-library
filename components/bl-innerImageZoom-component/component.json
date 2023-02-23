@@ -11,23 +11,23 @@
     {
       "type": "text",
       "name": "source",
-      "label": "Image Source",
+      "label": "URL",
       "settingTooltip": "Choose the image source to zoom",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "sourceLogic",
-      "handlerLabel": "Image Source Logic",
+      "handlerLabel": "URL Logic",
       "handlerDescription": "The logic to determine the image source to zoom.",
       "dataBinding": true,
-      "defaultValue": "https://content.r9cdn.net/rimg/dimg/6d/56/5bd0abd4-city-26896-1670df92320.jpg?width=1366&height=768&xhint=1567&yhint=925&crop=true"
+      "defaultValue": "https://via.placeholder.com/300x150.png/09f/fff"
     },
     {
       "type": "number",
       "name": "zoomIn",
       "label": "Zoom",
-      "settingTooltip": "Select zoom to enlarge the image.",
+      "settingTooltip": "Select zoom in percent(%) to enlarge the image.",
       "showInSettings": true,
-      "defaultValue": "2",
+      "defaultValue": "200",
       "hasLogicHandler": false,
       "handlerId": "zoomInLogic"
     }

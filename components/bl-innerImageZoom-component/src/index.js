@@ -1,21 +1,17 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
+
+import useStyles from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
+const DEFAULT_ZOOM_POSITION = '0% 0%';
 
 export default function InnerImageZoomComponent({ component, elRef, eventHandlers }) {
   const { classList, style, display, source, zoomIn } = component;
   const { onMouseOver, onMouseOut, onMouseMove } = eventHandlers;
 
-  const src = useMemo(() => source, [source]);
-  const zoom = useMemo(() => Math.max(1, zoomIn), [zoomIn]);
-
-  const [zoomPosition, setZoomPosition] = useState('0% 0%');
-
-  const figureStyle = useMemo(() => ({
-    backgroundImage   : `url(${ src })`,
-    backgroundPosition: zoomPosition,
-    backgroundSize    : `${ zoom * 100 }% ${ zoom * 100 }%`,
-  }), [src, zoomPosition, zoom]);
+  const zoom = Math.max(100, zoomIn);
+  const [zoomPosition, setZoomPosition] = useState(DEFAULT_ZOOM_POSITION);
+  const figureStyle = useStyles(source, zoomPosition, zoom);
 
   const handleMouseMove = event => {
     const { left, top, width, height } = event.target.getBoundingClientRect();
@@ -34,11 +30,11 @@ export default function InnerImageZoomComponent({ component, elRef, eventHandler
     <div ref={ elRef } className={ cn('bl-customComponent-innerImageZoom', ...classList) } style={ style }>
       <figure
         className="zoom-content"
-        style={ figureStyle }
+        style={ figureStyle.figure }
         onMouseOver={ onMouseOver }
         onMouseMove={ handleMouseMove }
         onMouseOut={ onMouseOut }>
-        <img src={ src } className="img" />
+        <img src={ source } className="img" />
       </figure>
     </div>
   );
