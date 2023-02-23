@@ -2,7 +2,7 @@ import { useEffect, useMemo, useCallback, useState } from 'react';
 import { translatePopover } from './helpers';
 
 export function Tooltip({ targetRef, position, popoverContent }) {
-  const [validatePosition, setValidatePosition] = useState(position);
+  const [validPosition, setValidPosition] = useState(position);
   const root = useRoot();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function Tooltip({ targetRef, position, popoverContent }) {
     if (targetRef) {
       const { leftShift, topShift, newPosition } = translatePopover(targetRef, root, position);
 
-      setValidatePosition(newPosition);
+      setValidPosition(newPosition);
 
       root.style.transform = `translate3d(${ leftShift }px, ${ topShift }px, 0px)`;
     }
@@ -35,7 +35,7 @@ export function Tooltip({ targetRef, position, popoverContent }) {
 
   return ReactDOM.createPortal(
     <>
-      <div className={ `popover-arrow popover-arrow--${ validatePosition }` }></div>
+      <div className={ `popover-arrow popover-arrow--${ validPosition }` }></div>
       { popoverContent.render() }
     </>,
     root

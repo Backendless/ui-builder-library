@@ -43,30 +43,30 @@ export const translatePopover = (targetRef, contentElement, position) => {
     }
   };
 
-  const PositionCheck = {
-    left  : () => (
+  const PositionValidator = {
+    [Position.LEFT]  : () => (
       targetX >= contentWidth
         && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
         && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter
     ),
-    right : () => (
+    [Position.RIGHT] : () => (
       document.documentElement.clientWidth - targetRight >= contentWidth
         && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
         && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter
     ),
-    top   : () => (
+    [Position.TOP]   : () => (
       targetY >= contentHeight
         && (targetX + targetVerticalCenter) >= contentVerticalCenter
         && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter
     ),
-    bottom: () => (
+    [Position.BOTTOM]: () => (
       window.innerHeight - targetBottom >= contentHeight
         && (targetX + targetVerticalCenter) >= contentVerticalCenter
         && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter
     ),
 };
 
-  return validatePosition(position, PositionCheck, ShiftHandler);
+  return validatePosition(position, PositionValidator, ShiftHandler);
 };
 
 const getOffset = (el) => {
@@ -77,16 +77,14 @@ const getOffset = (el) => {
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
 };
 
-const validatePosition = (position, PositionCheck, ShiftHandler) => {
-  if (PositionCheck[position]()) {
+const validatePosition = (position, PositionValidator, ShiftHandler) => {
+  if (PositionValidator[position]()) {
     return { ...ShiftHandler[position], newPosition: position };
   }
 
-  for (const key in Position) {
-    const side = Position[key];
-
+  for (const side of Object.values(Position)) {
     if (position !== side) {
-      if (PositionCheck[side]()) {
+      if (PositionValidator[side]()) {
         return { ...ShiftHandler[side], newPosition: side };
       }
     }
