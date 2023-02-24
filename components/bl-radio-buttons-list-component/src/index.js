@@ -20,7 +20,7 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
   component.getValue = () => selectedValue;
   component.setValue = value => setSelectedValue(value);
   component.getOptions = () => optionsList;
-  component.setOptions = options => setOptionsList(options);
+  component.setOptions = options => setOptionsList(validate(options));
 
   useEffect(() => {
     setOptionsList(validate(options));
@@ -40,12 +40,13 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
     <div
       style={ style }
       className={ classes }>
-      { optionsList.map(({ label, value }) => (
+      { optionsList.map(({ label, value, disabled }) => (
         <RadioButton
           key={ value }
           checked={ value === selectedValue }
           label={ label }
           value={ value }
+          disabled={ disabled || false }
           handleChange={ handleChange }
         />
       )) }
