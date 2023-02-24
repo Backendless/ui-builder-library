@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import primereact from './lib/primereact.min';
 import {
@@ -128,14 +128,14 @@ function useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode)
     }
   };
 
-  const onSelectedNodeChange = e => {
+  const onSelectedNodeChange = useCallback(e => {
     const selectedItems = getSelectedItems(e.value, nodes, selectionMode);
 
     setSelectedNodeKey(e.value);
     onChange({ selectedItems });
-  };
+  }, [nodes, onChange, selectionMode, setSelectedNodeKey]);
 
-  const updateNodesState = selectedNodeKeys => {
+  const updateNodesState = useCallback(selectedNodeKeys => {
     const expandedKeysMap = { ...expandedKeys };
     const options = [...nodes];
 
@@ -146,7 +146,7 @@ function useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode)
     validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMap);
     setSelectedNodeKey(selectedNodeKeys);
     setExpandedKeys(expandedKeysMap);
-  };
+  }, [expandedKeys, keysMap, nodes, selectionMode, setSelectedNodeKey]);
 
   return {
     expandAll, collapseAll, onSelectedNodeChange, onToggle, onNodeSelect,

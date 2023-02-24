@@ -125,8 +125,7 @@ function updateSelectedItems(node, selectedItems, selectionMode) {
   const { label, data } = node;
 
   if (selectionMode === SelectionMode.CHECKBOX) {
-    selectedItems[node.key].data = data;
-    selectedItems[node.key].label = label;
+    selectedItems[node.key] = { ...selectedItems[node.key], data, label };
   } else {
     selectedItems[node.key] = { data, label };
   }
@@ -139,11 +138,7 @@ export function updateKeysMap(node, keys) {
 
   keys[node.key] = true;
 
-  if (!node.children) {
-    return;
-  }
-
-  for (const childNode of node.children) {
+  for (const childNode of node.children || []) {
     updateKeysMap(childNode, keys);
   }
 }
