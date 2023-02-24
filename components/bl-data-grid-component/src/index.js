@@ -9,7 +9,8 @@ function CellComponent(params) {
 
 export default function DataGridComponent({ component, eventHandlers }) {
   const {
-    classList, display, style, disabled, sortable, filter, floatingFilter, height, width, columnDefs, rowData, theme
+    classList, display, style, disabled, sortable, filter, floatingFilter,
+    resizable, columnDefs, rowData, height, width, theme
   } = component;
   const { onCellClick } = eventHandlers;
 
@@ -18,9 +19,10 @@ export default function DataGridComponent({ component, eventHandlers }) {
     filter,
     sortable,
     floatingFilter,
+    resizable,
     cellRenderer: memo(CellComponent),
     filterParams: { buttons: ['apply', 'reset'] }
-  }), []);
+  }), [sortable, filter, floatingFilter, resizable]);
 
   const handleCellClick = useCallback(params => {
     onCellClick({ cellParams: params });
