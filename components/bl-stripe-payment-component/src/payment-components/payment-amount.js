@@ -1,11 +1,13 @@
 import { useRef } from 'react';
 
-export function PaymentAmount({ component }) {
-  const { amount, minAmount, fixedAmount, currency } = component;
+import { validatePaymentAmount } from '../payment-form';
+
+export function PaymentAmount({ component, amount }) {
+  const { minAmount, fixedAmount, currency, amountDecimalPlaces } = component;
   const amountRef = useRef(null);
 
   const changeAmount = e => {
-    component.amount = Number(e.target.value);
+    component.amount = validatePaymentAmount(e.target.value, amountDecimalPlaces);
     amountRef.current.value = amount;
   };
 
