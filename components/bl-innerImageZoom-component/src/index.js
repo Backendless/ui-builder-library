@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import useStyles from './helpers';
+import { useMemo, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 const DEFAULT_ZOOM_POSITION = '0% 0%';
@@ -30,7 +28,7 @@ export default function InnerImageZoomComponent({ component, elRef, eventHandler
     <div ref={ elRef } className={ cn('bl-customComponent-innerImageZoom', ...classList) } style={ style }>
       <figure
         className="zoom-content"
-        style={ figureStyle.figure }
+        style={ figureStyle }
         onMouseOver={ onMouseOver }
         onMouseMove={ handleMouseMove }
         onMouseOut={ onMouseOut }>
@@ -38,4 +36,12 @@ export default function InnerImageZoomComponent({ component, elRef, eventHandler
       </figure>
     </div>
   );
+}
+
+function useStyles(src, zoomPosition, zoom) {
+  return useMemo(() => ({
+    backgroundImage   : `url(${ src })`,
+    backgroundPosition: zoomPosition,
+    backgroundSize    : `${ zoom }% ${ zoom }%`,
+  }), [src, zoomPosition, zoom]);
 }
