@@ -29,6 +29,24 @@ const KeysSelector = {
   },
 };
 
+const ItemsSelector = {
+  [SelectionMode.SINGLE]  : (selectedItems, node) => {
+    const { label, data } = node;
+
+    Object.assign(selectedItems, { data, label });
+  },
+  [SelectionMode.MULTIPLE]: (selectedItems, node) => {
+    const { key, label, data } = node;
+
+    selectedItems[key] = { data, label };
+  },
+  [SelectionMode.CHECKBOX]: (selectedItems, node) => {
+    const { key, label, data } = node;
+
+    selectedItems[key] = { ...selectedItems[key], data, label };
+  },
+};
+
 export function getSelectedKeys(selectedOptionKey, selectionMode) {
   return KeysSelector[selectionMode](selectedOptionKey);
 }
@@ -98,7 +116,7 @@ export function getSelectedItems(selectedNodeKeys, nodes, selectionMode) {
     return null;
   }
 
-  const selectedItems = selectionMode === SelectionMode.SINGLE ? { [selectedNodeKeys]: true } : { ...selectedNodeKeys };
+  const selectedItems = selectionMode === SelectionMode.SINGLE ? { key: selectedNodeKeys } : { ...selectedNodeKeys };
 
   for (const childNode of nodes) {
     handleNode(childNode, selectedItems, selectionMode);
@@ -108,26 +126,12 @@ export function getSelectedItems(selectedNodeKeys, nodes, selectionMode) {
 }
 
 function handleNode(node, selectedItems, selectionMode) {
-  if (selectedItems[node.key]) {
-    updateSelectedItems(node, selectedItems, selectionMode);
+  if (selectedItems[node.key] || selectedItems.key === node.key) {
+    ItemsSelector[selectionMode](selectedItems, node);
   }
 
-  if (!node.children) {
-    return;
-  }
-
-  for (const childNode of node.children) {
+  for (const childNode of node.children || []) {
     handleNode(childNode, selectedItems, selectionMode);
-  }
-}
-
-function updateSelectedItems(node, selectedItems, selectionMode) {
-  const { label, data } = node;
-
-  if (selectionMode === SelectionMode.CHECKBOX) {
-    selectedItems[node.key] = { ...selectedItems[node.key], data, label };
-  } else {
-    selectedItems[node.key] = { data, label };
   }
 }
 

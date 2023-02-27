@@ -26,15 +26,15 @@ TreeSelect is a component for Backendless [UI-Builder](https://backendless.com/d
 
 ## Events
 
-| Name              | Triggers                             | Context Blocks                      |
-|-------------------|--------------------------------------|-------------------------------------|
-| On Show Event     | when the overlay is shown            |                                     |
-| On Hide Event     | when the overlay is hidden           |                                     |
-| On Change Event   | when the user changes selected items | Changed Value: `String` \| `Object` |
-| On Select Event   | when the user selects the item       | Selected Item: `Object`             |
-| On Unselect Event | when the user deselects the item     | Unselected Item: `Object`           |
-| On Expand Event   | when the user expands the item       | Expanded Item: `Object`             |
-| On Collapse Event | when the user collapses the item     | Collapsed Item: `Object`            |
+| Name              | Triggers                             | Context Blocks                                                                                                                                                                                                                                                                                          |
+|-------------------|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| On Show Event     | when the overlay is shown            |                                                                                                                                                                                                                                                                                                         |
+| On Hide Event     | when the overlay is hidden           |                                                                                                                                                                                                                                                                                                         |
+| On Change Event   | when the user changes selected items | Changed Value: `Object`. <br/> Signature for Single Mode: `{ key: String, data: Any, label: String }`. <br/> Signature for Multiple Mode: `{ key: { data: Any, label: String }}`. <br/> Signature for Checkbox Mode: `{ key: { checked: Boolean, partialChecked: Boolean, data: Any, label: String }}`. |
+| On Select Event   | when the user selects the item       | Selected Item: `Object`                                                                                                                                                                                                                                                                                 |
+| On Unselect Event | when the user deselects the item     | Unselected Item: `Object`                                                                                                                                                                                                                                                                               |
+| On Expand Event   | when the user expands the item       | Expanded Item: `Object`                                                                                                                                                                                                                                                                                 |
+| On Collapse Event | when the user collapses the item     | Collapsed Item: `Object`                                                                                                                                                                                                                                                                                |
 
 ## Actions
 
