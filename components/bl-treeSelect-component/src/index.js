@@ -19,6 +19,7 @@ export default function TreeSelectComponent({ component, eventHandlers, elRef })
   const [selectedNodeKey, setSelectedNodeKey] = useState(selectedOptionKey);
 
   const scrollHeight = useMemo(() => ensureMeasure('max-height', optionsPanelHeight), [optionsPanelHeight]);
+  const getElRef = useCallback(el => elRef.current = el?.getElement(), [elRef]);
 
   const {
     expandAll, collapseAll, onSelectedNodeChange, onToggle, onNodeSelect,
@@ -50,7 +51,7 @@ export default function TreeSelectComponent({ component, eventHandlers, elRef })
 
   return (
     <TreeSelect
-      ref={ el => elRef.current = el?.getElement() }
+      ref={ getElRef }
       className={ cn('bl-customComponent-treeSelect', classList) }
       style={ style }
       value={ selectedNodeKey }
