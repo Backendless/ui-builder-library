@@ -10,7 +10,7 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 | Property | Type       | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                                             |
 |----------|------------|---------------|----------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                                         |
-| Options  | *JSON*     | `[]`          | Options Logic  | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: List of object {value: `String`, label: `String`}. |
+| Options  | *JSON*     | `[]`          | Options Logic  | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#examples). Signature of options: List of object {value: `String`, label: `String`}. |
 | Value    | *Text*     |               | Value Logic    | YES          | YES        | This handler allows you to select value by default.                                                                                                                     |
 
 ## Events
@@ -52,7 +52,7 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 @bl-customComponent-radioButtonsList-radioButtonIcon-backgroundColor-onHover: rgba(@themePrimary, 0.04);
 ````
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Adding options to component:
 
