@@ -21,8 +21,8 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    setColumns(() => (columnDefs || []));
-    setRows(() => (rowData || []));
+    setColumns(columnDefs || []);
+    setRows(rowData || []);
   }, [columnDefs, rowData]);
 
   const defaultColDef = useMemo(() => ({
