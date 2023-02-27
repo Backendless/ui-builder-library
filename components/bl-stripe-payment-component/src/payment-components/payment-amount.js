@@ -3,9 +3,7 @@ import { useMemo } from 'react';
 export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   const { minAmount, fixedAmount, currency, amountDecimalPlaces } = component;
 
-  const amountPattern = useMemo(() => {
-    return new RegExp('^[0-9]*(\\.[0-9]{0,' + amountDecimalPlaces + '})?$');
-  }, [amountDecimalPlaces]);
+  const amountPattern = useAmountPattern(amountDecimalPlaces, { strictEnding: true });
 
   const changeAmount = event => {
     const amount = event.target.value;
@@ -36,4 +34,14 @@ export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
       </div>
     </div>
   );
+}
+
+export function useAmountPattern(amountDecimalPlaces, options) {
+  const { strictEnding } = options;
+
+  return useMemo(() => {
+    const endCharacter = strictEnding ? '$' : '';
+
+    return new RegExp('^[0-9]*(\\.[0-9]{0,' + amountDecimalPlaces + '})?' + endCharacter);
+  }, [amountDecimalPlaces, strictEnding]);
 }

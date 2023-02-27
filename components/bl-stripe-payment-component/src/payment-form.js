@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useCardElement } from './helpers/use-card-element';
 import { CardElement } from './lib/react-stripe.umd.min';
 import { BillingDetails } from './payment-components/billing-details';
-import { PaymentAmount } from './payment-components/payment-amount';
+import { PaymentAmount, useAmountPattern } from './payment-components/payment-amount';
 
 export function PaymentForm(props) {
   const { component, eventHandlers, setIsLoading, setTransactionDetails } = props;
@@ -14,10 +14,7 @@ export function PaymentForm(props) {
 
   const cardElementRef = useRef(null);
   const formRef = useRef(null);
-
-  const amountPattern = useMemo(() => {
-    return new RegExp('^[0-9]*(\\.[0-9]{0,' + amountDecimalPlaces + '})?');
-  }, [amountDecimalPlaces]);
+  const amountPattern = useAmountPattern(amountDecimalPlaces, { strictEnding: false });
 
   useEffect(() => {
     if (paymentAmount !== amount) {
