@@ -11,13 +11,15 @@
     {
       "type": "json",
       "name": "states",
-      "showInSettings": false,
-      "defaultValue": "{}",
+      "showInSettings": true,
+      "defaultValue": "{\n  \"default-state\": {\n    \"gradients\": [\n      [\"#834d9b\",\n        \"#d04ed6\"],\n      [\"#1CD8D2\",\n        \"#93EDC7\"]\n    ],\n    \"transitionSpeed\": 5000,\n    \"loop\": true\n  },\n  \"dark-state\": {\n    \"gradients\": [\n      [\"#757F9A\",\n        \"#D7DDE8\"],\n      [\"#5C258D\",\n        \"#4389A2\"]\n    ],\n    \"transitionSpeed\": 5000,\n    \"loop\": true\n  }\n}",
       "hasLogicHandler": true,
       "handlerId": "statesLogic",
       "handlerLabel": "States Logic",
-      "handlerDescription": "This is a handler for the logic to determine the object containing all the states. Signature of states: {}. Signature of state: { gradients: [...[...String]] || [...{color: String, pos: Number}], transitionSpeed: Number, loop: Boolean}.",
-      "dataBinding": true
+      "handlerDescription": "This is a handler for the logic to determine the object containing all the states.",
+      "dataBinding": true,
+      "label": "States",
+      "settingTooltip": "States Data"
     },
     {
       "type": "select",
@@ -354,6 +356,5 @@
       "id": "granimContent",
       "dataContainer": true
     }
-  },
-  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"granimContent\" data-uid=\"b8828219095d33ecaffe9d3c6ba4e2ae\" data-pod-container=\"true\" data-data-container=\"true\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;min-height:100px;min-width:100px;background-color:#b6cdf8;\"></div>"
+  }
 }
