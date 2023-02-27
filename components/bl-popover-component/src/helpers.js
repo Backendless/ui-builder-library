@@ -1,45 +1,72 @@
 const Position = {
   TOP   : 'top',
   RIGHT : 'right',
-  BOTTOM: 'bottom',
   LEFT  : 'left',
+  BOTTOM: 'bottom',
 };
 
-export const translatePopover = (contentElement, root, position) => {
-  const rootOffset = getOffset(root);
+export const translatePopover = (targetRef, contentElement, position) => {
   const contentOffset = getOffset(contentElement);
+  const targetOffset = getOffset(targetRef);
 
+  const targetHorizontalCenter = targetRef.clientHeight / 2;
   const contentHorizontalCenter = contentElement.clientHeight / 2;
-  const rootHorizontalCenter = root.clientHeight / 2;
-  const contentContainerVerticalCenter = contentElement.clientWidth / 2;
-  const rootVerticalCenter = root.clientWidth / 2;
+  const targetVerticalCenter = targetRef.clientWidth / 2;
+  const contentVerticalCenter = contentElement.clientWidth / 2;
 
-  const horizontalTopShift = contentOffset.top - rootOffset.top + contentHorizontalCenter - rootHorizontalCenter;
-  const verticalLeftShift = contentOffset.left + contentContainerVerticalCenter - rootVerticalCenter;
+  const horizontalTopShift = targetOffset.top - contentOffset.top + targetHorizontalCenter - contentHorizontalCenter;
+  const verticalLeftShift = targetOffset.left + targetVerticalCenter - contentVerticalCenter;
 
+  const {
+    width: targetWidth, height: targetHeight,
+    x: targetX, y: targetY,
+    right: targetRight, bottom: targetBottom
+  } = targetRef.getBoundingClientRect();
   const { width: contentWidth, height: contentHeight } = contentElement.getBoundingClientRect();
-  const { width: rootWidth, height: rootHeight } = root.getBoundingClientRect();
 
   const ShiftHandler = {
     [Position.RIGHT] : {
       topShift : horizontalTopShift,
-      leftShift: contentOffset.left + contentWidth + root.firstChild.clientHeight + rootOffset.left
+      leftShift: targetOffset.left + targetWidth + contentElement.firstChild.clientHeight + contentOffset.left
     },
     [Position.LEFT]  : {
       topShift : horizontalTopShift,
-      leftShift: contentOffset.left - rootWidth - root.firstChild.clientHeight + rootOffset.left
+      leftShift: targetOffset.left - contentWidth - contentElement.firstChild.clientHeight + contentOffset.left
     },
     [Position.TOP]   : {
-      topShift : contentOffset.top - rootOffset.top - rootHeight - root.firstChild.clientHeight,
+      topShift : targetOffset.top - contentOffset.top - contentHeight - contentElement.firstChild.clientHeight,
       leftShift: verticalLeftShift
     },
     [Position.BOTTOM]: {
-      topShift : contentOffset.top + contentHeight - rootOffset.top + root.firstChild.clientHeight,
+      topShift : targetOffset.top + targetHeight - contentOffset.top + contentElement.firstChild.clientHeight,
       leftShift: verticalLeftShift
     }
   };
 
-  return ShiftHandler[position];
+  const PositionValidator = {
+    [Position.LEFT]  : () => (
+      targetX >= contentWidth
+        && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
+        && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter
+    ),
+    [Position.RIGHT] : () => (
+      document.documentElement.clientWidth - targetRight >= contentWidth
+        && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
+        && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter
+    ),
+    [Position.TOP]   : () => (
+      targetY >= contentHeight
+        && (targetX + targetVerticalCenter) >= contentVerticalCenter
+        && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter
+    ),
+    [Position.BOTTOM]: () => (
+      window.innerHeight - targetBottom >= contentHeight
+        && (targetX + targetVerticalCenter) >= contentVerticalCenter
+        && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter
+    ),
+};
+
+  return validatePosition(position, PositionValidator, ShiftHandler);
 };
 
 const getOffset = (el) => {
@@ -49,3 +76,19 @@ const getOffset = (el) => {
 
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
 };
+
+const validatePosition = (position, PositionValidator, ShiftHandler) => {
+  if (PositionValidator[position]()) {
+    return { ...ShiftHandler[position], newPosition: position };
+  }
+
+  for (const side of Object.values(Position)) {
+    if (position !== side) {
+      if (PositionValidator[side]()) {
+        return { ...ShiftHandler[side], newPosition: side };
+      }
+    }
+  }
+
+  return { ...ShiftHandler[position], newPosition: position };
+}

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const { cn } = BackendlessUI.CSSUtils;
 
 export const Others = ({ component, eventHandlers, transitionsContainerPod, setIsOpen, isOpen }) => {
-  const { classList, style, variants, animationDuration } = component;
+  const { classList, style, variants, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const Others = ({ component, eventHandlers, transitionsContainerPod, setI
   useEffect(() => {
     const endAnimationTimeout = setTimeout(() => {
       onEndAnimation();
-    }, animationDuration);
+    }, duration);
 
     return () => {
       clearTimeout(endAnimationTimeout);
@@ -34,7 +34,7 @@ export const Others = ({ component, eventHandlers, transitionsContainerPod, setI
   return (
     <div
       className={ cn('bl-customComponent-transitions', variants, { [variants + '--open']: isOpen }, classList) }
-      style={ { ...style, transitionDuration: animationDuration + 'ms' } }>
+      style={ { ...style, transitionDuration: duration + 'ms' } }>
       { transitionsContainerPod.render() }
     </div>
   );

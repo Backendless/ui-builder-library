@@ -52,7 +52,7 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 @bl-customComponent-radioButtonsList-radioButtonIcon-backgroundColor-onHover: rgba(@themePrimary, 0.04);
 ````
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Adding options to component:
 
