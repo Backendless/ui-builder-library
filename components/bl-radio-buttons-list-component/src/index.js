@@ -4,7 +4,7 @@ import { RadioButton } from './components';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function RadioButtonsListComponent({ component, eventHandlers }) {
+export default function RadioButtonsListComponent({ component, eventHandlers, elRef }) {
   const { classList, style, display, disabled, options, value } = component;
   const { onChange } = eventHandlers;
 
@@ -38,6 +38,7 @@ export default function RadioButtonsListComponent({ component, eventHandlers }) 
 
   return (
     <div
+      ref={ elRef }
       style={ style }
       className={ classes }>
       { optionsList.map(({ label, value, disabled }) => (
