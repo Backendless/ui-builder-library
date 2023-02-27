@@ -2,6 +2,8 @@
 
 Input with Mask is a component of Backendless UI-Builder designer. This allows you to add input with mask.
 
+This component is based on an external library [imask.js](https://github.com/uNmAnNeR/imaskjs)
+
 ## Properties
 
 | Property                            | Type                                  | Default Value | Logic                  | Data Binding | UI Setting | Description                                                                                                                                                                                                                                               |
@@ -27,3 +29,41 @@ Input with Mask is a component of Backendless UI-Builder designer. This allows y
 @bl-customComponent-inputWithMask-backgroundColor: @appBackgroundColor;
 @bl-customComponent-inputWithMask-textColor: @appTextColor;
 ````
+
+## Mask Example
+
+`0` - any digit
+`a` - any letter
+`*` - any char
+
+`[]` - make input optional
+
+| Mask                | Input               |
+| ------------------- | ------------------- |
+| `+1 (000) 000-0000` | `+1 (555) 555-1234` |
+| `000-aaa-000-aaa`   | `254-jle-634-lji`   |
+| `****/****/****`    | `jie./kao4/1f?.`    |
+
+## Usage guide
+
+1. Add component Input with Mask to page:
+
+    <img src="./example-images/add-on-page.jpg" alt="add on page" />
+
+2. In the "On Validate" event, we can further validate each character before changing the value of the component. Just return a valid value or nothing. If you don't need additional validation, you can simply return the "Value" that is in the context block:
+
+    <img src="./example-images/on-validate-logic.jpg" alt="onValidate logic" />
+
+3. Now you can see result in the preview. You can input only Number:
+
+    <img src="./example-images/first-result.jpg" alt="first result" />
+
+4. Also, you can add a custom mask to the UI Setting property Mask:
+
+    <img src="./example-images/phone-number-mask.jpg" alt="phone number mask" />
+    <img src="./example-images/phone-number-mask-result.jpg" alt="phone number mask result" />
+
+5. And you can create a mask with RegExp:
+
+   <img src="./example-images/regexp-mask.jpg" alt="regExp mask" />
+   <img src="./example-images/regexp-mask-result.jpg" alt="regExp mask result" />
