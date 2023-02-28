@@ -171,9 +171,9 @@ export function formatCreditCardNumber(value, card) {
     parts = parts.filter(p => p);
 
     return parts.join(' ');
-  } else {
-    return parts[0];
   }
+
+  return parts[0];
 }
 
 export function formatCVC(value, card) {
@@ -230,9 +230,13 @@ export function formatExpirationDate(expiry) {
 export function validateCardDetails(card, cardNumber, expiry, cvc) {
   if (!validateCardNumber(cardNumber, card)) {
     throw new Error(ValidationErrorMessages.cardNumber);
-  } else if (!validateCardExpiry(expiry)) {
+  }
+
+  if (!validateCardExpiry(expiry)) {
     throw new Error(ValidationErrorMessages.expiry);
-  } else if (!validateCardCVC(cvc, card)) {
+  }
+
+  if (!validateCardCVC(cvc, card)) {
     throw new Error(ValidationErrorMessages.cvc);
   }
 }
@@ -305,8 +309,4 @@ function checkByLuhnAlgorithm(value) {
   }
 
   return sum % 10 === 0;
-}
-
-export function ensureMeasure(propertyName, value) {
-  return CSS.supports(propertyName, value) ? value : value + 'px';
 }

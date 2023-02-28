@@ -2,18 +2,14 @@ import { useEffect, useReducer, useState } from 'react';
 
 import { CardForm } from './card-form';
 import { CardPreview } from './card-preview';
-import {
-  ensureMeasure, formatCVC, getCardByNumber, validateCardCVC, validateCardExpiry, validateCardNumber,
-} from './helpers';
+import { formatCVC, getCardByNumber, validateCardCVC, validateCardExpiry, validateCardNumber } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function CreditCardComponent({ component, eventHandlers, elRef }) {
-  const {
-    display, classList, style, direction, borderWidth, borderStyle, borderColor, cardPreviewVisibility, cvcVisibility,
-  } = component;
+const initialFormState = { cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: null };
 
-  const initialFormState = { cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: null };
+export default function CreditCardComponent({ component, eventHandlers, elRef }) {
+  const { display, classList, style, direction, cardPreviewVisibility, cvcVisibility } = component;
 
   const [card, setCard] = useState();
   const [formState, setFormState] = useObjectState(initialFormState);
@@ -34,13 +30,7 @@ export default function CreditCardComponent({ component, eventHandlers, elRef })
     }
   }, [card]);
 
-  const styles = {
-    flexDirection: direction,
-    borderWidth  : ensureMeasure('border-width', borderWidth),
-    borderStyle,
-    borderColor,
-    ...style,
-  };
+  const styles = { flexDirection: direction, ...style };
 
   Object.assign(component, {
     clearForm     : () => setFormState(initialFormState),
@@ -81,7 +71,7 @@ function useObjectState(initialState) {
   initialState = useState(initialState)[0];
 
   return useReducer((state, patch) => {
-    const changes = patch instanceof Function ? patch(state) : patch;
+    const changes = typeof patch === 'function' ? patch(state) : patch;
 
     const changed = Object.entries(changes).some(([key, value]) => state[key] !== value);
 
