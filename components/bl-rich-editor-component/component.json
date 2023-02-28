@@ -120,6 +120,16 @@
     },
     {
       "type": "text",
+      "name": "scrollingContainer",
+      "label": "Scrolling Container",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "scrollingContainerLogic",
+      "handlerLabel": "Scrolling Container Logic",
+      "handlerDescription": "This is a handler for the logic to determine DOM Element or a CSS selector for DOM Element, indicating which container has scrollbars. Specify only when the editor is set to auto grow its height."
+    },
+    {
+      "type": "text",
       "name": "borderWidth",
       "label": "Border Width",
       "showInSettings": true,
