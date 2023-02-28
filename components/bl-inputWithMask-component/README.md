@@ -39,11 +39,12 @@ This component is based on an external library [imask.js](https://github.com/uNm
 
 `[]` - make input optional
 
-| Mask                | Input               |
-|---------------------|---------------------|
-| `+1 (000) 000-0000` | `+1 (555) 555-1234` |
-| `000-aaa-000-aaa`   | `254-jle-634-lji`   |
-| `****/****/****`    | `jie./kao4/1f?.`    |
+| Mask                    | Input                                     |
+|-------------------------|-------------------------------------------|
+| `+1 (000) 000-0000`     | `+1 (555) 555-1234`                       |
+| `000-aaa-000-aaa`       | `254-jle-634-lji`                         |
+| `****/****/****`        | `jie./kao4/1f?.`                          |
+| `aaaa aaaa aaaa [aaaa]` | `JLKI HUER LAGI` or `JLKI HUER LAGI OIUK` |
 
 ## Usage guide
 
