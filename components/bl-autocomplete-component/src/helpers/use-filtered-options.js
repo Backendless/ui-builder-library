@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const compareCaseInsensitive = (str1, str2) => str1.toLowerCase().includes(str2.toLowerCase());
+const compareCaseInsensitive = (str1 = '', str2 = '') => str1.toLowerCase().includes(str2.toLowerCase());
 
 export const useFilteredOptions = (optionsList, inputValue, hasGroup) => useMemo(() => {
   return optionsList.reduce((acc, item) => {
