@@ -6,18 +6,22 @@ const { cn } = BackendlessUI.CSSUtils;
 const MaskTypes = {
   NUMBER: 'Number',
   STRING: 'String',
-  REGEX: 'RegExp'
-}
+  REGEX : 'RegExp'
+};
 
-export default function InputWithMask({ component, eventHandlers }) {
+export default function InputWithMask({ component, eventHandlers, elRef }) {
   const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
   const { onChangeValue, onValidate } = eventHandlers;
 
   const options = {
-    mask    : preparedMask(maskType, mask),
+    mask   : preparedMask(maskType, mask),
     placeholderChar,
     lazy,
-    prepare: (value, mask) => onValidate({ value, mask })
+    prepare: (value, mask) => {
+      const result = onValidate({ value, mask });
+
+      return result === undefined ? value : result;
+    }
   };
   const { ref, value } = useIMask(options);
 
@@ -30,7 +34,7 @@ export default function InputWithMask({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-inputWithMask', 'form-input', classList) } style={style}>
+    <div ref={ elRef } className={ cn('bl-customComponent-inputWithMask', 'form-input', classList) } style={ style }>
       <input
         type="text"
         ref={ ref }
@@ -53,7 +57,7 @@ const preparedMask = (maskType, mask) => useMemo(() => {
   if (maskType === MaskTypes.REGEX) {
     try {
       return new RegExp(mask);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
     }
   }

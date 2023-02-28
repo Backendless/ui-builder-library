@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CollapseTop({ component, eventHandlers, transitionsContainerPod, isOpen, setIsOpen }) {
-  const { display, classList, style, variants, animationDuration } = component;
+  const { display, classList, style, variants, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
 
   const [height, setHeight] = useState('auto');
@@ -40,14 +40,14 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
 
       timeout = setTimeout(() => {
         rootRef.current.style.height = 'auto';
-      }, animationDuration);
+      }, duration);
     } else {
       rootRef.current.style.height = 0;
     }
 
     const endAnimationTimeout = setTimeout(() => {
       onEndAnimation();
-    }, animationDuration);
+    }, duration);
 
     return () => {
       clearTimeout(timeout);
@@ -59,7 +59,7 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
     <div
       ref={ rootRef }
       className={ cn('bl-customComponent-transitions', variants, { [variants + '--open']: isOpen }, classList) }
-      style={ { ...style, transitionDuration: animationDuration + 'ms' } }>
+      style={ { ...style, transitionDuration: duration + 'ms' } }>
       { transitionsContainerPod.render() }
     </div>
   );
