@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo,useRef } from 'react';
 
 import mapboxgl from './lib/mapbox';
 import { initMapboxLibrary, useMarkers, usePolygons, Map } from './helpers';
@@ -15,7 +15,8 @@ export default function Mapbox({ component, eventHandlers, settings }) {
 
   const { markers, polygons, center, classList } = component;
 
-  const map = new Map(mapRef);
+  const map = useMemo(() => new Map(mapRef), [mapRef]);
+
 
   useEffect(() => {
     mapboxgl.accessToken = accessToken;
