@@ -45,13 +45,14 @@
     },
     {
       "type": "text",
-      "name": "placeholder",
+      "name": "placeholderLabel",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "placeholderLogic",
       "dataBinding": true,
-      "label": "Placeholder",
-      "handlerDescription": "This is a handler for the logic to determine a placeholder."
+      "label": "Placeholder Label",
+      "handlerDescription": "This is a handler for the logic to determine a placeholder.",
+      "handlerLabel": "Placeholder Label Logic"
     },
     {
       "type": "text",

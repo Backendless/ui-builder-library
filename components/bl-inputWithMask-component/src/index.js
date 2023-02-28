@@ -10,7 +10,7 @@ const MaskTypes = {
 };
 
 export default function InputWithMask({ component, eventHandlers, elRef }) {
-  const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
+  const { style, display, classList, maskType, mask, placeholderLabel, placeholderChar, lazy } = component;
   const { onChangeValue, onValidate } = eventHandlers;
 
   const options = {
@@ -39,11 +39,11 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
         type="text"
         ref={ ref }
         id="input-with-mask"
-        placeholder={ placeholder }
+        placeholder={ placeholderLabel }
         className="form-input__input"
       />
-      { placeholder && (
-        <label htmlFor="input-with-mask" className="form-input__placeholder">{ placeholder }</label>
+      { placeholderLabel && (
+        <label htmlFor="input-with-mask" className="form-input__placeholder">{ placeholderLabel }</label>
       ) }
     </div>
   );
