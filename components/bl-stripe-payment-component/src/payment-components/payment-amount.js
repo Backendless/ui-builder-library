@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const plusOrMinusRegex = /[-+]/;
+const SIGN_REGEX = /[-+]/;
 
 export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   const { minAmount, fixedAmount, currency, amountDecimalPlaces } = component;
@@ -18,7 +18,7 @@ export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   };
 
   const validateInput = event => {
-    const invalid = plusOrMinusRegex.test(event.data);
+    const invalid = SIGN_REGEX.test(event.data);
 
     if (invalid) {
       event.preventDefault();
