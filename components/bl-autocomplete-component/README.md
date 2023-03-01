@@ -50,7 +50,7 @@ Autocomplete is a component of Backendless UI-Builder designer. This allows you 
 @bl-customComponent-autocomplete-option-backgroundColorOnHover: @backgroundColorOnHoverPrimary;
 ````
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Adding options to the component:
 
