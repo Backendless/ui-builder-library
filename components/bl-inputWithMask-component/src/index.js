@@ -44,10 +44,10 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
         id="input-with-mask"
         placeholder={ placeholder }
         className="form-input__input"
-        onFocus={ (event) => onFocusEvent({ event }) }
-        onBlur={ (event) => onLostFocusEvent({ event }) }
-        onMouseEnter={ (event) => onMouseEnter({ event }) }
-        onMouseLeave={ (event) => onMouseLeave({ event }) }
+        onFocus={ event => onFocusEvent({ event }) }
+        onBlur={ event => onLostFocusEvent({ event }) }
+        onMouseEnter={ event => onMouseEnter({ event }) }
+        onMouseLeave={ event => onMouseLeave({ event }) }
       />
       { placeholder && (
         <label htmlFor="input-with-mask" className="form-input__placeholder">{ placeholder }</label>
