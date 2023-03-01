@@ -4,6 +4,10 @@ Input with Mask is a component of Backendless UI-Builder designer. This allows y
 
 This component is based on an external library [imask.js](https://github.com/uNmAnNeR/imaskjs)
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property                            | Type                                  | Default Value | Logic                  | Data Binding | UI Setting | Description                                                                                                                                                                                                                                               |
@@ -16,10 +20,15 @@ This component is based on an external library [imask.js](https://github.com/uNm
 
 ## Events
 
-| Name            | Triggers                                                                                                                     | Context Blocks  | Return   |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------|-----------------|----------|
-| On Change Value | when the component's state (value) changes.                                                                                  | `value: string` |          |
-| On Validate     | before the component value changes. Using this event we can additionally ourself check and modify each symbol that we input. | `value: string` | `string` |
+| Name                | Triggers                                                                                                                     | Context Blocks  | Return   |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------|-----------------|----------|
+| On Change Value     | when the component's state (value) changes.                                                                                  | `value: string` |          |
+| On Validate         | before the component value changes. Using this event we can additionally ourself check and modify each symbol that we input. | `value: string` | `string` |
+| On Complete         | when the value is completely filled. This makes sense only for custom masks.                                                 | `value: string` |          |
+| On Focus Event      | when the component receives the focus for data entry or by pressing the TAB key.                                             | `event`         |          |
+| On Lost Focus Event | when the component loses focus.                                                                                              | `event`         |          |
+| On Mouse Enter      | when the Mouse Enters the component.                                                                                         | `event`         |          |
+| On Mouse Leave      | when the mouse leaves the component.                                                                                         | `event`         |          |
 
 ## Styles
 
