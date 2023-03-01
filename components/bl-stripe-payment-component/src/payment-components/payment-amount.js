@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const SIGN_REGEX = /[-+]/;
+const ONLY_NUMERIC_REGEX = /[-+eE]/;
 
 export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   const { minAmount, fixedAmount, currency, amountDecimalPlaces } = component;
@@ -18,7 +18,7 @@ export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   };
 
   const validateInput = event => {
-    const invalid = SIGN_REGEX.test(event.data);
+    const invalid = ONLY_NUMERIC_REGEX.test(event.data);
 
     if (invalid) {
       event.preventDefault();
