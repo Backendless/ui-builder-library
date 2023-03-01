@@ -39,12 +39,15 @@ This component is based on an external library [imask.js](https://github.com/uNm
 
 `[]` - make input optional
 
+If definition character should be treated as fixed it should be escaped by ` \ `
+
 | Mask                    | Input                                     |
 |-------------------------|-------------------------------------------|
 | `+1 (000) 000-0000`     | `+1 (555) 555-1234`                       |
 | `000-aaa-000-aaa`       | `254-jle-634-lji`                         |
 | `****/****/****`        | `jie./kao4/1f?.`                          |
 | `aaaa aaaa aaaa [aaaa]` | `JLKI HUER LAGI` or `JLKI HUER LAGI OIUK` |
+| `+38\0 (00) 000 0000`   | `+380 (85) 547 8653`                      |
 
 ## Usage guide
 
