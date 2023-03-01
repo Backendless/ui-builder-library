@@ -14,10 +14,10 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
   const { onChangeValue, onValidate } = eventHandlers;
 
   const options = {
-    mask   : preparedMask(maskType, mask),
-    placeholderChar,
+    mask           : preparedMask(maskType, mask),
+    placeholderChar: placeholderChar || '_',
     lazy,
-    prepare: (value, mask) => {
+    prepare        : (value, mask) => {
       const result = onValidate({ value, mask });
 
       return result === undefined ? value : result;
