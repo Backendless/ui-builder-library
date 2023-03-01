@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Elements } from './lib/react-stripe.umd.min.js';
 import { loadStripe } from './lib/stripe.min';

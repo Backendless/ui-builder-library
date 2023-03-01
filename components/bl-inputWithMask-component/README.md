@@ -11,7 +11,7 @@ This component is based on an external library [imask.js](https://github.com/uNm
 | Mask Type: `maskType`               | Select [`Number`, `String`, `RegExp`] | "Number"      | Mask Type Logic        | NO           | YES        | Allows select type of mask(Number, String, RegExp).                                                                                                                                                                                                       |
 | Mask: `mask`                        | Text                                  |               | Mask Logic             | YES          | YES        | Allows to specify mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp.                                                                                                                                                             |
 | Placeholder: `placeholder`          | Text                                  |               | Placeholder Logic      | YES          | YES        | Allows to specify placeholder.                                                                                                                                                                                                                            |
-| Placeholder Char: `placeholderChar` | Text                                  | "_"           | Placeholder Char Logic | YES          | YES        | Allows to specify placeholder char.                                                                                                                                                                                                                       |
+| Placeholder Char: `placeholderChar` | Text                                  | "_"           | Placeholder Char Logic | YES          | YES        | Allows to specify placeholder char. If it is left empty, the default value will be "_".                                                                                                                                                                   |
 | Lazy: `lazy`                        | Checkbox                              | `false`       | Lazy Logic             | NO           | YES        | Allows to specify lazy or not lazy. Lazy it's when the input doesn't display the template of the mask. For example, Mask: `000 000 000`, Placeholder Char: `_`, Lazy: `checked` input will be empty, but if Lazy: `unchecked` input will be `___ ___ ___` |
 
 ## Events
@@ -39,11 +39,15 @@ This component is based on an external library [imask.js](https://github.com/uNm
 
 `[]` - make input optional
 
-| Mask                | Input               |
-|---------------------|---------------------|
-| `+1 (000) 000-0000` | `+1 (555) 555-1234` |
-| `000-aaa-000-aaa`   | `254-jle-634-lji`   |
-| `****/****/****`    | `jie./kao4/1f?.`    |
+If definition character should be treated as fixed it should be escaped by ` \ `
+
+| Mask                    | Input                                     |
+|-------------------------|-------------------------------------------|
+| `+1 (000) 000-0000`     | `+1 (555) 555-1234`                       |
+| `000-aaa-000-aaa`       | `254-jle-634-lji`                         |
+| `****/****/****`        | `jie./kao4/1f?.`                          |
+| `aaaa aaaa aaaa [aaaa]` | `JLKI HUER LAGI` or `JLKI HUER LAGI OIUK` |
+| `+38\0 (00) 000 0000`   | `+380 (85) 547 8653`                      |
 
 ## Usage guide
 
