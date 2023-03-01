@@ -11,7 +11,10 @@ const MaskTypes = {
 
 export default function InputWithMask({ component, eventHandlers, elRef }) {
   const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
-  const { onChangeValue, onValidate } = eventHandlers;
+  const {
+    onChangeValue, onValidate, onComplete, onLostFocusEvent,
+    onFocusEvent, onMouseEnter, onMouseLeave
+  } = eventHandlers;
 
   const options = {
     mask           : preparedMask(maskType, mask),
@@ -23,7 +26,7 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
       return result === undefined ? value : result;
     }
   };
-  const { ref, value } = useIMask(options);
+  const { ref, value } = useIMask(options, { onComplete: (value, mask) => onComplete({ value, mask }) });
 
   useEffect(() => {
     onChangeValue({ value });
@@ -41,6 +44,10 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
         id="input-with-mask"
         placeholder={ placeholder }
         className="form-input__input"
+        onFocus={ event => onFocusEvent({ event }) }
+        onBlur={ event => onLostFocusEvent({ event }) }
+        onMouseEnter={ event => onMouseEnter({ event }) }
+        onMouseLeave={ event => onMouseLeave({ event }) }
       />
       { placeholder && (
         <label htmlFor="input-with-mask" className="form-input__placeholder">{ placeholder }</label>
