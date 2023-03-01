@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 
+const plusOrMinusRegex = /[-+]/;
+
 export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   const { minAmount, fixedAmount, currency, amountDecimalPlaces } = component;
 
@@ -15,6 +17,14 @@ export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
     }
   };
 
+  const validateInput = event => {
+    const invalid = plusOrMinusRegex.test(event.data);
+
+    if (invalid) {
+      event.preventDefault();
+    }
+  };
+
   return (
     <div className="payment-amount">
       <label htmlFor="amount">Payment amount</label>
@@ -26,6 +36,7 @@ export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
           step="0.01"
           value={ paymentAmount }
           onChange={ changeAmount }
+          onBeforeInput={ validateInput }
           placeholder="0"
           readOnly={ fixedAmount }
           required
