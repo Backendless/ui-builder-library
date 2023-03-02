@@ -15,7 +15,7 @@ export default function LottieAnimation({ component, eventHandlers }) {
     if (isStopped) {
       stop();
     }
-  }, [data]);
+  }, [data, display]);
 
   component.playAnimation = () => {
     play();

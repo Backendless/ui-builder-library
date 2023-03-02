@@ -6,10 +6,9 @@ import { TextField } from './text-field';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function AutocompleteComponent({ component, eventHandlers }) {
+export default function AutocompleteComponent({ component, eventHandlers, elRef }) {
   const { classList, style, display, disabled, placeholder, emptyOptionsLabel, variant, options } = component;
 
-  const rootRef = useRef();
   const autocompleteRef = useRef();
   const [inputValue, setInputValue] = useState('');
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
@@ -38,7 +37,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
     setInputValue('');
   }, []);
 
-  useOnClickOutside(rootRef, handleClickOutside);
+  useOnClickOutside(elRef, handleClickOutside);
 
   if (!display) {
     return null;
@@ -46,7 +45,7 @@ export default function AutocompleteComponent({ component, eventHandlers }) {
 
   return (
     <div
-      ref={ rootRef }
+      ref={ elRef }
       style={ style }
       className={ classes }>
       <TextField

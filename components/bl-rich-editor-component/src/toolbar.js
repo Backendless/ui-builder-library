@@ -132,7 +132,7 @@ const additionalFormats = [
   ],
   [
     { className: 'ql-blockquote' },
-    { className: 'ql-code-block' },
+    { className: 'ql-code' },
   ],
   [
     { className: 'ql-script', value: 'sub' },

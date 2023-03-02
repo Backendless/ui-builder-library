@@ -1,21 +1,28 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useCardElement } from './helpers/use-card-element';
 import { CardElement } from './lib/react-stripe.umd.min';
 import { BillingDetails } from './payment-components/billing-details';
-import { PaymentAmount } from './payment-components/payment-amount';
+import { PaymentAmount, useAmountPattern } from './payment-components/payment-amount';
 
 export function PaymentForm(props) {
   const { component, eventHandlers, setIsLoading, setTransactionDetails } = props;
   const { amount, currency, amountDecimalPlaces } = component;
 
   const [cardElementColor, setCardElementColor] = useState('inherit');
+  const [paymentAmount, setPaymentAmount] = useState(amount);
 
   const cardElementRef = useRef(null);
   const formRef = useRef(null);
-  const paymentAmount = useMemo(() => (
-    validatePaymentAmount(amount, amountDecimalPlaces)
-  ), [amount, amountDecimalPlaces]);
+  const amountPattern = useAmountPattern(amountDecimalPlaces, { strictEnding: false });
+
+  useEffect(() => {
+    if (paymentAmount !== amount) {
+      const validAmount = String(amount).match(amountPattern)[0];
+
+      setPaymentAmount(validAmount);
+    }
+  }, [amount]);
 
   const {
     handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, disabled, elements,
@@ -46,7 +53,7 @@ export function PaymentForm(props) {
           onChange={ onCardChange }
         />
       </div>
-      <PaymentAmount component={ component } amount={ paymentAmount }/>
+      <PaymentAmount component={ component } paymentAmount={ paymentAmount } setPaymentAmount={ setPaymentAmount }/>
       <button type="submit" disabled={ disabled }>{ `Pay ${ paymentAmount || 0 } ${ currency || '' }` }</button>
       { errorMessage && <span className="payment-error">{ errorMessage }</span> }
     </form>
@@ -67,10 +74,4 @@ function getCardElementOptions(cardElementColor) {
     style         : cardElementStyles,
     hidePostalCode: true,
   };
-}
-
-export function validatePaymentAmount(amount, decimalPlaces) {
-  const amountPattern = new RegExp('\\.(\\d{' + decimalPlaces + '}).*$');
-
-  return Number(String(amount).replace(amountPattern, '.$1'));
 }

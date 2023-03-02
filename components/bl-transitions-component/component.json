@@ -14,9 +14,6 @@
       "label": "Variants",
       "showInSettings": true,
       "defaultValue": "collapse-top",
-      "hasLogicHandler": false,
-      "handlerId": "variantsLogic",
-      "handlerLabel": "Variants Logic",
       "options": [
         {
           "value": "collapse-top",
@@ -42,13 +39,10 @@
     },
     {
       "type": "number",
-      "name": "animationDuration",
-      "label": "Animation Duration (ms)",
+      "name": "duration",
+      "label": "Duration (ms)",
       "showInSettings": true,
-      "defaultValue": "300",
-      "hasLogicHandler": false,
-      "handlerId": "animationDurationLogic",
-      "handlerLabel": "Animation Duration Logic"
+      "defaultValue": "300"
     }
   ],
   "eventHandlers": [

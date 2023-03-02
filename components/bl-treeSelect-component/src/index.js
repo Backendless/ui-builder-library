@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import primereact from './lib/primereact.min';
+import {
+  ensureMeasure, getSelectedItems, getSelectedKeys, updateKeysMap, updateNode, validateSelectedNodeKeys,
+} from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 const { TreeSelect } = primereact.treeselect;
 
-export default function TreeSelectComponent({ component, eventHandlers }) {
-  const { display, classList, style, options, label, selectionMode, filterVisibility, chipsDisplay } = component;
-  const { metaKeySelection, scrollHeight, disabled, resetFilterOnHide, filterInputAutoFocus } = component;
+export default function TreeSelectComponent({ component, eventHandlers, elRef }) {
+  const { display, classList, style, options, label, selectionMode, filterVisibility, chipsVisibility } = component;
+  const { metaKeySelection, optionsPanelHeight, disabled, resetFilterOnHide, filterInputAutoFocus } = component;
   const { filterPlaceholder, selectedOptionKey, emptyMessage } = component;
 
   const { onShow, onHide } = eventHandlers;
@@ -15,18 +18,27 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
   const [nodes, setNodes] = useState(options);
   const [selectedNodeKey, setSelectedNodeKey] = useState(selectedOptionKey);
 
+  const scrollHeight = useMemo(() => ensureMeasure('max-height', optionsPanelHeight), [optionsPanelHeight]);
+  const getElRef = useCallback(el => elRef.current = el?.getElement(), [elRef]);
+
   const {
     expandAll, collapseAll, onSelectedNodeChange, onToggle, onNodeSelect,
-    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys,
-  } = useNodeActions(nodes, eventHandlers, setSelectedNodeKey);
+    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys, updateNodesState,
+  } = useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode);
+
+  useEffect(() => {
+    if (!selectedOptionKey || !nodes?.length) {
+      return;
+    }
+
+    const selectedNodeKeys = getSelectedKeys(selectedOptionKey, selectionMode);
+
+    updateNodesState(selectedNodeKeys);
+  }, [selectedOptionKey]);
 
   useEffect(() => {
     setNodes(options);
   }, [options]);
-
-  useEffect(() => {
-    setSelectedNodeKey(selectedOptionKey);
-  }, [selectedOptionKey]);
 
   Object.assign(component, {
     expandAll  : () => expandAll(),
@@ -39,17 +51,18 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
 
   return (
     <TreeSelect
+      ref={ getElRef }
       className={ cn('bl-customComponent-treeSelect', classList) }
       style={ style }
       value={ selectedNodeKey }
       options={ nodes }
-      display={ chipsDisplay ? 'chip' : 'comma' }
+      display={ chipsVisibility ? 'chip' : 'comma' }
       panelClassName="bl-customComponent-treeSelect-options"
-      scrollHeight={ ensureMeasure(scrollHeight) }
+      scrollHeight={ scrollHeight }
       expandedKeys={ expandedKeys }
       selectionMode={ selectionMode }
       metaKeySelection={ metaKeySelection }
-      placeholder={ label }
+      placeholder={ label || ' ' }
       filter={ filterVisibility }
       resetFilterOnHide={ resetFilterOnHide }
       filterInputAutoFocus={ filterInputAutoFocus }
@@ -68,16 +81,30 @@ export default function TreeSelectComponent({ component, eventHandlers }) {
   );
 }
 
-function useNodeActions(nodes, eventHandlers, setSelectedNodeKey) {
-  const { onChange, onItemSelect, onItemUnselect, onItemExpand, onItemCollapse } = eventHandlers;
+function useNodeActions(nodes, eventHandlers, setSelectedNodeKey, selectionMode) {
+  const { onChange, onSelect, onUnselect, onExpand, onCollapse } = eventHandlers;
 
   const [expandedKeys, setExpandedKeys] = useState({});
 
+  const keysMap = useMemo(() => {
+    const keys = {};
+
+    if (!nodes?.length) {
+      return keys;
+    }
+
+    for (const childNode of nodes) {
+      updateKeysMap(childNode, keys);
+    }
+
+    return keys;
+  }, [nodes]);
+
   const onToggle = e => setExpandedKeys(e.value);
-  const onNodeSelect = e => onItemSelect({ item: e.node });
-  const onNodeUnselect = e => onItemUnselect({ item: e.node });
-  const onNodeExpand = e => onItemExpand({ item: e.node });
-  const onNodeCollapse = e => onItemCollapse({ item: e.node });
+  const onNodeSelect = e => onSelect({ selectedItem: e.node });
+  const onNodeUnselect = e => onUnselect({ unselectedItem: e.node });
+  const onNodeExpand = e => onExpand({ expandedItem: e.node });
+  const onNodeCollapse = e => onCollapse({ collapsedItem: e.node });
   const collapseAll = () => setExpandedKeys({});
 
   const expandAll = () => {
@@ -102,19 +129,28 @@ function useNodeActions(nodes, eventHandlers, setSelectedNodeKey) {
     }
   };
 
-  const onSelectedNodeChange = e => {
-    const changedValue = e.value;
+  const onSelectedNodeChange = useCallback(e => {
+    const selectedItems = getSelectedItems(e.value, nodes, selectionMode);
 
-    setSelectedNodeKey(changedValue);
-    onChange({ changedValue });
-  };
+    setSelectedNodeKey(e.value);
+    onChange({ selectedItems });
+  }, [nodes, onChange, selectionMode, setSelectedNodeKey]);
+
+  const updateNodesState = useCallback(selectedNodeKeys => {
+    const expandedKeysMap = { ...expandedKeys };
+    const options = [...nodes];
+
+    for (const childNode of options) {
+      updateNode(childNode, null, selectedNodeKeys, expandedKeysMap, selectionMode);
+    }
+
+    validateSelectedNodeKeys(selectionMode, selectedNodeKeys, keysMap);
+    setSelectedNodeKey(selectedNodeKeys);
+    setExpandedKeys(expandedKeysMap);
+  }, [expandedKeys, keysMap, nodes, selectionMode, setSelectedNodeKey]);
 
   return {
     expandAll, collapseAll, onSelectedNodeChange, onToggle, onNodeSelect,
-    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys,
+    onNodeUnselect, onNodeExpand, onNodeCollapse, expandedKeys, updateNodesState,
   };
-}
-
-function ensureMeasure(dimension) {
-  return String(Number(dimension)) === dimension ? dimension + 'px' : dimension;
 }

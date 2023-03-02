@@ -83,7 +83,8 @@
       "handlerId": "optionsLogic",
       "handlerLabel": "Options Logic",
       "handlerDescription": "This handler allows you to add options to a component.",
-      "dataBinding": true
+      "dataBinding": true,
+      "defaultValue": "[\n  {\n    \"label\": \"Apple\",\n    \"value\": \"apple\"\n  },\n  {\n    \"label\": \"Orange\",\n    \"value\": \"orange\"\n  },\n  {\n    \"label\": \"Grape\",\n    \"value\": \"grape\"\n  }\n]"
     }
   ],
   "eventHandlers": [
