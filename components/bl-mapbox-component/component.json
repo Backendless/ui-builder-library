@@ -271,7 +271,7 @@
     },
     {
       "id": "setStyle",
-      "label": "Set Style",
+      "label": "Set Style to",
       "inputs": [
         {
           "id": "style",
@@ -285,12 +285,12 @@
     },
     {
       "id": "getStyle",
-      "label": "Get Style",
+      "label": "Get Style from",
       "hasReturn": true
     },
     {
       "id": "setFog",
-      "label": "Set Fog",
+      "label": "Set Fog to",
       "inputs": [
         {
           "id": "fog",
@@ -300,7 +300,7 @@
     },
     {
       "id": "getFog",
-      "label": "Get Fog",
+      "label": "Get Fog from",
       "hasReturn": true
     },
     {
@@ -310,12 +310,12 @@
     },
     {
       "id": "getCenter",
-      "label": "Get Center",
+      "label": "Get Center from",
       "hasReturn": true
     },
     {
       "id": "setCenter",
-      "label": "Set Center",
+      "label": "Set Center to",
       "inputs": [
         {
           "id": "center",
@@ -365,12 +365,12 @@
     },
     {
       "id": "getZoom",
-      "label": "Get Zoom",
+      "label": "Get Zoom from",
       "hasReturn": true
     },
     {
       "id": "setZoom",
-      "label": "Set Zoom",
+      "label": "Set Zoom to",
       "inputs": [
         {
           "id": "zoom",
@@ -423,5 +423,6 @@
       "description": "It is an Access Token needed to use Mapbox",
       "required": true
     }
-  ]
+  ],
+  "pods": {}
 }

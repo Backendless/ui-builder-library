@@ -27,6 +27,7 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
           toDate={ toDate }
           fromDate={ fromDate }
           headerVisibility={ headerVisibility }
+          component={ component }
           onDateReset={ onDateReset }
           onEndDateChange={ onEndDateChange }
           onStartDateChange={ onStartDateChange }

@@ -38,7 +38,7 @@
 @bl-customComponent-treeSelect-options-background: @bl-customComponent-treeSelect-tree-background;
 @bl-customComponent-treeSelect-options-boxShadow: 0 2px 12px 0 fade(@bl-customComponent-treeSelect-shadowColor, 60%);
 
-@bl-customComponent-treeSelect-header-background: @bl-customComponent-treeSelect-tree-background;
+@bl-customComponent-treeSelect-header-background: #7e7e7e59;
 @bl-customComponent-treeSelect-header-padding: 12px 20px;
 @bl-customComponent-treeSelect-header-margin: 0;
 @bl-customComponent-treeSelect-header-borderBottom: 1px solid fade(@bl-customComponent-treeSelect-tree-color, 80%);
@@ -80,7 +80,7 @@
 @bl-customComponent-treeSelect-input-hover-boxShadow: 0 0 0 0.1rem fade(@bl-customComponent-treeSelect-themeColor, 60%);
 @bl-customComponent-treeSelect-input-fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 @bl-customComponent-treeSelect-input-fontSize: 16px;
-@bl-customComponent-treeSelect-input-padding: 12px;
+@bl-customComponent-treeSelect-input-padding: 12px 44px 12px 12px;
 @bl-customComponent-treeSelect-input-border: 1px solid fade(@bl-customComponent-treeSelect-color, 20%);
 @bl-customComponent-treeSelect-input-transition: border-color 0.2s, box-shadow 0.2s;
 
@@ -94,6 +94,7 @@
 
 @bl-customComponent-treeSelect-toggler-hover-background: fade(@bl-customComponent-treeSelect-themeColor, 10%);
 @bl-customComponent-treeSelect-trigger-width: 48px;
+@bl-customComponent-treeSelect-trigger-minHeight: 53px;
 @bl-customComponent-treeSelect-trigger-background: transparent;
 
 @bl-customComponent-treeSelect-content-highlight-color: @bl-customComponent-treeSelect-themeColor;
@@ -122,8 +123,13 @@
     }
   }
 
-  .p-treeselect-label {
-    padding: @bl-customComponent-treeSelect-label-padding;
+  .p-treeselect-label-container {
+    display: flex;
+    align-items: center;
+
+    .p-treeselect-label {
+      padding: @bl-customComponent-treeSelect-label-padding;
+    }
   }
 
   .p-treeselect-trigger {
@@ -132,6 +138,7 @@
     color: @bl-customComponent-treeSelect-icon-color;
     background: @bl-customComponent-treeSelect-trigger-background;
     width: @bl-customComponent-treeSelect-trigger-width;
+    min-height: @bl-customComponent-treeSelect-trigger-minHeight;
 
     .pi-chevron-down:before {
       content: "keyboard_arrow_down";

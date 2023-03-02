@@ -80,7 +80,7 @@ Quill.register(CodeBlock, true);
 Quill.register(Block, true);
 
 export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
-  const { placeholder, readOnly, content } = component;
+  const { placeholder, readOnly, content, scrollingContainer } = component;
 
   const editorRef = useRef(null);
 
@@ -93,16 +93,17 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
           handlers : { undo, redo },
         },
       },
-      placeholder: placeholder,
-      readOnly   : readOnly,
       theme      : 'snow',
+      scrollingContainer,
+      placeholder,
+      readOnly,
     });
 
     editorRef.current.on('text-change', () => {
       setTimeout(() => component.content = editorRef.current.root.innerHTML);
       onTextChange();
     });
-  }, []);
+  }, [scrollingContainer]);
 
   useEffect(() => {
     const innerHTML = editorRef.current.root.innerHTML;

@@ -1,7 +1,9 @@
-export function RadioButton({ checked, label, value, handleChange }) {
+const { cn } = BackendlessUI.CSSUtils;
+
+export function RadioButton({ checked, label, value, handleChange, disabled }) {
   return (
-    <label className="radio-button">
-      <Input checked={ checked } value={ value } handleChange={ handleChange } />
+    <label className={ cn("radio-button", { "radio-button--disabled": disabled }) }>
+      <Input checked={ checked } value={ value } disabled={ disabled } handleChange={ handleChange } />
       <span className="radio-button__label">
         { label }
       </span>
@@ -9,7 +11,7 @@ export function RadioButton({ checked, label, value, handleChange }) {
   );
 }
 
-function Input({ value, checked, handleChange }) {
+function Input({ value, checked, disabled, handleChange }) {
   return (
     <div className="input">
       <input
@@ -18,6 +20,7 @@ function Input({ value, checked, handleChange }) {
         value={ value }
         checked={ checked }
         onChange={() => handleChange(value) }
+        disabled={ disabled }
         className="input__radio"
       />
       <div class="input__icon">
