@@ -5,6 +5,8 @@ import MapboxDirections from './lib/mapbox-directions';
 import MapboxGeocoder from './lib/mapbox-geocoder';
 import { createActions } from './actions';
 
+const { Map, FullscreenControl, NavigationControl, Marker, Popup, GeolocateControl } = Mapbox;
+
 const defaultMapboxProps = {
   START_POS : { lat: 0, lng: 0 },
   MAP_STYLE : 'mapbox://styles/mapbox/streets-v11',
@@ -12,7 +14,7 @@ const defaultMapboxProps = {
   PROJECTION: 'mercator',
 };
 
-export class Map {
+export class MapClass {
   constructor(mapRef) {
     this.mapRef = mapRef;
   }
@@ -97,8 +99,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
   const { START_POS, MAP_STYLE, ZOOM, PROJECTION } = defaultMapboxProps;
   const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
   const { onDeterminingGeoposition } = eventHandlers;
-  const { Map, accessToken, FullscreenControl, NavigationControl } = Mapbox;
-
+  const { accessToken } = Mapbox;
   mapRef.current = new Map({
     container : mapContainerRef.current,
     style     : mapStyle || MAP_STYLE,
@@ -145,7 +146,6 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 };
 
 export const useMarkers = (markers, mapRef, onMarkerClick) => {
-  const { Marker, Popup } = Mapbox;
   const [markersArray, setMarkersArray] = useState([]);
 
   useEffect(() => {
@@ -197,7 +197,6 @@ const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, 
 };
 
 const createPopup = (polygon, mapRef, onPolygonClick, map) => {
-  const { Popup } = Mapbox;
   const { description, id } = polygon;
 
   if (description) {
@@ -285,7 +284,6 @@ export const useEvents = (mapRef, eventHandlers, map) => {
 };
 
 export const useGeolocation = (mapRef, onDeterminingGeoposition, map) => {
-  const { GeolocateControl } = Mapbox;
   const geolocate = new GeolocateControl({
     positionOptions  : {
       enableHighAccuracy: true,

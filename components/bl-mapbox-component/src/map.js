@@ -1,11 +1,11 @@
 import { useEffect, useMemo,useRef } from 'react';
 
-import mapboxgl from './lib/mapbox';
-import { initMapboxLibrary, useMarkers, usePolygons, Map } from './helpers';
+import Mapbox from './lib/mapbox';
+import { initMapboxLibrary, useMarkers, usePolygons, MapClass } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function Mapbox({ component, eventHandlers, settings }) {
+export default function MapboxComponent({ component, eventHandlers, settings }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
 
@@ -15,14 +15,14 @@ export default function Mapbox({ component, eventHandlers, settings }) {
 
   const { markers, polygons, center, classList } = component;
 
-  const map = useMemo(() => new Map(mapRef), [mapRef]);
-
+  const map = useMemo(() => new MapClass(mapRef), [mapRef]);
 
   useEffect(() => {
-    mapboxgl.accessToken = accessToken;
+    Mapbox.accessToken = accessToken;
 
     initMapboxLibrary(mapRef, mapContainerRef, component, eventHandlers, map);
   }, []);
+
 
   useEffect(() => {
     if (mapRef.current && center) {
