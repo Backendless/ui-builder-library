@@ -5,6 +5,13 @@ import MapboxDirections from './lib/mapbox-directions';
 import MapboxGeocoder from './lib/mapbox-geocoder';
 import { createActions } from './actions';
 
+const defaultMapboxProps = {
+  START_POS : { lat: 0, lng: 0 },
+  MAP_STYLE : 'mapbox://styles/mapbox/streets-v11',
+  ZOOM      : 10,
+  PROJECTION: 'mercator',
+};
+
 export class Map {
   constructor(mapRef) {
     this.mapRef = mapRef;
@@ -77,15 +84,22 @@ export const applyFog = (mapRef, component, map) => {
   });
 };
 
+const appendDirectionsOnMobile = (directions, mapRef, mapContainerRef) => {
+  const div = document.createElement('div');
+
+  div.style.margin = '0 auto';
+  div.appendChild(directions.onAdd(mapRef.current));
+
+  mapContainerRef.current.parentNode.insertAdjacentElement('afterend', div);
+};
+
 export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers, map) => {
-  const START_POS = { lat: 0, lng: 0 };
-  const MAP_STYLE = 'mapbox://styles/mapbox/streets-v11';
-  const ZOOM = 10;
-  const PROJECTION = 'mercator';
+  const { START_POS, MAP_STYLE, ZOOM, PROJECTION } = defaultMapboxProps;
   const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
   const { onDeterminingGeoposition } = eventHandlers;
+  const { Map, accessToken, FullscreenControl, NavigationControl } = Mapbox;
 
-  mapRef.current = new mapboxgl.Map({
+  mapRef.current = new Map({
     container : mapContainerRef.current,
     style     : mapStyle || MAP_STYLE,
     center    : center || START_POS,
@@ -96,12 +110,14 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
   createActions(mapRef, component);
 
   if (directions) {
-    map.addControl(
-      new MapboxDirections({
-        accessToken: mapboxgl.accessToken,
-      }),
-      'top-left'
-    );
+    const directions = new MapboxDirections({ accessToken });
+    const isFit = mapRef.current.transform.width > 570;
+
+    if (isFit) {
+      map.addControl(directions, 'top-left');
+    } else {
+      appendDirectionsOnMobile(directions, mapRef, mapContainerRef);
+    }
   }
 
   map.onLoad(() => {
@@ -110,20 +126,15 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     useEvents(mapRef, eventHandlers, map);
 
     if (searchBar) {
-      map.addControl(
-        new MapboxGeocoder({
-          accessToken: mapboxgl.accessToken,
-          mapboxgl   : mapboxgl,
-        })
-      );
+      map.addControl(new MapboxGeocoder({ accessToken, mapboxgl: Mapbox }));
     }
 
     if (fullScreen) {
-      map.addControl(new mapboxgl.FullscreenControl());
+      map.addControl(new FullscreenControl());
     }
 
     if (navigation) {
-      map.addControl(new mapboxgl.NavigationControl());
+      map.addControl(new NavigationControl());
     }
 
     if (geolocation) {
