@@ -5,6 +5,13 @@ import MapboxDirections from './lib/mapbox-directions';
 import MapboxGeocoder from './lib/mapbox-geocoder';
 import { createActions } from './actions';
 
+const defaultMapboxProps = {
+  START_POS : { lat: 0, lng: 0 },
+  MAP_STYLE : 'mapbox://styles/mapbox/streets-v11',
+  ZOOM      : 10,
+  PROJECTION: 'mercator',
+};
+
 export class Map {
   constructor(mapRef) {
     this.mapRef = mapRef;
@@ -77,7 +84,7 @@ export const applyFog = (mapRef, component, map) => {
   });
 };
 
-const appendMobileMark = (directions, mapRef, mapContainerRef) => {
+const appendDirectionsOnMobile = (directions, mapRef, mapContainerRef) => {
   const div = document.createElement('div');
 
   div.style.margin = '0 auto';
@@ -87,10 +94,7 @@ const appendMobileMark = (directions, mapRef, mapContainerRef) => {
 };
 
 export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers, map) => {
-  const START_POS = { lat: 0, lng: 0 };
-  const MAP_STYLE = 'mapbox://styles/mapbox/streets-v11';
-  const ZOOM = 10;
-  const PROJECTION = 'mercator';
+  const { START_POS, MAP_STYLE, ZOOM, PROJECTION } = defaultMapboxProps;
   const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
   const { onDeterminingGeoposition } = eventHandlers;
   const { Map, accessToken, FullscreenControl, NavigationControl } = Mapbox;
@@ -112,7 +116,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     if (isFit) {
       map.addControl(directions, 'top-left');
     } else {
-      appendMobileMark(directions, mapRef, mapContainerRef);
+      appendDirectionsOnMobile(directions, mapRef, mapContainerRef);
     }
   }
 
@@ -122,12 +126,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
     useEvents(mapRef, eventHandlers, map);
 
     if (searchBar) {
-      map.addControl(
-        new MapboxGeocoder({
-          accessToken,
-          mapboxgl   : Mapbox,
-        })
-      );
+      map.addControl(new MapboxGeocoder({ accessToken, mapboxgl: Mapbox }));
     }
 
     if (fullScreen) {
