@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import mapboxgl from './lib/mapbox';
+import Mapbox from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
 import MapboxGeocoder from './lib/mapbox-geocoder';
 import { createActions } from './actions';
@@ -158,11 +158,11 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
       markers.forEach(markerItem => {
         const { color, description } = markerItem;
 
-        const marker = new mapboxgl.Marker({ color })
+        const marker = new Mapbox.Marker({ color })
           .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
           .addTo(mapRef.current);
 
-        const popup = new mapboxgl.Popup();
+        const popup = new Mapbox.Popup();
 
         popup.on('open', () => {
           const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
@@ -200,7 +200,7 @@ const createPopup = (polygon, mapRef, onPolygonClick, map) => {
 
   if (description) {
     map.onClick(`${ id }-layer`, e => {
-      new mapboxgl.Popup()
+      new Mapbox.Popup()
         .setLngLat(e.lngLat)
         .setHTML(description)
         .addTo(mapRef.current);
@@ -283,7 +283,7 @@ export const useEvents = (mapRef, eventHandlers, map) => {
 };
 
 export const useGeolocation = (mapRef, onDeterminingGeoposition, map) => {
-  const geolocate = new mapboxgl.GeolocateControl({
+  const geolocate = new Mapbox.GeolocateControl({
     positionOptions  : {
       enableHighAccuracy: true,
     },
