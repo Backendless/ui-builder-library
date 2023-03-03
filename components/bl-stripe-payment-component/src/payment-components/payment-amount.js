@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const ONLY_NUMERIC_REGEX = /[-+eE]/;
+const ONLY_NUMERIC_REGEX = /^[\d.,]+$/;
 
 export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   const { minAmount, fixedAmount, currency, amountDecimalPlaces } = component;
@@ -18,9 +18,9 @@ export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
   };
 
   const validateInput = event => {
-    const invalid = ONLY_NUMERIC_REGEX.test(event.data);
+    const valid = ONLY_NUMERIC_REGEX.test(event.data);
 
-    if (invalid) {
+    if (!valid) {
       event.preventDefault();
     }
   };
@@ -34,6 +34,7 @@ export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
           name="amount"
           min={ minAmount || 0 }
           step="0.01"
+          inputMode="decimal"
           value={ paymentAmount }
           onChange={ changeAmount }
           onBeforeInput={ validateInput }
