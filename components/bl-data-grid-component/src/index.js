@@ -29,7 +29,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const defaultColDef = useMemo(() => ({
     filter,
     sortable,
-    floatingFilter,
+    floatingFilter: filter ? floatingFilter : false,
     resizable,
     cellRenderer: memo(CellComponent),
     filterParams: { buttons: ['apply', 'reset'] }
