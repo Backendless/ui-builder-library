@@ -1,7 +1,7 @@
 import { useEffect, useMemo,useRef } from 'react';
 
 import Mapbox from './lib/mapbox';
-import { initMapboxLibrary, useMarkers, usePolygons, MapClass } from './helpers';
+import { initMapboxLibrary, useMarkers, usePolygons, MapController } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -15,7 +15,7 @@ export default function MapboxComponent({ component, eventHandlers, settings }) 
 
   const { markers, polygons, center, classList } = component;
 
-  const map = useMemo(() => new MapClass(mapRef), [mapRef]);
+  const map = useMemo(() => new MapController(mapRef), [mapRef]);
 
   useEffect(() => {
     Mapbox.accessToken = accessToken;

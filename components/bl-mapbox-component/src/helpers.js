@@ -14,7 +14,7 @@ const defaultMapboxProps = {
   PROJECTION: 'mercator',
 };
 
-export class MapClass {
+export class MapController {
   constructor(mapRef) {
     this.mapRef = mapRef;
   }
