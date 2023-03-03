@@ -145,6 +145,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 };
 
 export const useMarkers = (markers, mapRef, onMarkerClick) => {
+  const { Marker, Popup } = Mapbox;
   const [markersArray, setMarkersArray] = useState([]);
 
   useEffect(() => {
@@ -158,11 +159,11 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
       markers.forEach(markerItem => {
         const { color, description } = markerItem;
 
-        const marker = new Mapbox.Marker({ color })
+        const marker = new Marker({ color })
           .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
           .addTo(mapRef.current);
 
-        const popup = new Mapbox.Popup();
+        const popup = new Popup();
 
         popup.on('open', () => {
           const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
@@ -196,11 +197,12 @@ const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, 
 };
 
 const createPopup = (polygon, mapRef, onPolygonClick, map) => {
+  const { Popup } = Mapbox;
   const { description, id } = polygon;
 
   if (description) {
     map.onClick(`${ id }-layer`, e => {
-      new Mapbox.Popup()
+      new Popup()
         .setLngLat(e.lngLat)
         .setHTML(description)
         .addTo(mapRef.current);
@@ -283,7 +285,8 @@ export const useEvents = (mapRef, eventHandlers, map) => {
 };
 
 export const useGeolocation = (mapRef, onDeterminingGeoposition, map) => {
-  const geolocate = new Mapbox.GeolocateControl({
+  const { GeolocateControl } = Mapbox;
+  const geolocate = new GeolocateControl({
     positionOptions  : {
       enableHighAccuracy: true,
     },
