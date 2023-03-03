@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import mapboxgl from './lib/mapbox';
+import Mapbox from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
 import MapboxGeocoder from './lib/mapbox-geocoder';
 import { createActions } from './actions';
+
+const { Map, FullscreenControl, NavigationControl, Marker, Popup, GeolocateControl } = Mapbox;
 
 const defaultMapboxProps = {
   START_POS : { lat: 0, lng: 0 },
@@ -12,7 +14,7 @@ const defaultMapboxProps = {
   PROJECTION: 'mercator',
 };
 
-export class Map {
+export class MapController {
   constructor(mapRef) {
     this.mapRef = mapRef;
   }
@@ -97,8 +99,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
   const { START_POS, MAP_STYLE, ZOOM, PROJECTION } = defaultMapboxProps;
   const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
   const { onDeterminingGeoposition } = eventHandlers;
-  const { Map, accessToken, FullscreenControl, NavigationControl } = Mapbox;
-
+  const { accessToken } = Mapbox;
   mapRef.current = new Map({
     container : mapContainerRef.current,
     style     : mapStyle || MAP_STYLE,
@@ -158,11 +159,11 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
       markers.forEach(markerItem => {
         const { color, description } = markerItem;
 
-        const marker = new mapboxgl.Marker({ color })
+        const marker = new Marker({ color })
           .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
           .addTo(mapRef.current);
 
-        const popup = new mapboxgl.Popup();
+        const popup = new Popup();
 
         popup.on('open', () => {
           const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
@@ -200,7 +201,7 @@ const createPopup = (polygon, mapRef, onPolygonClick, map) => {
 
   if (description) {
     map.onClick(`${ id }-layer`, e => {
-      new mapboxgl.Popup()
+      new Popup()
         .setLngLat(e.lngLat)
         .setHTML(description)
         .addTo(mapRef.current);
@@ -283,7 +284,7 @@ export const useEvents = (mapRef, eventHandlers, map) => {
 };
 
 export const useGeolocation = (mapRef, onDeterminingGeoposition, map) => {
-  const geolocate = new mapboxgl.GeolocateControl({
+  const geolocate = new GeolocateControl({
     positionOptions  : {
       enableHighAccuracy: true,
     },
