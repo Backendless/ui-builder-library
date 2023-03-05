@@ -1,17 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export const Others = ({ component, eventHandlers, transitionsContainerPod, setIsOpen, isOpen }) => {
+export const Others = ({ component, eventHandlers, transitionsContainerPod, display }) => {
   const { classList, style, variants, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
 
-  useEffect(() => {
-    setIsOpen(false);
+  const [isTransition, setIsTransition] = useState(false);
+  const [endAnimationTimeout, setEndAnimationTimeout] = useState();
 
+  useEffect(() => {
     const timeout = setTimeout(() => {
-      setIsOpen(true);
-    }, 100);
+      setIsTransition(true);
+    }, 50);
 
     onMounted();
 
@@ -22,19 +23,27 @@ export const Others = ({ component, eventHandlers, transitionsContainerPod, setI
   }, []);
 
   useEffect(() => {
-    const endAnimationTimeout = setTimeout(() => {
-      onEndAnimation();
-    }, duration);
+    if (display) {
+      setEndAnimationTimeout(setTimeout(() => {
+        onEndAnimation();
+      }, duration));
+    } else {
+      clearTimeout(endAnimationTimeout);
+    }
 
     return () => {
       clearTimeout(endAnimationTimeout);
     };
-  }, [isOpen]);
+  }, [display]);
 
   return (
     <div
-      className={ cn('bl-customComponent-transitions', variants, { [variants + '--open']: isOpen }, classList) }
-      style={ { ...style, transitionDuration: duration + 'ms' } }>
+      className={ cn(
+        'bl-customComponent-transitions',
+        variants,
+        { [variants + '--open']: display && isTransition },
+        classList) }
+      style={{ ...style, transitionDuration: duration + 'ms' }}>
       { transitionsContainerPod.render() }
     </div>
   );
