@@ -17,7 +17,8 @@
       "hasLogicHandler": true,
       "handlerId": "calendarDataLogic",
       "handlerLabel": "Calendar Data Logic",
-      "handlerDescription": "This is a handler for the logic to determine the data array of the calendar(date, count)."
+      "handlerDescription": "This is a handler for the logic to determine the data array of the calendar(date, count).",
+      "dataBinding": true
     },
     {
       "type": "checkbox",
