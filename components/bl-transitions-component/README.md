@@ -39,7 +39,9 @@ You can also change the visibility of the component "Transitions" and see the an
 
 For example:
 
-1. Add two buttons to the page: the first button is "Open," and the second button is "Close."
+1. Add two buttons to the page: the first button is "Open" and the second button is "Close":
+
+<img alt="Add open and close button" src="./example-images/add_open_close_button.jpg" width="900" />
 
 2. Open button logic:
 
