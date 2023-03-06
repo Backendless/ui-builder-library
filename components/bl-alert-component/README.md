@@ -67,17 +67,36 @@ Then navigate to the **Logic** section of the selected component, and in the **U
 
 **Dimensions**
 ````
+@bl-customComponent-alert-fontWeight: 400;
 @bl-customComponent-alert-fontSize: 12.8px;
-@bl-customComponent-alert-titleSize: 16px;
-
-@bl-customComponent-alert-closeButtonSize: 18px;
+@bl-customComponent-alert-padding: 6px 16px;
 @bl-customComponent-alert-borderRadius: 4px;
+
+@bl-customComponent-alert-titleSize: 16px;
+@bl-customComponent-alert-title-margin: -2px 0 8px 0;
+@bl-customComponent-alert-title-fontWeight: 600;
+
+@bl-customComponent-alert-text-fontWeight: 500;
+
+@bl-customComponent-alert-content-padding: 8px 0;
+
+@bl-customComponent-alert-buttonContainer-padding: 4px 0 0 16px;
+@bl-customComponent-alert-buttonContainer-margin: 0 -8px 0 auto;
+
+@bl-customComponent-alert-outline-border: 1px solid;
+
+@bl-customComponent-alert-closeButton-borderRadius: 50%;
+@bl-customComponent-alert-closeButton-padding: 5px;
+@bl-customComponent-alert-closeButtonSize: 18px;
+
 @bl-customComponent-alert-iconSize: 22px;
+@bl-customComponent-alert-icon-padding: 7px 0;
+@bl-customComponent-alert-icon-marginRight: 12px;
+@bl-customComponent-alert-icon-opacity: 0.9;
 ````
 
 **Colors**
 ````
-@bl-customComponent-alert-textColor: @appTextColor;
 @bl-customComponent-alert-errorBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#fdeded, 90%), #fdeded);
 @bl-customComponent-alert-warningBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#fff4e5, 90%), #fff4e5);
 @bl-customComponent-alert-infoBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#e5f6fd, 90%), #e5f6fd);
@@ -92,4 +111,22 @@ Then navigate to the **Logic** section of the selected component, and in the **U
 @bl-customComponent-alert-warningPrimaryColor: #ff9800;
 @bl-customComponent-alert-infoPrimaryColor: #03a9f4;
 @bl-customComponent-alert-successPrimaryColor: #4caf50;
+
+@bl-customComponent-alert-closeButton-backgroundColor: transparent;
+@bl-customComponent-alert-closeButton-backgroundColor-hover: rgba(0, 0, 0, 0.04);
+
+@bl-customComponent-alert-outline-backgroundColor: transparent;
+
+@bl-customComponent-alert-filled-color: #fff;
+@bl-customComponent-alert-filled-icon-fill: #fff;
+````
+
+**Others**
+````
+@bl-customComponent-alert-closeButton-cursor: pointer;
+
+@bl-customComponent-alert-closeButton-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+@bl-customComponent-alert-openAnimation: alert-open linear forwards;
+@bl-customComponent-alert-closeAnimation: alert-close linear forwards;
 ````
