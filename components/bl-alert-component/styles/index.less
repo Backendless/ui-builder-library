@@ -1,12 +1,42 @@
-// you can use LESS variables from the current Theme and app extensions of the UI-Container
 @bl-customComponent-alert-fontFamily: "Roboto", "Helvetica", "Arial", sans-serif;
+@bl-customComponent-alert-fontWeight: 400;
 @bl-customComponent-alert-fontSize: 12.8px;
 @bl-customComponent-alert-textColor: @appTextColor;
-@bl-customComponent-alert-titleSize: 16px;
-
-@bl-customComponent-alert-closeButtonSize: 18px;
+@bl-customComponent-alert-padding: 6px 16px;
 @bl-customComponent-alert-borderRadius: 4px;
+
+@bl-customComponent-alert-titleSize: 16px;
+@bl-customComponent-alert-title-margin: -2px 0 8px 0;
+@bl-customComponent-alert-title-fontWeight: 600;
+
+@bl-customComponent-alert-text-fontWeight: 500;
+
+@bl-customComponent-alert-openAnimation: alert-open linear forwards;
+@bl-customComponent-alert-closeAnimation: alert-close linear forwards;
+
+@bl-customComponent-alert-content-padding: 8px 0;
+
+@bl-customComponent-alert-buttonContainer-padding: 4px 0 0 16px;
+@bl-customComponent-alert-buttonContainer-margin: 0 -8px 0 auto;
+
+@bl-customComponent-alert-filled-color: #fff;
+@bl-customComponent-alert-filled-icon-fill: #fff;
+
+@bl-customComponent-alert-outline-border: 1px solid;
+@bl-customComponent-alert-outline-backgroundColor: transparent;
+
+@bl-customComponent-alert-closeButton-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+@bl-customComponent-alert-closeButton-backgroundColor: transparent;
+@bl-customComponent-alert-closeButton-backgroundColor-hover: rgba(0, 0, 0, 0.04);
+@bl-customComponent-alert-closeButton-cursor: pointer;
+@bl-customComponent-alert-closeButton-borderRadius: 50%;
+@bl-customComponent-alert-closeButton-padding: 5px;
+@bl-customComponent-alert-closeButtonSize: 18px;
+
 @bl-customComponent-alert-iconSize: 22px;
+@bl-customComponent-alert-icon-padding: 7px 0;
+@bl-customComponent-alert-icon-marginRight: 12px;
+@bl-customComponent-alert-icon-opacity: 0.9;
 
 @bl-customComponent-alert-errorBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#fdeded, 90%), #fdeded);
 @bl-customComponent-alert-warningBackgroundColor: if(luma(@appBackgroundColor) < 50%, darken(#fff4e5, 90%), #fff4e5);
@@ -49,10 +79,10 @@
     display: flex;
     border-radius: @bl-customComponent-alert-borderRadius;
 
-    padding: 6px 16px;
+    padding: @bl-customComponent-alert-padding;
 
     font-family: @bl-customComponent-alert-fontFamily;
-    font-weight: 400;
+    font-weight: @bl-customComponent-alert-fontWeight;
     font-size: @bl-customComponent-alert-fontSize;
 
     line-height: 1.43;
@@ -61,10 +91,10 @@
     &__icon {
       display: flex;
 
-      margin-right: 12px;
-      padding: 7px 0;
+      margin-right: @bl-customComponent-alert-icon-marginRight;
+      padding: @bl-customComponent-alert-icon-padding;
 
-      opacity: 0.9;
+      opacity: @bl-customComponent-alert-icon-opacity;
 
       &-svg {
         height: @bl-customComponent-alert-iconSize;
@@ -73,19 +103,18 @@
     }
 
     &__content {
-      padding: 8px 0;
+      padding: @bl-customComponent-alert-content-padding;
     }
 
     &__title {
       display: inline-block;
 
-      font-weight: 600;
+      font-weight: @bl-customComponent-alert-title-fontWeight;
       font-size: @bl-customComponent-alert-titleSize;
 
       line-height: 1.5;
 
-      margin-top: -2px;
-      margin-bottom: 8px;
+      margin: @bl-customComponent-alert-title-margin;
 
       .text-types-mixin()
     }
@@ -94,7 +123,7 @@
       display: block;
       min-width: 0;
       overflow: auto;
-      font-weight: 500;
+      font-weight: @bl-customComponent-alert-text-fontWeight;
 
       .text-types-mixin()
     }
@@ -104,20 +133,20 @@
       justify-content: center;
       align-items: center;
 
-      background-color: transparent;
-      border-radius: 50%;
-      cursor: pointer;
+      background-color: @bl-customComponent-alert-closeButton-backgroundColor;
+      border-radius: @bl-customComponent-alert-closeButton-borderRadius;
+      cursor: @bl-customComponent-alert-closeButton-cursor;
 
       outline: 0;
       border: 0;
 
       margin: 0;
-      padding: 5px;
+      padding: @bl-customComponent-alert-closeButton-padding;
 
-      transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      transition: @bl-customComponent-alert-closeButton-transition;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: @bl-customComponent-alert-closeButton-backgroundColor-hover;
       }
 
       &-icon {
@@ -143,7 +172,7 @@
   }
 
   .alert-filled {
-    color: #fff;
+    color: @bl-customComponent-alert-filled-color;
 
     &--error {
       background-color: @bl-customComponent-alert-errorPrimaryColor;
@@ -162,7 +191,7 @@
     }
 
     &__icon-svg {
-      fill: #fff;
+      fill: @bl-customComponent-alert-filled-icon-fill;
     }
 
     &__close-button-icon {
@@ -171,8 +200,8 @@
   }
 
   .alert-outline {
-    border: 1px solid;
-    background-color: transparent;
+    border: @bl-customComponent-alert-outline-border;
+    background-color: @bl-customComponent-alert-outline-backgroundColor;
 
     &__close-button-icon {
       .button-icon-mixin(@bl-customComponent-alert-closeButtonSize, @bl-customComponent-alert-textColor)
@@ -198,14 +227,13 @@
   .button-container {
     display: flex;
     align-items: center;
-    padding: 4px 0 0 16px;
-    margin-left: auto;
-    margin-right: -8px;
+    padding: @bl-customComponent-alert-buttonContainer-padding;
+    margin: @bl-customComponent-alert-buttonContainer-margin;
   }
 
   .alert-open {
     overflow: hidden;
-    animation: alert-open linear forwards;
+    animation: @bl-customComponent-alert-openAnimation;
   }
 
   @keyframes alert-open {
@@ -219,7 +247,7 @@
 
   .alert-close {
     overflow: hidden;
-    animation: alert-close linear forwards;
+    animation: @bl-customComponent-alert-closeAnimation;
   }
 
   @keyframes alert-close {
