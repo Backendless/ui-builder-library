@@ -60,6 +60,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
             rowData={ rows }
             columnDefs={ columns }
             defaultColDef={ defaultColDef }
+            scrollbarWidth={ 14 }
             onCellClicked={ handleCellClick }
           />
       }
