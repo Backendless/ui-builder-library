@@ -31,8 +31,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     sortable,
     floatingFilter: filter ? floatingFilter : false,
     resizable,
-    cellRenderer: memo(CellComponent),
-    filterParams: { buttons: ['apply', 'reset'] }
+    cellRenderer: memo(CellComponent)
   }), [sortable, filter, floatingFilter, resizable]);
 
   const handleCellClick = useCallback(params => {
