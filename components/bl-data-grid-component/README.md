@@ -3,6 +3,10 @@
 Data Grid is a component of Backendless UI-Builder designer. The main purpose of the component is to display data, and this data can be sorted and filtered.
 If you want to know more about this component, you can [follow the link.](https://www.ag-grid.com/example/)
 
+<p align="center">
+  <img src="./thumbnail.png" alt="thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property                             | Type                                                                                                                             | Default Value                                                                                                                                                             | Logic                   | Data Binding | UI Setting | Description                                                                                                                                                                                   |
