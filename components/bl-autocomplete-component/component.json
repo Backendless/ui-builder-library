@@ -84,7 +84,7 @@
       "handlerLabel": "Options Logic",
       "handlerDescription": "This handler allows you to add options to a component.",
       "dataBinding": true,
-      "defaultValue": "[\n  {\n    \"label\": \"Apple\",\n    \"value\": \"apple\"\n  },\n  {\n    \"label\": \"Orange\",\n    \"value\": \"orange\"\n  },\n  {\n    \"label\": \"Grape\",\n    \"value\": \"grape\"\n  }\n]"
+      "defaultValue": "[\n  {\n    \"groupLabel\": \"Winter\",\n    \"children\": [\n      {\"label\": \"December\", \"value\": \"December\"},\n      {\"label\": \"January\", \"value\": \"January\"},\n      {\"label\": \"February\", \"value\": \"February\"}\n    ]\n  },\n  {\n    \"groupLabel\": \"Summer\",\n    \"children\": [\n      {\"label\": \"June\", \"value\": \"June\"},\n      {\"label\": \"July\", \"value\": \"July\"},\n      {\"label\": \"August\", \"value\": \"August\"}\n    ]\n  }\n]"
     }
   ],
   "eventHandlers": [
