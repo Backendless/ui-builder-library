@@ -722,6 +722,19 @@
           "label": "model"
         }
       ]
+    },
+    {
+      "id": "uploadImage",
+      "label": "Upload Image to"
+    },
+    {
+      "id": "getCroppedImageContent",
+      "label": "Get Cropped Image Content from",
+      "hasReturn": true
+    },
+    {
+      "id": "removeImage",
+      "label": "Remove Image from"
     }
   ]
 }

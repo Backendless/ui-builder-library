@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 
-import { dataURLToBlob, download, upload } from './helpers';
+import { download, getImageBlob, upload } from './helpers';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 export function DropImageArea({ image, setImage, initialLabel }) {
   const uploadImage = e => upload(e, setImage);
@@ -26,8 +28,9 @@ export function DropImageArea({ image, setImage, initialLabel }) {
   );
 }
 
-export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }) {
+export function HeaderToolbar({ component, cropperRef, onSave, image, setImage, addImageButtonRef }) {
   const { addImageButtonVisibility, cleanButtonVisibility, saveButtonVisibility, downloadButtonVisibility } = component;
+
   const visibility = (
     addImageButtonVisibility || cleanButtonVisibility || saveButtonVisibility || downloadButtonVisibility
   );
@@ -35,10 +38,10 @@ export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }
   const clean = () => setImage('');
   const uploadImage = e => upload(e, setImage);
 
-  const saveImage = () => {
-    const croppedCanvasURL = cropperRef.current.getCroppedCanvas().toDataURL();
+  const saveImage = async () => {
+    const fileContent = await getImageBlob(cropperRef.current);
 
-    dataURLToBlob(croppedCanvasURL).then(fileContent => onSave({ fileContent }));
+    onSave({ fileContent });
   };
 
   const downloadImage = () => {
@@ -47,14 +50,15 @@ export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }
     download(croppedCanvasURL, 'cropped.png');
   };
 
-  if (!image || !visibility) {
-    return null;
-  }
-
   return (
-    <div className="header-toolbar">
+    <div className={ cn('header-toolbar', { hidden: !image || !visibility }) }>
       <div className="buttons-wrapper">
-        <ImageUploadButton onChange={ uploadImage } label="Add image" visibility={ addImageButtonVisibility }/>
+        <ImageUploadButton
+          onChange={ uploadImage }
+          label="Add image"
+          visibility={ addImageButtonVisibility }
+          addImageButtonRef={ addImageButtonRef }
+        />
         <Button onClick={ clean } label="Clean" visibility={ cleanButtonVisibility }/>
       </div>
       <div className="buttons-wrapper">
@@ -129,15 +133,11 @@ function Button({ className, label, onClick, visibility, disabled }) {
   );
 }
 
-function ImageUploadButton({ label, onChange, visibility }) {
-  if (!visibility) {
-    return null;
-  }
-
+function ImageUploadButton({ label, onChange, visibility, addImageButtonRef }) {
   return (
-    <label>
+    <label className={ cn({ hidden: !visibility }) }>
       <span>{ label }</span>
-      <input type="file" accept="image/*" onChange={ onChange }/>
+      <input type="file" ref={ addImageButtonRef } accept="image/*" onChange={ onChange }/>
     </label>
   );
 }

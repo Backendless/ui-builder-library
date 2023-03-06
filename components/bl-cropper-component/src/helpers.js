@@ -66,6 +66,12 @@ export async function dataURLToBlob(dataURL) {
   return response.blob();
 }
 
+export function getImageBlob(cropper) {
+  const croppedCanvasURL = cropper.getCroppedCanvas().toDataURL();
+
+  return dataURLToBlob(croppedCanvasURL);
+}
+
 export async function download(dataURL, filename) {
   const blob = await dataURLToBlob(dataURL);
   const url = window.URL.createObjectURL(blob);
