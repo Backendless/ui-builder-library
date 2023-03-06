@@ -46,7 +46,7 @@ export default function Markdown({ component, elRef }) {
     <div
       ref={ elRef }
       className={ cn('bl-customComponent-markdown markdown-body', classList) }
-      style={ { ...style, height: height || '100%', width: width || '100%' } }>
+      style={ { ...style, height: validateDimension(height), width: validateDimension(width) } }>
       <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown }/>
     </div>
   );
@@ -74,3 +74,13 @@ function Loader() {
     </div>
   );
 }
+
+const validateDimension = (dimension) => {
+  if (dimension) {
+    if (!!Number(dimension)) {
+      return dimension + 'px';
+    }
+
+    return dimension;
+  }
+};

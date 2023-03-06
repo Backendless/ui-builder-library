@@ -31,6 +31,12 @@
     vertical-align: middle;
     cursor: pointer;
 
+    &--disabled {
+      opacity: @bl-customComponent-radioButtonsList-disabled-opacity;
+      pointer-events: none;
+      cursor: @bl-customComponent-radioButtonsList-disabled-cursor;
+    }
+
     &__label {
       font-size: @bl-customComponent-radioButtonsList-radioButtonLabel-fontSize;
       color: @bl-customComponent-radioButtonsList-textColor;

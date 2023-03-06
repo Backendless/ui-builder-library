@@ -13,7 +13,7 @@ const transitionsViews = {
 };
 
 export default function Transitions({ component, eventHandlers, pods }) {
-  const { variants, display, animationDuration } = component;
+  const { variants, display, duration } = component;
   const transitionsContainerPod = pods['transitionsContainer'];
 
   const [visibility, setVisibility] = useState(display);
@@ -21,7 +21,7 @@ export default function Transitions({ component, eventHandlers, pods }) {
 
   const Transitions = transitionsViews[variants];
 
-  useVisibility(display, setIsOpen, setVisibility, animationDuration);
+  useVisibility(display, setIsOpen, setVisibility, duration);
 
   if (!visibility) {
     return null;

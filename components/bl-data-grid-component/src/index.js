@@ -1,4 +1,7 @@
-import { useRef, useMemo, useCallback, memo } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
+
+import { EmptyMessage } from './empty-message';
+
 import { AgGridReact } from './lib/ag-grid-react.min.js';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -15,13 +18,20 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const { onCellClick } = eventHandlers;
 
   const gridRef = useRef();
+  const [columns, setColumns] = useState([]);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    setColumns(columnDefs || []);
+    setRows(rowData || []);
+  }, [columnDefs, rowData]);
+
   const defaultColDef = useMemo(() => ({
     filter,
     sortable,
-    floatingFilter,
+    floatingFilter: filter ? floatingFilter : false,
     resizable,
-    cellRenderer: memo(CellComponent),
-    filterParams: { buttons: ['apply', 'reset'] }
+    cellRenderer: memo(CellComponent)
   }), [sortable, filter, floatingFilter, resizable]);
 
   const handleCellClick = useCallback(params => {
@@ -29,6 +39,10 @@ export default function DataGridComponent({ component, eventHandlers }) {
   }, []);
 
   const styles = { ...style, height: `${ height }px`, width: `${ width }px`, flexShrink: 0 };
+  const classes = cn(
+    'bl-customComponent-dataGrid', `ag-theme-${ theme }`, classList,
+    { 'bl-customComponent-dataGrid--disabled': disabled }
+  );
 
   if (!display) {
     return null;
@@ -37,19 +51,18 @@ export default function DataGridComponent({ component, eventHandlers }) {
   return (
     <div
       style={ styles }
-      className={
-        cn(
-          "bl-customComponent-dataGrid", `ag-theme-${ theme }`, classList,
-          { "bl-customComponent-dataGrid--disabled": disabled }
-        )
-      }>
-      <AgGridReact
-        ref={ gridRef }
-        rowData={ rowData }
-        columnDefs={ columnDefs }
-        defaultColDef={ defaultColDef }
-        onCellClicked={ handleCellClick }
-      />
+      className={ classes }>
+      { !columns.length || !rows.length
+        ? <EmptyMessage noColumns={ !columns.length } noRows={ !rows.length } />
+        : <AgGridReact
+            ref={ gridRef }
+            rowData={ rows }
+            columnDefs={ columns }
+            defaultColDef={ defaultColDef }
+            scrollbarWidth={ 14 }
+            onCellClicked={ handleCellClick }
+          />
+      }
     </div>
   );
 }
