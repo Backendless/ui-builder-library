@@ -2,11 +2,22 @@ import { useState } from 'react';
 
 import { useElements, useStripe } from '../lib/react-stripe.umd.min';
 
-export function useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef) {
+const ErrorMessages = {
+  SERVICE_NOT_AVAILABLE: 'Service not found',
+  PLUGIN_NOT_AVAILABLE : (
+    'Service not found. Make sure to install the Stripe Integration Plugin from the Backendless marketplace.'
+  ),
+  KEY_NOT_AVAILABLE    : (
+    'The component is not properly configured. Make sure to add Stripe\'s Publishable key in the SETTINGS tab.'
+  ),
+};
+
+export function useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef, publishableKey) {
   const { onSuccessEvent, onRejectEvent, onFocusEvent, onBlurEvent, onChangeEvent } = eventHandlers;
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(() => publishableKey ? '' : ErrorMessages.KEY_NOT_AVAILABLE);
   const [isCardValid, setIsCardValid] = useState(false);
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -58,7 +69,9 @@ export function useCardElement(eventHandlers, setIsLoading, setTransactionDetail
       .catch(error => {
         const errorMessage = error.message;
 
-        setErrorMessage(errorMessage);
+        setErrorMessage(
+          errorMessage === ErrorMessages.SERVICE_NOT_AVAILABLE ? ErrorMessages.PLUGIN_NOT_AVAILABLE : errorMessage
+        );
         setIsLoading(false);
         onRejectEvent({ errorMessage });
       });
