@@ -57,7 +57,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ { style } }>
+    <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ style }>
       <CalendarHeatmap
         values={ calendarData }
         startDate={ shiftDate(today, calendarData.length) }
