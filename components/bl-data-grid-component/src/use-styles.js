@@ -17,9 +17,6 @@ const validateStyles = styles => {
 
     console.error(`Property ${propertyName} has wrong value!`);
 
-    return {
-      ...acc,
-      [propertyName]: 0,
-    };
+    return acc;
   }, {});
 };
