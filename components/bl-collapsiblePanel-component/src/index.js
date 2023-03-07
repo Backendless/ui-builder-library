@@ -9,8 +9,8 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
   const [isActive, setIsActive] = useState(false);
   const [podClass, setPodClass] = useState('');
 
-  const changeActive = currentIsActive => {
-    if(currentIsActive) {
+  const togglePanel = activeState => {
+    if(activeState) {
       setIsActive(false);
       setPodClass('close');
       onClose();
@@ -29,8 +29,8 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
     return isActive ? activeTitle || title : title;
   }, [isActive, activeTitle, title]);
 
-  component.show = () => changeActive();
-  component.hide = () => changeActive(true);
+  component.show = () => togglePanel();
+  component.hide = () => togglePanel(true);
 
   if (!display) {
     return null;
@@ -38,7 +38,7 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-collapsiblePanel', ...classList) } style={ style }>
-      <PanelTitle title={ titleToShow } isActive={ isActive } onClick={ changeActive } />
+      <PanelTitle title={ titleToShow } isActive={ isActive } onClick={ togglePanel } />
       <div className={ cn('panel-content', podClass) }>
         { pods['panelContent'].render() }
       </div>
@@ -47,11 +47,8 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 }
 
 export function PanelTitle({ title, isActive, onClick }) {
-
-  const handleClick = () => onClick(isActive);
-
   return (
-    <div className="panel-title" aria-expanded={ isActive } role="button" onClick={ handleClick }>
+    <div className="panel-title" aria-expanded={ isActive } role="button" onClick={ () => onClick(isActive) }>
       <span className="panel-title-text">{ title }</span>
       <CollapseIcon active={ isActive } />
     </div>

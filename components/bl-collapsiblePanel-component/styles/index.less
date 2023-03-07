@@ -61,15 +61,16 @@
     width: @bl-customComponent-collapsiblePanel-width;
     max-height: 0;
     overflow: hidden;
-    animation-duration: @bl-customComponent-collapsiblePanel-content-animationDuration;
 
     &.open {
       max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
       animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
+      animation-duration: ( @bl-customComponent-collapsiblePanel-content-animationDuration * 2 );
     }
 
     &.close {
       animation-name: @bl-customComponent-collapsiblePanel-content-animationName-close;
+      animation-duration: @bl-customComponent-collapsiblePanel-content-animationDuration;
     }
   }
 }
