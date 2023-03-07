@@ -1,6 +1,6 @@
 export function Legend({ legend, width }) {
   return (
-    <div className="legend" style={ { width: `${ width }px` } }>
+    <div className="legend" style={{ width: `${ width }px` }}>
       { legend && (
         <p className="legend-text">{ legend }</p>
       ) }
