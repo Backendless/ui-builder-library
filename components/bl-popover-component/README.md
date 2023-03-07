@@ -12,9 +12,11 @@ The component allows you to render a popup window in your UI-Builder application
 
 ## Events
 
-| Name            | Triggers                   | Context Blocks     |
-| --------------- | -------------------------- | ------------------ |
-| On Target Click | when user clicks on target | Is Open: `Boolean` |
+| Name                | Triggers                                         | Context Blocks     |
+| ------------------- | ------------------------------------------------ | ------------------ |
+| On Target Click     | when user clicks on target                       | Is Open: `Boolean` |
+| On Mouse Over Event | when the mouse pointer hovers over the component |                    |
+| On Mouse Out Event  | when the mouse pointer leaves the component      |                    |
 
 ## Actions
 

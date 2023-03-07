@@ -36,7 +36,7 @@
       "name": "monthLabels",
       "label": "Month Labels",
       "showInSettings": true,
-      "defaultValue": "January,February,March,April,May,June,July,August,September,October,November,December",
+      "defaultValue": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
       "hasLogicHandler": true,
       "handlerId": "monthLabelsLogic",
       "handlerLabel": "Month Labels Logic",

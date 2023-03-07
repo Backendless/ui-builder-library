@@ -57,7 +57,8 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
-      "handlerDescription": "This is the handler for the logic to determine the height of the PDF Viewer."
+      "handlerDescription": "This is the handler for the logic to determine the height of the PDF Viewer.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [

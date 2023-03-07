@@ -8,7 +8,13 @@ import { PaymentForm } from './payment-form';
 const { cn } = BackendlessUI.CSSUtils;
 
 function useStripeAPI(publishableKey) {
-  return useMemo(() => loadStripe(publishableKey), [publishableKey]);
+  return useMemo(() => (
+    loadStripe(publishableKey).catch(error => {
+      console.error(error);
+
+      return null;
+    })
+  ), [publishableKey]);
 }
 
 export default function StripePaymentComponent({ component, eventHandlers, settings, elRef }) {
@@ -32,6 +38,7 @@ export default function StripePaymentComponent({ component, eventHandlers, setti
           eventHandlers={ eventHandlers }
           setIsLoading={ setIsLoading }
           setTransactionDetails={ setTransactionDetails }
+          publishableKey={ publishableKey }
         />
       </Elements>
 

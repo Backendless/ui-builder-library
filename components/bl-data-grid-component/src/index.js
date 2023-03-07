@@ -13,7 +13,7 @@ function CellComponent(params) {
 export default function DataGridComponent({ component, eventHandlers }) {
   const {
     classList, display, style, disabled, sortable, filter, floatingFilter,
-    resizable, columnDefs, rowData, height, width, theme
+    resizable, columnDefs, rowsData, height, width, theme
   } = component;
   const { onCellClick } = eventHandlers;
 
@@ -23,16 +23,15 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     setColumns(columnDefs || []);
-    setRows(rowData || []);
-  }, [columnDefs, rowData]);
+    setRows(rowsData || []);
+  }, [columnDefs, rowsData]);
 
   const defaultColDef = useMemo(() => ({
     filter,
     sortable,
     floatingFilter: filter ? floatingFilter : false,
     resizable,
-    cellRenderer: memo(CellComponent),
-    filterParams: { buttons: ['apply', 'reset'] }
+    cellRenderer: memo(CellComponent)
   }), [sortable, filter, floatingFilter, resizable]);
 
   const handleCellClick = useCallback(params => {
@@ -60,6 +59,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
             rowData={ rows }
             columnDefs={ columns }
             defaultColDef={ defaultColDef }
+            scrollbarWidth={ 14 }
             onCellClicked={ handleCellClick }
           />
       }
