@@ -1,12 +1,28 @@
-import { useRef } from 'react';
+import { useMemo } from 'react';
 
-export function PaymentAmount({ component }) {
-  const { amount, minAmount, fixedAmount, currency } = component;
-  const amountRef = useRef(null);
+const ONLY_NUMERIC_REGEX = /^[\d.,]+$/;
 
-  const changeAmount = e => {
-    component.amount = Number(e.target.value);
-    amountRef.current.value = amount;
+export function PaymentAmount({ component, paymentAmount, setPaymentAmount }) {
+  const { minAmount, fixedAmount, currency, amountDecimalPlaces } = component;
+
+  const amountPattern = useAmountPattern(amountDecimalPlaces, { strictEnding: true });
+
+  const changeAmount = event => {
+    const amount = event.target.value;
+    const valid = amountPattern.test(amount);
+
+    if (valid) {
+      setPaymentAmount(amount);
+      component.amount = amount;
+    }
+  };
+
+  const validateInput = event => {
+    const valid = ONLY_NUMERIC_REGEX.test(event.data);
+
+    if (!valid) {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -15,12 +31,13 @@ export function PaymentAmount({ component }) {
       <div className="amount">
         <input
           type="number"
-          ref={ amountRef }
           name="amount"
           min={ minAmount || 0 }
           step="0.01"
-          value={ amount }
+          inputMode="decimal"
+          value={ paymentAmount }
           onChange={ changeAmount }
+          onBeforeInput={ validateInput }
           placeholder="0"
           readOnly={ fixedAmount }
           required
@@ -29,4 +46,14 @@ export function PaymentAmount({ component }) {
       </div>
     </div>
   );
+}
+
+export function useAmountPattern(amountDecimalPlaces, options) {
+  const { strictEnding } = options;
+
+  return useMemo(() => {
+    const endCharacter = strictEnding ? '$' : '';
+
+    return new RegExp('^[0-9]*(\\.[0-9]{0,' + amountDecimalPlaces + '})?' + endCharacter);
+  }, [amountDecimalPlaces, strictEnding]);
 }

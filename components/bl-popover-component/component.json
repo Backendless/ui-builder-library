@@ -39,15 +39,15 @@
   ],
   "eventHandlers": [
     {
-      "name": "onButtonClick",
-      "label": "On Button Click",
+      "name": "onTargetClick",
+      "label": "On Target Click",
       "contextBlocks": [
         {
           "id": "isOpen",
           "label": "Is Open"
         }
       ],
-      "handlerDescription": "This event is triggered when the user clicks on the button."
+      "handlerDescription": "This event is triggered when the user clicks on the target."
     },
     {
       "name": "onMouseOver",
@@ -76,7 +76,7 @@
   ],
   "pods": {
     "f1bac586857f6846d1ca7ab7f71ba20b": {
-      "id": "popoverTrigger",
+      "id": "popoverTarget",
       "dataContainer": true
     },
     "1aec8dec2faf84f92fd9b717e81db234": {

@@ -35,7 +35,7 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
     }
   }, [isOptionsOpen]);
 
-  useOnClickOutside(rootRef, handleClickOutside);
+  useOnClickOutside(elRef, handleClickOutside);
 
   if (!display) {
     return null;

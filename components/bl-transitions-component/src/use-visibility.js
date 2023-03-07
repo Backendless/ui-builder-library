@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const useVisibility = (display, setIsOpen, setVisibility, animationDuration) => {
+export const useVisibility = (display, setIsOpen, setVisibility, duration) => {
   useEffect(() => {
     let visibilityTimeout, isOpenTimeout;
 
@@ -11,7 +11,7 @@ export const useVisibility = (display, setIsOpen, setVisibility, animationDurati
 
       visibilityTimeout = setTimeout(() => {
         setVisibility(false);
-      }, animationDuration);
+      }, duration);
     } else {
       setVisibility(true);
     }

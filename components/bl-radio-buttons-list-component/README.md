@@ -7,11 +7,11 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 
 ## Properties
 
-| Property | Type       | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                                             |
-|----------|------------|---------------|----------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled | *Checkbox* | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                                         |
-| Options  | *JSON*     | `[]`          | Options Logic  | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: List of object {value: `String`, label: `String`}. |
-| Value    | *Text*     |               | Value Logic    | YES          | YES        | This handler allows you to select value by default.                                                                                                                     |
+| Property                | Type     | Default Value                                                                                                                                                             | Logic          | Data Binding | UI Setting | Description                                                                                                                                                                                                                                                            |
+|-------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled<br/>`disabled` | Checkbox | `false`                                                                                                                                                                   | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                                                                                                                                        |
+| Options<br/>`options`   | JSON     | `[`</br>`{"label": "Radio 1", "value": "radio1", "disabled": true},`<br/>`{"label": "Radio 2", "value": "radio2"},`</br>`{"label": "Radio 3", "value": "radio3"}`<br/>`]` | Options Logic  | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#Examples). Signature of options: List of object `{value: String, label: String}`. If you need to disable an option, add the `disabled: true` property to the object of the option. |
+| Value<br/>`value`       | Text     | "radio3"                                                                                                                                                                  | Value Logic    | YES          | YES        | This handler allows you to select value by default.                                                                                                                                                                                                                    |
 
 ## Events
 
@@ -42,10 +42,18 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
 @bl-customComponent-radioButtonsList-inputRadio-width: 42px;
 @bl-customComponent-radioButtonsList-radioButtonIcon-width: 24px;
 @bl-customComponent-radioButtonsList-radioButtonLabel-fontSize: 16px;
+@bl-customComponent-radioButtonsList-disabled-opacity: 0.38;
+@bl-customComponent-radioButtonsList-disabled-cursor: default;
 ````
 
-## <a name="Examples"></a> Codeless Examples
+**Colors**
+````
+@bl-customComponent-radioButtonsList-radioButtonIcon-fill: @bl-customComponent-radioButtonsList-themeColor;
+@bl-customComponent-radioButtonsList-radioButtonIcon-backgroundColor-onHover: rgba(@themePrimary, 0.04);
+````
+
+## <a id="examples"></a> Codeless Examples
 
 Adding options to component:
 
-![markers example](./example-images/adding-options.png)
+![markers example](./example-images/options.png)

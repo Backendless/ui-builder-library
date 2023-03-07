@@ -14,7 +14,7 @@ The component allows you to render a popup window in your UI-Builder application
 
 | Name                | Triggers                                         | Context Blocks     |
 | ------------------- | ------------------------------------------------ | ------------------ |
-| On Button Click     | when user clicks on button                       | Is Open: `Boolean` |
+| On Target Click     | when user clicks on target                       | Is Open: `Boolean` |
 | On Mouse Over Event | when the mouse pointer hovers over the component |                    |
 | On Mouse Out Event  | when the mouse pointer leaves the component      |                    |
 
@@ -49,8 +49,8 @@ The component allows you to render a popup window in your UI-Builder application
 1. Add component Popover in page
     ![add component in page](./example-images/add-in-page.jpg)
 
-2. Add in popover trigger and content
-    ![add trigger and content](./example-images/add-triger-and-content.jpg)
+2. Add in popover target and content
+    ![add target and content](./example-images/add-target-and-content.jpg)
 
 3. Add logic for Popover "On Button Click" event
     ![add logic for on button click](./example-images/on-button-click-event.jpg)
