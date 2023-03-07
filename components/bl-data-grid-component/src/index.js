@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
 
 import { EmptyMessage } from './empty-message';
 
+import { useStyles } from './use-styles';
+
 import { AgGridReact } from './lib/ag-grid-react.min.js';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -38,7 +40,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     onCellClick({ cellParams: params });
   }, []);
 
-  const styles = { ...style, height: `${ height }px`, width: `${ width }px`, flexShrink: 0 };
+  const styles = useStyles(style, width, height);
   const classes = cn(
     'bl-customComponent-dataGrid', `ag-theme-${ theme }`, classList,
     { 'bl-customComponent-dataGrid--disabled': disabled }
