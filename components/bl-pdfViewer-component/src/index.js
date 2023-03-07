@@ -12,7 +12,7 @@ export default function PdfViewer({ component, eventHandlers }) {
   const [pageIndex, setPageIndex] = useState(1);
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
-  const [controlsDisabled, setControlsDisabled] = useState(false);
+  const [isControlDisplay, setIsControlDisplay] = useState(false);
 
   const inputRef = useRef();
 
@@ -23,12 +23,18 @@ export default function PdfViewer({ component, eventHandlers }) {
     }
   }, [documentRef]);
 
+  useEffect(() => {
+    setIsControlDisplay(false);
+  }, [pdfUrl]);
+
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
+    setIsControlDisplay(true);
     onLoadSuccess({ pageCount: numPages });
   };
 
-  const onDocumentLoadError = (error) => {
+  const onDocumentLoadError = error => {
+    setIsControlDisplay(false);
     onLoadError({ message: error.message });
   };
 
@@ -38,7 +44,7 @@ export default function PdfViewer({ component, eventHandlers }) {
   };
 
   const onNoData = () => {
-    setControlsDisabled(true);
+    setIsControlDisplay(false);
 
     return <NoData/>;
   };
@@ -49,15 +55,15 @@ export default function PdfViewer({ component, eventHandlers }) {
     }
 
     if (Number(target.value)) {
-      const ensureRange = (v, {min, max}) => Math.max(min, Math.min(v, max));
+      const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
 
-      const page = ensureRange(target.value, {min: 1, max: numPages})
+      const page = ensureRange(target.value, { min: 1, max: numPages });
 
       setPageIndex(page);
     }
   };
 
-  component.setPage = (page) => {
+  component.setPage = page => {
     setPageIndex(page);
   };
 
@@ -68,9 +74,9 @@ export default function PdfViewer({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-pdfViewer', classList) }
-      style={ { ...style } }>
+      style={{ ...style }}>
       <Document
-        inputRef={ (ref) => setDocumentRef(ref) }
+        inputRef={ ref => setDocumentRef(ref) }
         className="pdf-viewer"
         renderMode={ renderType }
         file={ pdfUrl }
@@ -78,7 +84,7 @@ export default function PdfViewer({ component, eventHandlers }) {
         onLoadError={ onDocumentLoadError }
         onLoadSuccess={ onDocumentLoadSuccess }>
         <Page
-          inputRef={(ref) => setPageRef(ref)}
+          inputRef={ ref => setPageRef(ref) }
           renderTextLayer={ false }
           onLoadSuccess={ onPageLoadSuccess }
           pageNumber={ pageIndex }
@@ -90,7 +96,7 @@ export default function PdfViewer({ component, eventHandlers }) {
         inputRef={ inputRef }
         handlerPageChange={ handlerPageChange }
         numPages={ numPages }
-        disabled={ controlsDisabled }
+        display={ isControlDisplay }
       />
     </div>
   );
