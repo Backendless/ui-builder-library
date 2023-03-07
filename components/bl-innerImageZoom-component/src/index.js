@@ -7,9 +7,11 @@ export default function InnerImageZoomComponent({ component, elRef, eventHandler
   const { classList, style, display, source, zoomIn } = component;
   const { onMouseOver, onMouseOut, onMouseMove } = eventHandlers;
 
-  const zoom = Math.max(100, zoomIn);
   const [zoomPosition, setZoomPosition] = useState(DEFAULT_ZOOM_POSITION);
+
   const figureStyle = useStyles(source, zoomPosition, zoom);
+
+  const zoom = Math.max(100, zoomIn);
 
   const handleMouseMove = event => {
     const { left, top, width, height } = event.target.getBoundingClientRect();
