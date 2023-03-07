@@ -27,7 +27,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     'color-cell-2': shadeColor(color, 80),
     'color-cell-3': shadeColor(color, 40),
     'color-cell-4': color
-  }), []);
+  }), [color]);
 
   useEffect(() => {
     if (color && ref.current) {
