@@ -27,7 +27,7 @@ export default function Popover({ component, eventHandlers, pods }) {
         onClick={ () => onTargetClick({ isOpen }) }
         onMouseEnter={ onMouseOver }
         onMouseLeave={ onMouseOut }>
-        { popoverTrigger.render() }
+        { popoverTarget.render() }
       </div>
 
       { isOpen && (
