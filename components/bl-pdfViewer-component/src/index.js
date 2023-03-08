@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import { Document, Page } from './react-pdf.min.js';
 import { Controls, NoData } from './subcomponents';
 
@@ -12,7 +13,7 @@ export default function PdfViewer({ component, eventHandlers }) {
   const [pageIndex, setPageIndex] = useState(1);
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
-  const [isControlDisplay, setIsControlDisplay] = useState(false);
+  const [isControlsVisible, setIsControlsVisible] = useState(false);
 
   const inputRef = useRef();
 
@@ -21,20 +22,27 @@ export default function PdfViewer({ component, eventHandlers }) {
       documentRef.style.height = height;
       documentRef.style.width = width;
     }
-  }, [documentRef]);
+  }, [documentRef, height, width]);
 
   useEffect(() => {
-    setIsControlDisplay(false);
+    if (pageRef) {
+      pageRef.firstChild.style.height = height;
+      pageRef.firstChild.style.width = width;
+    }
+  }, [pageRef, height, width]);
+
+  useEffect(() => {
+    setIsControlsVisible(false);
   }, [pdfUrl]);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
-    setIsControlDisplay(true);
+    setIsControlsVisible(true);
     onLoadSuccess({ pageCount: numPages });
   };
 
   const onDocumentLoadError = error => {
-    setIsControlDisplay(false);
+    setIsControlsVisible(false);
     onLoadError({ message: error.message });
   };
 
@@ -44,7 +52,7 @@ export default function PdfViewer({ component, eventHandlers }) {
   };
 
   const onNoData = () => {
-    setIsControlDisplay(false);
+    setIsControlsVisible(false);
 
     return <NoData/>;
   };
@@ -55,8 +63,6 @@ export default function PdfViewer({ component, eventHandlers }) {
     }
 
     if (Number(target.value)) {
-      const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
-
       const page = ensureRange(target.value, { min: 1, max: numPages });
 
       setPageIndex(page);
@@ -96,8 +102,10 @@ export default function PdfViewer({ component, eventHandlers }) {
         inputRef={ inputRef }
         handlerPageChange={ handlerPageChange }
         numPages={ numPages }
-        display={ isControlDisplay }
+        display={ isControlsVisible }
       />
     </div>
   );
 }
+
+const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
