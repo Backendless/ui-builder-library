@@ -6,7 +6,7 @@ import { BillingDetails } from './payment-components/billing-details';
 import { PaymentAmount, useAmountPattern } from './payment-components/payment-amount';
 
 export function PaymentForm(props) {
-  const { component, eventHandlers, setIsLoading, setTransactionDetails } = props;
+  const { component, eventHandlers, setIsLoading, setTransactionDetails, publishableKey } = props;
   const { amount, currency, amountDecimalPlaces } = component;
 
   const [cardElementColor, setCardElementColor] = useState('inherit');
@@ -26,7 +26,7 @@ export function PaymentForm(props) {
 
   const {
     handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, disabled, elements,
-  } = useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef);
+  } = useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef, publishableKey);
 
   const cardElementOptions = getCardElementOptions(cardElementColor);
 

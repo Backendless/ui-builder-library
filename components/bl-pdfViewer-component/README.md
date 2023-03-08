@@ -4,14 +4,18 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 The component allows you to add a pdf viewer to your UI-Builder application
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780" />
+</p>
+
 ## Properties
 
-| Property   | Type                    | Default Value | Logic             | Data Binding | UI Setting | Description                                                          |
-|------------|-------------------------|---------------|-------------------|--------------|------------|----------------------------------------------------------------------|
-| pdfUrl     | String                  |               | PDF URL Logic     | YES          | YES        | Allows write URL of PDF file, but file must be in Backendless Files. |
-| renderType | Select ["canvas","svg"] | "canvas"      | Render Type Logic | NO           | YES        | Allows select type of render(`canvas`, `svg`).                       |
-| width      | String                  | "0px"         | Width Logic       | YES          | YES        | Allows determine the width of the PDF Viewer.                        |
-| height     | String                  | "0px"         | Height Logic      | YES          | YES        | Allows determine the height of the PDF Viewer.                       |
+| Property                 | Type                                | Default Value   | Logic             | Data Binding | UI Setting | Description                                                          |
+|--------------------------|-------------------------------------|-----------------|-------------------|--------------|------------|----------------------------------------------------------------------|
+| PDF URL:`pdfUrl`         | Text                                |                 | PDF URL Logic     | YES          | YES        | Allows write URL of PDF file, but file must be in Backendless Files. |
+| Render Type:`renderType` | Select [Canvas:`canvas`, Svg:`svg`] | Canvas:`canvas` | Render Type Logic | NO           | YES        | Allows select type of render(`canvas`, `svg`).                       |
+| Width:`width`            | Text                                | "0px"           | Width Logic       | YES          | YES        | Allows determine the width of the PDF Viewer.                        |
+| Height:`height`          | Text                                | "0px"           | Height Logic      | YES          | YES        | Allows determine the height of the PDF Viewer.                       |
 
 ## Events
 
@@ -23,9 +27,9 @@ The component allows you to add a pdf viewer to your UI-Builder application
 
 ## Action
 
-| Action   | Inputs         | Returns |
-|----------|----------------|---------|
-| Set Page | page: `Number` |         |
+| Action                  | Inputs         | Returns |
+|-------------------------|----------------|---------|
+| Set Page for PDF Viewer | page: `Number` |         |
 
 ## Styles
 
