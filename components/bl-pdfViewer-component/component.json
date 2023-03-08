@@ -90,7 +90,7 @@
   "actions": [
     {
       "id": "setPage",
-      "label": "Set Page",
+      "label": "Set Page for",
       "inputs": [
         {
           "id": "page",

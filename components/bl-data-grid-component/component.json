@@ -98,29 +98,29 @@
       "defaultValue": "[\n  {\"name\": \"Jack\", \"age\": 26, \"city\": \"London\"},\n  {\"name\": \"Kate\", \"age\": 22, \"city\": \"New York\"},\n  {\"name\": \"Nick\", \"age\": 28, \"city\": \"Kyiv\"}\n]"
     },
     {
-      "type": "number",
+      "type": "text",
       "name": "height",
       "label": "Height",
-      "settingTooltip": "This handler allows you to specify the height of the component in pixels.",
+      "settingTooltip": "This handler allows you to specify the height of the component.",
       "showInSettings": true,
-      "defaultValue": "500",
+      "defaultValue": "500px",
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
-      "handlerDescription": "This handler allows you to specify the height of the component in pixels.",
+      "handlerDescription": "This handler allows you to specify the height of the component.",
       "dataBinding": true
     },
     {
-      "type": "number",
+      "type": "text",
       "name": "width",
       "label": "Width",
-      "settingTooltip": "This handler allows you to specify the width of the component in pixels.",
+      "settingTooltip": "This handler allows you to specify the width of the component.",
       "showInSettings": true,
-      "defaultValue": "750",
+      "defaultValue": "750px",
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
       "handlerLabel": "Width Logic",
-      "handlerDescription": "This handler allows you to specify the width of the component in pixels.",
+      "handlerDescription": "This handler allows you to specify the width of the component.",
       "dataBinding": true
     },
     {
