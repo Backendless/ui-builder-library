@@ -27,9 +27,9 @@ The component allows you to add a pdf viewer to your UI-Builder application
 
 ## Action
 
-| Action   | Inputs         | Returns |
-|----------|----------------|---------|
-| Set Page | page: `Number` |         |
+| Action                  | Inputs         | Returns |
+|-------------------------|----------------|---------|
+| Set Page for PDF Viewer | page: `Number` |         |
 
 ## Styles
 
