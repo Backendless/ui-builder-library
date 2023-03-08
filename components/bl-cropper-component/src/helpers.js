@@ -102,4 +102,5 @@ export function upload(e, callback) {
 
   reader.onload = () => callback(reader.result);
   reader.readAsDataURL(files[0]);
+  e.target.value = '';
 }

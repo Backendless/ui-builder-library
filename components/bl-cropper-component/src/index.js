@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { DropImageArea, FooterToolbar, HeaderToolbar } from './cropper-components';
-import { getImageBlob, useCropperLibrary } from './helpers';
+import { getImageBlob, upload, useCropperLibrary } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -15,10 +15,13 @@ export default function CropperComponent({ component, eventHandlers, elRef }) {
   const [image, setImage] = useState(imageUrl);
 
   const imageRef = useRef(null);
-  const addImageButtonRef = useRef(null);
+  const uploadInputId = useMemo(() => 'upload-input-' + BackendlessUI.UUID.short(), []);
+  const uploadInputRef = useRef(null);
   const cropperRef = useCropperLibrary(component, eventHandlers, imageRef, image);
 
-  useComponentActions(component, cropperRef, addImageButtonRef, setToolbarDisabled, setImage);
+  const uploadImage = e => upload(e, setImage);
+
+  useComponentActions(component, cropperRef, uploadInputRef, setToolbarDisabled, setImage);
 
   useEffect(() => {
     setImage(imageUrl);
@@ -39,16 +42,29 @@ export default function CropperComponent({ component, eventHandlers, elRef }) {
       <HeaderToolbar
         component={ component }
         cropperRef={ cropperRef }
-        addImageButtonRef={ addImageButtonRef }
+        uploadInputId={ uploadInputId }
         image={ image }
         setImage={ setImage }
         onSave={ onSave }
       />
 
       <div className="container" style={ containerDimensions }>
-        <DropImageArea image={ image } setImage={ setImage } initialLabel={ initialLabel }/>
+        <DropImageArea
+          image={ image }
+          setImage={ setImage }
+          initialLabel={ initialLabel }
+          uploadInputId={ uploadInputId }
+        />
 
         <img ref={ imageRef } src={ image }/>
+        <input
+          type="file"
+          ref={ uploadInputRef }
+          id={ uploadInputId }
+          name="upload-input"
+          accept="image/*"
+          onInput={ uploadImage }
+        />
       </div>
 
       <FooterToolbar
@@ -61,9 +77,9 @@ export default function CropperComponent({ component, eventHandlers, elRef }) {
   );
 }
 
-function useComponentActions(component, cropperRef, addImageButtonRef, setToolbarDisabled, setImage) {
+function useComponentActions(component, cropperRef, uploadInputRef, setToolbarDisabled, setImage) {
   Object.assign(component, {
-    uploadImage           : () => addImageButtonRef.current.click(),
+    uploadImage           : () => uploadInputRef.current.click(),
     getCroppedImageContent: () => getImageBlob(cropperRef.current),
     removeImage           : () => setImage(''),
     crop                  : () => cropperRef.current.crop(),

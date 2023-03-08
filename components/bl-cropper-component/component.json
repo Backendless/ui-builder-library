@@ -375,6 +375,42 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "minCropBoxHeightLogic"
+    },
+    {
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "name": "addImageButtonLabel",
+      "handlerId": "addImageButtonLabelLogic",
+      "label": "Add Image Button Label",
+      "type": "text",
+      "defaultValue": "Add image"
+    },
+    {
+      "type": "text",
+      "name": "cleanButtonLabel",
+      "label": "Clean Button Label",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "cleanButtonLabelLogic",
+      "defaultValue": "Clean"
+    },
+    {
+      "type": "text",
+      "name": "saveButtonLabel",
+      "label": "Save Button Label",
+      "showInSettings": true,
+      "defaultValue": "Save",
+      "hasLogicHandler": false,
+      "handlerId": "saveButtonLabelLogic"
+    },
+    {
+      "type": "text",
+      "name": "downloadButtonLabel",
+      "label": "Download Button Label",
+      "showInSettings": true,
+      "defaultValue": "Download",
+      "hasLogicHandler": false,
+      "handlerId": "downloadButtonLabelLogic"
     }
   ],
   "eventHandlers": [
