@@ -30,7 +30,7 @@ export function Controls(props) {
       <button
         className="controls-button"
         onClick={ () => setPageIndex(state => state - 1) }
-        disabled={ pageIndex === 1 || disabled }>
+        disabled={ (pageIndex > numPages) || (pageIndex <= 1) }>
         <PrevButtonIcon/>
       </button>
       <div className="pages-info">
@@ -46,7 +46,7 @@ export function Controls(props) {
       <button
         className="controls-button"
         onClick={ () => setPageIndex(state => state + 1) }
-        disabled={ pageIndex === numPages || disabled }>
+        disabled={ (pageIndex >= numPages) || (pageIndex <= 0) }>
         <NextButtonIcon/>
       </button>
     </div>
