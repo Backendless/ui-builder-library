@@ -4,7 +4,7 @@ import { Controls, NoData } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function PdfViewer({ component, eventHandlers }) {
+export default function PdfViewer({ component, eventHandlers, elRef }) {
   const { style, display, classList, pdfUrl, renderType, width, height } = component;
   const { onLoadSuccess, onLoadError } = eventHandlers;
 
@@ -67,8 +67,9 @@ export default function PdfViewer({ component, eventHandlers }) {
 
   return (
     <div
+      ref={ elRef }
       className={ cn('bl-customComponent-pdfViewer', classList) }
-      style={ { ...style } }>
+      style={{ ...style, width }}>
       <Document
         inputRef={ (ref) => setDocumentRef(ref) }
         className="pdf-viewer"
