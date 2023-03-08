@@ -60,7 +60,7 @@
     {
       "type": "checkbox",
       "name": "headerVisibility",
-      "label": "Header Visibility ",
+      "label": "Header Visibility",
       "settingTooltip": "This handler allows you to control the display of the header.",
       "showInSettings": true,
       "defaultValue": true,
@@ -69,6 +69,37 @@
       "handlerLabel": "Header Visibility Logic",
       "handlerDescription": "This handler allows you to control the display of the header.",
       "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "dateFormat",
+      "label": "Date Format",
+      "settingTooltip": "From Date and To Date must be specified as specified in the Date Format handler",
+      "showInSettings": true,
+      "defaultValue": "yyyy/MM/dd",
+      "hasLogicHandler": true,
+      "handlerId": "dateFormatLogic",
+      "handlerLabel": "Date Format Logic",
+      "handlerDescription": "This handler allows you to set a custom date format.",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "dd/MM/yyyy",
+          "label": "DD-MM-YYYY"
+        },
+        {
+          "value": "MM/dd/yyyy",
+          "label": "MM-DD-YYYY"
+        },
+        {
+          "value": "yyyy/MM/dd",
+          "label": "YYYY-MM-DD"
+        },
+        {
+          "value": "yyyy/dd/MM",
+          "label": "YYYY-DD-MM"
+        }
+      ]
     },
     {
       "type": "text",
