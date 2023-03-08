@@ -44,6 +44,18 @@ More information about granim you can find in the [Granim](https://github.com/sa
 | Clear                |                            |         |
 | Destroy              |                            |         |
 
+## Styles
+
+**Dimensions**
+```
+@bl-customComponent-granim-size: 100%;
+```
+
+**Other**
+```
+@bl-customComponent-granim-z-index-canvas: 1;
+@bl-customComponent-granim-z-index-content: 2;
+```
 
 ## States
 
