@@ -1,5 +1,3 @@
-const { cn } = BackendlessUI.CSSUtils;
-
 export function NoData() {
   return (
     <>
@@ -23,10 +21,14 @@ export function NoData() {
 }
 
 export function Controls(props) {
-  const { pageIndex, setPageIndex, inputRef, handlerPageChange, numPages, disabled, controlsRef } = props;
+  const { pageIndex, setPageIndex, inputRef, handlerPageChange, numPages, display, controlsRef } = props;
+
+  if (!display) {
+    return null;
+  }
 
   return (
-    <div ref={ controlsRef } className={ cn('controls', { 'disabled': disabled }) }>
+    <div ref={ controlsRef } className="controls">
       <button
         className="controls-button"
         onClick={ () => setPageIndex(state => state - 1) }
@@ -37,7 +39,6 @@ export function Controls(props) {
         <input
           ref={ inputRef }
           className="page-input"
-          disabled={ disabled }
           value={ pageIndex }
           onChange={ handlerPageChange }
         />
