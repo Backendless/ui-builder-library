@@ -21,6 +21,8 @@ const validateStyles = dimensions => {
 };
 
 const validateDimensions = dimensions => {
+  const numbersOnlyRegex = /^\d+$/;
+
   return Object.entries(dimensions).reduce((acc, [propertyName, value]) => {
     if (!value) {
       console.error(`Property ${ propertyName } has wrong value!`);
@@ -28,10 +30,10 @@ const validateDimensions = dimensions => {
       return acc;
     }
 
-    if (value.includes("%")) {
-      return { ...acc, [propertyName]: `${ parseFloat(value) }%` };
+    if (numbersOnlyRegex.test(value)) {
+      return { ...acc, [propertyName]: `${ value }px` };
     }
 
-    return { ...acc, [propertyName]: `${ parseFloat(value) }px` };
+    return { ...acc, [propertyName]: value };
   }, {});
 };
