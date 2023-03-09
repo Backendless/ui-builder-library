@@ -6,14 +6,14 @@ The component allows you to render a popup window in your UI-Builder application
 
 ## Properties
 
-| Property | Type                                    | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
-| -------- | --------------------------------------- | ------------- | -------------- | ------------ | ---------- | ---------------------------------------------------------------------- |
-| position | Select ["top", "right","bottom","left"] | "top"         | Position Logic | NO           | YES        | Allows to determine the position of the popover relative to the button |
+| Property            | Type                                                            | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
+|---------------------|-----------------------------------------------------------------|---------------|----------------|--------------|------------|------------------------------------------------------------------------|
+| Position:`position` | Select [Top:`top`, Right:`right`, Bottom:`bottom`, Left:`left`] | Top:`top`     | Position Logic | NO           | YES        | Allows to determine the position of the popover relative to the button |
 
 ## Events
 
 | Name                | Triggers                                         | Context Blocks     |
-| ------------------- | ------------------------------------------------ | ------------------ |
+|---------------------|--------------------------------------------------|--------------------|
 | On Target Click     | when user clicks on target                       | Is Open: `Boolean` |
 | On Mouse Over Event | when the mouse pointer hovers over the component |                    |
 | On Mouse Out Event  | when the mouse pointer leaves the component      |                    |
@@ -21,7 +21,7 @@ The component allows you to render a popup window in your UI-Builder application
 ## Actions
 
 | Action      | Inputs             | Returns |
-| ----------- | ------------------ | ------- |
+|-------------|--------------------|---------|
 | Set Is Open | Is Open: `Boolean` |         |
 
 ## Styles
