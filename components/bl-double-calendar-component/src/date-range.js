@@ -45,8 +45,10 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setStartDate(null);
+    setStartDate(new Date());
     setEndDate(null);
+
+    setTimeout(() => setStartDate(null), 1);
 
     if (onDateReset) {
       onDateReset();
