@@ -11,7 +11,6 @@ CollapsiblePanel is the component that can be used in Backendless [UI-Builder](h
 | Property                        | Type   | Default value | Logic              | Data Binding | UI Setting | Description                                           |
 |---------------------------------|--------|---------------|--------------------|--------------|------------|-------------------------------------------------------|
 | Title <br> `title`              | *Text* | `Panel Title` | Title Logic        | YES          | YES        | The logic to determine the title of the panel.        |
-| Active Title <br> `activeTitle` | *Text* |               | Active Title Logic | YES          | YES        | The logic to determine the title on opened the panel. |
 
 ## Events
 

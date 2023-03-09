@@ -20,18 +20,6 @@
       "handlerLabel": "Title Logic",
       "handlerDescription": "This is a handler for the logic to determine the title of the panel.",
       "defaultValue": "Panel Title"
-    },
-    {
-      "type": "text",
-      "name": "activeTitle",
-      "label": "Active Title",
-      "settingTooltip": "Title on opened the panel",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "activeTitleLogic",
-      "handlerDescription": "This is a handler for the logic to determine the title on opened the panel.",
-      "dataBinding": true,
-      "handlerLabel": "Active Title Logic"
     }
   ],
   "eventHandlers": [

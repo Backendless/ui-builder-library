@@ -1,36 +1,32 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function CollapsiblePanelComponent({ component, elRef, eventHandlers, pods }) {
-  const { classList, style, display, title, activeTitle } = component;
+  const { classList, style, display, title } = component;
   const { onOpen, onClose } = eventHandlers;
 
   const [isActive, setIsActive] = useState(false);
   const [podClass, setPodClass] = useState('');
 
-  const togglePanel = activeState => {
-    if(activeState) {
-      setIsActive(false);
-      setPodClass('close');
-      onClose();
-    } else {
-      setIsActive(true);
-      setPodClass('open');
-      onOpen();
-    }
-  };
+  const showContent = () => {
+    setIsActive(true);
+    setPodClass('open');
+    onOpen();
+  }
 
-  const titleToShow = useMemo(() => {
-    if (!title) {
-      return null;
-    }
+  const hideContent = () => {
+    setIsActive(false);
+    setPodClass('close');
+    onClose();
+  }
 
-    return isActive ? activeTitle || title : title;
-  }, [isActive, activeTitle, title]);
+  const togglePanel = useCallback(() => {
+    isActive ? hideContent() : showContent()
+  }, [isActive, hideContent, showContent]);
 
-  component.show = () => togglePanel();
-  component.hide = () => togglePanel(true);
+  component.show = showContent;
+  component.hide = hideContent;
 
   if (!display) {
     return null;
@@ -38,17 +34,15 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-collapsiblePanel', ...classList) } style={ style }>
-      <PanelTitle title={ titleToShow } isActive={ isActive } onClick={ togglePanel } />
-      <div className={ cn('panel-content', podClass) }>
-        { pods['panelContent'].render() }
-      </div>
+      <PanelTitle title={ title } isActive={ isActive } onClick={ togglePanel } />
+      <div className={ cn('panel-content', podClass) }>{ pods['panelContent'].render() }</div>
     </div>
   );
 }
 
-export function PanelTitle({ title, isActive, onClick }) {
+function PanelTitle({ title, isActive, onClick }) {
   return (
-    <div className="panel-title" aria-expanded={ isActive } role="button" onClick={ () => onClick(isActive) }>
+    <div className="panel-title" aria-expanded={ isActive } role="button" onClick={ onClick }>
       <span className="panel-title-text">{ title }</span>
       <CollapseIcon active={ isActive } />
     </div>
