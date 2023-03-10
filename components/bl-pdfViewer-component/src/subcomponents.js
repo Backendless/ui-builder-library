@@ -21,14 +21,14 @@ export function NoData() {
 }
 
 export function Controls(props) {
-  const { pageIndex, setPageIndex, inputRef, handlerPageChange, numPages, display } = props;
+  const { pageIndex, setPageIndex, inputRef, handlerPageChange, numPages, display, controlsRef } = props;
 
   if (!display) {
     return null;
   }
 
   return (
-    <div className="controls">
+    <div ref={ controlsRef } className="controls">
       <button
         className="controls-button"
         onClick={ () => setPageIndex(state => state - 1) }
