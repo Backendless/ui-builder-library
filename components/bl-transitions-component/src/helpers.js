@@ -1,23 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const useVisibility = (display, isOpen, setIsOpen, duration, onEndAnimation) => {
-  const [isOpenTimeout, setIsOpenTimeout] = useState();
+export const useVisibility = (display, duration, onEndAnimation) => {
+  const [isOpen, setIsOpen] = useState(display);
+  const isOpenTimeout = useRef(null);
 
   useEffect(() => {
     if (display) {
-      clearTimeout(isOpenTimeout);
+      clearTimeout(isOpenTimeout.current);
       setIsOpen(true);
     } else if (!display && isOpen) {
-      setIsOpenTimeout(setTimeout(() => {
+      isOpenTimeout.current = setTimeout(() => {
         setIsOpen(false);
         onEndAnimation();
-      }, duration));
+      }, duration);
     }
 
-    return () => {
-      clearTimeout(isOpenTimeout);
-    };
+    return () => clearTimeout(isOpenTimeout.current);
   }, [display]);
+
+  return isOpen;
 };
 
 export const useResizeObserver = (element, dimensionName, dimension, setDimension) => {
@@ -26,9 +27,9 @@ export const useResizeObserver = (element, dimensionName, dimension, setDimensio
   useEffect(() => {
     if (!element) return;
 
-    const resizeObserver = new ResizeObserver(() => {
+    const resizeObserver = new ResizeObserver(entries => {
       if (isAuto) {
-        const currentDimension = element['client' + dimensionName];
+        const currentDimension = entries[0].contentRect[dimensionName];
 
         if (dimension !== currentDimension) {
           setDimension(currentDimension);
@@ -39,15 +40,16 @@ export const useResizeObserver = (element, dimensionName, dimension, setDimensio
     resizeObserver.observe(element);
 
     return () => resizeObserver.disconnect();
-  }, [isAuto]);
+  }, [isAuto, element, dimension, setDimension, dimensionName]);
 
   return setIsAuto;
 };
 
 export const useTransition = (rootRef, display, duration, dimension, dimensionName, setIsAuto, onEndAnimation) => {
   const [isTransition, setIsTransition] = useState(false);
-  const [openTimeout, setOpenTimeout] = useState();
-  const [zeroDimensionTimeout, setZeroDimensionTimeout] = useState();
+
+  const openTimeout = useRef(null);
+  const zeroDimensionTimeout = useRef(null);
 
   useEffect(() => {
     if (rootRef.current) {
@@ -60,45 +62,41 @@ export const useTransition = (rootRef, display, duration, dimension, dimensionNa
           rootRef.current.style[dimensionName] = dimension + 'px';
         }, 50);
 
-        setOpenTimeout(setTimeout(() => {
+        openTimeout.current = setTimeout(() => {
           setIsTransition(false);
           rootRef.current.style[dimensionName] = 'auto';
           setIsAuto(true);
 
           onEndAnimation();
-        }, duration));
+        }, duration);
 
       } else if (!display) {
         setIsTransition(true);
 
-        clearTimeout(openTimeout);
+        clearTimeout(openTimeout.current);
 
         setIsAuto(false);
         rootRef.current.style[dimensionName] = dimension + 'px';
 
-        setZeroDimensionTimeout(setTimeout(() => {
+        zeroDimensionTimeout.current = setTimeout(() => {
           rootRef.current.style[dimensionName] = '0px';
-        }, 50));
+        }, 50);
       }
     }
 
     return () => {
-      clearTimeout(openTimeout);
-      clearTimeout(zeroDimensionTimeout);
+      clearTimeout(openTimeout.current);
+      clearTimeout(zeroDimensionTimeout.current);
     };
-  }, [display, rootRef, dimension]);
+  }, [display, rootRef]);
 
   return isTransition;
 };
 
 export const hideElement = element => {
-  element.style.opacity = 0;
-  element.style.position = 'absolute';
-  element.style.zIndex = -1;
+  element.style = { ...element.style, opacity: 0, position: 'absolute', zIndex: -1 };
 };
 
 export const showElement = element => {
-  element.style.opacity = 1;
-  element.style.position = 'static';
-  element.style.zIndex = 0;
+  element.style = { ...element.style, opacity: 1, position: 'static', zIndex: 0 };
 };

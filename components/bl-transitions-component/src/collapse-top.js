@@ -8,42 +8,38 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
   const { classList, style, variants, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
 
-  const [getHeightTimeout, setGetHeightTimeout] = useState();
   const [height, setHeight] = useState(0);
 
   const rootRef = useRef();
+  const getHeightTimeout = useRef(null);
 
-  const setIsAuto = useResizeObserver(rootRef.current, 'Height', height, setHeight);
+  const setIsAuto = useResizeObserver(rootRef.current, 'height', height, setHeight);
   const isTransition = useTransition(rootRef, display, duration, height, 'height', setIsAuto, onEndAnimation);
 
   useEffect(() => {
     if (rootRef.current) {
       hideElement(rootRef.current);
 
-      setGetHeightTimeout(setTimeout(() => {
+      getHeightTimeout.current = setTimeout(() => {
         rootRef.current.style.height = 'auto';
         setHeight(rootRef.current.clientHeight);
         rootRef.current.style.height = '0px';
-      }, 50));
+      }, 50);
     }
 
-    return () => {
-      clearTimeout(getHeightTimeout);
-    };
+    return () => clearTimeout(getHeightTimeout.current);
   }, [rootRef]);
 
   useEffect(() => {
     onMounted();
 
-    return () => {
-      onUnmounted();
-    };
+    return () => onUnmounted();
   }, []);
 
   return (
     <div
       ref={ rootRef }
-      className={ cn('bl-customComponent-transitions', variants, { [variants + '--open']: isTransition }, classList) }
+      className={ cn('bl-customComponent-transitions', variants, { [variants + '--active']: isTransition }, classList) }
       style={{ ...style, transitionDuration: duration + 'ms' }}>
       { transitionsContainerPod.render() }
     </div>
