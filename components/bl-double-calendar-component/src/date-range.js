@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
+const { cn } = BackendlessUI.CSSUtils;
+
+// this is needed to display the current month in the calendar after the reset without selecting the current day
+const setCurrentMonth = setState => {
+  setState(new Date());
+  setTimeout(() => setState(null), 1);
+};
+
 export function DateRange(props) {
   const {
     fromDate, toDate, dateFormat, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset
@@ -11,23 +19,28 @@ export function DateRange(props) {
   const [endDate, setEndDate] = useState(null);
 
   const daysAmount = differenceInDays(startDate, endDate);
+  const resetDisabled = !startDate && !endDate;
 
   useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
   useEffect(() => {
     if (!fromDate) {
-      console.error("From Date is not provided!")
-    }
+      console.error("From Date is not provided!");
 
-    setStartDate(new Date(fromDate || 0));
+      setCurrentMonth(setStartDate);
+    } else {
+      setStartDate(new Date(fromDate));
+    }
   }, [fromDate]);
 
   useEffect(() => {
     if (!toDate) {
-      console.error("To Date is not provided!")
-    }
+      console.error("To Date is not provided!");
 
-    setEndDate(new Date(toDate || 0));
+      setCurrentMonth(setEndDate);
+    } else {
+      setEndDate(new Date(toDate));
+    }
   }, [toDate]);
 
   const handleStartDateChange = date => {
@@ -47,11 +60,8 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setEndDate(null);
-
-    // this is needed to display the current month in the calendar after the reset without selecting the current day
-    setStartDate(new Date());
-    setTimeout(() => setStartDate(null), 1);
+    setCurrentMonth(setEndDate);
+    setCurrentMonth(setStartDate);
 
     if (onDateReset) {
       onDateReset();
@@ -63,7 +73,12 @@ export function DateRange(props) {
       { headerVisibility &&
         <div className="info">
           <span className="info__days-amount">Days amount: { daysAmount }</span>
-          <button onClick={ handleReset } className="info__button-reset">Reset</button>
+          <button
+            onClick={ handleReset }
+            disabled={ resetDisabled }
+            className={ cn("info__button-reset", { "info__button-reset--disabled": resetDisabled }) }>
+            Reset
+          </button>
         </div>
       }
       <div className="date-picker">
