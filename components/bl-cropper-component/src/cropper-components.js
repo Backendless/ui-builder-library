@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
-import { dataURLToBlob, download, upload } from './helpers';
+import { download, getImageBlob, upload } from './helpers';
 
-export function DropImageArea({ image, setImage, initialLabel }) {
+export function DropImageArea({ image, setImage, initialLabel, uploadInputId }) {
   const uploadImage = e => upload(e, setImage);
 
   const onDragOver = e => {
@@ -21,24 +21,27 @@ export function DropImageArea({ image, setImage, initialLabel }) {
 
   return (
     <div className="drop-image-area" onDragEnter={ onDragEnter } onDragOver={ onDragOver } onDrop={ uploadImage }>
-      <ImageUploadButton onChange={ uploadImage } label={ initialLabel } visibility={ true }/>
+      <label htmlFor={ uploadInputId }>{ initialLabel }</label>
     </div>
   );
 }
 
-export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }) {
-  const { addImageButtonVisibility, cleanButtonVisibility, saveButtonVisibility, downloadButtonVisibility } = component;
+export function HeaderToolbar({ component, cropperRef, onSave, image, setImage, uploadInputId }) {
+  const {
+    addImageButtonVisibility, cleanButtonVisibility, saveButtonVisibility, downloadButtonVisibility,
+    addImageButtonLabel, cleanButtonLabel, saveButtonLabel, downloadButtonLabel,
+  } = component;
+
   const visibility = (
     addImageButtonVisibility || cleanButtonVisibility || saveButtonVisibility || downloadButtonVisibility
   );
 
   const clean = () => setImage('');
-  const uploadImage = e => upload(e, setImage);
 
-  const saveImage = () => {
-    const croppedCanvasURL = cropperRef.current.getCroppedCanvas().toDataURL();
+  const saveImage = async () => {
+    const fileContent = await getImageBlob(cropperRef.current);
 
-    dataURLToBlob(croppedCanvasURL).then(fileContent => onSave({ fileContent }));
+    onSave({ fileContent });
   };
 
   const downloadImage = () => {
@@ -54,12 +57,15 @@ export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }
   return (
     <div className="header-toolbar">
       <div className="buttons-wrapper">
-        <ImageUploadButton onChange={ uploadImage } label="Add image" visibility={ addImageButtonVisibility }/>
-        <Button onClick={ clean } label="Clean" visibility={ cleanButtonVisibility }/>
+        { addImageButtonVisibility && (
+          <label htmlFor={ uploadInputId }>{ addImageButtonLabel }</label>
+        ) }
+
+        <Button onClick={ clean } label={ cleanButtonLabel } visibility={ cleanButtonVisibility }/>
       </div>
       <div className="buttons-wrapper">
-        <Button onClick={ saveImage } label="Save" visibility={ saveButtonVisibility }/>
-        <Button onClick={ downloadImage } label="Download" visibility={ downloadButtonVisibility }/>
+        <Button onClick={ saveImage } label={ saveButtonLabel } visibility={ saveButtonVisibility }/>
+        <Button onClick={ downloadImage } label={ downloadButtonLabel } visibility={ downloadButtonVisibility }/>
       </div>
     </div>
   );
@@ -126,18 +132,5 @@ function Button({ className, label, onClick, visibility, disabled }) {
 
   return (
     <button type="button" className={ className } onClick={ onClick } disabled={ disabled }>{ label }</button>
-  );
-}
-
-function ImageUploadButton({ label, onChange, visibility }) {
-  if (!visibility) {
-    return null;
-  }
-
-  return (
-    <label>
-      <span>{ label }</span>
-      <input type="file" accept="image/*" onChange={ onChange }/>
-    </label>
   );
 }
