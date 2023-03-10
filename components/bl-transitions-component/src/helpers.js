@@ -16,7 +16,7 @@ export const useVisibility = (display, duration, onEndAnimation) => {
     }
 
     return () => clearTimeout(isOpenTimeout.current);
-  }, [display]);
+  }, [display, duration, isOpen]);
 
   return isOpen;
 };
@@ -40,7 +40,7 @@ export const useResizeObserver = (element, dimensionName, dimension, setDimensio
     resizeObserver.observe(element);
 
     return () => resizeObserver.disconnect();
-  }, [isAuto, element, dimension, setDimension, dimensionName]);
+  }, [isAuto, element, dimension, setDimension]);
 
   return setIsAuto;
 };
@@ -88,15 +88,19 @@ export const useTransition = (rootRef, display, duration, dimension, dimensionNa
       clearTimeout(openTimeout.current);
       clearTimeout(zeroDimensionTimeout.current);
     };
-  }, [display, rootRef]);
+  }, [dimension, display, duration, rootRef]);
 
   return isTransition;
 };
 
 export const hideElement = element => {
-  element.style = { ...element.style, opacity: 0, position: 'absolute', zIndex: -1 };
+  element.style.opacity = 0;
+  element.style.position = 'absolute';
+  element.style.zIndex = -1;
 };
 
 export const showElement = element => {
-  element.style = { ...element.style, opacity: 1, position: 'static', zIndex: 0 };
+  element.style.opacity = 1;
+  element.style.position = 'static';
+  element.style.zIndex = 0;
 };
