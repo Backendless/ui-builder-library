@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import DatePicker from './lib/react-datepicker.min.js';
 
 export function DateRange(props) {
-  const { fromDate, toDate, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset } = props;
+  const {
+    fromDate, toDate, dateFormat, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset
+  } = props;
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -68,6 +70,7 @@ export function DateRange(props) {
           endDate={ endDate }
           selected={ startDate }
           startDate={ startDate }
+          dateFormat={ dateFormat }
           onChange={ handleStartDateChange }
         />
         <DatePicker
@@ -77,6 +80,7 @@ export function DateRange(props) {
           selected={ endDate }
           minDate={ startDate }
           startDate={ startDate }
+          dateFormat={ dateFormat }
           onChange={ handleEndDateChange }
         />
       </div>
