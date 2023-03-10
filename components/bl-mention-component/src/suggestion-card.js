@@ -3,7 +3,9 @@ export const SuggestionCard = ({ fields, suggestion }) => (
     { fields.map(field => {
       if (field === 'img' && suggestion[field]) {
         return (<img src={ suggestion[field] } className="img"/>);
-      } else if (suggestion[field]) {
+      }
+
+      if (suggestion[field]) {
         return (<span className="text"> { suggestion[field] } </span>);
       }
 

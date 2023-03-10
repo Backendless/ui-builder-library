@@ -49,11 +49,8 @@
       "label": "Scroll Height",
       "showInSettings": true,
       "defaultValue": "200px",
-      "hasLogicHandler": true,
-      "handlerId": "scrollHeightLogic",
-      "handlerLabel": "Scroll Height Logic",
-      "handlerDescription": "It is a handler to set the maximum height of the suggestions panel.",
-      "dataBinding": true
+      "hasLogicHandler": false,
+      "handlerId": "scrollHeightLogic"
     },
     {
       "type": "checkbox",
@@ -61,11 +58,8 @@
       "label": "Auto Highlight",
       "showInSettings": true,
       "defaultValue": true,
-      "hasLogicHandler": true,
-      "handlerId": "autoHighlightLogic",
-      "handlerLabel": "Auto Highlight Logic",
-      "handlerDescription": "It is a handler to set auto-highlighting. When enabled, it highlights the first item in the list by default.",
-      "dataBinding": true
+      "hasLogicHandler": false,
+      "handlerId": "autoHighlightLogic"
     },
     {
       "type": "text",
@@ -165,6 +159,13 @@
       "label": "On Hide Event",
       "handlerDescription": "This event is triggered when overlay panel becomes hidden.",
       "contextBlocks": []
+    },
+    {
+      "name": "onSearch",
+      "label": "On Search Event",
+      "contextBlocks": [],
+      "output": true,
+      "handlerDescription": "This event is triggered when started suggestions search."
     }
   ],
   "actions": [],

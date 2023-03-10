@@ -1,22 +1,23 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import primereact from './lib/core';
-import { filterSuggestions, orderFields, stringToList, useTriggers } from './helpers.js';
+import { filterSuggestions, getSuggestions, orderFields, stringToList, useTriggers } from './helpers.js';
 import { SuggestionCard } from './suggestion-card.js';
 
 const { Mention } = primereact.mention;
 const { cn } = BackendlessUI.CSSUtils;
+const { __appId: appId, __apiKey: apiKey } = Backendless;
 
 const BLACKLISTED_FIELDS = new Set(['created', '___class', 'ownerId', 'updated', 'objectId']);
 
 export default function MentionComponent({ component, eventHandlers }) {
   const {
     trigger, suggestions, field, scrollHeight, autoHighlight, placeholder, delay, autoresize, rows, cols,
-    hideField, classList, style, display
+    hideField, classList, style, display,
   } = component;
-  const { onChange, onFocus, onBlur, onShow, onHide } = eventHandlers;
+  const { onChange, onFocus, onBlur, onShow, onHide, onSearch } = eventHandlers;
 
-  const [suggestionsMap, setSuggestionsMap] = useState(new Map());
+  const [suggestionsMap, setSuggestionsMap] = useState(() => new Map());
   const [processedSuggestions, setProcessedSuggestions] = useState([]);
   const triggers = useTriggers(trigger);
   const [blacklistedFields, setBlacklistedFields] = useState(BLACKLISTED_FIELDS);
@@ -35,14 +36,26 @@ export default function MentionComponent({ component, eventHandlers }) {
   const searchHandler = useCallback(event => {
     const { trigger: eventTrigger, query } = event;
 
-    for (const trigger of triggers) {
-      if (trigger !== eventTrigger) {
-        continue;
+    const outputList = onSearch({ trigger: eventTrigger, query });
+    if (outputList) {
+      outputList.forEach(outputObject => {
+        const { table, trigger: triggerForTable } = outputObject;
+
+        if (triggerForTable === eventTrigger) {
+          getSuggestions(appId, apiKey, table, query, field)
+            .then(suggestions => setProcessedSuggestions(suggestions));
+        }
+      });
+    } else {
+      for (const trigger of triggers) {
+        if (trigger !== eventTrigger) {
+          continue;
+        }
+
+        const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
+
+        setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query));
       }
-
-      const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
-
-      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query));
     }
   }, [triggers, suggestionsMap]);
 
@@ -63,11 +76,15 @@ export default function MentionComponent({ component, eventHandlers }) {
     return null;
   }, [blacklistedFields, triggers]);
 
-  const onShowHandler = () => {
+  const onShowHandler = useCallback(() => {
     if (processedSuggestions.length) {
       onShow({ suggestions: processedSuggestions });
     }
-  };
+  }, [processedSuggestions]);
+
+  const onChangeHandler = useCallback(e => {
+    onChange({ value: e.target.value });
+  }, []);
 
   if (!display) {
     return null;
@@ -89,7 +106,7 @@ export default function MentionComponent({ component, eventHandlers }) {
       rows={ rows }
       cols={ cols }
       autoResize={ autoresize }
-      onChange={ e => onChange({ value: e.target.value }) }
+      onChange={ onChangeHandler }
       onFocus={ onFocus }
       onBlur={ onBlur }
       onShow={ onShowHandler }
