@@ -1,11 +1,12 @@
 import { ensureMeasure } from './index';
-import { Font, Size } from './use-quill-library';
+import { DefaultStyles, Font, Size } from './use-quill-library';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
   const {
-    linkInsertButton, imageInsertButton, videoInsertButton, toolbarPosition, borderWidth, borderColor, borderStyle,
+    linkInsertButton, imageInsertButton, videoInsertButton, toolbarPosition,
+    borderWidth, borderColor, borderStyle, showTooltips,
   } = component;
 
   const styles = {
@@ -18,7 +19,11 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
   };
 
   return (
-    <div ref={ toolbarRef } id="toolbar-container" style={ styles }>
+    <div
+      ref={ toolbarRef }
+      id="toolbar-container"
+      className={ cn({ 'active-tooltips': showTooltips }) }
+      style={ styles }>
       <InlineFormattingButtons/>
       <span className="ql-formats">
         <Button className="ql-undo material-icons-round" label="undo"/>
@@ -55,9 +60,9 @@ const InlineFormattingButtons = React.memo(() => (
 
 const FontSelect = React.memo(() => (
   <span className="ql-formats">
-    <select className="ql-font" defaultValue="arial">
+    <select className="ql-font" defaultValue={ DefaultStyles.fontFamily }>
       { Font.whitelist.map((font, index) => {
-        const fontLabel = font.replace(/-/g, ' ').replace(/(^|\s)\S/g, letter => letter.toUpperCase());
+        const fontLabel = font.split(',')[0].trim().replace(/(^|\s)\S/g, letter => letter.toUpperCase());
 
         return (
           <option value={ font } key={ index }>{ fontLabel }</option>
@@ -69,9 +74,9 @@ const FontSelect = React.memo(() => (
 
 const SizeSelect = React.memo(() => (
   <span className="ql-formats">
-    <select className="ql-size" defaultValue="14">
+    <select className="ql-size" defaultValue={ DefaultStyles.fontSize }>
       { Size.whitelist.map((size, index) => (
-        <option value={ size } key={ index }>{ size }px</option>
+        <option value={ size } key={ index }>{ size }</option>
       )) }
     </select>
   </span>
@@ -127,7 +132,7 @@ const additionalFormats = [
   ],
   [
     { className: 'ql-blockquote' },
-    { className: 'ql-code-block' },
+    { className: 'ql-code' },
   ],
   [
     { className: 'ql-script', value: 'sub' },

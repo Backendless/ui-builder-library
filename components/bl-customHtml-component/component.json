@@ -22,7 +22,7 @@
   "actions": [
     {
       "id": "setHtml",
-      "label": "Set HTML",
+      "label": "Set HTML for",
       "inputs": [
         {
           "id": "html",

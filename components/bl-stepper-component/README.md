@@ -24,12 +24,12 @@ The component based on external [stepper](https://mui.com/material-ui/react-step
 
 ## Actions
 
-| Action           | Inputs        | Returns |
-|------------------|---------------|---------|
-| Go Next Step     |               |         |
-| Go Previous Step |               |         |
-| Reset Step       |               |         |
-| Set Step         | step:`Number` |         |
+| Action                         | Inputs        | Returns |
+|--------------------------------|---------------|---------|
+| Go to Next Step in Stepper     |               |         |
+| Go to Previous Step in Stepper |               |         |
+| Reset Current Step for Stepper |               |         |
+| Set Step for Stepper           | step:`Number` |         |
 
 ## Styles
 

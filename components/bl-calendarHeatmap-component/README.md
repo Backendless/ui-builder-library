@@ -6,21 +6,21 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 
 ## Properties
 
-| Property          | Type    | Default value                                     | Logic                           | Data Binding | UI Setting | Description                                                                                                                                              |
-|-------------------|---------|---------------------------------------------------|---------------------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| calendarData      | Object  | `[ { "date": "", "count": 0 } ]`                  | Calendar Data Logic             | NO           | YES        | Specifies an array of date and count for calendar. Watch [Codeless Examples](#Examples). Signature of Calendar Data: `{"data": string, "count": number}` |
-| showMonthLabels   | Boolean | `true`                                            | Month Labels Visibility Logic   | NO           | YES        | Enables chose show or not show month labels                                                                                                              |
-| monthLabels       | String  | "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | Month Labels Logic              | YES          | YES        | Enables write month labels                                                                                                                               |
-| showWeekdayLabels | Boolean | `true`                                            | Weekday Labels Visibility Logic | NO           | YES        | Enables chose show or not show month labels                                                                                                              |
-| weekdayLabels     | String  | "Sun,Mon,Tues,Wed,Thurs,Fri,Sat"                  | Weekday Labels Logic            | YES          | YES        | Enables write Weekday labels                                                                                                                             |
-| color             | String  |                                                   | Color Logic                     | YES          | YES        | Allows selected color                                                                                                                                    |
-| legend            | String  |                                                   | Legend Logic                    | Yes          | YES        | Enables write legend                                                                                                                                     |
+| Property                                | Type     | Default value                                          | Logic                           | Data Binding | UI Setting | Description                                                                                                                                                            |
+|-----------------------------------------|----------|--------------------------------------------------------|---------------------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Calendar Data:`calendarData`            | JSON     | `[ { "date": "", "count": 0 } ]`                       | Calendar Data Logic             | YES          | YES        | Allows you to specifies an array of date and count for calendar. Watch [Codeless Examples](#examples). Signature of Calendar Data: `{"date": string, "count": number}` |
+| Show Month Labels:`showMonthLabels`     | Checkbox | `true`                                                 | Month Labels Visibility Logic   | NO           | YES        | Allows you to choose whether or not to show month labels                                                                                                               |
+| Month Labels:`monthLabels`              | Text     | "Jan,Feb,Mar,Apr,May,Jun,<br> Jul,Aug,Sep,Oct,Nov,Dec" | Month Labels Logic              | YES          | YES        | Allows you to write month labels                                                                                                                                       |
+| Show Weekday Labels:`showWeekdayLabels` | Checkbox | `true`                                                 | Weekday Labels Visibility Logic | NO           | YES        | Allows you to choose whether or not to show weekday labels                                                                                                             |
+| Weekday Labels:`weekdayLabels`          | Text     | "Sun,Mon,Tues,Wed,Thurs,Fri,Sat"                       | Weekday Labels Logic            | YES          | YES        | Allows you to write Weekday labels                                                                                                                                     |
+| Color:`color`                           | Color    | "#224b98"                                              | Color Logic                     | YES          | YES        | Allows you to selected color                                                                                                                                           |
+| Legend:`legend`                         | Text     |                                                        | Legend Logic                    | Yes          | YES        | Allows you to write legend                                                                                                                                             |
 
 ## Events
 
-| Name     | Triggers                  | Context Blocks  |
-|----------|---------------------------|-----------------|
-| On Click | when user clicks on cell  | Value: `Number` |
+| Name                | Triggers                                                 | Context Blocks                 |
+|---------------------|----------------------------------------------------------|--------------------------------|
+| On Cell Click Event | when the user clicks the mouse or taps the heatmap cell. | count: `Number` date: `String` |
 
 ## Styles
 
@@ -34,7 +34,7 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 @bl-customComponent-calendarHeatmap-textColor: #aaa;
 ````
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Addition  calendar data:
 

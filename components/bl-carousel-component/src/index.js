@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { NextButton, PrevButton, List, CarouselIndicators } from './subcomponents';
+import { Button, List, CarouselIndicators } from './subcomponents';
 import { getAdjacentImages } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -18,9 +18,9 @@ export default function Carousel({ component, eventHandlers }) {
     withIndicators,
     animationType
   } = component;
-  const { onNextButton, onPrevButton, onMouseEnter, onMouseLeave } = eventHandlers;
+  const { onNextButtonClick, onPrevButtonClick, onMouseEnter, onMouseLeave } = eventHandlers;
 
-  const [imagesList, setImagesList] = useState(imagesData);
+  const [imagesList, setImagesList] = useState([]);
   const [currentImg, setCurrentImg] = useState(0);
   const [animation, setAnimation] = useState(null);
   const [nextCurrentImage, setNextCurrentImage] = useState(0);
@@ -28,6 +28,12 @@ export default function Carousel({ component, eventHandlers }) {
   const autoplayRef = useRef();
 
   const { nextImg, prevImg } = getAdjacentImages(currentImg, imagesList.length);
+
+  useEffect(() => {
+    if (imagesData) {
+      setImagesList(imagesData);
+    }
+  }, [imagesData]);
 
   useEffect(() => {
     if (autoplayDelay && autoplay) {
@@ -91,13 +97,13 @@ export default function Carousel({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-carousel', classList) }
-      style={ { ...style, height: height, width: width} }
+      style={ { ...style, height: height, width: width } }
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
       { withControls && (
         <div className="carousel__controls-button">
-          <PrevButton disabled={ !!animation } onPrevButton={ onPrevButton }/>
-          <NextButton disabled={ !!animation } onNextButton={ onNextButton }/>
+          <Button disabled={ !!animation } onClick={ onPrevButtonClick } type="prev"/>
+          <Button disabled={ !!animation } onClick={ onNextButtonClick } type="next"/>
         </div>
       ) }
 

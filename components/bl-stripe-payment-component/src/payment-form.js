@@ -3,25 +3,30 @@ import { useEffect, useRef, useState } from 'react';
 import { useCardElement } from './helpers/use-card-element';
 import { CardElement } from './lib/react-stripe.umd.min';
 import { BillingDetails } from './payment-components/billing-details';
-import { PaymentAmount } from './payment-components/payment-amount';
+import { PaymentAmount, useAmountPattern } from './payment-components/payment-amount';
 
 export function PaymentForm(props) {
-  const { component, eventHandlers, setIsLoading, setTransactionDetails } = props;
-  const { amount, currency } = component;
+  const { component, eventHandlers, setIsLoading, setTransactionDetails, publishableKey } = props;
+  const { amount, currency, amountDecimalPlaces } = component;
 
   const [cardElementColor, setCardElementColor] = useState('inherit');
+  const [paymentAmount, setPaymentAmount] = useState(amount);
+
   const cardElementRef = useRef(null);
   const formRef = useRef(null);
+  const amountPattern = useAmountPattern(amountDecimalPlaces, { strictEnding: false });
+
+  useEffect(() => {
+    if (paymentAmount !== amount) {
+      const validAmount = String(amount).match(amountPattern)[0];
+
+      setPaymentAmount(validAmount);
+    }
+  }, [amount]);
 
   const {
-    handleSubmit,
-    onCardChange,
-    onCardFocus,
-    onCardBlur,
-    errorMessage,
-    disabled,
-    elements,
-  } = useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef);
+    handleSubmit, onCardChange, onCardFocus, onCardBlur, errorMessage, disabled, elements,
+  } = useCardElement(eventHandlers, setIsLoading, setTransactionDetails, formRef, publishableKey);
 
   const cardElementOptions = getCardElementOptions(cardElementColor);
 
@@ -48,8 +53,8 @@ export function PaymentForm(props) {
           onChange={ onCardChange }
         />
       </div>
-      <PaymentAmount component={ component }/>
-      <button type="submit" disabled={ disabled }>{ `Pay ${ amount || 0 } ${ currency || '' }` }</button>
+      <PaymentAmount component={ component } paymentAmount={ paymentAmount } setPaymentAmount={ setPaymentAmount }/>
+      <button type="submit" disabled={ disabled }>{ `Pay ${ paymentAmount || 0 } ${ currency || '' }` }</button>
       { errorMessage && <span className="payment-error">{ errorMessage }</span> }
     </form>
   );

@@ -5,6 +5,9 @@
 
 @bl-customComponent-radioButtonsList-inputRadio-width: 42px;
 
+@bl-customComponent-radioButtonsList-disabled-opacity: 0.38;
+@bl-customComponent-radioButtonsList-disabled-cursor: default;
+
 @bl-customComponent-radioButtonsList-radioButtonLabel-fontSize: 16px;
 @bl-customComponent-radioButtonsList-radioButtonIcon-width: 24px;
 @bl-customComponent-radioButtonsList-radioButtonIcon-fill: @bl-customComponent-radioButtonsList-themeColor;
@@ -14,6 +17,12 @@
   display: flex;
   flex-direction: column;
 
+  &--disabled {
+    opacity: @bl-customComponent-radioButtonsList-disabled-opacity;
+    pointer-events: none;
+    cursor: @bl-customComponent-radioButtonsList-disabled-cursor;
+  }
+
   .radio-button {
     display: inline-flex;
     align-items: center;
@@ -21,6 +30,12 @@
     margin-right: 16px;
     vertical-align: middle;
     cursor: pointer;
+
+    &--disabled {
+      opacity: @bl-customComponent-radioButtonsList-disabled-opacity;
+      pointer-events: none;
+      cursor: @bl-customComponent-radioButtonsList-disabled-cursor;
+    }
 
     &__label {
       font-size: @bl-customComponent-radioButtonsList-radioButtonLabel-fontSize;

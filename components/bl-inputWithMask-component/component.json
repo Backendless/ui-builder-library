@@ -101,7 +101,66 @@
           "label": "Mask"
         }
       ],
-      "handlerDescription": "This event is triggered before the component value changes. Using returned value(boolean) we could decide - apply changes(true) or not(false)."
+      "handlerDescription": "This event is triggered before the component value changes. Using this event we can additionally ourself check and modify each symbol that we input."
+    },
+    {
+      "name": "onComplete",
+      "label": "On Complete",
+      "handlerDescription": "This event is triggered when the value is completely filled. This makes sense only for custom masks.",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "id": "mask",
+          "label": "Mask"
+        }
+      ]
+    },
+    {
+      "name": "onFocusEvent",
+      "label": "On Focus Event",
+      "handlerDescription": "This event is fired when the component receives the focus for data entry or by pressing the TAB key.",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ]
+    },
+    {
+      "name": "onLostFocusEvent",
+      "label": "On Lost Focus Event",
+      "handlerDescription": "This event is triggered when the component loses focus.",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ]
+    },
+    {
+      "name": "onMouseEnter",
+      "label": "On Mouse Enter",
+      "handlerDescription": "This event is triggered when the mouse enters the component.",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ]
+    },
+    {
+      "name": "onMouseLeave",
+      "label": "On Mouse Leave",
+      "handlerDescription": "This event is triggered when the mouse leaves the component.",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ]
     }
   ],
   "actions": []

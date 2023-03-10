@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useItemsState } from './helpers';
 import { Item } from './item';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function AccordionComponent({ component, eventHandlers }) {
+export default function AccordionComponent({ component, eventHandlers, elRef }) {
   const { classList, display, accordionData, controlledAccordion, style } = component;
   const { onMouseOver, onMouseOut } = eventHandlers;
 
@@ -43,10 +43,12 @@ export default function AccordionComponent({ component, eventHandlers }) {
 
   return (
     <div
+      ref={ elRef }
       className={ cn('bl-customComponent-accordion', classList) }
       onMouseOver={ onMouseOver }
       onMouseOut={ onMouseOut }
       style={ style }>
+
       { data?.map((item, index) => (
         <Item
           key={ index }

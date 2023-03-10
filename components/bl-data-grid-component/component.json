@@ -42,8 +42,8 @@
       "hasLogicHandler": true,
       "handlerId": "filterLogic",
       "handlerLabel": "Filter Logic",
-      "handlerDescription": "This property allows you to specify a filter option for all grid columns.",
-      "settingTooltip": "This property allows you to specify a filter option for all grid columns.",
+      "handlerDescription": "This handler allows you to add filtering capability to all grid columns.",
+      "settingTooltip": "This handler allows you to add filtering capability to all grid columns.",
       "dataBinding": true
     },
     {
@@ -60,6 +60,18 @@
       "handlerLabel": "Floating Filter Logic"
     },
     {
+      "type": "checkbox",
+      "name": "resizable",
+      "label": "Resizable",
+      "settingTooltip": "Users will be able to change the width of the columns by dragging them.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "resizableLogic",
+      "handlerLabel": "Resizable Logic",
+      "handlerDescription": "This handler allows you to add the ability to change column widths."
+    },
+    {
       "type": "json",
       "name": "columnDefs",
       "label": "Column Definition",
@@ -68,28 +80,30 @@
       "handlerId": "columnDefsLogic",
       "handlerLabel": "Column Definition Logic",
       "dataBinding": true,
-      "settingTooltip": "This handler allows you to add columns to the component.",
-      "handlerDescription": "This handler allows you to add columns to the component."
+      "settingTooltip": "This handler allows you to define columns for the component.",
+      "handlerDescription": "This handler allows you to define columns for the component.",
+      "defaultValue": "[\n  {\"field\": \"name\", \"flex\": 1},\n  {\"field\": \"age\", \"sortable\": true, \"flex\": 1},\n  {\"field\": \"city\", \"flex\": 1}\n]"
     },
     {
       "type": "json",
-      "name": "rowData",
-      "label": "Row Data",
+      "name": "rowsData",
+      "label": "Rows Data",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "rowDataLogic",
-      "handlerLabel": "Row Data Logic",
+      "handlerId": "rowsDataLogic",
+      "handlerLabel": "Rows Data Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to add data to the component.",
-      "settingTooltip": "This handler allows you to add data to the component."
+      "handlerDescription": "This handler allows you to set data to the component.",
+      "settingTooltip": "This handler allows you to set data to the component.",
+      "defaultValue": "[\n  {\"name\": \"Jack\", \"age\": 26, \"city\": \"London\"},\n  {\"name\": \"Kate\", \"age\": 22, \"city\": \"New York\"},\n  {\"name\": \"Nick\", \"age\": 28, \"city\": \"Kyiv\"}\n]"
     },
     {
-      "type": "number",
+      "type": "text",
       "name": "height",
       "label": "Height",
       "settingTooltip": "This handler allows you to specify the height of the component.",
       "showInSettings": true,
-      "defaultValue": "500",
+      "defaultValue": "500px",
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
@@ -97,12 +111,12 @@
       "dataBinding": true
     },
     {
-      "type": "number",
+      "type": "text",
       "name": "width",
       "label": "Width",
       "settingTooltip": "This handler allows you to specify the width of the component.",
       "showInSettings": true,
-      "defaultValue": "750",
+      "defaultValue": "750px",
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
       "handlerLabel": "Width Logic",
@@ -113,13 +127,13 @@
       "type": "select",
       "name": "theme",
       "label": "Theme",
-      "settingTooltip": "This handler allows you to specify a component theme.",
+      "settingTooltip": "This handler allows you to specify the theme of the component.",
       "showInSettings": true,
       "defaultValue": "alpine",
       "hasLogicHandler": true,
       "handlerId": "themeLogic",
       "handlerLabel": "Theme Logic",
-      "handlerDescription": "This handler allows you to specify a component theme.",
+      "handlerDescription": "This handler allows you to specify the theme of the component.",
       "dataBinding": true,
       "options": [
         {
@@ -154,8 +168,8 @@
           "id": "cellParams",
           "label": "Cell Params"
         }
-      ]
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the grid cell."
     }
-  ],
-  "blockUI": "<div alt=\"Screenshot 2022-08-26 at 15.33.02.png\" data-display=\"\" data-uid=\"c9cc31835246124df964ba97dba93565\"></div><div alt=\"Screenshot 2022-08-26 at 15.33.02.png\" data-display=\"\" data-uid=\"5678e891f52565ee542dfcdebe033b62\"></div><img data-url=\"https://www.ag-grid.com/static/04463eecacf1cb21a3977ba5fa684977/row-grouping-still.png\" data-module-type=\"system\" data-module-id=\"image\" data-display data-uid=\"d1f5503fb64b1d5bb3482877cc2f3779\" style=\"width:550px;\"/>"
+  ]
 }

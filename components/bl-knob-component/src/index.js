@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import primereact from './lib/core';
 
@@ -18,6 +18,20 @@ export default function KnobComponent({ component, eventHandlers }) {
   const [knobDisabled, setKnobDisabled] = useState(!!disabled);
 
   useEffect(() => {
+    if (maxValue < 0) {
+      console.error('Maximum value must be greater than zero.');
+    }
+  }, [maxValue]);
+
+  useEffect(() => {
+    setKnobReadOnly(!!readOnly);
+  }, [readOnly]);
+
+  useEffect(() => {
+    setKnobDisabled(!!disabled);
+  }, [disabled]);
+
+  useEffect(() => {
     if (!isNaN(initialValue)) {
       setKnobValue(initialValue);
     }
@@ -29,12 +43,12 @@ export default function KnobComponent({ component, eventHandlers }) {
     setDisabled: disabled => setKnobDisabled(disabled),
   });
 
-  const handleChange = e => {
-    const value = e.value;
+  const handleChange = useCallback(e => {
+    const value = parseFloat(Math.min(e.value, maxValue).toFixed(2));
 
     setKnobValue(value);
     onChange({ value });
-  };
+  }, [maxValue]);
 
   if (!display) {
     return null;
@@ -46,11 +60,11 @@ export default function KnobComponent({ component, eventHandlers }) {
         value={ knobValue }
         readOnly={ knobReadOnly }
         disabled={ knobDisabled }
-        max={ maxValue }
+        max={ Math.max(maxValue, 0) }
         min={ minValue }
         step={ step }
         strokeWidth={ dial }
-        valueTemplate={ valueTemplate }
+        valueTemplate={ validateTemplate(valueTemplate) }
         size={ size }
         valueColor={ valueColor }
         rangeColor={ rangeColor }
@@ -58,3 +72,13 @@ export default function KnobComponent({ component, eventHandlers }) {
     </div>
   );
 }
+
+const validateTemplate = template => {
+  if (typeof template === 'string' && template.includes('{value}')) {
+    return template;
+  }
+
+  console.error(`Invalid template pattern: ${template}.`);
+
+  return '{value}';
+};

@@ -24,7 +24,7 @@
       "name": "options",
       "label": "Options",
       "showInSettings": true,
-      "defaultValue": "[]",
+      "defaultValue": "[{\"key\": \"0\", \"label\": \"Documents\", \"data\": \"Documents Folder\"}, {\"key\": \"1\", \"label\": \"Events\", \"data\": \"Events Folder\"}, {\"key\": \"2\", \"label\": \"Movies\", \"data\": \"Movies Folder\"}]",
       "hasLogicHandler": true,
       "handlerId": "optionsLogic",
       "handlerLabel": "Options Logic",
@@ -65,11 +65,11 @@
     },
     {
       "type": "checkbox",
-      "name": "chipsDisplay",
-      "label": "Chips Display",
+      "name": "chipsVisibility",
+      "label": "Chips Visibility",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "chipsDisplayLogic"
+      "handlerId": "chipsVisibilityLogic"
     },
     {
       "type": "checkbox",
@@ -117,12 +117,12 @@
     },
     {
       "type": "text",
-      "name": "scrollHeight",
-      "label": "Scroll Height",
+      "name": "optionsPanelHeight",
+      "label": "Options Panel Height",
       "showInSettings": true,
       "defaultValue": "400px",
       "hasLogicHandler": false,
-      "handlerId": "scrollHeightLogic"
+      "handlerId": "optionsPanelHeightLogic"
     },
     {
       "type": "checkbox",
@@ -158,53 +158,53 @@
       "label": "On Change Event",
       "contextBlocks": [
         {
-          "id": "changedValue",
-          "label": "Changed Value"
+          "id": "selectedItems",
+          "label": "Selected Items"
         }
       ],
       "handlerDescription": "This event is fired when the component's state (value) changes."
     },
     {
-      "name": "onItemSelect",
-      "label": "On Item Select Event",
+      "name": "onSelect",
+      "label": "On Select Event",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "Item"
+          "id": "selectedItem",
+          "label": "Selected Item"
         }
       ],
       "handlerDescription": "This event is fired when the item is selected."
     },
     {
-      "name": "onItemUnselect",
-      "label": "On Item Unselect Event",
+      "name": "onUnselect",
+      "label": "On Unselect Event",
       "handlerDescription": "This event is fired when the item is unselected.",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "Item"
+          "id": "unselectedItem",
+          "label": "Unselected Item"
         }
       ]
     },
     {
-      "name": "onItemExpand",
-      "label": "On Item Expand Event",
+      "name": "onExpand",
+      "label": "On Expand Event",
       "handlerDescription": "This event is fired when the item is expanded.",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "Item"
+          "id": "expandedItem",
+          "label": "Expanded Item"
         }
       ]
     },
     {
-      "name": "onItemCollapse",
-      "label": "On Item Collapse Event",
+      "name": "onCollapse",
+      "label": "On Collapse Event",
       "handlerDescription": "This event is fired when the item is collapsed.",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "Item"
+          "id": "collapsedItem",
+          "label": "Collapsed Item"
         }
       ]
     }
@@ -212,11 +212,11 @@
   "actions": [
     {
       "id": "expandAll",
-      "label": "Expand All"
+      "label": "Expand All Options for"
     },
     {
       "id": "collapseAll",
-      "label": "Collapse All"
+      "label": "Collapse All Options for"
     }
   ]
 }

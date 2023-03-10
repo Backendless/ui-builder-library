@@ -1,32 +1,38 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function Parallax({ component, pods }) {
+const MAX_STRENGTH = 2000;
+
+export default function Parallax({ component, pods, elRef }) {
   const { display, style, classList, imageUrl, strength } = component;
-  const parallaxContentPod = pods['parallaxContent'];
+
+  const [validStrength, setValidStrength] = useState(0);
 
   const backdropRef = useRef();
-  const containerRef = useRef();
 
-  useAnimation(backdropRef, containerRef, strength);
+  useEffect(() => {
+    setValidStrength(typeof strength === 'number' ? strength : 0);
+  }, [strength]);
+
+  useAnimation(backdropRef, elRef, Math.min(validStrength, MAX_STRENGTH), display);
 
   if (!display) {
     return null;
   }
 
   return (
-    <div ref={ containerRef } className={ cn('bl-customComponent-parallax', classList) } style={ style }>
-      <div ref={ backdropRef } className="parallax-background-img"
-           style={ { backgroundImage: `url(${ imageUrl })` } }></div>
+    <div ref={ elRef } className={ cn('bl-customComponent-parallax', classList) } style={ style }>
+      <div ref={ backdropRef } className="parallax-background-img" style={ { backgroundImage: `url(${ imageUrl })` } }/>
+
       <div className="parallax-content">
-        { parallaxContentPod.render() }
+        { pods['parallaxContent']?.render() }
       </div>
     </div>
   );
 }
 
-const useAnimation = (backdropRef, containerRef, strength) => {
+const useAnimation = (backdropRef, containerRef, strength, display) => {
   const animate = useCallback(() => {
     const containerTopOffset = containerRef.current.getBoundingClientRect().top + window.pageYOffset;
     const containerElementCenter = containerRef.current.getBoundingClientRect().height / 2;
@@ -38,19 +44,21 @@ const useAnimation = (backdropRef, containerRef, strength) => {
     const translateY = (distanceToCenterOfScreen / backgroundHeight * -100) * strength * 0.001;
 
     backdropRef.current.style.transform = `translate(0, calc(${ translateY }% - ${ strength / 2 }px))`;
-  }, []);
+  }, [strength]);
 
   useEffect(() => {
-    backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
+    if (display) {
+      backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
 
-    animate();
+      animate();
 
-    document.addEventListener('scroll', animate)
-    window.addEventListener('resize', animate, false);
+      document.addEventListener('scroll', animate)
+      window.addEventListener('resize', animate, false);
+    }
 
     return () => {
       document.removeEventListener('scroll', animate);
       window.removeEventListener('resize', animate, false);
     };
-  }, []);
-}
+  }, [display, strength]);
+};

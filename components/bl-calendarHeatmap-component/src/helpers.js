@@ -1,4 +1,4 @@
-export const validate = (items) => {
+export const validate = items => {
   if (typeof items === 'string') {
     return items.split(',');
   }
@@ -40,6 +40,6 @@ export const shadeColor = (col, amt) => {
   return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
 };
 
-const validateRgb = (color) => {
+const validateRgb = color => {
   return Math.max(0, Math.min(255, color));
 };

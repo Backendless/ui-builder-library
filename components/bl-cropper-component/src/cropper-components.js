@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
-import { dataURLToBlob, download, upload } from './helpers';
+import { download, getImageBlob, upload } from './helpers';
 
-export function DropImageArea({ image, setImage, initialLabel }) {
+export function DropImageArea({ image, setImage, initialLabel, uploadInputId }) {
   const uploadImage = e => upload(e, setImage);
 
   const onDragOver = e => {
@@ -21,24 +21,27 @@ export function DropImageArea({ image, setImage, initialLabel }) {
 
   return (
     <div className="drop-image-area" onDragEnter={ onDragEnter } onDragOver={ onDragOver } onDrop={ uploadImage }>
-      <ImageUploadButton onChange={ uploadImage } label={ initialLabel } visibility={ true }/>
+      <label htmlFor={ uploadInputId }>{ initialLabel }</label>
     </div>
   );
 }
 
-export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }) {
-  const { addImageButtonVisibility, cleanButtonVisibility, saveButtonVisibility, downloadButtonVisibility } = component;
+export function HeaderToolbar({ component, cropperRef, onSave, image, setImage, uploadInputId }) {
+  const {
+    addImageButtonVisibility, cleanButtonVisibility, saveButtonVisibility, downloadButtonVisibility,
+    addImageButtonLabel, cleanButtonLabel, saveButtonLabel, downloadButtonLabel,
+  } = component;
+
   const visibility = (
     addImageButtonVisibility || cleanButtonVisibility || saveButtonVisibility || downloadButtonVisibility
   );
 
   const clean = () => setImage('');
-  const uploadImage = e => upload(e, setImage);
 
-  const saveImage = () => {
-    const croppedCanvasURL = cropperRef.current.getCroppedCanvas().toDataURL();
+  const saveImage = async () => {
+    const fileContent = await getImageBlob(cropperRef.current);
 
-    dataURLToBlob(croppedCanvasURL).then(fileContent => onSave({ fileContent }));
+    onSave({ fileContent });
   };
 
   const downloadImage = () => {
@@ -54,18 +57,21 @@ export function HeaderToolbar({ component, cropperRef, onSave, image, setImage }
   return (
     <div className="header-toolbar">
       <div className="buttons-wrapper">
-        <ImageUploadButton onChange={ uploadImage } label="Add image" visibility={ addImageButtonVisibility }/>
-        <Button onClick={ clean } label="Clean" visibility={ cleanButtonVisibility }/>
+        { addImageButtonVisibility && (
+          <label htmlFor={ uploadInputId }>{ addImageButtonLabel }</label>
+        ) }
+
+        <Button onClick={ clean } label={ cleanButtonLabel } visibility={ cleanButtonVisibility }/>
       </div>
       <div className="buttons-wrapper">
-        <Button onClick={ saveImage } label="Save" visibility={ saveButtonVisibility }/>
-        <Button onClick={ downloadImage } label="Download" visibility={ downloadButtonVisibility }/>
+        <Button onClick={ saveImage } label={ saveButtonLabel } visibility={ saveButtonVisibility }/>
+        <Button onClick={ downloadImage } label={ downloadButtonLabel } visibility={ downloadButtonVisibility }/>
       </div>
     </div>
   );
 }
 
-export function FooterToolbar({ cropperRef, image, toolbarVisibility }) {
+export function FooterToolbar({ cropperRef, image, toolbarVisibility, disabled }) {
   const toolbar = useMemo(() => {
     const zoomIn = () => cropperRef.current.zoom(0.1);
     const zoomOut = () => cropperRef.current.zoom(-0.1);
@@ -96,13 +102,13 @@ export function FooterToolbar({ cropperRef, image, toolbarVisibility }) {
   return (
     <div className="footer-toolbar">
       { toolbar.map((buttons, index) => (
-        <ButtonsGroup buttons={ buttons } key={ index }/>
+        <ButtonsGroup buttons={ buttons } key={ index } disabled={ disabled }/>
       )) }
     </div>
   );
 }
 
-function ButtonsGroup({ buttons }) {
+function ButtonsGroup({ buttons, disabled }) {
   return (
     <div className="buttons-group">
       { buttons.map((button, index) => (
@@ -111,6 +117,7 @@ function ButtonsGroup({ buttons }) {
           onClick={ button.onClick }
           label={ button.label }
           visibility={ true }
+          disabled={ disabled }
           key={ index }
         />
       )) }
@@ -118,25 +125,12 @@ function ButtonsGroup({ buttons }) {
   );
 }
 
-function Button({ className, label, onClick, visibility }) {
+function Button({ className, label, onClick, visibility, disabled }) {
   if (!visibility) {
     return null;
   }
 
   return (
-    <button type="button" className={ className } onClick={ onClick }>{ label }</button>
-  );
-}
-
-function ImageUploadButton({ label, onChange, visibility }) {
-  if (!visibility) {
-    return null;
-  }
-
-  return (
-    <label>
-      <span>{ label }</span>
-      <input type="file" accept="image/*" onChange={ onChange }/>
-    </label>
+    <button type="button" className={ className } onClick={ onClick } disabled={ disabled }>{ label }</button>
   );
 }

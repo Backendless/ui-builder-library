@@ -93,11 +93,11 @@
   "actions": [
     {
       "id": "openPicker",
-      "label": "Open Picker"
+      "label": "Open"
     },
     {
       "id": "closePicker",
-      "label": "Close Picker"
+      "label": "Close"
     }
   ]
 }

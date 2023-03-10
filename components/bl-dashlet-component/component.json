@@ -1,0 +1,215 @@
+{
+  "id": "c_9b5d0fd30def939baeb82e23011d7551",
+  "name": "Dashlet",
+  "description": "",
+  "showInToolbox": true,
+  "faIcon": "window-restore",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "titleLogic",
+      "handlerDescription": "This is a handler for the logic of determining the title of dashlet",
+      "dataBinding": true,
+      "handlerLabel": "Title Logic"
+    },
+    {
+      "type": "select",
+      "name": "styleVariant",
+      "label": "Style Variant",
+      "showInSettings": true,
+      "defaultValue": "default",
+      "hasLogicHandler": false,
+      "handlerId": "styleVariantLogic",
+      "handlerLabel": "Style Variant Logic",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "alternative",
+          "label": "Alternative"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "400",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerDescription": "This is a handler for the logic of determining the height of dashlet",
+      "dataBinding": true,
+      "handlerLabel": "Height Logic"
+    },
+    {
+      "type": "number",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "600",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerDescription": "This is a handler for the logic of determining the width of dashlet",
+      "dataBinding": true,
+      "handlerLabel": "Width Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "resizing",
+      "label": "Resizing",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "resizingLogic",
+      "handlerLabel": "Resizing Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining resizable or no resizable dashlet"
+    },
+    {
+      "type": "checkbox",
+      "name": "dragging",
+      "label": "Dragging",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "draggingLogic",
+      "handlerLabel": "Dragging Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining draggable or no draggable dashlet"
+    },
+    {
+      "type": "json",
+      "name": "contextBlocks",
+      "label": "Context Blocks",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "contextBlocksLogic",
+      "handlerLabel": "Context Blocks Logic",
+      "handlerDescription": "This is a handler for the logic of determining context blocks for dashlet",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "minWidth",
+      "label": "Min Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minWidthLogic",
+      "handlerLabel": "Min Width Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the min-width of dashlet",
+      "defaultValue": "300"
+    },
+    {
+      "type": "number",
+      "name": "maxWidth",
+      "label": "Max Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxWidthLogic",
+      "handlerLabel": "Max Width Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the max-width of dashlet",
+      "defaultValue": "900"
+    },
+    {
+      "type": "number",
+      "name": "minHeight",
+      "label": "Min Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minHeightLogic",
+      "handlerLabel": "Min Height Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the min-height of dashlet",
+      "defaultValue": "300"
+    },
+    {
+      "type": "number",
+      "name": "maxHeight",
+      "label": "Max Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxHeightLogic",
+      "handlerLabel": "Max Height Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the max-height of dashlet",
+      "defaultValue": "900"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "contextBlocksHandler",
+      "label": "Context Blocks Handler",
+      "contextBlocks": [
+        {
+          "id": "action",
+          "label": "action"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks on actions in the context block of the dashlet."
+    }
+  ],
+  "actions": [
+    {
+      "id": "getPosition",
+      "label": "Get Position of",
+      "hasReturn": true
+    },
+    {
+      "id": "getSize",
+      "label": "Get Size of",
+      "hasReturn": true
+    },
+    {
+      "id": "getIsOpen",
+      "label": "Get Is Open of",
+      "hasReturn": true
+    },
+    {
+      "id": "setPosition",
+      "label": "Set Position to",
+      "inputs": [
+        {
+          "id": "position",
+          "label": "Position"
+        }
+      ]
+    },
+    {
+      "id": "setSize",
+      "label": "Set Size to",
+      "inputs": [
+        {
+          "id": "size",
+          "label": "Size"
+        }
+      ]
+    },
+    {
+      "id": "setIsOpen",
+      "label": "Set Is Open to",
+      "inputs": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ]
+    }
+  ],
+  "pods": {
+    "22b590cc58d8fb8ea221893d4923eca9": {
+      "id": "dashletContent",
+      "dataContainer": true
+    }
+  },
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"panel\" data-display data-uid=\"5ae95685f707005823612cc4c9e1fd3c\" style=\"display:flex;flex-grow:1;flex-direction:column;min-height:250px;min-width:200px;flex-basis:auto%;\"><div data-module-type=\"block\" data-display data-uid=\"619944efc3ab56bc30f53ac13754fb85\" style=\"display:flex;padding:5px 5px 5px 5px;align-items:center;\"><i data-icon=\"arrow_drop_down\" data-size=\"small\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"efce2b2cbba7f2635034c5ad13894f4d\" style=\"margin:0 5px 0 0;color:#aaaaaa;\"></i><span data-module-type=\"text\" data-content=\"Dashlet\" data-display data-uid=\"acee75c3b9e5afd54c01fdf617eaa9b7\" style=\"font-size:18px;align-self:flex-start;\"></span><i data-icon=\"more_horiz\" data-size=\"small\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"fbd8ebec9857daab4ebb5b074c1271a6\" style=\"margin:0 10px 0 auto;color:#aaaaaa;\"></i></div><div data-module-type=\"block\" data-display data-uid=\"1937998c9aef6708e2d88e9ef5cad0f7\" style=\"display:flex;flex-direction:column;flex-grow:1;\"><div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"dashletContent\" data-uid=\"22b590cc58d8fb8ea221893d4923eca9\" data-pod-container=\"true\" data-data-container=\"true\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;width:100%;height:100%;\"></div></div></div>"
+}

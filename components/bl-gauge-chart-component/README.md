@@ -16,12 +16,12 @@ Gauge Chart is a component of Backendless UI-Builder designer. This is a chart w
 
 ## Actions
 
-| Action                  | Inputs                             | Returns                             |
-|-------------------------|------------------------------------|-------------------------------------|
-| Set Goal                | Goal: `Number`                     |                                     |
-| Get Goal                |                                    | `Number`: current goal              |
-| Set Progress            | Progress: `Number`                 |                                     |
-| Get Progress            |                                    | `Number`: current progress          |
+| Action                        | Inputs             | Returns                    |
+|-------------------------------|--------------------|----------------------------|
+| Set Goal for Gauge Chart      | Goal: `Number`     |                            |
+| Get Goal from Gauge Chart     |                    | `Number`: current goal     |
+| Set Progress for Gauge Chart  | Progress: `Number` |                            |
+| Get Progress from Gauge Chart |                    | `Number`: current progress |
 
 ## Styles
 

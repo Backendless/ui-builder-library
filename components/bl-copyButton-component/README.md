@@ -26,6 +26,6 @@ Copy Button is a component of Backendless UI-Builder designer. This allows you c
 
 ## Action
 
-| Action | Inputs | Returns |
-|--------|--------|---------|
-| Copy   |        |         |
+| Action                          | Inputs | Returns |
+|---------------------------------|--------|---------|
+| Copy content from Copy Button   |        |         |

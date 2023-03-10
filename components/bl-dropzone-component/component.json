@@ -392,7 +392,7 @@
   "actions": [
     {
       "id": "uploadFiles",
-      "label": "Upload Files"
+      "label": "Upload Files from"
     }
   ]
 }

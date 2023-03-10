@@ -3,24 +3,27 @@
 Multiple Select is a component of Backendless UI-Builder designer. This component allows you to handle multiple selections.
 
 <p align="center">
-  <img alt="main thumbnail" height="290" src="./thumbnail.png" width="320"/>
+  <img alt="main thumbnail" src="./thumbnail.png" width="780"/>
 </p>
 
 ## Properties
 
-| Property    | Type                                                 | Default value | Logic          | Data Binding | UI Setting | Description
-|-------------|------------------------------------------------------|---------------|----------------|--------------|------------|-----------------------------------------------------------
-| Disable     | *Checkbox*                                           | false         | Disable logic  | YES          | YES        | This handler allows you to disable the component.
-| Placeholder | *Text*                                               | 'Placeholder' |                | NO           | YES        | This handler allows you to select a placeholder of component.
-| Options     | *JSON* <br/>{ label: `<string>`, value: `<string>` } | []            | Options logic  | YES          | YES        | This handler allows you to add items to be displayed in the drop down list.  Watch [Codeless Examples](#Examples).
-| Variant     | *Select* <br/>[`outlined`, `filled`, `standart`]     | 'outlined'    |                | NO           | YES        | This handler allows you to select the variant of multiple select.
-| Type        | *Select* <br/>[`default`, `checkmark`, `chip`]       | 'checkmark'   |                | NO           | YES        | This handler allows you to change the appearance of this component.
+| Property            | Type                                                         | Default Value        | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                              |
+|---------------------|--------------------------------------------------------------|----------------------|---------------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled            | *Checkbox*                                                   | `false`              | Disabled Logic            | YES          | YES        | This handler allows you to disable a component.                                                                                                                          |
+| Placeholder         | *Text*                                                       | 'Placeholder'        |                           | NO           | YES        | This handler allows you to specify a placeholder for a component.                                                                                                        |
+| Select All Checkbox | *Checkbox*                                                   | `true`               | Select All Checkbox Logic | YES          | YES        | This handler allows you to add a checkbox to select all options.                                                                                                         |
+| Select All Label    | *Text*                                                       | 'Select all options' | Select All Label Logic    | YES          | YES        | This handler allows you to specify label for "Select All Checkbox".                                                                                                      |
+| Variant             | *Select* <br/>'outlined' <br/>\| 'filled' <br/>\| 'standart' | 'outlined'           |                           | NO           | YES        | This handler allows you to select a variant of the component.                                                                                                            |
+| Type                | *Select* <br/>'default' <br/>\| 'checkmark' <br/>\| 'chip'   | 'checkmark'          |                           | NO           | YES        | This handler allows you to select a type of the component.                                                                                                               |
+| Value               | *Text*                                                       | ''                   | Value Logic               | YES          | YES        | This handler allows you to add value by default. Enter the value separated by a comma. Signature of value: '`String`, `String`'.                                         |
+| Options             | *JSON*                                                       |                      | Options Logic             | YES          | YES        | This handler allows you to add options to the component. Watch [Codeless Examples](#examples). Signature of options: list of objects { label: `String`, value: `String`} |
 
 ## Events
 
-| Name             | Triggers                                      | Context Blocks                                    |
-|------------------|-----------------------------------------------|---------------------------------------------------|
-| On Change        | when the user select an item from the options | `Select Value: string`                            |
+| Name             | Triggers                                      | Context Blocks                                                      |
+|------------------|-----------------------------------------------|---------------------------------------------------------------------|
+| On Change Event  | when the user select an item from the options | Select Value: list of objects { label: `String`, value: `String` }  |
 
 ## Styles
 
@@ -37,8 +40,17 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 @bl-customComponent-multipleSelect-margin: 0;
 ````
 
-## <a name="Examples"></a> Codeless Examples
+**Colors**
+````
+@bl-customComponent-option-backgroundColor-onHover: rgba(@themePrimary, 0.15);
+@bl-customComponent-optionSelected-backgroundColor: rgba(@themePrimary, 0.078);
+@bl-customComponent-optionCheckmark-color: @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-selectAllCheckbox-backgroundColor: rgba(@themePrimary, 0.5);
+@bl-customComponent-optionChip-backgroundColor: @bl-customComponent-optionSelected-backgroundColor;
+````
 
-Adding options to the selection list:
+## <a id="examples"></a> Codeless Examples
+
+Adding options to the component:
 
 ![markers example](./example-images/add-options.png)

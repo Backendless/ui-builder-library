@@ -39,6 +39,15 @@
       "handlerId": "fixedAmountLogic"
     },
     {
+      "type": "number",
+      "name": "amountDecimalPlaces",
+      "label": "Amount Decimal Places",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": false,
+      "handlerId": "amountDecimalPlacesLogic"
+    },
+    {
       "type": "text",
       "name": "currency",
       "label": "Currency",
@@ -100,14 +109,6 @@
       "defaultValue": false,
       "hasLogicHandler": false,
       "handlerId": "zipVisibilityLogic"
-    },
-    {
-      "type": "text",
-      "name": "publishableKey",
-      "label": "Publishable Key",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "publishableKeyLogic"
     }
   ],
   "eventHandlers": [
@@ -158,15 +159,24 @@
   "actions": [
     {
       "id": "clearCard",
-      "label": "Clear Card"
+      "label": "Clear Card in"
     },
     {
       "id": "blurCard",
-      "label": "Blur Card"
+      "label": "Blur Card in"
     },
     {
       "id": "focusCard",
-      "label": "Focus Card"
+      "label": "Focus Card in"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "name": "publishableKey",
+      "title": "Publishable Key",
+      "required": true,
+      "description": "This is your Stripe account’s Publishable Key."
     }
   ]
 }

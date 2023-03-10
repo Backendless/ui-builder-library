@@ -58,6 +58,15 @@
     },
     {
       "type": "checkbox",
+      "name": "showTooltips",
+      "label": "Show Tooltips",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "showTooltipsLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
       "name": "linkInsertButton",
       "label": "Link Insert Button",
       "showInSettings": true,
@@ -70,7 +79,7 @@
       "name": "imageInsertButton",
       "label": "Image Insert Button",
       "showInSettings": true,
-      "defaultValue": false,
+      "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "imageInsertButtonLogic"
     },
@@ -80,7 +89,8 @@
       "label": "Video Insert Button",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "videoInsertButtonLogic"
+      "handlerId": "videoInsertButtonLogic",
+      "defaultValue": true
     },
     {
       "type": "checkbox",
@@ -107,6 +117,16 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "editorMinHeightLogic"
+    },
+    {
+      "type": "text",
+      "name": "scrollingContainer",
+      "label": "Scrolling Container",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "scrollingContainerLogic",
+      "handlerLabel": "Scrolling Container Logic",
+      "handlerDescription": "This is a handler for the logic to determine DOM Element or a CSS selector for DOM Element, indicating which container has scrollbars. Specify only when the editor is set to auto grow its height."
     },
     {
       "type": "text",
@@ -193,7 +213,7 @@
   "actions": [
     {
       "id": "getText",
-      "label": "Get Text",
+      "label": "Get Text from",
       "hasReturn": true,
       "inputs": [
         {
@@ -208,37 +228,37 @@
     },
     {
       "id": "setText",
-      "label": "Set Text",
+      "label": "Set Text for",
       "inputs": [
         {
-          "id": "data",
-          "label": "Data"
+          "id": "text",
+          "label": "Text"
         }
       ]
     },
     {
       "id": "getHTML",
-      "label": "Get HTML",
+      "label": "Get HTML from",
       "hasReturn": true
     },
     {
       "id": "setHTML",
-      "label": "Set HTML",
+      "label": "Set HTML for",
       "inputs": [
         {
-          "id": "data",
-          "label": "Data"
+          "id": "content",
+          "label": "Content"
         }
       ]
     },
     {
       "id": "getSelection",
-      "label": "Get Selection",
+      "label": "Get Selection Range from",
       "hasReturn": true
     },
     {
       "id": "setSelection",
-      "label": "Set Selection",
+      "label": "Set Selection Range in",
       "inputs": [
         {
           "id": "index",
@@ -252,12 +272,12 @@
     },
     {
       "id": "getLength",
-      "label": "Get Length",
+      "label": "Get Length Property from",
       "hasReturn": true
     },
     {
       "id": "deleteText",
-      "label": "Delete Text",
+      "label": "Delete Text from",
       "inputs": [
         {
           "label": "Index",

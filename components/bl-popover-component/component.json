@@ -39,15 +39,27 @@
   ],
   "eventHandlers": [
     {
-      "name": "onClick",
-      "label": "On Click",
+      "name": "onTargetClick",
+      "label": "On Target Click",
       "contextBlocks": [
         {
           "id": "isOpen",
           "label": "Is Open"
         }
       ],
-      "handlerDescription": "This event is triggered when the user clicks on the button."
+      "handlerDescription": "This event is triggered when the user clicks on the target."
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "contextBlocks": [],
+      "handlerDescription": "This event is triggered when the mouse pointer hovers over the component."
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "contextBlocks": [],
+      "handlerDescription": "This event is triggered when the mouse pointer leaves the component."
     }
   ],
   "actions": [
@@ -56,15 +68,15 @@
       "label": "Set Is Open",
       "inputs": [
         {
-          "id": "boolean",
-          "label": "Boolean"
+          "id": "isOpen",
+          "label": "Is Open"
         }
       ]
     }
   ],
   "pods": {
     "f1bac586857f6846d1ca7ab7f71ba20b": {
-      "id": "popoverTrigger",
+      "id": "popoverTarget",
       "dataContainer": true
     },
     "1aec8dec2faf84f92fd9b717e81db234": {

@@ -5,17 +5,15 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function Popover({ component, eventHandlers, pods }) {
   const { display, style, classList, position } = component;
-  const { onClick } = eventHandlers;
+  const { onTargetClick, onMouseOut, onMouseOver } = eventHandlers;
 
-  const popoverTrigger = pods['popoverTrigger'];
+  const popoverTarget = pods['popoverTarget'];
   const popoverContent = pods['popoverContent'];
 
   const [isOpen, setIsOpen] = useState(false);
-  const contentElement = useRef();
+  const targetRef = useRef();
 
-  component.setIsOpen = (boolean) => {
-    setIsOpen(boolean);
-  };
+  component.setIsOpen = setIsOpen;
 
   if (!display) {
     return null;
@@ -24,15 +22,17 @@ export default function Popover({ component, eventHandlers, pods }) {
   return (
     <div className={ cn('bl-customComponent-popover', classList) } style={ style }>
       <div
-        ref={ contentElement }
+        ref={ targetRef }
         className="content-container"
-        onClick={ () => onClick({ isOpen }) }>
-        { popoverTrigger.render() }
+        onClick={ () => onTargetClick({ isOpen }) }
+        onMouseEnter={ onMouseOver }
+        onMouseLeave={ onMouseOut }>
+        { popoverTarget.render() }
       </div>
 
       { isOpen && (
         <Tooltip
-          contentElement={ contentElement.current }
+          targetRef={ targetRef.current }
           position={ position }
           popoverContent={ popoverContent }
         />

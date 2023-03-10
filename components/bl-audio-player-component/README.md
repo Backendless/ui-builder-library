@@ -23,11 +23,11 @@ While the player can be configured with multiple settings it is easy in use and 
 
 ## Actions
 
-| Action        | Inputs                                     | Returns |
-|---------------|--------------------------------------------|---------|
-| Play Audio    |                                            |         |
-| Stop Audio    |                                            |         |
-| Replace Audio | `Audio Url: String`, `Audio Title: String` |         |
+| Action                        | Inputs                                     | Returns |
+|-------------------------------|--------------------------------------------|---------|
+| Play Audio in Audio Player    |                                            |         |
+| Stop Audio in Audio Player    |                                            |         |
+| Replace Audio in Audio Player | `Audio Url: String`, `Audio Title: String` |         |
 
 ## Styles
 
