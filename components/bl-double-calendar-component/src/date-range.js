@@ -45,9 +45,10 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setStartDate(new Date());
     setEndDate(null);
 
+    // this is needed to display the current month in the calendar after the reset without selecting the current day
+    setStartDate(new Date());
     setTimeout(() => setStartDate(null), 1);
 
     if (onDateReset) {
