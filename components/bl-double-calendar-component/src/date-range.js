@@ -8,7 +8,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export function DateRange(props) {
   const {
-    fromDate, toDate, dateFormat, headerVisibility, monthDropdownVisibility,
+    fromDate, toDate, dateFormat, headerVisibility, daysAmountVisibility, monthDropdownVisibility,
     yearDropdownVisibility, component, onStartDateChange, onEndDateChange, onDateReset
   } = props;
 
@@ -100,7 +100,9 @@ export function DateRange(props) {
     <>
       { headerVisibility &&
         <div className="info">
-          <span className="info__days-amount">Days amount: { daysAmount }</span>
+          { daysAmountVisibility &&
+            <span className="info__days-amount">Days amount: { daysAmount }</span>
+          }
           <button
             onClick={ handleReset }
             disabled={ resetDisabled }
