@@ -19,13 +19,13 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const controlsRef = useRef();
 
   useEffect(() => {
-    if (documentRef) {
+    if (documentRef && controlsRef.current) {
       const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(documentRef);
 
       documentRef.style.height = `calc(${ height } - ${ spaceForControls }px)`;
       documentRef.style.width = width;
     }
-  }, [documentRef, height, width]);
+  }, [documentRef, controlsRef, height, width]);
 
   useEffect(() => {
     if (pageRef) {
@@ -52,8 +52,10 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const onPageLoadSuccess = () => {
     const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
 
-    pageRef.firstChild.style.height = `calc(${ height } - ${ spaceForControls }px)`;
-    pageRef.firstChild.style.width = width;
+    pageRef.firstChild.style.height = height ? `calc(${ height } - ${ spaceForControls }px)` : 'auto';
+    pageRef.firstChild.style.width = width || 'auto';
+
+    pageRef.firstChild.style.overflow = 'auto';
   };
 
   const onNoData = () => {
