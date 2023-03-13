@@ -15,7 +15,11 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn("bl-customComponent-doubleCalendar", { disabled }, classList) } style={ style }>
+    <div
+      style={ style }
+      className={
+        cn("bl-customComponent-doubleCalendar", { "bl-customComponent-doubleCalendar--disabled": disabled }, classList)
+      }>
       { specificDateRange ?
         <SpecificDateRange
           dateFormat={ dateFormat }
