@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
 import { useActions, differenceInDays, differenceInTime } from './helpers';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 export function DateRange(props) {
   const {
@@ -13,8 +15,20 @@ export function DateRange(props) {
   const [endDate, setEndDate] = useState(null);
 
   const daysAmount = differenceInDays(startDate, endDate);
+  const resetDisabled = !startDate && !endDate;
 
   useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
+
+  // this is needed to display the current month in the calendar after the reset without selecting the current day
+  const setCurrentMonthForStartDate = useCallback(() => {
+    setStartDate(new Date());
+    setTimeout(() => setStartDate(null), 1);
+  }, []);
+
+  const setCurrentMonthForEndDate = useCallback(() => {
+    setEndDate(new Date());
+    setTimeout(() => setEndDate(null), 1);
+  }, []);
 
   useEffect(() => {
     const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
@@ -73,11 +87,8 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setEndDate(null);
-
-    // this is needed to display the current month in the calendar after the reset without selecting the current day
-    setStartDate(new Date());
-    setTimeout(() => setStartDate(null), 1);
+    setCurrentMonthForEndDate();
+    setCurrentMonthForStartDate();
 
     if (onDateReset) {
       onDateReset();
@@ -89,7 +100,12 @@ export function DateRange(props) {
       { headerVisibility &&
         <div className="info">
           <span className="info__days-amount">Days amount: { daysAmount }</span>
-          <button onClick={ handleReset } className="info__button-reset">Reset</button>
+          <button
+            onClick={ handleReset }
+            disabled={ resetDisabled }
+            className={ cn("info__button-reset", { "info__button-reset--disabled": resetDisabled }) }>
+            Reset
+          </button>
         </div>
       }
       <div className="date-picker">
