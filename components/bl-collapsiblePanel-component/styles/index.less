@@ -24,6 +24,24 @@
 .bl-customComponent-collapsiblePanel {
   width: @bl-customComponent-collapsiblePanel-width;
 
+  &.panel-expanded.with-animation {
+    .collapse-icon {
+      transform: @bl-customComponent-collapsiblePanel-title-icon-transform;
+    }
+    .panel-content {
+      max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
+      animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
+      animation-duration: (@bl-customComponent-collapsiblePanel-content-animationDuration * 2);
+    }
+  }
+
+  &:not(.panel-expanded).with-animation {
+    .close {
+      animation-name: @bl-customComponent-collapsiblePanel-content-animationName-close;
+      animation-duration: @bl-customComponent-collapsiblePanel-content-animationDuration;
+    }
+  }
+
   .panel-title {
     display: flex;
     justify-content: space-between;
@@ -50,10 +68,6 @@
     fill: @bl-customComponent-collapsiblePanel-title-icon-color;
     transition: @bl-customComponent-collapsiblePanel-title-icon-transition;
     user-select: none;
-
-    &.active {
-      transform: @bl-customComponent-collapsiblePanel-title-icon-transform;
-    }
   }
 
   .panel-content {
@@ -61,17 +75,6 @@
     width: @bl-customComponent-collapsiblePanel-width;
     max-height: 0;
     overflow: hidden;
-
-    &.open {
-      max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
-      animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
-      animation-duration: ( @bl-customComponent-collapsiblePanel-content-animationDuration * 2 );
-    }
-
-    &.close {
-      animation-name: @bl-customComponent-collapsiblePanel-content-animationName-close;
-      animation-duration: @bl-customComponent-collapsiblePanel-content-animationDuration;
-    }
   }
 }
 

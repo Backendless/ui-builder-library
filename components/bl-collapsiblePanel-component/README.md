@@ -14,17 +14,17 @@ CollapsiblePanel is the component that can be used in Backendless [UI-Builder](h
 
 ## Events
 
-| Name                 | Triggers                                | Context Blocks |
-|----------------------|-----------------------------------------|----------------|
-| On Open Panel Event  | when the user opens the panel section.  |                |
-| On Close Panel Event | when the user closes the panel section. |                |
+| Name              | Triggers                                | Context Blocks |
+|-------------------|-----------------------------------------|----------------|
+| On Expand Event   | when the user opens the panel section.  |                |
+| On Collapse Event | when the user closes the panel section. |                |
 
 ## Actions
 
-| Action                           | Inputs | Returns |
-|----------------------------------|--------|---------|
-| Show Content Of CollapsiblePanel |        |         |
-| Hide Content Of CollapsiblePanel |        |         |
+| Action                               | Inputs | Returns |
+|--------------------------------------|--------|---------|
+| Expand Content Of CollapsiblePanel   |        |         |
+| Collapse Content Of CollapsiblePanel |        |         |
 
 ## Styles
 
