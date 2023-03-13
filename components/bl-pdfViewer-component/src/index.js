@@ -5,7 +5,7 @@ import { Controls, NoData } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function PdfViewer({ component, eventHandlers }) {
+export default function PdfViewer({ component, eventHandlers, elRef }) {
   const { style, display, classList, pdfUrl, renderType, width, height } = component;
   const { onLoadSuccess, onLoadError } = eventHandlers;
 
@@ -16,10 +16,13 @@ export default function PdfViewer({ component, eventHandlers }) {
   const [isControlsVisible, setIsControlsVisible] = useState(false);
 
   const inputRef = useRef();
+  const controlsRef = useRef();
 
   useEffect(() => {
     if (documentRef) {
-      documentRef.style.height = height;
+      const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(documentRef);
+
+      documentRef.style.height = `calc(${ height } - ${ spaceForControls }px)`;
       documentRef.style.width = width;
     }
   }, [documentRef, height, width]);
@@ -47,8 +50,10 @@ export default function PdfViewer({ component, eventHandlers }) {
   };
 
   const onPageLoadSuccess = () => {
+    const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
+
+    pageRef.firstChild.style.height = `calc(${ height } - ${ spaceForControls }px)`;
     pageRef.firstChild.style.width = width;
-    pageRef.firstChild.style.height = height;
   };
 
   const onNoData = () => {
@@ -79,8 +84,9 @@ export default function PdfViewer({ component, eventHandlers }) {
 
   return (
     <div
+      ref={ elRef }
       className={ cn('bl-customComponent-pdfViewer', classList) }
-      style={{ ...style }}>
+      style={{ ...style, width, height }}>
       <Document
         inputRef={ ref => setDocumentRef(ref) }
         className="pdf-viewer"
@@ -97,6 +103,7 @@ export default function PdfViewer({ component, eventHandlers }) {
         />
       </Document>
       <Controls
+        controlsRef={ controlsRef }
         pageIndex={ pageIndex }
         setPageIndex={ setPageIndex }
         inputRef={ inputRef }
@@ -108,4 +115,11 @@ export default function PdfViewer({ component, eventHandlers }) {
   );
 }
 
+const getBottomOffset = el => {
+  const rect = el.getBoundingClientRect();
+
+  return rect.bottom + window.scrollY;
+};
+
 const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
+
