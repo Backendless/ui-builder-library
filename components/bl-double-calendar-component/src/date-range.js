@@ -1,14 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
 const { cn } = BackendlessUI.CSSUtils;
-
-// this is needed to display the current month in the calendar after the reset without selecting the current day
-const setCurrentMonth = setState => {
-  setState(new Date());
-  setTimeout(() => setState(null), 1);
-};
 
 export function DateRange(props) {
   const {
@@ -23,11 +17,22 @@ export function DateRange(props) {
 
   useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
+  // this is needed to display the current month in the calendar after the reset without selecting the current day
+  const setCurrentMonthForStartDate = useCallback(() => {
+    setStartDate(new Date());
+    setTimeout(() => setStartDate(null), 1);
+  }, []);
+
+  const setCurrentMonthForEndDate = useCallback(() => {
+    setEndDate(new Date());
+    setTimeout(() => setEndDate(null), 1);
+  }, []);
+
   useEffect(() => {
     if (!fromDate) {
       console.error("From Date is not provided!");
 
-      setCurrentMonth(setStartDate);
+      setCurrentMonthForStartDate();
     } else {
       setStartDate(new Date(fromDate));
     }
@@ -37,7 +42,7 @@ export function DateRange(props) {
     if (!toDate) {
       console.error("To Date is not provided!");
 
-      setCurrentMonth(setEndDate);
+      setCurrentMonthForEndDate();
     } else {
       setEndDate(new Date(toDate));
     }
@@ -60,8 +65,8 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setCurrentMonth(setEndDate);
-    setCurrentMonth(setStartDate);
+    setCurrentMonthForEndDate();
+    setCurrentMonthForStartDate();
 
     if (onDateReset) {
       onDateReset();
