@@ -8,7 +8,8 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export function DateRange(props) {
   const {
-    fromDate, toDate, dateFormat, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset
+    fromDate, toDate, dateFormat, headerVisibility, monthDropdownVisibility,
+    yearDropdownVisibility, component, onStartDateChange, onEndDateChange, onDateReset
   } = props;
 
   const [startDate, setStartDate] = useState(null);
@@ -112,21 +113,31 @@ export function DateRange(props) {
         <DatePicker
           inline
           selectsStart
+          scrollableYearDropdown
+          scrollableMonthDropdown
           endDate={ endDate }
           selected={ startDate }
           startDate={ startDate }
           dateFormat={ dateFormat }
+          yearDropdownItemNumber={ 1000 }
+          showYearDropdown={ yearDropdownVisibility }
+          showMonthDropdown={ monthDropdownVisibility }
           maxDate={ endDate ? new Date(endDate) : null }
           onChange={ handleStartDateChange }
         />
         <DatePicker
           inline
           selectsEnd
+          scrollableYearDropdown
+          scrollableMonthDropdown
           endDate={ endDate }
           selected={ endDate }
           minDate={ startDate }
           startDate={ startDate }
           dateFormat={ dateFormat }
+          yearDropdownItemNumber={ 1000 }
+          showYearDropdown={ yearDropdownVisibility }
+          showMonthDropdown={ monthDropdownVisibility }
           onChange={ handleEndDateChange }
         />
       </div>

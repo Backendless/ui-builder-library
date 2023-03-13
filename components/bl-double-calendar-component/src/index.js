@@ -5,8 +5,8 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function DoubleCalendarComponent({ component, eventHandlers }) {
   const {
-    classList, display, disabled, style, specificDateRange, selectionRange,
-    selectedDate, headerVisibility, dateFormat, fromDate, toDate
+    classList, display, disabled, style, specificDateRange, selectionRange, selectedDate,
+    headerVisibility, monthDropdownVisibility, yearDropdownVisibility, dateFormat, fromDate, toDate
   } = component;
   const { onStartDateChange, onEndDateChange, onDateSelect, onDateReset } = eventHandlers;
 
@@ -33,6 +33,8 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
           fromDate={ fromDate }
           dateFormat={ dateFormat }
           headerVisibility={ headerVisibility }
+          yearDropdownVisibility={ yearDropdownVisibility }
+          monthDropdownVisibility={ monthDropdownVisibility }
           component={ component }
           onDateReset={ onDateReset }
           onEndDateChange={ onEndDateChange }
