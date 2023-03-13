@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 export function DateRange(props) {
   const {
@@ -11,23 +13,39 @@ export function DateRange(props) {
   const [endDate, setEndDate] = useState(null);
 
   const daysAmount = differenceInDays(startDate, endDate);
+  const resetDisabled = !startDate && !endDate;
 
   useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
+  // this is needed to display the current month in the calendar after the reset without selecting the current day
+  const setCurrentMonthForStartDate = useCallback(() => {
+    setStartDate(new Date());
+    setTimeout(() => setStartDate(null), 1);
+  }, []);
+
+  const setCurrentMonthForEndDate = useCallback(() => {
+    setEndDate(new Date());
+    setTimeout(() => setEndDate(null), 1);
+  }, []);
+
   useEffect(() => {
     if (!fromDate) {
-      console.error("From Date is not provided!")
-    }
+      console.error("From Date is not provided!");
 
-    setStartDate(new Date(fromDate || 0));
+      setCurrentMonthForStartDate();
+    } else {
+      setStartDate(new Date(fromDate));
+    }
   }, [fromDate]);
 
   useEffect(() => {
     if (!toDate) {
-      console.error("To Date is not provided!")
-    }
+      console.error("To Date is not provided!");
 
-    setEndDate(new Date(toDate || 0));
+      setCurrentMonthForEndDate();
+    } else {
+      setEndDate(new Date(toDate));
+    }
   }, [toDate]);
 
   const handleStartDateChange = date => {
@@ -47,11 +65,8 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setEndDate(null);
-
-    // this is needed to display the current month in the calendar after the reset without selecting the current day
-    setStartDate(new Date());
-    setTimeout(() => setStartDate(null), 1);
+    setCurrentMonthForEndDate();
+    setCurrentMonthForStartDate();
 
     if (onDateReset) {
       onDateReset();
@@ -63,7 +78,12 @@ export function DateRange(props) {
       { headerVisibility &&
         <div className="info">
           <span className="info__days-amount">Days amount: { daysAmount }</span>
-          <button onClick={ handleReset } className="info__button-reset">Reset</button>
+          <button
+            onClick={ handleReset }
+            disabled={ resetDisabled }
+            className={ cn("info__button-reset", { "info__button-reset--disabled": resetDisabled }) }>
+            Reset
+          </button>
         </div>
       }
       <div className="date-picker">
