@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
+import { useActions, differenceInDays, differenceInTime } from './helpers';
+
 export function DateRange(props) {
   const {
     fromDate, toDate, dateFormat, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset
@@ -15,19 +17,43 @@ export function DateRange(props) {
   useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
   useEffect(() => {
-    if (!fromDate) {
-      console.error("From Date is not provided!")
+    const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
+
+    if (fromDate && diffInTime > 0) {
+      setStartDate(new Date(fromDate));
     }
 
-    setStartDate(new Date(fromDate || 0));
+    if (!fromDate) {
+      console.error("From Date is not provided!");
+
+      setCurrentMonthForStartDate();
+    }
+
+    if (diffInTime <= 0) {
+      console.error("From Date is not valid!");
+
+      setCurrentMonthForStartDate();
+    }
   }, [fromDate]);
 
   useEffect(() => {
-    if (!toDate) {
-      console.error("To Date is not provided!")
+    const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
+
+    if (toDate && diffInTime > 0) {
+      setEndDate(new Date(toDate));
     }
 
-    setEndDate(new Date(toDate || 0));
+    if (!toDate) {
+      console.error("To Date is not provided!");
+
+      setCurrentMonthForEndDate();
+    }
+
+    if (diffInTime <= 0) {
+      console.error("To Date is not valid!");
+
+      setCurrentMonthForEndDate();
+    }
   }, [toDate]);
 
   const handleStartDateChange = date => {
@@ -74,6 +100,7 @@ export function DateRange(props) {
           selected={ startDate }
           startDate={ startDate }
           dateFormat={ dateFormat }
+          maxDate={ endDate ? new Date(endDate) : null }
           onChange={ handleStartDateChange }
         />
         <DatePicker
@@ -89,35 +116,4 @@ export function DateRange(props) {
       </div>
     </>
   );
-}
-
-const ONE_DAY = 86400000;
-
-function useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
-  Object.assign(component, {
-    getFromDate     : () => startDate,
-    setFromDate     : fromDate => setStartDate(new Date(fromDate)),
-    getToDate       : () => endDate,
-    setToDate       : toDate => setEndDate(new Date(toDate)),
-    getFromAndToDate: () => ({ fromDate: startDate, toDate: endDate }),
-    setFromAndToDate: (fromDate, toDate) => {
-      setStartDate(new Date(fromDate));
-      setEndDate(new Date(toDate));
-    },
-    getDaysAmount   : () => daysAmount,
-    resetDate       : () => {
-      setStartDate(new Date());
-      setEndDate(new Date());
-    }
-  })
-}
-
-function differenceInDays(start, end) {
-  if (!start || !end) {
-    return 0;
-  }
-
-  const diffInTime = end.getTime() - start.getTime();
-
-  return Math.round(diffInTime / ONE_DAY) + 1;
 }
