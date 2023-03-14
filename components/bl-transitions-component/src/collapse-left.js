@@ -1,65 +1,46 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+import { hideElement, useResizeObserver, useTransition } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export function CollapseLeft({ component, eventHandlers, transitionsContainerPod, isOpen, setIsOpen }) {
-  const { display, classList, style, variants, duration } = component;
+export function CollapseLeft({ component, eventHandlers, transitionsContainerPod, display }) {
+  const { classList, style, variants, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
 
-  const [width, setWidth] = useState('auto');
+  const [width, setWidth] = useState(0);
 
   const rootRef = useRef();
+  const getWidthTimeout = useRef(null);
+
+  const setIsAuto = useResizeObserver(rootRef.current, 'width', width, setWidth);
+  const isTransition = useTransition(rootRef, display, duration, width, 'width', setIsAuto, onEndAnimation);
 
   useEffect(() => {
-    setWidth(rootRef.current.clientWidth);
-    setIsOpen(false);
+    if (rootRef.current) {
+      hideElement(rootRef.current);
 
-    const timeout = setTimeout(() => {
-      setIsOpen(true);
-    }, 0);
+      getWidthTimeout.current = setTimeout(() => {
+        rootRef.current.style.width = 'auto';
+        setWidth(rootRef.current.clientWidth);
+        rootRef.current.style.width = '0px';
+      }, 50);
+    }
 
+    return () => clearTimeout(getWidthTimeout.current);
+  }, [rootRef]);
+
+  useEffect(() => {
     onMounted();
 
-    return () => {
-      clearTimeout(timeout);
-      onUnmounted();
-    };
+    return () => onUnmounted();
   }, []);
-
-  useEffect(() => {
-    if (!display) {
-      rootRef.current.style.width = rootRef.current.clientWidth + 'px';
-    }
-  }, [display]);
-
-  useEffect(() => {
-    let timeout;
-
-    if (isOpen) {
-      rootRef.current.style.width = width + 'px';
-
-      timeout = setTimeout(() => {
-        rootRef.current.style.width = 'auto';
-      }, duration);
-    } else {
-      rootRef.current.style.width = 0;
-    }
-
-    const endAnimationTimeout = setTimeout(() => {
-      onEndAnimation();
-    }, duration);
-
-    return () => {
-      clearTimeout(timeout);
-      clearTimeout(endAnimationTimeout);
-    };
-  }, [isOpen]);
 
   return (
     <div
       ref={ rootRef }
-      className={ cn('bl-customComponent-transitions', variants, { [variants + '--open']: isOpen }, classList) }
-      style={ { ...style, transitionDuration: duration + 'ms' } }>
+      className={ cn('bl-customComponent-transitions', variants, { [variants + '--active']: isTransition }, classList) }
+      style={{ ...style, transitionDuration: duration + 'ms' }}>
       { transitionsContainerPod.render() }
     </div>
   );
