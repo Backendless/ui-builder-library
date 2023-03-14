@@ -4,41 +4,43 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function CollapsiblePanelComponent({ component, elRef, eventHandlers, pods }) {
   const { classList, style, display, title } = component;
-  const { onOpen, onClose } = eventHandlers;
+  const { onExpand, onCollapse } = eventHandlers;
 
   const [expanded, setExpanded] = useState(false);
   const [withAnimation, setWithAnimation] = useState(false);
 
+  const className = cn('bl-customComponent-collapsiblePanel', ...classList, {
+    'panel-expanded': expanded,
+    'with-animation': withAnimation
+  });
+
   const showContent = useCallback(() => {
     setExpanded(true);
     setWithAnimation(true);
-    onOpen();
-  }, [onOpen]);
+    onExpand();
+  }, []);
 
   const hideContent = useCallback(() => {
     setExpanded(false);
     setWithAnimation(true);
-    onClose();
-  }, [onClose]);
+    onCollapse();
+  }, []);
 
   const togglePanel = useCallback(() => {
       expanded ? hideContent() : showContent();
     }, [expanded, hideContent, showContent]);
 
-  component.open = showContent;
-  component.close = hideContent;
+  component.expand = showContent;
+  component.collapse = hideContent;
 
   if (!display) {
     return null;
   }
 
   return (
-    <div
-      ref={ elRef }
-      style={ style }
-      className={ cn('bl-customComponent-collapsiblePanel', ...classList,
-      { 'panel-expanded': expanded, 'with-animation': withAnimation }) }>
+    <div ref={ elRef } className={ className } style={ style }>
       <PanelTitle title={ title } expanded={ expanded } onClick={ togglePanel } />
+
       <div className={ cn('panel-content', { 'close': !expanded }) }>
         { pods['panelContent'].render() }
       </div>
@@ -50,6 +52,7 @@ function PanelTitle({ title, expanded, onClick }) {
   return (
     <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ onClick }>
       <span className="panel-title-text">{ title }</span>
+
       <svg
         className="collapse-icon"
         focusable="false"

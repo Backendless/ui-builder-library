@@ -21,10 +21,10 @@ CollapsiblePanel is the component that can be used in Backendless [UI-Builder](h
 
 ## Actions
 
-| Action                               | Inputs | Returns |
-|--------------------------------------|--------|---------|
-| Expand Content Of CollapsiblePanel   |        |         |
-| Collapse Content Of CollapsiblePanel |        |         |
+| Action           | Inputs | Returns |
+|------------------|--------|---------|
+| Expand Content   |        |         |
+| Collapse Content |        |         |
 
 ## Styles
 

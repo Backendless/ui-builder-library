@@ -24,23 +24,23 @@
   ],
   "eventHandlers": [
     {
-      "name": "onOpen",
+      "name": "onExpand",
       "label": "On Expand Event",
       "handlerDescription": "Triggered when the user opens the panel section."
     },
     {
-      "name": "onClose",
+      "name": "onCollapse",
       "label": "On Collapse Event",
       "handlerDescription": "Triggered when the user closes the panel section."
     }
   ],
   "actions": [
     {
-      "id": "open",
+      "id": "expand",
       "label": "Expand Content of"
     },
     {
-      "id": "close",
+      "id": "collapse",
       "label": "Collapse Content of"
     }
   ],
