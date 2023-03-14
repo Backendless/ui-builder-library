@@ -7,9 +7,15 @@ export const useStyles = (style, width, height) => useMemo(() => {
 }, [style, width, height]);
 
 const validateStyles = dimensions => {
-  const validDimensions = validateDimensions(dimensions);
+  const numbersOnlyRegex = /^\d+$/;
 
-  return Object.entries(validDimensions).reduce((acc, [propertyName, value]) => {
+  return Object.entries(dimensions).reduce((acc, [propertyName, value]) => {
+    if (numbersOnlyRegex.test(value)) {
+      console.warn(`${propertyName} automatically changed (${value} -> ${value}px) as it is an invalid CSS value.`);
+
+      return { ...acc, [propertyName]: `${ value }px` };
+    }
+
     if (CSS.supports(propertyName, value)) {
       return { ...acc, [propertyName]: value };
     }
@@ -17,23 +23,5 @@ const validateStyles = dimensions => {
     console.error(`Property ${ propertyName } has wrong value!`);
 
     return acc;
-  }, {});
-};
-
-const validateDimensions = dimensions => {
-  const numbersOnlyRegex = /^\d+$/;
-
-  return Object.entries(dimensions).reduce((acc, [propertyName, value]) => {
-    if (!value) {
-      console.error(`Property ${ propertyName } has wrong value!`);
-
-      return acc;
-    }
-
-    if (numbersOnlyRegex.test(value)) {
-      return { ...acc, [propertyName]: `${ value }px` };
-    }
-
-    return { ...acc, [propertyName]: value };
   }, {});
 };
