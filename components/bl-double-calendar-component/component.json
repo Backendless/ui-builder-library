@@ -72,6 +72,17 @@
     },
     {
       "type": "checkbox",
+      "name": "daysAmountVisibility",
+      "label": "Days Amount Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "daysAmountVisibilityLogic",
+      "handlerLabel": "Days Amount Visibility Logic",
+      "handlerDescription": "This handler allows you to display the amount days in the header."
+    },
+    {
+      "type": "checkbox",
       "name": "monthDropdownVisibility",
       "label": "Month Dropdown Visibility",
       "settingTooltip": "the month dropdown will allow you to quickly select the desired month",
