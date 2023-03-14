@@ -14,7 +14,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
   const [isControlsVisible, setIsControlsVisible] = useState(false);
-  const [isPageLoadSuccess, setIsPageLoadSuccess] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   const inputRef = useRef();
   const controlsRef = useRef();
@@ -27,7 +27,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   }, [documentRef, height, width]);
 
   useEffect(() => {
-    if (isPageLoadSuccess) {
+    if (pageLoaded) {
       const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
 
       documentRef.style.height = height
@@ -38,7 +38,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
       pageRef.firstChild.style.height = height ? `calc(${ height } - ${ spaceForControls }px)` : 'auto';
       pageRef.firstChild.style.width = width || 'auto';
     }
-  }, [isPageLoadSuccess, height, width, pageRef, documentRef]);
+  }, [pageLoaded, height, width, pageRef, documentRef]);
 
   useEffect(() => {
     setIsControlsVisible(false);
@@ -56,11 +56,11 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   };
 
   const onLoading = () => {
-    setIsPageLoadSuccess(false);
+    setPageLoaded(false);
   };
 
   const onPageLoadSuccess = () => {
-    setIsPageLoadSuccess(true);
+    setPageLoaded(true);
     pageRef.firstChild.style.overflow = 'auto';
   };
 
