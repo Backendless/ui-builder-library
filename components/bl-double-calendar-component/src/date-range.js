@@ -77,7 +77,7 @@ export function DateRange(props) {
           selected={ startDate }
           startDate={ startDate }
           dateFormat={ dateFormat }
-          yearDropdownItemNumber={ 1000 }
+          yearDropdownItemNumber={ 50 }
           showYearDropdown={ yearDropdownVisibility }
           showMonthDropdown={ monthDropdownVisibility }
           onChange={ handleStartDateChange }
@@ -92,7 +92,7 @@ export function DateRange(props) {
           minDate={ startDate }
           startDate={ startDate }
           dateFormat={ dateFormat }
-          yearDropdownItemNumber={ 1000 }
+          yearDropdownItemNumber={ 50 }
           showYearDropdown={ yearDropdownVisibility }
           showMonthDropdown={ monthDropdownVisibility }
           onChange={ handleEndDateChange }
