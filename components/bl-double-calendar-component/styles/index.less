@@ -4,12 +4,23 @@
 @bl-customComponent-doubleCalendar-info-color: #000000;
 @bl-customComponent-doubleCalendar-info-backgroundColor: #FFFFFF;
 
+@bl-customComponent-doubleCalendar-disabled-opacity: 0.38;
+@bl-customComponent-doubleCalendar-disabled-cursor: default;
+
+@bl-customComponent-doubleCalendar-infoButtonReset--disabled-cursor: default;
+
 .bl-customComponent-doubleCalendar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 496px;
   width: 100%;
+
+  &--disabled {
+    opacity: @bl-customComponent-doubleCalendar-disabled-opacity;
+    pointer-events: none;
+    cursor: @bl-customComponent-doubleCalendar-disabled-cursor;
+  }
 
   .info {
     display: flex;
@@ -41,7 +52,11 @@
       letter-spacing: 0.7px;
       cursor: pointer;
 
-      &:hover {
+      &--disabled {
+        cursor: @bl-customComponent-doubleCalendar-infoButtonReset--disabled-cursor;
+      }
+
+      &:not(.info__button-reset--disabled):hover {
         background-color: #0f0f0f30;
         transform: scale(1.1);
         transition: background-color .3s transform .3s;
