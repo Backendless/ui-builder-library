@@ -1,0 +1,197 @@
+{
+  "id": "c_96cfb7158384c3e5564554f4a24d511a",
+  "name": "Credit Card",
+  "description": "This is a payment form component with beautiful interface of credit cards.",
+  "showInToolbox": true,
+  "faIcon": "credit-card",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "cardPreviewVisibility",
+      "label": "Card Preview Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "cardPreviewVisibilityLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "cvcVisibility",
+      "label": "CVC Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cvcVisibilityLogic"
+    },
+    {
+      "type": "select",
+      "name": "direction",
+      "label": "Direction",
+      "showInSettings": true,
+      "defaultValue": "column",
+      "hasLogicHandler": false,
+      "handlerId": "directionLogic",
+      "options": [
+        {
+          "value": "row",
+          "label": "Row"
+        },
+        {
+          "value": "row-reverse",
+          "label": "Row reverse"
+        },
+        {
+          "value": "column",
+          "label": "Column"
+        },
+        {
+          "value": "column-reverse",
+          "label": "Column reverse"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "labelsVisibility",
+      "label": "Labels Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "labelsVisibilityLogic"
+    },
+    {
+      "type": "text",
+      "name": "submitButtonLabel",
+      "label": "Submit Button Label",
+      "showInSettings": true,
+      "defaultValue": "Pay",
+      "hasLogicHandler": false,
+      "handlerId": "submitButtonLabelLogic"
+    },
+    {
+      "type": "text",
+      "name": "cardNumberFieldPlaceholder",
+      "label": "Card Number Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "Card Number",
+      "hasLogicHandler": false,
+      "handlerId": "cardNumberFieldPlaceholderLogic"
+    },
+    {
+      "type": "text",
+      "name": "cardholderNameFieldPlaceholder",
+      "label": "Cardholder Name Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "Cardholder Name",
+      "hasLogicHandler": false,
+      "handlerId": "cardholderNameFieldPlaceholderLogic"
+    },
+    {
+      "type": "text",
+      "name": "expiryFieldPlaceholder",
+      "label": "Expiry Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "MM / YY",
+      "hasLogicHandler": false,
+      "handlerId": "expiryFieldPlaceholderLogic"
+    },
+    {
+      "type": "text",
+      "name": "cvcFieldPlaceholder",
+      "label": "CVC Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "CVC",
+      "hasLogicHandler": false,
+      "handlerId": "cvcFieldPlaceholderLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onSubmit",
+      "label": "On Submit Event",
+      "handlerDescription": "This event is fired when the card form is submitted.",
+      "contextBlocks": [
+        {
+          "id": "cardDetails",
+          "label": "Сard Details"
+        }
+      ]
+    },
+    {
+      "name": "onSuccess",
+      "label": "On Success Event",
+      "contextBlocks": [
+        {
+          "id": "cardDetails",
+          "label": "Сard Details"
+        }
+      ],
+      "handlerDescription": "This event is fired when the payment is complete."
+    },
+    {
+      "name": "onReject",
+      "label": "On Reject Event",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ],
+      "handlerDescription": "This event is fired when the payment fails."
+    },
+    {
+      "name": "onFocus",
+      "label": "On Focus Event",
+      "handlerDescription": "This event is fired when the Card Form gains focus.",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "formData",
+          "label": "Form Data"
+        }
+      ]
+    },
+    {
+      "name": "onBlur",
+      "label": "On Blur Event",
+      "handlerDescription": "This event is fired when the Card Form loses focus.",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "formData",
+          "label": "Form Data"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "clearForm",
+      "label": "Clear Form of"
+    },
+    {
+      "id": "validateNumber",
+      "label": "Validate Number of",
+      "hasReturn": true
+    },
+    {
+      "id": "validateExpiry",
+      "label": "Validate Expiry of",
+      "hasReturn": true
+    },
+    {
+      "id": "validateCVC",
+      "label": "Validate CVC of",
+      "hasReturn": true
+    }
+  ]
+}

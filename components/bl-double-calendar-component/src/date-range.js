@@ -1,33 +1,74 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
+import { useActions, differenceInDays, differenceInTime } from './helpers';
+
+const { cn } = BackendlessUI.CSSUtils;
+
 export function DateRange(props) {
   const {
-    fromDate, toDate, dateFormat, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset
+    fromDate, toDate, dateFormat, headerVisibility, daysAmountVisibility, monthDropdownVisibility,
+    yearDropdownVisibility, component, onStartDateChange, onEndDateChange, onDateReset
   } = props;
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   const daysAmount = differenceInDays(startDate, endDate);
+  const resetDisabled = !startDate && !endDate;
 
   useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
+  // this is needed to display the current month in the calendar after the reset without selecting the current day
+  const setCurrentMonthForStartDate = useCallback(() => {
+    setStartDate(new Date());
+    setTimeout(() => setStartDate(null), 1);
+  }, []);
+
+  const setCurrentMonthForEndDate = useCallback(() => {
+    setEndDate(new Date());
+    setTimeout(() => setEndDate(null), 1);
+  }, []);
+
   useEffect(() => {
-    if (!fromDate) {
-      console.error("From Date is not provided!")
+    const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
+
+    if (fromDate && diffInTime > 0) {
+      setStartDate(new Date(fromDate));
     }
 
-    setStartDate(new Date(fromDate || 0));
+    if (!fromDate) {
+      console.error("From Date is not provided!");
+
+      setCurrentMonthForStartDate();
+    }
+
+    if (diffInTime <= 0) {
+      console.error("From Date is not valid!");
+
+      setCurrentMonthForStartDate();
+    }
   }, [fromDate]);
 
   useEffect(() => {
-    if (!toDate) {
-      console.error("To Date is not provided!")
+    const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
+
+    if (toDate && diffInTime > 0) {
+      setEndDate(new Date(toDate));
     }
 
-    setEndDate(new Date(toDate || 0));
+    if (!toDate) {
+      console.error("To Date is not provided!");
+
+      setCurrentMonthForEndDate();
+    }
+
+    if (diffInTime <= 0) {
+      console.error("To Date is not valid!");
+
+      setCurrentMonthForEndDate();
+    }
   }, [toDate]);
 
   const handleStartDateChange = date => {
@@ -47,11 +88,8 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setEndDate(null);
-
-    // this is needed to display the current month in the calendar after the reset without selecting the current day
-    setStartDate(new Date());
-    setTimeout(() => setStartDate(null), 1);
+    setCurrentMonthForEndDate();
+    setCurrentMonthForStartDate();
 
     if (onDateReset) {
       onDateReset();
@@ -62,62 +100,49 @@ export function DateRange(props) {
     <>
       { headerVisibility &&
         <div className="info">
-          <span className="info__days-amount">Days amount: { daysAmount }</span>
-          <button onClick={ handleReset } className="info__button-reset">Reset</button>
+          { daysAmountVisibility &&
+            <span className="info__days-amount">Days amount: { daysAmount }</span>
+          }
+          <button
+            onClick={ handleReset }
+            disabled={ resetDisabled }
+            className={ cn("info__button-reset", { "info__button-reset--disabled": resetDisabled }) }>
+            Reset
+          </button>
         </div>
       }
       <div className="date-picker">
         <DatePicker
           inline
           selectsStart
+          scrollableYearDropdown
+          scrollableMonthDropdown
           endDate={ endDate }
           selected={ startDate }
           startDate={ startDate }
           dateFormat={ dateFormat }
+          yearDropdownItemNumber={ 1000 }
+          showYearDropdown={ yearDropdownVisibility }
+          showMonthDropdown={ monthDropdownVisibility }
+          maxDate={ endDate ? new Date(endDate) : null }
           onChange={ handleStartDateChange }
         />
         <DatePicker
           inline
           selectsEnd
+          scrollableYearDropdown
+          scrollableMonthDropdown
           endDate={ endDate }
           selected={ endDate }
           minDate={ startDate }
           startDate={ startDate }
           dateFormat={ dateFormat }
+          yearDropdownItemNumber={ 1000 }
+          showYearDropdown={ yearDropdownVisibility }
+          showMonthDropdown={ monthDropdownVisibility }
           onChange={ handleEndDateChange }
         />
       </div>
     </>
   );
-}
-
-const ONE_DAY = 86400000;
-
-function useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
-  Object.assign(component, {
-    getFromDate     : () => startDate,
-    setFromDate     : fromDate => setStartDate(new Date(fromDate)),
-    getToDate       : () => endDate,
-    setToDate       : toDate => setEndDate(new Date(toDate)),
-    getFromAndToDate: () => ({ fromDate: startDate, toDate: endDate }),
-    setFromAndToDate: (fromDate, toDate) => {
-      setStartDate(new Date(fromDate));
-      setEndDate(new Date(toDate));
-    },
-    getDaysAmount   : () => daysAmount,
-    resetDate       : () => {
-      setStartDate(new Date());
-      setEndDate(new Date());
-    }
-  })
-}
-
-function differenceInDays(start, end) {
-  if (!start || !end) {
-    return 0;
-  }
-
-  const diffInTime = end.getTime() - start.getTime();
-
-  return Math.round(diffInTime / ONE_DAY) + 1;
 }

@@ -106,6 +106,8 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
         <Page
           inputRef={ ref => setPageRef(ref) }
           renderTextLayer={ false }
+          renderAnnotationLayer={ false }
+          renderForms={ false }
           loading={ onLoading }
           onLoadSuccess={ onPageLoadSuccess }
           pageNumber={ pageIndex }

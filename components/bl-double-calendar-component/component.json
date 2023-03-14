@@ -71,6 +71,41 @@
       "dataBinding": true
     },
     {
+      "type": "checkbox",
+      "name": "daysAmountVisibility",
+      "label": "Days Amount Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "daysAmountVisibilityLogic",
+      "handlerLabel": "Days Amount Visibility Logic",
+      "handlerDescription": "This handler allows you to display the amount days in the header."
+    },
+    {
+      "type": "checkbox",
+      "name": "monthDropdownVisibility",
+      "label": "Month Dropdown Visibility",
+      "settingTooltip": "the month dropdown will allow you to quickly select the desired month",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "monthDropdownVisibilityLogic",
+      "handlerLabel": "Month Dropdown Visibility Logic",
+      "handlerDescription": "This handler allows you to add a month dropdown to the component."
+    },
+    {
+      "type": "checkbox",
+      "name": "yearDropdownVisibility",
+      "label": "Year Dropdown Visibility",
+      "settingTooltip": "the year dropdown will allow you to quickly select the desired year",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "yearDropdownVisibilityLogic",
+      "handlerLabel": "Year Dropdown Visibility Logic",
+      "handlerDescription": "This handler allows you to add a year dropdown to the component."
+    },
+    {
       "type": "select",
       "name": "dateFormat",
       "label": "Date Format",
