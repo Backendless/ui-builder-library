@@ -4,9 +4,9 @@ import { SpecificDateRange } from './specific-date-range';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DoubleCalendarComponent({ component, eventHandlers }) {
-  const {
-    classList, display, disabled, style, specificDateRange, selectionRange, selectedDate,
-    headerVisibility, monthDropdownVisibility, yearDropdownVisibility, dateFormat, fromDate, toDate
+ const {
+    classList, display, disabled, style, specificDateRange, selectionRange, selectedDate, headerVisibility,
+    daysAmountVisibility, monthDropdownVisibility, yearDropdownVisibility, dateFormat, fromDate, toDate
   } = component;
   const { onStartDateChange, onEndDateChange, onDateSelect, onDateReset } = eventHandlers;
 
@@ -15,7 +15,11 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
   }
 
   return (
-    <div className={ cn("bl-customComponent-doubleCalendar", { disabled }, classList) } style={ style }>
+    <div
+      style={ style }
+      className={
+        cn("bl-customComponent-doubleCalendar", { "bl-customComponent-doubleCalendar--disabled": disabled }, classList)
+      }>
       { specificDateRange ?
         <SpecificDateRange
           dateFormat={ dateFormat }
@@ -29,6 +33,7 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
           fromDate={ fromDate }
           dateFormat={ dateFormat }
           headerVisibility={ headerVisibility }
+          daysAmountVisibility={ daysAmountVisibility }
           yearDropdownVisibility={ yearDropdownVisibility }
           monthDropdownVisibility={ monthDropdownVisibility }
           component={ component }

@@ -13,7 +13,6 @@ The component allows you to add a pdf viewer to your UI-Builder application
 | Property                 | Type                                | Default Value   | Logic             | Data Binding | UI Setting | Description                                                          |
 |--------------------------|-------------------------------------|-----------------|-------------------|--------------|------------|----------------------------------------------------------------------|
 | PDF URL:`pdfUrl`         | Text                                |                 | PDF URL Logic     | YES          | YES        | Allows write URL of PDF file, but file must be in Backendless Files. |
-| Render Type:`renderType` | Select [Canvas:`canvas`, Svg:`svg`] | Canvas:`canvas` | Render Type Logic | NO           | YES        | Allows select type of render(`canvas`, `svg`).                       |
 | Width:`width`            | Text                                | "0px"           | Width Logic       | YES          | YES        | Allows determine the width of the PDF Viewer.                        |
 | Height:`height`          | Text                                | "0px"           | Height Logic      | YES          | YES        | Allows determine the height of the PDF Viewer.                       |
 
@@ -41,8 +40,18 @@ The component allows you to add a pdf viewer to your UI-Builder application
 
 **Others**
 ````
-@bl-customComponent-pdfViewer-input-background-color: if(@isLightTheme, darken(#fff, 10%), lighten(#000, 15%));
+@bl-customComponent-pdfViewer-margin-bottom: 10px;
+
 @bl-customComponent-pdfViewer-button-icon-size: 16px;
 @bl-customComponent-pdfViewer-button-icon-color: contrast(@buttonContainedBackground);
+@bl-customComponent-pdfViewer-button-height: 20px;
+@bl-customComponent-pdfViewer-button-width: 60px;
+
+@bl-customComponent-pdfViewer-input-background-color: fade(@bl-customComponent-pdfViewer-themeColor, 20%);
+@bl-customComponent-pdfViewer-input-height: 16px;
+@bl-customComponent-pdfViewer-input-width: 40px;
+@bl-customComponent-pdfViewer-input-max-width: 100%;
+@bl-customComponent-pdfViewer-input-font-size: 16px;
+
 @bl-customComponent-pdfViewer-no-data-icon-size: 40px;
 ````

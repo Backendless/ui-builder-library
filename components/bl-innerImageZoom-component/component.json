@@ -1,0 +1,61 @@
+{
+  "id": "c_45986a7aa2295de846154f9dba1d8cc6",
+  "name": "InnerImageZoom",
+  "description": "The InnerImageZoom component allows the user to apply an image zoom effect inside that image in the application.",
+  "showInToolbox": true,
+  "faIcon": "image",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "source",
+      "label": "URL",
+      "settingTooltip": "Choose the image source to zoom",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "sourceLogic",
+      "handlerLabel": "URL Logic",
+      "handlerDescription": "The logic to determine the image source to zoom.",
+      "dataBinding": true,
+      "defaultValue": "https://via.placeholder.com/300x150.png/09f/fff"
+    },
+    {
+      "type": "number",
+      "name": "zoomIn",
+      "label": "Zoom",
+      "settingTooltip": "Select zoom in percent(%) to enlarge the image.",
+      "showInSettings": true,
+      "defaultValue": "200",
+      "hasLogicHandler": false,
+      "handlerId": "zoomInLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onMouseMove",
+      "label": "On Mouse Move Event",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user moves the mouse over or touches the image."
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "handlerDescription": "This event is fired when the mouse pointer hovers over the image."
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "handlerDescription": "This event is fired when the mouse pointer leaves the image."
+    }
+  ],
+  "actions": [],
+  "settings": [],
+  "pods": {}
+}
