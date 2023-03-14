@@ -1,11 +1,11 @@
-import { StepTitleContent } from './step-title-content'
+import { StepTitleContent } from './step-title-content';
 
-const { cn } = BackendlessUI.CSSUtils
+const { cn } = BackendlessUI.CSSUtils;
 
 export function StepTitle(props) {
-  const { steps, currentStep, stepIndex, step, stepperClassNames, customized } = props
+  const { steps, currentStep, stepIndex, step, stepperClassNames, customized } = props;
 
-  const isActive = stepIndex === currentStep || steps[stepIndex].completed
+  const isActive = stepIndex === currentStep || steps[stepIndex].completed;
 
   return (
     <div className={ stepperClassNames.stepTitle }>
@@ -25,19 +25,21 @@ export function StepTitle(props) {
         content={ step.content }
       />
     </div>
-  )
+  );
 }
 
 function StepTitleIcon({ isActive, stepperClassNames, step, stepIndex }) {
   if (step.completed) {
-    return <IconComplete stepperClassNames={ stepperClassNames }/>
+    return <IconComplete stepperClassNames={ stepperClassNames }/>;
   }
 
-  return <Icon
-    stepIndex={ stepIndex }
-    isActive={ isActive }
-    stepperClassNames={ stepperClassNames }
-  />
+  return (
+    <Icon
+      stepIndex={ stepIndex }
+      isActive={ isActive }
+      stepperClassNames={ stepperClassNames }
+    />
+  );
 }
 
 function Icon({ stepperClassNames, isActive, stepIndex }) {
@@ -59,7 +61,7 @@ function Icon({ stepperClassNames, isActive, stepIndex }) {
         { stepIndex + 1 }
       </text>
     </svg>
-  )
+  );
 }
 
 function IconComplete({ stepperClassNames }) {
@@ -72,22 +74,22 @@ function IconComplete({ stepperClassNames }) {
     >
       <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"></path>
     </svg>
-  )
+  );
 }
 
 function StepCustomizedTitleIcon({ step, isActive }) {
   if (step.completed) {
-    return <CurstomizedIconComplete/>
+    return <CustomizedIconComplete/>;
   }
 
   return (
     <div className="step-customized-title__icon-mark-container">
       <div className={ cn('step-customized-title__icon', { 'active': isActive }) }></div>
     </div>
-  )
+  );
 }
 
-function CurstomizedIconComplete() {
+function CustomizedIconComplete() {
   return (
     <svg
       className="step-customized-title__icon-complete"
@@ -97,5 +99,5 @@ function CurstomizedIconComplete() {
     >
       <path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
     </svg>
-  )
+  );
 }
