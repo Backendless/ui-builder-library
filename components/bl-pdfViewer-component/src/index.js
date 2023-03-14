@@ -6,7 +6,7 @@ import { Controls, NoData } from './subcomponents';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function PdfViewer({ component, eventHandlers, elRef }) {
-  const { style, display, classList, pdfUrl, renderType, width, height } = component;
+  const { style, display, classList, pdfUrl, width, height } = component;
   const { onLoadSuccess, onLoadError } = eventHandlers;
 
   const [numPages, setNumPages] = useState(null);
@@ -90,7 +90,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
       <Document
         inputRef={ ref => setDocumentRef(ref) }
         className="pdf-viewer"
-        renderMode={ renderType }
+        renderMode="canvas"
         file={ pdfUrl }
         noData={ onNoData }
         onLoadError={ onDocumentLoadError }
