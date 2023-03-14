@@ -14,25 +14,31 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
   const [isControlsVisible, setIsControlsVisible] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   const inputRef = useRef();
   const controlsRef = useRef();
 
   useEffect(() => {
     if (documentRef) {
-      const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(documentRef);
-
-      documentRef.style.height = `calc(${ height } - ${ spaceForControls }px)`;
+      documentRef.style.height = height;
       documentRef.style.width = width;
     }
   }, [documentRef, height, width]);
 
   useEffect(() => {
-    if (pageRef) {
-      pageRef.firstChild.style.height = height;
-      pageRef.firstChild.style.width = width;
+    if (pageLoaded) {
+      const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
+
+      documentRef.style.height = height
+        ? `calc(${ height } - ${ spaceForControls }px)`
+        : pageRef.firstChild.style.height;
+      documentRef.style.width = width || pageRef.firstChild.style.width;
+
+      pageRef.firstChild.style.height = height ? `calc(${ height } - ${ spaceForControls }px)` : 'auto';
+      pageRef.firstChild.style.width = width || 'auto';
     }
-  }, [pageRef, height, width]);
+  }, [pageLoaded, height, width, pageRef, documentRef]);
 
   useEffect(() => {
     setIsControlsVisible(false);
@@ -49,11 +55,13 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
     onLoadError({ message: error.message });
   };
 
-  const onPageLoadSuccess = () => {
-    const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
+  const onLoading = () => {
+    setPageLoaded(false);
+  };
 
-    pageRef.firstChild.style.height = `calc(${ height } - ${ spaceForControls }px)`;
-    pageRef.firstChild.style.width = width;
+  const onPageLoadSuccess = () => {
+    setPageLoaded(true);
+    pageRef.firstChild.style.overflow = 'auto';
   };
 
   const onNoData = () => {
@@ -100,6 +108,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
           renderTextLayer={ false }
           renderAnnotationLayer={ false }
           renderForms={ false }
+          loading={ onLoading }
           onLoadSuccess={ onPageLoadSuccess }
           pageNumber={ pageIndex }
         />
@@ -124,4 +133,3 @@ const getBottomOffset = el => {
 };
 
 const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
-
