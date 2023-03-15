@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 export function NoData() {
   return (
     <>
@@ -21,7 +23,31 @@ export function NoData() {
 }
 
 export function Controls(props) {
-  const { pageIndex, setPageIndex, inputRef, handlerPageChange, numPages, display, controlsRef } = props;
+  const { pageIndex, setPageIndex, inputRef, numPages, display, controlsRef } = props;
+
+  const [inputValue, setInputValue] = useState(1);
+
+  const handlerSubmit = () => {
+    if (Number(inputValue)) {
+      const page = ensureRange(inputValue, { min: 1, max: numPages });
+
+      setPageIndex(page);
+      setInputValue(page);
+    } else {
+      setPageIndex(1);
+      setInputValue(1);
+    }
+  };
+
+  const handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      handlerSubmit();
+    }
+  };
+
+  useEffect(() => {
+    setInputValue(pageIndex);
+  }, [pageIndex]);
 
   if (!display) {
     return null;
@@ -39,8 +65,10 @@ export function Controls(props) {
         <input
           ref={ inputRef }
           className="page-input"
-          value={ pageIndex }
-          onChange={ handlerPageChange }
+          value={ inputValue }
+          onChange={ ({ target }) => setInputValue(target.value) }
+          onKeyDown={ handleKeyDown }
+          onBlur={ handlerSubmit }
         />
         <span>/{ numPages }</span>
       </div>
@@ -53,6 +81,8 @@ export function Controls(props) {
     </div>
   );
 }
+
+const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
 
 function NextButtonIcon() {
   return (

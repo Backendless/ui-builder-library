@@ -70,18 +70,6 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
     return <NoData/>;
   };
 
-  const handlerPageChange = ({ target }) => {
-    if (target.value === '') {
-      setPageIndex(1);
-    }
-
-    if (Number(target.value)) {
-      const page = ensureRange(target.value, { min: 1, max: numPages });
-
-      setPageIndex(page);
-    }
-  };
-
   component.setPage = page => {
     setPageIndex(page);
   };
@@ -118,7 +106,6 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
         pageIndex={ pageIndex }
         setPageIndex={ setPageIndex }
         inputRef={ inputRef }
-        handlerPageChange={ handlerPageChange }
         numPages={ numPages }
         display={ isControlsVisible }
       />
@@ -131,5 +118,3 @@ const getBottomOffset = el => {
 
   return rect.bottom + window.scrollY;
 };
-
-const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
