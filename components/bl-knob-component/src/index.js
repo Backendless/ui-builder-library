@@ -9,7 +9,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function KnobComponent({ component, eventHandlers }) {
   const {
     initialValue, readOnly, disabled, maxValue, minValue, step, dial, valueTemplate, size, valueColor, rangeColor,
-    display, classList, setValue, setReadOnly, setDisabled, style
+    display, classList, setValue, setReadOnly, setDisabled, style, getValue,
   } = component;
   const { onChange } = eventHandlers;
 
@@ -41,6 +41,7 @@ export default function KnobComponent({ component, eventHandlers }) {
     setValue   : value => setKnobValue(value),
     setReadOnly: readOnly => setKnobReadOnly(readOnly),
     setDisabled: disabled => setKnobDisabled(disabled),
+    getValue   : () => knobValue,
   });
 
   const handleChange = useCallback(e => {
