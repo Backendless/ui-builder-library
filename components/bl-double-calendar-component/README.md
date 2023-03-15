@@ -53,4 +53,11 @@ Double Calendar is a component of Backendless UI-Builder designer. The component
 ````
 @bl-customComponent-doubleCalendar-info-color: #000000;
 @bl-customComponent-doubleCalendar-info-backgroundColor: #FFFFFF;
+@bl-customComponent-doubleCalendar-info-borderColor: #aeaeae;
 ````
+
+**Typography**
+```
+@bl-customComponent-doubleCalendar-disabled-opacity: 0.38;
+@bl-customComponent-doubleCalendar-disabled-cursor: default;
+```
