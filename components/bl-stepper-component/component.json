@@ -15,7 +15,9 @@
       "type": "text",
       "label": "List of Steps",
       "handlerLabel": "Step List Logic",
-      "handlerDescription": "This is a handler for the logic to determine the list of steps"
+      "handlerDescription": "This is a handler for the logic to determine the list of steps",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "number",
@@ -25,12 +27,14 @@
       "handlerId": "CountStepsLogic",
       "handlerLabel": "Count Steps Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the count steps"
+      "handlerDescription": "This is a handler for the logic to determine the count steps",
+      "showInSettings": true,
+      "hasLogicHandler": true
     },
     {
       "type": "select",
       "name": "stepperType",
-      "label": "Type Stepper Style",
+      "label": "Style",
       "defaultValue": "root",
       "options": [
         {
@@ -45,14 +49,22 @@
           "value": "customized",
           "label": "Customized"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
     {
       "name": "onStepChange",
       "label": "On Step Change",
-      "handlerDescription": "This handler triggered when the step changed."
+      "handlerDescription": "This handler triggered when the step changed.",
+      "contextBlocks": [
+        {
+          "id": "currentStep",
+          "label": "Current Step"
+        }
+      ]
     }
   ],
   "actions": [
@@ -77,6 +89,11 @@
           "label": "Step Number"
         }
       ]
+    },
+    {
+      "id": "getCurrentStep",
+      "label": "Get Current Step",
+      "hasReturn": true
     }
   ]
 }

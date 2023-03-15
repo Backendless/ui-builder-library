@@ -1,10 +1,10 @@
-import { StepTitle } from './step-title'
-import { StepperLine } from './stepper-line'
+import { StepTitle } from './step-title';
+import { StepperLine } from './stepper-line';
 
-const { cn } = BackendlessUI.CSSUtils
+const { cn } = BackendlessUI.CSSUtils;
 
 export function StepperItem(props) {
-  const { customized, currentStep, steps, stepIndex, step, stepperClassNames } = props
+  const { customized, currentStep, steps, stepIndex, step, stepperClassNames } = props;
 
   return (
     <div className={ stepperClassNames.item }>
@@ -20,8 +20,8 @@ export function StepperItem(props) {
       <StepperLine
         stepIndex={ stepIndex }
         steps={ steps }
-        stepperLineClass={ cn(stepperClassNames.line, { 'active': step.completed && customized}) }
+        stepperLineClass={ cn(stepperClassNames.line, { 'active': step.completed && customized }) }
       />
     </div>
-  )
+  );
 }
