@@ -183,15 +183,15 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
   }, [markers]);
 };
 
-const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
-  map.onLoad(() => {
+const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map, ready) => {
+  if (ready) {
     polygonsArray.forEach(polygon => {
-      if (mapRef.current.getSource(polygon)) {
+      if (mapRef.current.getSource(polygon.id)) {
         map.removeLayer(`${ polygon.id }-layer`);
         map.removeSource(polygon.id);
       }
     });
-  });
+  }
 
   setPolygonsArray(preparePolygons(polygons));
 };
@@ -219,8 +219,8 @@ const createPopup = (polygon, mapRef, onPolygonClick, map) => {
   }
 };
 
-const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
-  map.onLoad(() => {
+const addPolygons = (mapRef, polygonsArray, onPolygonClick, map, ready) => {
+  if (ready) {
     polygonsArray.forEach(polygon => {
       const { id, coordinates, color, opacity } = polygon;
 
@@ -248,21 +248,21 @@ const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
 
       createPopup(polygon, mapRef, onPolygonClick, map);
     });
-  });
+  }
 };
 
-export const usePolygons = (polygons, mapRef, onPolygonClick, map) => {
+export const usePolygons = (polygons, mapRef, onPolygonClick, map, ready) => {
   const [polygonsArray, setPolygonsArray] = useState([]);
 
   useEffect(() => {
     if (polygons?.length && mapRef.current) {
-      updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray, map);
+      updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray, map, ready);
     }
-  }, [polygons]);
+  }, [polygons, ready]);
 
   useEffect(() => {
-    addPolygons(mapRef, polygonsArray, onPolygonClick, map);
-  }, [polygonsArray]);
+    addPolygons(mapRef, polygonsArray, onPolygonClick, map, ready);
+  }, [polygonsArray, ready]);
 };
 
 export const useEvents = (mapRef, eventHandlers, map) => {
