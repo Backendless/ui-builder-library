@@ -39,13 +39,13 @@ export function DateRange(props) {
     }
 
     if (!fromDate) {
-      console.error("From Date is not provided!");
+      console.warn("From Date is not provided!");
 
       setCurrentMonthForStartDate();
     }
 
     if (diffInTime <= 0) {
-      console.error("From Date is not valid!");
+      console.warn("From Date is not valid!");
 
       setCurrentMonthForStartDate();
     }
@@ -59,13 +59,13 @@ export function DateRange(props) {
     }
 
     if (!toDate) {
-      console.error("To Date is not provided!");
+      console.warn("To Date is not provided!");
 
       setCurrentMonthForEndDate();
     }
 
     if (diffInTime <= 0) {
-      console.error("To Date is not valid!");
+      console.warn("To Date is not valid!");
 
       setCurrentMonthForEndDate();
     }
