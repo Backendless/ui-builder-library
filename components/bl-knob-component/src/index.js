@@ -35,7 +35,21 @@ export default function KnobComponent({ component, eventHandlers }) {
     if (!isNaN(initialValue)) {
       setKnobValue(initialValue);
     }
+
+    if (initialValue > maxValue || initialValue < minValue) {
+      setKnobValue(minValue);
+    }
   }, [initialValue]);
+
+  useEffect(() => {
+    if (knobValue < minValue) {
+      setKnobValue(minValue);
+    }
+
+    if (knobValue > maxValue) {
+      setKnobValue(maxValue)
+    }
+  },[knobValue])
 
   Object.assign(component, {
     setValue   : value => setKnobValue(value),
