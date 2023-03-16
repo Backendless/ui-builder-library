@@ -9,7 +9,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const { style, display, classList, pdfUrl, width, height } = component;
   const { onLoadSuccess, onLoadError } = eventHandlers;
 
-  const [numPages, setNumPages] = useState(null);
+  const [pageCount, setPageCount] = useState(null);
   const [pageIndex, setPageIndex] = useState(1);
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
@@ -45,7 +45,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   }, [pdfUrl]);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
+    setPageCount(numPages);
     setIsControlsVisible(true);
     onLoadSuccess({ pageCount: numPages });
   };
@@ -106,7 +106,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
         pageIndex={ pageIndex }
         setPageIndex={ setPageIndex }
         inputRef={ inputRef }
-        numPages={ numPages }
+        pageCount={ pageCount }
         display={ isControlsVisible }
       />
     </div>
