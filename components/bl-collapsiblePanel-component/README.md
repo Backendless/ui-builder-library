@@ -1,6 +1,6 @@
-# CollapsiblePanel
+# Collapsible Panel
 
-CollapsiblePanel is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). This component displays summary information and upon selecting the panel, it expands to display the full expansion panel.
+Collapsible Panel is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). This component displays summary information and upon selecting the panel, it expands to display the full expansion panel.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
@@ -63,10 +63,10 @@ CollapsiblePanel is the component that can be used in Backendless [UI-Builder](h
 
 ## Examples
 
-Below is an Example highlighting how to use the CollapsiblePanel component:
+Below is an Example highlighting how to use the Collapsible Panel component:
 
 <p align="center">
-  <img src="./example-images/example.png" alt="collapsiblePanel example" width="780"/>
+  <img src="./example-images/example.png" alt="collapsible panel example" width="780"/>
 </p>
 
 <p align="center">

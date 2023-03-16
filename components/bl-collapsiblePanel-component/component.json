@@ -1,7 +1,7 @@
 {
   "id": "c_f6882cbc4c8892c8cc465b8d23d45e3a",
-  "name": "CollapsiblePanel",
-  "description": "The CollapsiblePanel component displays summary information and upon selecting the panel, it expands to display the full expansion panel.",
+  "name": "Collapsible Panel",
+  "description": "The Collapsible Panel component displays summary information and upon selecting the panel, it expands to display the full expansion panel.",
   "showInToolbox": true,
   "faIcon": "window-maximize",
   "mainJS": "dist/index.js",
