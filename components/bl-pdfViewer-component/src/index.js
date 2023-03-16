@@ -136,7 +136,6 @@ const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
 
 const useResizeObserver = (pageRef, documentRef, pageLoaded, height) => {
   useEffect(() => {
-
     if (pageLoaded && !height) {
       const resizeObserver = new ResizeObserver(entries => {
         const { height, width } = entries[0].contentRect;
