@@ -19,6 +19,8 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const inputRef = useRef();
   const controlsRef = useRef();
 
+  useResizeObserver(pageRef, documentRef, pageLoaded, height);
+
   useEffect(() => {
     if (documentRef) {
       documentRef.style.height = height;
@@ -30,10 +32,8 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
     if (pageLoaded) {
       const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
 
-      documentRef.style.height = height
-        ? `calc(${ height } - ${ spaceForControls }px)`
-        : pageRef.firstChild.style.height;
-      documentRef.style.width = width || pageRef.firstChild.style.width;
+      documentRef.style.height = `calc(${ height } - ${ spaceForControls }px)`;
+      documentRef.style.width = width || 'auto';
 
       pageRef.firstChild.style.height = height ? `calc(${ height } - ${ spaceForControls }px)` : 'auto';
       pageRef.firstChild.style.width = width || 'auto';
@@ -133,3 +133,19 @@ const getBottomOffset = el => {
 };
 
 const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
+
+const useResizeObserver = (pageRef, documentRef, pageLoaded, height) => {
+  useEffect(() => {
+    if (pageLoaded && !height) {
+      const resizeObserver = new ResizeObserver(entries => {
+        const { height, width } = entries[0].contentRect;
+
+        documentRef.style.height = height + 'px';
+      });
+
+      resizeObserver.observe(pageRef.firstChild);
+
+      return () => resizeObserver.disconnect();
+    }
+  }, [documentRef, pageRef, pageLoaded, height]);
+};
