@@ -9,14 +9,13 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const { style, display, classList, pdfUrl, width, height } = component;
   const { onLoadSuccess, onLoadError } = eventHandlers;
 
-  const [numPages, setNumPages] = useState(null);
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageCount, setPageCount] = useState(null);
+  const [currentPage, setCurrentPage ] = useState(1);
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
   const [isControlsVisible, setIsControlsVisible] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
 
-  const inputRef = useRef();
   const controlsRef = useRef();
 
   useResizeObserver(pageRef, documentRef, pageLoaded, height);
@@ -45,7 +44,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   }, [pdfUrl]);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
+    setPageCount(numPages);
     setIsControlsVisible(true);
     onLoadSuccess({ pageCount: numPages });
   };
@@ -70,20 +69,8 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
     return <NoData/>;
   };
 
-  const handlerPageChange = ({ target }) => {
-    if (target.value === '') {
-      setPageIndex(1);
-    }
-
-    if (Number(target.value)) {
-      const page = ensureRange(target.value, { min: 1, max: numPages });
-
-      setPageIndex(page);
-    }
-  };
-
   component.setPage = page => {
-    setPageIndex(page);
+    setCurrentPage(page);
   };
 
   if (!display) {
@@ -110,16 +97,14 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
           renderForms={ false }
           loading={ onLoading }
           onLoadSuccess={ onPageLoadSuccess }
-          pageNumber={ pageIndex }
+          pageNumber={ currentPage }
         />
       </Document>
       <Controls
         controlsRef={ controlsRef }
-        pageIndex={ pageIndex }
-        setPageIndex={ setPageIndex }
-        inputRef={ inputRef }
-        handlerPageChange={ handlerPageChange }
-        numPages={ numPages }
+        currentPage={ currentPage }
+        setCurrentPage={ setCurrentPage }
+        pageCount={ pageCount }
         display={ isControlsVisible }
       />
     </div>
@@ -131,8 +116,6 @@ const getBottomOffset = el => {
 
   return rect.bottom + window.scrollY;
 };
-
-const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
 
 const useResizeObserver = (pageRef, documentRef, pageLoaded, height) => {
   useEffect(() => {
