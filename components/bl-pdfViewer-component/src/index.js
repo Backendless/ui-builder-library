@@ -10,13 +10,12 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const { onLoadSuccess, onLoadError } = eventHandlers;
 
   const [pageCount, setPageCount] = useState(null);
-  const [pageIndex, setPageIndex] = useState(1);
+  const [currentPage, setCurrentPage ] = useState(1);
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
   const [isControlsVisible, setIsControlsVisible] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
 
-  const inputRef = useRef();
   const controlsRef = useRef();
 
   useResizeObserver(pageRef, documentRef, pageLoaded, height);
@@ -71,7 +70,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   };
 
   component.setPage = page => {
-    setPageIndex(page);
+    setCurrentPage(page);
   };
 
   if (!display) {
@@ -98,14 +97,13 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
           renderForms={ false }
           loading={ onLoading }
           onLoadSuccess={ onPageLoadSuccess }
-          pageNumber={ pageIndex }
+          pageNumber={ currentPage }
         />
       </Document>
       <Controls
         controlsRef={ controlsRef }
-        pageIndex={ pageIndex }
-        setPageIndex={ setPageIndex }
-        inputRef={ inputRef }
+        currentPage={ currentPage }
+        setCurrentPage={ setCurrentPage }
         pageCount={ pageCount }
         display={ isControlsVisible }
       />

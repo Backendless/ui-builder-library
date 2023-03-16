@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function NoData() {
   return (
@@ -23,18 +23,25 @@ export function NoData() {
 }
 
 export function Controls(props) {
-  const { pageIndex, setPageIndex, inputRef, pageCount, display, controlsRef } = props;
+  const { currentPage, setCurrentPage, pageCount, display, controlsRef } = props;
+
+  const [nextPage, setNextPage] = useState(1);
 
   const onSubmit = ({ target }) => {
-    if (Number(target.value)) {
-      const page = ensureRange(target.value, { min: 1, max: pageCount });
+    const value = Number(target.value);
+    let validPage = value;
 
-      setPageIndex(page);
-      target.value = page;
-    } else {
-      setPageIndex(1);
-      target.value = 1;
+    if (target.value === '') {
+      validPage = 1;
+      validPage = 1;
+    } else if (value < 1 || value > pageCount) {
+      validPage = currentPage;
+
+      console.warn(`Non existed page "${ value }". Please, choose the page in range ${ 1 } - ${ pageCount }`);
     }
+
+    setCurrentPage(validPage);
+    setNextPage(validPage);
   };
 
   const onEnter = event => {
@@ -43,11 +50,17 @@ export function Controls(props) {
     }
   };
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.value = pageIndex;
+  const onInputChange = ({ target }) => {
+    const value = target.value;
+
+    if (!/\D/.test(value)) {
+      setNextPage(value);
     }
-  }, [pageIndex, inputRef]);
+  };
+
+  useEffect(() => {
+    setNextPage(currentPage);
+  }, [currentPage]);
 
   if (!display) {
     return null;
@@ -57,15 +70,15 @@ export function Controls(props) {
     <div ref={ controlsRef } className="controls">
       <button
         className="controls-button"
-        onClick={ () => setPageIndex(state => state - 1) }
-        disabled={ (pageIndex > pageCount) || (pageIndex <= 1) }>
+        onClick={ () => setCurrentPage(state => state - 1) }
+        disabled={ (currentPage > pageCount) || (currentPage <= 1) }>
         <PrevButtonIcon/>
       </button>
       <div className="pages-info">
         <input
-          ref={ inputRef }
           className="page-input"
-          defaultValue={ 1 }
+          value={ nextPage }
+          onChange={ onInputChange }
           onKeyDown={ onEnter }
           onBlur={ onSubmit }
         />
@@ -73,15 +86,13 @@ export function Controls(props) {
       </div>
       <button
         className="controls-button"
-        onClick={ () => setPageIndex(state => state + 1) }
-        disabled={ (pageIndex >= pageCount) || (pageIndex <= 0) }>
+        onClick={ () => setCurrentPage(state => state + 1) }
+        disabled={ (currentPage >= pageCount) || (currentPage <= 0) }>
         <NextButtonIcon/>
       </button>
     </div>
   );
 }
-
-const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
 
 function NextButtonIcon() {
   return (
