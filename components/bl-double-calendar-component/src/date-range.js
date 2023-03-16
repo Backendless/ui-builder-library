@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
@@ -16,20 +16,9 @@ export function DateRange(props) {
   const [endDate, setEndDate] = useState(null);
 
   const daysAmount = differenceInDays(startDate, endDate);
-  const resetDisabled = !startDate && !endDate;
+  const resetButtonDisabled = daysAmount === 1;
 
-  useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
-
-  // this is needed to display the current month in the calendar after the reset without selecting the current day
-  const setCurrentMonthForStartDate = useCallback(() => {
-    setStartDate(new Date());
-    setTimeout(() => setStartDate(null), 1);
-  }, []);
-
-  const setCurrentMonthForEndDate = useCallback(() => {
-    setEndDate(new Date());
-    setTimeout(() => setEndDate(null), 1);
-  }, []);
+  useActions({ component, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
   useEffect(() => {
     const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
@@ -41,13 +30,13 @@ export function DateRange(props) {
     if (!fromDate) {
       console.error("From Date is not provided!");
 
-      setCurrentMonthForStartDate();
+      setStartDate(new Date());
     }
 
     if (diffInTime <= 0) {
       console.error("From Date is not valid!");
 
-      setCurrentMonthForStartDate();
+      setStartDate(new Date());
     }
   }, [fromDate]);
 
@@ -61,13 +50,13 @@ export function DateRange(props) {
     if (!toDate) {
       console.error("To Date is not provided!");
 
-      setCurrentMonthForEndDate();
+      setEndDate(new Date());
     }
 
     if (diffInTime <= 0) {
       console.error("To Date is not valid!");
 
-      setCurrentMonthForEndDate();
+      setEndDate(new Date());
     }
   }, [toDate]);
 
@@ -88,8 +77,8 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setCurrentMonthForEndDate();
-    setCurrentMonthForStartDate();
+    setStartDate(new Date());
+    setEndDate(new Date());
 
     if (onDateReset) {
       onDateReset();
@@ -105,8 +94,8 @@ export function DateRange(props) {
           }
           <button
             onClick={ handleReset }
-            disabled={ resetDisabled }
-            className={ cn("info__button-reset", { "info__button-reset--disabled": resetDisabled }) }>
+            disabled={ resetButtonDisabled }
+            className={ cn("info__button-reset", { "info__button-reset--disabled": resetButtonDisabled }) }>
             Reset
           </button>
         </div>
