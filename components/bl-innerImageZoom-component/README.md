@@ -1,6 +1,6 @@
-# InnerImageZoom
+# Inner Image Zoom
 
-InnerImageZoom is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows the user to apply an image zoom effect inside that image in the application.
+Inner Image Zoom is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows the user to apply an image zoom effect inside that image in the application.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>

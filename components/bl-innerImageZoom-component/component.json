@@ -1,7 +1,7 @@
 {
   "id": "c_45986a7aa2295de846154f9dba1d8cc6",
-  "name": "InnerImageZoom",
-  "description": "The InnerImageZoom component allows the user to apply an image zoom effect inside that image in the application.",
+  "name": "Inner Image Zoom",
+  "description": "The Inner Image Zoom component allows the user to apply an image zoom effect inside that image in the application.",
   "showInToolbox": true,
   "faIcon": "image",
   "mainJS": "dist/index.js",
