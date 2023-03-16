@@ -13,7 +13,7 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   component.openModal = () => setVisibility(true);
   component.closeModal = () => {
     setVisibility(false);
-    onClose({ visibility: false });
+    onClose();
   };
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   const handleClick = () => {
     if (closeOnEscape) {
       setVisibility(false);
-      onClose({ visibility: false });
+      onClose();
     }
   };
 
@@ -50,7 +50,7 @@ const useCloseOnEscape = ({ onClose, visibility, setVisibility, closeOnEscape })
     const handleEscClick = e => {
       if (visibility && closeOnEscape && e.keyCode === ESCAPE_KEY_CODE) {
         setVisibility(false);
-        onClose({ visibility: false });
+        onClose();
       }
     };
 
