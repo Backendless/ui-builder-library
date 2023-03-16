@@ -33,7 +33,6 @@ export function Controls(props) {
 
     if (target.value === '') {
       validPage = 1;
-      validPage = 1;
     } else if (value < 1 || value > pageCount) {
       validPage = currentPage;
 
