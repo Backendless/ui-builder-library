@@ -16,8 +16,8 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const [isControlsVisible, setIsControlsVisible] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
 
-  const [rootHeight, setRootHeight] = useState(height);
-  const [rootWidth, setRootWidth] = useState(width);
+  const [rootHeight, setRootHeight] = useState(0);
+  const [rootWidth, setRootWidth] = useState(0);
 
   const controlsRef = useRef();
 
@@ -32,8 +32,8 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
 
   useEffect(() => {
     if (pageLoaded) {
-      setRootHeight(elRef.current.getBoundingClientRect().height + 'px');
-      setRootWidth(elRef.current.getBoundingClientRect().width + 'px');
+      setRootHeight(elRef.current.getBoundingClientRect().height);
+      setRootWidth(elRef.current.getBoundingClientRect().width);
     }
   }, [pageLoaded, elRef, height, width]);
 
@@ -41,10 +41,10 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
     if (pageLoaded) {
       const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
 
-      documentRef.style.height = `calc(${ rootHeight } - ${ spaceForControls }px)`;
+      documentRef.style.height = rootHeight - spaceForControls + 'px';
       documentRef.style.width = rootWidth;
 
-      pageRef.firstChild.style.height = `calc(${ rootHeight } - ${ spaceForControls }px)`;
+      pageRef.firstChild.style.height = rootHeight - spaceForControls + 'px';
       pageRef.firstChild.style.width = rootWidth;
     }
   }, [pageLoaded, pageRef, documentRef, rootHeight, rootWidth]);
@@ -135,10 +135,10 @@ const useResizeObserver = (pageRef, controlsRef, documentRef, pageLoaded, elRef)
 
         const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
 
-        documentRef.style.height = `calc(${ height }px - ${ spaceForControls }px)`;
+        documentRef.style.height = height - spaceForControls + 'px';
         documentRef.style.width = width + 'px';
 
-        pageRef.firstChild.style.height = `calc(${ height }px - ${ spaceForControls }px)`;
+        pageRef.firstChild.style.height = height - spaceForControls + 'px';
         pageRef.firstChild.style.width = width + 'px';
       });
 
