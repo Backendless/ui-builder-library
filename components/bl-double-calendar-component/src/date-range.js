@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
@@ -15,10 +15,14 @@ export function DateRange(props) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  const resetDateRef = useRef(false);
+  const startDateRef = useRef(null);
+  const endDateRef = useRef(null);
+
   const daysAmount = differenceInDays(startDate, endDate);
   const resetButtonDisabled = daysAmount === 1;
 
-  useActions({ component, startDate, endDate, daysAmount, setStartDate, setEndDate });
+  useActions({ component, resetDateRef, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
   useEffect(() => {
     const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
@@ -60,29 +64,32 @@ export function DateRange(props) {
     }
   }, [toDate]);
 
+  useEffect(() => {
+    if (resetDateRef.current) {
+      resetDateRef.current = false;
+
+      startDateRef.current.setState(startDateRef.current.calcInitialState());
+      endDateRef.current.setState(endDateRef.current.calcInitialState());
+    }
+  }, [startDate, endDate]);
+
   const handleStartDateChange = date => {
     setStartDate(date);
-
-    if (onStartDateChange) {
-      onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
-    }
+    onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
   };
 
   const handleEndDateChange = date => {
     setEndDate(date);
-
-    if (onEndDateChange) {
-      onEndDateChange({ endDate: date, daysAmount: differenceInDays(startDate, date) });
-    }
+    onEndDateChange({ endDate: date, daysAmount: differenceInDays(startDate, date) });
   };
 
   const handleReset = () => {
     setStartDate(new Date());
     setEndDate(new Date());
 
-    if (onDateReset) {
-      onDateReset();
-    }
+    resetDateRef.current = true;
+
+    onDateReset();
   };
 
   return (
@@ -102,6 +109,7 @@ export function DateRange(props) {
       }
       <div className="date-picker">
         <DatePicker
+          ref={ startDateRef }
           inline
           selectsStart
           scrollableYearDropdown
@@ -117,6 +125,7 @@ export function DateRange(props) {
           onChange={ handleStartDateChange }
         />
         <DatePicker
+          ref={ endDateRef }
           inline
           selectsEnd
           scrollableYearDropdown
