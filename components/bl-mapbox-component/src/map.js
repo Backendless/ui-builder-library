@@ -8,7 +8,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function MapboxComponent({ component, eventHandlers, settings }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
-  const [ready, setReady] = useState(false);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   const { accessToken } = settings;
 
@@ -23,7 +23,7 @@ export default function MapboxComponent({ component, eventHandlers, settings }) 
 
     initMapboxLibrary(mapRef, mapContainerRef, component, eventHandlers, map);
 
-    map.onLoad(() => setReady(true));
+    map.onLoad(() => setIsMapLoaded(true));
   }, []);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function MapboxComponent({ component, eventHandlers, settings }) 
 
   useMarkers(markers, mapRef, onMarkerClick);
 
-  usePolygons(polygons, mapRef, onPolygonClick, map, ready);
+  usePolygons(polygons, mapRef, onPolygonClick, map, isMapLoaded);
 
   return (
     <div className={ cn('bl-customComponent-mapbox', classList) }>
