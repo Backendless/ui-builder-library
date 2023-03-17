@@ -26,13 +26,12 @@ export default function BarcodeComponent({ component, eventHandlers, elRef }) {
 
   useBarcodeLibrary(component, barcodeRef);
 
-  const styles = {
-    display: !display && 'none',
-    ...style,
-  };
+  if (!display) {
+    return null;
+  }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-barcode', classList) } style={ styles }>
+    <div ref={ elRef } className={ cn('bl-customComponent-barcode', classList) } style={ style }>
       <img
         ref={ barcodeRef }
         onClick={ event => onClick({ event }) }
@@ -46,7 +45,7 @@ export default function BarcodeComponent({ component, eventHandlers, elRef }) {
 function useBarcodeLibrary(component, barcodeRef) {
   const {
     format, value, lineColor, background, valueVisibility, barWidth, height, margin,
-    font, fontSize, fontOptions, label, labelAlign, labelPosition, labelMargin,
+    font, fontSize, fontOptions, label, labelAlign, labelPosition, labelMargin, display,
   } = component;
 
   const options = useMemo(() => ({
@@ -70,10 +69,14 @@ function useBarcodeLibrary(component, barcodeRef) {
   }, [value, format]);
 
   useEffect(() => {
+    if (!barcodeRef.current) {
+      return;
+    }
+
     if (value) {
       JsBarcode(barcodeRef.current, value, { ...options, valid: onValidate });
     } else {
       barcodeRef.current.removeAttribute('src');
     }
-  }, [value]);
+  }, [value, options, display]);
 }

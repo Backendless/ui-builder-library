@@ -114,9 +114,11 @@
       "name": "background",
       "label": "Background",
       "showInSettings": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "backgroundLogic",
-      "defaultValue": "#ffffff"
+      "defaultValue": "#ffffff",
+      "handlerLabel": "Background Logic",
+      "handlerDescription": "This is a handler for the logic to determine the background of the barcode."
     },
     {
       "type": "range",
@@ -229,8 +231,10 @@
       "name": "label",
       "label": "Label",
       "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "labelLogic"
+      "hasLogicHandler": true,
+      "handlerId": "labelLogic",
+      "handlerLabel": "Label Logic",
+      "handlerDescription": "This is a handler for the logic to determine the label to be displayed instead of a value."
     },
     {
       "type": "select",
