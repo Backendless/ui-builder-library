@@ -165,6 +165,11 @@
       ]
     },
     {
+      "id": "getValue",
+      "label": "Get Value from",
+      "hasReturn": true
+    },
+    {
       "id": "setReadOnly",
       "label": "Set Read Only to",
       "inputs": [
@@ -183,11 +188,6 @@
           "label": "Disabled"
         }
       ]
-    },
-    {
-      "id": "getValue",
-      "label": "Get Value from",
-      "hasReturn": true
     }
   ]
 }

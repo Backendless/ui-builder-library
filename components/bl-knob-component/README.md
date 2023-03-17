@@ -35,6 +35,6 @@ The component based on external [Knob](https://www.primefaces.org/primereact/kno
 | Action                | Inputs               | Returns                      |
 |-----------------------|----------------------|------------------------------|
 | Set Value to Knob     | Value: `Number`      |                              |
+| Get Value from Knob   |                      | `Number`: current Knob value |
 | Set Read Only to Knob | Read Only: `Boolean` |                              |
 | Set Disabled to Knob  | Disabled: `Boolean`  |                              |
-| Get Value from Knob   |                      | `Number`: current Knob value |
