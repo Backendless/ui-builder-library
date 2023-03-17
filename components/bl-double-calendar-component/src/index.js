@@ -1,6 +1,8 @@
 import { DateRange } from './date-range';
 import { SpecificDateRange } from './specific-date-range';
 
+import { normalizeFormat } from './helpers';
+
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DoubleCalendarComponent({ component, eventHandlers }) {
