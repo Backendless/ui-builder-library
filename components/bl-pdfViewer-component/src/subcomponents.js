@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 export function NoData() {
   return (
     <>
@@ -21,7 +23,43 @@ export function NoData() {
 }
 
 export function Controls(props) {
-  const { pageIndex, setPageIndex, inputRef, handlerPageChange, numPages, display, controlsRef } = props;
+  const { currentPage, setCurrentPage, pageCount, display, controlsRef } = props;
+
+  const [nextPage, setNextPage] = useState(1);
+
+  const onSubmit = ({ target }) => {
+    const value = Number(target.value);
+    let validPage = value;
+
+    if (target.value === '') {
+      validPage = 1;
+    } else if (value < 1 || value > pageCount) {
+      validPage = currentPage;
+
+      console.warn(`Non existed page "${ value }". Please, choose the page in range ${ 1 } - ${ pageCount }`);
+    }
+
+    setCurrentPage(validPage);
+    setNextPage(validPage);
+  };
+
+  const onEnter = event => {
+    if (event.key === 'Enter') {
+      onSubmit(event);
+    }
+  };
+
+  const onInputChange = ({ target }) => {
+    const value = target.value;
+
+    if (!/\D/.test(value)) {
+      setNextPage(value);
+    }
+  };
+
+  useEffect(() => {
+    setNextPage(currentPage);
+  }, [currentPage]);
 
   if (!display) {
     return null;
@@ -31,23 +69,24 @@ export function Controls(props) {
     <div ref={ controlsRef } className="controls">
       <button
         className="controls-button"
-        onClick={ () => setPageIndex(state => state - 1) }
-        disabled={ (pageIndex > numPages) || (pageIndex <= 1) }>
+        onClick={ () => setCurrentPage(state => state - 1) }
+        disabled={ (currentPage > pageCount) || (currentPage <= 1) }>
         <PrevButtonIcon/>
       </button>
       <div className="pages-info">
         <input
-          ref={ inputRef }
           className="page-input"
-          value={ pageIndex }
-          onChange={ handlerPageChange }
+          value={ nextPage }
+          onChange={ onInputChange }
+          onKeyDown={ onEnter }
+          onBlur={ onSubmit }
         />
-        <span>/{ numPages }</span>
+        <span>/{ pageCount }</span>
       </div>
       <button
         className="controls-button"
-        onClick={ () => setPageIndex(state => state + 1) }
-        disabled={ (pageIndex >= numPages) || (pageIndex <= 0) }>
+        onClick={ () => setCurrentPage(state => state + 1) }
+        disabled={ (currentPage >= pageCount) || (currentPage <= 0) }>
         <NextButtonIcon/>
       </button>
     </div>

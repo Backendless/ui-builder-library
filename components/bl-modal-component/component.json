@@ -26,12 +26,7 @@
     {
       "name": "onClose",
       "label": "On Close Event",
-      "contextBlocks": [
-        {
-          "id": "visibility",
-          "label": "Visibility"
-        }
-      ],
+      "contextBlocks": [],
       "handlerDescription": "This event is triggered when the user clicks on the backdrop or Escape button."
     }
   ],
