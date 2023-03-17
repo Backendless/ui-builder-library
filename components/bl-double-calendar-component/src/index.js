@@ -29,8 +29,8 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
         />
         :
         <DateRange
-          toDate={ toDate }
-          fromDate={ fromDate }
+          toDate={ normalizeFormat(toDate, dateFormat) }
+          fromDate={ normalizeFormat(fromDate, dateFormat) }
           dateFormat={ dateFormat }
           headerVisibility={ headerVisibility }
           daysAmountVisibility={ daysAmountVisibility }
