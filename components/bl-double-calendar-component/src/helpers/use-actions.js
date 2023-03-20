@@ -1,6 +1,6 @@
 import { differenceInTime } from './utils';
 
-export function useActions({ component, resetDateRef, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
+export function useActions({ component, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
   Object.assign(component, {
     getFromDate     : () => startDate,
     setFromDate     : fromDate => setStartDate(new Date(fromDate)),
@@ -19,10 +19,10 @@ export function useActions({ component, resetDateRef, startDate, endDate, daysAm
     },
     getDaysAmount   : () => daysAmount,
     resetDate       : () => {
-      setStartDate(new Date());
-      setEndDate(new Date());
+      const dateObject = new Date();
 
-      resetDateRef.current = true;
+      setStartDate(dateObject);
+      setEndDate(dateObject);
     }
   })
 }

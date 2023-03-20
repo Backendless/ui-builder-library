@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
@@ -15,14 +15,10 @@ export function DateRange(props) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  const resetDateRef = useRef(false);
-  const startDateRef = useRef(null);
-  const endDateRef = useRef(null);
-
   const daysAmount = differenceInDays(startDate, endDate);
   const resetButtonDisabled = daysAmount === 1;
 
-  useActions({ component, resetDateRef, startDate, endDate, daysAmount, setStartDate, setEndDate });
+  useActions({ component, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
   useEffect(() => {
     const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
@@ -64,15 +60,6 @@ export function DateRange(props) {
     }
   }, [toDate]);
 
-  useEffect(() => {
-    if (resetDateRef.current) {
-      resetDateRef.current = false;
-
-      startDateRef.current.setState(startDateRef.current.calcInitialState());
-      endDateRef.current.setState(endDateRef.current.calcInitialState());
-    }
-  }, [startDate, endDate]);
-
   const handleStartDateChange = date => {
     setStartDate(date);
     onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
@@ -84,10 +71,10 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    setStartDate(new Date());
-    setEndDate(new Date());
+    const dateObject = new Date();
 
-    resetDateRef.current = true;
+    setStartDate(dateObject);
+    setEndDate(dateObject);
 
     onDateReset();
   };
@@ -109,9 +96,7 @@ export function DateRange(props) {
       }
       <div className="date-picker">
         <DatePicker
-          ref={ startDateRef }
           inline
-          selectsStart
           scrollableYearDropdown
           scrollableMonthDropdown
           endDate={ endDate }
@@ -121,13 +106,11 @@ export function DateRange(props) {
           yearDropdownItemNumber={ 50 }
           showYearDropdown={ yearDropdownVisibility }
           showMonthDropdown={ monthDropdownVisibility }
-          maxDate={ endDate ? new Date(endDate) : null }
+          maxDate={ endDate }
           onChange={ handleStartDateChange }
         />
         <DatePicker
-          ref={ endDateRef }
           inline
-          selectsEnd
           scrollableYearDropdown
           scrollableMonthDropdown
           endDate={ endDate }
