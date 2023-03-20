@@ -17,7 +17,7 @@ export function differenceInDays(start, end) {
 export function getShortDate(date) {
   const dateObject = new Date(date);
 
-  const month = dateObject.toLocaleString('en-US', { month: 'short' });
+  const month = dateObject.toLocaleDateString('en-US', { month: 'short' });
   const day = dateObject.getDate();
   const year = dateObject.getFullYear();
 

@@ -1,10 +1,12 @@
+import { useMemo  } from 'react';
+
 import { getShortDate } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Header({ startDate, endDate, daysAmount, daysAmountVisibility, resetButtonDisabled, handleReset }) {
-  const start = getShortDate(startDate);
-  const end = getShortDate(endDate);
+  const start = useMemo(() => getShortDate(startDate), [startDate]);
+  const end = useMemo(() => getShortDate(endDate), [endDate]);
 
   return (
     <div className="header">
