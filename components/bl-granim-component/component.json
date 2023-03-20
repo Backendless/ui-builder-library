@@ -71,7 +71,8 @@
       "settingTooltip": "Duration of the animation when changing state (in ms)",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "stateTransitionSpeedLogic"
+      "handlerId": "stateTransitionSpeedLogic",
+      "defaultValue": "1000"
     },
     {
       "type": "checkbox",
@@ -89,7 +90,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "scrollDebounceThresholdLogic",
-      "settingTooltip": "The scroll debounce threshold (in ms)"
+      "settingTooltip": "The scroll debounce threshold (in ms), only useful if Offscreen Pause is set to true",
+      "defaultValue": "300"
     },
     {
       "type": "text",
@@ -291,7 +293,7 @@
   "eventHandlers": [
     {
       "name": "onStart",
-      "label": "On Start",
+      "label": "On Animation Start",
       "handlerDescription": "Triggered when the animation start."
     },
     {
@@ -301,7 +303,7 @@
     },
     {
       "name": "onEnd",
-      "label": "On End",
+      "label": "On Animation End",
       "handlerDescription": "Triggered when the animation end."
     }
   ],
@@ -344,10 +346,6 @@
     {
       "id": "clear",
       "label": "Clear"
-    },
-    {
-      "id": "destroy",
-      "label": "Destroy"
     }
   ],
   "settings": [],
