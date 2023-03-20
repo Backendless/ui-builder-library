@@ -14,6 +14,15 @@ export function differenceInDays(start, end) {
   return Math.round(diffInTime / ONE_DAY) + 1;
 }
 
+function getFormatPartsOrder(format) {
+  return format.split("-").reduce((acc, item, index) => {
+    return {
+      ...acc,
+      [item]: index,
+    };
+  }, {});
+}
+
 export function normalizeFormat(date, format) {
   if (!date) {
     console.warn('Date is not provided!')
@@ -21,13 +30,8 @@ export function normalizeFormat(date, format) {
     return null;
   }
 
-  const splitDate = date.split("-");
-  const { DD, MM, YYYY } = format.split("-").reduce((acc, item, index) => {
-    return {
-      ...acc,
-      [item]: index,
-    };
-  }, {});
+  const dateParts = date.split("-");
+  const { DD, MM, YYYY } = getFormatPartsOrder(format);
 
-  return `${splitDate[MM]}-${splitDate[DD]}-${splitDate[YYYY]}`;
+  return `${dateParts[MM]}-${dateParts[DD]}-${dateParts[YYYY]}`;
 }

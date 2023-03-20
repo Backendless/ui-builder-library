@@ -1,3 +1,5 @@
+import { useMemo, useCallback } from 'react';
+
 import { DateRange } from './date-range';
 import { SpecificDateRange } from './specific-date-range';
 
@@ -11,6 +13,10 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
     daysAmountVisibility, monthDropdownVisibility, yearDropdownVisibility, dateFormat, fromDate, toDate
   } = component;
   const { onStartDateChange, onEndDateChange, onDateSelect, onDateReset } = eventHandlers;
+
+  const formatNormalizer = useCallback(date => normalizeFormat(date, dateFormat), []);
+  const normalizedToDate = useMemo(() => formatNormalizer(toDate), [toDate]);
+  const normalizedFromDate = useMemo(() => formatNormalizer(fromDate), [fromDate]);
 
   if (!display) {
     return null;
@@ -31,8 +37,8 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
         />
         :
         <DateRange
-          toDate={ normalizeFormat(toDate, dateFormat) }
-          fromDate={ normalizeFormat(fromDate, dateFormat) }
+          fromDate={ normalizedFromDate }
+          toDate={ normalizedToDate }
           dateFormat={ dateFormat }
           headerVisibility={ headerVisibility }
           daysAmountVisibility={ daysAmountVisibility }
