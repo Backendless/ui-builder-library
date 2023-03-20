@@ -39,9 +39,9 @@ export default function KnobComponent({ component, eventHandlers }) {
 
   Object.assign(component, {
     setValue   : value => setKnobValue(value),
+    getValue   : () => knobValue,
     setReadOnly: readOnly => setKnobReadOnly(readOnly),
     setDisabled: disabled => setKnobDisabled(disabled),
-    getValue   : () => knobValue,
   });
 
   const handleChange = useCallback(e => {
