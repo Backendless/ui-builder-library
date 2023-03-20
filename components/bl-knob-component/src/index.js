@@ -37,6 +37,10 @@ export default function KnobComponent({ component, eventHandlers }) {
     }
   }, [initialValue]);
 
+  useEffect(() => {
+    setKnobValue(ensureRange(knobValue, minValue, maxValue));
+  }, [knobValue, minValue, maxValue]);
+
   Object.assign(component, {
     setValue   : value => setKnobValue(value),
     getValue   : () => knobValue,
@@ -79,7 +83,9 @@ const validateTemplate = template => {
     return template;
   }
 
-  console.error(`Invalid template pattern: ${template}.`);
+  console.error(`Invalid template pattern: ${ template }.`);
 
   return '{value}';
 };
+
+const ensureRange = (v, min, max) => Math.max(min, Math.min(v, max));
