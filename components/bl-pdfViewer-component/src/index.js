@@ -21,7 +21,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
 
   const controlsRef = useRef();
 
-  useResizeObserver(pageRef, controlsRef, documentRef, pageLoaded, elRef);
+  useResizeObserver(pageRef, controlsRef, documentRef, pageLoaded, elRef, height, width);
 
   useEffect(() => {
     if (documentRef) {
@@ -42,13 +42,13 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
       const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
       const pdfHeight = rootHeight - spaceForControls;
 
-      documentRef.style.height = measure(pdfHeight, 'px');
-      documentRef.style.width = measure(rootWidth, 'px');
+      documentRef.style.height = height ? measure(pdfHeight, 'px') : 'auto';
+      documentRef.style.width = width ? measure(rootWidth, 'px') : 'auto';
 
-      pageRef.firstChild.style.height = measure(pdfHeight, 'px');
-      pageRef.firstChild.style.width = measure(rootWidth, 'px');
+      pageRef.firstChild.style.height = height ? measure(pdfHeight, 'px') : 'auto';
+      pageRef.firstChild.style.width = width ? measure(rootWidth, 'px') : 'auto';
     }
-  }, [pageLoaded, pageRef, documentRef, rootHeight, rootWidth]);
+  }, [pageLoaded, pageRef, documentRef, rootHeight, rootWidth, width, height]);
 
   useEffect(() => {
     setIsControlsVisible(false);
@@ -130,25 +130,39 @@ const getBottomOffset = el => {
 
 const measure = (variable, unit) => `${ variable }${ unit }`;
 
-const useResizeObserver = (pageRef, controlsRef, documentRef, pageLoaded, elRef) => {
+const useResizeObserver = (pageRef, controlsRef, documentRef, pageLoaded, elRef, height, width) => {
   useEffect(() => {
     if (pageLoaded) {
       const resizeObserver = new ResizeObserver(entries => {
-        const { height, width } = entries[0].contentRect;
+        const { height: rootHeight, width: rootWidth } = entries[0].contentRect;
 
         const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
-        const pdfHeight = height - spaceForControls;
+        const pdfHeight = rootHeight - spaceForControls;
 
-        documentRef.style.height = measure(pdfHeight, 'px');
-        documentRef.style.width = measure(width, 'px');
+        documentRef.style.height = height ? measure(pdfHeight, 'px') : 'auto';
+        documentRef.style.width = width ? measure(rootWidth, 'px') : 'auto';
 
-        pageRef.firstChild.style.height = measure(pdfHeight, 'px');
-        pageRef.firstChild.style.width = measure(width, 'px');
+        pageRef.firstChild.style.height = height ? measure(pdfHeight, 'px') : 'auto';
+        pageRef.firstChild.style.width = width ? measure(rootWidth, 'px') : 'auto';
       });
 
       resizeObserver.observe(elRef.current);
 
       return () => resizeObserver.disconnect();
     }
-  }, [pageLoaded, elRef, pageRef, documentRef, controlsRef]);
+  }, [pageLoaded, elRef, pageRef, documentRef, controlsRef, width, height]);
+
+  useEffect(() => {
+    if (pageLoaded && !height) {
+      const resizeObserver = new ResizeObserver(entries => {
+        const { height } = entries[0].contentRect;
+
+        documentRef.style.height = measure(height, 'px');
+      });
+
+      resizeObserver.observe(pageRef.firstChild);
+
+      return () => resizeObserver.disconnect();
+    }
+  }, [pageLoaded, pageRef, documentRef, controlsRef, height]);
 };
