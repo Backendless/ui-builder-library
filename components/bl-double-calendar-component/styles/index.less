@@ -23,7 +23,7 @@
     cursor: @bl-customComponent-doubleCalendar-disabled-cursor;
   }
 
-  .info {
+  .header {
     display: flex;
     justify-content: space-between;
     width: @bl-customComponent-doubleCalendar-info-width;
@@ -35,13 +35,20 @@
     border-radius: 5px;
     box-sizing: border-box;
 
-    &__days-amount {
+    &__info {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
+      width: 65%;
+
+      &-days-amount {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+      }
     }
 
     &__button-reset {
@@ -59,7 +66,7 @@
         cursor: @bl-customComponent-doubleCalendar-infoButtonReset--disabled-cursor;
       }
 
-      &:not(.info__button-reset--disabled):hover {
+      &:not(.header__button-reset--disabled):hover {
         background-color: #0f0f0f30;
         transform: scale(1.1);
         transition: background-color .3s transform .3s;

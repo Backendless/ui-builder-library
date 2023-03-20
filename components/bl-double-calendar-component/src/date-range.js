@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
-import { useActions, differenceInDays, differenceInTime } from './helpers';
+import { Header } from './header';
 
-const { cn } = BackendlessUI.CSSUtils;
+import { useActions, differenceInDays, differenceInTime } from './helpers';
 
 export function DateRange(props) {
   const {
@@ -88,17 +88,14 @@ export function DateRange(props) {
   return (
     <>
       { headerVisibility &&
-        <div className="info">
-          { daysAmountVisibility &&
-            <span className="info__days-amount">Days amount: { daysAmount }</span>
-          }
-          <button
-            onClick={ handleReset }
-            disabled={ resetButtonDisabled }
-            className={ cn("info__button-reset", { "info__button-reset--disabled": resetButtonDisabled }) }>
-            Reset
-          </button>
-        </div>
+        <Header
+          startDate={ startDate }
+          endDate={ endDate }
+          daysAmount={ daysAmount }
+          daysAmountVisibility={ daysAmountVisibility }
+          resetButtonDisabled={ resetButtonDisabled }
+          handleReset={ handleReset }
+        />
       }
       <div className="date-picker">
         <DatePicker
