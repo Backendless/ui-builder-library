@@ -3,7 +3,7 @@
   "name": "Inner Image Zoom",
   "description": "The Inner Image Zoom component allows the user to apply an image zoom effect inside that image in the application.",
   "showInToolbox": true,
-  "faIcon": "image",
+  "faIcon": "search-plus",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
