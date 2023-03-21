@@ -1,3 +1,4 @@
+const separators = ['-', '.', ':', '/'];
 const ONE_DAY = 86400000;
 
 export function differenceInTime(start, end) {
@@ -23,6 +24,10 @@ function getFormatPartsOrder(format) {
   }, {});
 }
 
+function getSeparator(date) {
+  return separators.find(el => date.includes(el));
+}
+
 export function normalizeFormat(date, format) {
   if (!date) {
     console.warn('Date is not provided!')
@@ -30,7 +35,8 @@ export function normalizeFormat(date, format) {
     return null;
   }
 
-  const dateParts = date.split("-");
+  const separator = getSeparator(date);
+  const dateParts = date.split(separator);
   const { DD, MM, YYYY } = getFormatPartsOrder(format);
 
   return `${dateParts[MM]}-${dateParts[DD]}-${dateParts[YYYY]}`;
