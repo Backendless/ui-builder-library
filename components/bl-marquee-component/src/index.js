@@ -7,9 +7,10 @@ const PlayState = { RUN: 'running', PAUSE: 'paused' };
 
 export default function MarqueeComponent({ component, elRef, eventHandlers, pods }) {
   const {
-    classList, style, display, start, pauseOnHover, pauseOnClick, direction, speed, delay, loop, gradient
+    classList, style, display, start, pauseOnHover, pauseOnClick, direction, speed, delay, loop, gradient,
   } = component;
   const { onFinish, onCycleComplete } = eventHandlers;
+
   const children = pods['marqueeContent'].render();
 
   const [isMounted, setIsMounted] = useState(false);
@@ -17,6 +18,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   const [marqueeWidth, setMarqueeWidth] = useState(0);
   const [hasFinished, setHasFinished] = useState(false);
   const [play, setPlay] = useState(start);
+
   const marqueeRef = useRef(null);
 
   useEffect(() => {
@@ -42,25 +44,29 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   }, [isMounted]);
 
   const duration = useMemo(() => {
-    return marqueeWidth < containerWidth ? containerWidth / speed : marqueeWidth / speed;
+    const width = marqueeWidth < containerWidth ? containerWidth : marqueeWidth;
+
+    return width / speed;
   }, [marqueeWidth, containerWidth, speed]);
 
   const styleMarquee = useMemo(() => {
     return {
-      '--marquee-play': play ? PlayState.RUN : PlayState.PAUSE,
-      animationDelay: `${delay}s`,
-      animationDuration: `${duration}s`,
-      animationDirection: direction,
-      animationIterationCount: !!loop ? loop : DEFAULT_COUNT,
+      '--marquee-play'       : play ? PlayState.RUN : PlayState.PAUSE,
+      animationDelay         : `${delay}s`,
+      animationDuration      : `${duration}s`,
+      animationDirection     : direction,
+      animationIterationCount: loop || DEFAULT_COUNT,
     };
   }, [play, direction, duration, delay, loop]);
 
   const styles = useMemo(() => {
+    const playStateOnHover = !play || pauseOnHover ? PlayState.PAUSE : PlayState.RUN;
+    const playStateOnClick = !play || (pauseOnHover && !pauseOnClick) || pauseOnClick ? PlayState.PAUSE : PlayState.RUN;
+
     return {
       ...style,
-      '--marquee-pause-on-hover': !play || pauseOnHover ? PlayState.PAUSE : PlayState.RUN,
-      '--marquee-pause-on-click':
-        !play || (pauseOnHover && !pauseOnClick) || pauseOnClick ? PlayState.PAUSE : PlayState.RUN,
+      '--marquee-pause-on-hover': playStateOnHover,
+      '--marquee-pause-on-click': playStateOnClick,
     };
   }, [style, play, pauseOnHover, pauseOnClick]);
 
@@ -72,8 +78,8 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
     }
   }, [onFinish, hasFinished]);
 
-  component.startPlay = () => { setPlay(true) };
-  component.stopPlay = () => { setPlay(false) };
+  component.startPlay = () => setPlay(true);
+  component.stopPlay = () => setPlay(false);
 
   if (!display || !isMounted) {
     return null;
@@ -81,7 +87,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-marquee', ...classList) } style={ styles }>
-      { gradient && <div className="overlay" /> }
+      { gradient && <div className="overlay"/> }
 
       <div
         ref={ marqueeRef }
@@ -89,7 +95,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
         className="marquee-content"
         onAnimationIteration={ onCycleComplete }
         onAnimationEnd={ handleFinish }>
-        {children}
+        { children }
       </div>
 
       <div style={ styleMarquee } className="marquee-content" aria-hidden="true">
