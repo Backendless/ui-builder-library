@@ -66,7 +66,7 @@ export function useDrawerStyles(component) {
   }, [placement, size]);
 
   const transitionDurationStyles = useMemo(() => (
-    { 'transition-duration': animationDuration + 'ms' }
+    { transitionDuration: animationDuration + 'ms' }
   ), [animationDuration]);
 
   const containerStyles = useMemo(() => (
