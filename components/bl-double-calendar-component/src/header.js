@@ -11,10 +11,7 @@ export function Header({ startDate, endDate, daysAmount, daysAmountVisibility, r
   return (
     <div className="header">
       <div className="header__info">
-        <div>
-          <span className="header__info-from-date">{ `${ start } - ` }</span>
-          <span className="header__info-to-date">{ end }</span>
-        </div>
+        <span>{ `${ start } - ${ end }` }</span>
         { daysAmountVisibility &&
           <span className="header__info-days-amount">Amount: { daysAmount }</span>
         }

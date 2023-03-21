@@ -15,11 +15,5 @@ export function differenceInDays(start, end) {
 }
 
 export function getShortDate(date) {
-  const dateObject = new Date(date);
-
-  const month = dateObject.toLocaleDateString('en-US', { month: 'short' });
-  const day = dateObject.getDate();
-  const year = dateObject.getFullYear();
-
-  return `${month} ${day} ${year}`;
+  return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
