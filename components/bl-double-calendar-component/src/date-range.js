@@ -71,10 +71,10 @@ export function DateRange(props) {
   };
 
   const handleReset = () => {
-    const dateObject = new Date();
+    const now = new Date();
 
-    setStartDate(dateObject);
-    setEndDate(dateObject);
+    setStartDate(now);
+    setEndDate(now);
 
     onDateReset();
   };
