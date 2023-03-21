@@ -3,7 +3,7 @@
 Marquee is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows the user to apply a lightweight React component that utilizes the power of CSS animations to create silky smooth marquees in the application.
 
 <p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+  <img src="./thumbnail.gif" alt="main thumbnail" width="780"/>
 </p>
 
 ## Configuration
