@@ -263,12 +263,12 @@
       "color": "#983b22",
       "inputs": [
         {
-          "label": "To Date",
-          "id": "toDate"
-        },
-        {
           "id": "fromDate",
           "label": "From Date"
+        },
+        {
+          "id": "toDate",
+          "label": "To Date"
         }
       ]
     },
