@@ -27,7 +27,7 @@ export function useDrawerActions(component, eventHandlers, drawerContentRef, dra
   const { onOpen, onClose } = eventHandlers;
   const { placement, animationDuration, defaultOpen } = component;
 
-  const [visibility, setVisibility] = useState(defaultOpen);
+  const [visibility, setVisibility] = useState(false);
 
   const openContent = event => {
     event?.stopPropagation();
@@ -49,6 +49,12 @@ export function useDrawerActions(component, eventHandlers, drawerContentRef, dra
     setTimeout(() => setVisibility(false), animationDuration);
     onClose();
   }, [animationDuration, drawerContainerRef, drawerContentRef, onClose, placement, visibility]);
+
+  useEffect(() => {
+    if (defaultOpen) {
+      setVisibility(true);
+    }
+  }, [])
 
   component.open = event => openContent(event);
   component.close = event => closeContent(event);

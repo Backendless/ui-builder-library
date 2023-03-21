@@ -45,13 +45,11 @@ function Drawer(props) {
   useCloseEvents(drawerContentRef, closeContent, component);
 
   useEffect(() => {
-    setTimeout(() => {
-      drawerContentRef.current.style.transform = 'translate(0px, 0px)';
+    drawerContentRef.current.style.transform = 'translate(0px, 0px)';
 
-      if (backdropVisibility) {
-        drawerContainerRef.current.classList.add('backdrop');
-      }
-    }, 10);
+    if (backdropVisibility) {
+      drawerContainerRef.current.classList.add('backdrop');
+    }
   }, []);
 
   return (
