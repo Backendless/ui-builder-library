@@ -62,27 +62,21 @@ export function DateRange(props) {
 
   const handleStartDateChange = date => {
     setStartDate(date);
-
-    if (onStartDateChange) {
-      onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
-    }
+    onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
   };
 
   const handleEndDateChange = date => {
     setEndDate(date);
-
-    if (onEndDateChange) {
-      onEndDateChange({ endDate: date, daysAmount: differenceInDays(startDate, date) });
-    }
+    onEndDateChange({ endDate: date, daysAmount: differenceInDays(startDate, date) });
   };
 
   const handleReset = () => {
-    setStartDate(new Date());
-    setEndDate(new Date());
+    const now = new Date();
 
-    if (onDateReset) {
-      onDateReset();
-    }
+    setStartDate(now);
+    setEndDate(now);
+
+    onDateReset();
   };
 
   return (
@@ -103,7 +97,6 @@ export function DateRange(props) {
       <div className="date-picker">
         <DatePicker
           inline
-          selectsStart
           scrollableYearDropdown
           scrollableMonthDropdown
           endDate={ endDate }
@@ -113,12 +106,11 @@ export function DateRange(props) {
           yearDropdownItemNumber={ 50 }
           showYearDropdown={ yearDropdownVisibility }
           showMonthDropdown={ monthDropdownVisibility }
-          maxDate={ endDate ? new Date(endDate) : null }
+          maxDate={ endDate }
           onChange={ handleStartDateChange }
         />
         <DatePicker
           inline
-          selectsEnd
           scrollableYearDropdown
           scrollableMonthDropdown
           endDate={ endDate }

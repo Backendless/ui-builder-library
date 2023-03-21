@@ -19,8 +19,10 @@ export function useActions({ component, startDate, endDate, daysAmount, setStart
     },
     getDaysAmount   : () => daysAmount,
     resetDate       : () => {
-      setStartDate(new Date());
-      setEndDate(new Date());
+      const now = new Date();
+
+      setStartDate(now);
+      setEndDate(now);
     }
   })
 }
