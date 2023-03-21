@@ -35,3 +35,7 @@ export function normalizeFormat(date, format) {
 
   return `${dateParts[MM]}-${dateParts[DD]}-${dateParts[YYYY]}`;
 }
+
+export function getShortDate(date) {
+  return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
