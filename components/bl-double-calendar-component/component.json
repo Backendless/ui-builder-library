@@ -119,19 +119,19 @@
       "dataBinding": true,
       "options": [
         {
-          "value": "dd/MM/yyyy",
+          "value": "DD-MM-YYYY",
           "label": "DD-MM-YYYY"
         },
         {
-          "value": "MM/dd/yyyy",
+          "value": "MM-DD-YYYY",
           "label": "MM-DD-YYYY"
         },
         {
-          "value": "yyyy/MM/dd",
+          "value": "YYYY-MM-DD",
           "label": "YYYY-MM-DD"
         },
         {
-          "value": "yyyy/dd/MM",
+          "value": "YYYY-DD-MM",
           "label": "YYYY-DD-MM"
         }
       ]
