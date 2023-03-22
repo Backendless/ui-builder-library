@@ -1,21 +1,21 @@
-import { differenceInTime, normalizeFormat } from './utils';
+import { differenceInTime } from './utils';
 
-export function useActions({ component, dateFormat, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
+export function useActions({ component, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
   Object.assign(component, {
     getFromDate     : () => startDate,
-    setFromDate     : fromDate => setStartDate(new Date(normalizeFormat(fromDate, dateFormat))),
+    setFromDate     : fromDate => setStartDate(new Date(fromDate)),
     getToDate       : () => endDate,
-    setToDate       : toDate => setEndDate(new Date(normalizeFormat(toDate, dateFormat))),
+    setToDate       : toDate => setEndDate(new Date(toDate)),
     getFromAndToDate: () => ({ fromDate: startDate, toDate: endDate }),
     setFromAndToDate: (fromDate, toDate) => {
-      const normalizedFromDate = new Date(normalizeFormat(fromDate, dateFormat));
-      const normalizedToDate = new Date(normalizeFormat(toDate, dateFormat));
+      const fromDateObject = new Date(fromDate);
+      const toDateObject = new Date(toDate);
 
-      const diffInTime = differenceInTime(normalizedFromDate, normalizedToDate);
+      const diffInTime = differenceInTime(fromDateObject, toDateObject);
 
       if (diffInTime >= 0) {
-        setStartDate(normalizedFromDate);
-        setEndDate(normalizedToDate);
+        setStartDate(fromDateObject);
+        setEndDate(toDateObject);
       } else {
         console.warn("The date in the From Date property is later than the To Date! Please pass a valid date.");
       }

@@ -1,22 +1,14 @@
-import { useMemo, useCallback } from 'react';
-
 import { DateRange } from './date-range';
 import { SpecificDateRange } from './specific-date-range';
-
-import { normalizeFormat } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DoubleCalendarComponent({ component, eventHandlers }) {
  const {
     classList, display, disabled, style, specificDateRange, selectionRange, selectedDate, headerVisibility,
-    daysAmountVisibility, monthDropdownVisibility, yearDropdownVisibility, dateFormat, fromDate, toDate
+    daysAmountVisibility, monthDropdownVisibility, yearDropdownVisibility, fromDate, toDate
   } = component;
   const { onStartDateChange, onEndDateChange, onDateSelect, onDateReset } = eventHandlers;
-
-  const formatNormalizer = useCallback(date => normalizeFormat(date, dateFormat), []);
-  const normalizedToDate = useMemo(() => formatNormalizer(toDate), [toDate]);
-  const normalizedFromDate = useMemo(() => formatNormalizer(fromDate), [fromDate]);
 
   if (!display) {
     return null;
@@ -37,9 +29,8 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
         />
         :
         <DateRange
-          fromDate={ normalizedFromDate }
-          toDate={ normalizedToDate }
-          dateFormat={ dateFormat }
+          fromDate={ fromDate }
+          toDate={ toDate }
           headerVisibility={ headerVisibility }
           daysAmountVisibility={ daysAmountVisibility }
           yearDropdownVisibility={ yearDropdownVisibility }

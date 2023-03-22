@@ -8,7 +8,7 @@ import { useActions, differenceInDays, differenceInTime } from './helpers';
 
 export function DateRange(props) {
   const {
-    fromDate, toDate, dateFormat, headerVisibility, daysAmountVisibility, monthDropdownVisibility,
+    fromDate, toDate, headerVisibility, daysAmountVisibility, monthDropdownVisibility,
     yearDropdownVisibility, component, onStartDateChange, onEndDateChange, onDateReset
   } = props;
 
@@ -21,16 +21,18 @@ export function DateRange(props) {
   useActions({ component, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
   useEffect(() => {
-    const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
-
-    if (fromDate && diffInTime > 0) {
-      setStartDate(new Date(fromDate));
-    }
-
     if (!fromDate) {
       console.warn("From Date is not provided!");
 
       setStartDate(new Date());
+    }
+
+    const fromDateObject = new Date(fromDate);
+    const toDateObject = new Date(toDate);
+    const diffInTime = differenceInTime(fromDateObject, toDateObject);
+
+    if (diffInTime > 0) {
+      setStartDate(fromDateObject);
     }
 
     if (diffInTime <= 0) {
@@ -41,16 +43,18 @@ export function DateRange(props) {
   }, [fromDate]);
 
   useEffect(() => {
-    const diffInTime = differenceInTime(new Date(fromDate), new Date(toDate));
-
-    if (toDate && diffInTime > 0) {
-      setEndDate(new Date(toDate));
-    }
-
     if (!toDate) {
       console.warn("To Date is not provided!");
 
       setEndDate(new Date());
+    }
+
+    const toDateObject = new Date(toDate);
+    const fromDateObject = new Date(fromDate);
+    const diffInTime = differenceInTime(fromDateObject, toDateObject);
+
+    if (diffInTime > 0) {
+      setEndDate(toDateObject);
     }
 
     if (diffInTime <= 0) {
@@ -99,7 +103,6 @@ export function DateRange(props) {
           endDate={ endDate }
           selected={ startDate }
           startDate={ startDate }
-          dateFormat={ dateFormat }
           yearDropdownItemNumber={ 50 }
           showYearDropdown={ yearDropdownVisibility }
           showMonthDropdown={ monthDropdownVisibility }
@@ -114,7 +117,6 @@ export function DateRange(props) {
           selected={ endDate }
           minDate={ startDate }
           startDate={ startDate }
-          dateFormat={ dateFormat }
           yearDropdownItemNumber={ 50 }
           showYearDropdown={ yearDropdownVisibility }
           showMonthDropdown={ monthDropdownVisibility }
