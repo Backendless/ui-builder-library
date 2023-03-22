@@ -106,58 +106,23 @@
       "handlerDescription": "This handler allows you to add a year dropdown to the component."
     },
     {
-      "type": "select",
-      "name": "dateFormat",
-      "label": "Date Format",
-      "settingTooltip": "From Date and To Date must be specified as specified in the Date Format handler",
-      "showInSettings": true,
-      "defaultValue": "yyyy/MM/dd",
-      "hasLogicHandler": true,
-      "handlerId": "dateFormatLogic",
-      "handlerLabel": "Date Format Logic",
-      "handlerDescription": "This handler allows you to set a custom date format.",
-      "dataBinding": true,
-      "options": [
-        {
-          "value": "DD-MM-YYYY",
-          "label": "DD-MM-YYYY"
-        },
-        {
-          "value": "MM-DD-YYYY",
-          "label": "MM-DD-YYYY"
-        },
-        {
-          "value": "YYYY-MM-DD",
-          "label": "YYYY-MM-DD"
-        },
-        {
-          "value": "YYYY-DD-MM",
-          "label": "YYYY-DD-MM"
-        }
-      ]
-    },
-    {
       "type": "text",
       "name": "fromDate",
-      "label": "From Date",
-      "settingTooltip": "This handler allows you to specify a start date. Date format to be specified \"year/month/day\".",
-      "showInSettings": true,
+      "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "fromDateLogic",
       "handlerLabel": "From Date Logic",
-      "handlerDescription": "This handler allows you to specify a start date. Date format to be specified \"year/month/day\".",
+      "handlerDescription": "This handler allows you to specify a start date.",
       "dataBinding": true
     },
     {
       "type": "text",
       "name": "toDate",
-      "label": "To Date",
-      "settingTooltip": "This handler allows you to specify an end date. Date format to be specified \"year/month/day\".",
-      "showInSettings": true,
+      "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "toDateLogic",
       "handlerLabel": "To Date Logic",
-      "handlerDescription": "This handler allows you to specify an end date. Date format to be specified \"year/month/day\".",
+      "handlerDescription": "This handler allows you to specify an end date.",
       "dataBinding": true
     }
   ],
