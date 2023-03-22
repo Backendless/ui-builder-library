@@ -134,7 +134,7 @@ const getBottomOffset = el => {
     return rect.bottom + window.scrollY;
   }
 
-  return null;
+  return 0;
 };
 
 const measure = (variable, unit) => `${ variable }${ unit }`;

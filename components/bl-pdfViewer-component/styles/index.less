@@ -15,6 +15,11 @@
 @bl-customComponent-pdfViewer-input-font-size: 16px;
 
 @bl-customComponent-pdfViewer-no-data-icon-size: 40px;
+@bl-customComponent-pdfViewer-no-data-background-color: #aaa;
+@bl-customComponent-pdfViewer-no-data-font-color: #fff;
+@bl-customComponent-pdfViewer-no-data-font-size: 24px;
+@bl-customComponent-pdfViewer-no-data-font-weight: bold;
+@bl-customComponent-pdfViewer-no-data-text-align: center;
 
 .bl-customComponent-pdfViewer {
   display: flex;
@@ -108,11 +113,16 @@
     height: 100%;
     width: 100%;
 
-    background-color: #aaa;
+    background-color: @bl-customComponent-pdfViewer-no-data-background-color;
   }
 
   .no-data-text {
-    text-align: center;
+    text-align: @bl-customComponent-pdfViewer-no-data-text-align;
+
+    font-size: @bl-customComponent-pdfViewer-no-data-font-size;
+    font-weight: @bl-customComponent-pdfViewer-no-data-font-weight;
+
+    color: @bl-customComponent-pdfViewer-no-data-font-color;
   }
 
   .no-data-icon {
