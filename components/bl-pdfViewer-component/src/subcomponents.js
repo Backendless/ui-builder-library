@@ -23,7 +23,7 @@ export function NoData() {
 }
 
 export function Controls(props) {
-  const { currentPage, setCurrentPage, pageCount, display, controlsRef } = props;
+  const { currentPage, setCurrentPage, pageCount, controlsRef } = props;
 
   const [nextPage, setNextPage] = useState(1);
 
@@ -61,7 +61,7 @@ export function Controls(props) {
     setNextPage(currentPage);
   }, [currentPage]);
 
-  if (!display) {
+  if (!pageCount) {
     return null;
   }
 

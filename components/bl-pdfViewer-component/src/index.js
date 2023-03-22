@@ -13,7 +13,6 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
-  const [isControlsVisible, setIsControlsVisible] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
 
   const [rootHeight, setRootHeight] = useState(0);
@@ -28,14 +27,14 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
       documentRef.style.height = '100%';
       documentRef.style.width = '100%';
     }
-  }, [documentRef, height, width]);
+  }, [documentRef]);
 
   useEffect(() => {
     if (pageLoaded) {
       setRootHeight(elRef.current.getBoundingClientRect().height);
       setRootWidth(elRef.current.getBoundingClientRect().width);
     }
-  }, [pageLoaded, height, width]);
+  }, [pageLoaded]);
 
   useEffect(() => {
     if (pageLoaded) {
@@ -50,23 +49,25 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
     }
   }, [pageLoaded, rootHeight, rootWidth, width, height]);
 
-  useEffect(() => {
-    setIsControlsVisible(false);
-  }, [pdfUrl]);
-
   const onDocumentLoadSuccess = ({ numPages }) => {
     setPageCount(numPages);
-    setIsControlsVisible(true);
     onLoadSuccess({ pageCount: numPages });
   };
 
   const onDocumentLoadError = error => {
-    setIsControlsVisible(false);
     onLoadError({ message: error.message });
   };
 
-  const onLoading = () => {
+  const onDocumentLoading = () => {
     setPageLoaded(false);
+
+    return 'Loading PDF…';
+  };
+
+  const onPageLoading = () => {
+    setPageLoaded(false);
+
+    return 'Loading page…';
   };
 
   const onPageLoadSuccess = () => {
@@ -75,21 +76,16 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   };
 
   const onNoData = () => {
-    setIsControlsVisible(false);
+    setPageLoaded(false);
 
-    return <NoData/>;
+    return (
+      <NoData/>
+    );
   };
 
   component.setPage = page => {
     setCurrentPage(page);
   };
-
-  useEffect(() => {
-    if (!display) {
-      setPageLoaded(false);
-      setIsControlsVisible(false);
-    }
-  }, [display]);
 
   if (!display) {
     return null;
@@ -106,6 +102,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
         renderMode="canvas"
         file={ pdfUrl }
         noData={ onNoData }
+        loading={ onDocumentLoading }
         onLoadError={ onDocumentLoadError }
         onLoadSuccess={ onDocumentLoadSuccess }>
         <Page
@@ -113,18 +110,19 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
           renderTextLayer={ false }
           renderAnnotationLayer={ false }
           renderForms={ false }
-          loading={ onLoading }
+          loading={ onPageLoading }
           onLoadSuccess={ onPageLoadSuccess }
           pageNumber={ currentPage }
         />
       </Document>
-      <Controls
-        controlsRef={ controlsRef }
-        currentPage={ currentPage }
-        setCurrentPage={ setCurrentPage }
-        pageCount={ pageCount }
-        display={ isControlsVisible }
-      />
+      { pageLoaded && (
+        <Controls
+          controlsRef={ controlsRef }
+          currentPage={ currentPage }
+          setCurrentPage={ setCurrentPage }
+          pageCount={ pageCount }
+        />
+      ) }
     </div>
   );
 }
