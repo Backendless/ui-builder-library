@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 export function NoData() {
   return (
     <>
-      <h3>No PDF file specified.</h3>
+      <span className="no-data-text">No PDF file specified.</span>
       <svg className="no-data-icon" width="24" height="24" viewBox="0 0 24 24">
         <path
           d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z"
         />
         <path
           d="M11 9.5C11 10.3284 10.3284 11 9.5 11C8.67157 11 8 10.3284 8 9.5C8 8.67157 8.67157 8 9.5 8C10.3284 8 11 8.67157 11 9.5Z"
-          fill="black"/>
+        />
         <path
           d="M16 9.5C16 10.3284 15.3284 11 14.5 11C13.6716 11 13 10.3284 13 9.5C13 8.67157 13.6716 8 14.5 8C15.3284 8 16 8.67157 16 9.5Z"
         />
@@ -23,7 +23,7 @@ export function NoData() {
 }
 
 export function Controls(props) {
-  const { currentPage, setCurrentPage, pageCount, display, controlsRef } = props;
+  const { currentPage, setCurrentPage, pageCount, controlsRef } = props;
 
   const [nextPage, setNextPage] = useState(1);
 
@@ -61,7 +61,7 @@ export function Controls(props) {
     setNextPage(currentPage);
   }, [currentPage]);
 
-  if (!display) {
+  if (!pageCount) {
     return null;
   }
 
