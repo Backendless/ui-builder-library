@@ -67,33 +67,6 @@
     },
     {
       "type": "checkbox",
-      "name": "linkInsertButton",
-      "label": "Link Insert Button",
-      "showInSettings": true,
-      "defaultValue": true,
-      "hasLogicHandler": false,
-      "handlerId": "linkInsertButtonLogic"
-    },
-    {
-      "type": "checkbox",
-      "name": "imageInsertButton",
-      "label": "Image Insert Button",
-      "showInSettings": true,
-      "defaultValue": true,
-      "hasLogicHandler": false,
-      "handlerId": "imageInsertButtonLogic"
-    },
-    {
-      "type": "checkbox",
-      "name": "videoInsertButton",
-      "label": "Video Insert Button",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "videoInsertButtonLogic",
-      "defaultValue": true
-    },
-    {
-      "type": "checkbox",
       "name": "readOnly",
       "label": "Read Only",
       "showInSettings": true,
@@ -191,6 +164,150 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "borderColorLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "linkInsertButton",
+      "label": "Link Insert Button",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "linkInsertButtonLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "imageInsertButton",
+      "label": "Image Insert Button",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "imageInsertButtonLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "videoInsertButton",
+      "label": "Video Insert Button",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "videoInsertButtonLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "fontStyleButtons",
+      "label": "Font Style Buttons",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "fontStyleButtonsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "historyButtons",
+      "label": "History Buttons",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "historyButtonsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "fontSelect",
+      "label": "Font Select",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "fontSelectLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "fontSizeSelect",
+      "label": "Font Size Select",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "fontSizeSelectLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "textColorPicker",
+      "label": "Text Color Picker",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "textColorPickerLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "backgroundColorPicker",
+      "label": "Background Color Picker",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "backgroundColorPickerLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "alignmentButtons",
+      "label": "Alignment Buttons",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "alignmentButtonsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "listButtons",
+      "label": "List Buttons",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "listButtonsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "scriptButtons",
+      "label": "Script Buttons",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "scriptButtonsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "textBlockButtons",
+      "label": "Text Block Buttons",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "textBlockButtonsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "headingButtons",
+      "label": "Heading Buttons",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "headingButtonsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "textDirectionButton",
+      "label": "Text Direction Button",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "textDirectionButtonLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "clearFormattingButton",
+      "label": "Clear Formatting Button",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "clearFormattingButtonLogic"
     }
   ],
   "eventHandlers": [
