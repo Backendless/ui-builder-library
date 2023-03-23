@@ -74,7 +74,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   component.startPlay = () => setPlay(true);
   component.stopPlay = () => setPlay(false);
 
-  if (!display || !isMounted) {
+  if (!display) {
     return null;
   }
 
