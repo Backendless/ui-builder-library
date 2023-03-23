@@ -43,13 +43,9 @@ export default function Stepper({ component, eventHandlers }) {
   };
 
   component.setStep = stepNumber => {
-    if (stepNumber <= steps.length + 1 && stepNumber > 0) {
+    if (inRange) {
       setCurrentStep(stepNumber - 1);
-      setSteps(steps.map((step, index) => {
-        const completed = index < stepNumber - 1;
-
-        return { ...step, completed };
-      }));
+      setSteps(steps.map((step, index) => getCompletedSteps(step, index, stepNumber)));
     } else {
       console.error(
         `Non existed step "${ stepNumber }". Please, choose the step in range ${ 1 } - ${ steps.length + 1 }`
@@ -78,3 +74,11 @@ export default function Stepper({ component, eventHandlers }) {
     </div>
   );
 }
+
+const inRange = (stepNumber, steps) => stepNumber <= steps.length + 1 && stepNumber > 0;
+
+const getCompletedSteps = (step, index, stepNumber) => {
+  const completed = index < stepNumber - 1;
+
+  return { ...step, completed };
+};
