@@ -13,7 +13,6 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
 
   const children = pods['marqueeContent'].render();
 
-  const [isMounted, setIsMounted] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
   const [marqueeWidth, setMarqueeWidth] = useState(0);
   const [hasFinished, setHasFinished] = useState(false);
@@ -22,26 +21,20 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   const marqueeRef = useRef(null);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    const calculateWidth = () => {
-      if (marqueeRef.current && elRef.current) {
+    if (marqueeRef.current && elRef.current) {
+      const calculateWidth = () => {
         setContainerWidth(elRef.current.getBoundingClientRect().width);
         setMarqueeWidth(marqueeRef.current.getBoundingClientRect().width);
-      }
-    };
+      };
 
-    calculateWidth();
-    window.addEventListener('resize', calculateWidth);
+      calculateWidth();
+      window.addEventListener('resize', calculateWidth);
 
-    return () => {
-      window.removeEventListener('resize', calculateWidth);
-    };
-  }, [isMounted]);
+      return () => {
+        window.removeEventListener('resize', calculateWidth);
+      };
+    }
+  }, []);
 
   const duration = useMemo(() => {
     const width = marqueeWidth < containerWidth ? containerWidth : marqueeWidth;
