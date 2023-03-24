@@ -1,13 +1,30 @@
 @bl-customComponent-pdfViewer-themeColor: @themePrimary;
 @bl-customComponent-pdfViewer-themeTextColor: @appTextColor;
 
-@bl-customComponent-pdfViewer-input-background-color: if(@isLightTheme, darken(#fff, 10%), lighten(#000, 15%));
+@bl-customComponent-pdfViewer-margin-bottom: 10px;
+
 @bl-customComponent-pdfViewer-button-icon-size: 16px;
 @bl-customComponent-pdfViewer-button-icon-color: contrast(@buttonContainedBackground);
+@bl-customComponent-pdfViewer-button-height: 20px;
+@bl-customComponent-pdfViewer-button-width: 60px;
+
+@bl-customComponent-pdfViewer-input-background-color: fade(@bl-customComponent-pdfViewer-themeColor, 20%);
+@bl-customComponent-pdfViewer-input-height: 16px;
+@bl-customComponent-pdfViewer-input-width: 40px;
+@bl-customComponent-pdfViewer-input-max-width: 100%;
+@bl-customComponent-pdfViewer-input-font-size: 16px;
 
 @bl-customComponent-pdfViewer-no-data-icon-size: 40px;
+@bl-customComponent-pdfViewer-no-data-background-color: #aaa;
+@bl-customComponent-pdfViewer-no-data-font-color: #fff;
+@bl-customComponent-pdfViewer-no-data-font-size: 24px;
+@bl-customComponent-pdfViewer-no-data-font-weight: bold;
+@bl-customComponent-pdfViewer-no-data-text-align: center;
 
 .bl-customComponent-pdfViewer {
+  display: flex;
+  flex-direction: column;
+
   color: @bl-customComponent-pdfViewer-themeTextColor;
 
   .controls {
@@ -23,8 +40,8 @@
     justify-content: center;
     align-items: center;
 
-    height: 20px;
-    width: 60px;
+    height: @bl-customComponent-pdfViewer-button-height;
+    width: @bl-customComponent-pdfViewer-button-width;
 
     fill: @bl-customComponent-pdfViewer-button-icon-color;
 
@@ -46,26 +63,27 @@
 
     height: auto;
 
-    margin-bottom: 10px;
+    margin-bottom: @bl-customComponent-pdfViewer-margin-bottom;
   }
 
   .page-input {
     outline: 0;
     border: 0;
 
-    width: 40px;
-    max-width: 100%;
-
-    text-align: end;
+    width: @bl-customComponent-pdfViewer-input-width;
+    max-width: @bl-customComponent-pdfViewer-input-max-width;
 
     color: @bl-customComponent-pdfViewer-themeTextColor;
 
     padding: 0 1px 0 0;
 
-    height: 15px;
-    font-size: 16px;
+    height: @bl-customComponent-pdfViewer-input-height;
 
-    background-color: transparent;
+    text-align: center;
+    font-size: @bl-customComponent-pdfViewer-input-font-size;
+
+    background-color: @bl-customComponent-pdfViewer-input-background-color;
+
     &:disabled {
       opacity: 0.5;
       cursor: auto;
@@ -95,7 +113,16 @@
     height: 100%;
     width: 100%;
 
-    background-color: #aaa;
+    background-color: @bl-customComponent-pdfViewer-no-data-background-color;
+  }
+
+  .no-data-text {
+    text-align: @bl-customComponent-pdfViewer-no-data-text-align;
+
+    font-size: @bl-customComponent-pdfViewer-no-data-font-size;
+    font-weight: @bl-customComponent-pdfViewer-no-data-font-weight;
+
+    color: @bl-customComponent-pdfViewer-no-data-font-color;
   }
 
   .no-data-icon {

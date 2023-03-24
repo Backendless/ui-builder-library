@@ -6,76 +6,85 @@ import { Controls, NoData } from './subcomponents';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function PdfViewer({ component, eventHandlers, elRef }) {
-  const { style, display, classList, pdfUrl, renderType, width, height } = component;
+  const { style, display, classList, pdfUrl, width, height } = component;
   const { onLoadSuccess, onLoadError } = eventHandlers;
 
-  const [numPages, setNumPages] = useState(null);
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageCount, setPageCount] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [documentRef, setDocumentRef] = useState();
   const [pageRef, setPageRef] = useState();
-  const [isControlsVisible, setIsControlsVisible] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
-  const inputRef = useRef();
+  const [rootHeight, setRootHeight] = useState(0);
+  const [rootWidth, setRootWidth] = useState(0);
+
   const controlsRef = useRef();
+
+  useResizeObserver(pageRef, controlsRef, documentRef, pageLoaded, elRef, height, width);
 
   useEffect(() => {
     if (documentRef) {
-      const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(documentRef);
-
-      documentRef.style.height = `calc(${ height } - ${ spaceForControls }px)`;
-      documentRef.style.width = width;
+      documentRef.style.height = '100%';
+      documentRef.style.width = '100%';
     }
-  }, [documentRef, height, width]);
+  }, [documentRef]);
 
   useEffect(() => {
-    if (pageRef) {
-      pageRef.firstChild.style.height = height;
-      pageRef.firstChild.style.width = width;
+    if (pageLoaded) {
+      setRootHeight(elRef.current.getBoundingClientRect().height);
+      setRootWidth(elRef.current.getBoundingClientRect().width);
     }
-  }, [pageRef, height, width]);
+  }, [pageLoaded]);
 
   useEffect(() => {
-    setIsControlsVisible(false);
-  }, [pdfUrl]);
+    if (pageLoaded) {
+      const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
+      const pdfHeight = rootHeight - spaceForControls;
+
+      documentRef.style.height = height ? measure(pdfHeight, 'px') : 'auto';
+      documentRef.style.width = width ? measure(rootWidth, 'px') : 'auto';
+
+      pageRef.firstChild.style.height = height ? measure(pdfHeight, 'px') : 'auto';
+      pageRef.firstChild.style.width = width ? measure(rootWidth, 'px') : 'auto';
+    }
+  }, [pageLoaded, rootHeight, rootWidth, width, height]);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-    setIsControlsVisible(true);
+    setPageCount(numPages);
     onLoadSuccess({ pageCount: numPages });
   };
 
   const onDocumentLoadError = error => {
-    setIsControlsVisible(false);
     onLoadError({ message: error.message });
   };
 
-  const onPageLoadSuccess = () => {
-    const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
+  const onDocumentLoading = () => {
+    setPageLoaded(false);
 
-    pageRef.firstChild.style.height = `calc(${ height } - ${ spaceForControls }px)`;
-    pageRef.firstChild.style.width = width;
+    return 'Loading PDF…';
+  };
+
+  const onPageLoading = () => {
+    setPageLoaded(false);
+
+    return 'Loading page…';
+  };
+
+  const onPageLoadSuccess = () => {
+    setPageLoaded(true);
+    pageRef.firstChild.style.overflow = 'auto';
   };
 
   const onNoData = () => {
-    setIsControlsVisible(false);
+    setPageLoaded(false);
 
-    return <NoData/>;
-  };
-
-  const handlerPageChange = ({ target }) => {
-    if (target.value === '') {
-      setPageIndex(1);
-    }
-
-    if (Number(target.value)) {
-      const page = ensureRange(target.value, { min: 1, max: numPages });
-
-      setPageIndex(page);
-    }
+    return (
+      <NoData/>
+    );
   };
 
   component.setPage = page => {
-    setPageIndex(page);
+    setCurrentPage(page);
   };
 
   if (!display) {
@@ -90,36 +99,79 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
       <Document
         inputRef={ ref => setDocumentRef(ref) }
         className="pdf-viewer"
-        renderMode={ renderType }
+        renderMode="canvas"
         file={ pdfUrl }
         noData={ onNoData }
+        loading={ onDocumentLoading }
         onLoadError={ onDocumentLoadError }
         onLoadSuccess={ onDocumentLoadSuccess }>
         <Page
           inputRef={ ref => setPageRef(ref) }
           renderTextLayer={ false }
+          renderAnnotationLayer={ false }
+          renderForms={ false }
+          loading={ onPageLoading }
           onLoadSuccess={ onPageLoadSuccess }
-          pageNumber={ pageIndex }
+          pageNumber={ currentPage }
         />
       </Document>
-      <Controls
-        controlsRef={ controlsRef }
-        pageIndex={ pageIndex }
-        setPageIndex={ setPageIndex }
-        inputRef={ inputRef }
-        handlerPageChange={ handlerPageChange }
-        numPages={ numPages }
-        display={ isControlsVisible }
-      />
+      { pageLoaded && (
+        <Controls
+          controlsRef={ controlsRef }
+          currentPage={ currentPage }
+          setCurrentPage={ setCurrentPage }
+          pageCount={ pageCount }
+        />
+      ) }
     </div>
   );
 }
 
 const getBottomOffset = el => {
-  const rect = el.getBoundingClientRect();
+  if (el) {
+    const rect = el.getBoundingClientRect();
 
-  return rect.bottom + window.scrollY;
+    return rect.bottom + window.scrollY;
+  }
+
+  return 0;
 };
 
-const ensureRange = (v, { min, max }) => Math.max(min, Math.min(v, max));
+const measure = (variable, unit) => `${ variable }${ unit }`;
 
+const useResizeObserver = (pageRef, controlsRef, documentRef, pageLoaded, elRef, height, width) => {
+  useEffect(() => {
+    if (pageLoaded) {
+      const resizeObserver = new ResizeObserver(entries => {
+        const { height: rootHeight, width: rootWidth } = entries[0].contentRect;
+
+        const spaceForControls = getBottomOffset(controlsRef.current) - getBottomOffset(pageRef);
+        const pdfHeight = rootHeight - spaceForControls;
+
+        documentRef.style.height = height ? measure(pdfHeight, 'px') : documentRef.style.height;
+        documentRef.style.width = width ? measure(rootWidth, 'px') : 'auto';
+
+        pageRef.firstChild.style.height = height ? measure(pdfHeight, 'px') : 'auto';
+        pageRef.firstChild.style.width = width ? measure(rootWidth, 'px') : 'auto';
+      });
+
+      resizeObserver.observe(elRef.current);
+
+      return () => resizeObserver.disconnect();
+    }
+  }, [pageLoaded, width, height]);
+
+  useEffect(() => {
+    if (pageLoaded && !height) {
+      const resizeObserver = new ResizeObserver(entries => {
+        const { height } = entries[0].contentRect;
+
+        documentRef.style.height = measure(height, 'px');
+      });
+
+      resizeObserver.observe(pageRef.firstChild);
+
+      return () => resizeObserver.disconnect();
+    }
+  }, [pageLoaded, height]);
+};

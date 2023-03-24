@@ -4,13 +4,19 @@ import { DefaultStyles, Font, Size } from './use-quill-library';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
+  const { toolbarPosition, borderWidth, borderColor, borderStyle, showTooltips } = component;
   const {
-    linkInsertButton, imageInsertButton, videoInsertButton, toolbarPosition,
-    borderWidth, borderColor, borderStyle, showTooltips,
+    linkInsertButton, imageInsertButton, videoInsertButton, fontStyleButtons, historyButtons, alignmentButtons,
+    fontSelect, fontSizeSelect, textColorPicker, backgroundColorPicker, clearFormattingButton, textDirectionButton,
+    listButtons, scriptButtons, textBlockButtons, headingButtons,
   } = component;
 
+  const optionsVisibility = linkInsertButton || imageInsertButton || videoInsertButton || fontStyleButtons ||
+    historyButtons || alignmentButtons || fontSelect || fontSizeSelect || textColorPicker || backgroundColorPicker ||
+    clearFormattingButton || textDirectionButton || listButtons || scriptButtons || textBlockButtons || headingButtons;
+
   const styles = {
-    display          : toolbarVisibility ? 'block' : 'none',
+    display          : toolbarVisibility && optionsVisibility ? 'block' : 'none',
     borderBottomWidth: toolbarPosition === 'top' ? ensureMeasure(borderWidth) : '0',
     borderTopWidth   : toolbarPosition === 'bottom' ? ensureMeasure(borderWidth) : '0',
     order            : toolbarPosition === 'bottom' ? '2' : '0',
@@ -24,24 +30,47 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
       id="toolbar-container"
       className={ cn({ 'active-tooltips': showTooltips }) }
       style={ styles }>
-      <InlineFormattingButtons/>
-      <span className="ql-formats">
-        <Button className="ql-undo material-icons-round" label="undo"/>
-        <Button className="ql-redo material-icons-round" label="redo"/>
-      </span>
-      <FontSelect/>
-      <SizeSelect/>
-      <span className="ql-formats">
-        <select className="ql-color"></select>
-        <select className="ql-background"></select>
-      </span>
-      <AlignButtons/>
+      { fontStyleButtons && <InlineFormattingButtons/> }
+
+      { historyButtons && (
+        <span className="ql-formats">
+          <Button className="ql-undo material-icons-round" label="undo"/>
+          <Button className="ql-redo material-icons-round" label="redo"/>
+        </span>
+      ) }
+
+      { fontSelect && <FontSelect/> }
+      { fontSizeSelect && <SizeSelect/> }
+
+      { (textColorPicker || backgroundColorPicker) && (
+        <span className="ql-formats">
+          { textColorPicker && (
+            <select className="ql-color"></select>
+          ) }
+          { backgroundColorPicker && (
+            <select className="ql-background"></select>
+          ) }
+        </span>
+      ) }
+
+      { alignmentButtons && <AlignButtons/> }
       <EmbedsButtons
         linkInsertButton={ linkInsertButton }
         imageInsertButton={ imageInsertButton }
         videoInsertButton={ videoInsertButton }
       />
-      <AdditionalFormattingButtons/>
+      <AdditionalFormattingButtons component={ component }/>
+
+      { (textDirectionButton || clearFormattingButton) && (
+        <span className="ql-formats">
+          { textDirectionButton && (
+            <Button className="ql-direction" value="rtl"/>
+          ) }
+          { clearFormattingButton && (
+            <Button className="ql-clean"/>
+          ) }
+        </span>
+      ) }
     </div>
   );
 }
@@ -106,16 +135,41 @@ const EmbedsButtons = React.memo(({ linkInsertButton, imageInsertButton, videoIn
   );
 });
 
-const AdditionalFormattingButtons = React.memo(() => (
-  <span>
-    { additionalFormats.map((button, index) => (
-      <span className="ql-formats" key={ index }>
-        <Button className={ button[0].className } value={ button[0].value }/>
-        <Button className={ button[1].className } value={ button[1].value }/>
-      </span>
-    )) }
-  </span>
-));
+const AdditionalFormattingButtons = React.memo(({ component }) => {
+  const { listButtons, scriptButtons, textBlockButtons, headingButtons } = component;
+
+  const visibility = listButtons || scriptButtons || textBlockButtons || headingButtons;
+
+  const buttonGroupsVisibility = {
+    list     : listButtons,
+    header   : headingButtons,
+    textBlock: textBlockButtons,
+    script   : scriptButtons,
+  };
+
+  if (!visibility) {
+    return null;
+  }
+
+  return (
+    <span>
+      { additionalFormats.map((button, index) => {
+        const visibility = buttonGroupsVisibility[button[0].group];
+
+        if (!visibility) {
+          return null;
+        }
+
+        return (
+          <span className="ql-formats" key={ index }>
+            <Button className={ button[0].className } value={ button[0].value }/>
+            <Button className={ button[1].className } value={ button[1].value }/>
+          </span>
+        );
+      }) }
+    </span>
+  );
+});
 
 const inlineFormattingClasses = ['ql-bold', 'ql-italic', 'ql-underline', 'ql-strike'];
 
@@ -123,23 +177,19 @@ const alignValues = ['', 'center', 'right', 'justify'];
 
 const additionalFormats = [
   [
-    { className: 'ql-list', value: 'ordered' },
-    { className: 'ql-list', value: 'bullet' },
+    { className: 'ql-list', value: 'ordered', group: 'list' },
+    { className: 'ql-list', value: 'bullet', group: 'list' },
   ],
   [
-    { className: 'ql-header', value: '1' },
-    { className: 'ql-header', value: '2' },
+    { className: 'ql-header', value: '1', group: 'header' },
+    { className: 'ql-header', value: '2', group: 'header' },
   ],
   [
-    { className: 'ql-blockquote' },
-    { className: 'ql-code' },
+    { className: 'ql-blockquote', group: 'textBlock' },
+    { className: 'ql-code', group: 'textBlock' },
   ],
   [
-    { className: 'ql-script', value: 'sub' },
-    { className: 'ql-script', value: 'super' },
-  ],
-  [
-    { className: 'ql-direction', value: 'rtl' },
-    { className: 'ql-clean' },
+    { className: 'ql-script', value: 'sub', group: 'script' },
+    { className: 'ql-script', value: 'super', group: 'script' },
   ],
 ];

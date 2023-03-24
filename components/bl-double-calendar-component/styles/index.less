@@ -3,6 +3,12 @@
 @bl-customComponent-doubleCalendar-info-width: 100%;
 @bl-customComponent-doubleCalendar-info-color: #000000;
 @bl-customComponent-doubleCalendar-info-backgroundColor: #FFFFFF;
+@bl-customComponent-doubleCalendar-info-borderColor: #aeaeae;
+
+@bl-customComponent-doubleCalendar-disabled-opacity: 0.38;
+@bl-customComponent-doubleCalendar-disabled-cursor: default;
+
+@bl-customComponent-doubleCalendar-infoButtonReset--disabled-cursor: default;
 
 .bl-customComponent-doubleCalendar {
   display: flex;
@@ -11,7 +17,13 @@
   max-width: 496px;
   width: 100%;
 
-  .info {
+  &--disabled {
+    opacity: @bl-customComponent-doubleCalendar-disabled-opacity;
+    pointer-events: none;
+    cursor: @bl-customComponent-doubleCalendar-disabled-cursor;
+  }
+
+  .header {
     display: flex;
     justify-content: space-between;
     width: @bl-customComponent-doubleCalendar-info-width;
@@ -19,16 +31,24 @@
     color: @bl-customComponent-doubleCalendar-info-color;
     padding: 5px 10px;
     margin-bottom: 10px;
+    border: 1px solid @bl-customComponent-doubleCalendar-info-borderColor;
     border-radius: 5px;
     box-sizing: border-box;
 
-    &__days-amount {
+    &__info {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
+      width: 70%;
+
+      &-days-amount {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+      }
     }
 
     &__button-reset {
@@ -36,12 +56,17 @@
       background-color: #0f0f0f20;
       border-radius: 3px;
       padding: 7px 20px;
+      margin-left: auto;
       border: none;
       text-transform: uppercase;
       letter-spacing: 0.7px;
       cursor: pointer;
 
-      &:hover {
+      &--disabled {
+        cursor: @bl-customComponent-doubleCalendar-infoButtonReset--disabled-cursor;
+      }
+
+      &:not(.header__button-reset--disabled):hover {
         background-color: #0f0f0f30;
         transform: scale(1.1);
         transition: background-color .3s transform .3s;

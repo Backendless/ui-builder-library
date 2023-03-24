@@ -1,0 +1,329 @@
+{
+  "id": "c_4db3fbbb5146ec1582af3ebe421be6bc",
+  "name": "Barcode",
+  "description": "This is a component for generating a barcode.",
+  "showInToolbox": true,
+  "faIcon": "barcode",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "format",
+      "label": "Format",
+      "showInSettings": true,
+      "defaultValue": "CODE128",
+      "hasLogicHandler": false,
+      "handlerId": "formatLogic",
+      "options": [
+        {
+          "value": "CODE128",
+          "label": "CODE128"
+        },
+        {
+          "value": "EAN13",
+          "label": "EAN13"
+        },
+        {
+          "value": "EAN8",
+          "label": "EAN8"
+        },
+        {
+          "value": "EAN5",
+          "label": "EAN5"
+        },
+        {
+          "value": "EAN2",
+          "label": "EAN2"
+        },
+        {
+          "value": "UPC",
+          "label": "UPC"
+        },
+        {
+          "value": "CODE39",
+          "label": "CODE39"
+        },
+        {
+          "value": "ITF14",
+          "label": "ITF14"
+        },
+        {
+          "value": "MSI",
+          "label": "MSI"
+        },
+        {
+          "value": "MSI10",
+          "label": "MSI10"
+        },
+        {
+          "value": "MSI11",
+          "label": "MSI11"
+        },
+        {
+          "value": "MSI1010",
+          "label": "MSI1010"
+        },
+        {
+          "value": "MSI1110",
+          "label": "MSI1110"
+        },
+        {
+          "value": "pharmacode",
+          "label": "Pharmacode"
+        },
+        {
+          "value": "codabar",
+          "label": "Codabar"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "value",
+      "label": "Value",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "valueLogic",
+      "handlerLabel": "Value Logic",
+      "handlerDescription": "This handler can contain logic to determine the source Data for the Barcode.",
+      "defaultValue": "Example 1234",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "valueVisibility",
+      "label": "Value Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "valueVisibilityLogic"
+    },
+    {
+      "type": "color",
+      "name": "lineColor",
+      "label": "Line Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "lineColorLogic",
+      "defaultValue": "#000000"
+    },
+    {
+      "type": "color",
+      "name": "background",
+      "label": "Background",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "backgroundLogic",
+      "defaultValue": "#ffffff",
+      "handlerLabel": "Background Logic",
+      "handlerDescription": "This is a handler for the logic to determine the background of the barcode."
+    },
+    {
+      "type": "range",
+      "name": "barWidth",
+      "label": "Bar Width",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": false,
+      "handlerId": "barWidthLogic",
+      "min": "1",
+      "max": "4",
+      "step": "1"
+    },
+    {
+      "type": "range",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "80",
+      "hasLogicHandler": false,
+      "handlerId": "heightLogic",
+      "min": "10",
+      "max": "150",
+      "step": "5"
+    },
+    {
+      "type": "range",
+      "name": "margin",
+      "label": "Margin",
+      "showInSettings": true,
+      "defaultValue": "10",
+      "hasLogicHandler": false,
+      "handlerId": "marginLogic",
+      "min": "0",
+      "max": "25",
+      "step": "1"
+    },
+    {
+      "type": "select",
+      "name": "font",
+      "label": "Font",
+      "showInSettings": true,
+      "defaultValue": "monospace",
+      "hasLogicHandler": false,
+      "handlerId": "fontLogic",
+      "options": [
+        {
+          "value": "monospace",
+          "label": "Monospace"
+        },
+        {
+          "value": "sans-serif",
+          "label": "Sans-serif"
+        },
+        {
+          "value": "serif",
+          "label": "Serif"
+        },
+        {
+          "value": "fantasy",
+          "label": "Fantasy"
+        },
+        {
+          "value": "cursive",
+          "label": "Cursive"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "name": "fontSize",
+      "label": "Font Size",
+      "showInSettings": true,
+      "defaultValue": "20",
+      "hasLogicHandler": false,
+      "handlerId": "fontSizeLogic",
+      "min": "8",
+      "max": "36",
+      "step": "1"
+    },
+    {
+      "type": "select",
+      "name": "fontOptions",
+      "label": "Font Options",
+      "showInSettings": true,
+      "defaultValue": "unset",
+      "hasLogicHandler": false,
+      "handlerId": "fontOptionsLogic",
+      "options": [
+        {
+          "value": "unset",
+          "label": "Unset"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        },
+        {
+          "value": "italic",
+          "label": "Italic"
+        },
+        {
+          "value": "boldItalic",
+          "label": "Bold & Italic"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "label": "Label",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "labelLogic",
+      "handlerLabel": "Label Logic",
+      "handlerDescription": "This is a handler for the logic to determine the label to be displayed instead of a value."
+    },
+    {
+      "type": "select",
+      "name": "labelAlign",
+      "label": "Label Align",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": false,
+      "handlerId": "labelAlignLogic",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "labelPosition",
+      "label": "Label Position",
+      "showInSettings": true,
+      "defaultValue": "bottom",
+      "hasLogicHandler": false,
+      "handlerId": "labelPositionLogic",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "name": "labelMargin",
+      "label": "Label Margin",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "labelMarginLogic",
+      "min": "-15",
+      "max": "40",
+      "step": "1"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click Event",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the barcode."
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ],
+      "handlerDescription": "This event is fired when the mouse pointer hovers over the barcode."
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ],
+      "handlerDescription": "This event is fired when the mouse pointer leaves the barcode boundaries."
+    }
+  ]
+}

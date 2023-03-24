@@ -14,9 +14,9 @@ Modal is a component of Backendless UI-Builder designer. This component allows y
 
 ## Events
 
-| Name              | Triggers                                                             | Context Blocks                                               |
-|-------------------|----------------------------------------------------------------------|--------------------------------------------------------------|
-| On Close Event    | triggered when the user clicks on the backdrop or Escape button      | Visibility: `false`                                          |
+| Name              | Triggers                                                             | Context Blocks                           |
+|-------------------|----------------------------------------------------------------------|------------------------------------------|
+| On Close Event    | triggered when the user clicks on the backdrop or Escape button      |                                          |
 
 ## Actions
 

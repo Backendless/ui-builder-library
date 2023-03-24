@@ -184,13 +184,11 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
 };
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
-  map.onLoad(() => {
-    polygonsArray.forEach(polygon => {
-      if (mapRef.current.getSource(polygon)) {
-        map.removeLayer(`${ polygon.id }-layer`);
-        map.removeSource(polygon.id);
-      }
-    });
+  polygonsArray.forEach(polygon => {
+    if (mapRef.current.getSource(polygon.id)) {
+      map.removeLayer(`${ polygon.id }-layer`);
+      map.removeSource(polygon.id);
+    }
   });
 
   setPolygonsArray(preparePolygons(polygons));
@@ -220,45 +218,43 @@ const createPopup = (polygon, mapRef, onPolygonClick, map) => {
 };
 
 const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
-  map.onLoad(() => {
-    polygonsArray.forEach(polygon => {
-      const { id, coordinates, color, opacity } = polygon;
+  polygonsArray.forEach(polygon => {
+    const { id, coordinates, color, opacity } = polygon;
 
-      map.addSource(id, {
-        type: 'geojson',
-        data: {
-          type    : 'Feature',
-          geometry: {
-            type       : 'Polygon',
-            coordinates: [coordinates],
-          },
+    map.addSource(id, {
+      type: 'geojson',
+      data: {
+        type    : 'Feature',
+        geometry: {
+          type       : 'Polygon',
+          coordinates: [coordinates],
         },
-      });
-
-      map.addLayer({
-        id    : `${ id }-layer`,
-        type  : 'fill',
-        source: id,
-        layout: {},
-        paint : {
-          'fill-color'  : color,
-          'fill-opacity': opacity,
-        },
-      });
-
-      createPopup(polygon, mapRef, onPolygonClick, map);
+      },
     });
+
+    map.addLayer({
+      id    : `${ id }-layer`,
+      type  : 'fill',
+      source: id,
+      layout: {},
+      paint : {
+        'fill-color'  : color,
+        'fill-opacity': opacity,
+      },
+    });
+
+    createPopup(polygon, mapRef, onPolygonClick, map);
   });
 };
 
-export const usePolygons = (polygons, mapRef, onPolygonClick, map) => {
+export const usePolygons = (polygons, mapRef, onPolygonClick, map, isMapLoaded) => {
   const [polygonsArray, setPolygonsArray] = useState([]);
 
   useEffect(() => {
-    if (polygons?.length && mapRef.current) {
+    if (polygons?.length && isMapLoaded) {
       updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray, map);
     }
-  }, [polygons]);
+  }, [polygons, isMapLoaded]);
 
   useEffect(() => {
     addPolygons(mapRef, polygonsArray, onPolygonClick, map);

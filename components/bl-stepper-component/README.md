@@ -10,11 +10,11 @@ The component based on external [stepper](https://mui.com/material-ui/react-step
 
 ## Properties
 
-| Property    | Type                                            | Default Value | Logic             | Data Binding | UI Setting | Description                                   |
-|-------------|-------------------------------------------------|---------------|-------------------|--------------|------------|-----------------------------------------------|
-| stepList    | Text                                            |               | Step List Logic   | NO           | YES        | Allows to determine the list of steps         |
-| countSteps  | Number                                          | 2             | Count Steps Logic | YES          | YES        | Allows to determine the count steps           |
-| stepperType | Select [`root`,`alternativeLabel`,`customized`] | root          |                   | NO           | YES        | Allows to determine the type of stepper style |
+| Property                 | Type                                                                                | Default Value | Logic             | Data Binding | UI Setting | Description                                   |
+|--------------------------|-------------------------------------------------------------------------------------|---------------|-------------------|--------------|------------|-----------------------------------------------|
+| List of Steps:`stepList` | Text                                                                                |               | Step List Logic   | YES          | YES        | Allows to determine the list of steps         |
+| Count Steps:`countSteps` | Number                                                                              | 2             | Count Steps Logic | YES          | YES        | Allows to determine the count steps           |
+| Style:`stepperType`      | Select [Root:`root`, Alternative Label:`alternativeLabel`, Customized:`customized`] | root          |                   | NO           | YES        | Allows to determine the type of stepper style |
 
 ## Events
 
@@ -24,12 +24,13 @@ The component based on external [stepper](https://mui.com/material-ui/react-step
 
 ## Actions
 
-| Action                         | Inputs        | Returns |
-|--------------------------------|---------------|---------|
-| Go to Next Step in Stepper     |               |         |
-| Go to Previous Step in Stepper |               |         |
-| Reset Current Step for Stepper |               |         |
-| Set Step for Stepper           | step:`Number` |         |
+| Action                         | Inputs        | Returns              |
+|--------------------------------|---------------|----------------------|
+| Go to Next Step in Stepper     |               |                      |
+| Go to Previous Step in Stepper |               |                      |
+| Reset Current Step for Stepper |               |                      |
+| Set Step for Stepper           | step:`Number` |                      |
+| Get Current Step               |               | currentStep:`Number` |
 
 ## Styles
 

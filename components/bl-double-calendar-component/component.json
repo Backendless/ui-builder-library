@@ -71,58 +71,58 @@
       "dataBinding": true
     },
     {
-      "type": "select",
-      "name": "dateFormat",
-      "label": "Date Format",
-      "settingTooltip": "From Date and To Date must be specified as specified in the Date Format handler",
+      "type": "checkbox",
+      "name": "daysAmountVisibility",
+      "label": "Days Amount Visibility",
       "showInSettings": true,
-      "defaultValue": "yyyy/MM/dd",
+      "defaultValue": true,
       "hasLogicHandler": true,
-      "handlerId": "dateFormatLogic",
-      "handlerLabel": "Date Format Logic",
-      "handlerDescription": "This handler allows you to set a custom date format.",
-      "dataBinding": true,
-      "options": [
-        {
-          "value": "dd/MM/yyyy",
-          "label": "DD-MM-YYYY"
-        },
-        {
-          "value": "MM/dd/yyyy",
-          "label": "MM-DD-YYYY"
-        },
-        {
-          "value": "yyyy/MM/dd",
-          "label": "YYYY-MM-DD"
-        },
-        {
-          "value": "yyyy/dd/MM",
-          "label": "YYYY-DD-MM"
-        }
-      ]
+      "handlerId": "daysAmountVisibilityLogic",
+      "handlerLabel": "Days Amount Visibility Logic",
+      "handlerDescription": "This handler allows you to display the amount days in the header."
+    },
+    {
+      "type": "checkbox",
+      "name": "monthDropdownVisibility",
+      "label": "Month Dropdown Visibility",
+      "settingTooltip": "the month dropdown will allow you to quickly select the desired month",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "monthDropdownVisibilityLogic",
+      "handlerLabel": "Month Dropdown Visibility Logic",
+      "handlerDescription": "This handler allows you to add a month dropdown to the component."
+    },
+    {
+      "type": "checkbox",
+      "name": "yearDropdownVisibility",
+      "label": "Year Dropdown Visibility",
+      "settingTooltip": "the year dropdown will allow you to quickly select the desired year",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "yearDropdownVisibilityLogic",
+      "handlerLabel": "Year Dropdown Visibility Logic",
+      "handlerDescription": "This handler allows you to add a year dropdown to the component."
     },
     {
       "type": "text",
       "name": "fromDate",
-      "label": "From Date",
-      "settingTooltip": "This handler allows you to specify a start date. Date format to be specified \"year/month/day\".",
-      "showInSettings": true,
+      "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "fromDateLogic",
       "handlerLabel": "From Date Logic",
-      "handlerDescription": "This handler allows you to specify a start date. Date format to be specified \"year/month/day\".",
+      "handlerDescription": "This handler allows you to specify a start date.",
       "dataBinding": true
     },
     {
       "type": "text",
       "name": "toDate",
-      "label": "To Date",
-      "settingTooltip": "This handler allows you to specify an end date. Date format to be specified \"year/month/day\".",
-      "showInSettings": true,
+      "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "toDateLogic",
       "handlerLabel": "To Date Logic",
-      "handlerDescription": "This handler allows you to specify an end date. Date format to be specified \"year/month/day\".",
+      "handlerDescription": "This handler allows you to specify an end date.",
       "dataBinding": true
     }
   ],
@@ -228,12 +228,12 @@
       "color": "#983b22",
       "inputs": [
         {
-          "label": "To Date",
-          "id": "toDate"
-        },
-        {
           "id": "fromDate",
           "label": "From Date"
+        },
+        {
+          "id": "toDate",
+          "label": "To Date"
         }
       ]
     },

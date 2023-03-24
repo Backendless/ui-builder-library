@@ -2,122 +2,127 @@ import { useState, useEffect } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
+import { Header } from './header';
+
+import { useActions, differenceInDays, differenceInTime } from './helpers';
+
 export function DateRange(props) {
   const {
-    fromDate, toDate, dateFormat, headerVisibility, component, onStartDateChange, onEndDateChange, onDateReset
+    fromDate, toDate, headerVisibility, daysAmountVisibility, monthDropdownVisibility,
+    yearDropdownVisibility, component, onStartDateChange, onEndDateChange, onDateReset
   } = props;
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   const daysAmount = differenceInDays(startDate, endDate);
+  const resetButtonDisabled = daysAmount === 1;
 
-  useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate });
+  useActions({ component, startDate, endDate, daysAmount, setStartDate, setEndDate });
 
   useEffect(() => {
     if (!fromDate) {
-      console.error("From Date is not provided!")
+      console.warn("From Date is not provided!");
+
+      setStartDate(new Date());
     }
 
-    setStartDate(new Date(fromDate || 0));
+    const fromDateObject = new Date(fromDate);
+    const toDateObject = new Date(toDate);
+    const diffInTime = differenceInTime(fromDateObject, toDateObject);
+
+    if (diffInTime > 0) {
+      setStartDate(fromDateObject);
+    }
+
+    if (diffInTime <= 0) {
+      console.warn("From Date is not valid!");
+
+      setStartDate(new Date());
+    }
   }, [fromDate]);
 
   useEffect(() => {
     if (!toDate) {
-      console.error("To Date is not provided!")
+      console.warn("To Date is not provided!");
+
+      setEndDate(new Date());
     }
 
-    setEndDate(new Date(toDate || 0));
+    const toDateObject = new Date(toDate);
+    const fromDateObject = new Date(fromDate);
+    const diffInTime = differenceInTime(fromDateObject, toDateObject);
+
+    if (diffInTime > 0) {
+      setEndDate(toDateObject);
+    }
+
+    if (diffInTime <= 0) {
+      console.warn("To Date is not valid!");
+
+      setEndDate(new Date());
+    }
   }, [toDate]);
 
   const handleStartDateChange = date => {
     setStartDate(date);
-
-    if (onStartDateChange) {
-      onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
-    }
+    onStartDateChange({ startDate: date, daysAmount: differenceInDays(date, endDate) });
   };
 
   const handleEndDateChange = date => {
     setEndDate(date);
-
-    if (onEndDateChange) {
-      onEndDateChange({ endDate: date, daysAmount: differenceInDays(startDate, date) });
-    }
+    onEndDateChange({ endDate: date, daysAmount: differenceInDays(startDate, date) });
   };
 
   const handleReset = () => {
-    setEndDate(null);
+    const now = new Date();
 
-    // this is needed to display the current month in the calendar after the reset without selecting the current day
-    setStartDate(new Date());
-    setTimeout(() => setStartDate(null), 1);
+    setStartDate(now);
+    setEndDate(now);
 
-    if (onDateReset) {
-      onDateReset();
-    }
+    onDateReset();
   };
 
   return (
     <>
       { headerVisibility &&
-        <div className="info">
-          <span className="info__days-amount">Days amount: { daysAmount }</span>
-          <button onClick={ handleReset } className="info__button-reset">Reset</button>
-        </div>
+        <Header
+          startDate={ startDate }
+          endDate={ endDate }
+          daysAmount={ daysAmount }
+          daysAmountVisibility={ daysAmountVisibility }
+          resetButtonDisabled={ resetButtonDisabled }
+          handleReset={ handleReset }
+        />
       }
       <div className="date-picker">
         <DatePicker
           inline
-          selectsStart
+          scrollableYearDropdown
+          scrollableMonthDropdown
           endDate={ endDate }
           selected={ startDate }
           startDate={ startDate }
-          dateFormat={ dateFormat }
+          yearDropdownItemNumber={ 50 }
+          showYearDropdown={ yearDropdownVisibility }
+          showMonthDropdown={ monthDropdownVisibility }
+          maxDate={ endDate }
           onChange={ handleStartDateChange }
         />
         <DatePicker
           inline
-          selectsEnd
+          scrollableYearDropdown
+          scrollableMonthDropdown
           endDate={ endDate }
           selected={ endDate }
           minDate={ startDate }
           startDate={ startDate }
-          dateFormat={ dateFormat }
+          yearDropdownItemNumber={ 50 }
+          showYearDropdown={ yearDropdownVisibility }
+          showMonthDropdown={ monthDropdownVisibility }
           onChange={ handleEndDateChange }
         />
       </div>
     </>
   );
-}
-
-const ONE_DAY = 86400000;
-
-function useActions({ component, fromDate, toDate, startDate, endDate, daysAmount, setStartDate, setEndDate }) {
-  Object.assign(component, {
-    getFromDate     : () => startDate,
-    setFromDate     : fromDate => setStartDate(new Date(fromDate)),
-    getToDate       : () => endDate,
-    setToDate       : toDate => setEndDate(new Date(toDate)),
-    getFromAndToDate: () => ({ fromDate: startDate, toDate: endDate }),
-    setFromAndToDate: (fromDate, toDate) => {
-      setStartDate(new Date(fromDate));
-      setEndDate(new Date(toDate));
-    },
-    getDaysAmount   : () => daysAmount,
-    resetDate       : () => {
-      setStartDate(new Date());
-      setEndDate(new Date());
-    }
-  })
-}
-
-function differenceInDays(start, end) {
-  if (!start || !end) {
-    return 0;
-  }
-
-  const diffInTime = end.getTime() - start.getTime();
-
-  return Math.round(diffInTime / ONE_DAY) + 1;
 }

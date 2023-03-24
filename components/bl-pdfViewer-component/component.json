@@ -20,27 +20,6 @@
       "handlerDescription": "This is the handler for the logic to determine the PDF URL."
     },
     {
-      "type": "select",
-      "name": "renderType",
-      "label": "Render Type",
-      "showInSettings": true,
-      "defaultValue": "canvas",
-      "hasLogicHandler": true,
-      "handlerId": "renderTypeLogic",
-      "handlerLabel": "Render Type Logic",
-      "options": [
-        {
-          "value": "canvas",
-          "label": "Canvas"
-        },
-        {
-          "value": "svg",
-          "label": "Svg"
-        }
-      ],
-      "handlerDescription": "This is the handler for the logic to determine the type of render."
-    },
-    {
       "type": "text",
       "name": "width",
       "label": "Width",

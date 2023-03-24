@@ -83,24 +83,32 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
   const { placeholder, readOnly, content, scrollingContainer } = component;
 
   const editorRef = useRef(null);
+  const contentRef = useRef(null);
 
   useEffect(() => {
     editorRef.current = new Quill(quillRef.current, {
-      bounds     : quillRef.current,
-      modules    : {
+      bounds : quillRef.current,
+      modules: {
         toolbar: {
           container: toolbarRef.current,
           handlers : { undo, redo },
         },
       },
-      theme      : 'snow',
+      theme  : 'snow',
       scrollingContainer,
       placeholder,
       readOnly,
     });
 
     editorRef.current.on('text-change', () => {
-      setTimeout(() => component.content = editorRef.current.root.innerHTML);
+      const innerHtml = editorRef.current.root.innerHTML;
+
+      if (innerHtml === contentRef.current) {
+        return;
+      }
+
+      contentRef.current = editorRef.current.root.innerHTML;
+      component.content = contentRef.current;
       onTextChange();
     });
   }, [scrollingContainer]);
@@ -112,7 +120,7 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
       return;
     }
 
-    editorRef.current.root.innerHTML = content;
+    insertHTML(editorRef.current, content);
   }, [content]);
 
   useEffect(() => {
@@ -123,6 +131,12 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
   const redo = () => editorRef.current.history.redo();
 
   return editorRef;
+}
+
+export function insertHTML(editor, content) {
+  const delta = editor.clipboard.convert(content);
+
+  editor.setContents(delta);
 }
 
 function addInlineStyles(block, styles) {

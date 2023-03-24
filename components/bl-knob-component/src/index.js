@@ -9,7 +9,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function KnobComponent({ component, eventHandlers }) {
   const {
     initialValue, readOnly, disabled, maxValue, minValue, step, dial, valueTemplate, size, valueColor, rangeColor,
-    display, classList, setValue, setReadOnly, setDisabled, style
+    display, classList, setValue, setReadOnly, setDisabled, style, getValue,
   } = component;
   const { onChange } = eventHandlers;
 
@@ -37,8 +37,13 @@ export default function KnobComponent({ component, eventHandlers }) {
     }
   }, [initialValue]);
 
+  useEffect(() => {
+    setKnobValue(ensureRange(knobValue, minValue, maxValue));
+  }, [knobValue, minValue, maxValue]);
+
   Object.assign(component, {
     setValue   : value => setKnobValue(value),
+    getValue   : () => knobValue,
     setReadOnly: readOnly => setKnobReadOnly(readOnly),
     setDisabled: disabled => setKnobDisabled(disabled),
   });
@@ -78,7 +83,9 @@ const validateTemplate = template => {
     return template;
   }
 
-  console.error(`Invalid template pattern: ${template}.`);
+  console.error(`Invalid template pattern: ${ template }.`);
 
   return '{value}';
 };
+
+const ensureRange = (v, min, max) => Math.max(min, Math.min(v, max));

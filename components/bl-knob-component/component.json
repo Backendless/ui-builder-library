@@ -156,7 +156,7 @@
   "actions": [
     {
       "id": "setValue",
-      "label": "Set Value",
+      "label": "Set Value to",
       "inputs": [
         {
           "id": "value",
@@ -165,8 +165,13 @@
       ]
     },
     {
+      "id": "getValue",
+      "label": "Get Value from",
+      "hasReturn": true
+    },
+    {
       "id": "setReadOnly",
-      "label": "Set Read Only",
+      "label": "Set Read Only to",
       "inputs": [
         {
           "id": "readOnly",
@@ -176,7 +181,7 @@
     },
     {
       "id": "setDisabled",
-      "label": "Set Disabled",
+      "label": "Set Disabled to",
       "inputs": [
         {
           "id": "disabled",
