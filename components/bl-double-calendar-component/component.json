@@ -48,13 +48,11 @@
     {
       "type": "text",
       "name": "selectedDate",
-      "label": "Selected Date",
-      "settingTooltip": "This handler allows you to specify the default selected date. Date format to be specified \"year/month/day\".",
-      "showInSettings": true,
+      "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "selectedDateLogic",
       "handlerLabel": "Selected Date Logic",
-      "handlerDescription": "This handler allows you to specify the default selected date. Date format to be specified \"year/month/day\".",
+      "handlerDescription": "This handler allows you to specify the default selected date.",
       "dataBinding": true
     },
     {

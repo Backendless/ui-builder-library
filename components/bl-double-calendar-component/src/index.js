@@ -22,7 +22,6 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
       }>
       { specificDateRange ?
         <SpecificDateRange
-          dateFormat={ dateFormat }
           selectionRange={ selectionRange }
           defaultSelectedDate={ selectedDate }
           onDateSelect={ onDateSelect }
