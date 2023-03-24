@@ -43,6 +43,6 @@ function normalizePropertyValue(value, allowedSuffixes, defaultSuffix) {
   }
 }
 
-function normalizeDimenstionProperty(value) {
+function normalizeDimensionValue(value) {
   return normalizePropertyValue(value, ['px', 'rem', 'em', '%', 'cm', 'mm', 'in', 'pt', 'pc', 'vh', 'vw', 'ch', 'vmin', 'vmax'], 'px');
 }
