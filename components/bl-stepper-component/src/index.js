@@ -43,9 +43,9 @@ export default function Stepper({ component, eventHandlers }) {
   };
 
   component.setStep = nextStep => {
-    if (inRange(nextStep, steps.length + 1)) {
+    if (inRange(nextStep, steps)) {
       setCurrentStep(nextStep - 1);
-      setSteps(steps => getCompletedSteps(steps, nextStep));
+      setSteps(steps => updateCompletedSteps(steps, nextStep));
     } else {
       console.error(
         `Invalid step "${ nextStep }". Please, choose the step in range ${ 1 } - ${ steps.length + 1 }`
@@ -75,12 +75,10 @@ export default function Stepper({ component, eventHandlers }) {
   );
 }
 
-const inRange = (nextStep, countSteps) => nextStep <= countSteps && nextStep > 0;
+const inRange = (nextStep, steps) => nextStep <= steps.length + 1 && nextStep > 0;
 
-const getCompletedSteps = (steps, nextStep) => (
-  steps.map((step, index) => {
-    const completed = index < nextStep - 1;
+const updateCompletedSteps = (steps, nextStep) => steps.map((step, index) => {
+  const completed = index < nextStep - 1;
 
-    return { ...step, completed };
-  })
-);
+  return { ...step, completed };
+});
