@@ -77,7 +77,7 @@ export function ModalButtons(props) {
     <div className="simple-modal__button-container">
       <button
         type="button"
-        className="simple-modal__button"
+        className="simple-modal__button close-button"
         onClick={ onClose }
       >
         { closeButtonLabel }
@@ -86,7 +86,7 @@ export function ModalButtons(props) {
       { (type === modalTypes.prompt || type === modalTypes.confirm) && (
         <button
           type="button"
-          className="simple-modal__button"
+          className="simple-modal__button submit-button"
           onClick={ onSubmitHandler }
         >
           { submitButtonLabel }
