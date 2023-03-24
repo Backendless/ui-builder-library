@@ -122,7 +122,8 @@
       "handlerLabel": "Data Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to add data to the component.",
-      "settingTooltip": "This handler allows you to add data to the component."
+      "settingTooltip": "This handler allows you to add data to the component.",
+      "defaultValue": "[\n  {\n    \"label\": \"Europe\",\n    \"value\": null,\n    \"parent\": null\n  },\n  {\n    \"label\": \"Asia\",\n    \"value\": null,\n    \"parent\": null\n  },\n  {\n    \"label\": \"Germany\",\n    \"value\": 357588,\n    \"parent\": \"Europe\"\n  },\n  {\n    \"label\": \"France\",\n    \"value\": 551695,\n    \"parent\": \"Europe\"\n  },\n  {\n    \"label\": \"Vietnam\",\n    \"value\": 331690 ,\n    \"parent\": \"Asia\"\n  },\n  {\n    \"label\": \"Japan\",\n    \"value\": 377973,\n    \"parent\": \"Asia\"\n  }\n]"
     }
   ]
 }
