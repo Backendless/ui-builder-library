@@ -43,7 +43,7 @@ export default function Stepper({ component, eventHandlers }) {
   };
 
   component.setStep = nextStep => {
-    if (inRange(nextStep, steps)) {
+    if (steps.length + 1 >=  nextStep > 0) {
       setCurrentStep(nextStep - 1);
       setSteps(steps => updateCompletedSteps(steps, nextStep));
     } else {
@@ -74,8 +74,6 @@ export default function Stepper({ component, eventHandlers }) {
     </div>
   );
 }
-
-const inRange = (nextStep, steps) => nextStep <= steps.length + 1 && nextStep > 0;
 
 const updateCompletedSteps = (steps, nextStep) => steps.map((step, index) => {
   const completed = index < nextStep - 1;
