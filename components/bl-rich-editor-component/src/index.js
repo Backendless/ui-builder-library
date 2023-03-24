@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 
 import { Toolbar } from './toolbar';
-import { useQuillLibrary } from './use-quill-library';
+import { insertHTML, useQuillLibrary } from './use-quill-library';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -66,7 +66,7 @@ function useComponentActions(component, editorRef) {
     getText     : (index, length) => editorRef.current.getText(index, length),
     setText     : text => editorRef.current.setText(text),
     getHTML     : () => editorRef.current.root.innerHTML,
-    setHTML     : content => editorRef.current.root.innerHTML = content,
+    setHTML     : content => insertHTML(editorRef.current, content),
     getLength   : () => editorRef.current.getLength(),
     deleteText  : (index = 0, length) => editorRef.current.deleteText(index, length),
     format      : (property, value) => editorRef.current.format(property, value),
