@@ -10,19 +10,19 @@ The component based on external [Mention](https://www.primefaces.org/primereact/
 
 ## Properties
 
-| Property       | Type       | Default Value               | Logic             | Data Binding | UI Setting | Description                                                                                                                                                                              |
-|----------------|------------|-----------------------------|-------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Trigger        | *Text*     | '@'                         | Trigger Logic     | YES          | YES        | It is a handler to set trigger keywords.                                                                                                                                                 |
+| Property       | Type       | Default Value               | Logic             | Data Binding | UI Setting | Description                                                                                                                                                                                       |
+|----------------|------------|-----------------------------|-------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Trigger        | *Text*     | '@'                         | Trigger Logic     | YES          | YES        | It is a handler to set trigger keywords.                                                                                                                                                          |
 | Suggestions    | *JSON*     |                             | Suggestions Logic | YES          | YES        | It is a handler to set an array of suggestion objects to display. Watch [Codeless Examples](#codeless-examples). Signature of suggestion object: `{trigger, suggestions: [name, nickname, img]}`. |
-| Field          | *Text*     |                             | Field Logic       | YES          | YES        | It is a handler to set a field of a suggested object to resolve and display.                                                                                                             |
-| Scroll Height  | *Text*     | '200px'                     |                   | NO           | YES        | It is a handler to set the maximum height of the suggestions panel.                                                                                                                      |
-| Auto Highlight | *Checkbox* | `true`                      |                   | NO           | YES        | It is a handler to set auto-highlighting. When enabled, it highlights the first item in the list by default.                                                                             |
-| Placeholder    | *Text*     | 'Please enter @ to mention' |                   | NO           | YES        | It is a handler to set a placeholder of the component.                                                                                                                                   |
-| Delay          | *Number*   | 0                           |                   | NO           | YES        | It is a handler to set a delay between keystrokes to wait before sending a query.                                                                                                        |
-| Autoresize     | *Checkbox* | `false`                     |                   | NO           | YES        | It is a handler to allow autoresizing.                                                                                                                                                   |
-| Rows           | *Number*   | 5                           |                   | NO           | YES        | It is a handler to set number of rows of the component.                                                                                                                                  |
-| Cols           | *Number*   | 40                          |                   | NO           | YES        | It is a handler to set number of columns of the component.                                                                                                                               |
-| Hide Filed     | *Text*     |                             | Hide Field Logic  | YES          | YES        | It is a handler to determine which fields will not showed in suggestions.                                                                                                                |
+| Field          | *Text*     |                             | Field Logic       | YES          | YES        | It is a handler to set a field of a suggested object to resolve and display.                                                                                                                      |
+| Scroll Height  | *Text*     | '200px'                     |                   | NO           | YES        | It is a handler to set the maximum height of the suggestions panel.                                                                                                                               |
+| Auto Highlight | *Checkbox* | `true`                      |                   | NO           | YES        | It is a handler to set auto-highlighting. When enabled, it highlights the first item in the list by default.                                                                                      |
+| Placeholder    | *Text*     | 'Please enter @ to mention' |                   | NO           | YES        | It is a handler to set a placeholder of the component.                                                                                                                                            |
+| Delay          | *Number*   | 0                           |                   | NO           | YES        | It is a handler to set a delay between keystrokes to wait before sending a query.                                                                                                                 |
+| Autoresize     | *Checkbox* | `false`                     |                   | NO           | YES        | It is a handler to allow autoresizing.                                                                                                                                                            |
+| Rows           | *Number*   | 5                           |                   | NO           | YES        | It is a handler to set number of rows of the component.                                                                                                                                           |
+| Cols           | *Number*   | 40                          |                   | NO           | YES        | It is a handler to set number of columns of the component.                                                                                                                                        |
+| Hide Filed     | *Text*     |                             | Hide Field Logic  | YES          | YES        | It is a handler to determine which fields will not showed in suggestions.                                                                                                                         |
 
 ## Events
 
@@ -33,7 +33,7 @@ The component based on external [Mention](https://www.primefaces.org/primereact/
 | On Blur Event   | When the element loses focus       |                                    |
 | On Show Event   | When overlay panel becomes visible | Suggestions: `[{suggestion}, ...]` |
 | On Hide Event   | When overlay panel becomes hidden  |                                    |
-| On Search Event | When started suggestions search    |                                    |
+| On Search Event | When started suggestions search    | Search Value: `String`             |
 
 ## Styles
 
@@ -83,17 +83,13 @@ The component based on external [Mention](https://www.primefaces.org/primereact/
 ````
 </details>
 
-###Adding suggestions using backend Data Tables with big data:
-
-For big data tables to optimize searching can be used search with On Search event.
-Create a list of objects `[{trigger, table, items}]`.
-Where `trigger` is a symbol to call `table` objects from the backend, `items` is optional, it is a number of suggestions that be shown(defaults 10).
+###Optimized load of suggestions:
 
 ![onSearch example](./example-images/mention-example-on-search.png)
 
 <details><summary>Codeless example</summary>
 
 ````javascript
-<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="kCx{UJ_Iv$Y#t3vE+mT!" x="242" y="68"><mutation items="2"></mutation><value name="ADD0"><block type="create_object" id="4c2#c//5[%6JX^D,UtVl"><mutation><properties><item id="property" prop-name="table"></item><item id="property" prop-name="trigger"></item><item id="property" prop-name="items"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="BGKEWij?R)VM13n;:S(p"><field name="TEXT">Table1</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="WM@1c8n4-B.nyD9-Sa~|"><field name="TEXT">@</field></block></value><value name="create_object_mutator_container_properties_stack_property2"><block type="text" id="W.g)P[3M`DL!ZA3W[hUO"><field name="TEXT">5</field></block></value></block></value><value name="ADD1"><block type="create_object" id="L#qGcXzf3;(HlYn@NpG^"><mutation><properties><item id="property" prop-name="table"></item><item id="property" prop-name="trigger"></item><item id="property" prop-name="items"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="ddyZ4^-gxs2%=u^`n|oN"><field name="TEXT">Table2</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="cQ3xO8@$f7@vN^/|INe@"><field name="TEXT">#</field></block></value><value name="create_object_mutator_container_properties_stack_property2"><block type="text" id=";Y?_z@rbNrs|H)4fdIP/"><field name="TEXT">2</field></block></value></block></value></block>
+<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="|Bf$+b~)[I!#Pp@Nqvx7" x="230.39999999999986" y="40.31999999999998"><mutation items="1"></mutation><value name="ADD0"><block type="create_object" id="neurkePyHAZ0E)s`)]*e"><mutation><properties><item id="property" prop-name="trigger"></item><item id="property" prop-name="suggestions"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="5+A{W_8C@IkKCuWP|yvT"><field name="TEXT">@</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="get_table_objects" id="6M`UtJ^;:zdWFw(o!^68"><value name="table_name"><shadow type="text" id="ac:H1@TVqm6s+|7rFZ^4"><field name="TEXT">Table</field></shadow></value><value name="having_clause"><block type="text_join" id="?qqm;|lsbj/I]8OkdI%`"><mutation items="3"></mutation><value name="ADD0"><block type="text" id="*jcMoQPo12b2|d0K`9e/"><field name="TEXT">field LIKE '%</field></block></value><value name="ADD1"><block type="root_block_ui_builder_c_9caa572d06d9006e2afa63415a71193c_onSearch_handler_context_blocks_searchValue" id=")OjP_`##P72)#_2vE%?T" bl_meta="{&quot;label&quot;:&quot;Search Value&quot;}"></block></value><value name="ADD2"><block type="text" id="c=[pzKL~/UGrUlSk|qjt"><field name="TEXT">%'</field></block></value></block></value><value name="page_size"><shadow type="math_number" id="}{e#th:f(,.h`Gv^CFDM"><field name="NUM">10</field></shadow></value></block></value></block></value></block>
 ````
 </details>

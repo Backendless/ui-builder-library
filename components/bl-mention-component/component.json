@@ -163,7 +163,12 @@
     {
       "name": "onSearch",
       "label": "On Search Event",
-      "contextBlocks": [],
+      "contextBlocks": [
+        {
+          "id": "searchValue",
+          "label": "Search Value"
+        }
+      ],
       "output": true,
       "handlerDescription": "This event is triggered when started suggestions search."
     }

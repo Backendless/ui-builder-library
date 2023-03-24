@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import primereact from './lib/core';
-import { filterSuggestions, getSuggestions, orderFields, stringToList, useTriggers } from './helpers.js';
+import { filterSuggestions, orderFields, stringToList, useTriggers, updateSuggestionsMap } from './helpers.js';
 import { SuggestionCard } from './suggestion-card.js';
 
 const { Mention } = primereact.mention;
 const { cn } = BackendlessUI.CSSUtils;
-const { __appId: appId, __apiKey: apiKey } = Backendless;
 
 const BLACKLISTED_FIELDS = new Set(['created', '___class', 'ownerId', 'updated', 'objectId']);
 
@@ -21,9 +20,10 @@ export default function MentionComponent({ component, eventHandlers }) {
   const [processedSuggestions, setProcessedSuggestions] = useState([]);
   const triggers = useTriggers(trigger);
   const [blacklistedFields, setBlacklistedFields] = useState(BLACKLISTED_FIELDS);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    suggestions?.forEach(el => setSuggestionsMap(prev => prev.set(el.trigger, el.suggestions)));
+    updateSuggestionsMap(suggestions, setSuggestionsMap);
   }, [suggestions]);
 
   useEffect(() => {
@@ -33,29 +33,24 @@ export default function MentionComponent({ component, eventHandlers }) {
     }
   }, [hideField]);
 
+  useEffect(() => {
+    onSearch({ searchValue })
+      .then(result => updateSuggestionsMap(result, setSuggestionsMap));
+  }, [searchValue]);
+
   const searchHandler = useCallback(event => {
     const { trigger: eventTrigger, query } = event;
 
-    const outputList = onSearch({ trigger: eventTrigger, query });
-    if (outputList) {
-      outputList.forEach(outputObject => {
-        const { table, trigger: triggerForTable } = outputObject;
+    setSearchValue(query);
 
-        if (triggerForTable === eventTrigger) {
-          getSuggestions(appId, apiKey, table, query, field)
-            .then(suggestions => setProcessedSuggestions(suggestions));
-        }
-      });
-    } else {
-      for (const trigger of triggers) {
-        if (trigger !== eventTrigger) {
-          continue;
-        }
-
-        const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
-
-        setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query));
+    for (const trigger of triggers) {
+      if (trigger !== eventTrigger) {
+        continue;
       }
+
+      const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
+
+      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query));
     }
   }, [triggers, suggestionsMap]);
 

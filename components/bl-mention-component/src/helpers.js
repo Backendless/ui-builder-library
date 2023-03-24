@@ -23,18 +23,6 @@ export const orderFields = (suggestion, fieldsBlacklistSet) => {
   return fields;
 };
 
-export const getSuggestions = (appId, restApiKey, table, text, field) => {
-  const having = `${ field } LIKE '%${ text }%'`;
-
-  return fetch(`https://api.backendless.com/${ appId }/${ restApiKey }/data/${ table }/find`, {
-    method : 'POST',
-    body   : JSON.stringify({
-      having  : having,
-      distinct: false,
-    }),
-    headers: {
-      'Content-type': 'application/json',
-    },
-  })
-    .then(response => response.json());
+export const updateSuggestionsMap = (suggestions, setSuggestionsMap) => {
+  suggestions?.forEach(el => setSuggestionsMap(prev => prev.set(el.trigger, el.suggestions)));
 };
