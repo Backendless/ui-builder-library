@@ -36,7 +36,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         element.style.fill = colors[element.classList[0]];
       });
     }
-  }, [color]);
+  }, [color, colors]);
 
   const handleResize = useCallback(() => {
     setLegendWidth(ref.current.querySelector('.react-calendar-heatmap-all-weeks').getBoundingClientRect().width);
@@ -67,7 +67,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         showWeekdayLabels={ showWeekdayLabels }
         monthLabels={ month }
         weekdayLabels={ weeks }
-        classForValue={ getClassForValue }
+        classForValue={ value => getClassForValue(value, calendarData) }
         tooltipDataAttrs={ getTooltipData }
         onClick={ ({ date, count }) => onCellClick({ date, count }) }
       />
@@ -77,7 +77,23 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   );
 }
 
-const getClassForValue = value => value ? `color-cell-${ value.count }` : 'color-empty';
+const getClassForValue = (value, calendarData) => {
+  if (value) {
+    const colorsCount = 4;
+    const { count } = value;
+    const counts = calendarData.map(value => value.count);
+    const maxCount = Math.max(...counts);
+    const part = maxCount / colorsCount;
+
+    for (let i = 1; i <= colorsCount; i++) {
+      if (count <= part * i) {
+        return `color-cell-${ i }`;
+      }
+    }
+  }
+
+  return 'color-empty';
+};
 
 const getTooltipData = value => {
   const date = new Date(value.date);
