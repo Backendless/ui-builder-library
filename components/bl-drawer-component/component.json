@@ -10,20 +10,20 @@
   "properties": [
     {
       "type": "checkbox",
-      "name": "openDrawerButtonVisibility",
-      "label": "Open Drawer Button Visibility",
+      "name": "controlVisibility",
+      "label": "Control Visibility",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "openDrawerButtonVisibilityLogic"
+      "handlerId": "controlVisibilityLogic"
     },
     {
       "type": "text",
-      "name": "openDrawerButtonLabel",
-      "label": "Open Drawer Button Label",
+      "name": "controlLabel",
+      "label": "Control Label",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "openDrawerButtonLabelLogic",
+      "handlerId": "controlLabelLogic",
       "defaultValue": "Open Drawer"
     },
     {

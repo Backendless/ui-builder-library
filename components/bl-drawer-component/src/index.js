@@ -5,7 +5,7 @@ import { useCloseEvents, useDrawerActions, useDrawerStyles } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DrawerComponent({ component, eventHandlers, pods, elRef }) {
-  const { classList, display, style, openDrawerButtonVisibility, openDrawerButtonLabel } = component;
+  const { classList, display, style, controlVisibility, controlLabel } = component;
 
   const drawerContentRef = useRef(null);
   const drawerContainerRef = useRef(null);
@@ -20,8 +20,8 @@ export default function DrawerComponent({ component, eventHandlers, pods, elRef 
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-drawer', classList) } style={ style }>
-      { openDrawerButtonVisibility && (
-        <button type="button" onClick={ openContent }>{ openDrawerButtonLabel }</button>
+      { controlVisibility && (
+        <button type="button" aria-label="open backdrop menu" onClick={ openContent }>{ controlLabel }</button>
       ) }
       { visibility && ReactDOM.createPortal((
         <Drawer
@@ -54,7 +54,7 @@ function Drawer(props) {
 
   return (
     <div ref={ drawerContainerRef } className="bl-customComponent-drawer-container" style={ containerStyles }>
-      <div ref={ drawerContentRef } className="content" style={ contentStyles }>
+      <div ref={ drawerContentRef } className="drawer-content" style={ contentStyles }>
         { pods['Drawer Content'].render() }
       </div>
     </div>

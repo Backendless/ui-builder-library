@@ -7,7 +7,7 @@
 @bl-customComponent-drawer-container-backdrop-backgroundColor: #00000080;
 @bl-customComponent-drawer-container-transitionTimingFunction: linear;
 @bl-customComponent-drawer-container-transitionProperty: background;
-@bl-customComponent-drawer-container-zIndex: 999;
+@bl-customComponent-drawer-container-zIndex: 10;
 
 @bl-customComponent-drawer-content-backgroundColor: @bl-customComponent-drawer-backgroundColor;
 @bl-customComponent-drawer-content-transitionProperty: transform;
@@ -25,6 +25,10 @@
 @bl-customComponent-drawer-button-color: contrast(@bl-customComponent-drawer-button-backgroundColor);
 @bl-customComponent-drawer-button-shadowColor: @bl-customComponent-drawer-shadowColor;
 @bl-customComponent-drawer-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-drawer-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-drawer-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-drawer-button-shadowColor, 12%);
+@bl-customComponent-drawer-button-textDecoration: none;
+@bl-customComponent-drawer-button-outline: none;
+@bl-customComponent-drawer-button-userSelect: none;
+@bl-customComponent-drawer-button-cursor: pointer;
 
 .bl-customComponent-drawer {
   display: flex;
@@ -39,16 +43,16 @@
     width: @bl-customComponent-drawer-button-width;
     line-height: @bl-customComponent-drawer-button-lineHeight;
     min-width: @bl-customComponent-drawer-button-minWidth;
-    text-decoration: none;
+    text-decoration: @bl-customComponent-drawer-button-textDecoration;
     padding: @bl-customComponent-drawer-button-padding;
     background: @bl-customComponent-drawer-button-backgroundColor;
     color: @bl-customComponent-drawer-button-color;
     margin: @bl-customComponent-drawer-button-margin;
     border-width: @bl-customComponent-drawer-button-borderWidth;
     border-radius: @bl-customComponent-drawer-button-borderRadius;
-    outline: none;
-    cursor: pointer;
-    user-select: none;
+    outline: @bl-customComponent-drawer-button-outline;
+    cursor: @bl-customComponent-drawer-button-cursor;
+    user-select: @bl-customComponent-drawer-button-userSelect;
 
     &:hover, &:focus-within {
       box-shadow: @bl-customComponent-drawer-button-shadowHover;
@@ -69,7 +73,7 @@
     background: @bl-customComponent-drawer-container-backdrop-backgroundColor;
   }
 
-  .content {
+  .drawer-content {
     position: absolute;
     inset: 0;
     display: flex;

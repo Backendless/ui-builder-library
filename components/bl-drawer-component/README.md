@@ -9,17 +9,17 @@ to open a panel that is overlaid on top of a page and slides in from the edge of
 
 ## Properties
 
-| Property                      | Type                                                  | Default value | Logic              | Data Binding | UI Setting | Description                                                      |
-|-------------------------------|-------------------------------------------------------|---------------|--------------------|--------------|------------|------------------------------------------------------------------|
-| Open Drawer Button Visibility | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables showing the Open Drawer button.                          |
-| Open Drawer Button Label      | *Text*                                                | "Open Drawer" |                    | NO           | YES        | Controls the label of the Open Drawer button.                    |
-| Placement                     | *Select* <br/> "Top" \| "Right" \| "Bottom" \| "Left" | "Right"       |                    | NO           | YES        | Controls the placement of the drawer window.                     |
-| Size                          | *Text*                                                | "40%"         | Size Logic         | NO           | YES        | Controls the size of the drawer window.                          |
-| Backdrop Visibility           | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables showing the backdrop when the drawer window is opened.   |
-| Close On Click Outside        | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables closing the drawer window by clicking outside it.        |
-| Close On Escape               | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables closing the drawer window by pressing the Escape button. |
-| Animation Duration (ms)       | *Range*                                               | 300           |                    | NO           | YES        | Specifies how long the drawer window opens and closes.           |
-| Default Open                  | *Checkbox*                                            | `false`       | Default Open Logic | NO           | YES        | Enables showing the drawer window after the page is loaded.      |
+| Property                | Type                                                  | Default value | Logic              | Data Binding | UI Setting | Description                                                      |
+|-------------------------|-------------------------------------------------------|---------------|--------------------|--------------|------------|------------------------------------------------------------------|
+| Control Visibility      | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables showing the Open Drawer button.                          |
+| Control Label           | *Text*                                                | "Open Drawer" |                    | NO           | YES        | Controls the label of the Open Drawer button.                    |
+| Placement               | *Select* <br/> "Top" \| "Right" \| "Bottom" \| "Left" | "Right"       |                    | NO           | YES        | Controls the placement of the drawer window.                     |
+| Size                    | *Text*                                                | "40%"         | Size Logic         | NO           | YES        | Controls the size of the drawer window.                          |
+| Backdrop Visibility     | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables showing the backdrop when the drawer window is opened.   |
+| Close On Click Outside  | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables closing the drawer window by clicking outside it.        |
+| Close On Escape         | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables closing the drawer window by pressing the Escape button. |
+| Animation Duration (ms) | *Range*                                               | 300           |                    | NO           | YES        | Specifies how long the drawer window opens and closes.           |
+| Default Open            | *Checkbox*                                            | `false`       | Default Open Logic | NO           | YES        | Enables showing the drawer window after the page is loaded.      |
 
 ## Events
 
@@ -50,11 +50,13 @@ to open a panel that is overlaid on top of a page and slides in from the edge of
 **General**
 
 ````
-@bl-customComponent-drawer-container-zIndex: 999;
+@bl-customComponent-drawer-container-zIndex: 10;
 @bl-customComponent-drawer-container-backdrop-backgroundColor: #00000080;
 @bl-customComponent-drawer-content-backgroundColor: @bl-customComponent-drawer-backgroundColor;
 @bl-customComponent-drawer-button-backgroundColor: @bl-customComponent-drawer-themeColor;
 @bl-customComponent-drawer-button-color: contrast(@bl-customComponent-drawer-button-backgroundColor);
+@bl-customComponent-drawer-button-userSelect: none;
+@bl-customComponent-drawer-button-cursor: pointer;
 ````
 
 **Dimensions**
@@ -71,6 +73,7 @@ to open a panel that is overlaid on top of a page and slides in from the edge of
 ````
 @bl-customComponent-drawer-button-lineHeight: 1.75;
 @bl-customComponent-drawer-button-fontSize: 14px;
+@bl-customComponent-drawer-button-textDecoration: none;
 ````
 
 **Decoration**
@@ -84,4 +87,5 @@ to open a panel that is overlaid on top of a page and slides in from the edge of
 @bl-customComponent-drawer-button-borderRadius: @bl-customComponent-drawer-borderRadius;
 @bl-customComponent-drawer-button-shadowColor: @bl-customComponent-drawer-shadowColor;
 @bl-customComponent-drawer-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-drawer-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-drawer-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-drawer-button-shadowColor, 12%);
+@bl-customComponent-drawer-button-outline: none;
 ````
