@@ -119,7 +119,7 @@ export function useCloseEvents(drawerContentRef, closeContent, component) {
   }, []);
 }
 
-// Waiting for validation function from SDK Utils (MARKET-1835)
+// TODO: Waiting for validation function from SDK Utils (MARKET-1835)
 // TEMPORARY SOLUTION
 function ensureMeasure(propertyName, value) {
   const dimension = value.replace(/ /g, '');
