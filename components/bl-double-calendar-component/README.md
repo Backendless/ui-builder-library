@@ -11,6 +11,7 @@ Double Calendar is a component of Backendless UI-Builder designer. The component
 |---------------------------------------------------------|----------|---------------|---------------------------------|--------------|------------|-----------------------------------------------------------------------------------------------------------------------|
 | Disabled<br/>`disabled`                                 | Checkbox | `false`       | Disabled Logic                  | YES          | YES        | This handler allows you to disable a component.                                                                       |
 | Specific Date Range<br/>`specificDateRange`             | Checkbox | `false`       | Specific Date Range Logic       | YES          | YES        | This handler allows you to select the date selection mode in a range.                                                 |
+| Start Date Of Range<br/>`startDateOfRange`              | Text     | ""            | Start Date Of Range Logic       | YES          | NO         | This handler allows you to specify the start date of the selection range.                                             |
 | Selection Range<br/>`selectionRange`                    | Nubmer   | 7             | Selection Range Logic           | YES          | YES        | This handler allows you to specify a date selection range. This will work if you select a `Specific Date Range` mode. |
 | Selected Date<br/>`selectedDate`                        | Text     | ""            | Selected Date Logic             | YES          | NO         | This handler allows you to specify the default selected date.                                                         |
 | Header Visibility<br/>`headerVisibility`                | Checkbox | `true`        | Header Visibility Logic         | YES          | YES        | This handler allows you to control the display of the header.                                                         |
@@ -19,6 +20,7 @@ Double Calendar is a component of Backendless UI-Builder designer. The component
 | Year Dropdown Visibility<br/>`yearDropdownVisibility`   | Checkbox | `true`        | Year Dropdown Visibility Logic  | NO           | YES        | This handler allows you to add a year dropdown to the component.                                                      |
 | From Date<br/>`fromDate`                                | Text     | ""            | From Date Logic                 | YES          | NO         | This handler allows you to specify a start date.                                                                      |
 | To Date<br/>`toDate`                                    | Text     | ""            | To Date Logic                   | YES          | NO         | This handler allows you to specify an end date.                                                                       |
+
 ## Events
 
 | Name                 | Triggers                                           | Context Blocks                              |
