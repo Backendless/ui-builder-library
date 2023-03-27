@@ -11,7 +11,7 @@
     {
       "type": "checkbox",
       "name": "start",
-      "label": "Play",
+      "label": "Start Play",
       "settingTooltip": "Whether to play or pause the marquee",
       "showInSettings": true,
       "defaultValue": true,
@@ -99,9 +99,9 @@
   ],
   "eventHandlers": [
     {
-      "name": "onFinish",
+      "name": "onAnimationEnd",
       "handlerDescription": "A callback for when the marquee finishes scrolling and stops. Only calls if loop is non-zero.",
-      "label": "On Finish Event"
+      "label": "On Animation End Event"
     },
     {
       "name": "onCycleComplete",

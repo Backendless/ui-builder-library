@@ -14,7 +14,7 @@ Configuration can be done in the UI Builder. You have to specify the content tha
 
 | Property                           | Type                                | Default value | Logic | Data Binding | UI Setting | Description                                                                        |
 |------------------------------------|-------------------------------------|---------------|-------|--------------|------------|------------------------------------------------------------------------------------|
-| Play <br> `start`                  | *Checkbox*                          | `true`        |       | NO           | YES        | Controls the playback or stop of the marquee.                                      |
+| Start Play <br> `start`            | *Checkbox*                          | `true`        |       | NO           | YES        | Controls the playback or stop of the marquee.                                      |
 | Pause On Hover <br> `pauseOnHover` | *Checkbox*                          | `false`       |       | NO           | YES        | Controls the pause of the marquee when hovered.                                    |
 | Pause On Click <br> `pauseOnClick` | *Checkbox*                          | `false`       |       | NO           | YES        | Controls the pause of the marquee when clicked.                                    |
 | Direction <br> `direction`         | *Select* <br> [`normal`, `reverse`] | `normal`      |       | NO           | YES        | Controls the direction the marquee is sliding.                                     |
@@ -27,7 +27,7 @@ Configuration can be done in the UI Builder. You have to specify the content tha
 
 | Name                    | Triggers                                                                                            | Context Blocks |
 |-------------------------|-----------------------------------------------------------------------------------------------------|----------------|
-| On Finish Event         | when the marquee finishes scrolling and stops, only calls if loop is non-zero                       |                |
+| On Animation End Event  | when the marquee finishes scrolling and stops, only calls if loop is non-zero                       |                |
 | On Cycle Complete Event | when the marquee finishes a loop, does not call if maximum loops are reached (use onFinish instead) |                |
 
 ## Actions

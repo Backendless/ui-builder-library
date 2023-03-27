@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -9,18 +9,17 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   const {
     classList, style, display, start, pauseOnHover, pauseOnClick, direction, speed, delay, loop, gradient,
   } = component;
-  const { onFinish, onCycleComplete } = eventHandlers;
+  const { onAnimationEnd, onCycleComplete } = eventHandlers;
 
   const children = pods['marqueeContent'].render();
 
   const [containerWidth, setContainerWidth] = useState(0);
   const [marqueeWidth, setMarqueeWidth] = useState(0);
-  const [hasFinished, setHasFinished] = useState(false);
   const [play, setPlay] = useState(start);
 
   const marqueeRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (marqueeRef.current && elRef.current) {
       const calculateWidth = () => {
         setContainerWidth(elRef.current.getBoundingClientRect().width);
@@ -34,7 +33,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
         window.removeEventListener('resize', calculateWidth);
       };
     }
-  }, []);
+  }, [elRef.current, marqueeRef.current]);
 
   const duration = useMemo(() => {
     const width = marqueeWidth < containerWidth ? containerWidth : marqueeWidth;
@@ -63,14 +62,6 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
     };
   }, [style, play, pauseOnHover, pauseOnClick]);
 
-  const handleFinish = useCallback(() => {
-    if (!hasFinished) {
-      setHasFinished(true);
-    } else {
-      onFinish();
-    }
-  }, [onFinish, hasFinished]);
-
   component.startPlay = () => setPlay(true);
   component.stopPlay = () => setPlay(false);
 
@@ -87,7 +78,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
         style={ styleMarquee }
         className="marquee-content"
         onAnimationIteration={ onCycleComplete }
-        onAnimationEnd={ handleFinish }>
+        onAnimationEnd={ onAnimationEnd }>
         { children }
       </div>
 
