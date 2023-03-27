@@ -14,11 +14,9 @@ export function SpecificDateRange({ selectionRange, defaultSelectedDate, startDa
   }, [startDateOfRange]);
 
   useEffect(() => {
-    if (defaultSelectedDate) {
-      setSelectedDate(new Date(defaultSelectedDate));
-    } else {
-      setSelectedDate(startDateOfRange ? new Date(startDateOfRange) : new Date());
-    }
+    const selectedDate = defaultSelectedDate || startDateOfRange || Date.now();
+
+    setSelectedDate(new Date(selectedDate));
   }, [defaultSelectedDate, startDateOfRange]);
 
   const handleDateSelect = date => {
