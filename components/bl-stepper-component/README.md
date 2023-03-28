@@ -30,7 +30,7 @@ The component based on external [stepper](https://mui.com/material-ui/react-step
 | Go to Previous Step in Stepper |               |                      |
 | Reset Current Step for Stepper |               |                      |
 | Set Step for Stepper           | step:`Number` |                      |
-| Get Current Step               |               | currentStep:`Number` |
+| Get Current Step in Stepper    |               | currentStep:`Number` |
 
 ## Styles
 
