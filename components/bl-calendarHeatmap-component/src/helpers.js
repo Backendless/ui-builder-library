@@ -1,9 +1,26 @@
-export const validate = items => {
-  if (typeof items === 'string') {
-    return items.split(',');
+import { today } from './index';
+
+export const generateData = (numberDays, data) => {
+  const newData = [];
+
+  for (let i = 0; i < numberDays; i++) {
+    const previousDay = getPreviousDay(today, i);
+    const foundData = data.find(({ date }) => dateComparison(date, previousDay));
+    const { date, count } = foundData || { date: previousDay, count: 0 };
+
+    newData.push({ date, count });
   }
 
-  return items;
+  return newData;
+};
+
+const dateComparison  = (date1, date2) => new Date(date1).toDateString() === new Date(date2).toDateString();
+
+const getPreviousDay = (date, previousDay) => {
+  const previous = new Date(date.getTime());
+  previous.setDate(date.getDate() - previousDay);
+
+  return previous;
 };
 
 export const shiftDate = (date, numDays) => {
@@ -12,6 +29,14 @@ export const shiftDate = (date, numDays) => {
   newDate.setDate(newDate.getDate() - numDays);
 
   return newDate;
+};
+
+export const validate = items => {
+  if (typeof items === 'string') {
+    return items.split(',');
+  }
+
+  return items;
 };
 
 // https://css-tricks.com/snippets/javascript/lighten-darken-color/
