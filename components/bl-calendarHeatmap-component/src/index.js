@@ -8,6 +8,7 @@ import { Legend } from './subcomponents';
 const { cn } = BackendlessUI.CSSUtils;
 
 const today = new Date();
+const COLORS_COUNT = 4;
 
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const {
@@ -79,13 +80,11 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
 const getClassForValue = (value, calendarData) => {
   if (value) {
-    const colorsCount = 4;
     const { count } = value;
-    const counts = calendarData.map(value => value.count);
-    const maxCount = Math.max(...counts);
-    const part = maxCount / colorsCount;
+    const maxCount = getMaxCalendarCount(calendarData);
+    const part = maxCount / COLORS_COUNT;
 
-    for (let i = 1; i <= colorsCount; i++) {
+    for (let i = 1; i <= COLORS_COUNT; i++) {
       if (count <= part * i) {
         return `color-cell-${ i }`;
       }
@@ -99,4 +98,10 @@ const getTooltipData = value => {
   const date = new Date(value.date);
 
   return { 'data-tip': `${ date.toISOString().slice(0, 10) } has count: ${ value.count }` };
+};
+
+const getMaxCalendarCount = calendarData => {
+  const counts = calendarData.map(value => value.count);
+
+  return Math.max(...counts);
 };
