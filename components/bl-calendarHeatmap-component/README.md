@@ -4,11 +4,16 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 The component allows you to add calendar heatmaps to your UI-Builder application.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property                                | Type     | Default value                                          | Logic                           | Data Binding | UI Setting | Description                                                                                                                                                            |
 |-----------------------------------------|----------|--------------------------------------------------------|---------------------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Calendar Data:`calendarData`            | JSON     | `[ { "date": "", "count": 0 } ]`                       | Calendar Data Logic             | YES          | YES        | Allows you to specifies an array of date and count for calendar. Watch [Codeless Examples](#examples). Signature of Calendar Data: `{"date": string, "count": number}` |
+| Number Days:`numberDays`                | Number   | 365                                                    | Number Days Logic               | YES          | YES        | Allows you to  determine the number of days on the calendar                                                                                                            |
 | Show Month Labels:`showMonthLabels`     | Checkbox | `true`                                                 | Month Labels Visibility Logic   | NO           | YES        | Allows you to choose whether or not to show month labels                                                                                                               |
 | Month Labels:`monthLabels`              | Text     | "Jan,Feb,Mar,Apr,May,Jun,<br> Jul,Aug,Sep,Oct,Nov,Dec" | Month Labels Logic              | YES          | YES        | Allows you to write month labels                                                                                                                                       |
 | Show Weekday Labels:`showWeekdayLabels` | Checkbox | `true`                                                 | Weekday Labels Visibility Logic | NO           | YES        | Allows you to choose whether or not to show weekday labels                                                                                                             |

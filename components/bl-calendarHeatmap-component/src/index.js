@@ -2,16 +2,16 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import CalendarHeatmap from './lib/react-calendar-heatmap.umd.min';
 import ReactTooltip from './lib/react-tooltip.min';
-import { shadeColor, shiftDate, validate } from './helpers';
+import { generateData, shadeColor, shiftDate, validate } from './helpers';
 import { Legend } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const today = new Date();
+export const today = new Date();
 
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const {
-    style, display, classList, calendarData, monthLabels,
+    style, display, classList, calendarData, numberDays, monthLabels,
     weekdayLabels, color, legend, showMonthLabels, showWeekdayLabels,
   } = component;
   const { onCellClick } = eventHandlers;
@@ -20,6 +20,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
   const [legendWidth, setLegendWidth] = useState(0);
 
+  const newCalendarData = useMemo(() => generateData(numberDays, calendarData), [numberDays, calendarData]);
   const month = useMemo(() => validate(monthLabels), [monthLabels]);
   const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
 
@@ -36,7 +37,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         element.style.fill = colors[element.classList[0]];
       });
     }
-  }, [color]);
+  }, [color, ref, newCalendarData]);
 
   const handleResize = useCallback(() => {
     setLegendWidth(ref.current.querySelector('.react-calendar-heatmap-all-weeks').getBoundingClientRect().width);
@@ -53,15 +54,15 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     };
   }, [ref.current]);
 
-  if (!display || !calendarData) {
+  if (!display || !newCalendarData) {
     return null;
   }
 
   return (
     <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ style }>
       <CalendarHeatmap
-        values={ calendarData }
-        startDate={ shiftDate(today, calendarData.length) }
+        values={ newCalendarData }
+        startDate={ shiftDate(today, newCalendarData.length) }
         endDate={ today }
         showMonthLabels={ showMonthLabels }
         showWeekdayLabels={ showWeekdayLabels }
