@@ -1,27 +1,20 @@
 import { today } from './index';
 
 export const generateData = (numberDays, data) => {
-  if (numberDays && data) {
-    const newData = [];
+  const newData = [];
 
-    for (let i = 0; i < numberDays; i++) {
-      const previousDay = getPreviousDay(today, i);
-      const foundData = data.find(value => new Date(value.date).toDateString() === previousDay.toDateString());
+  for (let i = 0; i < numberDays; i++) {
+    const previousDay = getPreviousDay(today, i);
+    const foundData = data.find(({ date }) => dateComparison(date, previousDay));
+    const { date, count } = foundData || { date: previousDay, count: 0 };
 
-      if (foundData) {
-        const { date, count } = foundData;
-
-        newData.push({ date, count });
-      } else {
-        newData.push({ date: previousDay, count: 0 });
-      }
-    }
-
-    return newData;
+    newData.push({ date, count });
   }
 
-  return data;
+  return newData;
 };
+
+const dateComparison  = (date1, date2) => new Date(date1).toDateString() === new Date(date2).toDateString();
 
 const getPreviousDay = (date, previousDay) => {
   const previous = new Date(date.getTime());

@@ -20,7 +20,10 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
   const [legendWidth, setLegendWidth] = useState(0);
 
-  const newCalendarData = useMemo(() => generateData(numberDays, calendarData), [numberDays, calendarData]);
+  const newCalendarData = useMemo(() => {
+    return calendarData && numberDays ? generateData(numberDays, calendarData) : calendarData;
+  }, [numberDays, calendarData]);
+
   const month = useMemo(() => validate(monthLabels), [monthLabels]);
   const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
 
