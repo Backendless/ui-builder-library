@@ -92,7 +92,7 @@
     },
     {
       "id": "getCurrentStep",
-      "label": "Get Current Step",
+      "label": "Get Current Step in",
       "hasReturn": true
     }
   ]
