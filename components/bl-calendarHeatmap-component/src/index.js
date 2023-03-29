@@ -8,6 +8,7 @@ import { Legend } from './subcomponents';
 const { cn } = BackendlessUI.CSSUtils;
 
 export const today = new Date();
+const COLORS_COUNT = 4;
 
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const {
@@ -40,7 +41,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         element.style.fill = colors[element.classList[0]];
       });
     }
-  }, [color, ref, newCalendarData]);
+  }, [color, colors, ref, newCalendarData]);
 
   const handleResize = useCallback(() => {
     setLegendWidth(ref.current.querySelector('.react-calendar-heatmap-all-weeks').getBoundingClientRect().width);
@@ -71,7 +72,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         showWeekdayLabels={ showWeekdayLabels }
         monthLabels={ month }
         weekdayLabels={ weeks }
-        classForValue={ getClassForValue }
+        classForValue={ value => getClassForValue(value, calendarData) }
         tooltipDataAttrs={ getTooltipData }
         onClick={ ({ date, count }) => onCellClick({ date, count }) }
       />
@@ -81,10 +82,30 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   );
 }
 
-const getClassForValue = value => value ? `color-cell-${ value.count }` : 'color-empty';
+const getClassForValue = (value, calendarData) => {
+  if (value) {
+    const { count } = value;
+    const maxCount = getMaxCalendarCount(calendarData);
+    const part = maxCount / COLORS_COUNT;
+
+    for (let i = 1; i <= COLORS_COUNT; i++) {
+      if (count <= part * i) {
+        return `color-cell-${ i }`;
+      }
+    }
+  }
+
+  return 'color-empty';
+};
 
 const getTooltipData = value => {
   const date = new Date(value.date);
 
   return { 'data-tip': `${ date.toISOString().slice(0, 10) } has count: ${ value.count }` };
+};
+
+const getMaxCalendarCount = calendarData => {
+  const counts = calendarData.map(value => value.count);
+
+  return Math.max(...counts);
 };
