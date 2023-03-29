@@ -21,6 +21,18 @@
       "dataBinding": true
     },
     {
+      "type": "number",
+      "name": "numberDays",
+      "label": "Number Days",
+      "showInSettings": true,
+      "defaultValue": "365",
+      "hasLogicHandler": true,
+      "handlerId": "numberDaysLogic",
+      "handlerLabel": "Number Days Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the number of days on the calendar."
+    },
+    {
       "type": "checkbox",
       "name": "showMonthLabels",
       "label": "Show Month Labels",
