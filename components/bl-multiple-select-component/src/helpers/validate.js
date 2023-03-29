@@ -9,5 +9,9 @@ export const validateOptions = options => {
 };
 
 export const validateValue = (value, options) => {
+  if (!value) {
+    return [];
+  }
+
   return options.filter(item => value.includes(item.value));
 };
