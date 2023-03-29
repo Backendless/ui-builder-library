@@ -13,5 +13,5 @@ export const validateValue = (value, options) => {
     return [];
   }
 
-  return options.filter(item => value.toLowerCase().includes(item.value.toLowerCase()));
+  return options.filter(item => value.includes(item.value));
 };
