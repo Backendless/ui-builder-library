@@ -106,7 +106,8 @@
       "handlerId": "valueLogic",
       "handlerLabel": "Value Logic",
       "handlerDescription": "This handler allows you to add value by default.",
-      "dataBinding": true
+      "dataBinding": true,
+      "defaultValue": "Bugatti Chiron, Tesla Model 3"
     },
     {
       "type": "json",
@@ -116,7 +117,9 @@
       "hasLogicHandler": true,
       "handlerId": "optionsLogic",
       "handlerLabel": "Options logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to set options for the component.",
+      "defaultValue": "[\n  {\"value\": \"Aston Martin Valkyrie\", \"label\": \"Aston Martin Valkyrie\"},\n  {\"value\": \"Bugatti Chiron\", \"label\": \"Bugatti Chiron\"},\n  {\"value\": \"Hennessey Venom GT\", \"label\": \"Hennessey Venom GT\"},\n  {\"value\": \"Tesla Model 3\", \"label\": \"Tesla Model 3\"},\n  {\"value\": \"Porsche Taycan\", \"label\": \"Porsche Taycan\"}\n]"
     }
   ],
   "eventHandlers": [
