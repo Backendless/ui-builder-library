@@ -70,13 +70,16 @@
   .options {
     position: absolute;
     width: 300px;
-    max-height: 224px;
     box-shadow: @boxShadowPrimary;
     border-radius: 4px;
     background-color: @bl-customComponent-multipleSelect-backgroundColor;
     color: @bl-customComponent-multipleSelect-textColor;
-    overflow: auto;
     z-index: 100;
+
+    &__list {
+      max-height: 200px;
+      overflow: auto;
+    }
   }
 
   .option {

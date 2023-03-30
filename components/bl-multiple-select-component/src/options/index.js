@@ -45,7 +45,7 @@ export function Options(props) {
   }, [selectValue]);
 
   return (
-    <div style={{ transform: `translateY(-${ margin }px)` }} className="options" ref={ selectRef }>
+    <div ref={ selectRef } className="options" style={{ transform: `translateY(-${ margin }px)` }}>
       { selectAllCheckbox &&
         <SelectAllCheckbox
           label={ selectAllLabel }
@@ -55,15 +55,17 @@ export function Options(props) {
           onChange={ onChange }
         />
       }
-      { options.map(option => (
-        <Option
-          key={ option.value }
-          type={ type }
-          option={ option }
-          isOptionSelected={ selectedValuesMap[option.value] }
-          handleSelectValue={ handleSelectValue }
-        />
-      )) }
+      <div className="options__list">
+        { options.map(option => (
+          <Option
+            key={ option.value }
+            type={ type }
+            option={ option }
+            isOptionSelected={ selectedValuesMap[option.value] }
+            handleSelectValue={ handleSelectValue }
+          />
+        )) }
+      </div>
     </div>
   );
 };
