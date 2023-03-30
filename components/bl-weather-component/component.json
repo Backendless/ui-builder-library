@@ -95,75 +95,75 @@
       "options": [
         {
           "value": "ca",
-          "label": "ca"
+          "label": "Catalan"
         },
         {
           "value": "cs",
-          "label": "cs"
+          "label": "Czech"
         },
         {
           "value": "en",
-          "label": "en"
+          "label": "English"
         },
         {
           "value": "es",
-          "label": "es"
+          "label": "Spanish"
         },
         {
           "value": "de",
-          "label": "de"
+          "label": "German"
         },
         {
           "value": "sl",
-          "label": "sl"
+          "label": "Slovenian"
         },
         {
           "value": "ja",
-          "label": "ja"
+          "label": "Japanese"
         },
         {
           "value": "zh_tw",
-          "label": "zh_tw"
+          "label": "Chinese (Traditional)"
         },
         {
           "value": "uk",
-          "label": "uk"
+          "label": "Ukrainian"
         },
         {
           "value": "fr",
-          "label": "fr"
+          "label": "French"
         },
         {
           "value": "it",
-          "label": "it"
+          "label": "Italian"
         },
         {
           "value": "pl",
-          "label": "pl"
+          "label": "Polish"
         },
         {
           "value": "tr",
-          "label": "tr"
+          "label": "Turkish"
         },
         {
           "value": "da",
-          "label": "da"
+          "label": "Danish"
         },
         {
           "value": "pt_br",
-          "label": "pt_br"
+          "label": "Portuguese (Brazil)"
         },
         {
           "value": "pt",
-          "label": "pt"
+          "label": "Portuguese"
         },
         {
           "value": "nl",
-          "label": "nl"
+          "label": "Dutch"
         },
         {
           "value": "nl_be",
-          "label": "nl_be"
+          "label": "Dutch (Belgium)"
         }
       ],
       "label": "Lang",
