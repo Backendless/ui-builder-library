@@ -1,6 +1,10 @@
 # Ace Editor
 
-Ace Editor is a component of Backendless UI-Builder designer. The Ace Editor component is the high-performance code editor for the web. This component is created using the [react-ace](https://www.npmjs.com/package/react-ace) library.
+Ace is the embeddable code editor which supports the syntax highlighting for the following programming languages: Java, JavaScript, TypeScript, Python, JSON, PHP, C, C++, C#, Ruby, HTML, CSS.
+
+When this component is deployed it can highlight only one programming language that was set by developer in the Logic of the Backendless UI-Builder. Therefore, a user cannot switch to another programming language while using the editor. 
+
+This component is created using the [react-ace](https://www.npmjs.com/package/react-ace) library.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
