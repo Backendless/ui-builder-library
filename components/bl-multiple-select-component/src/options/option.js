@@ -10,7 +10,7 @@ export function Option({ type, option, isOptionSelected, handleSelectValue }) {
       onClick={ () => handleSelectValue(option) }
       className={ cn("option", { "option__selected": isOptionSelected }) }>
       { type === CHECKMARK && <Checkmark checked={ isOptionSelected } /> }
-      <span>{ option.label }</span>
+      <span className="option__label-truncate">{ option.label }</span>
     </div>
   );
 };
