@@ -1,25 +1,51 @@
 # Audio Player
 
-This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer. You will have a styled player with the set of your tracks. It supports one or multiple audio sources and has all functions you can think of.
-
-While the player can be configured with multiple settings it is easy in use and provides users with smooth experience.
+The Audio Player component provides basic functionality to play audio files. 
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
+For every audio file that you want to run in the player, you must provide a valid URL where the audio file is located.
+
+There are two ways to specify the audio file URL in the Settings of this component:
+ 1. Enter a string value in the **Audio Url** property. The entered value must be the URL to the audio file.
+ 2. Create a list containing URL addresses in the Logic of this component.
+
+The valid format of the URL address looks as following: ````https://mycloudservice.com/audio/ambience/forest_sounds.mp3````
+
+Note how the URL leads right to the audio file, and not just a directory. The URL must always lead directly to the audio file.
+
+To create a list containing multiple URLs to the audio files, you have to navigate to the Logic of the component, and there you have to add the **Audio Url Logic** handler. 
+
+<p align="left">
+  <img src="component_audio_player_1.png" alt="main thumbnail" width="780"/>
+</p>
+
+In this block you must specify the list containing the URLs as following:
+
+<p align="center">
+  <img src="component_audio_player_2.png" alt="codeless block" width="780"/>
+</p>
+
+Below you can find all component settings and corresponding descriptions:
+
+<p align="center">
+  <img src="component_audio_player_3.png" alt="component settings" width="780"/>
 </p>
 
 ## Properties
 
 | Property                    | Type       | Default value | Logic             | Data Binding | UI Setting | Description                                                      |
 |-----------------------------|------------|---------------|-------------------|--------------|------------|------------------------------------------------------------------|
-| Audio Url                   | *Text*     |               | Audio Url Logic   | YES          | YES        | specifies the url of the audio or the list of audio urls         |
+| Audio Url                   | *Text*     |               | Audio Url Logic   | YES          | YES        | specifies the url of the audio file or the list containing audio urls         |
 | Audio Title                 | *Text*     |               | Audio Title Logic | YES          | YES        | specifies the title of the audio or the list of audio titles     |
 | Player Visibility           | *Checkbox* | `true`        |                   | NO           | YES        | enables the visibility of the audio player                       |
 | Track Navigation Visibility | *Checkbox* | `true`        |                   | NO           | YES        | enables the visibility of the track navigation                   |
 | Title Visibility            | *Checkbox* | `true`        |                   | NO           | YES        | enables the visibility of the track title                        |
 | Default Volume              | *Range*    | 50            |                   | NO           | YES        | controls the default volume of the player                        |
 | Auto Play                   | *Checkbox* | `false`       |                   | NO           | YES        | enables automatic playback of the track after the page is loaded |
-| Repeat                      | *Checkbox* | `false`       |                   | NO           | YES        | enables repeating one track over and over again                  |
+| Repeat                      | *Checkbox* | `false`       |                   | NO           | YES        | enables repeating one track infinite number of times                  |
 
 ## Actions
 
