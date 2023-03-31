@@ -1,6 +1,6 @@
 export const validateOptions = options => {
   if (!Array.isArray(options)) {
-    console.error('Options should be a list');
+    console.error('Invalid options or options are not provided! Please provide valid options.');
 
     return [];
   }
