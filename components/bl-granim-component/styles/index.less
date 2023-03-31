@@ -1,0 +1,26 @@
+@bl-customComponent-granim-size: 100%;
+@bl-customComponent-granim-z-index-canvas: 1;
+@bl-customComponent-granim-z-index-content: 2;
+
+.bl-customComponent-granim {
+  width: @bl-customComponent-granim-size;
+  height: auto;
+  position: relative;
+
+  .canvas {
+    display: block;
+    width: @bl-customComponent-granim-size;
+    height: @bl-customComponent-granim-size;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @bl-customComponent-granim-z-index-canvas;
+  }
+
+  .content {
+    position: relative;
+    z-index: @bl-customComponent-granim-z-index-content;
+  }
+}
