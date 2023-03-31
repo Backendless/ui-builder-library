@@ -1,21 +1,23 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useState, useLayoutEffect, useRef, useMemo, useCallback } from 'react';
 
 import { Option } from './option';
 import { SelectAllCheckbox } from './select-all-checkbox';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 const DEFAULT = 'default';
 
 export function Options(props) {
   const { type, options, selectValue, selectAllCheckbox, selectAllLabel, setSelectValue, onChange } = props;
   const selectRef = useRef(null);
-  const [margin, setMargin] = useState(0);
+  const [optionsPlacement, setOptionsPlacement] = useState('bottom');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const viewPortHeight = window.innerHeight;
     const selectBottom = selectRef.current?.getBoundingClientRect()?.bottom;
 
     if (selectBottom > viewPortHeight) {
-      setMargin(selectBottom - viewPortHeight);
+      setOptionsPlacement('top');
     }
   }, []);
 
@@ -45,7 +47,7 @@ export function Options(props) {
   }, [selectValue]);
 
   return (
-    <div ref={ selectRef } className="options" style={{ transform: `translateY(-${ margin }px)` }}>
+    <div ref={ selectRef } className={ cn("options", { ["options__placement-top"]: optionsPlacement === "top" }) }>
       { selectAllCheckbox &&
         <SelectAllCheckbox
           label={ selectAllLabel }
