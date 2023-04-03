@@ -5,7 +5,7 @@ export function Option(props) {
     setInputValue('');
     setAutocompleteValue(item);
     setIsOptionsOpen(false);
-    onChange({ inputValue: "" });
+    onChange({ inputValue: item.value });
   };
 
   const onEnterClick = ({ key }) => {
