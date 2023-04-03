@@ -1,21 +1,23 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useState, useLayoutEffect, useRef, useMemo, useCallback } from 'react';
 
 import { Option } from './option';
 import { SelectAllCheckbox } from './select-all-checkbox';
+
+const { cn } = BackendlessUI.CSSUtils;
 
 const DEFAULT = 'default';
 
 export function Options(props) {
   const { type, options, selectValue, selectAllCheckbox, selectAllLabel, setSelectValue, onChange } = props;
   const selectRef = useRef(null);
-  const [margin, setMargin] = useState(0);
+  const [isOptionsOnTop, setIsOptionsOnTop] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const viewPortHeight = window.innerHeight;
     const selectBottom = selectRef.current?.getBoundingClientRect()?.bottom;
 
     if (selectBottom > viewPortHeight) {
-      setMargin(selectBottom - viewPortHeight);
+      setIsOptionsOnTop(true);
     }
   }, []);
 
@@ -45,7 +47,7 @@ export function Options(props) {
   }, [selectValue]);
 
   return (
-    <div style={{ transform: `translateY(-${ margin }px)` }} className="options" ref={ selectRef }>
+    <div ref={ selectRef } className={ cn("options", { ["options__placement-top"]: isOptionsOnTop }) }>
       { selectAllCheckbox &&
         <SelectAllCheckbox
           label={ selectAllLabel }
@@ -55,15 +57,17 @@ export function Options(props) {
           onChange={ onChange }
         />
       }
-      { options.map(option => (
-        <Option
-          key={ option.value }
-          type={ type }
-          option={ option }
-          isOptionSelected={ selectedValuesMap[option.value] }
-          handleSelectValue={ handleSelectValue }
-        />
-      )) }
+      <div className="options__list">
+        { options.map(option => (
+          <Option
+            key={ option.value }
+            type={ type }
+            option={ option }
+            isOptionSelected={ selectedValuesMap[option.value] }
+            handleSelectValue={ handleSelectValue }
+          />
+        )) }
+      </div>
     </div>
   );
 };
