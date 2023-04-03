@@ -38,15 +38,29 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 ````
 @bl-customComponent-multipleSelect-width: 300px;
 @bl-customComponent-multipleSelect-margin: 0;
+@bl-customComponent-multipleSelect-options-width: 300px;
+@bl-customComponent-multipleSelect-options-minHeight: 200px;
 ````
 
 **Colors**
 ````
-@bl-customComponent-option-backgroundColor-onHover: rgba(@themePrimary, 0.15);
-@bl-customComponent-optionSelected-backgroundColor: rgba(@themePrimary, 0.078);
-@bl-customComponent-optionCheckmark-color: @bl-customComponent-multipleSelect-themeColor;
-@bl-customComponent-selectAllCheckbox-backgroundColor: rgba(@themePrimary, 0.5);
-@bl-customComponent-optionChip-backgroundColor: @bl-customComponent-optionSelected-backgroundColor;
+@bl-customComponent-multipleSelect-option-backgroundColor-onHover: rgba(@themePrimary, 0.15);
+@bl-customComponent-multipleSelect-optionSelected-backgroundColor: rgba(@themePrimary, 0.078);
+@bl-customComponent-multipleSelect-optionSelected-backgroundColor-onHover: rgba(@themePrimary, 0.122);
+@bl-customComponent-multipleSelect-optionCheckmark-color: @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-multipleSelect-optionChip-backgroundColor: @bl-customComponent-multipleSelect-optionSelected-backgroundColor;
+@bl-customComponent-multipleSelect-borderColor-onHover: rgba(@themePrimary, 0.75);
+@bl-customComponent-multipleSelect-dropDownButton-color: @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-multipleSelect-selectAllCheckbox-backgroundColor: rgba(@themePrimary, 0.5);
+````
+
+**Decorations**
+````
+@bl-customComponent-multipleSelect-selectAllCheckbox-borderBottom: 2px solid @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-multipleSelect-selectAllCheckbox-borderTopLeftRadius: 4px;
+@bl-customComponent-multipleSelect-selectAllCheckbox-borderTopRightRadius: 4px;
+@boxShadowPrimary: 0px 2px 1px -1px  @themePrimary, 0px 1px 1px 0px  @themePrimary, 0px 1px 3px 0px  @themePrimary;
+@bl-customComponent-multipleSelect-options-boxShadow: @boxShadowPrimary;
 ````
 
 ## <a id="examples"></a> Codeless Examples

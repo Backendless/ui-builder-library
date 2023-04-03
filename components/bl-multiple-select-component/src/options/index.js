@@ -10,14 +10,14 @@ const DEFAULT = 'default';
 export function Options(props) {
   const { type, options, selectValue, selectAllCheckbox, selectAllLabel, setSelectValue, onChange } = props;
   const selectRef = useRef(null);
-  const [optionsPlacement, setOptionsPlacement] = useState('bottom');
+  const [isOptionsOnTop, setIsOptionsOnTop] = useState(false);
 
   useLayoutEffect(() => {
     const viewPortHeight = window.innerHeight;
     const selectBottom = selectRef.current?.getBoundingClientRect()?.bottom;
 
     if (selectBottom > viewPortHeight) {
-      setOptionsPlacement('top');
+      setIsOptionsOnTop(true);
     }
   }, []);
 
@@ -47,7 +47,7 @@ export function Options(props) {
   }, [selectValue]);
 
   return (
-    <div ref={ selectRef } className={ cn("options", { ["options__placement-top"]: optionsPlacement === "top" }) }>
+    <div ref={ selectRef } className={ cn("options", { ["options__placement-top"]: isOptionsOnTop }) }>
       { selectAllCheckbox &&
         <SelectAllCheckbox
           label={ selectAllLabel }
