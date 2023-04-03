@@ -1,6 +1,6 @@
 export const validateOptions = options => {
   if (!Array.isArray(options)) {
-    console.error('Options should be a list OR you have an empty “Options Logic” handler in Logic, delete or fill it.');
+    console.error('Options should be a list. Check the Options Logic/Settings.');
 
     return [];
   }
