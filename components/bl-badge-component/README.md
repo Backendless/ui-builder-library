@@ -1,8 +1,8 @@
 # Badge
 
-This is a component of Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer. It generates a small badge to the corner of its child(ren). Any text, custom image or Material icon can be as a content of the component. It is also possible to combine them.
+The Badge component allows displaying specific data in the corner of the selected image/icon. The data must be a number or a string value which is fetched from the database and projected up into the right corner. This component is available in the [UI-Builder](https://backendless.com/developers/#ui-builder).
 
-Customizations include adjustments of position, size, form, visibility, background color, label color and font size.
+Customizations include adjustments of position, size, form, visibility, background color, label color and font size. The Badge supports a wide range of default icons that you can select in the Settings of the component in the UI-Builder.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
@@ -10,9 +10,35 @@ Customizations include adjustments of position, size, form, visibility, backgrou
 
 ## Configuration
 
-After adding the component to the page, specify the label of the badge. This can be done in UI-Builder designer or using codeless logic.
+This component must be configured using both the UI-Builder and the Codeless Logic. In the UI-Builder you have to set the image and other properties that reflect the final look of the badge.
 
-Then it is necessary to determine the contents of the component. Go to UI-Builder designer and specify one of the content field or combine them if you need. The component will be displayed with default properties. If you need even more flexibility, make other changes to its appearance in UI-Builder designer or by codeless logic.
+<p align="center">
+  <img src="./component_badge_4.png" alt="settings" width="780"/>
+</p>
+
+To display a specific value in the corner of the badge, you must set the **Badge Label Logic** handler in the Codeless.
+
+<p align="center">
+  <img src="./component_badge_1.png" alt="settings" width="780"/>
+</p>
+
+Suppose you have a data table where the number of unread messages is stored:
+
+<p align="center">
+  <img src="./component_badge_2.png" alt="settings" width="780"/>
+</p>
+
+To display the number of unread messages in the corner of your badge, you have to set the Logic that fetches the data from the table. The example below retrieves an object from the data table called **cloudMessages**, and then the value of the property **unreadMessages** is extracted from the object:
+
+<p align="center">
+  <img src="./component_badge_3.png" alt="settings" width="780"/>
+</p>
+
+As the result, once the page is loaded, the number of unread messages is displayed in the corner of the badge:
+
+<p align="center">
+  <img src="./component_badge_5.png" alt="settings" width="780"/>
+</p>
 
 ## Properties
 
@@ -42,7 +68,7 @@ Then it is necessary to determine the contents of the component. Go to UI-Builde
 | On Badge Click Event        | when a user click on the badge                                 |                |
 | On Badge Mouse Over Event   | when the mouse pointer hovers over the badge                   |                |
 | On Badge Mouse Out Event    | when the mouse pointer leaves the badge boundaries             |                |
-| On Content Click Event      | when a user click on the component content                     |                |
+| On Content Click Event      | when a user clicks on the component content                     |                |
 | On Content Mouse Over Event | when the mouse pointer hovers over the component content       |                |
 | On Content Mouse Out Event  | when the mouse pointer leaves the component content boundaries |                |
 
