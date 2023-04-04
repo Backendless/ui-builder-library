@@ -1,27 +1,28 @@
 # Color Picker
 
-This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer based on the
+Color picker is the component for the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) based on the
 [iro.js](https://github.com/jaames/iro.js) library.
 
-It allows to specify a color, either by using a visual color picker interface or by entering the color into a text field
-in hexadecimal format. A user can change any character of rgb or hsl format. The picker also allows to use an alpha
-channel, which could be modified by the slider visual interface or by the input field.
+<p align="center">
+  <img src="./component_color_picker_1.png" alt="main thumbnail" width="780"/>
+</p>
 
-Customizations include adjustments of color picker type, stacking direction, default color value, visibility of separate
-elements and the picker as a whole.
+The component allows specifying a color, either by using a visual color picker interface or by entering the color code(HEX, RGB or HSL format) in the corresponding input fields. Also, the Color Picker provides functionality to select the alpha channel, whose intensity can be adjusted using the slider or the input field. 
+
+All component's settings are described in the table below:
 
 ## Properties
 
 | Property                  | Type       | Default value | Logic                | Data Binding | UI Setting | Description                                                  |
 |---------------------------|------------|---------------|----------------------|--------------|------------|--------------------------------------------------------------|
-| Picker Trigger Visibility | *Checkbox* | `true`        |                      | NO           | YES        | enables toggling visibility of the color picker by a button  |
-| Circle Color Picker       | *Checkbox* | `false`       |                      | NO           | YES        | enables wheel layout for the color picker                    |
-| Vertical Color Picker     | *Checkbox* | `false`       |                      | NO           | YES        | enables vertical direction of the color picker ui components |
-| Opacity Slider Visibility | *Checkbox* | `true`        |                      | NO           | YES        | enables opacity slider in the color picker                   |
-| Opacity Input Visibility  | *Checkbox* | `true`        |                      | NO           | YES        | enables opacity input in the color picker                    |
-| RGB Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | enables RGB color format in the color picker                 |
-| HSL Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | enables HSL color format in the color picker                 |
-| Selected Color            | *Color*    | "#ff0000"     | Selected Color Logic | YES          | YES        | controls selected color in the color picker                  |
+| Picker Trigger Visibility | *Checkbox* | `true`        |                      | NO           | YES        | When this parameter is set to **true**, the Color Picker will be loaded on the page in the collapsed form. Otherwise, once the page is loaded the component's interface will be hidden.  |
+| Circle Color Picker       | *Checkbox* | `false`       |                      | NO           | YES        | Enables the wheel layout for the Color Picker.                    |
+| Vertical Color Picker     | *Checkbox* | `false`       |                      | NO           | YES        | When set to **false**, the component is loaded horizontally, otherwise vertically.  |
+| Opacity Slider Visibility | *Checkbox* | `true`        |                      | NO           | YES        | Enables the opacity slider in the color picker menu.                  |
+| Opacity Input Visibility  | *Checkbox* | `true`        |                      | NO           | YES        | Enables the opacity input in the color picker menu.                    |
+| RGB Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | Enables the RGB color input fields in the Color Picker menu.                |
+| HSL Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | Enables the HSL color input fields in the Color Picker menu.                 |
+| Selected Color            | *Color*    | "#ff0000"     | Selected Color Logic | YES          | YES        | Controls the default color of the Color Picker.                  |
 
 ## Events
 
