@@ -1,8 +1,7 @@
 # Barcode
 
-Barcode is the component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder), based on the
-[JsBarcode](https://github.com/lindell/JsBarcode) library. It allows you to create barcodes in your application.
-The component can generate a wide variety of barcode types, including Code 39, Code 128, and many others.
+Barcode is the component for the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder), based on the
+[JsBarcode](https://github.com/lindell/JsBarcode) library. It allows generating a wide range of barcodes in your application, including Code39, Code128 and other standards.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
@@ -22,8 +21,8 @@ The component can generate a wide variety of barcode types, including Code 39, C
 | Margin           | *Range*                                                                                                                                                                                 | 10             |                  | NO           | YES        | Controls the space margin around the barcode.                   |
 | Font             | *Select* <br/> "Monospace" \| "Sans-serif" \| "Serif" \| "Fantasy" \| "Cursive"                                                                                                         | "Monospace"    |                  | NO           | YES        | Specifies the font used for the label in the generated barcode. |
 | Font Size        | *Range*                                                                                                                                                                                 | 20             |                  | NO           | YES        | Controls the size of the label.                                 |
-| Font Options     | *Select* <br/> "Unset" \| "Bold" \| "Italic" \| "Bold & Italic"                                                                                                                         | "Unset"        |                  | NO           | YES        | Specifies a bold or italic font for the barcode label.          |
-| Label            | *Text*                                                                                                                                                                                  |                | Label Logic      | NO           | YES        | Overrides the value to be displayed.                            |
+| Font Options     | *Select* <br/> "Unset" \| "Bold" \| "Italic" \| "Bold & Italic"                                                                                                                         | "Unset"        |                  | NO           | YES        | Specifies the bold or italic font for the barcode label.          |
+| Label            | *Text*                                                                                                                                                                                  |                | Label Logic      | NO           | YES        | Overrides the displayed value.                            |
 | Label Align      | *Select* <br/> "Left" \| "Center" \| "Right"                                                                                                                                            | "Center"       |                  | NO           | YES        | Controls the horizontal alignment of the label.                 |
 | Label Position   | *Select* <br/> "Top" \| "Bottom"                                                                                                                                                        | "Bottom"       |                  | NO           | YES        | Controls the vertical position of the label.                    |
 | Label Margin     | *Range*                                                                                                                                                                                 | 0              |                  | NO           | YES        | Controls the space between the barcode and the label.           |
