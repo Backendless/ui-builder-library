@@ -2,26 +2,29 @@
 @bl-customComponent-multipleSelect-backgroundColor: @appBackgroundColor;
 @bl-customComponent-multipleSelect-textColor: @appTextColor;
 
+@boxShadowPrimary: 0px 2px 1px -1px  @themePrimary, 0px 1px 1px 0px  @themePrimary, 0px 1px 3px 0px  @themePrimary;
+
 @bl-customComponent-multipleSelect-width: 300px;
 @bl-customComponent-multipleSelect-margin: 0;
 
-@bl-customComponent-option-backgroundColor-onHover: rgba(@themePrimary, 0.15);
-@bl-customComponent-optionSelected-backgroundColor: rgba(@themePrimary, 0.078);
-@bl-customComponent-optionSelected-backgroundColor-onHover: rgba(@themePrimary, 0.122);
+@bl-customComponent-multipleSelect-options-width: 300px;
+@bl-customComponent-multipleSelect-options-minHeight: 200px;
+@bl-customComponent-multipleSelect-options-boxShadow: @boxShadowPrimary;
 
-@bl-customComponent-optionCheckmark-color: @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-multipleSelect-option-backgroundColor-onHover: rgba(@themePrimary, 0.15);
+@bl-customComponent-multipleSelect-optionSelected-backgroundColor: rgba(@themePrimary, 0.078);
+@bl-customComponent-multipleSelect-optionSelected-backgroundColor-onHover: rgba(@themePrimary, 0.122);
+
+@bl-customComponent-multipleSelect-optionCheckmark-color: @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-multipleSelect-optionChip-backgroundColor: @bl-customComponent-multipleSelect-optionSelected-backgroundColor;
 
 @bl-customComponent-multipleSelect-borderColor-onHover: rgba(@themePrimary, 0.75);
-@bl-customComponent-multipleSelectDropDownButton-color: @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-multipleSelect-dropDownButton-color: @bl-customComponent-multipleSelect-themeColor;
 
-@bl-customComponent-selectAllCheckbox-backgroundColor: rgba(@themePrimary, 0.5);
-
-@bl-customComponent-optionChip-backgroundColor: @bl-customComponent-optionSelected-backgroundColor;
-
-@boxShadowPrimary:
-  0px 2px 1px -1px  @themePrimary,
-  0px 1px 1px 0px  @themePrimary,
-  0px 1px 3px 0px  @themePrimary;
+@bl-customComponent-multipleSelect-selectAllCheckbox-backgroundColor: rgba(@themePrimary, 0.5);
+@bl-customComponent-multipleSelect-selectAllCheckbox-borderBottom: 2px solid @bl-customComponent-multipleSelect-themeColor;
+@bl-customComponent-multipleSelect-selectAllCheckbox-borderTopLeftRadius: 4px;
+@bl-customComponent-multipleSelect-selectAllCheckbox-borderTopRightRadius: 4px;
 
 .bl-customComponent-multipleSelect {
   position: relative;
@@ -69,14 +72,24 @@
 
   .options {
     position: absolute;
-    width: 300px;
-    max-height: 224px;
-    box-shadow: @boxShadowPrimary;
+    width: @bl-customComponent-multipleSelect-options-width;
+    box-shadow: @bl-customComponent-multipleSelect-options-boxShadow;
     border-radius: 4px;
+    margin-top: 60px;
+    inset: 0 auto auto 0;
     background-color: @bl-customComponent-multipleSelect-backgroundColor;
     color: @bl-customComponent-multipleSelect-textColor;
-    overflow: auto;
     z-index: 100;
+
+    &__list {
+      max-height: @bl-customComponent-multipleSelect-options-minHeight;
+      overflow: auto;
+    }
+
+    &__placement-top {
+      margin-bottom: 65px;
+      inset: auto auto 0 0;
+    }
   }
 
   .option {
@@ -91,17 +104,23 @@
     padding: 6px 16px;
 
     &:hover  {
-      background: @bl-customComponent-option-backgroundColor-onHover;
+      background: @bl-customComponent-multipleSelect-option-backgroundColor-onHover;
     }
 
     &__selected {
       font-weight: 500;
-      background-color: @bl-customComponent-optionSelected-backgroundColor;
+      background-color: @bl-customComponent-multipleSelect-optionSelected-backgroundColor;
+    }
+
+    &__label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
   .option__selected.option:hover {
-    background-color: @bl-customComponent-optionSelected-backgroundColor-onHover;
+    background-color: @bl-customComponent-multipleSelect-optionSelected-backgroundColor-onHover;
   }
 
   .input {
@@ -162,7 +181,7 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    fill: @bl-customComponent-multipleSelectDropDownButton-color;
+    fill: @bl-customComponent-multipleSelect-dropDownButton-color;
     pointer-events: none;
     user-select: none;
     transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -213,7 +232,7 @@
     align-items: center;
     padding: 9px;
     box-sizing: border-box;
-    color: @bl-customComponent-optionCheckmark-color;
+    color: @bl-customComponent-multipleSelect-optionCheckmark-color;
     background-color: transparent;
 
     &__input {
@@ -240,12 +259,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: @bl-customComponent-selectAllCheckbox-backgroundColor;
+    background-color: @bl-customComponent-multipleSelect-selectAllCheckbox-backgroundColor;
     padding: 6px 16px;
     box-sizing: border-box;
-    border-bottom: 2px solid @bl-customComponent-multipleSelect-themeColor;
     overflow: hidden;
     cursor: pointer;
+    border-bottom: @bl-customComponent-multipleSelect-selectAllCheckbox-borderBottom;
+    border-top-left-radius: @bl-customComponent-multipleSelect-selectAllCheckbox-borderTopLeftRadius;
+    border-top-right-radius: @bl-customComponent-multipleSelect-selectAllCheckbox-borderTopRightRadius;
   }
 
   .chip {
@@ -263,7 +284,7 @@
       font-size: 13px;
       height: 32px;
       color: @bl-customComponent-multipleSelect-textColor;
-      background-color: @bl-customComponent-optionChip-backgroundColor;
+      background-color: @bl-customComponent-multipleSelect-optionChip-backgroundColor;
       border-radius: 16px;
       white-space: nowrap;
       box-sizing: border-box;
