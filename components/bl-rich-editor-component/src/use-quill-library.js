@@ -107,8 +107,11 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
         return;
       }
 
-      contentRef.current = editorRef.current.root.innerHTML;
-      component.content = contentRef.current;
+      setTimeout(() => {
+        contentRef.current = editorRef.current.root.innerHTML;
+        component.content = contentRef.current;
+      });
+
       onTextChange();
     });
   }, [scrollingContainer]);
