@@ -3,7 +3,7 @@
 Autocomplete is the component of Backendless UI-Builder designer. It allows selecting one of the options from the list.
 
 <p align="center">
-  <img src="./example-images/thumbnail.png" alt="main thumbnail" width="780"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 All options are stored in a JSON object, that can be set either by using UI-Builder settings or Codeless Logic. You can also group options by passing a list containing JSON objects to the component:
