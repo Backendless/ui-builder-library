@@ -114,9 +114,7 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
   }, [scrollingContainer]);
 
   useEffect(() => {
-    const innerHTML = editorRef.current.root.innerHTML;
-
-    if (content === undefined || content === innerHTML) {
+    if (content === undefined || content === contentRef.current) {
       return;
     }
 
@@ -134,9 +132,11 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
 }
 
 export function insertHTML(editor, content) {
+  const range = editor.getSelection();
   const delta = editor.clipboard.convert(content);
 
   editor.setContents(delta);
+  editor.setSelection(range?.index);
 }
 
 function addInlineStyles(block, styles) {
