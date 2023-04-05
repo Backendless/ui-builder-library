@@ -3,13 +3,13 @@
 Autocomplete is the component of Backendless UI-Builder designer. It allows selecting one of the options from the list.
 
 <p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+  <img src="./example-images/thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 All options are stored in a JSON object, that can be set either by using UI-Builder settings or Codeless Logic. You can also group options by passing a list containing JSON objects to the component:
 
 <p align="center">
-  <img src="./autocomplete_component_1.png" alt="Array of objects" width="780"/>
+  <img src="./example-images/autocomplete_component_1.png" alt="Array of objects" width="780"/>
 </p>
 
 Once the option is selected from the list it gets saved to the local variable **Input Value** in the Codeless Logic. Suppose you selected the "Basketball" option from the list in the e-commerce store, then this value can be used later on to load and display products of a specific category ("Basketball") on the page. You must use the **On Changed Event** handler to get the selected value.
