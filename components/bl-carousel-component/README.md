@@ -3,13 +3,13 @@
 Carousel component represents an area where you can add images and switch between them using control buttons. This component is based on [Bootstrap Carousel](https://getbootstrap.com/docs/5.2/components/carousel/). Available in the UI-Builder.
 
 <p align="center">
-  <img src="./carousel_component_1.png" alt="main thumbnail" width="780"/>
+  <img src="./example-images/carousel_component_1.png" alt="main thumbnail" width="780"/>
 </p>
 
 Images for Carousel can be set in the Settings of the UI Builder. The component uses a list of JSON objects where base64-encoded images or URLs to images are stored. Besides the image data, the JSON object contains the **"title"** and the **"content"** properties to display text. As you can see in the image below, the base64-encoded image or the URL to the image is stored in the **"url"** property.
 
 <p align="center">
-  <img src="./carousel_component_2.png" alt="main thumbnail" width="780"/>
+  <img src="./example-images/carousel_component_2.png" alt="main thumbnail" width="780"/>
 </p>
 
 You can also set images, titles and content by using the Codeless Logic presented below:
@@ -18,16 +18,16 @@ You can also set images, titles and content by using the Codeless Logic presente
 
 ## Properties
 
-| Property                                    | Type                                    | Default Value                         | Logic                       | Data Binding | UI Setting | Description                                                                                                                                              |
-| ------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property                                    | Type                                    | Default Value                         | Logic                       | Data Binding | UI Setting | Description                                                                                                   |
+|---------------------------------------------|-----------------------------------------|---------------------------------------|-----------------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------|
 | Images Data:`imagesData`                    | JSON                                    | [Defalut Value](#images-data-default) | Image Data Logic            | YES          | YES        | Sets the data for the carousel. JSON object structure: `{"url": string, "title": string, "content": string }` |
-| Height:`height`                             | Text                                    | "400px"                               | Height Logic                | YES          | YES        | Sets the height for images.                                                                                                                    |
-| Width:`width`                               | Text                                    | "700px"                               | Width Logic                 | YES          | YES        | Sets the width for images.                                                                                                                     |
-| Autoplay Delay(ms):`autoplayDelay`          | Number                                  | 5000                                  | Autoplay Delay              | YES          | YES        | Sets the delay in milliseconds(ms) for autoplay.                                                                                                               |
-| Animation Type:`animationType`              | Select [Slide:`slide`, Smooth:`smooth`] | Slide: `slide`                        |                             | NO           | YES        | Sets the animation type (slide, smooth).                                                                                                         |
-| Animation Duration (ms):`animationDuration` | Number                                  | 600                                   | Animation Duration Logic    | YES          | YES        | Sets the duration for animation.                                                                                                               |
-| With Controls:`withControls`                | Checkbox                                | `false`                               | Controls Visibility Logic   | NO           | YES        | Sets the visibility for control buttons.                                                                                               |
-| With Indicators:`withIndicators`            | Checkbox                                | `false`                               | Indicators Visibility Logic | NO           | YES        | Sets the visibility for indicators.                                                                                                    |
+| Height:`height`                             | Text                                    | "400px"                               | Height Logic                | YES          | YES        | Sets the height for images.                                                                                   |
+| Width:`width`                               | Text                                    | "700px"                               | Width Logic                 | YES          | YES        | Sets the width for images.                                                                                    |
+| Autoplay Delay(ms):`autoplayDelay`          | Number                                  | 5000                                  | Autoplay Delay              | YES          | YES        | Sets the delay in milliseconds(ms) for autoplay.                                                              |
+| Animation Type:`animationType`              | Select [Slide:`slide`, Smooth:`smooth`] | Slide: `slide`                        |                             | NO           | YES        | Sets the animation type (slide, smooth).                                                                      |
+| Animation Duration (ms):`animationDuration` | Number                                  | 600                                   | Animation Duration Logic    | YES          | YES        | Sets the duration for animation.                                                                              |
+| With Controls:`withControls`                | Checkbox                                | `false`                               | Controls Visibility Logic   | NO           | YES        | Sets the visibility for control buttons.                                                                      |
+| With Indicators:`withIndicators`            | Checkbox                                | `false`                               | Indicators Visibility Logic | NO           | YES        | Sets the visibility for indicators.                                                                           |                                                                                |
 
 ## Events
 
