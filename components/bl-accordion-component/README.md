@@ -1,3 +1,5 @@
+DO NOT MERGE
+
 # Accordion
 
 Accordion is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows displaying structured content through progressive disclosure. This component is divided into two logical blocks:
