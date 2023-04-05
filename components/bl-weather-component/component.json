@@ -1,5 +1,5 @@
 {
-  "id": "c_7c4bc1edf82a1e2f90217ef50d71446e",
+  "id": "c_ae66659a8909ebceda4d5d3f551e5a36",
   "name": "Weather",
   "description": "The Weather component allows the user to add a weather widget for the current day or with the addition of a forecast.",
   "showInToolbox": true,
@@ -18,27 +18,30 @@
       "settingTooltip": "Select to display the weather for your location."
     },
     {
-      "type": "text",
-      "name": "city",
-      "showInSettings": true,
-      "defaultValue": "New York",
-      "hasLogicHandler": false,
-      "handlerId": "cityLogic",
-      "label": "City",
-      "settingTooltip": "City to display the weather for it."
-    },
-    {
       "type": "json",
-      "name": "coords",
+      "name": "location",
       "showInSettings": true,
       "defaultValue": "{\"lat\": 40.730610, \"lng\": -73.935242}",
       "hasLogicHandler": true,
-      "handlerId": "coordsLogic",
-      "settingTooltip": "Latitude and longitude coordinates to display the weather for them.",
-      "handlerDescription": "This is a handler for the logic to determine the latitude and longitude coordinates to display the weather for them.",
-      "label": "Coordinates",
-      "handlerLabel": "Coordinates Logic",
+      "handlerId": "locationLogic",
+      "settingTooltip": "Latitude and longitude of a location to display the weather for them.",
+      "handlerDescription": "This is a handler for the logic to determine the latitude and longitude of a location to display the weather for them.",
+      "label": "Location",
+      "handlerLabel": "Location Logic",
       "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "showInSettings": true,
+      "defaultValue": "Long Island City",
+      "hasLogicHandler": true,
+      "handlerId": "locationLabelLogic",
+      "label": "Location Label",
+      "settingTooltip": "The name of a location or city to show in the component.",
+      "handlerLabel": "Location Label Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the name of a location or city to display it in the component."
     },
     {
       "type": "checkbox",

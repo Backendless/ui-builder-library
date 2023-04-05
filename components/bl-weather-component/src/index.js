@@ -6,16 +6,26 @@ const { cn } = BackendlessUI.CSSUtils;
 
 const UNITS = {
   standard: { temperature: 'K', windSpeed: 'm/s' },
-  metric  : { temperature: '°C', windSpeed: 'm/s' },
-  imperial: { temperature: '°F', windSpeed: 'mph' },
+  metric: { temperature: '°C', windSpeed: 'm/s' },
+  imperial: { temperature: '°F', windSpeed: 'mph' }
 };
-const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 export default function WeatherComponent({ component, elRef, settings }) {
-  const { classList, style, display, currentLocation, city, coords, forecast, unit, theme, lang } = component;
+  const { classList, style, display, currentLocation, location, label, forecast, unit, theme, lang, } = component;
   const { API_KEY } = settings;
 
-  const { location, weatherCity, hasGeoAccess } = useOptions(currentLocation, city, coords, API_KEY);
+  const [options, setOptions] = useState({ key: API_KEY, lat: null, lon: null, lang, unit });
+
+  useEffect(async () => {
+    if (currentLocation) {
+      const locationData = await getLocation();
+      setOptions({ ...options, lat: locationData.lat, lon: locationData.lng });
+    } else if (location?.lat && location.lng) {
+      setOptions({ ...options, lat: location.lat, lon: location.lng });
+    } else {
+      console.error('Location data is not provided');
+    }
+  }, [currentLocation, location]);
 
   if (!display) {
     return null;
@@ -23,29 +33,16 @@ export default function WeatherComponent({ component, elRef, settings }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-weather', ...classList) } style={ style }>
-      { hasGeoAccess && location?.lat && location.lng && (
-        <Weather
-          settings={ settings }
-          lat={ location.lat }
-          lon={ location.lng }
-          weatherCity={ weatherCity }
-          showForecast={ forecast }
-          unit={ unit }
-          theme={ theme }
-          lang={ lang }
-        />
-      ) }
-      { !hasGeoAccess && (
-        <p className="warn">To obtain weather data, you must allow access to your location.</p>
+      { options?.lat && options.lon && (
+        <Weather options={ options } locationLabel={ label } showForecast={ forecast } theme={ theme } lang={ lang } />
       ) }
     </div>
   );
 }
 
-function Weather({ settings, lat, lon, weatherCity, showForecast, theme, unit, lang }) {
-  const key = settings.API_KEY;
-  const unitsLabels = UNITS[unit];
-  const { data, isLoading, errorMessage } = useOpenWeather({ key, lat, lon, lang, unit });
+function Weather({ options, locationLabel, showForecast, theme, lang }) {
+  const unitsLabels = UNITS[options.unit];
+  const { data, isLoading, errorMessage } = useOpenWeather(options);
 
   return (
     <ReactWeather
@@ -53,7 +50,7 @@ function Weather({ settings, lat, lon, weatherCity, showForecast, theme, unit, l
       errorMessage={ errorMessage }
       data={ data }
       lang={ lang }
-      locationLabel={ weatherCity }
+      locationLabel={ locationLabel }
       unitsLabels={ unitsLabels }
       showForecast={ showForecast }
       theme={ theme }
@@ -61,49 +58,8 @@ function Weather({ settings, lat, lon, weatherCity, showForecast, theme, unit, l
   );
 }
 
-function useOptions(currentLocation, city, coords, API_KEY) {
-  const [location, setLocation] = useState(null);
-  const [weatherCity, setWeatherCity] = useState(null);
-  const [hasGeoAccess, setHasGeoAccess] = useState(true);
-
-  useEffect(() => {
-    if (currentLocation && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => setLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude }),
-        error => {
-          console.error(error);
-          setHasGeoAccess(false);
-        }
-      );
-    } else if (city) {
-      fetch(`${ BASE_URL }/weather?q=${ city }&appid=${ API_KEY }`)
-        .then(response => response.json())
-        .then(data => {
-          setLocation({
-            lat: data.coord.lat,
-            lng: data.coord.lon });
-          setWeatherCity(data.name);
-        });
-    } else if (coords?.lat && coords.lng) {
-      setLocation({
-        lat: coords.lat,
-        lng: coords.lng });
-    }
-  }, [currentLocation, city, coords, API_KEY]);
-
-  useEffect(() => {
-    if (location?.lat && location.lng && !weatherCity) {
-      setCityByLocation(location);
-    }
-  }, [location, weatherCity]);
-
-  const setCityByLocation = (location) => {
-    fetch(`${ BASE_URL }/weather?lat=${ location.lat }&lon=${ location.lng }&appid=${ API_KEY }`)
-      .then(response => response.json())
-      .then(data => setWeatherCity(data.name));
-  };
-
-  return { location, weatherCity, hasGeoAccess };
+async function getLocation() {
+  return await (async function() {
+    return BackendlessUI.Navigator.getCurrentGeolocation();
+  })();
 }
