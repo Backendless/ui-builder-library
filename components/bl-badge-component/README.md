@@ -13,31 +13,31 @@ Customizations include adjustments of position, size, form, visibility, backgrou
 This component must be configured using both the UI-Builder and the Codeless Logic. In the UI-Builder you have to set the image and other properties that reflect the final look of the badge.
 
 <p align="center">
-  <img src="./component_badge_4.png" alt="settings" width="780"/>
+  <img src="./example-images/component_badge_4.png" alt="settings" width="780"/>
 </p>
 
 To display a specific value in the corner of the badge, you must set the **Badge Label Logic** handler in the Codeless.
 
 <p align="center">
-  <img src="./component_badge_1.png" alt="settings" width="780"/>
+  <img src="./example-images/component_badge_1.png" alt="settings" width="780"/>
 </p>
 
 Suppose you have a data table where the number of unread messages is stored:
 
 <p align="center">
-  <img src="./component_badge_2.png" alt="settings" width="780"/>
+  <img src="./example-images/component_badge_2.png" alt="settings" width="780"/>
 </p>
 
 To display the number of unread messages in the corner of your badge, you have to set the Logic that fetches the data from the table. The example below retrieves an object from the data table called **cloudMessages**, and then the value of the property **unreadMessages** is extracted from the object:
 
 <p align="center">
-  <img src="./component_badge_3.png" alt="settings" width="780"/>
+  <img src="./example-images/component_badge_3.png" alt="settings" width="780"/>
 </p>
 
 As the result, once the page is loaded, the number of unread messages is displayed in the corner of the badge:
 
 <p align="center">
-  <img src="./component_badge_5.png" alt="settings" width="780"/>
+  <img src="./example-images/component_badge_5.png" alt="settings" width="780"/>
 </p>
 
 ## Properties
