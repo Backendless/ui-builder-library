@@ -9,13 +9,13 @@ Collapsible Panel acts as a container for different elemenets that can be used i
 You can add any elements supported in the UI-Builder to the component by dragging-and-dropping them to the content area of the Collapsible Panel. Those elements can be text, images, and even other custom components. For instance, the example below contains two elements(**Text** and **Color Picker**) added to the Collapsible Panel:
 
 <p align="center">
-  <img src="./component_collapsible_panel_1.png" alt="preview_1" width="780"/>
+  <img src="./example-images/component_collapsible_panel_1.png" alt="preview_1" width="780"/>
 </p>
 
 As you can see, once the page is loaded and the panel is expanded, elements added to the container are visible and fully functional:
 
 <p align="center">
-  <img src="./component_collapsible_panel_2.png" alt="preview_2" width="780"/>
+  <img src="./example-images/component_collapsible_panel_2.png" alt="preview_2" width="780"/>
 </p>
 
 ## Properties
