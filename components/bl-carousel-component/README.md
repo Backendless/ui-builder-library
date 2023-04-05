@@ -3,7 +3,7 @@
 Carousel component represents an area where you can add images and switch between them using control buttons. This component is based on [Bootstrap Carousel](https://getbootstrap.com/docs/5.2/components/carousel/). Available in the UI-Builder.
 
 <p align="center">
-  <img src="./example-images/carousel_component_1.png" alt="main thumbnail" width="780"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 Images for Carousel can be set in the Settings of the UI Builder. The component uses a list of JSON objects where base64-encoded images or URLs to images are stored. Besides the image data, the JSON object contains the **"title"** and the **"content"** properties to display text. As you can see in the image below, the base64-encoded image or the URL to the image is stored in the **"url"** property.
