@@ -15,7 +15,7 @@ All options are stored in a JSON object, that can be set either by using UI-Buil
 Once the option is selected from the list it gets saved to the local variable **Input Value** in the Codeless Logic. Suppose you selected the "Basketball" option from the list in the e-commerce store, then this value can be used later on to load and display products of a specific category ("Basketball") on the page. You must use the **On Changed Event** handler to get the selected value.
 
 <p align="center">
-  <img src="./autocomplete_component_2.png" alt="On Changed Handler" width="780"/>
+  <img src="./example-images/autocomplete_component_2.png" alt="On Changed Handler" width="780"/>
 </p>
 
 
