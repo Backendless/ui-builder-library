@@ -18,20 +18,20 @@ Note how the URL leads right to the audio file, and not just a directory. The UR
 
 To create a list containing multiple URLs to the audio files, you have to navigate to the Logic of the component, and there you have to add the **Audio Url Logic** handler. 
 
-<p align="left">
-  <img src="./component_audio_player_1.png" alt="main thumbnail" width="780"/>
+<p align="center">
+  <img src="./example-images/component_audio_player_1.png" alt="main thumbnail" width="780"/>
 </p>
 
 In this block you must specify the list containing the URLs as following:
 
 <p align="center">
-  <img src="./component_audio_player_2.png" alt="codeless block" width="780"/>
+  <img src="./example-images/component_audio_player_2.png" alt="codeless block" width="780"/>
 </p>
 
 Below you can find all component settings and corresponding descriptions:
 
 <p align="center">
-  <img src="./component_audio_player_3.png" alt="component settings" width="780"/>
+  <img src="./example-images/component_audio_player_3.png" alt="component settings" width="780"/>
 </p>
 
 ## Properties
