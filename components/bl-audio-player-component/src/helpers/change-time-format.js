@@ -1,4 +1,8 @@
 export function changeTimeFormat(sec) {
+  if (sec === Infinity) {
+    return null;
+  }
+
   const minutes = Math.floor(sec / 60);
   const seconds = Math.floor(sec % 60);
   const time = {

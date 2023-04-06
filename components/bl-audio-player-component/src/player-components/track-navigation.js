@@ -2,13 +2,20 @@ import { useRef } from 'react';
 
 export function TrackNavigation(props) {
   const { audioRef, currentTrack, trackNavigationVisibility } = props;
+
+  const isAudioDurationInfinite = audioRef.current?.duration === Infinity;
+
   const navigationRef = useRef();
-  
+
   const styles = {
-    width: `${ currentTrack.progress }%`,
+    width: isAudioDurationInfinite ? '100%' : `${ currentTrack.progress }%`,
   };
 
   const setProgress = e => {
+    if (isAudioDurationInfinite) {
+      return;
+    }
+
     const width = navigationRef.current.clientWidth;
     const offset = e.nativeEvent.offsetX;
     const progress = offset / width;
