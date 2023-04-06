@@ -1,14 +1,7 @@
 import { ControlButton } from './control-button';
 
 export function Controls(props) {
-  const {
-    audioRef,
-    isPlaying,
-    setIsPlaying,
-    index,
-    setIndex,
-    audioUrls,
-  } = props;
+  const { audioRef, isPlaying, setIsPlaying, index, setIndex, audioUrls } = props;
 
   const skipBack = () => {
     setIndex((index - 1 + audioUrls.length) % audioUrls.length);
@@ -36,10 +29,7 @@ export function Controls(props) {
     <div className="control-buttons">
       { audioUrls && <ControlButton buttonName="skip_previous" onClick={ skipBack }/> }
       <ControlButton buttonName="fast_rewind" onClick={ rewind }/>
-      <ControlButton
-        buttonName={ isPlaying ? 'pause' : 'play_arrow' }
-        onClick={ togglePlaying }
-      />
+      <ControlButton buttonName={ isPlaying ? 'pause' : 'play_arrow' } onClick={ togglePlaying }/>
       <ControlButton buttonName="fast_forward" onClick={ forward }/>
       { audioUrls && <ControlButton buttonName="skip_next" onClick={ skipNext }/> }
     </div>

@@ -16,8 +16,12 @@ export function TrackTime({ audioRef, timer }) {
   return (
     <div className="track-time">
       <div>{ timer }</div>
-      <span>/</span>
-      <div>{ trackLength }</div>
+      { trackLength && (
+        <span>/</span>
+      ) }
+      { trackLength && (
+        <div>{ trackLength }</div>
+      ) }
     </div>
   );
 }

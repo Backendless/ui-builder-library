@@ -3,18 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useTimeUpdate } from './helpers/use-time-update';
 import { Player } from './player';
 
-export default function AudioPlayer({ component }) {
-  const {
-    style,
-    display,
-    audioUrl,
-    audioTitle,
-    classList,
-    repeat,
-    autoPlay,
-    defaultVolume,
-  } = component;
+const { cn } = BackendlessUI.CSSUtils;
+
+export default function AudioPlayer({ component, elRef }) {
+  const { style, display, audioUrl, audioTitle, classList, repeat, autoPlay, defaultVolume } = component;
+
   const audioRef = useRef();
+
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isMute, setIsMute] = useState(false);
   const [volume, setVolume] = useState(defaultVolume || 50);
@@ -28,6 +23,7 @@ export default function AudioPlayer({ component }) {
   };
 
   const [currentTrack, setCurrentTrack] = useState(defaultTrack);
+
   const { timer, onPlaying } = useTimeUpdate(audioRef, currentTrack, setCurrentTrack);
 
   useEffect(() => {
@@ -58,11 +54,7 @@ export default function AudioPlayer({ component }) {
   component.playAudio = () => setIsPlaying(true);
   component.stopAudio = () => stopPlaying();
   component.replaceAudio = (audioUrl, audioTitle) => {
-    setCurrentTrack({
-      url  : audioUrl,
-      title: audioTitle,
-    });
-
+    setCurrentTrack({ url: audioUrl, title: audioTitle });
     setIsPlaying(true);
   };
 
@@ -71,7 +63,7 @@ export default function AudioPlayer({ component }) {
   }
 
   return (
-    <div className={ 'bl-customComponent-audio-player ' + classList.join(' ') } style={ style }>
+    <div ref={ elRef } className={ cn('bl-customComponent-audio-player', classList) } style={ style }>
       <audio
         autoPlay={ isPlaying }
         ref={ audioRef }
