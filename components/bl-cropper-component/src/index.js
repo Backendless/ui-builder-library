@@ -85,7 +85,7 @@ function useComponentActions(component, cropperRef, uploadInputRef, setToolbarDi
     crop                  : () => cropperRef.current.crop(),
     reset                 : () => cropperRef.current.reset(),
     clear                 : () => cropperRef.current.clear(),
-    replace               : url => cropperRef.current.replace(url),
+    replace               : url => setImage(url),
     enableCropper         : () => {
       cropperRef.current.enable();
       setToolbarDisabled(false);
