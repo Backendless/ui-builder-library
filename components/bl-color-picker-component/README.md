@@ -13,16 +13,16 @@ All component's settings are described in the table below:
 
 ## Properties
 
-| Property                  | Type       | Default value | Logic                | Data Binding | UI Setting | Description                                                  |
-|---------------------------|------------|---------------|----------------------|--------------|------------|--------------------------------------------------------------|
-| Picker Trigger Visibility | *Checkbox* | `true`        |                      | NO           | YES        | When this parameter is set to **true**, the Color Picker will be loaded on the page in the collapsed form. Otherwise, once the page is loaded the component's interface will be hidden.  |
-| Circle Color Picker       | *Checkbox* | `false`       |                      | NO           | YES        | Enables the wheel layout for the Color Picker.                    |
-| Vertical Color Picker     | *Checkbox* | `false`       |                      | NO           | YES        | When set to **false**, the component is loaded horizontally, otherwise vertically.  |
-| Opacity Slider Visibility | *Checkbox* | `true`        |                      | NO           | YES        | Enables the opacity slider in the color picker menu.                  |
-| Opacity Input Visibility  | *Checkbox* | `true`        |                      | NO           | YES        | Enables the opacity input in the color picker menu.                    |
-| RGB Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | Enables the RGB color input fields in the Color Picker menu.                |
-| HSL Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | Enables the HSL color input fields in the Color Picker menu.                 |
-| Selected Color            | *Color*    | "#ff0000"     | Selected Color Logic | YES          | YES        | Controls the default color of the Color Picker.                  |
+| Property                  | Type       | Default value | Logic                | Data Binding | UI Setting | Description                                                                                                                                                                             |
+|---------------------------|------------|---------------|----------------------|--------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Picker Trigger Visibility | *Checkbox* | `true`        |                      | NO           | YES        | When this parameter is set to **true**, the Color Picker will be loaded on the page in the collapsed form. Otherwise, once the page is loaded the component's interface will be hidden. |
+| Circle Color Picker       | *Checkbox* | `false`       |                      | NO           | YES        | Enables the wheel layout for the Color Picker.                                                                                                                                          |
+| Vertical Color Picker     | *Checkbox* | `false`       |                      | NO           | YES        | When set to **false**, the component is loaded horizontally, otherwise vertically.                                                                                                      |
+| Opacity Slider Visibility | *Checkbox* | `true`        |                      | NO           | YES        | Enables the opacity slider in the color picker menu.                                                                                                                                    |
+| Opacity Input Visibility  | *Checkbox* | `true`        |                      | NO           | YES        | Enables the opacity input in the color picker menu.                                                                                                                                     |
+| RGB Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | Enables the RGB color input fields in the Color Picker menu.                                                                                                                            |
+| HSL Format Visibility     | *Checkbox* | `true`        |                      | NO           | YES        | Enables the HSL color input fields in the Color Picker menu.                                                                                                                            |
+| Selected Color            | *Color*    | "#ff0000"     | Selected Color Logic | YES          | YES        | Controls the default color of the Color Picker.                                                                                                                                         |
 
 ## Events
 
