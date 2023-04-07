@@ -109,7 +109,7 @@ To create a list containing multiple URLs to the audio files or streams, you hav
 In this block you must specify the list containing the URLs as following:
 
 <p align="center">
-  <img src="./example-images/codeless_block_example.png" alt="codeless block" width="780"/>
+  <img src="./example-images/add_audio_list.png" alt="add audio list example" width="780"/>
 </p>
 
 <details>
