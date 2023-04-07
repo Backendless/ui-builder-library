@@ -74,15 +74,15 @@ Before usage, you need:
 Below is a Codeless Example highlighting how to use the Weather component:
 
 <p align="center">
-  <img src="./example-images/weather-example.png" alt="weather example" width="780"/>
+  <img src="./example-images/properties-setup.png" alt="properties setup" width="780"/>
 </p>
 
 <p align="center">
-  <img src="./example-images/weather-theme-example.png" alt="weather theme example" width="500"/>
+  <img src="./example-images/theme-setup.png" alt="theme setup" width="500"/>
 </p>
 
 <p align="center">
-  <img src="./example-images/weather-example-view.png" alt="weather example view" width="780"/>
+  <img src="./example-images/component-preview.png" alt="component preview" width="780"/>
 </p>
 
 <details>

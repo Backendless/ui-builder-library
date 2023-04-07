@@ -17,14 +17,17 @@ export default function WeatherComponent({ component, elRef, settings }) {
   const [options, setOptions] = useState({ key: API_KEY, lat: null, lon: null, lang, unit });
 
   useEffect(async () => {
+    let usedLocation;
+
     if (currentLocation) {
-      const locationData = await getLocation();
-      setOptions({ ...options, lat: locationData.lat, lon: locationData.lng });
+      usedLocation = await BackendlessUI.Navigator.getCurrentGeolocation();
     } else if (location?.lat && location.lng) {
-      setOptions({ ...options, lat: location.lat, lon: location.lng });
+      usedLocation = location;
     } else {
-      console.error('Location data is not provided');
+      console.error('Location data not provided or provided incorrectly');
     }
+
+    setOptions({ ...options, lat: usedLocation?.lat, lon: usedLocation?.lng });
   }, [currentLocation, location]);
 
   if (!display) {
@@ -32,7 +35,7 @@ export default function WeatherComponent({ component, elRef, settings }) {
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-weather', ...classList) } style={ style }>
+    <div ref={ elRef } className={ cn('bl-customComponent-weather', classList) } style={ style }>
       { options?.lat && options.lon && (
         <Weather options={ options } locationLabel={ label } showForecast={ forecast } theme={ theme } lang={ lang } />
       ) }
@@ -56,10 +59,4 @@ function Weather({ options, locationLabel, showForecast, theme, lang }) {
       theme={ theme }
     />
   );
-}
-
-async function getLocation() {
-  return await (async function() {
-    return BackendlessUI.Navigator.getCurrentGeolocation();
-  })();
 }
