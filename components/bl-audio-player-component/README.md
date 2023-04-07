@@ -1,36 +1,13 @@
 # Audio Player
 
-The Audio Player component provides basic functionality to play audio files. 
+The Audio Player component provides basic functionality to play audio files and streams.
+
+For more information about the configuration of this component, refer to the **Configuration** section below.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-For every audio file that you want to run in the player, you must provide a valid URL where the audio file is located.
-
-There are two ways to specify the audio file URL in the Settings of this component:
- 1. Enter a string value in the **Audio Url** property. The entered value must be the URL to the audio file.
- 2. Create a list containing URL addresses in the Logic of this component.
-
-The valid format of the URL address looks as following: ````https://example-cloudservice.com/audio/ambience/forest_sounds.mp3````
-
-Note how the URL leads right to the audio file, and not just a directory. The URL must always lead directly to the audio file.
-
-To create a list containing multiple URLs to the audio files, you have to navigate to the Logic of the component, and there you have to add the **Audio Url Logic** handler. 
-
-In this block you must specify the list containing the URLs as following:
-
-<p align="center">
-  <img src="./example-images/component_audio_player_2.png" alt="codeless block" width="780"/>
-</p>
-
-<details>
-<summary> Codeless Block XML Code</summary>
-
-```
-<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="u[X|uT@6bN9@L{YGx3CU" x="146" y="100"><mutation items="3"></mutation><value name="ADD0"><block type="text" id="8|`:XT),oXrLYXww](Qh"><field name="TEXT">https://mymusic.com/audio/forest_sounds.mp3</field></block></value><value name="ADD1"><block type="text" id="S0]CoWI:@Cs)sR1`Wh38"><field name="TEXT">https://mymusic.com/audio/ocean_sounds.mp3</field></block></value><value name="ADD2"><block type="text" id="s[8Qx]M2`ZLyUnhRqmh{"><field name="TEXT">https://mymusic.com/audio/rain_sounds.mp3</field></block></value></block>
-```
-</details>
 
 Below you can find all component settings and corresponding descriptions:
 
@@ -112,3 +89,33 @@ Below you can find all component settings and corresponding descriptions:
 @bl-customComponent-audioPlayer-input-borderRadius: 5px;
 @bl-customComponent-audioPlayer-input-thumb-borderRadius: 50%;
 ````
+
+## Configuration
+
+For every audio file or stream that you want to run in the player, you must provide a valid URL where the audio file is located.
+
+There are two ways to specify the audio file URL in the Settings of this component:
+ 1. Enter a string value in the **Audio Url** property. The entered value must be the URL to the audio file or the stream.
+ 2. Create a list containing URL addresses in the Logic of this component.
+
+The valid format of the URL address looks as following: ````https://example-cloudservice.com/audio/ambience/forest_sounds.mp3````
+
+Note how the URL leads right to the audio file(forest_sounds.mp3), and not just a directory. The URL must always lead directly to the audio file.
+
+For audio streams, the URL can be of the following format: ````https://cast.radiogroup.com.ua/nrj````
+
+To create a list containing multiple URLs to the audio files or streams, you have to navigate to the Logic of the component, and there you have to add the **Audio Url Logic** handler. 
+
+In this block you must specify the list containing the URLs as following:
+
+<p align="center">
+  <img src="./example-images/codeless_block_example.png" alt="codeless block" width="780"/>
+</p>
+
+<details>
+<summary> Codeless Block XML Code</summary>
+
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="u[X|uT@6bN9@L{YGx3CU" x="146" y="100"><mutation items="3"></mutation><value name="ADD0"><block type="text" id="8|`:XT),oXrLYXww](Qh"><field name="TEXT">https://mymusic.com/audio/forest_sounds.mp3</field></block></value><value name="ADD1"><block type="text" id="S0]CoWI:@Cs)sR1`Wh38"><field name="TEXT">https://mymusic.com/audio/ocean_sounds.mp3</field></block></value><value name="ADD2"><block type="text" id="s[8Qx]M2`ZLyUnhRqmh{"><field name="TEXT">https://mymusic.com/audio/rain_sounds.mp3</field></block></value></block>
+```
+</details>
