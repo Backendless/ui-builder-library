@@ -12,15 +12,11 @@ There are two ways to specify the audio file URL in the Settings of this compone
  1. Enter a string value in the **Audio Url** property. The entered value must be the URL to the audio file.
  2. Create a list containing URL addresses in the Logic of this component.
 
-The valid format of the URL address looks as following: ````https://mycloudservice.com/audio/ambience/forest_sounds.mp3````
+The valid format of the URL address looks as following: ````https://example-cloudservice.com/audio/ambience/forest_sounds.mp3````
 
 Note how the URL leads right to the audio file, and not just a directory. The URL must always lead directly to the audio file.
 
 To create a list containing multiple URLs to the audio files, you have to navigate to the Logic of the component, and there you have to add the **Audio Url Logic** handler. 
-
-<p align="center">
-  <img src="./example-images/component_audio_player_1.png" alt="main thumbnail" width="780"/>
-</p>
 
 In this block you must specify the list containing the URLs as following:
 
@@ -28,11 +24,15 @@ In this block you must specify the list containing the URLs as following:
   <img src="./example-images/component_audio_player_2.png" alt="codeless block" width="780"/>
 </p>
 
-Below you can find all component settings and corresponding descriptions:
+<details>
+<summary> Codeless Block XML Code</summary>
 
-<p align="center">
-  <img src="./example-images/component_audio_player_3.png" alt="component settings" width="780"/>
-</p>
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="u[X|uT@6bN9@L{YGx3CU" x="146" y="100"><mutation items="3"></mutation><value name="ADD0"><block type="text" id="8|`:XT),oXrLYXww](Qh"><field name="TEXT">https://mymusic.com/audio/forest_sounds.mp3</field></block></value><value name="ADD1"><block type="text" id="S0]CoWI:@Cs)sR1`Wh38"><field name="TEXT">https://mymusic.com/audio/ocean_sounds.mp3</field></block></value><value name="ADD2"><block type="text" id="s[8Qx]M2`ZLyUnhRqmh{"><field name="TEXT">https://mymusic.com/audio/rain_sounds.mp3</field></block></value></block>
+```
+</details>
+
+Below you can find all component settings and corresponding descriptions:
 
 ## Properties
 
