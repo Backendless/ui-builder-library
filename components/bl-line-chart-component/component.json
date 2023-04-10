@@ -70,11 +70,87 @@
       ]
     },
     {
+      "type": "checkbox",
+      "name": "chartTitleVisibility",
+      "label": "Chart Title Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "chartTitleVisibilityLogic"
+    },
+    {
+      "type": "number",
+      "name": "chartTitleFontSize",
+      "label": "Chart Title Font Size",
+      "showInSettings": true,
+      "defaultValue": "20",
+      "hasLogicHandler": false,
+      "handlerId": "chartTitleFontSizeLogic"
+    },
+    {
+      "type": "text",
+      "name": "chartTitle",
+      "label": "Chart Title",
+      "showInSettings": true,
+      "defaultValue": "Fruit sale",
+      "hasLogicHandler": false,
+      "handlerId": "chartTitleLogic"
+    },
+    {
+      "type": "color",
+      "name": "chartBackgroundColor",
+      "label": "Chart Background Color",
+      "settingTooltip": "the background color of the chart will be whatever you specify using this handler",
+      "showInSettings": true,
+      "defaultValue": "rgba(163,182,218,0.13)",
+      "hasLogicHandler": true,
+      "handlerId": "chartBackgroundColorLogic",
+      "handlerLabel": "Chart Background Color Logic",
+      "handlerDescription": "This handler allows you to specify the background color for the chart.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "yGridLineVisibility",
+      "label": "Y Grid Line Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "yGridLineVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "xGridLineVisibility",
+      "label": "X Grid Line Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "xGridLineVisibilityLogic"
+    },
+    {
+      "type": "color",
+      "name": "gridLinesColor",
+      "label": "Grid Lines Color",
+      "showInSettings": true,
+      "defaultValue": "#a5adba",
+      "hasLogicHandler": false,
+      "handlerId": "gridLinesColorLogic"
+    },
+    {
+      "type": "number",
+      "name": "gridLinesWidth",
+      "label": "Grid Lines Width",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": false,
+      "handlerId": "gridLinesWidthLogic"
+    },
+    {
       "type": "json",
       "name": "labels",
       "label": "Labels",
       "showInSettings": true,
-      "defaultValue": "[\"A\", \"B\", \"C\", \"D\"]",
+      "defaultValue": "[\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"]",
       "hasLogicHandler": true,
       "handlerId": "labelsLogic",
       "handlerLabel": "Labels Logic",
@@ -91,7 +167,7 @@
       "handlerLabel": "Datasets Logic",
       "handlerDescription": "This handler allows you to set datasets to the component.",
       "dataBinding": true,
-      "defaultValue": "[\n  {\n    \"label\": \"Results for 2021\",\n    \"data\": [2, 2, 3, 4],\n    \"borderColor\": \"#36A2EB\",\n    \"backgroundColor\": \"#9BD0F5\"\n  },\n  {\n    \"label\": \"Results for 2022\",\n    \"data\": [6, 8, 7, 10],\n    \"borderColor\": \"#FF6384\",\n    \"backgroundColor\": \"#FFB1C1\"\n  }\n]"
+      "defaultValue": "[\n  {\n    \"label\": \"Apple\",\n    \"data\": [22, 25, 30, 24, 32, 35, 18],\n    \"borderColor\": \"#36A2EB\",\n    \"backgroundColor\": \"#9BD0F5\"\n  },\n  {\n    \"label\": \"Pear\",\n    \"data\": [25, 23, 28, 30, 37, 40, 21],\n    \"borderColor\": \"#FF6384\",\n    \"backgroundColor\": \"#FFB1C1\"\n  }\n]"
     },
     {
       "type": "json",
