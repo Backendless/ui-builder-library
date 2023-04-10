@@ -2,7 +2,7 @@
 
 The Audio Player component provides basic functionality to play audio files and streams.
 
-For more information about the configuration of this component, refer to the **Configuration** section below.
+For more information about the configuration of this component, refer to the [Configuration](#configuration) section below.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
