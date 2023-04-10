@@ -139,7 +139,10 @@ export function insertHTML(editor, content) {
   const delta = editor.clipboard.convert(content);
 
   editor.setContents(delta);
-  editor.setSelection(range?.index);
+
+  if (range) {
+    editor.setSelection(range.index);
+  }
 }
 
 function addInlineStyles(block, styles) {
