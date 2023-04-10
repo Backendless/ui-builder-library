@@ -1,0 +1,188 @@
+{
+  "id": "c_e6d73f0e4466f915a4c28d9eba4e4899",
+  "name": "World Clock",
+  "description": "This component allows you to add a clock and track the time according to the selected time zone.",
+  "showInToolbox": true,
+  "faIcon": "clock",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "defaultValue": "analog-gold",
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
+      "options": [
+        {
+          "value": "analog-gold",
+          "label": "square-gold"
+        },
+        {
+          "value": "analog-classic",
+          "label": "circle-classic"
+        },
+        {
+          "value": "analog-modern",
+          "label": "circle-modern"
+        },
+        {
+          "value": "analog-vintage",
+          "label": "circle-vintage"
+        },
+        {
+          "value": "digital",
+          "label": "digital"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "timezone",
+      "label": "Time Zone",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "timezoneLogic",
+      "options": [
+        {
+          "value": "-12",
+          "label": "GMT-12"
+        },
+        {
+          "value": "-11",
+          "label": "GMT-11"
+        },
+        {
+          "value": "-10",
+          "label": "GMT-10"
+        },
+        {
+          "value": "-9",
+          "label": "GMT-9"
+        },
+        {
+          "value": "-8",
+          "label": "GMT-8"
+        },
+        {
+          "value": "-7",
+          "label": "GMT-7"
+        },
+        {
+          "value": "-6",
+          "label": "GMT-6"
+        },
+        {
+          "value": "-5",
+          "label": "GMT-5"
+        },
+        {
+          "value": "-4",
+          "label": "GMT-4"
+        },
+        {
+          "value": "-3",
+          "label": "GMT-3"
+        },
+        {
+          "value": "-2",
+          "label": "GMT-2"
+        },
+        {
+          "value": "-1",
+          "label": "GMT-1"
+        },
+        {
+          "value": "+0",
+          "label": "GMT+0"
+        },
+        {
+          "value": "+1",
+          "label": "GMT+1"
+        },
+        {
+          "value": "+2",
+          "label": "GMT+2"
+        },
+        {
+          "value": "+3",
+          "label": "GMT+3"
+        },
+        {
+          "value": "+4",
+          "label": "GMT+4"
+        },
+        {
+          "value": "+5",
+          "label": "GMT+5"
+        },
+        {
+          "value": "+6",
+          "label": "GMT+6"
+        },
+        {
+          "value": "+7",
+          "label": "GMT+7"
+        },
+        {
+          "value": "+8",
+          "label": "GMT+8"
+        },
+        {
+          "value": "+9",
+          "label": "GMT+9"
+        },
+        {
+          "value": "+10",
+          "label": "GMT+10"
+        },
+        {
+          "value": "+11",
+          "label": "GMT+11"
+        },
+        {
+          "value": "+12",
+          "label": "GMT+12"
+        }
+      ],
+      "defaultValue": "+0"
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "label": "Label",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "labelLogic",
+      "defaultValue": "London",
+      "handlerLabel": "Label Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "timeFormat",
+      "label": "Time Format",
+      "showInSettings": true,
+      "defaultValue": "12",
+      "hasLogicHandler": false,
+      "handlerId": "timeFormatLogic",
+      "options": [
+        {
+          "value": "12",
+          "label": "12"
+        },
+        {
+          "value": "24",
+          "label": "24"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [],
+  "settings": [],
+  "pods": {}
+}
