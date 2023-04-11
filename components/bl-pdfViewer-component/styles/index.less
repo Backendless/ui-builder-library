@@ -30,7 +30,7 @@
 @bl-customComponent-pdfViewer-controls-button-disabled-opacity: 0.5;
 @bl-customComponent-pdfViewer-controls-button-disabled-cursor: auto;
 
-@bl-customComponent-pdfViewer-controls-button-icon-fill: rgba(255, 255, 255, 1);
+@bl-customComponent-pdfViewer-controls-button-icon-color: rgba(255, 255, 255, 1);
 @bl-customComponent-pdfViewer-controls-button-icon-size: 16px;
 
 @bl-customComponent-pdfViewer-controls-scale-position: absolute;
@@ -161,10 +161,15 @@
       }
 
       .button-icon {
-        fill: @bl-customComponent-pdfViewer-controls-button-icon-fill;
+        fill: @bl-customComponent-pdfViewer-controls-button-icon-color;
 
         height: @bl-customComponent-pdfViewer-controls-button-icon-size;
         width: @bl-customComponent-pdfViewer-controls-button-icon-size;
+
+        & path {
+          stroke: @bl-customComponent-pdfViewer-controls-button-icon-color;
+          fill: @bl-customComponent-pdfViewer-controls-button-icon-color;
+        }
       }
     }
   }

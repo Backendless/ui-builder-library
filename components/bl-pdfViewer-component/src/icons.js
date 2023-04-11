@@ -71,8 +71,8 @@ export function PlusIcon() {
   return (
     <svg className="button-icon" viewBox="0 0 24 24" fill="none">
       <g>
-        <path d="M5 12H19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M12 5L12 19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M5 12H19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M12 5L12 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
       </g>
     </svg>
   );
@@ -81,9 +81,9 @@ export function PlusIcon() {
 export function MinusIcon() {
   return (
     <svg className="button-icon" viewBox="0 0 20 20" fill="none">
-      <g id="SVGRepo_bgCarrier"></g>
-      <g id="SVGRepo_tracerCarrier"></g>
-      <g id="SVGRepo_iconCarrier">
+      <g></g>
+      <g></g>
+      <g>
         <path fill="#ffffff" d="M18 10a1 1 0 01-1 1H3a1 1 0 110-2h14a1 1 0 011 1z"></path>
       </g>
     </svg>

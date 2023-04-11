@@ -97,16 +97,9 @@ function PageControls({ currentPage, setCurrentPage, pageCount }) {
 }
 
 function ScaleControls({ scale, setScale }) {
-  const onMinusScaleClick = () => {
-    if (scale > 0.1) {
-      setScale(state => Number((state - 0.1).toFixed(1)));
-    }
-  };
-  const onPlusScaleClick = () => {
-    if (scale < 10) {
-      setScale(state => Number((state + 0.1).toFixed(1)));
-    }
-  };
+  const onMinusScaleClick = () => setScale(s => +Math.max(0.1, s - 0.1).toFixed(1));
+
+  const onPlusScaleClick = () => setScale(s => +Math.min(10, s + 0.1).toFixed(1));
 
   return (
     <div className="controls__scale">
@@ -122,28 +115,21 @@ function ScaleControls({ scale, setScale }) {
 }
 
 function OtherControls({ pdfUrl, showDownloadButton, showPrintButton }) {
-  const printButtonClick = () => {
-    printJS({
-      printable         : pdfUrl,
-      type              : 'pdf',
-      onPrintDialogClose: () => document.getElementById('printJS').remove(),
-    });
-  };
+  const printButtonClick = () =>  printJS({
+    printable         : pdfUrl,
+    type              : 'pdf',
+    onPrintDialogClose: () => document.getElementById('printJS').remove(),
+  });
 
   return (
     <div className="controls__other">
       { showDownloadButton && (
-        <a
-          className="controls__button"
-          href={ pdfUrl }
-          download="pdf">
+        <a className="controls__button" href={ pdfUrl } download="pdf">
           <DownloadIcon/>
         </a>
       ) }
       { showPrintButton && (
-        <button
-          className="controls__button"
-          onClick={ printButtonClick }>
+        <button className="controls__button" onClick={ printButtonClick }>
           <PrintIcon/>
         </button>
       ) }
