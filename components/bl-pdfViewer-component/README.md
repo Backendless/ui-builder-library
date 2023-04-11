@@ -81,7 +81,7 @@ The component allows you to add a pdf viewer to your UI-Builder application
 
 **Controls button icon**
 ```
-@bl-customComponent-pdfViewer-controls-button-icon-fill: rgba(255, 255, 255, 1);
+@bl-customComponent-pdfViewer-controls-button-icon-color: rgba(255, 255, 255, 1);
 @bl-customComponent-pdfViewer-controls-button-icon-size: 16px;
 ```
 
