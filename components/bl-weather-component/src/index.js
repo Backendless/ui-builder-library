@@ -17,17 +17,13 @@ export default function WeatherComponent({ component, elRef, settings }) {
   const [options, setOptions] = useState({ key: API_KEY, lat: null, lon: null, lang, unit });
 
   useEffect(async () => {
-    let usedLocation;
+    const usedLocation = currentLocation ? await BackendlessUI.Navigator.getCurrentGeolocation() : location;
 
-    if (currentLocation) {
-      usedLocation = await BackendlessUI.Navigator.getCurrentGeolocation();
-    } else if (location?.lat && location.lng) {
-      usedLocation = location;
-    } else {
-      console.error('Location data not provided or provided incorrectly');
-    }
-
-    setOptions({ ...options, lat: usedLocation?.lat, lon: usedLocation?.lng });
+    if(usedLocation?.lat && usedLocation.lng) {
+     setOptions({ ...options, lat: usedLocation.lat, lon: usedLocation.lng });
+   } else {
+    console.error('Location data not provided or provided incorrectly');
+   }
   }, [currentLocation, location]);
 
   if (!display) {
