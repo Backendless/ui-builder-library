@@ -89,10 +89,11 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
     editorRef.current = new Quill(quillRef.current, {
       bounds : quillRef.current,
       modules: {
-        toolbar: {
+        toolbar  : {
           container: toolbarRef.current,
           handlers : { undo, redo },
         },
+        clipboard: { matchVisual: false },
       },
       theme  : 'snow',
       scrollingContainer,
