@@ -98,7 +98,6 @@ function PageControls({ currentPage, setCurrentPage, pageCount }) {
 
 function ScaleControls({ scale, setScale }) {
   const onMinusScaleClick = () => setScale(s => +Math.max(0.1, s - 0.1).toFixed(1));
-
   const onPlusScaleClick = () => setScale(s => +Math.min(10, s + 0.1).toFixed(1));
 
   return (
