@@ -114,7 +114,7 @@ function ScaleControls({ scale, setScale }) {
 }
 
 function OtherControls({ pdfUrl, showDownloadButton, showPrintButton }) {
-  const printButtonClick = () =>  printJS({
+  const printButtonClick = () => printJS({
     printable         : pdfUrl,
     type              : 'pdf',
     onPrintDialogClose: () => document.getElementById('printJS').remove(),
