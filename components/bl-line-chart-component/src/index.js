@@ -14,6 +14,7 @@ export default function LineChartComponent({ component, elRef }) {
   const chartRef = useRef(null);
 
   useChart(chartRef, {
+    display,
     type,
     labels,
     datasets,
@@ -47,12 +48,16 @@ export default function LineChartComponent({ component, elRef }) {
 
 const useChart = (chartRef, props) => {
   const {
-    type, labels, datasets, options, chartTitleVisibility, chartTitleFontSize,
+    display, type, labels, datasets, options, chartTitleVisibility, chartTitleFontSize,
     chartTitle, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth
   } = props;
   const chartInstance = useRef();
 
   useEffect(() => {
+    if (!display) {
+      return null;
+    }
+
     chartInstance.current = new Chart(chartRef.current, {
       type,
       data: { labels, datasets },
@@ -86,10 +91,14 @@ const useChart = (chartRef, props) => {
       }
     });
 
-    return () => { chartInstance.current.destroy() };
-  }, []);
+    return () => chartInstance.current.destroy();
+  }, [display]);
 
   useEffect(() => {
+    if (!display) {
+      return null;
+    }
+
     const { current: chart } = chartInstance;
 
     if (chart) {
@@ -122,8 +131,7 @@ const useChart = (chartRef, props) => {
           }
         }
       };
-      chart.data.labels = labels;
-      chart.data.datasets = datasets;
+      Object.assign(chart.data, { labels, datasets });
 
       chart.update();
     }

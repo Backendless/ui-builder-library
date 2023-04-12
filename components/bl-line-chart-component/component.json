@@ -49,11 +49,8 @@
       "label": "Type",
       "showInSettings": true,
       "defaultValue": "line",
-      "hasLogicHandler": true,
+      "hasLogicHandler": false,
       "handlerId": "typeLogic",
-      "handlerLabel": "Type Logic",
-      "handlerDescription": "This handler allows you to specify the chart type.",
-      "dataBinding": true,
       "options": [
         {
           "value": "bar",
