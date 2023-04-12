@@ -7,7 +7,7 @@ The component based on external [Carousel](https://getbootstrap.com/docs/5.2/com
 ## Properties
 
 | Property                                    | Type                                    | Default Value                         | Logic                       | Data Binding | UI Setting | Description                                                                                                                                              |
-| ------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ------------------------------------------- |-----------------------------------------| ------------------------------------- | --------------------------- | ------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Images Data:`imagesData`                    | JSON                                    | [Defalut Value](#images-data-default) | Image Data Logic            | YES          | YES        | Allows determinate data for carousel. Watch [Codeless Examples](#examples). Signature of polygon: `{"url": string, "title": string, "content": string }` |
 | Height:`height`                             | Text                                    | "400px"                               | Height Logic                | YES          | YES        | Allows determinate height for images.                                                                                                                    |
 | Width:`width`                               | Text                                    | "700px"                               | Width Logic                 | YES          | YES        | Allows determinate width for images.                                                                                                                     |
@@ -74,3 +74,85 @@ Addition of Images Data
 ]
 ```
 </details>
+
+## Styles
+
+**Carousel Img**
+```
+@bl-customComponent-carousel-image-user-select: none;
+```
+
+**Carousel Prev and Next Button**
+```
+@bl-customComponent-carousel-prev-next-button-width: 15%;
+@bl-customComponent-carousel-prev-next-button-top: 0;
+@bl-customComponent-carousel-prev-next-button-bottom: 0;
+@bl-customComponent-carousel-prev-next-button-opacity: 0.5;
+@bl-customComponent-carousel-prev-next-button-hover-opacity: 0.9;
+@bl-customComponent-carousel-prev-next-button-transition: opacity 0.15s ease;
+@bl-customComponent-carousel-prev-next-button-cursor: pointer;
+@bl-customComponent-carousel-prev-next-button-padding: 0;
+@bl-customComponent-carousel-prev-next-button-border: 0;
+@bl-customComponent-carousel-prev-next-button-background: 0 0;
+@bl-customComponent-carousel-prev-next-button-hover-outline: 0;
+```
+
+**Carousel Prev and Next Button Icon**
+```
+@bl-customComponent-carousel-prev-next-button-icon-stroke: #000;
+@bl-customComponent-carousel-prev-next-button-icon-stroke-width: 0.3px;
+@bl-customComponent-carousel-prev-next-button-icon-height: 2rem;
+@bl-customComponent-carousel-prev-next-button-icon-width: 2rem;
+```
+
+**Carousel Indicator List**
+```
+@bl-customComponent-carousel-indicator-list-right: 0;
+@bl-customComponent-carousel-indicator-list-left: 0;
+@bl-customComponent-carousel-indicator-list-bottom: 0;
+@bl-customComponent-carousel-indicator-list-padding: 0;
+@bl-customComponent-carousel-indicator-list-margin-right: 15%;
+@bl-customComponent-carousel-indicator-list-margin-left: 15%;
+@bl-customComponent-carousel-indicator-list-margin-bottom: 1rem;
+```
+
+**Carousel Indicator Item**
+```
+@bl-customComponent-carousel-indicator-item-width: 30px;
+@bl-customComponent-carousel-indicator-item-height: 20px;
+@bl-customComponent-carousel-indicator-item-padding: 0;
+@bl-customComponent-carousel-indicator-item-margin-left: 5px;
+@bl-customComponent-carousel-indicator-item-margin-right: 5px;
+@bl-customComponent-carousel-indicator-item-cursor: pointer;
+@bl-customComponent-carousel-indicator-item-border: 0;
+@bl-customComponent-carousel-indicator-item-opacity: 0.5;
+@bl-customComponent-carousel-indicator-item-background-color: transparent;
+@bl-customComponent-carousel-indicator-item-transition: opacity 0.6s ease;
+@bl-customComponent-carousel-indicator-item-active-opacity: 1;
+```
+
+**Carousel Indicator Icon**
+```
+@bl-customComponent-carousel-indicator-icon-height: 3px;
+@bl-customComponent-carousel-indicator-icon-width: 30px;
+@bl-customComponent-carousel-indicator-icon-fill: #fff;
+@bl-customComponent-carousel-indicator-icon-stroke: #000;
+@bl-customComponent-carousel-indicator-icon-stroke-width: 0.5px;
+```
+
+**Carousel Caption**
+```
+@bl-customComponent-carousel-caption-font-family: inherit;
+@bl-customComponent-carousel-caption-font-size: inherit;
+@bl-customComponent-carousel-caption-font-weight: inherit;
+@bl-customComponent-carousel-caption-title-font-family: inherit;
+@bl-customComponent-carousel-caption-title-font-size: inherit;
+@bl-customComponent-carousel-caption-title-font-weight: inherit;
+@bl-customComponent-carousel-caption-right: 15%;
+@bl-customComponent-carousel-caption-left: 15%;
+@bl-customComponent-carousel-caption-bottom: 1.25rem;
+@bl-customComponent-carousel-caption-padding: 1.25rem 0 1.25rem 0;
+@bl-customComponent-carousel-caption-color: #fff;
+@bl-customComponent-carousel-caption-text-align: center;
+@bl-customComponent-carousel-caption-text-shadow: 0 0 2px #000000;
+```

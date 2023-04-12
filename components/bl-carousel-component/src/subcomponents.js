@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import { useClassNamesItem } from './helpers';
+
+import { getClassNamesItem } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -11,7 +12,7 @@ export function List(props) {
     height,
     animation,
     animationDuration,
-    animationType
+    animationType,
   } = props;
 
   const style = useMemo(() => {
@@ -20,16 +21,16 @@ export function List(props) {
     }
 
     return {
-      height: height,
+      height           : height,
       animationDuration: `${ animationDuration }ms`,
-      transition       : `transform ${ animationDuration }ms ease-in-out`
+      transition       : `transform ${ animationDuration }ms ease-in-out`,
     };
   }, [animationDuration, animationType]);
 
   return (
     <div className="carousel__list">
       { imagesList.map((image, index) => {
-        const classes = useClassNamesItem(
+        const classes = getClassNamesItem(
           index,
           currentImg,
           nextCurrentImage,
@@ -61,7 +62,7 @@ function Item({ classes, style, height, url, title, content }) {
       <img
         src={ url }
         className="carousel__image"
-        style={ { height: height } }
+        style={{ height: height }}
       />
       <CarouselCaption title={ title } content={ content }/>
     </div>
@@ -92,6 +93,9 @@ export function CarouselIndicators(props) {
           className={ cn('carousel__indicator-item', { 'active': index === nextCurrentImage }) }
           onClick={ () => goToImage(index) }
           disabled={ isAnimated || index === currentImg }>
+          <svg className="carousel__indicator-icon">
+            <rect />
+          </svg>
         </button>
       )) }
     </div>
@@ -113,17 +117,17 @@ export const PrevButtonIcon = () => (
 );
 
 const ButtonIcons = {
-  next: <NextButtonIcon />,
-  prev: <PrevButtonIcon />,
-}
+  next: <NextButtonIcon/>,
+  prev: <PrevButtonIcon/>,
+};
 
 export function Button({ disabled, onClick, type }) {
   return (
     <button
       type="button"
-      className={ `carousel__${type}-button` }
+      className={ `carousel__${ type }-button` }
       onClick={ onClick }
-      style={ { pointerEvents: disabled ? "none" : "auto" } }>
+      style={{ pointerEvents: disabled ? 'none' : 'auto' }}>
       { ButtonIcons[type] }
     </button>
   );

@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { Button, List, CarouselIndicators } from './subcomponents';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
 import { getAdjacentImages } from './helpers';
+import { Button, CarouselIndicators, List } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -16,7 +17,7 @@ export default function Carousel({ component, eventHandlers }) {
     animationDuration,
     withControls,
     withIndicators,
-    animationType
+    animationType,
   } = component;
   const { onNextButtonClick, onPrevButtonClick, onMouseEnter, onMouseLeave } = eventHandlers;
 
@@ -27,7 +28,10 @@ export default function Carousel({ component, eventHandlers }) {
   const [autoplay, setAutoplay] = useState(true);
   const autoplayRef = useRef();
 
-  const { nextImg, prevImg } = getAdjacentImages(currentImg, imagesList.length);
+  const { nextImg, prevImg } = useMemo(
+    () => getAdjacentImages(currentImg, imagesList.length),
+    [currentImg, imagesList]
+  );
 
   useEffect(() => {
     if (imagesData) {
@@ -67,7 +71,7 @@ export default function Carousel({ component, eventHandlers }) {
     }, animationDuration);
   };
 
-  component.goToImage = (index) => {
+  component.goToImage = index => {
     clearTimeout(autoplayRef.current);
     setNextCurrentImage(index);
 
@@ -79,11 +83,11 @@ export default function Carousel({ component, eventHandlers }) {
     }, animationDuration);
   };
 
-  component.autoplay = (boolean) => {
+  component.autoplay = boolean => {
     setAutoplay(boolean);
   };
 
-  component.setImagesData = (listImagesData) => {
+  component.setImagesData = listImagesData => {
     setCurrentImg(0);
     setNextCurrentImage(0);
     clearTimeout(autoplayRef.current);

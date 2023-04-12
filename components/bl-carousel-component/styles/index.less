@@ -1,4 +1,61 @@
-// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-carousel-image-user-select: none;
+
+@bl-customComponent-carousel-prev-next-button-width: 15%;
+@bl-customComponent-carousel-prev-next-button-top: 0;
+@bl-customComponent-carousel-prev-next-button-bottom: 0;
+@bl-customComponent-carousel-prev-next-button-opacity: 0.5;
+@bl-customComponent-carousel-prev-next-button-hover-opacity: 0.9;
+@bl-customComponent-carousel-prev-next-button-transition: opacity 0.15s ease;
+@bl-customComponent-carousel-prev-next-button-cursor: pointer;
+@bl-customComponent-carousel-prev-next-button-padding: 0;
+@bl-customComponent-carousel-prev-next-button-border: 0;
+@bl-customComponent-carousel-prev-next-button-background: 0 0;
+@bl-customComponent-carousel-prev-next-button-hover-outline: 0;
+
+@bl-customComponent-carousel-prev-next-button-icon-stroke: #000;
+@bl-customComponent-carousel-prev-next-button-icon-stroke-width: 0.3px;
+@bl-customComponent-carousel-prev-next-button-icon-height: 2rem;
+@bl-customComponent-carousel-prev-next-button-icon-width: 2rem;
+
+@bl-customComponent-carousel-indicator-list-right: 0;
+@bl-customComponent-carousel-indicator-list-left: 0;
+@bl-customComponent-carousel-indicator-list-bottom: 0;
+@bl-customComponent-carousel-indicator-list-padding: 0;
+@bl-customComponent-carousel-indicator-list-margin-right: 15%;
+@bl-customComponent-carousel-indicator-list-margin-left: 15%;
+@bl-customComponent-carousel-indicator-list-margin-bottom: 1rem;
+
+@bl-customComponent-carousel-indicator-item-width: 30px;
+@bl-customComponent-carousel-indicator-item-height: 20px;
+@bl-customComponent-carousel-indicator-item-padding: 0;
+@bl-customComponent-carousel-indicator-item-margin-left: 5px;
+@bl-customComponent-carousel-indicator-item-margin-right: 5px;
+@bl-customComponent-carousel-indicator-item-cursor: pointer;
+@bl-customComponent-carousel-indicator-item-border: 0;
+@bl-customComponent-carousel-indicator-item-opacity: 0.5;
+@bl-customComponent-carousel-indicator-item-background-color: transparent;
+@bl-customComponent-carousel-indicator-item-transition: opacity 0.6s ease;
+@bl-customComponent-carousel-indicator-item-active-opacity: 1;
+
+@bl-customComponent-carousel-indicator-icon-height: 3px;
+@bl-customComponent-carousel-indicator-icon-width: 30px;
+@bl-customComponent-carousel-indicator-icon-fill: #fff;
+@bl-customComponent-carousel-indicator-icon-stroke: #000;
+@bl-customComponent-carousel-indicator-icon-stroke-width: 0.5px;
+
+@bl-customComponent-carousel-caption-font-family: inherit;
+@bl-customComponent-carousel-caption-font-size: inherit;
+@bl-customComponent-carousel-caption-font-weight: inherit;
+@bl-customComponent-carousel-caption-title-font-family: inherit;
+@bl-customComponent-carousel-caption-title-font-size: inherit;
+@bl-customComponent-carousel-caption-title-font-weight: inherit;
+@bl-customComponent-carousel-caption-right: 15%;
+@bl-customComponent-carousel-caption-left: 15%;
+@bl-customComponent-carousel-caption-bottom: 1.25rem;
+@bl-customComponent-carousel-caption-padding: 1.25rem 0 1.25rem 0;
+@bl-customComponent-carousel-caption-color: #fff;
+@bl-customComponent-carousel-caption-text-align: center;
+@bl-customComponent-carousel-caption-text-shadow: 0 0 2px #000;
 
 .bl-customComponent-carousel {
   position: relative;
@@ -24,31 +81,43 @@
     &__image {
       height: 100%;
       width: 100%;
+
+      user-select: @bl-customComponent-carousel-image-user-select;
+
       object-fit: cover;
     }
 
     &__prev-button,
     &__next-button {
+      padding: @bl-customComponent-carousel-prev-next-button-padding;
+      border: @bl-customComponent-carousel-prev-next-button-border;
+      background: @bl-customComponent-carousel-prev-next-button-background;
+
       position: absolute;
-      top: 0;
-      bottom: 0;
+      top: @bl-customComponent-carousel-prev-next-button-top;
+      bottom: @bl-customComponent-carousel-prev-next-button-bottom;
       z-index: 1;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 15%;
-      padding: 0;
+
+      width: @bl-customComponent-carousel-prev-next-button-width;
+
       color: #fff;
-      background: 0 0;
-      border: 0;
-      opacity: 0.5;
-      transition: opacity 0.15s ease;
-      cursor: pointer;
+      opacity: @bl-customComponent-carousel-prev-next-button-opacity;
+      cursor: @bl-customComponent-carousel-prev-next-button-cursor;
+      transition: @bl-customComponent-carousel-prev-next-button-transition;
 
       &:hover {
         color: #fff;
-        outline: 0;
-        opacity: 0.9;
+        outline: @bl-customComponent-carousel-prev-next-button-hover-outline;
+        opacity: @bl-customComponent-carousel-prev-next-button-hover-opacity;
+      }
+
+      & path {
+        stroke: @bl-customComponent-carousel-prev-next-button-icon-stroke;
+        stroke-width: @bl-customComponent-carousel-prev-next-button-icon-stroke-width;
       }
     }
 
@@ -62,53 +131,86 @@
 
     &__next-icon,
     &__prev-icon {
-      width: 2rem;
-      height: 2rem;
+      width: @bl-customComponent-carousel-prev-next-button-icon-height;
+      height: @bl-customComponent-carousel-prev-next-button-icon-width;
     }
 
     &__indicator-list {
       position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      right: @bl-customComponent-carousel-indicator-list-right;
+      bottom: @bl-customComponent-carousel-indicator-list-bottom;
+      left: @bl-customComponent-carousel-indicator-list-left;
+
       display: flex;
       justify-content: center;
-      padding: 0;
-      margin-right: 15%;
-      margin-bottom: 1rem;
-      margin-left: 15%;
+
+      padding: @bl-customComponent-carousel-indicator-list-padding;
+      margin-right: @bl-customComponent-carousel-indicator-list-margin-right;
+      margin-bottom: @bl-customComponent-carousel-indicator-list-margin-bottom;
+      margin-left: @bl-customComponent-carousel-indicator-list-margin-left;
     }
 
     &__indicator-item {
       box-sizing: content-box;
-      width: 30px;
-      height: 3px;
-      padding: 0;
-      margin-right: 3px;
-      margin-left: 3px;
-      cursor: pointer;
-      background-color: #fff;
-      background-clip: padding-box;
-      border: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      opacity: 0.5;
-      transition: opacity 0.6s ease;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: @bl-customComponent-carousel-indicator-item-width;
+      height: @bl-customComponent-carousel-indicator-item-height;
+
+      padding: @bl-customComponent-carousel-indicator-item-padding;
+      margin-right: @bl-customComponent-carousel-indicator-item-margin-right;
+      margin-left: @bl-customComponent-carousel-indicator-item-margin-left;
+
+      cursor: @bl-customComponent-carousel-indicator-item-cursor;
+      border: @bl-customComponent-carousel-indicator-item-border;
+      opacity: @bl-customComponent-carousel-indicator-item-opacity;
+      background-color: @bl-customComponent-carousel-indicator-item-background-color;
+      transition: @bl-customComponent-carousel-indicator-item-transition;
 
       &.active {
-        opacity: 1;
+        opacity: @bl-customComponent-carousel-indicator-item-active-opacity;
+      }
+    }
+
+    &__indicator-icon {
+      height: @bl-customComponent-carousel-indicator-icon-height;
+      width: @bl-customComponent-carousel-indicator-icon-width;
+
+      fill: @bl-customComponent-carousel-indicator-icon-fill;
+
+      stroke-width: @bl-customComponent-carousel-indicator-icon-stroke-width;
+      stroke: @bl-customComponent-carousel-indicator-icon-stroke;
+
+      & rect {
+        height: @bl-customComponent-carousel-indicator-icon-height;
+        width: @bl-customComponent-carousel-indicator-icon-width;
       }
     }
 
     &__caption {
       position: absolute;
-      right: 15%;
-      bottom: 1.25rem;
-      left: 15%;
-      padding-top: 1.25rem;
-      padding-bottom: 1.25rem;
-      color: #fff;
-      text-align: center;
+      right: @bl-customComponent-carousel-caption-right;
+      bottom: @bl-customComponent-carousel-caption-bottom;
+      left: @bl-customComponent-carousel-caption-left;
+
+      font-family: @bl-customComponent-carousel-caption-font-family;
+      font-size: @bl-customComponent-carousel-caption-font-size;
+      font-weight: @bl-customComponent-carousel-caption-font-weight;
+
+      padding: @bl-customComponent-carousel-caption-padding;
+
+      color: @bl-customComponent-carousel-caption-color;
+      text-align: @bl-customComponent-carousel-caption-text-align;
+      text-shadow: @bl-customComponent-carousel-caption-text-shadow;
+
+      & h3 {
+        font-family: @bl-customComponent-carousel-caption-title-font-family;
+        font-size: @bl-customComponent-carousel-caption-title-font-size;
+        font-weight: @bl-customComponent-carousel-caption-title-font-weight;
+      }
     }
   }
 
