@@ -35,6 +35,22 @@
         }
       ],
       "handlerDescription": "This is a handler for the logic to determine the position of the popover relative to the button"
+    },
+    {
+      "type": "number",
+      "name": "delayMouseOver",
+      "label": "Delay Mouse Over",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false
+    },
+    {
+      "type": "number",
+      "name": "delayMouseOut",
+      "label": "Delay Mouse Out",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false
     }
   ],
   "eventHandlers": [
@@ -52,13 +68,23 @@
     {
       "name": "onMouseOver",
       "label": "On Mouse Over Event",
-      "contextBlocks": [],
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
       "handlerDescription": "This event is triggered when the mouse pointer hovers over the component."
     },
     {
       "name": "onMouseOut",
       "label": "On Mouse Out Event",
-      "contextBlocks": [],
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
       "handlerDescription": "This event is triggered when the mouse pointer leaves the component."
     }
   ],

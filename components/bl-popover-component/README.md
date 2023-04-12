@@ -6,17 +6,19 @@ The component allows you to render a popup window in your UI-Builder application
 
 ## Properties
 
-| Property            | Type                                                            | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
-|---------------------|-----------------------------------------------------------------|---------------|----------------|--------------|------------|------------------------------------------------------------------------|
-| Position:`position` | Select [Top:`top`, Right:`right`, Bottom:`bottom`, Left:`left`] | Top:`top`     | Position Logic | NO           | YES        | Allows to determine the position of the popover relative to the button |
+| Property                           | Type                                                            | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
+|------------------------------------|-----------------------------------------------------------------|---------------|----------------|--------------|------------|------------------------------------------------------------------------|
+| Position:`position`                | Select [Top:`top`, Right:`right`, Bottom:`bottom`, Left:`left`] | Top:`top`     | Position Logic | NO           | YES        | Allows to determine the position of the popover relative to the button |
+| Delay Mouse Over: `delayMouseOver` | Number                                                          | 0             |                | NO           | YES        | Allows to determine the delay for On Mouse Over event                  |
+| Delay Mouse Out: `delayMouseOut`   | Number                                                          | 0             |                | NO           | YES        | Allows to determine the delay for On Mouse Out event                   |
 
 ## Events
 
 | Name                | Triggers                                         | Context Blocks     |
 |---------------------|--------------------------------------------------|--------------------|
 | On Target Click     | when user clicks on target                       | Is Open: `Boolean` |
-| On Mouse Over Event | when the mouse pointer hovers over the component |                    |
-| On Mouse Out Event  | when the mouse pointer leaves the component      |                    |
+| On Mouse Over Event | when the mouse pointer hovers over the component | Is Open: `Boolean` |
+| On Mouse Out Event  | when the mouse pointer leaves the component      | Is Open: `Boolean` |
 
 ## Actions
 

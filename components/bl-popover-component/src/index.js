@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
+
 import { Tooltip } from './Tooltip';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function Popover({ component, eventHandlers, pods }) {
-  const { display, style, classList, position } = component;
+  const { display, style, classList, position, delayMouseOver, delayMouseOut } = component;
   const { onTargetClick, onMouseOut, onMouseOver } = eventHandlers;
 
   const popoverTarget = pods['popoverTarget'];
@@ -14,6 +15,14 @@ export default function Popover({ component, eventHandlers, pods }) {
   const targetRef = useRef();
 
   component.setIsOpen = setIsOpen;
+
+  const onMouseEnter = () => {
+    setTimeout(() => onMouseOver({ isOpen }), delayMouseOver);
+  };
+
+  const onMouseLeave = () => {
+    setTimeout(() => onMouseOut({ isOpen }), delayMouseOut);
+  };
 
   if (!display) {
     return null;
@@ -25,8 +34,8 @@ export default function Popover({ component, eventHandlers, pods }) {
         ref={ targetRef }
         className="content-container"
         onClick={ () => onTargetClick({ isOpen }) }
-        onMouseEnter={ onMouseOver }
-        onMouseLeave={ onMouseOut }>
+        onMouseEnter={ onMouseEnter }
+        onMouseLeave={ onMouseLeave }>
         { popoverTarget.render() }
       </div>
 
