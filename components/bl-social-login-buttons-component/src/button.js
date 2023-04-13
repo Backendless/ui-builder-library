@@ -53,9 +53,7 @@ export function Button(props) {
       onClick={ handleClick }
       className={ cn("social-button", `social-button__${ provider }`, { ["with-icon"]: iconsVisibility }) }>
       { iconsVisibility &&
-        <div className="social-button__icon-container">
-          { iconsMap[provider] }
-        </div>
+        <div className="social-button__icon-container">{ iconsMap[provider] }</div>
       }
       <div className="social-button__text-container">
         <span className="social-button__text">{ buttonLabel }</span>
