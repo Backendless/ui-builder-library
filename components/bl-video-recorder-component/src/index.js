@@ -4,8 +4,8 @@ import { captureMediaDevices, download, prepareToRecord, prepareToView } from '.
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function VideoRecorder({ component, eventHandlers }) {
-  const { fileName, allowAudio, display, classList, style } = component;
+export default function VideoRecorder({ component, eventHandlers, elRef }) {
+  const { width, height, fileName, allowAudio, display, classList, style } = component;
   const { onStart, onStop, onDownload } = eventHandlers;
 
   const videoRef = useRef();
@@ -21,7 +21,8 @@ export default function VideoRecorder({ component, eventHandlers }) {
 
   const startRecording = useCallback(async () => {
     onStart();
-    prepareToRecord(videoRef);
+    prepareToRecord(videoRef.current);
+
     const stream = await captureMediaDevices({ video: true, audio: allowAudio }, videoRef);
 
     if (stream) {
@@ -43,7 +44,7 @@ export default function VideoRecorder({ component, eventHandlers }) {
 
         setRecordedBlob(recordedBlob);
         onStop();
-        prepareToView(videoRef);
+        prepareToView(videoRef.current);
         chunks.length = 0;
       };
 
@@ -65,17 +66,24 @@ export default function VideoRecorder({ component, eventHandlers }) {
   }, [recordedBlob, fileName]);
 
   useEffect(() => {
-    if (recordedBlob) {
+    if (recordedBlob && videoRef.current) {
       videoRef.current.src = URL.createObjectURL(recordedBlob);
     }
   }, [recordedBlob]);
+
+  useEffect(() => {
+    if (display) {
+      videoRef.current.width = width;
+      videoRef.current.height = height;
+    }
+  }, [width, height, display]);
 
   if (!display) {
     return null;
   }
 
   return (
-    <div className={ cn('bl-customComponent-videoRecorder', classList) } style={ style }>
+    <div ref={ elRef } className={ cn('bl-customComponent-videoRecorder', classList) } style={ style }>
       <video ref={ videoRef } className="video"/>
     </div>
   );

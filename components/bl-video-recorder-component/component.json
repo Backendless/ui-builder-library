@@ -9,6 +9,24 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "number",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "720",
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic"
+    },
+    {
+      "type": "number",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "480",
+      "hasLogicHandler": false,
+      "handlerId": "heightLogic"
+    },
+    {
       "type": "checkbox",
       "name": "allowAudio",
       "label": "Allow Audio",

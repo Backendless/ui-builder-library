@@ -11,6 +11,8 @@ Video Recorder is a component of Backendless UI-Builder designer. This allows to
 
 | Property    | Type       | Default Value    | Logic           | Data Binding | UI Setting | Description                                                  |
 |-------------|------------|------------------|-----------------|--------------|------------|--------------------------------------------------------------|
+| Width       | *Number*   | 720              |                 | NO           | YES        | Controls width of component, in 'px'.                        |
+| Height      | *Number*   | 480              |                 | NO           | YES        | Controls height of component, in 'px'.                       |
 | Allow Audio | *Checkbox* | `true`           |                 | NO           | YES        | Controls allow recording audio from screen, page, etc.       |
 | File Name   | *Text*     | "Recorded Video" | File Name Logic | YES          | YES        | This is a handler to control the name of the downloaded file.|
 
@@ -32,12 +34,6 @@ Video Recorder is a component of Backendless UI-Builder designer. This allows to
 | Get Blob of Video Recorder               |                            | `Blob`: recorded blob |
 
 ## Styles
-
-**Dimensions**
-````
-@bl-customComponent-videoRecorder-video-width: 720px;
-@bl-customComponent-videoRecorder-video-height: 480px;
-````
 
 **Color**
 ````

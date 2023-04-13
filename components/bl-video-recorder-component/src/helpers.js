@@ -1,18 +1,18 @@
 export const prepareToRecord = videoRef => {
-  if (videoRef.current) {
-    videoRef.current.autoplay = true;
-    videoRef.current.muted = true;
-    videoRef.current.controls = false;
+  if (videoRef) {
+    videoRef.autoplay = true;
+    videoRef.muted = true;
+    videoRef.controls = false;
   }
 };
 
 export const prepareToView = videoRef => {
-  if (videoRef.current) {
-    videoRef.current.autoplay = false;
-    videoRef.current.muted = false;
-    videoRef.current.controls = true;
-    videoRef.current.srcObject = null;
-    videoRef.current.captureStream = null;
+  if (videoRef) {
+    videoRef.autoplay = false;
+    videoRef.muted = false;
+    videoRef.controls = true;
+    videoRef.srcObject = null;
+    videoRef.captureStream = null;
   }
 };
 
@@ -36,7 +36,6 @@ export const captureMediaDevices = async (mediaConstraints, videoRef) => {
     const stream = await navigator.mediaDevices.getDisplayMedia(mediaConstraints);
 
     videoRef.current.srcObject = stream;
-    videoRef.current.muted = true;
 
     return stream;
   } catch (e) {
