@@ -31,16 +31,16 @@ Social Login Buttons is a component of Backendless UI-Builder designer. The comp
 
 **Size**
 ````
-@bl-customComponent-socialLoginButton-maxWidth: 375px;
-@bl-customComponent-socialLoginButton-minWidth: 300px;
+@bl-customComponent-socialLoginButtons-maxWidth: 375px;
+@bl-customComponent-socialLoginButtons-minWidth: 300px;
 ````
 
 **Colors**
 ````
-@bl-customComponent-socialLoginButton-colorOnHover: #FFFFFF;
-@bl-customComponent-socialLoginButton-iconGoogle-colorPrimary: #DC4A3D;
-@bl-customComponent-socialLoginButton-iconFacebook-colorPrimary: #3C5A9A;
-@bl-customComponent-socialLoginButton-iconTwitter-colorPrimary: #55ACEE;
-@bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary: #0A66C2;
-@bl-customComponent-socialLoginButton-iconGithub-colorPrimary: #000000;
+@bl-customComponent-socialLoginButtons-colorOnHover: #FFFFFF;
+@bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary: #DC4A3D;
+@bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary: #3C5A9A;
+@bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary: #55ACEE;
+@bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary: #0A66C2;
+@bl-customComponent-socialLoginButtons-iconGithub-colorPrimary: #000000;
 ````
