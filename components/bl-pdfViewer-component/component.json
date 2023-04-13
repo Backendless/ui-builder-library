@@ -38,6 +38,37 @@
       "handlerId": "heightLogic",
       "handlerDescription": "This is the handler for the logic to determine the height of the PDF Viewer.",
       "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "scale",
+      "label": "Scale",
+      "showInSettings": true,
+      "defaultValue": "1",
+      "hasLogicHandler": false,
+      "handlerId": "scaleLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "showPrintButton",
+      "label": "Show Print Button",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "showPrintButtonLogic",
+      "handlerLabel": "Show Print Button Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the print button should be visible. If the handler returns true, the component will be visible.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "showDownloadButton",
+      "label": "Show Download Button",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "showDownloadButtonLogic",
+      "handlerLabel": "Show Download Button Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the download button should be visible. If the handler returns true, the component will be visible.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
@@ -77,5 +108,6 @@
         }
       ]
     }
-  ]
+  ],
+  "pods": {}
 }

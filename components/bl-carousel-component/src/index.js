@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Button, List, CarouselIndicators } from './subcomponents';
 import { getAdjacentImages } from './helpers';
 
@@ -90,6 +90,22 @@ export default function Carousel({ component, eventHandlers }) {
     setImagesList(listImagesData);
   };
 
+  const onPrevClick = useCallback(() => {
+    if (onPrevButtonClick.hasLogic) {
+      onPrevButtonClick();
+    } else {
+      component.goToPrevImage();
+    }
+  }, [onPrevButtonClick]);
+
+  const onNextClick = useCallback(() => {
+    if (onNextButtonClick.hasLogic) {
+      onNextButtonClick();
+    } else {
+      component.goToNextImage();
+    }
+  }, [onNextButtonClick]);
+
   if (!display || !imagesList.length) {
     return null;
   }
@@ -97,13 +113,13 @@ export default function Carousel({ component, eventHandlers }) {
   return (
     <div
       className={ cn('bl-customComponent-carousel', classList) }
-      style={ { ...style, height: height, width: width } }
+      style={{ ...style, height, width }}
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
       { withControls && (
         <div className="carousel__controls-button">
-          <Button disabled={ !!animation } onClick={ onPrevButtonClick } type="prev"/>
-          <Button disabled={ !!animation } onClick={ onNextButtonClick } type="next"/>
+          <Button disabled={ !!animation } onClick={ onPrevClick } type="prev"/>
+          <Button disabled={ !!animation } onClick={ onNextClick } type="next"/>
         </div>
       ) }
 

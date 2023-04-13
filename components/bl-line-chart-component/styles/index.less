@@ -1,0 +1,10 @@
+@bl-customComponent-lineChart-disabled-cursor: default;
+@bl-customComponent-lineChart-disabled-opacity: 0.38;
+
+.bl-customComponent-lineChart {
+  &--disabled {
+    opacity: @bl-customComponent-lineChart-disabled-opacity;
+    pointer-events: none;
+    cursor: @bl-customComponent-lineChart-disabled-cursor;
+  }
+}
