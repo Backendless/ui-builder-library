@@ -19,8 +19,8 @@ export const translatePopover = (targetRef, contentElement, position) => {
 
   const {
     width: targetWidth, height: targetHeight,
-    x    : targetX, y: targetY,
-    right: targetRight, bottom: targetBottom
+    x: targetX, y: targetY,
+    right: targetRight, bottom: targetBottom,
   } = targetRef.getBoundingClientRect();
   const { width: contentWidth, height: contentHeight } = contentElement.getBoundingClientRect();
 
@@ -44,26 +44,26 @@ export const translatePopover = (targetRef, contentElement, position) => {
   };
 
   const PositionValidator = {
-    [Position.LEFT]  : () => (
-      targetX >= contentWidth
-      && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
-      && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter
-    ),
-    [Position.RIGHT] : () => (
-      document.documentElement.clientWidth - targetRight >= contentWidth
-      && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
-      && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter
-    ),
-    [Position.TOP]   : () => (
-      targetY >= contentHeight
-      && (targetX + targetVerticalCenter) >= contentVerticalCenter
-      && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter
-    ),
-    [Position.BOTTOM]: () => (
-      window.innerHeight - targetBottom >= contentHeight
-      && (targetX + targetVerticalCenter) >= contentVerticalCenter
-      && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter
-    ),
+    [Position.LEFT]  : () => {
+      return targetX >= contentWidth
+        && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
+        && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter;
+    },
+    [Position.RIGHT] : () => {
+      return document.documentElement.clientWidth - targetRight >= contentWidth
+        && (targetY + targetHorizontalCenter) >= contentHorizontalCenter
+        && window.innerHeight - targetBottom + targetHorizontalCenter >= contentHorizontalCenter;
+    },
+    [Position.TOP]   : () => {
+      return targetY >= contentHeight
+        && (targetX + targetVerticalCenter) >= contentVerticalCenter
+        && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter;
+    },
+    [Position.BOTTOM]: () => {
+      return window.innerHeight - targetBottom >= contentHeight
+        && (targetX + targetVerticalCenter) >= contentVerticalCenter
+        && document.documentElement.clientWidth - targetRight + targetVerticalCenter >= contentVerticalCenter;
+    },
   };
 
   return validatePosition(position, PositionValidator, ShiftHandler);

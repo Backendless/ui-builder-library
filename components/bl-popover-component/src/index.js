@@ -14,14 +14,27 @@ export default function Popover({ component, eventHandlers, pods }) {
   const [isOpen, setIsOpen] = useState(false);
   const targetRef = useRef();
 
+  const mouseEnterTimeout = useRef(null);
+  const mouseLeaveTimeout = useRef(null);
+
   component.setIsOpen = setIsOpen;
 
   const onMouseEnter = () => {
-    setTimeout(() => onMouseOver({ isOpen }), delayMouseOver);
+    if (mouseEnterTimeout.current) {
+      clearTimeout(mouseEnterTimeout.current);
+      clearTimeout(mouseLeaveTimeout.current);
+    }
+
+    mouseEnterTimeout.current = setTimeout(() => onMouseOver({ isOpen }), delayMouseOver);
   };
 
   const onMouseLeave = () => {
-    setTimeout(() => onMouseOut({ isOpen }), delayMouseOut);
+    if (mouseLeaveTimeout.current) {
+      clearTimeout(mouseLeaveTimeout.current);
+      clearTimeout(mouseEnterTimeout.current);
+    }
+
+    mouseLeaveTimeout.current = (setTimeout(() => onMouseOut({ isOpen }), delayMouseOut));
   };
 
   if (!display) {
