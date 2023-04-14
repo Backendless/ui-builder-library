@@ -5,10 +5,10 @@ const { cn } = BackendlessUI.CSSUtils;
 const ESCAPE_KEY_CODE = 27;
 
 export default function ModalComponent({ component, eventHandlers, pods, elRef }) {
-  const { display, classList, style, closeOnEscape } = component;
+  const { display, classList, style, modalVisibility, closeOnEscape } = component;
   const { onClose } = eventHandlers;
 
-  const [visibility, setVisibility] = useState(display);
+  const [visibility, setVisibility] = useState(modalVisibility);
 
   component.openModal = () => setVisibility(true);
   component.closeModal = () => {
@@ -17,8 +17,8 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   };
 
   useEffect(() => {
-    setVisibility(display);
-  }, [display]);
+    setVisibility(modalVisibility);
+  }, [modalVisibility]);
 
   const modalContentPod = pods['modalContent'];
 
@@ -31,16 +31,14 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
     }
   };
 
-  if (!visibility) {
+  if (!display || !visibility) {
     return null;
   }
 
   return (
     <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
       <div className="backdrop" onClick={ handleClick } />
-      <div className="modal-content">
-        { modalContentPod.render() }
-      </div>
+      <div className="modal-content">{ modalContentPod.render() }</div>
     </div>
   );
 }

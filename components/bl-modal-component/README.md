@@ -7,10 +7,10 @@ Modal is a component of Backendless UI-Builder designer. This component allows y
 
 ## Properties
 
-| Property        | Type       | Default Value | Logic                 | Data Binding | UI Setting | Description                                                                                         |
-|-----------------|------------|---------------|-----------------------|--------------|------------|-----------------------------------------------------------------------------------------------------|
-| Display         | *Checkbox* | `false`       | Visibility Logic      | YES          | YES        | This handler allows you to control the visibility of the component.                                 |
-| Close On Escape | *Checkbox* | `true`        | Close On Escape Logic | YES          | YES        | This handler allows you to add the close of the modal window by pressing Escape button or backdrop. |
+| Property                               | Type     | Default Value | Logic                  | Data Binding | UI Setting | Description                                                                                         |
+|----------------------------------------|----------|---------------|------------------------|--------------|------------|-----------------------------------------------------------------------------------------------------|
+| Modal Visibility<br/>`modalVisibility` | Checkbox | `false`       | Modal Visibility Logic | YES          | YES        | This handler allows you to control the visibility of the modal.                                     |
+| Close On Escape<br/>`closeOnEscape`    | Checkbox | `true`        | Close On Escape Logic  | YES          | YES        | This handler allows you to add the close of the modal window by pressing Escape button or backdrop. |
 
 ## Events
 
