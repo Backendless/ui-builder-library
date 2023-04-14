@@ -31,19 +31,15 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
     }
   };
 
-  if (!display) {
+  if (!display || !visibility) {
     return null;
   }
 
   return (
-    <>
-      { visibility &&
-        <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
-          <div className="backdrop" onClick={ handleClick } />
-          <div className="modal-content">{ modalContentPod.render() }</div>
-        </div>
-      }
-    </>
+    <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
+      <div className="backdrop" onClick={ handleClick } />
+      <div className="modal-content">{ modalContentPod.render() }</div>
+    </div>
   );
 }
 
