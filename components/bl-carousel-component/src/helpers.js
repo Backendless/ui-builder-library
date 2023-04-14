@@ -1,8 +1,6 @@
-import { useMemo } from 'react';
-
 const { cn } = BackendlessUI.CSSUtils;
 
-export const useClassNamesItem = (
+export const getClassNamesItem = (
   index,
   currentImg,
   nextCurrentImage,
@@ -20,9 +18,9 @@ export const useClassNamesItem = (
   });
 };
 
-export const getAdjacentImages = (currentImg, dataLength) => useMemo(() => {
-  let nextImg = currentImg !== dataLength - 1 ? currentImg + 1 : 0;
-  let prevImg = currentImg !== 0 ? currentImg - 1 : dataLength - 1;
-
-  return { nextImg, prevImg };
-}, [currentImg, dataLength]);
+export const getAdjacentImages = (currentImg, imagesCount) => {
+  return {
+    nextImg: (currentImg + 1) % (imagesCount + 1),
+    prevImg: currentImg ? currentImg - 1 : imagesCount,
+  };
+};
