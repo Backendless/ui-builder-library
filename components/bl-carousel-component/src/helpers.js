@@ -18,9 +18,9 @@ export const getClassNamesItem = (
   });
 };
 
-export const getAdjacentImages = (currentImg, dataLength) => () => {
-  const nextImg = currentImg !== dataLength - 1 ? currentImg + 1 : 0;
-  const prevImg = currentImg !== 0 ? currentImg - 1 : dataLength - 1;
-
-  return { nextImg, prevImg };
+export const getAdjacentImages = (currentImg, imagesCount) => {
+  return {
+    nextImg: (currentImg + 1) % (imagesCount + 1),
+    prevImg: currentImg ? currentImg - 1 : imagesCount,
+  };
 };

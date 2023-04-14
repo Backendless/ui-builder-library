@@ -28,10 +28,9 @@ export default function Carousel({ component, eventHandlers }) {
   const [autoplay, setAutoplay] = useState(true);
   const autoplayRef = useRef();
 
-  const { nextImg, prevImg } = useMemo(
-    () => getAdjacentImages(currentImg, imagesList.length),
-    [currentImg, imagesList]
-  );
+  const { nextImg, prevImg } = useMemo(() => {
+    return getAdjacentImages(currentImg, imagesList.length - 1);
+  }, [currentImg, imagesList]);
 
   useEffect(() => {
     if (imagesData) {

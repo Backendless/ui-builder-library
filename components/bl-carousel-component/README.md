@@ -95,6 +95,8 @@ Addition of Images Data
 @bl-customComponent-carousel-prev-next-button-border: 0;
 @bl-customComponent-carousel-prev-next-button-background: 0 0;
 @bl-customComponent-carousel-prev-next-button-hover-outline: 0;
+@bl-customComponent-carousel-prev-next-button-pointer-events: auto;
+@bl-customComponent-carousel-prev-next-button-disabled-pointer-events: none;
 ```
 
 **Carousel Prev and Next Button Icon**

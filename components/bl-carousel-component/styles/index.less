@@ -11,6 +11,8 @@
 @bl-customComponent-carousel-prev-next-button-border: 0;
 @bl-customComponent-carousel-prev-next-button-background: 0 0;
 @bl-customComponent-carousel-prev-next-button-hover-outline: 0;
+@bl-customComponent-carousel-prev-next-button-pointer-events: auto;
+@bl-customComponent-carousel-prev-next-button-disabled-pointer-events: none;
 
 @bl-customComponent-carousel-prev-next-button-icon-stroke: #000;
 @bl-customComponent-carousel-prev-next-button-icon-stroke-width: 0.3px;
@@ -108,6 +110,12 @@
       opacity: @bl-customComponent-carousel-prev-next-button-opacity;
       cursor: @bl-customComponent-carousel-prev-next-button-cursor;
       transition: @bl-customComponent-carousel-prev-next-button-transition;
+
+      pointer-events: @bl-customComponent-carousel-prev-next-button-pointer-events;
+
+      &.disabled {
+        pointer-events: @bl-customComponent-carousel-prev-next-button-disabled-pointer-events;
+      }
 
       &:hover {
         color: #fff;

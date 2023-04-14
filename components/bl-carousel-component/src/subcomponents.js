@@ -21,7 +21,7 @@ export function List(props) {
     }
 
     return {
-      height           : height,
+      height,
       animationDuration: `${ animationDuration }ms`,
       transition       : `transform ${ animationDuration }ms ease-in-out`,
     };
@@ -62,7 +62,7 @@ function Item({ classes, style, height, url, title, content }) {
       <img
         src={ url }
         className="carousel__image"
-        style={{ height: height }}
+        style={{ height }}
       />
       <CarouselCaption title={ title } content={ content }/>
     </div>
@@ -125,9 +125,8 @@ export function Button({ disabled, onClick, type }) {
   return (
     <button
       type="button"
-      className={ `carousel__${ type }-button` }
-      onClick={ onClick }
-      style={{ pointerEvents: disabled ? 'none' : 'auto' }}>
+      className={ cn(`carousel__${ type }-button`, { disabled }) }
+      onClick={ onClick }>
       { ButtonIcons[type] }
     </button>
   );
