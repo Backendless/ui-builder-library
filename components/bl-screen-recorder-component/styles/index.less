@@ -1,0 +1,52 @@
+@bl-customComponent-screenRecorder-video-background: black;
+
+@bl-customComponent-screenRecorder-button-backgroundColor: @themePrimary;
+@bl-customComponent-screenRecorder-button-disabled: @disabledColor;
+@bl-customComponent-screenRecorder-button-borderRadius: @appComponentBorderRadius;
+@bl-customComponent-screenRecorder-button-color: @appTextColor;
+@bl-customComponent-screenRecorder-button-shadowColor: @appComponentShadowColor;
+@bl-customComponent-screenRecorder-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-screenRecorder-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 12%);
+@bl-customComponent-screenRecorder-button-shadow: 0px 3px 1px -2px fade(@bl-customComponent-screenRecorder-button-shadowColor, 20%), 0px 2px 2px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 14%), 0px 1px 5px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 12%);
+@bl-customComponent-screenRecorder-button-disaled-background: @bl-customComponent-screenRecorder-button-disabled;
+@bl-customComponent-screenRecorder-button-disabled-color: contrast(@bl-customComponent-screenRecorder-button-disaled-background);
+@bl-customComponent-screenRecorder-button-fontSize: 0.875rem;
+@bl-customComponent-screenRecorder-button-borderStyle: solid;
+@bl-customComponent-screenRecorder-button-borderWidth: 0px;
+
+.bl-customComponent-screenRecorder {
+  margin: 0 auto;
+
+  .video {
+    width: 100%;
+    height: 100%;
+    background: @bl-customComponent-screenRecorder-video-background;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px
+  }
+
+  .control-button {
+    cursor: pointer;
+    background: @bl-customComponent-screenRecorder-button-backgroundColor;
+    border-radius: @bl-customComponent-screenRecorder-button-borderRadius;
+    border-width: @bl-customComponent-screenRecorder-button-borderWidth;
+    border-style: @bl-customComponent-screenRecorder-button-borderStyle;
+    box-shadow: @bl-customComponent-screenRecorder-button-shadow;
+    height: 36px;
+    width: 25%;
+    color: #fff;
+    font-size: @bl-customComponent-screenRecorder-button-fontSize;
+
+    &:disabled {
+      background: @bl-customComponent-screenRecorder-button-disaled-background;
+      color: @bl-customComponent-screenRecorder-button-disabled-color;
+    }
+
+    &:hover {
+      box-shadow: @bl-customComponent-screenRecorder-button-shadowHover;
+    }
+  }
+}

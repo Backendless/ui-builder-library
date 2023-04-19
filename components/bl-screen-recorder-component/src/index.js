@@ -1,15 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { captureMediaDevices, download, prepareToRecord, prepareToView } from './helpers';
+import { captureMediaDevices, download, ensureMeasure, prepareToRecord, prepareToView } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function VideoRecorder({ component, eventHandlers, elRef }) {
-  const { width, height, fileName, allowAudio, display, classList, style } = component;
+  const {
+    width, height, allowAudio, controls, fileName, fileType,
+    startText, stopText, downloadText, display, classList, style,
+  } = component;
   const { onStart, onStop, onDownload } = eventHandlers;
 
   const videoRef = useRef();
   const recorder = useRef();
+  const startRef = useRef();
+  const stopRef = useRef();
+  const downloadRef = useRef();
   const [recordedBlob, setRecordedBlob] = useState();
 
   Object.assign(component, {
@@ -21,9 +27,10 @@ export default function VideoRecorder({ component, eventHandlers, elRef }) {
 
   const startRecording = useCallback(async () => {
     onStart();
-    prepareToRecord(videoRef.current);
 
     const stream = await captureMediaDevices({ video: true, audio: allowAudio }, videoRef);
+
+    prepareToRecord(videoRef.current, startRef.current, stopRef.current);
 
     if (stream) {
       videoRef.current.srcObject = stream;
@@ -40,15 +47,15 @@ export default function VideoRecorder({ component, eventHandlers, elRef }) {
       };
 
       recorder.current.onstop = () => {
-        const recordedBlob = new Blob(chunks, { type: 'video/webm' });
+        const recordedBlob = new Blob(chunks, { type: `video/${ fileType }` });
 
         setRecordedBlob(recordedBlob);
         onStop();
-        prepareToView(videoRef.current);
+        prepareToView(videoRef.current, startRef.current, stopRef.current, downloadRef.current);
         chunks.length = 0;
       };
 
-      recorder.current.start(200);
+      recorder.current.start();
     }
   }, [videoRef]);
 
@@ -62,8 +69,8 @@ export default function VideoRecorder({ component, eventHandlers, elRef }) {
 
   const downloadRecordedFile = useCallback(() => {
     onDownload({ blob: recordedBlob });
-    download(recordedBlob, fileName);
-  }, [recordedBlob, fileName]);
+    download(recordedBlob, fileName, fileType);
+  }, [recordedBlob, fileName, fileType]);
 
   useEffect(() => {
     if (recordedBlob && videoRef.current) {
@@ -73,8 +80,13 @@ export default function VideoRecorder({ component, eventHandlers, elRef }) {
 
   useEffect(() => {
     if (display) {
-      videoRef.current.width = width;
-      videoRef.current.height = height;
+      elRef.current.style.width = ensureMeasure(width);
+      videoRef.current.style.height = ensureMeasure(height);
+
+      if (stopRef.current && downloadRef.current) {
+        stopRef.current.disabled = true;
+        downloadRef.current.disabled = true;
+      }
     }
   }, [width, height, display]);
 
@@ -83,8 +95,18 @@ export default function VideoRecorder({ component, eventHandlers, elRef }) {
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-videoRecorder', classList) } style={ style }>
+    <div ref={ elRef } className={ cn('bl-customComponent-screenRecorder', classList) } style={ style }>
       <video ref={ videoRef } className="video"/>
+      { controls && (
+        <div className="controls">
+          <button ref={ startRef } className="control-button" onClick={ startRecording }>{ startText }</button>
+          <button ref={ stopRef } className="control-button" onClick={ stopRecording }>{ stopText }</button>
+          <button ref={ downloadRef } className="control-button"
+                  onClick={ downloadRecordedFile }>{ downloadText }</button>
+        </div>
+      ) }
     </div>
   );
 }
+
+
