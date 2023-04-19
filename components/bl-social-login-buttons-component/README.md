@@ -14,7 +14,7 @@ Social Login Buttons is a component of Backendless UI-Builder designer. The comp
 | Redirect To Page       | *Text*     |               | Redirect To Page Logic            | YES          | YES        | This handler allows you to specify which page to go to after login.                      |
 | Extra Query Params     | *Text*     |               | Extra Query Params Logic          | YES          | YES        | This handler allows you to add extra query params that will be added to the URL address. |
 | Icons Visibility       | *Checkbox* | `true`        | Icons Visibility Visibility Logic | YES          | YES        | This handler allows you to select the mode for a button with an icon or without.         |
-| Google Plus Visibility | *Checkbox* | `true`        | Google Plus Visibility Logic      | YES          | YES        | This handler allows you to choose whether to show the Google Plus button or not.         |
+| Google Visibility      | *Checkbox* | `true`        | Google Visibility Logic           | YES          | YES        | This handler allows you to choose whether to show the Google button or not.              |
 | Facebook Visibility    | *Checkbox* | `true`        | Facebook Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Facebook button or not.            |
 | Twitter Visibility     | *Checkbox* | `true`        | Twitter Visibility Logic          | YES          | YES        | This handler allows you to choose whether to show the Twitter button or not.             |
 | Linkedin Visibility    | *Checkbox* | `true`        | Linkedin Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Linkedin button or not.            |
@@ -31,16 +31,16 @@ Social Login Buttons is a component of Backendless UI-Builder designer. The comp
 
 **Size**
 ````
-@bl-customComponent-socialLoginButton-maxWidth: 375px;
-@bl-customComponent-socialLoginButton-minWidth: 300px;
+@bl-customComponent-socialLoginButtons-maxWidth: 375px;
+@bl-customComponent-socialLoginButtons-minWidth: 300px;
 ````
 
 **Colors**
 ````
-@bl-customComponent-socialLoginButton-colorOnHover: #FFFFFF;
-@bl-customComponent-socialLoginButton-iconGoogle-colorPrimary: #DC4A3D;
-@bl-customComponent-socialLoginButton-iconFacebook-colorPrimary: #3C5A9A;
-@bl-customComponent-socialLoginButton-iconTwitter-colorPrimary: #55ACEE;
-@bl-customComponent-socialLoginButton-iconLinkedin-colorPrimary: #0A66C2;
-@bl-customComponent-socialLoginButton-iconGithub-colorPrimary: #000000;
+@bl-customComponent-socialLoginButtons-colorOnHover: #FFFFFF;
+@bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary: #DC4A3D;
+@bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary: #3C5A9A;
+@bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary: #55ACEE;
+@bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary: #0A66C2;
+@bl-customComponent-socialLoginButtons-iconGithub-colorPrimary: #000000;
 ````

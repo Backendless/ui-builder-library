@@ -10,6 +10,18 @@
   "properties": [
     {
       "type": "checkbox",
+      "name": "modalVisibility",
+      "label": "Modal Visibility",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": true,
+      "handlerId": "modalVisibilityLogic",
+      "handlerLabel": "Modal Visibility Logic",
+      "handlerDescription": "This handler allows you to control the visibility of the modal.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
       "name": "closeOnEscape",
       "label": "Close On Escape",
       "settingTooltip": "This handler allows you to add the close of the modal window by pressing Escape or Backdrop.",

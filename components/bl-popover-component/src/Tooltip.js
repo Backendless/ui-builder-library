@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useCallback, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+
 import { translatePopover } from './helpers';
 
 export function Tooltip({ targetRef, position, popoverContent }) {
@@ -23,7 +24,7 @@ export function Tooltip({ targetRef, position, popoverContent }) {
 
       root.style.transform = `translate3d(${ leftShift }px, ${ topShift }px, 0px)`;
     }
-  }, []);
+  }, [position]);
 
   useEffect(() => {
     translateHandler();
@@ -31,7 +32,7 @@ export function Tooltip({ targetRef, position, popoverContent }) {
     window.addEventListener('resize', translateHandler, false);
 
     return () => window.removeEventListener('resize', translateHandler, false);
-  }, []);
+  }, [translateHandler]);
 
   return ReactDOM.createPortal(
     <>
