@@ -4,7 +4,7 @@ import { captureMediaDevices, download, ensureMeasure, prepareToRecord, prepareT
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function VideoRecorder({ component, eventHandlers, elRef }) {
+export default function ScreenRecorder({ component, eventHandlers, elRef }) {
   const {
     width, height, allowAudio, controls, fileName, fileType,
     startText, stopText, downloadText, display, classList, style,
