@@ -1,4 +1,5 @@
 @bl-customComponent-carousel-image-user-select: none;
+@bl-customComponent-carousel-image-transition: opacity ease-in-out;
 
 @bl-customComponent-carousel-prev-next-button-width: 15%;
 @bl-customComponent-carousel-prev-next-button-top: 0;
@@ -58,6 +59,7 @@
 @bl-customComponent-carousel-caption-color: #fff;
 @bl-customComponent-carousel-caption-text-align: center;
 @bl-customComponent-carousel-caption-text-shadow: 0 0 2px #000;
+@bl-customComponent-carousel-caption-transition: opacity ease-in-out;
 
 .bl-customComponent-carousel {
   position: relative;
@@ -75,8 +77,13 @@
       margin-right: -100%;
 
       &.smooth {
-        z-index: 0;
-        opacity: 0;
+        display: block;
+
+        .carousel {
+          &__caption, &__image {
+            opacity: 0;
+          }
+        }
       }
     }
 
@@ -87,6 +94,8 @@
       user-select: @bl-customComponent-carousel-image-user-select;
 
       object-fit: cover;
+
+      transition: @bl-customComponent-carousel-image-transition;
     }
 
     &__prev-button,
@@ -214,6 +223,8 @@
       text-align: @bl-customComponent-carousel-caption-text-align;
       text-shadow: @bl-customComponent-carousel-caption-text-shadow;
 
+      transition: @bl-customComponent-carousel-caption-transition;
+
       & h3 {
         font-family: @bl-customComponent-carousel-caption-title-font-family;
         font-size: @bl-customComponent-carousel-caption-title-font-size;
@@ -231,9 +242,11 @@
   .smooth.active,
   .smooth.carousel-smooth-item-next,
   .smooth.carousel-smooth-item-prev {
-    display: block;
-    z-index: 1;
-    opacity: 1;
+    .carousel {
+      &__caption, &__image {
+        opacity: 1;
+      }
+    }
   }
 
   .active {
@@ -247,8 +260,11 @@
 
     &.carousel-smooth-item-end,
     &.carousel-smooth-item-start {
-      z-index: 0;
-      opacity: 0;
+      .carousel {
+        &__caption, &__image {
+          opacity: 0;
+        }
+      }
     }
   }
 

@@ -16,16 +16,16 @@ export function List(props) {
   } = props;
 
   const style = useMemo(() => {
-    if (animationType === 'smooth') {
-      return { transition: `opacity ${ animationDuration }ms ease-in-out` };
+    if (animationType === 'slide') {
+      return {
+        height,
+        animationDuration: `${ animationDuration }ms`,
+        transition       : `transform ${ animationDuration }ms ease-in-out`,
+      };
     }
 
-    return {
-      height,
-      animationDuration: `${ animationDuration }ms`,
-      transition       : `transform ${ animationDuration }ms ease-in-out`,
-    };
-  }, [animationDuration, animationType]);
+    return {};
+  }, [animationDuration, animationType, height]);
 
   return (
     <div className="carousel__list">
@@ -47,6 +47,9 @@ export function List(props) {
             url={ url }
             classes={ classes }
             height={ height }
+            animationDuration={ animationDuration }
+            index={ index }
+            currentImg={ currentImg }
           />
         );
       }) }
@@ -54,28 +57,38 @@ export function List(props) {
   );
 }
 
-function Item({ classes, style, height, url, title, content }) {
+function Item({ classes, style, height, url, title, content, animationDuration, index, currentImg }) {
   return (
     <div
       className={ classes }
       style={ style }>
       <img
+        alt={ title }
         src={ url }
         className="carousel__image"
-        style={{ height }}
+        style={{ height, transitionDuration: animationDuration + 'ms' }}
       />
-      <CarouselCaption title={ title } content={ content }/>
+      <CarouselCaption
+        title={ title }
+        content={ content }
+        animationDuration={ animationDuration }
+        index={ index }
+        currentImg={ currentImg }
+      />
     </div>
   );
 }
 
-function CarouselCaption({ title, content }) {
+function CarouselCaption({ title, content, animationDuration, index, currentImg }) {
   if (!title && !content) {
     return null;
   }
 
   return (
-    <div className="carousel__caption">
+    <div className="carousel__caption" style={{
+      transitionDuration: `${ animationDuration / 2 }ms`,
+      transitionDelay   : index !== currentImg ? `${ animationDuration / 2 }ms` : '',
+    }}>
       { title && (<h3>{ title }</h3>) }
       { content && (<p>{ content }</p>) }
     </div>
@@ -94,7 +107,7 @@ export function CarouselIndicators(props) {
           onClick={ () => goToImage(index) }
           disabled={ isAnimated || index === currentImg }>
           <svg className="carousel__indicator-icon">
-            <rect />
+            <rect/>
           </svg>
         </button>
       )) }
