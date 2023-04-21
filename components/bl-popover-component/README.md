@@ -31,6 +31,7 @@ The component allows you to render a popup window in your UI-Builder application
 **Dimensions**
 ```
 @bl-customComponent-popover-border-width: 1px;
+@bl-customComponent-popover-min-width: 250px;
 @bl-customComponent-popover-max-width: 276px;
 @bl-customComponent-popover-arrow-size: 10px;
 ```
@@ -44,6 +45,7 @@ The component allows you to render a popup window in your UI-Builder application
 **Others**
 ```
 @bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid @bl-customComponent-popover-border-color;
+@bl-customComponent-popover-border-radius: 0.5rem;
 ```
 
 ## Usage
