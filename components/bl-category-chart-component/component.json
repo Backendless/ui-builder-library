@@ -1,7 +1,7 @@
 {
   "id": "c_c4f766d585f372396136476db06960af",
-  "name": "Line Chart",
-  "description": "The Line Chart component allows you to display data in the form of charts. You can also choose a chart type.",
+  "name": "Category Chart",
+  "description": "The Category Chart component allows you to display data in the form of charts. You can also choose a chart type.",
   "showInToolbox": true,
   "faIcon": "chart-line",
   "mainJS": "dist/index.js",
