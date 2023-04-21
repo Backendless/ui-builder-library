@@ -34,8 +34,20 @@
           "label": "circle-vintage"
         },
         {
-          "value": "digital",
-          "label": "digital"
+          "value": "digital-modern",
+          "label": "digital-modern"
+        },
+        {
+          "value": "digital-pixel",
+          "label": "digital-pixel"
+        },
+        {
+          "value": "digital-techno",
+          "label": "digital-techno"
+        },
+        {
+          "value": "digital-flip",
+          "label": "digital-flip"
         }
       ]
     },
@@ -48,107 +60,107 @@
       "handlerId": "timezoneLogic",
       "options": [
         {
-          "value": "-12",
+          "value": "-12:00",
           "label": "GMT-12"
         },
         {
-          "value": "-11",
+          "value": "-11:00",
           "label": "GMT-11"
         },
         {
-          "value": "-10",
+          "value": "-10:00",
           "label": "GMT-10"
         },
         {
-          "value": "-9",
+          "value": "-09:00",
           "label": "GMT-9"
         },
         {
-          "value": "-8",
+          "value": "-08:00",
           "label": "GMT-8"
         },
         {
-          "value": "-7",
+          "value": "-07:00",
           "label": "GMT-7"
         },
         {
-          "value": "-6",
+          "value": "-06:00",
           "label": "GMT-6"
         },
         {
-          "value": "-5",
+          "value": "-05:00",
           "label": "GMT-5"
         },
         {
-          "value": "-4",
+          "value": "-04:00",
           "label": "GMT-4"
         },
         {
-          "value": "-3",
+          "value": "-03:00",
           "label": "GMT-3"
         },
         {
-          "value": "-2",
+          "value": "-02:00",
           "label": "GMT-2"
         },
         {
-          "value": "-1",
+          "value": "-01:00",
           "label": "GMT-1"
         },
         {
-          "value": "+0",
+          "value": "+00:00",
           "label": "GMT+0"
         },
         {
-          "value": "+1",
+          "value": "+01:00",
           "label": "GMT+1"
         },
         {
-          "value": "+2",
+          "value": "+02:00",
           "label": "GMT+2"
         },
         {
-          "value": "+3",
+          "value": "+03:00",
           "label": "GMT+3"
         },
         {
-          "value": "+4",
+          "value": "+04:00",
           "label": "GMT+4"
         },
         {
-          "value": "+5",
+          "value": "+05:00",
           "label": "GMT+5"
         },
         {
-          "value": "+6",
+          "value": "+06:00",
           "label": "GMT+6"
         },
         {
-          "value": "+7",
+          "value": "+07:00",
           "label": "GMT+7"
         },
         {
-          "value": "+8",
+          "value": "+08:00",
           "label": "GMT+8"
         },
         {
-          "value": "+9",
+          "value": "+09:00",
           "label": "GMT+9"
         },
         {
-          "value": "+10",
+          "value": "+10:00",
           "label": "GMT+10"
         },
         {
-          "value": "+11",
+          "value": "+11:00",
           "label": "GMT+11"
         },
         {
-          "value": "+12",
+          "value": "+12:00",
           "label": "GMT+12"
         }
       ],
-      "defaultValue": "+0"
+      "defaultValue": "+00:00"
     },
     {
       "type": "text",
@@ -179,10 +191,20 @@
           "label": "24"
         }
       ]
+    },
+    {
+      "type": "checkbox",
+      "name": "displaySeconds",
+      "label": "Display Seconds",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "displaySecondsLogic"
     }
   ],
   "eventHandlers": [],
   "actions": [],
   "settings": [],
-  "pods": {}
+  "pods": {},
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"f70453891eb7d1edd2180d630de25af5\"><i data-icon=\"access_time\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"1eeb92c7e6374f52c322cd660b9da303\"></i></div>"
 }

@@ -1,32 +1,51 @@
-import { useEffect, useMemo, useState } from 'react';
-
-import { luxon } from './lib/luxon';
+import { useEffect, useState } from 'react';
+import dayjs from './lib/dayjs.min';
+import utc from './lib/utc';
 
 import { AnalogClock } from './analog-clock';
 import { DigitalClock } from './digital-clock';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const DateTime = luxon.DateTime;
-const FixedOffsetZone = luxon.FixedOffsetZone;
 const ClockTypes = {
   analog: AnalogClock,
   digital: DigitalClock
 }
 
-export default function WorldClockComponent({ component, elRef, eventHandlers }) {
-  const { classList, style, display, type, timezone, label, timeFormat, } = component;
+dayjs.extend(utc);
 
-  const fixedOffsetZone = useMemo(() => FixedOffsetZone.instance(timezone * 60), [timezone]);
-  const [time, setTime] = useState(() => DateTime.local().setZone(fixedOffsetZone));
+export default function WorldClockComponent({ component, elRef, eventHandlers }) {
+  const { classList, style, display, type, timezone, label, timeFormat, displaySeconds, } = component;
+
+  const [time, setTime] = useState(() => {
+    const date = dayjs().utcOffset(timezone);
+
+    return {
+      hour: timeFormat === '24' ? +date.format('HH') : +date.format('hh'),
+      minute: +date.format('mm'),
+      second: +date.format('ss'),
+      isAmpm: timeFormat === '12',
+      ampm: date.format('A'),
+      weekday: +date.format('d')
+    };
+  });
 
   useEffect(() => {
     const timerID = setInterval(() => {
-      setTime(DateTime.local().setZone(fixedOffsetZone));
+      const date = dayjs().utcOffset(timezone);
+
+      setTime({
+        hour: timeFormat === '24' ? +date.format('HH') : +date.format('hh'),
+        minute: +date.format('mm'),
+        second: +date.format('ss'),
+        isAmpm: timeFormat === '12',
+        ampm: date.format('A'),
+        weekday: +date.format('d')
+      })
     }, 1000);
 
     return () => clearInterval(timerID);
-  }, [fixedOffsetZone]);
+  }, [timezone, timeFormat]);
 
   const clockType = type.split('-');
   const WorldClock = ClockTypes[clockType[0]];
@@ -38,9 +57,9 @@ export default function WorldClockComponent({ component, elRef, eventHandlers })
 
   return (
     <div className={ cn('bl-customComponent-worldClock', classList) } style={ style } ref={ elRef }>
-      {WorldClock && (
-        <WorldClock time={ time } label={ label } timeFormat={ timeFormat } clockSubType={ clockSubType } />
-      )}
+      { WorldClock && (
+        <WorldClock time={ time } label={ label } clockSubType={ clockSubType } displaySeconds={ displaySeconds } />
+      ) }
     </div>
   );
 }

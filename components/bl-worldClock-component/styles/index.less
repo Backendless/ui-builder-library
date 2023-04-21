@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+@font-face {
+  font-family: 'Digital-7';
+  src: url(./fonts/digital-7.ttf);
+}
+
 @bl-customComponent-worldClock-font-family: 'Poppins', sans-serif;
+@bl-customComponent-worldClock-font-family-digital: 'Digital-7', arial;
 @bl-customComponent-worldClock-margin: 10px;
 @bl-customComponent-worldClock-white-color: #fff;
 @bl-customComponent-worldClock-z-normal: 1;
@@ -17,11 +23,15 @@
 
 .bl-customComponent-worldClock {
 
-  .analog {
+  .analog,
+  .digital {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: @bl-customComponent-worldClock-margin;
+  }
+
+  .analog {
 
     &.gold {
       --wClock-hue-color: 50;
@@ -124,26 +134,32 @@
       height: 1px;
       background-color: var(--wClock-first-color);
     }
+
     .clock-twelve,
     .clock-six {
       transform: translateX(-50%) rotate(90deg);
     }
+
     .clock-twelve {
       top: 1.25rem;
       left: 50%;
     }
+
     .clock-three {
       top: 50%;
       right: 0.75rem;
     }
+
     .clock-six {
       bottom: 1.25rem;
       left: 50%;
     }
+
     .clock-nine {
       left: 0.75rem;
       top: 50%;
     }
+
     .clock-rounder {
       width: 0.75rem;
       height: 0.75rem;
@@ -152,6 +168,7 @@
       border: var(--wClock-border-rounder);
       z-index: var(--wClock-z-tooltip);
     }
+
     .clock-hour,
     .clock-minute,
     .clock-second {
@@ -164,6 +181,7 @@
       width: 70px;
       height: 100px;
     }
+
     .clock-hour::before {
       content: '';
       position: absolute;
@@ -174,10 +192,12 @@
       box-shadow: var(--wClock-hand-shadow);
       z-index: var(--wClock-z-normal);
     }
+
     .clock-minute {
       width: 96px;
       height: 146px;
     }
+
     .clock-minute::before {
       content: '';
       position: absolute;
@@ -188,10 +208,12 @@
       box-shadow: var(--wClock-hand-shadow);
       z-index: var(--wClock-z-normal);
     }
+
     .clock-second {
       width: 90px;
       height: 160px;
     }
+
     .clock-second::before {
       content: '';
       position: absolute;
@@ -202,21 +224,385 @@
       box-shadow: var(--wClock-hand-shadow);
       z-index: var(--wClock-z-normal);
     }
+  }
 
-    // .clock-label {
-    //   width: max-content;
-    //   margin-top: 10px;
-    //   padding: 5px 10px;
-    //   border-radius: 4px;
-    //   box-shadow: var(--wClock-label-shadow);
-    //   background-color: var(--wClock-label-bg-color);
-    // }
+  .digital {
 
-    // .clock-label-text {
-    //   font-family: var(--wClock-text-font);
-    //   font-weight: bold;
-    //   color: var(--wClock-label-color);
-    // }
+    &.modern {
+      --wClock-hue-color: 240;
+      --wClock-first-color: hsl(var(--wClock-hue-color), 53%, 49%);
+      --wClock-body-color: hsl(var(--wClock-hue-color), 24%, 94%);
+      --wClock-text-color: hsl(var(--wClock-hue-color), 12%, 35%);
+      --wClock-shadow: -6px -6px 16px var(--wClock-white-color),
+      6px 6px 16px hsla(var(--wClock-hue-color), 30%, 86%, 1),
+      inset 6px 6px 16px hsla(var(--wClock-hue-color), 30%, 86%, 1),
+      inset -6px -6px 16px var(--wClock-white-color);
+      --wClock-text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      --wClock-label-color: var(--wClock-text-color);
+      --wClock-label-bg-color: var(--wClock-white-color);
+      --wClock-label-shadow: var(--wClock-shadow);
+      --wClock-border-radius: 15px;
+      --wClock-border: none;
+
+      .hour,
+      .minute,
+      .second,
+      .ampm {
+        display: inline-block;
+        width: calc(2ch + 2px);
+        text-align: center;
+      }
+
+      .ampm {
+        font-size: 0.5rem;
+        margin: 10px 0 0 2px;
+        align-self: start;
+      }
+    }
+
+    &.pixel {
+      --wClock-hue-color: 40;
+      --wClock-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      --wClock-text-color: hsl(var(--wClock-white-color), 12%, 35%);
+      --wClock-label-color: var(--wClock-text-color);
+      --wClock-label-bg-color: var(--wClock-white-color);
+      --wClock-label-shadow: var(--wClock-shadow);
+
+      padding: 10px;
+      border-radius: 4px;
+      background-color: hsl(var(--wClock-hue-color), 10%, 95%);
+      box-shadow: var(--wClock-shadow);
+
+      .clock {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 10px;
+      }
+
+      .digit {
+        width: 30px;
+      }
+
+      .digit:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      .segment {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        float: left;
+      }
+
+      .ampm {
+        align-self: flex-end;
+        color: blue;
+        font-weight: 600;
+        line-height: 1.2rem;
+      }
+    }
+
+    &.techno {
+      --wClock-text-font: @bl-customComponent-worldClock-font-family-digital;
+      font-family: var(--wClock-text-font);
+
+      .clock {
+        margin: 10px;
+        border-radius: 10px;
+        background: #0d1621;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        padding: 20px 20px 5px 20px;
+      }
+
+      .calendar {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 33px;
+        padding: 0 10px;
+        padding-top: 10px;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      .hour {
+        flex: 1;
+        font-size: 7rem;
+        margin: 0;
+        padding: 0;
+        top: 0;
+      }
+
+      .ampm {
+        align-self: flex-end;
+        font-size: 2.5rem;
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+      }
+
+      .digit {
+        display: inline-block;
+        position: relative;
+      }
+
+      .digit :first-child {
+        width: 100%;
+        position: absolute;
+        color: #243820;
+      }
+
+      .digit :last-child {
+        position: relative;
+        color: #2bd012;
+      }
+
+      .digit p {
+        margin: 0;
+      }
+
+      @media (max-width: 770px) {
+
+        .calendar, .ampm {
+          font-size: 0.7rem;
+        }
+
+        .hour {
+          font-size: 4rem;
+        }
+
+        .clock {
+          padding: 5px;
+        }
+      }
+    }
+
+    &.flip {
+      --wClock-label-color: rgb(255, 253, 255);
+      background-color: rgb(0, 115, 116);
+      border-radius: 3px;
+      font-size: 1.5rem;
+
+      .clock-label {
+        margin: 0;
+      }
+
+      .clock-label-text {
+        font-size: 1rem;
+      }
+
+      .flipClock {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5px 0px;
+      }
+
+      .flipUnitContainer {
+        display: block;
+        position: relative;
+        width: 34px;
+        height: 48px;
+        perspective-origin: 50% 50%;
+        perspective: 300px;
+        background-color: rgb(16, 21, 23);
+        border-radius: 3px;
+        box-shadow: 0px 10px 10px -10px rgb(255, 253, 255);
+        margin: 0 3px;
+      }
+
+      .flip-ampm {
+        font-size: 1.1rem;
+      }
+
+      .upperCard, .lowerCard {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+        border: 1px solid whitesmoke;
+      }
+      .upperCard span, .lowerCard span {
+        font-weight: lighter;
+        color: rgb(255, 253, 255);
+      }
+
+      .upperCard {
+        align-items: flex-end;
+        border-bottom: 0.1px solid rgba(255, 253, 255, 0.5);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+
+      .upperCard span {
+        transform: translateY(50%);
+      }
+
+      .lowerCard {
+        align-items: flex-start;
+        border-top: 0.1px solid rgba(255, 253, 255, 0.5);
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+
+      .lowerCard span {
+        transform: translateY(-50%);
+      }
+
+      .flipCard {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .flipCard span {
+        font-weight: lighter;
+        color: rgb(255, 253, 255);
+      }
+
+      .flipCard.unfold {
+        top: 50%;
+        align-items: flex-start;
+        transform-origin: 50% 0%;
+        transform: rotateX(180deg);
+        background-color: rgb(16, 21, 23);
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border: 1px solid whitesmoke;
+        border-top: 0.1px solid rgba(255, 253, 255, 0.5);
+      }
+
+      .flipCard.unfold span {
+        transform: translateY(-50%);
+      }
+
+      .flipCard.fold {
+        top: 0%;
+        align-items: flex-end;
+        transform-origin: 50% 100%;
+        transform: rotateX(0deg);
+        background-color: rgb(16, 21, 23);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid whitesmoke;
+        border-bottom: 0.1px solid rgba(255, 253, 255, 0.5);
+      }
+
+      .flipCard.fold span {
+        transform: translateY(50%);
+      }
+
+      .fold {
+        -webkit-animation: fold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+        animation: fold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+        transform-style: preserve-3d;
+      }
+
+      .unfold {
+        -webkit-animation: unfold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+        animation: unfold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+        transform-style: preserve-3d;
+      }
+
+      .semicolon {
+        width: 4px;
+        height: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+
+      .semicolon > span {
+        width: 4px;
+        height: 4px;
+        background: rgb(255, 253, 255);
+        border-radius: 50%;
+      }
+
+      @-webkit-keyframes fold {
+        0% {
+          transform: rotateX(0deg);
+        }
+        100% {
+          transform: rotateX(-180deg);
+        }
+      }
+
+      @keyframes fold {
+        0% {
+          transform: rotateX(0deg);
+        }
+        100% {
+          transform: rotateX(-180deg);
+        }
+      }
+
+      @-webkit-keyframes unfold {
+        0% {
+          transform: rotateX(180deg);
+        }
+        100% {
+          transform: rotateX(0deg);
+        }
+      }
+
+      @keyframes unfold {
+        0% {
+          transform: rotateX(180deg);
+        }
+        100% {
+          transform: rotateX(0deg);
+        }
+      }
+    }
+
+    .clock-time {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: var(--wClock-border-radius);
+      background-color: var(--wClock-white-color);
+      border: var(--wClock-border);
+      box-shadow: var(--wClock-shadow);
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--wClock-text-color);
+      text-shadow: var(--wClock-text-shadow);
+      padding: 5px 10px;
+    }
+
+    .separator {
+      font-size: 1.5rem;
+      font-weight: normal;
+      color: var(--wClock-text-color);
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .ampm {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-left: 0.5rem;
+    }
   }
 
   .clock-label {
@@ -234,43 +620,12 @@
     color: var(--wClock-label-color);
   }
 
-  .digital {
-    font-family: sans-serif;
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-
-    .label {
-      font-size: 1.5rem;
-      font-weight: normal;
-      margin-bottom: 1rem;
+  @keyframes flip {
+    from {
+      transform: rotateX(0deg);
     }
-
-    .time {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    to {
+      transform: rotateX(-180deg);
     }
-
-    .separator {
-      font-size: 1.5rem;
-      font-weight: normal;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-    }
-
-    .ampm {
-      font-size: 1.5rem;
-      font-weight: normal;
-      margin-left: 0.5rem;
-    }
-
-
-    // .digital {
-    //   width: 100%;
-    //   border: 1px solid black;
-    //   padding: 2em;
-    //   margin: 1em 0;
-    //   backdrop-filter: blur(10px) opacity(100) brightness(0.2);
   }
 }
