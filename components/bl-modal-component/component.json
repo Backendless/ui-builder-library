@@ -32,6 +32,17 @@
       "handlerLabel": "Close On Escape Logic",
       "handlerDescription": "This handler allows you to add the close of the modal window by pressing Escape or Backdrop.",
       "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "allowScrolling",
+      "label": "Allow Scrolling",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "allowScrollingLogic",
+      "handlerLabel": "Allow Scrolling Logic",
+      "handlerDescription": "This handler allows you to control the page scroll ability when a modal is open.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
