@@ -44,3 +44,20 @@ Social Login Buttons is a component of Backendless UI-Builder designer. The comp
 @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary: #0A66C2;
 @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary: #000000;
 ````
+
+## <a name="usage-guide"></a> Usage Guide
+
+Add a component to the page and select the social media buttons you want:
+
+<img alt="tabs" src="./example-images/add-component-to-page.png" width="720" />
+
+Go to the Login Providers tab:
+
+<img alt="tab content id" src="./example-images/go-to-login-providers.png" width="720" />
+
+For all the providers you selected, do the following:
+  1. Turn on the toggle.
+  2. Fill in the App ID and App Secret fields.
+  3. Click the `SAVE` button.
+
+<img alt="tab content" src="./example-images/fill-in-required-fields.png" width="720" />
