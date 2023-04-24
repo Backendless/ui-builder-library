@@ -46,6 +46,7 @@ The component allows you to add a pdf viewer to your UI-Builder application
 @bl-customComponent-pdfViewer-background-color: rgba(42, 42, 46, 1);
 @bl-customComponent-pdfViewer-color: #ffffff;
 @bl-customComponent-pdfViewer-overflow: auto;
+@bl-customComponent-pdfViewer-flex-shrink: 0;
 ````
 
 **Input**

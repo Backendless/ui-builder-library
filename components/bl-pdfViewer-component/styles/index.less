@@ -7,6 +7,7 @@
 @bl-customComponent-pdfViewer-background-color: rgba(42, 42, 46, 1);
 @bl-customComponent-pdfViewer-color: #ffffff;
 @bl-customComponent-pdfViewer-overflow: auto;
+@bl-customComponent-pdfViewer-flex-shrink: 0;
 
 @bl-customComponent-pdfViewer-input-background-color: rgba(64, 64, 68, 1);
 @bl-customComponent-pdfViewer-input-height: 18px;
@@ -71,6 +72,7 @@
 .bl-customComponent-pdfViewer {
   display: flex;
   flex-direction: column;
+  flex-shrink: @bl-customComponent-pdfViewer-flex-shrink;
 
   overflow: @bl-customComponent-pdfViewer-overflow;
 
