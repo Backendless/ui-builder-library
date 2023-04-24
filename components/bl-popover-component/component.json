@@ -96,7 +96,7 @@
           "label": "Is Open"
         }
       ],
-      "handlerDescription": "This event is triggered when the user clicks on outside the component."
+      "handlerDescription": "This event is triggered when the user clicks outside the component."
     }
   ],
   "actions": [
