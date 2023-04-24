@@ -1,4 +1,5 @@
 @bl-customComponent-popover-border-width: 1px;
+@bl-customComponent-popover-min-width: 250px;
 @bl-customComponent-popover-max-width: 276px;
 @bl-customComponent-popover-arrow-size: 10px;
 
@@ -6,8 +7,11 @@
 @bl-customComponent-popover-border-color: if(@isLightTheme, rgba(0, 0, 0, 0.175), rgba(255, 255, 255, 0.175));
 
 @bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid @bl-customComponent-popover-border-color;
+@bl-customComponent-popover-border-radius: 0.5rem;
 
 .bl-customComponent-popover {
+  position: relative;
+
   .content-container {
     display: inline-block;
   }
@@ -15,11 +19,12 @@
   &.popover {
     position: absolute;
     max-width: @bl-customComponent-popover-max-width;
+    min-width: @bl-customComponent-popover-min-width;
 
     background-color: @bl-customComponent-popover-background-color;
     background-clip: padding-box;
     border: @bl-customComponent-popover-border;
-    border-radius: 0.5rem;
+    border-radius: @bl-customComponent-popover-border-radius;
 
     .popover-arrow {
       position: absolute;
