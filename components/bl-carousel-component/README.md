@@ -80,6 +80,7 @@ Addition of Images Data
 **Carousel Img**
 ```
 @bl-customComponent-carousel-image-user-select: none;
+@bl-customComponent-carousel-image-transition: opacity ease-in-out;
 ```
 
 **Carousel Prev and Next Button**
@@ -157,4 +158,5 @@ Addition of Images Data
 @bl-customComponent-carousel-caption-color: #fff;
 @bl-customComponent-carousel-caption-text-align: center;
 @bl-customComponent-carousel-caption-text-shadow: 0 0 2px #000000;
+@bl-customComponent-carousel-caption-transition: opacity ease-in-out;
 ```
