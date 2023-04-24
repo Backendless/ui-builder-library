@@ -43,12 +43,12 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
     return null;
   }
 
-  return (
+  return ReactDOM.createPortal((
     <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
       <div className="backdrop" onClick={ handleClick } />
       <div className="modal-content">{ modalContentPod.render() }</div>
     </div>
-  );
+  ), document.body);
 }
 
 const useCloseOnEscape = ({ onClose, visibility, setVisibility, closeOnEscape }) => {
