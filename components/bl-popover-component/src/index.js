@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Tooltip } from './Tooltip';
 
@@ -6,7 +6,9 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function Popover({ component, eventHandlers, pods }) {
   const { display, style, classList, position, delayMouseOver, delayMouseOut } = component;
-  const { onTargetClick, onMouseOut, onMouseOver } = eventHandlers;
+  const { onTargetClick, onMouseOut, onMouseOver, onClickOutside } = eventHandlers;
+
+  const rootRef = useRef();
 
   const popoverTarget = pods['popoverTarget'];
   const popoverContent = pods['popoverContent'];
@@ -18,6 +20,8 @@ export default function Popover({ component, eventHandlers, pods }) {
   const mouseLeaveTimeout = useRef(null);
 
   component.setIsOpen = setIsOpen;
+
+  useOutsideAlerter(rootRef, onClickOutside, isOpen);
 
   const onMouseEnter = () => {
     if (mouseEnterTimeout.current) {
@@ -42,7 +46,7 @@ export default function Popover({ component, eventHandlers, pods }) {
   }
 
   return (
-    <div className={ cn('bl-customComponent-popover', classList) } style={ style }>
+    <div ref={ rootRef } className={ cn('bl-customComponent-popover', classList) } style={ style }>
       <div
         ref={ targetRef }
         className="content-container"
@@ -62,3 +66,19 @@ export default function Popover({ component, eventHandlers, pods }) {
     </div>
   );
 }
+
+const useOutsideAlerter = (ref, onClickOutside, isOpen) => {
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        onClickOutside({ isOpen });
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, isOpen]);
+};
