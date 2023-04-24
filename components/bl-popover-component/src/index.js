@@ -21,7 +21,7 @@ export default function Popover({ component, eventHandlers, pods }) {
 
   component.setIsOpen = setIsOpen;
 
-  useOutsideAlerter(rootRef, onClickOutside, isOpen);
+  useClickOutside(rootRef, onClickOutside, isOpen);
 
   const onMouseEnter = () => {
     if (mouseEnterTimeout.current) {
@@ -67,7 +67,7 @@ export default function Popover({ component, eventHandlers, pods }) {
   );
 }
 
-const useOutsideAlerter = (ref, onClickOutside, isOpen) => {
+const useClickOutside = (ref, onClickOutside, isOpen) => {
   useEffect(() => {
     const handleClickOutside = event => {
       if (ref.current && !ref.current.contains(event.target)) {
