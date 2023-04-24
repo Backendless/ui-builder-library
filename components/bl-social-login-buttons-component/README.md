@@ -3,7 +3,7 @@
 Social Login Buttons is a component of Backendless UI-Builder designer. The component is designed for quick login. For the correct work of the component, you need to configure the social network provider, you can do this by going to Backend => Users => Login Providers. Also, if you want to watch the tutorial, you can [follow the link,](https://www.youtube.com/watch?v=PVmXcQn-FxA&t=842s&ab_channel=Backendless) or go to [the documentation.](https://backendless.com/docs/js/users_oauth2.html)
 
 <p align="center">
-  <img alt="main thumbnail" height="290" src="./thumbnail.png" width="370"/>
+  <img alt="main thumbnail" src="./thumbnail.png" width="720"/>
 </p>
 
 ## Properties
