@@ -5,7 +5,7 @@ const { cn } = BackendlessUI.CSSUtils;
 const ESCAPE_KEY_CODE = 27;
 
 export default function ModalComponent({ component, eventHandlers, pods, elRef }) {
-  const { display, classList, style, modalVisibility, closeOnEscape } = component;
+  const { display, classList, style, modalVisibility, closeOnEscape, allowScrolling } = component;
   const { onClose } = eventHandlers;
 
   const [visibility, setVisibility] = useState(modalVisibility);
@@ -19,6 +19,14 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   useEffect(() => {
     setVisibility(modalVisibility);
   }, [modalVisibility]);
+
+  useEffect(() => {
+    if (visibility && !allowScrolling) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => document.body.style.overflow = 'visible';
+  }, [visibility, allowScrolling]);
 
   const modalContentPod = pods['modalContent'];
 

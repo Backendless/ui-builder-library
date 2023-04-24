@@ -11,6 +11,7 @@ Modal is a component of Backendless UI-Builder designer. This component allows y
 |----------------------------------------|----------|---------------|------------------------|--------------|------------|-----------------------------------------------------------------------------------------------------|
 | Modal Visibility<br/>`modalVisibility` | Checkbox | `false`       | Modal Visibility Logic | YES          | YES        | This handler allows you to control the visibility of the modal.                                     |
 | Close On Escape<br/>`closeOnEscape`    | Checkbox | `true`        | Close On Escape Logic  | YES          | YES        | This handler allows you to add the close of the modal window by pressing Escape button or backdrop. |
+| Allow Scrolling<br/>`allowScrolling`   | Checkbox | `false`       | Allow Scrolling        | YES          | YES        | This handler allows you to control the page scroll ability when a modal is open.                    |
 
 ## Events
 
