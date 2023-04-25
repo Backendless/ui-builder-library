@@ -49,7 +49,8 @@
           "value": "digital-flip",
           "label": "digital-flip"
         }
-      ]
+      ],
+      "settingTooltip": "Choose the type of world clock."
     },
     {
       "type": "select",
@@ -160,7 +161,8 @@
           "label": "GMT+12"
         }
       ],
-      "defaultValue": "+00:00"
+      "defaultValue": "+00:00",
+      "settingTooltip": "Choose a time zone for the world clock."
     },
     {
       "type": "text",
@@ -171,7 +173,9 @@
       "handlerId": "labelLogic",
       "defaultValue": "London",
       "handlerLabel": "Label Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "The name of a location/city/etc to show in the component.",
+      "handlerDescription": "This is a handler for the logic to determine the name of a location/city/etc to display it in the component."
     },
     {
       "type": "select",
@@ -190,7 +194,8 @@
           "value": "24",
           "label": "24"
         }
-      ]
+      ],
+      "settingTooltip": "Choose a time format for the world clock(only for digital types)."
     },
     {
       "type": "checkbox",
@@ -199,12 +204,12 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "displaySecondsLogic"
+      "handlerId": "displaySecondsLogic",
+      "settingTooltip": "Select to display the seconds(second hand)."
     }
   ],
   "eventHandlers": [],
   "actions": [],
   "settings": [],
-  "pods": {},
-  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"f70453891eb7d1edd2180d630de25af5\"><i data-icon=\"access_time\" data-size=\"default\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"1eeb92c7e6374f52c322cd660b9da303\"></i></div>"
+  "pods": {}
 }

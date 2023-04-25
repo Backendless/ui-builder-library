@@ -28,6 +28,7 @@ export function DigitalClock({ time, label, clockSubType, displaySeconds }) {
           hour={ hour }
           minute={ minute }
           second={ second }
+          displaySeconds={ displaySeconds }
           weekday={ weekday }
           isAmpm={ isAmpm }
           isPM={ isPM } />
@@ -45,14 +46,14 @@ export function DigitalClock({ time, label, clockSubType, displaySeconds }) {
 
       { clockSubType === 'modern' && (
         <div className="clock-time">
-          <span className="hour">{ hour.toString().padStart(2, "0") }</span>
+          <span className="hour">{ hour }</span>
           <span className="separator">:</span>
-          <span className="minute">{ minute.toString().padStart(2, "0") }</span>
+          <span className="minute">{ minute }</span>
 
           { displaySeconds && (
             <>
               <span className="separator">:</span>
-              <span className="second">{ second.toString().padStart(2, "0") }</span>
+              <span className="second">{ second }</span>
             </>
           ) }
 

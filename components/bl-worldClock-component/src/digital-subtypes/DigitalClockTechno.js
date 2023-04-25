@@ -1,6 +1,6 @@
 const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-export const DigitalClockTechno = ({hour, minute, second, weekday, isAmpm, isPM}) => {
+export const DigitalClockTechno = ({hour, minute, second, weekday, displaySeconds, isAmpm, isPM}) => {
   return (
     <div className='clock'>
       <div className='calendar'>
@@ -14,8 +14,13 @@ export const DigitalClockTechno = ({hour, minute, second, weekday, isAmpm, isPM}
           <Number value={ hour }/>
           <Word value={ ':' } />
           <Number value={ minute }/>
-          <Word value={ ':' } />
-          <Number value={ second }/>
+
+          { displaySeconds && (
+            <>
+              <Word value={ ':' } />
+              <Number value={ second }/>
+            </>
+          ) }
         </div>
 
         { isAmpm && (
@@ -29,13 +34,11 @@ export const DigitalClockTechno = ({hour, minute, second, weekday, isAmpm, isPM}
   );
 }
 
-const Number = ({ value = 0 }) => {
-  const result = String(value).padStart(2, '0');
-
+const Number = ({ value = '00' }) => {
   return (
     <div className="digit">
       <p>88</p>
-      <p>{ result }</p>
+      <p>{ value }</p>
     </div>
   )
 };

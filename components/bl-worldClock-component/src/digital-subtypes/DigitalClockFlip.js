@@ -4,7 +4,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 const AnimatedCard = ({ animation, digit }) => {
   return (
-    <div className={ `flipCard ${ animation }` }>
+    <div className={ `flip-card ${ animation }` }>
       <span>{ digit }</span>
     </div>
   );
@@ -61,13 +61,13 @@ const FlipUnitContainer = ({ digit, shuffle, unit }) => {
     : 'unfold';
 
   return (
-    <div className={ cn('flipUnitContainer', (unit === 'ampm' ? 'flip-ampm' : '')) }>
+    <div className={ cn('flip-unit-container', (unit === 'ampm' ? 'flip-ampm' : '')) }>
       <StaticCard
-        position={ 'upperCard' }
+        position={ 'upper-card' }
         digit={ currentDigit }
       />
       <StaticCard
-        position={ 'lowerCard' }
+        position={ 'lower-card' }
         digit={ previousDigit }
       />
       <AnimatedCard
@@ -146,7 +146,7 @@ export function DigitalClockFlip({ hour, minute, second, displaySeconds, ampm, i
   }, [hour, minute, second, ampm]);
 
   return (
-    <div className="flipClock">
+    <div className="flip-clock">
       <FlipUnitContainer
         unit={ 'hour' }
         digit={ state.hour }

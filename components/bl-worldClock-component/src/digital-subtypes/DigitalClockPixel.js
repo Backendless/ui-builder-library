@@ -19,7 +19,7 @@ function Segment({ active, color }) {
     backgroundColor: active ? color : 'transparent'
   };
 
-  return <div className="segment" style={style} />;
+  return <div className="segment" style={ style } />;
 }
 
 function Digit({ value, colors }) {
@@ -41,7 +41,7 @@ export function DigitalClockPixel({ time, displaySeconds, ampm, isAmpm }) {
   }, []);
 
   const digits = useMemo(() => {
-    const [hour, minute, second] = time.map((num) => num.toString().padStart(2, '0').split(''));
+    const [hour, minute, second] = time;
     const formattedTime = displaySeconds ? [...hour, ':', ...minute, ':', ...second] : [...hour, ':', ...minute];
 
     return formattedTime;
