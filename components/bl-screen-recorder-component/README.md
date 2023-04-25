@@ -1,6 +1,6 @@
-# Video Recorder
+# Screen Recorder
 
-Video Recorder is a component of Backendless UI-Builder designer. This allows to record screen and use the recorded file.
+Screen Recorder is a component of Backendless UI-Builder designer. This allows to record screen and use the recorded file.
 
 
 <p align="center">
@@ -30,12 +30,12 @@ Video Recorder is a component of Backendless UI-Builder designer. This allows to
 
 ## Actions
 
-| Action                                   | Inputs                     | Returns               |
-|------------------------------------------|----------------------------|-----------------------|
-| Start record of Video Recorder           |                            |                       |
-| Stop record of Video Recorder            |                            |                       |
-| Download recorded file of Video Recorder |                            |                       |
-| Get Blob of Video Recorder               |                            | `Blob`: recorded blob |
+| Action                                    | Inputs                     | Returns               |
+|-------------------------------------------|----------------------------|-----------------------|
+| Start record of Screen Recorder           |                            |                       |
+| Stop record of Screen Recorder            |                            |                       |
+| Download recorded file of Screen Recorder |                            |                       |
+| Get Blob of Screen Recorder               |                            | `Blob`: recorded blob |
 
 ## Styles
 
@@ -61,6 +61,6 @@ Video Recorder is a component of Backendless UI-Builder designer. This allows to
 
 **Color**
 ````
-@bl-customComponent-videoRecorder-video-background: black;
+@bl-customComponent-screenRecorder-video-background: black;
 ````
 
