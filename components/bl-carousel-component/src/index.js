@@ -39,14 +39,14 @@ export default function Carousel({ component, eventHandlers }) {
   }, [imagesData]);
 
   useEffect(() => {
-    if (autoplayDelay && autoplay) {
+    if (autoplayDelay && autoplay && imagesList.length > 1) {
       autoplayRef.current = setTimeout(() => {
         component.goToNextImage();
       }, autoplayDelay);
-    } else if (!autoplay) {
+    } else {
       clearTimeout(autoplayRef.current);
     }
-  }, [currentImg, autoplayDelay, autoplay]);
+  }, [currentImg, autoplayDelay, autoplay, imagesList]);
 
   component.goToNextImage = () => {
     clearTimeout(autoplayRef.current);
@@ -121,8 +121,8 @@ export default function Carousel({ component, eventHandlers }) {
       onMouseLeave={ onMouseLeave }>
       { withControls && (
         <div className="carousel__controls-button">
-          <Button disabled={ !!animation } onClick={ onPrevClick } type="prev"/>
-          <Button disabled={ !!animation } onClick={ onNextClick } type="next"/>
+          <Button disabled={ !!animation || imagesList.length < 2 } onClick={ onPrevClick } type="prev"/>
+          <Button disabled={ !!animation || imagesList.length < 2 } onClick={ onNextClick } type="next"/>
         </div>
       ) }
 
@@ -148,3 +148,4 @@ export default function Carousel({ component, eventHandlers }) {
     </div>
   );
 }
+
