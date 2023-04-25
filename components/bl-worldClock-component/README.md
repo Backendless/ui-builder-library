@@ -18,6 +18,7 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 
 ## Styles
 
+````
 @bl-customComponent-worldClock-font-family: 'Poppins', sans-serif;
 @bl-customComponent-worldClock-font-family-digital: 'Digital-7', arial;
 @bl-customComponent-worldClock-margin: 10px;
@@ -151,6 +152,7 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 @bl-customComponent-worldClock-digital-flip-semicolon-border-radius: 50%;
 @bl-customComponent-worldClock-digital-flip-semicolon-span-height: 4px;
 @bl-customComponent-worldClock-digital-flip-semicolon-color: rgb(255, 253, 255);
+````
 
 ## Examples
 
