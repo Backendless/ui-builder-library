@@ -32,6 +32,8 @@ export default function Carousel({ component, eventHandlers }) {
     return getAdjacentImages(currentImg, imagesList.length - 1);
   }, [currentImg, imagesList]);
 
+  const isSwipeable = useMemo(() => imagesList.length > 1, [imagesList]);
+
   useEffect(() => {
     if (imagesData) {
       setImagesList(imagesData);
@@ -39,14 +41,14 @@ export default function Carousel({ component, eventHandlers }) {
   }, [imagesData]);
 
   useEffect(() => {
-    if (autoplayDelay && autoplay && imagesList.length > 1) {
+    if (autoplayDelay && autoplay && isSwipeable) {
       autoplayRef.current = setTimeout(() => {
         component.goToNextImage();
       }, autoplayDelay);
     } else {
       clearTimeout(autoplayRef.current);
     }
-  }, [currentImg, autoplayDelay, autoplay, imagesList]);
+  }, [currentImg, autoplayDelay, autoplay, isSwipeable]);
 
   component.goToNextImage = () => {
     clearTimeout(autoplayRef.current);
@@ -121,8 +123,8 @@ export default function Carousel({ component, eventHandlers }) {
       onMouseLeave={ onMouseLeave }>
       { withControls && (
         <div className="carousel__controls-button">
-          <Button disabled={ !!animation || imagesList.length < 2 } onClick={ onPrevClick } type="prev"/>
-          <Button disabled={ !!animation || imagesList.length < 2 } onClick={ onNextClick } type="next"/>
+          <Button disabled={ !!animation || !isSwipeable } onClick={ onPrevClick } type="prev"/>
+          <Button disabled={ !!animation || !isSwipeable } onClick={ onNextClick } type="next"/>
         </div>
       ) }
 
