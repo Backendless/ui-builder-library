@@ -94,13 +94,13 @@
     },
     {
       "type": "json",
-      "name": "locale",
-      "label": "Locale",
+      "name": "labels",
+      "label": "Labels",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "localeLogic",
-      "defaultValue": "{ \"back\": \"Back\", \"close\": \"Close\", \"last\": \"Last\", \"next\": \"Next\", \"open\": \"Open the dialog\", \"skip\": \"Skip\" }",
-      "handlerLabel": "Locale Logic",
+      "handlerId": "labelsLogic",
+      "defaultValue": "{ \"back\": \"Back\", \"close\": \"Close\", \"last\": \"Finish\", \"next\": \"Next\", \"open\": \"Open the dialog\", \"skip\": \"Skip\" }",
+      "handlerLabel": "Labels Logic",
       "handlerDescription": "This is a handler for the logic to determine the strings used in the tooltip."
     },
     {

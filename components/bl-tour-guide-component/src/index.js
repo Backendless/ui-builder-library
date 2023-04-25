@@ -8,14 +8,8 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
   const { onChange } = eventHandlers;
   const {
     classList, display, style, controlVisibility, controlLabel, options, continuous, autoStart, closeOnEscape,
-    closeOnClickOverlay, scrolling, locale, scrollOffset, scrollDuration, scrollToFirstStep, spotlightClicks,
-  } = component;
-
-  const {
+    closeOnClickOverlay, scrolling, labels, scrollOffset, scrollDuration, scrollToFirstStep, spotlightClicks,
     progressVisibility, skipButtonVisibility, overlayVisibility, backButtonVisibility, closeButtonVisibility,
-  } = component;
-
-  const {
     spotlightPadding, beaconSize, arrowColor, backgroundColor, overlayColor, primaryColor, textColor, width,
   } = component;
 
@@ -31,13 +25,13 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
     setStepsKey(stepsKey + 1);
   }, [options]);
 
-  const handleClickStart = event => {
+  const onStartClick = event => {
     event.preventDefault();
 
     setRun(true);
   };
 
-  const handleCallback = tourState => {
+  const onCallback = tourState => {
     const { status, action } = tourState;
 
     const isNextStepAction = action === ACTIONS.NEXT && status !== STATUS.FINISHED;
@@ -66,7 +60,7 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-tourGuide', classList) } style={ style }>
       { controlVisibility && (
-        <button type="button" aria-label="start tour" onClick={ handleClickStart }>{ controlLabel }</button>
+        <button type="button" aria-label="start tour" onClick={ onStartClick }>{ controlLabel }</button>
       ) }
 
       <Joyride
@@ -81,7 +75,7 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
         getHelpers={ helpers => setHelpers(helpers) }
         hideBackButton={ !backButtonVisibility }
         hideCloseButton={ !closeButtonVisibility }
-        locale={ locale }
+        locale={ labels }
         scrollOffset={ scrollOffset }
         scrollDuration={ scrollDuration }
         scrollToFirstStep={ scrollToFirstStep }
@@ -90,7 +84,7 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
         spotlightClicks={ spotlightClicks }
         spotlightPadding={ spotlightPadding }
         styles={{ options: tooltipStyles }}
-        callback={ handleCallback }
+        callback={ onCallback }
       />
     </div>
   );
