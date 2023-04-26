@@ -15,6 +15,7 @@ Audio Recorder is a component of Backendless UI-Builder designer. This allows re
 | Noise Suppression | *Checkbox*                                          | `true`           |                     | NO           | YES        | This is a handler to control Noise Suppression property.      |
 | File Name         | *Text*                                              | 'Recorded Audio' | File Name Logic     | YES          | YES        | This is a handler to control the name of the downloaded file. |
 | File Type         | *Select* <br/>[`webm`, `wav`, `mpeg`, `mp4`, `ogg`] | 'webm'           |                     | NO           | YES        | This is a handler to control the type of the downloaded file. |
+| Width             | *Text*                                              | '380px'          |                     | NO           | YES        | This is a handler to control the width of the component.      |
 
 ## Events
 

@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { captureMediaDevices, download } from './helpers';
 import { TYPES } from './types';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
@@ -40,6 +40,12 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
       onState({ state });
     }
   }, [state]);
+
+  useEffect(() => {
+    if (width) {
+      elRef.current.style.width = normalizeDimensionValue(width);
+    }
+  }, [width]);
 
   Object.assign(component, {
     start: () => startRecording(),

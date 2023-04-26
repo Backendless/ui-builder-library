@@ -83,6 +83,15 @@
           "label": "ogg"
         }
       ]
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "380px",
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic"
     }
   ],
   "eventHandlers": [
