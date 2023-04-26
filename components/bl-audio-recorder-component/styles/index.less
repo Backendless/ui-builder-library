@@ -1,0 +1,48 @@
+@bl-customComponent-audioRecorder-button-backgroundColor: @themePrimary;
+@bl-customComponent-audioRecorder-button-disabled: @disabledColor;
+@bl-customComponent-audioRecorder-button-borderRadius: @appComponentBorderRadius;
+@bl-customComponent-audioRecorder-button-color: @appTextColor;
+@bl-customComponent-audioRecorder-button-shadowColor: @appComponentShadowColor;
+@bl-customComponent-audioRecorder-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-audioRecorder-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 12%);
+@bl-customComponent-audioRecorder-button-shadow: 0px 3px 1px -2px fade(@bl-customComponent-audioRecorder-button-shadowColor, 20%), 0px 2px 2px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 14%), 0px 1px 5px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 12%);
+@bl-customComponent-audioRecorder-button-disaled-background: @bl-customComponent-audioRecorder-button-disabled;
+@bl-customComponent-audioRecorder-button-disabled-color: contrast(@bl-customComponent-audioRecorder-button-disaled-background);
+@bl-customComponent-audioRecorder-button-fontSize: 0.875rem;
+@bl-customComponent-audioRecorder-button-borderStyle: solid;
+@bl-customComponent-audioRecorder-button-borderWidth: 0px;
+
+.bl-customComponent-audioRecorder {
+  margin: 0 auto;
+
+  .audio {
+    width: 100%;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px
+  }
+
+  .control-button {
+    cursor: pointer;
+    background: @bl-customComponent-audioRecorder-button-backgroundColor;
+    border-radius: @bl-customComponent-audioRecorder-button-borderRadius;
+    border-width: @bl-customComponent-audioRecorder-button-borderWidth;
+    border-style: @bl-customComponent-audioRecorder-button-borderStyle;
+    box-shadow: @bl-customComponent-audioRecorder-button-shadow;
+    height: 36px;
+    width: 20%;
+    color: #fff;
+    font-size: @bl-customComponent-audioRecorder-button-fontSize;
+
+    &:disabled {
+      background: @bl-customComponent-audioRecorder-button-disaled-background;
+      color: @bl-customComponent-audioRecorder-button-disabled-color;
+    }
+
+    &:hover {
+      box-shadow: @bl-customComponent-audioRecorder-button-shadowHover;
+    }
+  }
+}
