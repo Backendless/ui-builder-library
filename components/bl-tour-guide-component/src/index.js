@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import Joyride, { ACTIONS, STATUS } from './lib/react-joyride.min';
+import Joyride, { ACTIONS, EVENTS, STATUS } from './lib/react-joyride.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function TourGuideComponent({ component, eventHandlers, elRef }) {
-  const { onChange } = eventHandlers;
+export default function TourGuideComponent({ component, eventHandlers: { onChange }, elRef }) {
   const {
     classList, display, style, controlVisibility, controlLabel, options, continuous, autoStart, closeOnEscape,
     closeOnClickOverlay, scrolling, labels, scrollOffset, scrollDuration, scrollToFirstStep, spotlightClicks,
@@ -19,6 +18,7 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
   const [steps, setSteps] = useState(options);
   const [helpers, setHelpers] = useState(null);
   const [stepsKey, setStepsKey] = useState(0);
+  const [stepIndex, setStepIndex] = useState(0);
 
   useEffect(() => {
     setSteps(options);
@@ -31,27 +31,35 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
     setRun(true);
   };
 
-  const onCallback = tourState => {
-    const { status, action } = tourState;
-
-    const isNextStepAction = action === ACTIONS.NEXT && status !== STATUS.FINISHED;
-    const isChangeStepAction = isNextStepAction || action === ACTIONS.PREV || action === ACTIONS.GO;
-
-    if (status === STATUS.FINISHED || status === STATUS.SKIPPED || action === ACTIONS.RESET) {
-      setRun(false);
-    }
-
-    if (continuous && isChangeStepAction) {
-      setTimeout(() => {
-        setRun(false);
-        setRun(true);
-      });
-    }
-
-    onChange({ tourState });
+  const updateTourState = (run, index) => {
+    setStepIndex(index);
+    setRun(run);
   };
 
-  useComponentActions(component, setRun, helpers);
+  const onCallback = tourState => {
+    const { status, action, index, type } = tourState;
+
+    onChange({ tourState });
+
+    if (status === STATUS.FINISHED || status === STATUS.SKIPPED) {
+      // Need to set our running state to false, so we can restart if we click start again.
+      updateTourState(false, 0);
+    }
+
+    if (type !== EVENTS.STEP_AFTER && type !== EVENTS.TARGET_NOT_FOUND) {
+      return;
+    }
+
+    if (action === ACTIONS.NEXT || action === ACTIONS.CLOSE) {
+      return setStepIndex(index + 1);
+    }
+
+    if (action === ACTIONS.PREV) {
+      setStepIndex(index - 1);
+    }
+  };
+
+  useComponentActions(component, helpers, stepIndex, setRun, updateTourState);
 
   if (!display) {
     return null;
@@ -65,6 +73,7 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
 
       <Joyride
         key={ stepsKey }
+        stepIndex={ stepIndex }
         steps={ steps }
         continuous={ continuous }
         run={ run }
@@ -90,16 +99,28 @@ export default function TourGuideComponent({ component, eventHandlers, elRef }) 
   );
 }
 
-function useComponentActions(component, setRun, helpers) {
+function useComponentActions(component, helpers, stepIndex, setRun, updateTourState) {
+  const goTo = index => {
+    setRun(false);
+    // Need to set the necessary index only after our running state has changed to false
+    // so the setStepIndex does not fire a callback
+    setTimeout(() => updateTourState(true, index));
+  };
+
+  const goPrevious = () => {
+    if (stepIndex) {
+      helpers?.prev();
+    }
+  };
+
   Object.assign(component, {
-    start     : () => setRun(true),
-    stop      : () => setRun(false),
-    skip      : () => helpers?.skip(),
-    close     : () => helpers?.close(),
-    reset     : () => helpers?.reset(),
-    open      : () => helpers?.open(),
-    goNext    : () => helpers?.next(),
-    goPrevious: () => helpers?.prev(),
-    goTo      : index => helpers?.go(index),
+    goTo, goPrevious,
+    goNext: () => helpers?.next(),
+    skip  : () => helpers?.skip(),
+    close : () => helpers?.close(),
+    open  : () => helpers?.open(),
+    start : () => setRun(true),
+    stop  : () => setRun(false),
+    reset : () => updateTourState(false, 0),
   });
 }

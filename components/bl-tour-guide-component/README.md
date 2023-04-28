@@ -57,6 +57,7 @@ that guide users through the features and functionality of an application.
 | Close Current Step of Tour Guide  |        |         |
 | Open Current Step of Tour Guide   |        |         |
 | Reset Tour Guide                  |        |         |
+| Skip Tour Guide                   |        |         |
 
 ## Styles
 
