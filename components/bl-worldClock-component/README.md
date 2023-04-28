@@ -163,5 +163,5 @@ Below is a Codeless Example highlighting how to use the World Clock component:
 </p>
 
 <p align="center">
-  <img src="./example-images/component-preview.png" alt="component preview" width="780"/>
+  <img src="./example-images/component-preview.png" alt="component preview" width="500"/>
 </p>
