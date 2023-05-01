@@ -37,11 +37,13 @@ export function CollapseLeft({ component, eventHandlers, transitionsContainerPod
   }, []);
 
   return (
-    <div
-      ref={ rootRef }
-      className={ cn('bl-customComponent-transitions', variants, { [variants + '--active']: isTransition }, classList) }
-      style={{ ...style, transitionDuration: duration + 'ms' }}>
-      { transitionsContainerPod.render() }
+    <div className={ cn('bl-customComponent-transitions', classList) }>
+      <div
+        ref={ rootRef }
+        className={ cn('transition', variants, { [variants + '--active']: isTransition }) }
+        style={{ ...style, transitionDuration: duration + 'ms' }}>
+        { transitionsContainerPod.render() }
+      </div>
     </div>
   );
 }
