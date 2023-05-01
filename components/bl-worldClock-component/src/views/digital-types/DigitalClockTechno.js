@@ -1,13 +1,14 @@
-const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const WEEKDAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-export const DigitalClockTechno = ({ time, displaySeconds }) => {
+export function DigitalClockTechno({ time, displaySeconds }) {
   const { hour, minute, second, weekday, isAmpm, ampm } = time;
+
   const isPM = ampm === 'PM';
 
   return (
     <div className="clock">
       <div className="calendar">
-        { weekdays.map((value, index) => (
+        { WEEKDAYS.map((value, index) => (
           <Word key={ value } value={ value } hidden={ index != weekday }/>
         )) }
       </div>
@@ -35,18 +36,22 @@ export const DigitalClockTechno = ({ time, displaySeconds }) => {
       </div>
     </div>
   );
-};
+}
 
-const Number = ({ value = '00' }) => (
-  <div className="digit">
-    <p>88</p>
-    <p>{ value }</p>
-  </div>
-);
+function Number({ value = '00' }) {
+  return (
+    <div className="digit">
+      <p>88</p>
+      <p>{ value }</p>
+    </div>
+  );
+}
 
-const Word = ({ value, hidden = false }) => (
-  <div className="digit">
-    <p>{ value }</p>
-    <p style={{ visibility:  hidden ? 'hidden' : 'visible' }}>{ value }</p>
-  </div>
-);
+function Word({ value, hidden = false }) {
+  return (
+    <div className="digit">
+      <p>{ value }</p>
+      <p style={{ visibility:  hidden ? 'hidden' : 'visible' }}>{ value }</p>
+    </div>
+  );
+}

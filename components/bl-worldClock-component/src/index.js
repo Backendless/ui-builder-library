@@ -8,16 +8,21 @@ import { DigitalClock } from './views/digital-clock';
 const { cn } = BackendlessUI.CSSUtils;
 
 const ClockTypes = {
-  analog : AnalogClock,
-  digital: DigitalClock,
+  ANALOG : 'analog',
+  DIGITAL: 'digital',
 };
+const ClockViews = {
+  [ClockTypes.ANALOG] : AnalogClock,
+  [ClockTypes.DIGITAL]: DigitalClock,
+}
+const TWELVE_HOUR = '12';
 const TimeFormats = {
-  '12'     : 'hh',
-  '24'     : 'HH',
-  'minute' : 'mm',
-  'second' : 'ss',
-  'ampm'   : 'A',
-  'weekday': 'd',
+  TWELVE_HOUR     : 'hh',
+  TWENTY_FOUR_HOUR: 'HH',
+  MINUTE          : 'mm',
+  SECOND          : 'ss',
+  AMPM            : 'A',
+  WEEKDAY         : 'd',
 };
 
 dayjs.extend(utc);
@@ -28,16 +33,14 @@ export default function WorldClockComponent({ component, elRef }) {
   const [time, setTime] = useState(() => getTimeData(timezone, timeFormat));
 
   useEffect(() => {
-    const timerID = setInterval(() => {
-      setTime(getTimeData(timezone, timeFormat));
-    }, 1000);
+    const timerID = setInterval(() => setTime(getTimeData(timezone, timeFormat)), 1000);
 
     return () => clearInterval(timerID);
   }, [timezone, timeFormat]);
 
-  const clockType = type.split('-');
-  const WorldClock = ClockTypes[clockType[0]];
-  const clockSubType = clockType[1];
+  const clockTypes = type.split('-');
+  const WorldClock = ClockViews[clockTypes[0]];
+  const clockSubType = clockTypes[1];
 
   if (!display) {
     return null;
@@ -46,7 +49,7 @@ export default function WorldClockComponent({ component, elRef }) {
   return (
     <div className={ cn('bl-customComponent-worldClock', classList) } style={ style } ref={ elRef }>
       { WorldClock && (
-        <WorldClock time={ time } label={ label } clockSubType={ clockSubType } displaySeconds={ displaySeconds }/>
+        <WorldClock time={ time } label={ label } type={ clockSubType } displaySeconds={ displaySeconds }/>
       ) }
     </div>
   );
@@ -54,13 +57,15 @@ export default function WorldClockComponent({ component, elRef }) {
 
 function getTimeData(timezone, timeFormat) {
   const date = dayjs().utcOffset(timezone);
+  const isAmpm = timeFormat === TWELVE_HOUR;
+  const hourFormat = isAmpm ? TimeFormats.TWELVE_HOUR : TimeFormats.TWENTY_FOUR_HOUR;
 
   return {
-    hour   : date.format(TimeFormats[timeFormat]),
-    minute : date.format(TimeFormats['minute']),
-    second : date.format(TimeFormats['second']),
-    isAmpm : timeFormat === '12',
-    ampm   : date.format(TimeFormats['ampm']),
-    weekday: date.format(TimeFormats['weekday']),
+    hour   : date.format(hourFormat),
+    minute : date.format(TimeFormats.MINUTE),
+    second : date.format(TimeFormats.SECOND),
+    ampm   : date.format(TimeFormats.AMPM),
+    weekday: date.format(TimeFormats.WEEKDAY),
+    isAmpm,
   };
 }

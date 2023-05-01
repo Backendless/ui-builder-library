@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-const digits = {
+const DIGITS = {
   '0': [1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1],
   '1': [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
   '2': [1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1],
@@ -14,18 +14,9 @@ const digits = {
   ':': [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
 };
 
-function Digit({ value, colors }) {
-  return (
-    <div className="digit">
-      { digits[value].map((active, index) => (
-        <div className="segment" style={{ backgroundColor: active ? colors[index] : 'transparent' }} key={ index }/>
-      )) }
-    </div>
-  );
-}
-
 export function DigitalClockPixel({ time, displaySeconds }) {
   const { hour, minute, second, isAmpm, ampm } = time;
+
   const [colors, setColors] = useState([]);
 
   useEffect(() => {
@@ -36,19 +27,29 @@ export function DigitalClockPixel({ time, displaySeconds }) {
     setColors(newColors);
   }, []);
 
-  const digits = useMemo(() => {
-    return displaySeconds ? [...hour, ':', ...minute, ':', ...second] : [...hour, ':', ...minute];
-  }, [hour, minute, second]);
+  const digits = useMemo(() => (
+    displaySeconds ? [...hour, ':', ...minute, ':', ...second] : [...hour, ':', ...minute]
+  ), [displaySeconds, hour, minute, second]);
 
   return (
     <div className="clock">
       { digits.map((value, index) => (
-        <Digit key={ index } value={ value } colors={ colors } />
+        <Digit key={ index } value={ value } colors={ colors }/>
       )) }
 
       { isAmpm && (
         <span className="ampm">{ ampm }</span>
       ) }
+    </div>
+  );
+}
+
+function Digit({ value, colors }) {
+  return (
+    <div className="digit">
+      { DIGITS[value].map((active, index) => (
+        <div className="segment" style={{ backgroundColor: active ? colors[index] : 'transparent' }} key={ index }/>
+      )) }
     </div>
   );
 }
