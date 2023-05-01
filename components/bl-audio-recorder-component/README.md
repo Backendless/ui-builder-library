@@ -34,6 +34,7 @@ Audio Recorder is a component of Backendless UI-Builder designer. This allows re
 | Stop record of Audio Recorder            |                            |                       |
 | Download recorded file of Audio Recorder |                            |                       |
 | Get Blob of Audio Recorder               |                            | `Blob`: recorded blob |
+| Pause/Resume of Audio Recorder           |                            |                       |
 
 ## Styles
 
@@ -46,8 +47,8 @@ Audio Recorder is a component of Backendless UI-Builder designer. This allows re
 @bl-customComponent-audioRecorder-button-shadowColor: @appComponentShadowColor;
 @bl-customComponent-audioRecorder-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-audioRecorder-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 12%);
 @bl-customComponent-audioRecorder-button-shadow: 0px 3px 1px -2px fade(@bl-customComponent-audioRecorder-button-shadowColor, 20%), 0px 2px 2px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 14%), 0px 1px 5px 0px fade(@bl-customComponent-audioRecorder-button-shadowColor, 12%);
-@bl-customComponent-audioRecorder-button-disaled-background: @bl-customComponent-audioRecorder-button-disabled;
-@bl-customComponent-audioRecorder-button-disabled-color: contrast(@bl-customComponent-audioRecorder-button-disaled-background);
+@bl-customComponent-audioRecorder-button-disabled-background: @bl-customComponent-audioRecorder-button-disabled;
+@bl-customComponent-audioRecorder-button-disabled-color: contrast(@bl-customComponent-audioRecorder-button-disabled-background);
 ````
 
 **Other**

@@ -3,7 +3,7 @@ export const download = (blob, fileName, fileType) => {
 
   link.style.display = 'none';
   link.href = URL.createObjectURL(blob);
-  link.download = `${ fileName }.${ fileType.type }`;
+  link.download = `${ fileName }.${ fileType }`;
 
   document.body.appendChild(link);
   link.click();

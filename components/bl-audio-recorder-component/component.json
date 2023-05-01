@@ -119,7 +119,7 @@
     {
       "name": "onState",
       "output": false,
-      "label": "On State",
+      "label": "On State Change Event",
       "contextBlocks": [
         {
           "id": "state",
@@ -140,13 +140,16 @@
     },
     {
       "id": "downloadFile",
-      "label": "Download recorded file of",
-      "inputs": []
+      "label": "Download recorded file of"
     },
     {
       "id": "getBlob",
       "label": "Get Blob of",
       "hasReturn": true
+    },
+    {
+      "id": "pause",
+      "label": "Pause/Resume of "
     }
   ],
   "pods": {}

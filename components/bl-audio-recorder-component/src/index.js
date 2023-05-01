@@ -1,37 +1,28 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { captureMediaDevices, download } from './helpers';
-import { TYPES } from './types';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
-
-  const { player, controls, noise, fileName, fileType, display, style, classList } = component;
+  const { player, controls, noise, fileName, fileType, width, display, style, classList } = component;
   const { onStart, onStop, onDownload, onState } = eventHandlers;
+  const { paused, recording, inactive } = STREAM_STATES;
 
   const audioRef = useRef();
-  const recorder = useRef();
-  const startRef = useRef();
-  const stopRef = useRef();
-  const pauseRef = useRef();
-  const downloadRef = useRef();
+  const recorderRef = useRef();
 
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
 
-  const determinedType = useMemo(() => TYPES.get(fileType), [fileType]);
-
-  useEffect(() => {
-    stopRef.current.disabled = true;
-    pauseRef.current.disabled = true;
-    downloadRef.current.disabled = true;
-  }, []);
+  const styles = useMemo(() => ({
+    width: normalizeDimensionValue(width),
+    ...style,
+  }), [style]);
 
   useEffect(() => {
     if (recordedBlob && audioRef.current) {
       audioRef.current.src = URL.createObjectURL(recordedBlob);
-      downloadRef.current.disabled = false;
     }
   }, [recordedBlob]);
 
@@ -41,90 +32,74 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     }
   }, [state]);
 
-  useEffect(() => {
-    if (width) {
-      elRef.current.style.width = normalizeDimensionValue(width);
-    }
-  }, [width]);
-
   Object.assign(component, {
-    start: () => startRecording(),
-    stop: () => stopRecording(),
+    start       : () => startRecording(),
+    stop        : () => stopRecording(),
     downloadFile: () => downloadRecordedFile(),
-    getBlob: () => recordedBlob,
+    getBlob     : () => recordedBlob,
+    pause       : () => toggleRecord(),
   });
 
   const startRecording = useCallback(async () => {
-    onStart();
-
     const audioConstrains = { audio: { echoCancelation: true, noiseSuppression: noise } };
     const stream = await captureMediaDevices(audioConstrains, audioRef);
 
-    stopRef.current.disabled = false;
-    pauseRef.current.disabled = false;
-    startRef.current.disabled = true;
-
     if (stream) {
-      recorder.current = new MediaRecorder(stream);
+      recorderRef.current = new MediaRecorder(stream);
 
       const chunks = [];
 
-      recorder.current.ondataavailable = event => {
+      recorderRef.current.ondataavailable = event => {
         if (event.data.size > 0) {
           chunks.push(event.data);
         }
       };
 
-      recorder.current.onstart = () => {
-        setState(recorder.current.state);
+      recorderRef.current.onstart = () => {
+        setState(recorderRef.current.state);
       };
 
-      recorder.current.onstop = () => {
-        const recordedBlob = new Blob(chunks, { type: determinedType.blobType });
+      recorderRef.current.onstop = () => {
+        const recordedBlob = new Blob(chunks, { type: TYPES[fileType] });
 
-        setState(recorder.current.state);
+        setState(recorderRef.current.state);
         setRecordedBlob(recordedBlob);
         onStop();
-
-        startRef.current.disabled = false;
-        stopRef.current.disabled = true;
-        pauseRef.current.disabled = true;
 
         chunks.length = 0;
       };
 
-      recorder.current.onpause = () => {
-        setState(recorder.current.state);
+      recorderRef.current.onpause = () => {
+        setState(recorderRef.current.state);
       };
 
-      recorder.current.onresume = () => {
-        setState(recorder.current.state);
+      recorderRef.current.onresume = () => {
+        setState(recorderRef.current.state);
       };
 
-      recorder.current.start();
+      recorderRef.current.start();
+      onStart();
     }
   }, []);
 
   const stopRecording = useCallback(async () => {
     try {
-      recorder.current.stream.getTracks().forEach(track => track.stop());
+      recorderRef.current.stream.getTracks().forEach(track => track.stop());
     } catch (e) {
       console.error('Stream did not found.', e);
     }
-  }, [recorder.current]);
+  }, [recorderRef.current]);
 
   const downloadRecordedFile = useCallback(() => {
     onDownload({ blob: recordedBlob });
-    download(recordedBlob, fileName, determinedType);
-  }, [recordedBlob, fileName, determinedType]);
+    download(recordedBlob, fileName, fileType);
+  }, [recordedBlob, fileName, fileType]);
 
   const toggleRecord = useCallback(() => {
-    if (recorder.current?.state === 'recording') {
-      recorder.current.pause();
-      pauseRef.current.textContent = 'Resume';
-    } else if (recorder.current?.state === 'paused') {
-      recorder.current.resume();
-      pauseRef.current.textContent = 'Pause';
+    if (recorderRef.current?.state === recording) {
+      recorderRef.current.pause();
+    } else if (recorderRef.current?.state === paused) {
+      recorderRef.current.resume();
     }
   }, []);
 
@@ -133,17 +108,46 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-audioRecorder', classList) } style={ style }>
+    <div ref={ elRef } className={ cn('bl-customComponent-audioRecorder', classList) } style={ styles }>
       <audio ref={ audioRef } className="audio" controls={ player }/>
       { controls && (
         <div className="controls">
-          <button ref={ startRef } className="control-button" onClick={ startRecording }>Start Record</button>
-          <button ref={ stopRef } className="control-button" onClick={ stopRecording }>Stop Record</button>
-          <button ref={ downloadRef } className="control-button" onClick={ downloadRecordedFile }>Download Recorded
+          <button
+            disabled={ state && state !== inactive }
+            className="control-button" onClick={ startRecording }>
+            Start Record
           </button>
-          <button ref={ pauseRef } className="control-button" onClick={ toggleRecord }>Pause</button>
+          <button
+            disabled={ !state || state === inactive }
+            className="control-button" onClick={ stopRecording }>
+            Stop Record
+          </button>
+          <button
+            disabled={ !recordedBlob }
+            className="control-button" onClick={ downloadRecordedFile }>
+            Download Recorded
+          </button>
+          <button
+            disabled={ state !== recording && state !== paused }
+            className="control-button" onClick={ toggleRecord }>
+            { state === paused ? 'Resume' : 'Pause' }
+          </button>
         </div>
       ) }
     </div>
   );
 }
+
+const STREAM_STATES = {
+  paused   : 'paused',
+  recording: 'recording',
+  inactive : 'inactive',
+};
+
+const TYPES = {
+  'wav' : 'audio/wav; codecs="1"',
+  'mpeg': 'audio/mpeg;',
+  'mp4' : 'audio/mp4; codecs="mp4a.40.2"',
+  'webm': 'audio/webm; codecs="vorbis"',
+  'ogg' : 'audio/ogg; codecs="opus"',
+};
