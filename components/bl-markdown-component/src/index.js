@@ -18,7 +18,12 @@ export default function Markdown({ component, elRef }) {
   component.setUrl = url => fetchContent(url);
   component.setContent = text => setContent(text);
 
-  useEffect(() => setContent(text), [text]);
+  useEffect(() => {
+    if (text) {
+      setContent(text);
+    }
+  }, [text]);
+
   useEffect(() => {
     if (url) {
       fetchContent(url);
