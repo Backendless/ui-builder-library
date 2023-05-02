@@ -13,13 +13,13 @@ const AnalogClockViews = {
   [AnalogClockTypes.VINTAGE]: AnalogClockVintage,
 };
 
-export function AnalogClock({ time, label, type, displaySeconds }) {
+export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
   const { hour, minute, second } = time;
 
-  const Clock = AnalogClockViews[type];
+  const Clock = AnalogClockViews[clockStyle];
 
   return (
-    <div className={ cn('analog', type) }>
+    <div className={ cn('analog', clockStyle) }>
       { Clock ? (
         <Clock handStyle={ useHandStyles(hour, minute, second, displaySeconds) }/>
       ) : (

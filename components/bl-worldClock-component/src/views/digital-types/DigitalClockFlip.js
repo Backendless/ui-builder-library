@@ -82,7 +82,7 @@ function FlipUnitContainer({ digit, shuffle, unit }) {
     currentDigit = digit;
     previousDigit = digit === Formats.AM ? Formats.PM : Formats.AM;
   } else {
-    currentDigit = digit * 1;
+    currentDigit = Number(digit);
     previousDigit = digit - 1;
 
     if (previousDigit < 0) {

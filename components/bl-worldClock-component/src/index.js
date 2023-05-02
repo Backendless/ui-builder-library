@@ -38,9 +38,8 @@ export default function WorldClockComponent({ component, elRef }) {
     return () => clearInterval(timerID);
   }, [timezone, timeFormat]);
 
-  const clockTypes = type.split('-');
-  const WorldClock = ClockViews[clockTypes[0]];
-  const clockSubType = clockTypes[1];
+  const [clockType, clockStyle] = type.split('-');
+  const WorldClock = ClockViews[clockType];
 
   if (!display) {
     return null;
@@ -49,7 +48,7 @@ export default function WorldClockComponent({ component, elRef }) {
   return (
     <div className={ cn('bl-customComponent-worldClock', classList) } style={ style } ref={ elRef }>
       { WorldClock && (
-        <WorldClock time={ time } label={ label } type={ clockSubType } displaySeconds={ displaySeconds }/>
+        <WorldClock time={ time } label={ label } clockStyle={ clockStyle } displaySeconds={ displaySeconds }/>
       ) }
     </div>
   );

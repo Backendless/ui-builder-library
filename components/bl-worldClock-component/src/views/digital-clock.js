@@ -18,11 +18,11 @@ const DigitalClockViews = {
   [DigitalClockTypes.TECHNO]: DigitalClockTechno,
 };
 
-export function DigitalClock({ time, label, type, displaySeconds }) {
-  const Clock = DigitalClockViews[type];
+export function DigitalClock({ time, label, clockStyle, displaySeconds }) {
+  const Clock = DigitalClockViews[clockStyle];
 
   return (
-    <div className={ cn('digital', type) }>
+    <div className={ cn('digital', clockStyle) }>
       { Clock && (
         <Clock time={ time } displaySeconds={ displaySeconds }/>
       ) }
