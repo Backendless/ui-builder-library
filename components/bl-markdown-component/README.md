@@ -22,8 +22,8 @@ The component based on external [markdown-it](https://github.com/markdown-it/mar
 
 | Action                  | Inputs         | Returns |
 |-------------------------|----------------|---------|
-| Set Content to Markdown | text: `String` |         |
-| Set URL to Markdown     | url: `String`  |         |
+| Set Content in Markdown | text: `String` |         |
+| Set URL for Markdown     | url: `String`  |         |
 
 ## Styles
 
