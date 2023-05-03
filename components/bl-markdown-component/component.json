@@ -68,7 +68,7 @@
     },
     {
       "id": "setUrl",
-      "label": "Set URL to",
+      "label": "Set URL for",
       "inputs": [
         {
           "id": "url",
