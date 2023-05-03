@@ -81,11 +81,11 @@
     {
       "id": "openModal",
       "color": "#224b98",
-      "label": "Open Modal"
+      "label": "Open"
     },
     {
       "id": "closeModal",
-      "label": "Close Modal",
+      "label": "Close",
       "color": "#982230"
     }
   ],
