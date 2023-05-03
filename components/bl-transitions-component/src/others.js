@@ -32,14 +32,16 @@ export const Others = ({ component, eventHandlers, transitionsContainerPod, disp
   }, [display]);
 
   return (
-    <div
-      className={ getClassName(variants, display, isTransition, classList) }
-      style={{ ...style, transitionDuration: duration + 'ms' }}>
-      { transitionsContainerPod.render() }
+    <div className={ cn('bl-customComponent-transitions', classList) }>
+      <div
+        className={ getClassName(variants, display, isTransition, classList) }
+        style={{ ...style, transitionDuration: duration + 'ms' }}>
+        { transitionsContainerPod.render() }
+      </div>
     </div>
   );
 };
 
 const getClassName = (variants, display, isTransition, classList) => (
-  cn('bl-customComponent-transitions', variants, { [variants + '--active']: display && isTransition }, classList)
+  cn('transition', variants, { [variants + '--active']: display && isTransition })
 );
