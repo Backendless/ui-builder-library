@@ -20,10 +20,10 @@ The component based on external [markdown-it](https://github.com/markdown-it/mar
 
 ## Actions
 
-| Action      | Inputs         | Returns |
-|-------------|----------------|---------|
-| Set Content | text: `String` |         |
-| Set URL     | url: `String`  |         |
+| Action                  | Inputs         | Returns |
+|-------------------------|----------------|---------|
+| Set Content to Markdown | text: `String` |         |
+| Set URL to Markdown     | url: `String`  |         |
 
 ## Styles
 
