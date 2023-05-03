@@ -1,0 +1,307 @@
+{
+  "id": "c_6b0d48d3180372b129fb1dc58bb4554a",
+  "name": "Tour Guide",
+  "description": "The Tour Guide component allows you to create walkthroughs and awesome tours for your app.",
+  "showInToolbox": true,
+  "faIcon": "route",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "options",
+      "label": "Options",
+      "showInSettings": true,
+      "defaultValue": "[{ \"content\": \"These are our super awesome projects!\", \"target\": \"body\", \"placement\": \"center\" }]",
+      "hasLogicHandler": true,
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "handlerDescription": "This is a handler for the logic to determine steps of the tour."
+    },
+    {
+      "type": "checkbox",
+      "name": "continuous",
+      "label": "Continuous",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "continuousLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "autoStart",
+      "label": "Auto Start",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "autoStartLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "controlVisibility",
+      "label": "Control Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "controlVisibilityLogic"
+    },
+    {
+      "type": "text",
+      "name": "controlLabel",
+      "label": "Control Label",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "controlLabelLogic",
+      "defaultValue": "Start",
+      "handlerLabel": "Control Label Logic",
+      "handlerDescription": "This is a handler for the logic to determine the label of the Start Tour button."
+    },
+    {
+      "type": "checkbox",
+      "name": "overlayVisibility",
+      "label": "Overlay Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "overlayVisibilityLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "closeOnClickOverlay",
+      "label": "Close On Click Overlay",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "closeOnClickOverlayLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "closeOnEscape",
+      "label": "Close On Escape",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "closeOnEscapeLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "scrolling",
+      "label": "Scrolling",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "scrollingLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "json",
+      "name": "labels",
+      "label": "Labels",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "labelsLogic",
+      "defaultValue": "{ \"back\": \"Back\", \"close\": \"Close\", \"last\": \"Finish\", \"next\": \"Next\", \"open\": \"Open the dialog\", \"skip\": \"Skip\" }",
+      "handlerLabel": "Labels Logic",
+      "handlerDescription": "This is a handler for the logic to determine the strings used in the tooltip."
+    },
+    {
+      "type": "checkbox",
+      "name": "backButtonVisibility",
+      "label": "Back Button Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "backButtonVisibilityLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "closeButtonVisibility",
+      "label": "Close Button Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "closeButtonVisibilityLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "skipButtonVisibility",
+      "label": "Skip Button Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "skipButtonVisibilityLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "progressVisibility",
+      "label": "Progress Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "progressVisibilityLogic"
+    },
+    {
+      "type": "number",
+      "name": "scrollOffset",
+      "label": "Scroll Offset",
+      "showInSettings": true,
+      "defaultValue": "20",
+      "hasLogicHandler": false,
+      "handlerId": "scrollOffsetLogic"
+    },
+    {
+      "type": "number",
+      "name": "scrollDuration",
+      "label": "Scroll Duration",
+      "showInSettings": true,
+      "defaultValue": "300",
+      "hasLogicHandler": false,
+      "handlerId": "scrollDurationLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "scrollToFirstStep",
+      "label": "Scroll To First Step",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "scrollToFirstStepLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "spotlightClicks",
+      "label": "Spotlight Clicks",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "spotlightClicksLogic"
+    },
+    {
+      "type": "number",
+      "name": "spotlightPadding",
+      "label": "Spotlight Padding",
+      "showInSettings": true,
+      "defaultValue": "10",
+      "hasLogicHandler": false,
+      "handlerId": "spotlightPaddingLogic"
+    },
+    {
+      "type": "number",
+      "name": "beaconSize",
+      "label": "Beacon Size",
+      "showInSettings": true,
+      "defaultValue": "36",
+      "hasLogicHandler": false,
+      "handlerId": "beaconSizeLogic"
+    },
+    {
+      "type": "number",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic",
+      "defaultValue": "380"
+    },
+    {
+      "type": "color",
+      "name": "primaryColor",
+      "label": "Primary Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "primaryColorLogic",
+      "defaultValue": "#ff0044"
+    },
+    {
+      "type": "color",
+      "name": "textColor",
+      "label": "Text Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "textColorLogic",
+      "defaultValue": "#000000"
+    },
+    {
+      "type": "color",
+      "name": "backgroundColor",
+      "label": "Background Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "backgroundColorLogic",
+      "defaultValue": "#ffffff"
+    },
+    {
+      "type": "color",
+      "name": "arrowColor",
+      "label": "Arrow Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "arrowColorLogic",
+      "defaultValue": "#ffffff"
+    },
+    {
+      "type": "color",
+      "name": "overlayColor",
+      "label": "Overlay Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "overlayColorLogic",
+      "defaultValue": "rgba(0,0,0,0.5)"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "label": "On Change Event",
+      "contextBlocks": [
+        {
+          "id": "tourState",
+          "label": "Tour State"
+        }
+      ],
+      "handlerDescription": "This event is fired when the tour state has changed."
+    }
+  ],
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start"
+    },
+    {
+      "id": "stop",
+      "label": "Stop"
+    },
+    {
+      "id": "skip",
+      "label": "Skip"
+    },
+    {
+      "id": "goNext",
+      "label": "Go to Next Step of"
+    },
+    {
+      "id": "goPrevious",
+      "label": "Go to Previous Step of"
+    },
+    {
+      "id": "goTo",
+      "label": "Go to Step of",
+      "inputs": [
+        {
+          "id": "index",
+          "label": "Index"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "label": "Close Current Step of"
+    },
+    {
+      "id": "open",
+      "label": "Open Current Step of"
+    },
+    {
+      "id": "reset",
+      "label": "Reset"
+    }
+  ]
+}

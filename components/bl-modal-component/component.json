@@ -43,6 +43,30 @@
       "handlerLabel": "Allow Scrolling Logic",
       "handlerDescription": "This handler allows you to control the page scroll ability when a modal is open.",
       "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "backdropWidth",
+      "label": "Backdrop Width",
+      "showInSettings": true,
+      "defaultValue": "100%",
+      "hasLogicHandler": true,
+      "handlerId": "backdropWidthLogic",
+      "handlerLabel": "Backdrop Width Logic",
+      "handlerDescription": "This handler allows you to specify the width of a component backdrop.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "backdropHeight",
+      "label": "Backdrop Height",
+      "showInSettings": true,
+      "defaultValue": "100%",
+      "hasLogicHandler": true,
+      "handlerId": "backdropHeightLogic",
+      "handlerLabel": "Backdrop Height Logic",
+      "handlerDescription": "This handler allows you to specify the height of a component backdrop.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
@@ -57,11 +81,11 @@
     {
       "id": "openModal",
       "color": "#224b98",
-      "label": "Open Modal"
+      "label": "Open"
     },
     {
       "id": "closeModal",
-      "label": "Close Modal",
+      "label": "Close",
       "color": "#982230"
     }
   ],

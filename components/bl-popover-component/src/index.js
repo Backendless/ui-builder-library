@@ -54,15 +54,15 @@ export default function Popover({ component, eventHandlers, pods }) {
         onMouseEnter={ onMouseEnter }
         onMouseLeave={ onMouseLeave }>
         { popoverTarget.render() }
-      </div>
 
-      { isOpen && (
-        <Tooltip
-          targetRef={ targetRef.current }
-          position={ position }
-          popoverContent={ popoverContent }
-        />
-      ) }
+        { isOpen && (
+          <Tooltip
+            targetRef={ targetRef.current }
+            position={ position }
+            popoverContent={ popoverContent }
+          />
+        ) }
+      </div>
     </div>
   );
 }
@@ -82,3 +82,4 @@ const useClickOutside = (ref, onClickOutside, isOpen) => {
     };
   }, [ref, isOpen]);
 };
+

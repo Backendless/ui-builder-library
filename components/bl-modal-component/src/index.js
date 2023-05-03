@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 
+import { useStyles, useCloseOnEscape } from './helpers';
+
 const { cn } = BackendlessUI.CSSUtils;
 
-const ESCAPE_KEY_CODE = 27;
-
 export default function ModalComponent({ component, eventHandlers, pods, elRef }) {
-  const { display, classList, style, modalVisibility, closeOnEscape, allowScrolling } = component;
+  const {
+    display, classList, style, modalVisibility, closeOnEscape, allowScrolling, backdropWidth, backdropHeight
+  } = component;
   const { onClose } = eventHandlers;
 
   const [visibility, setVisibility] = useState(modalVisibility);
@@ -32,36 +34,23 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
 
   useCloseOnEscape({ onClose, visibility, setVisibility, closeOnEscape });
 
-  const handleClick = () => {
+  const handleBackdropClick = () => {
     if (closeOnEscape) {
       setVisibility(false);
       onClose();
     }
   };
 
+  const styles = useStyles({ style, backdropWidth, backdropHeight });
+
   if (!display || !visibility) {
     return null;
   }
 
-  return ReactDOM.createPortal((
-    <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
-      <div className="backdrop" onClick={ handleClick } />
+  return (
+    <div ref={ elRef } style={ styles } className={ cn("bl-customComponent-modal", classList) }>
+      <div className="backdrop" onClick={ handleBackdropClick } />
       <div className="modal-content">{ modalContentPod.render() }</div>
     </div>
-  ), document.body);
+  );
 }
-
-const useCloseOnEscape = ({ onClose, visibility, setVisibility, closeOnEscape }) => {
-  useEffect(() => {
-    const handleEscClick = e => {
-      if (visibility && closeOnEscape && e.keyCode === ESCAPE_KEY_CODE) {
-        setVisibility(false);
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleEscClick);
-
-    return () => document.removeEventListener('keydown', handleEscClick);
-  }, [visibility, closeOnEscape]);
-};
