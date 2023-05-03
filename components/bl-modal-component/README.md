@@ -43,3 +43,35 @@ Modal is a component of Backendless UI-Builder designer. This component is a Pod
 ````
 @bl-customComponent-modal-backdrop-color: rgba(0, 0, 0, 0.5);
 ````
+
+## <a name="guide"></a> Usage Guide
+
+Add the Modal component to the page.
+
+<img src="./example-images/add-modal-to-page.png" width="720" />
+
+Drag the Block component into the Modal component.
+
+<img src="./example-images/add-block-component-to-modal.png" width="720" />
+
+Set any styles for the Block component (background color, width, height, etc.).
+
+<img src="./example-images/set-styles-for-block.png" width="720" />
+
+Add content to the Block component:
+
+<img src="./example-images/add-content-to-block.png" width="720" />
+
+Also, if you want to add a close button for the modal, do the following:
+
+  1. Go to the Logic of Button.
+
+  <img src="./example-images/go-to-icon-logic.png" width="720" />
+
+  2. Add a `Close Modal` action to the `On Click Event` section.
+
+  <img src="./example-images/add-close-action-on-click-event.png" width="720" />
+
+  3. The `Close Modal` action you can find here.
+
+  <img src="./example-images/close-action.png" width="720" />
