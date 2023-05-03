@@ -9,6 +9,7 @@ const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export const today = new Date();
 const COLORS_COUNT = 4;
+const WEEKDAY_LABELS_RIGHT_SPACE = 10;
 
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const {
@@ -51,7 +52,9 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   }, [color, colors, ref, newCalendarData]);
 
   const handleResize = useCallback(() => {
-    setLegendMargin(ref.current.querySelector('.react-calendar-heatmap-weekday-labels').getBoundingClientRect().width);
+    const weekdayLabels = ref.current.querySelector('.react-calendar-heatmap-weekday-labels');
+
+    setLegendMargin(weekdayLabels.getBoundingClientRect().width + WEEKDAY_LABELS_RIGHT_SPACE);
   }, []);
 
   useEffect(() => {
@@ -88,7 +91,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         onClick={ ({ date, count }) => onCellClick({ date, count }) }
       />
       <ReactTooltip/>
-      <Legend legendRef={ legendRef } legend={ legend } margin={ legendMargin + 12 }/>
+      <Legend legendRef={ legendRef } legend={ legend } margin={ legendMargin }/>
     </div>
   );
 }
