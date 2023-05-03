@@ -5,9 +5,11 @@ import { captureMediaDevices, download } from './helpers';
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
-  const { player, controls, noise, fileName, fileType, width, display, style, classList } = component;
+  const {
+    player, controls, noise, fileName, fileType, width, startText, stopText, downloadText, pauseText, resumeText,
+    display, style, classList,
+  } = component;
   const { onStart, onStop, onDownload, onState } = eventHandlers;
-  const { paused, recording, inactive } = STREAM_STATES;
 
   const audioRef = useRef();
   const recorderRef = useRef();
@@ -60,7 +62,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
       };
 
       recorderRef.current.onstop = () => {
-        const recordedBlob = new Blob(chunks, { type: TYPES[fileType] });
+        const recordedBlob = new Blob(chunks, { type: RecordFormat[fileType] });
 
         setState(recorderRef.current.state);
         setRecordedBlob(recordedBlob);
@@ -96,9 +98,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   }, [recordedBlob, fileName, fileType]);
 
   const toggleRecord = useCallback(() => {
-    if (recorderRef.current?.state === recording) {
+    if (recorderRef.current?.state === stream_state.RECORDING) {
       recorderRef.current.pause();
-    } else if (recorderRef.current?.state === paused) {
+    } else if (recorderRef.current?.state === stream_state.PAUSED) {
       recorderRef.current.resume();
     }
   }, []);
@@ -113,24 +115,24 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
       { controls && (
         <div className="controls">
           <button
-            disabled={ state && state !== inactive }
+            disabled={ state && state !== stream_state.INACTIVE }
             className="control-button" onClick={ startRecording }>
-            Start Record
+            { startText }
           </button>
           <button
-            disabled={ !state || state === inactive }
+            disabled={ !state || state === stream_state.INACTIVE }
             className="control-button" onClick={ stopRecording }>
-            Stop Record
+            { stopText }
           </button>
           <button
             disabled={ !recordedBlob }
             className="control-button" onClick={ downloadRecordedFile }>
-            Download Recorded
+            { downloadText }
           </button>
           <button
-            disabled={ state !== recording && state !== paused }
+            disabled={ state !== stream_state.RECORDING && state !== stream_state.PAUSED }
             className="control-button" onClick={ toggleRecord }>
-            { state === paused ? 'Resume' : 'Pause' }
+            { state === stream_state.PAUSED ? resumeText : pauseText }
           </button>
         </div>
       ) }
@@ -138,16 +140,16 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   );
 }
 
-const STREAM_STATES = {
-  paused   : 'paused',
-  recording: 'recording',
-  inactive : 'inactive',
+const stream_state = {
+  PAUSED   : 'paused',
+  RECORDING: 'recording',
+  INACTIVE : 'inactive',
 };
 
-const TYPES = {
-  'wav' : 'audio/wav; codecs="1"',
-  'mpeg': 'audio/mpeg;',
-  'mp4' : 'audio/mp4; codecs="mp4a.40.2"',
-  'webm': 'audio/webm; codecs="vorbis"',
-  'ogg' : 'audio/ogg; codecs="opus"',
+const RecordFormat = {
+  'WAV' : 'audio/wav; codecs="1"',
+  'MPEG': 'audio/mpeg;',
+  'MP4' : 'audio/mp4; codecs="mp4a.40.2"',
+  'WEBM': 'audio/webm; codecs="vorbis"',
+  'OGG' : 'audio/ogg; codecs="opus"',
 };
