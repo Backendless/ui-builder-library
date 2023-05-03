@@ -1,0 +1,57 @@
+@bl-customComponent-tourGuide-themeColor: @themePrimary;
+@bl-customComponent-tourGuide-backgroundColor: @appBackgroundColor;
+@bl-customComponent-tourGuide-shadowColor: @appComponentShadowColor;
+@bl-customComponent-tourGuide-borderRadius: @appComponentBorderRadius;
+
+@bl-customComponent-tourGuide-floater-position: fixed!important;
+
+@bl-customComponent-tourGuide-button-lineHeight: 1.75;
+@bl-customComponent-tourGuide-button-width: 100%;
+@bl-customComponent-tourGuide-button-minWidth: 64px;
+@bl-customComponent-tourGuide-button-fontSize: 14px;
+@bl-customComponent-tourGuide-button-borderWidth: 0;
+@bl-customComponent-tourGuide-button-borderRadius: @bl-customComponent-tourGuide-borderRadius;
+@bl-customComponent-tourGuide-button-margin: 20px 10px;
+@bl-customComponent-tourGuide-button-padding: 6px 16px;
+@bl-customComponent-tourGuide-button-backgroundColor: @bl-customComponent-tourGuide-themeColor;
+@bl-customComponent-tourGuide-button-color: contrast(@bl-customComponent-tourGuide-button-backgroundColor);
+@bl-customComponent-tourGuide-button-shadowColor: @bl-customComponent-tourGuide-shadowColor;
+@bl-customComponent-tourGuide-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-tourGuide-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-tourGuide-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-tourGuide-button-shadowColor, 12%);
+@bl-customComponent-tourGuide-button-textDecoration: none;
+@bl-customComponent-tourGuide-button-outline: none;
+@bl-customComponent-tourGuide-button-userSelect: none;
+@bl-customComponent-tourGuide-button-cursor: pointer;
+
+.bl-customComponent-tourGuide {
+  display: flex;
+  background: @bl-customComponent-tourGuide-backgroundColor;
+
+  button {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: @bl-customComponent-tourGuide-button-fontSize;
+    width: @bl-customComponent-tourGuide-button-width;
+    line-height: @bl-customComponent-tourGuide-button-lineHeight;
+    min-width: @bl-customComponent-tourGuide-button-minWidth;
+    text-decoration: @bl-customComponent-tourGuide-button-textDecoration;
+    padding: @bl-customComponent-tourGuide-button-padding;
+    background: @bl-customComponent-tourGuide-button-backgroundColor;
+    color: @bl-customComponent-tourGuide-button-color;
+    margin: @bl-customComponent-tourGuide-button-margin;
+    border-width: @bl-customComponent-tourGuide-button-borderWidth;
+    border-radius: @bl-customComponent-tourGuide-button-borderRadius;
+    outline: @bl-customComponent-tourGuide-button-outline;
+    cursor: @bl-customComponent-tourGuide-button-cursor;
+    user-select: @bl-customComponent-tourGuide-button-userSelect;
+
+    &:hover, &:focus-within {
+      box-shadow: @bl-customComponent-tourGuide-button-shadowHover;
+    }
+  }
+}
+
+.__floater {
+  position: @bl-customComponent-tourGuide-floater-position;
+}
