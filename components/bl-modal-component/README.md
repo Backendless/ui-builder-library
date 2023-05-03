@@ -1,5 +1,5 @@
 # Modal
-Modal is a component of Backendless UI-Builder designer. This component allows you to add content by dragging components to this component, and it is displayed in the center.
+Modal is a component of Backendless UI-Builder designer. This component is a Pod container, so you can insert anything into it - from a block with elements to other components by dragging it onto this component.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780" />
