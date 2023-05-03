@@ -58,7 +58,7 @@
   "actions": [
     {
       "id": "setContent",
-      "label": "Set Content to",
+      "label": "Set Content in",
       "inputs": [
         {
           "id": "text",
