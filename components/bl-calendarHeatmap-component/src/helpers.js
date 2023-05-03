@@ -14,7 +14,7 @@ export const generateData = (numberDays, data) => {
   return newData;
 };
 
-const dateComparison  = (date1, date2) => new Date(date1).toDateString() === new Date(date2).toDateString();
+const dateComparison = (date1, date2) => new Date(date1).toDateString() === new Date(date2).toDateString();
 
 const getPreviousDay = (date, previousDay) => {
   const previous = new Date(date.getTime());

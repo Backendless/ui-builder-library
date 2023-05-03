@@ -25,7 +25,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
   const rootStyle = useMemo(() => ({
     ...style,
-    width: normalizeDimensionValue(width),
+    width : normalizeDimensionValue(width),
     height: normalizeDimensionValue(height),
   }), [style, width, height]);
 
@@ -64,7 +64,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
       const calendar = ref.current.querySelector('svg');
 
-      calendar.style.height = `calc(100% - ${legendRef.current.clientHeight}px)`;
+      calendar.style.height = `calc(100% - ${ legendRef.current.clientHeight }px)`;
     }
 
     return () => {
