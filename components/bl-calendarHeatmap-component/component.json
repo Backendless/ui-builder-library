@@ -100,6 +100,30 @@
       "label": "Legend",
       "dataBinding": true,
       "handlerLabel": "Legend Logic"
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine component height.",
+      "defaultValue": "230px"
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine component width.",
+      "defaultValue": "auto"
     }
   ],
   "eventHandlers": [

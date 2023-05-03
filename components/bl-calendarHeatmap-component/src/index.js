@@ -5,21 +5,28 @@ import ReactTooltip from './lib/react-tooltip.min';
 import { generateData, shadeColor, shiftDate, validate } from './helpers';
 import { Legend } from './subcomponents';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export const today = new Date();
 const COLORS_COUNT = 4;
 
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const {
-    style, display, classList, calendarData, numberDays, monthLabels,
-    weekdayLabels, color, legend, showMonthLabels, showWeekdayLabels,
+    style, display, classList, calendarData, numberDays, monthLabels, weekdayLabels,
+    color, legend, showMonthLabels, showWeekdayLabels, width, height,
   } = component;
   const { onCellClick } = eventHandlers;
 
   const ref = useRef();
+  const legendRef = useRef();
 
-  const [legendWidth, setLegendWidth] = useState(0);
+  const [legendMargin, setLegendMargin] = useState(0);
+
+  const rootStyle = useMemo(() => ({
+    ...style,
+    width: normalizeDimensionValue(width),
+    height: normalizeDimensionValue(height),
+  }), [style, width, height]);
 
   const newCalendarData = useMemo(() => {
     return calendarData && numberDays ? generateData(numberDays, calendarData) : calendarData;
@@ -44,26 +51,30 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   }, [color, colors, ref, newCalendarData]);
 
   const handleResize = useCallback(() => {
-    setLegendWidth(ref.current.querySelector('.react-calendar-heatmap-all-weeks').getBoundingClientRect().width);
+    setLegendMargin(ref.current.querySelector('.react-calendar-heatmap-weekday-labels').getBoundingClientRect().width);
   }, []);
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && legendRef.current) {
       handleResize();
       window.addEventListener('resize', handleResize, false);
+
+      const calendar = ref.current.querySelector('svg');
+
+      calendar.style.height = `calc(100% - ${legendRef.current.clientHeight}px)`;
     }
 
     return () => {
       window.removeEventListener('resize', handleResize, false);
     };
-  }, [ref.current]);
+  }, [ref.current, legendRef.current]);
 
   if (!display || !newCalendarData) {
     return null;
   }
 
   return (
-    <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ style }>
+    <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ rootStyle }>
       <CalendarHeatmap
         values={ newCalendarData }
         startDate={ shiftDate(today, newCalendarData.length) }
@@ -77,7 +88,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         onClick={ ({ date, count }) => onCellClick({ date, count }) }
       />
       <ReactTooltip/>
-      <Legend legend={ legend } width={ legendWidth }/>
+      <Legend legendRef={ legendRef } legend={ legend } margin={ legendMargin + 12 }/>
     </div>
   );
 }
@@ -109,3 +120,4 @@ const getMaxCalendarCount = calendarData => {
 
   return Math.max(...counts);
 };
+
