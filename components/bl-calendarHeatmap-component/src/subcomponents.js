@@ -18,5 +18,3 @@ export function Legend({ legend, margin, legendRef }) {
     </div>
   );
 }
-
-

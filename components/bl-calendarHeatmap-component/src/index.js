@@ -33,6 +33,8 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     return calendarData && numberDays ? generateData(numberDays, calendarData) : calendarData;
   }, [numberDays, calendarData]);
 
+  const maxCount = useMemo(() => getMaxCalendarCount(calendarData), [calendarData]);
+
   const month = useMemo(() => validate(monthLabels), [monthLabels]);
   const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
 
@@ -86,7 +88,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
         showWeekdayLabels={ showWeekdayLabels }
         monthLabels={ month }
         weekdayLabels={ weeks }
-        classForValue={ value => getClassForValue(value, calendarData) }
+        classForValue={ value => getClassForValue(value, maxCount) }
         tooltipDataAttrs={ getTooltipData }
         onClick={ ({ date, count }) => onCellClick({ date, count }) }
       />
@@ -96,10 +98,14 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   );
 }
 
-const getClassForValue = (value, calendarData) => {
+const getClassForValue = (value, maxCount) => {
   if (value) {
     const { count } = value;
-    const maxCount = getMaxCalendarCount(calendarData);
+
+    if (!count) {
+      return 'color-cell-0';
+    }
+
     const part = maxCount / COLORS_COUNT;
 
     for (let i = 1; i <= COLORS_COUNT; i++) {
@@ -123,4 +129,3 @@ const getMaxCalendarCount = calendarData => {
 
   return Math.max(...counts);
 };
-
