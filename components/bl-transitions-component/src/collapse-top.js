@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { hideElement, useResizeObserver, useTransition } from './helpers';
+import { useResizeObserver, useTransition } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export function CollapseTop({ component, eventHandlers, transitionsContainerPod, display }) {
+export function CollapseTop({ component, eventHandlers, transitionsContainerPod, display, isContentLoaded }) {
   const { classList, style, variants, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
 
@@ -18,17 +18,17 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
 
   useEffect(() => {
     if (rootRef.current) {
-      hideElement(rootRef.current);
-
-      getHeightTimeout.current = setTimeout(() => {
-        rootRef.current.style.height = 'auto';
-        setHeight(rootRef.current.clientHeight);
-        rootRef.current.style.height = '0px';
-      }, 50);
+      if (isContentLoaded) {
+        getHeightTimeout.current = setTimeout(() => {
+          rootRef.current.style.height = 'auto';
+          setHeight(rootRef.current.clientHeight);
+          rootRef.current.style.height = '0px';
+        }, 50);
+      }
     }
 
     return () => clearTimeout(getHeightTimeout.current);
-  }, [rootRef]);
+  }, [rootRef, isContentLoaded]);
 
   useEffect(() => {
     onMounted();
@@ -41,7 +41,7 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
       <div
         ref={ rootRef }
         className={ cn('transition', variants, { [variants + '--active']: isTransition }) }
-        style={{ ...style, transitionDuration: duration + 'ms' }}>
+        style={{ ...style, transitionDuration: duration + 'ms', position: 'absolute', zIndex: -1, opacity: 0 }}>
         { transitionsContainerPod.render() }
       </div>
     </div>
