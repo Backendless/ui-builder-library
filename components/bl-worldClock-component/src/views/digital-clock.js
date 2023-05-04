@@ -1,7 +1,8 @@
-import { DigitalClockFlip } from './digital-types/DigitalClockFlip';
-import { DigitalClockModern } from './digital-types/DigitalClockModern';
-import { DigitalClockPixel } from './digital-types/DigitalClockPixel';
-import { DigitalClockTechno } from './digital-types/DigitalClockTechno';
+import { DigitalClockFlip } from './digital-types/digital-clock-flip';
+import { DigitalClockModern } from './digital-types/digital-clock-modern';
+import { DigitalClockPixel } from './digital-types/digital-clock-pixel';
+import { DigitalClockTechno } from './digital-types/digital-clock-techno';
+import { Label } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -27,7 +28,7 @@ export function DigitalClock({ time, label, clockStyle, displaySeconds }) {
         <Clock time={ time } displaySeconds={ displaySeconds }/>
       ) }
 
-      <div className="clock-label"><span className="clock-label-text">{ label }</span></div>
+      <Label content={ label }/>
     </div>
   );
 }

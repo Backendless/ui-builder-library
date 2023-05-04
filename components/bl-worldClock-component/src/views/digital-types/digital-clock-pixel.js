@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 const DIGITS = {
   '0': [1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1],
@@ -17,15 +17,10 @@ const DIGITS = {
 export function DigitalClockPixel({ time, displaySeconds }) {
   const { hour, minute, second, isAmpm, ampm } = time;
 
-  const [colors, setColors] = useState([]);
-
-  useEffect(() => {
-    const newColors = Array(15)
-      .fill()
-      .map(() => `rgb(0, ${ Math.floor(Math.random() * 150) }, ${ Math.floor(Math.random() * 255) })`);
-
-    setColors(newColors);
-  }, []);
+  const colors = useMemo(() => Array(15)
+    .fill()
+    .map(() => `rgb(0, ${ generateGreen() }, ${ generateBlue() })`
+  ), []);
 
   const digits = useMemo(() => (
     displaySeconds ? [...hour, ':', ...minute, ':', ...second] : [...hour, ':', ...minute]
@@ -52,4 +47,12 @@ function Digit({ value, colors }) {
       )) }
     </div>
   );
+}
+
+function generateGreen() {
+  return Math.floor(Math.random() * 150);
+}
+
+function generateBlue() {
+  return Math.floor(Math.random() * 255);
 }

@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+import { useObjectState } from '../helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -13,15 +15,13 @@ const LimitValues = {
   MAX_TIME_UNIT  : 59,
   MIN_DIGIT_VALUE: 10,
 };
-const Shuffle = {
-  FOLD  : 'fold',
-  UNFOLD: 'unfold',
-};
+const FOLD = 'fold';
+const UNFOLD = 'unfold';
 
 export function DigitalClockFlip({ time, displaySeconds }) {
   const { hour, minute, second, isAmpm, ampm } = time;
 
-  const [state, setState] = useState({
+  const [state, setState] = useObjectState({
     hour, minute, second, ampm,
     hourShuffle  : true,
     minuteShuffle: true,
@@ -31,19 +31,19 @@ export function DigitalClockFlip({ time, displaySeconds }) {
 
   useEffect(() => {
     if (hour !== state.hour) {
-      setState(prevState => ({ ...prevState, hour, hourShuffle: !state.hourShuffle }));
+      setState({ hour, hourShuffle: !state.hourShuffle });
     }
 
     if (minute !== state.minute) {
-      setState(prevState => ({ ...prevState, minute, minuteShuffle: !state.minuteShuffle }));
+      setState({ minute, minuteShuffle: !state.minuteShuffle });
     }
 
     if (second !== state.second) {
-      setState(prevState => ({ ...prevState, second, secondShuffle: !state.secondShuffle }));
+      setState({ second, secondShuffle: !state.secondShuffle });
     }
 
     if (ampm !== state.ampm) {
-      setState(prevState => ({ ...prevState, ampm, ampmShuffle: !state.ampmShuffle }));
+      setState({ ampm, ampmShuffle: !state.ampmShuffle });
     }
   }, [hour, minute, second, ampm]);
 
@@ -85,30 +85,17 @@ function FlipUnitContainer({ digit, shuffle, unit }) {
     currentDigit = Number(digit);
     previousDigit = digit - 1;
 
-    if (previousDigit < 0) {
-      previousDigit = unit === Formats.HOUR ? LimitValues.MAX_HOUR : LimitValues.MAX_TIME_UNIT;
-    }
-
-    if (currentDigit < LimitValues.MIN_DIGIT_VALUE) {
-      currentDigit = `0${ currentDigit }`;
-    }
-
-    if (previousDigit < LimitValues.MIN_DIGIT_VALUE) {
-      previousDigit = `0${ previousDigit }`;
-    }
+    [previousDigit, currentDigit] = ensureLimits(previousDigit, currentDigit, unit);
   }
 
-  const digit1 = shuffle ? previousDigit : currentDigit;
-  const digit2 = shuffle ? currentDigit : previousDigit;
-  const animation1 = shuffle ? Shuffle.FOLD : Shuffle.UNFOLD;
-  const animation2 = shuffle ? Shuffle.UNFOLD : Shuffle.FOLD;
+  const [digit1, digit2] = shuffle ? [previousDigit, currentDigit] : [currentDigit, previousDigit];
 
   return (
     <div className={ cn('flip-unit-container', { 'flip-ampm': unit === Formats.AMPM }) }>
       <Card className="upper-card" digit={ currentDigit }/>
       <Card className="lower-card" digit={ previousDigit }/>
-      <Card className={ `flip-card ${ animation1 }` } digit={ digit1 }/>
-      <Card className={ `flip-card ${ animation2 }` } digit={ digit2 }/>
+      <Card className={ cn('flip-card', shuffle ? FOLD : UNFOLD) } digit={ digit1 }/>
+      <Card className={ cn('flip-card', shuffle ? UNFOLD : FOLD) } digit={ digit2 }/>
     </div>
   );
 }
@@ -120,4 +107,20 @@ function Semicolon() {
       <span></span>
     </div>
   );
+}
+
+function ensureLimits(prev, current, unit) {
+  if (prev < 0) {
+    prev = unit === Formats.HOUR ? LimitValues.MAX_HOUR : LimitValues.MAX_TIME_UNIT;
+  }
+
+  if (current < LimitValues.MIN_DIGIT_VALUE) {
+    current = `0${ current }`;
+  }
+
+  if (prev < LimitValues.MIN_DIGIT_VALUE) {
+    prev = `0${ prev }`;
+  }
+
+  return [prev, current];
 }

@@ -1,13 +1,18 @@
-import AnalogClockClassic from '../lib/analog-clock-classic';
+import { useMemo } from 'react';
+
+import ClockClassic from '../lib/analog-clock-classic';
+import { Label } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 const AnalogClockTypes = {
+  CLASSIC: 'classic',
   GOLD   : 'gold',
   MODERN : 'modern',
   VINTAGE: 'vintage',
 };
 const AnalogClockViews = {
+  [AnalogClockTypes.CLASSIC]: AnalogClockClassic,
   [AnalogClockTypes.GOLD]   : AnalogClockGold,
   [AnalogClockTypes.MODERN] : AnalogClockModern,
   [AnalogClockTypes.VINTAGE]: AnalogClockVintage,
@@ -16,34 +21,46 @@ const AnalogClockViews = {
 export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
   const { hour, minute, second } = time;
 
+  const clockProps = useMemo(() => {
+    if (clockStyle === AnalogClockTypes.CLASSIC) {
+      return {
+        date           : useDate(hour, minute, second),
+        secondHandColor: displaySeconds ? 'red' : 'transparent',
+      };
+    } else {
+      return {handStyle: useHandStyles(hour, minute, second, displaySeconds)};
+    }
+  },[clockStyle, hour, minute, second, displaySeconds]);
+
   const Clock = AnalogClockViews[clockStyle];
 
   return (
     <div className={ cn('analog', clockStyle) }>
-      { Clock ? (
-        <Clock handStyle={ useHandStyles(hour, minute, second, displaySeconds) }/>
-      ) : (
-        <AnalogClockClassic
-          date={ useDate(hour, minute, second) }
-          secondHandColor={ displaySeconds ? 'red' : 'transparent' }
-        />
+      { Clock && (
+        <Clock clockProps={ clockProps }/>
       ) }
 
-      <div className="clock-label"><span className="clock-label-text">{ label }</span></div>
+      <Label content={ label }/>
     </div>
   );
 }
 
-function AnalogClockGold({ handStyle }) {
-  return <ClockHands handStyle={ handStyle } markersVisible={ true } markersFull={ true }/>;
+function AnalogClockClassic({ clockProps }) {
+  const { date, secondHandColor } = clockProps;
+
+  return <ClockClassic date={ date } secondHandColor={ secondHandColor }/>;
 }
 
-function AnalogClockModern({ handStyle }) {
-  return <ClockHands handStyle={ handStyle } markersVisible={ true }/>;
+function AnalogClockGold({ clockProps }) {
+  return <ClockHands handStyle={ clockProps.handStyle } markersVisible={ true } markersFull={ true }/>;
 }
 
-function AnalogClockVintage({ handStyle }) {
-  return <ClockHands handStyle={ handStyle }/>;
+function AnalogClockModern({ clockProps }) {
+  return <ClockHands handStyle={ clockProps.handStyle } markersVisible={ true }/>;
+}
+
+function AnalogClockVintage({ clockProps }) {
+  return <ClockHands handStyle={ clockProps.handStyle }/>;
 }
 
 function ClockHands({ handStyle, markersVisible, markersFull }) {
@@ -87,6 +104,14 @@ function Markers({ markersFull=false }) {
   );
 }
 
+function useDate(hour, minute, second) {
+  const date = new Date();
+
+  date.setHours(hour, minute, second);
+
+  return date;
+}
+
 function useHandStyles(hours, minutes, seconds, displaySeconds) {
   const hourDegree = (hours % 12) * 30 + minutes * 0.5;
   const minuteDegree = minutes * 6 + seconds * 0.1;
@@ -96,12 +121,4 @@ function useHandStyles(hours, minutes, seconds, displaySeconds) {
   const second = { transform: `rotate(${ secondDegree }deg)` };
 
   return { hour, minute, ...(displaySeconds && { second }) };
-}
-
-function useDate(hour, minute, second) {
-  const date = new Date();
-
-  date.setHours(hour, minute, second);
-
-  return date;
 }
