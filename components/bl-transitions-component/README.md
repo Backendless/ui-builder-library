@@ -59,7 +59,7 @@ If you want to animate content that is rendered with a delay (for example, async
 
 1. You need to activate it in the settings:
 
-> WARNING: After this action the component will not be displayed in preview mode
+> 🔴 **IMPORTANT**: After this action the component will not be displayed in preview mode
 
 <img alt="Close button logic" src="example-images/enable_dynamic_content.jpg" />
 
