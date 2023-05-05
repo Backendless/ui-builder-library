@@ -21,9 +21,9 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 | On End Animation | after the animation finishes                            |                |
 
 ## Actions
-| Action             | Inputs | Returns |
-|--------------------|--------|---------|
-| Set Content Loaded |        |         |
+| Action                             | Inputs | Returns |
+|------------------------------------|--------|---------|
+| Set Content Loaded for Transitions |        |         |
 
 ## Usage Guide
 

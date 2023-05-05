@@ -75,7 +75,7 @@
   "actions": [
     {
       "id": "setContentLoaded",
-      "label": "Set Content Loaded"
+      "label": "Set Content Loaded for"
     }
   ],
   "pods": {

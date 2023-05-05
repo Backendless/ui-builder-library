@@ -17,14 +17,12 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
   const isTransition = useTransition(rootRef, display, duration, height, 'height', setIsAuto, onEndAnimation);
 
   useEffect(() => {
-    if (rootRef.current) {
-      if (isContentLoaded) {
-        getHeightTimeout.current = setTimeout(() => {
-          rootRef.current.style.height = 'auto';
-          setHeight(rootRef.current.clientHeight);
-          rootRef.current.style.height = '0px';
-        }, 50);
-      }
+    if (rootRef.current && isContentLoaded) {
+      getHeightTimeout.current = setTimeout(() => {
+        rootRef.current.style.height = 'auto';
+        setHeight(rootRef.current.clientHeight);
+        rootRef.current.style.height = '0px';
+      }, 50);
     }
 
     return () => clearTimeout(getHeightTimeout.current);
