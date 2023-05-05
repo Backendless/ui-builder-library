@@ -1,6 +1,6 @@
-export function Legend({ legend, width }) {
+export function Legend({ legend, margin, legendRef }) {
   return (
-    <div className="legend" style={{ width: `${ width }px` }}>
+    <div ref={ legendRef } className="legend" style={ { marginLeft: `${ margin }px` } }>
       { legend && (
         <p className="legend-text">{ legend }</p>
       ) }

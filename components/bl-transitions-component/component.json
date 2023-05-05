@@ -13,16 +13,8 @@
       "name": "variants",
       "label": "Variants",
       "showInSettings": true,
-      "defaultValue": "collapse-top",
+      "defaultValue": "fade",
       "options": [
-        {
-          "value": "collapse-top",
-          "label": "Collapse Top"
-        },
-        {
-          "value": "collapse-left",
-          "label": "Collapse Left"
-        },
         {
           "value": "fade",
           "label": "Fade"
@@ -34,6 +26,14 @@
         {
           "value": "zoom",
           "label": "Zoom"
+        },
+        {
+          "value": "collapse-top",
+          "label": "Collapse Top"
+        },
+        {
+          "value": "collapse-left",
+          "label": "Collapse Left"
         }
       ],
       "hasLogicHandler": false
