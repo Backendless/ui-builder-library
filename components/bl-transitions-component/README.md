@@ -6,10 +6,10 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 
 ## Properties
 
-| Property | Type                                                                  | Default Value  | Logic | Data Binding | UI Setting | Description                                     |
-|----------|-----------------------------------------------------------------------|----------------|-------|--------------|------------|-------------------------------------------------|
-| Variants | Select <br/>["collapse-top", "collapse-left", "fade", "grow", "zoom"] | "collapse-top" |       | NO           | YES        | Allows to determine variant of transition       |
-| Duration | Number                                                                | 300            |       | NO           | YES        | Allows to determine duration of transition (ms) |
+| Property | Type                                                                  | Default Value | Logic | Data Binding | UI Setting | Description                                     |
+|----------|-----------------------------------------------------------------------|---------------|-------|--------------|------------|-------------------------------------------------|
+| Variants | Select <br/>["collapse-top", "collapse-left", "fade", "grow", "zoom"] | Fade:`fade`   |       | NO           | YES        | Allows to determine variant of transition       |
+| Duration | Number                                                                | 300           |       | NO           | YES        | Allows to determine duration of transition (ms) |
 
 ## Events
 
