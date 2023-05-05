@@ -11,23 +11,22 @@ export function CollapseLeft({ component, eventHandlers, transitionsContainerPod
   const [width, setWidth] = useState(0);
 
   const rootRef = useRef();
-  const getWidthTimeout = useRef(null);
 
   const setIsAuto = useResizeObserver(rootRef.current, 'width', width, setWidth);
   const isTransition = useTransition(rootRef, display, duration, width, 'width', setIsAuto, onEndAnimation);
 
   useEffect(() => {
-    if (rootRef.current) {
-      if (isContentLoaded) {
-        getWidthTimeout.current = setTimeout(() => {
-          rootRef.current.style.width = 'auto';
-          setWidth(rootRef.current.clientWidth);
-          rootRef.current.style.width = '0px';
-        }, 50);
-      }
+    let getWidthTimeout;
+
+    if (rootRef.current && isContentLoaded) {
+      getWidthTimeout = setTimeout(() => {
+        rootRef.current.style.width = 'auto';
+        setWidth(rootRef.current.clientWidth);
+        rootRef.current.style.width = '0px';
+      }, 50);
     }
 
-    return () => clearTimeout(getWidthTimeout.current);
+    return () => getWidthTimeout && clearTimeout(getWidthTimeout);
   }, [rootRef, isContentLoaded]);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export function CollapseLeft({ component, eventHandlers, transitionsContainerPod
       <div
         ref={ rootRef }
         className={ cn('transition', variants, { [variants + '--active']: isTransition }) }
-        style={{ ...style, transitionDuration: duration + 'ms', position: 'absolute', zIndex: -1, opacity: 0 }}>
+        style={{ ...style, transitionDuration: duration + 'ms' }}>
         { transitionsContainerPod.render() }
       </div>
     </div>

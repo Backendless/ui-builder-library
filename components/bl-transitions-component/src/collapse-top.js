@@ -11,21 +11,22 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
   const [height, setHeight] = useState(0);
 
   const rootRef = useRef();
-  const getHeightTimeout = useRef(null);
 
   const setIsAuto = useResizeObserver(rootRef.current, 'height', height, setHeight);
   const isTransition = useTransition(rootRef, display, duration, height, 'height', setIsAuto, onEndAnimation);
 
   useEffect(() => {
+    let getHeightTimeout;
+
     if (rootRef.current && isContentLoaded) {
-      getHeightTimeout.current = setTimeout(() => {
+      getHeightTimeout = setTimeout(() => {
         rootRef.current.style.height = 'auto';
         setHeight(rootRef.current.clientHeight);
         rootRef.current.style.height = '0px';
       }, 50);
     }
 
-    return () => clearTimeout(getHeightTimeout.current);
+    return () => getHeightTimeout && clearTimeout(getHeightTimeout);
   }, [rootRef, isContentLoaded]);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export function CollapseTop({ component, eventHandlers, transitionsContainerPod,
       <div
         ref={ rootRef }
         className={ cn('transition', variants, { [variants + '--active']: isTransition }) }
-        style={{ ...style, transitionDuration: duration + 'ms', position: 'absolute', zIndex: -1, opacity: 0 }}>
+        style={{ ...style, transitionDuration: duration + 'ms' }}>
         { transitionsContainerPod.render() }
       </div>
     </div>
