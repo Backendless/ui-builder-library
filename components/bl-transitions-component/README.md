@@ -26,7 +26,8 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 <img alt="Add component on page" src="./example-images/add_on_page.jpg" width="900" />
 
 ### Adding component in the transitions pod:
-> #### WARNING: If you add any Image component, set its width and height. This is generally good practice for all images on a website
+> 🔴 **IMPORTANT**: If you add any Image component, set its width and height. This is generally good practice for all images on a website
+
 <img alt="Add component in transitions" src="./example-images/add_component_in_transitions.jpg" width="900" />
 
 Now you can open the preview and see the mount animation when the page loads.
@@ -54,13 +55,14 @@ For example:
 In the preview, you now have the option to change the visibility of the component with animation by clicking on either the Close or Open button.
 
 ### Adding component with dynamic content in transition
-It can come in handy when animating a block that requires some time to render completely. To good utilize the Collapse Top and Collapse Left effects, it's important to employ this guid.
-1. Firstly, you need activate it in the settings:
+If you want to animate content that is rendered with a delay (for example, asynchronously loaded) follow the guide:
 
-> WARNING: After this action the component will not be displayed
+1. You need activate it in the settings:
+
+> WARNING: After this action the component will not be displayed in preview mode
 
 <img alt="Close button logic" src="example-images/enable_dynamic_content.jpg" />
 
-2. Secondly, your block must have event that triggered when he full loaded. In him, we add component action "Set Content Loaded"
+2. Run the action `Set Content Loaded` when your components are fully rendered. It could be done in `On ... Mount handlers`.
 
 <img alt="Close button logic" src="example-images/add_setContentLoaded_in_onLoadEvent.jpg" width="900" />
