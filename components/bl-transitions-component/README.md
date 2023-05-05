@@ -63,6 +63,6 @@ If you want to animate content that is rendered with a delay (for example, async
 
 <img alt="Close button logic" src="example-images/enable_dynamic_content.jpg" />
 
-2. Run the action `Set Content Loaded` when your components are fully rendered. It could be done in `On ... Mount handlers`.
+2. Run the action `Set Content Loaded` when your components are fully rendered. It could be done in `On ... Mount` handlers.
 
 <img alt="Close button logic" src="example-images/add_setContentLoaded_in_onLoadEvent.jpg" width="900" />
