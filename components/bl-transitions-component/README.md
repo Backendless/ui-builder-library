@@ -57,7 +57,7 @@ In the preview, you now have the option to change the visibility of the componen
 ### Adding component with dynamic content in transition
 If you want to animate content that is rendered with a delay (for example, asynchronously loaded) follow the guide:
 
-1. You need activate it in the settings:
+1. You need to activate it in the settings:
 
 > WARNING: After this action the component will not be displayed in preview mode
 
