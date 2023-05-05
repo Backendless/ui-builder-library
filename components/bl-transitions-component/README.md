@@ -6,10 +6,11 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 
 ## Properties
 
-| Property | Type                                                                  | Default Value | Logic | Data Binding | UI Setting | Description                                     |
-|----------|-----------------------------------------------------------------------|---------------|-------|--------------|------------|-------------------------------------------------|
-| Variants | Select <br/>["collapse-top", "collapse-left", "fade", "grow", "zoom"] | Fade:`fade`   |       | NO           | YES        | Allows to determine variant of transition       |
-| Duration | Number                                                                | 300           |       | NO           | YES        | Allows to determine duration of transition (ms) |
+| Property                         | Type                                                                                                            | Default Value | Logic | Data Binding | UI Setting | Description                                                 |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|-------|--------------|------------|-------------------------------------------------------------|
+| Variants:`variants`              | Select <br/>[Fade:`fade`, Grow:`grow`, Zoom:`zoom`, Collapse Top:`collapse-top`, Collapse Left:`collapse-left`] | Fade:`fade`   |       | NO           | YES        | Allows to determine variant of transition                   |
+| Duration:`duration`              | Number                                                                                                          | 300           |       | NO           | YES        | Allows to determine duration of transition (ms)             |
+| Dynamic Content:`dynamicContent` | Checkbox                                                                                                        | `false`       |       | NO           | YES        | Allows you to determine the need to animate dynamic content |
 
 ## Events
 
@@ -18,6 +19,11 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 | On Mounted       | after the component is mounted and appeared on the page |                |
 | On Unmounted     | before the component is unmounted and destroyed         |                |
 | On End Animation | after the animation finishes                            |                |
+
+## Actions
+| Action                             | Inputs | Returns |
+|------------------------------------|--------|---------|
+| Set Content Loaded for Transitions |        |         |
 
 ## Usage Guide
 

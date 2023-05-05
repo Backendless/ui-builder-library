@@ -1,34 +1,33 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { hideElement, useResizeObserver, useTransition } from './helpers';
+import { useResizeObserver, useTransition } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export function CollapseTop({ component, eventHandlers, transitionsContainerPod, display }) {
+export function CollapseTop({ component, eventHandlers, transitionsContainerPod, display, isContentLoaded }) {
   const { classList, style, variants, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
 
   const [height, setHeight] = useState(0);
 
   const rootRef = useRef();
-  const getHeightTimeout = useRef(null);
 
   const setIsAuto = useResizeObserver(rootRef.current, 'height', height, setHeight);
   const isTransition = useTransition(rootRef, display, duration, height, 'height', setIsAuto, onEndAnimation);
 
   useEffect(() => {
-    if (rootRef.current) {
-      hideElement(rootRef.current);
+    let getHeightTimeout;
 
-      getHeightTimeout.current = setTimeout(() => {
+    if (rootRef.current && isContentLoaded) {
+      getHeightTimeout = setTimeout(() => {
         rootRef.current.style.height = 'auto';
         setHeight(rootRef.current.clientHeight);
         rootRef.current.style.height = '0px';
       }, 50);
     }
 
-    return () => clearTimeout(getHeightTimeout.current);
-  }, [rootRef]);
+    return () => getHeightTimeout && clearTimeout(getHeightTimeout);
+  }, [rootRef, isContentLoaded]);
 
   useEffect(() => {
     onMounted();
