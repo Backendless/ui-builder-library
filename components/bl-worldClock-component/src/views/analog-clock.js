@@ -28,7 +28,9 @@ export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
         secondHandColor: displaySeconds ? 'red' : 'transparent',
       };
     } else {
-      return {handStyle: useHandStyles(hour, minute, second, displaySeconds)};
+      return {
+        handStyle: useHandStyles(hour, minute, second, displaySeconds),
+      };
     }
   },[clockStyle, hour, minute, second, displaySeconds]);
 
@@ -36,10 +38,7 @@ export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
 
   return (
     <div className={ cn('analog', clockStyle) }>
-      { Clock && (
-        <Clock clockProps={ clockProps }/>
-      ) }
-
+      <Clock clockProps={ clockProps }/>
       <Label content={ label }/>
     </div>
   );
@@ -80,26 +79,26 @@ function ClockHands({ handStyle, markersVisible, markersFull }) {
 }
 
 function Markers({ markersFull=false }) {
+  if (markersFull) {
+    return (
+      [...Array(12).keys()].map(i => {
+        const rotation = -60 + 30 * i;
+        const rotate = 60 - 30 * i;
+
+        return (
+          <div className="number" key={ i } style={{ '--rotation': `${ rotation }deg` }}>
+            <span className="number-content" style={{ transform: `rotate(${ rotate }deg)` }}>{ i + 1 }</span>
+          </div>
+        );
+    }));
+  }
+
   return (
     <>
-      { markersFull ? (
-        [...Array(12).keys()].map((i, key) => {
-          const rotation = -60 + 30 * i;
-          const rotate = 60 - 30 * i;
-
-          return (
-            <div className="number" key={ key } style={{ '--rotation': `${ rotation }deg` }}>
-              <span className="number-content" style={{ transform: `rotate(${ rotate }deg)` }}>{ i + 1 }</span>
-            </div>
-          );
-      })) : (
-        <>
-          <span className="clock-twelve"/>
-          <span className="clock-three"/>
-          <span className="clock-six"/>
-          <span className="clock-nine"/>
-        </>
-      ) }
+      <span className="clock-twelve"/>
+      <span className="clock-three"/>
+      <span className="clock-six"/>
+      <span className="clock-nine"/>
     </>
   );
 }
@@ -116,6 +115,7 @@ function useHandStyles(hours, minutes, seconds, displaySeconds) {
   const hourDegree = (hours % 12) * 30 + minutes * 0.5;
   const minuteDegree = minutes * 6 + seconds * 0.1;
   const secondDegree = seconds * 6;
+
   const hour = { transform: `rotate(${ hourDegree }deg)` };
   const minute = { transform: `rotate(${ minuteDegree }deg)` };
   const second = { transform: `rotate(${ secondDegree }deg)` };

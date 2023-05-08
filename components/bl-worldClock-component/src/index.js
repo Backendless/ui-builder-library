@@ -27,16 +27,33 @@ const TimeFormats = {
 
 dayjs.extend(utc);
 
-export default function WorldClockComponent({ component, elRef }) {
+export default function WorldClockComponent({ component, elRef, eventHandlers }) {
   const { classList, style, display, type, timezone, label, timeFormat, displaySeconds } = component;
+  const { onSecondChange, onMinuteChange, onHourChange } = eventHandlers;
 
   const [time, setTime] = useState(() => getTimeData(timezone, timeFormat));
 
   useEffect(() => {
-    const timerID = setInterval(() => setTime(getTimeData(timezone, timeFormat)), 1000);
+    const timerID = setInterval(() => {
+      const newTime = getTimeData(timezone, timeFormat);
+
+      if (onSecondChange.hasLogic && newTime.second !== time.second) {
+        onSecondChange({ timeData: newTime });
+      }
+
+      if (onMinuteChange.hasLogic && newTime.minute !== time.minute) {
+        onMinuteChange({ timeData: newTime });
+      }
+
+      if (onHourChange.hasLogic && newTime.hour !== time.hour) {
+        onHourChange({ timeData: newTime });
+      }
+
+      setTime(newTime);
+    }, 1000);
 
     return () => clearInterval(timerID);
-  }, [timezone, timeFormat]);
+  }, [timezone, timeFormat, time]);
 
   const [clockType, clockStyle] = type.split('-');
   const WorldClock = ClockViews[clockType];
@@ -47,9 +64,7 @@ export default function WorldClockComponent({ component, elRef }) {
 
   return (
     <div className={ cn('bl-customComponent-worldClock', classList) } style={ style } ref={ elRef }>
-      { WorldClock && (
-        <WorldClock time={ time } label={ label } clockStyle={ clockStyle } displaySeconds={ displaySeconds }/>
-      ) }
+      <WorldClock time={ time } label={ label } clockStyle={ clockStyle } displaySeconds={ displaySeconds }/>
     </div>
   );
 }

@@ -156,12 +156,14 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 
 ## Examples
 
+### Usage
+
 Below is a Codeless Example highlighting how to use the World Clock component:
 
 <p align="center">
-  <img src="./example-images/settings.png" alt="settings" width="500"/>
+  <img src="./example-images/settings.png" alt="settings" width="200"/>
 </p>
 
 <p align="center">
-  <img src="./example-images/component-preview.png" alt="component preview" width="500"/>
+  <img src="./example-images/component-preview.png" alt="component preview" width="250"/>
 </p>

@@ -17,10 +17,7 @@ const DIGITS = {
 export function DigitalClockPixel({ time, displaySeconds }) {
   const { hour, minute, second, isAmpm, ampm } = time;
 
-  const colors = useMemo(() => Array(15)
-    .fill()
-    .map(() => `rgb(0, ${ generateGreen() }, ${ generateBlue() })`
-  ), []);
+  const colors = useMemo(() => getColors(), []);
 
   const digits = useMemo(() => (
     displaySeconds ? [...hour, ':', ...minute, ':', ...second] : [...hour, ':', ...minute]
@@ -49,10 +46,7 @@ function Digit({ value, colors }) {
   );
 }
 
-function generateGreen() {
-  return Math.floor(Math.random() * 150);
-}
-
-function generateBlue() {
-  return Math.floor(Math.random() * 255);
-}
+const generateGreen = () => Math.floor(Math.random() * 150);
+const generateBlue = () => Math.floor(Math.random() * 255);
+const generateColor = () => `rgb(0, ${ generateGreen() }, ${ generateBlue() })`;
+const getColors = () => Array(15).fill().map(() => generateColor());

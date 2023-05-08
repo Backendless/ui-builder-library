@@ -175,7 +175,7 @@
       "handlerLabel": "Label Logic",
       "dataBinding": true,
       "settingTooltip": "The name of a location/city/etc to show in the component.",
-      "handlerDescription": "This is a handler for the logic to determine the name of a location/city/etc to display it in the component."
+      "handlerDescription": "This is a handler for the logic to determine the content of the World Clock label."
     },
     {
       "type": "select",
@@ -205,10 +205,44 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "displaySecondsLogic",
-      "settingTooltip": "Select to display the seconds(second hand)."
+      "settingTooltip": "Disable to hide the seconds(second hand)."
     }
   ],
-  "eventHandlers": [],
+  "eventHandlers": [
+    {
+      "name": "onSecondChange",
+      "label": "On Second(s) Change",
+      "contextBlocks": [
+        {
+          "id": "timeData",
+          "label": "time"
+        }
+      ],
+      "handlerDescription": "This event is fired every second."
+    },
+    {
+      "name": "onMinuteChange",
+      "label": "On Minute(s) Change",
+      "contextBlocks": [
+        {
+          "id": "timeData",
+          "label": "time"
+        }
+      ],
+      "handlerDescription": "This event is fired every minute."
+    },
+    {
+      "name": "onHourChange",
+      "label": "On Hour(s) Change",
+      "contextBlocks": [
+        {
+          "id": "timeData",
+          "label": "time"
+        }
+      ],
+      "handlerDescription": "This event is fired every hour."
+    }
+  ],
   "actions": [],
   "settings": [],
   "pods": {}
