@@ -16,6 +16,14 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 | Time Format <br> `timeFormat`         | *Select* <br> [`12`, `24`]                                                                                                                                                                                                                                                                                                                                                                                                                                    | `12`                       |             | NO           | YES        | Controls a time format for the world clock(only for digital types).                              |
 | Display Seconds <br> `displaySeconds` | *Checkbox*                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `true`                     |             | NO           | YES        | Controls the display the seconds(second hand).                                                   |
 
+## Events
+
+| Name                | Triggers                                    | Context Blocks   |
+|---------------------|---------------------------------------------|------------------|
+| On Second(s) Change | when the time changes(updated every second) | `{time: Object}` |
+| On Minute(s) Change | when the time changes(updated every minute) | `{time: Object}` |
+| On Hour(s) Change   | when the time changes(updated every hour)   | `{time: Object}` |
+
 ## Styles
 
 ````
