@@ -51,32 +51,26 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
       const chunks = [];
 
+      Object.assign( recorderRef.current, {
+        onstart: () => setState(StreamState.RECORDING),
+        onpause: () => setState(StreamState.PAUSED),
+        onresume: () => setState(StreamState.RECORDING),
+      });
+
       recorderRef.current.ondataavailable = event => {
         if (event.data.size > 0) {
           chunks.push(event.data);
         }
       };
 
-      recorderRef.current.onstart = () => {
-        setState(recorderRef.current.state);
-      };
-
       recorderRef.current.onstop = () => {
         const recordedBlob = new Blob(chunks, { type: RecordFormat[fileType] });
 
-        setState(recorderRef.current.state);
+        setState(StreamState.INACTIVE);
         setRecordedBlob(recordedBlob);
         onStop();
 
         chunks.length = 0;
-      };
-
-      recorderRef.current.onpause = () => {
-        setState(recorderRef.current.state);
-      };
-
-      recorderRef.current.onresume = () => {
-        setState(recorderRef.current.state);
       };
 
       recorderRef.current.start();
@@ -98,9 +92,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   }, [recordedBlob, fileName, fileType]);
 
   const toggleRecord = useCallback(() => {
-    if (recorderRef.current?.state === stream_state.RECORDING) {
+    if (recorderRef.current?.state === StreamState.RECORDING) {
       recorderRef.current.pause();
-    } else if (recorderRef.current?.state === stream_state.PAUSED) {
+    } else if (recorderRef.current?.state === StreamState.PAUSED) {
       recorderRef.current.resume();
     }
   }, []);
@@ -115,12 +109,12 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
       { controls && (
         <div className="controls">
           <button
-            disabled={ state && state !== stream_state.INACTIVE }
+            disabled={ state && state !== StreamState.INACTIVE }
             className="control-button" onClick={ startRecording }>
             { startText }
           </button>
           <button
-            disabled={ !state || state === stream_state.INACTIVE }
+            disabled={ !state || state === StreamState.INACTIVE }
             className="control-button" onClick={ stopRecording }>
             { stopText }
           </button>
@@ -130,9 +124,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
             { downloadText }
           </button>
           <button
-            disabled={ state !== stream_state.RECORDING && state !== stream_state.PAUSED }
+            disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
             className="control-button" onClick={ toggleRecord }>
-            { state === stream_state.PAUSED ? resumeText : pauseText }
+            { state === StreamState.PAUSED ? resumeText : pauseText }
           </button>
         </div>
       ) }
@@ -140,7 +134,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   );
 }
 
-const stream_state = {
+const StreamState = {
   PAUSED   : 'paused',
   RECORDING: 'recording',
   INACTIVE : 'inactive',
