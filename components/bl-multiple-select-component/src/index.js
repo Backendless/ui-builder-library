@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { Options } from './options';
 import { SelectField } from './select-field';
@@ -12,15 +12,20 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
   } = component;
   const { onChange } = eventHandlers;
 
-  const optionsList = useMemo(() => validateOptions(options), [options]);
-
+  const [optionsList, setOptionsList] = useState(validateOptions(options));
   const [isOptionsOpen, setIsOptionsOpen]= useState(false);
   const [selectValue, setSelectValue] = useState(validateValue(value, optionsList));
   const [isSelectActive, setIsSelectActive] = useState(false);
 
+  useActions({ component, optionsList, setOptionsList, selectValue, setSelectValue });
+
+  useEffect(() => {
+    setOptionsList(validateOptions(options));
+  }, [options]);
+
   useEffect(() => {
     setSelectValue(validateValue(value, optionsList));
-  }, [value, options]);
+  }, [value, optionsList]);
 
   const classes = cn(
     'bl-customComponent-multipleSelect', variant, classList,
@@ -67,4 +72,13 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
       }
     </div>
   );
+};
+
+function useActions({ component, optionsList, setOptionsList, selectValue, setSelectValue }) {
+  Object.assign(component, {
+    getOptions: () => optionsList,
+    setOptions: options => setOptionsList(validateOptions(options)),
+    getValue  : () => selectValue,
+    setValue  : value => setSelectValue(validateValue(value, optionsList))
+  })
 };

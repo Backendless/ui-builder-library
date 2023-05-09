@@ -6,10 +6,11 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 
 ## Properties
 
-| Property | Type                                                                  | Default Value  | Logic | Data Binding | UI Setting | Description                                     |
-|----------|-----------------------------------------------------------------------|----------------|-------|--------------|------------|-------------------------------------------------|
-| Variants | Select <br/>["collapse-top", "collapse-left", "fade", "grow", "zoom"] | "collapse-top" |       | NO           | YES        | Allows to determine variant of transition       |
-| Duration | Number                                                                | 300            |       | NO           | YES        | Allows to determine duration of transition (ms) |
+| Property                         | Type                                                                                                            | Default Value | Logic | Data Binding | UI Setting | Description                                                 |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|-------|--------------|------------|-------------------------------------------------------------|
+| Variants:`variants`              | Select <br/>[Fade:`fade`, Grow:`grow`, Zoom:`zoom`, Collapse Top:`collapse-top`, Collapse Left:`collapse-left`] | Fade:`fade`   |       | NO           | YES        | Allows to determine variant of transition                   |
+| Duration:`duration`              | Number                                                                                                          | 300           |       | NO           | YES        | Allows to determine duration of transition (ms)             |
+| Dynamic Content:`dynamicContent` | Checkbox                                                                                                        | `false`       |       | NO           | YES        | Allows you to determine the need to animate dynamic content |
 
 ## Events
 
@@ -19,6 +20,11 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 | On Unmounted     | before the component is unmounted and destroyed         |                |
 | On End Animation | after the animation finishes                            |                |
 
+## Actions
+| Action                             | Inputs | Returns |
+|------------------------------------|--------|---------|
+| Set Content Loaded for Transitions |        |         |
+
 ## Usage Guide
 
 ### Adding the Transitions component to the page:
@@ -26,6 +32,7 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 <img alt="Add component on page" src="./example-images/add_on_page.jpg" width="900" />
 
 ### Adding component in the transitions pod:
+> 🔴 **IMPORTANT**: If you add any Image component, set its width and height. This is generally good practice for all images on a website
 
 <img alt="Add component in transitions" src="./example-images/add_component_in_transitions.jpg" width="900" />
 
@@ -52,3 +59,16 @@ For example:
 <img alt="Close button logic" src="./example-images/close_button_logic.jpg" width="900" />
 
 In the preview, you now have the option to change the visibility of the component with animation by clicking on either the Close or Open button.
+
+### Adding component with dynamic content in transition
+If you want to animate content that is rendered with a delay (for example, asynchronously loaded) follow the guide:
+
+1. You need to activate it in the settings:
+
+> 🔴 **IMPORTANT**: After this action the component will not be displayed in preview mode
+
+<img alt="Close button logic" src="example-images/enable_dynamic_content.jpg" />
+
+2. Run the action `Set Content Loaded` when your components are fully rendered. It could be done in `On ... Mount` handlers.
+
+<img alt="Close button logic" src="example-images/add_setContentLoaded_in_onLoadEvent.jpg" width="900" />

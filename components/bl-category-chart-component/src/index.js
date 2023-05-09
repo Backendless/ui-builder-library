@@ -4,7 +4,7 @@ import Chart from './chartjs';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function LineChartComponent({ component, elRef }) {
+export default function CategoryChartComponent({ component, elRef }) {
   const {
     classList, display, style, disabled, height, width, type,
     chartTitleVisibility, chartTitle, chartTitleFontSize, chartBackgroundColor,
@@ -39,7 +39,7 @@ export default function LineChartComponent({ component, elRef }) {
       ref={ elRef }
       style={ styles }
       className={
-        cn("bl-customComponent-lineChart", classList, { "bl-customComponent-lineChart--disabled": disabled })
+        cn("bl-customComponent-categoryChart", classList, { "bl-customComponent-categoryChart--disabled": disabled })
       }>
       <canvas ref={ chartRef } style={{ backgroundColor: chartBackgroundColor, width: "100%", height: "100%" }} />
     </div>

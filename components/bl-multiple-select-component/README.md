@@ -25,6 +25,15 @@ Multiple Select is a component of Backendless UI-Builder designer. This componen
 |------------------|-----------------------------------------------|---------------------------------------------------------------------|
 | On Change Event  | when the user select an item from the options | Select Value: list of objects { label: `String`, value: `String` }  |
 
+## Actions
+
+| Action                         | Inputs                                         | Returns                                       |
+|--------------------------------|------------------------------------------------|-----------------------------------------------|
+| Set Options to Multiple Select | Options: [{label: `String`, value: `String`}]  |                                               |
+| Get Options of Multiple Select |                                                | Options: [{label: `String`, value: `String`}] |
+| Set Value to Multiple Select   | Value: `String`                                |                                               |
+| Get Value of Multiple Select   |                                                | `String`: current selected value              |
+
 ## Styles
 
 **Theme**

@@ -1,3 +1,5 @@
+const ARROW_SIZE = 10;
+
 const Position = {
   TOP   : 'top',
   RIGHT : 'right',
@@ -6,41 +8,39 @@ const Position = {
 };
 
 export const translatePopover = (targetRef, contentElement, position) => {
-  const contentOffset = getOffset(contentElement);
-  const targetOffset = getOffset(targetRef);
-
   const targetHorizontalCenter = targetRef.clientHeight / 2;
   const contentHorizontalCenter = contentElement.clientHeight / 2;
   const targetVerticalCenter = targetRef.clientWidth / 2;
   const contentVerticalCenter = contentElement.clientWidth / 2;
 
-  const horizontalTopShift = targetOffset.top - contentOffset.top + targetHorizontalCenter - contentHorizontalCenter;
-  const verticalLeftShift = targetOffset.left + targetVerticalCenter - contentVerticalCenter;
-
   const {
     width: targetWidth, height: targetHeight,
-    x: targetX, y: targetY,
+    x    : targetX, y: targetY,
     right: targetRight, bottom: targetBottom,
   } = targetRef.getBoundingClientRect();
   const { width: contentWidth, height: contentHeight } = contentElement.getBoundingClientRect();
 
   const ShiftHandler = {
     [Position.RIGHT] : {
-      topShift : horizontalTopShift,
-      leftShift: targetOffset.left + targetWidth + contentElement.firstChild.clientHeight + contentOffset.left
+      top      : '50%',
+      transform: 'translateY(-50%)',
+      left     : `${ targetWidth + ARROW_SIZE }px`,
     },
     [Position.LEFT]  : {
-      topShift : horizontalTopShift,
-      leftShift: targetOffset.left - contentWidth - contentElement.firstChild.clientHeight + contentOffset.left
+      top      : '50%',
+      transform: 'translateY(-50%)',
+      right    : `${ targetWidth + ARROW_SIZE }px`,
     },
     [Position.TOP]   : {
-      topShift : targetOffset.top - contentOffset.top - contentHeight - contentElement.firstChild.clientHeight,
-      leftShift: verticalLeftShift
+      left     : '50%',
+      transform: 'translateX(-50%)',
+      bottom   : `${ targetHeight + ARROW_SIZE }px`,
     },
     [Position.BOTTOM]: {
-      topShift : targetOffset.top + targetHeight - contentOffset.top + contentElement.firstChild.clientHeight,
-      leftShift: verticalLeftShift
-    }
+      left     : '50%',
+      transform: 'translateX(-50%)',
+      top      : `${ targetHeight + ARROW_SIZE }px`,
+    },
   };
 
   const PositionValidator = {
@@ -69,26 +69,18 @@ export const translatePopover = (targetRef, contentElement, position) => {
   return validatePosition(position, PositionValidator, ShiftHandler);
 };
 
-const getOffset = el => {
-  const rect = el.getBoundingClientRect();
-  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
-};
-
 const validatePosition = (position, PositionValidator, ShiftHandler) => {
   if (PositionValidator[position]()) {
-    return { ...ShiftHandler[position], newPosition: position };
+    return { style: ShiftHandler[position], newPosition: position };
   }
 
   for (const side of Object.values(Position)) {
     if (position !== side) {
       if (PositionValidator[side]()) {
-        return { ...ShiftHandler[side], newPosition: side };
+        return { style: ShiftHandler[side], newPosition: side };
       }
     }
   }
 
-  return { ...ShiftHandler[position], newPosition: position };
+  return { style: ShiftHandler[position], newPosition: position };
 };

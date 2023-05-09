@@ -86,6 +86,17 @@
         }
       ],
       "handlerDescription": "This event is triggered when the mouse pointer leaves the component."
+    },
+    {
+      "name": "onClickOutside",
+      "label": "On Click Outside",
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks outside the component."
     }
   ],
   "actions": [

@@ -3,7 +3,7 @@
 Social Login Buttons is a component of Backendless UI-Builder designer. The component is designed for quick login. For the correct work of the component, you need to configure the social network provider, you can do this by going to Backend => Users => Login Providers. Also, if you want to watch the tutorial, you can [follow the link,](https://www.youtube.com/watch?v=PVmXcQn-FxA&t=842s&ab_channel=Backendless) or go to [the documentation.](https://backendless.com/docs/js/users_oauth2.html)
 
 <p align="center">
-  <img alt="main thumbnail" height="290" src="./thumbnail.png" width="370"/>
+  <img alt="main thumbnail" src="./thumbnail.png" width="720"/>
 </p>
 
 ## Properties
@@ -44,3 +44,20 @@ Social Login Buttons is a component of Backendless UI-Builder designer. The comp
 @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary: #0A66C2;
 @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary: #000000;
 ````
+
+## <a name="usage-guide"></a> Usage Guide
+
+Add a component to the page and select the social media buttons you want:
+
+<img alt="tabs" src="./example-images/add-component-to-page.png" width="720" />
+
+Go to the Login Providers tab:
+
+<img alt="tab content id" src="./example-images/go-to-login-providers.png" width="720" />
+
+For all the providers you selected, do the following:
+  1. Turn on the toggle.
+  2. Fill in the App ID and App Secret fields.
+  3. Click the `SAVE` button.
+
+<img alt="tab content" src="./example-images/fill-in-required-fields.png" width="720" />

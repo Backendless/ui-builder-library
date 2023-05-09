@@ -19,6 +19,7 @@ The component allows you to render a popup window in your UI-Builder application
 | On Target Click     | when user clicks on target                       | Is Open: `Boolean` |
 | On Mouse Over Event | when the mouse pointer hovers over the component | Is Open: `Boolean` |
 | On Mouse Out Event  | when the mouse pointer leaves the component      | Is Open: `Boolean` |
+| On Click Outside    | when user clicks outside the component           | Is Open: `Boolean` |
 
 ## Actions
 
@@ -30,7 +31,9 @@ The component allows you to render a popup window in your UI-Builder application
 
 **Dimensions**
 ```
+@bl-customComponent-popover-z-index: 1;
 @bl-customComponent-popover-border-width: 1px;
+@bl-customComponent-popover-min-width: 250px;
 @bl-customComponent-popover-max-width: 276px;
 @bl-customComponent-popover-arrow-size: 10px;
 ```
@@ -44,6 +47,7 @@ The component allows you to render a popup window in your UI-Builder application
 **Others**
 ```
 @bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid @bl-customComponent-popover-border-color;
+@bl-customComponent-popover-border-radius: 0.5rem;
 ```
 
 ## Usage

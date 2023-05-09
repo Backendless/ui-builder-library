@@ -134,5 +134,41 @@
         }
       ]
     }
+  ],
+  "actions": [
+    {
+      "id": "setOptions",
+      "label": "Set Options to",
+      "color": "#1f468e",
+      "inputs": [
+        {
+          "id": "options",
+          "label": "Options"
+        }
+      ]
+    },
+    {
+      "id": "getOptions",
+      "label": "Get Options of",
+      "color": "#982235",
+      "hasReturn": true
+    },
+    {
+      "id": "setValue",
+      "label": "Set Value to",
+      "color": "#224b97",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    },
+    {
+      "id": "getValue",
+      "label": "Get Value of",
+      "color": "#982235",
+      "hasReturn": true
+    }
   ]
 }

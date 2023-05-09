@@ -1,5 +1,5 @@
-# Line Chart
-The Line Chart component allows you to display data in the form of charts. You can also choose a chart type. Also, the [chart.js](https://www.chartjs.org/) library is used to create this component.
+# Category Chart
+The Category Chart component allows you to display data in the form of charts. You can also choose a chart type. Also, the [chart.js](https://www.chartjs.org/) library is used to create this component.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
@@ -29,8 +29,8 @@ The Line Chart component allows you to display data in the form of charts. You c
 
 **Dimensions**
 ````
-@bl-customComponent-lineChart-disabled-cursor: default;
-@bl-customComponent-lineChart-disabled-opacity: 0.38;
+@bl-customComponent-categoryChart-disabled-cursor: default;
+@bl-customComponent-categoryChart-disabled-opacity: 0.38;
 ````
 
 ## <a id="examples"></a> Codeless Examples
