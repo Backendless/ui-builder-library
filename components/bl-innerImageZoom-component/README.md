@@ -49,3 +49,13 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 @bl-customComponent-innerImageZoom-width: fit-content;
 @bl-customComponent-innerImageZoom-margin: 10px;
 ````
+
+## Examples
+
+### Usage
+
+The following is an example showing how to specify the image source in the URL Logic of the Inner Image Zoom component:
+
+<p align="center">
+  <img src="./example-images/source-logic.png" alt="source logic" width="720"/>
+</p>
