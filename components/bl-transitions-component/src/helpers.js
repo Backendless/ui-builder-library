@@ -93,12 +93,6 @@ export const useTransition = (rootRef, display, duration, dimension, dimensionNa
   return isTransition;
 };
 
-export const hideElement = element => {
-  element.style.opacity = 0;
-  element.style.position = 'absolute';
-  element.style.zIndex = -1;
-};
-
 export const showElement = element => {
   element.style.opacity = 1;
   element.style.position = 'static';

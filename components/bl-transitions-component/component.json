@@ -13,16 +13,8 @@
       "name": "variants",
       "label": "Variants",
       "showInSettings": true,
-      "defaultValue": "collapse-top",
+      "defaultValue": "fade",
       "options": [
-        {
-          "value": "collapse-top",
-          "label": "Collapse Top"
-        },
-        {
-          "value": "collapse-left",
-          "label": "Collapse Left"
-        },
         {
           "value": "fade",
           "label": "Fade"
@@ -34,15 +26,33 @@
         {
           "value": "zoom",
           "label": "Zoom"
+        },
+        {
+          "value": "collapse-top",
+          "label": "Collapse Top"
+        },
+        {
+          "value": "collapse-left",
+          "label": "Collapse Left"
         }
-      ]
+      ],
+      "hasLogicHandler": false
     },
     {
       "type": "number",
       "name": "duration",
       "label": "Duration (ms)",
       "showInSettings": true,
-      "defaultValue": "300"
+      "defaultValue": "300",
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "dynamicContent",
+      "label": "Dynamic Content",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "dynamicContentLogic"
     }
   ],
   "eventHandlers": [
@@ -62,7 +72,12 @@
       "handlerDescription": "This event is triggered after the animation finishes"
     }
   ],
-  "actions": [],
+  "actions": [
+    {
+      "id": "setContentLoaded",
+      "label": "Set Content Loaded for"
+    }
+  ],
   "pods": {
     "d562eaea8fcc85660b2f4124a92456d2": {
       "id": "transitionsContainer",
