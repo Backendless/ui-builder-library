@@ -98,3 +98,36 @@ export const showElement = element => {
   element.style.position = 'static';
   element.style.zIndex = 0;
 };
+
+export const useImageLoad = (rootRef, dynamicContent) => {
+  const [countLoadedImages, setCountLoadedImages] = useState(0);
+  const [countImages, setCountImages] = useState(0);
+  const [isImagesLoaded, setIsImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    if (dynamicContent) {
+      setIsImagesLoaded(true);
+    } else {
+      if (rootRef.current) {
+        const images = [...rootRef.current.querySelectorAll('img')];
+        setCountImages(images.length);
+
+        if (images.length) {
+          images.forEach(image => {
+            image.addEventListener('load', () => setCountLoadedImages(state => state + 1));
+          });
+        } else {
+          setIsImagesLoaded(true);
+        }
+      }
+    }
+  }, [rootRef]);
+
+  useEffect(() => {
+    if (countImages && countLoadedImages === countImages) {
+      setIsImagesLoaded(true);
+    }
+  }, [countLoadedImages]);
+
+  return isImagesLoaded;
+};

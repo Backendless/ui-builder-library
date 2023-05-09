@@ -1,25 +1,33 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { useImageLoad } from './helpers';
+
 const { cn } = BackendlessUI.CSSUtils;
 
-export const Others = ({ component, eventHandlers, transitionsContainerPod, display }) => {
+export const Others = props => {
+  const { component, eventHandlers, transitionsContainerPod, display, isContentLoaded, dynamicContent } = props;
   const { classList, style, variants, duration } = component;
-  const { onMounted, onUnmounted, onEndAnimation } = eventHandlers;
+  const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
 
   const [isTransition, setIsTransition] = useState(false);
 
+  const rootRef = useRef();
   const endAnimationTimeout = useRef(null);
 
+  const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
+
   useEffect(() => {
-    const timeout = setTimeout(() => setIsTransition(true), 50);
+    if (isContentLoaded && isImagesLoaded) {
+      const timeout = setTimeout(() => setIsTransition(true), 50);
+
+      return () => {
+        clearTimeout(timeout);
+        onUnmounted();
+      };
+    }
 
     onMounted();
-
-    return () => {
-      clearTimeout(timeout);
-      onUnmounted();
-    };
-  }, []);
+  }, [isContentLoaded, isImagesLoaded]);
 
   useEffect(() => {
     if (display) {
@@ -31,10 +39,16 @@ export const Others = ({ component, eventHandlers, transitionsContainerPod, disp
     return () => clearTimeout(endAnimationTimeout.current);
   }, [display]);
 
+  useEffect(() => {
+    if (isTransition) {
+      onStartAnimation();
+    }
+  }, [isTransition]);
+
   return (
-    <div className={ cn('bl-customComponent-transitions', classList) }>
+    <div ref={ rootRef } className={ cn('bl-customComponent-transitions', classList) }>
       <div
-        className={ getClassName(variants, display, isTransition, classList) }
+        className={ getClassName(variants, display, isTransition) }
         style={{ ...style, transitionDuration: duration + 'ms' }}>
         { transitionsContainerPod.render() }
       </div>
@@ -42,6 +56,6 @@ export const Others = ({ component, eventHandlers, transitionsContainerPod, disp
   );
 };
 
-const getClassName = (variants, display, isTransition, classList) => (
+const getClassName = (variants, display, isTransition) => (
   cn('transition', variants, { [variants + '--active']: display && isTransition })
 );
