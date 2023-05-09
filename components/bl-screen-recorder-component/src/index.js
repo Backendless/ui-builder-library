@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { captureMediaDevices, download, ensureMeasure, prepareToRecord, prepareToView } from './helpers';
+import { captureMediaDevices, download, prepareToRecord, prepareToView } from './helpers';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function ScreenRecorder({ component, eventHandlers, elRef }) {
   const {
@@ -80,8 +80,8 @@ export default function ScreenRecorder({ component, eventHandlers, elRef }) {
 
   useEffect(() => {
     if (display) {
-      elRef.current.style.width = ensureMeasure(width);
-      videoRef.current.style.height = ensureMeasure(height);
+      elRef.current.style.width = normalizeDimensionValue(width);
+      videoRef.current.style.height = normalizeDimensionValue(height);
 
       if (stopRef.current && downloadRef.current) {
         stopRef.current.disabled = true;
@@ -96,17 +96,29 @@ export default function ScreenRecorder({ component, eventHandlers, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-screenRecorder', classList) } style={ style }>
-      <video ref={ videoRef } className="video"/>
+      <video ref={ videoRef } className="screenRecorder-video"/>
       { controls && (
-        <div className="controls">
-          <button ref={ startRef } className="control-button" onClick={ startRecording }>{ startText }</button>
-          <button ref={ stopRef } className="control-button" onClick={ stopRecording }>{ stopText }</button>
-          <button ref={ downloadRef } className="control-button"
-                  onClick={ downloadRecordedFile }>{ downloadText }</button>
+        <div className="screenRecorder-controls">
+          <button
+            ref={ startRef }
+            className="screenRecorder-control-button"
+            onClick={ startRecording }>
+            { startText }
+          </button>
+          <button
+            ref={ stopRef }
+            className="screenRecorder-control-button"
+            onClick={ stopRecording }>
+            { stopText }
+          </button>
+          <button
+            ref={ downloadRef }
+            className="screenRecorder-control-button"
+            onClick={ downloadRecordedFile }>
+            { downloadText }
+          </button>
         </div>
       ) }
     </div>
   );
 }
-
-

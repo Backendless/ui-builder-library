@@ -18,7 +18,8 @@
       "handlerId": "widthLogic",
       "handlerLabel": "Width Logic",
       "handlerDescription": "This handler controls component width.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Controls component width"
     },
     {
       "type": "text",
@@ -30,7 +31,8 @@
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
       "handlerDescription": "This handler controls component height.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Controls component height"
     },
     {
       "type": "checkbox",
@@ -39,7 +41,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "allowAudioLogic"
+      "handlerId": "allowAudioLogic",
+      "settingTooltip": "Allows to record device audio"
     },
     {
       "type": "checkbox",
@@ -48,7 +51,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "controlsLogic"
+      "handlerId": "controlsLogic",
+      "settingTooltip": "Show control buttons"
     },
     {
       "type": "text",
@@ -60,7 +64,8 @@
       "handlerId": "fileNameLogic",
       "handlerLabel": "File Name Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler to control the name of the downloaded file."
+      "handlerDescription": "This is a handler to control the name of the downloaded file.",
+      "settingTooltip": "Assign a name of the downloaded file"
     },
     {
       "type": "select",
@@ -95,7 +100,8 @@
           "value": "mkv",
           "label": "mkv"
         }
-      ]
+      ],
+      "settingTooltip": "Assign a recorded file type"
     },
     {
       "type": "text",
@@ -104,7 +110,8 @@
       "showInSettings": true,
       "defaultValue": "Start Record",
       "hasLogicHandler": false,
-      "handlerId": "startTextLogic"
+      "handlerId": "startTextLogic",
+      "settingTooltip": "Start Record Button text"
     },
     {
       "type": "text",
@@ -113,7 +120,8 @@
       "showInSettings": true,
       "defaultValue": "Stop Record",
       "hasLogicHandler": false,
-      "handlerId": "stopTextLogic"
+      "handlerId": "stopTextLogic",
+      "settingTooltip": "Stop Record Button text"
     },
     {
       "type": "text",
@@ -122,7 +130,8 @@
       "showInSettings": true,
       "defaultValue": "Download Recorded",
       "hasLogicHandler": false,
-      "handlerId": "downloadTextLogic"
+      "handlerId": "downloadTextLogic",
+      "settingTooltip": "Download Record Button text"
     }
   ],
   "eventHandlers": [

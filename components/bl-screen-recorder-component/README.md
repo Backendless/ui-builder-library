@@ -54,9 +54,14 @@ Screen Recorder is a component of Backendless UI-Builder designer. This allows t
 
 **Other**
 ````
+@bl-customComponent-screenRecorder-button-disabled-cursor: default;
 @bl-customComponent-screenRecorder-button-fontSize: 0.875rem;
-@bl-customComponent-screenRecorder-button-borderType: solid;
+@bl-customComponent-screenRecorder-button-borderStyle: solid;
 @bl-customComponent-screenRecorder-button-borderWidth: 0px;
+@bl-customComponent-screenRecorder-button-height: 36px;
+@bl-customComponent-screenRecorder-button-margin: 0 5px;
+@bl-customComponent-screenRecorder-button-color: #fff;
+@bl-customComponent-screenRecorder-button-cursor: pointer;
 ````
 
 **Color**

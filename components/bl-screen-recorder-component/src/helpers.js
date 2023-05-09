@@ -11,7 +11,6 @@ export const prepareToRecord = (videoRef, startRef, stopRef) => {
     startRef.disabled = true;
     stopRef.disabled = false;
   }
-
 };
 
 export const prepareToView = (videoRef, startRef, stopRef, downloadRef) => {
@@ -58,8 +57,4 @@ export const captureMediaDevices = async (mediaConstraints, videoRef) => {
   } catch (e) {
     console.error('The source of the stream did not select.', e);
   }
-};
-
-export const ensureMeasure = dimension => {
-  return String(Number(dimension)) === dimension || !isNaN(dimension) ? dimension + 'px' : dimension;
 };
