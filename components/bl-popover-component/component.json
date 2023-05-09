@@ -51,6 +51,18 @@
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false
+    },
+    {
+      "type": "number",
+      "name": "zIndex",
+      "label": "Z Index",
+      "showInSettings": true,
+      "defaultValue": "1",
+      "hasLogicHandler": true,
+      "handlerId": "zIndexLogic",
+      "handlerLabel": "Z Index Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the z-index style for popover "
     }
   ],
   "eventHandlers": [
