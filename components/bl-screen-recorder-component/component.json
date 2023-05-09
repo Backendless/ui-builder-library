@@ -1,0 +1,181 @@
+{
+  "id": "c_5aef43f347b7ddabda0d932126c2d172",
+  "name": "Screen Recorder",
+  "description": "This is a component that allows to record screen and use the recorded file.",
+  "showInToolbox": true,
+  "faIcon": "video",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "720px",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "handlerDescription": "This handler controls component width.",
+      "dataBinding": true,
+      "settingTooltip": "Controls component width"
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "480px",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "handlerDescription": "This handler controls component height.",
+      "dataBinding": true,
+      "settingTooltip": "Controls component height"
+    },
+    {
+      "type": "checkbox",
+      "name": "allowAudio",
+      "label": "Allow Audio",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "allowAudioLogic",
+      "settingTooltip": "Allows to record device audio"
+    },
+    {
+      "type": "checkbox",
+      "name": "controls",
+      "label": "Show Controls",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "controlsLogic",
+      "settingTooltip": "Show control buttons"
+    },
+    {
+      "type": "text",
+      "name": "fileName",
+      "label": "File Name",
+      "showInSettings": true,
+      "defaultValue": "Recorded Video",
+      "hasLogicHandler": true,
+      "handlerId": "fileNameLogic",
+      "handlerLabel": "File Name Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to control the name of the downloaded file.",
+      "settingTooltip": "Assign a name of the downloaded file"
+    },
+    {
+      "type": "select",
+      "name": "fileType",
+      "label": "File Type",
+      "showInSettings": true,
+      "defaultValue": "webm",
+      "hasLogicHandler": false,
+      "handlerId": "fileTypeLogic",
+      "options": [
+        {
+          "value": "webm",
+          "label": "webm"
+        },
+        {
+          "value": "mp4",
+          "label": "mp4"
+        },
+        {
+          "value": "mov",
+          "label": "mov"
+        },
+        {
+          "value": "wmv",
+          "label": "wmv"
+        },
+        {
+          "value": "avi",
+          "label": "avi"
+        },
+        {
+          "value": "mkv",
+          "label": "mkv"
+        }
+      ],
+      "settingTooltip": "Assign a recorded file type"
+    },
+    {
+      "type": "text",
+      "name": "startText",
+      "label": "Start Button Content",
+      "showInSettings": true,
+      "defaultValue": "Start Record",
+      "hasLogicHandler": false,
+      "handlerId": "startTextLogic",
+      "settingTooltip": "Start Record Button text"
+    },
+    {
+      "type": "text",
+      "name": "stopText",
+      "label": "Stop Button Content",
+      "showInSettings": true,
+      "defaultValue": "Stop Record",
+      "hasLogicHandler": false,
+      "handlerId": "stopTextLogic",
+      "settingTooltip": "Stop Record Button text"
+    },
+    {
+      "type": "text",
+      "name": "downloadText",
+      "label": "Download Button Content",
+      "showInSettings": true,
+      "defaultValue": "Download Recorded",
+      "hasLogicHandler": false,
+      "handlerId": "downloadTextLogic",
+      "settingTooltip": "Download Record Button text"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onStart",
+      "label": "On Start Recording",
+      "handlerDescription": "The event is fired when the recording is started."
+    },
+    {
+      "name": "onStop",
+      "label": "On Stop Recording",
+      "handlerDescription": "The event is fired when the recording is stopped."
+    },
+    {
+      "name": "onDownload",
+      "label": "On Download file",
+      "handlerDescription": "The event is fired when the recorded file starts downloading.",
+      "contextBlocks": [
+        {
+          "id": "blob",
+          "label": "Blob File"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start record of"
+    },
+    {
+      "id": "stop",
+      "label": "Stop record of"
+    },
+    {
+      "id": "downloadFile",
+      "label": "Download recorded file of",
+      "inputs": []
+    },
+    {
+      "id": "getBlob",
+      "label": "Get Blob of",
+      "hasReturn": true
+    }
+  ],
+  "pods": {}
+}

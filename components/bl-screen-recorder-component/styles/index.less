@@ -1,0 +1,64 @@
+@bl-customComponent-screenRecorder-video-background: black;
+
+@bl-customComponent-screenRecorder-button-background: @themePrimary;
+@bl-customComponent-screenRecorder-button-disabled: @disabledColor;
+@bl-customComponent-screenRecorder-button-borderRadius: @appComponentBorderRadius;
+@bl-customComponent-screenRecorder-button-color: @appTextColor;
+@bl-customComponent-screenRecorder-button-shadowColor: @appComponentShadowColor;
+@bl-customComponent-screenRecorder-button-shadowHover:
+        0px 2px 4px -1px fade(@bl-customComponent-screenRecorder-button-shadowColor, 20%),
+        0px 4px 5px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 14%),
+        0px 1px 10px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 12%);
+@bl-customComponent-screenRecorder-button-shadow:
+        0px 3px 1px -2px fade(@bl-customComponent-screenRecorder-button-shadowColor, 20%),
+        0px 2px 2px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 14%),
+        0px 1px 5px 0px fade(@bl-customComponent-screenRecorder-button-shadowColor, 12%);
+@bl-customComponent-screenRecorder-button-disabled-background: @bl-customComponent-screenRecorder-button-disabled;
+@bl-customComponent-screenRecorder-button-disabled-color: contrast(@bl-customComponent-screenRecorder-button-disabled-background);
+@bl-customComponent-screenRecorder-button-disabled-cursor: default;
+@bl-customComponent-screenRecorder-button-fontSize: 0.875rem;
+@bl-customComponent-screenRecorder-button-borderStyle: solid;
+@bl-customComponent-screenRecorder-button-borderWidth: 0px;
+@bl-customComponent-screenRecorder-button-height: 36px;
+@bl-customComponent-screenRecorder-button-margin: 0 5px;
+@bl-customComponent-screenRecorder-button-color: #fff;
+@bl-customComponent-screenRecorder-button-cursor: pointer;
+
+.bl-customComponent-screenRecorder {
+  margin: 0 auto;
+
+  .screenRecorder-video {
+    width: 100%;
+    height: 100%;
+    background: @bl-customComponent-screenRecorder-video-background;
+  }
+
+  .screenRecorder-controls {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px
+  }
+
+  .screenRecorder-control-button {
+    cursor: @bl-customComponent-screenRecorder-button-cursor;
+    background: @bl-customComponent-screenRecorder-button-background;
+    border-radius: @bl-customComponent-screenRecorder-button-borderRadius;
+    border-width: @bl-customComponent-screenRecorder-button-borderWidth;
+    border-style: @bl-customComponent-screenRecorder-button-borderStyle;
+    box-shadow: @bl-customComponent-screenRecorder-button-shadow;
+    height: @bl-customComponent-screenRecorder-button-height;
+    color: @bl-customComponent-screenRecorder-button-color;
+    font-size: @bl-customComponent-screenRecorder-button-fontSize;
+    margin: @bl-customComponent-screenRecorder-button-margin;
+
+    &:disabled {
+      background: @bl-customComponent-screenRecorder-button-disabled-background;
+      color: @bl-customComponent-screenRecorder-button-disabled-color;
+      cursor: @bl-customComponent-screenRecorder-button-disabled-cursor;
+    }
+
+    &:hover:enabled {
+      box-shadow: @bl-customComponent-screenRecorder-button-shadowHover;
+    }
+  }
+}
