@@ -36,7 +36,8 @@
           "label": "Collapse Left"
         }
       ],
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to choose a variant of transition"
     },
     {
       "type": "number",
@@ -44,7 +45,8 @@
       "label": "Duration (ms)",
       "showInSettings": true,
       "defaultValue": "300",
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine duration of transition (ms)"
     },
     {
       "type": "checkbox",
@@ -52,7 +54,8 @@
       "label": "Dynamic Content",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "dynamicContentLogic"
+      "handlerId": "dynamicContentLogic",
+      "settingTooltip": "Enable if your content is dynamic. See the component's documentation for details"
     }
   ],
   "eventHandlers": [
