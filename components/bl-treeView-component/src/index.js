@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+
+import { treeItemsValidator } from './helpers';
 import { Branch } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -17,7 +19,7 @@ export default function TreeView({ component, eventHandlers }) {
   const prepareTree = useCallback(treeItems => {
     let levelOfNesting = 0;
 
-    const prepare = (treeItems) => {
+    const prepare = treeItems => {
       const validTreeItems = treeItems.map(item => {
         let validItem = { ...item, levelOfNesting };
 
@@ -25,7 +27,7 @@ export default function TreeView({ component, eventHandlers }) {
           levelOfNesting++;
           validItem = {
             ...validItem,
-            children: prepare(item.children)
+            children: prepare(item.children),
           };
 
           setParentItems(state => [...state, { value: item.value, isOpen: false }]);
@@ -43,13 +45,7 @@ export default function TreeView({ component, eventHandlers }) {
   }, []);
 
   useEffect(() => {
-    const [detected, locate] = isCyclic(treeItems);
-
-    if (detected) {
-      throw new Error('treeItems have cycling object in ' + locate);
-    }
-
-    if (treeItems) {
+    if (treeItemsValidator(treeItems)) {
       setItemsTree(prepareTree(treeItems));
     }
   }, [treeItems]);
@@ -82,45 +78,4 @@ export default function TreeView({ component, eventHandlers }) {
       />
     </div>
   );
-}
-
-function isCyclic(obj) {
-  const keys = [];
-  const stack = [];
-  const stackSet = new Set();
-  let detected = false;
-  let locate;
-
-  function detect(obj, key) {
-    if (obj && typeof obj != 'object') {
-      return;
-    }
-
-    if (stackSet.has(obj)) {
-      locate = keys.join('.') + '.' + key;
-      detected = true;
-
-      return;
-    }
-
-    keys.push(key);
-    stack.push(obj);
-    stackSet.add(obj);
-
-    for (const k in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, k)) {
-        detect(obj[k], k);
-      }
-    }
-
-    keys.pop();
-    stack.pop();
-    stackSet.delete(obj);
-
-    return;
-  }
-
-  detect(obj, 'obj');
-
-  return [detected, locate];
 }
