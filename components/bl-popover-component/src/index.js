@@ -1,45 +1,30 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
+import { useMouseEvents } from './helpers';
 import { Tooltip } from './Tooltip';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function Popover({ component, eventHandlers, pods }) {
-  const { display, style, classList, position, delayMouseOver, delayMouseOut } = component;
-  const { onTargetClick, onMouseOut, onMouseOver, onClickOutside } = eventHandlers;
+  const { display, style, classList, position, delayMouseOver, delayMouseOut, zIndex } = component;
+  const { onTargetClick, onMouseOver, onMouseOut } = eventHandlers;
 
   const rootRef = useRef();
+  const tooltipRef = useRoot();
+  const targetRef = useRef();
 
   const popoverTarget = pods['popoverTarget'];
   const popoverContent = pods['popoverContent'];
 
   const [isOpen, setIsOpen] = useState(false);
-  const targetRef = useRef();
 
-  const mouseEnterTimeout = useRef(null);
-  const mouseLeaveTimeout = useRef(null);
+  useEffect(() => {
+    tooltipRef.style.zIndex = zIndex;
+  }, [zIndex]);
 
   component.setIsOpen = setIsOpen;
 
-  useClickOutside(rootRef, onClickOutside, isOpen);
-
-  const onMouseEnter = () => {
-    if (mouseEnterTimeout.current) {
-      clearTimeout(mouseEnterTimeout.current);
-      clearTimeout(mouseLeaveTimeout.current);
-    }
-
-    mouseEnterTimeout.current = setTimeout(() => onMouseOver({ isOpen }), delayMouseOver);
-  };
-
-  const onMouseLeave = () => {
-    if (mouseLeaveTimeout.current) {
-      clearTimeout(mouseLeaveTimeout.current);
-      clearTimeout(mouseEnterTimeout.current);
-    }
-
-    mouseLeaveTimeout.current = (setTimeout(() => onMouseOut({ isOpen }), delayMouseOut));
-  };
+  useMouseEvents(tooltipRef, targetRef, onMouseOver, onMouseOut, isOpen, delayMouseOver, delayMouseOut);
 
   if (!display) {
     return null;
@@ -50,36 +35,25 @@ export default function Popover({ component, eventHandlers, pods }) {
       <div
         ref={ targetRef }
         className="content-container"
-        onClick={ () => onTargetClick({ isOpen }) }
-        onMouseEnter={ onMouseEnter }
-        onMouseLeave={ onMouseLeave }>
+        onClick={ () => onTargetClick({ isOpen }) }>
         { popoverTarget.render() }
-
-        { isOpen && (
-          <Tooltip
-            targetRef={ targetRef.current }
-            position={ position }
-            popoverContent={ popoverContent }
-          />
-        ) }
       </div>
+      { isOpen && (
+        <Tooltip
+          root={ tooltipRef }
+          targetRef={ targetRef.current }
+          position={ position }
+          popoverContent={ popoverContent }
+          eventHandlers={ eventHandlers }
+        />
+      ) }
     </div>
   );
 }
 
-const useClickOutside = (ref, onClickOutside, isOpen) => {
-  useEffect(() => {
-    const handleClickOutside = event => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        onClickOutside({ isOpen });
-      }
-    };
+const useRoot = () => useMemo(() => {
+  const root = document.createElement('div');
+  root.className = ('bl-customComponent-popover popover');
 
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref, isOpen]);
-};
-
+  return root;
+}, []);

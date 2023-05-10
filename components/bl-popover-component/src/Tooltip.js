@@ -1,18 +1,28 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { translatePopover } from './helpers';
 
-export function Tooltip({ targetRef, position, popoverContent }) {
+export function Tooltip({ root, targetRef, position, popoverContent, eventHandlers }) {
   const [validPosition, setValidPosition] = useState(position);
-  const [style, setStyle] = useState({ opacity: 0 });
-  const root = useRef();
+  const { onClickOutside } = eventHandlers;
+
+  useEffect(() => {
+    document.body.appendChild(root);
+
+    return () => {
+      document.body.removeChild(root);
+    };
+  }, []);
 
   const translateHandler = useCallback(() => {
-    if (targetRef && root.current) {
-      const { style, newPosition } = translatePopover(targetRef, root.current, position);
+    root.style.transform = 'translate3d(0px, 0px, 0px)';
+
+    if (targetRef) {
+      const { leftShift, topShift, newPosition } = translatePopover(targetRef, root, position);
 
       setValidPosition(newPosition);
-      setStyle({ ...style, opacity: 1 });
+
+      root.style.transform = `translate3d(${ leftShift }px, ${ topShift }px, 0px)`;
     }
   }, [position, targetRef]);
 
@@ -24,10 +34,29 @@ export function Tooltip({ targetRef, position, popoverContent }) {
     return () => window.removeEventListener('resize', translateHandler, false);
   }, [translateHandler]);
 
-  return (
-    <div ref={ root } className="bl-customComponent-popover popover" style={ style }>
+  useClickOutside(root, targetRef, onClickOutside);
+
+  return ReactDOM.createPortal(
+    <>
       <div className={ `popover-arrow popover-arrow--${ validPosition }` }></div>
       { popoverContent.render() }
-    </div>
+    </>,
+    root
   );
 }
+
+const useClickOutside = (ref, targetRef, onClickOutside) => {
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (ref && !(ref.contains(event.target) || targetRef.contains(event.target))) {
+        onClickOutside({ isOpen: true });
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, targetRef]);
+};

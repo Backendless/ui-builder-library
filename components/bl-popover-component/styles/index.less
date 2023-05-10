@@ -1,6 +1,4 @@
-@bl-customComponent-popover-z-index: 1;
 @bl-customComponent-popover-border-width: 1px;
-@bl-customComponent-popover-min-width: 250px;
 @bl-customComponent-popover-max-width: 276px;
 @bl-customComponent-popover-arrow-size: 10px;
 
@@ -13,14 +11,11 @@
 .bl-customComponent-popover {
   .content-container {
     display: inline-block;
-    position: relative;
   }
 
   &.popover {
     position: absolute;
-    z-index: @bl-customComponent-popover-z-index;
     max-width: @bl-customComponent-popover-max-width;
-    min-width: @bl-customComponent-popover-min-width;
 
     background-color: @bl-customComponent-popover-background-color;
     background-clip: padding-box;
