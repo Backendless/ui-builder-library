@@ -119,7 +119,7 @@ export const useMouseEvents = (tooltip, targetRef, onMouseOver, onMouseOut, isOp
     clearTimeout(targetMouseLeaveTimeout.current);
     clearTimeout(targetMouseEnterTimeout.current);
 
-    timeout.current = (setTimeout(() => onMouseOut({ isOpen }), delayMouseOut));
+    timeout.current = setTimeout(() => onMouseOut({ isOpen }), delayMouseOut);
   };
 
   useEffect(() => {
