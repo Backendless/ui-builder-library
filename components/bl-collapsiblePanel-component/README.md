@@ -1,16 +1,28 @@
 # Collapsible Panel
 
-Collapsible Panel is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). This component displays summary information and upon selecting the panel, it expands to display the full expansion panel.
+Collapsible Panel acts as a container for different elemenets that can be used in the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). By default, this component always loads in the nonexpanded state, and when it is clicked, the panel gets expanded. Once the panel is expanded it displays the content that must be set in the UI-Builder.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
+You can add any elements supported in the UI-Builder to the component by dragging-and-dropping them to the content area of the Collapsible Panel. Those elements can be text, images, and even other custom components. For instance, the example below contains two elements(**Text** and **Color Picker**) added to the Collapsible Panel:
+
+<p align="center">
+  <img src="./example-images/component_collapsible_panel_1.png" alt="preview_1" width="780"/>
+</p>
+
+As you can see, once the page is loaded and the panel is expanded, elements added to the container are visible and fully functional:
+
+<p align="center">
+  <img src="./example-images/component_collapsible_panel_2.png" alt="preview_2" width="780"/>
 </p>
 
 ## Properties
 
 | Property                        | Type   | Default value | Logic              | Data Binding | UI Setting | Description                                           |
 |---------------------------------|--------|---------------|--------------------|--------------|------------|-------------------------------------------------------|
-| Title <br> `title`              | *Text* | `Panel Title` | Title Logic        | YES          | YES        | The logic to determine the title of the panel.        |
+| Title <br> `title`              | *Text* | `Panel Title` | Title Logic        | YES          | YES        | Sets the title for the panel.        |
 
 ## Events
 
