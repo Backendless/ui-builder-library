@@ -14,11 +14,12 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 
 ## Events
 
-| Name             | Triggers                                                | Context Blocks |
-|------------------|---------------------------------------------------------|----------------|
-| On Mounted       | after the component is mounted and appeared on the page |                |
-| On Unmounted     | before the component is unmounted and destroyed         |                |
-| On End Animation | after the animation finishes                            |                |
+| Name               | Triggers                                                | Context Blocks |
+|--------------------|---------------------------------------------------------|----------------|
+| On Mounted         | after the component is mounted and appeared on the page |                |
+| On Unmounted       | before the component is unmounted and destroyed         |                |
+| On End Animation   | after the animation finishes                            |                |
+| On Start Animation | when the animation started                              |                |
 
 ## Actions
 | Action                             | Inputs | Returns |

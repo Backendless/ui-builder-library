@@ -6,11 +6,12 @@ The component allows you to render a popup window in your UI-Builder application
 
 ## Properties
 
-| Property                           | Type                                                            | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
-|------------------------------------|-----------------------------------------------------------------|---------------|----------------|--------------|------------|------------------------------------------------------------------------|
-| Position:`position`                | Select [Top:`top`, Right:`right`, Bottom:`bottom`, Left:`left`] | Top:`top`     | Position Logic | NO           | YES        | Allows to determine the position of the popover relative to the button |
-| Delay Mouse Over: `delayMouseOver` | Number                                                          | 0             |                | NO           | YES        | Allows to determine the delay for On Mouse Over event                  |
-| Delay Mouse Out: `delayMouseOut`   | Number                                                          | 0             |                | NO           | YES        | Allows to determine the delay for On Mouse Out event                   |
+| Property                          | Type                                                            | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
+|-----------------------------------|-----------------------------------------------------------------|---------------|----------------|--------------|------------|------------------------------------------------------------------------|
+| Position:`position`               | Select [Top:`top`, Right:`right`, Bottom:`bottom`, Left:`left`] | Top:`top`     | Position Logic | NO           | YES        | Allows to determine the position of the popover relative to the button |
+| Delay Mouse Over:`delayMouseOver` | Number                                                          | 0             |                | NO           | YES        | Allows to determine the delay for On Mouse Over event                  |
+| Delay Mouse Out:`delayMouseOut`   | Number                                                          | 0             |                | NO           | YES        | Allows to determine the delay for On Mouse Out event                   |
+| Z Index:`zIndex`                  | Number                                                          | 1             | Z Index Logic  | YES          | YES        | Allows to determine the z-index style for popover                      |
 
 ## Events
 
@@ -31,9 +32,7 @@ The component allows you to render a popup window in your UI-Builder application
 
 **Dimensions**
 ```
-@bl-customComponent-popover-z-index: 1;
 @bl-customComponent-popover-border-width: 1px;
-@bl-customComponent-popover-min-width: 250px;
 @bl-customComponent-popover-max-width: 276px;
 @bl-customComponent-popover-arrow-size: 10px;
 ```

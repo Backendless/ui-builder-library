@@ -17,7 +17,7 @@ export default function Transitions({ component, eventHandlers, pods }) {
   const { variants, display, duration, dynamicContent } = component;
   const { onEndAnimation } = eventHandlers;
 
-  const [isContentLoaded, setIsContentLoaded] = useState(dynamicContent);
+  const [isContentLoaded, setIsContentLoaded] = useState(!dynamicContent);
 
   const transitionsContainerPod = pods['transitionsContainer'];
   const Transitions = transitionsViews[variants];
@@ -36,6 +36,7 @@ export default function Transitions({ component, eventHandlers, pods }) {
       eventHandlers={ eventHandlers }
       transitionsContainerPod={ transitionsContainerPod }
       display={ display }
+      dynamicContent={ dynamicContent }
       isContentLoaded={ isContentLoaded }
     />
   );
