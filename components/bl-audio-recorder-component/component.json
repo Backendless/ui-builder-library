@@ -177,7 +177,7 @@
       ]
     },
     {
-      "name": "onState",
+      "name": "onStateChange",
       "output": false,
       "label": "On State Change",
       "contextBlocks": [

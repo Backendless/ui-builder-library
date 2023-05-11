@@ -29,7 +29,7 @@ Audio Recorder is a component of Backendless UI-Builder designer. This allows re
 | On Start Recording | When the recording is started             |                                                                                                    |
 | On Stop Recording  | When the recording is stopped             |                                                                                                    |
 | On Download File   | When the recorded file starts downloading | [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) File: `{size: Number, type: String}` |
-| On State           | When the recorder state is changed.       | State: `String`                                                                                    |
+| On State Change    | When the recorder state is changed.       | State: `String`                                                                                    |
 
 ## Actions
 

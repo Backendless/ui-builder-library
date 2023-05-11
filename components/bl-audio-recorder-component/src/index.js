@@ -9,7 +9,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     player, controls, noise, fileName, fileType, width, startText, stopText, downloadText, pauseText, resumeText,
     display, style, classList,
   } = component;
-  const { onStart, onStop, onDownload, onState } = eventHandlers;
+  const { onStart, onStop, onDownload, onStateChange } = eventHandlers;
 
   const audioRef = useRef();
   const recorderRef = useRef();
@@ -30,7 +30,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   useEffect(() => {
     if (state) {
-      onState({ state });
+      onStateChange({ state });
     }
   }, [state]);
 
