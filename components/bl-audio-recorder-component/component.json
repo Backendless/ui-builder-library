@@ -1,0 +1,216 @@
+{
+  "id": "c_5fb4fc55206a78a530c50f6ea9aba4f8",
+  "name": "Audio Recorder",
+  "description": "This component allows recording audio from the user's microphone and using the recorded file.",
+  "showInToolbox": true,
+  "faIcon": "microphone",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "player",
+      "label": "Show Player",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "playerLogic",
+      "handlerLabel": "Show PLayer Logic",
+      "handlerDescription": "This is a handler to control audio player visibility.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "controls",
+      "label": "Show Controls",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "controlsLogic",
+      "handlerLabel": "Show Controls Logic",
+      "handlerDescription": "This handler allows to show or hide control buttons.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "noise",
+      "label": "Noise Suppression",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "noiseLogic"
+    },
+    {
+      "type": "text",
+      "name": "fileName",
+      "label": "File Name",
+      "showInSettings": true,
+      "defaultValue": "Recorded Audio",
+      "hasLogicHandler": true,
+      "handlerId": "fileNameLogic",
+      "handlerLabel": "File Name Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to control the name of the downloaded file."
+    },
+    {
+      "type": "select",
+      "name": "fileType",
+      "label": "File Type",
+      "showInSettings": true,
+      "defaultValue": "WEBM",
+      "hasLogicHandler": false,
+      "handlerId": "fileTypeLogic",
+      "options": [
+        {
+          "value": "WEBM",
+          "label": "webm"
+        },
+        {
+          "value": "WAV",
+          "label": "wav"
+        },
+        {
+          "value": "MPEG",
+          "label": "mpeg"
+        },
+        {
+          "value": "MP4",
+          "label": "mp4"
+        },
+        {
+          "value": "OGG",
+          "label": "ogg"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "380px",
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic"
+    },
+    {
+      "type": "text",
+      "name": "startText",
+      "label": "Start Record Button Text",
+      "showInSettings": true,
+      "defaultValue": "Start Record",
+      "hasLogicHandler": true,
+      "handlerId": "startTextLogic",
+      "handlerLabel": "Start Button Text Logic",
+      "handlerDescription": "This is a handler that controls the Start Button Text.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "stopText",
+      "label": "Stop Record Button Text",
+      "showInSettings": true,
+      "defaultValue": "Stop Record",
+      "hasLogicHandler": true,
+      "handlerId": "stopTextLogic",
+      "handlerLabel": "Stop Button Text Logic",
+      "handlerDescription": "This is a handler that controls the Stop Button Text.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "downloadText",
+      "label": "Download Button Text",
+      "showInSettings": true,
+      "defaultValue": "Download Recorded",
+      "hasLogicHandler": true,
+      "handlerId": "downloadTextLogic",
+      "handlerLabel": "Download Button Text Logic",
+      "handlerDescription": "This is a handler that controls the Download Button Text.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "pauseText",
+      "label": "Pause Button Text",
+      "showInSettings": true,
+      "defaultValue": "Pause",
+      "hasLogicHandler": true,
+      "handlerId": "pauseTextLogic",
+      "handlerLabel": "Pause Button Text Logic",
+      "handlerDescription": "This is a handler that controls the Pause Button Text when recording.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "resumeText",
+      "label": "Resume Button Text",
+      "showInSettings": true,
+      "defaultValue": "Resume",
+      "hasLogicHandler": true,
+      "handlerId": "resumeTextLogic",
+      "handlerLabel": "Resume Button Text Logic",
+      "handlerDescription": "This is a handler that controls the Resume Button Text when recording is paused.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onStart",
+      "label": "On Start Recording",
+      "handlerDescription": "The event is fired when the recording is started."
+    },
+    {
+      "name": "onStop",
+      "label": "On Stop Recording",
+      "handlerDescription": "The event is fired when the recording is stopped."
+    },
+    {
+      "name": "onDownload",
+      "label": "On Download File",
+      "handlerDescription": "The event is fired when the recorded file starts downloading.",
+      "contextBlocks": [
+        {
+          "id": "blob",
+          "label": "Blob File"
+        }
+      ]
+    },
+    {
+      "name": "onStateChange",
+      "output": false,
+      "label": "On State Change",
+      "contextBlocks": [
+        {
+          "id": "state",
+          "label": "State"
+        }
+      ],
+      "handlerDescription": "The event is fired when the recorder state is changed."
+    }
+  ],
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start record of"
+    },
+    {
+      "id": "stop",
+      "label": "Stop record of"
+    },
+    {
+      "id": "downloadFile",
+      "label": "Download recorded file of"
+    },
+    {
+      "id": "getBlob",
+      "label": "Get Blob of",
+      "hasReturn": true
+    },
+    {
+      "id": "pause",
+      "label": "Pause/Resume of "
+    }
+  ],
+  "pods": {}
+}
