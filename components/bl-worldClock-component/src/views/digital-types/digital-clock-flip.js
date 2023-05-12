@@ -19,49 +19,49 @@ const FOLD = 'fold';
 const UNFOLD = 'unfold';
 
 export function DigitalClockFlip({ time, displaySeconds }) {
-  const { hour, minute, second, isAmpm, ampm } = time;
-
-  const [state, setState] = useObjectState({
-    hour, minute, second, ampm,
-    hourShuffle  : true,
+  const [{
+    hour, minute, second, ampm, hourShuffle, minuteShuffle, secondShuffle, ampmShuffle,
+  }, setState] = useObjectState({
+    ...time,
+    hourShuffle: true,
     minuteShuffle: true,
     secondShuffle: true,
-    ampmShuffle  : true,
+    ampmShuffle: true,
   });
 
   useEffect(() => {
-    if (hour !== state.hour) {
-      setState({ hour, hourShuffle: !state.hourShuffle });
+    if (time.hour !== hour) {
+      setState({ hour: time.hour, hourShuffle: !hourShuffle });
     }
 
-    if (minute !== state.minute) {
-      setState({ minute, minuteShuffle: !state.minuteShuffle });
+    if (time.minute !== minute) {
+      setState({ minute: time.minute, minuteShuffle: !minuteShuffle });
     }
 
-    if (second !== state.second) {
-      setState({ second, secondShuffle: !state.secondShuffle });
+    if (time.second !== second) {
+      setState({ second: time.second, secondShuffle: !secondShuffle });
     }
 
-    if (ampm !== state.ampm) {
-      setState({ ampm, ampmShuffle: !state.ampmShuffle });
+    if (time.ampm !== ampm) {
+      setState({ ampm: time.ampm, ampmShuffle: !ampmShuffle });
     }
-  }, [hour, minute, second, ampm]);
+  }, [time]);
 
   return (
     <div className="flip-clock">
-      <FlipUnitContainer unit="hour" digit={ state.hour } shuffle={ state.hourShuffle }/>
+      <FlipUnitContainer unit="hour" digit={ hour } shuffle={ hourShuffle }/>
       <Semicolon/>
-      <FlipUnitContainer unit="minute" digit={ state.minute } shuffle={ state.minuteShuffle }/>
+      <FlipUnitContainer unit="minute" digit={ minute } shuffle={ minuteShuffle }/>
 
       { displaySeconds && (
         <>
           <Semicolon/>
-          <FlipUnitContainer unit="second" digit={ state.second } shuffle={ state.secondShuffle }/>
+          <FlipUnitContainer unit="second" digit={ second } shuffle={ secondShuffle }/>
         </>
       ) }
 
-      { isAmpm && (
-        <FlipUnitContainer unit="ampm" digit={ state.ampm } shuffle={ state.ampmShuffle }/>
+      { time.isAmpm && (
+        <FlipUnitContainer unit="ampm" digit={ ampm } shuffle={ ampmShuffle }/>
       ) }
     </div>
   );

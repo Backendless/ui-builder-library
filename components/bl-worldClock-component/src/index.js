@@ -37,15 +37,15 @@ export default function WorldClockComponent({ component, elRef, eventHandlers })
     const timerID = setInterval(() => {
       const newTime = getTimeData(timezone, timeFormat);
 
-      if (onSecondChange.hasLogic && newTime.second !== time.second) {
+      if (newTime.second !== time.second) {
         onSecondChange({ timeData: newTime });
       }
 
-      if (onMinuteChange.hasLogic && newTime.minute !== time.minute) {
+      if (newTime.minute !== time.minute) {
         onMinuteChange({ timeData: newTime });
       }
 
-      if (onHourChange.hasLogic && newTime.hour !== time.hour) {
+      if (newTime.hour !== time.hour) {
         onHourChange({ timeData: newTime });
       }
 

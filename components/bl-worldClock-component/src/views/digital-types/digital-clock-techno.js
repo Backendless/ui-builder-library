@@ -9,7 +9,7 @@ export function DigitalClockTechno({ time, displaySeconds }) {
     <div className="clock">
       <div className="calendar">
         { WEEKDAYS.map((value, index) => (
-          <Word key={ value } value={ value } highlighted={ index != weekday }/>
+          <Word key={ value } value={ value } dimmed={ index != weekday }/>
         )) }
       </div>
 
@@ -29,8 +29,8 @@ export function DigitalClockTechno({ time, displaySeconds }) {
 
         { isAmpm && (
           <div className="ampm">
-            <Word value="AM" highlighted={ isPM }/>
-            <Word value="PM" highlighted={ !isPM }/>
+            <Word value="AM" dimmed={ isPM }/>
+            <Word value="PM" dimmed={ !isPM }/>
           </div>
         ) }
       </div>
@@ -47,11 +47,11 @@ function Number({ value = '00' }) {
   );
 }
 
-function Word({ value, highlighted = false }) {
+function Word({ value, dimmed = false }) {
   return (
     <div className="digit">
       <p>{ value }</p>
-      <p style={{ visibility:  highlighted ? 'hidden' : 'visible' }}>{ value }</p>
+      <p style={{ visibility:  dimmed ? 'hidden' : 'visible' }}>{ value }</p>
     </div>
   );
 }

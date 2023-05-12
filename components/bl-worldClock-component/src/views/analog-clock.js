@@ -17,49 +17,48 @@ const AnalogClockViews = {
   [AnalogClockTypes.MODERN] : AnalogClockModern,
   [AnalogClockTypes.VINTAGE]: AnalogClockVintage,
 };
+const HOURS_LIST = [...Array(12).keys()];
 
 export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
   const { hour, minute, second } = time;
 
   const clockProps = useMemo(() => {
+    const props = {};
+
     if (clockStyle === AnalogClockTypes.CLASSIC) {
-      return {
-        date           : useDate(hour, minute, second),
-        secondHandColor: displaySeconds ? 'red' : 'transparent',
-      };
+      props.date = useDate(hour, minute, second);
+      props.secondHandColor = displaySeconds ? 'red' : 'transparent';
     } else {
-      return {
-        handStyle: useHandStyles(hour, minute, second, displaySeconds),
-      };
+      props.handStyle = useHandStyles(hour, minute, second, displaySeconds);
     }
-  },[clockStyle, hour, minute, second, displaySeconds]);
+
+    return props;
+  }, [clockStyle, hour, minute, second, displaySeconds]);
 
   const Clock = AnalogClockViews[clockStyle];
 
   return (
     <div className={ cn('analog', clockStyle) }>
-      <Clock clockProps={ clockProps }/>
+      <Clock { ...clockProps }/>
       <Label content={ label }/>
     </div>
   );
 }
 
-function AnalogClockClassic({ clockProps }) {
-  const { date, secondHandColor } = clockProps;
-
+function AnalogClockClassic({ date, secondHandColor }) {
   return <ClockClassic date={ date } secondHandColor={ secondHandColor }/>;
 }
 
-function AnalogClockGold({ clockProps }) {
-  return <ClockHands handStyle={ clockProps.handStyle } markersVisible={ true } markersFull={ true }/>;
+function AnalogClockGold({ handStyle }) {
+  return <ClockHands handStyle={ handStyle } markersVisible markersFull/>;
 }
 
-function AnalogClockModern({ clockProps }) {
-  return <ClockHands handStyle={ clockProps.handStyle } markersVisible={ true }/>;
+function AnalogClockModern({ handStyle }) {
+  return <ClockHands handStyle={ handStyle } markersVisible/>;
 }
 
-function AnalogClockVintage({ clockProps }) {
-  return <ClockHands handStyle={ clockProps.handStyle }/>;
+function AnalogClockVintage({ handStyle }) {
+  return <ClockHands handStyle={ handStyle }/>;
 }
 
 function ClockHands({ handStyle, markersVisible, markersFull }) {
@@ -79,28 +78,32 @@ function ClockHands({ handStyle, markersVisible, markersFull }) {
 }
 
 function Markers({ markersFull=false }) {
-  if (markersFull) {
+  const renderedMarkers = useMemo(() => {
+    if (markersFull) {
+      return (
+        HOURS_LIST.map(i => {
+          const rotation = -60 + 30 * i;
+          const rotate = 60 - 30 * i;
+
+          return (
+            <div className="number" key={ i } style={{ '--rotation': `${ rotation }deg` }}>
+              <span className="number-content" style={{ transform: `rotate(${ rotate }deg)` }}>{ i + 1 }</span>
+            </div>
+          );
+      }));
+    }
+
     return (
-      [...Array(12).keys()].map(i => {
-        const rotation = -60 + 30 * i;
-        const rotate = 60 - 30 * i;
+      <>
+        <span className="clock-twelve"/>
+        <span className="clock-three"/>
+        <span className="clock-six"/>
+        <span className="clock-nine"/>
+      </>
+    );
+  }, [markersFull]);
 
-        return (
-          <div className="number" key={ i } style={{ '--rotation': `${ rotation }deg` }}>
-            <span className="number-content" style={{ transform: `rotate(${ rotate }deg)` }}>{ i + 1 }</span>
-          </div>
-        );
-    }));
-  }
-
-  return (
-    <>
-      <span className="clock-twelve"/>
-      <span className="clock-three"/>
-      <span className="clock-six"/>
-      <span className="clock-nine"/>
-    </>
-  );
+  return renderedMarkers;
 }
 
 function useDate(hour, minute, second) {
@@ -116,9 +119,9 @@ function useHandStyles(hours, minutes, seconds, displaySeconds) {
   const minuteDegree = minutes * 6 + seconds * 0.1;
   const secondDegree = seconds * 6;
 
-  const hour = { transform: `rotate(${ hourDegree }deg)` };
-  const minute = { transform: `rotate(${ minuteDegree }deg)` };
-  const second = { transform: `rotate(${ secondDegree }deg)` };
-
-  return { hour, minute, ...(displaySeconds && { second }) };
+  return {
+    hour  : { transform: `rotate(${ hourDegree }deg)` },
+    minute: { transform: `rotate(${ minuteDegree }deg)` },
+    second: displaySeconds ? { transform: `rotate(${ secondDegree }deg)` } : undefined,
+  };
 }
