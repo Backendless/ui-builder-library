@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 
+const { cn } = BackendlessUI.CSSUtils;
+
 export function Branch(props) {
   const { itemsTree, parentItems, gap, selectedItemId, handlerItemClick, openHandler } = props;
 

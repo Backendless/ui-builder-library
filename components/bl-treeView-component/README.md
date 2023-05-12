@@ -6,7 +6,7 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 
 | Property  | Type     | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                                                                             |
 |-----------|----------|---------------|------------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| treeItems | *JSON*   |               | Tree Items Logic | YES          | YES        | Allows to determine tree items. Signature of data: `[{ label: string, value: string, ?children: [{ label, value, ?children }] }]`. Watch [Codeless Examples](#Examples) |
+| treeItems | *JSON*   |               | Tree Items Logic | YES          | YES        | Allows to determine tree items. Signature of data: `[{ label: string, value: string, ?children: [{ label, value, ?children }] }]`. Watch [Codeless Examples](#examples) |
 | gap       | *Number* | 10            | Gap Logic        | YES          | YES        | Allows to determine gap for every nested element                                                                                                                        |
 
 ## Events
@@ -49,7 +49,7 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 @bl-customComponent-treeView-button-transition: background-color 0.3s;
 ```
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Addition of files and folders in tree items:
 
