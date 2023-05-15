@@ -77,7 +77,8 @@
           "value": "codabar",
           "label": "Codabar"
         }
-      ]
+      ],
+      "settingTooltip": "Select which barcode type to use."
     },
     {
       "type": "text",
@@ -89,7 +90,8 @@
       "handlerLabel": "Value Logic",
       "handlerDescription": "This handler can contain logic to determine the source Data for the Barcode.",
       "defaultValue": "Example 1234",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Define barcode value."
     },
     {
       "type": "checkbox",
@@ -98,7 +100,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "valueVisibilityLogic"
+      "handlerId": "valueVisibilityLogic",
+      "settingTooltip": "Select to display the barcode value."
     },
     {
       "type": "color",
@@ -107,7 +110,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "lineColorLogic",
-      "defaultValue": "#000000"
+      "defaultValue": "#000000",
+      "settingTooltip": "Set the color of the bars and the text."
     },
     {
       "type": "color",
@@ -118,7 +122,8 @@
       "handlerId": "backgroundLogic",
       "defaultValue": "#ffffff",
       "handlerLabel": "Background Logic",
-      "handlerDescription": "This is a handler for the logic to determine the background of the barcode."
+      "handlerDescription": "This is a handler for the logic to determine the background of the barcode.",
+      "settingTooltip": "Set the background of the barcode."
     },
     {
       "type": "range",
@@ -130,7 +135,8 @@
       "handlerId": "barWidthLogic",
       "min": "1",
       "max": "4",
-      "step": "1"
+      "step": "1",
+      "settingTooltip": "The width of a single bar."
     },
     {
       "type": "range",
@@ -142,7 +148,8 @@
       "handlerId": "heightLogic",
       "min": "10",
       "max": "150",
-      "step": "5"
+      "step": "5",
+      "settingTooltip": "The height of the barcode."
     },
     {
       "type": "range",
@@ -154,7 +161,8 @@
       "handlerId": "marginLogic",
       "min": "0",
       "max": "25",
-      "step": "1"
+      "step": "1",
+      "settingTooltip": "Set the space margin around the barcode."
     },
     {
       "type": "select",
@@ -185,7 +193,8 @@
           "value": "cursive",
           "label": "Cursive"
         }
-      ]
+      ],
+      "settingTooltip": "Define the font used for the text in the generated barcode."
     },
     {
       "type": "range",
@@ -197,7 +206,8 @@
       "handlerId": "fontSizeLogic",
       "min": "8",
       "max": "36",
-      "step": "1"
+      "step": "1",
+      "settingTooltip": "Set the size of the text."
     },
     {
       "type": "select",
@@ -224,7 +234,8 @@
           "value": "boldItalic",
           "label": "Bold & Italic"
         }
-      ]
+      ],
+      "settingTooltip": "Add bold or italic text to the barcode."
     },
     {
       "type": "text",
@@ -234,7 +245,8 @@
       "hasLogicHandler": true,
       "handlerId": "labelLogic",
       "handlerLabel": "Label Logic",
-      "handlerDescription": "This is a handler for the logic to determine the label to be displayed instead of a value."
+      "handlerDescription": "This is a handler for the logic to determine the label to be displayed instead of a value.",
+      "settingTooltip": "Override the text that is displayed."
     },
     {
       "type": "select",
@@ -257,7 +269,8 @@
           "value": "right",
           "label": "Right"
         }
-      ]
+      ],
+      "settingTooltip": "Set the horizontal alignment of the text."
     },
     {
       "type": "select",
@@ -276,7 +289,8 @@
           "value": "bottom",
           "label": "Bottom"
         }
-      ]
+      ],
+      "settingTooltip": "Set the vertical position of the text."
     },
     {
       "type": "range",
@@ -288,7 +302,8 @@
       "handlerId": "labelMarginLogic",
       "min": "-15",
       "max": "40",
-      "step": "1"
+      "step": "1",
+      "settingTooltip": "Set the space between the barcode and the text."
     }
   ],
   "eventHandlers": [
