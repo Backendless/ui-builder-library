@@ -32,7 +32,7 @@ export default function BarcodeComponent({ component, eventHandlers, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-barcode', classList) } style={ style }>
-      <img
+      <svg
         ref={ barcodeRef }
         onClick={ event => onClick({ event }) }
         onMouseOver={ event => onMouseOver({ event }) }
