@@ -4,10 +4,10 @@ Tree View is a component of the Backendless [UI-Builder](https://backendless.com
 
 ## Properties
 
-| Property  | Type     | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                            |
-|-----------|----------|---------------|------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------|
-| treeItems | *JSON*   |               | Tree Items Logic | YES          | YES        | Allows to determine tree items. Signature of data: `[{label, value, ?children}]`. Watch [Codeless Examples](#examples) |
-| gap       | *Number* | 10            | Gap Logic        | YES          | YES        | Allows to determine gap for every nested element                                                                       |
+| Property  | Type     | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                                                                             |
+|-----------|----------|---------------|------------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| treeItems | *JSON*   |               | Tree Items Logic | YES          | YES        | Allows to determine tree items. Signature of data: `[{ label: string, value: string, ?children: [{ label, value, ?children }] }]`. Watch [Codeless Examples](#examples) |
+| gap       | *Number* | 10            | Gap Logic        | YES          | YES        | Allows to determine gap for every nested element                                                                                                                        |
 
 ## Events
 
