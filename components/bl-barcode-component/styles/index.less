@@ -5,7 +5,11 @@
   display: flex;
   width: @bl-customComponent-barcode-width;
 
-  img {
+  svg {
     width: @bl-customComponent-barcode-image-width;
+
+    rect, text {
+      pointer-events: none;
+    }
   }
 }
