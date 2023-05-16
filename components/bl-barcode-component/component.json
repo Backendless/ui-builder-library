@@ -300,8 +300,8 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "labelMarginLogic",
-      "min": "-15",
-      "max": "40",
+      "min": "0",
+      "max": "25",
       "step": "1",
       "settingTooltip": "Set the space between the barcode and the text."
     }
