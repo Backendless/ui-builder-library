@@ -45,7 +45,10 @@ export const useResizeObserver = (element, dimensionName, dimension, setDimensio
   return setIsAuto;
 };
 
-export const useTransition = (rootRef, display, duration, dimension, dimensionName, setIsAuto, onEndAnimation) => {
+export const useTransition = (
+  rootRef, display, duration, initDimension,
+  dimension, dimensionName, setIsAuto, onEndAnimation
+) => {
   const [isTransition, setIsTransition] = useState(false);
 
   const openTimeout = useRef(null);
@@ -64,7 +67,7 @@ export const useTransition = (rootRef, display, duration, dimension, dimensionNa
 
         openTimeout.current = setTimeout(() => {
           setIsTransition(false);
-          rootRef.current.style[dimensionName] = 'auto';
+          rootRef.current.style[dimensionName] = initDimension;
           setIsAuto(true);
 
           onEndAnimation();
@@ -88,7 +91,7 @@ export const useTransition = (rootRef, display, duration, dimension, dimensionNa
       clearTimeout(openTimeout.current);
       clearTimeout(zeroDimensionTimeout.current);
     };
-  }, [dimension, display, duration, rootRef]);
+  }, [dimension, initDimension, display, duration, rootRef]);
 
   return isTransition;
 };

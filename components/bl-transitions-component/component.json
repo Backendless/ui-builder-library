@@ -55,7 +55,31 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "dynamicContentLogic",
-      "settingTooltip": "Enable if your content is dynamic. See the component's documentation for details"
+      "settingTooltip": "Allows you to determine the need to animate dynamic content"
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "auto",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine component width."
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "auto",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine component height."
     }
   ],
   "eventHandlers": [
