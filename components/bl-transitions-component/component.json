@@ -55,7 +55,7 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "dynamicContentLogic",
-      "settingTooltip": "Allows you to determine the need to animate dynamic content"
+      "settingTooltip": "Enable if your content is dynamic. See the component's documentation for details"
     },
     {
       "type": "text",
