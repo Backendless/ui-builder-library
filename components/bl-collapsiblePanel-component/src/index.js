@@ -2,11 +2,13 @@ import { useCallback, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const ONELINE = 'oneline';
+
 export default function CollapsiblePanelComponent({ component, elRef, eventHandlers, pods }) {
-  const { classList, style, display, title } = component;
+  const { classList, style, display, title, titleLayout, isExpanded } = component;
   const { onExpand, onCollapse } = eventHandlers;
 
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(isExpanded);
   const [withAnimation, setWithAnimation] = useState(false);
 
   const className = cn('bl-customComponent-collapsiblePanel', ...classList, {
@@ -15,16 +17,20 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
   });
 
   const showContent = useCallback(() => {
-    setExpanded(true);
-    setWithAnimation(true);
-    onExpand();
-  }, []);
+    if (!expanded) {
+      setExpanded(true);
+      setWithAnimation(true);
+      onExpand();
+    }
+  }, [expanded]);
 
   const hideContent = useCallback(() => {
-    setExpanded(false);
-    setWithAnimation(true);
-    onCollapse();
-  }, []);
+    if (expanded) {
+      setExpanded(false);
+      setWithAnimation(true);
+      onCollapse();
+    }
+  }, [expanded]);
 
   const togglePanel = useCallback(() => {
       expanded ? hideContent() : showContent();
@@ -39,7 +45,7 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   return (
     <div ref={ elRef } className={ className } style={ style }>
-      <PanelTitle title={ title } expanded={ expanded } onClick={ togglePanel } />
+      <PanelTitle title={ title } expanded={ expanded } onClick={ togglePanel } layout={ titleLayout } />
 
       <div className={ cn('panel-content', { 'close': !expanded }) }>
         { pods['panelContent'].render() }
@@ -48,10 +54,10 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
   );
 }
 
-function PanelTitle({ title, expanded, onClick }) {
+function PanelTitle({ title, layout, expanded, onClick }) {
   return (
     <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ onClick }>
-      <span className="panel-title-text">{ title }</span>
+      <span className={ cn('panel-title-text', layout === ONELINE ? 'oneline' : 'multiline' ) }>{ title }</span>
 
       <svg
         className="collapse-icon"

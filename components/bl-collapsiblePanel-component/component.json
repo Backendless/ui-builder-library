@@ -20,6 +20,35 @@
       "handlerLabel": "Title Logic",
       "handlerDescription": "This is a handler for the logic to determine the title of the panel.",
       "defaultValue": "Panel Title"
+    },
+    {
+      "type": "select",
+      "name": "titleLayout",
+      "label": "Title Layout",
+      "settingTooltip": "Title layout: 'oneline' for a single line without line breaks or 'multiline' for multiple lines with word wrapping.",
+      "showInSettings": true,
+      "defaultValue": "oneline",
+      "hasLogicHandler": false,
+      "handlerId": "titleLayoutLogic",
+      "options": [
+        {
+          "value": "oneline",
+          "label": "oneline"
+        },
+        {
+          "value": "multiline",
+          "label": "multiline"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "isExpanded",
+      "label": "Expanded",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "isExpandedLogic",
+      "settingTooltip": "Flag indicating whether the component is expanded or collapsed."
     }
   ],
   "eventHandlers": [

@@ -8,9 +8,11 @@ Collapsible Panel is the component that can be used in Backendless [UI-Builder](
 
 ## Properties
 
-| Property                        | Type   | Default value | Logic              | Data Binding | UI Setting | Description                                           |
-|---------------------------------|--------|---------------|--------------------|--------------|------------|-------------------------------------------------------|
-| Title <br> `title`              | *Text* | `Panel Title` | Title Logic        | YES          | YES        | The logic to determine the title of the panel.        |
+| Property                        | Type                                   | Default value | Logic       | Data Binding | UI Setting | Description                                              |
+|---------------------------------|----------------------------------------|---------------|-------------|--------------|------------|----------------------------------------------------------|
+| Title <br> `title`              | *Text*                                 | `Panel Title` | Title Logic | YES          | YES        | The logic to determine the title of the panel.           |
+| Title Layout <br> `titleLayout` | *Select* <br> [`oneline`, `multiline`] | `oneline`     |             | NO           | YES        | Controls the title layout.                               |
+| Expanded <br> `isExpanded`      | *Checkbox*                             | `false`       |             | NO           | YES        | Controls whether the component is expanded or collapsed. |
 
 ## Events
 
