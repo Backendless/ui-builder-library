@@ -21,31 +21,7 @@ export const useVisibility = (display, duration, onEndAnimation) => {
   return isOpen;
 };
 
-export const useResizeObserver = (element, dimensionName, dimension, setDimension) => {
-  const [isAuto, setIsAuto] = useState(false);
-
-  useEffect(() => {
-    if (!element) return;
-
-    const resizeObserver = new ResizeObserver(entries => {
-      if (isAuto) {
-        const currentDimension = entries[0].contentRect[dimensionName];
-
-        if (dimension !== currentDimension) {
-          setDimension(currentDimension);
-        }
-      }
-    });
-
-    resizeObserver.observe(element);
-
-    return () => resizeObserver.disconnect();
-  }, [isAuto, element, dimension, setDimension]);
-
-  return setIsAuto;
-};
-
-export const useTransition = (rootRef, display, duration, dimension, dimensionName, setIsAuto, onEndAnimation) => {
+export const useTransition = (rootRef, display, duration, initDimension, dimension, dimensionName, onEndAnimation) => {
   const [isTransition, setIsTransition] = useState(false);
 
   const openTimeout = useRef(null);
@@ -54,18 +30,12 @@ export const useTransition = (rootRef, display, duration, dimension, dimensionNa
   useEffect(() => {
     if (rootRef.current) {
       if (display && dimension) {
-        setTimeout(() => {
-          showElement(rootRef.current);
-
-          setIsTransition(true);
-
-          rootRef.current.style[dimensionName] = dimension + 'px';
-        }, 50);
+        setIsTransition(true);
 
         openTimeout.current = setTimeout(() => {
           setIsTransition(false);
-          rootRef.current.style[dimensionName] = 'auto';
-          setIsAuto(true);
+
+          rootRef.current.style[dimensionName] = initDimension;
 
           onEndAnimation();
         }, duration);
@@ -74,9 +44,6 @@ export const useTransition = (rootRef, display, duration, dimension, dimensionNa
         setIsTransition(true);
 
         clearTimeout(openTimeout.current);
-
-        setIsAuto(false);
-        rootRef.current.style[dimensionName] = dimension + 'px';
 
         zeroDimensionTimeout.current = setTimeout(() => {
           rootRef.current.style[dimensionName] = '0px';

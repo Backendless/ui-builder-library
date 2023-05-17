@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useImageLoad } from './helpers';
+import { showElement, useImageLoad } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -10,11 +10,18 @@ export const Others = props => {
   const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
 
   const [isTransition, setIsTransition] = useState(false);
+  const [element, setElement] = useState({ current: null });
 
   const rootRef = useRef();
   const endAnimationTimeout = useRef(null);
 
   const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
+
+  useEffect(() => {
+    if (rootRef.current && !element.current) {
+      setElement({ current: rootRef.current.firstElementChild });
+    }
+  }, [rootRef]);
 
   useEffect(() => {
     if (isContentLoaded && isImagesLoaded) {
@@ -45,17 +52,25 @@ export const Others = props => {
     }
   }, [isTransition]);
 
+  useEffect(() => {
+    if (element.current) {
+      element.current.classList.add('transition', variants);
+
+      if (display && isTransition) {
+        element.current.classList.add(variants + '--active');
+        element.current.style.transitionDuration = duration + 'ms';
+
+        showElement(rootRef.current);
+      } else {
+        element.current.classList.remove(variants + '--active');
+        element.current.style.transitionDuration = 0;
+      }
+    }
+  }, [element, variants, display, isTransition, duration]);
+
   return (
-    <div ref={ rootRef } className={ cn('bl-customComponent-transitions', classList) }>
-      <div
-        className={ getClassName(variants, display, isTransition) }
-        style={{ ...style, transitionDuration: duration + 'ms' }}>
-        { transitionsContainerPod.render() }
-      </div>
+    <div ref={ rootRef } className={ cn('bl-customComponent-transitions', variants, classList) } style={ style }>
+      { transitionsContainerPod.render() }
     </div>
   );
 };
-
-const getClassName = (variants, display, isTransition) => (
-  cn('transition', variants, { [variants + '--active']: display && isTransition })
-);
