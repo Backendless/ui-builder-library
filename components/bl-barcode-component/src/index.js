@@ -52,7 +52,7 @@ function useBarcodeLibrary(component, barcodeRef) {
     width       : barWidth,
     text        : label,
     textAlign   : labelAlign,
-    textPosition: labelPosition,
+    textPosition: valueVisibility && labelPosition,
     textMargin  : labelMargin,
     displayValue: valueVisibility,
     fontOptions : FontOptionsMap[fontOptions],
