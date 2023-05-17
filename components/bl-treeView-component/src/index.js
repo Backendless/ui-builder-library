@@ -4,6 +4,7 @@ import { treeItemsValidator } from './helpers';
 import { Branch } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
+const { short } = BackendlessUI.UUID;
 
 export default function TreeView({ component, eventHandlers }) {
   const { display, style, classList, treeItems, gap } = component;
@@ -21,7 +22,7 @@ export default function TreeView({ component, eventHandlers }) {
 
     const prepare = treeItems => {
       const validTreeItems = treeItems.map(item => {
-        let validItem = { ...item, levelOfNesting };
+        let validItem = { ...item, levelOfNesting, id: short() };
 
         if (item.children) {
           levelOfNesting++;
@@ -30,7 +31,7 @@ export default function TreeView({ component, eventHandlers }) {
             children: prepare(item.children),
           };
 
-          setParentItems(state => [...state, { value: item.value, isOpen: false }]);
+          setParentItems(state => [...state, { value: item.value, isOpen: false, id: validItem.id }]);
         }
 
         return validItem;
@@ -50,16 +51,16 @@ export default function TreeView({ component, eventHandlers }) {
     }
   }, [treeItems]);
 
-  const openHandler = useCallback((value, label) => {
+  const openHandler = useCallback((id, value, label) => {
     setParentItems(state => state.map(item => (
-      item.value === value ? { ...item, isOpen: !item.isOpen } : item
+      item.id === id ? { ...item, isOpen: !item.isOpen } : item
     )));
-    handlerItemClick(value, label);
+    handlerItemClick(id, value, label);
   }, []);
 
-  const handlerItemClick = useCallback((value, label) => {
+  const handlerItemClick = useCallback((id, value, label) => {
     onClick({ label, value });
-    setSelectedItemId(value);
+    setSelectedItemId(id);
   }, []);
 
   if (!display) {
