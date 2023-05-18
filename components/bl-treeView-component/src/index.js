@@ -4,7 +4,6 @@ import { treeItemsValidator } from './helpers';
 import { Branch } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
-const { short } = BackendlessUI.UUID;
 
 export default function TreeView({ component, eventHandlers }) {
   const { display, style, classList, treeItems, gap } = component;
@@ -20,15 +19,16 @@ export default function TreeView({ component, eventHandlers }) {
   const prepareTree = useCallback(treeItems => {
     let levelOfNesting = 0;
 
-    const prepare = treeItems => {
-      const validTreeItems = treeItems.map(item => {
-        let validItem = { ...item, levelOfNesting, id: short() };
+    const prepare = (treeItems, parentId) => {
+      const validTreeItems = treeItems.map((item, index) => {
+        const id = parentId ? `${parentId}-${index}` : String(index);
+        let validItem = { ...item, levelOfNesting, id };
 
         if (item.children) {
           levelOfNesting++;
           validItem = {
             ...validItem,
-            children: prepare(item.children),
+            children: prepare(item.children, validItem.id),
           };
 
           setParentItems(state => [...state, { value: item.value, isOpen: false, id: validItem.id }]);
