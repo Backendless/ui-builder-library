@@ -25,12 +25,12 @@ export function Branch(props) {
 
 function BranchItem(props) {
   const { item, parentItems, gap, selectedItemId, handlerItemClick, openHandler } = props;
-  const { value, label, children, levelOfNesting } = item;
+  const { value, label, children, levelOfNesting, id } = item;
 
   const nestingStyle = { marginLeft: gap * levelOfNesting + 'px' };
 
   if (children) {
-    const { isOpen } = useMemo(() => parentItems.find(element => element.value === value), [parentItems]);
+    const { isOpen } = useMemo(() => parentItems.find(element => element.id === id), [parentItems]);
 
     return (
       <li className="container">
@@ -38,6 +38,7 @@ function BranchItem(props) {
           selectedItemId={ selectedItemId }
           openHandler={ openHandler }
           nestingStyle={ nestingStyle }
+          id={ id }
           value={ value }
           label={ label }
           isOpen={ isOpen }
@@ -62,30 +63,45 @@ function BranchItem(props) {
       selectedItemId={ selectedItemId }
       handlerItemClick={ handlerItemClick }
       nestingStyle={ nestingStyle }
+      id={ id }
       value={ value }
       label={ label }
     />
   );
 }
 
-function Item({ selectedItemId, handlerItemClick, nestingStyle, value, label }) {
+function Item({ selectedItemId, handlerItemClick, nestingStyle, id, value, label }) {
+  const onEnter = event => {
+    if (event.key === 'Enter') {
+      handlerItemClick(id, value, label);
+    }
+  };
+
   return (
     <li
-      tabIndex={ selectedItemId === value ? 0 : -1 }
-      className={ cn('list__item', { selected: selectedItemId === value }) }
-      onClick={ () => handlerItemClick(value, label) }
+      tabIndex={ 0 }
+      className={ cn('list__item', { selected: selectedItemId === id }) }
+      onClick={ () => handlerItemClick(id, value, label) }
+      onKeyDown={ onEnter }
       style={ nestingStyle }>
       { label }
     </li>
   );
 }
 
-function ParentItem({ selectedItemId, openHandler, nestingStyle, value, label, isOpen }) {
+function ParentItem({ selectedItemId, openHandler, nestingStyle, id, value, label, isOpen }) {
+  const onEnter = event => {
+    if (event.key === 'Enter') {
+      openHandler(id, value, label);
+    }
+  };
+
   return (
     <div
-      tabIndex={ selectedItemId === value ? 0 : -1 }
-      className={ cn('list__button', { selected: selectedItemId === value, open: isOpen }) }
-      onClick={ () => openHandler(value, label) }
+      tabIndex={ 0 }
+      className={ cn('list__button', { selected: selectedItemId === id, open: isOpen }) }
+      onClick={ () => openHandler(id, value, label) }
+      onKeyDown={ onEnter }
       style={ nestingStyle }>
       <ParentArrowIcon/>
       { label }

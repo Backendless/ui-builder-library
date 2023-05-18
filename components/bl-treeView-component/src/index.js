@@ -19,18 +19,19 @@ export default function TreeView({ component, eventHandlers }) {
   const prepareTree = useCallback(treeItems => {
     let levelOfNesting = 0;
 
-    const prepare = treeItems => {
-      const validTreeItems = treeItems.map(item => {
-        let validItem = { ...item, levelOfNesting };
+    const prepare = (treeItems, parentId) => {
+      const validTreeItems = treeItems.map((item, index) => {
+        const id = parentId ? `${parentId}-${index}` : String(index);
+        let validItem = { ...item, levelOfNesting, id };
 
         if (item.children) {
           levelOfNesting++;
           validItem = {
             ...validItem,
-            children: prepare(item.children),
+            children: prepare(item.children, validItem.id),
           };
 
-          setParentItems(state => [...state, { value: item.value, isOpen: false }]);
+          setParentItems(state => [...state, { value: item.value, isOpen: false, id: validItem.id }]);
         }
 
         return validItem;
@@ -50,16 +51,16 @@ export default function TreeView({ component, eventHandlers }) {
     }
   }, [treeItems]);
 
-  const openHandler = useCallback((value, label) => {
+  const openHandler = useCallback((id, value, label) => {
     setParentItems(state => state.map(item => (
-      item.value === value ? { ...item, isOpen: !item.isOpen } : item
+      item.id === id ? { ...item, isOpen: !item.isOpen } : item
     )));
-    handlerItemClick(value, label);
+    handlerItemClick(id, value, label);
   }, []);
 
-  const handlerItemClick = useCallback((value, label) => {
+  const handlerItemClick = useCallback((id, value, label) => {
     onClick({ label, value });
-    setSelectedItemId(value);
+    setSelectedItemId(id);
   }, []);
 
   if (!display) {
