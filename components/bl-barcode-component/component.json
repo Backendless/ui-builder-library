@@ -340,5 +340,17 @@
       ],
       "handlerDescription": "This event is fired when the mouse pointer leaves the barcode boundaries."
     }
+  ],
+  "actions": [
+    {
+      "id": "setValue",
+      "label": "Set Value to",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "value"
+        }
+      ]
+    }
   ]
 }
