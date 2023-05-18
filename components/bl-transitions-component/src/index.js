@@ -14,13 +14,13 @@ const transitionsViews = {
 };
 
 export default function Transitions({ component, eventHandlers, pods }) {
-  const { variants, display, duration, dynamicContent } = component;
+  const { variant, display, duration, dynamicContent } = component;
   const { onEndAnimation } = eventHandlers;
 
   const [isContentLoaded, setIsContentLoaded] = useState(!dynamicContent);
 
   const transitionsContainerPod = pods['transitionsContainer'];
-  const Transitions = transitionsViews[variants];
+  const Transitions = transitionsViews[variant];
 
   const isOpen = useVisibility(display, duration, onEndAnimation);
 

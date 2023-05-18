@@ -10,8 +10,8 @@
   "properties": [
     {
       "type": "select",
-      "name": "variants",
-      "label": "Variants",
+      "name": "variant",
+      "label": "Variant",
       "showInSettings": true,
       "defaultValue": "fade",
       "options": [

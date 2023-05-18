@@ -6,7 +6,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export const Others = props => {
   const { component, eventHandlers, transitionsContainerPod, display, isContentLoaded, dynamicContent } = props;
-  const { classList, style, variants, duration } = component;
+  const { classList, style, variant, duration } = component;
   const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
 
   const [isTransition, setIsTransition] = useState(false);
@@ -18,7 +18,9 @@ export const Others = props => {
   const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
 
   useEffect(() => {
-    if (rootRef.current && !element.current) {
+    const readyToInitialTransition = rootRef.current && !element.current;
+
+    if (readyToInitialTransition) {
       setElement({ current: rootRef.current.firstElementChild });
     }
   }, [rootRef]);
@@ -54,23 +56,30 @@ export const Others = props => {
 
   useEffect(() => {
     if (element.current) {
-      element.current.classList.add('transition', variants);
+      element.current.classList.add('transition', variant);
 
       if (display && isTransition) {
-        element.current.classList.add(variants + '--active');
-        element.current.style.transitionDuration = duration + 'ms';
-
+        onOpen(element, variant, duration);
         showElement(rootRef.current);
       } else {
-        element.current.classList.remove(variants + '--active');
-        element.current.style.transitionDuration = 0;
+        onHide(element, variant);
       }
     }
-  }, [element, variants, display, isTransition, duration]);
+  }, [element, variant, display, isTransition, duration]);
 
   return (
-    <div ref={ rootRef } className={ cn('bl-customComponent-transitions', variants, classList) } style={ style }>
+    <div ref={ rootRef } className={ cn('bl-customComponent-transitions', variant, classList) } style={ style }>
       { transitionsContainerPod.render() }
     </div>
   );
+};
+
+const onOpen = (element, variant, duration) => {
+  element.current.classList.add(variant + '--active');
+  element.current.style.transitionDuration = duration + 'ms';
+};
+
+const onHide = (element, variant) => {
+  element.current.classList.remove(variant + '--active');
+  element.current.style.transitionDuration = 0;
 };
