@@ -19,12 +19,14 @@ const FontOptionsMap = {
 };
 
 export default function BarcodeComponent({ component, eventHandlers, elRef }) {
-  const { classList, display, style } = component;
+  const { classList, display, style, value } = component;
   const { onClick, onMouseOver, onMouseOut } = eventHandlers;
 
   const barcodeRef = useRef(null);
 
   useBarcodeLibrary(component, barcodeRef);
+
+  component.setValue = value => component.value = value;
 
   if (!display) {
     return null;
@@ -32,12 +34,14 @@ export default function BarcodeComponent({ component, eventHandlers, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-barcode', classList) } style={ style }>
-      <svg
-        ref={ barcodeRef }
-        onClick={ event => onClick({ event }) }
-        onMouseOver={ event => onMouseOver({ event }) }
-        onMouseOut={ event => onMouseOut({ event }) }
-      />
+      { value && (
+        <svg
+          ref={ barcodeRef }
+          onClick={ event => onClick({ event }) }
+          onMouseOver={ event => onMouseOver({ event }) }
+          onMouseOut={ event => onMouseOut({ event }) }
+        />
+      ) }
     </div>
   );
 }
@@ -73,10 +77,6 @@ function useBarcodeLibrary(component, barcodeRef) {
       return;
     }
 
-    if (value) {
-      JsBarcode(barcodeRef.current, value, { ...options, valid: onValidate });
-    } else {
-      barcodeRef.current.removeAttribute('src');
-    }
+    JsBarcode(barcodeRef.current, value, { ...options, valid: onValidate });
   }, [value, options, display]);
 }

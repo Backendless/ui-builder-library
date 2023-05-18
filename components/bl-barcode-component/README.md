@@ -35,6 +35,12 @@ Barcode is the component for the Backendless [UI-Builder](https://backendless.co
 | On Mouse Over Event | when the mouse pointer hovers over the barcode       | Event: `Object`      |
 | On Mouse Out Event  | when the mouse pointer leaves the barcode boundaries | Event: `Object`      |
 
+## Actions
+
+| Action               | Inputs          | Returns |
+|----------------------|-----------------|---------|
+| Set Value to Barcode | value: `String` |         |
+
 ## Styles
 
 **Dimensions**
