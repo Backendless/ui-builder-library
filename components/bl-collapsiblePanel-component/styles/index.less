@@ -24,14 +24,20 @@
 .bl-customComponent-collapsiblePanel {
   width: @bl-customComponent-collapsiblePanel-width;
 
-  &.panel-expanded.with-animation {
+  &.panel-expanded {
     .collapse-icon {
       transform: @bl-customComponent-collapsiblePanel-title-icon-transform;
     }
+
     .panel-content {
       max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
-      animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
-      animation-duration: (@bl-customComponent-collapsiblePanel-content-animationDuration * 2);
+    }
+
+    &.with-animation {
+      .panel-content {
+        animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
+        animation-duration: (@bl-customComponent-collapsiblePanel-content-animationDuration * 2);
+      }
     }
   }
 
@@ -57,8 +63,24 @@
   }
 
   .panel-title-text {
+    width: calc(100% - @bl-customComponent-collapsiblePanel-title-icon-width);
     font-size: @bl-customComponent-collapsiblePanel-title-fontSize;
     color: @bl-customComponent-collapsiblePanel-themeTextColor;
+
+    &::selection {
+      background: none;
+    }
+
+    &.oneline {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.multiline {
+      white-space: normal;
+      word-wrap: break-word;
+    }
   }
 
   .collapse-icon {
@@ -67,7 +89,6 @@
     font-size: @bl-customComponent-collapsiblePanel-title-fontSize;
     fill: @bl-customComponent-collapsiblePanel-title-icon-color;
     transition: @bl-customComponent-collapsiblePanel-title-icon-transition;
-    user-select: none;
   }
 
   .panel-content {

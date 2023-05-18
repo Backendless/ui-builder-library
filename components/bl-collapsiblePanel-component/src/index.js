@@ -3,35 +3,28 @@ import { useCallback, useState } from 'react';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function CollapsiblePanelComponent({ component, elRef, eventHandlers, pods }) {
-  const { classList, style, display, title } = component;
+  const { classList, style, display, title, multiline, isExpanded } = component;
   const { onExpand, onCollapse } = eventHandlers;
 
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(isExpanded);
   const [withAnimation, setWithAnimation] = useState(false);
 
-  const className = cn('bl-customComponent-collapsiblePanel', ...classList, {
+  const className = cn('bl-customComponent-collapsiblePanel', classList, {
     'panel-expanded': expanded,
     'with-animation': withAnimation
   });
 
-  const showContent = useCallback(() => {
-    setExpanded(true);
+  const togglePanel = useCallback((expanded) => {
+    setExpanded(!expanded);
     setWithAnimation(true);
-    onExpand();
+
+    const handler = expanded ? onCollapse : onExpand;
+
+    handler();
   }, []);
 
-  const hideContent = useCallback(() => {
-    setExpanded(false);
-    setWithAnimation(true);
-    onCollapse();
-  }, []);
-
-  const togglePanel = useCallback(() => {
-      expanded ? hideContent() : showContent();
-    }, [expanded, hideContent, showContent]);
-
-  component.expand = showContent;
-  component.collapse = hideContent;
+  component.expand = () => !expanded && togglePanel(false);
+  component.collapse = () => expanded && togglePanel(true);
 
   if (!display) {
     return null;
@@ -39,7 +32,7 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   return (
     <div ref={ elRef } className={ className } style={ style }>
-      <PanelTitle title={ title } expanded={ expanded } onClick={ togglePanel } />
+      <PanelTitle title={ title } expanded={ expanded } onClick={ togglePanel } multiline={ multiline } />
 
       <div className={ cn('panel-content', { 'close': !expanded }) }>
         { pods['panelContent'].render() }
@@ -48,10 +41,10 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
   );
 }
 
-function PanelTitle({ title, expanded, onClick }) {
+function PanelTitle({ title, multiline, expanded, onClick }) {
   return (
-    <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ onClick }>
-      <span className="panel-title-text">{ title }</span>
+    <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ () => onClick(expanded) }>
+      <span className={ cn('panel-title-text', multiline ? 'multiline' : 'oneline' ) }>{ title }</span>
 
       <svg
         className="collapse-icon"
