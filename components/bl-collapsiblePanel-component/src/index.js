@@ -2,16 +2,14 @@ import { useCallback, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const ONELINE = 'oneline';
-
 export default function CollapsiblePanelComponent({ component, elRef, eventHandlers, pods }) {
-  const { classList, style, display, title, titleLayout, isExpanded } = component;
+  const { classList, style, display, title, multiline, isExpanded } = component;
   const { onExpand, onCollapse } = eventHandlers;
 
   const [expanded, setExpanded] = useState(isExpanded);
   const [withAnimation, setWithAnimation] = useState(false);
 
-  const className = cn('bl-customComponent-collapsiblePanel', ...classList, {
+  const className = cn('bl-customComponent-collapsiblePanel', classList, {
     'panel-expanded': expanded,
     'with-animation': withAnimation
   });
@@ -45,7 +43,7 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   return (
     <div ref={ elRef } className={ className } style={ style }>
-      <PanelTitle title={ title } expanded={ expanded } onClick={ togglePanel } layout={ titleLayout } />
+      <PanelTitle title={ title } expanded={ expanded } onClick={ togglePanel } multiline={ multiline } />
 
       <div className={ cn('panel-content', { 'close': !expanded }) }>
         { pods['panelContent'].render() }
@@ -54,10 +52,10 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
   );
 }
 
-function PanelTitle({ title, layout, expanded, onClick }) {
+function PanelTitle({ title, multiline, expanded, onClick }) {
   return (
     <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ onClick }>
-      <span className={ cn('panel-title-text', layout === ONELINE ? 'oneline' : 'multiline' ) }>{ title }</span>
+      <span className={ cn('panel-title-text', multiline ? 'multiline' : 'oneline' ) }>{ title }</span>
 
       <svg
         className="collapse-icon"

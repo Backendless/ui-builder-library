@@ -22,24 +22,13 @@
       "defaultValue": "Panel Title"
     },
     {
-      "type": "select",
-      "name": "titleLayout",
-      "label": "Title Layout",
-      "settingTooltip": "Title layout: 'oneline' for a single line without line breaks or 'multiline' for multiple lines with word wrapping.",
+      "type": "checkbox",
+      "name": "multiline",
+      "label": "Multi-line Title",
+      "settingTooltip": "Flag indicating whether the title layout 'multi-line' for multiple lines with word wrapping or 'one-line' for a single line without line breaks by default.",
       "showInSettings": true,
-      "defaultValue": "oneline",
       "hasLogicHandler": false,
-      "handlerId": "titleLayoutLogic",
-      "options": [
-        {
-          "value": "oneline",
-          "label": "oneline"
-        },
-        {
-          "value": "multiline",
-          "label": "multiline"
-        }
-      ]
+      "handlerId": "multilineLogic"
     },
     {
       "type": "checkbox",
@@ -48,7 +37,7 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "isExpandedLogic",
-      "settingTooltip": "Flag indicating whether the component is expanded or collapsed."
+      "settingTooltip": "Flag indicating whether the component is expanded or collapsed by default."
     }
   ],
   "eventHandlers": [
