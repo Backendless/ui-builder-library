@@ -14,28 +14,17 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
     'with-animation': withAnimation
   });
 
-  const showContent = useCallback(() => {
-    if (!expanded) {
-      setExpanded(true);
-      setWithAnimation(true);
-      onExpand();
-    }
-  }, [expanded]);
+  const togglePanel = useCallback((expanded) => {
+    setExpanded(!expanded);
+    setWithAnimation(true);
 
-  const hideContent = useCallback(() => {
-    if (expanded) {
-      setExpanded(false);
-      setWithAnimation(true);
-      onCollapse();
-    }
-  }, [expanded]);
+    const handler = expanded ? onCollapse : onExpand;
 
-  const togglePanel = useCallback(() => {
-      expanded ? hideContent() : showContent();
-    }, [expanded, hideContent, showContent]);
+    handler();
+  }, []);
 
-  component.expand = showContent;
-  component.collapse = hideContent;
+  component.expand = () => !expanded && togglePanel(false);
+  component.collapse = () => expanded && togglePanel(true);
 
   if (!display) {
     return null;
@@ -54,7 +43,7 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
 function PanelTitle({ title, multiline, expanded, onClick }) {
   return (
-    <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ onClick }>
+    <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ () => onClick(expanded) }>
       <span className={ cn('panel-title-text', multiline ? 'multiline' : 'oneline' ) }>{ title }</span>
 
       <svg

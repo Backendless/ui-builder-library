@@ -28,15 +28,16 @@
     .collapse-icon {
       transform: @bl-customComponent-collapsiblePanel-title-icon-transform;
     }
+
     .panel-content {
       max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
     }
-  }
 
-  &.panel-expanded.with-animation {
-    .panel-content {
-      animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
-      animation-duration: (@bl-customComponent-collapsiblePanel-content-animationDuration * 2);
+    &.with-animation {
+      .panel-content {
+        animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
+        animation-duration: (@bl-customComponent-collapsiblePanel-content-animationDuration * 2);
+      }
     }
   }
 
