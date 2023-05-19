@@ -19,7 +19,7 @@
       "handlerLabel": "Show PLayer Logic",
       "handlerDescription": "This is a handler to control audio player visibility.",
       "dataBinding": true,
-      "settingTooltip": "Toggle audio player visibility."
+      "settingTooltip": "Toggle the audio player visibility."
     },
     {
       "type": "checkbox",
@@ -32,7 +32,7 @@
       "handlerLabel": "Show Controls Logic",
       "handlerDescription": "This handler allows to show or hide control buttons.",
       "dataBinding": true,
-      "settingTooltip": "Toggle control buttons visibility."
+      "settingTooltip": "Toggle the control buttons visibility."
     },
     {
       "type": "checkbox",
@@ -42,7 +42,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "noiseLogic",
-      "settingTooltip": "Toggle noise suppression."
+      "settingTooltip": "Toggle the noise suppression."
     },
     {
       "type": "text",
@@ -55,7 +55,7 @@
       "handlerLabel": "File Name Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler to control the name of the downloaded file.",
-      "settingTooltip": "Set name of the recorded file."
+      "settingTooltip": "Set the name of the recorded file."
     },
     {
       "type": "select",
@@ -87,7 +87,7 @@
           "label": "ogg"
         }
       ],
-      "settingTooltip": "Choose type of the recorded file"
+      "settingTooltip": "Choose the type of the recorded file."
     },
     {
       "type": "text",
@@ -97,7 +97,7 @@
       "defaultValue": "380px",
       "hasLogicHandler": false,
       "handlerId": "widthLogic",
-      "settingTooltip": "Set width of the component"
+      "settingTooltip": "Set the width of the component."
     },
     {
       "type": "text",
@@ -110,7 +110,7 @@
       "handlerLabel": "Start Button Text Logic",
       "handlerDescription": "This is a handler that controls the Start Button Text.",
       "dataBinding": true,
-      "settingTooltip": "Set the Start Record button text"
+      "settingTooltip": "Set the Start Record button label."
     },
     {
       "type": "text",
@@ -123,7 +123,7 @@
       "handlerLabel": "Stop Button Text Logic",
       "handlerDescription": "This is a handler that controls the Stop Button Text.",
       "dataBinding": true,
-      "settingTooltip": "Set the Stop Record button text"
+      "settingTooltip": "Set the Stop Record button label."
     },
     {
       "type": "text",
@@ -136,7 +136,7 @@
       "handlerLabel": "Download Button Text Logic",
       "handlerDescription": "This is a handler that controls the Download Button Text.",
       "dataBinding": true,
-      "settingTooltip": "Set the Download Record button text"
+      "settingTooltip": "Set the Download Record button label."
     },
     {
       "type": "text",
@@ -149,7 +149,7 @@
       "handlerLabel": "Pause Button Text Logic",
       "handlerDescription": "This is a handler that controls the Pause Button Text when recording.",
       "dataBinding": true,
-      "settingTooltip": "Set the Pause Record button text, when recording."
+      "settingTooltip": "Set the Pause Record button label, when recording."
     },
     {
       "type": "text",
@@ -162,7 +162,7 @@
       "handlerLabel": "Resume Button Text Logic",
       "handlerDescription": "This is a handler that controls the Resume Button Text when recording is paused.",
       "dataBinding": true,
-      "settingTooltip": "Set the Resume Record button, when record is paused."
+      "settingTooltip": "Set the Resume Record button label, when record is paused."
     }
   ],
   "eventHandlers": [
