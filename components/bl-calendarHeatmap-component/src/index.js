@@ -67,6 +67,7 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
       const calendar = ref.current.querySelector('svg');
 
       calendar.style.height = `calc(100% - ${ legendRef.current.clientHeight }px)`;
+      calendar.style.width = '100%';
     }
 
     return () => {
@@ -80,20 +81,22 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
   return (
     <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ rootStyle }>
-      <CalendarHeatmap
-        values={ newCalendarData }
-        startDate={ shiftDate(today, newCalendarData.length) }
-        endDate={ today }
-        showMonthLabels={ showMonthLabels }
-        showWeekdayLabels={ showWeekdayLabels }
-        monthLabels={ month }
-        weekdayLabels={ weeks }
-        classForValue={ value => getClassForValue(value, maxCount) }
-        tooltipDataAttrs={ getTooltipData }
-        onClick={ ({ date, count }) => onCellClick({ date, count }) }
-      />
+      <div className="wrapper">
+        <CalendarHeatmap
+          values={ newCalendarData }
+          startDate={ shiftDate(today, newCalendarData.length) }
+          endDate={ today }
+          showMonthLabels={ showMonthLabels }
+          showWeekdayLabels={ showWeekdayLabels }
+          monthLabels={ month }
+          weekdayLabels={ weeks }
+          classForValue={ value => getClassForValue(value, maxCount) }
+          tooltipDataAttrs={ getTooltipData }
+          onClick={ ({ date, count }) => onCellClick({ date, count }) }
+        />
+        <Legend legendRef={ legendRef } legend={ legend } margin={ legendMargin }/>
+      </div>
       <ReactTooltip/>
-      <Legend legendRef={ legendRef } legend={ legend } margin={ legendMargin }/>
     </div>
   );
 }
