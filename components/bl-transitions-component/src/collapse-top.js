@@ -13,34 +13,34 @@ export function CollapseTop(props) {
   const [initHeight, setInitHeight] = useState('');
 
   const rootRef = useRef();
-  const [element, setElement] = useState({});
+  const [podElement, setPodElement] = useState();
 
-  const isImagesLoaded = useImageLoad(element, dynamicContent);
-  const isTransition = useTransition(element, display, duration, initHeight, height, 'height', onEndAnimation);
+  const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
+  const isTransition = useTransition(podElement, display, duration, initHeight, height, 'height', onEndAnimation);
 
   useEffect(() => {
-    const readyToInitialTransition = rootRef.current && !element.current;
+    const readyToInitialTransition = rootRef.current && !podElement;
 
     if (readyToInitialTransition) {
-      setElement({ current: rootRef.current.firstElementChild });
+      setPodElement(rootRef.current.firstElementChild);
       setInitHeight(rootRef.current.firstElementChild.style.height);
     }
   }, [rootRef]);
 
   useEffect(() => {
     let getHeightTimeout;
-    const readyToStartTransition = element.current && isContentLoaded && isImagesLoaded;
+    const readyToStartTransition = podElement && isContentLoaded && isImagesLoaded;
 
     if (readyToStartTransition) {
-      const size = element.current.clientHeight;
+      const size = podElement.clientHeight;
 
       getHeightTimeout = setTimeout(() => setHeight(size), 50);
 
-      element.current.style.height = '0px';
+      podElement.style.height = '0px';
     }
 
     return () => getHeightTimeout && clearTimeout(getHeightTimeout);
-  }, [element, isContentLoaded, isImagesLoaded]);
+  }, [podElement, isContentLoaded, isImagesLoaded]);
 
   useEffect(() => {
     onMounted();
@@ -55,19 +55,19 @@ export function CollapseTop(props) {
   }, [isTransition]);
 
   useEffect(() => {
-    if (element.current) {
-      element.current.classList.add('transition', variant);
+    if (podElement) {
+      podElement.classList.add('transition', variant);
 
       if (isTransition) {
-        element.current.style.transitionDuration = duration + 'ms';
-        element.current.style.height = height + 'px';
+        podElement.style.transitionDuration = duration + 'ms';
+        podElement.style.height = height + 'px';
 
         showElement(rootRef.current);
       } else {
-        element.current.style.transitionDuration = '0ms';
+        podElement.style.transitionDuration = '0ms';
       }
     }
-  }, [element, height, variant, isTransition]);
+  }, [podElement, height, variant, isTransition]);
 
   return (
     <div ref={ rootRef } className={ cn('bl-customComponent-transitions', variant, classList) } style={ style }>

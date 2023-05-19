@@ -21,21 +21,24 @@ export const useVisibility = (display, duration, onEndAnimation) => {
   return isOpen;
 };
 
-export const useTransition = (rootRef, display, duration, initDimension, dimension, dimensionName, onEndAnimation) => {
+export const useTransition = (
+  podElement, display, duration, initDimension,
+  dimension, dimensionName, onEndAnimation
+) => {
   const [isTransition, setIsTransition] = useState(false);
 
   const openTimeout = useRef(null);
   const zeroDimensionTimeout = useRef(null);
 
   useEffect(() => {
-    if (rootRef.current) {
+    if (podElement) {
       if (display && dimension) {
         setIsTransition(true);
 
         openTimeout.current = setTimeout(() => {
           setIsTransition(false);
 
-          rootRef.current.style[dimensionName] = initDimension;
+          podElement.style[dimensionName] = initDimension;
 
           onEndAnimation();
         }, duration);
@@ -46,7 +49,7 @@ export const useTransition = (rootRef, display, duration, initDimension, dimensi
         clearTimeout(openTimeout.current);
 
         zeroDimensionTimeout.current = setTimeout(() => {
-          rootRef.current.style[dimensionName] = '0px';
+          podElement.style[dimensionName] = '0px';
         }, 50);
       }
     }
@@ -55,7 +58,7 @@ export const useTransition = (rootRef, display, duration, initDimension, dimensi
       clearTimeout(openTimeout.current);
       clearTimeout(zeroDimensionTimeout.current);
     };
-  }, [dimension, display, duration, rootRef]);
+  }, [dimension, display, duration, podElement]);
 
   return isTransition;
 };

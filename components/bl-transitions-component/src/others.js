@@ -10,7 +10,7 @@ export const Others = props => {
   const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
 
   const [isTransition, setIsTransition] = useState(false);
-  const [element, setElement] = useState({ current: null });
+  const [podElement, setPodElement] = useState();
 
   const rootRef = useRef();
   const endAnimationTimeout = useRef(null);
@@ -18,10 +18,10 @@ export const Others = props => {
   const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
 
   useEffect(() => {
-    const readyToInitialTransition = rootRef.current && !element.current;
+    const readyToInitialTransition = rootRef.current && !podElement;
 
     if (readyToInitialTransition) {
-      setElement({ current: rootRef.current.firstElementChild });
+      setPodElement(rootRef.current.firstElementChild);
     }
   }, [rootRef]);
 
@@ -55,17 +55,17 @@ export const Others = props => {
   }, [isTransition]);
 
   useEffect(() => {
-    if (element.current) {
-      element.current.classList.add('transition', variant);
+    if (podElement) {
+      podElement.classList.add('transition', variant);
 
       if (display && isTransition) {
-        onOpen(element, variant, duration);
+        onOpen(podElement, variant, duration);
         showElement(rootRef.current);
       } else {
-        onHide(element, variant);
+        onHide(podElement, variant);
       }
     }
-  }, [element, variant, display, isTransition, duration]);
+  }, [podElement, variant, display, isTransition, duration]);
 
   return (
     <div ref={ rootRef } className={ cn('bl-customComponent-transitions', variant, classList) } style={ style }>
@@ -75,11 +75,11 @@ export const Others = props => {
 };
 
 const onOpen = (element, variant, duration) => {
-  element.current.classList.add(variant + '--active');
-  element.current.style.transitionDuration = duration + 'ms';
+  element.classList.add(variant + '--active');
+  element.style.transitionDuration = duration + 'ms';
 };
 
 const onHide = (element, variant) => {
-  element.current.classList.remove(variant + '--active');
-  element.current.style.transitionDuration = 0;
+  element.classList.remove(variant + '--active');
+  element.style.transitionDuration = 0;
 };
