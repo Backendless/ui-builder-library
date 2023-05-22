@@ -3,13 +3,18 @@
 
 @bl-customComponent-calendarHeatmap-padding: 10px;
 
-@bl-customComponent-calendarHeatmap-margin: 0 auto 0 0;
 @bl-customComponent-calendarHeatmap-legend-container-padding: 0 0 0 100px;
 @bl-customComponent-calendarHeatmap-legend-container-margin: 1em 0 1em auto;
 
 .bl-customComponent-calendarHeatmap {
   padding: @bl-customComponent-calendarHeatmap-padding;
-  margin: @bl-customComponent-calendarHeatmap-margin;
+
+  .wrapper {
+    display: inline-flex;
+    flex-direction: column;
+
+    height: 100%;
+  }
 
   .react-calendar-heatmap {
     height: 100%;
