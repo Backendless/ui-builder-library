@@ -1,18 +1,19 @@
-import { useMemo, useEffect, useCallback, useState } from 'react';
-import { useDraggable, getPosition, StyleVariants } from './helpers';
-import { CollapseButtonIcon, ContextMenu } from './subcomponents';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+
+import { getPosition, StyleVariants, useDraggable } from './helpers';
 import { ResizableBox } from './react-resizable.min';
+import { CollapseButtonIcon, ContextMenu } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Dashlet(props) {
   const {
     rootRef, isOpen, height, width, setIsOpen, setPosition, setSize,
-    position, contextBlocksHandler, dashletContentPod, component
+    position, contextBlocksHandler, dashletContentPod, component,
   } = props;
   const {
     title, resizing, contextBlocks, minWidth, maxWidth,
-    minHeight, maxHeight, dragging, styleVariant
+    minHeight, maxHeight, dragging, styleVariant,
   } = component;
 
   const [resizeMaxWidth, setResizeMaxWidth] = useState(maxWidth);
@@ -39,7 +40,7 @@ export function Dashlet(props) {
     }
   }, [position]);
 
-  const handleDrag = useCallback((coords) => {
+  const handleDrag = useCallback(coords => {
     const position = getPosition(rootRef, coords);
 
     setPosition(position);
@@ -51,7 +52,7 @@ export function Dashlet(props) {
     onDrag         : handleDrag,
     rootRef        : rootRef,
     initialPosition: position,
-    dragging
+    dragging,
   });
 
   const onResizeStop = useCallback((e, data) => {
@@ -83,7 +84,7 @@ export function Dashlet(props) {
       <div
         ref={ ref }
         className={ cn('dashlet__header', StyleVariants[styleVariant]) }
-        style={ { cursor: dragging ? 'move' : 'auto' } }>
+        style={{ cursor: dragging ? 'move' : 'auto' }}>
         <button type="button" className="dashlet__collapse-button" onClick={ onCollapseButtonClick }>
           <CollapseButtonIcon isOpen={ isOpen } styleVariant={ styleVariant }/>
         </button>

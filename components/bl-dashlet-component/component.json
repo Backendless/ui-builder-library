@@ -1,5 +1,5 @@
 {
-  "id": "c_9b5d0fd30def939baeb82e23011d7551",
+  "id": "c_34e78b2552953123061c9cf949366d5b",
   "name": "Dashlet",
   "description": "",
   "showInToolbox": true,
@@ -62,6 +62,18 @@
       "handlerDescription": "This is a handler for the logic of determining the width of dashlet",
       "dataBinding": true,
       "handlerLabel": "Width Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "localStorage",
+      "label": "local Storage",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "localStorageLogic",
+      "handlerLabel": "Local Storage Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining can save state(size, position, close or open) of dashlet in Local Storage",
+      "settingTooltip": "Allows to determine can save state(size, position, close or open) in Local Storage"
     },
     {
       "type": "checkbox",
@@ -210,6 +222,5 @@
       "id": "dashletContent",
       "dataContainer": true
     }
-  },
-  "blockUI": "<div data-module-type=\"system\" data-module-id=\"panel\" data-display data-uid=\"5ae95685f707005823612cc4c9e1fd3c\" style=\"display:flex;flex-grow:1;flex-direction:column;min-height:250px;min-width:200px;flex-basis:auto%;\"><div data-module-type=\"block\" data-display data-uid=\"619944efc3ab56bc30f53ac13754fb85\" style=\"display:flex;padding:5px 5px 5px 5px;align-items:center;\"><i data-icon=\"arrow_drop_down\" data-size=\"small\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"efce2b2cbba7f2635034c5ad13894f4d\" style=\"margin:0 5px 0 0;color:#aaaaaa;\"></i><span data-module-type=\"text\" data-content=\"Dashlet\" data-display data-uid=\"acee75c3b9e5afd54c01fdf617eaa9b7\" style=\"font-size:18px;align-self:flex-start;\"></span><i data-icon=\"more_horiz\" data-size=\"small\" data-module-type=\"system\" data-module-id=\"icon\" data-display data-uid=\"fbd8ebec9857daab4ebb5b074c1271a6\" style=\"margin:0 10px 0 auto;color:#aaaaaa;\"></i></div><div data-module-type=\"block\" data-display data-uid=\"1937998c9aef6708e2d88e9ef5cad0f7\" style=\"display:flex;flex-direction:column;flex-grow:1;\"><div data-module-type=\"system\" data-module-id=\"block\" data-display id=\"dashletContent\" data-uid=\"22b590cc58d8fb8ea221893d4923eca9\" data-pod-container=\"true\" data-data-container=\"true\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;width:100%;height:100%;\"></div></div></div>"
+  }
 }
