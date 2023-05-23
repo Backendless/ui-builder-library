@@ -2,13 +2,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import CalendarHeatmap from './lib/react-calendar-heatmap.umd.min';
 import ReactTooltip from './lib/react-tooltip.min';
-import { generateData, shadeColor, shiftDate, validate } from './helpers';
+import { generateData, getSaturationByCount, hexToHSL, shiftDate, validate } from './helpers';
 import { Legend } from './subcomponents';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export const today = new Date();
-const COLORS_COUNT = 4;
 const WEEKDAY_LABELS_RIGHT_SPACE = 10;
 
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
@@ -29,6 +28,8 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     height: normalizeDimensionValue(height),
   }), [style, width, height]);
 
+  const hslColor = useMemo(() => hexToHSL(color), [color]);
+
   const newCalendarData = useMemo(() => {
     return calendarData && numberDays ? generateData(numberDays, calendarData) : calendarData;
   }, [numberDays, calendarData]);
@@ -37,21 +38,6 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
   const month = useMemo(() => validate(monthLabels), [monthLabels]);
   const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
-
-  const colors = useMemo(() => ({
-    'color-cell-1': shadeColor(color, 120),
-    'color-cell-2': shadeColor(color, 80),
-    'color-cell-3': shadeColor(color, 40),
-    'color-cell-4': color,
-  }), [color]);
-
-  useEffect(() => {
-    if (color && ref.current) {
-      ref.current.querySelectorAll('.color-cell-1, .color-cell-2, .color-cell-3, .color-cell-4').forEach(element => {
-        element.style.fill = colors[element.classList[0]];
-      });
-    }
-  }, [color, colors, ref, newCalendarData]);
 
   const handleResize = useCallback(() => {
     const weekdayLabels = ref.current.querySelector('.react-calendar-heatmap-weekday-labels');
@@ -90,35 +76,31 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
           showWeekdayLabels={ showWeekdayLabels }
           monthLabels={ month }
           weekdayLabels={ weeks }
-          classForValue={ value => getClassForValue(value, maxCount) }
           tooltipDataAttrs={ getTooltipData }
+          transformDayElement={ (element, value) => TransformDayElement(element, value, maxCount, hslColor) }
           onClick={ ({ date, count }) => onCellClick({ date, count }) }
         />
-        <Legend legendRef={ legendRef } legend={ legend } margin={ legendMargin }/>
+        <Legend
+          maxCount={ maxCount }
+          hslColor={ hslColor }
+          legendRef={ legendRef }
+          legend={ legend }
+          margin={ legendMargin }
+        />
       </div>
       <ReactTooltip/>
     </div>
   );
 }
 
-const getClassForValue = (value, maxCount) => {
-  if (value) {
-    const { count } = value;
+const TransformDayElement = (element, value, maxCount, hslColor) => {
+  const newElement = React.cloneElement(element, { title: value.date });
+  const rateOfSaturation = getSaturationByCount(maxCount, value.count);
+  const { h, l } = hslColor;
 
-    if (!count) {
-      return 'color-cell-0';
-    }
+  newElement.props.fill = value.count ? `hsl(${ h }, ${ rateOfSaturation }%, ${ l }%)` : '#eee';
 
-    const part = maxCount / COLORS_COUNT;
-
-    for (let i = 1; i <= COLORS_COUNT; i++) {
-      if (count <= part * i) {
-        return `color-cell-${ i }`;
-      }
-    }
-  }
-
-  return 'color-empty';
+  return newElement;
 };
 
 const getTooltipData = value => {
