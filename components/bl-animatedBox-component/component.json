@@ -1,0 +1,190 @@
+{
+  "id": "c_365c02ad9a5f6696a4dcde6ab0c4442b",
+  "name": "Animated Box",
+  "description": "The Animated Box component allows the user to create interactive animations.",
+  "showInToolbox": true,
+  "faIcon": "tent-arrow-left-right",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Animation Type",
+      "showInSettings": true,
+      "defaultValue": "bounce",
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
+      "options": [
+        {
+          "value": "bounce",
+          "label": "bounce"
+        },
+        {
+          "value": "bounceIn",
+          "label": "bounceIn"
+        },
+        {
+          "value": "bounceOut",
+          "label": "bounceOut"
+        },
+        {
+          "value": "flash",
+          "label": "flash"
+        },
+        {
+          "value": "flip",
+          "label": "flip"
+        },
+        {
+          "value": "flipInX",
+          "label": "flipInX"
+        },
+        {
+          "value": "flipInY",
+          "label": "flipInY"
+        },
+        {
+          "value": "heartBeat",
+          "label": "heartBeat"
+        },
+        {
+          "value": "hinge",
+          "label": "hinge"
+        },
+        {
+          "value": "jackInTheBox",
+          "label": "jackInTheBox"
+        },
+        {
+          "value": "jello",
+          "label": "jello"
+        },
+        {
+          "value": "pulse",
+          "label": "pulse"
+        },
+        {
+          "value": "rotateIn",
+          "label": "rotateIn"
+        },
+        {
+          "value": "rubberBand",
+          "label": "rubberBand"
+        },
+        {
+          "value": "shakeX",
+          "label": "shakeX"
+        },
+        {
+          "value": "shakeY",
+          "label": "shakeY"
+        },
+        {
+          "value": "swing",
+          "label": "swing"
+        },
+        {
+          "value": "tada",
+          "label": "tada"
+        },
+        {
+          "value": "wobble",
+          "label": "wobble"
+        },
+        {
+          "value": "zoomIn",
+          "label": "zoomIn"
+        },
+        {
+          "value": "zoomOut",
+          "label": "zoomOut"
+        }
+      ],
+      "settingTooltip": "Select the animation type of the component."
+    },
+    {
+      "type": "number",
+      "name": "duration",
+      "label": "Duration",
+      "settingTooltip": "Duration of the animation, in seconds.",
+      "showInSettings": true,
+      "defaultValue": "1",
+      "hasLogicHandler": false,
+      "handlerId": "durationLogic"
+    },
+    {
+      "type": "number",
+      "name": "delay",
+      "label": "Delay",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "delayLogic",
+      "settingTooltip": "Duration to delay the animation, in seconds."
+    },
+    {
+      "type": "number",
+      "name": "loop",
+      "label": "Loop",
+      "settingTooltip": "The number of times the animation should loop, 0 is equivalent to infinite.",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "loopLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "contextBlocks": [],
+      "handlerDescription": "Triggered when the user clicks on the component.",
+      "label": "On Click"
+    },
+    {
+      "name": "onMouseOver",
+      "contextBlocks": [],
+      "handlerDescription": "Triggered when the mouse pointer hovers over the component.",
+      "label": "On Mouse Over"
+    },
+    {
+      "name": "onMouseOut",
+      "contextBlocks": [],
+      "handlerDescription": "Triggered when the mouse pointer leaves the component.",
+      "label": "On Mouse Out"
+    },
+    {
+      "name": "onAnimationStart",
+      "handlerDescription": "Triggered when the animation start.",
+      "label": "On Animation Start"
+    },
+    {
+      "name": "onCycleComplete",
+      "handlerDescription": "Triggered when the component finishes a loop.",
+      "label": "On Cycle Complete"
+    },
+    {
+      "name": "onAnimationEnd",
+      "handlerDescription": "Triggered when the animation end, only calls if loop is non-zero.",
+      "label": "On Animation End"
+    }
+  ],
+  "actions": [
+    {
+      "id": "play",
+      "label": "Play"
+    },
+    {
+      "id": "pause",
+      "label": "Pause"
+    }
+  ],
+  "settings": [],
+  "pods": {
+    "b8828219095d33ecaffe9d3c6ba4e2ae": {
+      "id": "animatedBoxContent",
+      "dataContainer": true
+    }
+  }
+}
