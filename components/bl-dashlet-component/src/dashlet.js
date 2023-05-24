@@ -31,7 +31,6 @@ export function Dashlet(props) {
   }, [height, width, isOpen]);
 
   useEffect(() => setResizeMaxHeight(maxHeight), [maxHeight]);
-
   useEffect(() => setResizeMaxWidth(maxWidth), [maxWidth]);
 
   const onCollapseButtonClick = () => {
