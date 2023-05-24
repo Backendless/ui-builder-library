@@ -83,8 +83,7 @@ export function Dashlet(props) {
     <div className={ cn('dashlet', StyleVariants[styleVariant], { 'close': !isOpen }) } style={ style }>
       <div
         ref={ ref }
-        className={ cn('dashlet__header', StyleVariants[styleVariant]) }
-        style={{ cursor: dragging ? 'move' : 'auto' }}>
+        className={ cn('dashlet__header', StyleVariants[styleVariant], { dragging }) }>
         <button type="button" className="dashlet__collapse-button" onClick={ onCollapseButtonClick }>
           <CollapseButtonIcon isOpen={ isOpen } styleVariant={ styleVariant }/>
         </button>

@@ -1,7 +1,7 @@
 {
   "id": "c_34e78b2552953123061c9cf949366d5b",
   "name": "Dashlet",
-  "description": "",
+  "description": "The component allows you to add dashlet to your UI-Builder application",
   "showInToolbox": true,
   "faIcon": "window-restore",
   "mainJS": "dist/index.js",
@@ -72,8 +72,8 @@
       "handlerId": "localStorageLogic",
       "handlerLabel": "Local Storage Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic of determining can save state(size, position, close or open) of dashlet in Local Storage",
-      "settingTooltip": "Allows to determine can save state(size, position, close or open) in Local Storage"
+      "handlerDescription": "This is a handler for the logic of determining whether the state (size, position, closed or open) of a dashlet is allowed to be stored in local storage or not",
+      "settingTooltip": "Allows you to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in local storage or not"
     },
     {
       "type": "checkbox",
