@@ -203,24 +203,24 @@
   "actions": [
     {
       "id": "start",
-      "label": "Start record of"
+      "label": "Start Record in"
     },
     {
       "id": "stop",
-      "label": "Stop record of"
+      "label": "Stop Record in"
     },
     {
       "id": "downloadFile",
-      "label": "Download recorded file of"
+      "label": "Download Recorded file from"
     },
     {
       "id": "getBlob",
-      "label": "Get Blob of",
+      "label": "Get Blob from",
       "hasReturn": true
     },
     {
       "id": "pause",
-      "label": "Pause/Resume of "
+      "label": "Pause/Resume in"
     }
   ],
   "pods": {}
