@@ -3,14 +3,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 const { cn } = BackendlessUI.CSSUtils;
 
 const INFINITE = 'infinite';
+const DEFAULT_ZERO = 0;
+const DEFAULT_ONE = '1s';
 
 export default function AnimatedBoxComponent({ component, elRef, eventHandlers, pods }) {
   const { style, classList, display, type, duration, delay, loop, autoStart } = component;
   const { onMouseOver, onMouseOut, onClick, onAnimationStart, onCycleComplete, onAnimationEnd } = eventHandlers;
 
-  const startAnimation = useMemo(() => duration && duration > 0 && loop && loop >= 0 && autoStart, [duration, loop, autoStart]);
-
-  const [isAnimating, setIsAnimating] = useState(startAnimation);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [hasStarted, setHasStarted] = useState(autoStart);
   const [isInViewport, setIsInViewport] = useState(null);
 
@@ -23,14 +23,13 @@ export default function AnimatedBoxComponent({ component, elRef, eventHandlers, 
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => (
-      display && setIsInViewport(entry.isIntersecting)
-    ), { threshold: 0.5 });
     const ref = elRef.current;
 
     if (!ref) {
       return;
     }
+
+    const observer = new IntersectionObserver(([entry]) => setIsInViewport(entry.isIntersecting), { threshold: 0.5 });
 
     observer.observe(ref);
 
@@ -79,10 +78,15 @@ export default function AnimatedBoxComponent({ component, elRef, eventHandlers, 
 }
 
 function useStyles(style, duration, delay, loop) {
-  return useMemo(() => ({
+  return useMemo(() => {
+    const animDuration = duration > 0 ? `${ duration }s` : DEFAULT_ONE;
+    const animDelay = delay > 0 ? `${ delay }s` : DEFAULT_ZERO;
+    const animCount = loop > 0 ? loop : INFINITE;
+
+    return {
     ...style,
-    '--animate-duration'       : `${ duration }s`,
-    '--animate-delay'          : `${ delay }s`,
-    '--animate-iteration-count': loop || INFINITE,
-  }), [style, duration, delay, loop]);
+    '--animate-duration'       : animDuration,
+    '--animate-delay'          : animDelay,
+    '--animate-iteration-count': animCount,
+  }}, [style, duration, delay, loop]);
 }
