@@ -32,13 +32,14 @@ Collapsible Panel is the component that can be used in Backendless [UI-Builder](
 
 **Theme**
 ````
-@bl-customComponent-collapsiblePanel-theme: @themePrimary;
 @bl-customComponent-collapsiblePanel-themeTextColor: @appTextColor;
 ````
 
 **Dimensions**
 ```
 @bl-customComponent-collapsiblePanel-width: 100%;
+@bl-customComponent-collapsiblePanel-content-width: 100%;
+@bl-customComponent-collapsiblePanel-title-width: 100%;
 @bl-customComponent-collapsiblePanel-padding: 10px 14px;
 @bl-customComponent-collapsiblePanel-content-open-maxHeight: 1000px;
 @bl-customComponent-collapsiblePanel-title-fontSize: 26px;
