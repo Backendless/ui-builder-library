@@ -3,7 +3,7 @@
   "name": "Animated Box",
   "description": "The Animated Box component allows the user to create interactive animations.",
   "showInToolbox": true,
-  "faIcon": "tent-arrow-left-right",
+  "faIcon": "parachute-box",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -133,24 +133,31 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "loopLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "autoStart",
+      "label": "Start Play",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "autoStartLogic",
+      "settingTooltip": "Flag whether to play animation on startup or not."
     }
   ],
   "eventHandlers": [
     {
       "name": "onClick",
-      "contextBlocks": [],
       "handlerDescription": "Triggered when the user clicks on the component.",
       "label": "On Click"
     },
     {
       "name": "onMouseOver",
-      "contextBlocks": [],
       "handlerDescription": "Triggered when the mouse pointer hovers over the component.",
       "label": "On Mouse Over"
     },
     {
       "name": "onMouseOut",
-      "contextBlocks": [],
       "handlerDescription": "Triggered when the mouse pointer leaves the component.",
       "label": "On Mouse Out"
     },
@@ -173,11 +180,11 @@
   "actions": [
     {
       "id": "play",
-      "label": "Play"
+      "label": "Play animation of"
     },
     {
-      "id": "pause",
-      "label": "Pause"
+      "id": "stop",
+      "label": "Stop animation of"
     }
   ],
   "settings": [],
