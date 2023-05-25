@@ -183,9 +183,12 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
   }, [markers]);
 };
 
-const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
+const updatePolygonsArray = (polygons, mapRef, polygonsArray, polygonOutline, setPolygonsArray, map) => {
   polygonsArray.forEach(polygon => {
     if (mapRef.current.getSource(polygon.id)) {
+      if (polygonOutline) {
+        map.removeLayer(`${ polygon.id }-outline`);
+      }
       map.removeLayer(`${ polygon.id }-layer`);
       map.removeSource(polygon.id);
     }
@@ -217,9 +220,16 @@ const createPopup = (polygon, mapRef, onPolygonClick, map) => {
   }
 };
 
-const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
+const addPolygons = (mapRef, polygonsArray, onPolygonClick, map, polygonOutline, polygonOutlineColor,
+                     polygonOutlineWidth) => {
   polygonsArray.forEach(polygon => {
     const { id, coordinates, color, opacity } = polygon;
+    const verifiedCoordinates = [...coordinates];
+
+    if (coordinates[0][0] !== coordinates[coordinates.length - 1][0]
+      && coordinates[0][1] !== coordinates[coordinates.length - 1][1]) {
+      verifiedCoordinates.push(coordinates[0]);
+    }
 
     map.addSource(id, {
       type: 'geojson',
@@ -227,7 +237,7 @@ const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
         type    : 'Feature',
         geometry: {
           type       : 'Polygon',
-          coordinates: [coordinates],
+          coordinates: [verifiedCoordinates],
         },
       },
     });
@@ -243,21 +253,35 @@ const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
       },
     });
 
+    if (polygonOutline) {
+      map.addLayer({
+        id    : `${ id }-outline`,
+        type  : 'line',
+        source: id,
+        layout: {},
+        paint : {
+          'line-color': polygonOutlineColor,
+          'line-width': polygonOutlineWidth
+        }
+      });
+    }
+
     createPopup(polygon, mapRef, onPolygonClick, map);
   });
 };
 
-export const usePolygons = (polygons, mapRef, onPolygonClick, map, isMapLoaded) => {
+export const usePolygons = (polygons, polygonOutline, polygonOutlineColor, polygonOutlineWidth, mapRef, onPolygonClick,
+                            map, isMapLoaded) => {
   const [polygonsArray, setPolygonsArray] = useState([]);
 
   useEffect(() => {
     if (polygons?.length && isMapLoaded) {
-      updatePolygonsArray(polygons, mapRef, polygonsArray, setPolygonsArray, map);
+      updatePolygonsArray(polygons, mapRef, polygonsArray, polygonOutline, setPolygonsArray, map);
     }
   }, [polygons, isMapLoaded]);
 
   useEffect(() => {
-    addPolygons(mapRef, polygonsArray, onPolygonClick, map);
+    addPolygons(mapRef, polygonsArray, onPolygonClick, map, polygonOutline, polygonOutlineColor, polygonOutlineWidth);
   }, [polygonsArray]);
 };
 

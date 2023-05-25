@@ -31,6 +31,32 @@
       "handlerDescription": "Specifies an array of polygons to display on the map."
     },
     {
+      "type": "checkbox",
+      "name": "polygonOutline",
+      "label": "Polygon Outline",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "polygonOutlineLogic"
+    },
+    {
+      "type": "color",
+      "name": "polygonOutlineColor",
+      "label": "Polygon Outline Color",
+      "showInSettings": true,
+      "defaultValue": "#000000",
+      "hasLogicHandler": false,
+      "handlerId": "polygonOutlineColorLogic"
+    },
+    {
+      "type": "number",
+      "name": "polygonOutlineWidth",
+      "label": "Polygon Outline Width",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": false,
+      "handlerId": "polygonOutlineWidthLogic"
+    },
+    {
       "type": "json",
       "name": "center",
       "label": "Center",

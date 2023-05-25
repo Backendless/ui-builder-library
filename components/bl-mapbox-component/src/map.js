@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import Mapbox from './lib/mapbox';
-import { initMapboxLibrary, useMarkers, usePolygons, MapController } from './helpers';
+import { initMapboxLibrary, MapController, useMarkers, usePolygons } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -14,7 +14,7 @@ export default function MapboxComponent({ component, eventHandlers, settings }) 
 
   const { onMarkerClick, onPolygonClick } = eventHandlers;
 
-  const { markers, polygons, center, classList } = component;
+  const { markers, polygons, polygonOutline, polygonOutlineColor, polygonOutlineWidth, center, classList } = component;
 
   const map = useMemo(() => new MapController(mapRef), [mapRef]);
 
@@ -34,7 +34,8 @@ export default function MapboxComponent({ component, eventHandlers, settings }) 
 
   useMarkers(markers, mapRef, onMarkerClick);
 
-  usePolygons(polygons, mapRef, onPolygonClick, map, isMapLoaded);
+  usePolygons(polygons, polygonOutline, polygonOutlineColor, polygonOutlineWidth, mapRef, onPolygonClick, map,
+    isMapLoaded);
 
   return (
     <div className={ cn('bl-customComponent-mapbox', classList) }>
