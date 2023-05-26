@@ -2,19 +2,19 @@
 
 This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer.
 
-The component allows you to add dashlet to your UI-Builder application.
+The component allows you to add a dashlet to your UI-Builder application.
 
 ## Properties
 
 | Property     | Type                              | Default Value | Logic               | Data Binding | UI Setting | Description                                                                                                                                                                                                     |
 |--------------|-----------------------------------|---------------|---------------------|--------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| title        | Text                              |               | Title Logic         | YES          | YES        | Allows to determine the title for dashlet                                                                                                                                                                       |
+| title        | Text                              |               | Title Logic         | YES          | YES        | Allows to determine the title for the dashlet                                                                                                                                                                   |
 | styleVariant | Select ["default", "alternative"] | "default"     |                     | NO           | YES        | Allows to determine the variant of style for dashlet                                                                                                                                                            |
 | height       | Number                            | 400           | Height Logic        | YES          | YES        | Allows to determine the height                                                                                                                                                                                  |
 | width        | Number                            | 600           | Width Logic         | YES          | YES        | Allows to determine the width                                                                                                                                                                                   |
 | localStorage | Checkbox                          | `false`       | Local Storage Logic | YES          | YES        | Allows you to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) or not |
-| resizing     | Checkbox                          | `false`       | Resizing Logic      | YES          | YES        | Allows to determine whether resizing is allows or not                                                                                                                                                           |
-| dragging     | Checkbox                          | `false`       | Dragging Logic      | YES          | YES        | Allows to determine whether dragging is allows or not                                                                                                                                                           |
+| resizing     | Checkbox                          | `false`       | Resizing Logic      | YES          | YES        | Allows to determine whether resizing is allowed or not                                                                                                                                                          |
+| dragging     | Checkbox                          | `false`       | Dragging Logic      | YES          | YES        | Allows to determine whether dragging is allowed or not                                                                                                                                                          |
 | contextBlock | JSON                              | `[]`          | Context Block Logic | YES          | YES        | Allows to determine context block. [Codeless Examples](#Examples). Signature of context block: `{type, label, content}`                                                                                         |
 | minWidth     | Number                            | 300           | Min Width Logic     | YES          | YES        | Allows to determine min-width                                                                                                                                                                                   |
 | maxWidth     | Number                            | 900           | Max Width Logic     | YES          | YES        | Allows to determine max-width                                                                                                                                                                                   |
@@ -23,9 +23,9 @@ The component allows you to add dashlet to your UI-Builder application.
 
 ## Events
 
-| Name                  | Triggers                                         | Context Blocks   |
-|-----------------------|--------------------------------------------------|------------------|
-| Context Block Handler | when user clicks on some action in context block | action: `string` |
+| Name                  | Triggers                                                 | Context Blocks   |
+|-----------------------|----------------------------------------------------------|------------------|
+| Context Block Handler | when the user clicks on some action in the context block | action: `string` |
 
 ## Actions
 

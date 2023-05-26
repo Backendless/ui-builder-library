@@ -1,7 +1,7 @@
 {
   "id": "c_34e78b2552953123061c9cf949366d5b",
   "name": "Dashlet",
-  "description": "The component allows you to add dashlet to your UI-Builder application",
+  "description": "The component allows you to add a dashlet to your UI-Builder application",
   "showInToolbox": true,
   "faIcon": "window-restore",
   "mainJS": "dist/index.js",
@@ -84,7 +84,7 @@
       "handlerId": "resizingLogic",
       "handlerLabel": "Resizing Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic of determining resizable or no resizable dashlet"
+      "handlerDescription": "This is a handler for the logic of determining whether resizing is allowed or not"
     },
     {
       "type": "checkbox",
@@ -95,7 +95,7 @@
       "handlerId": "draggingLogic",
       "handlerLabel": "Dragging Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic of determining draggable or no draggable dashlet"
+      "handlerDescription": "This is a handler for the logic of determining whether dragging is allowed or not"
     },
     {
       "type": "json",
