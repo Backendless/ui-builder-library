@@ -24,13 +24,13 @@ The component allows you to add dashlet to your UI-Builder application.
 
 | Name                  | Triggers                                         | Context Blocks   |
 |-----------------------|--------------------------------------------------|------------------|
-| Context Block Handler | when user clicks on some action in context block | action: `string` |
+| Context Block Handler | when user clicks on some action in context block | action: `String` |
 
 ## Actions
 
 | Action       | Inputs                                    | Return                                |
 |--------------|-------------------------------------------|---------------------------------------|
-| Get Position |                                           | { top: `Number`, left: `number`}      |
+| Get Position |                                           | { top: `Number`, left: `Number`}      |
 | Get Size     |                                           | { height: `Number`, width: `Number` } |
 | Get Is Open  |                                           | `Bollean`                             |
 | Set Position | Position: `{ top: Number left: Number}`   |                                       |
