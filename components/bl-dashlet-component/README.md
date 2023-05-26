@@ -30,10 +30,10 @@ The component allows you to add dashlet to your UI-Builder application.
 
 | Action       | Inputs                                    | Return                                |
 |--------------|-------------------------------------------|---------------------------------------|
-| Get Position |                                           | { top: `Number`, left: `number`}      |
+| Get Position |                                           | { x: `Number`, y: `number`}           |
 | Get Size     |                                           | { height: `Number`, width: `Number` } |
 | Get Is Open  |                                           | `Bollean`                             |
-| Set Position | Position: `{ top: Number left: Number}`   |                                       |
+| Set Position | Position: `{ x: Number y: Number}`        |                                       |
 | Set Size     | Size: `{ height: Number, width: Number }` |                                       |
 | Set Is Open  | Is Open: `Bollean`                        |                                       |
 
