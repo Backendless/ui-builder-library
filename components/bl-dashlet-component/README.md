@@ -4,6 +4,10 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 The component allows you to add dashlet to your UI-Builder application.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property     | Type                              | Default Value | Logic               | Data Binding | UI Setting | Description                                                                                                             |
