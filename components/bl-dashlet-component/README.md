@@ -4,6 +4,10 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 The component allows you to add a dashlet to your UI-Builder application.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property            | Type                              | Default Value | Logic                       | Data Binding | UI Setting | Description                                                                                                                                                                                                     |
@@ -15,7 +19,7 @@ The component allows you to add a dashlet to your UI-Builder application.
 | localStorageEnabled | Checkbox                          | `false`       | Local Storage Enabled Logic | YES          | YES        | Allows you to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) or not |
 | resizing            | Checkbox                          | `false`       | Resizing Logic              | YES          | YES        | Allows to determine whether resizing is allowed or not                                                                                                                                                          |
 | dragging            | Checkbox                          | `false`       | Dragging Logic              | YES          | YES        | Allows to determine whether dragging is allowed or not                                                                                                                                                          |
-| contextBlock        | JSON                              | `[]`          | Context Block Logic         | YES          | YES        | Allows to determine context block. [Codeless Examples](#Examples). Signature of context block: `{type, label, content}`                                                                                         |
+| contextBlock        | JSON                              | `[]`          | Context Block Logic         | YES          | YES        | Allows to determine context block. [Codeless Examples](#examples). Signature of context block: `{type, label, content}`                                                                                         |
 | minWidth            | Number                            | 300           | Min Width Logic             | YES          | YES        | Allows to determine min-width                                                                                                                                                                                   |
 | maxWidth            | Number                            | 900           | Max Width Logic             | YES          | YES        | Allows to determine max-width                                                                                                                                                                                   |
 | minHeight           | Number                            | 300           | Min Height Logic            | YES          | YES        | Allows to determine min-height                                                                                                                                                                                  |
@@ -25,16 +29,16 @@ The component allows you to add a dashlet to your UI-Builder application.
 
 | Name                  | Triggers                                                 | Context Blocks   |
 |-----------------------|----------------------------------------------------------|------------------|
-| Context Block Handler | when the user clicks on some action in the context block | action: `string` |
+| Context Block Handler | when the user clicks on some action in the context block | action: `String` |
 
 ## Actions
 
 | Action       | Inputs                                    | Return                                |
 |--------------|-------------------------------------------|---------------------------------------|
-| Get Position |                                           | { top: `Number`, left: `number`}      |
+| Get Position |                                           | { x: `Number`, y: `Number`}           |
 | Get Size     |                                           | { height: `Number`, width: `Number` } |
 | Get Is Open  |                                           | `Bollean`                             |
-| Set Position | Position: `{ top: Number left: Number}`   |                                       |
+| Set Position | Position: `{ x: Number y: Number}`        |                                       |
 | Set Size     | Size: `{ height: Number, width: Number }` |                                       |
 | Set Is Open  | Is Open: `Bollean`                        |                                       |
 
@@ -79,7 +83,7 @@ The component allows you to add a dashlet to your UI-Builder application.
 @bl-customComponent-dashlet-title-alternative-text-color: contrast(@themePrimary);
 ```
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Addition of context block in UI Setting:
 

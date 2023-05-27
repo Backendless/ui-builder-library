@@ -30,6 +30,9 @@ export function Dashlet(props) {
     return {};
   }, [height, width, isOpen]);
 
+  useEffect(() => setResizeMaxHeight(maxHeight), [maxHeight]);
+  useEffect(() => setResizeMaxWidth(maxWidth), [maxWidth]);
+
   const onCollapseButtonClick = () => {
     setIsOpen(state => !state);
   };
@@ -55,11 +58,11 @@ export function Dashlet(props) {
     dragging,
   });
 
-  const onResizeStop = useCallback((e, data) => {
+  const onResizeStop = useCallback((e, { size: { height, width } }) => {
     setResizeMaxWidth(maxWidth);
     setResizeMaxHeight(maxHeight);
-    setSize({ width: data.size.width, height: data.size.height });
-  }, []);
+    setSize({ width, height });
+  }, [maxWidth, maxHeight]);
 
   const onResize = useCallback((e, data) => {
     const { top, left, width, height } = rootRef.current.parentElement.getBoundingClientRect();
