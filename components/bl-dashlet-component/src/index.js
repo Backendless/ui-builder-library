@@ -6,7 +6,7 @@ import { Storage } from './storage';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DashletComponent({ component, eventHandlers, pods, instanceId }) {
-  const { display, classList, style, localStorage, height, width } = component;
+  const { display, classList, style, localStorageEnabled, height, width } = component;
   const { contextBlocksHandler } = eventHandlers;
   const dashletContentPod = pods['dashletContent'];
 
@@ -25,7 +25,7 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
   }, [height, width]);
 
   useComponentActions(component, size, setSize, position, setPosition, isOpen, setIsOpen);
-  useLocalSettings(localStorage, storage, position, size, isOpen);
+  useLocalSettings(localStorageEnabled, storage, position, size, isOpen);
 
   if (!display) {
     return null;
@@ -64,22 +64,22 @@ const useComponentActions = (component, size, setSize, position, setPosition, is
   });
 };
 
-const useLocalSettings = (localStorage, storage, position, size, isOpen) => {
+const useLocalSettings = (localStorageEnabled, storage, position, size, isOpen) => {
   useEffect(() => {
-    if (localStorage) {
+    if (localStorageEnabled) {
       storage.position = position;
     }
-  }, [position]);
+  }, [position, localStorageEnabled]);
 
   useEffect(() => {
-    if (localStorage) {
+    if (localStorageEnabled) {
       storage.size = size;
     }
-  }, [size]);
+  }, [size, localStorageEnabled]);
 
   useEffect(() => {
-    if (localStorage) {
+    if (localStorageEnabled) {
       storage.isOpen = isOpen;
     }
-  }, [size, position, isOpen, localStorage]);
+  }, [isOpen, localStorageEnabled]);
 };

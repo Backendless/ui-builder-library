@@ -65,12 +65,12 @@
     },
     {
       "type": "checkbox",
-      "name": "localStorage",
-      "label": "local Storage",
+      "name": "localStorageEnabled",
+      "label": " Local Storage Enabled",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "localStorageLogic",
-      "handlerLabel": "Local Storage Logic",
+      "handlerId": "localStorageEnabledLogic",
+      "handlerLabel": "Local Storage Enabled Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic of determining whether the state (size, position, closed or open) of a dashlet is allowed to be stored in local storage or not",
       "settingTooltip": "Allows you to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in local storage or not"
