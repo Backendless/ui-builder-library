@@ -1,11 +1,12 @@
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
 import { Dashlet } from './dashlet';
 import { Storage } from './storage';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DashletComponent({ component, eventHandlers, pods, instanceId }) {
-  const { display, classList, style, height, width } = component;
+  const { display, classList, style, localStorageEnabled, height, width } = component;
   const { contextBlocksHandler } = eventHandlers;
   const dashletContentPod = pods['dashletContent'];
 
@@ -17,8 +18,14 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
   const [position, setPosition] = useState(storage.position || { x: 0, y: 0 });
   const [size, setSize] = useState(storage.size || { height, width });
 
+  useEffect(() => {
+    if (!storage.size) {
+      setSize({ height, width });
+    }
+  }, [height, width]);
+
   useComponentActions(component, size, setSize, position, setPosition, isOpen, setIsOpen);
-  useLocalSettings(storage, position, size, isOpen);
+  useLocalSettings(localStorageEnabled, storage, position, size, isOpen);
 
   if (!display) {
     return null;
@@ -28,7 +35,7 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
     <div
       ref={ rootRef }
       className={ cn('bl-customComponent-dashlet', classList) }
-      style={ { ...style } }>
+      style={ style }>
       <Dashlet
         rootRef={ rootRef }
         component={ component }
@@ -53,20 +60,26 @@ const useComponentActions = (component, size, setSize, position, setPosition, is
     setPosition: position => setPosition(position),
     getPosition: () => position,
     setIsOpen  : isOpen => setIsOpen(isOpen),
-    getIsOpen  : () => isOpen
+    getIsOpen  : () => isOpen,
   });
 };
 
-const useLocalSettings = (storage, position, size, isOpen) => {
+const useLocalSettings = (localStorageEnabled, storage, position, size, isOpen) => {
   useEffect(() => {
-    storage.position = position;
-  }, [position]);
+    if (localStorageEnabled) {
+      storage.position = position;
+    }
+  }, [position, localStorageEnabled]);
 
   useEffect(() => {
-    storage.size = size;
-  }, [size]);
+    if (localStorageEnabled) {
+      storage.size = size;
+    }
+  }, [size, localStorageEnabled]);
 
   useEffect(() => {
-    storage.isOpen = isOpen;
-  }, [isOpen]);
+    if (localStorageEnabled) {
+      storage.isOpen = isOpen;
+    }
+  }, [isOpen, localStorageEnabled]);
 };

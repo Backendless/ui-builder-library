@@ -4,6 +4,8 @@ import {
   formatCreditCardNumber, formatCVC, formatExpirationDate, getExpirationDate, RegexPatterns, validateCardDetails,
 } from './helpers';
 
+const { cn } = BackendlessUI.CSSUtils;
+
 export function CardForm(props) {
   const { card, formState, setFormState, component, eventHandlers } = props;
   const { submitButtonLabel, labelsVisibility } = component;
@@ -28,12 +30,16 @@ export function CardForm(props) {
 }
 
 function FormField({ labelsVisibility, field, setFormState }) {
-  const { label, type, name, placeholder, pattern, value, onChange } = field;
+  const { visibility, label, type, name, placeholder, pattern, value, onChange } = field;
 
   const handleInputFocus = event => setFormState({ focusedField: event.target.name });
 
+  if (!visibility) {
+    return null;
+  }
+
   return (
-    <div className="form-field">
+    <div className={ cn('form-field', name) }>
       { labelsVisibility && (
         <label className="form-field-label" htmlFor={ name }>{ label }</label>
       ) }
@@ -55,8 +61,8 @@ function FormField({ labelsVisibility, field, setFormState }) {
 function useFormFields(formState, setFormState, card, component, eventHandlers) {
   const { cardNumber, cardholderName, expiry, cvc } = formState;
   const {
-    cardNumberFieldPlaceholder, cardholderNameFieldPlaceholder,
-    expiryFieldPlaceholder, cvcFieldPlaceholder, cvcVisibility,
+    cardNumberFieldPlaceholder, cardholderNameFieldPlaceholder, expiryFieldPlaceholder,
+    cvcFieldPlaceholder, cvcVisibility, cardholderNameFieldVisibility,
   } = component;
 
   const {
@@ -70,6 +76,7 @@ function useFormFields(formState, setFormState, card, component, eventHandlers) 
     placeholder: cardNumberFieldPlaceholder,
     pattern    : '[\\d| ]{16,22}',
     value      : cardNumber,
+    visibility : true,
     onChange   : handleNumberChange,
   }), [cardNumber, cardNumberFieldPlaceholder, handleNumberChange]);
 
@@ -80,8 +87,9 @@ function useFormFields(formState, setFormState, card, component, eventHandlers) 
     placeholder: cardholderNameFieldPlaceholder,
     pattern    : '[a-z A-Z-]+',
     value      : cardholderName,
+    visibility : cardholderNameFieldVisibility,
     onChange   : handleCardholderNameChange,
-  }), [cardholderName, cardholderNameFieldPlaceholder, handleCardholderNameChange]);
+  }), [cardholderName, cardholderNameFieldPlaceholder, cardholderNameFieldVisibility, handleCardholderNameChange]);
 
   const expiryField = useMemo(() => ({
     label      : 'Expiration Date:',
@@ -90,6 +98,7 @@ function useFormFields(formState, setFormState, card, component, eventHandlers) 
     placeholder: expiryFieldPlaceholder,
     pattern    : '\\d\\d / \\d\\d',
     value      : expiry,
+    visibility : true,
     onChange   : handleExpiryChange,
   }), [expiry, expiryFieldPlaceholder, handleExpiryChange]);
 
@@ -100,6 +109,7 @@ function useFormFields(formState, setFormState, card, component, eventHandlers) 
     placeholder: cvcFieldPlaceholder,
     pattern    : '\\d{3,4}',
     value      : cvc,
+    visibility : true,
     onChange   : handleCVCChange,
   }), [cvc, cvcFieldPlaceholder, cvcVisibility, handleCVCChange]);
 

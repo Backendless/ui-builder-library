@@ -106,6 +106,16 @@
       "defaultValue": "CVC",
       "hasLogicHandler": false,
       "handlerId": "cvcFieldPlaceholderLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "cardholderNameFieldVisibility",
+      "label": "Cardholder Name Field Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "cardholderNameFieldVisibilityLogic",
+      "settingTooltip": "Select to display the Cardholder Name field."
     }
   ],
   "eventHandlers": [

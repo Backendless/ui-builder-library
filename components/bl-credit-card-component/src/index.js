@@ -9,7 +9,7 @@ const { cn } = BackendlessUI.CSSUtils;
 const initialFormState = { cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: null };
 
 export default function CreditCardComponent({ component, eventHandlers, elRef }) {
-  const { display, classList, style, direction, cardPreviewVisibility, cvcVisibility } = component;
+  const { display, classList, style, direction, cardPreviewVisibility } = component;
 
   const [card, setCard] = useState();
   const [formState, setFormState] = useObjectState(initialFormState);
@@ -53,7 +53,7 @@ export default function CreditCardComponent({ component, eventHandlers, elRef })
           focusedField={ focusedField }
           name={ cardholderName }
           card={ card }
-          cvcVisibility={ cvcVisibility }
+          component={ component }
         />
       ) }
       <CardForm
