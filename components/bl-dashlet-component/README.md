@@ -87,8 +87,8 @@ The component allows you to add a dashlet to your UI-Builder application.
 
 Addition of context block in UI Setting:
 
-![context block example](example-images/context-block-json.png)
+![context block example](./example-images/context-block-json.jpg)
 
 Use context block actions in event Context Block Handler:
 
-![context block actions example](example-images/context-block-handler-logic.png)
+![context block actions example](example-images/context-block-handler-logic.jpg)
