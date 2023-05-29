@@ -101,64 +101,16 @@
           "label": "Catalan"
         },
         {
-          "value": "cs",
-          "label": "Czech"
-        },
-        {
-          "value": "en",
-          "label": "English"
-        },
-        {
-          "value": "es",
-          "label": "Spanish"
-        },
-        {
-          "value": "de",
-          "label": "German"
-        },
-        {
-          "value": "sl",
-          "label": "Slovenian"
-        },
-        {
-          "value": "ja",
-          "label": "Japanese"
-        },
-        {
           "value": "zh_tw",
           "label": "Chinese (Traditional)"
         },
         {
-          "value": "uk",
-          "label": "Ukrainian"
-        },
-        {
-          "value": "fr",
-          "label": "French"
-        },
-        {
-          "value": "it",
-          "label": "Italian"
-        },
-        {
-          "value": "pl",
-          "label": "Polish"
-        },
-        {
-          "value": "tr",
-          "label": "Turkish"
+          "value": "cs",
+          "label": "Czech"
         },
         {
           "value": "da",
           "label": "Danish"
-        },
-        {
-          "value": "pt_br",
-          "label": "Portuguese (Brazil)"
-        },
-        {
-          "value": "pt",
-          "label": "Portuguese"
         },
         {
           "value": "nl",
@@ -167,6 +119,54 @@
         {
           "value": "nl_be",
           "label": "Dutch (Belgium)"
+        },
+        {
+          "value": "en",
+          "label": "English"
+        },
+        {
+          "value": "fr",
+          "label": "French"
+        },
+        {
+          "value": "de",
+          "label": "German"
+        },
+        {
+          "value": "it",
+          "label": "Italian"
+        },
+        {
+          "value": "ja",
+          "label": "Japanese"
+        },
+        {
+          "value": "pl",
+          "label": "Polish"
+        },
+        {
+          "value": "pt",
+          "label": "Portuguese"
+        },
+        {
+          "value": "pt_br",
+          "label": "Portuguese (Brazil)"
+        },
+        {
+          "value": "sl",
+          "label": "Slovenian"
+        },
+        {
+          "value": "es",
+          "label": "Spanish"
+        },
+        {
+          "value": "tr",
+          "label": "Turkish"
+        },
+        {
+          "value": "uk",
+          "label": "Ukrainian"
         }
       ],
       "label": "Lang",
