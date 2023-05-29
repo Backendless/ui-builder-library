@@ -15,7 +15,8 @@ const NumberSpaces = { shortFormat: [4, 11], defaultFormat: [4, 9, 14] };
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CardPreview(props) {
-  const { cardNumber, expiry, cvc, focusedField, name, card, cvcVisibility } = props;
+  const { cardNumber, expiry, cvc, focusedField, name, card, component } = props;
+  const { cvcVisibility, cardholderNameFieldVisibility } = component;
 
   const { creditCardNumber, expirationDate, issuer } = useCardPreview(cardNumber, expiry, card);
 
@@ -39,9 +40,11 @@ export function CardPreview(props) {
             }) }>
             { creditCardNumber }
           </div>
-          <div className={ cn('card-name', { 'focused': focusedField === 'name', 'filled': !!name }) }>
-            { name || defaultState.namePlaceholder }
-          </div>
+          { cardholderNameFieldVisibility && (
+            <div className={ cn('card-name', { 'focused': focusedField === 'name', 'filled': !!name }) }>
+              { name || defaultState.namePlaceholder }
+            </div>
+          ) }
           <div className={ cn('card-expiry', {
             'focused': focusedField === 'expiry',
             'filled' : expirationDate[0] !== '•',
