@@ -12,18 +12,18 @@ they don't require user input to disappear.
 
 ## Properties
 
-| Property           | Type                                                              | Default value   | Logic                  | Data Binding | UI Setting | Description                                                        |
-|--------------------|-------------------------------------------------------------------|-----------------|------------------------|--------------|------------|--------------------------------------------------------------------|
-| showClose          | *checkbox*                                                        | `true`          |                        | NO           | YES        | This is a handler that controls visibility of the close button.    |
-| showAction         | *checkbox*                                                        | `false`         |                        | NO           | YES        | This is a handler that controls visibility of the action button.   |
-| actionContent      | *text*                                                            | 'Action'        | Action Content Logic   | YES          | YES        | This is a handler to set the text of the action button.            |
-| snackContent       | *text*                                                            | 'Snackbar Info' | Snackbar Content Logic | YES          | YES        | This is a handler to set the text of the snackbar.                 |
-| autoHide           | *checkbox*                                                        | `false`         |                        | NO           | YES        | This is a handler that controls autohiding.                        |
-| autoHideDuration   | *number*                                                          | 5000            |                        | NO           | YES        | This is a handler that sets the time when snackbar will be hidden. |
-| verticalPosition   | *select* <br/>[`top`, `center`, `bottom`]                         | 'top'           |                        | NO           | YES        | This is a handler that sets the vertical position of snackbar.     |
-| horizontalPosition | *select* <br/>[`right`, `center`, `left`]                         | 'right'         |                        | NO           | YES        | This is a handler that sets the horizontal position of snackbar.   |
-| type               | *select* <br/> [`default`, `info`, `success`, `warning`, `error`] | 'default'       | Type Logic             | YES          | YES        | This is a handler to set the type of the snackbar.                 |
-| maxSnacks          | *number*                                                          | 3               |                        | NO           | YES        | This is a handler to set the number of maximum visible snackbars.  |
+| Property           | Type                                                              | Default value   | Logic                    | Data Binding | UI Setting | Description                                                        |
+|--------------------|-------------------------------------------------------------------|-----------------|--------------------------|--------------|------------|--------------------------------------------------------------------|
+| showClose          | *checkbox*                                                        | `true`          |                          | NO           | YES        | This is a handler that controls visibility of the close button.    |
+| showAction         | *checkbox*                                                        | `false`         |                          | NO           | YES        | This is a handler that controls visibility of the action button.   |
+| actionContent      | *text*                                                            | 'Action'        | Action Content Logic     | YES          | YES        | This is a handler to set the text of the action button.            |
+| snackContent       | *text*                                                            | 'Snackbar Info' | Snackbar Content Logic   | YES          | YES        | This is a handler to set the text of the snackbar.                 |
+| autoHide           | *checkbox*                                                        | `false`         | Auto Hide Logic          | YES          | YES        | This is a handler that controls autohiding.                        |
+| autoHideDuration   | *number*                                                          | 5000            | Auto Hide Duration Logic | YES          | YES        | This is a handler that sets the time when snackbar will be hidden. |
+| verticalPosition   | *select* <br/>[`top`, `center`, `bottom`]                         | 'top'           |                          | NO           | YES        | This is a handler that sets the vertical position of snackbar.     |
+| horizontalPosition | *select* <br/>[`right`, `center`, `left`]                         | 'right'         |                          | NO           | YES        | This is a handler that sets the horizontal position of snackbar.   |
+| type               | *select* <br/> [`default`, `info`, `success`, `warning`, `error`] | 'default'       | Type Logic               | YES          | YES        | This is a handler to set the type of the snackbar.                 |
+| maxSnacks          | *number*                                                          | 3               |                          | NO           | YES        | This is a handler to set the number of maximum visible snackbars.  |
 
 ## Events
 
