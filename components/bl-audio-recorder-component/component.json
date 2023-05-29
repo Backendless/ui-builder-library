@@ -62,10 +62,14 @@
       "name": "fileType",
       "label": "File Type",
       "showInSettings": true,
-      "defaultValue": "WEBM",
+      "defaultValue": "MP4",
       "hasLogicHandler": false,
       "handlerId": "fileTypeLogic",
       "options": [
+        {
+          "value": "MP4",
+          "label": "mp4"
+        },
         {
           "value": "WEBM",
           "label": "webm"
@@ -77,10 +81,6 @@
         {
           "value": "MPEG",
           "label": "mpeg"
-        },
-        {
-          "value": "MP4",
-          "label": "mp4"
         },
         {
           "value": "OGG",
