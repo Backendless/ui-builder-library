@@ -15,7 +15,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "cardPreviewVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Select to display a preview of the card."
     },
     {
       "type": "checkbox",
@@ -24,7 +25,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "cvcVisibilityLogic"
+      "handlerId": "cvcVisibilityLogic",
+      "settingTooltip": "Select to display digits of the credit card CVC number."
     },
     {
       "type": "select",
@@ -51,7 +53,8 @@
           "value": "column-reverse",
           "label": "Column reverse"
         }
-      ]
+      ],
+      "settingTooltip": "Select the component direction."
     },
     {
       "type": "checkbox",
@@ -60,7 +63,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "labelsVisibilityLogic"
+      "handlerId": "labelsVisibilityLogic",
+      "settingTooltip": "Select to display labels of the form fields."
     },
     {
       "type": "text",
@@ -69,7 +73,8 @@
       "showInSettings": true,
       "defaultValue": "Pay",
       "hasLogicHandler": false,
-      "handlerId": "submitButtonLabelLogic"
+      "handlerId": "submitButtonLabelLogic",
+      "settingTooltip": "Define the label of the submit button."
     },
     {
       "type": "text",
@@ -78,7 +83,8 @@
       "showInSettings": true,
       "defaultValue": "Card Number",
       "hasLogicHandler": false,
-      "handlerId": "cardNumberFieldPlaceholderLogic"
+      "handlerId": "cardNumberFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the card number field."
     },
     {
       "type": "text",
@@ -87,7 +93,8 @@
       "showInSettings": true,
       "defaultValue": "Cardholder Name",
       "hasLogicHandler": false,
-      "handlerId": "cardholderNameFieldPlaceholderLogic"
+      "handlerId": "cardholderNameFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the cardholder name field."
     },
     {
       "type": "text",
@@ -96,7 +103,8 @@
       "showInSettings": true,
       "defaultValue": "MM / YY",
       "hasLogicHandler": false,
-      "handlerId": "expiryFieldPlaceholderLogic"
+      "handlerId": "expiryFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the card expiration field."
     },
     {
       "type": "text",
@@ -105,7 +113,8 @@
       "showInSettings": true,
       "defaultValue": "CVC",
       "hasLogicHandler": false,
-      "handlerId": "cvcFieldPlaceholderLogic"
+      "handlerId": "cvcFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the CVC number field."
     },
     {
       "type": "checkbox",
@@ -115,7 +124,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "cardholderNameFieldVisibilityLogic",
-      "settingTooltip": "Select to display the Cardholder Name field."
+      "settingTooltip": "Select to display the cardholder name field."
     }
   ],
   "eventHandlers": [
