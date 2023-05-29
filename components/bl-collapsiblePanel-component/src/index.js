@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -22,6 +22,8 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
     handler();
   }, []);
+
+  useEffect(() => display && setWithAnimation(false), [display]);
 
   component.expand = () => !expanded && togglePanel(false);
   component.collapse = () => expanded && togglePanel(true);

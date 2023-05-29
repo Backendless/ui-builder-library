@@ -4,6 +4,10 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 The component allows you to add dashlet to your UI-Builder application.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property     | Type                              | Default Value | Logic               | Data Binding | UI Setting | Description                                                                                                             |
@@ -14,7 +18,7 @@ The component allows you to add dashlet to your UI-Builder application.
 | width        | Number                            | 600           | Width Logic         | YES          | YES        | Allows to determine the width                                                                                           |
 | resizing     | Checkbox                          | `false`       | Resizing Logic      | YES          | YES        | Allows to determine can resize or can't                                                                                 |
 | dragging     | Checkbox                          | `false`       | Dragging Logic      | YES          | YES        | Allows to determine can drag or can't                                                                                   |
-| contextBlock | JSON                              | `[]`          | Context Block Logic | YES          | YES        | Allows to determine context block. [Codeless Examples](#Examples). Signature of context block: `{type, label, content}` |
+| contextBlock | JSON                              | `[]`          | Context Block Logic | YES          | YES        | Allows to determine context block. [Codeless Examples](#examples). Signature of context block: `{type, label, content}` |
 | minWidth     | Number                            | 300           | Min Width Logic     | YES          | YES        | Allows to determine min-width                                                                                           |
 | maxWidth     | Number                            | 900           | Max Width Logic     | YES          | YES        | Allows to determine max-width                                                                                           |
 | minHeight    | Number                            | 300           | Min Height Logic    | YES          | YES        | Allows to determine min-height                                                                                          |
@@ -24,23 +28,23 @@ The component allows you to add dashlet to your UI-Builder application.
 
 | Name                  | Triggers                                         | Context Blocks   |
 |-----------------------|--------------------------------------------------|------------------|
-| Context Block Handler | when user clicks on some action in context block | action: `string` |
+| Context Block Handler | when user clicks on some action in context block | action: `String` |
 
 ## Actions
 
 | Action       | Inputs                                    | Return                                |
 |--------------|-------------------------------------------|---------------------------------------|
-| Get Position |                                           | { top: `Number`, left: `number`}      |
+| Get Position |                                           | { x: `Number`, y: `Number`}           |
 | Get Size     |                                           | { height: `Number`, width: `Number` } |
 | Get Is Open  |                                           | `Bollean`                             |
-| Set Position | Position: `{ top: Number left: Number}`   |                                       |
+| Set Position | Position: `{ x: Number y: Number}`        |                                       |
 | Set Size     | Size: `{ height: Number, width: Number }` |                                       |
 | Set Is Open  | Is Open: `Bollean`                        |                                       |
 
 ## Styles
 
 
-## <a name="Examples"></a> Codeless Examples
+## <a id="examples"></a> Codeless Examples
 
 Addition of context block in UI Setting:
 

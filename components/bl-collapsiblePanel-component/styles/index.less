@@ -1,4 +1,3 @@
-@bl-customComponent-collapsiblePanel-theme: @themePrimary;
 @bl-customComponent-collapsiblePanel-themeTextColor: @appTextColor;
 
 @bl-customComponent-collapsiblePanel-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
@@ -6,12 +5,13 @@
 
 @bl-customComponent-collapsiblePanel-width: 100%;
 @bl-customComponent-collapsiblePanel-padding: 10px 14px;
+@bl-customComponent-collapsiblePanel-content-width: 100%;
 @bl-customComponent-collapsiblePanel-content-open-maxHeight: 1000px;
 @bl-customComponent-collapsiblePanel-content-animationName-open: collapsiblePanel-animation-open;
 @bl-customComponent-collapsiblePanel-content-animationName-close: collapsiblePanel-animation-close;
 @bl-customComponent-collapsiblePanel-content-animationDuration: 0.3s;
 
-
+@bl-customComponent-collapsiblePanel-title-width: 100%;
 @bl-customComponent-collapsiblePanel-title-fontSize: 26px;
 @bl-customComponent-collapsiblePanel-title-icon-width: 1.5em;
 @bl-customComponent-collapsiblePanel-title-icon-height: 1.5em;
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: @bl-customComponent-collapsiblePanel-width;
+    width: @bl-customComponent-collapsiblePanel-title-width;
     padding: @bl-customComponent-collapsiblePanel-padding;
     background-color: @bl-customComponent-collapsiblePanel-background-color;
     cursor: @bl-customComponent-collapsiblePanel-cursor;
@@ -93,7 +93,7 @@
 
   .panel-content {
     display: flex;
-    width: @bl-customComponent-collapsiblePanel-width;
+    width: @bl-customComponent-collapsiblePanel-content-width;
     max-height: 0;
     overflow: hidden;
   }
