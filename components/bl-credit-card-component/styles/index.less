@@ -148,7 +148,8 @@
     .form-field {
       width: @bl-customComponent-creditCard-paymentForm-formField-width;
 
-      &:nth-child(n+3) {
+      &.cvc,
+      &.expiry {
         width: @bl-customComponent-creditCard-paymentForm-lastFields-width;
       }
 

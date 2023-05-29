@@ -19,6 +19,7 @@ Credit Card is the component that can be used in Backendless [UI-Builder](https:
 | Cardholder Name Field Placeholder | *Text*                                                                | "Cardholder Name" |       | NO           | YES        | Controls the placeholder for the cardholder name entry field. |
 | Expiry Field Placeholder          | *Text*                                                                | "MM / YY"         |       | NO           | YES        | Controls the placeholder for the card expiration entry field. |
 | CVC Field Placeholder             | *Text*                                                                | "CVC"             |       | NO           | YES        | Controls the placeholder for the CVC entry field.             |
+| Cardholder Name Field Visibility  | *Checkbox*                                                            | `true`            |       | NO           | YES        | Enables showing Cardholder Name field in the card form.       |
 
 ## Events
 
