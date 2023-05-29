@@ -8,10 +8,12 @@ import { createActions } from './actions';
 const { Map, FullscreenControl, NavigationControl, Marker, Popup, GeolocateControl } = Mapbox;
 
 const defaultMapboxProps = {
-  START_POS : { lat: 0, lng: 0 },
-  MAP_STYLE : 'mapbox://styles/mapbox/streets-v11',
-  ZOOM      : 10,
-  PROJECTION: 'mercator',
+  START_POS            : { lat: 0, lng: 0 },
+  MAP_STYLE            : 'mapbox://styles/mapbox/streets-v11',
+  ZOOM                 : 10,
+  PROJECTION           : 'mercator',
+  POLYGON_OUTLINE_WIDTH: 0,
+  POLYGON_OUTLINE_COLOR: '#000000',
 };
 
 export class MapController {
@@ -56,16 +58,45 @@ export class MapController {
   removeSource(id) {
     this.mapRef.current.removeSource(id);
   }
+
+  addPolygonOutline(id, outlineColor, outlineWidth) {
+    this.mapRef.current.addLayer({
+      id    : `${ id }-outline`,
+      type  : 'line',
+      source: id,
+      layout: {},
+      paint : {
+        'line-color': outlineColor,
+        'line-width': outlineWidth,
+      },
+    });
+  }
 }
 
+const verifyPolygon = polygon => {
+  const firstPoint = JSON.stringify(polygon[0]);
+  const lastPoint = JSON.stringify(polygon[polygon.length - 1]);
+  const verifiedPolygon = [...polygon];
+
+  if (firstPoint !== lastPoint) {
+    verifiedPolygon.push(polygon[0]);
+  }
+
+  return verifiedPolygon.map(coordinate => [coordinate.lng, coordinate.lat]);
+};
+
 export const preparePolygons = polygons => {
+  const { POLYGON_OUTLINE_WIDTH, POLYGON_OUTLINE_COLOR } = defaultMapboxProps;
+
   return polygons.map(polygon => ({
-    id         : BackendlessUI.UUID.short(),
-    color      : polygon.color,
-    coordinates: polygon.polygon.boundary.points.map(coordinate => [coordinate.lng, coordinate.lat]),
-    name       : polygon.name,
-    opacity    : polygon.opacity,
-    description: polygon.description,
+    id          : BackendlessUI.UUID.short(),
+    color       : polygon.color,
+    coordinates : verifyPolygon(polygon.polygon.boundary.points),
+    name        : polygon.name,
+    opacity     : polygon.opacity,
+    description : polygon.description,
+    outlineWidth: polygon.outlineWidth || POLYGON_OUTLINE_WIDTH,
+    outlineColor: polygon.outlineColor || POLYGON_OUTLINE_COLOR,
   }));
 };
 
@@ -186,6 +217,9 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
   polygonsArray.forEach(polygon => {
     if (mapRef.current.getSource(polygon.id)) {
+      if (polygon.outlineWidth > 0) {
+        map.removeLayer(`${ polygon.id }-outline`);
+      }
       map.removeLayer(`${ polygon.id }-layer`);
       map.removeSource(polygon.id);
     }
@@ -219,7 +253,7 @@ const createPopup = (polygon, mapRef, onPolygonClick, map) => {
 
 const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
   polygonsArray.forEach(polygon => {
-    const { id, coordinates, color, opacity } = polygon;
+    const { id, coordinates, color, opacity, outlineWidth, outlineColor } = polygon;
 
     map.addSource(id, {
       type: 'geojson',
@@ -242,6 +276,10 @@ const addPolygons = (mapRef, polygonsArray, onPolygonClick, map) => {
         'fill-opacity': opacity,
       },
     });
+
+    if (outlineWidth > 0) {
+      map.addPolygonOutline(id, outlineColor, outlineWidth);
+    }
 
     createPopup(polygon, mapRef, onPolygonClick, map);
   });
