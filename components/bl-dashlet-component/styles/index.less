@@ -5,14 +5,31 @@
 @bl-customComponent-dashlet-context-block-item-icon-size: 12px;
 @bl-customComponent-dashlet-context-block-item-background-hover: @themePrimary;
 
+@bl-customComponent-dashlet-border-padding: 5px;
 @bl-customComponent-dashlet-border-radius: 4px;
+@bl-customComponent-dashlet-close-border-radius: 5px;
 @bl-customComponent-dashlet-border-color: if((@isLightTheme), rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
 @bl-customComponent-dashlet-border: 1px solid @bl-customComponent-dashlet-border-color;
 
 @bl-customComponent-dashlet-body-background-color: if((@isLightTheme), darken(@bl-customComponent-dashlet-background-color, 7%), lighten(@bl-customComponent-dashlet-background-color, 7%));
+@bl-customComponent-dashlet-body-border-top-left-radius: 0;
+@bl-customComponent-dashlet-body-border-top-right-radius: 0;
 
 @bl-customComponent-dashlet-resize-icon-size: 20px;
 @bl-customComponent-dashlet-collapse-icon-size: 20px;
+
+@bl-customComponent-dashlet-header-height: 25px;
+@bl-customComponent-dashlet-header-dragging-cursor: move;
+
+@bl-customComponent-dashlet-title-margin: 0 0 0 5px;
+
+@bl-customComponent-dashlet-alternative-padding: 0;
+
+@bl-customComponent-dashlet-header-alternative-height: 35px;
+@bl-customComponent-dashlet-header-alternative-background-color: @themePrimary;
+@bl-customComponent-dashlet-header-alternative-padding: 0 10px;
+
+@bl-customComponent-dashlet-title-alternative-text-color: contrast(@themePrimary);
 
 .bl-customComponent-dashlet {
   .buttonNormalize() {
@@ -30,7 +47,7 @@
     display: flex;
     flex-direction: column;
 
-    padding: 5px;
+    padding: @bl-customComponent-dashlet-border-padding;
 
     height: 100%;
     width: 100%;
@@ -43,24 +60,27 @@
     background-color: @bl-customComponent-dashlet-background-color;
 
     &.alternative {
-      padding: 0;
+      padding: @bl-customComponent-dashlet-alternative-padding;
     }
 
     &.close {
-      border-radius: 5px;
+      border-radius: @bl-customComponent-dashlet-close-border-radius;
     }
 
     &__header {
       display: flex;
       align-items: center;
-      height: 25px;
+      height: @bl-customComponent-dashlet-header-height;
 
+      &.dragging {
+        cursor: @bl-customComponent-dashlet-header-dragging-cursor;
+      }
 
       &.alternative {
-        background-color: @themePrimary;
+        background-color: @bl-customComponent-dashlet-header-alternative-background-color;
 
-        padding: 0 10px;
-        height: 35px;
+        padding: @bl-customComponent-dashlet-header-alternative-padding;
+        height: @bl-customComponent-dashlet-header-alternative-height;
 
         border-top-left-radius: @bl-customComponent-dashlet-border-radius;
         border-top-right-radius: @bl-customComponent-dashlet-border-radius;
@@ -68,11 +88,11 @@
     }
 
     &__title {
-      margin: 0 0 0 5px;
+      margin: @bl-customComponent-dashlet-title-margin;
       display: inline-block;
 
       &.alternative {
-        color: contrast(@themePrimary);
+        color: @bl-customComponent-dashlet-title-alternative-text-color;
       }
     }
 
@@ -83,8 +103,8 @@
       background-color: @bl-customComponent-dashlet-body-background-color;
 
       &.alternative {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+        border-top-left-radius: @bl-customComponent-dashlet-body-border-top-left-radius;
+        border-top-right-radius: @bl-customComponent-dashlet-body-border-top-right-radius;
       }
     }
 
@@ -116,7 +136,7 @@
         top: 100%;
         width: 150px;
         background-color: @bl-customComponent-dashlet-background-color;
-        box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 1px -1px, rgba(255, 255, 255, 0.14) 0px 1px 1px 0px, rgba(255, 255, 255, 0.12) 0px 1px 3px 0px;
+        box-shadow: rgba(255, 255, 255, 0.2) 0 2px 1px -1px, rgba(255, 255, 255, 0.14) 0px 1px 1px 0px, rgba(255, 255, 255, 0.12) 0px 1px 3px 0px;
         border-radius: @bl-customComponent-dashlet-border-radius;
         border: 1px solid @themePrimary;
       }
@@ -142,7 +162,7 @@
 
       &__list {
         margin: 0;
-        padding: 0px;
+        padding: 0;
         list-style: none;
       }
 
