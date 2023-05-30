@@ -102,33 +102,33 @@
           "label": "zoomOut"
         }
       ],
-      "settingTooltip": "Select the animation type of the component."
+      "settingTooltip": "Select the component animation type."
     },
     {
       "type": "number",
       "name": "duration",
-      "label": "Duration",
-      "settingTooltip": "Duration of the animation, in seconds.",
+      "label": "Duration(ms)",
+      "settingTooltip": "Animation duration in milliseconds.",
       "showInSettings": true,
-      "defaultValue": "1",
+      "defaultValue": "1000",
       "hasLogicHandler": false,
       "handlerId": "durationLogic"
     },
     {
       "type": "number",
       "name": "delay",
-      "label": "Delay",
+      "label": "Delay(ms)",
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "delayLogic",
-      "settingTooltip": "Duration to delay the animation, in seconds."
+      "settingTooltip": "Animation delay duration in milliseconds."
     },
     {
       "type": "number",
       "name": "loop",
       "label": "Loop",
-      "settingTooltip": "The number of times the animation should loop, 0 is equivalent to infinite.",
+      "settingTooltip": "The number of times the animation must repeat (0 is equivalent to infinite).",
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
@@ -136,12 +136,12 @@
     },
     {
       "type": "checkbox",
-      "name": "autoStart",
-      "label": "Start Play",
+      "name": "autoPlay",
+      "label": "Auto Play",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "autoStartLogic",
+      "handlerId": "autoPlayLogic",
       "settingTooltip": "Flag whether to play animation on startup or not."
     }
   ],

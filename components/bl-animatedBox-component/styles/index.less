@@ -5,14 +5,15 @@
 @bl-customComponent-animated-box-animate-iteration-count: infinite;
 
 .bl-customComponent-animated-box {
+  --animate-duration: @bl-customComponent-animated-box-animate-duration;
+  --animate-delay: @bl-customComponent-animated-box-animate-delay;
+  --animate-iteration-count: @bl-customComponent-animated-box-animate-iteration-count;
+
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   width: @bl-customComponent-animated-box-width;
-  --animate-duration: @bl-customComponent-animated-box-animate-duration;
-  --animate-delay: @bl-customComponent-animated-box-animate-delay;
-  --animate-iteration-count: @bl-customComponent-animated-box-animate-iteration-count;
 
   .animated {
     -webkit-animation-duration: var(--animate-duration);
