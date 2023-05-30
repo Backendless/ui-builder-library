@@ -22,6 +22,28 @@
     },
     {
       "type": "number",
+      "name": "maxCount",
+      "label": "Max Count",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxCountLogic",
+      "handlerLabel": "Max Count Logic",
+      "handlerDescription": "This is a logic handler for determining the max count. This is necessary to decide on the max gradation. If it is empty, the max count value  will be selected from the calendar data",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "minCount",
+      "label": "Min Count",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minCountLogic",
+      "handlerLabel": "Min Count Logic",
+      "handlerDescription": "This is a logic handler for determining the min count. This is necessary to decide on the min gradation. If it is empty, the min count value  will be selected from the calendar data",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
       "name": "numberDays",
       "label": "Number Days",
       "showInSettings": true,
