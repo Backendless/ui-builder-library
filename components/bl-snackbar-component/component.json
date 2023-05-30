@@ -168,6 +168,15 @@
       "hasLogicHandler": false,
       "handlerId": "maxSnacksLogic",
       "settingTooltip": "Set maximum visible snackbars."
+    },
+    {
+      "type": "checkbox",
+      "name": "outline",
+      "label": "Outline",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "outlineLogic",
+      "settingTooltip": "Allow outline"
     }
   ],
   "eventHandlers": [
