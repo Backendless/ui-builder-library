@@ -1,5 +1,7 @@
 import { today } from './index';
 
+const NTH_ROOT = 3;
+
 export const generateData = (numberDays, data) => {
   const newData = [];
 
@@ -39,10 +41,12 @@ export const validate = items => {
   return items;
 };
 
-export const getSaturationByCount = (maxCount, count) => {
-  const nthRoot = 3;
-  const maxCountRoot = Math.pow(maxCount, 1 / nthRoot);
-  const countRoot = Math.pow(count, 1 / nthRoot);
+export const getSaturationByCount = (maxCount, minCount, count) => {
+  maxCount = maxCount - minCount;
+  count = count - minCount;
+
+  const maxCountRoot = Math.pow(maxCount, 1 / NTH_ROOT);
+  const countRoot = Math.pow(count, 1 / NTH_ROOT);
   const onePercentOfSaturationCost = maxCountRoot / 100;
 
   return countRoot / onePercentOfSaturationCost;

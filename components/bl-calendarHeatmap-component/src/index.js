@@ -13,7 +13,7 @@ const WEEKDAY_LABELS_RIGHT_SPACE = 10;
 export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const {
     style, display, classList, calendarData, numberDays, monthLabels, weekdayLabels,
-    color, legend, showMonthLabels, showWeekdayLabels, width, height,
+    color, legend, showMonthLabels, showWeekdayLabels, width, height, maxCount: propMaxCount, minCount: propMinCount,
   } = component;
   const { onCellClick } = eventHandlers;
 
@@ -21,6 +21,8 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   const legendRef = useRef();
 
   const [legendMargin, setLegendMargin] = useState(0);
+  const [maxCount, setMaxCount] = useState(0);
+  const [minCount, setMinCount] = useState(0);
 
   const rootStyle = useMemo(() => ({
     ...style,
@@ -34,8 +36,6 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     return calendarData && numberDays ? generateData(numberDays, calendarData) : calendarData;
   }, [numberDays, calendarData]);
 
-  const maxCount = useMemo(() => getMaxCalendarCount(calendarData), [calendarData]);
-
   const month = useMemo(() => validate(monthLabels), [monthLabels]);
   const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
 
@@ -44,6 +44,22 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
     setLegendMargin(weekdayLabels.getBoundingClientRect().width + WEEKDAY_LABELS_RIGHT_SPACE);
   }, []);
+
+  useEffect(() => {
+    if (propMaxCount === null) {
+      setMaxCount(getMaxMinCalendarCount(calendarData).maxCount);
+    } else {
+      setMaxCount(propMaxCount);
+    }
+  }, [propMaxCount, calendarData]);
+
+  useEffect(() => {
+    if (propMinCount === null) {
+      setMinCount(getMaxMinCalendarCount(calendarData).minCount);
+    } else {
+      setMinCount(propMinCount);
+    }
+  }, [propMinCount, calendarData]);
 
   useEffect(() => {
     if (ref.current && legendRef.current) {
@@ -61,6 +77,16 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
     };
   }, [ref.current, legendRef.current]);
 
+  const transformDayElement = useCallback((element, value) => {
+    const newElement = React.cloneElement(element, { title: value.date });
+    const rateOfSaturation = getSaturationByCount(maxCount, minCount, value.count);
+    const { h, l } = hslColor;
+
+    newElement.props.fill = `hsl(${ h }, ${ rateOfSaturation }%, ${ l }%)`;
+
+    return newElement;
+  }, [maxCount, minCount, hslColor]);
+
   if (!display || !newCalendarData) {
     return null;
   }
@@ -77,11 +103,12 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
           monthLabels={ month }
           weekdayLabels={ weeks }
           tooltipDataAttrs={ getTooltipData }
-          transformDayElement={ (element, value) => TransformDayElement(element, value, maxCount, hslColor) }
+          transformDayElement={ transformDayElement }
           onClick={ ({ date, count }) => onCellClick({ date, count }) }
         />
         <Legend
           maxCount={ maxCount }
+          minCount={ minCount }
           hslColor={ hslColor }
           legendRef={ legendRef }
           legend={ legend }
@@ -93,24 +120,14 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
   );
 }
 
-const TransformDayElement = (element, value, maxCount, hslColor) => {
-  const newElement = React.cloneElement(element, { title: value.date });
-  const rateOfSaturation = getSaturationByCount(maxCount, value.count);
-  const { h, l } = hslColor;
-
-  newElement.props.fill = value.count ? `hsl(${ h }, ${ rateOfSaturation }%, ${ l }%)` : '#eee';
-
-  return newElement;
-};
-
 const getTooltipData = value => {
   const date = new Date(value.date);
 
   return { 'data-tip': `${ date.toISOString().slice(0, 10) } has count: ${ value.count }` };
 };
 
-const getMaxCalendarCount = calendarData => {
+const getMaxMinCalendarCount = calendarData => {
   const counts = calendarData.map(value => value.count);
 
-  return Math.max(...counts);
+  return { maxCount: Math.max(...counts), minCount: Math.min(...counts) };
 };
