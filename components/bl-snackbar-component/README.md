@@ -62,3 +62,17 @@ they don't require user input to disappear.
 @bl-customComponent-snackBar-error-background-color: #d84646;
 @bl-customComponent-snackBar-error-color-text: contrast(@themePrimary);
 ````
+
+## Codeless Examples
+
+To show the Snackbar on page, add codeless block to some event or logic.
+
+![show snackbar](./example-images/snackbar-show.png)
+
+To control Snackbar content or properties, use codeless block inputs, data binding or logic.
+
+![snackbar logic](./example-images/snackbar-logic.png)
+
+![snackbar duration](./example-images/snackbar-duration.png)
+
+![snackbar set data](./example-images/snackbar-set-data.png)
