@@ -39,6 +39,7 @@ We have some form where we put reCaptcha and reCaptcha must have an `id`
 
 ![](example-images/form-example.jpg)
 
+
 In SETTINGS we set site-key.
 
 ![](example-images/settings-example.jpg)
