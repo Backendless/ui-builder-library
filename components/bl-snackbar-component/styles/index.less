@@ -1,6 +1,9 @@
 @bl-customComponent-distance: 15px;
 @bl-customComponent-snackBar-background-color: @themePrimary;
 @bl-customComponent-snackBar-text-color: contrast(@themePrimary);
+@bl-customComponent-snackBar-border-width: 1px;
+@bl-customComponent-snackBar-border-color: #000;
+@bl-customComponent-snackBar-border-style: solid;
 
 @bl-customComponent-snackBar-success-background-color: #4e9a51;
 @bl-customComponent-snackBar-success-color-text: contrast(@themePrimary);
@@ -28,6 +31,9 @@
     justify-content: space-between;
     margin-bottom: 10px;
     max-width: 500px;
+    border-width: @bl-customComponent-snackBar-border-width;
+    border-color: @bl-customComponent-snackBar-border-color;
+    border-style: @bl-customComponent-snackBar-border-style;
 
     .text {
       padding: 0 5px;

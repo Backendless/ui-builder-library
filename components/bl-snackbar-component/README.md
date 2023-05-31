@@ -24,6 +24,7 @@ they don't require user input to disappear.
 | horizontalPosition | *select* <br/>[`right`, `center`, `left`]                         | 'right'         |                          | NO           | YES        | This is a handler that sets the horizontal position of snackbar.   |
 | type               | *select* <br/> [`default`, `info`, `success`, `warning`, `error`] | 'default'       | Type Logic               | YES          | YES        | This is a handler to set the type of the snackbar.                 |
 | maxSnacks          | *number*                                                          | 3               |                          | NO           | YES        | This is a handler to set the number of maximum visible snackbars.  |
+| outline            | *checkbox*                                                        | `false`         |                          | NO           | YES        | This is a handler that controls snackbar outline.                  |
 
 ## Events
 
@@ -62,3 +63,25 @@ they don't require user input to disappear.
 @bl-customComponent-snackBar-error-background-color: #d84646;
 @bl-customComponent-snackBar-error-color-text: contrast(@themePrimary);
 ````
+
+**Outline**
+````
+@bl-customComponent-snackBar-border-width: 1px;
+@bl-customComponent-snackBar-border-color: #000;
+@bl-customComponent-snackBar-border-style: solid;
+````
+
+## Codeless Examples
+
+To show the Snackbar on page, add codeless block to some event or logic.
+
+![show snackbar](./example-images/snackbar-show.png)
+
+To control Snackbar content or properties, use codeless block inputs, data binding or logic.
+
+![snackbar logic](./example-images/snackbar-logic.png)
+
+![snackbar duration](./example-images/snackbar-duration.png)
+
+![snackbar set data](./example-images/snackbar-set-data.png)
+
