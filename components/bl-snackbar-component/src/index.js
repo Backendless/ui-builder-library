@@ -18,6 +18,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
     horizontalPosition,
     type,
     maxSnacks,
+    outline,
     display
   } = component;
 
@@ -41,6 +42,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
       snackContent : text,
       type         : snackType,
       id           : Date.now(),
+      outline      : outline,
     };
 
     setSnackData(prev => [...prev, snackObject]);
@@ -76,7 +78,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
   return (
     <div className={ `bl-customComponent-snackbar' ${ classes }` } style={ style }>
       { !!snackData.length && snackData.map(el => {
-        const { showClose, showAction, actionContent, snackContent, type, id } = el;
+        const { showClose, showAction, actionContent, snackContent, type, id, outline } = el;
 
         return (
           <div key={ id }>
@@ -89,6 +91,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
               onAction={ onAction }
               onClose={ close }
               id={ id }
+              outline={ outline }
             />
           </div>
         );

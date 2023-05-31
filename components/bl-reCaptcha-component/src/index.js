@@ -1,4 +1,5 @@
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
 import { ReCaptcha } from './re-captcha';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -6,7 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 const TypeCaptcha = {
   compact  : CaptchaComponent,
   normal   : CaptchaComponent,
-  invisible: InvisibleCaptcha
+  invisible: InvisibleCaptcha,
 };
 
 export default function Captcha({ component, eventHandlers, settings }) {
@@ -24,7 +25,7 @@ export default function Captcha({ component, eventHandlers, settings }) {
     }
   }, [reCaptchaRef]);
 
-  if (!display) {
+  if (!display || !siteKey) {
     return null;
   }
 
@@ -41,7 +42,7 @@ function CaptchaComponent({ component, onErrored, siteKey }) {
   const [isPassed, setIsPassed] = useState(false);
   const [token, setToken] = useState(null);
 
-  const onChange = (value) => {
+  const onChange = value => {
     setIsPassed(true);
     setToken(value);
   };
