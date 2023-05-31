@@ -84,6 +84,16 @@
     {
       "id": "setContentLoaded",
       "label": "Set Content Loaded for"
+    },
+    {
+      "id": "setIsOpen",
+      "label": "Set Is Open",
+      "inputs": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ]
     }
   ],
   "pods": {

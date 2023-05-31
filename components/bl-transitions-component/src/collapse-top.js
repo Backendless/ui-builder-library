@@ -1,77 +1,74 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { showElement, useImageLoad, useTransition } from './helpers';
+import { hideElement, showElement } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CollapseTop(props) {
-  const { component, eventHandlers, transitionsContainerPod, display, isContentLoaded, dynamicContent } = props;
+  const { component, transitionsContainerPod, isOpen, isContentLoaded } = props;
   const { classList, style, variant, duration } = component;
-  const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
 
-  const [height, setHeight] = useState(0);
-  const [initHeight, setInitHeight] = useState('');
+  const [height, setHeight] = useState('0px');
 
-  const rootRef = useRef();
+  const [hasOpen, setHasOpen] = useState(false);
+
+  const transitionRef = useRef();
   const [podElement, setPodElement] = useState();
 
-  const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
-  const isTransition = useTransition(podElement, display, duration, initHeight, height, 'height', onEndAnimation);
+  const openTimeout = useRef(null);
+  const closeTimeout = useRef(null);
 
   useEffect(() => {
-    const readyToInitialTransition = rootRef.current && !podElement;
+    const readyToInitialTransition = transitionRef.current && !podElement;
 
     if (readyToInitialTransition) {
-      setPodElement(rootRef.current.firstElementChild);
-      setInitHeight(rootRef.current.firstElementChild.style.height);
+      setPodElement(transitionRef.current.firstElementChild);
     }
-  }, [rootRef]);
+  }, [transitionRef, podElement]);
 
   useEffect(() => {
-    let getHeightTimeout;
-    const readyToStartTransition = podElement && isContentLoaded && isImagesLoaded;
-
-    if (readyToStartTransition) {
-      const size = podElement.clientHeight;
-
-      getHeightTimeout = setTimeout(() => setHeight(size), 50);
-
-      podElement.style.height = '0px';
+    if (isOpen) {
+      setHasOpen(true);
     }
-
-    return () => getHeightTimeout && clearTimeout(getHeightTimeout);
-  }, [podElement, isContentLoaded, isImagesLoaded]);
+  }, [isOpen]);
 
   useEffect(() => {
-    onMounted();
+    const readyToStartTransition = podElement && isContentLoaded;
 
-    return () => onUnmounted();
-  }, []);
+    if(readyToStartTransition) {
+      if (isOpen) {
+        showElement(transitionRef.current);
 
-  useEffect(() => {
-    if (isTransition) {
-      onStartAnimation();
-    }
-  }, [isTransition]);
+        setHeight(podElement.clientHeight + 'px');
 
-  useEffect(() => {
-    if (podElement) {
-      podElement.classList.add('transition', variant);
+        openTimeout.current = setTimeout(() => {
+          setHeight('auto');
+        }, duration);
+      } else if (!isOpen &&  hasOpen) {
+        clearTimeout(openTimeout.current);
 
-      if (isTransition) {
-        podElement.style.transitionDuration = duration + 'ms';
-        podElement.style.height = height + 'px';
+        setHeight(podElement.clientHeight + 'px');
 
-        showElement(rootRef.current);
-      } else {
-        podElement.style.transitionDuration = '0ms';
+        closeTimeout.current = setTimeout(() => {
+          hideElement(transitionRef.current);
+        }, duration);
       }
     }
-  }, [podElement, height, variant, isTransition]);
+
+    return () => {
+      clearTimeout(openTimeout.current);
+      clearTimeout(closeTimeout.current);
+    };
+  }, [isOpen, podElement, isContentLoaded]);
 
   return (
-    <div ref={ rootRef } className={ cn('bl-customComponent-transitions', variant, classList) } style={ style }>
-      { transitionsContainerPod.render() }
+    <div className={ cn('bl-customComponent-transitions', classList) }>
+      <div
+        ref={ transitionRef }
+        className={ cn('transition', variant) }
+        style={{ ...style, transitionDuration: duration + 'ms', height: isOpen && height ? height : height !== 'auto' ? '0px' : podElement.clientHeight + 'px' }}>
+        { transitionsContainerPod.render() }
+      </div>
     </div>
   );
 }

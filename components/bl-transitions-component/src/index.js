@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CollapseLeft } from './collapse-left';
 import { CollapseTop } from './collapse-top';
-import { useVisibility } from './helpers';
 import { Others } from './others';
 
 const transitionsViews = {
@@ -15,18 +14,38 @@ const transitionsViews = {
 
 export default function Transitions({ component, eventHandlers, pods }) {
   const { variant, display, duration, dynamicContent } = component;
-  const { onEndAnimation } = eventHandlers;
+  const { onEndAnimation, onStartAnimation, onMounted, onUnmounted } = eventHandlers;
 
   const [isContentLoaded, setIsContentLoaded] = useState(!dynamicContent);
+  const [isOpen, setIsOpen] = useState(false);
 
   const transitionsContainerPod = pods['transitionsContainer'];
   const Transition = transitionsViews[variant];
 
-  const isOpen = useVisibility(display, duration, onEndAnimation);
-
   component.setContentLoaded = () => setIsContentLoaded(true);
+  component.setIsOpen = isOpen => setIsOpen(isOpen);
 
-  if (!isOpen) {
+  useEffect(() => {
+    if (isOpen) {
+      onStartAnimation();
+
+      setTimeout(() => {
+        onEndAnimation();
+      }, duration);
+    } else {
+      setTimeout(() => {
+        onEndAnimation();
+      }, duration);
+    }
+  }, [isOpen, duration]);
+
+  useEffect(() => {
+    onMounted();
+
+    return () => onUnmounted();
+  }, []);
+
+  if (!display) {
     return null;
   }
 
@@ -35,8 +54,7 @@ export default function Transitions({ component, eventHandlers, pods }) {
       component={ component }
       eventHandlers={ eventHandlers }
       transitionsContainerPod={ transitionsContainerPod }
-      display={ display }
-      dynamicContent={ dynamicContent }
+      isOpen={ isOpen }
       isContentLoaded={ isContentLoaded }
     />
   );
