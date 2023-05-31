@@ -60,9 +60,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
       const chunks = [];
 
-      Object.assign( recorderRef.current, {
-        onstart: () => setState(StreamState.RECORDING),
-        onpause: () => setState(StreamState.PAUSED),
+      Object.assign(recorderRef.current, {
+        onstart : () => setState(StreamState.RECORDING),
+        onpause : () => setState(StreamState.PAUSED),
         onresume: () => setState(StreamState.RECORDING),
       });
 
