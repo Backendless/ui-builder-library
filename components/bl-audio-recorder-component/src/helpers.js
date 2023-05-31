@@ -21,3 +21,21 @@ export const captureMediaDevices = async mediaConstraints => {
     console.error('The source of the stream did not select.', e);
   }
 };
+
+export const timeConverter = (time) => {
+  const totalMs = time * 1000;
+
+  return new Date(totalMs).toISOString().slice(14, 19);
+}
+
+export const simpleTimer = (state, recording, setTime, setTimerInterval, timerInterval) => {
+  if (state === recording) {
+    const interval = setInterval(() => {
+      setTime(prev => prev + 1);
+    }, 1000)
+
+    setTimerInterval(interval);
+  } else {
+    clearInterval(timerInterval);
+  }
+}

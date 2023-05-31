@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { captureMediaDevices, download } from './helpers';
+import { captureMediaDevices, download, simpleTimer, timeConverter } from './helpers';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
@@ -16,6 +16,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
+  const [time, setTime] = useState(0);
+  const [timerInterval, setTimerInterval] = useState();
+  const [convertedTime, setConvertedTime] = useState();
 
   const styles = useMemo(() => ({
     width: normalizeDimensionValue(width),
@@ -32,7 +35,13 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     if (state) {
       onStateChange({ state });
     }
+
+    simpleTimer(state, StreamState.RECORDING, setTime, setTimerInterval, timerInterval);
   }, [state]);
+
+  useEffect(() => {
+    setConvertedTime(timeConverter(time));
+  }, [time]);
 
   Object.assign(component, {
     start       : () => startRecording(),
@@ -68,6 +77,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
         setState(StreamState.INACTIVE);
         setRecordedBlob(recordedBlob);
+        setTime(0);
         onStop();
 
         chunks.length = 0;
@@ -111,7 +121,16 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
           <button
             disabled={ state && state !== StreamState.INACTIVE }
             className="control-button" onClick={ startRecording }>
-            { startText }
+            { state && state !== StreamState.INACTIVE ?
+              (
+                <>
+                  <span className="record-dot"/>
+                  <span className="record-text">rec</span>
+                  <span className="record-time">{ convertedTime }</span>
+                </>
+              )
+              : startText
+            }
           </button>
           <button
             disabled={ !state || state === StreamState.INACTIVE }
