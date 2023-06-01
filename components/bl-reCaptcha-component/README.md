@@ -44,7 +44,7 @@ In SETTINGS we set site-key.
 
 ![](example-images/settings-example.jpg)
 
-We need to create in Cloud Code new API service with POST method on reCaptcha API https://www.google.com/recaptcha/api/siteverify and send secret-key and token. In response, we get the following object:
+We need to create in Cloud Code a new API service with POST method on reCaptcha API https://www.google.com/recaptcha/api/siteverify and send a secret-key and token. In response, we get the following object:
 ```
 {
     "success": true|false,
