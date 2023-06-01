@@ -1,54 +1,82 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useTransition = (
-  podElement, display, duration, initDimension,
-  dimension, dimensionName, onEndAnimation
-) => {
-  const [isTransition, setIsTransition] = useState(false);
+export const useTransition = (transitionRef, podElement, isOpen, isContentLoaded, duration, dimensionName) => {
+  const [dimension, setDimension] = useState('');
+  const [podElementDimension, setPodElementDimension] = useState(0);
+  const [isTakenMeasurements, setIsTakenMeasurements] = useState(false);
+  const [hasOpen, setHasOpen] = useState(false);
 
   const openTimeout = useRef(null);
-  const zeroDimensionTimeout = useRef(null);
+  const closeTimeout = useRef(null);
 
   useEffect(() => {
-    if (podElement) {
-      if (display && dimension) {
-        setIsTransition(true);
+    if (isOpen) {
+      setHasOpen(true);
+    }
+  }, [isOpen]);
 
-        openTimeout.current = setTimeout(() => {
-          setIsTransition(false);
+  useEffect(() => {
+    if (transitionRef.current) {
+      hideElement(transitionRef.current);
+    }
+  }, [transitionRef]);
 
-          podElement.style[dimensionName] = initDimension;
+  useEffect(() => {
+    if (!isTakenMeasurements) {
+      const readyToStartTransition = podElement && isContentLoaded;
 
-          onEndAnimation();
-        }, duration);
-
-      } else if (!display) {
-        setIsTransition(true);
-
-        clearTimeout(openTimeout.current);
-
-        zeroDimensionTimeout.current = setTimeout(() => {
-          podElement.style[dimensionName] = '0px';
-        }, 50);
+      if(readyToStartTransition) {
+        setPodElementDimension(podElement['client' + dimensionName]);
+        setIsTakenMeasurements(true);
       }
+    }
+  }, [podElement, isContentLoaded, isTakenMeasurements]);
+
+  useEffect(() => {
+    if (isTakenMeasurements) {
+      setDimension('0px');
+    }
+  }, [isTakenMeasurements]);
+
+  useEffect(() => {
+    if (isOpen && isTakenMeasurements) {
+      showElement(transitionRef.current);
+
+      setDimension(podElementDimension + 'px');
+
+      openTimeout.current = setTimeout(() => {
+        setDimension('auto');
+      }, duration);
+    } else if (hasOpen) {
+      clearTimeout(openTimeout.current);
+
+      setDimension(podElement['client' + dimensionName] + 'px');
+
+      closeTimeout.current = setTimeout(() => {
+        hideElement(transitionRef.current);
+
+        setDimension('');
+        setIsTakenMeasurements(false);
+        setHasOpen(false);
+      }, duration);
     }
 
     return () => {
       clearTimeout(openTimeout.current);
-      clearTimeout(zeroDimensionTimeout.current);
+      clearTimeout(closeTimeout.current);
     };
-  }, [dimension, display, duration, podElement]);
+  }, [transitionRef, podElement, isOpen, isTakenMeasurements, duration, hasOpen]);
 
-  return isTransition;
+  return dimension;
 };
 
-export const showElement = element => {
+const showElement = element => {
   element.style.opacity = 1;
   element.style.position = 'static';
   element.style.zIndex = 0;
 };
 
-export const hideElement = element => {
+const hideElement = element => {
   element.style.opacity = 0;
   element.style.position = 'absolute';
   element.style.zIndex = -1;
