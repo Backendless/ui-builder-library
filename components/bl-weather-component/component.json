@@ -1,5 +1,5 @@
 {
-  "id": "c_ae66659a8909ebceda4d5d3f551e5a36",
+  "id": "c_7c4bc1edf82a1e2f90217ef50d71446e",
   "name": "Weather",
   "description": "The Weather component allows the user to add a weather widget for the current day or with the addition of a forecast.",
   "showInToolbox": true,
@@ -42,6 +42,76 @@
       "handlerLabel": "Location Label Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the name of a location or city to display it in the component."
+    },
+    {
+      "type": "checkbox",
+      "name": "weatherInfo",
+      "label": "Weather Info",
+      "settingTooltip": "Select to display weather information.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "weatherInfoLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "date",
+      "label": "Date",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "dateLogic",
+      "settingTooltip": "Select to display today’s date."
+    },
+    {
+      "type": "checkbox",
+      "name": "temperature",
+      "label": "Temperature",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "temperatureLogic",
+      "settingTooltip": "Select to display the temperature for now."
+    },
+    {
+      "type": "checkbox",
+      "name": "desc",
+      "label": "Description",
+      "settingTooltip": "Select to display the weather description for now.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "descLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "wind",
+      "label": "Wind",
+      "settingTooltip": "Select to display the wind speed for now.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "windLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "humidity",
+      "label": "Humidity",
+      "settingTooltip": "Select to display the humidity for now.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "humidityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "weatherIcon",
+      "label": "Weather Icon",
+      "settingTooltip": "Select to display weather icon.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "weatherIconLogic"
     },
     {
       "type": "checkbox",
