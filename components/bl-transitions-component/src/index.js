@@ -13,31 +13,34 @@ const transitionsViews = {
 };
 
 export default function Transitions({ component, eventHandlers, pods }) {
-  const { variant, display, duration, dynamicContent } = component;
+  const { variant, display, dynamicContent } = component;
   const { onEndAnimation, onStartAnimation, onMounted, onUnmounted } = eventHandlers;
 
   const [isContentLoaded, setIsContentLoaded] = useState(!dynamicContent);
   const [isOpen, setIsOpen] = useState(false);
+  const [hasOpen, setHasOpen] = useState(false);
+  const [isTransition, setIsTransition] = useState(false);
 
   const transitionsContainerPod = pods['transitionsContainer'];
   const Transition = transitionsViews[variant];
 
   component.setContentLoaded = () => setIsContentLoaded(true);
-  component.setIsOpen = isOpen => setIsOpen(isOpen);
+  component.getIsOpen = () => isOpen;
+  component.setIsOpen = isOpen => setIsOpen(isOpen && isContentLoaded);
 
   useEffect(() => {
     if (isOpen) {
-      onStartAnimation();
-
-      setTimeout(() => {
-        onEndAnimation();
-      }, duration);
-    } else {
-      setTimeout(() => {
-        onEndAnimation();
-      }, duration);
+      setHasOpen(true);
     }
-  }, [isOpen, duration]);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isTransition) {
+      onStartAnimation();
+    } else if (hasOpen) {
+      onEndAnimation();
+    }
+  }, [isTransition]);
 
   useEffect(() => {
     onMounted();
@@ -52,10 +55,12 @@ export default function Transitions({ component, eventHandlers, pods }) {
   return (
     <Transition
       component={ component }
+      setIsTransition={ setIsTransition }
       eventHandlers={ eventHandlers }
       transitionsContainerPod={ transitionsContainerPod }
       isOpen={ isOpen }
       isContentLoaded={ isContentLoaded }
+      hasOpen={ hasOpen }
     />
   );
 }

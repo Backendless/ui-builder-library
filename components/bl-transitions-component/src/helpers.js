@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useTransition = (transitionRef, podElement, isOpen, isContentLoaded, duration, dimensionName) => {
+export const useTransition = (
+  transitionRef, podElement, isOpen, isContentLoaded,
+  duration, dimensionName, setIsTransition
+) => {
   const [dimension, setDimension] = useState('');
   const [podElementDimension, setPodElementDimension] = useState(0);
   const [isTakenMeasurements, setIsTakenMeasurements] = useState(false);
@@ -8,12 +11,6 @@ export const useTransition = (transitionRef, podElement, isOpen, isContentLoaded
 
   const openTimeout = useRef(null);
   const closeTimeout = useRef(null);
-
-  useEffect(() => {
-    if (isOpen) {
-      setHasOpen(true);
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     if (transitionRef.current) {
@@ -43,21 +40,26 @@ export const useTransition = (transitionRef, podElement, isOpen, isContentLoaded
       showElement(transitionRef.current);
 
       setDimension(podElementDimension + 'px');
+      setIsTransition(true);
+      setHasOpen(true);
 
       openTimeout.current = setTimeout(() => {
         setDimension('auto');
+        setIsTransition(false);
       }, duration);
     } else if (hasOpen) {
       clearTimeout(openTimeout.current);
 
       setDimension(podElement['client' + dimensionName] + 'px');
+      setIsTransition(true);
+      setHasOpen(false);
 
       closeTimeout.current = setTimeout(() => {
         hideElement(transitionRef.current);
 
+        setIsTransition(false);
         setDimension('');
         setIsTakenMeasurements(false);
-        setHasOpen(false);
       }, duration);
     }
 
@@ -65,18 +67,18 @@ export const useTransition = (transitionRef, podElement, isOpen, isContentLoaded
       clearTimeout(openTimeout.current);
       clearTimeout(closeTimeout.current);
     };
-  }, [transitionRef, podElement, isOpen, isTakenMeasurements, duration, hasOpen]);
+  }, [transitionRef, isOpen, isTakenMeasurements, duration]);
 
   return dimension;
 };
 
-const showElement = element => {
+export const showElement = element => {
   element.style.opacity = 1;
   element.style.position = 'static';
   element.style.zIndex = 0;
 };
 
-const hideElement = element => {
+export const hideElement = element => {
   element.style.opacity = 0;
   element.style.position = 'absolute';
   element.style.zIndex = -1;

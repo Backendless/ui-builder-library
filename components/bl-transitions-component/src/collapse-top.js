@@ -5,13 +5,13 @@ import { useTransition } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CollapseTop(props) {
-  const { component, transitionsContainerPod, isOpen, isContentLoaded } = props;
+  const { component, setIsTransition, transitionsContainerPod, isOpen, isContentLoaded } = props;
   const { classList, style, variant, duration } = component;
 
   const transitionRef = useRef();
   const [podElement, setPodElement] = useState();
 
-  const height = useTransition(transitionRef, podElement, isOpen, isContentLoaded, duration, 'Height');
+  const height = useTransition(transitionRef, podElement, isOpen, isContentLoaded, duration, 'Height', setIsTransition);
 
   useEffect(() => {
     const readyToInitialTransition = transitionRef.current && !podElement;
