@@ -62,4 +62,4 @@ After that, we create an API service to save the form data to the database. We n
 
 In form logic add On Submit Event.
 
-![](example-images/on-submint-event-example.jpg)
+![](example-images/on-submit-event-example.jpg)
