@@ -4,10 +4,16 @@ import { ReCaptcha } from './re-captcha';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const TypeCaptcha = {
-  compact  : CaptchaComponent,
-  normal   : CaptchaComponent,
-  invisible: InvisibleCaptcha,
+const SizeType = {
+  COMPACT  : 'compact',
+  NORMAL   : 'normal',
+  INVISIBLE: 'invisible',
+};
+
+const CaptchaComponentMap = {
+  [SizeType.COMPACT]  : CaptchaComponent,
+  [SizeType.NORMAL]   : CaptchaComponent,
+  [SizeType.INVISIBLE]: InvisibleCaptcha,
 };
 
 export default function Captcha({ component, eventHandlers, settings }) {
@@ -17,10 +23,10 @@ export default function Captcha({ component, eventHandlers, settings }) {
 
   const reCaptchaRef = useRef();
 
-  const Captcha = TypeCaptcha[size];
+  const Captcha = CaptchaComponentMap[size];
 
   useEffect(() => {
-    if (size !== 'invisible') {
+    if (size !== SizeType.INVISIBLE) {
       component.el = reCaptchaRef.current;
     }
   }, [reCaptchaRef]);
