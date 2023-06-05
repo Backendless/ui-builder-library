@@ -47,18 +47,40 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
   }, [strength]);
 
   useEffect(() => {
+    let scrollElement;
+
     if (display) {
       backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
 
       animate();
 
-      document.addEventListener('scroll', animate)
+      let parentElement = containerRef.current;
+
+      while(parentElement.parentNode) {
+        if (isOverflown(parentElement.parentNode)) {
+          scrollElement = parentElement.parentNode;
+
+          break;
+        }
+
+        parentElement = parentElement.parentNode;
+      }
+
+      if (!scrollElement) {
+        scrollElement = document;
+      }
+
+      scrollElement.addEventListener('scroll', animate);
       window.addEventListener('resize', animate, false);
     }
 
     return () => {
-      document.removeEventListener('scroll', animate);
+      scrollElement.removeEventListener('scroll', animate);
       window.removeEventListener('resize', animate, false);
     };
   }, [display, strength]);
 };
+
+const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => {
+  return scrollHeight > clientHeight || scrollWidth > clientWidth;
+}
