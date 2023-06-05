@@ -17,7 +17,8 @@
       "handlerId": "imageUrlLogic",
       "handlerLabel": "Image URL Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine image URL"
+      "handlerDescription": "This is a handler for the logic to determine image URL",
+      "settingTooltip": "Allows to determine image URL"
     },
     {
       "type": "number",
@@ -29,7 +30,8 @@
       "handlerId": "strengthLogic",
       "handlerLabel": "Strength Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the strength of parallax"
+      "handlerDescription": "This is a handler for the logic to determine the strength of parallax",
+      "settingTooltip": "Allows to determine the strength of parallax. The value should be between 100(low) and 2000(high)"
     }
   ],
   "eventHandlers": [],
