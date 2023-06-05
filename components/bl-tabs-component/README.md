@@ -47,9 +47,9 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
 @bl-customComponent-tabs-backgroundColor: rgba(@themePrimary, 0.15);
 ````
 
-## <a name="Examples"></a> Usage Guide
+## <a name="usage-guide"></a> Usage Guide
 
-Add tabs to the component. You can add tabs using component logic:
+Add tabs to the component. You can add tabs using component logic. Note: Be sure to place blocks of tabs for Tab1, Tab2, and so on INSIDE the Tabs component. The Tabs component uses the Backendless POD feature, which requires proper nesting of UI components.
 
 <img alt="tabs" src="./example-images/add-tabs-via-logic.png" width="720" />
 
