@@ -5,12 +5,12 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 
 ## Properties
 
-| Property | Type                                             | Default Value  | Logic       | Data Binding | UI Setting | Description                                                      |
-|----------|--------------------------------------------------|----------------|-------------|--------------|------------|------------------------------------------------------------------|
-| Type     | Select ["image", "audio"]                        | "image"        |             | NO           | YES        | Allows to determine the type of verification by image or audio.  |
-| Size     | Select ["compact", "normal", "invisible"]        | "normal"       | Size Logic  | YES          | YES        | Allows to determine the reCaptcha size.                          |
-| Badge    | Select ["bottom-right", "bottom-left", "inline"] | "bottom-right" |             | NO           | YES        | Allows to determine the position. Work when Size is "invisible". |
-| Theme    | Select ["light", "dark"]                         | "light"        | Theme Color | YES          | YES        | Allows to determine the theme.                                   |
+| Property          | Type                                             | Default Value  | Logic                   | Data Binding | UI Setting | Description                                                      |
+|-------------------|--------------------------------------------------|----------------|-------------------------|--------------|------------|------------------------------------------------------------------|
+| Verification Type | Select ["image", "audio"]                        | "image"        | Verification Type Logic | YES          | YES        | Allows to determine the type of verification by image or audio.  |
+| Size              | Select ["compact", "normal", "invisible"]        | "normal"       | Size Logic              | YES          | YES        | Allows to determine the reCaptcha size.                          |
+| Badge             | Select ["bottom-right", "bottom-left", "inline"] | "bottom-right" |                         | NO           | YES        | Allows to determine the position. Work when Size is "invisible". |
+| Theme             | Select ["light", "dark"]                         | "light"        | Theme Color             | YES          | YES        | Allows to determine the theme.                                   |
 
 ## Actions
 

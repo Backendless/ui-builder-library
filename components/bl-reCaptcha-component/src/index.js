@@ -4,23 +4,29 @@ import { ReCaptcha } from './re-captcha';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const TypeCaptcha = {
-  compact  : CaptchaComponent,
-  normal   : CaptchaComponent,
-  invisible: InvisibleCaptcha,
+const SizeType = {
+  COMPACT  : 'compact',
+  NORMAL   : 'normal',
+  INVISIBLE: 'invisible',
+};
+
+const CaptchaComponentMap = {
+  [SizeType.COMPACT]  : CaptchaComponent,
+  [SizeType.NORMAL]   : CaptchaComponent,
+  [SizeType.INVISIBLE]: InvisibleCaptcha,
 };
 
 export default function Captcha({ component, eventHandlers, settings }) {
-  const { display, style, classList, type } = component;
+  const { display, style, classList, size } = component;
   const { onErrored } = eventHandlers;
   const { siteKey } = settings;
 
   const reCaptchaRef = useRef();
 
-  const Captcha = TypeCaptcha[type];
+  const Captcha = CaptchaComponentMap[size];
 
   useEffect(() => {
-    if (type !== 'invisible') {
+    if (size !== SizeType.INVISIBLE) {
       component.el = reCaptchaRef.current;
     }
   }, [reCaptchaRef]);
@@ -37,7 +43,7 @@ export default function Captcha({ component, eventHandlers, settings }) {
 }
 
 function CaptchaComponent({ component, onErrored, siteKey }) {
-  const { theme, verificationType, type } = component;
+  const { theme, verificationType, size } = component;
 
   const [isPassed, setIsPassed] = useState(false);
   const [token, setToken] = useState(null);
@@ -63,14 +69,14 @@ function CaptchaComponent({ component, onErrored, siteKey }) {
       onExpired={ onExpired }
       onErrored={ () => onErrored() }
       type={ verificationType }
-      size={ type }
+      size={ size }
       theme={ theme }
     />
   );
 }
 
 function InvisibleCaptcha({ component, siteKey, onErrored }) {
-  const { theme, verificationType, type, badge } = component;
+  const { theme, verificationType, size, badge } = component;
 
   const captchaRef = useRef();
 
@@ -83,7 +89,7 @@ function InvisibleCaptcha({ component, siteKey, onErrored }) {
       sitekey={ siteKey }
       type={ verificationType }
       onErrored={ () => onErrored() }
-      size={ type }
+      size={ size }
       badge={ badge }
       theme={ theme }
     />
