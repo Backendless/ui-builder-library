@@ -94,6 +94,12 @@
           "label": "Is Open"
         }
       ]
+    },
+    {
+      "id": "getIsOpen",
+      "label": "Get Is Open of",
+      "inputs": [],
+      "hasReturn": true
     }
   ],
   "pods": {

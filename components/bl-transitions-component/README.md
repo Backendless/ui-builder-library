@@ -22,9 +22,11 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 | On Start Animation | when the animation started                              |                |
 
 ## Actions
-| Action                             | Inputs | Returns |
-|------------------------------------|--------|---------|
-| Set Content Loaded for Transitions |        |         |
+| Action                             | Inputs             | Returns   |
+|------------------------------------|--------------------|-----------|
+| Set Content Loaded for Transitions |                    |           |
+| Set Is Open for Transitions        | Is Open: `boolean` |           |
+| Get Is Open of Transitions         |                    | `boolean` |
 
 ## Usage Guide
 
