@@ -3,6 +3,10 @@
 ReCaptcha is a component of Backendless UI-Builder designer. reCAPTCHA is a free service that protects your website from spam and abuse. reCAPTCHA uses an advanced risk analysis engine and adaptive CAPTCHAs to keep automated software from engaging in abusive activities on your site. It does this while letting your valid users pass through with ease.
 In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property | Type                                             | Default Value  | Logic       | Data Binding | UI Setting | Description                                                      |
