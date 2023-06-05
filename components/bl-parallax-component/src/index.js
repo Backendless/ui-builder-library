@@ -54,21 +54,7 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
 
       animate();
 
-      let parentElement = containerRef.current;
-
-      while(parentElement.parentNode) {
-        if (isOverflown(parentElement.parentNode)) {
-          scrollElement = parentElement.parentNode;
-
-          break;
-        }
-
-        parentElement = parentElement.parentNode;
-      }
-
-      if (!scrollElement) {
-        scrollElement = document;
-      }
+      scrollElement = findScrollableElement(containerRef.current);
 
       scrollElement.addEventListener('scroll', animate);
       window.addEventListener('resize', animate, false);
@@ -81,6 +67,20 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
   }, [display, strength]);
 };
 
-const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => {
+const hasOverflow = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => {
   return scrollHeight > clientHeight || scrollWidth > clientWidth;
-}
+};
+
+const findScrollableElement = element => {
+  let parentElement = element;
+
+  while (parentElement.parentNode) {
+    if (hasOverflow(parentElement.parentNode)) {
+      return parentElement.parentNode;
+    }
+
+    parentElement = parentElement.parentNode;
+  }
+
+  return document;
+};
