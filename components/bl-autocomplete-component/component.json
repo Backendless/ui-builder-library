@@ -61,8 +61,8 @@
           "label": "Filled"
         },
         {
-          "value": "standart",
-          "label": "Standart"
+          "value": "standard",
+          "label": "Standard"
         }
       ],
       "handlerId": "variantLogic",

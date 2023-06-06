@@ -26,7 +26,7 @@
       "label": "Variant",
       "settingTooltip": "This handler allows you to select variant of tab.",
       "showInSettings": true,
-      "defaultValue": "standart",
+      "defaultValue": "standard",
       "hasLogicHandler": true,
       "handlerId": "variantLogic",
       "handlerLabel": "Variant Logic",
@@ -34,8 +34,8 @@
       "dataBinding": true,
       "options": [
         {
-          "value": "standart",
-          "label": "Standart"
+          "value": "standard",
+          "label": "Standard"
         },
         {
           "value": "filled",
