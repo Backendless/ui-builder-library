@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 
 const ONLY_NUMERIC_REGEX = /^\d+$/;
+const SUFFIX_REGEX = /[a-zA-Z%]+$/;
 
 export const useStyles = (style, width, height) => useMemo(() => {
   const validStyles = validateStyles({ width, height });
@@ -25,3 +26,23 @@ const validateStyles = dimensions => {
     return acc;
   }, {});
 };
+
+function normalizePropertyValue(value, allowedSuffixes, defaultSuffix) {
+  const suffix = value.match(SUFFIX_REGEX);
+
+  if (suffix && allowedSuffixes.includes(suffix[0])) {
+    return value;
+  }
+
+  if (suffix && !allowedSuffixes.includes(suffix[0])) {
+    return parseFloat(value) + defaultSuffix;
+  }
+
+  if (ONLY_NUMERIC_REGEX.test(value)) {
+    return value + defaultSuffix;
+  }
+}
+
+function normalizeDimensionValue(value) {
+  return normalizePropertyValue(value, ['px', 'rem', 'em', '%', 'cm', 'mm', 'in', 'pt', 'pc', 'vh', 'vw', 'ch', 'vmin', 'vmax'], 'px');
+}
