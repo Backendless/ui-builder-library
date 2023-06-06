@@ -72,6 +72,18 @@
       "handlerDescription": "This handler allows you to add the ability to change column widths."
     },
     {
+      "type": "checkbox",
+      "name": "multipleRowsSelection",
+      "label": "Multiple Rows Selection",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "multipleRowsSelectionLogic",
+      "handlerLabel": "Multiple Rows Selection Logic",
+      "handlerDescription": "This handler adds the ability to select multiple rows.",
+      "dataBinding": true
+    },
+    {
       "type": "json",
       "name": "columnDefs",
       "label": "Column Definition",
@@ -170,6 +182,14 @@
         }
       ],
       "handlerDescription": "This event is fired when the user clicks the mouse or taps the grid cell."
+    }
+  ],
+  "actions": [
+    {
+      "id": "getSelectedRows",
+      "label": "Get Selected Rows of ",
+      "color": "#204994",
+      "hasReturn": true
     }
   ]
 }
