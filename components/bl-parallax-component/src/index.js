@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -23,7 +23,7 @@ export default function Parallax({ component, pods, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-parallax', classList) } style={ style }>
-      <div ref={ backdropRef } className="parallax-background-img" style={ { backgroundImage: `url(${ imageUrl })` } }/>
+      <div ref={ backdropRef } className="parallax-background-img" style={{ backgroundImage: `url(${ imageUrl })` }}/>
 
       <div className="parallax-content">
         { pods['parallaxContent']?.render() }
@@ -47,14 +47,12 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
   }, [strength]);
 
   useEffect(() => {
-    let scrollElement;
-
     if (display) {
       backdropRef.current.style.height = `calc(100% + ${ strength }px)`;
 
       animate();
 
-      scrollElement = findScrollableElement(containerRef.current);
+      const scrollElement = findScrollableElement(containerRef.current);
 
       scrollElement.addEventListener('scroll', animate);
       window.addEventListener('resize', animate, false);
