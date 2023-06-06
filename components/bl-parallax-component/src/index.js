@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -23,7 +23,7 @@ export default function Parallax({ component, pods, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-parallax', classList) } style={ style }>
-      <div ref={ backdropRef } className="parallax-background-img" style={ { backgroundImage: `url(${ imageUrl })` } }/>
+      <div ref={ backdropRef } className="parallax-background-img" style={{ backgroundImage: `url(${ imageUrl })` }}/>
 
       <div className="parallax-content">
         { pods['parallaxContent']?.render() }
@@ -52,13 +52,33 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
 
       animate();
 
-      document.addEventListener('scroll', animate)
+      const scrollElement = findScrollableElement(containerRef.current);
+
+      scrollElement.addEventListener('scroll', animate);
       window.addEventListener('resize', animate, false);
+
+      return () => {
+        scrollElement.removeEventListener('scroll', animate);
+        window.removeEventListener('resize', animate, false);
+      };
+    }
+  }, [display, strength]);
+};
+
+const hasOverflow = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => {
+  return scrollHeight > clientHeight || scrollWidth > clientWidth;
+};
+
+const findScrollableElement = element => {
+  let parentElement = element;
+
+  while (parentElement.parentNode) {
+    if (hasOverflow(parentElement.parentNode)) {
+      return parentElement.parentNode;
     }
 
-    return () => {
-      document.removeEventListener('scroll', animate);
-      window.removeEventListener('resize', animate, false);
-    };
-  }, [display, strength]);
+    parentElement = parentElement.parentNode;
+  }
+
+  return document;
 };
