@@ -58,12 +58,12 @@ const useAnimation = (backdropRef, containerRef, strength, display) => {
 
       scrollElement.addEventListener('scroll', animate);
       window.addEventListener('resize', animate, false);
-    }
 
-    return () => {
-      scrollElement.removeEventListener('scroll', animate);
-      window.removeEventListener('resize', animate, false);
-    };
+      return () => {
+        scrollElement.removeEventListener('scroll', animate);
+        window.removeEventListener('resize', animate, false);
+      };
+    }
   }, [display, strength]);
 };
 
