@@ -10,8 +10,8 @@
   "properties": [
     {
       "type": "select",
-      "name": "variants",
-      "label": "Variants",
+      "name": "variant",
+      "label": "Variant",
       "showInSettings": true,
       "defaultValue": "fade",
       "options": [
@@ -84,6 +84,22 @@
     {
       "id": "setContentLoaded",
       "label": "Set Content Loaded for"
+    },
+    {
+      "id": "setIsOpen",
+      "label": "Set Is Open",
+      "inputs": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ]
+    },
+    {
+      "id": "getIsOpen",
+      "label": "Get Is Open of",
+      "inputs": [],
+      "hasReturn": true
     }
   ],
   "pods": {

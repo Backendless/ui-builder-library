@@ -136,6 +136,11 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
             }
           </button>
           <button
+            disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
+            className="control-button" onClick={ toggleRecord }>
+            { state === StreamState.PAUSED ? resumeText : pauseText }
+          </button>
+          <button
             disabled={ !state || state === StreamState.INACTIVE }
             className="control-button" onClick={ stopRecording }>
             { stopText }
@@ -144,11 +149,6 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
             disabled={ !recordedBlob }
             className="control-button" onClick={ downloadRecordedFile }>
             { downloadText }
-          </button>
-          <button
-            disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
-            className="control-button" onClick={ toggleRecord }>
-            { state === StreamState.PAUSED ? resumeText : pauseText }
           </button>
         </div>
       ) }

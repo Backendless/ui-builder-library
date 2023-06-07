@@ -13,6 +13,7 @@
 @bl-customComponent-audioRecorder-button-borderStyle: solid;
 @bl-customComponent-audioRecorder-button-borderWidth: 0px;
 @bl-customComponent-audioRecorder-button-height: 36px;
+@bl-customComponent-audioRecorder-button-outline: none;
 
 .bl-customComponent-audioRecorder {
   margin: 0 auto;
@@ -20,6 +21,7 @@
 
   .audio {
     width: 100%;
+    outline: none;
   }
 
   .controls {
@@ -29,6 +31,7 @@
   }
 
   .control-button {
+    outline: @bl-customComponent-audioRecorder-button-outline;
     cursor: @bl-customComponent-audioRecorder-button-cursor;
     background: @bl-customComponent-audioRecorder-button-backgroundColor;
     border-radius: @bl-customComponent-audioRecorder-button-borderRadius;

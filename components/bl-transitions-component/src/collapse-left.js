@@ -1,56 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useImageLoad, useResizeObserver, useTransition } from './helpers';
+import { useTransition } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CollapseLeft(props) {
-  const { component, eventHandlers, transitionsContainerPod, display, isContentLoaded, dynamicContent } = props;
-  const { classList, style, variants, duration } = component;
-  const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
+  const { component, setIsTransition, transitionsContainerPod, isOpen, isContentLoaded } = props;
+  const { classList, style, variant, duration } = component;
 
-  const [width, setWidth] = useState(0);
+  const transitionRef = useRef();
+  const [podElement, setPodElement] = useState();
 
-  const rootRef = useRef();
-
-  const setIsAuto = useResizeObserver(rootRef.current, 'width', width, setWidth);
-  const isTransition = useTransition(rootRef, display, duration, width, 'width', setIsAuto, onEndAnimation);
-  const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
+  const width = useTransition(transitionRef, podElement, isOpen, isContentLoaded, duration, 'Width', setIsTransition);
 
   useEffect(() => {
-    let getWidthTimeout;
+    const readyToInitialTransition = transitionRef.current && !podElement;
 
-    if (rootRef.current && isContentLoaded && isImagesLoaded) {
-      getWidthTimeout = setTimeout(() => {
-        rootRef.current.style.width = 'auto';
-        setWidth(rootRef.current.clientWidth);
-        rootRef.current.style.width = '0px';
-      }, 50);
+    if (readyToInitialTransition) {
+      setPodElement(transitionRef.current.firstElementChild);
     }
-
-    return () => getWidthTimeout && clearTimeout(getWidthTimeout);
-  }, [rootRef, isContentLoaded, isImagesLoaded]);
-
-  useEffect(() => {
-    onMounted();
-
-    return () => onUnmounted();
-  }, []);
-
-  useEffect(() => {
-    if (isTransition) {
-      onStartAnimation();
-    }
-  }, [isTransition]);
+  }, [transitionRef, podElement]);
 
   return (
     <div className={ cn('bl-customComponent-transitions', classList) }>
       <div
-        ref={ rootRef }
-        className={ cn('transition', variants, { [variants + '--active']: isTransition }) }
-        style={{ ...style, transitionDuration: duration + 'ms' }}>
+        ref={ transitionRef }
+        className={ cn('transition', variant) }
+        style={{ ...style, transitionDuration: duration + 'ms', width: getWidth(isOpen, width, podElement) }}>
         { transitionsContainerPod.render() }
       </div>
     </div>
   );
 }
+
+const getWidth = (isOpen, width, podElement) => {
+  if (width) {
+    if (isOpen) {
+      return width;
+    }
+
+    if (width === 'auto') {
+      return podElement.clientWidth + 'px';
+    }
+
+    return '0px';
+  }
+};

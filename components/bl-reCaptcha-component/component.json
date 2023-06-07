@@ -1,12 +1,6 @@
 {
   "id": "c_3a5f07d6ce793a6d8bff0dc56b1871ba",
   "name": "ReCaptcha",
-  "description": "This component allows you to upgrade your security from bots when need to send some form",
-  "showInToolbox": true,
-  "faIcon": "shield-alt",
-  "mainJS": "dist/index.js",
-  "type": "custom",
-  "category": "Custom Components",
   "properties": [
     {
       "type": "select",
@@ -14,7 +8,11 @@
       "label": "Verification Type",
       "showInSettings": true,
       "defaultValue": "image",
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
+      "handlerId": "verificationTypeLogic",
+      "handlerLabel": "Verification Type Logic",
+      "handlerDescription": "This handler allows determining the type of verification",
+      "dataBinding": true,
       "options": [
         {
           "value": "image",
@@ -24,17 +22,18 @@
           "value": "audio",
           "label": "Audio"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine the type of verification by image or audio."
     },
     {
       "type": "select",
-      "name": "type",
-      "label": "Type",
+      "name": "size",
+      "label": "Size",
       "showInSettings": true,
       "defaultValue": "normal",
       "hasLogicHandler": true,
-      "handlerId": "typeLogic",
-      "handlerLabel": "Type Logic",
+      "handlerId": "sizeLogic",
+      "handlerLabel": "Size Logic",
       "dataBinding": true,
       "options": [
         {
@@ -50,7 +49,8 @@
           "label": "Invisible"
         }
       ],
-      "handlerDescription": "This handler allow determining the reCaptcha size."
+      "handlerDescription": "This handler allows determining the reCaptcha size.",
+      "settingTooltip": "Allows to determine the reCaptcha size."
     },
     {
       "type": "select",
@@ -73,7 +73,8 @@
           "value": "inline",
           "label": "Inline"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine the position. Work when Size is \"invisible\"."
     },
     {
       "type": "select",
@@ -95,7 +96,8 @@
           "label": "Dark"
         }
       ],
-      "handlerDescription": "This handler allows determining the style theme"
+      "handlerDescription": "This handler allows determining the style theme",
+      "settingTooltip": "Allows to determine the theme."
     }
   ],
   "eventHandlers": [

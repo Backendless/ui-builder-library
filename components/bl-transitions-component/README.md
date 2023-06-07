@@ -8,7 +8,7 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 
 | Property                         | Type                                                                                                            | Default Value | Logic | Data Binding | UI Setting | Description                                                 |
 |----------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|-------|--------------|------------|-------------------------------------------------------------|
-| Variants:`variants`              | Select <br/>[Fade:`fade`, Grow:`grow`, Zoom:`zoom`, Collapse Top:`collapse-top`, Collapse Left:`collapse-left`] | Fade:`fade`   |       | NO           | YES        | Allows to determine variant of transition                   |
+| Variant:`variant `               | Select <br/>[Fade:`fade`, Grow:`grow`, Zoom:`zoom`, Collapse Top:`collapse-top`, Collapse Left:`collapse-left`] | Fade:`fade`   |       | NO           | YES        | Allows to determine variant of transition                   |
 | Duration:`duration`              | Number                                                                                                          | 300           |       | NO           | YES        | Allows to determine duration of transition (ms)             |
 | Dynamic Content:`dynamicContent` | Checkbox                                                                                                        | `false`       |       | NO           | YES        | Allows you to determine the need to animate dynamic content |
 
@@ -22,9 +22,11 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 | On Start Animation | when the animation started                              |                |
 
 ## Actions
-| Action                             | Inputs | Returns |
-|------------------------------------|--------|---------|
-| Set Content Loaded for Transitions |        |         |
+| Action                             | Inputs             | Returns   |
+|------------------------------------|--------------------|-----------|
+| Set Content Loaded for Transitions |                    |           |
+| Set Is Open for Transitions        | Is Open: `boolean` |           |
+| Get Is Open of Transitions         |                    | `boolean` |
 
 ## Usage Guide
 
