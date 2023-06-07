@@ -1,61 +1,66 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useImageLoad } from './helpers';
+import { hideElement, showElement } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export const Others = props => {
-  const { component, eventHandlers, transitionsContainerPod, display, isContentLoaded, dynamicContent } = props;
-  const { classList, style, variants, duration } = component;
-  const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
+  const { component, setIsTransition, transitionsContainerPod, isOpen, hasOpen } = props;
+  const { classList, style, variant, duration } = component;
 
-  const [isTransition, setIsTransition] = useState(false);
+  const transitionRef = useRef(null);
+  const [podElement, setPodElement] = useState();
 
-  const rootRef = useRef();
-  const endAnimationTimeout = useRef(null);
-
-  const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
+  const closeTimeout = useRef(null);
+  const openTimeout = useRef(null);
 
   useEffect(() => {
-    if (isContentLoaded && isImagesLoaded) {
-      const timeout = setTimeout(() => setIsTransition(true), 50);
+    const readyToInitialTransition = transitionRef.current && !podElement;
 
-      return () => {
-        clearTimeout(timeout);
-        onUnmounted();
-      };
+    if (readyToInitialTransition) {
+      setPodElement(transitionRef.current.firstElementChild);
     }
-
-    onMounted();
-  }, [isContentLoaded, isImagesLoaded]);
+  }, [transitionRef]);
 
   useEffect(() => {
-    if (display) {
-      endAnimationTimeout.current = setTimeout(() => onEndAnimation(), duration);
-    } else {
-      clearTimeout(endAnimationTimeout.current);
+    if (transitionRef.current) {
+      hideElement(transitionRef.current);
     }
-
-    return () => clearTimeout(endAnimationTimeout.current);
-  }, [display]);
+  }, [transitionRef]);
 
   useEffect(() => {
-    if (isTransition) {
-      onStartAnimation();
+    if (isOpen && transitionRef.current) {
+      clearTimeout(closeTimeout.current);
+
+      showElement(transitionRef.current);
+      transitionRef.current.style.opacity = '';
+
+      setIsTransition(true);
+
+      openTimeout.current = setTimeout(() => setIsTransition(false), duration);
+    } else if (transitionRef.current && hasOpen) {
+      clearTimeout(openTimeout.current);
+      setIsTransition(true);
+
+      closeTimeout.current = setTimeout(() => {
+        hideElement(transitionRef.current);
+        transitionRef.current.style.opacity = '';
+
+        setIsTransition(false);
+      }, duration);
     }
-  }, [isTransition]);
+
+    return () => clearTimeout(closeTimeout.current);
+  }, [isOpen, transitionRef, duration]);
 
   return (
-    <div ref={ rootRef } className={ cn('bl-customComponent-transitions', classList) }>
+    <div className={ cn('bl-customComponent-transitions', classList) } style={ style }>
       <div
-        className={ getClassName(variants, display, isTransition) }
-        style={{ ...style, transitionDuration: duration + 'ms' }}>
+        ref={ transitionRef }
+        className={ cn('transition', variant, { [variant + '--active']: isOpen }) }
+        style={{ transitionDuration: duration + 'ms' }}>
         { transitionsContainerPod.render() }
       </div>
     </div>
   );
 };
-
-const getClassName = (variants, display, isTransition) => (
-  cn('transition', variants, { [variants + '--active']: display && isTransition })
-);

@@ -1,96 +1,75 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useVisibility = (display, duration, onEndAnimation) => {
-  const [isOpen, setIsOpen] = useState(display);
-  const isOpenTimeout = useRef(null);
-
-  useEffect(() => {
-    if (display) {
-      clearTimeout(isOpenTimeout.current);
-      setIsOpen(true);
-    } else if (!display && isOpen) {
-      isOpenTimeout.current = setTimeout(() => {
-        setIsOpen(false);
-        onEndAnimation();
-      }, duration);
-    }
-
-    return () => clearTimeout(isOpenTimeout.current);
-  }, [display, duration, isOpen]);
-
-  return isOpen;
-};
-
-export const useResizeObserver = (element, dimensionName, dimension, setDimension) => {
-  const [isAuto, setIsAuto] = useState(false);
-
-  useEffect(() => {
-    if (!element) return;
-
-    const resizeObserver = new ResizeObserver(entries => {
-      if (isAuto) {
-        const currentDimension = entries[0].contentRect[dimensionName];
-
-        if (dimension !== currentDimension) {
-          setDimension(currentDimension);
-        }
-      }
-    });
-
-    resizeObserver.observe(element);
-
-    return () => resizeObserver.disconnect();
-  }, [isAuto, element, dimension, setDimension]);
-
-  return setIsAuto;
-};
-
-export const useTransition = (rootRef, display, duration, dimension, dimensionName, setIsAuto, onEndAnimation) => {
-  const [isTransition, setIsTransition] = useState(false);
+export const useTransition = (
+  transitionRef, podElement, isOpen, isContentLoaded,
+  duration, dimensionName, setIsTransition
+) => {
+  const [dimension, setDimension] = useState('');
+  const [podElementDimension, setPodElementDimension] = useState(0);
+  const [isTakenMeasurements, setIsTakenMeasurements] = useState(false);
+  const [hasOpen, setHasOpen] = useState(false);
 
   const openTimeout = useRef(null);
-  const zeroDimensionTimeout = useRef(null);
+  const closeTimeout = useRef(null);
 
   useEffect(() => {
-    if (rootRef.current) {
-      if (display && dimension) {
-        setTimeout(() => {
-          showElement(rootRef.current);
+    if (transitionRef.current) {
+      hideElement(transitionRef.current);
+    }
+  }, [transitionRef]);
 
-          setIsTransition(true);
+  useEffect(() => {
+    if (!isTakenMeasurements) {
+      const readyToStartTransition = podElement && isContentLoaded;
 
-          rootRef.current.style[dimensionName] = dimension + 'px';
-        }, 50);
-
-        openTimeout.current = setTimeout(() => {
-          setIsTransition(false);
-          rootRef.current.style[dimensionName] = 'auto';
-          setIsAuto(true);
-
-          onEndAnimation();
-        }, duration);
-
-      } else if (!display) {
-        setIsTransition(true);
-
-        clearTimeout(openTimeout.current);
-
-        setIsAuto(false);
-        rootRef.current.style[dimensionName] = dimension + 'px';
-
-        zeroDimensionTimeout.current = setTimeout(() => {
-          rootRef.current.style[dimensionName] = '0px';
-        }, 50);
+      if(readyToStartTransition) {
+        setPodElementDimension(podElement['client' + dimensionName]);
+        setIsTakenMeasurements(true);
       }
+    }
+  }, [podElement, isContentLoaded, isTakenMeasurements]);
+
+  useEffect(() => {
+    if (isTakenMeasurements) {
+      setDimension('0px');
+    }
+  }, [isTakenMeasurements]);
+
+  useEffect(() => {
+    if (isOpen && isTakenMeasurements) {
+      showElement(transitionRef.current);
+
+      setDimension(podElementDimension + 'px');
+      setIsTransition(true);
+      setHasOpen(true);
+
+      openTimeout.current = setTimeout(() => {
+        setDimension('auto');
+        setIsTransition(false);
+      }, duration);
+    } else if (hasOpen) {
+      clearTimeout(openTimeout.current);
+
+      setDimension(podElement['client' + dimensionName] + 'px');
+      setIsTransition(true);
+      setHasOpen(false);
+
+      closeTimeout.current = setTimeout(() => {
+        hideElement(transitionRef.current);
+
+        setIsTransition(false);
+        setDimension('');
+        setIsTakenMeasurements(false);
+      }, duration);
     }
 
     return () => {
       clearTimeout(openTimeout.current);
-      clearTimeout(zeroDimensionTimeout.current);
+      clearTimeout(closeTimeout.current);
     };
-  }, [dimension, display, duration, rootRef]);
+  }, [transitionRef, isOpen, isTakenMeasurements, duration]);
 
-  return isTransition;
+  return dimension;
 };
 
 export const showElement = element => {
@@ -99,35 +78,8 @@ export const showElement = element => {
   element.style.zIndex = 0;
 };
 
-export const useImageLoad = (rootRef, dynamicContent) => {
-  const [countLoadedImages, setCountLoadedImages] = useState(0);
-  const [countImages, setCountImages] = useState(0);
-  const [isImagesLoaded, setIsImagesLoaded] = useState(false);
-
-  useEffect(() => {
-    if (dynamicContent) {
-      setIsImagesLoaded(true);
-    } else {
-      if (rootRef.current) {
-        const images = [...rootRef.current.querySelectorAll('img')];
-        setCountImages(images.length);
-
-        if (images.length) {
-          images.forEach(image => {
-            image.addEventListener('load', () => setCountLoadedImages(state => state + 1));
-          });
-        } else {
-          setIsImagesLoaded(true);
-        }
-      }
-    }
-  }, [rootRef]);
-
-  useEffect(() => {
-    if (countImages && countLoadedImages === countImages) {
-      setIsImagesLoaded(true);
-    }
-  }, [countLoadedImages]);
-
-  return isImagesLoaded;
+export const hideElement = element => {
+  element.style.opacity = 0;
+  element.style.position = 'absolute';
+  element.style.zIndex = -1;
 };

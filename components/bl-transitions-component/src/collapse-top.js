@@ -1,57 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useImageLoad, useResizeObserver, useTransition } from './helpers';
+import { useTransition } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CollapseTop(props) {
-  const { component, eventHandlers, transitionsContainerPod, display, isContentLoaded, dynamicContent } = props;
-  const { classList, style, variants, duration } = component;
-  const { onMounted, onUnmounted, onEndAnimation, onStartAnimation } = eventHandlers;
+  const { component, setIsTransition, transitionsContainerPod, isOpen, isContentLoaded } = props;
+  const { classList, style, variant, duration } = component;
 
-  const [height, setHeight] = useState(0);
+  const transitionRef = useRef();
+  const [podElement, setPodElement] = useState();
 
-  const rootRef = useRef();
-
-  const setIsAuto = useResizeObserver(rootRef.current, 'height', height, setHeight);
-  const isTransition = useTransition(rootRef, display, duration, height, 'height', setIsAuto, onEndAnimation);
-  const isImagesLoaded = useImageLoad(rootRef, dynamicContent);
+  const height = useTransition(transitionRef, podElement, isOpen, isContentLoaded, duration, 'Height', setIsTransition);
 
   useEffect(() => {
-    let getHeightTimeout;
+    const readyToInitialTransition = transitionRef.current && !podElement;
 
-    if (rootRef.current && isContentLoaded && isImagesLoaded) {
-      getHeightTimeout = setTimeout(() => {
-        rootRef.current.style.height = 'auto';
-        setHeight(rootRef.current.clientHeight);
-        rootRef.current.style.height = '0px';
-      }, 50);
+    if (readyToInitialTransition) {
+      setPodElement(transitionRef.current.firstElementChild);
     }
-
-    return () => getHeightTimeout && clearTimeout(getHeightTimeout);
-  }, [rootRef, isContentLoaded, isImagesLoaded]);
-
-  useEffect(() => {
-    onMounted();
-
-    return () => onUnmounted();
-  }, []);
-
-  useEffect(() => {
-    if (isTransition) {
-      onStartAnimation();
-    }
-  }, [isTransition]);
+  }, [transitionRef, podElement]);
 
   return (
     <div className={ cn('bl-customComponent-transitions', classList) }>
       <div
-        ref={ rootRef }
-        className={ cn('transition', variants, { [variants + '--active']: isTransition }) }
-        style={{ ...style, transitionDuration: duration + 'ms' }}>
+        ref={ transitionRef }
+        className={ cn('transition', variant) }
+        style={{ ...style, transitionDuration: duration + 'ms', height: getHeight(isOpen, height, podElement) }}>
         { transitionsContainerPod.render() }
       </div>
     </div>
   );
 }
 
+const getHeight = (isOpen, height, podElement) => {
+  if (height) {
+    if (isOpen) {
+      return height;
+    }
+
+    if (height === 'auto') {
+      return podElement.clientHeight + 'px';
+    }
+
+    return '0px';
+  }
+};
