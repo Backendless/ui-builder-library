@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { captureMediaDevices, download, simpleTimer, timeConverter } from './helpers';
+import { captureMediaDevices, download, Timer } from './helpers';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
@@ -16,9 +16,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
-  const [time, setTime] = useState(0);
-  const [timerInterval, setTimerInterval] = useState();
-  const [convertedTime, setConvertedTime] = useState();
+  const [time, setTime] = useState(DefaultValues.INITIAL_TIME);
+
+  const timer = useMemo(() => new Timer(setTime), [setTime]);
 
   const styles = useMemo(() => ({
     width: normalizeDimensionValue(width),
@@ -35,13 +35,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     if (state) {
       onStateChange({ state });
     }
-
-    simpleTimer(state, StreamState.RECORDING, setTime, setTimerInterval, timerInterval);
   }, [state]);
-
-  useEffect(() => {
-    setConvertedTime(timeConverter(time));
-  }, [time]);
 
   Object.assign(component, {
     start       : () => startRecording(),
@@ -60,11 +54,20 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
       const chunks = [];
 
-      Object.assign(recorderRef.current, {
-        onstart : () => setState(StreamState.RECORDING),
-        onpause : () => setState(StreamState.PAUSED),
-        onresume: () => setState(StreamState.RECORDING),
-      });
+      recorderRef.current.onstart = () => {
+        setState(StreamState.RECORDING);
+        timer.start();
+      };
+
+      recorderRef.current.onpause = () => {
+        setState(StreamState.PAUSED);
+        timer.pause();
+      };
+
+      recorderRef.current.onresume = () => {
+        setState(StreamState.RECORDING);
+        timer.start();
+      };
 
       recorderRef.current.ondataavailable = event => {
         if (event.data.size > 0) {
@@ -77,7 +80,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
         setState(StreamState.INACTIVE);
         setRecordedBlob(recordedBlob);
-        setTime(0);
+        timer.reset();
         onStop();
 
         chunks.length = 0;
@@ -126,7 +129,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
                 <>
                   <span className="record-dot"/>
                   <span className="record-text">rec</span>
-                  <span className="record-time">{ convertedTime }</span>
+                  <span className="record-time">{ time }</span>
                 </>
               )
               : startText
@@ -165,4 +168,8 @@ const RecordFormat = {
   'MP4' : 'audio/mp4; codecs="mp4a.40.2"',
   'WEBM': 'audio/webm; codecs="vorbis"',
   'OGG' : 'audio/ogg; codecs="opus"',
+};
+
+const DefaultValues = {
+  INITIAL_TIME: '00:00',
 };

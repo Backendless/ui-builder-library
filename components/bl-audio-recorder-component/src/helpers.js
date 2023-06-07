@@ -22,20 +22,45 @@ export const captureMediaDevices = async mediaConstraints => {
   }
 };
 
-export const timeConverter = (time) => {
-  const totalMs = time * 1000;
-
-  return new Date(totalMs).toISOString().slice(14, 19);
-};
-
-export const simpleTimer = (state, recording, setTime, setTimerInterval, timerInterval) => {
-  if (state === recording) {
-    const interval = setInterval(() => {
-      setTime(prev => prev + 1);
-    }, 1000);
-
-    setTimerInterval(interval);
-  } else {
-    clearInterval(timerInterval);
+export class Timer {
+  constructor(setTime) {
+    this.setTime = setTime;
+    this.isRunning = false;
+    this.currTimer = 0;
+    this.interval = undefined;
   }
-};
+
+  start() {
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.interval = setInterval(() => {
+        this.currTimer = ++this.currTimer;
+        this.updateTime();
+      }, 1000);
+    }
+  }
+
+  pause() {
+    if (this.isRunning) {
+      clearInterval(this.interval);
+      this.isRunning = false;
+    }
+  }
+
+  reset() {
+    clearInterval(this.interval);
+    this.isRunning = false;
+    this.currTimer = 0;
+    this.updateTime();
+  }
+
+  updateTime() {
+    this.setTime(this.getDisplaySeconds(this.currTimer));
+  }
+
+  getDisplaySeconds(time) {
+    const totalMs = time * 1000;
+
+    return new Date(totalMs).toISOString().slice(14, 19);
+  }
+}
