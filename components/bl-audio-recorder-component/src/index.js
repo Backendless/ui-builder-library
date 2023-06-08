@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { captureMediaDevices, download, assignButtonLabels } from './helpers';
-import { Icons } from './icons';
+import { captureMediaDevices, download, prepareLabel } from './helpers';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const {
     player, controls, noise, fileName, fileType, width, startText, stopText, downloadText, pauseText, resumeText,
-    controlLabels } = component;
+    labelsType } = component;
   const { onStart, onStop, onDownload, onStateChange } = eventHandlers;
 
   const audioRef = useRef();
@@ -17,8 +16,8 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
 
-  const buttonLabels = useMemo(() => assignButtonLabels(component, Icons),
-    [controlLabels, startText, stopText, downloadText, pauseText, resumeText]);
+  const buttonLabels = useMemo(() => prepareLabel(component),
+    [labelsType, startText, stopText, downloadText, pauseText, resumeText]);
 
   const styles = useMemo(() => ({
     width: normalizeDimensionValue(width),

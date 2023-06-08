@@ -36,13 +36,13 @@
     },
     {
       "type": "select",
-      "name": "controlLabels",
-      "label": "Control Labels",
+      "name": "labelsType",
+      "label": "Control Labels Type",
       "settingTooltip": "Choose Control Labels Type",
       "showInSettings": true,
       "defaultValue": "icons",
       "hasLogicHandler": false,
-      "handlerId": "controlLabelsLogic",
+      "handlerId": "labelsTypeLogic",
       "options": [
         {
           "value": "icons",
