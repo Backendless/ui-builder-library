@@ -35,6 +35,26 @@
       "settingTooltip": "Toggle the control buttons visibility."
     },
     {
+      "type": "select",
+      "name": "labelsType",
+      "label": "Control Labels Type",
+      "settingTooltip": "Choose Control Labels Type",
+      "showInSettings": true,
+      "defaultValue": "icons",
+      "hasLogicHandler": false,
+      "handlerId": "labelsTypeLogic",
+      "options": [
+        {
+          "value": "icons",
+          "label": "Icons"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
       "type": "checkbox",
       "name": "noise",
       "label": "Noise Suppression",
@@ -103,7 +123,7 @@
       "type": "text",
       "name": "startText",
       "label": "Start Record Button Text",
-      "showInSettings": true,
+      "showInSettings": false,
       "defaultValue": "Start Record",
       "hasLogicHandler": true,
       "handlerId": "startTextLogic",
@@ -116,7 +136,7 @@
       "type": "text",
       "name": "stopText",
       "label": "Stop Record Button Text",
-      "showInSettings": true,
+      "showInSettings": false,
       "defaultValue": "Stop Record",
       "hasLogicHandler": true,
       "handlerId": "stopTextLogic",
@@ -129,7 +149,7 @@
       "type": "text",
       "name": "downloadText",
       "label": "Download Button Text",
-      "showInSettings": true,
+      "showInSettings": false,
       "defaultValue": "Download Recorded",
       "hasLogicHandler": true,
       "handlerId": "downloadTextLogic",
@@ -142,7 +162,7 @@
       "type": "text",
       "name": "pauseText",
       "label": "Pause Button Text",
-      "showInSettings": true,
+      "showInSettings": false,
       "defaultValue": "Pause",
       "hasLogicHandler": true,
       "handlerId": "pauseTextLogic",
@@ -155,7 +175,7 @@
       "type": "text",
       "name": "resumeText",
       "label": "Resume Button Text",
-      "showInSettings": true,
+      "showInSettings": false,
       "defaultValue": "Resume",
       "hasLogicHandler": true,
       "handlerId": "resumeTextLogic",

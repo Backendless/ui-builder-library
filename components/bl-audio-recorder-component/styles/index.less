@@ -14,6 +14,8 @@
 @bl-customComponent-audioRecorder-button-borderWidth: 0px;
 @bl-customComponent-audioRecorder-button-height: 36px;
 @bl-customComponent-audioRecorder-button-outline: none;
+@bl-customComponent-audioRecorder-button-icon-fill: @bl-customComponent-audioRecorder-button-color;
+@bl-customComponent-audioRecorder-button-icon-size: 1rem;
 
 .bl-customComponent-audioRecorder {
   margin: 0 auto;
@@ -84,6 +86,11 @@
       to {
         background: red;
       }
+      
+    .icon {
+      fill: @bl-customComponent-audioRecorder-button-icon-fill;
+      width: @bl-customComponent-audioRecorder-button-icon-size;
+      height: @bl-customComponent-audioRecorder-button-icon-size;
     }
   }
 }

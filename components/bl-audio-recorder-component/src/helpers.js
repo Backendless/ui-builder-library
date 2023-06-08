@@ -1,3 +1,5 @@
+import { Icons } from './icons';
+
 export const download = (blob, fileName, fileType) => {
   const link = document.createElement('a');
 
@@ -62,3 +64,18 @@ export class Timer {
     this.setTime(Timer.getDisplaySeconds(this.currentTime));
   }
 }
+
+export const prepareLabel = component => {
+  const { labelsType, startText, stopText, downloadText, pauseText, resumeText } = component;
+  const { Record, Pause, Play, Stop, Download } = Icons;
+
+  const isIcon = labelsType === 'icons';
+
+  return ({
+    start   : isIcon ? <Record/> : startText,
+    stop    : isIcon ? <Stop/> : stopText,
+    pause   : isIcon ? <Pause/> : pauseText,
+    resume  : isIcon ? <Play/> : resumeText,
+    download: isIcon ? <Download/> : downloadText,
+  });
+};

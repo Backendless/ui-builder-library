@@ -12,15 +12,16 @@ Audio Recorder is a component of Backendless UI-Builder designer. This allows re
 |--------------------------|-----------------------------------------------------|---------------------|----------------------------|--------------|------------|----------------------------------------------------------------------------------|
 | Show Player              | *Checkbox*                                          | `true`              | Show PLayer Logic          | YES          | YES        | This is a handler to control audio player visibility.                            |
 | Show Controls            | *Checkbox*                                          | `true`              | Show Controls Logic        | YES          | YES        | This handler allows to show or hide control buttons.                             |
+| Control Labels Type      | *Select* <br/>[`icons`, `text`]                     | `icons`             |                            | NO           | YES        | This is a handler to control the control button labels.                          |
 | Noise Suppression        | *Checkbox*                                          | `true`              |                            | NO           | YES        | This is a handler to control Noise Suppression property.                         |
 | File Name                | *Text*                                              | 'Recorded Audio'    | File Name Logic            | YES          | YES        | This is a handler to control the name of the downloaded file.                    |
 | File Type                | *Select* <br/>[`mp4`, `webm`, `wav`, `mpeg`, `ogg`] | 'mp4'               |                            | NO           | YES        | This is a handler to control the type of the downloaded file.                    |
 | Width                    | *Text*                                              | '380px'             |                            | NO           | YES        | This is a handler to control the width of the component.                         |
-| Start Record Button Text | *Text*                                              | 'Start Record'      | Start Button Text Logic    | YES          | YES        | This is a handler that controls the Start Button Text.                           |
-| Stop Record Button Text  | *Text*                                              | 'Stop Record'       | Stop Button Text Logic     | YES          | YES        | This is a handler that controls the Stop Button Text.                            |
-| Download Button Text     | *Text*                                              | 'Download Recorded' | Download Button Text Logic | YES          | YES        | This is a handler that controls the Download Button Text.                        |
-| Pause Button Text        | *Text*                                              | 'Pause'             | Pause Button Text Logic    | YES          | YES        | This is a handler that controls the Pause Button Text when recording.            |
-| Resume Button Text       | *Text*                                              | 'Resume'            | Resume Button Text Logic   | YES          | YES        | This is a handler that controls the Resume Button Text when recording is paused. |
+| Start Record Button Text | *Text*                                              | 'Start Record'      | Start Button Text Logic    | YES          | NO         | This is a handler that controls the Start Button Text.                           |
+| Stop Record Button Text  | *Text*                                              | 'Stop Record'       | Stop Button Text Logic     | YES          | NO         | This is a handler that controls the Stop Button Text.                            |
+| Download Button Text     | *Text*                                              | 'Download Recorded' | Download Button Text Logic | YES          | NO         | This is a handler that controls the Download Button Text.                        |
+| Pause Button Text        | *Text*                                              | 'Pause'             | Pause Button Text Logic    | YES          | NO         | This is a handler that controls the Pause Button Text when recording.            |
+| Resume Button Text       | *Text*                                              | 'Resume'            | Resume Button Text Logic   | YES          | NO         | This is a handler that controls the Resume Button Text when recording is paused. |
 
 ## Events
 
@@ -63,4 +64,8 @@ Audio Recorder is a component of Backendless UI-Builder designer. This allows re
 @bl-customComponent-audioRecorder-button-disabled-color: @bl-customComponent-audioRecorder-button-backgroundColor;
 @bl-customComponent-audioRecorder-button-disabled-cursor: default;
 @bl-customComponent-audioRecorder-button-fontSize: 0.875rem;
+@bl-customComponent-audioRecorder-button-borderStyle: solid;
+@bl-customComponent-audioRecorder-button-outline: none;
+@bl-customComponent-audioRecorder-button-icon-fill: @bl-customComponent-audioRecorder-button-color;
+@bl-customComponent-audioRecorder-button-icon-size: 1rem;
 ````

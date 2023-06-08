@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { captureMediaDevices, download, Timer } from './helpers';
+import { captureMediaDevices, download, Timer, prepareLabel } from './helpers';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const {
     player, controls, noise, fileName, fileType, width, startText, stopText, downloadText, pauseText, resumeText,
-    display, style, classList,
-  } = component;
+    labelsType } = component;
   const { onStart, onStop, onDownload, onStateChange } = eventHandlers;
 
   const audioRef = useRef();
@@ -25,6 +24,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
       timer.reset();
     };
   }, []);
+
+  const buttonLabels = useMemo(() => prepareLabel(component),
+    [labelsType, startText, stopText, downloadText, pauseText, resumeText]);
 
   const styles = useMemo(() => ({
     width: normalizeDimensionValue(width),
@@ -138,23 +140,23 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
                   <span className="record-time">{ time }</span>
                 </>
               )
-              : startText
+              : buttonLabels.start
             }
           </button>
           <button
             disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
             className="control-button" onClick={ toggleRecord }>
-            { state === StreamState.PAUSED ? resumeText : pauseText }
+            { state === StreamState.PAUSED ? buttonLabels.resume : buttonLabels.pause }
           </button>
           <button
             disabled={ !state || state === StreamState.INACTIVE }
             className="control-button" onClick={ stopRecording }>
-            { stopText }
+            { buttonLabels.stop }
           </button>
           <button
             disabled={ !recordedBlob }
             className="control-button" onClick={ downloadRecordedFile }>
-            { downloadText }
+            { buttonLabels.download }
           </button>
         </div>
       ) }
