@@ -25,42 +25,40 @@ export const captureMediaDevices = async mediaConstraints => {
 export class Timer {
   constructor(setTime) {
     this.setTime = setTime;
-    this.isRunning = false;
-    this.currTimer = 0;
-    this.interval = undefined;
+    this.currentTime = 0;
+    this.interval = null;
   }
 
-  start() {
-    if (!this.isRunning) {
-      this.isRunning = true;
+  static getDisplaySeconds(time) {
+    const totalMs = time * 1000;
+
+    return new Date(totalMs).toISOString().slice(14, 19);
+  }
+
+  start(state) {
+    if (state === 'recording') {
       this.interval = setInterval(() => {
-        this.currTimer = ++this.currTimer;
-        this.updateTime();
+        this.currentTime += 1;
+
+        this.#updateTime();
       }, 1000);
     }
   }
 
-  pause() {
-    if (this.isRunning) {
+  pause(state) {
+    if (state === 'paused') {
       clearInterval(this.interval);
-      this.isRunning = false;
     }
   }
 
   reset() {
     clearInterval(this.interval);
-    this.isRunning = false;
-    this.currTimer = 0;
-    this.updateTime();
+    this.currentTime = 0;
+
+    this.#updateTime();
   }
 
-  updateTime() {
-    this.setTime(this.getDisplaySeconds(this.currTimer));
-  }
-
-  getDisplaySeconds(time) {
-    const totalMs = time * 1000;
-
-    return new Date(totalMs).toISOString().slice(14, 19);
+  #updateTime() {
+    this.setTime(Timer.getDisplaySeconds(this.currentTime));
   }
 }

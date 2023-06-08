@@ -16,9 +16,15 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
-  const [time, setTime] = useState(DefaultValues.INITIAL_TIME);
+  const [time, setTime] = useState(INITIAL_TIME);
 
-  const timer = useMemo(() => new Timer(setTime), [setTime]);
+  const timer = useMemo(() => new Timer(setTime), []);
+
+  useEffect(() => {
+    return () => {
+      timer.reset();
+    };
+  }, []);
 
   const styles = useMemo(() => ({
     width: normalizeDimensionValue(width),
@@ -35,6 +41,15 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     if (state) {
       onStateChange({ state });
     }
+
+    if (state === StreamState.RECORDING) {
+      timer.start(state);
+    } else if (state === StreamState.PAUSED) {
+      timer.pause(state);
+    } else {
+      timer.reset();
+    }
+
   }, [state]);
 
   Object.assign(component, {
@@ -54,20 +69,11 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
       const chunks = [];
 
-      recorderRef.current.onstart = () => {
-        setState(StreamState.RECORDING);
-        timer.start();
-      };
-
-      recorderRef.current.onpause = () => {
-        setState(StreamState.PAUSED);
-        timer.pause();
-      };
-
-      recorderRef.current.onresume = () => {
-        setState(StreamState.RECORDING);
-        timer.start();
-      };
+      Object.assign(recorderRef.current, {
+        onstart : () => setState(StreamState.RECORDING),
+        onpause : () => setState(StreamState.PAUSED),
+        onresume: () => setState(StreamState.RECORDING),
+      });
 
       recorderRef.current.ondataavailable = event => {
         if (event.data.size > 0) {
@@ -170,6 +176,4 @@ const RecordFormat = {
   'OGG' : 'audio/ogg; codecs="opus"',
 };
 
-const DefaultValues = {
-  INITIAL_TIME: '00:00',
-};
+const INITIAL_TIME = '00:00';
