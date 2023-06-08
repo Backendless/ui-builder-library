@@ -1,10 +1,11 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { CollapseButtonIcon, Cascade } from './subcomponent';
+import { useCallback, useEffect, useState } from 'react';
+
 import { openCascade, validate } from './helpers';
+import { Cascade, CollapseButtonIcon } from './subcomponent';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function CascadeSelect({ component, eventHandlers }) {
+export default function CascadeSelect({ component, eventHandlers, elRef }) {
   const { display, classList, style, cascade, placeholder } = component;
   const { onClickItem } = eventHandlers;
 
@@ -13,8 +14,6 @@ export default function CascadeSelect({ component, eventHandlers }) {
   const [items, setItems] = useState([]);
   const [selected, setSelected] = useState({ name: placeholder });
   const [isOpen, setIsOpen] = useState(false);
-
-  const cascadeSelectRef = useRef();
 
   useEffect(() => {
     component.setCascade(cascade);
@@ -35,20 +34,18 @@ export default function CascadeSelect({ component, eventHandlers }) {
 
   component.getSelected = () => selected;
 
-  component.setCode = (code) => setSelected(state => items.find(item => item.code === code) || state);
+  component.setCode = code => setSelected(state => items.find(item => item.code === code) || state);
   component.getCode = () => selected.code || '';
 
   component.getCascade = () => itemsCascade;
-  component.setCascade = (cascade) => validate(cascade, setItemsCascade, setParentItems, setItems);
-
-  useEffect(() => component.el = cascadeSelectRef.current, []);
+  component.setCascade = cascade => validate(cascade, setItemsCascade, setParentItems, setItems);
 
   if (!display) {
     return null;
   }
 
   return (
-    <div ref={ cascadeSelectRef } className={ cn('bl-cascadeSelect-component', ...classList) } style={ style }>
+    <div ref={ elRef } className={ cn('bl-cascadeSelect-component', classList) } style={ style }>
       <div
         className={ cn('cascade-select__input', { 'cascade-select__input--selected': selected.code }) }
         onClick={ onClickInput }>

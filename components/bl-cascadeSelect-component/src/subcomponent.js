@@ -12,7 +12,7 @@ export function Cascade(props) {
   return (
     <ul
       className="cascade-select__list"
-      style={ { top: levelOfNesting ? 0 : '100%', left: levelOfNesting ? '100%' : 0 } }>
+      style={{ top: levelOfNesting ? 0 : '100%', left: levelOfNesting ? '100%' : 0 }}>
       { itemsCascade.map(item => (
         <CascadeItem
           item={ item }

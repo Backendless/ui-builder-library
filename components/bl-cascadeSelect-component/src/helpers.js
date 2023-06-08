@@ -17,7 +17,7 @@ function analyzeCircularDependencies(obj) {
   let isCircular = false;
   let cycleLocation;
 
-  function detect(obj, key) {
+  function detectCircular(obj, key) {
     if (obj && typeof obj != 'object') {
       return;
     }
@@ -35,7 +35,7 @@ function analyzeCircularDependencies(obj) {
 
     for (const k in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, k)) {
-        detect(obj[k], k);
+        detectCircular(obj[k], k);
       }
     }
 
@@ -44,7 +44,7 @@ function analyzeCircularDependencies(obj) {
     stackSet.delete(obj);
   }
 
-  detect(obj, 'obj');
+  detectCircular(obj, 'obj');
 
   return { isCircular, cycleLocation };
 }
