@@ -1,3 +1,5 @@
+import { Icons } from './icons';
+
 export const download = (blob, fileName, fileType) => {
   const link = document.createElement('a');
 
@@ -20,4 +22,19 @@ export const captureMediaDevices = async mediaConstraints => {
   } catch (e) {
     console.error('The source of the stream did not select.', e);
   }
+};
+
+export const prepareLabel = component => {
+  const { labelsType, startText, stopText, downloadText, pauseText, resumeText } = component;
+  const { Record, Pause, Play, Stop, Download } = Icons;
+
+  const isIcon = labelsType === 'icons';
+
+  return ({
+    start   : isIcon ? <Record/> : startText,
+    stop    : isIcon ? <Stop/> : stopText,
+    pause   : isIcon ? <Pause/> : pauseText,
+    resume  : isIcon ? <Play/> : resumeText,
+    download: isIcon ? <Download/> : downloadText,
+  });
 };
