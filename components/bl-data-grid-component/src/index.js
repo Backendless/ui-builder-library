@@ -17,12 +17,13 @@ export default function DataGridComponent({ component, eventHandlers }) {
     classList, display, style, disabled, sortable, filter, floatingFilter,
     resizable, multipleRowsSelection, columnDefs, rowsData, height, width, theme
   } = component;
-  const { onCellClick } = eventHandlers;
+  const { onCellClick, onColumnMoved } = eventHandlers;
 
   const gridRef = useRef();
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
 
+  component.getColumnState = () => gridRef.current.columnApi.getColumnState();
   component.getSelectedRows = () => gridRef.current.api.getSelectedNodes().map(node => node.data);
 
   useEffect(() => {
@@ -40,6 +41,10 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   const handleCellClick = useCallback(params => {
     onCellClick({ cellParams: params });
+  }, []);
+
+  const handleColumnMove = useCallback(() => {
+    onColumnMoved({ columns: gridRef.current.columnApi.getColumnState() });
   }, []);
 
   const styles = useStyles(style, width, height);
@@ -64,8 +69,9 @@ export default function DataGridComponent({ component, eventHandlers }) {
             columnDefs={ columns }
             defaultColDef={ defaultColDef }
             scrollbarWidth={ 14 }
-            onCellClicked={ handleCellClick }
             rowSelection={ multipleRowsSelection ? "multiple" : "single" }
+            onCellClicked={ handleCellClick }
+            onColumnMoved={ handleColumnMove }
           />
       }
     </div>
