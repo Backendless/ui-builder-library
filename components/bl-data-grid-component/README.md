@@ -25,15 +25,17 @@ If you want to know more about this component, you can [follow the link.](https:
 
 ## Events
 
-| Name                | Triggers                                                                  | Context Blocks              |
-|---------------------|---------------------------------------------------------------------------|---------------------------- |
-| On Cell Click Event | This event is fired when the user clicks the mouse or taps the grid cell. | Cell Params: `{key: value}` |
+| Name                  | Triggers                                                                  | Context Blocks                 |
+|-----------------------|---------------------------------------------------------------------------|--------------------------------|
+| On Cell Click Event   | This event is fired when the user clicks the mouse or taps the grid cell. | Cell Params: `{key: value}`    |
+| On Column Moved Event | This event is fired when any column is moved.                             | Columns: list of moved columns |
 
 ## Actions
 
-| Action                         | Inputs     | Returns                                       |
-|--------------------------------|------------|-----------------------------------------------|
-| Get Selected Rows of Data Grid |            | `JSON`: list of selected rows                 |
+| Action                         | Inputs     | Returns                                 |
+|--------------------------------|------------|-----------------------------------------|
+| Get Selected Rows of Data Grid |            | `JSON`: list of selected rows           |
+| Get Columns of Data Grid       |            | `JSON`: list of moved columns           |
 
 ## <a id="examples"></a> Codeless Examples
 

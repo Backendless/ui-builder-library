@@ -182,6 +182,17 @@
         }
       ],
       "handlerDescription": "This event is fired when the user clicks the mouse or taps the grid cell."
+    },
+    {
+      "name": "onColumnMoved",
+      "label": "On Column Moved Event",
+      "handlerDescription": "This event is fired when any column is moved.",
+      "contextBlocks": [
+        {
+          "id": "columns",
+          "label": "Columns"
+        }
+      ]
     }
   ],
   "actions": [
@@ -189,6 +200,12 @@
       "id": "getSelectedRows",
       "label": "Get Selected Rows of ",
       "color": "#204994",
+      "hasReturn": true
+    },
+    {
+      "id": "getColumnState",
+      "label": "Get Columns of",
+      "color": "#214a96",
       "hasReturn": true
     }
   ]
