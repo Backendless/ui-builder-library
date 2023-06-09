@@ -21,7 +21,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     [labelsType, startText, stopText, downloadText, pauseText, resumeText]);
 
   const styles = useMemo(() => ({
-    width: normalizeDimensionValue(width),
+    maxWidth: normalizeDimensionValue(width),
     ...style,
   }), [style]);
 
