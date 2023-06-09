@@ -7,7 +7,8 @@ const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const {
     player, controls, noise, fileName, fileType, width, startText, stopText, downloadText, pauseText, resumeText,
-    labelsType } = component;
+    labelsType, display, style, classList,
+  } = component;
   const { onStart, onStop, onDownload, onStateChange } = eventHandlers;
 
   const audioRef = useRef();
