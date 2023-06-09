@@ -105,7 +105,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "sizeLogic",
-      "defaultValue": "",
+      "defaultValue": "40px",
       "settingTooltip": "The size(width/height) of the up button",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the size(width/height) of the up button.",
@@ -121,7 +121,8 @@
       "handlerId": "iconSizeLogic",
       "handlerDescription": "This is a handler for the logic to determine the size(width/height) of the icon inside the up button.",
       "dataBinding": true,
-      "handlerLabel": "Icon Size Logic"
+      "handlerLabel": "Icon Size Logic",
+      "defaultValue": "20px"
     },
     {
       "type": "text",
