@@ -146,7 +146,7 @@ const StreamState = {
 const RecordFormat = {
   'WAV' : 'audio/wav; codecs="1"',
   'MPEG': 'audio/mpeg;',
-  'MP4' : 'audio/mp4; codecs="mp4a.40.2"',
   'WEBM': 'audio/webm; codecs="vorbis"',
   'OGG' : 'audio/ogg; codecs="opus"',
+  'MP3' : 'audio/mp3; codecs="opus"',
 };
