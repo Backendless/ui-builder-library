@@ -91,10 +91,6 @@
           "label": "mp3"
         },
         {
-          "value": "MP4",
-          "label": "mp4"
-        },
-        {
           "value": "WEBM",
           "label": "webm"
         },
