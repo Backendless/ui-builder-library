@@ -148,6 +148,15 @@
       "handlerDescription": "This is a handler for the logic to determine the indent of the up button from the edge of the page vertically.",
       "dataBinding": true,
       "handlerLabel": "Indent Y Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "hideOnTop",
+      "label": "Hide on Top",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "hideOnTopLogic",
+      "settingTooltip": "Hide the up button on the top page position"
     }
   ],
   "eventHandlers": [],

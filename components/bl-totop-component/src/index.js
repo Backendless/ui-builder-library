@@ -1,20 +1,20 @@
-import { useMemo, useCallback, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 const AxisClassesMap = {
-  X: { left: "start-0", right: "end-0", center: "start-50 translate-middle-x" },
-  Y: { top: "top-0", bottom: "bottom-0", center: "top-50  translate-middle-y" },
+  X: { left: 'start-0', right: 'end-0', center: 'start-50 translate-middle-x' },
+  Y: { top: 'top-0', bottom: 'bottom-0', center: 'top-50  translate-middle-y' },
 };
 
 export default function TotopComponent({ component, elRef }) {
   const {
-    classList, display, offset, position, backgroundColor, color, size, iconSize, indentX, indentY, element
+    classList, display, offset, position, backgroundColor, color, size, iconSize, indentX, indentY, element, hideOnTop,
   } = component;
 
-  const [isTotopVisible, setIsTotopVisible] = useState(true);
+  const [isTotopVisible, setIsTotopVisible] = useState(!hideOnTop);
 
-  const axisPositions = position.split("-");
+  const axisPositions = position.split('-');
 
   const classes = useMemo(() => {
     return [...classList, AxisClassesMap.X[axisPositions[1]], AxisClassesMap.Y[axisPositions[0]]];
@@ -23,10 +23,10 @@ export default function TotopComponent({ component, elRef }) {
   const styles = useMemo(() => {
     return {
       backgroundColor,
-      width: size,
-      height: size,
-      "--totop-indent-x": indentX,
-      "--totop-indent-y": indentY,
+      width             : size,
+      height            : size,
+      '--totop-indent-x': indentX,
+      '--totop-indent-y': indentY,
     };
   }, [backgroundColor, size, indentX, indentY]);
 
@@ -34,22 +34,36 @@ export default function TotopComponent({ component, elRef }) {
     return { width: iconSize, height: iconSize, fill: color };
   }, [iconSize, color]);
 
-  const offsetTop = element?.el?.offsetTop || 0;
-
   const handleScroll = useCallback(() => {
-    window.scrollTo({ top: offsetTop + offset, behavior: "smooth" });
-  }, [offsetTop, offset]);
+    const offsetTop = element?.el?.offsetTop || 0;
 
-  component.hide = () => { setIsTotopVisible(false) };
-  component.show = () => { setIsTotopVisible(true) };
+    window.scrollTo({ top: offsetTop + offset, behavior: 'smooth' });
+  }, [element, offset]);
+
+  useEffect(() => {
+    if (!hideOnTop) {
+      return;
+    }
+
+    const onScroll = () => setIsTotopVisible(window.scrollY !== 0);
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
+  component.hide = () => setIsTotopVisible(false);
+  component.show = () => setIsTotopVisible(true);
 
   if (!display || !isTotopVisible) {
     return null;
   }
 
   return (
-    <div ref={ elRef } className={ cn("bl-customComponent-totop", classes) } style={ styles } onClick={ handleScroll }>
-      <TotopIcon styles={ iconStyles } />
+    <div ref={ elRef } className={ cn('bl-customComponent-totop', classes) } style={ styles } onClick={ handleScroll }>
+      <TotopIcon styles={ iconStyles }/>
     </div>
   );
 }

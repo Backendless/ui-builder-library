@@ -19,6 +19,7 @@ Totop is the component that can be used in Backendless [UI-Builder](https://back
 | Icon Size <br> `iconSize`         | *Text*                                                                                                                               | `20px`         | Icon Size Logic           | YES          | YES        | Controls the size(width/height) of the icon inside the up button, in px.                              |
 | Indent X <br> `indentX`           | *Text*                                                                                                                               |                | Indent X Logic            | YES          | YES        | Controls the indent of the up button from the edge of the page horizontally.                          |
 | Indent Y <br> `indentY`           | *Text*                                                                                                                               |                | Indent Y Logic            | YES          | YES        | Controls the indent of the up button from the edge of the page vertically.                            |
+| Hide on Top <br> `hideOnTop`      | *Checkbox*                                                                                                                           | `false`        |                           | NO           | YES        | Enable hiding the up button on the top page position.                                                 |
 
 ## Actions
 
