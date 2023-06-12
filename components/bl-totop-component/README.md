@@ -55,6 +55,14 @@ Totop is the component that can be used in Backendless [UI-Builder](https://back
 @bl-customComponent-totop-cursor: pointer;
 ````
 
+## Usage
+
+Make sure the page overflow is not set. In addition, the scrolling target should not be hidden by any parent element.
+
+<p align="center">
+  <img src="./example-images/page-overflow.png" alt="page overflow" width="959"/>
+</p>
+
 ## Examples
 
 Below is a Codeless Example highlighting how to use the Totop component:
