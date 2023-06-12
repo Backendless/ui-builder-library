@@ -82,10 +82,14 @@
       "name": "fileType",
       "label": "File Type",
       "showInSettings": true,
-      "defaultValue": "MP4",
+      "defaultValue": "MP3",
       "hasLogicHandler": false,
       "handlerId": "fileTypeLogic",
       "options": [
+        {
+          "value": "MP3",
+          "label": "mp3"
+        },
         {
           "value": "MP4",
           "label": "mp4"
