@@ -12,16 +12,16 @@ Configuration can be done in the UI Builder. You have to specify the content tha
 
 ## Properties
 
-| Property                           | Type                                | Default value | Logic | Data Binding | UI Setting | Description                                                                        |
-|------------------------------------|-------------------------------------|---------------|-------|--------------|------------|------------------------------------------------------------------------------------|
-| Start Play <br> `start`            | *Checkbox*                          | `true`        |       | NO           | YES        | Controls the playback or stop of the marquee.                                      |
-| Pause On Hover <br> `pauseOnHover` | *Checkbox*                          | `false`       |       | NO           | YES        | Controls the pause of the marquee when hovered.                                    |
-| Pause On Click <br> `pauseOnClick` | *Checkbox*                          | `false`       |       | NO           | YES        | Controls the pause of the marquee when clicked.                                    |
-| Direction <br> `direction`         | *Select* <br> [`normal`, `reverse`] | `normal`      |       | NO           | YES        | Controls the direction the marquee is sliding.                                     |
-| Speed <br> `speed`                 | *Number*                            | 20            |       | NO           | YES        | Controls the speed calculated as pixels/second.                                    |
-| Delay <br> `delay`                 | *Number*                            | 0             |       | NO           | YES        | Controls the duration to delay the animation after render, in seconds.             |
-| Loop <br> `loop`                   | *Number*                            | 0             |       | NO           | YES        | Controls the number of times the marquee should loop, 0 is equivalent to infinite. |
-| Enable Gradient <br> `gradient`    | *Checkbox*                          | `true`        |       | NO           | YES        | Controls the display of the gradient overlay.                                      |
+| Property                           | Type                                             | Default value    | Logic | Data Binding | UI Setting | Description                                                                        |
+|------------------------------------|--------------------------------------------------|------------------|-------|--------------|------------|------------------------------------------------------------------------------------|
+| Start Play <br> `start`            | *Checkbox*                                       | `true`           |       | NO           | YES        | Controls the playback or stop of the marquee.                                      |
+| Pause On Hover <br> `pauseOnHover` | *Checkbox*                                       | `false`          |       | NO           | YES        | Controls the pause of the marquee when hovered.                                    |
+| Pause On Click <br> `pauseOnClick` | *Checkbox*                                       | `false`          |       | NO           | YES        | Controls the pause of the marquee when clicked.                                    |
+| Direction <br> `direction`         | *Select* <br> [`Right to left`, `Left to right`] | `Right to left`  |       | NO           | YES        | Controls the direction the marquee is sliding.                                     |
+| Speed <br> `speed`                 | *Number*                                         | 20               |       | NO           | YES        | Controls the speed calculated as pixels/second.                                    |
+| Delay <br> `delay`                 | *Number*                                         | 0                |       | NO           | YES        | Controls the duration to delay the animation after render, in seconds.             |
+| Loop <br> `loop`                   | *Number*                                         | 0                |       | NO           | YES        | Controls the number of times the marquee should loop, 0 is equivalent to infinite. |
+| Enable Gradient <br> `gradient`    | *Checkbox*                                       | `true`           |       | NO           | YES        | Controls the display of the gradient overlay.                                      |
 
 ## Events
 

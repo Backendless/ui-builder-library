@@ -46,11 +46,11 @@
       "options": [
         {
           "value": "normal",
-          "label": "normal"
+          "label": "Right to left"
         },
         {
           "value": "reverse",
-          "label": "reverse"
+          "label": "Left to right"
         }
       ],
       "label": "Direction",
