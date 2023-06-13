@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const SMOOTH_SCROLL_BEHAVIOR = 'smooth';
+
 const AxisClassesMap = {
   X: { left: 'start-0', right: 'end-0', center: 'start-50 translate-middle-x' },
   Y: { top: 'top-0', bottom: 'bottom-0', center: 'top-50  translate-middle-y' },
@@ -37,7 +39,7 @@ export default function TotopComponent({ component, elRef }) {
   const handleScroll = useCallback(() => {
     const offsetTop = element?.el?.offsetTop || 0;
 
-    window.scrollTo({ top: offsetTop + offset, behavior: 'smooth' });
+    setTimeout(() => window.scrollTo({ top: offsetTop + offset, behavior: SMOOTH_SCROLL_BEHAVIOR }), 300);
   }, [element, offset]);
 
   useEffect(() => {
