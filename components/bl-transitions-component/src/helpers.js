@@ -25,15 +25,11 @@ export const useTransition = (
       if(readyToStartTransition) {
         setPodElementDimension(podElement['client' + dimensionName]);
         setIsTakenMeasurements(true);
+
+        transitionRef.current.style[dimensionName.toLowerCase()] = '0px';
       }
     }
   }, [podElement, isContentLoaded, isTakenMeasurements]);
-
-  useEffect(() => {
-    if (isTakenMeasurements) {
-      setDimension('0px');
-    }
-  }, [isTakenMeasurements]);
 
   useEffect(() => {
     if (isOpen && isTakenMeasurements) {

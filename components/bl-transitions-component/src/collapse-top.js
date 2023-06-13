@@ -1,14 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTransition } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CollapseTop(props) {
-  const { component, setIsTransition, transitionsContainerPod, isOpen, isContentLoaded } = props;
+  const { component, setIsTransition, transitionsContainerPod, isOpen, isContentLoaded, transitionRef } = props;
   const { classList, style, variant, duration } = component;
 
-  const transitionRef = useRef();
   const [podElement, setPodElement] = useState();
 
   const height = useTransition(transitionRef, podElement, isOpen, isContentLoaded, duration, 'Height', setIsTransition);
