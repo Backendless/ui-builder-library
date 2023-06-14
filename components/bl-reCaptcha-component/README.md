@@ -39,7 +39,11 @@ Before usage, you need:
 ## Usage
 Let's look at example
 
-We have some form where we put reCaptcha and reCaptcha must have an `id`
+We have some "form" data table
+
+![](example-images/example-form-data-table.jpg)
+
+And we have some form where we put reCaptcha and reCaptcha must have an `id`
 
 ![](example-images/form-example.jpg)
 
@@ -48,7 +52,7 @@ In SETTINGS we set site-key.
 
 ![](example-images/settings-example.jpg)
 
-We need to create in Cloud Code a new API service with POST method on reCaptcha API https://www.google.com/recaptcha/api/siteverify and send a secret-key and token. In response, we get the following object:
+### We need to create in Cloud Code a new API service with POST method on reCaptcha API https://www.google.com/recaptcha/api/siteverify and send a secret-key and token. In response, we get the following object:
 ```
 {
     "success": true|false,
@@ -57,13 +61,41 @@ We need to create in Cloud Code a new API service with POST method on reCaptcha 
     "error-codes": [...]        // optional
 }
 ```
-![](example-images/create-method-example.jpg)
-![](example-images/api-service-captcha-codeless.jpg)
 
-After that, we create an API service to save the form data to the database. We need to make conditions, if the captcha is successful, we save the data, otherwise nothing (or you might want to return an error)
+1. Go to Backend > Cloud Code > Services > Add New Service
 
-![](example-images/api-service-form-data-codeless-example.jpg)
+    ![](example-images/go-to-add-new-service.jpg)
 
-In form logic add On Submit Event.
+2. Add new service
+
+    ![](example-images/add-new-service.jpg)
+
+3. After must open modal window "New Codeless Method". Fill in as in the screenshot
+
+    ![](example-images/create-method-example.jpg)
+
+4. After go to edit over getResult method
+
+    ![](example-images/go-to-edit-captcha-method.jpg)
+
+5. Make logic like in the screenshot. In the prop secret of the query object we put the secret key from your Google reCAPTCHA admin console. And when logic will be made, click on "DEPLOY MODEL"
+
+    ![](example-images/api-service-captcha-codeless.jpg)
+
+### After that, we create an API service to save the form data to the database.
+
+1. Add new service FormData
+
+    ![](example-images/add-formData-service.jpg)
+
+2. Add new Codeless Method createForm
+
+    ![](example-images/add-codeless-method-createForm.jpg)
+
+3. Make logic like in the screenshot. We need to make conditions, if the captcha is successful, we save the data, otherwise nothing (or you might want to return an error). And when logic will be made, click on "DEPLOY MODEL"
+
+    ![](example-images/api-service-form-data-codeless-example.jpg)
+
+### In form logic add On Submit Event.
 
 ![](example-images/on-submit-event-example.jpg)
