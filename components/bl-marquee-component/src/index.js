@@ -72,7 +72,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   return (
     <div
       ref={ elRef }
-      className={ cn('bl-customComponent-marquee', ...classList) }
+      className={ cn('bl-customComponent-marquee', classList) }
       style={ styles }
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }
