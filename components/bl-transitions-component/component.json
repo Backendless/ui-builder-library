@@ -18,7 +18,8 @@
       "handlerId": "isOpenLogic",
       "handlerLabel": "Is Open Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows for determining if the component is open or closed."
+      "handlerDescription": "This handler allows for determining if the component is open or closed.",
+      "settingTooltip": "Allows to determine if the component is open or closed"
     },
     {
       "type": "select",

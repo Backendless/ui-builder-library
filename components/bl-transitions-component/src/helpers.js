@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export const useTransition = (
   transitionRef, podElement, podWrapperRef, isOpen,
-  isContentLoaded, duration, dimensionName, setIsTransition
+  isContentLoaded, duration, clientName, setIsTransition
 ) => {
   const [dimension, setDimension] = useState('0px');
   const [podElementDimension, setPodElementDimension] = useState(0);
@@ -23,7 +23,7 @@ export const useTransition = (
       const readyToStartTransition = podElement && isContentLoaded;
 
       if(readyToStartTransition) {
-        setPodElementDimension(podElement['client' + dimensionName]);
+        setPodElementDimension(podElement[clientName]);
         setIsTakenMeasurements(true);
       }
     }
@@ -45,7 +45,7 @@ export const useTransition = (
     } else if (hasOpen) {
       clearTimeout(openTimeout.current);
 
-      setDimension(podElement['client' + dimensionName] + 'px');
+      setDimension(podElement[clientName] + 'px');
       setIsTransition(true);
       setHasOpen(false);
 

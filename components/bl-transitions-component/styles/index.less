@@ -17,33 +17,102 @@
     }
 
     &.fade {
-      opacity: 0;
-      transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-      &--active {
+      &.open {
+        animation: fadeOpen 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         opacity: 1;
+      }
+
+      &.close {
+        animation: fadeClose 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        opacity: 0;
+      }
+
+      @keyframes fadeOpen {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeClose {
+        0% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
       }
     }
 
     &.grow {
-      transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      transform: scale(0.75, 0.5625);
-      opacity: 0;
-
-      &--active {
-        transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        transform: none;
+      &.open {
+        animation: growOpen 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         opacity: 1;
+      }
+
+      &.close {
+        animation: growClose 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        opacity: 0;
+      }
+
+      @keyframes growOpen {
+        0% {
+          opacity: 0;
+          transform: scale(0.75, 0.5625);
+        }
+
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes growClose {
+        0% {
+          opacity: 1;
+          transform: none;
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(0.75, 0.5625);
+        }
       }
     }
 
     &.zoom {
-      transform: scale(0);
-      transition: transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      &.open {
+        animation: zoomOpen 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        opacity: 1;
+      }
 
-      &--active {
-        transform: none;
-        transition: transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      &.close {
+        animation: zoomClose 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        opacity: 1;
+      }
+
+      @keyframes zoomOpen {
+        0% {
+          transform: scale(0);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes zoomClose {
+        0% {
+          transform: scale(1);
+        }
+
+        100% {
+          transform: scale(0);
+        }
       }
     }
   }

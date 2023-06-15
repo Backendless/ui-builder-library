@@ -13,7 +13,7 @@ export function CollapseLeft(props) {
 
   const width = useTransition(
     transitionRef, podElement, podWrapperRef, isOpen,
-    isContentLoaded, duration, 'Width', setIsTransition
+    isContentLoaded, duration, 'clientWidth', setIsTransition
   );
 
   useEffect(() => {

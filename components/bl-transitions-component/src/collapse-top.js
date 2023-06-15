@@ -13,7 +13,7 @@ export function CollapseTop(props) {
 
   const height = useTransition(
     transitionRef, podElement, podWrapperRef, isOpen,
-    isContentLoaded, duration, 'Height', setIsTransition
+    isContentLoaded, duration, 'clientHeight', setIsTransition
   );
 
   useEffect(() => {
