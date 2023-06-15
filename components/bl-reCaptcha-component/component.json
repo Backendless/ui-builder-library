@@ -1,6 +1,12 @@
 {
   "id": "c_3a5f07d6ce793a6d8bff0dc56b1871ba",
   "name": "ReCaptcha",
+  "description": "This component allows you to upgrade your security from bots when need to send some form",
+  "showInToolbox": true,
+  "faIcon": "shield-alt",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
   "properties": [
     {
       "type": "select",
