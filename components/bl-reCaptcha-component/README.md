@@ -45,6 +45,8 @@ We have some "form" data table
 
 And we have some form where we put reCaptcha and reCaptcha must have an `id`
 
+![](example-images/add-form-on-page.jpg)
+
 ![](example-images/form-example.jpg)
 
 
@@ -97,5 +99,7 @@ In SETTINGS we set site-key.
     ![](example-images/api-service-form-data-codeless-example.jpg)
 
 ### In form logic add On Submit Event.
+
+![](example-images/open-form-logic.jpg)
 
 ![](example-images/on-submit-event-example.jpg)
