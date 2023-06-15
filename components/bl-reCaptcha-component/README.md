@@ -20,8 +20,8 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 
 | Action        | Inputs | Return                                         |
 |---------------|--------|------------------------------------------------|
-| On Token Sent |        | `String`: can get when the user passed captcha |
-| On Pass(ed)   |        | `Boolean`: `true` when the user passed captcha |
+| On Token Sent |        | `String`: can get when the user passed the captcha |
+| On Pass(ed)   |        | `Boolean`: `true` when the user passed the captcha |
 
 ## Settings
 
@@ -32,7 +32,7 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 ## Before Usage
 Before usage, you need:
 
-1. Create google account if you don't have.
+1. Create a Google account if you don't have one.
 2. Register your site in [Google Recaptcha](https://www.google.com/recaptcha/admin/create). Choose reCaptcha v2 "I'm not a robot" (invisible captcha mode will not work in this case) or Invisible reCaptcha badge.
 3. Get your site-key and secret-key
 
@@ -72,11 +72,11 @@ In SETTINGS we set site-key.
 
     ![](example-images/add-new-service.jpg)
 
-3. After must open modal window "New Codeless Method". Fill in as in the screenshot
+3. After must open the modal window "New Codeless Method". Fill in as in the screenshot
 
     ![](example-images/create-method-example.jpg)
 
-4. After go to edit over getResult method
+4. After go to edit over the getResult method
 
     ![](example-images/go-to-edit-captcha-method.jpg)
 
