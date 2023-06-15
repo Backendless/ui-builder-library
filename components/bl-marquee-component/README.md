@@ -29,6 +29,9 @@ Configuration can be done in the UI Builder. You have to specify the content tha
 |-------------------------|-----------------------------------------------------------------------------------------------------|----------------|
 | On Animation End Event  | when the marquee finishes scrolling and stops, only calls if loop is non-zero                       |                |
 | On Cycle Complete Event | when the marquee finishes a loop, does not call if maximum loops are reached (use onFinish instead) |                |
+| On Mouse Enter Event    | when the mouse pointer enters the boundaries of the component                                       |                |
+| On Mouse Leave Event    | when the mouse pointer moves out of the component boundary                                          |                |
+| On Click Event          | when the user clicks on the component                                                               |                |
 
 ## Actions
 

@@ -6,10 +6,10 @@ const DEFAULT_COUNT = 'infinite';
 const PlayState = { RUN: 'running', PAUSE: 'paused' };
 
 export default function MarqueeComponent({ component, elRef, eventHandlers, pods }) {
+  const { onAnimationEnd, onCycleComplete, onMouseEnter, onMouseLeave, onClick } = eventHandlers;
   const {
     classList, style, display, start, pauseOnHover, pauseOnClick, direction, speed, delay, loop, gradient,
   } = component;
-  const { onAnimationEnd, onCycleComplete } = eventHandlers;
 
   const children = pods['marqueeContent'].render();
 
@@ -44,8 +44,8 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   const styleMarquee = useMemo(() => {
     return {
       '--marquee-play'       : play ? PlayState.RUN : PlayState.PAUSE,
-      animationDelay         : `${delay}s`,
-      animationDuration      : `${duration}s`,
+      animationDelay         : `${ delay }s`,
+      animationDuration      : `${ duration }s`,
       animationDirection     : direction,
       animationIterationCount: loop || DEFAULT_COUNT,
     };
@@ -70,7 +70,13 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-marquee', ...classList) } style={ styles }>
+    <div
+      ref={ elRef }
+      className={ cn('bl-customComponent-marquee', classList) }
+      style={ styles }
+      onMouseEnter={ onMouseEnter }
+      onMouseLeave={ onMouseLeave }
+      onClick={ onClick }>
       { gradient && <div className="overlay"/> }
 
       <div

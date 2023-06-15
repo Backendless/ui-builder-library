@@ -107,6 +107,21 @@
       "name": "onCycleComplete",
       "handlerDescription": "A callback for when the marquee finishes a loop. Does not call if maximum loops are reached (use onFinish instead).",
       "label": "On Cycle Complete Event"
+    },
+    {
+      "name": "onMouseEnter",
+      "label": "On Mouse Enter Event",
+      "handlerDescription": "Triggered when the mouse pointer enters the boundaries of the component."
+    },
+    {
+      "name": "onMouseLeave",
+      "label": "On Mouse Leave Event",
+      "handlerDescription": "Triggered when the mouse pointer moves out of the component boundary."
+    },
+    {
+      "name": "onClick",
+      "label": "On Click Event",
+      "handlerDescription": "Triggered when the user clicks on the component."
     }
   ],
   "actions": [
