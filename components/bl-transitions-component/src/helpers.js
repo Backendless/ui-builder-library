@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
 export const useTransition = (
-  transitionRef, podElement, isOpen, isContentLoaded,
-  duration, dimensionName, setIsTransition
+  transitionRef, podElement, podWrapperRef, isOpen,
+  isContentLoaded, duration, dimensionName, setIsTransition
 ) => {
-  const [dimension, setDimension] = useState('');
+  const [dimension, setDimension] = useState('0px');
   const [podElementDimension, setPodElementDimension] = useState(0);
   const [isTakenMeasurements, setIsTakenMeasurements] = useState(false);
   const [hasOpen, setHasOpen] = useState(false);
@@ -19,21 +19,20 @@ export const useTransition = (
   }, [transitionRef]);
 
   useEffect(() => {
-    if (!isTakenMeasurements) {
+    if (!isTakenMeasurements && isOpen) {
       const readyToStartTransition = podElement && isContentLoaded;
 
       if(readyToStartTransition) {
         setPodElementDimension(podElement['client' + dimensionName]);
         setIsTakenMeasurements(true);
-
-        transitionRef.current.style[dimensionName.toLowerCase()] = '0px';
       }
     }
-  }, [podElement, isContentLoaded, isTakenMeasurements]);
+  }, [isOpen, isTakenMeasurements, isContentLoaded, podElement]);
 
   useEffect(() => {
     if (isOpen && isTakenMeasurements) {
       showElement(transitionRef.current);
+      podWrapperRef.current.style.position = 'static';
 
       setDimension(podElementDimension + 'px');
       setIsTransition(true);
@@ -52,9 +51,10 @@ export const useTransition = (
 
       closeTimeout.current = setTimeout(() => {
         hideElement(transitionRef.current);
+        podWrapperRef.current.style.position = 'absolute';
 
         setIsTransition(false);
-        setDimension('');
+        setDimension('0px');
         setIsTakenMeasurements(false);
       }, duration);
     }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useTransition } from './helpers';
 
@@ -9,8 +9,12 @@ export function CollapseLeft(props) {
   const { classList, style, variant, duration } = component;
 
   const [podElement, setPodElement] = useState();
+  const podWrapperRef = useRef();
 
-  const width = useTransition(transitionRef, podElement, isOpen, isContentLoaded, duration, 'Width', setIsTransition);
+  const width = useTransition(
+    transitionRef, podElement, podWrapperRef, isOpen,
+    isContentLoaded, duration, 'Width', setIsTransition
+  );
 
   useEffect(() => {
     const readyToInitialTransition = transitionRef.current && !podElement;
@@ -26,7 +30,9 @@ export function CollapseLeft(props) {
         ref={ transitionRef }
         className={ cn('transition', variant) }
         style={{ ...style, transitionDuration: duration + 'ms', width: getWidth(isOpen, width, podElement) }}>
-        { transitionsContainerPod.render() }
+        <div ref={ podWrapperRef } style={{ position: 'absolute' }}>
+          { transitionsContainerPod.render() }
+        </div>
       </div>
     </div>
   );

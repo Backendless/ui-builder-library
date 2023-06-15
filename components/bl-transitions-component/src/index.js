@@ -31,10 +31,8 @@ export default function Transitions({ component, eventHandlers, pods }) {
   component.setIsOpen = isOpen => setIsOpen(isOpen && isContentLoaded);
 
   useEffect(() => {
-    if (transitionRef.current) {
-      setIsOpen(isOpenProp);
-    }
-  }, [isOpenProp, transitionRef]);
+    setIsOpen(isOpenProp);
+  }, [isOpenProp]);
 
   useEffect(() => {
     if (isOpen) {
