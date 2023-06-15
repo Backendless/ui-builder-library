@@ -9,6 +9,19 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "checkbox",
+      "name": "isOpen",
+      "label": "Is Open",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "isOpenLogic",
+      "handlerLabel": "Is Open Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows for determining if the component is open or closed.",
+      "settingTooltip": "Allows to determine if the component is open or closed"
+    },
+    {
       "type": "select",
       "name": "variant",
       "label": "Variant",

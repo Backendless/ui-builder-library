@@ -5,13 +5,16 @@ import { useTransition } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function CollapseLeft(props) {
-  const { component, setIsTransition, transitionsContainerPod, isOpen, isContentLoaded } = props;
+  const { component, setIsTransition, transitionsContainerPod, isOpen, isContentLoaded, transitionRef } = props;
   const { classList, style, variant, duration } = component;
 
-  const transitionRef = useRef();
   const [podElement, setPodElement] = useState();
+  const podWrapperRef = useRef();
 
-  const width = useTransition(transitionRef, podElement, isOpen, isContentLoaded, duration, 'Width', setIsTransition);
+  const width = useTransition(
+    transitionRef, podElement, podWrapperRef, isOpen,
+    isContentLoaded, duration, 'clientWidth', setIsTransition
+  );
 
   useEffect(() => {
     const readyToInitialTransition = transitionRef.current && !podElement;
@@ -27,7 +30,9 @@ export function CollapseLeft(props) {
         ref={ transitionRef }
         className={ cn('transition', variant) }
         style={{ ...style, transitionDuration: duration + 'ms', width: getWidth(isOpen, width, podElement) }}>
-        { transitionsContainerPod.render() }
+        <div ref={ podWrapperRef } style={{ position: 'absolute' }}>
+          { transitionsContainerPod.render() }
+        </div>
       </div>
     </div>
   );

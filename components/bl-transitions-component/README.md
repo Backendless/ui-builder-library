@@ -6,11 +6,12 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 
 ## Properties
 
-| Property                         | Type                                                                                                            | Default Value | Logic | Data Binding | UI Setting | Description                                                 |
-|----------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|-------|--------------|------------|-------------------------------------------------------------|
-| Variant:`variant `               | Select <br/>[Fade:`fade`, Grow:`grow`, Zoom:`zoom`, Collapse Top:`collapse-top`, Collapse Left:`collapse-left`] | Fade:`fade`   |       | NO           | YES        | Allows to determine variant of transition                   |
-| Duration:`duration`              | Number                                                                                                          | 300           |       | NO           | YES        | Allows to determine duration of transition (ms)             |
-| Dynamic Content:`dynamicContent` | Checkbox                                                                                                        | `false`       |       | NO           | YES        | Allows you to determine the need to animate dynamic content |
+| Property                         | Type                                                                                                            | Default Value | Logic         | Data Binding | UI Setting | Description                                                 |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|---------------|--------------|------------|-------------------------------------------------------------|
+| Is Open: `isOpen`                | Checkbox                                                                                                        | `true`        | Is Open Logic | YES          | YES        | Allows to determine if the component is open or closed.     |
+| Variant:`variant `               | Select <br/>[Fade:`fade`, Grow:`grow`, Zoom:`zoom`, Collapse Top:`collapse-top`, Collapse Left:`collapse-left`] | Fade:`fade`   |               | NO           | YES        | Allows to determine variant of transition                   |
+| Duration:`duration`              | Number                                                                                                          | 300           |               | NO           | YES        | Allows to determine duration of transition (ms)             |
+| Dynamic Content:`dynamicContent` | Checkbox                                                                                                        | `false`       |               | NO           | YES        | Allows you to determine the need to animate dynamic content |
 
 ## Events
 

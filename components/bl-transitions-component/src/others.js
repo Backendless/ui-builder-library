@@ -5,10 +5,9 @@ import { hideElement, showElement } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export const Others = props => {
-  const { component, setIsTransition, transitionsContainerPod, isOpen, hasOpen } = props;
+  const { component, setIsTransition, transitionsContainerPod, isOpen, hasOpen, transitionRef } = props;
   const { classList, style, variant, duration } = component;
 
-  const transitionRef = useRef(null);
   const [podElement, setPodElement] = useState();
 
   const closeTimeout = useRef(null);
@@ -33,7 +32,6 @@ export const Others = props => {
       clearTimeout(closeTimeout.current);
 
       showElement(transitionRef.current);
-      transitionRef.current.style.opacity = '';
 
       setIsTransition(true);
 
@@ -44,7 +42,6 @@ export const Others = props => {
 
       closeTimeout.current = setTimeout(() => {
         hideElement(transitionRef.current);
-        transitionRef.current.style.opacity = '';
 
         setIsTransition(false);
       }, duration);
@@ -57,8 +54,8 @@ export const Others = props => {
     <div className={ cn('bl-customComponent-transitions', classList) } style={ style }>
       <div
         ref={ transitionRef }
-        className={ cn('transition', variant, { [variant + '--active']: isOpen }) }
-        style={{ transitionDuration: duration + 'ms' }}>
+        className={ cn('transition', variant, { [isOpen ? 'open' : 'close']: hasOpen }) }
+        style={{ animationDuration: duration + 'ms' }}>
         { transitionsContainerPod.render() }
       </div>
     </div>
