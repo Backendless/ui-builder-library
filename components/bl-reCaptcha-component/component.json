@@ -74,7 +74,7 @@
           "label": "Inline"
         }
       ],
-      "settingTooltip": "Allows to determine the position. Work when Size is \"invisible\"."
+      "settingTooltip": "Allows to determine the position. Work when Size is invisible."
     },
     {
       "type": "select",
