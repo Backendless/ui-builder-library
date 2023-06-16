@@ -18,7 +18,8 @@
       "handlerId": "calendarDataLogic",
       "handlerLabel": "Calendar Data Logic",
       "handlerDescription": "This is a handler for the logic to determine the data array of the calendar(date, count).",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows you to specifies an array of date and count for calendar. Signature of Calendar Data: {date: string, count: number}"
     },
     {
       "type": "number",
@@ -29,7 +30,8 @@
       "handlerId": "maxCountLogic",
       "handlerLabel": "Max Count Logic",
       "handlerDescription": "This is a logic handler for determining the max count. This is necessary to decide on the max gradation. If it is empty, the max count value  will be selected from the calendar data",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows you to determine the max count. This is necessary to decide on the max gradation. If it is empty, the max count value  will be selected from the calendar data."
     },
     {
       "type": "number",
@@ -40,7 +42,8 @@
       "handlerId": "minCountLogic",
       "handlerLabel": "Min Count Logic",
       "handlerDescription": "This is a logic handler for determining the min count. This is necessary to decide on the min gradation. If it is empty, the min count value  will be selected from the calendar data",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows you to determine the min count. This is necessary to decide on the min gradation. If it is empty, the min count value  will be selected from the calendar data."
     },
     {
       "type": "number",
@@ -52,7 +55,8 @@
       "handlerId": "numberDaysLogic",
       "handlerLabel": "Number Days Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the number of days on the calendar."
+      "handlerDescription": "This is a handler for the logic to determine the number of days on the calendar.",
+      "settingTooltip": "Allows you to determine the number of days on the calendar."
     },
     {
       "type": "checkbox",
@@ -63,7 +67,8 @@
       "hasLogicHandler": true,
       "handlerId": "monthLabelsVisibilityLogic",
       "handlerLabel": "Month Labels Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the month labels should be visible."
+      "handlerDescription": "This is a handler for the logic to determine if the month labels should be visible.",
+      "settingTooltip": "Allows you to choose whether or not to show month labels."
     },
     {
       "type": "text",
@@ -75,7 +80,8 @@
       "handlerId": "monthLabelsLogic",
       "handlerLabel": "Month Labels Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the list of the month labels."
+      "handlerDescription": "This is a handler for the logic to determine the list of the month labels.",
+      "settingTooltip": "Allows you to write month labels."
     },
     {
       "type": "checkbox",
@@ -86,7 +92,8 @@
       "hasLogicHandler": true,
       "handlerId": "weekdayLabelsVisibilityLogic",
       "handlerLabel": "Weekday Labels Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the weekday labels should be visible."
+      "handlerDescription": "This is a handler for the logic to determine if the weekday labels should be visible.",
+      "settingTooltip": "Allows you to choose whether or not to show weekday labels."
     },
     {
       "type": "text",
@@ -98,7 +105,8 @@
       "handlerId": "weekdayLabelsLogic",
       "handlerLabel": "Weekday Labels Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the list of the weekday labels."
+      "handlerDescription": "This is a handler for the logic to determine the list of the weekday labels.",
+      "settingTooltip": "Allows you to write Weekday labels."
     },
     {
       "type": "color",
@@ -110,7 +118,8 @@
       "label": "Color",
       "dataBinding": true,
       "handlerLabel": "Color Logic",
-      "defaultValue": "#224b98"
+      "defaultValue": "#224b98",
+      "settingTooltip": "Allows you to selected color of cells."
     },
     {
       "type": "text",
@@ -121,7 +130,8 @@
       "handlerDescription": "This is a handler for the logic to determine the legend for calendar.",
       "label": "Legend",
       "dataBinding": true,
-      "handlerLabel": "Legend Logic"
+      "handlerLabel": "Legend Logic",
+      "settingTooltip": "Allows you to write legend."
     },
     {
       "type": "text",
@@ -133,7 +143,8 @@
       "handlerLabel": "Height Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine component height.",
-      "defaultValue": "230px"
+      "defaultValue": "230px",
+      "settingTooltip": "Allows you to determine component height."
     },
     {
       "type": "text",
@@ -145,7 +156,8 @@
       "handlerLabel": "Width Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine component width.",
-      "defaultValue": "auto"
+      "defaultValue": "auto",
+      "settingTooltip": "Allows you to determine component width."
     }
   ],
   "eventHandlers": [
