@@ -19,7 +19,7 @@
       "handlerLabel": "Calendar Data Logic",
       "handlerDescription": "This is a handler for the logic to determine the data array of the calendar(date, count).",
       "dataBinding": true,
-      "settingTooltip": "Allows you to specifies an array of date and count for calendar. Signature of Calendar Data: {date: string, count: number}"
+      "settingTooltip": "Allows to specify an array of date and count for the calendar. Signature of Calendar Data: {date: string, count: number}"
     },
     {
       "type": "number",
@@ -31,7 +31,7 @@
       "handlerLabel": "Max Count Logic",
       "handlerDescription": "This is a logic handler for determining the max count. This is necessary to decide on the max gradation. If it is empty, the max count value  will be selected from the calendar data",
       "dataBinding": true,
-      "settingTooltip": "Allows you to determine the max count. This is necessary to decide on the max gradation. If it is empty, the max count value  will be selected from the calendar data."
+      "settingTooltip": "Allows to determine the max count. This is necessary to decide on the max gradation. If it is empty, the max count value will be selected from the calendar data."
     },
     {
       "type": "number",
@@ -43,7 +43,7 @@
       "handlerLabel": "Min Count Logic",
       "handlerDescription": "This is a logic handler for determining the min count. This is necessary to decide on the min gradation. If it is empty, the min count value  will be selected from the calendar data",
       "dataBinding": true,
-      "settingTooltip": "Allows you to determine the min count. This is necessary to decide on the min gradation. If it is empty, the min count value  will be selected from the calendar data."
+      "settingTooltip": "Allows to determine the min count. This is necessary to decide on the min gradation. If it is empty, the min count value will be selected from the calendar data."
     },
     {
       "type": "number",
@@ -56,7 +56,7 @@
       "handlerLabel": "Number Days Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the number of days on the calendar.",
-      "settingTooltip": "Allows you to determine the number of days on the calendar."
+      "settingTooltip": "Allows to determine the number of days on the calendar."
     },
     {
       "type": "checkbox",
@@ -68,7 +68,7 @@
       "handlerId": "monthLabelsVisibilityLogic",
       "handlerLabel": "Month Labels Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the month labels should be visible.",
-      "settingTooltip": "Allows you to choose whether or not to show month labels."
+      "settingTooltip": "Allows to choose whether or not to show month labels."
     },
     {
       "type": "text",
@@ -81,7 +81,7 @@
       "handlerLabel": "Month Labels Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the list of the month labels.",
-      "settingTooltip": "Allows you to write month labels."
+      "settingTooltip": "Allows to write month labels."
     },
     {
       "type": "checkbox",
@@ -93,7 +93,7 @@
       "handlerId": "weekdayLabelsVisibilityLogic",
       "handlerLabel": "Weekday Labels Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the weekday labels should be visible.",
-      "settingTooltip": "Allows you to choose whether or not to show weekday labels."
+      "settingTooltip": "Allows to choose whether or not to show weekday labels."
     },
     {
       "type": "text",
@@ -106,7 +106,7 @@
       "handlerLabel": "Weekday Labels Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the list of the weekday labels.",
-      "settingTooltip": "Allows you to write Weekday labels."
+      "settingTooltip": "Allows to write Weekday labels."
     },
     {
       "type": "color",
@@ -119,7 +119,7 @@
       "dataBinding": true,
       "handlerLabel": "Color Logic",
       "defaultValue": "#224b98",
-      "settingTooltip": "Allows you to selected color of cells."
+      "settingTooltip": "Allows to select the color of the cells."
     },
     {
       "type": "text",
@@ -131,7 +131,7 @@
       "label": "Legend",
       "dataBinding": true,
       "handlerLabel": "Legend Logic",
-      "settingTooltip": "Allows you to write legend."
+      "settingTooltip": "Allows to write legend."
     },
     {
       "type": "text",
@@ -144,7 +144,7 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine component height.",
       "defaultValue": "230px",
-      "settingTooltip": "Allows you to determine component height."
+      "settingTooltip": "Allows to determine the component height."
     },
     {
       "type": "text",
@@ -157,7 +157,7 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine component width.",
       "defaultValue": "auto",
-      "settingTooltip": "Allows you to determine component width."
+      "settingTooltip": "Allows to determine the component width."
     }
   ],
   "eventHandlers": [
