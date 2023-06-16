@@ -40,13 +40,13 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
 
 <img alt="Add component in transitions" src="./example-images/add_component_in_transitions.jpg" width="900" />
 
-Now you can open the preview and see the mount animation when the page loads.
+Now you can open the preview and see the animation when the page loads.
 
 ---
 
-### Changing the visibility of the component Transitions
+### Changing the Is Open of the component Transitions
 
-You can also change the visibility of the component "Transitions" and see the animation for mounting and unmounting.
+You can also change the Is Open of the component "Transitions" and see the animation.
 
 For example:
 
@@ -62,7 +62,7 @@ For example:
 
 <img alt="Close button logic" src="./example-images/close_button_logic.jpg" width="900" />
 
-In the preview, you now have the option to change the visibility of the component with animation by clicking on either the Close or Open button.
+In the preview, you now have the option to change the Is Open of the component with animation by clicking on either the Close or Open button.
 
 ### Adding component with dynamic content in transition
 If you want to animate content that is rendered with a delay (for example, asynchronously loaded) follow the guide:
@@ -71,8 +71,8 @@ If you want to animate content that is rendered with a delay (for example, async
 
 > 🔴 **IMPORTANT**: After this action the component will not be displayed in preview mode
 
-<img alt="Close button logic" src="example-images/enable_dynamic_content.jpg" />
+<img alt="enable_dynamic_content" src="example-images/enable_dynamic_content.jpg" />
 
 2. Run the action `Set Content Loaded` when your components are fully rendered. It could be done in `On ... Mount` handlers.
 
-<img alt="Close button logic" src="example-images/add_setContentLoaded_in_onLoadEvent.jpg" width="900" />
+<img alt="add setContentLoaded in onLoadEvent " src="example-images/add_setContentLoaded_in_onLoadEvent.jpg" width="900" />
