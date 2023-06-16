@@ -4,6 +4,10 @@ Transitions is a component of the Backendless [UI-Builder](https://backendless.c
 
 The component based on external [Transitions](https://mui.com/material-ui/transitions/).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property                         | Type                                                                                                            | Default Value | Logic         | Data Binding | UI Setting | Description                                                 |
