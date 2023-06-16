@@ -195,7 +195,7 @@
           "label": "24h"
         }
       ],
-      "settingTooltip": "Choose a time format for the world clock(only for digital types)."
+      "settingTooltip": "Choose a time format for the world clock (only for digital types)."
     },
     {
       "type": "checkbox",
@@ -205,7 +205,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "displaySecondsLogic",
-      "settingTooltip": "Disable to hide the seconds(second hand)."
+      "settingTooltip": "Disable to hide the seconds (second hand)."
     }
   ],
   "eventHandlers": [
