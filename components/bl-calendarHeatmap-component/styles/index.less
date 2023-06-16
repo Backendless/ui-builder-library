@@ -3,6 +3,12 @@
 
 @bl-customComponent-calendarHeatmap-padding: 10px;
 
+@bl-customComponent-calendarHeatmap-text: 10px;
+
+@bl-customComponent-calendarHeatmap-cells-outline: 0;
+@bl-customComponent-calendarHeatmap-cells-stroke-hover: #555;
+@bl-customComponent-calendarHeatmap-cells-stroke-width-hover: 1px;
+
 @bl-customComponent-calendarHeatmap-legend-container-padding: 0 0 0 100px;
 @bl-customComponent-calendarHeatmap-legend-container-margin: 1em 0 1em auto;
 
@@ -20,7 +26,12 @@
     height: 100%;
 
     rect {
-      outline: 0;
+      outline: @bl-customComponent-calendarHeatmap-cells-outline;
+
+      &:hover {
+        stroke: @bl-customComponent-calendarHeatmap-cells-stroke-hover;
+        stroke-width: @bl-customComponent-calendarHeatmap-cells-stroke-width-hover;
+      }
     }
   }
 
@@ -45,12 +56,7 @@
   }
 
   .react-calendar-heatmap text {
-    font-size: 10px;
+    font-size: @bl-customComponent-calendarHeatmap-text;
     fill: @bl-customComponent-calendarHeatmap-textColor;
-  }
-
-  .react-calendar-heatmap rect:hover {
-    stroke: #555;
-    stroke-width: 1px;
   }
 }

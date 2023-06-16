@@ -41,7 +41,18 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 **Color**
 ````
 @bl-customComponent-calendarHeatmap-textColor: #aaa;
+@bl-customComponent-calendarHeatmap-cells-stroke-hover: #555;
 ````
+
+**Others**
+```
+@bl-customComponent-calendarHeatmap-padding: 10px;
+@bl-customComponent-calendarHeatmap-text: 10px;
+@bl-customComponent-calendarHeatmap-cells-outline: 0;
+@bl-customComponent-calendarHeatmap-cells-stroke-width-hover: 1px;
+@bl-customComponent-calendarHeatmap-legend-container-padding: 0 0 0 100px;
+@bl-customComponent-calendarHeatmap-legend-container-margin: 1em 0 1em auto;
+```
 
 ## <a id="examples"></a> Codeless Examples
 
