@@ -53,9 +53,10 @@ const UNSET_COLLISION_MODE = 'unset';
 const LINKS_DISTANCE = 150;
 const STROKE_WIDTH = 2;
 const COLOR_ANIMATION_SPEED = 20;
-const OPACITY = { FULL: 1, LOW: 0.1 };
 const DEFAULT_Z_INDEX = 0;
 const DEFAULT_TIMING = 0;
+
+const Opacity = { FULL: 1, LOW: 0.1 };
 const RotateDegrees = { MIN: 0, MAX: 360 };
 const SpiralShapeProps = {
   particles  : { stroke: { width: STROKE_WIDTH } },
@@ -86,15 +87,15 @@ export function useOptions(component) {
       enable   : lineLinksVisibility || triangleLinksVisibility,
       distance : LINKS_DISTANCE,
       color    : linksColor || Colors.RANDOM,
-      opacity  : OPACITY[lineLinksVisibility ? 'FULL' : 'LOW'],
+      opacity  : lineLinksVisibility ? Opacity.FULL : Opacity.LOW,
       triangles: {
         enable : triangleLinksVisibility,
         color  : linksColor,
-        opacity: OPACITY.LOW,
+        opacity: Opacity.LOW,
       },
     },
     rotate    : {
-      value    : RotateDegrees[rotate ? 'MAX' : 'MIN'],
+      value    : rotate ? RotateDegrees.MAX : RotateDegrees.MIN,
       random   : true,
       direction: Direction.RANDOM,
       animation: { enable: rotationAnimation, speed, sync: false },
@@ -122,70 +123,82 @@ export function useOptions(component) {
     rollingAnimation, color, colorAnimation, opacity, shape, imageURL, textValue, move, direction, outModes, size,
   ]);
 
-  return useMemo(() => ({
-    autoPlay, particles,
-    duration    : duration || DEFAULT_TIMING,
-    delay       : delay || DEFAULT_TIMING,
-    fullScreen  : { enable: fullScreen, zIndex: zIndex || DEFAULT_Z_INDEX },
-    background  : { color: backgroundColor, opacity: backgroundOpacity },
-    detectRetina: true,
-    pauseOnBlur : false,
+  const otherProps = useMemo(() => ({
+    duration  : duration || DEFAULT_TIMING,
+    delay     : delay || DEFAULT_TIMING,
+    fullScreen: { enable: fullScreen, zIndex: zIndex || DEFAULT_Z_INDEX },
+    background: { color: backgroundColor, opacity: backgroundOpacity },
     ...PresetsMap[preset],
-    ...customOptions,
-  }), [
-    autoPlay, particles, duration, delay, fullScreen, zIndex, backgroundColor, backgroundOpacity, preset, customOptions,
-  ]);
+  }), [duration, delay, fullScreen, zIndex, backgroundColor, backgroundOpacity, preset]);
+
+  return {
+    detectRetina: true, pauseOnBlur: false,
+    autoPlay, particles,
+    ...otherProps, ...customOptions,
+  };
 }
 
 async function loadShapes(engine) {
-  await loadBubbleShape(engine);
-  await loadCardsShape(engine);
-  await loadHeartShape(engine);
-  await loadMultilineTextShape(engine);
-  await loadPathShape(engine);
-  await loadRoundedRectShape(engine);
-  await loadSpiralShape(engine);
+  await Promise.all([
+    loadBubbleShape(engine),
+    loadCardsShape(engine),
+    loadHeartShape(engine),
+    loadMultilineTextShape(engine),
+    loadPathShape(engine),
+    loadRoundedRectShape(engine),
+    loadSpiralShape(engine),
+  ]);
 }
 
 async function loadPlugins(engine) {
-  await loadHsvColorPlugin();
-  await loadEasingBackPlugin();
-  await loadEasingCircPlugin();
-  await loadEasingCubicPlugin();
-  await loadEasingExpoPlugin();
-  await loadEasingQuadPlugin();
-  await loadEasingQuartPlugin();
-  await loadEasingQuintPlugin();
-  await loadEasingSinePlugin();
-  await loadPolygonMaskPlugin(engine);
-  await loadCanvasMaskPlugin(engine);
-  await loadMotionPlugin(engine);
-  await loadSoundsPlugin(engine);
-  await loadInfectionPlugin(engine);
+  await Promise.all([
+    loadHsvColorPlugin(),
+    loadEasingBackPlugin(),
+    loadEasingCircPlugin(),
+    loadEasingCubicPlugin(),
+    loadEasingExpoPlugin(),
+    loadEasingQuadPlugin(),
+    loadEasingQuartPlugin(),
+    loadEasingQuintPlugin(),
+    loadEasingSinePlugin(),
+    loadPolygonMaskPlugin(engine),
+    loadCanvasMaskPlugin(engine),
+    loadMotionPlugin(engine),
+    loadSoundsPlugin(engine),
+    loadInfectionPlugin(engine),
+  ]);
 }
 
 async function loadUpdaters(engine) {
-  await loadGradientUpdater(engine);
-  await loadOrbitUpdater(engine);
+  await Promise.all([
+    loadGradientUpdater(engine),
+    loadOrbitUpdater(engine),
+  ]);
 }
 
 async function loadPaths(engine) {
-  await loadCurvesPath(engine);
-  await loadPerlinNoisePath(engine);
-  await loadPolygonPath(engine);
-  await loadSimplexNoisePath(engine);
+  await Promise.all([
+    loadCurvesPath(engine),
+    loadPerlinNoisePath(engine),
+    loadPolygonPath(engine),
+    loadSimplexNoisePath(engine),
+  ]);
 }
 
 async function loadInteractions(engine) {
-  await loadLightInteraction(engine);
-  await loadParticlesRepulseInteraction(engine);
+  await Promise.all([
+    loadLightInteraction(engine),
+    loadParticlesRepulseInteraction(engine),
+  ]);
 }
 
 export async function loadParticles(engine) {
-  await loadFull(engine);
-  await loadPlugins(engine);
-  await loadInteractions(engine);
-  await loadUpdaters(engine);
-  await loadPaths(engine);
-  await loadShapes(engine);
+  await Promise.all([
+    loadFull(engine),
+    loadPlugins(engine),
+    loadInteractions(engine),
+    loadUpdaters(engine),
+    loadPaths(engine),
+    loadShapes(engine),
+  ]);
 }

@@ -13,7 +13,7 @@ export default function ParticlesComponent({ component, eventHandlers: { onLoad 
   const options = useOptions(component);
 
   const onInit = useCallback(async engine => await loadParticles(engine), []);
-  const onLoaded = useCallback(async ({ sourceOptions, canvas }) => {
+  const onLoaded = useCallback(({ sourceOptions, canvas }) => {
     elRef.current = canvas.element.parentNode;
 
     onLoad({ options: sourceOptions });
