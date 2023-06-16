@@ -62,6 +62,7 @@ The component allows you to add a dashlet to your UI-Builder application.
 @bl-customComponent-dashlet-body-background-color: if((@isLightTheme), darken(@bl-customComponent-dashlet-background-color, 7%), lighten(@bl-customComponent-dashlet-background-color, 7%));
 @bl-customComponent-dashlet-body-border-top-left-radius: 0;
 @bl-customComponent-dashlet-body-border-top-right-radius: 0;
+@bl-customComponent-dashlet-body-overflow: auto;
 
 @bl-customComponent-dashlet-resize-icon-size: 20px;
 @bl-customComponent-dashlet-collapse-icon-size: 20px;
