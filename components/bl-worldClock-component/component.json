@@ -188,11 +188,11 @@
       "options": [
         {
           "value": "12",
-          "label": "12"
+          "label": "AM/PM"
         },
         {
           "value": "24",
-          "label": "24"
+          "label": "24h"
         }
       ],
       "settingTooltip": "Choose a time format for the world clock(only for digital types)."
