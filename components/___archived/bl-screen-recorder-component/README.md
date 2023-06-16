@@ -4,7 +4,7 @@ Screen Recorder is a component of Backendless UI-Builder designer. This allows t
 
 
 <p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+  <img src="thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
 ## Properties
