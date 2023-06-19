@@ -49,9 +49,10 @@
 @bl-customComponent-worldClock-analog-gold-number-after-transform: rotate(-90deg) translateX(20px);
 @bl-customComponent-worldClock-analog-gold-number-after-margin-left: -20px;
 
-@bl-customComponent-worldClock-analog-vintage-hue: 40;
-@bl-customComponent-worldClock-analog-vintage-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-@bl-customComponent-worldClock-analog-vintage-border-radius: 50%;
+@bl-customComponent-worldClock-analog-customizable-url: './assets/vintage.png';
+@bl-customComponent-worldClock-analog-customizable-hue: 40;
+@bl-customComponent-worldClock-analog-customizable-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+@bl-customComponent-worldClock-analog-customizable-border-radius: 50%;
 
 @bl-customComponent-worldClock-analog-modern-hue: 240;
 @bl-customComponent-worldClock-analog-modern-border-radius: 50%;
@@ -182,21 +183,21 @@
       --wClock-border-rounder: 3px solid var(--wClock-text-color);
     }
 
-    &.vintage {
-      --wClock-hue-color: @bl-customComponent-worldClock-analog-vintage-hue;
+    &.customizable {
+      --wClock-hue-color: @bl-customComponent-worldClock-analog-customizable-hue;
       --wClock-first-color: hsl(var(--wClock-hue-color), 100%, 50%);
       --wClock-body-color: hsl(var(--wClock-hue-color), 24%, 84%);
       --wClock-text-color: hsl(var(--wClock-hue-color), 10%, 15%);
-      --wClock-shadow: @bl-customComponent-worldClock-analog-vintage-shadow;
+      --wClock-shadow: @bl-customComponent-worldClock-analog-customizable-shadow;
       --wClock-label-color: var(--wClock-first-color);
       --wClock-label-bg-color: hsl(var(--wClock-hue-color), 20%, 35%);
       --wClock-label-shadow: var(--wClock-shadow);
-      --wClock-border-radius: @bl-customComponent-worldClock-analog-vintage-border-radius;
+      --wClock-border-radius: @bl-customComponent-worldClock-analog-customizable-border-radius;
       --wClock-border: none;
       --wClock-border-rounder: 3px solid var(--wClock-text-color);
 
       .clock-time {
-        background: var(--wClock-body-color) center/contain url(./assets/vintage.png);
+        background: var(--wClock-body-color) center/contain url("@{bl-customComponent-worldClock-analog-customizable-url}");
       }
     }
 
