@@ -10,7 +10,7 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 
 | Property                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Default value                    | Logic       | Data Binding | UI Setting | Description                                                                                      |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|-------------|--------------|------------|--------------------------------------------------------------------------------------------------|
-| Type <br> `type`                      | *Select* <br> [square-gold: `analog-gold`, circle-classic: `analog-classic`, circle-modern: `analog-modern`, circle-vintage: `analog-vintage`, digital-modern: `digital-modern`, digital-pixel: `digital-pixel`, digital-techno: `digital-techno`, digital-flip: `digital-flip`]                                                                                                                                                                              | digital-modern: `digital-modern` |             | NO           | YES        | Controls the type of world clock.                                                                |
+| Type <br> `type`                      | *Select* <br> [square-gold: `analog-gold`, circle-classic: `analog-classic`, circle-modern: `analog-modern`, circle-customizable: `analog-customizable`, digital-modern: `digital-modern`, digital-pixel: `digital-pixel`, digital-techno: `digital-techno`, digital-flip: `digital-flip`]                                                                                                                                                                    | digital-modern: `digital-modern` |             | NO           | YES        | Controls the type of world clock.                                                                |
 | Time Zone <br> `timezone`             | *Select* <br> [GMT-12: `-12:00`, GMT-11: `-11:00`, GMT-10: `-10:00`, GMT-9: `-09:00`, GMT-8: `-08:00`, GMT-7: `-07:00`, GMT-6: `-06:00`, GMT-5: `-05:00`, GMT-4: `-04:00`, GMT-3: `-03:00`, GMT-2: `-02:00`, GMT-1: `-01:00`, GMT+0: `+00:00`, GMT+1: `+01:00`, GMT+2: `+02:00`, GMT+3: `+03:00`, GMT+4: `+04:00`, GMT+5: `+05:00`, GMT+6: `+06:00`, GMT+7: `+07:00`, GMT+8: `+08:00`, GMT+9: `+09:00`, GMT+10: `+10:00`, GMT+11: `+11:00`, GMT+12: `+12:00`] | GMT+0: `+00:00`                  |             | NO           | YES        | Controls a time zone for the world clock.                                                        |
 | Label <br> `label`                    | *Text*                                                                                                                                                                                                                                                                                                                                                                                                                                                        | "London"                         | Label Logic | YES          | YES        | Specifies the logic to determine the name of a location/city/etc to display it in the component. |
 | Time Format <br> `timeFormat`         | *Select* <br> [`AM/PM`, `24h`]                                                                                                                                                                                                                                                                                                                                                                                                                                | `AM/PM`                          |             | NO           | YES        | Controls a time format for the world clock (only for digital types).                             |
@@ -71,9 +71,10 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 @bl-customComponent-worldClock-analog-gold-number-after-transform: rotate(-90deg) translateX(20px);
 @bl-customComponent-worldClock-analog-gold-number-after-margin-left: -20px;
 
-@bl-customComponent-worldClock-analog-vintage-hue: 40;
-@bl-customComponent-worldClock-analog-vintage-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-@bl-customComponent-worldClock-analog-vintage-border-radius: 50%;
+@bl-customComponent-worldClock-analog-customizable-url: './assets/vintage.png';
+@bl-customComponent-worldClock-analog-customizable-hue: 40;
+@bl-customComponent-worldClock-analog-customizable-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+@bl-customComponent-worldClock-analog-customizable-border-radius: 50%;
 
 @bl-customComponent-worldClock-analog-modern-hue: 240;
 @bl-customComponent-worldClock-analog-modern-border-radius: 50%;
@@ -162,16 +163,14 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 @bl-customComponent-worldClock-digital-flip-semicolon-color: rgb(255, 253, 255);
 ````
 
-## Examples
+## Usage
 
-### Usage
-
-Below is a Codeless Example highlighting how to use the World Clock component:
-
-<p align="center">
-  <img src="./example-images/settings.png" alt="settings" width="200"/>
-</p>
+The World Clock component provides the ability to add a custom dial. Follow these steps to add your own dial design:
+- Choose the `circle-customizable` type in the settings.
+- Add a theme extension by providing a new URL for the `@bl-customComponent-worldClock-analog-customizable-url` variable.
 
 <p align="center">
-  <img src="./example-images/component-preview.png" alt="component preview" width="250"/>
+  <img src="./example-images/custom-dial-url.png" alt="custom dial url" width="1149"/>
 </p>
+
+Using style variables, you can easily customize any digital clock type to match your preferences and design requirements.

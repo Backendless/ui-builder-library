@@ -6,16 +6,16 @@ import { Label } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 const AnalogClockTypes = {
-  CLASSIC: 'classic',
-  GOLD   : 'gold',
-  MODERN : 'modern',
-  VINTAGE: 'vintage',
+  CLASSIC     : 'classic',
+  GOLD        : 'gold',
+  MODERN      : 'modern',
+  CUSTOMIZABLE: 'customizable',
 };
 const AnalogClockViews = {
-  [AnalogClockTypes.CLASSIC]: AnalogClockClassic,
-  [AnalogClockTypes.GOLD]   : AnalogClockGold,
-  [AnalogClockTypes.MODERN] : AnalogClockModern,
-  [AnalogClockTypes.VINTAGE]: AnalogClockVintage,
+  [AnalogClockTypes.CLASSIC]     : AnalogClockClassic,
+  [AnalogClockTypes.GOLD]        : AnalogClockGold,
+  [AnalogClockTypes.MODERN]      : AnalogClockModern,
+  [AnalogClockTypes.CUSTOMIZABLE]: AnalogClockCustomizable,
 };
 const HOURS_LIST = [...Array(12).keys()];
 
@@ -57,7 +57,7 @@ function AnalogClockModern({ handStyle }) {
   return <ClockHands handStyle={ handStyle } markersVisible/>;
 }
 
-function AnalogClockVintage({ handStyle }) {
+function AnalogClockCustomizable({ handStyle }) {
   return <ClockHands handStyle={ handStyle }/>;
 }
 

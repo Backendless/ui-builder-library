@@ -18,22 +18,6 @@
       "handlerId": "typeLogic",
       "options": [
         {
-          "value": "analog-gold",
-          "label": "square-gold"
-        },
-        {
-          "value": "analog-classic",
-          "label": "circle-classic"
-        },
-        {
-          "value": "analog-modern",
-          "label": "circle-modern"
-        },
-        {
-          "value": "analog-vintage",
-          "label": "circle-vintage"
-        },
-        {
           "value": "digital-modern",
           "label": "digital-modern"
         },
@@ -48,6 +32,22 @@
         {
           "value": "digital-flip",
           "label": "digital-flip"
+        },
+        {
+          "value": "analog-gold",
+          "label": "square-gold"
+        },
+        {
+          "value": "analog-classic",
+          "label": "circle-classic"
+        },
+        {
+          "value": "analog-modern",
+          "label": "circle-modern"
+        },
+        {
+          "value": "analog-customizable",
+          "label": "circle-customizable"
         }
       ],
       "settingTooltip": "Choose the type of world clock."
