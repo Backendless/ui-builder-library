@@ -17,7 +17,8 @@
       "handlerId": "titleLogic",
       "handlerDescription": "This is a handler for the logic of determining the title of dashlet",
       "dataBinding": true,
-      "handlerLabel": "Title Logic"
+      "handlerLabel": "Title Logic",
+      "settingTooltip": "Allows to determine the title for the dashlet."
     },
     {
       "type": "select",
@@ -37,7 +38,8 @@
           "value": "alternative",
           "label": "Alternative"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine the variety of styles for dashlet."
     },
     {
       "type": "number",
@@ -49,7 +51,8 @@
       "handlerId": "heightLogic",
       "handlerDescription": "This is a handler for the logic of determining the height of dashlet",
       "dataBinding": true,
-      "handlerLabel": "Height Logic"
+      "handlerLabel": "Height Logic",
+      "settingTooltip": "Allows to determine the height."
     },
     {
       "type": "number",
@@ -61,7 +64,8 @@
       "handlerId": "widthLogic",
       "handlerDescription": "This is a handler for the logic of determining the width of dashlet",
       "dataBinding": true,
-      "handlerLabel": "Width Logic"
+      "handlerLabel": "Width Logic",
+      "settingTooltip": "Allows to determine the width."
     },
     {
       "type": "checkbox",
@@ -73,7 +77,7 @@
       "handlerLabel": "Local Storage Enabled Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic of determining whether the state (size, position, closed or open) of a dashlet is allowed to be stored in local storage or not",
-      "settingTooltip": "Allows you to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in local storage or not"
+      "settingTooltip": "Allows to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in Local Storage or not."
     },
     {
       "type": "checkbox",
@@ -84,7 +88,8 @@
       "handlerId": "resizingLogic",
       "handlerLabel": "Resizing Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic of determining whether resizing is allowed or not"
+      "handlerDescription": "This is a handler for the logic of determining whether resizing is allowed or not",
+      "settingTooltip": "Allows to determine whether resizing is allowed or not."
     },
     {
       "type": "checkbox",
@@ -95,7 +100,8 @@
       "handlerId": "draggingLogic",
       "handlerLabel": "Dragging Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic of determining whether dragging is allowed or not"
+      "handlerDescription": "This is a handler for the logic of determining whether dragging is allowed or not",
+      "settingTooltip": "Allows to determine whether dragging is allowed or not."
     },
     {
       "type": "json",
@@ -106,7 +112,8 @@
       "handlerId": "contextBlocksLogic",
       "handlerLabel": "Context Blocks Logic",
       "handlerDescription": "This is a handler for the logic of determining context blocks for dashlet",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine context block. Signature of context block: `{type, label, content}`."
     },
     {
       "type": "number",
@@ -118,7 +125,8 @@
       "handlerLabel": "Min Width Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic of determining the min-width of dashlet",
-      "defaultValue": "300"
+      "defaultValue": "300",
+      "settingTooltip": "Allows to determine the min-width."
     },
     {
       "type": "number",
@@ -130,7 +138,8 @@
       "handlerLabel": "Max Width Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic of determining the max-width of dashlet",
-      "defaultValue": "900"
+      "defaultValue": "900",
+      "settingTooltip": "Allows to determine the max-width."
     },
     {
       "type": "number",
@@ -142,7 +151,8 @@
       "handlerLabel": "Min Height Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic of determining the min-height of dashlet",
-      "defaultValue": "300"
+      "defaultValue": "300",
+      "settingTooltip": "Allows to determine the min-height."
     },
     {
       "type": "number",
@@ -154,7 +164,8 @@
       "handlerLabel": "Max Height Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic of determining the max-height of dashlet",
-      "defaultValue": "900"
+      "defaultValue": "900",
+      "settingTooltip": "Allows to determine the max-height."
     }
   ],
   "eventHandlers": [
