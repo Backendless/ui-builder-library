@@ -6,18 +6,24 @@ const FontSize = [
   '8px', '9px', '10px', '11px', '12px', '14px', '16px', '18px', '20px', '22px', '24px', '26px', '28px', '36px', '48px',
 ];
 
-const FontFamily = [
-  'arial, helvetica, sans-serif', 'Comic Sans MS, cursive, sans-serif', 'courier new, courier, monospace',
-  'georgia, palatino, serif', 'helvetica, arial, sans-serif', 'Lucida Sans Unicode, Lucida Grande, sans-serif',
-  'andale mono, monospace', 'book antiqua, palatino, serif', 'impact, sans-serif',
-  'tahoma, arial, helvetica, sans-serif', 'terminal, monaco, monospace', 'times new roman, times, serif',
-  'trebuchet ms, geneva, sans-serif', 'verdana, geneva, sans-serif',
-];
-
-export const DefaultStyles = {
-  fontSize  : '14px',
-  fontFamily: 'arial, helvetica, sans-serif',
+export const FontFamilyMap = {
+  ARIAL              : 'arial, helvetica, sans-serif',
+  COMIC_SANS_MS      : 'Comic Sans MS, cursive, sans-serif',
+  COURIER_NEW        : 'courier new, courier, monospace',
+  GEORGIA            : 'georgia, palatino, serif',
+  HELVETICA          : 'helvetica, arial, sans-serif',
+  LUCIDA_SANS_UNICODE: 'Lucida Sans Unicode, Lucida Grande, sans-serif',
+  ANDALE_MONO        : 'andale mono, monospace',
+  BOOK_ANTIQUA       : 'book antiqua, palatino, serif',
+  IMPACT             : 'impact, sans-serif',
+  TAHOMA             : 'tahoma, arial, helvetica, sans-serif',
+  TERMINAL           : 'terminal, monaco, monospace',
+  TIMES_NEW_ROMAN    : 'times new roman, times, serif',
+  TREBUCHET_MS       : 'trebuchet ms, geneva, sans-serif',
+  VERDANA            : 'verdana, geneva, sans-serif',
 };
+
+const FontFamily = Object.values(FontFamilyMap);
 
 const BlockquoteStyles = {
   borderLeft  : '4px solid #ccc',
@@ -52,21 +58,25 @@ FontStyle.whitelist = FontFamily;
 addInlineStyles(Blockquote, BlockquoteStyles);
 addInlineStyles(CodeBlock, CodeStyles);
 
-class Block extends BlockPrototype {
-  constructor(domNode, value) {
-    super(domNode, value);
+function registerBlockFormat(defaultFontFamily, defaultFontSize) {
+  class Block extends BlockPrototype {
+    constructor(domNode, value) {
+      super(domNode, value);
 
-    this.format('fontSize', DefaultStyles.fontSize);
-    this.format('fontFamily', DefaultStyles.fontFamily);
-  }
+      this.format('fontSize', defaultFontSize);
+      this.format('fontFamily', defaultFontFamily);
+    }
 
-  format(name, value) {
-    if (DefaultStyles[name]) {
-      this.domNode.style[name] = value;
-    } else {
-      super.format(name, value);
+    format(name, value) {
+      if (name === 'fontSize' || name === 'fontFamily') {
+        this.domNode.style[name] = value;
+      } else {
+        super.format(name, value);
+      }
     }
   }
+
+  Quill.register(Block, true);
 }
 
 Quill.register(Size, true);
@@ -77,15 +87,16 @@ Quill.register(FontStyle, true);
 Quill.register(SizeStyle, true);
 Quill.register(Blockquote, true);
 Quill.register(CodeBlock, true);
-Quill.register(Block, true);
 
 export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
-  const { placeholder, readOnly, content, scrollingContainer } = component;
+  const { placeholder, readOnly, content, scrollingContainer, defaultFontFamily, defaultFontSize } = component;
 
   const editorRef = useRef(null);
   const contentRef = useRef(null);
 
   useEffect(() => {
+    registerBlockFormat(FontFamilyMap[defaultFontFamily], defaultFontSize);
+
     editorRef.current = new Quill(quillRef.current, {
       bounds : quillRef.current,
       modules: {

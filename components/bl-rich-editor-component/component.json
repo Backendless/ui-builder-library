@@ -17,7 +17,9 @@
       "label": "Content",
       "handlerLabel": "Content Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the content of the rich editor."
+      "handlerDescription": "This is a handler for the logic to determine the content of the rich editor.",
+      "defaultValue": "",
+      "settingTooltip": "Define the content of the editor."
     },
     {
       "type": "text",
@@ -26,7 +28,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "placeholderLogic",
-      "defaultValue": "Compose an epic..."
+      "defaultValue": "Compose an epic...",
+      "settingTooltip": "Define the placeholder of the editor."
     },
     {
       "type": "select",
@@ -45,7 +48,8 @@
           "value": "bottom",
           "label": "bottom"
         }
-      ]
+      ],
+      "settingTooltip": "Select the position of the toolbar."
     },
     {
       "type": "checkbox",
@@ -54,7 +58,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "fixedToolbarLogic"
+      "handlerId": "fixedToolbarLogic",
+      "settingTooltip": "Select to pin the toolbar."
     },
     {
       "type": "checkbox",
@@ -63,7 +68,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "showTooltipsLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Select to show tooltips on the toolbar buttons."
     },
     {
       "type": "checkbox",
@@ -73,7 +79,8 @@
       "hasLogicHandler": true,
       "handlerId": "readOnlyLogic",
       "handlerLabel": "Read Only Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the editor content should be editable. If the handler returns 'true' the content will be read-only."
+      "handlerDescription": "This is a handler for the logic to determine if the editor content should be editable. If the handler returns 'true' the content will be read-only.",
+      "settingTooltip": "Disable the ability to edit the content."
     },
     {
       "type": "text",
@@ -81,7 +88,8 @@
       "label": "Editor Height",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "editorHeightLogic"
+      "handlerId": "editorHeightLogic",
+      "settingTooltip": "The height of the editor."
     },
     {
       "type": "text",
@@ -89,7 +97,8 @@
       "label": "Editor Min Height",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "editorMinHeightLogic"
+      "handlerId": "editorMinHeightLogic",
+      "settingTooltip": "The minimal height of the editor."
     },
     {
       "type": "text",
@@ -99,7 +108,8 @@
       "hasLogicHandler": true,
       "handlerId": "scrollingContainerLogic",
       "handlerLabel": "Scrolling Container Logic",
-      "handlerDescription": "This is a handler for the logic to determine DOM Element or a CSS selector for DOM Element, indicating which container has scrollbars. Specify only when the editor is set to auto grow its height."
+      "handlerDescription": "This is a handler for the logic to determine DOM Element or a CSS selector for DOM Element, indicating which container has scrollbars. Specify only when the editor is set to auto grow its height.",
+      "settingTooltip": "Define the container that has the scrollbars."
     },
     {
       "type": "text",
@@ -108,7 +118,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "borderWidthLogic",
-      "defaultValue": "1px"
+      "defaultValue": "1px",
+      "settingTooltip": "The width of the editor border."
     },
     {
       "type": "select",
@@ -155,7 +166,8 @@
           "value": "outset",
           "label": "outset"
         }
-      ]
+      ],
+      "settingTooltip": "Select the style of the editor border."
     },
     {
       "type": "color",
@@ -163,7 +175,8 @@
       "label": "Border Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "borderColorLogic"
+      "handlerId": "borderColorLogic",
+      "settingTooltip": "Set the color of the editor border."
     },
     {
       "type": "checkbox",
@@ -172,7 +185,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "linkInsertButtonLogic"
+      "handlerId": "linkInsertButtonLogic",
+      "settingTooltip": "Show the button to insert a link."
     },
     {
       "type": "checkbox",
@@ -181,7 +195,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "imageInsertButtonLogic"
+      "handlerId": "imageInsertButtonLogic",
+      "settingTooltip": "Show the button to insert an image."
     },
     {
       "type": "checkbox",
@@ -190,7 +205,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "videoInsertButtonLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Show the button to insert a video."
     },
     {
       "type": "checkbox",
@@ -199,7 +215,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "fontStyleButtonsLogic"
+      "handlerId": "fontStyleButtonsLogic",
+      "settingTooltip": "Show buttons to make text bold, italic, underlined, or crossed out."
     },
     {
       "type": "checkbox",
@@ -208,7 +225,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "historyButtonsLogic"
+      "handlerId": "historyButtonsLogic",
+      "settingTooltip": "Show undo and redo buttons."
     },
     {
       "type": "checkbox",
@@ -217,7 +235,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "fontSelectLogic"
+      "handlerId": "fontSelectLogic",
+      "settingTooltip": "Show the select to specify the font in the editor."
     },
     {
       "type": "checkbox",
@@ -226,7 +245,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "fontSizeSelectLogic"
+      "handlerId": "fontSizeSelectLogic",
+      "settingTooltip": "Show the select to specify the font size in the editor."
     },
     {
       "type": "checkbox",
@@ -235,7 +255,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "textColorPickerLogic"
+      "handlerId": "textColorPickerLogic",
+      "settingTooltip": "Show the picker to specify the text color."
     },
     {
       "type": "checkbox",
@@ -244,7 +265,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "backgroundColorPickerLogic"
+      "handlerId": "backgroundColorPickerLogic",
+      "settingTooltip": "Show the picker to specify the background color."
     },
     {
       "type": "checkbox",
@@ -253,7 +275,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "alignmentButtonsLogic"
+      "handlerId": "alignmentButtonsLogic",
+      "settingTooltip": "Show buttons to specify the text alignment."
     },
     {
       "type": "checkbox",
@@ -262,7 +285,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "listButtonsLogic"
+      "handlerId": "listButtonsLogic",
+      "settingTooltip": "Show buttons to create lists in the editor."
     },
     {
       "type": "checkbox",
@@ -271,7 +295,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "scriptButtonsLogic"
+      "handlerId": "scriptButtonsLogic",
+      "settingTooltip": "Show buttons to make text subscript or superscript."
     },
     {
       "type": "checkbox",
@@ -280,7 +305,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "textBlockButtonsLogic"
+      "handlerId": "textBlockButtonsLogic",
+      "settingTooltip": "Show buttons to format text as a quote or code."
     },
     {
       "type": "checkbox",
@@ -289,7 +315,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "headingButtonsLogic"
+      "handlerId": "headingButtonsLogic",
+      "settingTooltip": "Show buttons to format text as section headings."
     },
     {
       "type": "checkbox",
@@ -298,7 +325,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "textDirectionButtonLogic"
+      "handlerId": "textDirectionButtonLogic",
+      "settingTooltip": "Show buttons to specify the text direction."
     },
     {
       "type": "checkbox",
@@ -307,7 +335,148 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "clearFormattingButtonLogic"
+      "handlerId": "clearFormattingButtonLogic",
+      "settingTooltip": "Show the button to remove all formatting in the editor."
+    },
+    {
+      "type": "select",
+      "name": "defaultFontFamily",
+      "label": "Default Font Family",
+      "showInSettings": true,
+      "defaultValue": "ARIAL",
+      "hasLogicHandler": false,
+      "handlerId": "defaultFontFamilyLogic",
+      "options": [
+        {
+          "value": "ARIAL",
+          "label": "Arial"
+        },
+        {
+          "value": "COMIC_SANS_MS",
+          "label": "Comic Sans MS"
+        },
+        {
+          "value": "COURIER_NEW",
+          "label": "Courier New"
+        },
+        {
+          "value": "GEORGIA",
+          "label": "Georgia"
+        },
+        {
+          "value": "HELVETICA",
+          "label": "Helvetica"
+        },
+        {
+          "value": "LUCIDA_SANS_UNICODE",
+          "label": "Lucida Sans Unicode"
+        },
+        {
+          "value": "ANDALE_MONO",
+          "label": "Andale Mono"
+        },
+        {
+          "value": "BOOK_ANTIQUA",
+          "label": "Book Antiqua"
+        },
+        {
+          "value": "IMPACT",
+          "label": "Impact"
+        },
+        {
+          "value": "TAHOMA",
+          "label": "Tahoma"
+        },
+        {
+          "value": "TERMINAL",
+          "label": "Terminal"
+        },
+        {
+          "value": "TIMES_NEW_ROMAN",
+          "label": "Times New Roman"
+        },
+        {
+          "value": "TREBUCHET_MS",
+          "label": "Trebuchet Ms"
+        },
+        {
+          "value": "VERDANA",
+          "label": "Verdana"
+        }
+      ],
+      "settingTooltip": "Select the default font family of the editor."
+    },
+    {
+      "type": "select",
+      "name": "defaultFontSize",
+      "label": "Default Font Size",
+      "showInSettings": true,
+      "defaultValue": "14px",
+      "hasLogicHandler": false,
+      "handlerId": "defaultFontSizeLogic",
+      "options": [
+        {
+          "value": "8px",
+          "label": "8px"
+        },
+        {
+          "value": "9px",
+          "label": "9px"
+        },
+        {
+          "value": "10px",
+          "label": "10px"
+        },
+        {
+          "value": "11px",
+          "label": "11px"
+        },
+        {
+          "value": "12px",
+          "label": "12px"
+        },
+        {
+          "value": "14px",
+          "label": "14px"
+        },
+        {
+          "value": "16px",
+          "label": "16px"
+        },
+        {
+          "value": "18px",
+          "label": "18px"
+        },
+        {
+          "value": "20px",
+          "label": "20px"
+        },
+        {
+          "value": "22px",
+          "label": "22px"
+        },
+        {
+          "value": "24px",
+          "label": "24px"
+        },
+        {
+          "value": "26px",
+          "label": "26px"
+        },
+        {
+          "value": "28px",
+          "label": "28px"
+        },
+        {
+          "value": "36px",
+          "label": "36px"
+        },
+        {
+          "value": "48px",
+          "label": "48px"
+        }
+      ],
+      "settingTooltip": "Select the default font size of the editor."
     }
   ],
   "eventHandlers": [

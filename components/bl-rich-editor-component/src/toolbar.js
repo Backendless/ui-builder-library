@@ -1,11 +1,11 @@
 import { ensureMeasure } from './index';
-import { DefaultStyles, Font, Size } from './use-quill-library';
+import { Font, FontFamilyMap, Size } from './use-quill-library';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
-  const { toolbarPosition, borderWidth, borderColor, borderStyle, showTooltips } = component;
   const {
+    toolbarPosition, borderWidth, borderColor, borderStyle, showTooltips, defaultFontFamily, defaultFontSize,
     linkInsertButton, imageInsertButton, videoInsertButton, fontStyleButtons, historyButtons, alignmentButtons,
     fontSelect, fontSizeSelect, textColorPicker, backgroundColorPicker, clearFormattingButton, textDirectionButton,
     listButtons, scriptButtons, textBlockButtons, headingButtons,
@@ -39,8 +39,8 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
         </span>
       ) }
 
-      { fontSelect && <FontSelect/> }
-      { fontSizeSelect && <SizeSelect/> }
+      { fontSelect && <FontSelect defaultFontFamily={ defaultFontFamily }/> }
+      { fontSizeSelect && <SizeSelect defaultFontSize={ defaultFontSize }/> }
 
       { (textColorPicker || backgroundColorPicker) && (
         <span className="ql-formats">
@@ -87,9 +87,9 @@ const InlineFormattingButtons = React.memo(() => (
   </span>
 ));
 
-const FontSelect = React.memo(() => (
+const FontSelect = React.memo(({ defaultFontFamily }) => (
   <span className="ql-formats">
-    <select className="ql-font" defaultValue={ DefaultStyles.fontFamily }>
+    <select className="ql-font" defaultValue={ FontFamilyMap[defaultFontFamily] }>
       { Font.whitelist.map((font, index) => {
         const fontLabel = font.split(',')[0].trim().replace(/(^|\s)\S/g, letter => letter.toUpperCase());
 
@@ -101,9 +101,9 @@ const FontSelect = React.memo(() => (
   </span>
 ));
 
-const SizeSelect = React.memo(() => (
+const SizeSelect = React.memo(({ defaultFontSize }) => (
   <span className="ql-formats">
-    <select className="ql-size" defaultValue={ DefaultStyles.fontSize }>
+    <select className="ql-size" defaultValue={ defaultFontSize }>
       { Size.whitelist.map((size, index) => (
         <option value={ size } key={ index }>{ size }</option>
       )) }
