@@ -29,6 +29,11 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 |----------|--------|---------------|----------|-----------------------------------|
 | Site-key | *Text* |               | YES      | Site-key needed to use reCaptcha. |
 
+## Styles
+```
+@bl-customComponent-reCaptcha-invisible-z-index: 1;
+```
+
 ## Before Usage
 Before usage, you need:
 
