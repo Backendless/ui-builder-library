@@ -4,6 +4,10 @@ Carousel is a component of Backendless UI-Builder designer. This allows you to a
 
 The component based on external [Carousel](https://getbootstrap.com/docs/5.2/components/carousel/).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property                                    | Type                                    | Default Value                         | Logic                       | Data Binding | UI Setting | Description                                                                                                                                              |
