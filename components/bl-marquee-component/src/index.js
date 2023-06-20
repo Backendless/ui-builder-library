@@ -18,11 +18,12 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
   const [play, setPlay] = useState(start);
 
   const marqueeRef = useRef(null);
+  const containerRef = useRef(null);
 
   useLayoutEffect(() => {
-    if (marqueeRef.current && elRef.current) {
+    if (marqueeRef.current && containerRef.current) {
       const calculateWidth = () => {
-        setContainerWidth(elRef.current.getBoundingClientRect().width);
+        setContainerWidth(containerRef.current.getBoundingClientRect().width);
         setMarqueeWidth(marqueeRef.current.getBoundingClientRect().width);
       };
 
@@ -33,7 +34,7 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
         window.removeEventListener('resize', calculateWidth);
       };
     }
-  }, [elRef.current, marqueeRef.current]);
+  }, [containerRef.current, marqueeRef.current]);
 
   const duration = useMemo(() => {
     const width = marqueeWidth < containerWidth ? containerWidth : marqueeWidth;
@@ -56,11 +57,10 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
     const playStateOnClick = !play || (pauseOnHover && !pauseOnClick) || pauseOnClick ? PlayState.PAUSE : PlayState.RUN;
 
     return {
-      ...style,
       '--marquee-pause-on-hover': playStateOnHover,
       '--marquee-pause-on-click': playStateOnClick,
     };
-  }, [style, play, pauseOnHover, pauseOnClick]);
+  }, [play, pauseOnHover, pauseOnClick]);
 
   component.startPlay = () => setPlay(true);
   component.stopPlay = () => setPlay(false);
@@ -73,23 +73,23 @@ export default function MarqueeComponent({ component, elRef, eventHandlers, pods
     <div
       ref={ elRef }
       className={ cn('bl-customComponent-marquee', classList) }
-      style={ styles }
+      style={ style }
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }
       onClick={ onClick }>
       { gradient && <div className="overlay"/> }
 
-      <div
-        ref={ marqueeRef }
-        style={ styleMarquee }
-        className="marquee-content"
-        onAnimationIteration={ onCycleComplete }
-        onAnimationEnd={ onAnimationEnd }>
-        { children }
-      </div>
+      <div ref={ containerRef } className="marquee-container" style={ styles }>
+        <div
+          ref={ marqueeRef }
+          style={ styleMarquee }
+          className="marquee-content"
+          onAnimationIteration={ onCycleComplete }
+          onAnimationEnd={ onAnimationEnd }>
+          { children }
+        </div>
 
-      <div style={ styleMarquee } className="marquee-content" aria-hidden="true">
-        { children }
+        <div style={ styleMarquee } className="marquee-content" aria-hidden="true">{ children }</div>
       </div>
     </div>
   );
