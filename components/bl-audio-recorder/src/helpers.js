@@ -5,7 +5,7 @@ export const download = (blob, fileName, fileType) => {
 
   link.style.display = 'none';
   link.href = URL.createObjectURL(blob);
-  link.download = `${ fileName }.${ fileType }`;
+  link.download = `${ fileName }.${ fileType.toLowerCase() }`;
 
   document.body.appendChild(link);
   link.click();

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import RecordRTC, { StereoAudioRecorder } from './lib';
 
 import { captureMediaDevices, download, prepareLabel } from './helpers';
 
@@ -47,43 +48,34 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const startRecording = useCallback(async () => {
     const audioConstrains = { audio: { echoCancelation: true, noiseSuppression: noise } };
-    const stream = await captureMediaDevices(audioConstrains, audioRef);
-
+    const stream = await captureMediaDevices(audioConstrains);
     if (stream) {
-      recorderRef.current = new MediaRecorder(stream);
-
-      const chunks = [];
-
-      Object.assign(recorderRef.current, {
-        onstart : () => setState(StreamState.RECORDING),
-        onpause : () => setState(StreamState.PAUSED),
-        onresume: () => setState(StreamState.RECORDING),
+      recorderRef.current = RecordRTC(stream, {
+        type: 'audio',
+        mimeType: RecordFormat[fileType],
+        recorderType: StereoAudioRecorder,
+        desiredSampRate: 16000,
+        disableLogs: true,
       });
 
-      recorderRef.current.ondataavailable = event => {
-        if (event.data.size > 0) {
-          chunks.push(event.data);
-        }
+      recorderRef.current.onStateChanged = function (state) {
+        setState(state);
       };
 
-      recorderRef.current.onstop = () => {
-        const recordedBlob = new Blob(chunks, { type: RecordFormat[fileType] });
-
-        setState(StreamState.INACTIVE);
-        setRecordedBlob(recordedBlob);
-        onStop();
-
-        chunks.length = 0;
-      };
-
-      recorderRef.current.start();
+      recorderRef.current.startRecording();
+      recorderRef.current.microphone = stream;
       onStart();
     }
   }, []);
 
   const stopRecording = useCallback(async () => {
     try {
-      recorderRef.current.stream.getTracks().forEach(track => track.stop());
+      recorderRef.current.stopRecording(() => {
+        const blob = recorderRef.current.getBlob();
+        setRecordedBlob(blob.slice(0, blob.size, RecordFormat[fileType]));
+        recorderRef.current.microphone.stop();
+        onStop();
+      });
     } catch (e) {
       console.error('Stream did not found.', e);
     }
@@ -96,9 +88,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const toggleRecord = useCallback(() => {
     if (recorderRef.current?.state === StreamState.RECORDING) {
-      recorderRef.current.pause();
+      recorderRef.current.pauseRecording();
     } else if (recorderRef.current?.state === StreamState.PAUSED) {
-      recorderRef.current.resume();
+      recorderRef.current.resumeRecording();
     }
   }, []);
 
@@ -112,7 +104,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
       { controls && (
         <div className="controls">
           <button
-            disabled={ state && state !== StreamState.INACTIVE }
+            disabled={ state && state !== StreamState.STOPPED }
             className="control-button" onClick={ startRecording }>
             { buttonLabels.start }
           </button>
@@ -122,7 +114,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
             { state === StreamState.PAUSED ? buttonLabels.resume : buttonLabels.pause }
           </button>
           <button
-            disabled={ !state || state === StreamState.INACTIVE }
+            disabled={ !state || state === StreamState.STOPPED }
             className="control-button" onClick={ stopRecording }>
             { buttonLabels.stop }
           </button>
@@ -140,13 +132,13 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 const StreamState = {
   PAUSED   : 'paused',
   RECORDING: 'recording',
-  INACTIVE : 'inactive',
+  STOPPED  : 'stopped',
 };
 
 const RecordFormat = {
-  'WAV' : 'audio/wav; codecs="1"',
+  'WAV' : 'audio/wav',
   'MPEG': 'audio/mpeg;',
-  'WEBM': 'audio/webm; codecs="vorbis"',
-  'OGG' : 'audio/ogg; codecs="opus"',
-  'MP3' : 'audio/mp3; codecs="opus"',
+  'WEBM': 'audio/webm',
+  'OGG' : 'audio/ogg',
+  'MP3' : 'audio/mp3',
 };

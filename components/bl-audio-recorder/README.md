@@ -1,6 +1,6 @@
 # Audio Recorder
 
-Audio Recorder is a component of Backendless UI-Builder designer. This allows recording audio from the user's microphone and using the recorded file.
+Audio Recorder is a component of Backendless UI-Builder designer based on the [RecordRTC](https://recordrtc.org/) library. This allows recording audio from the user's microphone and using the recorded file.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
