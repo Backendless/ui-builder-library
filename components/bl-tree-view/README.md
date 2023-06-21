@@ -2,6 +2,10 @@
 
 Tree View is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). Tree views can be used to represent a file system navigator displaying folders and files.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property  | Type     | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                                                                             |
