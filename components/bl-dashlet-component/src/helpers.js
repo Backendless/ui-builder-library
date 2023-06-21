@@ -78,7 +78,7 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => 
         document.removeEventListener('mouseup', handleMouseUp);
       };
     }
-  }, [pressed, onDrag]);
+  }, [pressed, onDrag, dragging]);
 
   if (!dragging) {
     return [null];
