@@ -1,6 +1,12 @@
 # Alert
 
-Alert is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows notifying a user when a specific event happens. This component supports 4 different notification types:
+Alert is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows notifying a user when a specific event happens. 
+
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
+This component supports 4 different notification types:
 
     1. Error
     2. Warning
