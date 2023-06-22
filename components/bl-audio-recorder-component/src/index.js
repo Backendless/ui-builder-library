@@ -150,11 +150,3 @@ const RecordFormat = {
   'WEBM': 'audio/webm; codecs="vorbis"',
   'OGG' : 'audio/ogg; codecs="opus"',
 };
-
-export const DefaultValues = {
-  START_TEXT: 'Start Record',
-  STOP_TEXT: 'Stop Record',
-  PAUSE_TEXT: 'Pause',
-  RESUME_TEXT: 'Resume',
-  DOWNLOAD_TEXT: 'Download Recorded',
-};
