@@ -65,7 +65,5 @@ Configuration can be done in the UI Builder. You have to specify the content tha
 @bl-customComponent-marquee-animation-name: scroll;
 @bl-customComponent-marquee-animation-timing-function: linear;
 @bl-customComponent-marquee-animation-delay: 0s;
-@bl-customComponent-marquee-animation-direction: normal;
 @bl-customComponent-marquee-animation-duration: 10s;
-@bl-customComponent-marquee-animation-iteration-count: infinite;
 ````
