@@ -1,0 +1,237 @@
+{
+  "id": "c_34e78b2552953123061c9cf949366d5b",
+  "name": "Dashlet",
+  "description": "The component allows you to add a dashlet to your UI-Builder application",
+  "showInToolbox": true,
+  "faIcon": "window-restore",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "titleLogic",
+      "handlerDescription": "This is a handler for the logic of determining the title of dashlet",
+      "dataBinding": true,
+      "handlerLabel": "Title Logic",
+      "settingTooltip": "Allows to determine the title for the dashlet."
+    },
+    {
+      "type": "select",
+      "name": "styleVariant",
+      "label": "Style Variant",
+      "showInSettings": true,
+      "defaultValue": "default",
+      "hasLogicHandler": false,
+      "handlerId": "styleVariantLogic",
+      "handlerLabel": "Style Variant Logic",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "alternative",
+          "label": "Alternative"
+        }
+      ],
+      "settingTooltip": "Allows to determine the variety of styles for dashlet."
+    },
+    {
+      "type": "number",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "400",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerDescription": "This is a handler for the logic of determining the height of dashlet",
+      "dataBinding": true,
+      "handlerLabel": "Height Logic",
+      "settingTooltip": "Allows to determine the height."
+    },
+    {
+      "type": "number",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "600",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerDescription": "This is a handler for the logic of determining the width of dashlet",
+      "dataBinding": true,
+      "handlerLabel": "Width Logic",
+      "settingTooltip": "Allows to determine the width."
+    },
+    {
+      "type": "checkbox",
+      "name": "localStorageEnabled",
+      "label": " Local Storage Enabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "localStorageEnabledLogic",
+      "handlerLabel": "Local Storage Enabled Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining whether the state (size, position, closed or open) of a dashlet is allowed to be stored in local storage or not",
+      "settingTooltip": "Allows to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in Local Storage or not."
+    },
+    {
+      "type": "checkbox",
+      "name": "resizing",
+      "label": "Resizing",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "resizingLogic",
+      "handlerLabel": "Resizing Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining whether resizing is allowed or not",
+      "settingTooltip": "Allows to determine whether resizing is allowed or not."
+    },
+    {
+      "type": "checkbox",
+      "name": "dragging",
+      "label": "Dragging",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "draggingLogic",
+      "handlerLabel": "Dragging Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining whether dragging is allowed or not",
+      "settingTooltip": "Allows to determine whether dragging is allowed or not."
+    },
+    {
+      "type": "json",
+      "name": "contextBlocks",
+      "label": "Context Blocks",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "contextBlocksLogic",
+      "handlerLabel": "Context Blocks Logic",
+      "handlerDescription": "This is a handler for the logic of determining context blocks for dashlet",
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine context block. Signature of context block: `{type, label, content}`."
+    },
+    {
+      "type": "number",
+      "name": "minWidth",
+      "label": "Min Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minWidthLogic",
+      "handlerLabel": "Min Width Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the min-width of dashlet",
+      "defaultValue": "300",
+      "settingTooltip": "Allows to determine the min-width."
+    },
+    {
+      "type": "number",
+      "name": "maxWidth",
+      "label": "Max Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxWidthLogic",
+      "handlerLabel": "Max Width Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the max-width of dashlet",
+      "defaultValue": "900",
+      "settingTooltip": "Allows to determine the max-width."
+    },
+    {
+      "type": "number",
+      "name": "minHeight",
+      "label": "Min Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minHeightLogic",
+      "handlerLabel": "Min Height Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the min-height of dashlet",
+      "defaultValue": "300",
+      "settingTooltip": "Allows to determine the min-height."
+    },
+    {
+      "type": "number",
+      "name": "maxHeight",
+      "label": "Max Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxHeightLogic",
+      "handlerLabel": "Max Height Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic of determining the max-height of dashlet",
+      "defaultValue": "900",
+      "settingTooltip": "Allows to determine the max-height."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "contextBlocksHandler",
+      "label": "Context Blocks Handler",
+      "contextBlocks": [
+        {
+          "id": "action",
+          "label": "action"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks on actions in the context block of the dashlet."
+    }
+  ],
+  "actions": [
+    {
+      "id": "getPosition",
+      "label": "Get Position of",
+      "hasReturn": true
+    },
+    {
+      "id": "getSize",
+      "label": "Get Size of",
+      "hasReturn": true
+    },
+    {
+      "id": "getIsOpen",
+      "label": "Get Is Open of",
+      "hasReturn": true
+    },
+    {
+      "id": "setPosition",
+      "label": "Set Position to",
+      "inputs": [
+        {
+          "id": "position",
+          "label": "Position"
+        }
+      ]
+    },
+    {
+      "id": "setSize",
+      "label": "Set Size to",
+      "inputs": [
+        {
+          "id": "size",
+          "label": "Size"
+        }
+      ]
+    },
+    {
+      "id": "setIsOpen",
+      "label": "Set Is Open to",
+      "inputs": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ]
+    }
+  ],
+  "pods": {
+    "22b590cc58d8fb8ea221893d4923eca9": {
+      "id": "dashletContent",
+      "dataContainer": true
+    }
+  }
+}
