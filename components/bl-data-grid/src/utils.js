@@ -1,4 +1,4 @@
-export function validateRows(data) {
+export function rowsValidation(data) {
   if (!data) {
     return [];
   }
@@ -6,8 +6,8 @@ export function validateRows(data) {
   return data.map(item => {
     const parentObj = {};
 
-    for (let key in item) {
-      if (typeof item[key] !== 'object' || item[key] === null || Array.isArray(item[key])) {
+    for (const key in item) {
+      if (!isObject(item[key])) {
         parentObj[key] = item[key];
       }
     }
@@ -22,7 +22,7 @@ function flattenObject(parent, nestedObj) {
   const parentObj = parent;
 
   for (const key in nestedObj) {
-    if (typeof nestedObj[key] === 'object' && nestedObj[key] !== null && !Array.isArray(nestedObj[key])) {
+    if (isObject(nestedObj[key])) {
       flattenObject(parentObj, nestedObj[key]);
     } else {
       parentObj[key] = nestedObj[key];
@@ -30,4 +30,8 @@ function flattenObject(parent, nestedObj) {
   }
 
   return parentObj;
+}
+
+function isObject(param) {
+  return typeof param === 'object' && param !== null && !Array.isArray(param);
 }
