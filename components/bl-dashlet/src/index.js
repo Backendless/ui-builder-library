@@ -24,6 +24,18 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
     }
   }, [height, width]);
 
+  useEffect(() => {
+    if (!height && rootRef.current) {
+      setSize(state => ({ ...state, height: rootRef.current.clientHeight }));
+    }
+  }, [rootRef, height]);
+
+  useEffect(() => {
+    if (!width && rootRef.current) {
+      setSize(state => ({ ...state, width: rootRef.current.clientWidth }));
+    }
+  }, [rootRef, width]);
+
   useComponentActions(component, size, setSize, position, setPosition, isOpen, setIsOpen);
   useLocalSettings(localStorageEnabled, storage, position, size, isOpen);
 
