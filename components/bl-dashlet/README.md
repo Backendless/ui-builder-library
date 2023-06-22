@@ -90,6 +90,41 @@ Addition of context block in UI Setting:
 
 ![context block example](./example-images/context-block-json.jpg)
 
+<details>
+<summary>Try yourself</summary>
+
+```
+[
+  {
+    "type": "action",
+    "label": "Fixed",
+    "content": "fixed"
+  },
+  {
+    "type": "action",
+    "label": "Delete",
+    "content": "delete"
+  },
+  {
+    "type": "link",
+    "label": "Some Link",
+    "content": "someLink"
+  }
+]
+```
+</details>
+
 Use context block actions in event Context Block Handler:
 
 ![context block actions example](example-images/context-block-handler-logic.jpg)
+
+<details>
+<summary>Try yourself</summary>
+
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="controls_if" id="MfysFcoD)zFID2+f08c6" x="289" y="161"><value name="IF0"><block type="logic_compare" id="}cx1l/;Txf=2K0H;q,K$"><field name="OP">EQ</field><value name="A"><block type="text" id="xE/kr1mqy1r`+^xv976c"><field name="TEXT">fixed</field></block></value><value name="B"><block type="root_block_ui_builder_c_34e78b2552953123061c9cf949366d5b_contextBlocksHandler_handler_context_blocks_action" id="BT3W*Q~)?f^;IpI+fe)]" bl_meta="{&quot;label&quot;:&quot;action&quot;}"></block></value></block></value><statement name="DO0"><block type="set_object_property" id="OY^G;uZRH(o5)iKu3W1~"><value name="object"><block type="root_block_ui_builder_common__context_blocks_pageData" id="+M14Zh`|;lo#.uy?tby+" bl_meta="{&quot;label&quot;:&quot;Page Data&quot;}"></block></value><value name="propName"><shadow type="text" id="f%GB_a8W$pCCLqQvA$-,"><field name="TEXT">isDashletFixed</field></shadow></value><value name="propValue"><block type="logic_boolean" id="@7mr.#nt+8f?Z]f$`%bu"><field name="BOOL">TRUE</field></block></value></block></statement></block>
+```
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="controls_if" id="-TsC!npk=K8C77{%XQz%" x="289" y="288"><value name="IF0"><block type="logic_compare" id="4]a+dML=ik~OQ;YywceW"><field name="OP">EQ</field><value name="A"><block type="text" id="VV8EFgxbEW!z}fU%~^|l"><field name="TEXT">delete</field></block></value><value name="B"><block type="root_block_ui_builder_c_34e78b2552953123061c9cf949366d5b_contextBlocksHandler_handler_context_blocks_action" id="vmW:mf:GN=j0Tu(@1YKi" bl_meta="{&quot;label&quot;:&quot;action&quot;}"></block></value></block></value><statement name="DO0"><block type="ui_common_blocks__toggle_component_visibility" id="J0Il}xZ{NaNCVS$b%1[z" bl_meta="{&quot;label&quot;:&quot;Toggle component visibility&quot;}"><field name="componentUid">'5fbe6578603550475a51195800a15938'</field><value name="visible"><block type="logic_boolean" id=".fAZ6(R=*T$Bd@Me6y,l"><field name="BOOL">FALSE</field></block></value></block></statement></block>
+```
+</details>
