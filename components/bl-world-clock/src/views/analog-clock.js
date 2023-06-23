@@ -46,7 +46,29 @@ export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
 }
 
 function AnalogClockClassic({ date, secondHandColor }) {
-  return <ClockClassic date={ date } secondHandColor={ secondHandColor }/>;
+  return (
+    <ClockClassic
+      date={ date }
+      secondHandColor={ secondHandColor }
+      size={ 800 }
+      hourMarkerSize={ 32 }
+      minuteMarkerSize={ 24 }
+      hourMarkerThickness={ 20 }
+      minuteMarkerThickness={ 12 }
+      hourHandSize={ 200 }
+      minuteHandSize={ 280 }
+      secondHandSize={ 320 }
+      secondHandTailSize={ 40 }
+      hourHandThickness={ 28 }
+      minuteHandThickness={ 20 }
+      secondHandThickness={ 8 }
+      hourHandRadius={ 32 }
+      minuteHandRadius={ 24 }
+      secondHandRadius={ 16 }
+      borderThickness={ 16 }
+      padding={ 24 }
+    />
+  );
 }
 
 function AnalogClockGold({ handStyle }) {
