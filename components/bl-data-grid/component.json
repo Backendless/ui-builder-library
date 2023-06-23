@@ -61,6 +61,17 @@
     },
     {
       "type": "checkbox",
+      "name": "editable",
+      "label": "Editable",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "editableLogic",
+      "handlerLabel": "Editable Logic",
+      "handlerDescription": "This handler allows you to control the ability to edit data in the cell."
+    },
+    {
+      "type": "checkbox",
       "name": "resizable",
       "label": "Resizable",
       "settingTooltip": "Users will be able to change the width of the columns by dragging them.",
@@ -70,6 +81,16 @@
       "handlerId": "resizableLogic",
       "handlerLabel": "Resizable Logic",
       "handlerDescription": "This handler allows you to add the ability to change column widths."
+    },
+    {
+      "type": "checkbox",
+      "name": "suppressCellFocus",
+      "label": "Suppress Cell Focus",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "suppressCellFocusLogic",
+      "handlerLabel": "Suppress Cell Focus Logic",
+      "handlerDescription": "This handler allows you to disable cell focus and keyboard navigation."
     },
     {
       "type": "checkbox",
@@ -207,6 +228,12 @@
       "label": "Get Columns of",
       "color": "#214a96",
       "hasReturn": true
+    },
+    {
+      "id": "getRowsData",
+      "label": "Get Rows Data of ",
+      "hasReturn": true,
+      "color": "#204994"
     }
   ]
 }
