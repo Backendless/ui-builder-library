@@ -80,8 +80,7 @@ function InvisibleCaptcha({ component, siteKey, onErrored }) {
 
   const captchaRef = useRef();
 
-  component.getIsPassed = () => true;
-  component.getToken = async () => await captchaRef.current.executeAsync();
+  component.getTokenInvisible = async () => await captchaRef.current.executeAsync();
 
   return (
     <ReCaptcha

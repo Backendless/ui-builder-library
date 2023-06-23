@@ -18,10 +18,11 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 
 ## Actions
 
-| Action        | Inputs | Return                                         |
-|---------------|--------|------------------------------------------------|
-| On Token Sent |        | `String`: can get when the user passed the captcha |
-| On Pass(ed)   |        | `Boolean`: `true` when the user passed the captcha |
+| Action                   | Inputs | Return                                                       |
+|--------------------------|--------|--------------------------------------------------------------|
+| On Token Sent            |        | `String`: can get when the user passed the captcha           |
+| On Pass(ed)              |        | `Boolean`: `true` when the user passed the captcha           |
+| Get a Token of Invisible |        | `String`: can provide a token if the user passes the captcha |
 
 ## Settings
 
@@ -108,3 +109,7 @@ In SETTINGS we set site-key.
 ![](example-images/open-form-logic.jpg)
 
 ![](example-images/on-submit-event-example.jpg)
+
+### If you use invisible size for reCaptcha, add this Logic for On Submit Event
+
+![](example-images/on-submit-with-invisible.jpg)
