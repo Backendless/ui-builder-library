@@ -112,4 +112,11 @@ In SETTINGS we set site-key.
 
 ### If you use invisible size for reCaptcha, add this Logic for On Submit Event
 
-![](example-images/on-submit-with-invisible.jpg)
+1. You can create a variable to save the token
+
+    ![](example-images/create-token-variable.jpg)
+    ![](example-images/use-token-variable.jpg)
+
+2. Now "On Submit Event" must look like on this screenshot
+
+    ![](example-images/on-submit-with-invisible.jpg)
