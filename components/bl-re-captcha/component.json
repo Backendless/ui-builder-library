@@ -123,6 +123,11 @@
       "id": "onPassed",
       "label": "On Pass(ed)",
       "hasReturn": true
+    },
+    {
+      "id": "getTokenInvisible",
+      "label": "Get a Token of Invisible",
+      "hasReturn": true
     }
   ],
   "settings": [
@@ -130,7 +135,8 @@
       "type": "text",
       "name": "siteKey",
       "title": "Site Key",
-      "description": "This setting allows determining the site key for reCaptcha"
+      "description": "This setting allows determining the site key for reCaptcha",
+      "required": true
     }
   ]
 }

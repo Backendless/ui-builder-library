@@ -15,8 +15,8 @@ function CellComponent(params) {
 
 export default function DataGridComponent({ component, eventHandlers }) {
   const {
-    classList, display, style, disabled, sortable, filter, floatingFilter,
-    resizable, multipleRowsSelection, columnDefs, rowsData, height, width, theme
+    classList, display, style, disabled, sortable, filter, floatingFilter, editable,
+    resizable, suppressCellFocus, multipleRowsSelection, columnDefs, rowsData, height, width, theme
   } = component;
   const { onCellClick, onColumnMoved } = eventHandlers;
 
@@ -24,10 +24,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
 
-  const rowsToDisplay = useMemo(() => rowsValidation(rows), [rows]);
-
-  component.getColumnState = () => gridRef.current.columnApi.getColumnState();
-  component.getSelectedRows = () => gridRef.current.api.getSelectedNodes().map(node => node.data);
+  useActions({ component, gridRef });
 
   useEffect(() => {
     setColumns(columnDefs || []);
@@ -38,6 +35,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     filter,
     sortable,
     floatingFilter: filter ? floatingFilter : false,
+    editable,
     resizable,
     cellRenderer: memo(CellComponent)
   }), [sortable, filter, floatingFilter, resizable]);
@@ -72,6 +70,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
             columnDefs={ columns }
             defaultColDef={ defaultColDef }
             scrollbarWidth={ 14 }
+            suppressCellFocus={ suppressCellFocus }
             rowSelection={ multipleRowsSelection ? "multiple" : "single" }
             onCellClicked={ handleCellClick }
             onColumnMoved={ handleColumnMove }
@@ -79,4 +78,20 @@ export default function DataGridComponent({ component, eventHandlers }) {
       }
     </div>
   );
+}
+
+function useActions({ component, gridRef }) {
+  Object.assign(component, {
+    getRowsData: () => {
+      const rowsData = [];
+
+      gridRef.current.api.forEachNode(node => {
+        rowsData.push(node.data);
+      });
+
+      return rowsData;
+    },
+    getColumnState: () => gridRef.current.columnApi.getColumnState(),
+    getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data)
+  });
 }

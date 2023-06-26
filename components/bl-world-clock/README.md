@@ -174,3 +174,5 @@ The World Clock component provides the ability to add a custom dial. Follow thes
 </p>
 
 Using style variables, you can easily customize any digital clock type to match your preferences and design requirements.
+
+**NOTE:** If you encounter any errors while using the `digital-techno` or `circle-customizable` clock types, we recommend moving the component to a newly created container.
