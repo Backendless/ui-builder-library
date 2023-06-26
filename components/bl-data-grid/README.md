@@ -50,6 +50,32 @@ Adding columns to the component:
 
 ![markers example](./example-images/columns.png)
 
+
+> **If you have nested objects (as shown in the screenshot below) and you want it to display as a group, then you need to do the following:**
+
+1. Add row data with nested objects:
+
+![markers example](./example-images/rows-with-nested-object.png)
+
+2. Add a `children` property for the field with the nested object, and pass a list of nested properties as shown in the screenshot:
+
+![markers example](./example-images/col-def-with-children-prop.png)
+
+3. Result:
+
+<img src="./example-images/result.png" alt="result" width="780"/>
+
+
+> **If you want the properties of nested objects not to be displayed as a group, then do the following:**
+
+1. Add the properties of the nested object in the same way as other properties:
+
+![markers example](./example-images/add-nested-props-as-default-props.png)
+
+2. Result:
+
+<img src="./example-images/res-of-def.png" alt="res-of-def" width="780"/>
+
 ## <a id="adding-row-selections-guide"></a>Adding Row Selections Guide
 
 Add `"checkboxSelection": true` property to the desired column:

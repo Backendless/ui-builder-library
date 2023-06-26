@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
 import { EmptyMessage } from './empty-message';
 
 import { useStyles } from './use-styles';
+import { rowsValidation } from './utils';
 
 import { AgGridReact } from './lib/ag-grid-react.min.js';
 
@@ -65,7 +66,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
         ? <EmptyMessage noColumns={ !columns.length } noRows={ !rows.length } />
         : <AgGridReact
             ref={ gridRef }
-            rowData={ rows }
+            rowData={ rowsToDisplay }
             columnDefs={ columns }
             defaultColDef={ defaultColDef }
             scrollbarWidth={ 14 }
