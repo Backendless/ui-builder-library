@@ -1,11 +1,11 @@
 import { Icons } from './icons';
 
-const DefaultValues = {
-  START_TEXT   : 'Start Record',
-  STOP_TEXT    : 'Stop Record',
-  PAUSE_TEXT   : 'Pause',
-  RESUME_TEXT  : 'Resume',
-  DOWNLOAD_TEXT: 'Download Recorded',
+const Labels = {
+  START    : 'Start Record',
+  STOP     : 'Stop Record',
+  PAUSE    : 'Pause',
+  RESUME   : 'Resume',
+  DOWNLOAD : 'Download Recorded',
 };
 
 export const download = (blob, fileName, fileType) => {
@@ -39,10 +39,10 @@ export const prepareLabel = component => {
   const isIcon = labelsType === 'icons';
 
   return ({
-    start   : isIcon ? <Record/> : startText || DefaultValues.START_TEXT,
-    stop    : isIcon ? <Stop/> : stopText || DefaultValues.STOP_TEXT,
-    pause   : isIcon ? <Pause/> : pauseText || DefaultValues.PAUSE_TEXT,
-    resume  : isIcon ? <Play/> : resumeText || DefaultValues.RESUME_TEXT,
-    download: isIcon ? <Download/> : downloadText || DefaultValues.DOWNLOAD_TEXT,
+    start   : isIcon ? <Record/> : startText || Labels.START,
+    stop    : isIcon ? <Stop/> : stopText || Labels.STOP,
+    pause   : isIcon ? <Pause/> : pauseText || Labels.PAUSE,
+    resume  : isIcon ? <Play/> : resumeText || Labels.RESUME,
+    download: isIcon ? <Download/> : downloadText || Labels.DOWNLOAD,
   });
 };
