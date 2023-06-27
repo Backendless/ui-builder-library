@@ -25,6 +25,8 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
 
+  const rowsToDisplay = useMemo(() => rowsValidation(rows), [rows]);
+
   useActions({ component, gridRef });
 
   useEffect(() => {
