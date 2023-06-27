@@ -16,6 +16,12 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 | Badge             | Select ["bottom-right", "bottom-left", "inline"] | "bottom-right" |                         | NO           | YES        | Allows to determine the position. Work when Size is "invisible". |
 | Theme             | Select ["light", "dark"]                         | "light"        | Theme Color             | YES          | YES        | Allows to determine the theme.                                   |
 
+## Events
+
+| Name        | Triggers                                                       | Context Blocks |
+|-------------|----------------------------------------------------------------|----------------|
+| On Errored  | when the challenge errored, most likely due to network issues. |                |
+
 ## Actions
 
 | Action                   | Inputs | Return                                                       |
