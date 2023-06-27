@@ -15,8 +15,9 @@ function CellComponent(params) {
 
 export default function DataGridComponent({ component, eventHandlers }) {
   const {
-    classList, display, style, disabled, sortable, filter, floatingFilter, editable,
-    resizable, suppressCellFocus, multipleRowsSelection, columnDefs, rowsData, height, width, theme
+    classList, display, style, disabled, sortable, filter,
+    floatingFilter, editable, resizable, suppressCellFocus, multipleRowsSelection,
+    columnDefs, rowsData, height, width, theme, pagination, paginationAutoPageSize, paginationPageSize
   } = component;
   const { onCellClick, onColumnMoved } = eventHandlers;
 
@@ -71,6 +72,9 @@ export default function DataGridComponent({ component, eventHandlers }) {
             defaultColDef={ defaultColDef }
             scrollbarWidth={ 14 }
             suppressCellFocus={ suppressCellFocus }
+            pagination={ pagination }
+            paginationPageSize={ paginationPageSize }
+            paginationAutoPageSize={ paginationAutoPageSize }
             rowSelection={ multipleRowsSelection ? "multiple" : "single" }
             onCellClicked={ handleCellClick }
             onColumnMoved={ handleColumnMove }
