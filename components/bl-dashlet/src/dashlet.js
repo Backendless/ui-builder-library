@@ -119,7 +119,7 @@ export function Dashlet(props) {
         height={ height }
         width={ width }
         minConstraints={ [minWidth, minHeight] }
-        maxConstraints={ [resizeMaxWidth, resizeMaxHeight] }>
+        maxConstraints={ [resizeMaxWidth || Infinity, resizeMaxHeight || Infinity] }>
         { DashletComponent }
       </ResizableBox>
     );

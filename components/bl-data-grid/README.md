@@ -15,7 +15,9 @@ If you want to know more about this component, you can [follow the link.](https:
 | Sortable<br/>`sortable`                             | Checkbox                                                                                                                         | `true`                                                                                                                                                                    | Sortable Logic                | YES          | YES        | This handler allows you to specify the sorting option for all grid columns.                                                                                                                   |
 | Filter<br/>`filter`                                 | Checkbox                                                                                                                         | `true`                                                                                                                                                                    | Filter Logic                  | YES          | YES        | This handler allows you to add filtering capability to all grid columns.                                                                                                                      |
 | Floating Filter<br/>`floatingFilter`                | Checkbox                                                                                                                         | `true`                                                                                                                                                                    | Floating Filter Logic         | YES          | YES        | This handler allows you to specify whether or not the floating filter is displayed.                                                                                                           |
+| Editable<br/>`editable`                             | Checkbox                                                                                                                         | `true`                                                                                                                                                                    | Editable Logic                | NO           | YES        | This handler allows you to control the ability to edit data in the cell.                                                                                                                      |
 | Resizable<br/>`resizable`                           | Checkbox                                                                                                                         | `true`                                                                                                                                                                    | Resizable Logic               | NO           | YES        | This handler allows you to add the ability to change column widths.                                                                                                                           |
+| Suppress Cell Focus<br/>`suppressCellFocus`         | Checkbox                                                                                                                         | `false`                                                                                                                                                                   | Suppress Cell Focus Logic     | NO           | YES        | This handler allows you to disable cell focus and keyboard navigation.                                                                                                                        |
 | Multiple Rows Selection<br/>`multipleRowsSelection` | Checkbox                                                                                                                         | `true`                                                                                                                                                                    | Multiple Rows Selection Logic | YES          | YES        | This handler adds the ability to select multiple rows. Watch [Adding Row Selections Guide](#adding-row-selections-guide).                                                                     |
 | Column Definition<br/>`columnDefs`                  | JSON                                                                                                                             | `[`<br/>`{"field": "name", "flex": 1},`<br/>`{"field": "age", "sortable": true, "flex": 1},`<br/>`{"field": "city", "flex": 1}`<br/>`]`                                   | Column Definition Logic       | YES          | YES        | This handler allows you to define columns for the component. Watch [Codeless Examples](#examples). Signature of column: List of object `{field: String, sortable: Boolean, filter: Boolean}`. |
 | Rows Data<br/>`rowsData`                            | JSON                                                                                                                             | `[`<br/>`{"name": "Jack", "age": 26, "city": "London"},`<br/>`{"name": "Kate", "age": 22, "city": "New York"},`<br/>`{"name": "Nick", "age": 28, "city": "Kyiv"}`<br/>`]` | Rows Data Logic               | YES          | YES        | This handler allows you to set data to the component. Watch [Codeless Examples](#examples). Signature of data: List of object `{field: String \| Number}`                                     |
@@ -36,6 +38,7 @@ If you want to know more about this component, you can [follow the link.](https:
 |--------------------------------|------------|-----------------------------------------|
 | Get Selected Rows of Data Grid |            | `JSON`: list of selected rows           |
 | Get Columns of Data Grid       |            | `JSON`: list of moved columns           |
+| Get Rows Data of Data Grid     |            | `JSON`: list of rows                    |
 
 ## <a id="examples"></a> Codeless Examples
 
@@ -46,6 +49,32 @@ Adding row data to the component:
 Adding columns to the component:
 
 ![markers example](./example-images/columns.png)
+
+
+> **If you have nested objects (as shown in the screenshot below) and you want it to display as a group, then you need to do the following:**
+
+1. Add row data with nested objects:
+
+![markers example](./example-images/rows-with-nested-object.png)
+
+2. Add a `children` property for the field with the nested object, and pass a list of nested properties as shown in the screenshot:
+
+![markers example](./example-images/col-def-with-children-prop.png)
+
+3. Result:
+
+<img src="./example-images/result.png" alt="result" width="780"/>
+
+
+> **If you want the properties of nested objects not to be displayed as a group, then do the following:**
+
+1. Add the properties of the nested object in the same way as other properties:
+
+![markers example](./example-images/add-nested-props-as-default-props.png)
+
+2. Result:
+
+<img src="./example-images/res-of-def.png" alt="res-of-def" width="780"/>
 
 ## <a id="adding-row-selections-guide"></a>Adding Row Selections Guide
 
