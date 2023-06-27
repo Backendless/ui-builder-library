@@ -190,6 +190,38 @@
           "label": "Material"
         }
       ]
+    },
+    {
+      "type": "checkbox",
+      "name": "pagination",
+      "label": "Pagination",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "paginationLogic",
+      "handlerLabel": "Pagination Logic",
+      "handlerDescription": "This handler allows you to add pagination."
+    },
+    {
+      "type": "checkbox",
+      "name": "paginationAutoPageSize",
+      "label": "Pagination Auto Page Size",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "paginationAutoPageSizeLogic",
+      "handlerLabel": "Pagination Auto Page Size Logic",
+      "handlerDescription": "This handler allows automatically showing as many rows on each page as possible."
+    },
+    {
+      "type": "number",
+      "name": "paginationPageSize",
+      "label": "Pagination Page Size",
+      "settingTooltip": "does not work when Pagination Auto Page Size is selected",
+      "showInSettings": true,
+      "defaultValue": "10",
+      "hasLogicHandler": true,
+      "handlerId": "paginationPageSizeLogic",
+      "handlerLabel": "Pagination Page Size Logic",
+      "handlerDescription": "This handler allows you to specify the required number of rows to display on each page. Does not work when Pagination Auto Page Size is selected!"
     }
   ],
   "eventHandlers": [
