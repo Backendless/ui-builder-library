@@ -1,0 +1,144 @@
+{
+  "id": "c_778db94d3fad59fceeb99dc511590ab5",
+  "name": "Marquee",
+  "description": "A lightweight React component that utilizes the power of CSS animations to create silky smooth marquees.",
+  "showInToolbox": true,
+  "faIcon": "arrows-alt-h",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "start",
+      "label": "Start Play",
+      "settingTooltip": "Whether to play or pause the marquee",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "startLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "pauseOnHover",
+      "label": "Pause On Hover",
+      "settingTooltip": "Whether to pause the marquee when hovered",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "pauseOnHoverLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "pauseOnClick",
+      "label": "Pause On Click",
+      "settingTooltip": "Whether to pause the marquee when clicked",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "pauseOnClickLogic"
+    },
+    {
+      "type": "select",
+      "name": "direction",
+      "showInSettings": true,
+      "defaultValue": "normal",
+      "hasLogicHandler": false,
+      "handlerId": "directionLogic",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Right to left"
+        },
+        {
+          "value": "reverse",
+          "label": "Left to right"
+        }
+      ],
+      "label": "Direction",
+      "settingTooltip": "The direction the marquee is sliding"
+    },
+    {
+      "type": "number",
+      "name": "speed",
+      "showInSettings": true,
+      "defaultValue": "20",
+      "hasLogicHandler": false,
+      "handlerId": "speedLogic",
+      "label": "Speed",
+      "settingTooltip": "Speed calculated as pixels/second"
+    },
+    {
+      "type": "number",
+      "name": "delay",
+      "label": "Delay",
+      "settingTooltip": "Duration to delay the animation after render, in seconds",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "delayLogic"
+    },
+    {
+      "type": "number",
+      "name": "loop",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "loopLogic",
+      "label": "Loop",
+      "settingTooltip": "The number of times the marquee should loop, 0 is equivalent to infinite"
+    },
+    {
+      "type": "checkbox",
+      "name": "gradient",
+      "label": "Enable Gradient",
+      "settingTooltip": "Whether to show the gradient overlay or not",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "gradientLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onAnimationEnd",
+      "handlerDescription": "A callback for when the marquee finishes scrolling and stops. Only calls if loop is non-zero.",
+      "label": "On Animation End Event"
+    },
+    {
+      "name": "onCycleComplete",
+      "handlerDescription": "A callback for when the marquee finishes a loop. Does not call if maximum loops are reached (use onFinish instead).",
+      "label": "On Cycle Complete Event"
+    },
+    {
+      "name": "onMouseEnter",
+      "label": "On Mouse Enter Event",
+      "handlerDescription": "Triggered when the mouse pointer enters the boundaries of the component."
+    },
+    {
+      "name": "onMouseLeave",
+      "label": "On Mouse Leave Event",
+      "handlerDescription": "Triggered when the mouse pointer moves out of the component boundary."
+    },
+    {
+      "name": "onClick",
+      "label": "On Click Event",
+      "handlerDescription": "Triggered when the user clicks on the component."
+    }
+  ],
+  "actions": [
+    {
+      "id": "stopPlay",
+      "label": "Pause"
+    },
+    {
+      "id": "startPlay",
+      "label": "Play"
+    }
+  ],
+  "settings": [],
+  "pods": {
+    "b8828219095d33ecaffe9d3c6ba4e2ae": {
+      "id": "marqueeContent",
+      "dataContainer": true
+    }
+  }
+}

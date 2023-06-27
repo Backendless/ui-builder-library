@@ -1,0 +1,82 @@
+@bl-customComponent-totop-theme: @themePrimary;
+@bl-customComponent-totop-themeTextColor: @appTextColor;
+
+@bl-customComponent-totop-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+@bl-customComponent-totop-hover-background-color: fade(@bl-customComponent-totop-background-color, 20%);
+
+@bl-customComponent-totop-size: 40px;
+@bl-customComponent-totop-icon-size: 20px;
+@bl-customComponent-totop-indent: 20px;
+@bl-customComponent-totop-border-radius: 50%;
+@bl-customComponent-totop-z-index: 999;
+
+@bl-customComponent-totop-cursor: pointer;
+
+html {
+  --totop-indent-x: @bl-customComponent-totop-indent;
+  --totop-indent-y: @bl-customComponent-totop-indent;
+}
+
+.bl-customComponent-totop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: @bl-customComponent-totop-size;
+  height: @bl-customComponent-totop-size;
+  position: fixed;
+  z-index: @bl-customComponent-totop-z-index;
+  background-color: @bl-customComponent-totop-background-color;
+  color: @bl-customComponent-totop-themeTextColor;
+  border-radius: @bl-customComponent-totop-border-radius;
+  cursor: @bl-customComponent-totop-cursor;
+  user-select: none;
+
+  &:hover {
+    background-color: @bl-customComponent-totop-hover-background-color;
+  }
+
+  .totop__icon {
+    display: flex;
+    width: @bl-customComponent-totop-icon-size;
+    height: @bl-customComponent-totop-icon-size;
+    fill: @bl-customComponent-totop-themeTextColor;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.start-0 {
+    left: var(--totop-indent-x);
+  }
+
+  &.end-0 {
+    right: var(--totop-indent-x);
+  }
+
+  &.top-0 {
+    top: var(--totop-indent-y);
+  }
+
+  &.bottom-0 {
+    bottom: var(--totop-indent-y);
+  }
+
+  &.start-50 {
+    left: 50%;
+  }
+
+  &.top-50 {
+    top: 50%;
+  }
+
+  &.translate-middle-x {
+    transform: translateX(-50%);
+  }
+
+  &.translate-middle-y {
+    transform: translateY(-50%);
+  }
+}
