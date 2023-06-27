@@ -1,70 +1,224 @@
-// you can use LESS variables from the current Theme and app extensions of the UI-Container
-@bl-customComponent-inputWithMask-themeColor: @themePrimary;
-@bl-customComponent-inputWithMask-backgroundColor: @appBackgroundColor;
-@bl-customComponent-inputWithMask-textColor: @appTextColor;
+@themePrimary: #337ab7;
 
-.bl-customComponent-inputWithMask {
-  &.form-input {
+@disabledColor: gray;
+
+@appBackgroundColor: #fff;
+@appTextColor: contrast(@appBackgroundColor);
+
+@isLightTheme: boolean(lightness(@appBackgroundColor) > 50%);
+
+@appComponentShadowColor: #000;
+@appComponentShadow: 0 3px 1px -2px fade(@appComponentShadowColor, 20%), 0 2px 2px 0 fade(@appComponentShadowColor, 14%), 0 1px 5px 0 fade(@appComponentShadowColor, 12%);
+
+@appComponentBorderRadius: 4px;
+@appComponentBorderWidth: 2px;
+
+@appBlockBackgroundColor: @appBackgroundColor;
+@appBlockTextColor: @appTextColor;
+@appBlockBorderRadius: @appComponentBorderRadius;
+@appBlockShadow: @appComponentShadow;
+
+@appLayoutMaxPhoneWidth: 479px;
+@appLayoutMinTabletWidth: @appLayoutMaxPhoneWidth + 1px;
+@appLayoutMaxTabletWidth: 839px;
+@appLayoutMinDesktopWidth: @appLayoutMaxTabletWidth + 1px;
+
+@appLayoutPhoneGap: 16px;
+@appLayoutTabletGap: 16px;
+@appLayoutDesktopGap: 24px;
+
+
+@bl-customComponent-input-with-mask-themeColor: @themePrimary;
+@bl-customComponent-input-with-mask-backgroundColor: @appBackgroundColor;
+@bl-customComponent-input-with-mask-textColor: @appTextColor;
+@backgroundColorOnHoverPrimary: #28f5be0a;
+@boxShadowPrimary:
+        0px 2px 1px -1px  @themePrimary,
+        0px 1px 1px 0px  @themePrimary,
+        0px 1px 3px 0px  @themePrimary;
+
+@bl-customComponent-input-with-mask-width: 300px;
+
+@bl-customComponent-input-with-mask-boxShadow: @boxShadowPrimary;
+@bl-customComponent-input-with-mask-iconFill: @bl-customComponent-input-with-mask-themeColor;
+@bl-customComponent-input-with-mask-borderRadius: 4px;
+
+@bl-customComponent-input-with-mask-option-padding: 6px 16px;
+@bl-customComponent-input-with-mask-option-backgroundColorOnHover: @backgroundColorOnHoverPrimary;
+@bl-customComponent-input-with-mask-options-maxHeight: 40vh;
+
+@bl-customComponent-input-with-mask-borderColor-onHover: rgba(@themePrimary, 0.75);
+
+@bl-customComponent-input-with-mask-groupLabel-padding: 6px 10px;
+@bl-customComponent-input-with-mask-groupLabel-color: @bl-customComponent-input-with-mask-textColor;
+@bl-customComponent-input-with-mask-groupLabel-backgroundColor: rgba(@themePrimary, 0.5);
+
+.bl-customComponent-input-with-mask {
+  position: relative;
+  background-color: @bl-customComponent-input-with-mask-backgroundColor;
+  border-radius: @bl-customComponent-input-with-mask-borderRadius;
+  display: block;
+  width: @bl-customComponent-input-with-mask-width;
+  height: auto;
+
+  .input-with-mask {
+    color: @bl-customComponent-input-with-mask-textColor;
     position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    vertical-align: top;
     width: 100%;
-    margin-top: calc(1.2em + 8px);
 
-    .form-input__input {
+    &__text-field {
+      position: relative;
       width: 100%;
-      height: 1.2em;
-
-      font-size: 1.2rem;
+      font-size: 16px;
       font-weight: 400;
-      color: @bl-customComponent-inputWithMask-textColor;
-
-      padding: 0px;
-
-      outline: none;
-
-      border: 0;
-      border-bottom: 1px solid gray;
-      background: transparent;
-      transition: 0.3s;
-
-      &::placeholder {
-        opacity: 0;
-      }
-
-      &:focus {
-        border-bottom: 1px solid @bl-customComponent-inputWithMask-themeColor
-      }
-
-      &:hover {
-        border-width: 2px;
-      }
-    }
-
-    .form-input__placeholder {
-      position: absolute;
-      left: 0px;
-      top: 50%;
-
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.4375em;
-      letter-spacing: 0.00938em;
-      color: gray;
-
-      user-select: none;
-      z-index: 1;
-      transition: 0.3s;
-      transform: translateY(-50%);
-    }
-
-    .form-input__input:focus + .form-input__placeholder {
-      color: @bl-customComponent-inputWithMask-themeColor;
-    }
-
-    .form-input__input:focus + .form-input__placeholder,
-    .form-input__input:not(:placeholder-shown) + .form-input__placeholder {
-      top: 0;
-      font-size: 0.8rem;
-      transform: translateY(-130%);
+      line-height: 23px;
+      color: @bl-customComponent-input-with-mask-textColor;
+      cursor: text;
+      box-sizing: border-box;
+      border-radius: @bl-customComponent-input-with-mask-borderRadius;
     }
   }
+
+  .placeholder {
+    position: absolute;
+    display: block;
+    color: @bl-customComponent-input-with-mask-textColor;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    padding: 0px;
+    transform-origin: left top;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 24px);
+    left: 0px;
+    top: 0px;
+    transform: translate(14px, 16px) scale(1);
+    transition:
+            color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+            transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+            max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    z-index: 1;
+    pointer-events: none;
+
+    &__move-up {
+      transform: translate(14px, -9px) scale(0.75);
+      background-color: @bl-customComponent-input-with-mask-backgroundColor;
+      border-radius: 10px;
+    }
+  }
+
+  .icon {
+    display: inline-block;
+    fill: @bl-customComponent-input-with-mask-iconFill;
+    width: 24px;
+    height: 24px;
+  }
+
+  .input-with-mask {
+    &__container {
+      display: block;
+      height: 23px;
+      min-width: 30px;
+      flex-grow: 1;
+      box-sizing: content-box;
+      padding: 7.5px 4px 6px;
+      margin: 0;
+      animation-duration: 10ms;
+    }
+
+    &__field {
+      font-size: 16px;
+      background-color: transparent;
+      color: @bl-customComponent-input-with-mask-textColor;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      border: 0;
+      flex-grow: 1;
+
+      padding: 16.5px 14px;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+
+  .fieldset {
+    position: absolute;
+    text-align: left;
+    border-radius: inherit;
+    margin: 0px;
+    inset: -5px 0px 0px;
+    border: 1px solid @bl-customComponent-input-with-mask-themeColor;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .legend {
+    float: unset;
+    overflow: hidden;
+    display: block;
+    font-size: 12px;
+    height: 11px;
+    width: auto;
+    max-width: 0;
+    padding: 0px;
+    visibility: hidden;
+    transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    white-space: nowrap;
+
+    &__with-label {
+      max-width: 100%;
+      transition: max-width 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
+    }
+  }
+}
+
+.bl-customComponent-input-with-mask--filled {
+  & .input-with-mask {
+    background-color: #4b4a4a7a;
+    border-bottom: 1px solid @bl-customComponent-input-with-mask-themeColor;
+
+    &:hover {
+      background-color: #706d6d8e;
+      transition: background-color .3s;
+    }
+  }
+
+  & .fieldset {
+    border: 0;
+  }
+}
+
+.bl-customComponent-input-with-mask--standard {
+  &.bl-customComponent-input-with-mask {
+    background-color: transparent;
+  }
+
+  & .input-with-mask {
+    border-bottom: 1px solid @bl-customComponent-input-with-mask-themeColor;
+    transition: border-bottom-color .2s;
+
+    &:hover {
+      border-bottom-color: @bl-customComponent-input-with-mask-borderColor-onHover;
+    }
+  }
+
+  & .fieldset {
+    border: 0;
+  }
+}
+
+.input-with-mask-focused .fieldset  {
+  border-width: 2px;
 }

@@ -1,4 +1,8 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
+import { Fieldset } from './fieldset';
+import { Input } from './input';
+import { Placeholder } from './placeholder';
 import useIMask from './react-imask';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -6,25 +10,24 @@ const { cn } = BackendlessUI.CSSUtils;
 const MaskTypes = {
   NUMBER: 'Number',
   STRING: 'String',
-  REGEX : 'RegExp'
+  REGEX : 'RegExp',
 };
 
 export default function InputWithMask({ component, eventHandlers, elRef }) {
   const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
-  const {
-    onChangeValue, onValidate, onComplete, onLostFocusEvent,
-    onFocusEvent, onMouseEnter, onMouseLeave
-  } = eventHandlers;
+  const { onChangeValue, onValidate, onComplete } = eventHandlers;
+
+  const [isFocused, setIsFocused] = useState(false);
 
   const options = {
-    mask           : preparedMask(maskType, mask),
+    mask           : usePreparedMask(maskType, mask),
     placeholderChar: placeholderChar || '_',
     lazy,
     prepare        : (value, mask) => {
       const result = onValidate({ value, mask });
 
       return result === undefined ? value : result;
-    }
+    },
   };
   const { ref, value } = useIMask(options, { onComplete: (value, mask) => onComplete({ value, mask }) });
 
@@ -37,26 +40,37 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-inputWithMask', 'form-input', classList) } style={ style }>
-      <input
-        type="text"
-        ref={ ref }
-        id="input-with-mask"
-        placeholder={ placeholder }
-        className="form-input__input"
-        onFocus={ event => onFocusEvent({ event }) }
-        onBlur={ event => onLostFocusEvent({ event }) }
-        onMouseEnter={ event => onMouseEnter({ event }) }
-        onMouseLeave={ event => onMouseLeave({ event }) }
-      />
-      { placeholder && (
-        <label htmlFor="input-with-mask" className="form-input__placeholder">{ placeholder }</label>
-      ) }
+    <div
+      ref={ elRef }
+      className={ cn('bl-customComponent-input-with-mask', 'bl-customComponent-input-with-mask--filled', classList) }
+      style={ style }>
+      <div className="input-with-mask">
+        <Placeholder
+          value={ value }
+          isFocused={ isFocused }
+          placeholder={ placeholder }
+          htmlFor="input_field"
+        />
+
+        <div className="input-with-mask__text-field">
+          <Input
+            ref={ ref }
+            htmlFor="input_field"
+            eventHandlers={ eventHandlers }
+            setIsFocused={ setIsFocused }
+          />
+          <Fieldset
+            placeholder={ placeholder }
+            value={ value }
+            isFocused={ isFocused }
+          />
+        </div>
+      </div>
     </div>
   );
 }
 
-const preparedMask = (maskType, mask) => useMemo(() => {
+const usePreparedMask = (maskType, mask) => useMemo(() => {
   if ((maskType === MaskTypes.STRING || maskType === MaskTypes.NUMBER) && mask) {
     return mask;
   }
