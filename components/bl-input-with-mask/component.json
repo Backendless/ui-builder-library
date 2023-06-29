@@ -31,7 +31,8 @@
           "label": "RegExp"
         }
       ],
-      "handlerDescription": "This is a handler for the logic to determine type of mask(Number, String, RegExp)."
+      "handlerDescription": "This is a handler for the logic to determine type of mask(Number, String, RegExp).",
+      "settingTooltip": "Allows select type of mask(Number, String, RegExp).  "
     },
     {
       "type": "text",
@@ -41,7 +42,8 @@
       "hasLogicHandler": true,
       "handlerId": "maskLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine mask."
+      "handlerDescription": "This is a handler for the logic to determine mask.",
+      "settingTooltip": "Allows to specify the mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp. "
     },
     {
       "type": "text",
@@ -51,7 +53,8 @@
       "handlerId": "placeholderLogic",
       "dataBinding": true,
       "label": "Placeholder",
-      "handlerDescription": "This is a handler for the logic to determine a placeholder."
+      "handlerDescription": "This is a handler for the logic to determine a placeholder.",
+      "settingTooltip": "Allows to specify placeholder."
     },
     {
       "type": "text",
@@ -63,7 +66,8 @@
       "handlerId": "placeholderCharLogic",
       "handlerLabel": "Placeholder Char Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine a placeholder character."
+      "handlerDescription": "This is a handler for the logic to determine a placeholder character.",
+      "settingTooltip": "Allows to specify placeholder char. If it is left empty, the default value will be `_`."
     },
     {
       "type": "checkbox",
@@ -72,7 +76,35 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "lazyLogic",
-      "handlerDescription": "This is a handler for the logic to determine a lazy. If lazy is true mask is not visible, and if lazy is false mask visible, but if the mask is visible, the input value includes the mask."
+      "handlerDescription": "This is a handler for the logic to determine a lazy. If lazy is true mask is not visible, and if lazy is false mask visible, but if the mask is visible, the input value includes the mask.",
+      "settingTooltip": " Allows to specify lazy or not lazy. Lazy it's when the input doesn't display the template of the mask. For example, Mask: `000 000 000`, Placeholder Char: `_`, Lazy: `checked` input will be empty, but if Lazy: `unchecked` input will be `___ ___ ___` "
+    },
+    {
+      "type": "select",
+      "name": "variant",
+      "label": "Variant",
+      "showInSettings": true,
+      "defaultValue": "standard",
+      "hasLogicHandler": true,
+      "handlerId": "variantLogic",
+      "handlerLabel": "Variant Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to choose one of three style variants - outlined, standard, or filled.",
+      "settingTooltip": "Allows to choose one of three style variants - outlined, standard, or filled."
     }
   ],
   "eventHandlers": [

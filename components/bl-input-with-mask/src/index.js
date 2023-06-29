@@ -14,7 +14,7 @@ const MaskTypes = {
 };
 
 export default function InputWithMask({ component, eventHandlers, elRef }) {
-  const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy } = component;
+  const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy, variant } = component;
   const { onChangeValue, onValidate, onComplete } = eventHandlers;
 
   const [isFocused, setIsFocused] = useState(false);
@@ -29,7 +29,7 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
       return result === undefined ? value : result;
     },
   };
-  const { ref, value } = useIMask(options, { onComplete: (value, mask) => onComplete({ value, mask }) });
+  const { ref: inputRef, value } = useIMask(options, { onComplete: (value, mask) => onComplete({ value, mask }) });
 
   useEffect(() => {
     onChangeValue({ value });
@@ -42,9 +42,13 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
   return (
     <div
       ref={ elRef }
-      className={ cn('bl-customComponent-input-with-mask', 'bl-customComponent-input-with-mask--filled', classList) }
+      className={ cn(
+        'bl-customComponent-input-with-mask',
+        `bl-customComponent-input-with-mask--${ variant }`,
+        classList
+      ) }
       style={ style }>
-      <div className="input-with-mask">
+      <div className={ cn('input-with-mask', { 'input-with-mask--focused': isFocused || value }) }>
         <Placeholder
           value={ value }
           isFocused={ isFocused }
@@ -52,9 +56,9 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
           htmlFor="input_field"
         />
 
-        <div className="input-with-mask__text-field">
+        <div className={ cn('input-with-mask__text-field', { 'input-with-mask__text-field--focused': isFocused }) }>
           <Input
-            ref={ ref }
+            inputRef={ inputRef }
             htmlFor="input_field"
             eventHandlers={ eventHandlers }
             setIsFocused={ setIsFocused }

@@ -1,4 +1,4 @@
-export const Input = ({ ref, htmlFor, placeholder, eventHandlers, setIsFocused }) => {
+export const Input = ({ inputRef, htmlFor, eventHandlers, setIsFocused }) => {
   const { onFocusEvent, onLostFocusEvent, onMouseEnter, onMouseLeave } = eventHandlers;
 
   const onFocusHandler = event => {
@@ -12,17 +12,15 @@ export const Input = ({ ref, htmlFor, placeholder, eventHandlers, setIsFocused }
   };
 
   return (
-    <div className="input-with-mask__conteiner">
-      <input
-        type="text"
-        ref={ ref }
-        id={ htmlFor }
-        className="input-with-mask__field"
-        onFocus={ onFocusHandler }
-        onBlur={ onBlurHandler }
-        onMouseEnter={ event => onMouseEnter({ event }) }
-        onMouseLeave={ event => onMouseLeave({ event }) }
-      />
-    </div>
+    <input
+      type="text"
+      ref={ inputRef }
+      id={ htmlFor }
+      className="input-with-mask__field"
+      onFocus={ onFocusHandler }
+      onBlur={ onBlurHandler }
+      onMouseEnter={ event => onMouseEnter({ event }) }
+      onMouseLeave={ event => onMouseLeave({ event }) }
+    />
   );
 };
