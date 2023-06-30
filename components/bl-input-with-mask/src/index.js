@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { Fieldset } from './fieldset';
-import { Input } from './input';
-import { Placeholder } from './placeholder';
 import useIMask from './react-imask';
+import { Fieldset, Input, Placeholder } from './subcomponent';
 
 const { cn } = BackendlessUI.CSSUtils;
 

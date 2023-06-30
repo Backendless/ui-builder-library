@@ -1,3 +1,6 @@
+@bl-customComponent-input-with-mask-focused-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+@bl-customComponent-input-with-mask-underline-hover-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
 .bl-customComponent-input-with-mask {
   position: relative;
 
@@ -19,9 +22,9 @@
       overflow: hidden;
       left: 0;
       top: 0;
-      transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-      transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-      max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+      transition: color 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms,
+      transform 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms,
+      max-width 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
       z-index: 1;
       pointer-events: none;
       line-height: 1;
@@ -63,13 +66,13 @@
       max-width: 0;
       padding: 0;
       visibility: hidden;
-      transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+      transition: max-width 50ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
       white-space: nowrap;
 
       &--with-label {
         max-width: 100%;
         padding: 0 5px;
-        transition: max-width 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
+        transition: max-width 100ms @bl-customComponent-input-with-mask-focused-transition-timing-function 50ms;
       }
     }
   }
@@ -104,11 +107,11 @@
           box-shadow: @inputOutlinedShadowHover;
         }
 
-        input:-webkit-autofill:hover {
-          -webkit-text-fill-color: @inputOutlinedAutofillColorHover;
+        input:autofill:hover {
+          text-fill-color: @inputOutlinedAutofillColorHover;
           transition: background-color 5000s ease-in-out 0s;
           caret-color: @inputOutlinedAutofillColorHover;
-          -webkit-box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColorHover inset;
+          box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColorHover inset;
         }
 
         background-color: @inputOutlinedBackgroundHover;
@@ -121,11 +124,11 @@
           box-shadow: @inputOutlinedShadowActive;
         }
 
-        input:-webkit-autofill:focus {
-          -webkit-text-fill-color: @inputOutlinedAutofillColorActive;
+        input:autofill:focus {
+          text-fill-color: @inputOutlinedAutofillColorActive;
           transition: background-color 5000s ease-in-out 0s;
           caret-color: @inputOutlinedAutofillColorActive;
-          -webkit-box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColorActive inset;
+          box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColorActive inset;
         }
 
         background-color: @inputOutlinedBackgroundActive;
@@ -137,11 +140,11 @@
         box-shadow: @inputOutlinedShadow;
       }
 
-      input:-webkit-autofill {
-        -webkit-text-fill-color: @inputOutlinedAutofillColor;
+      input:autofill {
+        text-fill-color: @inputOutlinedAutofillColor;
         transition: background-color 5000s ease-in-out 0s;
         caret-color: @inputOutlinedAutofillColor;
-        -webkit-box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColor inset;
+        box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColor inset;
       }
 
       background-color: @inputOutlinedBackground;
@@ -192,11 +195,11 @@
     }
 
     &__text-field {
-      input:-webkit-autofill {
-        -webkit-text-fill-color: @inputFilledAutofillColor;
+      input:autofill {
+        text-fill-color: @inputFilledAutofillColor;
         transition: background-color 5000s ease-in-out 0s;
         caret-color: @inputFilledAutofillColor;
-        -webkit-box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColor inset;
+        box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColor inset;
       }
 
       border-radius: @inputFilledBorderRadiusTopLeft @inputFilledBorderRadiusTopRight @inputFilledBorderRadiusBottomRight @inputFilledBorderRadiusBottomLeft;
@@ -213,7 +216,7 @@
         bottom: 0;
         content: "\00a0";
         position: absolute;
-        transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: border-bottom-color 200ms @bl-customComponent-input-with-mask-underline-hover-transition-timing-function 0ms;
         border-bottom: 1px solid rgba(0, 0, 0, 0.42);
         pointer-events: none;
       }
@@ -225,17 +228,17 @@
         content: "";
         position: absolute;
         transform: scaleX(0);
-        transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+        transition: transform 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
         border-bottom: @inputFilledUnderline;
         pointer-events: none;
       }
 
       &--focused {
-        input:-webkit-autofill:focus {
-          -webkit-text-fill-color: @inputFilledAutofillColorActive;
+        input:autofill:focus {
+          text-fill-color: @inputFilledAutofillColorActive;
           transition: background-color 5000s ease-in-out 0s;
           caret-color: @inputFilledAutofillColorActive;
-          -webkit-box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColorActive inset;
+          box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColorActive inset;
         }
 
         border: @inputFilledBorderActive;
@@ -249,11 +252,11 @@
       }
 
       &:not(&--focused):hover {
-        input:-webkit-autofill:hover {
-          -webkit-text-fill-color: @inputFilledAutofillColorHover;
+        input:autofill:hover {
+          text-fill-color: @inputFilledAutofillColorHover;
           transition: background-color 5000s ease-in-out 0s;
           caret-color: @inputFilledAutofillColorHover;
-          -webkit-box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColorHover inset;
+          box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColorHover inset;
         }
 
         border: @inputFilledBorderHover;
@@ -311,8 +314,8 @@
     &__text-field {
       position: relative;
 
-      input:-webkit-autofill {
-        -webkit-text-fill-color: @inputStandardAutofillColor;
+      input:autofill {
+        text-fill-color: @inputStandardAutofillColor;
         transition: background-color 5000s ease-in-out 0s;
         caret-color: @inputStandardAutofillColor;
       }
@@ -328,7 +331,7 @@
         bottom: 0;
         content: "\00a0";
         position: absolute;
-        transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: border-bottom-color 200ms @bl-customComponent-input-with-mask-underline-hover-transition-timing-function 0ms;
         border-bottom: @inputStandardUnderline;
         pointer-events: none;
       }
@@ -340,14 +343,14 @@
         content: "";
         position: absolute;
         transform: scaleX(0);
-        transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+        transition: transform 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
         border-bottom: @inputStandardUnderlineActive;
         pointer-events: none;
       }
 
       &:hover:not(&--focused) {
-        input:-webkit-autofill:hover {
-          -webkit-text-fill-color: @inputStandardAutofillColorHover;
+        input:autofill:hover {
+          text-fill-color: @inputStandardAutofillColorHover;
           transition: background-color 5000s ease-in-out 0s;
           caret-color: @inputStandardAutofillColorHover;
         }
@@ -361,8 +364,8 @@
       }
 
       &--focused {
-        input:-webkit-autofill:focus {
-          -webkit-text-fill-color: @inputStandardAutofillColorActive;
+        input:autofill:focus {
+          text-fill-color: @inputStandardAutofillColorActive;
           transition: background-color 5000s ease-in-out 0s;
           caret-color: @inputStandardAutofillColorActive;
         }
