@@ -31,18 +31,6 @@ Weather is the component that can be used in Backendless [UI-Builder](https://ba
 |---------|--------|---------------|----------|------------------------------------------|
 | API_KEY | *Text* |               | YES      | API key needed to use Weather component. |
 
-## Before Usage
-
-Before usage, you need:
-
-1. Create an account if you don't have on [OpenWeather](https://openweathermap.org/).
-2. Get your API key for use the component. More information about obtaining a key can be found [here](https://openweathermap.org/appid).
-3. Next, in the SETTINGS of the UI-Builder, set the received API key in a special field(as shown in the example below). The component is ready to go.
-
-<p align="center">
-  <img src="./example-images/settings.png" alt="settings" width="780"/>
-</p>
-
 ## Styles
 
 **Dimensions**
@@ -75,6 +63,27 @@ Before usage, you need:
   "containerDropShadow": "0px 3px 6px 0px rgba(50, 50, 50, 0.5)"
 }
 ```
+
+## Before Usage
+
+Before usage, you need:
+
+1. Create an account if you don't have on [OpenWeather](https://openweathermap.org/).
+2. Get your API key for use the component. More information about obtaining a key can be found [here](https://openweathermap.org/appid).
+3. Next, in the SETTINGS of the UI-Builder, set the received API key in a special field(as shown in the example below). The component is ready to go.
+
+<p align="center">
+  <img src="./example-images/settings.png" alt="settings" width="780"/>
+</p>
+
+## Possible problems and solutions
+
+If you got the error 401:
+- make sure you have specified the API key in settings;
+- make sure your API key is active (personal account - My API Keys);
+- after creating a new API key, it may take some time to activate it (within the next few hours it will be activated and ready to use).
+
+This case and other possible API errors are described [here](https://openweathermap.org/faq#api-errors).
 
 ## Examples
 
