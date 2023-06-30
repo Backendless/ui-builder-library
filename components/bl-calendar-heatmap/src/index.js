@@ -47,19 +47,19 @@ export default function CalendarHeatmapComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     if (propMaxCount === null) {
-      setMaxCount(getMaxMinCalendarCount(calendarData).maxCount);
+      setMaxCount(getMaxMinCalendarCount(newCalendarData).maxCount);
     } else {
       setMaxCount(propMaxCount);
     }
-  }, [propMaxCount, calendarData]);
+  }, [propMaxCount, newCalendarData]);
 
   useEffect(() => {
     if (propMinCount === null) {
-      setMinCount(getMaxMinCalendarCount(calendarData).minCount);
+      setMinCount(getMaxMinCalendarCount(newCalendarData).minCount);
     } else {
       setMinCount(propMinCount);
     }
-  }, [propMinCount, calendarData]);
+  }, [propMinCount, newCalendarData]);
 
   useEffect(() => {
     if (ref.current && legendRef.current) {
