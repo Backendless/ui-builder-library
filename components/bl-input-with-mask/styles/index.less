@@ -1,70 +1,382 @@
-// you can use LESS variables from the current Theme and app extensions of the UI-Container
-@bl-customComponent-inputWithMask-themeColor: @themePrimary;
-@bl-customComponent-inputWithMask-backgroundColor: @appBackgroundColor;
-@bl-customComponent-inputWithMask-textColor: @appTextColor;
+@bl-customComponent-input-with-mask-focused-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+@bl-customComponent-input-with-mask-underline-hover-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-.bl-customComponent-inputWithMask {
-  &.form-input {
-    position: relative;
+.bl-customComponent-input-with-mask {
+  position: relative;
+
+  .input-with-mask {
+    vertical-align: top;
     width: 100%;
-    margin-top: calc(1.2em + 8px);
 
-    .form-input__input {
+    &__text-field {
       width: 100%;
-      height: 1.2em;
+      cursor: text;
+    }
 
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: @bl-customComponent-inputWithMask-textColor;
+    &__label {
+      position: absolute;
+      display: block;
+      padding: 0;
+      transform-origin: left top;
+      white-space: nowrap;
+      overflow: hidden;
+      left: 0;
+      top: 0;
+      transition: color 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms,
+      transform 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms,
+      max-width 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
+      z-index: 1;
+      pointer-events: none;
+      line-height: 1;
+      letter-spacing: 0.00938em;
+    }
 
-      padding: 0px;
-
-      outline: none;
-
+    &__field {
+      font: inherit;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
       border: 0;
-      border-bottom: 1px solid gray;
-      background: transparent;
-      transition: 0.3s;
+      flex-grow: 1;
 
-      &::placeholder {
-        opacity: 0;
-      }
+      background: none;
 
       &:focus {
-        border-bottom: 1px solid @bl-customComponent-inputWithMask-themeColor
-      }
-
-      &:hover {
-        border-width: 2px;
+        outline: 0;
       }
     }
 
-    .form-input__placeholder {
+    &__fieldset {
       position: absolute;
-      left: 0px;
-      top: 50%;
-
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.4375em;
-      letter-spacing: 0.00938em;
-      color: gray;
-
-      user-select: none;
-      z-index: 1;
-      transition: 0.3s;
-      transform: translateY(-50%);
+      text-align: left;
+      border-radius: inherit;
+      margin: 0;
+      inset: -5px 0 0;
+      pointer-events: none;
+      padding: 0 8px;
+      overflow: hidden;
     }
 
-    .form-input__input:focus + .form-input__placeholder {
-      color: @bl-customComponent-inputWithMask-themeColor;
+    &__legend {
+      float: unset;
+      overflow: hidden;
+      display: block;
+      font-size: 12px;
+      width: auto;
+      max-width: 0;
+      padding: 0;
+      visibility: hidden;
+      transition: max-width 50ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
+      white-space: nowrap;
+
+      &--with-label {
+        max-width: 100%;
+        padding: 0 5px;
+        transition: max-width 100ms @bl-customComponent-input-with-mask-focused-transition-timing-function 50ms;
+      }
+    }
+  }
+}
+
+.bl-customComponent-input-with-mask--outline {
+  .input-with-mask {
+    &__label {
+      color: @inputOutlinedLabelColor;
+      font-size: @inputOutlinedLabelFontSize;
+      font-family: @inputOutlinedFontFamily;
+
+      transform: translate(14px, 20px) scale(1);
+
+      &:hover:not(&--focused) {
+        color: @inputOutlinedLabelColorHover;
+      }
+
+      &--focused {
+        color: @inputOutlinedLabelColorActive;
+      }
+
+      &--move-up {
+        transform: translate(14px, -6px) scale(0.75);
+      }
     }
 
-    .form-input__input:focus + .form-input__placeholder,
-    .form-input__input:not(:placeholder-shown) + .form-input__placeholder {
-      top: 0;
-      font-size: 0.8rem;
-      transform: translateY(-130%);
+    &__text-field {
+      &:not(&--focused):hover {
+        fieldset {
+          border: @inputOutlinedBorderHover;
+          box-shadow: @inputOutlinedShadowHover;
+        }
+
+        input:autofill:hover {
+          text-fill-color: @inputOutlinedAutofillColorHover;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: @inputOutlinedAutofillColorHover;
+          box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColorHover inset;
+        }
+
+        background-color: @inputOutlinedBackgroundHover;
+        color: @inputOutlinedColorHover;
+      }
+
+      &--focused {
+        fieldset {
+          border: @inputOutlinedBorderActive;
+          box-shadow: @inputOutlinedShadowActive;
+        }
+
+        input:autofill:focus {
+          text-fill-color: @inputOutlinedAutofillColorActive;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: @inputOutlinedAutofillColorActive;
+          box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColorActive inset;
+        }
+
+        background-color: @inputOutlinedBackgroundActive;
+        color: @inputOutlinedColorActive;
+      }
+
+      fieldset {
+        border: @inputOutlinedBorder;
+        box-shadow: @inputOutlinedShadow;
+      }
+
+      input:autofill {
+        text-fill-color: @inputOutlinedAutofillColor;
+        transition: background-color 5000s ease-in-out 0s;
+        caret-color: @inputOutlinedAutofillColor;
+        box-shadow: 0 0 0 30px @inputOutlinedAutofillBackgroundColor inset;
+      }
+
+      background-color: @inputOutlinedBackground;
+      color: @inputOutlinedColor;
+      font-size: @inputOutlinedFontSize;
+      font-family: @inputOutlinedFontFamily;
+    }
+
+    &__field {
+      color: currentColor;
+      background-color: transparent;
+      padding: 18.5px 14px;
+    }
+
+    fieldset {
+      border-radius: @inputOutlinedBorderRadiusTopLeft @inputOutlinedBorderRadiusTopRight @inputOutlinedBorderRadiusBottomRight @inputOutlinedBorderRadiusBottomLeft;
+    }
+  }
+}
+
+.bl-customComponent-input-with-mask--filled {
+  .input-with-mask {
+    &__field {
+      padding: 27px 12px 10px;
+      color: @inputFilledColor;
+    }
+
+    &__label {
+      color: @inputFilledLabelColor;
+      font-size: @inputFilledLabelFontSize;
+      font-family: @inputFilledFontFamily;
+
+      transform: translate(13px, 20px) scale(1);
+
+      &--move-up {
+        color: @inputFilledLabelColorActive;
+
+        transform: translate(13px, 10px) scale(0.75);
+      }
+
+      &:not(.input-with-mask--focused):hover {
+        color: @inputFilledLabelColorHover;
+      }
+    }
+
+    &__fieldset {
+      border: 0;
+    }
+
+    &__text-field {
+      input:autofill {
+        text-fill-color: @inputFilledAutofillColor;
+        transition: background-color 5000s ease-in-out 0s;
+        caret-color: @inputFilledAutofillColor;
+        box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColor inset;
+      }
+
+      border-radius: @inputFilledBorderRadiusTopLeft @inputFilledBorderRadiusTopRight @inputFilledBorderRadiusBottomRight @inputFilledBorderRadiusBottomLeft;
+      border: @inputFilledBorder;
+      box-shadow: @inputFilledShadow;
+      background-color: @inputFilledBackground;
+      color: @inputFilledColor;
+      font-size: @inputFilledFontSize;
+      font-family: @inputFilledFontFamily;
+
+      &::before {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "\00a0";
+        position: absolute;
+        transition: border-bottom-color 200ms @bl-customComponent-input-with-mask-underline-hover-transition-timing-function 0ms;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+        pointer-events: none;
+      }
+
+      &::after {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "";
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
+        border-bottom: @inputFilledUnderline;
+        pointer-events: none;
+      }
+
+      &--focused {
+        input:autofill:focus {
+          text-fill-color: @inputFilledAutofillColorActive;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: @inputFilledAutofillColorActive;
+          box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColorActive inset;
+        }
+
+        border: @inputFilledBorderActive;
+        box-shadow: @inputFilledShadowActive;
+        background-color: @inputFilledBackgroundActive;
+        color: @inputFilledColorActive;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+
+      &:not(&--focused):hover {
+        input:autofill:hover {
+          text-fill-color: @inputFilledAutofillColorHover;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: @inputFilledAutofillColorHover;
+          box-shadow: 0 0 0 30px @inputFilledAutofillBackgroundColorHover inset;
+        }
+
+        border: @inputFilledBorderHover;
+        box-shadow: @inputFilledShadowHover;
+        background-color: @inputFilledBackgroundHover;
+        color: @inputFilledColorHover;
+
+        &::before {
+          border-bottom: 1px solid rgba(0, 0, 0, 1);
+        }
+      }
+    }
+  }
+}
+
+.bl-customComponent-input-with-mask--standard {
+  &.bl-customComponent-input-with-mask {
+    background-color: transparent;
+  }
+
+  .input-with-mask {
+    &__field {
+      padding: 6px 0 7px;
+      color: currentColor;
+    }
+
+    &__text-field {
+      margin-top: 16px;
+    }
+
+    &__label {
+      color: @inputStandardLabelColor;
+      font-size: @inputStandardLabelFontSize;
+      font-family: @inputStandardFontFamily;
+
+      transform: translate(0px, 22px) scale(1);
+
+      &--focused {
+        color: @inputStandardLabelColorActive;
+      }
+
+      &--move-up {
+        transform: translate(0px, 0.5px) scale(0.75);
+      }
+
+      &:hover:not(&--focused) {
+        color: @inputStandardLabelColorHover;
+      }
+    }
+
+    &__fieldset {
+      border: 0;
+    }
+
+    &__text-field {
+      position: relative;
+
+      input:autofill {
+        text-fill-color: @inputStandardAutofillColor;
+        transition: background-color 5000s ease-in-out 0s;
+        caret-color: @inputStandardAutofillColor;
+      }
+
+      box-shadow: @inputStandardShadow;
+      color: @inputStandardColor;
+      font-size: @inputStandardFontSize;
+      font-family: @inputStandardFontFamily;
+
+      &::before {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "\00a0";
+        position: absolute;
+        transition: border-bottom-color 200ms @bl-customComponent-input-with-mask-underline-hover-transition-timing-function 0ms;
+        border-bottom: @inputStandardUnderline;
+        pointer-events: none;
+      }
+
+      &::after {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "";
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform 200ms @bl-customComponent-input-with-mask-focused-transition-timing-function 0ms;
+        border-bottom: @inputStandardUnderlineActive;
+        pointer-events: none;
+      }
+
+      &:hover:not(&--focused) {
+        input:autofill:hover {
+          text-fill-color: @inputStandardAutofillColorHover;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: @inputStandardAutofillColorHover;
+        }
+
+        &::before {
+          border-bottom: @inputStandardUnderlineHover;
+        }
+
+        box-shadow: @inputStandardShadowHover;
+        color: @inputStandardColorHover;
+      }
+
+      &--focused {
+        input:autofill:focus {
+          text-fill-color: @inputStandardAutofillColorActive;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: @inputStandardAutofillColorActive;
+        }
+
+        box-shadow: @inputStandardShadowActive;
+        color: @inputStandardColorActive;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
     }
   }
 }
