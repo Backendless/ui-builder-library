@@ -7,7 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function CategoryChartComponent({ component, elRef }) {
   const {
     classList, display, style, disabled, height, width, type,
-    chartTitleVisibility, chartTitle, chartTitleFontSize, chartBackgroundColor,
+    chartTitleVisibility, chartTitle, chartTitleFontSize, chartBackgroundColor, chartLegendVisibility,
     yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth, labels, datasets, options
   } = component;
 
@@ -29,6 +29,10 @@ export default function CategoryChartComponent({ component, elRef }) {
   });
 
   const styles = { ...style, width, height };
+
+  if (!chartLegendVisibility) {
+    Chart.defaults.plugins.legend.display = false;
+  }
 
   if (!display) {
     return null;
