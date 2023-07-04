@@ -31,10 +31,8 @@ export default function CategoryChartComponent({ component, elRef }) {
   const styles = { ...style, width, height };
 
   useEffect(() => {
-    if (!chartLegendVisibility) {
-      Chart.defaults.plugins.legend.display = false;
-    }
-  }, [chartLegendVisibility]);
+    Chart.defaults.plugins.legend.display = chartLegendVisibility;
+  }, []);
 
   if (!display) {
     return null;
