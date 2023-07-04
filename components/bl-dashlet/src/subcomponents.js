@@ -5,23 +5,22 @@ import { ContextBlockItemTypes, StyleVariants } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function ContextMenu({ contextBlocks, contextBlocksHandler, styleVariant }) {
-  const [isContextOpen, setIsContextOpen] = useState(false);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const contextMenuRef = useRef(null);
 
-  const onContextBlockButtonClick = () => setIsContextOpen(state => !state);
+  const onContextMenuButtonClick = () => setIsMenuOpen(state => !state);
 
-  const { sides, isChecked } = useContextMenuPositionHandler(contextMenuRef, isContextOpen);
+  const { sides, isChecked } = useContextMenuPositionHandler(contextMenuRef, isMenuOpen);
 
-  useClickOutsideHandler(contextMenuRef, () => setIsContextOpen(false));
+  useClickOutsideHandler(contextMenuRef, () => setIsMenuOpen(false));
 
   return (
     <div className="dashlet__context-menu context-menu">
-      <button className="context-menu__button" onClick={ onContextBlockButtonClick }>
+      <button className="context-menu__button" onClick={ onContextMenuButtonClick }>
         <ContextBlockButtonIcon styleVariant={ styleVariant }/>
       </button>
 
-      { isContextOpen && (
+      { isMenuOpen && (
         <div
           ref={ contextMenuRef }
           className={ cn('context-menu__container', sides) }
@@ -60,28 +59,28 @@ function useClickOutsideHandler(ref, handler) {
   });
 }
 
-function useContextMenuPositionHandler(contextMenuRef, isContextOpen) {
-  const [sides, setSides] = useState([]);
+function useContextMenuPositionHandler(contextMenuRef, isMenuOpen) {
+  const [sides, setSides] = useState({ left: false, top: false });
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    if (contextMenuRef.current && isContextOpen) {
+    if (contextMenuRef.current && isMenuOpen) {
       const { bottom, right } = contextMenuRef.current.getBoundingClientRect();
 
       if (right > window.innerWidth) {
-        setSides(state => [...state, 'left']);
+        sides.left = true;
       }
 
       if (bottom > window.innerHeight) {
-        setSides(state => [...state, 'top']);
+        sides.top = true;
       }
 
       setIsChecked(true);
     } else {
-      setSides([]);
+      setSides({ left: false, top: false });
       setIsChecked(false);
     }
-  }, [contextMenuRef, isContextOpen]);
+  }, [contextMenuRef, isMenuOpen]);
 
   return { sides, isChecked };
 }
@@ -140,7 +139,7 @@ export function CollapseButtonIcon({ isOpen, styleVariant }) {
   return (
     <svg
       className={ cn('dashlet__collapse-button-icon', StyleVariants[styleVariant]) }
-      style={ { transform: isOpen ? 'rotate(0deg)' : 'rotate(-90deg)' } }
+      style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(-90deg)' }}
       viewBox="0 0 24 24">
       <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
     </svg>
