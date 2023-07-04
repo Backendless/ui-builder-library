@@ -142,6 +142,16 @@
         box-shadow: rgba(255, 255, 255, 0.2) 0 2px 1px -1px, rgba(255, 255, 255, 0.14) 0px 1px 1px 0px, rgba(255, 255, 255, 0.12) 0px 1px 3px 0px;
         border-radius: @bl-customComponent-dashlet-border-radius;
         border: 1px solid @themePrimary;
+
+        &.top {
+          bottom: 100%;
+          top: auto;
+        }
+
+        &.left {
+          right: 0;
+          left: auto;
+        }
       }
 
       &__button {
