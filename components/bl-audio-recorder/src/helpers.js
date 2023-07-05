@@ -1,19 +1,19 @@
 import { Icons } from './icons';
 
 const Labels = {
-  START    : 'Start Record',
-  STOP     : 'Stop Record',
-  PAUSE    : 'Pause',
-  RESUME   : 'Resume',
-  DOWNLOAD : 'Download Recorded',
+  START   : 'Start Record',
+  STOP    : 'Stop Record',
+  PAUSE   : 'Pause',
+  RESUME  : 'Resume',
+  DOWNLOAD: 'Download Recorded',
 };
 
-export const download = (blob, fileName, fileType) => {
+export const download = (blob, fileName) => {
   const link = document.createElement('a');
 
   link.style.display = 'none';
   link.href = URL.createObjectURL(blob);
-  link.download = `${ fileName }.${ fileType.toLowerCase() }`;
+  link.download = `${ fileName }.webm`;
 
   document.body.appendChild(link);
   link.click();
