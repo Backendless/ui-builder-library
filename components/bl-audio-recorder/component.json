@@ -78,38 +78,6 @@
       "settingTooltip": "Set the name of the recorded file."
     },
     {
-      "type": "select",
-      "name": "fileType",
-      "label": "File Type",
-      "showInSettings": true,
-      "defaultValue": "MP3",
-      "hasLogicHandler": false,
-      "handlerId": "fileTypeLogic",
-      "options": [
-        {
-          "value": "MP3",
-          "label": "mp3"
-        },
-        {
-          "value": "WEBM",
-          "label": "webm"
-        },
-        {
-          "value": "WAV",
-          "label": "wav"
-        },
-        {
-          "value": "MPEG",
-          "label": "mpeg"
-        },
-        {
-          "value": "OGG",
-          "label": "ogg"
-        }
-      ],
-      "settingTooltip": "Choose the type of the recorded file."
-    },
-    {
       "type": "text",
       "name": "width",
       "label": "Width",
