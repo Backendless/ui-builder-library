@@ -18,13 +18,14 @@
       "handlerId": "modalVisibilityLogic",
       "handlerLabel": "Modal Visibility Logic",
       "handlerDescription": "This handler allows you to control the visibility of the modal.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "This setting allows you to control the visibility of the modal."
     },
     {
       "type": "checkbox",
       "name": "closeOnEscape",
       "label": "Close On Escape",
-      "settingTooltip": "This handler allows you to add the close of the modal window by pressing Escape or Backdrop.",
+      "settingTooltip": "This setting allows you to add the close of the modal window by pressing Escape or Backdrop.",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": true,
@@ -42,7 +43,34 @@
       "handlerId": "allowScrollingLogic",
       "handlerLabel": "Allow Scrolling Logic",
       "handlerDescription": "This handler allows you to control the page scroll ability when a modal is open.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "By selecting this checkbox, you will be able to scroll through the page that is under the backdrop."
+    },
+    {
+      "type": "text",
+      "name": "contentWidth",
+      "label": "Content Width",
+      "showInSettings": true,
+      "defaultValue": "600px",
+      "hasLogicHandler": true,
+      "handlerId": "contentWidthLogic",
+      "handlerLabel": "Content Width Logic",
+      "handlerDescription": "This handler allows you to specify the width of the modal content.",
+      "dataBinding": true,
+      "settingTooltip": "This setting allows you to specify max width of the modal content. Scrolling will occur if you pass any component whose width exceeds the Content Width."
+    },
+    {
+      "type": "text",
+      "name": "contentHeight",
+      "label": "Content Height",
+      "showInSettings": true,
+      "defaultValue": "550px",
+      "hasLogicHandler": true,
+      "handlerId": "contentHeightLogic",
+      "handlerLabel": "Content Height Logic",
+      "handlerDescription": "This handler allows you to specify the height of the modal content.",
+      "dataBinding": true,
+      "settingTooltip": "This setting allows you to specify max height of the modal content. Scrolling will occur if you pass any component whose width exceeds the Content Height."
     }
   ],
   "eventHandlers": [
