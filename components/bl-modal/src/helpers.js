@@ -4,12 +4,11 @@ const { normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 const ESCAPE_KEY_CODE = 27;
 
-export function useStyles({ style, backdropWidth, backdropHeight }) {
+export function useModalContentStyles({ contentWidth, contentHeight }) {
   return useMemo(() => ({
-    ...style,
-    width : normalizeDimensionValue(backdropWidth),
-    height: normalizeDimensionValue(backdropHeight)
-  }), [style, backdropWidth, backdropHeight]);
+    width : normalizeDimensionValue(contentWidth),
+    height: normalizeDimensionValue(contentHeight)
+  }), [contentWidth, contentHeight]);
 };
 
 export function useCloseOnEscape({ onClose, visibility, setVisibility, closeOnEscape }) {
