@@ -46,27 +46,29 @@
     },
     {
       "type": "text",
-      "name": "backdropWidth",
-      "label": "Backdrop Width",
+      "name": "contentWidth",
+      "label": "Content Width",
       "showInSettings": true,
-      "defaultValue": "100%",
+      "defaultValue": "600px",
       "hasLogicHandler": true,
-      "handlerId": "backdropWidthLogic",
-      "handlerLabel": "Backdrop Width Logic",
-      "handlerDescription": "This handler allows you to specify the width of a component backdrop.",
-      "dataBinding": true
+      "handlerId": "contentWidthLogic",
+      "handlerLabel": "Content Width Logic",
+      "handlerDescription": "This handler allows you to specify the width of the modal content.",
+      "dataBinding": true,
+      "settingTooltip": "This setting allows you to specify max width of the modal content. Scrolling will occur if you pass any component whose width exceeds the Content Width."
     },
     {
       "type": "text",
-      "name": "backdropHeight",
-      "label": "Backdrop Height",
+      "name": "contentHeight",
+      "label": "Content Height",
       "showInSettings": true,
-      "defaultValue": "100%",
+      "defaultValue": "550px",
       "hasLogicHandler": true,
-      "handlerId": "backdropHeightLogic",
-      "handlerLabel": "Backdrop Height Logic",
-      "handlerDescription": "This handler allows you to specify the height of a component backdrop.",
-      "dataBinding": true
+      "handlerId": "contentHeightLogic",
+      "handlerLabel": "Content Height Logic",
+      "handlerDescription": "This handler allows you to specify the height of the modal content.",
+      "dataBinding": true,
+      "settingTooltip": "This setting allows you to specify max height of the modal content. Scrolling will occur if you pass any component whose width exceeds the Content Height."
     }
   ],
   "eventHandlers": [

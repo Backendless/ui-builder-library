@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-import { useStyles, useCloseOnEscape } from './helpers';
+import { useModalContentStyles, useCloseOnEscape } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function ModalComponent({ component, eventHandlers, pods, elRef }) {
   const {
-    display, classList, style, modalVisibility, closeOnEscape, allowScrolling, backdropWidth, backdropHeight
+    display, classList, style, modalVisibility, closeOnEscape, allowScrolling, contentWidth, contentHeight
   } = component;
   const { onClose } = eventHandlers;
 
@@ -41,7 +41,7 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
     }
   };
 
-  const styles = useStyles({ style, backdropWidth, backdropHeight });
+  const modalContentStyles = useModalContentStyles({ contentWidth, contentHeight });
 
   if (!display || !visibility) {
     return null;
@@ -50,7 +50,7 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   return (
     <div ref={ elRef } style={ styles } className={ cn("bl-customComponent-modal", classList) }>
       <div className="backdrop" onClick={ handleBackdropClick } />
-      <div className="modal-content">{ modalContentPod.render() }</div>
+      <div className="modal-content" style={ modalContentStyles }>{ modalContentPod.render() }</div>
     </div>
   );
 }
