@@ -93,12 +93,12 @@
     },
     {
       "type": "checkbox",
-      "name": "dragging",
-      "label": "Dragging",
+      "name": "draggable",
+      "label": "Draggable",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "draggingLogic",
-      "handlerLabel": "Dragging Logic",
+      "handlerId": "draggableLogic",
+      "handlerLabel": "Draggable Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic of determining whether dragging is allowed or not",
       "settingTooltip": "Allows to determine whether dragging is allowed or not."

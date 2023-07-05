@@ -10,7 +10,7 @@ export const ContextBlockItemTypes = {
   ACTION: 'action',
 };
 
-export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => {
+export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) => {
   const [pressed, setPressed] = useState(false);
 
   const position = useRef({ x: initialPosition.x, y: initialPosition.y });
@@ -18,7 +18,7 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => 
 
   const unsubscribe = useRef();
   const legacyRef = useCallback(elem => {
-    if (dragging) {
+    if (draggable) {
       ref.current = elem;
 
       if (unsubscribe.current) {
@@ -39,14 +39,14 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => 
         elem.removeEventListener('mousedown', handleMouseDown);
       };
     }
-  }, [dragging]);
+  }, [draggable]);
 
   useEffect(() => {
     if (!pressed) {
       return;
     }
 
-    if (dragging) {
+    if (draggable) {
       const handleMouseMove = throttle(event => {
         if (!rootRef.current || !position.current) {
           return;
@@ -78,9 +78,9 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => 
         document.removeEventListener('mouseup', handleMouseUp);
       };
     }
-  }, [pressed, onDrag, dragging]);
+  }, [pressed, onDrag, draggable]);
 
-  if (!dragging) {
+  if (!draggable) {
     return [null];
   }
 
