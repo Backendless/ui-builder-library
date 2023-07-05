@@ -1,28 +1,26 @@
 import { useState } from 'react';
 
-import { Dropzone, FileItem, FullScreenPreview, VideoPreview } from './lib/dropzone-ui.min';
-import { ensureMeasure, useDropzone } from './helpers';
+import { Dropzone, FileMosaic, FullScreen, ImagePreview, VideoPreview } from './lib/files-ui.min';
+import { useDropzone } from './helpers';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function DropzoneComponent({ component, eventHandlers }) {
-  const { display, classList, style, acceptedFileTypes, onDropBehaviour, clickable, footerVisibility } = component;
-  const { headerVisibility, label, language, maxFiles, maxFileSize, minHeight, maxHeight, viewMode } = component;
-  const { disableScrollbar, themeColor, cleanButtonVisibility, showInfoLayer } = component;
-  const { activeItems, preview, borderWidth, borderStyle, borderColor } = component;
-
-  const { onDrop, onChangeView, onClean } = eventHandlers;
+  const { display, classList, style, label, language, showInfoLayer, activeItems } = component;
+  const { themeColor, maxFiles, maxFileSize, minHeight, borderWidth, borderStyle, borderColor } = component;
+  const { footerVisibility, headerVisibility, downloadButtonVisibility, cleanButtonVisibility, preview } = component;
+  const { acceptedFileTypes, onDropBehaviour, clickable, autoClean, disableRipple, disabled } = component;
 
   const [imageSrc, setImageSrc] = useState();
   const [videoSrc, setVideoSrc] = useState();
-  const { files, updateFiles, handleDelete } = useDropzone(component, eventHandlers);
+
+  const { files, updateFiles, handleDelete, handleClean } = useDropzone(component, eventHandlers);
 
   const handleSee = imageSource => setImageSrc(imageSource);
   const handleWatch = videoSource => setVideoSrc(videoSource);
-  const handleClean = validatedFiles => onClean({ validatedFiles });
 
   const borderStyles = {
-    borderWidth: ensureMeasure(borderWidth),
+    borderWidth: normalizeDimensionValue(borderWidth),
     borderStyle,
     borderColor,
   };
@@ -38,50 +36,44 @@ export default function DropzoneComponent({ component, eventHandlers }) {
         onChange={ updateFiles }
         value={ files }
         clickable={ clickable }
+        autoClean={ autoClean }
         onClean={ cleanButtonVisibility ? handleClean : false }
         accept={ acceptedFileTypes }
         maxFileSize={ maxFileSize }
         maxFiles={ maxFiles }
         label={ label }
-        minHeight={ ensureMeasure(minHeight) }
-        maxHeight={ ensureMeasure(maxHeight) }
+        minHeight={ normalizeDimensionValue(minHeight) }
         localization={ language }
-        view={ viewMode === 'unset' ? false : viewMode }
         footer={ footerVisibility }
         header={ headerVisibility }
         behaviour={ onDropBehaviour }
         color={ themeColor }
-        disableScroll={ disableScrollbar }
-        onDrop={ filesList => onDrop({ filesList }) }
-        onChangeView={ viewMode => onChangeView({ viewMode }) }
-      >
+        disableRipple={ disableRipple }
+        disabled={ disabled }>
+
         { files?.map(file => (
-          <FileItem
+          <FileMosaic
             { ...file }
             key={ file.id }
             onDelete={ handleDelete }
-            onSee={ handleSee }
-            onWatch={ handleWatch }
+            onSee={ preview ? handleSee : undefined }
+            onWatch={ preview ? handleWatch : undefined }
             alwaysActive={ activeItems }
             localization={ language }
             preview={ preview }
             info={ showInfoLayer }
-            hd
+            downloadUrl={ downloadButtonVisibility ? URL.createObjectURL(file.file) : undefined }
+            imageUrl={ file.type.match('image.*') && file.file } // fix fullscreen preview for not valid image files
+            videoUrl={ file.type.match('video.*') && file.file } // fix fullscreen preview for video files
           />
         )) }
       </Dropzone>
-      <FullScreenPreview
-        imgSource={ imageSrc }
-        openImage={ imageSrc }
-        onClose={ () => handleSee(undefined) }
-      />
-      <VideoPreview
-        videoSrc={ videoSrc }
-        openVideo={ videoSrc }
-        onClose={ () => handleWatch(undefined) }
-        controls
-        autoplay
-      />
+      <FullScreen open={ imageSrc !== undefined } onClose={ handleSee }>
+        <ImagePreview src={ imageSrc }/>
+      </FullScreen>
+      <FullScreen open={ videoSrc !== undefined } onClose={ handleWatch }>
+        <VideoPreview src={ videoSrc } autoPlay controls/>
+      </FullScreen>
     </div>
   );
 }

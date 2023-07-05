@@ -8,7 +8,7 @@ const UploadStatus = {
 
 export function useDropzone(component, eventHandlers) {
   const { overwriteFiles, targetDirectory, uploadOnDrop } = component;
-  const { onDelete, onChange, fileNameLogic, onUpload, onUploadFailed } = eventHandlers;
+  const { onDelete, onChange, fileNameLogic, onUpload, onUploadFailed, onClean } = eventHandlers;
 
   const [files, setFiles] = useState([]);
 
@@ -66,13 +66,20 @@ export function useDropzone(component, eventHandlers) {
     onDelete({ fileID });
   };
 
-  component.uploadFiles = () => uploadFiles(files);
+  const handleClean = () => {
+    const validatedFiles = files.filter(file => file.valid);
 
-  return { files, updateFiles, handleDelete };
-}
+    setFiles(validatedFiles);
+    onClean({ validatedFiles });
+  };
 
-export function ensureMeasure(dimension) {
-  return String(Number(dimension)) === dimension ? dimension + 'px' : dimension;
+  Object.assign(component, {
+    uploadFiles  : () => uploadFiles(files),
+    cleanFileList: () => handleClean(files),
+    resetFileList: () => setFiles([]),
+  });
+
+  return { files, updateFiles, handleDelete, handleClean };
 }
 
 function ensureExtension(fileName, file) {

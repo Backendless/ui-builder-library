@@ -15,7 +15,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "acceptedFileTypesLogic",
-      "defaultValue": "image/*"
+      "defaultValue": "image/*",
+      "settingTooltip": "The file types that dropzone should accept."
     },
     {
       "type": "text",
@@ -25,7 +26,8 @@
       "hasLogicHandler": true,
       "handlerId": "targetDirectoryLogic",
       "handlerLabel": "Target Directory Logic",
-      "handlerDescription": "This is a handler where you can determine the path of the directory where the file(s) will be uploaded to."
+      "handlerDescription": "This is a handler where you can determine the path of the directory where the file(s) will be uploaded to.",
+      "settingTooltip": "The path of the directory where the file(s) will be uploaded to."
     },
     {
       "type": "number",
@@ -34,7 +36,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "maxFilesLogic",
-      "defaultValue": "5"
+      "defaultValue": "5",
+      "settingTooltip": "Maximum number of files to be accepted."
     },
     {
       "type": "number",
@@ -43,7 +46,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "maxFileSizeLogic",
-      "defaultValue": "102400"
+      "defaultValue": "102400",
+      "settingTooltip": "Maximum file size allowed in bytes."
     },
     {
       "type": "checkbox",
@@ -51,7 +55,8 @@
       "label": "Overwrite Files",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "overwriteFilesLogic"
+      "handlerId": "overwriteFilesLogic",
+      "settingTooltip": "Select to overwrite existing files."
     },
     {
       "type": "text",
@@ -60,7 +65,8 @@
       "showInSettings": true,
       "defaultValue": "Drop Files here or click to browse",
       "hasLogicHandler": false,
-      "handlerId": "labelLogic"
+      "handlerId": "labelLogic",
+      "settingTooltip": "Define the label to place when no files selected."
     },
     {
       "type": "checkbox",
@@ -69,7 +75,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "headerVisibilityLogic"
+      "handlerId": "headerVisibilityLogic",
+      "settingTooltip": "Select to show the header in the dropzone."
     },
     {
       "type": "checkbox",
@@ -78,7 +85,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "footerVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Select to show the footer in the dropzone."
     },
     {
       "type": "select",
@@ -117,7 +125,8 @@
           "value": "ES-es",
           "label": "Spanish"
         }
-      ]
+      ],
+      "settingTooltip": "Select the language to present labels."
     },
     {
       "type": "select",
@@ -136,7 +145,8 @@
           "value": "replace",
           "label": "replace"
         }
-      ]
+      ],
+      "settingTooltip": "Select the behaviour on drop files."
     },
     {
       "type": "checkbox",
@@ -145,7 +155,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "clickableLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Select to open the file dialog after the dropzone is clicked."
     },
     {
       "type": "text",
@@ -154,39 +165,8 @@
       "showInSettings": true,
       "defaultValue": "280px",
       "hasLogicHandler": false,
-      "handlerId": "minHeightLogic"
-    },
-    {
-      "type": "text",
-      "name": "maxHeight",
-      "label": "Max Height",
-      "showInSettings": true,
-      "defaultValue": "450px",
-      "hasLogicHandler": false,
-      "handlerId": "maxHeightLogic"
-    },
-    {
-      "type": "select",
-      "name": "viewMode",
-      "label": "View Mode",
-      "showInSettings": true,
-      "defaultValue": "unset",
-      "hasLogicHandler": false,
-      "handlerId": "viewModeLogic",
-      "options": [
-        {
-          "value": "unset",
-          "label": "unset"
-        },
-        {
-          "value": "grid",
-          "label": "grid"
-        },
-        {
-          "value": "list",
-          "label": "list"
-        }
-      ]
+      "handlerId": "minHeightLogic",
+      "settingTooltip": "The minimum height of the dropzone container."
     },
     {
       "type": "checkbox",
@@ -195,7 +175,26 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "cleanButtonVisibilityLogic"
+      "handlerId": "cleanButtonVisibilityLogic",
+      "settingTooltip": "Select to show the button for cleaning not valid files."
+    },
+    {
+      "type": "checkbox",
+      "name": "autoClean",
+      "label": "Auto Clean",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "autoCleanLogic",
+      "settingTooltip": "Select to automatically remove non valid files."
+    },
+    {
+      "type": "checkbox",
+      "name": "downloadButtonVisibility",
+      "label": "Download Button Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "downloadButtonVisibilityLogic",
+      "settingTooltip": "Select to show the button to download a file."
     },
     {
       "type": "checkbox",
@@ -204,15 +203,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "uploadOnDropLogic",
-      "defaultValue": true
-    },
-    {
-      "type": "checkbox",
-      "name": "disableScrollbar",
-      "label": "Disable Scrollbar",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "disableScrollbarLogic"
+      "defaultValue": true,
+      "settingTooltip": "Select to upload on drop file(s)."
     },
     {
       "type": "color",
@@ -220,7 +212,8 @@
       "label": "Theme Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "themeColorLogic"
+      "handlerId": "themeColorLogic",
+      "settingTooltip": "Set the main color for dropzone labels and borders."
     },
     {
       "type": "checkbox",
@@ -229,7 +222,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "showInfoLayerLogic"
+      "handlerId": "showInfoLayerLogic",
+      "settingTooltip": "Select to show the info layer and the info button for dropzone items."
     },
     {
       "type": "checkbox",
@@ -237,7 +231,8 @@
       "label": "Always Active Items",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "activeItemsLogic"
+      "handlerId": "activeItemsLogic",
+      "settingTooltip": "Select to show all actions and buttons for dropzone items."
     },
     {
       "type": "checkbox",
@@ -246,7 +241,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "previewLogic"
+      "handlerId": "previewLogic",
+      "settingTooltip": "Select to show the preview of valid dropzone items."
     },
     {
       "type": "text",
@@ -255,7 +251,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "borderWidthLogic",
-      "defaultValue": "1px"
+      "defaultValue": "1px",
+      "settingTooltip": "The width of the dropzone border."
     },
     {
       "type": "select",
@@ -286,7 +283,8 @@
           "label": "double"
         }
       ],
-      "defaultValue": "dashed"
+      "defaultValue": "dashed",
+      "settingTooltip": "The style of the dropzone border."
     },
     {
       "type": "color",
@@ -294,7 +292,28 @@
       "label": "Border Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "borderColorLogic"
+      "handlerId": "borderColorLogic",
+      "settingTooltip": "The color of the dropzone border."
+    },
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "settingTooltip": "Select to disable the dropzone.",
+      "handlerDescription": "This is the handler for the logic to determine whether the dropzone should be enabled or disabled. If the handler returns true, the component will be disabled."
+    },
+    {
+      "type": "checkbox",
+      "name": "disableRipple",
+      "label": "Disable Ripple",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "disableRippleLogic",
+      "settingTooltip": "Select to disable a ripple effect every time the user drops files or clicks the dropzone."
     }
   ],
   "eventHandlers": [
@@ -318,28 +337,6 @@
         {
           "id": "filesList",
           "label": "Files List"
-        }
-      ]
-    },
-    {
-      "name": "onDrop",
-      "label": "On Drop Event",
-      "contextBlocks": [
-        {
-          "id": "filesList",
-          "label": "Files List"
-        }
-      ],
-      "handlerDescription": "This event is fired when files are dropped inside the dropzone or selected from file dialog."
-    },
-    {
-      "name": "onChangeView",
-      "label": "On Change View Event",
-      "handlerDescription": "This event is fired when view mode is changed.",
-      "contextBlocks": [
-        {
-          "id": "viewMode",
-          "label": "View Mode"
         }
       ]
     },
@@ -393,6 +390,14 @@
     {
       "id": "uploadFiles",
       "label": "Upload Files from"
+    },
+    {
+      "id": "cleanFileList",
+      "label": "Clean File List in"
+    },
+    {
+      "id": "resetFileList",
+      "label": "Reset File List in"
     }
   ]
 }
