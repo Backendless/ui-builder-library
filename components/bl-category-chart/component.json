@@ -1,5 +1,5 @@
 {
-  "id": "c_c4f766d585f372396136476db06960af",
+  "id": "c_9a1e0ea44247dc473a68c30a9934ecc7",
   "name": "Category Chart",
   "description": "The Category Chart component allows you to display data in the form of charts. You can also choose a chart type.",
   "showInToolbox": true,
@@ -17,7 +17,8 @@
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to disable a component."
+      "handlerDescription": "This handler allows you to disable the component.",
+      "settingTooltip": "Flag indicating whether the component is disabled or enabled by default."
     },
     {
       "type": "text",
@@ -29,7 +30,8 @@
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
       "handlerDescription": "This handler allows you to specify the height of a component.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Component height."
     },
     {
       "type": "text",
@@ -41,14 +43,15 @@
       "handlerId": "widthLogic",
       "handlerLabel": "Width Logic",
       "handlerDescription": "This handler allows you to specify the width of a component.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Component width."
     },
     {
       "type": "select",
       "name": "type",
       "label": "Type",
       "showInSettings": true,
-      "defaultValue": "line",
+      "defaultValue": "bar",
       "hasLogicHandler": false,
       "handlerId": "typeLogic",
       "options": [
@@ -64,7 +67,8 @@
           "value": "pie",
           "label": "Pie"
         }
-      ]
+      ],
+      "settingTooltip": "Select a chart type."
     },
     {
       "type": "checkbox",
@@ -73,7 +77,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "chartTitleVisibilityLogic"
+      "handlerId": "chartTitleVisibilityLogic",
+      "settingTooltip": "Flag indicating whether the chart title is hidden or displayed by default."
     },
     {
       "type": "number",
@@ -82,7 +87,8 @@
       "showInSettings": true,
       "defaultValue": "20",
       "hasLogicHandler": false,
-      "handlerId": "chartTitleFontSizeLogic"
+      "handlerId": "chartTitleFontSizeLogic",
+      "settingTooltip": "The font size of the chart title."
     },
     {
       "type": "text",
@@ -91,20 +97,31 @@
       "showInSettings": true,
       "defaultValue": "Fruit sale",
       "hasLogicHandler": false,
-      "handlerId": "chartTitleLogic"
+      "handlerId": "chartTitleLogic",
+      "settingTooltip": "Title of the chart."
     },
     {
       "type": "color",
       "name": "chartBackgroundColor",
       "label": "Chart Background Color",
-      "settingTooltip": "the background color of the chart will be whatever you specify using this handler",
+      "settingTooltip": "Background color of the chart.",
       "showInSettings": true,
       "defaultValue": "rgba(163,182,218,0.13)",
       "hasLogicHandler": true,
       "handlerId": "chartBackgroundColorLogic",
       "handlerLabel": "Chart Background Color Logic",
-      "handlerDescription": "This handler allows you to specify the background color for the chart.",
+      "handlerDescription": "This handler allows you to specify a background color for the chart.",
       "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "chartLegendVisibility",
+      "label": "Chart Legend Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "chartLegendVisibilityLogic",
+      "settingTooltip": "Flag indicating whether the chart legend is hidden or displayed by default."
     },
     {
       "type": "checkbox",
@@ -113,7 +130,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "yGridLineVisibilityLogic"
+      "handlerId": "yGridLineVisibilityLogic",
+      "settingTooltip": "Flag indicating whether the chart's vertical grid line is hidden or displayed by default."
     },
     {
       "type": "checkbox",
@@ -122,7 +140,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "xGridLineVisibilityLogic"
+      "handlerId": "xGridLineVisibilityLogic",
+      "settingTooltip": "Flag indicating whether the chart's horizontal grid line is hidden or displayed by default."
     },
     {
       "type": "color",
@@ -131,7 +150,8 @@
       "showInSettings": true,
       "defaultValue": "#a5adba",
       "hasLogicHandler": false,
-      "handlerId": "gridLinesColorLogic"
+      "handlerId": "gridLinesColorLogic",
+      "settingTooltip": "The color of the chart grid lines."
     },
     {
       "type": "number",
@@ -140,7 +160,8 @@
       "showInSettings": true,
       "defaultValue": "2",
       "hasLogicHandler": false,
-      "handlerId": "gridLinesWidthLogic"
+      "handlerId": "gridLinesWidthLogic",
+      "settingTooltip": "The thickness of the chart grid lines."
     },
     {
       "type": "json",
@@ -151,8 +172,9 @@
       "hasLogicHandler": true,
       "handlerId": "labelsLogic",
       "handlerLabel": "Labels Logic",
-      "handlerDescription": "This handler allows you to set chart elements.",
-      "dataBinding": true
+      "handlerDescription": "This handler allows you to set chart labels that are used to indicate the index axis (x-axis by default).",
+      "dataBinding": true,
+      "settingTooltip": "Labels that are used to indicate the index axis (x-axis by default)."
     },
     {
       "type": "json",
@@ -162,9 +184,10 @@
       "hasLogicHandler": true,
       "handlerId": "datasetsLogic",
       "handlerLabel": "Datasets Logic",
-      "handlerDescription": "This handler allows you to set datasets to the component.",
+      "handlerDescription": "This handler allows you to set datasets for drawing the chart.",
       "dataBinding": true,
-      "defaultValue": "[\n  {\n    \"label\": \"Apple\",\n    \"data\": [22, 25, 30, 24, 32, 35, 18],\n    \"borderColor\": \"#36A2EB\",\n    \"backgroundColor\": \"#9BD0F5\"\n  },\n  {\n    \"label\": \"Pear\",\n    \"data\": [25, 23, 28, 30, 37, 40, 21],\n    \"borderColor\": \"#FF6384\",\n    \"backgroundColor\": \"#FFB1C1\"\n  }\n]"
+      "defaultValue": "[\n  {\n    \"label\": \"Apple\",\n    \"data\": [22, 25, 30, 24, 32, 35, 18],\n    \"borderColor\": \"#36A2EB\",\n    \"backgroundColor\": \"#9BD0F5\"\n  },\n  {\n    \"label\": \"Pear\",\n    \"data\": [25, 23, 28, 30, 37, 40, 21],\n    \"borderColor\": \"#FF6384\",\n    \"backgroundColor\": \"#FFB1C1\"\n  }\n]",
+      "settingTooltip": "The datasets for drawing the chart."
     },
     {
       "type": "json",
@@ -174,9 +197,12 @@
       "hasLogicHandler": true,
       "handlerId": "optionsLogic",
       "handlerLabel": "Options Logic",
-      "handlerDescription": "This handler allows you to set options for a component.",
+      "handlerDescription": "This handler allows you to set additional options for the chart.",
       "dataBinding": true,
-      "defaultValue": "{ \"indexAxis\": \"x\" }"
+      "defaultValue": "{ \"indexAxis\": \"x\" }",
+      "settingTooltip": "A set of additional chart options."
     }
-  ]
+  ],
+  "eventHandlers": [],
+  "actions": []
 }

@@ -18,7 +18,7 @@ The component allows you to add a dashlet to your UI-Builder application.
 | width               | Number                            | 600           | Width Logic                 | YES          | YES        | Allows to determine the width.                                                                                                                                                                               |
 | localStorageEnabled | Checkbox                          | `false`       | Local Storage Enabled Logic | YES          | YES        | Allows to determine whether the state (size, position, closed or open) of a dashlet is allowed to be stored in [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) or not. |
 | resizing            | Checkbox                          | `false`       | Resizing Logic              | YES          | YES        | Allows to determine whether resizing is allowed or not.                                                                                                                                                      |
-| dragging            | Checkbox                          | `false`       | Dragging Logic              | YES          | YES        | Allows to determine whether dragging is allowed or not.                                                                                                                                                      |
+| draggable           | Checkbox                          | `false`       | Draggable Logic             | YES          | YES        | Allows to determine whether dragging is allowed or not.                                                                                                                                                      |
 | contextBlock        | JSON                              | `[]`          | Context Block Logic         | YES          | YES        | Allows to determine context block. [Codeless Examples](#examples). Signature of context block: `{type, label, content}`.                                                                                     |
 | minWidth            | Number                            | 300           | Min Width Logic             | YES          | YES        | Allows to determine the min-width.                                                                                                                                                                           |
 | maxWidth            | Number                            | 900           | Max Width Logic             | YES          | YES        | Allows to determine the max-width.                                                                                                                                                                           |
@@ -45,8 +45,10 @@ The component allows you to add a dashlet to your UI-Builder application.
 ## Styles
 
 **Default**
+
 ```
 @bl-customComponent-dashlet-background-color: @appBackgroundColor;
+@bl-customComponent-dashlet-z-index: 1;
 
 @bl-customComponent-dashlet-text-color: @appTextColor;
 @bl-customComponent-dashlet-context-block-icon-size: 15px;
@@ -68,12 +70,13 @@ The component allows you to add a dashlet to your UI-Builder application.
 @bl-customComponent-dashlet-collapse-icon-size: 20px;
 
 @bl-customComponent-dashlet-header-height: 25px;
-@bl-customComponent-dashlet-header-dragging-cursor: move;
+@bl-customComponent-dashlet-header-draggable-cursor: move;
 
 @bl-customComponent-dashlet-title-margin: 0 0 0 5px;
 ```
 
 **Alternative**
+
 ```
 @bl-customComponent-dashlet-alternative-padding: 0;
 

@@ -6,7 +6,7 @@ import { Storage } from './storage';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DashletComponent({ component, eventHandlers, pods, instanceId }) {
-  const { display, classList, style, localStorageEnabled, height, width } = component;
+  const { display, classList, style, localStorageEnabled, height, width, draggable } = component;
   const { contextBlocksHandler } = eventHandlers;
   const dashletContentPod = pods['dashletContent'];
 
@@ -24,6 +24,18 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
     }
   }, [height, width]);
 
+  useEffect(() => {
+    if (!height && rootRef.current) {
+      setSize(state => ({ ...state, height: rootRef.current.clientHeight }));
+    }
+  }, [rootRef, height]);
+
+  useEffect(() => {
+    if (!width && rootRef.current) {
+      setSize(state => ({ ...state, width: rootRef.current.clientWidth }));
+    }
+  }, [rootRef, width]);
+
   useComponentActions(component, size, setSize, position, setPosition, isOpen, setIsOpen);
   useLocalSettings(localStorageEnabled, storage, position, size, isOpen);
 
@@ -34,7 +46,7 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
   return (
     <div
       ref={ rootRef }
-      className={ cn('bl-customComponent-dashlet', classList) }
+      className={ cn('bl-customComponent-dashlet', classList, { draggable }) }
       style={ style }>
       <Dashlet
         rootRef={ rootRef }

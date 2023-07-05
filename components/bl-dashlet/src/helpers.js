@@ -10,11 +10,7 @@ export const ContextBlockItemTypes = {
   ACTION: 'action',
 };
 
-export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => {
-  if (!dragging) {
-    return [null];
-  }
-
+export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) => {
   const [pressed, setPressed] = useState(false);
 
   const position = useRef({ x: initialPosition.x, y: initialPosition.y });
@@ -22,63 +18,71 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, dragging }) => 
 
   const unsubscribe = useRef();
   const legacyRef = useCallback(elem => {
-    ref.current = elem;
+    if (draggable) {
+      ref.current = elem;
 
-    if (unsubscribe.current) {
-      unsubscribe.current();
+      if (unsubscribe.current) {
+        unsubscribe.current();
+      }
+
+      if (!elem) {
+        return;
+      }
+
+      const handleMouseDown = e => {
+        e.target.style.userSelect = 'none';
+        setPressed(true);
+      };
+
+      elem.addEventListener('mousedown', handleMouseDown);
+      unsubscribe.current = () => {
+        elem.removeEventListener('mousedown', handleMouseDown);
+      };
     }
-
-    if (!elem) {
-      return;
-    }
-
-    const handleMouseDown = e => {
-      e.target.style.userSelect = 'none';
-      setPressed(true);
-    };
-
-    elem.addEventListener('mousedown', handleMouseDown);
-    unsubscribe.current = () => {
-      elem.removeEventListener('mousedown', handleMouseDown);
-    };
-  }, []);
+  }, [draggable]);
 
   useEffect(() => {
     if (!pressed) {
       return;
     }
 
-    const handleMouseMove = throttle(event => {
-      if (!rootRef.current || !position.current) {
-        return;
-      }
+    if (draggable) {
+      const handleMouseMove = throttle(event => {
+        if (!rootRef.current || !position.current) {
+          return;
+        }
 
-      const pos = position.current;
-      const elem = rootRef.current;
+        const pos = position.current;
+        const elem = rootRef.current;
 
-      position.current = onDrag({
-        x: pos.x + event.movementX,
-        y: pos.y + event.movementY,
+        position.current = onDrag({
+          x: pos.x + event.movementX,
+          y: pos.y + event.movementY,
+        });
+
+        elem.style.transform = `translate(${ pos.x }px, ${ pos.y }px)`;
       });
 
-      elem.style.transform = `translate(${ pos.x }px, ${ pos.y }px)`;
-    });
+      const handleMouseUp = e => {
+        e.target.style.userSelect = 'auto';
+        setPressed(false);
+      };
 
-    const handleMouseUp = e => {
-      e.target.style.userSelect = 'auto';
-      setPressed(false);
-    };
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+      return () => {
+        handleMouseMove.cancel();
 
-    return () => {
-      handleMouseMove.cancel();
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [pressed, onDrag, draggable]);
 
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [pressed, onDrag]);
+  if (!draggable) {
+    return [null];
+  }
 
   return [legacyRef, pressed];
 };

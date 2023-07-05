@@ -18,7 +18,7 @@
       "handlerLabel": "Disabled Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to disable a component.",
-      "settingTooltip": "This handler allows you to disable a component."
+      "settingTooltip": "This setting allows you to disable a component."
     },
     {
       "type": "checkbox",
@@ -30,7 +30,7 @@
       "handlerId": "sortableLogic",
       "handlerLabel": "Sortable Logic",
       "dataBinding": true,
-      "settingTooltip": "This property allows you to specify the sorting option for all grid columns.",
+      "settingTooltip": "This setting allows you to specify the sorting option for all grid columns.",
       "handlerDescription": "This property allows you to specify the sorting option for all grid columns."
     },
     {
@@ -43,7 +43,7 @@
       "handlerId": "filterLogic",
       "handlerLabel": "Filter Logic",
       "handlerDescription": "This handler allows you to add filtering capability to all grid columns.",
-      "settingTooltip": "This handler allows you to add filtering capability to all grid columns.",
+      "settingTooltip": "This setting allows you to add filtering capability to all grid columns.",
       "dataBinding": true
     },
     {
@@ -54,10 +54,22 @@
       "defaultValue": true,
       "hasLogicHandler": true,
       "handlerId": "floatingFilterLogic",
-      "settingTooltip": "This handler allows you to specify whether or not the floating filter is displayed.",
+      "settingTooltip": "This setting allows you to specify whether or not the floating filter is displayed.",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to specify whether or not the floating filter is displayed.",
       "handlerLabel": "Floating Filter Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "editable",
+      "label": "Editable",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "editableLogic",
+      "handlerLabel": "Editable Logic",
+      "handlerDescription": "This handler allows you to control the ability to edit data in the cell.",
+      "settingTooltip": "This setting allows you to control the ability to edit data in the cell"
     },
     {
       "type": "checkbox",
@@ -73,6 +85,17 @@
     },
     {
       "type": "checkbox",
+      "name": "suppressCellFocus",
+      "label": "Suppress Cell Focus",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "suppressCellFocusLogic",
+      "handlerLabel": "Suppress Cell Focus Logic",
+      "handlerDescription": "This handler allows you to disable cell focus and keyboard navigation.",
+      "settingTooltip": "This setting allows you to disable cell focus and keyboard navigation."
+    },
+    {
+      "type": "checkbox",
       "name": "multipleRowsSelection",
       "label": "Multiple Rows Selection",
       "showInSettings": true,
@@ -81,7 +104,8 @@
       "handlerId": "multipleRowsSelectionLogic",
       "handlerLabel": "Multiple Rows Selection Logic",
       "handlerDescription": "This handler adds the ability to select multiple rows.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "This setting adds the ability to select multiple rows."
     },
     {
       "type": "json",
@@ -92,7 +116,7 @@
       "handlerId": "columnDefsLogic",
       "handlerLabel": "Column Definition Logic",
       "dataBinding": true,
-      "settingTooltip": "This handler allows you to define columns for the component.",
+      "settingTooltip": "This setting allows you to define columns for the component.",
       "handlerDescription": "This handler allows you to define columns for the component.",
       "defaultValue": "[\n  {\"field\": \"name\", \"flex\": 1},\n  {\"field\": \"age\", \"sortable\": true, \"flex\": 1},\n  {\"field\": \"city\", \"flex\": 1}\n]"
     },
@@ -106,14 +130,14 @@
       "handlerLabel": "Rows Data Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to set data to the component.",
-      "settingTooltip": "This handler allows you to set data to the component.",
+      "settingTooltip": "This setting allows you to set data to the component.",
       "defaultValue": "[\n  {\"name\": \"Jack\", \"age\": 26, \"city\": \"London\"},\n  {\"name\": \"Kate\", \"age\": 22, \"city\": \"New York\"},\n  {\"name\": \"Nick\", \"age\": 28, \"city\": \"Kyiv\"}\n]"
     },
     {
       "type": "text",
       "name": "height",
       "label": "Height",
-      "settingTooltip": "This handler allows you to specify the height of the component.",
+      "settingTooltip": "This setting allows you to specify the height of the component.",
       "showInSettings": true,
       "defaultValue": "500px",
       "hasLogicHandler": true,
@@ -126,7 +150,7 @@
       "type": "text",
       "name": "width",
       "label": "Width",
-      "settingTooltip": "This handler allows you to specify the width of the component.",
+      "settingTooltip": "This setting allows you to specify the width of the component.",
       "showInSettings": true,
       "defaultValue": "750px",
       "hasLogicHandler": true,
@@ -139,7 +163,7 @@
       "type": "select",
       "name": "theme",
       "label": "Theme",
-      "settingTooltip": "This handler allows you to specify the theme of the component.",
+      "settingTooltip": "This setting allows you to specify the theme of the component.",
       "showInSettings": true,
       "defaultValue": "alpine",
       "hasLogicHandler": true,
@@ -169,6 +193,40 @@
           "label": "Material"
         }
       ]
+    },
+    {
+      "type": "checkbox",
+      "name": "pagination",
+      "label": "Pagination",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "paginationLogic",
+      "handlerLabel": "Pagination Logic",
+      "handlerDescription": "This handler allows you to add pagination.",
+      "settingTooltip": "This setting allows you to add pagination."
+    },
+    {
+      "type": "checkbox",
+      "name": "paginationAutoPageSize",
+      "label": "Pagination Auto Page Size",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "paginationAutoPageSizeLogic",
+      "handlerLabel": "Pagination Auto Page Size Logic",
+      "handlerDescription": "This handler allows automatically showing as many rows on each page as possible.",
+      "settingTooltip": "This setting allows automatically showing as many rows on each page as possible."
+    },
+    {
+      "type": "number",
+      "name": "paginationPageSize",
+      "label": "Pagination Page Size",
+      "settingTooltip": "does not work when Pagination Auto Page Size is selected",
+      "showInSettings": true,
+      "defaultValue": "10",
+      "hasLogicHandler": true,
+      "handlerId": "paginationPageSizeLogic",
+      "handlerLabel": "Pagination Page Size Logic",
+      "handlerDescription": "This handler allows you to specify the required number of rows to display on each page. Does not work when Pagination Auto Page Size is selected!"
     }
   ],
   "eventHandlers": [
@@ -207,6 +265,12 @@
       "label": "Get Columns of",
       "color": "#214a96",
       "hasReturn": true
+    },
+    {
+      "id": "getRowsData",
+      "label": "Get Rows Data of ",
+      "hasReturn": true,
+      "color": "#204994"
     }
   ]
 }

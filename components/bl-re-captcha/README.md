@@ -16,12 +16,19 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
 | Badge             | Select ["bottom-right", "bottom-left", "inline"] | "bottom-right" |                         | NO           | YES        | Allows to determine the position. Work when Size is "invisible". |
 | Theme             | Select ["light", "dark"]                         | "light"        | Theme Color             | YES          | YES        | Allows to determine the theme.                                   |
 
+## Events
+
+| Name        | Triggers                                                       | Context Blocks |
+|-------------|----------------------------------------------------------------|----------------|
+| On Errored  | when the challenge errored, most likely due to network issues. |                |
+
 ## Actions
 
-| Action        | Inputs | Return                                         |
-|---------------|--------|------------------------------------------------|
-| On Token Sent |        | `String`: can get when the user passed the captcha |
-| On Pass(ed)   |        | `Boolean`: `true` when the user passed the captcha |
+| Action                   | Inputs | Return                                                       |
+|--------------------------|--------|--------------------------------------------------------------|
+| On Token Sent            |        | `String`: can get when the user passed the captcha           |
+| On Pass(ed)              |        | `Boolean`: `true` when the user passed the captcha           |
+| Get a Token of Invisible |        | `String`: can provide a token if the user passes the captcha |
 
 ## Settings
 
@@ -108,3 +115,14 @@ In SETTINGS we set site-key.
 ![](example-images/open-form-logic.jpg)
 
 ![](example-images/on-submit-event-example.jpg)
+
+### If you use invisible size for reCaptcha, add this Logic for On Submit Event
+
+1. You can create a variable to save the token
+
+    ![](example-images/create-token-variable.jpg)
+    ![](example-images/use-token-variable.jpg)
+
+2. Now "On Submit Event" must look like on this screenshot
+
+    ![](example-images/on-submit-with-invisible.jpg)

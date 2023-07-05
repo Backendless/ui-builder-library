@@ -13,7 +13,7 @@ export function Dashlet(props) {
   } = props;
   const {
     title, resizing, contextBlocks, minWidth, maxWidth,
-    minHeight, maxHeight, dragging, styleVariant,
+    minHeight, maxHeight, draggable, styleVariant,
   } = component;
 
   const [resizeMaxWidth, setResizeMaxWidth] = useState(maxWidth);
@@ -55,7 +55,7 @@ export function Dashlet(props) {
     onDrag         : handleDrag,
     rootRef        : rootRef,
     initialPosition: position,
-    dragging,
+    draggable,
   });
 
   const onResizeStop = useCallback((e, { size: { height, width } }) => {
@@ -86,7 +86,7 @@ export function Dashlet(props) {
     <div className={ cn('dashlet', StyleVariants[styleVariant], { 'close': !isOpen }) } style={ style }>
       <div
         ref={ ref }
-        className={ cn('dashlet__header', StyleVariants[styleVariant], { dragging }) }>
+        className={ cn('dashlet__header', StyleVariants[styleVariant], { draggable }) }>
         <button type="button" className="dashlet__collapse-button" onClick={ onCollapseButtonClick }>
           <CollapseButtonIcon isOpen={ isOpen } styleVariant={ styleVariant }/>
         </button>
@@ -119,7 +119,7 @@ export function Dashlet(props) {
         height={ height }
         width={ width }
         minConstraints={ [minWidth, minHeight] }
-        maxConstraints={ [resizeMaxWidth, resizeMaxHeight] }>
+        maxConstraints={ [resizeMaxWidth || Infinity, resizeMaxHeight || Infinity] }>
         { DashletComponent }
       </ResizableBox>
     );
