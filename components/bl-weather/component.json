@@ -126,21 +126,21 @@
       "type": "select",
       "name": "unit",
       "showInSettings": true,
-      "defaultValue": "standard",
+      "defaultValue": "imperial",
       "hasLogicHandler": false,
       "handlerId": "unitLogic",
       "options": [
         {
-          "value": "standard",
-          "label": "standard"
+          "value": "imperial",
+          "label": "Fahrenheit (°F), mph"
         },
         {
           "value": "metric",
-          "label": "metric"
+          "label": "Celsius (°C), m/s"
         },
         {
-          "value": "imperial",
-          "label": "imperial"
+          "value": "standard",
+          "label": "Kelvin (K), m/s"
         }
       ],
       "settingTooltip": "Choose a unit of measurement.",
