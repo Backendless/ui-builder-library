@@ -5,7 +5,7 @@ export const StyleVariants = {
   'alternative': 'alternative',
 };
 
-export const ContextBlockItemTypes = {
+export const ContextMenuItemTypes = {
   LINK  : 'link',
   ACTION: 'action',
 };
@@ -124,3 +124,83 @@ export const getPosition = (ref, coords) => {
     ),
   };
 };
+
+export const useContextMenuPositionHandler = (contextMenuRef, isMenuOpen) => {
+  const [sides, setSides] = useState({ left: false, top: false });
+  const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    if (contextMenuRef.current && isMenuOpen) {
+      const { bottom, right } = contextMenuRef.current.getBoundingClientRect();
+
+      if (right > window.innerWidth) {
+        sides.left = true;
+      }
+
+      if (bottom > window.innerHeight) {
+        sides.top = true;
+      }
+
+      setIsChecked(true);
+    } else {
+      setSides({ left: false, top: false });
+      setIsChecked(false);
+    }
+  }, [contextMenuRef, isMenuOpen]);
+
+  return { sides, isChecked };
+};
+
+function useDocumentEvents(events, callback) {
+  const callbackRef = useRef();
+
+  callbackRef.current = callback;
+
+  useEffect(() => {
+    const handler = event => {
+      callbackRef.current(event);
+    };
+
+    for (const eventName of events) {
+      on(document, eventName, handler);
+    }
+
+    return () => {
+      for (const eventName of events) {
+        off(document, eventName, handler);
+      }
+    };
+  }, [events]);
+}
+
+function on(obj, ...args) {
+  if (obj && obj.addEventListener) {
+    obj.addEventListener(...args);
+  }
+}
+
+function off(obj, ...args) {
+  if (obj && obj.removeEventListener) {
+    obj.removeEventListener(...args);
+  }
+}
+
+const defaultEvents = ['mousedown', 'touchstart'];
+
+export function useClickAway(elements, onClickAway, events = defaultEvents) {
+  elements = Array.isArray(elements) ? elements : [elements];
+
+  useDocumentEvents(events, event => {
+    let clickedByElement = false;
+
+    for (const el of elements) {
+      if (el && el.contains && el.contains(event.target)) {
+        clickedByElement = true;
+      }
+    }
+
+    if (!clickedByElement) {
+      onClickAway();
+    }
+  });
+}

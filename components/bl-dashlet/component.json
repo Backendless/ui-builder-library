@@ -105,15 +105,15 @@
     },
     {
       "type": "json",
-      "name": "contextBlocks",
-      "label": "Context Blocks",
+      "name": "menuItems",
+      "label": "Menu Items",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "contextBlocksLogic",
-      "handlerLabel": "Context Blocks Logic",
-      "handlerDescription": "This is a handler for the logic of determining context blocks for dashlet",
+      "handlerId": "menuItemsLogic",
+      "handlerLabel": "Menu Items Logic",
+      "handlerDescription": "This is a handler for the logic of determining context menu items for dashlet",
       "dataBinding": true,
-      "settingTooltip": "Allows to determine context block. Signature of context block: `{type, label, content}`."
+      "settingTooltip": "Allows to determine context menu items. Signature of context block: `{type, label, content}`."
     },
     {
       "type": "number",
@@ -170,15 +170,15 @@
   ],
   "eventHandlers": [
     {
-      "name": "contextBlocksHandler",
-      "label": "Context Blocks Handler",
+      "name": "contextMenuHandler",
+      "label": "Context Menu Handler",
       "contextBlocks": [
         {
           "id": "action",
           "label": "action"
         }
       ],
-      "handlerDescription": "This event is triggered when the user clicks on actions in the context block of the dashlet."
+      "handlerDescription": "This event is triggered when the user clicks on actions in the context menu of the dashlet."
     }
   ],
   "actions": [

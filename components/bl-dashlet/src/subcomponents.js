@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
-import { ContextBlockItemTypes, StyleVariants } from './helpers';
+import { ContextMenuItemTypes, StyleVariants, useClickAway, useContextMenuPositionHandler } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export function ContextMenu({ contextBlocks, contextBlocksHandler, styleVariant }) {
+export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const contextMenuRef = useRef(null);
 
@@ -12,12 +12,12 @@ export function ContextMenu({ contextBlocks, contextBlocksHandler, styleVariant 
 
   const { sides, isChecked } = useContextMenuPositionHandler(contextMenuRef, isMenuOpen);
 
-  useClickOutsideHandler(contextMenuRef, () => setIsMenuOpen(false));
+  useClickAway(contextMenuRef, () => setIsMenuOpen(false));
 
   return (
     <div className="dashlet__context-menu context-menu">
       <button className="context-menu__button" onClick={ onContextMenuButtonClick }>
-        <ContextBlockButtonIcon styleVariant={ styleVariant }/>
+        <ContextMenuButtonIcon styleVariant={ styleVariant }/>
       </button>
 
       { isMenuOpen && (
@@ -27,12 +27,12 @@ export function ContextMenu({ contextBlocks, contextBlocksHandler, styleVariant 
           style={{ visibility: isChecked ? 'initial' : 'hidden' }}>
           <ul className="context-menu__list">
 
-            { contextBlocks.map(({ label, type, content }) => (
-              <ContextBlockItem
+            { menuItems.map(({ label, type, content }) => (
+              <ContextMenuItem
                 label={ label }
                 type={ type }
                 content={ content }
-                contextBlocksHandler={ contextBlocksHandler }
+                contextMenuHandler={ contextMenuHandler }
               />
             )) }
 
@@ -43,59 +43,17 @@ export function ContextMenu({ contextBlocks, contextBlocksHandler, styleVariant 
   );
 }
 
-function useClickOutsideHandler(ref, handler) {
-  const handleClickOutside = event => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      handler();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  });
-}
-
-function useContextMenuPositionHandler(contextMenuRef, isMenuOpen) {
-  const [sides, setSides] = useState({ left: false, top: false });
-  const [isChecked, setIsChecked] = useState(false);
-
-  useEffect(() => {
-    if (contextMenuRef.current && isMenuOpen) {
-      const { bottom, right } = contextMenuRef.current.getBoundingClientRect();
-
-      if (right > window.innerWidth) {
-        sides.left = true;
-      }
-
-      if (bottom > window.innerHeight) {
-        sides.top = true;
-      }
-
-      setIsChecked(true);
-    } else {
-      setSides({ left: false, top: false });
-      setIsChecked(false);
-    }
-  }, [contextMenuRef, isMenuOpen]);
-
-  return { sides, isChecked };
-}
-
-function ContextBlockItem({ content, label, type, contextBlocksHandler }) {
-  if (type === ContextBlockItemTypes.LINK) {
-    return <ContextBlockLink content={ content } label={ label }/>;
+function ContextMenuItem({ content, label, type, contextMenuHandler }) {
+  if (type === ContextMenuItemTypes.LINK) {
+    return <ContextMenuLink content={ content } label={ label }/>;
   }
 
-  if (type === ContextBlockItemTypes.ACTION) {
+  if (type === ContextMenuItemTypes.ACTION) {
     return (
-      <ContextBlockAction
+      <ContextMenuAction
         content={ content }
         label={ label }
-        contextBlocksHandler={ contextBlocksHandler }
+        contextMenuHandler={ contextMenuHandler }
       />
     );
   }
@@ -103,7 +61,7 @@ function ContextBlockItem({ content, label, type, contextBlocksHandler }) {
   return null;
 }
 
-function ContextBlockLink({ content, label }) {
+function ContextMenuLink({ content, label }) {
   return (
     <li>
       <a className="context-menu__item context-menu__item--link" href={ content } target="_blank" rel="noreferrer">
@@ -113,20 +71,20 @@ function ContextBlockLink({ content, label }) {
   );
 }
 
-function ContextBlockAction({ content, label, contextBlocksHandler }) {
+function ContextMenuAction({ content, label, contextMenuHandler }) {
   return (
     <li>
       <button
         className="context-menu__item context-menu__item--action"
         type="button"
-        onClick={ () => contextBlocksHandler({ action: content }) }>
+        onClick={ () => contextMenuHandler({ action: content }) }>
         { label }
       </button>
     </li>
   );
 }
 
-function ContextBlockButtonIcon({ styleVariant }) {
+function ContextMenuButtonIcon({ styleVariant }) {
   return (
     <svg className={ cn('context-menu__button-icon', StyleVariants[styleVariant]) } viewBox="0 0 24 24">
       <path
