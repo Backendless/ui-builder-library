@@ -32,8 +32,8 @@ Modal is a component of Backendless UI-Builder designer. This component is a Pod
 
 **Dimensions**
 ````
-@bl-customComponent-modalBackdrop-width: 100%;
-@bl-customComponent-modalBackdrop-height: 100%;
+@bl-customComponent-modal-width: 100%;
+@bl-customComponent-modal-height: 100%;
 @bl-customComponent-modal-backdrop-z-index: 1;
 @bl-customComponent-modal-content-z-index: 2;
 @bl-customComponent-modal-component-z-index: 100;

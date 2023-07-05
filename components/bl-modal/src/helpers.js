@@ -1,6 +1,4 @@
-import { useEffect, useMemo } from 'react';
-
-const { normalizeDimensionValue } = BackendlessUI.CSSUtils;
+import { useEffect } from 'react';
 
 const ESCAPE_KEY_CODE = 27;
 

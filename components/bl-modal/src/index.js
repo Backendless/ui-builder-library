@@ -48,7 +48,7 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   }
 
   return (
-    <div ref={ elRef } style={ styles } className={ cn("bl-customComponent-modal", classList) }>
+    <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
       <div className="backdrop" onClick={ handleBackdropClick } />
       <div className="modal-content" style={ modalContentStyles }>{ modalContentPod.render() }</div>
     </div>
