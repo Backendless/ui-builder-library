@@ -1,9 +1,14 @@
 import { useState } from 'react';
 
 import { Dropzone, FileMosaic, FullScreen, ImagePreview, VideoPreview } from './lib/files-ui.min';
-import { useDropzone } from './helpers';
+import { ensureFileType, useDropzone } from './helpers';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
+
+const FileTypes = {
+  IMG  : 'image.*',
+  VIDEO: 'video.*',
+};
 
 export default function DropzoneComponent({ component, eventHandlers }) {
   const { display, classList, style, label, language, showInfoLayer, activeItems } = component;
@@ -63,8 +68,8 @@ export default function DropzoneComponent({ component, eventHandlers }) {
             preview={ preview }
             info={ showInfoLayer }
             downloadUrl={ downloadButtonVisibility ? URL.createObjectURL(file.file) : undefined }
-            imageUrl={ file.type.match('image.*') && file.file } // fix fullscreen preview for not valid image files
-            videoUrl={ file.type.match('video.*') && file.file } // fix fullscreen preview for video files
+            imageUrl={ ensureFileType(file, FileTypes.IMG) } // fix fullscreen preview for not valid image files
+            videoUrl={ ensureFileType(file, FileTypes.VIDEO) } // fix fullscreen preview for video files
           />
         )) }
       </Dropzone>

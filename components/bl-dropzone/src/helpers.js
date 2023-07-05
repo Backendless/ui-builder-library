@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const UploadStatus = {
   success  : 'success',
@@ -61,21 +61,21 @@ export function useDropzone(component, eventHandlers) {
     }
   };
 
-  const handleDelete = fileID => {
+  const handleDelete = useCallback(fileID => {
     setFiles(files.filter(file => file.id !== fileID));
     onDelete({ fileID });
-  };
+  }, [files]);
 
-  const handleClean = () => {
+  const handleClean = useCallback(() => {
     const validatedFiles = files.filter(file => file.valid);
 
     setFiles(validatedFiles);
     onClean({ validatedFiles });
-  };
+  }, [files]);
 
   Object.assign(component, {
     uploadFiles  : () => uploadFiles(files),
-    cleanFileList: () => handleClean(files),
+    cleanFileList: () => handleClean(),
     resetFileList: () => setFiles([]),
   });
 
@@ -94,4 +94,8 @@ function ensureExtension(fileName, file) {
   }
 
   return fileName;
+}
+
+export function ensureFileType(file, expectedType) {
+  return file.type.match(expectedType) ? file.file : undefined;
 }
