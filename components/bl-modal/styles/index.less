@@ -1,5 +1,5 @@
-@bl-customComponent-modalBackdrop-width: 100%;
-@bl-customComponent-modalBackdrop-height: 100%;
+@bl-customComponent-modal-width: 100%;
+@bl-customComponent-modal-height: 100%;
 
 @bl-customComponent-modal-backdrop-z-index: 1;
 @bl-customComponent-modal-content-z-index: 2;
@@ -12,6 +12,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: @bl-customComponent-modal-width;
+  height: @bl-customComponent-modal-height;
   z-index: @bl-customComponent-modal-component-z-index;
 
   .modal-content {
@@ -21,8 +23,8 @@
 
   .backdrop {
     position: absolute;
-    width: @bl-customComponent-modalBackdrop-width;
-    height: @bl-customComponent-modalBackdrop-height;
+    width: 100%;
+    height: 100%;
     background-color: @bl-customComponent-modal-backdrop-color;
     z-index: @bl-customComponent-modal-backdrop-z-index;
   }

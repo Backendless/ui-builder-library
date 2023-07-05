@@ -1,16 +1,6 @@
-import { useEffect, useMemo } from 'react';
-
-const { normalizeDimensionValue } = BackendlessUI.CSSUtils;
+import { useEffect } from 'react';
 
 const ESCAPE_KEY_CODE = 27;
-
-export function useStyles({ style, backdropWidth, backdropHeight }) {
-  return useMemo(() => ({
-    ...style,
-    width : normalizeDimensionValue(backdropWidth),
-    height: normalizeDimensionValue(backdropHeight)
-  }), [style, backdropWidth, backdropHeight]);
-};
 
 export function useCloseOnEscape({ onClose, visibility, setVisibility, closeOnEscape }) {
   useEffect(() => {
