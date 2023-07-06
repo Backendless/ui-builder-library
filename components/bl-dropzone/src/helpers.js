@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const UploadStatus = {
   success  : 'success',
@@ -8,7 +8,7 @@ const UploadStatus = {
 
 export function useDropzone(component, eventHandlers) {
   const { overwriteFiles, targetDirectory, uploadOnDrop } = component;
-  const { onDelete, onChange, fileNameLogic, onUpload, onUploadFailed } = eventHandlers;
+  const { onDelete, onChange, fileNameLogic, onUpload, onUploadFailed, onClean } = eventHandlers;
 
   const [files, setFiles] = useState([]);
 
@@ -61,18 +61,25 @@ export function useDropzone(component, eventHandlers) {
     }
   };
 
-  const handleDelete = fileID => {
+  const handleDelete = useCallback(fileID => {
     setFiles(files.filter(file => file.id !== fileID));
     onDelete({ fileID });
-  };
+  }, [files]);
 
-  component.uploadFiles = () => uploadFiles(files);
+  const handleClean = useCallback(() => {
+    const validatedFiles = files.filter(file => file.valid);
 
-  return { files, updateFiles, handleDelete };
-}
+    setFiles(validatedFiles);
+    onClean({ validatedFiles });
+  }, [files]);
 
-export function ensureMeasure(dimension) {
-  return String(Number(dimension)) === dimension ? dimension + 'px' : dimension;
+  Object.assign(component, {
+    uploadFiles  : () => uploadFiles(files),
+    cleanFileList: () => handleClean(),
+    resetFileList: () => setFiles([]),
+  });
+
+  return { files, updateFiles, handleDelete, handleClean };
 }
 
 function ensureExtension(fileName, file) {
@@ -87,4 +94,8 @@ function ensureExtension(fileName, file) {
   }
 
   return fileName;
+}
+
+export function ensureFileType(file, expectedType) {
+  return file.type.match(expectedType) ? file.file : undefined;
 }
