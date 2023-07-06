@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import RecordRTC, { StereoAudioRecorder } from './lib';
 
 import { captureMediaDevices, download, prepareLabel } from './helpers';
+import ysFixWebmDuration from './lib';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const {
-    player, controls, noise, fileName, fileType, width, startText, stopText, downloadText, pauseText, resumeText,
+    player, controls, noise, fileName, width, startText, stopText, downloadText, pauseText, resumeText,
     labelsType, display, style, classList,
   } = component;
   const { onStart, onStop, onDownload, onStateChange } = eventHandlers;
 
   const audioRef = useRef();
   const recorderRef = useRef();
+  const startTime = useRef();
 
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
@@ -47,35 +48,51 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   });
 
   const startRecording = useCallback(async () => {
+    startTime.current = Date.now();
     const audioConstrains = { audio: { echoCancelation: true, noiseSuppression: noise } };
-    const stream = await captureMediaDevices(audioConstrains);
+    const stream = await captureMediaDevices(audioConstrains, audioRef);
+    const options = {
+      audioBitsPerSecond: 128000,
+      mimeType          : 'audio/webm',
+    };
+
     if (stream) {
-      recorderRef.current = RecordRTC(stream, {
-        type: 'audio',
-        mimeType: RecordFormat[fileType],
-        recorderType: StereoAudioRecorder,
-        desiredSampRate: 16000,
-        disableLogs: true,
+      recorderRef.current = new MediaRecorder(stream, options);
+
+      const chunks = [];
+
+      Object.assign(recorderRef.current, {
+        onstart : () => setState(StreamState.RECORDING),
+        onpause : () => setState(StreamState.PAUSED),
+        onresume: () => setState(StreamState.RECORDING),
       });
 
-      recorderRef.current.onStateChanged = function (state) {
-        setState(state);
+      recorderRef.current.ondataavailable = event => {
+        if (event.data.size > 0) {
+          chunks.push(event.data);
+        }
       };
 
-      recorderRef.current.startRecording();
-      recorderRef.current.microphone = stream;
+      recorderRef.current.onstop = async () => {
+        const recordedBlob = new Blob(chunks, { type: 'audio/webm' });
+        const durattion = Date.now() - startTime.current;
+        const resultBlob = await ysFixWebmDuration(recordedBlob, durattion, { logger: false });
+
+        setState(StreamState.INACTIVE);
+        setRecordedBlob(resultBlob);
+        onStop();
+
+        chunks.length = 0;
+      };
+
+      recorderRef.current.start();
       onStart();
     }
   }, []);
 
   const stopRecording = useCallback(async () => {
     try {
-      recorderRef.current.stopRecording(() => {
-        const blob = recorderRef.current.getBlob();
-        setRecordedBlob(blob.slice(0, blob.size, RecordFormat[fileType]));
-        recorderRef.current.microphone.stop();
-        onStop();
-      });
+      recorderRef.current.stream.getTracks().forEach(track => track.stop());
     } catch (e) {
       console.error('Stream did not found.', e);
     }
@@ -83,14 +100,14 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const downloadRecordedFile = useCallback(() => {
     onDownload({ blob: recordedBlob });
-    download(recordedBlob, fileName, fileType);
-  }, [recordedBlob, fileName, fileType]);
+    download(recordedBlob, fileName);
+  }, [recordedBlob, fileName]);
 
   const toggleRecord = useCallback(() => {
     if (recorderRef.current?.state === StreamState.RECORDING) {
-      recorderRef.current.pauseRecording();
+      recorderRef.current.pause();
     } else if (recorderRef.current?.state === StreamState.PAUSED) {
-      recorderRef.current.resumeRecording();
+      recorderRef.current.resume();
     }
   }, []);
 
@@ -100,11 +117,11 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-audioRecorder', classList) } style={ styles }>
-      <audio ref={ audioRef } className="audio" controls={ player }/>
+      <audio ref={ audioRef } className="audio" controls={ player } controlsList="nodownload"/>
       { controls && (
         <div className="controls">
           <button
-            disabled={ state && state !== StreamState.STOPPED }
+            disabled={ state && state !== StreamState.INACTIVE }
             className="control-button" onClick={ startRecording }>
             { buttonLabels.start }
           </button>
@@ -114,7 +131,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
             { state === StreamState.PAUSED ? buttonLabels.resume : buttonLabels.pause }
           </button>
           <button
-            disabled={ !state || state === StreamState.STOPPED }
+            disabled={ !state || state === StreamState.INACTIVE }
             className="control-button" onClick={ stopRecording }>
             { buttonLabels.stop }
           </button>
@@ -132,13 +149,5 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 const StreamState = {
   PAUSED   : 'paused',
   RECORDING: 'recording',
-  STOPPED  : 'stopped',
-};
-
-const RecordFormat = {
-  'WAV' : 'audio/wav',
-  'MPEG': 'audio/mpeg;',
-  'WEBM': 'audio/webm',
-  'OGG' : 'audio/ogg',
-  'MP3' : 'audio/mp3',
+  INACTIVE : 'inactive',
 };

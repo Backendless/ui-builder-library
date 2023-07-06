@@ -7,41 +7,32 @@
 @bl-customComponent-dropzone-minWidth: 436px;
 
 @bl-customComponent-dropzone-header-gap: 3px;
-@bl-customComponent-dropzone-header-paddingRight: 0;
-@bl-customComponent-dropzone-header-paddingTop: 5px;
-
-@bl-customComponent-dropzone-footer-width: 100%;
+@bl-customComponent-dropzone-header-padding: 3px;
 
 .bl-customComponent-dropzone {
-  .dropzone-ui {
+  .fui-dropzone-root {
     color: @bl-customComponent-dropzone-color;
     background-color: @bl-customComponent-dropzone-backgroundColor;
     min-width: @bl-customComponent-dropzone-minWidth;
 
-    .dz-ui-header {
+    .files-ui-header {
       gap: @bl-customComponent-dropzone-header-gap;
-      padding-right: @bl-customComponent-dropzone-header-paddingRight;
-      padding-top: @bl-customComponent-dropzone-header-paddingTop;
+      padding: @bl-customComponent-dropzone-header-padding;
 
       span svg {
         fill: @bl-customComponent-dropzone-color;
-
-        path:not(:last-child) {
-          opacity: 0;
-        }
       }
     }
 
-    .dz-ui-footer {
-      width: @bl-customComponent-dropzone-footer-width;
-    }
+    .files-ui-dropzone-children-container {
+      label {
+        color: @bl-customComponent-dropzone-labelColor;
+        cursor: pointer;
+      }
 
-    .dz-ui-label {
-      color: @bl-customComponent-dropzone-labelColor;
-    }
-
-    .file-item-full-container-container .file-item-name {
-      color: @bl-customComponent-dropzone-fileName-color;
+      .files-ui-file-mosaic-main-container .files-ui-file-mosaic-file-name {
+        color: @bl-customComponent-dropzone-fileName-color;
+      }
     }
   }
 }
