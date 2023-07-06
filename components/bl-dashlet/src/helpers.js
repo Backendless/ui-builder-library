@@ -131,24 +131,39 @@ export const useContextMenuPositionHandler = (contextMenuRef, isMenuOpen) => {
 
   useEffect(() => {
     if (contextMenuRef.current && isMenuOpen) {
-      const { bottom, right } = contextMenuRef.current.getBoundingClientRect();
+      contextMenuPosition(contextMenuRef, isMenuOpen, sides, setIsChecked, setSides);
 
-      if (right > window.innerWidth) {
-        sides.left = true;
-      }
+      window.addEventListener('resize', () => {
+        contextMenuPosition(contextMenuRef, isMenuOpen, sides, setIsChecked, setSides);
+      });
 
-      if (bottom > window.innerHeight) {
-        sides.top = true;
-      }
-
-      setIsChecked(true);
     } else {
       setSides({ left: false, top: false });
       setIsChecked(false);
     }
+
+    return () => {
+      window.removeEventListener('resize', () => {
+        contextMenuPosition(contextMenuRef, isMenuOpen, sides, setIsChecked, setSides);
+      });
+    };
   }, [contextMenuRef, isMenuOpen]);
 
   return { sides, isChecked };
+};
+
+const contextMenuPosition = (contextMenuRef, isMenuOpen, sides, setIsChecked, setSides) => {
+  const { bottom, right } = contextMenuRef.current.getBoundingClientRect();
+
+  if (right > window.innerWidth) {
+    setSides({ ...sides, left: true });
+  }
+
+  if (bottom > window.innerHeight) {
+    setSides({ ...sides, top: true });
+  }
+
+  setIsChecked(true);
 };
 
 function useDocumentEvents(events, callback) {
