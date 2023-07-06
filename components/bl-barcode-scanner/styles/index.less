@@ -1,0 +1,106 @@
+@bl-customComponent-barcodeScanner-themeColor: @themePrimary;
+@bl-customComponent-barcodeScanner-disabledColor: @disabledColor;
+@bl-customComponent-barcodeScanner-shadowColor: @appComponentShadowColor;
+@bl-customComponent-barcodeScanner-borderRadius: @appComponentBorderRadius;
+
+@bl-customComponent-barcodeScanner-width: 100%;
+@bl-customComponent-barcodeScanner-scanner-width: 100%;
+
+@bl-customComponent-barcodeScanner-button-lineHeight: 1.75;
+@bl-customComponent-barcodeScanner-button-width: 100%;
+@bl-customComponent-barcodeScanner-button-minWidth: 64px;
+@bl-customComponent-barcodeScanner-button-textDecoration: none;
+@bl-customComponent-barcodeScanner-button-fontSize: 14px;
+@bl-customComponent-barcodeScanner-button-borderWidth: 0;
+@bl-customComponent-barcodeScanner-button-borderRadius: @bl-customComponent-barcodeScanner-borderRadius;
+@bl-customComponent-barcodeScanner-button-margin: 20px 10px;
+@bl-customComponent-barcodeScanner-button-padding: 6px 16px;
+@bl-customComponent-barcodeScanner-button-background: @bl-customComponent-barcodeScanner-themeColor;
+@bl-customComponent-barcodeScanner-button-color: contrast(@bl-customComponent-barcodeScanner-button-background);
+@bl-customComponent-barcodeScanner-button-shadowColor: @bl-customComponent-barcodeScanner-shadowColor;
+@bl-customComponent-barcodeScanner-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-barcodeScanner-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-barcodeScanner-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-barcodeScanner-button-shadowColor, 12%);
+@bl-customComponent-barcodeScanner-button-shadowDisabled: none;
+@bl-customComponent-barcodeScanner-button-disabledBackground: @bl-customComponent-barcodeScanner-disabledColor;
+@bl-customComponent-barcodeScanner-button-disabledColor: contrast(@bl-customComponent-barcodeScanner-button-disabledBackground);
+@bl-customComponent-barcodeScanner-button-outline: none;
+@bl-customComponent-barcodeScanner-button-cursor: pointer;
+@bl-customComponent-barcodeScanner-button-userSelect: none;
+
+@bl-customComponent-barcodeScanner-modal-backgroundColor: rgba(0, 0, 0, 0.5);
+@bl-customComponent-barcodeScanner-modal-zIndex: 10;
+
+@bl-customComponent-barcodeScanner-video-maxWidth: 100%;
+@bl-customComponent-barcodeScanner-video-maxHeight: 100%;
+
+.bl-customComponent-barcodeScanner {
+  display: flex;
+  flex-direction: column;
+  width: @bl-customComponent-barcodeScanner-width;
+
+  .controls {
+    display: flex;
+
+    .scan-button, .upload-button {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      font-size: @bl-customComponent-barcodeScanner-button-fontSize;
+      width: @bl-customComponent-barcodeScanner-button-width;
+      line-height: @bl-customComponent-barcodeScanner-button-lineHeight;
+      min-width: @bl-customComponent-barcodeScanner-button-minWidth;
+      text-decoration: @bl-customComponent-barcodeScanner-button-textDecoration;
+      padding: @bl-customComponent-barcodeScanner-button-padding;
+      margin: @bl-customComponent-barcodeScanner-button-margin;
+      background: @bl-customComponent-barcodeScanner-button-background;
+      color: @bl-customComponent-barcodeScanner-button-color;
+      border-width: @bl-customComponent-barcodeScanner-button-borderWidth;
+      border-radius: @bl-customComponent-barcodeScanner-button-borderRadius;
+      outline: @bl-customComponent-barcodeScanner-button-outline;
+      cursor: @bl-customComponent-barcodeScanner-button-cursor;
+      user-select: @bl-customComponent-barcodeScanner-button-userSelect;
+
+      &:hover, &:focus-within {
+        box-shadow: @bl-customComponent-barcodeScanner-button-shadowHover;
+      }
+
+      &:disabled {
+        background: @bl-customComponent-barcodeScanner-button-disabledBackground;
+        color: @bl-customComponent-barcodeScanner-button-disabledColor;
+        box-shadow: @bl-customComponent-barcodeScanner-button-shadowDisabled;
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    &.modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: @bl-customComponent-barcodeScanner-modal-zIndex;
+      background-color: @bl-customComponent-barcodeScanner-modal-backgroundColor;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    .scanner {
+      width: @bl-customComponent-barcodeScanner-scanner-width;
+
+      video {
+        max-width: @bl-customComponent-barcodeScanner-video-maxWidth;
+        max-height: @bl-customComponent-barcodeScanner-video-maxHeight;
+      }
+    }
+  }
+}
