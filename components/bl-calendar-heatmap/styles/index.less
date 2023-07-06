@@ -1,0 +1,62 @@
+@bl-customComponent-calendarHeatmap-themeColor: @themePrimary;
+@bl-customComponent-calendarHeatmap-textColor: #aaa;
+
+@bl-customComponent-calendarHeatmap-padding: 10px;
+
+@bl-customComponent-calendarHeatmap-text: 10px;
+
+@bl-customComponent-calendarHeatmap-cells-outline: 0;
+@bl-customComponent-calendarHeatmap-cells-stroke-hover: #555;
+@bl-customComponent-calendarHeatmap-cells-stroke-width-hover: 1px;
+
+@bl-customComponent-calendarHeatmap-legend-container-padding: 0 0 0 100px;
+@bl-customComponent-calendarHeatmap-legend-container-margin: 1em 0 1em auto;
+
+.bl-customComponent-calendarHeatmap {
+  padding: @bl-customComponent-calendarHeatmap-padding;
+
+  .wrapper {
+    display: inline-flex;
+    flex-direction: column;
+
+    height: 100%;
+  }
+
+  .react-calendar-heatmap {
+    height: 100%;
+
+    rect {
+      outline: @bl-customComponent-calendarHeatmap-cells-outline;
+
+      &:hover {
+        stroke: @bl-customComponent-calendarHeatmap-cells-stroke-hover;
+        stroke-width: @bl-customComponent-calendarHeatmap-cells-stroke-width-hover;
+      }
+    }
+  }
+
+  .legend {
+    display: flex;
+    margin-left: auto;
+    color: @bl-customComponent-calendarHeatmap-textColor;
+    font-size: 70%;
+
+    .legend-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: @bl-customComponent-calendarHeatmap-legend-container-padding;
+      margin: @bl-customComponent-calendarHeatmap-legend-container-margin;
+    }
+
+    .legend-color-gradation {
+      height: 10px;
+      width: 70px;
+    }
+  }
+
+  .react-calendar-heatmap text {
+    font-size: @bl-customComponent-calendarHeatmap-text;
+    fill: @bl-customComponent-calendarHeatmap-textColor;
+  }
+}
