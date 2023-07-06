@@ -73,10 +73,10 @@ export default function DropzoneComponent({ component, eventHandlers }) {
           />
         )) }
       </Dropzone>
-      <FullScreen open={ imageSrc !== undefined } onClose={ handleSee }>
+      <FullScreen open={ imageSrc } onClose={ handleSee }>
         <ImagePreview src={ imageSrc }/>
       </FullScreen>
-      <FullScreen open={ videoSrc !== undefined } onClose={ handleWatch }>
+      <FullScreen open={ videoSrc } onClose={ handleWatch }>
         <VideoPreview src={ videoSrc } autoPlay controls/>
       </FullScreen>
     </div>
