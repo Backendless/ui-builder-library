@@ -115,16 +115,6 @@
     },
     {
       "type": "checkbox",
-      "name": "chartLegendVisibility",
-      "label": "Chart Legend Visibility",
-      "showInSettings": true,
-      "defaultValue": true,
-      "hasLogicHandler": false,
-      "handlerId": "chartLegendVisibilityLogic",
-      "settingTooltip": "Flag indicating whether the chart legend is hidden or displayed by default."
-    },
-    {
-      "type": "checkbox",
       "name": "yGridLineVisibility",
       "label": "Y Grid Line Visibility",
       "showInSettings": true,
