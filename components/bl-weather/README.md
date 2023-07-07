@@ -69,7 +69,7 @@ Weather is the component that can be used in Backendless [UI-Builder](https://ba
 Before usage, you need:
 
 1. Create an account if you don't have on [OpenWeather](https://openweathermap.org/).
-2. Subscribe to [One Call API 3.0](https://home.openweathermap.org/subscriptions/billing_info/onecall_30/base?key=base&service=onecall_30).
+2. Add the credit card to acc and Subscribe to [One Call API 3.0](https://home.openweathermap.org/subscriptions/billing_info/onecall_30/base?key=base&service=onecall_30).
 3. Get your [API key](https://home.openweathermap.org/api_keys) for use the component. More information about obtaining a key can be found [here](https://openweathermap.org/appid).
 4. Next, in the SETTINGS of the UI-Builder, set the received API key in a special field(as shown in the example below). The component is ready to go.
 
