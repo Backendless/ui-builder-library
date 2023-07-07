@@ -1,6 +1,6 @@
 # Weather
 
-Weather is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows you to create a weather widget for the current day or with the addition of a forecast in your application. You can apply your own settings for weather display or leave the default. You can find more information about the widget in the [React Open Weather](https://github.com/farahat80/react-open-weather/) library.
+Weather is the component that can be used in Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows you to create a weather widget for the current day or with the addition of a forecast in your application. You can apply your own settings for weather display or leave the default. You can find more information about the widget in the [React Open Weather](https://github.com/farahat80/react-open-weather/) library. We use One Call API 3.0 for requests.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
@@ -69,8 +69,9 @@ Weather is the component that can be used in Backendless [UI-Builder](https://ba
 Before usage, you need:
 
 1. Create an account if you don't have on [OpenWeather](https://openweathermap.org/).
-2. Get your [API key](https://home.openweathermap.org/api_keys) for use the component. More information about obtaining a key can be found [here](https://openweathermap.org/appid).
-3. Next, in the SETTINGS of the UI-Builder, set the received API key in a special field(as shown in the example below). The component is ready to go.
+2. Subscribe to [One Call API 3.0](https://home.openweathermap.org/subscriptions/billing_info/onecall_30/base?key=base&service=onecall_30).
+3. Get your [API key](https://home.openweathermap.org/api_keys) for use the component. More information about obtaining a key can be found [here](https://openweathermap.org/appid).
+4. Next, in the SETTINGS of the UI-Builder, set the received API key in a special field(as shown in the example below). The component is ready to go.
 
 <p align="center">
   <img src="./example-images/settings.png" alt="settings" width="780"/>
