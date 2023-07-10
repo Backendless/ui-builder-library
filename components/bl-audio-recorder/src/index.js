@@ -21,11 +21,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const timer = useMemo(() => new Timer(setTime), []);
 
-  useEffect(() => {
-    return () => {
-      timer.reset();
-    };
-  }, []);
+  useEffect(() => {return () => {timer.reset();};}, []);
 
   const buttonLabels = useMemo(() => prepareLabel(component),
     [labelsType, startText, stopText, downloadText, pauseText, resumeText]);
