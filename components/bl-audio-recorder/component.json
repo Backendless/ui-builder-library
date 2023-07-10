@@ -209,6 +209,11 @@
     {
       "id": "pause",
       "label": "Pause/Resume in"
+    },
+    {
+      "id": "getUrl",
+      "label": "Get URL from recorded file",
+      "hasReturn": true
     }
   ],
   "pods": {}

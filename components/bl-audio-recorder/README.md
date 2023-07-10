@@ -33,13 +33,14 @@ Audio Recorder is a component of Backendless UI-Builder designer based on the [R
 
 ## Actions
 
-| Action                                     | Inputs                     | Returns               |
-|--------------------------------------------|----------------------------|-----------------------|
-| Start Record in Audio Recorder             |                            |                       |
-| Stop Record in Audio Recorder              |                            |                       |
-| Download Recorded file from Audio Recorder |                            |                       |
-| Get Blob from Audio Recorder               |                            | `Blob`: recorded blob |
-| Pause/Resume in Audio Recorder             |                            |                       |
+| Action                                       | Inputs                     | Returns                      |
+|----------------------------------------------|----------------------------|------------------------------|
+| Start Record in Audio Recorder               |                            |                              |
+| Stop Record in Audio Recorder                |                            |                              |
+| Download Recorded file from Audio Recorder   |                            |                              |
+| Get Blob from Audio Recorder                 |                            | `Blob`: recorded blob        |
+| Pause/Resume in Audio Recorder               |                            |                              |
+| Get URL from recorded file in Audio Recorder |                            | `Text`: URL of recorded blob |
 
 ## Styles
 
