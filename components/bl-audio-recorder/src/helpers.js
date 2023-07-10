@@ -1,4 +1,5 @@
 import { Icons } from './icons';
+import { StreamState } from './index';
 
 const Labels = {
   START   : 'Start Record',
@@ -37,6 +38,9 @@ export class Timer {
     this.setTime = setTime;
     this.currentTime = 0;
     this.interval = null;
+    this.state = StreamState.INACTIVE;
+    this.startTime = null;
+    this.duration = 0;
   }
 
   static getDisplaySeconds(time) {
@@ -45,31 +49,62 @@ export class Timer {
     return new Date(totalMs).toISOString().slice(14, 19);
   }
 
-  start(state) {
-    if (state === 'recording') {
-      this.interval = setInterval(() => {
-        this.currentTime += 1;
+  start() {
+    if (this.state !== StreamState.RECORDING) {
+      this.state = StreamState.RECORDING;
+      this.startTime = Date.now();
+      this.duration = 0;
 
-        this.#updateTime();
-      }, 1000);
+      this.#startCounter();
     }
   }
 
-  pause(state) {
-    if (state === 'paused') {
+  pause() {
+    if (this.state === StreamState.RECORDING) {
+      this.#updateDuration();
+
+      this.state = StreamState.PAUSED;
+
       clearInterval(this.interval);
     }
   }
 
+  resume() {
+    if (this.state === StreamState.PAUSED) {
+      this.#startCounter();
+
+      this.state = StreamState.RECORDING;
+      this.startTime = Date.now();
+    }
+  }
+
   reset() {
-    clearInterval(this.interval);
+    this.#updateDuration();
+
+    this.state = StreamState.INACTIVE;
     this.currentTime = 0;
+
+    clearInterval(this.interval);
 
     this.#updateTime();
   }
 
   #updateTime() {
     this.setTime(Timer.getDisplaySeconds(this.currentTime));
+  }
+
+  #updateDuration() {
+    if (this.state === StreamState.RECORDING) {
+      this.duration = this.duration + Date.now() - this.startTime;
+    }
+  }
+
+  #startCounter() {
+    this.interval = setInterval(() => {
+      this.currentTime += 1;
+
+      this.#updateTime();
+    }, 1000);
   }
 }
 
