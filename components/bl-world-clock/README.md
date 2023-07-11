@@ -129,11 +129,13 @@ World Clock is the component that can be used in Backendless [UI-Builder](https:
 
 @bl-customComponent-worldClock-digital-flip-label-color: rgb(255, 253, 255);
 @bl-customComponent-worldClock-digital-flip-background: rgb(0, 115, 116);
+@bl-customComponent-worldClock-digital-flip-padding-bottom: 5px;
 @bl-customComponent-worldClock-digital-flip-border-radius: 3px;
 @bl-customComponent-worldClock-digital-flip-font-size: 1.5rem;
+@bl-customComponent-worldClock-digital-flip-label-padding: 0 10px;
 @bl-customComponent-worldClock-digital-flip-label-margin: 0;
 @bl-customComponent-worldClock-digital-flip-label-font-size: 1rem;
-@bl-customComponent-worldClock-digital-flip-clock-padding: 10px 5px 0px;
+@bl-customComponent-worldClock-digital-flip-clock-padding: 10px 5px 5px;
 @bl-customComponent-worldClock-digital-flip-container-width: 34px;
 @bl-customComponent-worldClock-digital-flip-container-height: 48px;
 @bl-customComponent-worldClock-digital-flip-container-perspective-origin: 50% 50%;
