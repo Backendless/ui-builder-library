@@ -19,13 +19,13 @@ const DigitalClockViews = {
   [DigitalClockTypes.TECHNO]: DigitalClockTechno,
 };
 
-export function DigitalClock({ time, label, clockStyle, displaySeconds }) {
+export function DigitalClock({ time, label, clockStyle, displaySeconds, labelVisibility }) {
   const Clock = DigitalClockViews[clockStyle];
 
   return (
     <div className={ cn('digital', clockStyle) }>
       <Clock time={ time } displaySeconds={ displaySeconds }/>
-      <Label content={ label }/>
+      { labelVisibility && <Label content={ label }/> }
     </div>
   );
 }
