@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export const StyleVariants = {
   'default'    : '',
@@ -125,45 +125,25 @@ export const getPosition = (ref, coords) => {
   };
 };
 
-export const useContextMenuPositionHandler = (contextMenuRef, isMenuOpen) => {
-  const [sides, setSides] = useState({ left: false, top: false });
-  const [isChecked, setIsChecked] = useState(false);
+export const useContextMenuPositionHandler = (contextMenu, isMenuOpen) => useMemo(() => {
+  let sides, readyToShow;
 
-  useEffect(() => {
-    if (contextMenuRef.current && isMenuOpen) {
-      contextMenuPosition(contextMenuRef, isMenuOpen, sides, setIsChecked, setSides);
-
-      window.addEventListener('resize', () => {
-        contextMenuPosition(contextMenuRef, isMenuOpen, sides, setIsChecked, setSides);
-      });
-
-    } else {
-      setSides({ left: false, top: false });
-      setIsChecked(false);
-    }
-
-    return () => {
-      window.removeEventListener('resize', () => {
-        contextMenuPosition(contextMenuRef, isMenuOpen, sides, setIsChecked, setSides);
-      });
-    };
-  }, [contextMenuRef, isMenuOpen]);
-
-  return { sides, isChecked };
-};
-
-const contextMenuPosition = (contextMenuRef, isMenuOpen, sides, setIsChecked, setSides) => {
-  const { bottom, right } = contextMenuRef.current.getBoundingClientRect();
-
-  if (right > window.innerWidth) {
-    setSides({ ...sides, left: true });
+  if (contextMenu && isMenuOpen) {
+    sides = handleOverflow(contextMenu);
+    readyToShow = true;
+  } else {
+    sides = { left: false, top: false };
+    readyToShow = false;
   }
 
-  if (bottom > window.innerHeight) {
-    setSides({ ...sides, top: true });
-  }
+  return { sides, readyToShow };
+}, [contextMenu, isMenuOpen]);
 
-  setIsChecked(true);
+export const handleOverflow = contextMenu => {
+  return {
+    left: contextMenu.getBoundingClientRect().right > window.innerWidth,
+    top : contextMenu.getBoundingClientRect().bottom > window.innerHeight,
+  };
 };
 
 function useDocumentEvents(events, callback) {

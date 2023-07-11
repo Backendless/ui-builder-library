@@ -1,18 +1,48 @@
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import { ContextMenuItemTypes, StyleVariants, useClickAway, useContextMenuPositionHandler } from './helpers';
+import {
+  ContextMenuItemTypes, handleOverflow,
+  StyleVariants, useClickAway,
+  useContextMenuPositionHandler,
+} from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
+  const [newSides, setNewSides] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const contextMenuRef = useRef(null);
+  const [contextMenu, setContextMenu] = useState(null);
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setContextMenu(node);
+    }
+  }, []);
+
+  const { sides, readyToShow } = useContextMenuPositionHandler(contextMenu, isMenuOpen);
+  useClickAway(contextMenu, () => setIsMenuOpen(false));
 
   const onContextMenuButtonClick = () => setIsMenuOpen(state => !state);
 
-  const { sides, isChecked } = useContextMenuPositionHandler(contextMenuRef, isMenuOpen);
+  const resizeHandler = useCallback(() => {
+    const { left, top } = handleOverflow(contextMenu);
 
-  useClickAway(contextMenuRef, () => setIsMenuOpen(false));
+    setNewSides(state => ({
+      left: state?.left || left,
+      top: state?.top || top,
+    }));
+  }, [contextMenu]);
+
+  useEffect(() => {
+    if (contextMenu && isMenuOpen) {
+      window.addEventListener('resize', resizeHandler);
+
+      return () => {
+        setNewSides(null);
+        window.removeEventListener('resize', resizeHandler);
+      };
+    }
+  }, [resizeHandler, contextMenu, isMenuOpen]);
 
   return (
     <div className="dashlet__context-menu context-menu">
@@ -22,9 +52,9 @@ export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
 
       { isMenuOpen && (
         <div
-          ref={ contextMenuRef }
-          className={ cn('context-menu__container', sides) }
-          style={{ visibility: isChecked ? 'initial' : 'hidden' }}>
+          ref={ measuredRef }
+          className={ cn('context-menu__container', newSides || sides) }
+          style={{ visibility: readyToShow ? 'initial' : 'hidden' }}>
           <ul className="context-menu__list">
 
             { menuItems.map(({ label, type, content }) => (

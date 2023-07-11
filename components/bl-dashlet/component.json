@@ -113,7 +113,7 @@
       "handlerLabel": "Menu Items Logic",
       "handlerDescription": "This is a handler for the logic of determining context menu items for dashlet",
       "dataBinding": true,
-      "settingTooltip": "Allows to determine context menu items. Signature of context block: `{type, label, content}`."
+      "settingTooltip": "Allows to determine context menu items. Signature of context menu: `{type, label, content}`."
     },
     {
       "type": "number",
