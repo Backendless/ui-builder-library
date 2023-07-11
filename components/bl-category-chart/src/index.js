@@ -72,15 +72,8 @@ const useChart = (chartRef, display, type, labels, datasets, chartConfig) => {
 };
 
 const useChartConfig = ({
-  options,
-  legendVisibility,
-  titleVisibility,
-  title,
-  titleFontSize,
-  yGridLineVisibility,
-  xGridLineVisibility,
-  gridLinesColor,
-  gridLinesWidth,
+  options, legendVisibility, titleVisibility, title, titleFontSize,
+  yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,
 }) => useMemo(() => ({
   ...options,
   responsive: true,
