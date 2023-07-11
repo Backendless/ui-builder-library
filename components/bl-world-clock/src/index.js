@@ -28,7 +28,7 @@ const TimeFormats = {
 dayjs.extend(utc);
 
 export default function WorldClockComponent({ component, elRef, eventHandlers }) {
-  const { classList, style, display, type, timezone, label, timeFormat, displaySeconds } = component;
+  const { classList, style, display, type, timezone, label, timeFormat, displaySeconds, labelVisibility } = component;
   const { onSecondChange, onMinuteChange, onHourChange } = eventHandlers;
 
   const [time, setTime] = useState(() => getTimeData(timezone, timeFormat));
@@ -64,7 +64,13 @@ export default function WorldClockComponent({ component, elRef, eventHandlers })
 
   return (
     <div className={ cn('bl-customComponent-worldClock', classList) } style={ style } ref={ elRef }>
-      <WorldClock time={ time } label={ label } clockStyle={ clockStyle } displaySeconds={ displaySeconds }/>
+      <WorldClock
+        time={ time }
+        label={ label }
+        clockStyle={ clockStyle }
+        displaySeconds={ displaySeconds }
+        labelVisibility={ labelVisibility }
+      />
     </div>
   );
 }

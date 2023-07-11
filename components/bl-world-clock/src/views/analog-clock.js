@@ -19,7 +19,7 @@ const AnalogClockViews = {
 };
 const HOURS_LIST = [...Array(12).keys()];
 
-export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
+export function AnalogClock({ time, label, clockStyle, displaySeconds, labelVisibility }) {
   const { hour, minute, second } = time;
 
   const clockProps = useMemo(() => {
@@ -40,7 +40,7 @@ export function AnalogClock({ time, label, clockStyle, displaySeconds }) {
   return (
     <div className={ cn('analog', clockStyle) }>
       <Clock { ...clockProps }/>
-      <Label content={ label }/>
+      <Label content={ label } labelVisibility={ labelVisibility }/>
     </div>
   );
 }
