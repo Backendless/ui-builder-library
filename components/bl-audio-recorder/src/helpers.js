@@ -8,12 +8,19 @@ const Labels = {
   DOWNLOAD: 'Download Recorded',
 };
 
-export const download = (blob, fileName) => {
+export const download = (blob, fileName, fileNameDate, recordDate) => {
   const link = document.createElement('a');
 
   link.style.display = 'none';
   link.href = URL.createObjectURL(blob);
-  link.download = `${ fileName }.webm`;
+
+  if (fileNameDate) {
+    const date = new Date(recordDate).toISOString();
+
+    link.download = `${ fileName }${date}.webm`;
+  } else {
+    link.download = `${ fileName }.webm`;
+  }
 
   document.body.appendChild(link);
   link.click();
