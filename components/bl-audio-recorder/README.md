@@ -70,7 +70,7 @@ Audio Recorder is a component of Backendless UI-Builder designer based on the [R
 @bl-customComponent-audioRecorder-button-icon-size: 1rem;
 ````
 
-##Usage
+## Usage
 
 Addition an audio record to file storage.
 Use File API to add file to the file storage.
