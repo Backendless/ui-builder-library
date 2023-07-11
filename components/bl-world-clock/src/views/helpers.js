@@ -1,10 +1,6 @@
 import { useReducer, useState } from 'react';
 
-export function Label({ content, labelVisibility }) {
-  if (!labelVisibility) {
-    return null;
-  }
-
+export function Label({ content }) {
   return (
     <div className="clock-label">
       <span className="clock-label-text">{ content }</span>

@@ -40,7 +40,7 @@ export function AnalogClock({ time, label, clockStyle, displaySeconds, labelVisi
   return (
     <div className={ cn('analog', clockStyle) }>
       <Clock { ...clockProps }/>
-      <Label content={ label } labelVisibility={ labelVisibility }/>
+      { labelVisibility && <Label content={ label }/> }
     </div>
   );
 }

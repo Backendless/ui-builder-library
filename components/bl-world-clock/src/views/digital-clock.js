@@ -25,7 +25,7 @@ export function DigitalClock({ time, label, clockStyle, displaySeconds, labelVis
   return (
     <div className={ cn('digital', clockStyle) }>
       <Clock time={ time } displaySeconds={ displaySeconds }/>
-      <Label content={ label } labelVisibility={ labelVisibility }/>
+      { labelVisibility && <Label content={ label }/> }
     </div>
   );
 }
