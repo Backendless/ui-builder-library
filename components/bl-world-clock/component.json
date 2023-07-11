@@ -161,7 +161,7 @@
           "label": "GMT+12"
         }
       ],
-      "defaultValue": "+00:00",
+      "defaultValue": "+01:00",
       "settingTooltip": "Choose a time zone for the world clock."
     },
     {

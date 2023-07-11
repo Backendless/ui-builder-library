@@ -69,3 +69,17 @@ Audio Recorder is a component of Backendless UI-Builder designer based on the [R
 @bl-customComponent-audioRecorder-button-icon-fill: @bl-customComponent-audioRecorder-button-color;
 @bl-customComponent-audioRecorder-button-icon-size: 1rem;
 ````
+
+## Usage
+
+Addition an audio record to file storage.
+Use File API to add file to the file storage.
+
+![addition to storage example](./example-images/file-example.png)
+
+<details><summary>Codeless example</summary>
+
+````javascript
+<block xmlns="http://www.w3.org/1999/xhtml" type="create_file" id="fyZ-S297uoGp/(IJf}lC" x="331" y="124"><mutation has_output="false"></mutation><field name="connections_toggler">FALSE</field><value name="file_path"><shadow type="text" id="I0.+QI8d4!d_CJ,T?IQ4"><field name="TEXT">/audio</field></shadow></value><value name="file_name"><shadow type="text" id="O9:RAdCn_^07PqG|{erF"><field name="TEXT">Recorded Audio.webm</field></shadow></value><value name="file_content"><shadow type="text" id="mr#w0oE_%jv%2d2pvTf4"><field name="TEXT"></field></shadow><block type="ui_custom_component__c_5fb4fc55206a78a530c50f6ea9aba4f8__getBlob" id="$46v*gjwsUE*m!e0,RUa" bl_meta="{&quot;label&quot;:&quot;Audio Recorder Component Action - Get Blob from&quot;}"><mutation has_output="true"></mutation><field name="componentUid">'1e1e7558158658d85db207c9a1c8615b'</field><field name="connections_toggler">TRUE</field></block></value><value name="overwrite"><shadow type="logic_boolean" id="1yWD5LP[~wx2vAx?AKp/"><field name="BOOL">TRUE</field></shadow></value></block>
+````
+</details>
