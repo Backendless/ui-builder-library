@@ -126,25 +126,17 @@ export const getPosition = (ref, coords) => {
 };
 
 export const useContextMenuPositionHandler = (contextMenu, isMenuOpen) => useMemo(() => {
-  let sides, readyToShow;
+  const readyToShow = contextMenu && isMenuOpen;
 
-  if (contextMenu && isMenuOpen) {
-    sides = handleOverflow(contextMenu);
-    readyToShow = true;
-  } else {
-    sides = { left: false, top: false };
-    readyToShow = false;
-  }
-
-  return { sides, readyToShow };
+  return {
+    readyToShow, sides: readyToShow ? handleOverflow(contextMenu) : { left: false, top: false },
+  };
 }, [contextMenu, isMenuOpen]);
 
-export const handleOverflow = contextMenu => {
-  return {
-    left: contextMenu.getBoundingClientRect().right > window.innerWidth,
-    top : contextMenu.getBoundingClientRect().bottom > window.innerHeight,
-  };
-};
+export const handleOverflow = contextMenu => ({
+  left: contextMenu.getBoundingClientRect().right > window.innerWidth,
+  top : contextMenu.getBoundingClientRect().bottom > window.innerHeight,
+});
 
 function useDocumentEvents(events, callback) {
   const callbackRef = useRef();
