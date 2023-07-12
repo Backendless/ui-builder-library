@@ -178,6 +178,16 @@
       "handlerDescription": "This is a handler for the logic to determine the content of the World Clock label."
     },
     {
+      "type": "checkbox",
+      "name": "labelVisibility",
+      "label": "Label Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "labelVisibilityLogic",
+      "settingTooltip": "Select to display the World Clock label."
+    },
+    {
       "type": "select",
       "name": "timeFormat",
       "label": "Time Format",
