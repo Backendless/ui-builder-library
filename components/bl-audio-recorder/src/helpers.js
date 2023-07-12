@@ -13,14 +13,7 @@ export const download = (blob, fileName, fileNameDate, recordDate) => {
 
   link.style.display = 'none';
   link.href = URL.createObjectURL(blob);
-
-  if (fileNameDate) {
-    const date = new Date(recordDate).toISOString();
-
-    link.download = `${ fileName }${date}.webm`;
-  } else {
-    link.download = `${ fileName }.webm`;
-  }
+  link.download = getFileName(fileName, fileNameDate, recordDate);
 
   document.body.appendChild(link);
   link.click();
@@ -52,4 +45,14 @@ export const prepareLabel = component => {
     resume  : isIcon ? <Play/> : resumeText || Labels.RESUME,
     download: isIcon ? <Download/> : downloadText || Labels.DOWNLOAD,
   });
+};
+
+const getFileName = (fileName, fileNameDate, recordDate) => {
+  if (fileNameDate) {
+    const date = new Date(recordDate).toISOString();
+
+    return `${ fileName }${ date }.webm`;
+  }
+
+  return `${ fileName }.webm`;
 };
