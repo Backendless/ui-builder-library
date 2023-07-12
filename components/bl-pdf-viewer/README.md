@@ -95,7 +95,7 @@ The component allows you to add a pdf viewer to your UI-Builder application
 
 **Controls scale text**
 ```
-@bl-customComponent-pdfViewer-controls-scale-text-width: 23px;
+@bl-customComponent-pdfViewer-controls-scale-text-width: auto;
 @bl-customComponent-pdfViewer-controls-scale-text-align: center;
 @bl-customComponent-pdfViewer-controls-scale-text-margin: 0 5px;
 ```

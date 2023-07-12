@@ -105,7 +105,7 @@ function ScaleControls({ scale, setScale }) {
       <button className="controls__button" onClick={ onMinusScaleClick } disabled={ scale <= 0.1 }>
         <MinusIcon/>
       </button>
-      <span>{ scale }</span>
+      <span>{ `${(scale * 100).toFixed(0)}%` }</span>
       <button className="controls__button" onClick={ onPlusScaleClick } disabled={ scale >= 10 }>
         <PlusIcon/>
       </button>
