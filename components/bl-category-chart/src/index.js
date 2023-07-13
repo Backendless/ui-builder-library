@@ -4,26 +4,8 @@ import Chart from './chartjs';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function CategoryChartComponent({ component, elRef }) {
-  const {
-    classList, display, style, disabled, height, width, type, titleVisibility, title, titleFontSize, backgroundColor,
-    legendVisibility, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth, labels, datasets, options
-  } = component;
-
-  const chartRef = useRef(null);
-  const chartConfig = useChartConfig({
-    options,
-    legendVisibility,
-    titleVisibility,
-    title,
-    titleFontSize,
-    yGridLineVisibility,
-    xGridLineVisibility,
-    gridLinesColor,
-    gridLinesWidth,
-  });
-
-  useChart(chartRef, display, type, labels, datasets, chartConfig);
-
+  const { chartRef } = useChartLogic(component);
+  const { classList, display, style, disabled, height, width, backgroundColor } = component;
   const styles = { ...style, width, height };
 
   if (!display) {
@@ -42,17 +24,108 @@ export default function CategoryChartComponent({ component, elRef }) {
   );
 }
 
-const useChart = (chartRef, display, type, labels, datasets, chartConfig) => {
+function useChartLogic(component) {
+  const {
+    options, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,
+    legendVisibility, titleVisibility, title, titleFontSize,
+    display, type, labels, datasets
+  } = component;
+
+  const chartRef = useRef(null);
   const chartInstance = useRef(null);
+
+  const chartConfig = {
+    ...options,
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: legendVisibility,
+      },
+      title: {
+        display: titleVisibility,
+        text: title,
+        font: {
+          size: titleFontSize,
+        },
+      },
+    },
+    scales: {
+      y: {
+        grid: {
+          display: yGridLineVisibility,
+          color: gridLinesColor,
+          lineWidth: gridLinesWidth,
+        },
+      },
+      x: {
+        grid: {
+          display: xGridLineVisibility,
+          color: gridLinesColor,
+          lineWidth: gridLinesWidth,
+        },
+      },
+    },
+  }
 
   useEffect(() => {
     if (!display) {
       return;
     }
 
-    if (chartInstance.current) {
+    let requireRerender = false;
+
+    const optionsConfig = { ...options };
+
+    if (isDataChange(chartConfig, optionsConfig)) {
+      requireRerender = true;
+      Object.assign(chartConfig, optionsConfig);
+    }
+
+    const scaleConfig = {
+      y: {
+        grid: {
+          display: yGridLineVisibility,
+          color: gridLinesColor,
+          lineWidth: gridLinesWidth,
+        },
+      },
+      x: {
+        grid: {
+          display: xGridLineVisibility,
+          color: gridLinesColor,
+          lineWidth: gridLinesWidth,
+        },
+      },
+    };
+
+    if (isDataChange(chartConfig.scales, scaleConfig)) {
+      requireRerender = true;
+      Object.assign(chartConfig.scales.y, scaleConfig.y);
+      Object.assign(chartConfig.scales.x, scaleConfig.x);
+    }
+
+    const pluginsConfig = {
+      legend: {
+        display: legendVisibility,
+      },
+      title: {
+        display: titleVisibility,
+        text: title,
+        font: {
+          size: titleFontSize,
+        },
+      },
+    };
+
+    if (isDataChange(chartConfig.plugins, pluginsConfig)) {
+      requireRerender = true;
+      Object.assign(chartConfig.plugins.legend, pluginsConfig.legend);
+      Object.assign(chartConfig.plugins.title, pluginsConfig.title);
+    }
+
+    if (chartInstance.current && requireRerender) {
       chartInstance.current.data = { labels, datasets };
-      chartInstance.current.options = chartConfig;
       chartInstance.current.update();
     } else {
       chartInstance.current = new Chart(chartRef.current, {
@@ -68,43 +141,42 @@ const useChart = (chartRef, display, type, labels, datasets, chartConfig) => {
         chartInstance.current = null;
       }
     };
-  }, [chartRef.current, display, type, labels, datasets, chartConfig]);
-};
+  }, [chartRef.current, display, type, labels, datasets, chartConfig, options,
+    legendVisibility, titleVisibility, title, titleFontSize,
+    yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth]);
 
-const useChartConfig = ({
-  options, legendVisibility, titleVisibility, title, titleFontSize,
-  yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,
-}) => useMemo(() => ({
-  ...options,
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      display: legendVisibility,
-    },
-    title: {
-      display: titleVisibility,
-      text: title,
-      font: {
-        size: titleFontSize,
-      },
-    },
-  },
-  scales: {
-    y: {
-      grid: {
-        display: yGridLineVisibility,
-        color: gridLinesColor,
-        lineWidth: gridLinesWidth,
-      },
-    },
-    x: {
-      grid: {
-        display: xGridLineVisibility,
-        color: gridLinesColor,
-        lineWidth: gridLinesWidth,
-      },
-    },
-  },
-}), [options, legendVisibility, titleVisibility, title, titleFontSize,
-  yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,]);
+  return { chartRef };
+}
+
+function isDataChange(prevData, nextData) {
+  if (prevData === nextData) {
+    return false;
+  }
+
+  if (typeof prevData !== typeof nextData) {
+    return true;
+  }
+
+  if (prevData === null || prevData === undefined || nextData === null || nextData === undefined) {
+    return false;
+  }
+
+  if (typeof prevData === 'object' && typeof nextData === 'object') {
+    const prevKeys = Object.keys(prevData);
+    const nextKeys = Object.keys(nextData);
+
+    if (prevKeys.length !== nextKeys.length) {
+      return true;
+    }
+
+    for (let key of prevKeys) {
+      if (!isDataChange(prevData[key], nextData[key])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  return prevData !== nextData;
+}
