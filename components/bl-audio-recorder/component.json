@@ -78,6 +78,16 @@
       "settingTooltip": "Set the name of the recorded file."
     },
     {
+      "type": "checkbox",
+      "name": "fileNameHasTimestamp",
+      "label": "File Name Has Timestamp",
+      "settingTooltip": "Add date of record to file name",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "fileNameHasTimestampLogic"
+    },
+    {
       "type": "text",
       "name": "width",
       "label": "Width",
@@ -212,7 +222,7 @@
     },
     {
       "id": "getUrl",
-      "label": "Get URL from recorded file",
+      "label": "Get URL from recorded file in",
       "hasReturn": true
     }
   ],

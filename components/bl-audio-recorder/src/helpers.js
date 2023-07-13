@@ -8,12 +8,12 @@ const Labels = {
   DOWNLOAD: 'Download Recorded',
 };
 
-export const download = (blob, fileName) => {
+export const download = (blob, fileName, fileNameHasTimestamp, recordDate) => {
   const link = document.createElement('a');
 
   link.style.display = 'none';
   link.href = URL.createObjectURL(blob);
-  link.download = `${ fileName }.webm`;
+  link.download = getFileName(fileName, fileNameHasTimestamp, recordDate);
 
   document.body.appendChild(link);
   link.click();
@@ -45,4 +45,14 @@ export const prepareLabel = component => {
     resume  : isIcon ? <Play/> : resumeText || Labels.RESUME,
     download: isIcon ? <Download/> : downloadText || Labels.DOWNLOAD,
   });
+};
+
+const getFileName = (fileName, fileNameHasTimestamp, recordDate) => {
+  if (fileNameHasTimestamp) {
+    const date = new Date(recordDate).toISOString();
+
+    return `${ fileName }${ date }.webm`;
+  }
+
+  return `${ fileName }.webm`;
 };
