@@ -79,13 +79,13 @@
     },
     {
       "type": "checkbox",
-      "name": "fileNameDate",
-      "label": "File Name Date",
+      "name": "fileNameHasTimestamp",
+      "label": "File Name Has Timestamp",
       "settingTooltip": "Add date of record to file name",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "fileNameDateLogic"
+      "handlerId": "fileNameHasTimestampLogic"
     },
     {
       "type": "text",
