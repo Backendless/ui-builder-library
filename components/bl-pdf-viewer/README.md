@@ -95,7 +95,7 @@ The component allows you to add a pdf viewer to your UI-Builder application
 
 **Controls scale text**
 ```
-@bl-customComponent-pdfViewer-controls-scale-text-width: 23px;
+@bl-customComponent-pdfViewer-controls-scale-text-width: auto;
 @bl-customComponent-pdfViewer-controls-scale-text-align: center;
 @bl-customComponent-pdfViewer-controls-scale-text-margin: 0 5px;
 ```
@@ -129,11 +129,11 @@ The component allows you to add a pdf viewer to your UI-Builder application
 
 **No data**
 ```
+@bl-customComponent-pdfViewer-message-text-align: center;
 @bl-customComponent-pdfViewer-no-data-icon-size: 40px;
 @bl-customComponent-pdfViewer-no-data-font-color: #fff;
 @bl-customComponent-pdfViewer-no-data-font-size: 24px;
 @bl-customComponent-pdfViewer-no-data-font-weight: bold;
-@bl-customComponent-pdfViewer-no-data-text-align: center;
 @bl-customComponent-pdfViewer-no-data-border-height: 100%;
 @bl-customComponent-pdfViewer-no-data-border-width: 100%;
 @bl-customComponent-pdfViewer-no-data-icon-fill: #fff;
