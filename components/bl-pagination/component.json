@@ -29,7 +29,8 @@
       "handlerLabel": "Sibling Count Logic",
       "handlerDescription": "This is a handler for the logic to determine how many digits to display either side of current page.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "dataBinding": true
     },
     {
       "type": "select",

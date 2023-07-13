@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { BackButton, NextButton, FirstPageButton, LastPageButton, PageList } from './buttons';
+
+import { BackButton, FirstPageButton, LastPageButton, NextButton, PageList } from './buttons';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -54,7 +55,7 @@ export default function Pagination({ component, eventHandlers }) {
 
         { isFirstPageButtonVisible && (
           <FirstPageButton
-            onGoFirst={ onGoFirst }
+            onGoFirst={ onGoFirst.hasLogic ? onGoFirst : component.goFirstPage }
             currentPage={ currentPage }
             paginationSize={ size }
             variant={ variant }
@@ -63,7 +64,7 @@ export default function Pagination({ component, eventHandlers }) {
 
         { isPrevButtonVisible && (
           <BackButton
-            onGoBack={ onGoBack }
+            onGoBack={ onGoBack.hasLogic ? onGoBack : component.goPreviousPage }
             currentPage={ currentPage }
             paginationSize={ size }
             variant={ variant }
@@ -81,7 +82,7 @@ export default function Pagination({ component, eventHandlers }) {
 
         { isNextButtonVisible && (
           <NextButton
-            onGoNext={ onGoNext }
+            onGoNext={ onGoNext.hasLogic ? onGoNext : component.goNextPage }
             currentPage={ currentPage }
             lastPage={ pageCount }
             paginationSize={ size }
@@ -91,7 +92,7 @@ export default function Pagination({ component, eventHandlers }) {
 
         { isLastPageButtonVisible && (
           <LastPageButton
-            onGoLast={ onGoLast }
+            onGoLast={ onGoLast.hasLogic ? onGoLast : component.goLastPage }
             currentPage={ currentPage }
             lastPage={ pageCount }
             paginationSize={ size }
