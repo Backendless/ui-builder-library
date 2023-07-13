@@ -36,11 +36,13 @@ export const captureMediaDevices = async mediaConstraints => {
 export class Timer {
   constructor(setTime) {
     this.setTime = setTime;
+    this.state = StreamState.INACTIVE;
+
     this.currentTime = 0;
     this.interval = null;
-    this.state = StreamState.INACTIVE;
-    this.startTime = null;
+
     this.duration = 0;
+    this.startTime = null;
   }
 
   static getDisplaySeconds(time) {

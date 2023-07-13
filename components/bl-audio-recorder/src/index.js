@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { captureMediaDevices, download, prepareLabel, Timer } from './helpers';
 import ysFixWebmDuration from './lib';
+import { RecordTimer } from './record-timer';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
@@ -21,7 +22,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const timer = useMemo(() => new Timer(setTime), []);
 
-  useEffect(() => {return () => {timer.reset();};}, []);
+  useEffect(() => () => timer.reset(), []);
 
   const buttonLabels = useMemo(() => prepareLabel(component),
     [labelsType, startText, stopText, downloadText, pauseText, resumeText]);
@@ -128,16 +129,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
           <button
             disabled={ state && state !== StreamState.INACTIVE }
             className="control-button" onClick={ startRecording }>
-            { state && state !== StreamState.INACTIVE ?
-              (
-                <>
-                  <span className="record-dot"/>
-                  <span className="record-text">rec</span>
-                  <span className="record-time">{ time }</span>
-                </>
-              )
-              : buttonLabels.start
-            }
+            { state && state !== StreamState.INACTIVE ? <RecordTimer time={ time }/> : buttonLabels.start }
           </button>
           <button
             disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
