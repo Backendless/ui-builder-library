@@ -137,22 +137,22 @@
     },
     {
       "name": "onGoNext",
-      "label": "On Go Next",
+      "label": "On Next Button Click",
       "handlerDescription": "This handler is triggered when the user clicks on next button."
     },
     {
       "name": "onGoBack",
-      "label": "On Go Back",
+      "label": "On Back Button Click",
       "handlerDescription": "This handler is triggered when the user clicks on back button."
     },
     {
       "name": "onGoFirst",
-      "label": "On Go First",
+      "label": "On First Button Click",
       "handlerDescription": "This handler is triggered when the user clicks on first-page button."
     },
     {
       "name": "onGoLast",
-      "label": "On Go Last",
+      "label": "On Last Button Click",
       "handlerDescription": "This handler is triggered when the user clicks on last-page button."
     }
   ],

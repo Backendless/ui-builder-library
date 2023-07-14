@@ -44,9 +44,7 @@ export default function Pagination({ component, eventHandlers }) {
   useEffect(() => {
     onMounted();
 
-    return () => {
-      onUnmount();
-    };
+    return () => onUnmount();
   }, []);
 
   useEffect(() => {
