@@ -115,6 +115,16 @@
   ],
   "eventHandlers": [
     {
+      "name": "onMounted",
+      "label": "On Mounted",
+      "handlerDescription": "This event is triggered immediately after the component is mounted and appeared on the page."
+    },
+    {
+      "name": "onUnmount",
+      "label": "On Before Unmount",
+      "handlerDescription": "This event is triggered immediately before the component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers or cleaning up any RT subscriptions that were created in this component."
+    },
+    {
       "name": "onPageChange",
       "label": "On Page Change",
       "contextBlocks": [

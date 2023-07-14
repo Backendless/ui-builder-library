@@ -17,7 +17,7 @@ export default function Pagination({ component, eventHandlers }) {
     size,
     variant,
   } = component;
-  const { onPageChange, onGoNext, onGoBack, onGoFirst, onGoLast } = eventHandlers;
+  const { onPageChange, onGoNext, onGoBack, onGoFirst, onGoLast, onMounted, onUnmount } = eventHandlers;
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -42,6 +42,14 @@ export default function Pagination({ component, eventHandlers }) {
   };
 
   useEffect(() => {
+    onMounted();
+
+    return () => {
+      onUnmount();
+    };
+  }, []);
+
+  useEffect(() => {
     onPageChange({ currentPage });
   }, [currentPage]);
 
@@ -60,7 +68,7 @@ export default function Pagination({ component, eventHandlers }) {
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
 
         { isPrevButtonVisible && (
           <BackButton
@@ -69,7 +77,7 @@ export default function Pagination({ component, eventHandlers }) {
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
 
         <PageList
           pageCount={ pageCount }
@@ -88,7 +96,7 @@ export default function Pagination({ component, eventHandlers }) {
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
 
         { isLastPageButtonVisible && (
           <LastPageButton
@@ -98,7 +106,7 @@ export default function Pagination({ component, eventHandlers }) {
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
       </div>
     </div>
   );
