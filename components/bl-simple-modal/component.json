@@ -36,7 +36,7 @@
       "label": "Submit Button Label",
       "defaultValue": "Submit",
       "handlerId": "submitButtonLogic",
-      "handlerLabel": "Submit Button Logic",
+      "handlerLabel": "Submit Button Label Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the label for Submit Button.",
       "showInSettings": true,
@@ -81,7 +81,7 @@
       "name": "placeholder",
       "label": "Placeholder",
       "handlerId": "placeholderLogic",
-      "handlerLabel": "PlaceholderLogic",
+      "handlerLabel": "Placeholder Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the text for input placeholder.",
       "showInSettings": true,
@@ -99,12 +99,12 @@
   "eventHandlers": [
     {
       "name": "onClose",
-      "label": "On Close Button",
+      "label": "On Close Event",
       "handlerDescription": "This event triggers when the user clicks on the close button."
     },
     {
       "name": "onSubmit",
-      "label": "On Submit Button",
+      "label": "On Submit Event",
       "contextBlocks": [
         {
           "id": "inputValue",
