@@ -1,23 +1,23 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
+import { createActions } from './helpers/actions';
 import {
   initMap,
-  createMarkers,
   createCircles,
   createPolygons,
   changeMapType,
   setCenter,
   setZoom,
-  toggleZoomControl,
   toggleDraggingControl,
-  toggleFullscreen
+  toggleFullscreen,
+  toggleZoomControl,
+  useMarkers,
 } from './helpers/map';
-import { createActions } from './helpers/actions';
 import { useIcon } from './helpers/use-icon';
+import { FullscreenButton } from './fullscreen-button';
+import { GeopositionButton } from './geoposition-button';
 import { IconOptions } from './icons';
 import { MapTypeSelect } from './map-type-select';
-import { GeopositionButton } from './geoposition-button';
-import { FullscreenButton } from './fullscreen-button';
 
 export default function LeafletMap({ component, eventHandlers }) {
   const {
@@ -42,23 +42,19 @@ export default function LeafletMap({ component, eventHandlers }) {
   const mapRef = useRef(null);
   const currentLayer = useRef(null);
   const markerIcon = useIcon(IconOptions.marker);
-  const uid = useMemo(() => BackendlessUI.UUID.short(),[])
+  const uid = useMemo(() => BackendlessUI.UUID.short(), []);
 
   useEffect(() => {
     initMap(component, eventHandlers, mapRef, currentLayer, uid);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     createActions(component, mapRef.current);
-  },[markers, circles,polygons]);
+  }, [markers, circles, polygons]);
 
   useEffect(() => {
     changeMapType(mapRef, currentLayer, component);
   }, [mapType]);
-
-  useEffect(() => {
-    createMarkers(markers, markerIcon, mapRef.current, eventHandlers);
-  }, [markers]);
 
   useEffect(() => {
     createCircles(circles, mapRef.current, eventHandlers);
@@ -88,6 +84,8 @@ export default function LeafletMap({ component, eventHandlers }) {
     toggleFullscreen(containerRef.current, fullscreen, mapRef.current);
   }, [fullscreen]);
 
+  useMarkers(markers, markerIcon, mapRef.current, eventHandlers);
+
   if (!display) {
     return null;
   }
@@ -99,7 +97,7 @@ export default function LeafletMap({ component, eventHandlers }) {
       style={ style }
       ref={ containerRef }>
       { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }
-      { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers } component={component}/> }
+      { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers } component={ component }/>}
       { fullscreenControl && <FullscreenButton component={ component } eventHandlers={ eventHandlers }/> }
     </div>
   );

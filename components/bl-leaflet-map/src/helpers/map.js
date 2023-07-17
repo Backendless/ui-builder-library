@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
+
 import Leaflet from '../lib/leaflet';
-import { toCoordinates } from './coordinates';
 import { MapProviders } from '../maps';
+import { toCoordinates } from './coordinates';
 
 const DefaultValues = {
   ZOOM  : 10,
@@ -103,18 +105,34 @@ export function createCircles(circles, map, eventHandlers) {
   }
 }
 
-export function createMarkers(markers, icon, map, eventHandlers) {
-  if (markers) {
-    const { onMarkerClick } = eventHandlers;
+export function useMarkers(markers, icon, map, eventHandlers) {
+  const [markersArray, setMarkersArray] = useState([]);
 
-    markers.forEach(item => {
-      Leaflet.marker([item.point.lat, item.point.lng], { icon })
-        .on('click', () => {
-          onMarkerClick({ coordinates: [item.point.lat, item.point.lng], description: item.description });
-        })
-        .addTo(map)
-        .bindPopup(item.description);
+  useEffect(() => {
+    clearOldMarkers(markersArray, setMarkersArray);
+
+    if (markers) {
+      const { onMarkerClick } = eventHandlers;
+
+      markers.forEach(item => {
+        const marker = Leaflet.marker([item.point.lat, item.point.lng], { icon })
+          .on('click', () => {
+            onMarkerClick({ coordinates: [item.point.lat, item.point.lng], description: item.description });
+          })
+          .addTo(map)
+          .bindPopup(item.description);
+        setMarkersArray(prev => [...prev, marker]);
+      });
+    }
+  }, [markers]);
+}
+
+function clearOldMarkers(markersArray, setMarkersArray) {
+  if(markersArray) {
+    markersArray.forEach(item => {
+      item.remove();
     });
+    setMarkersArray([]);
   }
 }
 
