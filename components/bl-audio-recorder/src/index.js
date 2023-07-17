@@ -9,7 +9,7 @@ const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const {
     player, controls, noise, fileName, width, startText, stopText, downloadText, pauseText, resumeText,
-    labelsType, display, style, classList,
+    labelsType, fileNameHasTimestamp, display, style, classList,
   } = component;
   const { onStart, onStop, onDownload, onStateChange } = eventHandlers;
 
@@ -84,6 +84,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
         setState(StreamState.INACTIVE);
         setRecordedBlob(resultBlob);
+        setRecordDate(Date.now());
         onStop();
 
         chunks.length = 0;
@@ -105,8 +106,8 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const downloadRecordedFile = useCallback(() => {
     onDownload({ blob: recordedBlob });
-    download(recordedBlob, fileName);
-  }, [recordedBlob, fileName]);
+    download(recordedBlob, fileName, fileNameHasTimestamp, recordDate);
+  }, [recordedBlob, fileName, recordDate]);
 
   const toggleRecord = useCallback(() => {
 

@@ -44,16 +44,70 @@ The component based on external [Simple Modal](https://mui.com/material-ui/react
 @bl-customComponent-simple-modal-textColor: @appTextColor;
 ```
 
-**Dimensions**
+**General**
 ```
+@bl-customComponent-simple-modal-font-family: inherit;
 @bl-customComponent-simple-modal-max-width: 600px;
 @bl-customComponent-simple-modal-min-width: 300px;
-@bl-customComponent-simple-modal-button-borderRadius: 4px;
+@bl-customComponent-simple-modal-z-index: 1000;
+@bl-customComponent-simple-modal-open-animation: modal-open linear forwards;
+@bl-customComponent-simple-modal-close-animation: modal-close linear forwards;
 ```
 
-**Colors**
+**Content**
+```
+@bl-customComponent-simple-modal-content-padding: 16px 20px 8px;
+@bl-customComponent-simple-modal-content-border-radius: 3px;
+```
+
+**Title**
+```
+@bl-customComponent-simple-modal-title-margin: 0;
+@bl-customComponent-simple-modal-title-padding: 0 0 16px;
+@bl-customComponent-simple-modal-title-font-size: 1.25rem;
+@bl-customComponent-simple-modal-title-font-weight: 500;
+```
+
+**Text**
+```
+@bl-customComponent-simple-modal-text-margin: 0;
+@bl-customComponent-simple-modal-text-font-size: 1rem;
+@bl-customComponent-simple-modal-text-font-weight: 400;
+@bl-customComponent-simple-modal-text-opacity: 0.6;
+```
+
+**Button**
 ```
 @bl-customComponent-simple-modal-buttonColor: @bl-customComponent-simple-modal-themeColor;
 @bl-customComponent-simple-modal-button-backgroundColor: transparent;
 @bl-customComponent-simple-modal-button-backgroundColorHover: fade(@bl-customComponent-simple-modal-themeColor, 4%);
+@bl-customComponent-simple-modal-button-borderRadius: 4px;
+@bl-customComponent-simple-modal-button-margin: 0;
+@bl-customComponent-simple-modal-button-border: 0;
+@bl-customComponent-simple-modal-button-outline: 0;
+@bl-customComponent-simple-modal-button-padding: 6px 8px;
+@bl-customComponent-simple-modal-button-font-size: 0.875rem;
+@bl-customComponent-simple-modal-button-font-weight: 500;
+@bl-customComponent-simple-modal-button-text-transform: uppercase;
+@bl-customComponent-simple-modal-button-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+```
+
+**Input**
+```
+@bl-customComponent-simple-modal-input-background-color: transparent;
+@bl-customComponent-simple-modal-input-border-bottom: 1px solid gray;
+@bl-customComponent-simple-modal-input-border-bottom-focus: 2px solid @bl-customComponent-simple-modal-themeColor;
+@bl-customComponent-simple-modal-input-border-width-hover: 3px;
+@bl-customComponent-simple-modal-input-border-bottom-transition: 0.3s;
+@bl-customComponent-simple-modal-input-font-size: 1.25rem;
+@bl-customComponent-simple-modal-input-font-weight: 400;
+```
+
+**Placeholder**
+```
+@bl-customComponent-simple-modal-placeholder-color: gray;
+@bl-customComponent-simple-modal-placeholder-font-size: 1rem;
+@bl-customComponent-simple-modal-placeholder-font-weight: 400;
+@bl-customComponent-simple-modal-placeholder-transition: 0.3s;
+@bl-customComponent-simple-modal-placeholder-input-focused-font-size: 0.8rem;
 ```
