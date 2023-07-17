@@ -1,4 +1,5 @@
 import { Icons } from './icons';
+import { StreamState } from './index';
 
 const Labels = {
   START   : 'Start Record',
@@ -31,6 +32,83 @@ export const captureMediaDevices = async mediaConstraints => {
     console.error('The source of the stream did not select.', e);
   }
 };
+
+export class Timer {
+  constructor(setTime) {
+    this.setTime = setTime;
+    this.state = StreamState.INACTIVE;
+
+    this.currentTime = 0;
+    this.interval = null;
+
+    this.duration = 0;
+    this.startTime = null;
+  }
+
+  static getDisplaySeconds(time) {
+    const totalMs = time * 1000;
+
+    return new Date(totalMs).toISOString().slice(14, 19);
+  }
+
+  start() {
+    if (this.state !== StreamState.RECORDING) {
+      this.state = StreamState.RECORDING;
+      this.startTime = Date.now();
+      this.duration = 0;
+
+      this.#startCounter();
+    }
+  }
+
+  pause() {
+    if (this.state === StreamState.RECORDING) {
+      this.#updateDuration();
+
+      this.state = StreamState.PAUSED;
+
+      clearInterval(this.interval);
+    }
+  }
+
+  resume() {
+    if (this.state === StreamState.PAUSED) {
+      this.#startCounter();
+
+      this.state = StreamState.RECORDING;
+      this.startTime = Date.now();
+    }
+  }
+
+  reset() {
+    this.#updateDuration();
+
+    this.state = StreamState.INACTIVE;
+    this.currentTime = 0;
+
+    clearInterval(this.interval);
+
+    this.#updateTime();
+  }
+
+  #updateTime() {
+    this.setTime(Timer.getDisplaySeconds(this.currentTime));
+  }
+
+  #updateDuration() {
+    if (this.state === StreamState.RECORDING) {
+      this.duration = this.duration + Date.now() - this.startTime;
+    }
+  }
+
+  #startCounter() {
+    this.interval = setInterval(() => {
+      this.currentTime += 1;
+
+      this.#updateTime();
+    }, 1000);
+  }
+}
 
 export const prepareLabel = component => {
   const { labelsType, startText, stopText, downloadText, pauseText, resumeText } = component;
