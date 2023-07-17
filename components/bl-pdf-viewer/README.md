@@ -112,6 +112,7 @@ The component allows you to add a pdf viewer to your UI-Builder application
 @bl-customComponent-pdfViewer-controls-page-info-text-align: center;
 @bl-customComponent-pdfViewer-controls-page-info-disabled-opacity: 0.5;
 @bl-customComponent-pdfViewer-controls-page-info-disabled-cursor: auto;
+@bl-customComponent-pdfViewer-controls-page-slash-margin: 0 5px;
 ```
 
 **Container**
