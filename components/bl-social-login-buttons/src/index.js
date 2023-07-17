@@ -2,7 +2,7 @@ import { Button } from './button';
 
 const { cn } = BackendlessUI.CSSUtils
 
-const providersList = ['google', 'facebook', 'twitter', 'linkedin', 'github'];
+const providersList = ['googleplus', 'facebook', 'twitter', 'linkedin', 'github'];
 
 export default function SocialLoginButtonsComponent({ component, eventHandlers }) {
   const { display, classList, disabled, redirectToPage, extraQueryParams, iconsVisibility } = component;
@@ -17,7 +17,7 @@ export default function SocialLoginButtonsComponent({ component, eventHandlers }
       { providersList.map(provider => (
         component[provider] &&
           <Button
-            provider={ provider }
+            providerCode={ provider }
             iconsVisibility={ iconsVisibility }
             buttonLabel={ `Connect with ${ provider }` }
             redirectToPage={ redirectToPage }
