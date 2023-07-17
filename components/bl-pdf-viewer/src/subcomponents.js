@@ -91,7 +91,8 @@ function PageControls({ currentPage, setCurrentPage, pageCount }) {
         onKeyDown={ onEnter }
         onBlur={ onSubmit }
       />
-      <span>/{ pageCount }</span>
+      <span className="controls__page-slash">/</span>
+      <span>{ pageCount }</span>
     </div>
   );
 }
