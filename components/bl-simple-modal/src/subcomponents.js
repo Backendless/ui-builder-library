@@ -36,9 +36,7 @@ export function Container(props) {
   return (
     <div className="simple-modal__container">
       { content && (
-        <p className="simple-modal__text">
-          { content }
-        </p>
+        <p className="simple-modal__text" dangerouslySetInnerHTML={{ __html: content }}></p>
       ) }
 
       { type === modalTypes.prompt && (
