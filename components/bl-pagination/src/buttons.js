@@ -1,6 +1,6 @@
+import { ArrowBackIcon, ArrowNextIcon, FirstPageIcon, LastPageIcon } from './buttons-svg';
+import { getControlButtonClasses, getPageListClasses } from './helpers';
 import { DOTS, usePagination } from './use-pagination';
-import { useControlButtonClasses, usePageListClasses } from './helpers';
-import { ArrowNextIcon, ArrowBackIcon, FirstPageIcon, LastPageIcon } from './buttons-svg';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -8,7 +8,7 @@ export function BackButton(props) {
   const { onGoBack, currentPage, paginationSize, variant } = props;
   const isDisabled = currentPage === 1;
 
-  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
+  const classes = getControlButtonClasses(isDisabled, variant, paginationSize);
 
   return (
     <button
@@ -25,7 +25,7 @@ export function NextButton(props) {
   const { onGoNext, currentPage, lastPage, paginationSize, variant } = props;
   const isDisabled = currentPage === lastPage;
 
-  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
+  const classes = getControlButtonClasses(isDisabled, variant, paginationSize);
 
   return (
     <button
@@ -42,7 +42,7 @@ export function FirstPageButton(props) {
   const { onGoFirst, currentPage, paginationSize, variant } = props;
   const isDisabled = currentPage === 1;
 
-  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
+  const classes = getControlButtonClasses(isDisabled, variant, paginationSize);
 
   return (
     <button
@@ -59,7 +59,7 @@ export function LastPageButton(props) {
   const { onGoLast, currentPage, lastPage, paginationSize, variant } = props;
   const isDisabled = currentPage === lastPage;
 
-  const classes = useControlButtonClasses(isDisabled, variant, paginationSize);
+  const classes = getControlButtonClasses(isDisabled, variant, paginationSize);
 
   return (
     <button
@@ -78,8 +78,8 @@ export function PageList(props) {
 
   return (
     <ul className="pagination__button-list">
-      { pages.map((page) => {
-        const classes = usePageListClasses(currentPage, page, variant, paginationSize);
+      { pages.map(page => {
+        const classes = getPageListClasses(currentPage, page, variant, paginationSize);
 
         if (page === DOTS) {
           return (

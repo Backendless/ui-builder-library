@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { BackButton, NextButton, FirstPageButton, LastPageButton, PageList } from './buttons';
+
+import { BackButton, FirstPageButton, LastPageButton, NextButton, PageList } from './buttons';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -16,7 +17,7 @@ export default function Pagination({ component, eventHandlers }) {
     size,
     variant,
   } = component;
-  const { onPageChange, onGoNext, onGoBack, onGoFirst, onGoLast } = eventHandlers;
+  const { onPageChange, onGoNext, onGoBack, onGoFirst, onGoLast, onMounted, onUnmount } = eventHandlers;
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -41,6 +42,12 @@ export default function Pagination({ component, eventHandlers }) {
   };
 
   useEffect(() => {
+    onMounted();
+
+    return () => onUnmount();
+  }, []);
+
+  useEffect(() => {
     onPageChange({ currentPage });
   }, [currentPage]);
 
@@ -54,21 +61,21 @@ export default function Pagination({ component, eventHandlers }) {
 
         { isFirstPageButtonVisible && (
           <FirstPageButton
-            onGoFirst={ onGoFirst }
+            onGoFirst={ onGoFirst.hasLogic ? onGoFirst : component.goFirstPage }
             currentPage={ currentPage }
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
 
         { isPrevButtonVisible && (
           <BackButton
-            onGoBack={ onGoBack }
+            onGoBack={ onGoBack.hasLogic ? onGoBack : component.goPreviousPage }
             currentPage={ currentPage }
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
 
         <PageList
           pageCount={ pageCount }
@@ -81,23 +88,23 @@ export default function Pagination({ component, eventHandlers }) {
 
         { isNextButtonVisible && (
           <NextButton
-            onGoNext={ onGoNext }
+            onGoNext={ onGoNext.hasLogic ? onGoNext : component.goNextPage }
             currentPage={ currentPage }
             lastPage={ pageCount }
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
 
         { isLastPageButtonVisible && (
           <LastPageButton
-            onGoLast={ onGoLast }
+            onGoLast={ onGoLast.hasLogic ? onGoLast : component.goLastPage }
             currentPage={ currentPage }
             lastPage={ pageCount }
             paginationSize={ size }
             variant={ variant }
           />
-        )}
+        ) }
       </div>
     </div>
   );
