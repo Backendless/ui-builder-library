@@ -69,7 +69,7 @@ We will display this data table:
 
 ![Data Table](./example-images/usage-data-table.png)
 
-Add Data Grid and Pagination component to the page:
+Add Data Grid and Pagination components to the page:
 
 ![Add Data Grid and Pagination](./example-images/usage-add-data-grid-and-pagination.png)
 
