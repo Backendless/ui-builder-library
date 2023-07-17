@@ -3,11 +3,11 @@ import { iconsMap } from './icons-map';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Button(props) {
-  const { provider, iconsVisibility, buttonLabel, onLogin, onLoginFail, redirectToPage, extraQueryParams } = props;
+  const { providerCode, iconsVisibility, buttonLabel, onLogin, onLoginFail, redirectToPage, extraQueryParams } = props;
 
   const handleClick = async () => {
     try {
-      async function socialLogin(providerCode, fieldsMappings, scope, options, callbackUrlDomain) {
+      async function socialLogin(providerCode, fieldsMappings, scope, options, redirectToPage, callbackUrlDomain) {
         if (BackendlessUI.DeviceAPI.isMobile()) {
           const user = await BackendlessUI.DeviceAPI
             .socialLogin(providerCode, fieldsMappings, scope, options, callbackUrlDomain);
@@ -18,7 +18,7 @@ export function Button(props) {
             BackendlessUI.Navigator.goToPage(redirectToPage);
           }
         } else {
-          let redirectAfterLoginUrl = redirectToPage
+          const redirectAfterLoginUrl = redirectToPage
             ? window.location.href.split('?')[0] + `?page=${ redirectToPage }`
             : window.location.href;
 
@@ -28,21 +28,14 @@ export function Button(props) {
 
           window.location = await Backendless.UserService
             .getAuthorizationUrlLink(
-              providerCode,
-              fieldsMappings,
-              scope,
-              false,
-              redirectAfterLoginUrl,
-              callbackUrlDomain
+              providerCode, fieldsMappings, scope, false, redirectAfterLoginUrl, callbackUrlDomain
             );
         }
       }
 
-      await socialLogin(provider);
+      await socialLogin(providerCode, null, null, null, redirectToPage, null);
 
-      if (onLogin) {
-        onLogin({ loginType: provider });
-      }
+      onLogin({ loginType: providerCode });
     } catch (error) {
       onLoginFail({ error });
     }
@@ -51,9 +44,9 @@ export function Button(props) {
   return (
     <button
       onClick={ handleClick }
-      className={ cn("social-button", `social-button__${ provider }`, { ["with-icon"]: iconsVisibility }) }>
+      className={ cn("social-button", `social-button__${ providerCode }`, { ["with-icon"]: iconsVisibility }) }>
       { iconsVisibility &&
-        <div className="social-button__icon-container">{ iconsMap[provider] }</div>
+        <div className="social-button__icon-container">{ iconsMap[providerCode] }</div>
       }
       <div className="social-button__text-container">
         <span className="social-button__text">{ buttonLabel }</span>
