@@ -21,6 +21,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const [time, setTime] = useState(INITIAL_TIME);
 
   const timer = useMemo(() => new Timer(setTime), []);
+  const isRecording = useMemo(() => state && state !== StreamState.INACTIVE, [state]);
 
   useEffect(() => () => timer.reset(), []);
 
@@ -56,10 +57,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const startRecording = useCallback(async () => {
     const audioConstrains = { audio: { echoCancelation: true, noiseSuppression: noise } };
     const stream = await captureMediaDevices(audioConstrains, audioRef);
-    const options = { audioBitsPerSecond: 128000, mimeType: 'audio/webm' };
 
     if (stream) {
-      recorderRef.current = new MediaRecorder(stream, options);
+      recorderRef.current = new MediaRecorder(stream, MEDIA_RECORDER_OPTIONS);
 
       const chunks = [];
 
@@ -109,6 +109,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   }, [recordedBlob, fileName]);
 
   const toggleRecord = useCallback(() => {
+
     if (recorderRef.current?.state === StreamState.RECORDING) {
       recorderRef.current.pause();
       timer.pause();
@@ -128,9 +129,9 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
       { controls && (
         <div className="controls">
           <button
-            disabled={ state && state !== StreamState.INACTIVE }
+            disabled={ isRecording }
             className="control-button" onClick={ startRecording }>
-            { state && state !== StreamState.INACTIVE ? <RecordTimer time={ time }/> : buttonLabels.start }
+            { isRecording ? <RecordTimer time={ time } /> : buttonLabels.start }
           </button>
           <button
             disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
@@ -160,3 +161,4 @@ export const StreamState = {
 };
 
 const INITIAL_TIME = '00:00';
+const MEDIA_RECORDER_OPTIONS = { audioBitsPerSecond: 128000, mimeType : 'audio/webm'};
