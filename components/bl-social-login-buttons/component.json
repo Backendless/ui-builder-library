@@ -15,7 +15,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "disabledLogic",
-      "settingTooltip": "This is the handler to disable the component.",
+      "settingTooltip": "This setting allows you to disable the component.",
       "dataBinding": true,
       "handlerDescription": "This is the handler to disable the component.",
       "handlerLabel": "Disabled Logic"
@@ -24,7 +24,7 @@
       "type": "text",
       "name": "redirectToPage",
       "label": "Redirect To Page",
-      "settingTooltip": "This handler allows you to specify which page to go to after login.",
+      "settingTooltip": "This setting allows you to specify which page to go to after login.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "redirectToPageLogic",
@@ -36,7 +36,7 @@
       "type": "text",
       "name": "extraQueryParams",
       "label": "Extra Query Params",
-      "settingTooltip": "This handler allows you to add extra query parameters that will be added to the URL address.",
+      "settingTooltip": "This setting allows you to add extra query parameters that will be added to the URL address.",
       "showInSettings": true,
       "defaultValue": "",
       "hasLogicHandler": true,
@@ -55,7 +55,7 @@
       "handlerId": "iconsVisibilityLogic",
       "handlerLabel": "Icons Visibility Logic",
       "dataBinding": true,
-      "settingTooltip": "This handler allows you to control the visibility of the button icon.",
+      "settingTooltip": "This setting allows you to control the visibility of the button icon.",
       "handlerDescription": "This handler allows you to control the visibility of the button icon."
     },
     {
@@ -68,7 +68,8 @@
       "handlerId": "googleLogic",
       "handlerLabel": "Google Visibility Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to control the visibility of the Google button."
+      "handlerDescription": "This handler allows you to control the visibility of the Google button.",
+      "settingTooltip": "This setting allows you to control the visibility of the Google button."
     },
     {
       "type": "checkbox",
@@ -80,7 +81,7 @@
       "handlerId": "facebookLogic",
       "dataBinding": true,
       "handlerLabel": "Facebook Visibility  Logic",
-      "settingTooltip": "This handler allows you to control the visibility of the Facebook button.",
+      "settingTooltip": "This setting allows you to control the visibility of the Facebook button.",
       "handlerDescription": "This handler allows you to control the visibility of the Facebook button."
     },
     {
@@ -94,7 +95,7 @@
       "dataBinding": true,
       "handlerLabel": "Twitter Visibility  Logic",
       "handlerDescription": "This handler allows you to control the visibility of the Twitter button.",
-      "settingTooltip": "This handler allows you to control the visibility of the Twitter button."
+      "settingTooltip": "This setting allows you to control the visibility of the Twitter button."
     },
     {
       "type": "checkbox",
@@ -107,7 +108,7 @@
       "handlerLabel": "Linkedin Visibility Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to control the visibility of the Linkedin button.",
-      "settingTooltip": "This handler allows you to control the visibility of the Linkedin button."
+      "settingTooltip": "This setting allows you to control the visibility of the Linkedin button."
     },
     {
       "type": "checkbox",
@@ -120,7 +121,7 @@
       "handlerLabel": "Github Visibility Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to control the visibility of the Github button.",
-      "settingTooltip": "This handler allows you to control the visibility of the Github button."
+      "settingTooltip": "This setting allows you to control the visibility of the Github button."
     }
   ],
   "eventHandlers": [
