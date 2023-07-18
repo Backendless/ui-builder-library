@@ -3,7 +3,10 @@ import { iconsMap } from './icons-map';
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Button(props) {
-  const { providerCode, iconsVisibility, buttonLabel, onLogin, onLoginFail, redirectToPage, extraQueryParams } = props;
+  const {
+    providerCode, buttonLabel, iconsVisibility, redirectToPage,
+    extraQueryParams, callbackUrlDomain, onLogin, onLoginFail
+  } = props;
 
   const handleClick = async () => {
     try {
@@ -33,7 +36,7 @@ export function Button(props) {
         }
       }
 
-      await socialLogin(providerCode, null, null, null, redirectToPage, null);
+      await socialLogin(providerCode, null, null, null, redirectToPage, callbackUrlDomain);
 
       onLogin({ loginType: providerCode });
     } catch (error) {
