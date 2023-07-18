@@ -16,7 +16,7 @@
       "hasLogicHandler": true,
       "handlerId": "optionsLogic",
       "handlerLabel": "Options Logic",
-      "handlerDescription": "This is a handler for the logic to determine the data for the breadcrumbs. Array of objects returned by the handler will define the label, the corresponding page name and the page data.",
+      "handlerDescription": "This is a handler for the logic to determine the data for the breadcrumbs. Array of objects returned by the handler will define the label and the corresponding page name.",
       "defaultValue": "[{\"label\": \"Landing\", \"pageName\": \"landing\"}]",
       "settingTooltip": "Define the items of the breadcrumbs."
     }

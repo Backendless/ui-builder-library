@@ -4,13 +4,6 @@ export default function StaticBreadcrumbsComponent({ component, eventHandlers, e
   const { classList, display, style, options } = component;
   const { onItemClick, onMouseOver, onMouseOut } = eventHandlers;
 
-  const onClick = item => {
-    const { pageName, pageData } = item;
-
-    BackendlessUI.Navigator.goToPage(pageName, pageData);
-    onItemClick({ item });
-  };
-
   if (!display) {
     return null;
   }
@@ -18,10 +11,10 @@ export default function StaticBreadcrumbsComponent({ component, eventHandlers, e
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-staticBreadcrumbs', classList) } style={ style }>
       { options?.map(item => (
-        <div className="item">
+        <div className="breadcrumbs-item">
           <span
-            className="label"
-            onClick={ () => onClick(item) }
+            className="breadcrumbs-item-label"
+            onClick={ () => onItemClick({ item }) }
             onMouseOver={ () => onMouseOver({ item }) }
             onMouseOut={ () => onMouseOut({ item }) }>
             { item.label }

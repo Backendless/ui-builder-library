@@ -1,8 +1,8 @@
 # Static Breadcrumbs
 
 Static Breadcrumbs is a navigational component allows indicating the user's location within the application's
-hierarchical structure. It displays a trail of links, visually representing the path the user has taken to reach the
-current page. This component is available in the [UI-Builder](https://backendless.com/developers/#ui-builder).
+hierarchical structure. It visually represents the path the user has taken to reach the current page. This component is
+available in the [UI-Builder](https://backendless.com/developers/#ui-builder).
 
 Customize the appearance of the breadcrumbs according to your preferences using [style variables](#styles).
 
@@ -12,9 +12,9 @@ Customize the appearance of the breadcrumbs according to your preferences using 
 
 ## Properties
 
-| Property               | Type    | Default value                                   | Logic         | Data Binding | UI Setting | Description                                                                                                                                                                  |
-|------------------------|---------|-------------------------------------------------|---------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Options <br> `options` | *JSON*  | `[{"label": "Landing", "pageName": "landing"}]` | Options Logic | NO           | YES        | Specifies an array of breadcrumbs to display. Signature of breadcrumb: `{label: String, pageName: String, pageData: Object}`. Watch [Codeless Examples](#codeless-examples). |
+| Property               | Type    | Default value                                   | Logic         | Data Binding | UI Setting | Description                                                                                                                                                |
+|------------------------|---------|-------------------------------------------------|---------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Options <br> `options` | *JSON*  | `[{"label": "Landing", "pageName": "landing"}]` | Options Logic | NO           | YES        | Specifies an array of breadcrumbs to display. Signature of breadcrumb: `{label: String, pageName: String}`. Watch [Codeless Examples](#codeless-examples). |
 
 ## Events
 
@@ -91,7 +91,22 @@ Below is a Codeless Example highlighting how to use the Static Breadcrumbs compo
 <summary>Try yourself</summary>
 
 ```
-<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="vuM=!g(DA!LK.~As.r[1" x="239.6750030517578" y="160"><mutation items="3"></mutation><value name="ADD0"><block type="create_object" id="eablTEHO{`nHc;E??0x!"><mutation><properties><item id="property" prop-name="label"></item><item id="property" prop-name="pageName"></item><item id="property" prop-name="pageData"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="v%(VU?((9JF^ZA;sqh-J"><field name="TEXT">HOME</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="iDn~`eo#Rh.pYnwadqvl"><field name="TEXT">home</field></block></value></block></value><value name="ADD1"><block type="create_object" id="/FwYVFShFia9(OXx,Z8!"><mutation><properties><item id="property" prop-name="label"></item><item id="property" prop-name="pageName"></item><item id="property" prop-name="pageData"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="w;i-0Ac=dMKj}o[ubvx`"><field name="TEXT">ABOUT</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="V6:-sx{*3iBc=LnnDSPs"><field name="TEXT">about</field></block></value></block></value><value name="ADD2"><block type="create_object" id="4ocH%rsSZirT},:gl@JN"><mutation><properties><item id="property" prop-name="label"></item><item id="property" prop-name="pageName"></item><item id="property" prop-name="pageData"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="IBL.TtJ/513.7khx`:q="><field name="TEXT">CONTACT</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="j*AxnWTA3U!XUwrjnl?V"><field name="TEXT">contact</field></block></value></block></value></block>
+<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="vuM=!g(DA!LK.~As.r[1" x="292.6750030517578" y="185"><mutation items="3"></mutation><value name="ADD0"><block type="create_object" id="eablTEHO{`nHc;E??0x!"><mutation><properties><item id="property" prop-name="label"></item><item id="property" prop-name="pageName"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="v%(VU?((9JF^ZA;sqh-J"><field name="TEXT">HOME</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="iDn~`eo#Rh.pYnwadqvl"><field name="TEXT">home</field></block></value></block></value><value name="ADD1"><block type="create_object" id="/FwYVFShFia9(OXx,Z8!"><mutation><properties><item id="property" prop-name="label"></item><item id="property" prop-name="pageName"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="w;i-0Ac=dMKj}o[ubvx`"><field name="TEXT">ABOUT</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="V6:-sx{*3iBc=LnnDSPs"><field name="TEXT">about</field></block></value></block></value><value name="ADD2"><block type="create_object" id="4ocH%rsSZirT},:gl@JN"><mutation><properties><item id="property" prop-name="label"></item><item id="property" prop-name="pageName"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="IBL.TtJ/513.7khx`:q="><field name="TEXT">CONTACT</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="j*AxnWTA3U!XUwrjnl?V"><field name="TEXT">contact</field></block></value></block></value></block>```
+```
+
+</details>
+
+Make your breadcrumbs links to related pages:
+
+<p align="center">
+  <img src="./example-images/on-item-click-event.png" alt="on item click event" width="780"/>
+</p>
+
+<details>
+<summary>Try yourself</summary>
+
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="ui_dynamic_category__app-router__goto_page" id="u[eA{Ssw#jdx$Mb[#1,l" bl_meta="{&quot;label&quot;:&quot;Dynamic Block: Go To Page&quot;}" x="179" y="105"><value name="pageName"><shadow type="text" id=".1gMhIuZ0,]~H8?Hc/;H"><field name="TEXT"></field></shadow><block type="get_object_property" id="Ghze4.pK8a8jClSfqds;"><value name="prop_name"><shadow type="text" id="mK2ztG4TY=$[G#G6)Nfx"><field name="TEXT">pageName</field></shadow></value><value name="object"><block type="root_block_ui_builder_c_1b2f2897e6984c5c6b22548d9bb18e77_onItemClick_handler_context_blocks_item" id="C{lT4i@3k*zgcWhJPR@]" bl_meta="{&quot;label&quot;:&quot;Item&quot;}"></block></value></block></value></block>
 ```
 
 </details>
