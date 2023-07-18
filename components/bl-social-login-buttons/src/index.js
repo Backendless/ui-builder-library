@@ -5,7 +5,9 @@ const { cn } = BackendlessUI.CSSUtils
 const providersList = ['googleplus', 'facebook', 'twitter', 'linkedin', 'github'];
 
 export default function SocialLoginButtonsComponent({ component, eventHandlers }) {
-  const { display, classList, disabled, redirectToPage, extraQueryParams, iconsVisibility } = component;
+  const {
+    display, classList, disabled, redirectToPage, extraQueryParams, callbackUrlDomain, iconsVisibility
+  } = component;
   const { onLogin, onLoginFail } = eventHandlers;
 
   if (!display) {
@@ -14,14 +16,15 @@ export default function SocialLoginButtonsComponent({ component, eventHandlers }
 
   return (
     <div className={ cn('bl-customComponent-socialLoginButtons', classList, { disabled }) }>
-      { providersList.map(provider => (
-        component[provider] &&
+      { providersList.map(providerCode => (
+        component[providerCode] &&
           <Button
-            providerCode={ provider }
+            providerCode={ providerCode }
+            buttonLabel={ `Connect with ${ providerCode }` }
             iconsVisibility={ iconsVisibility }
-            buttonLabel={ `Connect with ${ provider }` }
             redirectToPage={ redirectToPage }
             extraQueryParams={ extraQueryParams }
+            callbackUrlDomain={ callbackUrlDomain }
             onLogin={ onLogin }
             onLoginFail={ onLoginFail }
           />

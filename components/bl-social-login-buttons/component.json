@@ -46,6 +46,17 @@
       "dataBinding": true
     },
     {
+      "type": "text",
+      "name": "callbackUrlDomain",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "callbackUrlDomainLogic",
+      "label": "Callback URL Domain",
+      "handlerLabel": "Callback URL Domain Logic",
+      "handlerDescription": "This handler allows you to add a callback URL Domain.",
+      "settingTooltip": "This setting allows you to add a callback URL Domain."
+    },
+    {
       "type": "checkbox",
       "name": "iconsVisibility",
       "label": "Icons Visibility",
