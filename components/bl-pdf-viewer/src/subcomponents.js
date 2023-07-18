@@ -98,16 +98,16 @@ function PageControls({ currentPage, setCurrentPage, pageCount }) {
 }
 
 function ScaleControls({ scale, setScale }) {
-  const onMinusScaleClick = () => setScale(s => +Math.max(0.1, s - 0.1).toFixed(1));
-  const onPlusScaleClick = () => setScale(s => +Math.min(10, s + 0.1).toFixed(1));
+  const onMinusScaleClick = () => setScale(s => +Math.max(10, s - 10).toFixed(1));
+  const onPlusScaleClick = () => setScale(s => +Math.min(1000, s + 10).toFixed(1));
 
   return (
     <div className="controls__scale">
-      <button className="controls__button" onClick={ onMinusScaleClick } disabled={ scale <= 0.1 }>
+      <button className="controls__button" onClick={ onMinusScaleClick } disabled={ scale <= 10 }>
         <MinusIcon/>
       </button>
-      <span>{ `${(scale * 100).toFixed(0)}%` }</span>
-      <button className="controls__button" onClick={ onPlusScaleClick } disabled={ scale >= 10 }>
+      <span>{ `${ scale }%` }</span>
+      <button className="controls__button" onClick={ onPlusScaleClick } disabled={ scale >= 1000 }>
         <PlusIcon/>
       </button>
     </div>

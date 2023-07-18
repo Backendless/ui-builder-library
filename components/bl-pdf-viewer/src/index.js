@@ -93,7 +93,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
             loading={ onPageLoading }
             onLoadSuccess={ onPageLoadSuccess }
             pageNumber={ currentPage }
-            scale={ scale }
+            scale={ scale / 100 }
           />
         </Document>
       </div>
