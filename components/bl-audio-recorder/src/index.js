@@ -19,6 +19,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
   const [time, setTime] = useState(INITIAL_TIME);
+  const [recordDate, setRecordDate] = useState();
 
   const timer = useMemo(() => new Timer(setTime), []);
   const isRecording = useMemo(() => state && state !== StreamState.INACTIVE, [state]);
