@@ -60,9 +60,11 @@ function Controls(props) {
       { scanButtonVisibility && (
         <button type="button" className="scan-button" onClick={ toggleScan }>{ scanButtonLabel }</button>
       ) }
+
       { uploadButtonVisibility && (
         <label htmlFor={ `upload-input-${ instanceId }` } className="upload-button">{ uploadButtonLabel }</label>
       ) }
+
       <input
         type="file"
         ref={ uploadInputRef }

@@ -53,7 +53,12 @@ export function useScanner(scannerRef, instanceId, component, eventHandlers) {
   }, [hideAfterScan, onDecodeError, onDecodeSuccess, onStartScanFailed, options, scannerRef, stopScan]);
 
   const toggleScan = scannerVisibility ? stopScan : startScan;
-  const updateScanner = () => scannerRef.current?.isScanning && scannerRef.current.stop().then(() => startScan());
+  const updateScanner = () => {
+    if (scannerRef.current?.isScanning) {
+      scannerRef.current.stop()
+        .then(() => startScan());
+    }
+  };
 
   return { startScan, stopScan, toggleScan, updateScanner, scannerVisibility };
 }
@@ -76,5 +81,5 @@ export function scanImage(event, scannerRef, eventHandlers) {
     })
     .catch(error => onDecodeError({ error }));
 
-  event.target.value = ''; // fix the ability to upload the same image again
+  event.target.value = ''; // needed to reset the image after scanning
 }
