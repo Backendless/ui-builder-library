@@ -1,9 +1,12 @@
+import { useMemo } from 'react';
+
 import modalTypes from './modal-types';
+import { sanitize } from './sanitize';
 
 function SimpleModalInput(props) {
   const { inputValue, placeholder, setInputValue } = props;
 
-  const onChange = (event) => {
+  const onChange = event => {
     setInputValue(event.target.value);
   };
 
@@ -32,11 +35,12 @@ function SimpleModalInput(props) {
 
 export function Container(props) {
   const { content, type, inputValue, setInputValue, placeholder } = props;
+  const sanitizedContent = useMemo(() => content ? sanitize(content) : '', [content]);
 
   return (
     <div className="simple-modal__container">
       { content && (
-        <p className="simple-modal__text" dangerouslySetInnerHTML={{ __html: content }}></p>
+        <p className="simple-modal__text" dangerouslySetInnerHTML={{ __html: sanitizedContent }}></p>
       ) }
 
       { type === modalTypes.prompt && (
