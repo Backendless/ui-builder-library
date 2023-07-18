@@ -1,0 +1,121 @@
+{
+  "id": "c_365c02ad9a5f6696a4dcde6ab0c4442b",
+  "name": "Spoiler Effect",
+  "description": "The Spoiler Effect component allows the user to create different spoiler effects above the content inside.",
+  "showInToolbox": true,
+  "faIcon": "tent-arrow-left-right",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "effect",
+      "label": "Effect",
+      "showInSettings": true,
+      "defaultValue": "blur",
+      "hasLogicHandler": false,
+      "handlerId": "effectLogic",
+      "options": [
+        {
+          "value": "blur",
+          "label": "blur"
+        },
+        {
+          "value": "morphology",
+          "label": "morphology"
+        },
+        {
+          "value": "morphose",
+          "label": "morphose"
+        },
+        {
+          "value": "music",
+          "label": "music"
+        },
+        {
+          "value": "ripples",
+          "label": "ripples"
+        },
+        {
+          "value": "smoke",
+          "label": "smoke"
+        },
+        {
+          "value": "snow",
+          "label": "snow"
+        },
+        {
+          "value": "turbulence",
+          "label": "turbulence"
+        }
+      ],
+      "settingTooltip": "Select the spoiler effect of the component."
+    },
+    {
+      "type": "color",
+      "name": "background",
+      "label": "Background Color",
+      "settingTooltip": "Choose the background color for the spoiler effect.",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "backgroundLogic",
+      "defaultValue": "#a5b3cd"
+    },
+    {
+      "type": "checkbox",
+      "name": "applyEffect",
+      "label": "Apply Effect",
+      "settingTooltip": "A flag indicating whether a spoiler effect has been applied.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "applyEffectLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ],
+      "handlerDescription": "Triggered when the user clicks on the component.",
+      "label": "On Click"
+    },
+    {
+      "name": "onMouseOver",
+      "handlerDescription": "Triggered when the mouse pointer hovers over the component.",
+      "label": "On Mouse Over"
+    },
+    {
+      "name": "onMouseMove",
+      "label": "On Mouse Move",
+      "handlerDescription": "Triggered when the mouse pointer moves over the component."
+    },
+    {
+      "name": "onMouseOut",
+      "handlerDescription": "Triggered when the mouse pointer leaves the component.",
+      "label": "On Mouse Out"
+    }
+  ],
+  "actions": [
+    {
+      "id": "applySpoiler",
+      "label": "Apply"
+    },
+    {
+      "id": "removeSpoiler",
+      "label": "Remove"
+    }
+  ],
+  "settings": [],
+  "pods": {
+    "b8828219095d33ecaffe9d3c6ba4e2ae": {
+      "id": "spoilerEffectContent",
+      "dataContainer": true
+    }
+  }
+}

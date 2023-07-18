@@ -1,0 +1,48 @@
+@bl-customComponent-spoiler-effect-width: 100%;
+@bl-customComponent-spoiler-effect-align-items: center;
+@bl-customComponent-spoiler-effect-justify-content: center;
+
+@bl-customComponent-spoiler-effect-content-width: 100%;
+@bl-customComponent-spoiler-effect-content-height: 100%;
+@bl-customComponent-spoiler-effect-content-transition: all 0.3s ease;
+@bl-customComponent-spoiler-effect-content-blur: 8px;
+
+@bl-customComponent-spoiler-effect-overlay-width: 100%;
+@bl-customComponent-spoiler-effect-overlay-height: 100%;
+
+.bl-customComponent-spoiler-effect {
+  display: flex;
+  align-items: @bl-customComponent-spoiler-effect-align-items;
+  justify-content: @bl-customComponent-spoiler-effect-justify-content;
+  width: @bl-customComponent-spoiler-effect-width;
+  position: relative;
+  overflow: hidden;
+
+  .spoiler-effect-content {
+    width: @bl-customComponent-spoiler-effect-content-width;
+    height: @bl-customComponent-spoiler-effect-content-height;
+    transition: @bl-customComponent-spoiler-effect-content-transition;
+
+    &.blured {
+      filter: blur(@bl-customComponent-spoiler-effect-content-blur);
+    }
+  }
+
+  .spoiler-effect-overlay {
+    width: @bl-customComponent-spoiler-effect-overlay-width;
+    height: @bl-customComponent-spoiler-effect-overlay-height;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+
+  .svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    cursor: pointer;
+  }
+}
