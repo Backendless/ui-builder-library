@@ -15,9 +15,9 @@ The component allows you to add a pdf viewer to your UI-Builder application
 | PDF URL:`pdfUrl`                            | Text     |               | PDF URL Logic              | YES          | YES        | Allows write URL of PDF file, but file must be in Backendless Files.                                                   |
 | Width:`width`                               | Text     | "0px"         | Width Logic                | YES          | YES        | Allows determine the width of the PDF Viewer.                                                                          |
 | Height:`height`                             | Text     | "0px"         | Height Logic               | YES          | YES        | Allows determine the height of the PDF Viewer.                                                                         |
-| Scale:`scale`                               | Number   | 1             |                            | NO           | YES        | Allows determine the default scale value.                                                                              |
-| Show Print Button:`showPrintButton`         | Checkbox | `false`       | Show Print Button Logic    | YES          | YES        | Allows determine if the print button should be visible. If the handler returns true, the component will be visible.    |
-| Show Download Button:`showDownloadButton`   | Checkbox | `false`       | Show Download Button Logic | YES          | YES        | Allows determine if the download button should be visible. If the handler returns true, the component will be visible. |
+| Scale:`scale`                               | Number   | 100           |                            | NO           | YES        | Allows determine the default scale value in percentage.                                                                |
+| Show Print Button:`showPrintButton`         | Checkbox | `true`        | Show Print Button Logic    | YES          | YES        | Allows determine if the print button should be visible. If the handler returns true, the component will be visible.    |
+| Show Download Button:`showDownloadButton`   | Checkbox | `true`        | Show Download Button Logic | YES          | YES        | Allows determine if the download button should be visible. If the handler returns true, the component will be visible. |
 
 ## Events
 
@@ -112,6 +112,7 @@ The component allows you to add a pdf viewer to your UI-Builder application
 @bl-customComponent-pdfViewer-controls-page-info-text-align: center;
 @bl-customComponent-pdfViewer-controls-page-info-disabled-opacity: 0.5;
 @bl-customComponent-pdfViewer-controls-page-info-disabled-cursor: auto;
+@bl-customComponent-pdfViewer-controls-page-slash-margin: 0 5px;
 ```
 
 **Container**
