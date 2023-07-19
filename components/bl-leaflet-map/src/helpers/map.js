@@ -121,6 +121,7 @@ export function useMarkers(markers, icon, map, eventHandlers) {
           })
           .addTo(map)
           .bindPopup(description);
+
         setMarkersArray(prev => [...prev, marker]);
       });
     }
