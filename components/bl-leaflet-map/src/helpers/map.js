@@ -114,13 +114,13 @@ export function useMarkers(markers, icon, map, eventHandlers) {
     if (markers) {
       const { onMarkerClick } = eventHandlers;
 
-      markers.forEach(item => {
-        const marker = Leaflet.marker([item.point.lat, item.point.lng], { icon })
+      markers.forEach(({ point: { lng, lat }, description }) => {
+        const marker = Leaflet.marker([lat, lng], { icon })
           .on('click', () => {
-            onMarkerClick({ coordinates: [item.point.lat, item.point.lng], description: item.description });
+            onMarkerClick({ coordinates: [lat, lng], description });
           })
           .addTo(map)
-          .bindPopup(item.description);
+          .bindPopup(description);
         setMarkersArray(prev => [...prev, marker]);
       });
     }
@@ -128,10 +128,9 @@ export function useMarkers(markers, icon, map, eventHandlers) {
 }
 
 function clearOldMarkers(markersArray, setMarkersArray) {
-  if(markersArray) {
-    markersArray.forEach(item => {
-      item.remove();
-    });
+  if (markersArray) {
+    markersArray.forEach(item => { item.remove(); });
+
     setMarkersArray([]);
   }
 }

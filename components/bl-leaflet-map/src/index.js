@@ -2,16 +2,8 @@ import { useEffect, useMemo, useRef } from 'react';
 
 import { createActions } from './helpers/actions';
 import {
-  initMap,
-  createCircles,
-  createPolygons,
-  changeMapType,
-  setCenter,
-  setZoom,
-  toggleDraggingControl,
-  toggleFullscreen,
-  toggleZoomControl,
-  useMarkers,
+  changeMapType, createCircles, createPolygons, initMap, setCenter, setZoom, toggleDraggingControl, toggleFullscreen,
+  toggleZoomControl, useMarkers,
 } from './helpers/map';
 import { useIcon } from './helpers/use-icon';
 import { FullscreenButton } from './fullscreen-button';
@@ -97,7 +89,8 @@ export default function LeafletMap({ component, eventHandlers }) {
       style={ style }
       ref={ containerRef }>
       { geopositionControl && <GeopositionButton map={ mapRef.current } eventHandlers={ eventHandlers }/> }
-      { mapTypeControl && <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers } component={ component }/>}
+      { mapTypeControl &&
+      <MapTypeSelect selected={ mapType } eventHandlers={ eventHandlers } component={ component }/> }
       { fullscreenControl && <FullscreenButton component={ component } eventHandlers={ eventHandlers }/> }
     </div>
   );
