@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Chart from './chartjs';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -75,14 +75,14 @@ function useChartLogic(component) {
 
     let requireRerender = false;
 
-    const optionsConfig = { ...options };
+    const additionalOptions = { ...options };
 
-    if (isDataChange(chartConfig, optionsConfig)) {
+    if (isDataChanged(chartConfig, additionalOptions)) {
       requireRerender = true;
-      Object.assign(chartConfig, optionsConfig);
+      Object.assign(chartConfig, additionalOptions);
     }
 
-    const scaleConfig = {
+    const scales = {
       y: {
         grid: {
           display: yGridLineVisibility,
@@ -99,13 +99,13 @@ function useChartLogic(component) {
       },
     };
 
-    if (isDataChange(chartConfig.scales, scaleConfig)) {
+    if (isDataChanged(chartConfig.scales, scales)) {
       requireRerender = true;
-      Object.assign(chartConfig.scales.y, scaleConfig.y);
-      Object.assign(chartConfig.scales.x, scaleConfig.x);
+      Object.assign(chartConfig.scales.y, scales.y);
+      Object.assign(chartConfig.scales.x, scales.x);
     }
 
-    const pluginsConfig = {
+    const plugins = {
       legend: {
         display: legendVisibility,
       },
@@ -118,10 +118,10 @@ function useChartLogic(component) {
       },
     };
 
-    if (isDataChange(chartConfig.plugins, pluginsConfig)) {
+    if (isDataChanged(chartConfig.plugins, plugins)) {
       requireRerender = true;
-      Object.assign(chartConfig.plugins.legend, pluginsConfig.legend);
-      Object.assign(chartConfig.plugins.title, pluginsConfig.title);
+      Object.assign(chartConfig.plugins.legend, plugins.legend);
+      Object.assign(chartConfig.plugins.title, plugins.title);
     }
 
     if (chartInstance.current && requireRerender) {
@@ -148,17 +148,13 @@ function useChartLogic(component) {
   return { chartRef };
 }
 
-function isDataChange(prevData, nextData) {
+function isDataChanged(prevData, nextData) {
   if (prevData === nextData) {
     return false;
   }
 
   if (typeof prevData !== typeof nextData) {
     return true;
-  }
-
-  if (prevData === null || prevData === undefined || nextData === null || nextData === undefined) {
-    return false;
   }
 
   if (typeof prevData === 'object' && typeof nextData === 'object') {
@@ -170,7 +166,7 @@ function isDataChange(prevData, nextData) {
     }
 
     for (let key of prevKeys) {
-      if (!isDataChange(prevData[key], nextData[key])) {
+      if (!isDataChanged(prevData[key], nextData[key])) {
         return false;
       }
     }
