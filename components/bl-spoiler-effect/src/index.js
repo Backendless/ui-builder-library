@@ -22,17 +22,24 @@ const EffectViews = {
   [EffectTypes.SNOW]      : SnowEffect,
   [EffectTypes.TURBULENCE]: TurbulenceEffect,
 };
+const DefaultValues = {
+  OPACITY       : 0.5,
+  BASE_FREQUENCY: 200,
+  MIN_RADIUS    : 1,
+  MAX_RADIUS    : 7,
+  DESIRE_DENSITY: 0.0002,
+};
 
 export default function SpoilerEffectComponent({ component, elRef, eventHandlers, pods }) {
   const { style, classList, display, effect, background, applyEffect } = component;
-  const { onClick, onMouseOver, onMouseMove, onMouseOut } = eventHandlers;
+  const { onClick, onMouseEnter, onMouseMove, onMouseLeave } = eventHandlers;
 
   const [isApplied, setIsApplied] = useState(applyEffect);
 
   const handleOnClick = useCallback(() => {
-    setIsApplied((prevState) => !prevState);
+    setIsApplied(!isApplied);
     onClick();
-  }, []);
+  }, [isApplied]);
 
   component.applySpoiler = () => setIsApplied(true);
   component.removeSpoiler = () => setIsApplied(false);
@@ -49,18 +56,18 @@ export default function SpoilerEffectComponent({ component, elRef, eventHandlers
       ref={ elRef }
       style={ style }
       onClick={ handleOnClick }
-      onMouseOver={ onMouseOver }
+      onMouseEnter={ onMouseEnter }
       onMouseMove={ onMouseMove }
-      onMouseOut={ onMouseOut }>
+      onMouseLeave={ onMouseLeave }>
 
       <div
-        className={ cn('spoiler-effect-content', { blured: isApplied }) }
+        className={ cn('spoiler-effect-content', { blurred: isApplied }) }
         style={{ filter: isApplied ? `url(#filter-${effect})` : 'none' }}>
         { pods.spoilerEffectContent.render() }
       </div>
 
       { isApplied && (
-        <svg className="svg" style={{ opacity: effect === 'morphology' ? 0.5 : undefined }}>
+        <svg className="svg" style={{ opacity: effect === EffectTypes.MORPHOLOGY ? DefaultValues.OPACITY : undefined }}>
           <Effect fill={ background }/>
         </svg>
       ) }
@@ -142,7 +149,7 @@ function MusicEffect({ fill }) {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(updateBaseFrequency, 200);
+    const interval = setInterval(updateBaseFrequency, DefaultValues.BASE_FREQUENCY);
 
     return () => clearInterval(interval);
   }, []);
@@ -216,11 +223,6 @@ function SmokeEffect({ fill }) {
 }
 
 function SnowEffect({ fill }) {
-  const minRadius = 1;
-  const maxRadius = 7;
-  const desiredDensity = 0.0002;
-  const numSnowflakes = Math.round(window.innerWidth * window.innerHeight * desiredDensity);
-
   return (
     <>
       <defs>
@@ -231,8 +233,8 @@ function SnowEffect({ fill }) {
         </filter>
       </defs>
       <rect width="100%" height="100%" fill={ fill } filter="url(#filter-snow)"/>
-      { [...Array(numSnowflakes)].map((_, index) => {
-        const radius = Math.random() * (maxRadius - minRadius) + minRadius;
+      { [...Array(getNumSnowflakes())].map((_, index) => {
+        const radius = Math.random() * (DefaultValues.MAX_RADIUS - DefaultValues.MIN_RADIUS) + DefaultValues.MIN_RADIUS;
         const { x: startX, y: startY } = getRandomPosition();
         const animationDurationX = Math.random() * 10 + 5;
         const animationDurationY = Math.random() * 10 + 1;
@@ -249,7 +251,7 @@ function SnowEffect({ fill }) {
             <animate
               attributeName="cx"
               from={ `${ startX - 5 }%` }
-              to={ `${ startX + 5 }%`}
+              to={ `${ startX + 5 }%` }
               dur={ `${ animationDurationX }s` }
               repeatCount="indefinite"
             />
@@ -289,4 +291,8 @@ function getRandomPosition() {
   const y = Math.random() * 100;
 
   return { x, y };
+}
+
+function getNumSnowflakes() {
+  return Math.round(window.innerWidth * window.innerHeight * DefaultValues.DESIRE_DENSITY);
 }

@@ -3,7 +3,7 @@
   "name": "Spoiler Effect",
   "description": "The Spoiler Effect component allows the user to create different spoiler effects above the content inside.",
   "showInToolbox": true,
-  "faIcon": "tent-arrow-left-right",
+  "faIcon": "mask",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -86,9 +86,10 @@
       "label": "On Click"
     },
     {
-      "name": "onMouseOver",
+      "name": "onMouseEnter",
+      "contextBlocks": [],
       "handlerDescription": "Triggered when the mouse pointer hovers over the component.",
-      "label": "On Mouse Over"
+      "label": "On Mouse Enter"
     },
     {
       "name": "onMouseMove",
@@ -96,9 +97,10 @@
       "handlerDescription": "Triggered when the mouse pointer moves over the component."
     },
     {
-      "name": "onMouseOut",
+      "name": "onMouseLeave",
+      "contextBlocks": [],
       "handlerDescription": "Triggered when the mouse pointer leaves the component.",
-      "label": "On Mouse Out"
+      "label": "On Mouse Leave"
     }
   ],
   "actions": [

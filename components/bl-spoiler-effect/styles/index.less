@@ -4,6 +4,7 @@
 
 @bl-customComponent-spoiler-effect-content-width: 100%;
 @bl-customComponent-spoiler-effect-content-height: 100%;
+@bl-customComponent-spoiler-effect-content-direction: column;
 @bl-customComponent-spoiler-effect-content-transition: all 0.3s ease;
 @bl-customComponent-spoiler-effect-content-blur: 8px;
 
@@ -19,11 +20,13 @@
   overflow: hidden;
 
   .spoiler-effect-content {
+    display: flex;
     width: @bl-customComponent-spoiler-effect-content-width;
     height: @bl-customComponent-spoiler-effect-content-height;
+    flex-direction: @bl-customComponent-spoiler-effect-content-direction;
     transition: @bl-customComponent-spoiler-effect-content-transition;
 
-    &.blured {
+    &.blurred {
       filter: blur(@bl-customComponent-spoiler-effect-content-blur);
     }
   }

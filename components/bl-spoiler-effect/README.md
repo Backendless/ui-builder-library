@@ -16,12 +16,12 @@ Spoiler Effect is the component that can be used in Backendless [UI-Builder](htt
 
 ## Events
 
-| Name          | Triggers                                          | Context Blocks  |
-|---------------|---------------------------------------------------|-----------------|
-| On Click      | when the user clicks on the component.            | Event: `Object` |
-| On Mouse Over | when the mouse pointer hovers over the component. |                 |
-| On Mouse Move | when the mouse pointer moves over the component.  |                 |
-| On Mouse Out  | when the mouse pointer leaves the component.      |                 |
+| Name           | Triggers                                          | Context Blocks  |
+|----------------|---------------------------------------------------|-----------------|
+| On Click       | when the user clicks on the component.            | Event: `Object` |
+| On Mouse Enter | when the mouse pointer hovers over the component. |                 |
+| On Mouse Move  | when the mouse pointer moves over the component.  |                 |
+| On Mouse Leave | when the mouse pointer leaves the component.      |                 |
 
 ## Actions
 
@@ -39,6 +39,7 @@ Spoiler Effect is the component that can be used in Backendless [UI-Builder](htt
 
 @bl-customComponent-spoiler-effect-content-width: 100%;
 @bl-customComponent-spoiler-effect-content-height: 100%;
+@bl-customComponent-spoiler-effect-content-direction: column;
 @bl-customComponent-spoiler-effect-content-transition: all 0.3s ease;
 @bl-customComponent-spoiler-effect-content-blur: 8px;
 
