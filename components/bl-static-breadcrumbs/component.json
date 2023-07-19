@@ -27,8 +27,12 @@
       "label": "On Item Click Event",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "Item"
+          "id": "label",
+          "label": "Page Label"
+        },
+        {
+          "id": "pageName",
+          "label": "Page Name"
         }
       ],
       "handlerDescription": "This event is fired when the user clicks the mouse or taps the breadcrumbs item."
@@ -39,8 +43,12 @@
       "handlerDescription": "This event is fired when the mouse pointer hovers over the breadcrumbs item.",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "Item"
+          "id": "label",
+          "label": "Page Label"
+        },
+        {
+          "label": "Page Name",
+          "id": "pageName"
         }
       ]
     },
@@ -50,8 +58,12 @@
       "handlerDescription": "This event is fired when the mouse pointer leaves the breadcrumbs item boundaries.",
       "contextBlocks": [
         {
-          "id": "item",
-          "label": "Item"
+          "id": "label",
+          "label": "Page Label"
+        },
+        {
+          "id": "pageName",
+          "label": "Page Name"
         }
       ]
     }

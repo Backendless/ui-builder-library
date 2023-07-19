@@ -1,8 +1,22 @@
+import { useMemo } from 'react';
+
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function StaticBreadcrumbsComponent({ component, eventHandlers, elRef }) {
   const { classList, display, style, options } = component;
   const { onItemClick, onMouseOver, onMouseOut } = eventHandlers;
+
+  const optionsValidator = useMemo(() => {
+    if (Array.isArray(options)) {
+      return options;
+    }
+
+    if (options !== undefined) {
+      console.error('Breadcrumbs options must be an array with option signature: {label: String, pageName: String}.');
+    }
+
+    return [];
+  }, [options]);
 
   if (!display) {
     return null;
@@ -10,14 +24,14 @@ export default function StaticBreadcrumbsComponent({ component, eventHandlers, e
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-staticBreadcrumbs', classList) } style={ style }>
-      { options?.map(item => (
-        <div className="breadcrumbs-item">
+      { optionsValidator.map(({ label, pageName }) => (
+        <div className="breadcrumbs-item" key={ pageName }>
           <span
             className="breadcrumbs-item-label"
-            onClick={ () => onItemClick({ item }) }
-            onMouseOver={ () => onMouseOver({ item }) }
-            onMouseOut={ () => onMouseOut({ item }) }>
-            { item.label }
+            onClick={ () => onItemClick({ label, pageName }) }
+            onMouseOver={ () => onMouseOver({ label, pageName }) }
+            onMouseOut={ () => onMouseOut({ label, pageName }) }>
+            { label }
           </span>
         </div>
       )) }

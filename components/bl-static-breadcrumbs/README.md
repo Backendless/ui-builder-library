@@ -18,11 +18,11 @@ Customize the appearance of the breadcrumbs according to your preferences using 
 
 ## Events
 
-| Name                | Triggers                                                      | Context Blocks |
-|---------------------|---------------------------------------------------------------|----------------|
-| On Item Click Event | when a user click on the breadcrumbs item                     | Item: `Object` |
-| On Mouse Over Event | when the mouse pointer hovers over the breadcrumbs item       | Item: `Object` |
-| On Mouse Out Event  | when the mouse pointer leaves the breadcrumbs item boundaries | Item: `Object` |
+| Name                | Triggers                                                      | Context Blocks                                |
+|---------------------|---------------------------------------------------------------|-----------------------------------------------|
+| On Item Click Event | when a user click on the breadcrumbs item                     | Page Label: `String` <br> Page Name: `String` |
+| On Mouse Over Event | when the mouse pointer hovers over the breadcrumbs item       | Page Label: `String` <br> Page Name: `String` |
+| On Mouse Out Event  | when the mouse pointer leaves the breadcrumbs item boundaries | Page Label: `String` <br> Page Name: `String` |
 
 ## Styles
 
@@ -106,7 +106,7 @@ Make your breadcrumbs links to related pages:
 <summary>Try yourself</summary>
 
 ```
-<block xmlns="http://www.w3.org/1999/xhtml" type="ui_dynamic_category__app-router__goto_page" id="u[eA{Ssw#jdx$Mb[#1,l" bl_meta="{&quot;label&quot;:&quot;Dynamic Block: Go To Page&quot;}" x="179" y="105"><value name="pageName"><shadow type="text" id=".1gMhIuZ0,]~H8?Hc/;H"><field name="TEXT"></field></shadow><block type="get_object_property" id="Ghze4.pK8a8jClSfqds;"><value name="prop_name"><shadow type="text" id="mK2ztG4TY=$[G#G6)Nfx"><field name="TEXT">pageName</field></shadow></value><value name="object"><block type="root_block_ui_builder_c_1b2f2897e6984c5c6b22548d9bb18e77_onItemClick_handler_context_blocks_item" id="C{lT4i@3k*zgcWhJPR@]" bl_meta="{&quot;label&quot;:&quot;Item&quot;}"></block></value></block></value></block>
+<block xmlns="http://www.w3.org/1999/xhtml" type="ui_dynamic_category__app-router__goto_page" id="u[eA{Ssw#jdx$Mb[#1,l" bl_meta="{&quot;label&quot;:&quot;Dynamic Block: Go To Page&quot;}" x="316" y="178"><value name="pageName"><shadow type="text" id=".1gMhIuZ0,]~H8?Hc/;H"><field name="TEXT"></field></shadow><block type="root_block_ui_builder_c_1b2f2897e6984c5c6b22548d9bb18e77_onItemClick_handler_context_blocks_pageName" id="0;0v@!O)C:wv?@!!-^G7" bl_meta="{&quot;label&quot;:&quot;Page Name&quot;}"></block></value></block>
 ```
 
 </details>
