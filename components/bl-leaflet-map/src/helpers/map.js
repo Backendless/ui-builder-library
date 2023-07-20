@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import Leaflet from '../lib/leaflet';
 import { MapProviders } from '../maps';
@@ -7,7 +7,7 @@ import { toCoordinates } from './coordinates';
 const DefaultValues = {
   ZOOM  : 10,
   CENTER: '40.6893, -74.0444',
-  TYPE  : 'openStreet'
+  TYPE  : 'openStreet',
 };
 
 export function changeMapType(map, currentLayer, component) {
@@ -60,7 +60,7 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
   map.current = Leaflet.map(uid, {
     zoom             : zoom || DefaultValues.ZOOM,
     center           : centerPoint,
-    fullscreenControl: true
+    fullscreenControl: true,
   });
 
   currentLayer.current = Leaflet
@@ -77,7 +77,7 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
     onPan({
       center   : bounds.getCenter(),
       northEast: bounds.getNorthEast(),
-      southWest: bounds.getSouthWest()
+      southWest: bounds.getSouthWest(),
     });
   });
 
@@ -96,7 +96,7 @@ export function createCircles(circles, map, eventHandlers) {
           onCircleClick({
             coordinates: [item.point.lat, item.point.lng],
             radius     : item.radius,
-            description: item.description
+            description: item.description,
           });
         })
         .addTo(map)
@@ -106,33 +106,29 @@ export function createCircles(circles, map, eventHandlers) {
 }
 
 export function useMarkers(markers, icon, map, eventHandlers) {
-  const [markersArray, setMarkersArray] = useState([]);
+  const markersArray = useRef();
 
   useEffect(() => {
-    clearOldMarkers(markersArray, setMarkersArray);
+    clearOldMarkers(markersArray);
 
     if (markers) {
       const { onMarkerClick } = eventHandlers;
 
-      markers.forEach(({ point: { lng, lat }, description }) => {
-        const marker = Leaflet.marker([lat, lng], { icon })
-          .on('click', () => {
-            onMarkerClick({ coordinates: [lat, lng], description });
-          })
+      markersArray.current = markers.map(({ point: { lng, lat }, description }) => {
+        return Leaflet.marker([lat, lng], { icon })
+          .on('click', () => onMarkerClick({ coordinates: [lat, lng], description }))
           .addTo(map)
           .bindPopup(description);
-
-        setMarkersArray(prev => [...prev, marker]);
       });
     }
   }, [markers]);
 }
 
-function clearOldMarkers(markersArray, setMarkersArray) {
-  if (markersArray) {
-    markersArray.forEach(item => { item.remove(); });
+function clearOldMarkers(markersArray) {
+  if (markersArray.current) {
+    markersArray.current.forEach(item => item.remove());
 
-    setMarkersArray([]);
+    markersArray.current = [];
   }
 }
 
