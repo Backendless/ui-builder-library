@@ -6,7 +6,7 @@ export default function StaticBreadcrumbsComponent({ component, eventHandlers, e
   const { classList, display, style, options } = component;
   const { onItemClick, onMouseOver, onMouseOut } = eventHandlers;
 
-  const optionsValidator = useMemo(() => {
+  const validOptions = useMemo(() => {
     if (Array.isArray(options)) {
       return options;
     }
@@ -24,7 +24,7 @@ export default function StaticBreadcrumbsComponent({ component, eventHandlers, e
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-staticBreadcrumbs', classList) } style={ style }>
-      { optionsValidator.map(({ label, pageName }) => (
+      { validOptions.map(({ label, pageName }) => (
         <div className="breadcrumbs-item" key={ pageName }>
           <span
             className="breadcrumbs-item-label"
