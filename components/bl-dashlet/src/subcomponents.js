@@ -9,7 +9,7 @@ import {
 const { cn } = BackendlessUI.CSSUtils;
 
 export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
-  const [newSides, setNewSides] = useState(null);
+  const [newSides, setNewSides] = useState({});
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [contextMenu, setContextMenu] = useState(null);
 
@@ -24,12 +24,14 @@ export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
 
   const onContextMenuButtonClick = () => setIsMenuOpen(state => !state);
 
+  useEffect(() => setNewSides(sides), [sides]);
+
   const resizeHandler = useCallback(() => {
     const { left, top } = handleOverflow(contextMenu);
 
     setNewSides(state => ({
-      left: state?.left || left,
-      top: state?.top || top,
+      left: state.left || left,
+      top: state.top || top,
     }));
   }, [contextMenu]);
 
@@ -53,7 +55,7 @@ export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
       { isMenuOpen && (
         <div
           ref={ measuredRef }
-          className={ cn('context-menu__container', newSides || sides) }
+          className={ cn('context-menu__container', newSides) }
           style={{ visibility: readyToShow ? 'initial' : 'hidden' }}>
           <ul className="context-menu__list">
 
