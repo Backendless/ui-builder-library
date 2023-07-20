@@ -105,6 +105,13 @@
       left: @bl-customComponent-pdfViewer-controls-scale-left;
       transform: @bl-customComponent-pdfViewer-controls-scale-transform;
 
+      @media screen and (max-width: 500px) {
+        position: static;
+        transform: none;
+        left: auto;
+        margin: 0 auto;
+      }
+
       & span {
         width: @bl-customComponent-pdfViewer-controls-scale-text-width;
         text-align: @bl-customComponent-pdfViewer-controls-scale-text-align;
