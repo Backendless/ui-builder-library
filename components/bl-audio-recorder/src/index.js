@@ -22,7 +22,8 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const [recordDate, setRecordDate] = useState();
 
   const timer = useMemo(() => new Timer(setTime), []);
-  const isRecording = useMemo(() => state && state !== StreamState.INACTIVE, [state]);
+  const isRecording = state && state !== StreamState.INACTIVE;
+  const isPaused = state === StreamState.PAUSED;
 
   useEffect(() => () => timer.reset(), []);
 
@@ -133,12 +134,12 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
           <button
             disabled={ isRecording }
             className="control-button" onClick={ startRecording }>
-            { isRecording ? <RecordTimer time={ time } /> : buttonLabels.start }
+            { isRecording ? <RecordTimer time={ time } paused={ isPaused }/> : buttonLabels.start }
           </button>
           <button
-            disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
+            disabled={ state !== StreamState.RECORDING && !isPaused }
             className="control-button" onClick={ toggleRecord }>
-            { state === StreamState.PAUSED ? buttonLabels.resume : buttonLabels.pause }
+            { isPaused ? buttonLabels.resume : buttonLabels.pause }
           </button>
           <button
             disabled={ !state || state === StreamState.INACTIVE }
@@ -163,4 +164,4 @@ export const StreamState = {
 };
 
 const INITIAL_TIME = '00:00';
-const MEDIA_RECORDER_OPTIONS = { audioBitsPerSecond: 128000, mimeType : 'audio/webm'};
+const MEDIA_RECORDER_OPTIONS = { audioBitsPerSecond: 128000, mimeType: 'audio/webm' };
