@@ -23,7 +23,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const timer = useMemo(() => new Timer(setTime), []);
   const isRecording = useMemo(() => state && state !== StreamState.INACTIVE, [state]);
-  const isPaused = useMemo(() => state === StreamState.PAUSED, [state]);
+  const isPaused = state === StreamState.PAUSED;
 
   useEffect(() => () => timer.reset(), []);
 
