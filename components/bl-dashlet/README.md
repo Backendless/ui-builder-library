@@ -54,6 +54,7 @@ The component allows you to add a dashlet to your UI-Builder application.
 @bl-customComponent-dashlet-context-menu-icon-size: 15px;
 @bl-customComponent-dashlet-context-menu-item-icon-size: 12px;
 @bl-customComponent-dashlet-context-menu-item-background-hover: @themePrimary;
+@bl-customComponent-dashlet-context-menu-z-index: 50;
 
 @bl-customComponent-dashlet-border-padding: 5px;
 @bl-customComponent-dashlet-border-radius: 4px;

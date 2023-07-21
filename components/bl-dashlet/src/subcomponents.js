@@ -10,19 +10,14 @@ const { cn } = BackendlessUI.CSSUtils;
 export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
   const [sides, setSides] = useState({});
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [allowedDisplay, setAllowedDisplay] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const menuRef = useRef();
   const buttonRef = useRef();
 
   useEffect(() => {
-    if (isMenuOpen) {
-      setSides(handleOverflow(buttonRef.current, menuRef.current));
-      setAllowedDisplay(true);
-    } else {
-      setAllowedDisplay(false);
-      setSides({ top: false, right: false });
-    }
+    setSides(isMenuOpen ? handleOverflow(buttonRef.current, menuRef.current) : { top: false, right: false });
+    setIsMenuVisible(isMenuOpen);
   }, [isMenuOpen]);
 
   useClickAway([menuRef.current, buttonRef.current], () => setIsMenuOpen(false));
@@ -50,7 +45,7 @@ export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
         ref={ menuRef }
         className={ cn('context-menu__container', sides) }
         style={{
-          visibility: allowedDisplay ? 'initial' : 'hidden',
+          visibility: isMenuVisible ? 'initial' : 'hidden',
           display   : isMenuOpen ? 'block' : 'none',
         }}>
         <ul className="context-menu__list">

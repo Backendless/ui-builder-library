@@ -131,7 +131,7 @@ export const handleOverflow = (button, menu) => {
   }
 
   return {
-    right: !(button.getBoundingClientRect().left + menu.getBoundingClientRect().width > window.innerWidth),
+    right: button.getBoundingClientRect().left + menu.getBoundingClientRect().width < window.innerWidth,
     top  : button.getBoundingClientRect().bottom + menu.getBoundingClientRect().height > window.innerHeight,
   };
 };
