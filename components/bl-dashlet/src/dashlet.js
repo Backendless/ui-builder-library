@@ -9,10 +9,10 @@ const { cn } = BackendlessUI.CSSUtils;
 export function Dashlet(props) {
   const {
     rootRef, isOpen, height, width, setIsOpen, setPosition, setSize,
-    position, contextBlocksHandler, dashletContentPod, component,
+    position, contextMenuHandler, dashletContentPod, component,
   } = props;
   const {
-    title, resizing, contextBlocks, minWidth, maxWidth,
+    title, resizing, menuItems, minWidth, maxWidth,
     minHeight, maxHeight, draggable, styleVariant,
   } = component;
 
@@ -92,10 +92,10 @@ export function Dashlet(props) {
         </button>
         <h4 className={ cn('dashlet__title', StyleVariants[styleVariant]) }>{ title }</h4>
 
-        { contextBlocks && (
+        { menuItems && (
           <ContextMenu
-            contextBlocks={ contextBlocks }
-            contextBlocksHandler={ contextBlocksHandler }
+            menuItems={ menuItems }
+            contextMenuHandler={ contextMenuHandler }
             styleVariant={ styleVariant }
           />
         ) }

@@ -5,7 +5,7 @@ export const StyleVariants = {
   'alternative': 'alternative',
 };
 
-export const ContextBlockItemTypes = {
+export const ContextMenuItemTypes = {
   LINK  : 'link',
   ACTION: 'action',
 };
@@ -124,3 +124,68 @@ export const getPosition = (ref, coords) => {
     ),
   };
 };
+
+export const handleOverflow = (button, menu) => {
+  if (!button || !menu) {
+    return {};
+  }
+
+  return {
+    right: button.getBoundingClientRect().left + menu.getBoundingClientRect().width < window.innerWidth,
+    top  : button.getBoundingClientRect().bottom + menu.getBoundingClientRect().height > window.innerHeight,
+  };
+};
+
+function useDocumentEvents(events, callback) {
+  const callbackRef = useRef();
+
+  callbackRef.current = callback;
+
+  useEffect(() => {
+    const handler = event => {
+      callbackRef.current(event);
+    };
+
+    for (const eventName of events) {
+      on(document, eventName, handler);
+    }
+
+    return () => {
+      for (const eventName of events) {
+        off(document, eventName, handler);
+      }
+    };
+  }, [events]);
+}
+
+function on(obj, ...args) {
+  if (obj && obj.addEventListener) {
+    obj.addEventListener(...args);
+  }
+}
+
+function off(obj, ...args) {
+  if (obj && obj.removeEventListener) {
+    obj.removeEventListener(...args);
+  }
+}
+
+const defaultEvents = ['mousedown', 'touchstart'];
+
+export function useClickAway(elements, onClickAway, events = defaultEvents) {
+  elements = Array.isArray(elements) ? elements : [elements];
+
+  useDocumentEvents(events, event => {
+    let clickedByElement = false;
+
+    for (const el of elements) {
+      if (el && el.contains && el.contains(event.target)) {
+        clickedByElement = true;
+      }
+    }
+
+    if (!clickedByElement) {
+      onClickAway();
+    }
+  });
+}

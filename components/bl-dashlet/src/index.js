@@ -7,7 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function DashletComponent({ component, eventHandlers, pods, instanceId }) {
   const { display, classList, style, localStorageEnabled, height, width, draggable } = component;
-  const { contextBlocksHandler } = eventHandlers;
+  const { contextMenuHandler } = eventHandlers;
   const dashletContentPod = pods['dashletContent'];
 
   const rootRef = useRef();
@@ -51,7 +51,7 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
       <Dashlet
         rootRef={ rootRef }
         component={ component }
-        contextBlocksHandler={ contextBlocksHandler }
+        contextMenuHandler={ contextMenuHandler }
         dashletContentPod={ dashletContentPod }
         width={ size.width }
         height={ size.height }
