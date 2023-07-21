@@ -1,76 +1,71 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
   ContextMenuItemTypes, handleOverflow,
   StyleVariants, useClickAway,
-  useContextMenuPositionHandler,
 } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
-  const [newSides, setNewSides] = useState({});
+  const [sides, setSides] = useState({});
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [contextMenu, setContextMenu] = useState(null);
+  const [allowedDisplay, setAllowedDisplay] = useState(false);
 
-  const measuredRef = useCallback(node => {
-    if (node !== null) {
-      setContextMenu(node);
-    }
-  }, []);
-
-  const { sides, readyToShow } = useContextMenuPositionHandler(contextMenu, isMenuOpen);
-  useClickAway(contextMenu, () => setIsMenuOpen(false));
-
-  const onContextMenuButtonClick = () => setIsMenuOpen(state => !state);
-
-  useEffect(() => setNewSides(sides), [sides]);
-
-  const resizeHandler = useCallback(() => {
-    const { left, top } = handleOverflow(contextMenu);
-
-    setNewSides(state => ({
-      left: state.left || left,
-      top: state.top || top,
-    }));
-  }, [contextMenu]);
+  const menuRef = useRef();
+  const buttonRef = useRef();
 
   useEffect(() => {
-    if (contextMenu && isMenuOpen) {
-      window.addEventListener('resize', resizeHandler);
-
-      return () => {
-        setNewSides(null);
-        window.removeEventListener('resize', resizeHandler);
-      };
+    if (isMenuOpen) {
+      setSides(handleOverflow(buttonRef.current, menuRef.current));
+      setAllowedDisplay(true);
+    } else {
+      setAllowedDisplay(false);
+      setSides({ top: false, right: false });
     }
-  }, [resizeHandler, contextMenu, isMenuOpen]);
+  }, [isMenuOpen]);
+
+  useClickAway([menuRef.current, buttonRef.current], () => setIsMenuOpen(false));
+
+  const onContextMenuButtonClick = () => setIsMenuOpen(true);
+
+  const resizeHandler = useCallback(() => {
+    setSides(handleOverflow(buttonRef.current, menuRef.current));
+  }, [buttonRef.current, menuRef.current]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      window.addEventListener('resize', resizeHandler);
+    }
+
+    return () => window.removeEventListener('resize', resizeHandler);
+  }, [resizeHandler, isMenuOpen]);
 
   return (
     <div className="dashlet__context-menu context-menu">
-      <button className="context-menu__button" onClick={ onContextMenuButtonClick }>
+      <button className="context-menu__button" onClick={ onContextMenuButtonClick } ref={ buttonRef }>
         <ContextMenuButtonIcon styleVariant={ styleVariant }/>
       </button>
+      <div
+        ref={ menuRef }
+        className={ cn('context-menu__container', sides) }
+        style={{
+          visibility: allowedDisplay ? 'initial' : 'hidden',
+          display   : isMenuOpen ? 'block' : 'none',
+        }}>
+        <ul className="context-menu__list">
 
-      { isMenuOpen && (
-        <div
-          ref={ measuredRef }
-          className={ cn('context-menu__container', newSides) }
-          style={{ visibility: readyToShow ? 'initial' : 'hidden' }}>
-          <ul className="context-menu__list">
+          { menuItems.map(({ label, type, content }) => (
+            <ContextMenuItem
+              label={ label }
+              type={ type }
+              content={ content }
+              contextMenuHandler={ contextMenuHandler }
+            />
+          )) }
 
-            { menuItems.map(({ label, type, content }) => (
-              <ContextMenuItem
-                label={ label }
-                type={ type }
-                content={ content }
-                contextMenuHandler={ contextMenuHandler }
-              />
-            )) }
-
-          </ul>
-        </div>
-      ) }
+        </ul>
+      </div>
     </div>
   );
 }

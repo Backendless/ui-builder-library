@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const StyleVariants = {
   'default'    : '',
@@ -125,18 +125,16 @@ export const getPosition = (ref, coords) => {
   };
 };
 
-export const useContextMenuPositionHandler = (contextMenu, isMenuOpen) => useMemo(() => {
-  const readyToShow = contextMenu && isMenuOpen;
+export const handleOverflow = (button, menu) => {
+  if (!button || !menu) {
+    return {};
+  }
 
   return {
-    readyToShow, sides: readyToShow ? handleOverflow(contextMenu) : { left: false, top: false },
+    right: !(button.getBoundingClientRect().left + menu.getBoundingClientRect().width > window.innerWidth),
+    top  : button.getBoundingClientRect().bottom + menu.getBoundingClientRect().height > window.innerHeight,
   };
-}, [contextMenu, isMenuOpen]);
-
-export const handleOverflow = contextMenu => ({
-  left: contextMenu.getBoundingClientRect().right > window.innerWidth,
-  top : contextMenu.getBoundingClientRect().bottom > window.innerHeight,
-});
+};
 
 function useDocumentEvents(events, callback) {
   const callbackRef = useRef();
