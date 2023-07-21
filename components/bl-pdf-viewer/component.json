@@ -45,7 +45,7 @@
     {
       "type": "number",
       "name": "scale",
-      "label": "Scale in %",
+      "label": "Scale(%)",
       "showInSettings": true,
       "defaultValue": "100",
       "hasLogicHandler": false,
