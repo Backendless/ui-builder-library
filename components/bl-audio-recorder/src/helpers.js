@@ -7,6 +7,7 @@ const Labels = {
   PAUSE   : 'Pause',
   RESUME  : 'Resume',
   DOWNLOAD: 'Download Recorded',
+  CLEAR   : 'Clear',
 };
 
 export const download = (blob, fileName, fileNameHasTimestamp, recordDate) => {
@@ -111,8 +112,8 @@ export class Timer {
 }
 
 export const prepareLabel = component => {
-  const { labelsType, startText, stopText, downloadText, pauseText, resumeText } = component;
-  const { Record, Pause, Play, Stop, Download } = Icons;
+  const { labelsType, startText, stopText, downloadText, pauseText, resumeText, clearText } = component;
+  const { Record, Pause, Play, Stop, Download, Clear } = Icons;
 
   const isIcon = labelsType === 'icons';
 
@@ -122,6 +123,7 @@ export const prepareLabel = component => {
     pause   : isIcon ? <Pause/> : pauseText || Labels.PAUSE,
     resume  : isIcon ? <Play/> : resumeText || Labels.RESUME,
     download: isIcon ? <Download/> : downloadText || Labels.DOWNLOAD,
+    clear   : isIcon ? <Clear/> : clearText || Labels.CLEAR,
   });
 };
 
