@@ -47,7 +47,7 @@ export default function DashletComponent({ component, eventHandlers, pods, insta
     <div
       ref={ rootRef }
       className={ cn('bl-customComponent-dashlet', classList, { draggable }) }
-      style={ style }>
+      style={{ ...style, height: isOpen ? `${ size.height }px` : 'auto', width: `${ size.width }px` }}>
       <Dashlet
         rootRef={ rootRef }
         component={ component }
