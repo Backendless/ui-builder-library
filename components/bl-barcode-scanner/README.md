@@ -96,3 +96,24 @@ application. The component supports a variety of 2D and 1D code formats.
 @bl-customComponent-barcodeScanner-button-shadowDisabled: none;
 @bl-customComponent-barcodeScanner-button-outline: none;
 ````
+
+## Usage
+
+In order to get the result of the scan, you should use On Decode Success Event. After you click "Add logic" button on
+the handler, you'll see the context block "Decoded Code" that contains the necessary information. You can save its value
+or pass it to another component on the page for further use.
+
+The following example shows how to bind the "Decoded Code" value with the Text component:
+
+<p align="center">
+  <img src="./example-images/decoded-code-binding.png" alt="on item click event" width="879"/>
+</p>
+
+<details>
+<summary>Try yourself</summary>
+
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="set_object_property" id="Gd8Gcr%_58TLKPQ3:W`n" x="375" y="165"><value name="object"><block type="root_block_ui_builder_common__context_blocks_pageData" id="JhE[SKG?fBT*j:z9Dn0^" bl_meta="{&quot;label&quot;:&quot;Page Data&quot;}"></block></value><value name="propName"><shadow type="text" id="iuwb`e=C7R2-HYvA0A=`"><field name="TEXT">decodedCode</field></shadow></value><value name="propValue"><block type="root_block_ui_builder_c_e5dc7484d0c3859c15054eb6f5661b36_onDecodeSuccess_handler_context_blocks_decodedCode" id="byJ`952=Stjt}9@rz1%q" bl_meta="{&quot;label&quot;:&quot;Decoded Code&quot;}"></block></value></block>
+```
+
+</details>
