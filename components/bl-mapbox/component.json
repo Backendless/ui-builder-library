@@ -204,6 +204,10 @@
         {
           "id": "description",
           "label": "Description"
+        },
+        {
+          "id": "markerData",
+          "label": "Marker Data"
         }
       ]
     },

@@ -188,7 +188,7 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
       setMarkersArray([]);
 
       markers.forEach(markerItem => {
-        const { color, description } = markerItem;
+        const { color, description, markerData } = markerItem;
 
         const marker = new Marker({ color })
           .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
@@ -199,7 +199,7 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
         popup.on('open', () => {
           const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
 
-          onMarkerClick({ coordinates, description: description || '' });
+          onMarkerClick({ coordinates, description: description || '', markerData });
         });
 
         if (description) {
