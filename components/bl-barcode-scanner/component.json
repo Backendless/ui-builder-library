@@ -3,7 +3,7 @@
   "name": "Barcode Scanner",
   "description": "This is a component for scanning barcodes directly from a web application.",
   "showInToolbox": true,
-  "faIcon": "barcode",
+  "faIcon": "expand",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
