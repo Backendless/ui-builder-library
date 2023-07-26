@@ -1,11 +1,26 @@
 import { Button } from './button';
 
-const { cn } = BackendlessUI.CSSUtils
+const { cn } = BackendlessUI.CSSUtils;
 
-const GOOGLEPLUS = 'googleplus';
-const providersList = ['googleplus', 'facebook', 'twitter', 'linkedin', 'github'];
+const ProvidersMap = {
+  GOOGLEPLUS: 'googleplus',
+  FACEBOOK  : 'facebook',
+  TWITTER   : 'twitter',
+  LINKEDIN  : 'linkedin',
+  GITHUB    : 'github'
+};
 
-export default function SocialLoginButtonsComponent({ component, eventHandlers }) {
+const ProvidersList = Object.values(ProvidersMap);
+
+const ProviderLabels = {
+  [ProvidersMap.GOOGLEPLUS]: 'google',
+  [ProvidersMap.FACEBOOK]  : 'facebook',
+  [ProvidersMap.TWITTER]   : 'twitter',
+  [ProvidersMap.LINKEDIN]  : 'linkedin',
+  [ProvidersMap.GITHUB]    : 'github'
+};
+
+export default function SocialLoginButtonsComponent({ component, eventHandlers, elRef }) {
   const {
     display, classList, disabled, redirectToPage, extraQueryParams, callbackUrlDomain, iconsVisibility
   } = component;
@@ -16,12 +31,12 @@ export default function SocialLoginButtonsComponent({ component, eventHandlers }
   }
 
   return (
-    <div className={ cn('bl-customComponent-socialLoginButtons', classList, { disabled }) }>
-      { providersList.map(providerCode => (
+    <div ref={ elRef } className={ cn('bl-customComponent-socialLoginButtons', classList, { disabled }) }>
+      { ProvidersList.map(providerCode => (
         component[providerCode] &&
           <Button
             providerCode={ providerCode }
-            buttonLabel={ `Connect with ${ providerCode === GOOGLEPLUS ? "google" : providerCode }` }
+            buttonLabel={ `Connect with ${ ProviderLabels[providerCode] }` }
             iconsVisibility={ iconsVisibility }
             redirectToPage={ redirectToPage }
             extraQueryParams={ extraQueryParams }
