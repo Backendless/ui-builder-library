@@ -47,10 +47,10 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
     return null;
   }
 
-  return (
+  return ReactDOM.createPortal((
     <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
       <div className="backdrop" onClick={ handleBackdropClick } />
       <div className="modal-content" style={ modalContentStyles }>{ modalContentPod.render() }</div>
     </div>
-  );
+  ), document.body);
 }
