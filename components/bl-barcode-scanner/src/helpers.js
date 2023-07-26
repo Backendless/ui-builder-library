@@ -36,7 +36,7 @@ export function useScanner(scannerRef, instanceId, component, eventHandlers) {
       return;
     }
 
-    const onScanFailed = error => onDecodeError({ error });
+    const onScanFailed = debounce(error => onDecodeError({ error }), fps);
     const onScanSuccess = decodedCode => {
       onDecodeSuccess({ decodedCode });
 
@@ -50,7 +50,7 @@ export function useScanner(scannerRef, instanceId, component, eventHandlers) {
     scannerRef.current
       .start({ facingMode: ENVIRONMENT_FACING_MODE }, options, onScanSuccess, onScanFailed)
       .catch(error => onStartScanFailed({ error }));
-  }, [hideAfterScan, onDecodeError, onDecodeSuccess, onStartScanFailed, options, scannerRef, stopScan]);
+  }, [fps, hideAfterScan, onDecodeError, onDecodeSuccess, onStartScanFailed, options, scannerRef, stopScan]);
 
   const toggleScan = scannerVisibility ? stopScan : startScan;
   const updateScanner = () => {
@@ -82,4 +82,14 @@ export function scanImage(event, scannerRef, eventHandlers) {
     .catch(error => onDecodeError({ error }));
 
   event.target.value = ''; // needed to reset the image after scanning
+}
+
+function debounce(callback, fps) {
+  let timerId;
+  const delay = Math.ceil(1000 / fps);
+
+  return function(...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => callback.apply(this, args), delay);
+  };
 }
