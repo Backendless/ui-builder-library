@@ -53,7 +53,9 @@
       "hasLogicHandler": true,
       "handlerId": "definitionsLogic",
       "handlerLabel": "Definitions Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to provide custom mask definitions such as default \"0\", \"a\", and \"*\". Signature of data where X is any single char: `{ X: { mask: string, displayChar: string, placeholderChar: string }`",
+      "handlerDescription": "This is a handler for the logic to determine a custom mask definitions such as default \"0\", \"a\", and \"*\". Signature of data where X is any single char: `{ X: { mask: string, displayChar: string, placeholderChar: string }`"
     },
     {
       "type": "text",
@@ -63,7 +65,9 @@
       "hasLogicHandler": true,
       "handlerId": "displayCharLogic",
       "handlerLabel": "Display Char Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to specify char that will be displayed instead of the input value.",
+      "handlerDescription": "This is a handler for the logic to determine a char that will be displayed instead of the input value."
     },
     {
       "type": "text",

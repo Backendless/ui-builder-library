@@ -14,6 +14,8 @@ This component is based on an external library [imask.js](https://github.com/uNm
 |-------------------------------------|---------------------------------------------------------------------|----------------------|------------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Mask Type: `maskType`               | Select [`Number`, `String`, `RegExp`]                               | "Number"             | Mask Type Logic        | NO           | YES        | Allows select type of mask(Number, String, RegExp).                                                                                                                                                                                                        |
 | Mask: `mask`                        | Text                                                                |                      | Mask Logic             | YES          | YES        | Allows to specify mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp.                                                                                                                                                              |
+| Definitions: `definitions`          | JSON                                                                |                      | Definitions Logic      | YES          | YES        | Allows to provide custom mask definitions such as default "0", "a", and "*". Signature of data where X is any single char: `{ X: { mask: string, displayChar: string, placeholderChar: string } }`                                                         |
+| Display Char: `displayChar`         | Text                                                                |                      | Display Char Logic     | YES          | YES        | Allows to specify char that will be displayed instead of the input value.                                                                                                                                                                                  |
 | Placeholder: `placeholder`          | Text                                                                |                      | Placeholder Logic      | YES          | YES        | Allows to specify placeholder.                                                                                                                                                                                                                             |
 | Placeholder Char: `placeholderChar` | Text                                                                | "_"                  | Placeholder Char Logic | YES          | YES        | Allows to specify placeholder char. If it is left empty, the default value will be "_".                                                                                                                                                                    |
 | Lazy: `lazy`                        | Checkbox                                                            | `false`              | Lazy Logic             | NO           | YES        | Allows to specify lazy or not lazy. Lazy it's when the input doesn't display the template of the mask. For example, Mask: `000 000 000`, Placeholder Char: `_`, Lazy: `checked` input will be empty, but if Lazy: `unchecked` input will be `___ ___ ___`. |
@@ -87,7 +89,29 @@ If definition character should be treated as fixed it should be escaped by ` \ `
     <img src="./example-images/phone-number-mask.jpg" alt="phone number mask" />
     <img src="./example-images/phone-number-mask-result.jpg" alt="phone number mask result" />
 
-5. And you can create a mask with RegExp:
+5. And you can create custom definitions of mask with UI Setting property Definitions:
+
+    <img src="./example-images/mask-with-definitions.jpg" alt="mask with definitions" />
+    <img src="./example-images/definitions.jpg" alt="definitions" />
+
+   <details>
+   <summary>Try yourself</summary>
+
+    ```
+    {
+      "#": {
+        "mask": "0",
+        "displayChar": "#",
+        "placeholderChar": "_"
+      }
+    }
+    ```
+
+    </details>
+
+    <img src="./example-images/definitions-result.jpg" alt="definitions result" />
+
+6. And you can create a mask with RegExp:
 
    <img src="./example-images/regexp-mask.jpg" alt="regExp mask" />
    <img src="./example-images/regexp-mask-result.jpg" alt="regExp mask result" />
