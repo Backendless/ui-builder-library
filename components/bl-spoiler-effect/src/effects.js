@@ -73,7 +73,7 @@ export function Morphose({ fill }) {
 }
 
 export function Music({ fill }) {
-  const [baseFrequency, setBaseFrequency] = useState(() => getRandomBaseFrequency());
+  const [baseFrequency, setBaseFrequency] = useState(getRandomBaseFrequency);
   const animationRef = useRef();
 
   const updateBaseFrequency = () => {
