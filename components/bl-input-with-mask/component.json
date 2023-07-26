@@ -46,6 +46,26 @@
       "settingTooltip": "Allows to specify the mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp. "
     },
     {
+      "type": "json",
+      "name": "definitions",
+      "label": "Definitions",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "definitionsLogic",
+      "handlerLabel": "Definitions Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "displayChar",
+      "label": "Display Char",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "displayCharLogic",
+      "handlerLabel": "Display Char Logic",
+      "dataBinding": true
+    },
+    {
       "type": "text",
       "name": "placeholder",
       "showInSettings": true,

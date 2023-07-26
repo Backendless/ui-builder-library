@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import useIMask from './react-imask';
+import { useIMask } from './react-imask';
 import { Fieldset, Input, Placeholder } from './subcomponent';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -12,13 +12,18 @@ const MaskTypes = {
 };
 
 export default function InputWithMask({ component, eventHandlers, elRef }) {
-  const { style, display, classList, maskType, mask, placeholder, placeholderChar, lazy, variant } = component;
+  const {
+    style, display, classList, maskType, mask, definitions,
+    displayChar, placeholder, placeholderChar, lazy, variant,
+  } = component;
   const { onChangeValue, onValidate, onComplete } = eventHandlers;
 
   const [isFocused, setIsFocused] = useState(false);
 
   const options = {
     mask           : usePreparedMask(maskType, mask),
+    definitions,
+    displayChar,
     placeholderChar: placeholderChar || '_',
     lazy,
     prepare        : (value, mask) => {
