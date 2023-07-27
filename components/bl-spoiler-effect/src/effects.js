@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const DefaultValues = {
   BASE_FREQUENCY: 200,
@@ -76,9 +76,9 @@ export function Music({ fill }) {
   const [baseFrequency, setBaseFrequency] = useState(getRandomBaseFrequency);
   const animationRef = useRef();
 
-  const updateBaseFrequency = () => {
+  const updateBaseFrequency = useCallback(() => {
     setBaseFrequency(getRandomBaseFrequency());
-  };
+  }, []);
 
   useEffect(() => {
     animationRef.current = requestAnimationFrame(updateBaseFrequency);

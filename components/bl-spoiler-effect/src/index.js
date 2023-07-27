@@ -27,19 +27,25 @@ const EffectViews = {
 
 const OPACITY = 0.5;
 
-export default function SpoilerEffectComponent({ component, elRef, eventHandlers, pods }) {
-  const { style, classList, display, effect, background, applyEffect } = component;
+export default function SpoilerComponent({ component, elRef, eventHandlers, pods }) {
+  const { style, classList, display, effect, background, enabled } = component;
   const { onClick, onMouseEnter, onMouseMove, onMouseLeave } = eventHandlers;
 
-  const [isApplied, setIsApplied] = useState(applyEffect);
+  const [isEnabled, setIsEnabled] = useState(enabled);
 
-  const onClickHandler = useCallback(() => {
-    setIsApplied((prevState) => !prevState);
-    onClick();
-  }, []);
+  const onClickHandler = useCallback((event) => {
+    onClick({ event, isEnabled });
+  }, [isEnabled]);
 
-  component.applySpoiler = () => setIsApplied(true);
-  component.removeSpoiler = () => setIsApplied(false);
+  component.enableSpoiler = () => setIsEnabled(true);
+  component.disableSpoiler = () => setIsEnabled(false);
+  component.toggleSpoiler = (state) => {
+    if (state !== undefined) {
+      setIsEnabled(state);
+    } else {
+      setIsApplied(v => !v);
+    }
+  };
 
   const Effect = EffectViews[effect];
 
@@ -49,7 +55,7 @@ export default function SpoilerEffectComponent({ component, elRef, eventHandlers
 
   return (
     <div
-      className={ cn('bl-customComponent-spoiler-effect', classList) }
+      className={ cn('bl-customComponent-spoiler', classList) }
       ref={ elRef }
       style={ style }
       onClick={ onClickHandler }
@@ -58,12 +64,12 @@ export default function SpoilerEffectComponent({ component, elRef, eventHandlers
       onMouseLeave={ onMouseLeave }>
 
       <div
-        className={ cn('spoiler-effect-content', { blurred: isApplied }) }
-        style={{ filter: isApplied ? `url(#filter-${ effect })` : 'none' }}>
-        { pods.spoilerEffectContent.render() }
+        className={ cn('spoiler-content', { blurred: isEnabled }) }
+        style={{ filter: isEnabled ? `url(#filter-${ effect })` : 'none' }}>
+        { pods.spoilerContent.render() }
       </div>
 
-      { isApplied && (
+      { isEnabled && (
         <svg className="svg" style={{ opacity: effect === EffectTypes.MORPHOLOGY ? OPACITY : undefined }}>
           <Effect fill={ background }/>
         </svg>

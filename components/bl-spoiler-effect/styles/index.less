@@ -1,39 +1,39 @@
-@bl-customComponent-spoiler-effect-width: 100%;
-@bl-customComponent-spoiler-effect-align-items: center;
-@bl-customComponent-spoiler-effect-justify-content: center;
+@bl-customComponent-spoiler-width: 100%;
+@bl-customComponent-spoiler-align-items: center;
+@bl-customComponent-spoiler-justify-content: center;
 
-@bl-customComponent-spoiler-effect-content-width: 100%;
-@bl-customComponent-spoiler-effect-content-height: 100%;
-@bl-customComponent-spoiler-effect-content-direction: column;
-@bl-customComponent-spoiler-effect-content-transition: all 0.3s ease;
-@bl-customComponent-spoiler-effect-content-blur: 8px;
+@bl-customComponent-spoiler-content-width: 100%;
+@bl-customComponent-spoiler-content-height: 100%;
+@bl-customComponent-spoiler-content-direction: column;
+@bl-customComponent-spoiler-content-transition: all 0.3s ease;
+@bl-customComponent-spoiler-content-blur: 8px;
 
-@bl-customComponent-spoiler-effect-overlay-width: 100%;
-@bl-customComponent-spoiler-effect-overlay-height: 100%;
+@bl-customComponent-spoiler-overlay-width: 100%;
+@bl-customComponent-spoiler-overlay-height: 100%;
 
-.bl-customComponent-spoiler-effect {
+.bl-customComponent-spoiler {
   display: flex;
-  align-items: @bl-customComponent-spoiler-effect-align-items;
-  justify-content: @bl-customComponent-spoiler-effect-justify-content;
-  width: @bl-customComponent-spoiler-effect-width;
+  align-items: @bl-customComponent-spoiler-align-items;
+  justify-content: @bl-customComponent-spoiler-justify-content;
+  width: @bl-customComponent-spoiler-width;
   position: relative;
   overflow: hidden;
 
-  .spoiler-effect-content {
+  .spoiler-content {
     display: flex;
-    width: @bl-customComponent-spoiler-effect-content-width;
-    height: @bl-customComponent-spoiler-effect-content-height;
-    flex-direction: @bl-customComponent-spoiler-effect-content-direction;
-    transition: @bl-customComponent-spoiler-effect-content-transition;
+    width: @bl-customComponent-spoiler-content-width;
+    height: @bl-customComponent-spoiler-content-height;
+    flex-direction: @bl-customComponent-spoiler-content-direction;
+    transition: @bl-customComponent-spoiler-content-transition;
 
     &.blurred {
-      filter: blur(@bl-customComponent-spoiler-effect-content-blur);
+      filter: blur(@bl-customComponent-spoiler-content-blur);
     }
   }
 
-  .spoiler-effect-overlay {
-    width: @bl-customComponent-spoiler-effect-overlay-width;
-    height: @bl-customComponent-spoiler-effect-overlay-height;
+  .spoiler-overlay {
+    width: @bl-customComponent-spoiler-overlay-width;
+    height: @bl-customComponent-spoiler-overlay-height;
     position: absolute;
     top: 0;
     left: 0;

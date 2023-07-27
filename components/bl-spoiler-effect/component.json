@@ -1,7 +1,7 @@
 {
   "id": "c_365c02ad9a5f6696a4dcde6ab0c4442b",
-  "name": "Spoiler Effect",
-  "description": "The Spoiler Effect component allows the user to create different spoiler effects above the content inside.",
+  "name": "Spoiler",
+  "description": "The Spoiler component allows the user to create different spoiler effects above the content inside.",
   "showInToolbox": true,
   "faIcon": "mask",
   "mainJS": "dist/index.js",
@@ -64,13 +64,13 @@
     },
     {
       "type": "checkbox",
-      "name": "applyEffect",
-      "label": "Apply Effect",
-      "settingTooltip": "A flag indicating whether a spoiler effect has been applied.",
+      "name": "enabled",
+      "label": "Enabled",
+      "settingTooltip": "A flag indicating whether the spoiler effect is enabled.",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "applyEffectLogic"
+      "handlerId": "enabledLogic"
     }
   ],
   "eventHandlers": [
@@ -80,6 +80,10 @@
         {
           "id": "event",
           "label": "Event"
+        },
+        {
+          "id": "isEnabled",
+          "label": "isEnabled"
         }
       ],
       "handlerDescription": "Triggered when the user clicks on the component.",
@@ -87,7 +91,6 @@
     },
     {
       "name": "onMouseEnter",
-      "contextBlocks": [],
       "handlerDescription": "Triggered when the mouse pointer hovers over the component.",
       "label": "On Mouse Enter"
     },
@@ -98,25 +101,34 @@
     },
     {
       "name": "onMouseLeave",
-      "contextBlocks": [],
       "handlerDescription": "Triggered when the mouse pointer leaves the component.",
       "label": "On Mouse Leave"
     }
   ],
   "actions": [
     {
-      "id": "applySpoiler",
-      "label": "Apply"
+      "id": "enableSpoiler",
+      "label": "Enable"
     },
     {
-      "id": "removeSpoiler",
-      "label": "Remove"
+      "id": "disableSpoiler",
+      "label": "Disable"
+    },
+    {
+      "id": "toggleSpoiler",
+      "label": "Toggle",
+      "inputs": [
+        {
+          "id": "state",
+          "label": "State"
+        }
+      ]
     }
   ],
   "settings": [],
   "pods": {
     "b8828219095d33ecaffe9d3c6ba4e2ae": {
-      "id": "spoilerEffectContent",
+      "id": "spoilerContent",
       "dataContainer": true
     }
   }
