@@ -26,10 +26,13 @@
       "name": "placeholder",
       "label": "Placeholder",
       "showInSettings": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "placeholderLogic",
       "defaultValue": "Compose an epic...",
-      "settingTooltip": "Define the placeholder of the editor."
+      "settingTooltip": "Define the placeholder of the editor.",
+      "handlerLabel": "Placeholder Logic",
+      "handlerDescription": "This is a handler for the logic to determine the placeholder of the rich editor.",
+      "dataBinding": true
     },
     {
       "type": "select",
