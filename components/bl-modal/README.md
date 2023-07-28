@@ -12,8 +12,8 @@ Modal is a component of Backendless UI-Builder designer. This component is a Pod
 | Modal Visibility<br/>`modalVisibility` | Checkbox | `false`       | Modal Visibility Logic | YES          | YES        | This handler allows you to control the visibility of the modal.                                     |
 | Close On Escape<br/>`closeOnEscape`    | Checkbox | `true`        | Close On Escape Logic  | YES          | YES        | This handler allows you to add the close of the modal window by pressing Escape button or backdrop. |
 | Allow Scrolling<br/>`allowScrolling`   | Checkbox | `false`       | Allow Scrolling Logic  | YES          | YES        | This handler allows you to control the page scroll ability when a modal is open.                    |
-| Content Width<br/>`contentWidth`       | Text     | "600px"       | Content Width Logic    | YES          | YES        | This handler allows you to specify the width of the modal content.                                  |
-| Content Height<br/>`contentHeight`     | Text     | "550px"       | Content Height Logic   | YES          | YES        | This handler allows you to specify the height of the modal content.                                 |
+| Content Width<br/>`contentWidth`       | Text     |               | Content Width Logic    | YES          | YES        | This handler allows you to specify the width of the modal content.                                  |
+| Content Height<br/>`contentHeight`     | Text     |               | Content Height Logic   | YES          | YES        | This handler allows you to specify the height of the modal content.                                 |
 
 ## Events
 
