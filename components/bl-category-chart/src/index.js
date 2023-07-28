@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Chart from './chartjs';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function CategoryChartComponent({ component, elRef }) {
-  const { chartRef } = useChartLogic(component);
+  const { chartRef } = useChart(component);
   const { classList, display, style, disabled, height, width, backgroundColor } = component;
   const styles = { ...style, width, height };
 
@@ -24,7 +24,7 @@ export default function CategoryChartComponent({ component, elRef }) {
   );
 }
 
-function useChartLogic(component) {
+function useChart(component) {
   const {
     options, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,
     legendVisibility, titleVisibility, title, titleFontSize,
@@ -32,147 +32,93 @@ function useChartLogic(component) {
   } = component;
 
   const chartRef = useRef(null);
-  const chartInstance = useRef(null);
+  const [chartInstance, setChartInstance] = useState(null);
 
-  const chartConfig = {
-    ...options,
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: legendVisibility,
-      },
-      title: {
-        display: titleVisibility,
-        text: title,
-        font: {
-          size: titleFontSize,
-        },
+  const chartData = useMemo(() => ({ labels, datasets }), [labels, datasets]);
+
+  const pluginsOptions = useMemo(() => ({
+    legend: { display: legendVisibility },
+    title: {
+      display: titleVisibility,
+      text: title,
+      font: {
+        size: titleFontSize,
       },
     },
-    scales: {
-      y: {
-        grid: {
-          display: yGridLineVisibility,
-          color: gridLinesColor,
-          lineWidth: gridLinesWidth,
-        },
-      },
-      x: {
-        grid: {
-          display: xGridLineVisibility,
-          color: gridLinesColor,
-          lineWidth: gridLinesWidth,
-        },
+  }), [legendVisibility, titleVisibility, title, titleFontSize]);
+
+  const scaleOptions = useMemo(() => ({
+    y: {
+      grid: {
+        display: yGridLineVisibility,
+        color: gridLinesColor,
+        lineWidth: gridLinesWidth,
       },
     },
-  }
+    x: {
+      grid: {
+        display: xGridLineVisibility,
+        color: gridLinesColor,
+        lineWidth: gridLinesWidth,
+      },
+    },
+  }), [yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth]);
 
   useEffect(() => {
     if (!display) {
       return;
     }
 
-    let requireRerender = false;
-
-    const additionalOptions = { ...options };
-
-    if (isDataChanged(chartConfig, additionalOptions)) {
-      requireRerender = true;
-      Object.assign(chartConfig, additionalOptions);
-    }
-
-    const scales = {
-      y: {
-        grid: {
-          display: yGridLineVisibility,
-          color: gridLinesColor,
-          lineWidth: gridLinesWidth,
-        },
+    const newChartInstance = new Chart(chartRef.current, {
+      type,
+      data: chartData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: pluginsOptions,
+        scales: scaleOptions,
+        ...options,
       },
-      x: {
-        grid: {
-          display: xGridLineVisibility,
-          color: gridLinesColor,
-          lineWidth: gridLinesWidth,
-        },
-      },
-    };
+    });
 
-    if (isDataChanged(chartConfig.scales, scales)) {
-      requireRerender = true;
-      Object.assign(chartConfig.scales.y, scales.y);
-      Object.assign(chartConfig.scales.x, scales.x);
-    }
-
-    const plugins = {
-      legend: {
-        display: legendVisibility,
-      },
-      title: {
-        display: titleVisibility,
-        text: title,
-        font: {
-          size: titleFontSize,
-        },
-      },
-    };
-
-    if (isDataChanged(chartConfig.plugins, plugins)) {
-      requireRerender = true;
-      Object.assign(chartConfig.plugins.legend, plugins.legend);
-      Object.assign(chartConfig.plugins.title, plugins.title);
-    }
-
-    if (chartInstance.current && requireRerender) {
-      chartInstance.current.data = { labels, datasets };
-      chartInstance.current.update();
-    } else {
-      chartInstance.current = new Chart(chartRef.current, {
-        type,
-        data: { labels, datasets },
-        options: chartConfig,
-      });
-    }
+    setChartInstance(newChartInstance);
 
     return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-        chartInstance.current = null;
-      }
+      newChartInstance.destroy();
     };
-  }, [chartRef.current, display, type, labels, datasets, chartConfig, options,
-    legendVisibility, titleVisibility, title, titleFontSize,
-    yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth]);
+  }, [display, type]);
+
+  useEffect(() => {
+    if (!chartInstance) {
+      return;
+    }
+
+    let requireRerender = false;
+
+    if (chartData) {
+      requireRerender = true;
+      chartInstance.data = chartData;
+    }
+
+    if (pluginsOptions) {
+      requireRerender = true;
+      chartInstance.options.plugins = pluginsOptions;
+    }
+
+    if (scaleOptions) {
+      requireRerender = true;
+      chartInstance.options.scales = scaleOptions;
+    }
+
+    if (options) {
+      requireRerender = true;
+      Object.assign(chartInstance.options, options);
+    }
+
+    if (requireRerender) {
+      chartInstance.update();
+    }
+  }, [chartInstance, chartData, pluginsOptions, scaleOptions, options]);
 
   return { chartRef };
-}
-
-function isDataChanged(prevData, nextData) {
-  if (prevData === nextData) {
-    return false;
-  }
-
-  if (typeof prevData !== typeof nextData) {
-    return true;
-  }
-
-  if (typeof prevData === 'object' && typeof nextData === 'object') {
-    const prevKeys = Object.keys(prevData);
-    const nextKeys = Object.keys(nextData);
-
-    if (prevKeys.length !== nextKeys.length) {
-      return true;
-    }
-
-    for (let key of prevKeys) {
-      if (!isDataChanged(prevData[key], nextData[key])) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  return prevData !== nextData;
 }
