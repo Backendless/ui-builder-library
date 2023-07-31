@@ -1,11 +1,29 @@
 import { Button } from './button';
 
-const { cn } = BackendlessUI.CSSUtils
+const { cn } = BackendlessUI.CSSUtils;
 
-const providersList = ['google', 'facebook', 'twitter', 'linkedin', 'github'];
+const ProvidersMap = {
+  GOOGLEPLUS: 'googleplus',
+  FACEBOOK  : 'facebook',
+  TWITTER   : 'twitter',
+  LINKEDIN  : 'linkedin',
+  GITHUB    : 'github'
+};
 
-export default function SocialLoginButtonsComponent({ component, eventHandlers }) {
-  const { display, classList, disabled, redirectToPage, extraQueryParams, iconsVisibility } = component;
+const ProvidersList = Object.values(ProvidersMap);
+
+const ProviderLabels = {
+  [ProvidersMap.GOOGLEPLUS]: 'google',
+  [ProvidersMap.FACEBOOK]  : 'facebook',
+  [ProvidersMap.TWITTER]   : 'twitter',
+  [ProvidersMap.LINKEDIN]  : 'linkedin',
+  [ProvidersMap.GITHUB]    : 'github'
+};
+
+export default function SocialLoginButtonsComponent({ component, eventHandlers, elRef }) {
+  const {
+    display, classList, disabled, redirectToPage, extraQueryParams, callbackUrlDomain, iconsVisibility
+  } = component;
   const { onLogin, onLoginFail } = eventHandlers;
 
   if (!display) {
@@ -13,15 +31,16 @@ export default function SocialLoginButtonsComponent({ component, eventHandlers }
   }
 
   return (
-    <div className={ cn('bl-customComponent-socialLoginButtons', classList, { disabled }) }>
-      { providersList.map(provider => (
-        component[provider] &&
+    <div ref={ elRef } className={ cn('bl-customComponent-socialLoginButtons', classList, { disabled }) }>
+      { ProvidersList.map(providerCode => (
+        component[providerCode] &&
           <Button
-            provider={ provider }
+            providerCode={ providerCode }
+            buttonLabel={ `Connect with ${ ProviderLabels[providerCode] }` }
             iconsVisibility={ iconsVisibility }
-            buttonLabel={ `Connect with ${ provider }` }
             redirectToPage={ redirectToPage }
             extraQueryParams={ extraQueryParams }
+            callbackUrlDomain={ callbackUrlDomain }
             onLogin={ onLogin }
             onLoginFail={ onLoginFail }
           />

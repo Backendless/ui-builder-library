@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import RecordRTC, { StereoAudioRecorder } from './lib';
 
-import { captureMediaDevices, download, prepareLabel } from './helpers';
+import { captureMediaDevices, download, prepareLabel, Timer } from './helpers';
+import ysFixWebmDuration from './lib';
+import { RecordTimer } from './record-timer';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function AudioRecorder({ component, eventHandlers, elRef }) {
   const {
-    player, controls, noise, fileName, fileType, width, startText, stopText, downloadText, pauseText, resumeText,
-    labelsType, display, style, classList,
+    player, controls, noise, fileName, width, startText, stopText, downloadText, pauseText, resumeText, clearText,
+    labelsType, fileNameHasTimestamp, display, style, classList,
   } = component;
   const { onStart, onStop, onDownload, onStateChange } = eventHandlers;
 
@@ -17,9 +18,17 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const [recordedBlob, setRecordedBlob] = useState();
   const [state, setState] = useState();
+  const [time, setTime] = useState(INITIAL_TIME);
+  const [recordDate, setRecordDate] = useState();
+
+  const timer = useMemo(() => new Timer(setTime), []);
+  const isRecording = state && state !== StreamState.INACTIVE;
+  const isPaused = state === StreamState.PAUSED;
+
+  useEffect(() => () => timer.reset(), []);
 
   const buttonLabels = useMemo(() => prepareLabel(component),
-    [labelsType, startText, stopText, downloadText, pauseText, resumeText]);
+    [labelsType, startText, stopText, downloadText, pauseText, resumeText, clearText]);
 
   const styles = useMemo(() => ({
     maxWidth: normalizeDimensionValue(width),
@@ -44,38 +53,55 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     downloadFile: () => downloadRecordedFile(),
     getBlob     : () => recordedBlob,
     pause       : () => toggleRecord(),
+    getUrl      : () => URL.createObjectURL(recordedBlob),
+    clearRecord  : () => clearRecord(),
   });
 
   const startRecording = useCallback(async () => {
     const audioConstrains = { audio: { echoCancelation: true, noiseSuppression: noise } };
-    const stream = await captureMediaDevices(audioConstrains);
+    const stream = await captureMediaDevices(audioConstrains, audioRef);
+
     if (stream) {
-      recorderRef.current = RecordRTC(stream, {
-        type: 'audio',
-        mimeType: RecordFormat[fileType],
-        recorderType: StereoAudioRecorder,
-        desiredSampRate: 16000,
-        disableLogs: true,
+      recorderRef.current = new MediaRecorder(stream, MEDIA_RECORDER_OPTIONS);
+
+      const chunks = [];
+
+      Object.assign(recorderRef.current, {
+        onstart : () => setState(StreamState.RECORDING),
+        onpause : () => setState(StreamState.PAUSED),
+        onresume: () => setState(StreamState.RECORDING),
       });
 
-      recorderRef.current.onStateChanged = function (state) {
-        setState(state);
+      recorderRef.current.ondataavailable = event => {
+        if (event.data.size > 0) {
+          chunks.push(event.data);
+        }
       };
 
-      recorderRef.current.startRecording();
-      recorderRef.current.microphone = stream;
+      recorderRef.current.onstop = async () => {
+        const recordedBlob = new Blob(chunks, { type: 'audio/webm' });
+
+        timer.reset();
+
+        const resultBlob = await ysFixWebmDuration(recordedBlob, timer.duration, { logger: false });
+
+        setState(StreamState.INACTIVE);
+        setRecordedBlob(resultBlob);
+        setRecordDate(Date.now());
+        onStop();
+
+        chunks.length = 0;
+      };
+
+      recorderRef.current.start();
       onStart();
+      timer.start();
     }
   }, []);
 
   const stopRecording = useCallback(async () => {
     try {
-      recorderRef.current.stopRecording(() => {
-        const blob = recorderRef.current.getBlob();
-        setRecordedBlob(blob.slice(0, blob.size, RecordFormat[fileType]));
-        recorderRef.current.microphone.stop();
-        onStop();
-      });
+      recorderRef.current.stream.getTracks().forEach(track => track.stop());
     } catch (e) {
       console.error('Stream did not found.', e);
     }
@@ -83,15 +109,25 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   const downloadRecordedFile = useCallback(() => {
     onDownload({ blob: recordedBlob });
-    download(recordedBlob, fileName, fileType);
-  }, [recordedBlob, fileName, fileType]);
+    download(recordedBlob, fileName, fileNameHasTimestamp, recordDate);
+  }, [recordedBlob, fileName, recordDate]);
 
   const toggleRecord = useCallback(() => {
+
     if (recorderRef.current?.state === StreamState.RECORDING) {
-      recorderRef.current.pauseRecording();
+      recorderRef.current.pause();
+      timer.pause();
     } else if (recorderRef.current?.state === StreamState.PAUSED) {
-      recorderRef.current.resumeRecording();
+      recorderRef.current.resume();
+      timer.resume();
     }
+  }, []);
+
+  const clearRecord = useCallback(() => {
+    audioRef.current.src = '';
+
+    setRecordedBlob(null);
+    audioRef.current.removeAttribute('src');
   }, []);
 
   if (!display) {
@@ -100,21 +136,21 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-audioRecorder', classList) } style={ styles }>
-      <audio ref={ audioRef } className="audio" controls={ player }/>
+      <audio ref={ audioRef } className="audio" controls={ player } controlsList="nodownload"/>
       { controls && (
         <div className="controls">
           <button
-            disabled={ state && state !== StreamState.STOPPED }
+            disabled={ isRecording }
             className="control-button" onClick={ startRecording }>
-            { buttonLabels.start }
+            { isRecording ? <RecordTimer time={ time } paused={ isPaused }/> : buttonLabels.start }
           </button>
           <button
-            disabled={ state !== StreamState.RECORDING && state !== StreamState.PAUSED }
+            disabled={ state !== StreamState.RECORDING && !isPaused }
             className="control-button" onClick={ toggleRecord }>
-            { state === StreamState.PAUSED ? buttonLabels.resume : buttonLabels.pause }
+            { isPaused ? buttonLabels.resume : buttonLabels.pause }
           </button>
           <button
-            disabled={ !state || state === StreamState.STOPPED }
+            disabled={ !state || state === StreamState.INACTIVE }
             className="control-button" onClick={ stopRecording }>
             { buttonLabels.stop }
           </button>
@@ -123,22 +159,22 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
             className="control-button" onClick={ downloadRecordedFile }>
             { buttonLabels.download }
           </button>
+          <button
+            disabled={ !recordedBlob }
+            className="control-button" onClick={ clearRecord }>
+            { buttonLabels.clear }
+          </button>
         </div>
       ) }
     </div>
   );
 }
 
-const StreamState = {
+export const StreamState = {
   PAUSED   : 'paused',
   RECORDING: 'recording',
-  STOPPED  : 'stopped',
+  INACTIVE : 'inactive',
 };
 
-const RecordFormat = {
-  'WAV' : 'audio/wav',
-  'MPEG': 'audio/mpeg;',
-  'WEBM': 'audio/webm',
-  'OGG' : 'audio/ogg',
-  'MP3' : 'audio/mp3',
-};
+const INITIAL_TIME = '00:00';
+const MEDIA_RECORDER_OPTIONS = { audioBitsPerSecond: 128000, mimeType: 'audio/webm' };

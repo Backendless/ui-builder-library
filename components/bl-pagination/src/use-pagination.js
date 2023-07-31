@@ -7,7 +7,7 @@ export const usePagination = (pageCount, currentPage, siblingCount) => {
     throw new Error('The page count must be greater than 0');
   }
 
-  const paginationRange = useMemo(() => {
+  return useMemo(() => {
     if (siblingCount < 0) {
       throw new Error('The sibling count cannot be less than 0');
     }
@@ -51,8 +51,6 @@ export const usePagination = (pageCount, currentPage, siblingCount) => {
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
   }, [pageCount, siblingCount, currentPage]);
-
-  return paginationRange;
 };
 
 const range = (start, end) => {

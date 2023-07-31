@@ -8,23 +8,24 @@ Social Login Buttons is a component of Backendless UI-Builder designer. The comp
 
 ## Properties
 
-| Property               | Type       | Default value | Logic                             | Data Binding | UI Setting | Description                                                                              |
-|------------------------|------------|---------------|-----------------------------------|--------------|------------|------------------------------------------------------------------------------------------|
-| Disabled               | *Checkbox* | `false`       | Disabled logic                    | YES          | YES        | This handler allows you to disable the component.                                        |
-| Redirect To Page       | *Text*     |               | Redirect To Page Logic            | YES          | YES        | This handler allows you to specify which page to go to after login.                      |
-| Extra Query Params     | *Text*     |               | Extra Query Params Logic          | YES          | YES        | This handler allows you to add extra query params that will be added to the URL address. |
-| Icons Visibility       | *Checkbox* | `true`        | Icons Visibility Visibility Logic | YES          | YES        | This handler allows you to select the mode for a button with an icon or without.         |
-| Google Visibility      | *Checkbox* | `true`        | Google Visibility Logic           | YES          | YES        | This handler allows you to choose whether to show the Google button or not.              |
-| Facebook Visibility    | *Checkbox* | `true`        | Facebook Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Facebook button or not.            |
-| Twitter Visibility     | *Checkbox* | `true`        | Twitter Visibility Logic          | YES          | YES        | This handler allows you to choose whether to show the Twitter button or not.             |
-| Linkedin Visibility    | *Checkbox* | `true`        | Linkedin Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Linkedin button or not.            |
-| Github Visibility      | *Checkbox* | `true`        | Github Visibility Logic           | YES          | YES        | This handler allows you to choose whether to show the Github button or not.              |
+| Property                                    | Type     | Default value | Logic                             | Data Binding | UI Setting | Description                                                                              |
+|---------------------------------------------|----------|---------------|-----------------------------------|--------------|------------|------------------------------------------------------------------------------------------|
+| Disabled<br/>`disabled`                     | Checkbox | `false`       | Disabled logic                    | YES          | YES        | This handler allows you to disable the component.                                        |
+| Redirect To Page<br/>`redirectToPage`       | Text     |               | Redirect To Page Logic            | YES          | YES        | This handler allows you to specify which page to go to after login.                      |
+| Extra Query Params<br/>`extraQueryParams`   | Text     |               | Extra Query Params Logic          | YES          | YES        | This handler allows you to add extra query params that will be added to the URL address. |
+| Callback URL Domain<br/>`callbackUrlDomain` | Text     |               | Callback URL Domain Logic         | NO           | YES        | This handler allows you to add a callback URL Domain.                                    |
+| Icons Visibility<br/>`iconsVisibility`      | Checkbox | `true`        | Icons Visibility Visibility Logic | YES          | YES        | This handler allows you to select the mode for a button with an icon or without.         |
+| Google Visibility<br/>`googleplus`          | Checkbox | `true`        | Google Visibility Logic           | YES          | YES        | This handler allows you to choose whether to show the Google button or not.              |
+| Facebook Visibility<br/>`facebook`          | Checkbox | `true`        | Facebook Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Facebook button or not.            |
+| Twitter Visibility<br/>`twitter`            | Checkbox | `true`        | Twitter Visibility Logic          | YES          | YES        | This handler allows you to choose whether to show the Twitter button or not.             |
+| Linkedin Visibility<br/>`linkedin`          | Checkbox | `true`        | Linkedin Visibility Logic         | YES          | YES        | This handler allows you to choose whether to show the Linkedin button or not.            |
+| Github Visibility<br/>`github`              | Checkbox | `true`        | Github Visibility Logic           | YES          | YES        | This handler allows you to choose whether to show the Github button or not.              |
 
 ## Events
 
 | Name                 | Triggers                                           | Context Blocks                        |
 |----------------------|----------------------------------------------------|---------------------------------------|
-| On Click Event       | when the user clicks the Social Login Button       | Login Type: `String`                  |
+| On Login Event       | when the user clicks the Social Login Button       | Login Type: `String`                  |
 | On Login Fail        | when a login request returns an error              | Error: `String`                       |
 
 ## Styles
@@ -33,11 +34,16 @@ Social Login Buttons is a component of Backendless UI-Builder designer. The comp
 ````
 @bl-customComponent-socialLoginButtons-maxWidth: 375px;
 @bl-customComponent-socialLoginButtons-minWidth: 300px;
+@bl-customComponent-socialLoginButtons-button-width: 100%;
+@bl-customComponent-socialLoginButtons-button-height: 50px;
+@bl-customComponent-socialLoginButtons-button-borderRadius: 3px;
+@bl-customComponent-socialLoginButtons-button-marginBottom: 10px;
 ````
 
 **Colors**
 ````
 @bl-customComponent-socialLoginButtons-colorOnHover: #FFFFFF;
+@bl-customComponent-socialLoginButtons-button-backgroundColor: #FFFFFF;
 @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary: #DC4A3D;
 @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary: #3C5A9A;
 @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary: #55ACEE;

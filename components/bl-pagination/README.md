@@ -10,26 +10,28 @@ The component based on external [pagination](https://mui.com/material-ui/react-p
 
 ## Properties
 
-| Property                 | Type                                                       | Default Value | Loigc               | Data Binding | UI Setting | Description                                                                |
-|--------------------------|------------------------------------------------------------|---------------|---------------------|--------------|------------|----------------------------------------------------------------------------|
-| pageCount                | Number                                                     | 10            | Page Count Loigc    | YES          | YES        | Allows to determine the count of pages                                     |
-| siblingCount             | Number                                                     | 1             | Sibling Count Logic | NO           | YES        | Allows to determine how many digits to display either side of current page |
-| variant                  | Select ["normal", "outline", "rounded", "rounded-outline"] | normal        |                     | NO           | YES        | Allows to determine the variant of pagination style                        |
-| size                     | Select ["small", "normal", "large"]                        | normal        |                     | NO           | YES        | Allows to determine the size for pagination                                |
-| isNextButtonVisible      | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visibel "Next" button               |
-| isPrevButtonVisible      | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visible "Previous" button           |
-| isFirstPageButtonVisible | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visible "First Page" button         |
-| isLastPageButtonVisible  | Checkbox                                                   | `true`        |                     | NO           | YES        | Allows to determine the visible or not visible "Last Page" button          |
+| Property                                      | Type                                                                                                  | Default Value    | Logic               | Data Binding | UI Setting | Description                                                                |
+|-----------------------------------------------|-------------------------------------------------------------------------------------------------------|------------------|---------------------|--------------|------------|----------------------------------------------------------------------------|
+| Page Count: `pageCount`                       | Number                                                                                                | 10               | Page Count Logic    | YES          | YES        | Allows to determine the count of pages                                     |
+| Sibling Count: `siblingCount`                 | Number                                                                                                | 1                | Sibling Count Logic | YES          | YES        | Allows to determine how many digits to display either side of current page |
+| Variant: `variant`                            | Select [Normal: `normal`, Outline: `outline`, Rounded: `rounded`, Rounded-Outline: `rounded-outline`] | Normal: `normal` |                     | NO           | YES        | Allows to determine the variant of pagination style                        |
+| Size: `size`                                  | Select [Small: `small`, Normal: `normal`, Large: `large`]                                             | Normal: `normal` |                     | NO           | YES        | Allows to determine the size for pagination                                |
+| Next Button: `isNextButtonVisible`            | Checkbox                                                                                              | `true`           |                     | NO           | YES        | Allows to determine the visible or not visible "Next" button               |
+| Previous Button: `isPrevButtonVisible`        | Checkbox                                                                                              | `true`           |                     | NO           | YES        | Allows to determine the visible or not visible "Previous" button           |
+| First Page Button: `isFirstPageButtonVisible` | Checkbox                                                                                              | `true`           |                     | NO           | YES        | Allows to determine the visible or not visible "First Page" button         |
+| Last Page Button: `isLastPageButtonVisible`   | Checkbox                                                                                              | `true`           |                     | NO           | YES        | Allows to determine the visible or not visible "Last Page" button          |
 
 ## Events
 
-| Name           | Triggered                                 | Context Block         |
-|----------------|-------------------------------------------|-----------------------|
-| On Page Change | when the current page change              | currentPage: `Number` |
-| On Go Next     | when the user clicks on next button       |                       |
-| On Go Back     | when the user clicks on back button       |                       |
-| On Go First    | when the user clicks on first-page button |                       |
-| On Go Last     | when the user clicks on last-page button  |                       |
+| Name                  | Triggered                                                                                                                                                                                                       | Context Block         |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| On Mounted            | immediately after the component is mounted and appeared on the page                                                                                                                                             |                       |
+| On Before Unmount     | immediately before the component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers or cleaning up any RT subscriptions that were created in this component. |                       |
+| On Page Change        | when the current page change                                                                                                                                                                                    | currentPage: `Number` |
+| On Next Button Click  | when the user clicks on next button                                                                                                                                                                             |                       |
+| On Back Button Click  | when the user clicks on back button                                                                                                                                                                             |                       |
+| On First Button Click | when the user clicks on first-page button                                                                                                                                                                       |                       |
+| On Last Button Click  | when the user clicks on last-page button                                                                                                                                                                        |                       |
 
 ## Actions
 
@@ -60,3 +62,48 @@ The component based on external [pagination](https://mui.com/material-ui/react-p
 @bl-customComponent-pagination-button-normalSize: 32px;
 @bl-customComponent-pagination-button-largeSize: 40px;
 ```
+
+## Usage guide
+
+We will display this data table:
+
+![Data Table](./example-images/usage-data-table.png)
+
+Add Data Grid and Pagination components to the page:
+
+![Add Data Grid and Pagination](./example-images/usage-add-data-grid-and-pagination.png)
+
+Configure the columns to be displayed:
+
+![Configure Data Grid](./example-images/usage-configure-data-grid-1.png)
+![Configure Data Grid](./example-images/usage-configure-data-grid-2.png)
+
+Add property “pageSize” to “Page Data” to some mount event:
+
+![Make variable](./example-images/usage-add-page-size-to-page-data.jpg)
+
+Now we need to calculate how many pages we have. For that, in Pagination On Mounted event we use the block for getting the count of rows in our table and then divide this count by the count of rows on one page(pageSize). This result we round up for integer number:
+
+![Calculate pages](./example-images/usage-calculate-page-count.png)
+
+Add “pageCount” from “Page Data” to data binding for Page Count Logic:
+
+![Add pageCount](./example-images/usage-add-page-count-to-data-binding.png)
+
+Now we load the table's data in Pagination On Page Change event and calculate page offset and set it to “Page Data”:
+
+![Load data](./example-images/usage-get-data-from-table.jpg)
+
+Get table data from “Page Data” to Data Grid "Rows Data Logic":
+
+![Set currentPage](./example-images/usage-get-tabelt-data-to-rows-dtata-logic.jpg)
+
+Finally, If you want to add some logic to control events you should add action in control events: "On Go Next", "On Go Back", "On Go Last", and "On Go First".
+
+![Add actions](./example-images/usage-add-controls-action.png)
+
+### Now in the preview, we have a component Data Grid with component Pagination
+
+![Preview](./example-images/usage-result-1.png)
+
+![Preview](./example-images/usage-result-2.png)

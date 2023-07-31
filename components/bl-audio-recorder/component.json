@@ -78,36 +78,14 @@
       "settingTooltip": "Set the name of the recorded file."
     },
     {
-      "type": "select",
-      "name": "fileType",
-      "label": "File Type",
+      "type": "checkbox",
+      "name": "fileNameHasTimestamp",
+      "label": "File Name Has Timestamp",
+      "settingTooltip": "Add date of record to file name",
       "showInSettings": true,
-      "defaultValue": "MP3",
+      "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "fileTypeLogic",
-      "options": [
-        {
-          "value": "MP3",
-          "label": "mp3"
-        },
-        {
-          "value": "WEBM",
-          "label": "webm"
-        },
-        {
-          "value": "WAV",
-          "label": "wav"
-        },
-        {
-          "value": "MPEG",
-          "label": "mpeg"
-        },
-        {
-          "value": "OGG",
-          "label": "ogg"
-        }
-      ],
-      "settingTooltip": "Choose the type of the recorded file."
+      "handlerId": "fileNameHasTimestampLogic"
     },
     {
       "type": "text",
@@ -183,6 +161,17 @@
       "handlerDescription": "This is a handler that controls the Resume Button Text when recording is paused.",
       "dataBinding": true,
       "settingTooltip": "Set the Resume Record button label, when record is paused."
+    },
+    {
+      "showInSettings": false,
+      "hasLogicHandler": true,
+      "name": "clearText",
+      "handlerId": "clearTextLogic",
+      "handlerLabel": "Clear Record Button Text Logic ",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler that controls the Clear Record Button Text.",
+      "type": "text",
+      "defaultValue": "Clear"
     }
   ],
   "eventHandlers": [
@@ -241,6 +230,15 @@
     {
       "id": "pause",
       "label": "Pause/Resume in"
+    },
+    {
+      "id": "getUrl",
+      "label": "Get URL from recorded file in",
+      "hasReturn": true
+    },
+    {
+      "id": "clearRecord",
+      "label": "Clear Record in"
     }
   ],
   "pods": {}

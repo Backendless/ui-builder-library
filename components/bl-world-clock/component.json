@@ -161,7 +161,7 @@
           "label": "GMT+12"
         }
       ],
-      "defaultValue": "+00:00",
+      "defaultValue": "+01:00",
       "settingTooltip": "Choose a time zone for the world clock."
     },
     {
@@ -176,6 +176,16 @@
       "dataBinding": true,
       "settingTooltip": "The name of a location/city/etc to show in the component.",
       "handlerDescription": "This is a handler for the logic to determine the content of the World Clock label."
+    },
+    {
+      "type": "checkbox",
+      "name": "labelVisibility",
+      "label": "Label Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "labelVisibilityLogic",
+      "settingTooltip": "Select to display the World Clock label."
     },
     {
       "type": "select",

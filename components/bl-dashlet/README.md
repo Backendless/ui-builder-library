@@ -27,9 +27,9 @@ The component allows you to add a dashlet to your UI-Builder application.
 
 ## Events
 
-| Name                  | Triggers                                                 | Context Blocks   |
-|-----------------------|----------------------------------------------------------|------------------|
-| Context Block Handler | when the user clicks on some action in the context block | action: `String` |
+| Name                 | Triggers                                                | Context Blocks   |
+|----------------------|---------------------------------------------------------|------------------|
+| Context Menu Handler | when the user clicks on some action in the context menu | action: `String` |
 
 ## Actions
 
@@ -51,9 +51,10 @@ The component allows you to add a dashlet to your UI-Builder application.
 @bl-customComponent-dashlet-z-index: 1;
 
 @bl-customComponent-dashlet-text-color: @appTextColor;
-@bl-customComponent-dashlet-context-block-icon-size: 15px;
-@bl-customComponent-dashlet-context-block-item-icon-size: 12px;
-@bl-customComponent-dashlet-context-block-item-background-hover: @themePrimary;
+@bl-customComponent-dashlet-context-menu-icon-size: 15px;
+@bl-customComponent-dashlet-context-menu-item-icon-size: 12px;
+@bl-customComponent-dashlet-context-menu-item-background-hover: @themePrimary;
+@bl-customComponent-dashlet-context-menu-z-index: 50;
 
 @bl-customComponent-dashlet-border-padding: 5px;
 @bl-customComponent-dashlet-border-radius: 4px;
@@ -89,9 +90,9 @@ The component allows you to add a dashlet to your UI-Builder application.
 
 ## <a id="examples"></a> Codeless Examples
 
-Addition of context block in UI Setting:
+Addition of context menu in UI Setting:
 
-![context block example](./example-images/context-block-json.jpg)
+![context menu example](./example-images/context-menu-json.jpg)
 
 <details>
 <summary>Try yourself</summary>
@@ -118,9 +119,9 @@ Addition of context block in UI Setting:
 
 </details>
 
-Use context block actions in event Context Block Handler:
+Use context menu actions in event Context Menu Handler:
 
-![context block actions example](example-images/context-block-handler-logic.jpg)
+![context menu actions example](example-images/context-menu-handler-logic.jpg)
 
 <details>
 <summary>Try yourself</summary>

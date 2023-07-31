@@ -13,6 +13,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [scale, setScale] = useState(scaleProp);
+  const [error, setError] = useState('');
 
   const controlsRef = useRef();
 
@@ -22,6 +23,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
   };
 
   const onDocumentLoadError = error => {
+    setError(`${ error.message } You could check error details in Browser Devtools.`);
     onLoadError({ message: error.message });
   };
 
@@ -79,6 +81,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
           className="pdf-viewer"
           renderMode="canvas"
           file={ pdfUrl }
+          error={ error }
           noData={ onNoData }
           loading={ onDocumentLoading }
           onLoadError={ onDocumentLoadError }
@@ -90,7 +93,7 @@ export default function PdfViewer({ component, eventHandlers, elRef }) {
             loading={ onPageLoading }
             onLoadSuccess={ onPageLoadSuccess }
             pageNumber={ currentPage }
-            scale={ scale }
+            scale={ scale / 100 }
           />
         </Document>
       </div>

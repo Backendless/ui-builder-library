@@ -38,7 +38,7 @@
 @bl-customComponent-pdfViewer-controls-scale-left: 50%;
 @bl-customComponent-pdfViewer-controls-scale-transform: translateX(-50%);
 
-@bl-customComponent-pdfViewer-controls-scale-text-width: 23px;
+@bl-customComponent-pdfViewer-controls-scale-text-width: auto;
 @bl-customComponent-pdfViewer-controls-scale-text-align: center;
 @bl-customComponent-pdfViewer-controls-scale-text-margin: 0 5px;
 
@@ -52,6 +52,7 @@
 @bl-customComponent-pdfViewer-controls-page-info-text-align: center;
 @bl-customComponent-pdfViewer-controls-page-info-disabled-opacity: 0.5;
 @bl-customComponent-pdfViewer-controls-page-info-disabled-cursor: auto;
+@bl-customComponent-pdfViewer-controls-page-slash-margin: 0 5px;
 
 @bl-customComponent-pdfViewer-container-height: 100%;
 @bl-customComponent-pdfViewer-container-width: 100%;
@@ -60,11 +61,11 @@
 
 @bl-customComponent-pdfViewer-pdf-viewer-margin: auto;
 
+@bl-customComponent-pdfViewer-message-text-align: center;
 @bl-customComponent-pdfViewer-no-data-icon-size: 40px;
 @bl-customComponent-pdfViewer-no-data-font-color: #fff;
 @bl-customComponent-pdfViewer-no-data-font-size: 24px;
 @bl-customComponent-pdfViewer-no-data-font-weight: bold;
-@bl-customComponent-pdfViewer-no-data-text-align: center;
 @bl-customComponent-pdfViewer-no-data-border-height: 100%;
 @bl-customComponent-pdfViewer-no-data-border-width: 100%;
 @bl-customComponent-pdfViewer-no-data-icon-fill: #fff;
@@ -104,6 +105,13 @@
       left: @bl-customComponent-pdfViewer-controls-scale-left;
       transform: @bl-customComponent-pdfViewer-controls-scale-transform;
 
+      @media screen and (max-width: 500px) {
+        position: static;
+        transform: none;
+        left: auto;
+        margin: 0 auto;
+      }
+
       & span {
         width: @bl-customComponent-pdfViewer-controls-scale-text-width;
         text-align: @bl-customComponent-pdfViewer-controls-scale-text-align;
@@ -137,6 +145,10 @@
         opacity: @bl-customComponent-pdfViewer-controls-page-info-disabled-opacity;
         cursor: @bl-customComponent-pdfViewer-controls-page-info-disabled-cursor;
       }
+    }
+
+    &__page-slash {
+      margin: @bl-customComponent-pdfViewer-controls-page-slash-margin;
     }
 
     &__button {
@@ -199,28 +211,30 @@
     display: flex;
   }
 
-  .react-pdf__message--no-data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .react-pdf__message {
+    text-align: center;
 
-    height: @bl-customComponent-pdfViewer-no-data-border-height;
-    width: @bl-customComponent-pdfViewer-no-data-border-width;
-  }
+    &--no-data {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-  .no-data-text {
-    text-align: @bl-customComponent-pdfViewer-no-data-text-align;
+      height: @bl-customComponent-pdfViewer-no-data-border-height;
+      width: @bl-customComponent-pdfViewer-no-data-border-width;
+    }
 
-    font-size: @bl-customComponent-pdfViewer-no-data-font-size;
-    font-weight: @bl-customComponent-pdfViewer-no-data-font-weight;
+    .no-data-text {
+      font-size: @bl-customComponent-pdfViewer-no-data-font-size;
+      font-weight: @bl-customComponent-pdfViewer-no-data-font-weight;
 
-    color: @bl-customComponent-pdfViewer-no-data-font-color;
-  }
+      color: @bl-customComponent-pdfViewer-no-data-font-color;
+    }
 
-  .no-data-icon {
-    fill: @bl-customComponent-pdfViewer-no-data-icon-fill;
-    width: @bl-customComponent-pdfViewer-no-data-icon-size;
-    height: @bl-customComponent-pdfViewer-no-data-icon-size;
+    .no-data-icon {
+      fill: @bl-customComponent-pdfViewer-no-data-icon-fill;
+      width: @bl-customComponent-pdfViewer-no-data-icon-size;
+      height: @bl-customComponent-pdfViewer-no-data-icon-size;
+    }
   }
 }

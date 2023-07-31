@@ -60,10 +60,44 @@
       box-shadow: @bl-customComponent-audioRecorder-button-shadowHover;
     }
 
+    .record-dot {
+      margin-right: 10px;
+      display: block;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      animation: blinking-dot 1s ease-in-out infinite alternate;
+    }
+
+    .paused {
+      animation: none;
+      background: red;
+    }
+
+    .record-text {
+      color: red;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .record-time {
+      color: @bl-customComponent-audioRecorder-button-color;
+      margin-left: 5px;
+    }
+
     .icon {
       fill: @bl-customComponent-audioRecorder-button-icon-fill;
       width: @bl-customComponent-audioRecorder-button-icon-size;
       height: @bl-customComponent-audioRecorder-button-icon-size;
+    }
+
+    @keyframes blinking-dot {
+      from {
+        background: transparent;
+      }
+      to {
+        background: red;
+      }
     }
   }
 }

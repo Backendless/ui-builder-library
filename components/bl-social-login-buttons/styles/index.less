@@ -2,6 +2,12 @@
 @bl-customComponent-socialLoginButtons-minWidth: 300px;
 @bl-customComponent-socialLoginButtons-colorOnHover: #FFFFFF;
 
+@bl-customComponent-socialLoginButtons-button-width: 100%;
+@bl-customComponent-socialLoginButtons-button-height: 50px;
+@bl-customComponent-socialLoginButtons-button-borderRadius: 3px;
+@bl-customComponent-socialLoginButtons-button-marginBottom: 10px;
+@bl-customComponent-socialLoginButtons-button-backgroundColor: #FFFFFF;
+
 @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary: #DC4A3D;
 @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary: #3C5A9A;
 @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary: #55ACEE;
@@ -17,13 +23,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    width: 100%;
+    height: @bl-customComponent-socialLoginButtons-button-height;
+    width: @bl-customComponent-socialLoginButtons-button-width;
     line-height: 50px;
-    margin-bottom: 10px;
-    background-color: transparent;
+    margin-bottom: @bl-customComponent-socialLoginButtons-button-marginBottom;
+    background-color: @bl-customComponent-socialLoginButtons-button-backgroundColor;
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: @bl-customComponent-socialLoginButtons-button-borderRadius;
     cursor: pointer;
 
     &:hover {
@@ -36,7 +42,7 @@
       }
     }
 
-    &__google {
+    &__googleplus {
       color: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
       border: 1px solid @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
 
@@ -112,7 +118,7 @@
       width: 22px;
       height: 22px;
 
-      &__google {
+      &__googleplus {
         fill: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
       }
 
