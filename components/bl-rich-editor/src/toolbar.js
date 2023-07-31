@@ -1,7 +1,6 @@
-import { ensureMeasure } from './index';
 import { APP_FONT_SIZE, FontFamily, FontFamilyLabels, FontFamilyMap, FontSize } from './use-quill-library';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 const APP_FONT_SIZE_LABEL = 'Font Size';
 const APP_FONT_LABEL = 'Font';
@@ -20,8 +19,8 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
 
   const styles = {
     display          : toolbarVisibility && optionsVisibility ? 'block' : 'none',
-    borderBottomWidth: toolbarPosition === 'top' ? ensureMeasure(borderWidth) : '0',
-    borderTopWidth   : toolbarPosition === 'bottom' ? ensureMeasure(borderWidth) : '0',
+    borderBottomWidth: toolbarPosition === 'top' ? normalizeDimensionValue(borderWidth) : '0',
+    borderTopWidth   : toolbarPosition === 'bottom' ? normalizeDimensionValue(borderWidth) : '0',
     order            : toolbarPosition === 'bottom' ? '2' : '0',
     borderColor,
     borderStyle,
