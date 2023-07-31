@@ -92,6 +92,7 @@ The component allows you to add a dashlet to your UI-Builder application.
 
 Addition of context menu in UI Setting:
 
+![change menu items](./example-images/change-menu-items.jpg)
 ![context menu example](./example-images/context-menu-json.jpg)
 
 <details>
@@ -112,7 +113,7 @@ Addition of context menu in UI Setting:
   {
     "type": "link",
     "label": "Some Link",
-    "content": "someLink"
+    "content": "http://www.backendless.com"
   }
 ]
 ```
