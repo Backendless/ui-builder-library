@@ -1,0 +1,67 @@
+@bl-customComponent-avatar-backgroundColor: rgba(128, 128, 128, 0.486);
+@bl-customComponent-avatar-borderRadius: 10px;
+
+@bl-customComponent-avatar-circle-borderRadius: 50%;
+@bl-customComponent-avatar-square-borderRadius: 0;
+
+@bl-customComponent-avatar-label-color: #FFFFFF;
+@bl-customComponent-avatar-label-backgroundColor: rgba(128, 128, 128, 0.486);
+@bl-customComponent-avatar-label-margin: 0;
+@bl-customComponent-avatar-label-width: 100%;
+@bl-customComponent-avatar-label-height: 100%;
+@bl-customComponent-avatar-label-hover-backgroundColor: rgba(71, 71, 71, 0.74);
+
+.bl-customComponent-avatar {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: @bl-customComponent-avatar-backgroundColor;
+  border-radius: @bl-customComponent-avatar-borderRadius;
+
+  &:hover .avatar-label.hide {
+    display: flex;
+  }
+
+  &.circle {
+    border-radius: @bl-customComponent-avatar-circle-borderRadius;
+  }
+
+  &.square {
+    border-radius: @bl-customComponent-avatar-square-borderRadius;
+  }
+
+  .avatar-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .avatar-label {
+    margin: @bl-customComponent-avatar-label-margin;
+    overflow: hidden;
+    background-color: @bl-customComponent-avatar-label-backgroundColor;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: @bl-customComponent-avatar-label-width;
+    height: @bl-customComponent-avatar-label-height;
+    color: @bl-customComponent-avatar-label-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+
+    &.hide {
+      display: none;
+    }
+
+    &:hover {
+      background-color: @bl-customComponent-avatar-label-hover-backgroundColor;
+      display: flex;
+      cursor: pointer;
+    }
+  }
+}
