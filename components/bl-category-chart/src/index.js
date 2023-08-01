@@ -8,16 +8,15 @@ export default function CategoryChartComponent({ component, elRef }) {
   const { classList, display, style, disabled, height, width, backgroundColor } = component;
   const styles = { ...style, width, height };
 
-  if (!display) {
-    return null;
-  }
-
   return (
     <div
       ref={ elRef }
       style={ styles }
       className={
-        cn('bl-customComponent-categoryChart', classList, { 'bl-customComponent-categoryChart--disabled': disabled })
+        cn('bl-customComponent-categoryChart', classList, {
+          'bl-customComponent-categoryChart--disabled': disabled,
+          'bl-customComponent-categoryChart--hidden': !display
+        })
       }>
       <canvas ref={ chartRef } style={{ backgroundColor, width: '100%', height: '100%' }}/>
     </div>
@@ -27,8 +26,7 @@ export default function CategoryChartComponent({ component, elRef }) {
 function useChart(component) {
   const {
     options, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,
-    legendVisibility, titleVisibility, title, titleFontSize,
-    display, type, labels, datasets
+    legendVisibility, titleVisibility, title, titleFontSize, type, labels, datasets
   } = component;
 
   const chartRef = useRef(null);
@@ -65,10 +63,6 @@ function useChart(component) {
   }), [yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth]);
 
   useEffect(() => {
-    if (!display) {
-      return;
-    }
-
     const newChartInstance = new Chart(chartRef.current, {
       type,
       data: chartData,
@@ -84,7 +78,7 @@ function useChart(component) {
     setChartInstance(newChartInstance);
 
     return () => newChartInstance.destroy();
-  }, [display, type]);
+  }, [type]);
 
   useEffect(() => {
     if (!chartInstance) {
