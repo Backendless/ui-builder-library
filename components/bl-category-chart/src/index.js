@@ -83,9 +83,7 @@ function useChart(component) {
 
     setChartInstance(newChartInstance);
 
-    return () => {
-      newChartInstance.destroy();
-    };
+    return () => newChartInstance.destroy();
   }, [display, type]);
 
   useEffect(() => {
