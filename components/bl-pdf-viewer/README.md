@@ -141,11 +141,11 @@ The component allows you to add a pdf viewer to your UI-Builder application
 ```
 
 ## <a id="external-link-guide"></a> Usage external link to PDF file
-Unfortunately, we are unable to resolve the issue with external links to PDF files due to the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
-policy on the server where the PDF file is stored. But we can suggest trying to bypass CORS. The idea is to send a request
-to a PDF file through a Cloud Code >> Services and use the File API to add the file to our file system, then transfer
-the URL of this file (already in our file system) to the component. After uploading the file to the user interface, it
-can be removed from our file system. Here is an example of this logic:
+If you are facing an issue with external links to PDF files due to the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+policy on the server where the PDF file is stored and storing and using that PDF from our file system is not suitable for you,
+you can try to bypass CORS. The idea is to send a request to a PDF file through a Cloud Code >> Services and use the File
+API to add the file to our file system, then transfer The URL of this file (already in our file system) to the component.
+After uploading the file to the user interface, it Can be removed from our file system. Here is an example of this logic:
 
 1. Create a service in the Cloud Code >> Services section. For example, `PDF_File`.
 
