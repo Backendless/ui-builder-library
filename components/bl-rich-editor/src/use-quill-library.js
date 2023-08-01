@@ -149,7 +149,7 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
 
       onTextChange();
     });
-  }, [scrollingContainer]);
+  }, [scrollingContainer, placeholder]);
 
   useEffect(() => {
     if (content === undefined || content === contentRef.current) {
