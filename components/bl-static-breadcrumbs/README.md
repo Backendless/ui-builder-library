@@ -1,6 +1,6 @@
 # Static Breadcrumbs
 
-Static Breadcrumbs is a navigational component allows indicating the user's location within the application's
+Static Breadcrumbs is a navigational component that allows indicating the user's location within the application's
 hierarchical structure. It visually represents the path the user has taken to reach the current page. This component is
 available in the [UI-Builder](https://backendless.com/developers/#ui-builder).
 
@@ -14,13 +14,13 @@ Customize the appearance of the breadcrumbs according to your preferences using 
 
 | Property               | Type    | Default value                                   | Logic         | Data Binding | UI Setting | Description                                                                                                                                                |
 |------------------------|---------|-------------------------------------------------|---------------|--------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Options <br> `options` | *JSON*  | `[{"label": "Landing", "pageName": "landing"}]` | Options Logic | NO           | YES        | Specifies an array of breadcrumbs to display. Signature of breadcrumb: `{label: String, pageName: String}`. Watch [Codeless Examples](#codeless-examples). |
+| Options <br> `options` | *JSON*  | `[{"label": "Landing", "pageName": "landing"}]` | Options Logic | NO           | YES        | Specifies an array of breadcrumbs to display. Signature of a breadcrumb: `{label: String, pageName: String}`. Watch [Codeless Examples](#codeless-examples). |
 
 ## Events
 
 | Name                | Triggers                                                      | Context Blocks                                |
 |---------------------|---------------------------------------------------------------|-----------------------------------------------|
-| On Item Click Event | when a user click on the breadcrumbs item                     | Page Label: `String` <br> Page Name: `String` |
+| On Item Click Event | when a user clicks on the breadcrumbs item                     | Page Label: `String` <br> Page Name: `String` |
 | On Mouse Over Event | when the mouse pointer hovers over the breadcrumbs item       | Page Label: `String` <br> Page Name: `String` |
 | On Mouse Out Event  | when the mouse pointer leaves the breadcrumbs item boundaries | Page Label: `String` <br> Page Name: `String` |
 

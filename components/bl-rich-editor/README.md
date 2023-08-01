@@ -106,8 +106,8 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
 **Typography**
 
 ````
-@bl-customComponent-richEditor-editor-fontSize: 14px;
-@bl-customComponent-richEditor-editor-fontFamily: Arial, sans-serif;
+@bl-customComponent-richEditor-editor-fontSize: inherit;
+@bl-customComponent-richEditor-editor-fontFamily: inherit;
 @bl-customComponent-richEditor-toolbar-tooltip-fontSize: 12px;
 ````
 
