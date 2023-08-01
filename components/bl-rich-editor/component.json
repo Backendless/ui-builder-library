@@ -348,6 +348,10 @@
       "handlerId": "defaultFontFamilyLogic",
       "options": [
         {
+          "value": "inherit",
+          "label": "App Font"
+        },
+        {
           "value": "ARIAL",
           "label": "Arial"
         },
@@ -415,6 +419,10 @@
       "hasLogicHandler": false,
       "handlerId": "defaultFontSizeLogic",
       "options": [
+        {
+          "value": "inherit",
+          "label": "App Font Size"
+        },
         {
           "value": "8px",
           "label": "8px"
