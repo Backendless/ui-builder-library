@@ -1,38 +1,11 @@
-import { useEffect, useRef } from 'react';
-
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Chart from './chartjs';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function CategoryChartComponent({ component, elRef }) {
-  const {
-    classList, display, style, disabled, height, width, type,
-    chartTitleVisibility, chartTitle, chartTitleFontSize, chartBackgroundColor, chartLegendVisibility,
-    yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth, labels, datasets, options
-  } = component;
-
-  const chartRef = useRef(null);
-
-  useChart(chartRef, {
-    display,
-    type,
-    labels,
-    datasets,
-    options,
-    chartTitle,
-    chartTitleFontSize,
-    chartTitleVisibility,
-    yGridLineVisibility,
-    xGridLineVisibility,
-    gridLinesColor,
-    gridLinesWidth
-  });
-
+  const { classList, display, style, disabled, height, width } = component;
   const styles = { ...style, width, height };
-
-  useEffect(() => {
-    Chart.defaults.plugins.legend.display = chartLegendVisibility;
-  }, []);
 
   if (!display) {
     return null;
@@ -43,104 +16,109 @@ export default function CategoryChartComponent({ component, elRef }) {
       ref={ elRef }
       style={ styles }
       className={
-        cn("bl-customComponent-categoryChart", classList, { "bl-customComponent-categoryChart--disabled": disabled })
+        cn('bl-customComponent-categoryChart', classList, { 'bl-customComponent-categoryChart--disabled': disabled })
       }>
-      <canvas ref={ chartRef } style={{ backgroundColor: chartBackgroundColor, width: "100%", height: "100%" }} />
+      <CategoryChart component={ component }/>
     </div>
   );
 }
 
-const useChart = (chartRef, props) => {
+function CategoryChart({ component }) {
+  const { chartRef } = useChart(component);
+
+  return (
+    <canvas ref={ chartRef } style={{ backgroundColor: component.backgroundColor, width: '100%', height: '100%' }}/>
+  );
+}
+
+function useChart(component) {
   const {
-    display, type, labels, datasets, options, chartTitleVisibility, chartTitleFontSize,
-    chartTitle, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth
-  } = props;
-  const chartInstance = useRef();
+    options, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,
+    legendVisibility, titleVisibility, title, titleFontSize, type, labels, datasets
+  } = component;
+
+  const chartRef = useRef(null);
+  const [chartInstance, setChartInstance] = useState(null);
+
+  const chartData = useMemo(() => ({ labels, datasets }), [labels, datasets]);
+
+  const pluginsOptions = useMemo(() => ({
+    legend: { display: legendVisibility },
+    title: {
+      display: titleVisibility,
+      text: title,
+      font: {
+        size: titleFontSize,
+      },
+    },
+  }), [legendVisibility, titleVisibility, title, titleFontSize]);
+
+  const scaleOptions = useMemo(() => ({
+    y: {
+      grid: {
+        display: yGridLineVisibility,
+        color: gridLinesColor,
+        lineWidth: gridLinesWidth,
+      },
+    },
+    x: {
+      grid: {
+        display: xGridLineVisibility,
+        color: gridLinesColor,
+        lineWidth: gridLinesWidth,
+      },
+    },
+  }), [yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth]);
 
   useEffect(() => {
-    if (!display) {
-      return null;
-    }
-
-    chartInstance.current = new Chart(chartRef.current, {
+    const newChartInstance = new Chart(chartRef.current, {
       type,
-      data: { labels, datasets },
+      data: chartData,
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: pluginsOptions,
+        scales: scaleOptions,
         ...options,
-        plugins: {
-          title: {
-            display: chartTitleVisibility,
-            text: chartTitle,
-            font: {
-              size: chartTitleFontSize
-            }
-          }
-        },
-        scales: {
-          y: {
-            grid: {
-              display: yGridLineVisibility,
-              color: gridLinesColor,
-              lineWidth: gridLinesWidth
-            }
-          },
-          x: {
-            grid: {
-              display: xGridLineVisibility,
-              color: gridLinesColor,
-              lineWidth: gridLinesWidth
-            },
-          }
-        }
-      }
+      },
     });
 
-    return () => chartInstance.current.destroy();
-  }, [display]);
+    setChartInstance(newChartInstance);
+
+    return () => newChartInstance.destroy();
+  }, [type]);
 
   useEffect(() => {
-    if (!display) {
-      return null;
+    if (!chartInstance) {
+      return;
     }
 
-    const { current: chart } = chartInstance;
+    let requireRerender = false;
 
-    if (chart) {
-      chart.type = type;
-      chart.options = {
-        ...options,
-        plugins: {
-          title: {
-            display: chartTitleVisibility,
-            text: chartTitle,
-            font: {
-              size: chartTitleFontSize
-            }
-          }
-        },
-        scales: {
-          y: {
-            grid: {
-              display: yGridLineVisibility,
-              color: gridLinesColor,
-              lineWidth: gridLinesWidth
-            }
-          },
-          x: {
-            grid: {
-              display: xGridLineVisibility,
-              color: gridLinesColor,
-              lineWidth: gridLinesWidth
-            }
-          }
-        }
-      };
-      Object.assign(chart.data, { labels, datasets });
-
-      chart.update();
+    if (chartData) {
+      requireRerender = true;
+      chartInstance.data = chartData;
     }
-  }, [
-    type, labels, datasets, options, chartTitleVisibility, chartTitleFontSize,
-    chartTitle, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth
-  ]);
-};
+
+    if (pluginsOptions) {
+      requireRerender = true;
+      chartInstance.options.plugins = pluginsOptions;
+    }
+
+    if (scaleOptions) {
+      requireRerender = true;
+      chartInstance.options.scales = scaleOptions;
+    }
+
+    if (options) {
+      requireRerender = true;
+      Object.assign(chartInstance.options, options);
+    }
+
+    if (requireRerender) {
+      chartInstance.update();
+    }
+  }, [chartInstance, chartData, pluginsOptions, scaleOptions, options]);
+
+  return { chartRef };
+}
