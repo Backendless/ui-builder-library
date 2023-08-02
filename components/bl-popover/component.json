@@ -34,7 +34,8 @@
           "label": "Left"
         }
       ],
-      "handlerDescription": "This is a handler for the logic to determine the position of the popover relative to the button"
+      "handlerDescription": "This is a handler for the logic to determine the position of the popover relative to the button",
+      "settingTooltip": "Allows to determine the position of the popover relative to the button"
     },
     {
       "type": "number",
@@ -42,7 +43,8 @@
       "label": "Delay Mouse Over",
       "showInSettings": true,
       "defaultValue": "0",
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the delay for On Mouse Over event"
     },
     {
       "type": "number",
@@ -50,7 +52,8 @@
       "label": "Delay Mouse Out",
       "showInSettings": true,
       "defaultValue": "0",
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the delay for On Mouse Out event"
     },
     {
       "type": "number",
@@ -62,7 +65,8 @@
       "handlerId": "zIndexLogic",
       "handlerLabel": "Z Index Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the z-index style for popover "
+      "handlerDescription": "This is a handler for the logic to determine the z-index style for popover ",
+      "settingTooltip": "Allows to determine the z-index style for popover "
     }
   ],
   "eventHandlers": [
