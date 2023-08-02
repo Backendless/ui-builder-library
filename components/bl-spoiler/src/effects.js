@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const DefaultValues = {
-  BASE_FREQUENCY: 200,
-  MIN_RADIUS    : 1,
-  MAX_RADIUS    : 7,
-  DESIRE_DENSITY: 0.0002,
-  MIN_FX        : 0.1,
-  MAX_FX        : 0.3,
-  MIN_FY        : 0.01,
-  MAX_FY        : 0.03,
+  MIN_RADIUS       : 1,
+  MAX_RADIUS       : 7,
+  DESIRE_DENSITY   : 0.0002,
+  Frequency: {
+    UPDATE_INTERVAL: 200,
+    MIN_X          : 0.1,
+    MAX_X          : 0.3,
+    MIN_Y          : 0.01,
+    MAX_Y          : 0.03,
+   },
 };
 
 const SNOWFLAKES = generateSnowflakes();
@@ -87,7 +89,7 @@ export function Music({ fill }) {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(updateBaseFrequency, DefaultValues.BASE_FREQUENCY);
+    const interval = setInterval(updateBaseFrequency, DefaultValues.Frequency.UPDATE_INTERVAL);
 
     return () => clearInterval(interval);
   }, []);
@@ -216,8 +218,9 @@ function Snowflake({ startX, startY, radius, animationDurationX, animationDurati
 }
 
 function getRandomBaseFrequency() {
-  const randomFrequencyX = Math.random() * (DefaultValues.MAX_FX - DefaultValues.MIN_FX) + DefaultValues.MIN_FX;
-  const randomFrequencyY = Math.random() * (DefaultValues.MAX_FY - DefaultValues.MIN_FY) + DefaultValues.MIN_FY;
+  const { Frequency } = DefaultValues;
+  const randomFrequencyX = Math.random() * (Frequency.MAX_X - Frequency.MIN_X) + Frequency.MIN_X;
+  const randomFrequencyY = Math.random() * (Frequency.MAX_Y - Frequency.MIN_Y) + Frequency.MIN_Y;
 
   return `${ randomFrequencyX } ${ randomFrequencyY }`;
 }
@@ -230,10 +233,10 @@ function getRandomPosition() {
 }
 
 function generateSnowflakes() {
-  const numSnowflakes = Math.round(window.innerWidth * window.innerHeight * DefaultValues.DESIRE_DENSITY);
+  const particlesCount = Math.round(window.innerWidth * window.innerHeight * DefaultValues.DESIRE_DENSITY);
   const snowflakes = [];
 
-  for (let i = 0; i < numSnowflakes; i++) {
+  for (let i = 0; i < particlesCount; i++) {
     const radius = Math.random() * (DefaultValues.MAX_RADIUS - DefaultValues.MIN_RADIUS) + DefaultValues.MIN_RADIUS;
     const { x: startX, y: startY } = getRandomPosition();
     const animationDurationX = Math.random() * 10 + 5;

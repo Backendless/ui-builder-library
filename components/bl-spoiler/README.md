@@ -46,6 +46,9 @@ Spoiler is the component that can be used in Backendless [UI-Builder](https://ba
 
 @bl-customComponent-spoiler-overlay-width: 100%;
 @bl-customComponent-spoiler-overlay-height: 100%;
+@bl-customComponent-spoiler-overlay-cursor: pointer;
+
+@bl-customComponent-spoiler-svg-cursor: pointer;
 ````
 
 ## Usage

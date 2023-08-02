@@ -10,6 +10,9 @@
 
 @bl-customComponent-spoiler-overlay-width: 100%;
 @bl-customComponent-spoiler-overlay-height: 100%;
+@bl-customComponent-spoiler-overlay-cursor: pointer;
+
+@bl-customComponent-spoiler-svg-cursor: pointer;
 
 .bl-customComponent-spoiler {
   display: flex;
@@ -37,7 +40,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    cursor: pointer;
+    cursor: @bl-customComponent-spoiler-overlay-cursor;
   }
 
   .svg {
@@ -46,6 +49,6 @@
     position: absolute;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    cursor: pointer;
+    cursor: @bl-customComponent-spoiler-svg-cursor;
   }
 }
