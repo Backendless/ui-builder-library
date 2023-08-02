@@ -4,22 +4,30 @@ import Chart from './chartjs';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function CategoryChartComponent({ component, elRef }) {
-  const { chartRef } = useChart(component);
-  const { classList, display, style, disabled, height, width, backgroundColor } = component;
+  const { classList, display, style, disabled, height, width } = component;
   const styles = { ...style, width, height };
+
+  if (!display) {
+    return null;
+  }
 
   return (
     <div
       ref={ elRef }
       style={ styles }
       className={
-        cn('bl-customComponent-categoryChart', classList, {
-          'bl-customComponent-categoryChart--disabled': disabled,
-          'bl-customComponent-categoryChart--hidden': !display
-        })
+        cn('bl-customComponent-categoryChart', classList, { 'bl-customComponent-categoryChart--disabled': disabled })
       }>
-      <canvas ref={ chartRef } style={{ backgroundColor, width: '100%', height: '100%' }}/>
+      <CategoryChart component={ component }/>
     </div>
+  );
+}
+
+function CategoryChart({ component }) {
+  const { chartRef } = useChart(component);
+
+  return (
+    <canvas ref={ chartRef } style={{ backgroundColor: component.backgroundColor, width: '100%', height: '100%' }}/>
   );
 }
 
