@@ -39,8 +39,8 @@
     },
     {
       "type": "number",
-      "name": "delayMouseOver",
-      "label": "Delay Mouse Over",
+      "name": "enterDelay",
+      "label": "Enter Delay",
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
@@ -48,8 +48,8 @@
     },
     {
       "type": "number",
-      "name": "delayMouseOut",
-      "label": "Delay Mouse Out",
+      "name": "exitDelay",
+      "label": "Exit Delay",
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
