@@ -44,7 +44,7 @@
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the delay for On Mouse Over event"
+      "settingTooltip": "Allows to determine the enter delay"
     },
     {
       "type": "number",
@@ -53,7 +53,7 @@
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the delay for On Mouse Out event"
+      "settingTooltip": "Allows to determine the exit delay"
     },
     {
       "type": "number",
