@@ -95,7 +95,7 @@ const validatePosition = (position, PositionValidator, ShiftHandler) => {
   return { ...ShiftHandler[position], newPosition: position };
 };
 
-export const useMouseEvents = (tooltip, targetRef, onMouseOver, onMouseOut, isOpen, delayMouseOver, delayMouseOut) => {
+export const useMouseEvents = (tooltip, targetRef, onMouseOver, onMouseOut, isOpen, enterDelay, exitDelay) => {
   const tooltipMouseEnterTimeout = useRef(null);
   const tooltipMouseLeaveTimeout = useRef(null);
 
@@ -109,7 +109,7 @@ export const useMouseEvents = (tooltip, targetRef, onMouseOver, onMouseOut, isOp
     clearTimeout(targetMouseLeaveTimeout.current);
     clearTimeout(targetMouseEnterTimeout.current);
 
-    timeout.current = setTimeout(() => onMouseOver({ isOpen }), delayMouseOver);
+    timeout.current = setTimeout(() => onMouseOver({ isOpen }), enterDelay);
   };
 
   const onMouseLeave = timeout => {
@@ -119,7 +119,7 @@ export const useMouseEvents = (tooltip, targetRef, onMouseOver, onMouseOut, isOp
     clearTimeout(targetMouseLeaveTimeout.current);
     clearTimeout(targetMouseEnterTimeout.current);
 
-    timeout.current = setTimeout(() => onMouseOut({ isOpen }), delayMouseOut);
+    timeout.current = setTimeout(() => onMouseOut({ isOpen }), exitDelay);
   };
 
   useEffect(() => {
