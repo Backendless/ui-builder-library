@@ -156,8 +156,9 @@ After uploading the file to the user interface, it Can be removed from our file 
     ![Create method](./example-images/add-get-pdf-method.jpg)
 
 3. Add method logic. The `target file path` is the path to the root directory in our file system, which contains the directory `pdfFiles` that you need to create yourself.
-
+    ![Create folder](./example-images/create-folder.jpg)
     ![Add logic to method](./example-images/add-logic-for-get-pdf-method.jpg)
+    ![Deploy method](./example-images/deploy-method.jpg)
 
 4. Now we need to add logic to the `PDF URL Logic` handler in the component. In the property `pdfName` we set the file name of pdf so we can delete the file when we don't need it.
 
