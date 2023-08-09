@@ -111,7 +111,7 @@ export function useMarkers(markers, icon, map, eventHandlers) {
   useEffect(() => {
     clearOldMarkers(markersArray);
 
-    if (markers) {
+    if (markers && map) {
       const { onMarkerClick } = eventHandlers;
 
       markersArray.current = markers.map(({ point: { lng, lat }, description }) => {
@@ -121,7 +121,7 @@ export function useMarkers(markers, icon, map, eventHandlers) {
           .bindPopup(description);
       });
     }
-  }, [markers]);
+  }, [markers, map]);
 }
 
 function clearOldMarkers(markersArray) {
