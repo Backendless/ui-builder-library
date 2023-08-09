@@ -21,9 +21,9 @@ The component covers all the main features of the library and allows you in a co
 | fullscreenControl  | *Checkbox*                                                                       | true                   | Fullscreen Control Logic  | YES          | YES        | enables toggling fullscreen for the map                                                                                                                                         |
 | draggingControl    | *Checkbox*                                                                       | true                   | Dragging Control Logic    | YES          | YES        | enables dragging on the map                                                                                                                                                     |
 | geopositionControl | *Checkbox*                                                                       | true                   | Geoposition Control Logic | YES          | YES        | enables geoposition controls on the map                                                                                                                                         |
-| markers            | *JSON*                                                                           |                        | Markers Logic             | YES          | YES        | Specifies an array of markers to display on the map. Watch [Codeless Examples](#Examples). Signature of marker: `{description, point: {lat, lng}}`.                             |
-| circles            | *JSON*                                                                           |                        | Circles Logic             | YES          | YES        | Specifies an array of circles to display on the map. Watch [Codeless Examples](#Examples). Signature of circle: `{description, point: {lat, lng}, radius}`.                     |
-| polygons           | *JSON*                                                                           |                        | Polygons Logic            | YES          | YES        | Specifies an array of polygons to display on the map. Watch [Codeless Examples](#Examples). Signature of polygon: `{description, polygon: {boundary: {points: [{lat, lng}]}}}`. |
+| markers            | *JSON*                                                                           |                        | Markers Logic             | YES          | YES        | Specifies an array of markers to display on the map. Watch [Codeless Examples](#codeless-examples). Signature of marker: `{description, point: {lat, lng}}`.                             |
+| circles            | *JSON*                                                                           |                        | Circles Logic             | YES          | YES        | Specifies an array of circles to display on the map. Watch [Codeless Examples](#codeless-examples). Signature of circle: `{description, point: {lat, lng}, radius}`.                     |
+| polygons           | *JSON*                                                                           |                        | Polygons Logic            | YES          | YES        | Specifies an array of polygons to display on the map. Watch [Codeless Examples](#codeless-examples). Signature of polygon: `{description, polygon: {boundary: {points: [{lat, lng}]}}}`. |
 
 
 ## Events
@@ -64,7 +64,7 @@ The component covers all the main features of the library and allows you in a co
 @bl-customComponent-leafletMap-height: 400px;
 @bl-customComponent-leafletMap-margin: 0;
 ````
-## <a name="Examples"></a> Codeless Examples
+## Codeless Examples
 
 Addition of markers on map:
 
