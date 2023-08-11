@@ -1,0 +1,14 @@
+@bl-customComponent-sweet-alert-width: 32em;
+@bl-customComponent-sweet-alert-padding: 0 0 1.25em;
+@bl-customComponent-sweet-alert-color: #545454;
+@bl-customComponent-sweet-alert-background: #fff;
+
+.bl-customComponent-sweet-alert {
+
+  div:where(.swal2-container) div:where(.swal2-popup) {
+    width: @bl-customComponent-sweet-alert-width;
+    padding: @bl-customComponent-sweet-alert-padding;
+    color: @bl-customComponent-sweet-alert-color;
+    background: @bl-customComponent-sweet-alert-background;
+  }
+}
