@@ -51,7 +51,9 @@ export default function SweetAlertComponent({ component, eventHandlers, elRef })
     return null;
   }
 
-  return <div className={ cn('bl-customComponent-sweet-alert', classList) } ref={ elRef } style={ style } />;
+  return (
+    <div className={ cn('bl-customComponent-sweet-alert', classList) } ref={ elRef } style={ style } />
+  );
 }
 
 const createAlert = (options) => Swal.fire(options);
