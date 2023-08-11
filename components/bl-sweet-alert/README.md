@@ -88,7 +88,7 @@ To configure the main Sweet Alert, add the following settings:
   2. using Buttons Settings Logic
 
 <p align="center">
-    <img src="./example-images/buttons-settings.png" alt="buttons settings" width="300"/>
+    <img src="./example-images/buttons-settings.png" alt="buttons settings" width="720"/>
 </p>
 
 <details>
@@ -102,17 +102,17 @@ To configure the main Sweet Alert, add the following settings:
 - adding logic for confirm and dismiss:
 
 <p align="center">
-    <img src="./example-images/on-confirm.png" alt="on confirm" width="500"/>
+    <img src="./example-images/on-confirm.png" alt="on confirm" width="720"/>
 </p>
 
 <p align="center">
-    <img src="./example-images/on-dismiss.png" alt="on-dismiss" width="500"/>
+    <img src="./example-images/on-dismiss.png" alt="on-dismiss" width="720"/>
 </p>
 
 As a result, we get a Sweet Alert of this kind:
 
 <p align="center">
-    <img src="./example-images/main-alert.png" alt="main alert" width="720"/>
+    <img src="./example-images/main-alert.png" alt="main alert" width="780"/>
 </p>
 
 The next step is to set up `Sweet Alert Confirm` and `Sweet Alert Dismiss` by adding the appropriate parameters in the same way as in the main Sweet Alert:
