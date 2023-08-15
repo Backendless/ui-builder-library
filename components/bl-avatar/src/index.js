@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { defineImageDimensions, uploadImage } from './helpers';
+import { defineImageDimensions, FALLBACK_IMAGE, uploadImage } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -22,10 +22,14 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
     }
   };
 
-  const styles = { minHeight: height, width, height, ...style };
+  const styles = {
+    minHeight    : height,
+    pointerEvents: readOnly && 'none',
+    width, height, ...style,
+  };
 
   Object.assign(component, {
-    removeImage: () => setImageSource(''),
+    removeImage: () => setImageSource(readOnly ? FALLBACK_IMAGE : ''),
     uploadImage: () => inputRef.current?.click(),
   });
 
@@ -35,9 +39,13 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-avatar', shape, classList) } style={ styles }>
-      <ImagePreview imageSource={ imageSource } component={ component } eventHandlers={ eventHandlers }/>
+      <ImagePreview
+        imageSource={ readOnly ? (imageSource || FALLBACK_IMAGE) : imageSource }
+        component={ component }
+        eventHandlers={ eventHandlers }
+      />
 
-      { (!readOnly || !imageSource) && (
+      { !readOnly && (
         <div className={ cn('avatar-label', { hide: imageSource }) } onClick={ onClick }>
           { imageSource ? changeLabel : emptyLabel }
         </div>
