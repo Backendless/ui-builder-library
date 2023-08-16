@@ -86,21 +86,34 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
   });
 }
 
+function isCircleDataValid(numbers, text) {
+  const isNumbers = numbers.every(value => !isNaN(value));
+  const isText = text.every(value => typeof value === 'string');
+
+  return isNumbers && isText;
+}
+
 export function createCircles(circles, map, eventHandlers) {
   if (circles) {
     const { onCircleClick } = eventHandlers;
 
     circles.forEach(item => {
-      Leaflet.circle([item.point.lat, item.point.lng], { radius: item.radius })
-        .on('click', () => {
-          onCircleClick({
-            coordinates: [item.point.lat, item.point.lng],
-            radius     : item.radius,
-            description: item.description,
-          });
-        })
-        .addTo(map)
-        .bindPopup(item.description);
+      const { point: { lat, lng }, radius, description } = item;
+
+      if (isCircleDataValid([lat, lng, radius], [description]) && radius > 0) {
+        Leaflet.circle([lat, lng], { radius })
+          .on('click', () => {
+            onCircleClick({
+              coordinates: [lat, lng],
+              radius     : radius,
+              description: description,
+            });
+          })
+          .addTo(map)
+          .bindPopup(description);
+      } else {
+        console.warn('Circle data is not valid!');
+      }
     });
   }
 }
