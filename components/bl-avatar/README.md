@@ -46,6 +46,7 @@ a graphical representation used to identify users or entities within an applicat
 @bl-customComponent-avatar-label-color: #FFFFFF;
 @bl-customComponent-avatar-label-backgroundColor: rgba(128, 128, 128, 0.486);
 @bl-customComponent-avatar-label-hover-backgroundColor: rgba(71, 71, 71, 0.74);
+@bl-customComponent-avatar-label-userSelect: none;
 ````
 
 **Dimensions**

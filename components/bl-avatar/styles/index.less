@@ -9,6 +9,7 @@
 @bl-customComponent-avatar-label-margin: 0;
 @bl-customComponent-avatar-label-width: 100%;
 @bl-customComponent-avatar-label-height: 100%;
+@bl-customComponent-avatar-label-userSelect: none;
 @bl-customComponent-avatar-label-hover-backgroundColor: rgba(71, 71, 71, 0.74);
 
 .bl-customComponent-avatar {
@@ -57,6 +58,7 @@
     justify-content: center;
     text-align: center;
     flex-direction: column;
+    user-select: @bl-customComponent-avatar-label-userSelect;
 
     &.hide {
       display: none;
