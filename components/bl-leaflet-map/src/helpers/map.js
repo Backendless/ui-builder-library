@@ -86,11 +86,12 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
   });
 }
 
-function isCircleDataValid(numbers, text) {
+function isCircleDataValid(numbers, text, radius) {
   const isNumbers = numbers.every(value => !isNaN(value));
-  const isText = text.every(value => typeof value === 'string');
+  const isText = text.every(value => typeof value === "string");
+  const isRadius = radius > 0;
 
-  return isNumbers && isText;
+  return isNumbers && isText && isRadius;
 }
 
 export function createCircles(circles, map, eventHandlers) {
@@ -100,7 +101,7 @@ export function createCircles(circles, map, eventHandlers) {
     circles.forEach(item => {
       const { point: { lat, lng }, radius, description } = item;
 
-      if (isCircleDataValid([lat, lng, radius], [description]) && radius > 0) {
+      if (isCircleDataValid([lat, lng, radius], [description], radius)) {
         Leaflet.circle([lat, lng], { radius })
           .on('click', () => {
             onCircleClick({
