@@ -1,8 +1,8 @@
 @bl-customComponent-avatar-backgroundColor: rgba(128, 128, 128, 0.486);
-@bl-customComponent-avatar-borderRadius: 10px;
 
+@bl-customComponent-avatar-roundedRectangle-borderRadius: 10px;
 @bl-customComponent-avatar-circle-borderRadius: 50%;
-@bl-customComponent-avatar-square-borderRadius: 0;
+@bl-customComponent-avatar-rectangle-borderRadius: 0;
 
 @bl-customComponent-avatar-label-color: #FFFFFF;
 @bl-customComponent-avatar-label-backgroundColor: rgba(128, 128, 128, 0.486);
@@ -18,19 +18,22 @@
   align-items: center;
   justify-content: center;
   background-color: @bl-customComponent-avatar-backgroundColor;
-  border-radius: @bl-customComponent-avatar-borderRadius;
 
   &:hover .avatar-label.hide {
     display: flex;
     background-color: @bl-customComponent-avatar-label-hover-backgroundColor;
   }
 
+  &.rounded-rectangle {
+    border-radius: @bl-customComponent-avatar-roundedRectangle-borderRadius;
+  }
+
   &.circle {
     border-radius: @bl-customComponent-avatar-circle-borderRadius;
   }
 
-  &.square {
-    border-radius: @bl-customComponent-avatar-square-borderRadius;
+  &.rectangle {
+    border-radius: @bl-customComponent-avatar-rectangle-borderRadius;
   }
 
   .avatar-image {
