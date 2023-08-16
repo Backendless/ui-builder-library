@@ -1,181 +1,834 @@
 {
-  "id": "c_f6f83724b2f70e2b25b13c5b3b930c3f",
+  "id": "c_826bf5f8a42dfd7a50d2812b08929e6b",
   "name": "Calendar Heatmap",
-  "description": "This component allows you add calendar heatmaps to your application",
+  "description": "",
   "showInToolbox": true,
-  "faIcon": "calendar-alt",
+  "faIcon": "pencil-ruler",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
   "properties": [
     {
+      "type": "text",
+      "name": "sourceDataUrl",
+      "label": "Source Data URL",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "sourceDataUrlLogic",
+      "handlerLabel": "Source Data URL Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "dataType",
+      "label": "Data Type",
+      "showInSettings": true,
+      "defaultValue": "json",
+      "hasLogicHandler": true,
+      "handlerId": "dataTypeLogic",
+      "handlerLabel": "Data Type Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "json",
+          "label": "JSON"
+        },
+        {
+          "value": "csv",
+          "label": "CSV"
+        },
+        {
+          "value": "tsv",
+          "label": "TSV"
+        },
+        {
+          "value": "txt",
+          "label": "TXT"
+        }
+      ]
+    },
+    {
       "type": "json",
-      "name": "calendarData",
-      "label": "Calendar Data",
-      "showInSettings": true,
-      "defaultValue": "[\r\n  {\r\n    \"date\": \"2023-01-30\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-29T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-28T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-27T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2023-01-26T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2023-01-25T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-24T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-23T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2023-01-22T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2023-01-21T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-20T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-19T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-18T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-17T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-16T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-15T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-14T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-13T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-12T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2023-01-11T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2023-01-10T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2023-01-09T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2023-01-08T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2023-01-07T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2023-01-06T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-05T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2023-01-04T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2023-01-03T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2023-01-02T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2023-01-01T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-31T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-30T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-12-29T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-12-28T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-27T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-12-26T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-25T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-12-24T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-23T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-22T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-21T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-12-20T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-12-19T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-18T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-17T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-16T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-15T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-14T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-12-13T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-12T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-12-11T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-10T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-09T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-12-08T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-12-07T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-12-06T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-05T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-04T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-12-03T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-12-02T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-12-01T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-30T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-11-29T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-11-28T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-11-27T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-26T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-25T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-11-24T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-11-23T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-22T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-11-21T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-20T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-19T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-11-18T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-17T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-11-16T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-11-15T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-14T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-13T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-12T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-11T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-11-10T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-09T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-08T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-07T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-11-06T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-05T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-04T18:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-11-03T18:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-11-02T18:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-11-01T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-31T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-30T18:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-29T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-10-28T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-10-27T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-26T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-25T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-10-24T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-10-23T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-22T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-21T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-20T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-19T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-10-18T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-17T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-16T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-15T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-10-14T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-10-13T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-12T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-11T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-10-10T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-09T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-08T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-07T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-10-06T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-10-05T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-04T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-03T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-10-02T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-10-01T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-30T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-29T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-28T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-27T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-26T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-25T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-09-24T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-23T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-22T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-21T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-20T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-19T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-18T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-17T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-16T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-15T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-14T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-13T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-12T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-09-11T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-10T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-09T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-08T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-09-07T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-06T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-05T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-09-04T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-09-03T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-02T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-09-01T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-08-31T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-08-30T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-08-29T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-08-28T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-08-27T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-08-26T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-08-25T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-24T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-08-23T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-22T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-08-21T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-08-20T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-19T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-18T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-08-17T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-16T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-08-15T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-08-14T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-08-13T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-08-12T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-08-11T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-10T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-08-09T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-08T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-08-07T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-06T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-05T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-04T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-08-03T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-08-02T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-08-01T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-07-31T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-07-30T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-07-29T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-07-28T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-07-27T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-07-26T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-07-25T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-07-24T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-07-23T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-07-22T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-07-21T17:34:28.682Z\",\r\n    \"count\": 1\r\n  },\r\n  {\r\n    \"date\": \"2022-07-20T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-07-19T17:34:28.682Z\",\r\n    \"count\": 3\r\n  },\r\n  {\r\n    \"date\": \"2022-07-18T17:34:28.682Z\",\r\n    \"count\": 2\r\n  },\r\n  {\r\n    \"date\": \"2022-07-17T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-07-16T17:34:28.682Z\",\r\n    \"count\": 4\r\n  },\r\n  {\r\n    \"date\": \"2022-07-15T17:34:28.682Z\",\r\n    \"count\": 3\r\n  }\r\n]",
-      "hasLogicHandler": true,
-      "handlerId": "calendarDataLogic",
-      "handlerLabel": "Calendar Data Logic",
-      "handlerDescription": "This is a handler for the logic to determine the data array of the calendar(date, count).",
-      "dataBinding": true,
-      "settingTooltip": "Allows to specify an array of date and count for the calendar. Signature of Calendar Data: {date: string, count: number}"
-    },
-    {
-      "type": "number",
-      "name": "maxCount",
-      "label": "Max Count",
+      "name": "data",
+      "label": "Data",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "maxCountLogic",
-      "handlerLabel": "Max Count Logic",
-      "handlerDescription": "This is a logic handler for determining the max count. This is necessary to decide on the max gradation. If it is empty, the max count value  will be selected from the calendar data",
-      "dataBinding": true,
-      "settingTooltip": "Allows to determine the max count. This is necessary to decide on the max gradation. If it is empty, the max count value will be selected from the calendar data."
-    },
-    {
-      "type": "number",
-      "name": "minCount",
-      "label": "Min Count",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "minCountLogic",
-      "handlerLabel": "Min Count Logic",
-      "handlerDescription": "This is a logic handler for determining the min count. This is necessary to decide on the min gradation. If it is empty, the min count value  will be selected from the calendar data",
-      "dataBinding": true,
-      "settingTooltip": "Allows to determine the min count. This is necessary to decide on the min gradation. If it is empty, the min count value will be selected from the calendar data."
-    },
-    {
-      "type": "number",
-      "name": "numberDays",
-      "label": "Number Days",
-      "showInSettings": true,
-      "defaultValue": "365",
-      "hasLogicHandler": true,
-      "handlerId": "numberDaysLogic",
-      "handlerLabel": "Number Days Logic",
-      "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the number of days on the calendar.",
-      "settingTooltip": "Allows to determine the number of days on the calendar."
-    },
-    {
-      "type": "checkbox",
-      "name": "showMonthLabels",
-      "label": "Show Month Labels",
-      "showInSettings": true,
-      "defaultValue": true,
-      "hasLogicHandler": true,
-      "handlerId": "monthLabelsVisibilityLogic",
-      "handlerLabel": "Month Labels Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the month labels should be visible.",
-      "settingTooltip": "Allows to choose whether or not to show month labels."
+      "handlerId": "dataLogic",
+      "handlerLabel": "Data Logic",
+      "dataBinding": true
     },
     {
       "type": "text",
-      "name": "monthLabels",
-      "label": "Month Labels",
+      "name": "datePropName",
+      "label": "Date Property Name",
       "showInSettings": true,
-      "defaultValue": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
       "hasLogicHandler": true,
-      "handlerId": "monthLabelsLogic",
-      "handlerLabel": "Month Labels Logic",
+      "handlerId": "datePropNameLogic",
+      "handlerLabel": "Date Property Name Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the list of the month labels.",
-      "settingTooltip": "Allows to write month labels."
-    },
-    {
-      "type": "checkbox",
-      "name": "showWeekdayLabels",
-      "label": "Show Weekday Labels",
-      "showInSettings": true,
-      "defaultValue": true,
-      "hasLogicHandler": true,
-      "handlerId": "weekdayLabelsVisibilityLogic",
-      "handlerLabel": "Weekday Labels Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the weekday labels should be visible.",
-      "settingTooltip": "Allows to choose whether or not to show weekday labels."
+      "defaultValue": "date"
     },
     {
       "type": "text",
-      "name": "weekdayLabels",
-      "label": "Weekday Labels",
+      "name": "valuePropName",
+      "label": "Value Property Name",
       "showInSettings": true,
-      "defaultValue": "Sun,Mon,Tues,Wed,Thurs,Fri,Sat",
       "hasLogicHandler": true,
-      "handlerId": "weekdayLabelsLogic",
-      "handlerLabel": "Weekday Labels Logic",
+      "handlerId": "valuePropNameLogic",
+      "handlerLabel": "Value Property Name Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the list of the weekday labels.",
-      "settingTooltip": "Allows to write Weekday labels."
+      "defaultValue": "value"
+    },
+    {
+      "type": "text",
+      "name": "defaultDataValue",
+      "label": "Default Data Value",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "defaultDataValueLogic",
+      "handlerLabel": "Default Data Value Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "startDate",
+      "label": "Start Date",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "startDateLogic",
+      "handlerLabel": "Start Date Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "minDate",
+      "label": "Min Date",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minDateLogic",
+      "handlerLabel": "Min Date Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "maxDate",
+      "label": "Max Date",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxDateLogic",
+      "handlerLabel": "Max Date Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "highlightDate",
+      "label": "Highlight Date",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "highlightDateLogic",
+      "handlerLabel": "Highlight Date Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "range",
+      "name": "range",
+      "label": "Range",
+      "showInSettings": true,
+      "defaultValue": "12",
+      "hasLogicHandler": true,
+      "handlerId": "rangeLogic",
+      "handlerLabel": "Range Logic",
+      "dataBinding": true,
+      "min": "0",
+      "max": "12",
+      "step": "1"
+    },
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "defaultValue": "year",
+      "hasLogicHandler": true,
+      "handlerId": "typeLogic",
+      "handlerLabel": "Type Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "year",
+          "label": "Year"
+        },
+        {
+          "value": "month",
+          "label": "Month"
+        },
+        {
+          "value": "week",
+          "label": "Week"
+        },
+        {
+          "value": "day",
+          "label": "Day"
+        },
+        {
+          "value": "hour",
+          "label": "Hour"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "max",
+      "label": "Max",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxLogic",
+      "handlerLabel": "Max Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "min",
+      "label": "Min",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minLogic",
+      "handlerLabel": "Min Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "sort",
+      "label": "Sort",
+      "showInSettings": true,
+      "defaultValue": "asc",
+      "hasLogicHandler": true,
+      "handlerId": "sortLogic",
+      "handlerLabel": "Sort Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "asc",
+          "label": "ASC"
+        },
+        {
+          "value": "desc",
+          "label": "DESC"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "subType",
+      "label": "Sub Type",
+      "showInSettings": true,
+      "defaultValue": "month",
+      "hasLogicHandler": true,
+      "handlerId": "subTypeLogic",
+      "handlerLabel": "Sub Type Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "year",
+          "label": "Year"
+        },
+        {
+          "value": "month",
+          "label": "Month"
+        },
+        {
+          "value": "week",
+          "label": "Week"
+        },
+        {
+          "value": "day",
+          "label": "Day"
+        },
+        {
+          "value": "hour",
+          "label": "Hour"
+        },
+        {
+          "value": "ghDay",
+          "label": "ghDay"
+        },
+        {
+          "value": "xDay",
+          "label": "xDay"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "groupY",
+      "label": "Group",
+      "showInSettings": true,
+      "defaultValue": "sum",
+      "hasLogicHandler": false,
+      "handlerId": "groupYLogic",
+      "handlerLabel": "Group Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "sum",
+          "label": "Sum"
+        },
+        {
+          "value": "count",
+          "label": "Count"
+        },
+        {
+          "value": "min",
+          "label": "Min"
+        },
+        {
+          "value": "max",
+          "label": "Max"
+        },
+        {
+          "value": "median",
+          "label": "Median"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "scaleType",
+      "label": "Scale Type",
+      "showInSettings": true,
+      "defaultValue": "linear",
+      "hasLogicHandler": true,
+      "handlerId": "scaleTypeLogic",
+      "handlerLabel": "Scale Type Logic",
+      "options": [
+        {
+          "value": "ordinal",
+          "label": "Ordinal"
+        },
+        {
+          "value": "linear",
+          "label": "Linear"
+        },
+        {
+          "value": "pow",
+          "label": "Pow"
+        },
+        {
+          "value": "sqrt",
+          "label": "Sqrt"
+        },
+        {
+          "value": "log",
+          "label": "Log"
+        },
+        {
+          "value": "symlog",
+          "label": "Symlog"
+        },
+        {
+          "value": "categorical",
+          "label": "Categorical"
+        },
+        {
+          "value": "sequential",
+          "label": "Sequential"
+        },
+        {
+          "value": "cyclical",
+          "label": "Cyclical"
+        },
+        {
+          "value": "threshold",
+          "label": "Threshold"
+        },
+        {
+          "value": "quantile",
+          "label": "Quantile"
+        },
+        {
+          "value": "quantize",
+          "label": "Quantize"
+        },
+        {
+          "value": "diverging",
+          "label": "Diverging"
+        },
+        {
+          "value": "diverging-log",
+          "label": "Diverging-log"
+        },
+        {
+          "value": "diverging-pow",
+          "label": "Diverging-pow"
+        },
+        {
+          "value": "diverging-sqrt",
+          "label": "Diverging-sqrt"
+        },
+        {
+          "value": "diverging-symlog",
+          "label": "Diverging-symlog"
+        }
+      ]
     },
     {
       "type": "color",
-      "name": "color",
+      "name": "scaleOpacityBaseColor",
+      "label": "Scale Opacity Base Color",
+      "showInSettings": true,
+      "defaultValue": "#000000",
+      "hasLogicHandler": true,
+      "handlerId": "scaleOpacityBaseColorLogic",
+      "handlerLabel": "Scale Opacity Base Color Logic",
+      "dataBinding": true
+    },
+    {
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "colorLogic",
-      "handlerDescription": "This is a handler for the logic to determine the color of cells.",
-      "label": "Color",
+      "name": "scaleColorScheme",
+      "handlerId": "scaleColorSchemeLogic",
+      "label": "Scale Color Scheme",
+      "handlerLabel": "Scale Color Scheme Logic",
       "dataBinding": true,
-      "handlerLabel": "Color Logic",
-      "defaultValue": "#224b98",
-      "settingTooltip": "Allows to select the color of the cells."
+      "type": "text"
     },
     {
       "type": "text",
-      "name": "legend",
+      "name": "scaleColorRange",
+      "label": "Scale Color Range",
       "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "scaleColorRangeLogic",
+      "handlerLabel": "Scale Color Range Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "verticalOrientation",
+      "label": "Vertical Orientation",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "verticalOrientationLogic",
+      "handlerLabel": "Vertical Orientation Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "cellHeight",
+      "label": "Cell Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "cellHeightLogic",
+      "handlerLabel": "Cell Height Logic",
+      "dataBinding": true,
+      "defaultValue": "20"
+    },
+    {
+      "type": "number",
+      "name": "cellWidth",
+      "label": "Cell Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "cellWidthLogic",
+      "handlerLabel": "Cell Width Logic",
+      "dataBinding": true,
+      "defaultValue": "20"
+    },
+    {
+      "type": "number",
+      "name": "cellRadius",
+      "label": "Cell Radius",
+      "showInSettings": true,
+      "defaultValue": "4",
+      "hasLogicHandler": true,
+      "handlerId": "cellRadiusLogic",
+      "handlerLabel": "Cell Radius Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "label": "Label",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "labelLogic"
+    },
+    {
+      "type": "select",
+      "name": "labelPosition",
+      "label": "Label Position",
+      "showInSettings": true,
+      "defaultValue": "bottom",
+      "hasLogicHandler": true,
+      "handlerId": "labelPositionLogic",
+      "handlerLabel": "Label Position Logic",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "labelHeight",
+      "label": "Label Height",
+      "showInSettings": true,
+      "defaultValue": "20",
+      "hasLogicHandler": true,
+      "handlerId": "labelHeightLogic",
+      "handlerLabel": "Label Height",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "labelWidth",
+      "label": "Label Width",
+      "showInSettings": true,
+      "defaultValue": "20",
+      "hasLogicHandler": true,
+      "handlerId": "labelWidthLogic",
+      "handlerLabel": "Label Width Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "labelRotation",
+      "label": "Label Rotation",
+      "showInSettings": true,
+      "defaultValue": "",
+      "hasLogicHandler": true,
+      "handlerId": "labelRotationLogic",
+      "handlerLabel": "Label Rotation Logic",
+      "options": [
+        {
+          "value": "",
+          "label": "none"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "textAlign",
+      "label": "Text Align",
+      "showInSettings": true,
+      "defaultValue": "middle",
+      "hasLogicHandler": true,
+      "handlerId": "textAlignLogic",
+      "handlerLabel": "Text Align Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "labelOffsetX",
+      "label": "Label Offset X",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": true,
+      "handlerId": "labelOffsetXLogic",
+      "handlerLabel": "Label Offset X Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "labelOffsetY",
+      "label": "Label Offset Y",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": true,
+      "handlerId": "labelOffsetYLogic",
+      "handlerLabel": "Label Offset Y Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "subLabel",
+      "label": "Sub Label",
+      "showInSettings": true,
+      "defaultValue": "DD",
+      "hasLogicHandler": false,
+      "handlerId": "subLabelLogic",
+      "handlerLabel": "Sub Label Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "subGutter",
+      "label": "Sub Gutter",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": true,
+      "handlerId": "subGutterLogic",
+      "handlerLabel": "Sub Gutter Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "subColorLabel",
+      "label": "Sub Color Label",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "subColorLabelLogic",
+      "handlerLabel": "Sub Color Label Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "subSort",
+      "label": "Sub Sort",
+      "showInSettings": true,
+      "defaultValue": "asc",
+      "hasLogicHandler": true,
+      "handlerId": "subSortLogic",
+      "handlerLabel": "Sub Sort Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "asc",
+          "label": "Asc"
+        },
+        {
+          "value": "desc",
+          "label": "Desc"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "dynamicDimension",
+      "label": "Dynamic Dimension",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dynamicDimensionLogic",
+      "handlerLabel": "Dynamic Dimension Logic",
+      "dataBinding": true
+    },
+    {
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "name": "gutter",
+      "handlerId": "gutterLogic",
+      "label": "Gutter",
+      "handlerLabel": "Gutter Logic",
+      "dataBinding": true,
+      "type": "text"
+    },
+    {
+      "type": "select",
+      "name": "legend",
+      "label": "Legend",
+      "showInSettings": true,
+      "defaultValue": "none",
       "hasLogicHandler": true,
       "handlerId": "legendLogic",
-      "handlerDescription": "This is a handler for the logic to determine the legend for calendar.",
-      "label": "Legend",
-      "dataBinding": true,
       "handlerLabel": "Legend Logic",
-      "settingTooltip": "Allows to write legend."
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "LegendLite",
+          "label": "Lite"
+        },
+        {
+          "value": "Legend",
+          "label": "Standard"
+        }
+      ]
     },
     {
       "type": "text",
-      "name": "height",
-      "label": "Height",
+      "name": "scaleDomain",
+      "label": "Scale Domain",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "heightLogic",
-      "handlerLabel": "Height Logic",
-      "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine component height.",
-      "defaultValue": "230px",
-      "settingTooltip": "Allows to determine the component height."
+      "handlerId": "scaleDomainLogic",
+      "handlerLabel": "Scale Domain Logic",
+      "dataBinding": true
     },
     {
-      "type": "text",
-      "name": "width",
-      "label": "Width",
+      "type": "json",
+      "name": "calendarLabel",
+      "label": "Calendar Label",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "widthLogic",
-      "handlerLabel": "Width Logic",
-      "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine component width.",
-      "defaultValue": "auto",
-      "settingTooltip": "Allows to determine the component width."
+      "handlerId": "calendarLabelLogic",
+      "handlerLabel": "Calendar Label Logic",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
     {
-      "name": "onCellClick",
-      "label": "On Cell Click Event",
-      "handlerDescription": "This event is fired when the user clicks the mouse or taps the heatmap cell.",
+      "name": "subColorLabelLogic",
+      "label": "Sub Color Label Logic",
+      "output": true,
       "contextBlocks": [
+        {
+          "id": "timestamp",
+          "label": "timestamp"
+        },
+        {
+          "id": "value",
+          "label": "value"
+        },
+        {
+          "id": "backgroundColor",
+          "label": "backgroundColor"
+        }
+      ]
+    },
+    {
+      "name": "subLabelLogic",
+      "label": "Sub Label Logic",
+      "output": true,
+      "contextBlocks": [
+        {
+          "id": "timestamp",
+          "label": "Timestamp"
+        },
+        {
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "id": "element",
+          "label": "Element"
+        }
+      ]
+    },
+    {
+      "name": "groupYLogic",
+      "label": "Group Logic",
+      "output": true,
+      "contextBlocks": [
+        {
+          "id": "values",
+          "label": "Values"
+        }
+      ]
+    },
+    {
+      "name": "labelLogic",
+      "label": "Label Logic",
+      "output": true,
+      "contextBlocks": [
+        {
+          "id": "timestamp",
+          "label": "Timestamp"
+        },
+        {
+          "id": "element",
+          "label": "Element"
+        }
+      ]
+    },
+    {
+      "name": "onCellClick",
+      "label": "On Cell Click",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "timestamp",
+          "label": "Timestamp"
+        },
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    },
+    {
+      "name": "mouseOver",
+      "label": "Mouse Over"
+    },
+    {
+      "name": "mouseOut",
+      "label": "Mouse Out"
+    },
+    {
+      "name": "minDateReached",
+      "label": "Min Date Reached"
+    },
+    {
+      "name": "maxDateReached",
+      "label": "Max Date Reached"
+    }
+  ],
+  "actions": [
+    {
+      "id": "goNext",
+      "label": "Go Next",
+      "inputs": [
+        {
+          "id": "steps",
+          "label": "Steps"
+        }
+      ]
+    },
+    {
+      "id": "goPrev",
+      "label": "Go Previous",
+      "inputs": [
+        {
+          "id": "steps",
+          "label": "Steps"
+        }
+      ]
+    },
+    {
+      "id": "jumpTo",
+      "label": "Jump To",
+      "inputs": [
         {
           "id": "date",
           "label": "Date"
         },
         {
-          "id": "count",
-          "label": "Count"
+          "id": "reset",
+          "label": "Reset"
         }
       ]
     }
-  ],
-  "actions": []
+  ]
 }
