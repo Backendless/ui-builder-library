@@ -1,5 +1,7 @@
 import { useLayoutEffect } from 'react';
 
+const gap = 15;
+
 export const useOptionsPlacement = props => {
   const { optionsContainerRef, autocompleteHeight, setOptionsPlacement } = props;
 
@@ -10,9 +12,9 @@ export const useOptionsPlacement = props => {
         const { bottom, height } = optionsContainerRef.current.getBoundingClientRect();
 
         setOptionsPlacement(placement => {
-          const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height  : bottom;
+          const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height + gap : bottom;
 
-          return (viewPortHeight - bottomCoordinate) > 0 ? 'bottom' : 'top';
+          return viewPortHeight >= bottomCoordinate ? 'bottom' : 'top';
         });
       }
     };
