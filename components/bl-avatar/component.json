@@ -27,21 +27,21 @@
       "label": "Shape",
       "settingTooltip": "Select the shape of the avatar container.",
       "showInSettings": true,
-      "defaultValue": "default",
+      "defaultValue": "rounded-rectangle",
       "hasLogicHandler": false,
       "handlerId": "shapeLogic",
       "options": [
         {
-          "value": "default",
-          "label": "Default"
+          "value": "rounded-rectangle",
+          "label": "Rounded Rectangle"
         },
         {
           "value": "circle",
           "label": "Circle"
         },
         {
-          "value": "square",
-          "label": "Square"
+          "value": "rectangle",
+          "label": "Rectangle"
         }
       ]
     },
@@ -113,7 +113,7 @@
       "type": "text",
       "name": "alt",
       "label": "Alt",
-      "settingTooltip": "Define an alternative text description of the image.",
+      "settingTooltip": "Define an alternative text that describes the image for accessibility and when the image cannot be displayed.",
       "showInSettings": true,
       "defaultValue": "Avatar",
       "hasLogicHandler": false,

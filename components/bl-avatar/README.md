@@ -9,17 +9,17 @@ a graphical representation used to identify users or entities within an applicat
 
 ## Properties
 
-| Property                             | Type                                                | Default value                       | Logic           | Data Binding  | UI Setting | Description                                                   |
-|--------------------------------------|-----------------------------------------------------|-------------------------------------|-----------------|---------------|------------|---------------------------------------------------------------|
-| Image URL <br> `imageUrl`            | *Text*                                              |                                     | Image URL Logic | YES           | YES        | Specifies the source URL for the avatar image.                |
-| Shape <br> `shape`                   | *Select* <br/> "Default" \| "Circle" \| "Square"    | "Default"                           |                 | NO            | YES        | Defines the shape of the avatar container.                    |
-| Width <br> `width`                   | *Number*                                            | 150                                 |                 | NO            | YES        | Controls the width of the avatar container.                   |
-| Height <br> `height`                 | *Number*                                            | 150                                 |                 | NO            | YES        | Controls the height of the avatar container.                  |
-| Smart Image Fit <br> `smartImageFit` | *Select* <br/> "Unset" \| "Center" \| "Orientation" | "Center"                            |                 | NO            | YES        | Displays the image according to its height and width.         |
-| Empty Label <br> `emptyLabel`        | *Text*                                              | "You can choose an image..."        |                 | NO            | YES        | Specifies the label content when the source is not set.       |
-| Change Label <br> `changeLabel`      | *Text*                                              | "Do you want to change this image?" |                 | NO            | YES        | Specifies the label content when there is a valid source set. |
-| Alt <br> `alt`                       | *Text*                                              | "Avatar"                            |                 | NO            | YES        | Specifies an alternative text description of the image.       |
-| Read Only <br> `readOnly`            | *Checkbox*                                          | `false`                             | Read Only Logic | NO            | YES        | Enables read-only image in the avatar.                        |
+| Property                             | Type                                                          | Default value                       | Logic           | Data Binding  | UI Setting | Description                                                                                                                                                                                                                 |
+|--------------------------------------|---------------------------------------------------------------|-------------------------------------|-----------------|---------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Image URL <br> `imageUrl`            | *Text*                                                        |                                     | Image URL Logic | YES           | YES        | Specifies the source URL for the avatar image.                                                                                                                                                                              |
+| Shape <br> `shape`                   | *Select* <br/> "Rounded Rectangle" \| "Circle" \| "Rectangle" | "Rounded Rectangle"                 |                 | NO            | YES        | Defines the shape of the avatar container.                                                                                                                                                                                  |
+| Width <br> `width`                   | *Number*                                                      | 150                                 |                 | NO            | YES        | Controls the width of the avatar container.                                                                                                                                                                                 |
+| Height <br> `height`                 | *Number*                                                      | 150                                 |                 | NO            | YES        | Controls the height of the avatar container.                                                                                                                                                                                |
+| Smart Image Fit <br> `smartImageFit` | *Select* <br/> "Unset" \| "Center" \| "Orientation"           | "Center"                            |                 | NO            | YES        | Displays the image according to its height and width.                                                                                                                                                                       |
+| Empty Label <br> `emptyLabel`        | *Text*                                                        | "You can choose an image..."        |                 | NO            | YES        | Specifies the label content when the source is not set.                                                                                                                                                                     |
+| Change Label <br> `changeLabel`      | *Text*                                                        | "Do you want to change this image?" |                 | NO            | YES        | Specifies the label content when there is a valid source set.                                                                                                                                                               |
+| Alt <br> `alt`                       | *Text*                                                        | "Avatar"                            |                 | NO            | YES        | Specifies an alternative text that describes the image for accessibility and when the image cannot be displayed (non-visual browsers, the user chooses not to display images, the image is invalid or an unsupported type). |
+| Read Only <br> `readOnly`            | *Checkbox*                                                    | `false`                             | Read Only Logic | NO            | YES        | Enables read-only image in the avatar.                                                                                                                                                                                      |
 
 ## Events
 
@@ -46,6 +46,7 @@ a graphical representation used to identify users or entities within an applicat
 @bl-customComponent-avatar-label-color: #FFFFFF;
 @bl-customComponent-avatar-label-backgroundColor: rgba(128, 128, 128, 0.486);
 @bl-customComponent-avatar-label-hover-backgroundColor: rgba(71, 71, 71, 0.74);
+@bl-customComponent-avatar-label-userSelect: none;
 ````
 
 **Dimensions**
@@ -59,7 +60,7 @@ a graphical representation used to identify users or entities within an applicat
 **Decoration**
 
 ````
-@bl-customComponent-avatar-borderRadius: 10px;
+@bl-customComponent-avatar-roundedRectangle-borderRadius: 10px;
 @bl-customComponent-avatar-circle-borderRadius: 50%;
-@bl-customComponent-avatar-square-borderRadius: 0;
+@bl-customComponent-avatar-rectangle-borderRadius: 0;
 ````
