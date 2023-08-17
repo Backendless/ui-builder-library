@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import fallbackImage from './assets/fallback-image.jpg';
+import FALLBACK_IMAGE from './assets/fallback-image.jpg';
 import { defineImageDimensions, uploadImage } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -30,7 +30,7 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
   };
 
   Object.assign(component, {
-    removeImage: () => setImageSource(readOnly ? fallbackImage : ''),
+    removeImage: () => setImageSource(readOnly ? FALLBACK_IMAGE : ''),
     uploadImage: () => inputRef.current?.click(),
   });
 
@@ -41,7 +41,7 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-avatar', shape, classList) } style={ styles }>
       <ImagePreview
-        imageSource={ readOnly ? (imageSource || fallbackImage) : imageSource }
+        imageSource={ readOnly ? (imageSource || FALLBACK_IMAGE) : imageSource }
         component={ component }
         eventHandlers={ eventHandlers }
       />
