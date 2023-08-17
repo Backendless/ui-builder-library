@@ -113,7 +113,7 @@
       "type": "text",
       "name": "alt",
       "label": "Alt",
-      "settingTooltip": "Define an alternative text description of the image.",
+      "settingTooltip": "Define an alternative text that describes the image for accessibility and when the image cannot be displayed.",
       "showInSettings": true,
       "defaultValue": "Avatar",
       "hasLogicHandler": false,
