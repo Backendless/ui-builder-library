@@ -132,19 +132,49 @@ function clearOldMarkers(markersArray) {
   }
 }
 
+function validatePolygon(polygon) {
+  const MINIMAL_POLYGON_LENGTH = 2;
+  const isDescriptionValid = polygon.description === undefined || typeof polygon.description === 'string';
+  const hasPolygon = polygon.polygon?.boundary?.points?.length > MINIMAL_POLYGON_LENGTH;
+  const isPointsValid = hasPolygon && polygon.polygon?.boundary?.points?.every(point => {
+    const isPoint = point.lat && point.lng;
+    const isNumbers = !isNaN(point.lat) && !isNaN(point.lng);
+
+    return isPoint && isNumbers;
+  });
+
+  if (!isDescriptionValid) {
+    console.error('Polygon description is not valid!\n', polygon);
+  }
+
+  if (!hasPolygon) {
+    console.error('Polygon points wrong data!\n', polygon);
+  }
+
+  if (hasPolygon && !isPointsValid) {
+    console.error('Polygon points. Some points are incorrect!\n', polygon);
+  }
+
+  return isDescriptionValid && isPointsValid;
+}
+
 export function createPolygons(polygons, map, eventHandlers) {
   if (polygons) {
     const { onPolygonClick } = eventHandlers;
 
     polygons.forEach(item => {
-      const coordinates = item.polygon.boundary.points.map(point => [point.lat, point.lng]);
+      if (validatePolygon(item)) {
+        const coordinates = item.polygon.boundary.points.map(point => [point.lat, point.lng]);
+        const description = item.description;
 
-      Leaflet.polygon(coordinates)
-        .on('click', () => {
-          onPolygonClick({ coordinates, description: item.description });
-        })
-        .addTo(map)
-        .bindPopup(item.description);
+        const polygon = Leaflet.polygon(coordinates)
+          .on('click', () => { onPolygonClick({ coordinates, description })})
+          .addTo(map);
+
+        if (description) {
+          polygon.bindPopup(description);
+        }
+      }
     });
   }
 }
