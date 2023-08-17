@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import FALLBACK_IMAGE from './assets/fallback-image.jpg';
-import { defineImageDimensions, uploadImage } from './helpers';
+import { defineImageDimensions, getUploadLabel, uploadImage } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -10,8 +10,22 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
   const { onUpload } = eventHandlers;
 
   const [imageSource, setImageSource] = useState(imageUrl);
+  const [[addImageLabel, changeImageLabel], setLabels] = useState([emptyLabel, changeLabel]);
 
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (!elRef.current || readOnly) {
+      return;
+    }
+
+    const addImageLabel = getUploadLabel(elRef, emptyLabel);
+    const changeImageLabel = getUploadLabel(elRef, changeLabel);
+
+    if (addImageLabel !== emptyLabel || changeImageLabel !== changeLabel) {
+      setLabels([addImageLabel, changeImageLabel]);
+    }
+  }, [readOnly]);
 
   useEffect(() => {
     setImageSource(imageUrl);
@@ -48,7 +62,7 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
 
       { !readOnly && (
         <div className={ cn('avatar-label', { hide: imageSource }) } onClick={ onClick }>
-          { imageSource ? changeLabel : emptyLabel }
+          { imageSource ? changeImageLabel : addImageLabel }
         </div>
       ) }
 
