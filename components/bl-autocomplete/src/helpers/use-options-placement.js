@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 
-const gap = 15;
+const GAP = 15; // margin between dropdown list and input field
 
 export const useOptionsPlacement = props => {
   const { optionsContainerRef, autocompleteHeight, setOptionsPlacement } = props;
@@ -12,7 +12,7 @@ export const useOptionsPlacement = props => {
         const { bottom, height } = optionsContainerRef.current.getBoundingClientRect();
 
         setOptionsPlacement(placement => {
-          const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height + gap : bottom;
+          const bottomCoordinate = placement === 'top' ? bottom + autocompleteHeight + height + GAP : bottom;
 
           return viewPortHeight >= bottomCoordinate ? 'bottom' : 'top';
         });
