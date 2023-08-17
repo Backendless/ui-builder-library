@@ -86,12 +86,25 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
   });
 }
 
-function isCircleDataValid(numbers, text, radius) {
-  const isNumbers = numbers.every(value => !isNaN(value));
-  const isText = text.every(value => typeof value === "string");
-  const isRadius = radius > 0;
+function validateCircle(circle) {
+  const { point: { lat, lng }, radius, description } = circle;
+  const isNumbers = [lat, lng, radius].every(value => !isNaN(value));
+  const isText = description === undefined || typeof description === 'string';
+  const hasRadius = radius > 0;
 
-  return isNumbers && isText && isRadius;
+  if (!isNumbers) {
+    console.error('Circle coordinates and/or radius are not a number!\n', circle);
+  }
+
+  if (!isText) {
+    console.error('Circle description should be text!', circle);
+  }
+
+  if (isNumbers && !hasRadius) {
+    console.error('Circle radius should be greater than 0!', circle);
+  }
+
+  return isNumbers && isText && hasRadius;
 }
 
 export function createCircles(circles, map, eventHandlers) {
@@ -101,19 +114,16 @@ export function createCircles(circles, map, eventHandlers) {
     circles.forEach(item => {
       const { point: { lat, lng }, radius, description } = item;
 
-      if (isCircleDataValid([lat, lng, radius], [description], radius)) {
-        Leaflet.circle([lat, lng], { radius })
+      if (validateCircle(item)) {
+        const circle = Leaflet.circle([lat, lng], { radius })
           .on('click', () => {
-            onCircleClick({
-              coordinates: [lat, lng],
-              radius     : radius,
-              description: description,
-            });
+            onCircleClick({ coordinates: [lat, lng], radius, description });
           })
-          .addTo(map)
-          .bindPopup(description);
-      } else {
-        console.warn('Circle data is not valid!');
+          .addTo(map);
+
+        if (description) {
+          circle.bindPopup(description);
+        }
       }
     });
   }
