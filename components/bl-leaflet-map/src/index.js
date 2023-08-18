@@ -76,7 +76,7 @@ export default function LeafletMap({ component, eventHandlers }) {
     toggleFullscreen(containerRef.current, fullscreen, mapRef.current);
   }, [fullscreen]);
 
-  useMarkers(markers, markerIcon, mapRef.current, eventHandlers);
+  useMarkers(markers, markerIcon, mapRef, eventHandlers);
 
   if (!display) {
     return null;
