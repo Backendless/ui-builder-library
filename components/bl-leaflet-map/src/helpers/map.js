@@ -88,23 +88,28 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
 
 function validateCircle(circle) {
   const { point: { lat, lng }, radius, description } = circle;
-  const isNumbers = [lat, lng, radius].every(value => !isNaN(value));
-  const isText = description === undefined || typeof description === 'string';
+  const isAllPropertiesAreNumbers = [lat, lng, radius].every(value => {
+    const result = !isNaN(value);
+
+    if (!result) {
+      console.error(`Circle error!\n Expected number but received "${ value }" in\n`, circle);
+    }
+
+    return result;
+
+  });
+  const isDescriptionIsText = description === undefined || typeof description === 'string';
   const hasRadius = radius > 0;
 
-  if (!isNumbers) {
-    console.error('Circle coordinates and/or radius are not a number!\n', circle);
+  if (!isDescriptionIsText) {
+    console.error(`Circle Erorr!\n Expected description type text but received "${ description }" in\n`, circle);
   }
 
-  if (!isText) {
-    console.error('Circle description should be text!', circle);
+  if (isAllPropertiesAreNumbers && !hasRadius) {
+    console.error(`Circle error!\n Circle radius should be greater than 0, but received ${ radius } in\n`, circle);
   }
 
-  if (isNumbers && !hasRadius) {
-    console.error('Circle radius should be greater than 0!', circle);
-  }
-
-  return isNumbers && isText && hasRadius;
+  return isAllPropertiesAreNumbers && isDescriptionIsText && hasRadius;
 }
 
 export function createCircles(circles, map, eventHandlers) {
