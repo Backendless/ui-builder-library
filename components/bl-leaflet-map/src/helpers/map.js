@@ -117,16 +117,19 @@ function validateMarker(marker) {
     const result = !isNaN(value);
 
     if (!result) {
-      console.error(`Marker error!\n Expected point coordinates with number type but received "${value}" in\n`, marker);
+      console.error(
+        `Marker error!\n Expected point coordinates with number type but received "${ value }" in\n`,
+        marker
+      );
     }
 
     return result;
   });
 
-  const isDescriptionIsText = description === undefined || typeof description === "string";
+  const isDescriptionIsText = description === undefined || typeof description === 'string';
 
   if (!isDescriptionIsText) {
-    console.error(`Marker Erorr!\n Expected description type text but received "${description}" in\n`, marker);
+    console.error(`Marker Erorr!\n Expected description type text but received "${ description }" in\n`, marker);
   }
 
   return isCoordinatesAreNumbers && isDescriptionIsText;
