@@ -10,6 +10,8 @@ const DefaultValues = {
   TYPE  : 'openStreet',
 };
 
+const MINIMAL_POLYGON_POINTS_COUNT = 3;
+
 export function changeMapType(map, currentLayer, component) {
   const { mapType } = component;
 
@@ -132,28 +134,41 @@ function clearOldMarkers(markersArray) {
   }
 }
 
-function validatePolygon(polygon) {
-  const MINIMAL_POLYGON_LENGTH = 2;
-  const isDescriptionValid = polygon.description === undefined || typeof polygon.description === 'string';
-  const hasPolygon = polygon.polygon?.boundary?.points?.length > MINIMAL_POLYGON_LENGTH;
-  const isPointsValid = hasPolygon && polygon.polygon?.boundary?.points?.every(point => {
-    const isPoint = point.lat && point.lng;
-    const isNumbers = !isNaN(point.lat) && !isNaN(point.lng);
+function validatePoints(hasMinimalPointsCount, points) {
+  return hasMinimalPointsCount && points.every(({ lat, lng }) => {
+    if (isNaN(lat) || isNaN(lng)) {
+      console.error(`Polygon Point error!\n Point lat/lng is not a number. Recived lat: ${lat}, lng: ${lng}`);
 
-    return isPoint && isNumbers;
+      return false;
+    }
+
+    return true;
   });
+}
+
+function validatePolygon(polygon) {
+  const isDescriptionValid = polygon.description === undefined || typeof polygon.description === 'string';
+
+  if (!polygon.polygon?.boundary?.points) {
+    console.error('Polygon error!\n Polygon points route is invalid.\n ' +
+      'Expected "polygon: { boundary: { points }}" in\n', polygon);
+    return false;
+  }
+
+  const { polygon: { boundary: { points }}} = polygon;
+  const hasMinimalPointsCount = points.length >= MINIMAL_POLYGON_POINTS_COUNT;
+  const isPointsValid = validatePoints(hasMinimalPointsCount, points);
 
   if (!isDescriptionValid) {
-    console.error('Polygon description is not valid!\n', polygon);
+    console.error('Polygon error!\n Polygon description is not valid!\n' +
+      `Recived "${ polygon.description }", expected description type text, in\n`, polygon);
   }
 
-  if (!hasPolygon) {
-    console.error('Polygon points wrong data!\n', polygon);
+  if (!hasMinimalPointsCount) {
+    console.error('Polygon error!\n' +
+      `Expected minimum number of points 3, received number of points: ${points.length}, in\n`, polygon);
   }
 
-  if (hasPolygon && !isPointsValid) {
-    console.error('Polygon points. Some points are incorrect!\n', polygon);
-  }
 
   return isDescriptionValid && isPointsValid;
 }
@@ -164,8 +179,8 @@ export function createPolygons(polygons, map, eventHandlers) {
 
     polygons.forEach(item => {
       if (validatePolygon(item)) {
-        const coordinates = item.polygon.boundary.points.map(point => [point.lat, point.lng]);
-        const description = item.description;
+        const { polygon: { boundary: { points } }, description } = item;
+        const coordinates = points.map(({ lat, lng }) => [lat, lng]);
 
         const polygon = Leaflet.polygon(coordinates)
           .on('click', () => { onPolygonClick({ coordinates, description })})
