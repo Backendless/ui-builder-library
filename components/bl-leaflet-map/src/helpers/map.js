@@ -113,7 +113,14 @@ function validateMarker(marker) {
   }
 
   const { point: { lat, lng }, description } = marker;
-  const isCoordinatesAreNumbers = [lat, lng].every(value => {
+
+  if (description !== undefined && typeof description !== 'string') {
+    console.error(`Marker Error!\n Expected description type string but received "${ description }" in\n`, marker);
+
+    return false;
+  }
+
+  return [lat, lng].every(value => {
     const result = !isNaN(value);
 
     if (!result) {
@@ -125,14 +132,6 @@ function validateMarker(marker) {
 
     return result;
   });
-
-  const isDescriptionIsText = description === undefined || typeof description === 'string';
-
-  if (!isDescriptionIsText) {
-    console.error(`Marker Erorr!\n Expected description type text but received "${ description }" in\n`, marker);
-  }
-
-  return isCoordinatesAreNumbers && isDescriptionIsText;
 }
 
 export function useMarkers(markers, icon, map, eventHandlers) {
