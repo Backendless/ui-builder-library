@@ -25,7 +25,7 @@ const ImageDimensionsMap = {
   },
 };
 
-export function uploadImage(event, setImageSource, onUpload) {
+export function uploadImage(event, setImageSource, setDimensions, smartImageFit, onUpload) {
   event.preventDefault();
 
   const selectedFile = event.target?.files[0];
@@ -38,14 +38,24 @@ export function uploadImage(event, setImageSource, onUpload) {
   const reader = new FileReader();
 
   reader.readAsDataURL(selectedFile);
-  reader.onload = () => setImageSource(reader.result);
+  reader.onload = () => updateImage(reader.result, smartImageFit, setDimensions, setImageSource);
 
   onUpload({ selectedFile });
 
   event.target.value = ''; // needed to reset the image after uploading
 }
 
+export async function updateImage(imageSource, smartImageFit, setDimensions, setImageSource) {
+  await defineImageDimensions(imageSource, smartImageFit, setDimensions);
+
+  setImageSource(imageSource);
+}
+
 export async function defineImageDimensions(imageSource, smartImageFit, setDimensions) {
+  if (!imageSource) {
+    return;
+  }
+
   if (smartImageFit === ImageFitOptions.UNSET) {
     return setDimensions(ImageDimensions.FULL_WIDTH);
   }
