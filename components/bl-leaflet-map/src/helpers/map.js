@@ -96,7 +96,6 @@ function validateCircle(circle) {
     }
 
     return result;
-
   });
   const isDescriptionIsText = description === undefined || typeof description === 'string';
   const hasRadius = radius > 0;
