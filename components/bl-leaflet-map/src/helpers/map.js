@@ -134,10 +134,20 @@ function clearOldMarkers(markersArray) {
   }
 }
 
-function validatePoints(hasMinimalPointsCount, points) {
-  return hasMinimalPointsCount && points.every(({ lat, lng }) => {
+function validatePoints(points) {
+  if (points.length < MINIMAL_POLYGON_POINTS_COUNT) {
+    console.error(
+      'Polygon error!\n' +
+      `Expected minimum number of points 3, received number of points: ${ points.length }, in\n`,
+      points
+    );
+
+    return false;
+  }
+
+  return points.every(({ lat, lng }) => {
     if (isNaN(lat) || isNaN(lng)) {
-      console.error(`Polygon Point error!\n Point lat/lng is not a number. Recived lat: ${lat}, lng: ${lng}`);
+      console.error(`Polygon Point error!\n Point lat/lng is not a number. Recived lat: ${ lat }, lng: ${ lng }`);
 
       return false;
     }
@@ -147,30 +157,30 @@ function validatePoints(hasMinimalPointsCount, points) {
 }
 
 function validatePolygon(polygon) {
-  const isDescriptionValid = polygon.description === undefined || typeof polygon.description === 'string';
-
   if (!polygon.polygon?.boundary?.points) {
-    console.error('Polygon error!\n Polygon points route is invalid.\n ' +
-      'Expected "polygon: { boundary: { points }}" in\n', polygon);
+    console.error(
+      'Polygon error!\n' +
+      'Polygon points route is invalid.\n ' +
+      'Expected "polygon: { boundary: { points }}" in\n',
+      polygon
+    );
     return false;
   }
 
-  const { polygon: { boundary: { points }}} = polygon;
-  const hasMinimalPointsCount = points.length >= MINIMAL_POLYGON_POINTS_COUNT;
-  const isPointsValid = validatePoints(hasMinimalPointsCount, points);
+  const { polygon: { boundary: { points } }, description } = polygon;
 
-  if (!isDescriptionValid) {
-    console.error('Polygon error!\n Polygon description is not valid!\n' +
-      `Recived "${ polygon.description }", expected description type text, in\n`, polygon);
+  if (description !== undefined && typeof description !== 'string') {
+    console.error(
+      'Polygon error!\n' +
+      'Polygon description is not valid!\n' +
+      `Recived "${ description }", expected description type string, in\n`,
+      polygon
+    );
+
+    return false;
   }
 
-  if (!hasMinimalPointsCount) {
-    console.error('Polygon error!\n' +
-      `Expected minimum number of points 3, received number of points: ${points.length}, in\n`, polygon);
-  }
-
-
-  return isDescriptionValid && isPointsValid;
+  return validatePoints(points);
 }
 
 export function createPolygons(polygons, map, eventHandlers) {
