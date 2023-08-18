@@ -90,24 +90,14 @@
       "settingTooltip": "Display image according to its height and width."
     },
     {
-      "type": "text",
-      "name": "emptyLabel",
-      "label": "Empty Label",
+      "type": "mui_icon",
+      "name": "uploadIcon",
+      "label": "Upload Icon",
+      "settingTooltip": "Select the icon for uploading a new avatar image.",
       "showInSettings": true,
+      "defaultValue": "add_circle_outline",
       "hasLogicHandler": false,
-      "handlerId": "emptyLabelLogic",
-      "defaultValue": "You can choose an image...",
-      "settingTooltip": "Define the label content when the source is not set."
-    },
-    {
-      "type": "text",
-      "name": "changeLabel",
-      "label": "Change Label",
-      "showInSettings": true,
-      "hasLogicHandler": false,
-      "handlerId": "changeLabelLogic",
-      "defaultValue": "Do you want to change this image?",
-      "settingTooltip": "Define the label content when there is a valid source set."
+      "handlerId": "uploadIconLogic"
     },
     {
       "type": "text",
