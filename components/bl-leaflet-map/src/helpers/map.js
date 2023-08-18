@@ -87,6 +87,12 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
 }
 
 function validateCircle(circle) {
+  if (!circle.point) {
+    console.error('Circle error!\n Circle should store "point" property with latlng object in\n', circle);
+
+    return false;
+  }
+
   const { point: { lat, lng }, radius, description } = circle;
   const isAllPropertiesAreNumbers = [lat, lng, radius].every(value => {
     const result = !isNaN(value);
@@ -97,18 +103,24 @@ function validateCircle(circle) {
 
     return result;
   });
-  const isDescriptionIsText = description === undefined || typeof description === 'string';
-  const hasRadius = radius > 0;
 
-  if (!isDescriptionIsText) {
-    console.error(`Circle Erorr!\n Expected description type text but received "${ description }" in\n`, circle);
+  if (!isAllPropertiesAreNumbers) {
+    return false;
   }
 
-  if (isAllPropertiesAreNumbers && !hasRadius) {
+  if (description !== undefined && typeof description !== 'string') {
+    console.error(`Circle Erorr!\n Expected description type string but received "${ description }" in\n`, circle);
+
+    return false;
+  }
+
+  if (radius <= 0) {
     console.error(`Circle error!\n Circle radius should be greater than 0, but received ${ radius } in\n`, circle);
+
+    return false;
   }
 
-  return isAllPropertiesAreNumbers && isDescriptionIsText && hasRadius;
+  return true;
 }
 
 export function createCircles(circles, map, eventHandlers) {
@@ -116,9 +128,9 @@ export function createCircles(circles, map, eventHandlers) {
     const { onCircleClick } = eventHandlers;
 
     circles.forEach(item => {
-      const { point: { lat, lng }, radius, description } = item;
-
       if (validateCircle(item)) {
+        const { point: { lat, lng }, radius, description } = item;
+
         const circle = Leaflet.circle([lat, lng], { radius })
           .on('click', () => {
             onCircleClick({ coordinates: [lat, lng], radius, description });
