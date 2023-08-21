@@ -17,9 +17,5 @@ export default function Skeleton({ component, pods }) {
     );
   }
 
-  return (
-    <>
-      { skeletonContent.render() }
-    </>
-  );
+  return skeletonContent.render();
 }
