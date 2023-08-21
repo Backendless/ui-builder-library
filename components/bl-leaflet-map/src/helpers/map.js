@@ -164,6 +164,7 @@ function validatePolygon(polygon) {
       'Expected "polygon: { boundary: { points }}" in\n',
       polygon
     );
+
     return false;
   }
 
