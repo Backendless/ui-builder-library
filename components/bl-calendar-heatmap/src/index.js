@@ -16,6 +16,7 @@ export default function ComponentName({ component, eventHandlers, instanceId }) 
     scaleOpacityBaseColor, verticalOrientation, startDate, minDate, maxDate, highlightDate,
     defaultDataValue, cellHeight, cellWidth, subLabel, subGutter, subColorLabel, cellRadius,
     groupY, label, gutter, dynamicDimension, subSort, scaleDomain, legend, calendarLabel,
+    animationDuration, theme,
   } = component;
   const { subColorLabelLogic, subLabelLogic, groupYLogic, labelLogic, onCellClick } = eventHandlers;
 
@@ -87,6 +88,8 @@ export default function ComponentName({ component, eventHandlers, instanceId }) 
         },
 
         verticalOrientation,
+        animationDuration,
+        theme,
         itemSelector: `#cal-heatmap-${ instanceId }`,
       },
       [

@@ -177,47 +177,6 @@
       ]
     },
     {
-      "type": "number",
-      "name": "max",
-      "label": "Max",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "maxLogic",
-      "handlerLabel": "Max Logic",
-      "dataBinding": true
-    },
-    {
-      "type": "number",
-      "name": "min",
-      "label": "Min",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "minLogic",
-      "handlerLabel": "Min Logic",
-      "dataBinding": true
-    },
-    {
-      "type": "select",
-      "name": "sort",
-      "label": "Sort",
-      "showInSettings": true,
-      "defaultValue": "asc",
-      "hasLogicHandler": true,
-      "handlerId": "sortLogic",
-      "handlerLabel": "Sort Logic",
-      "dataBinding": true,
-      "options": [
-        {
-          "value": "asc",
-          "label": "ASC"
-        },
-        {
-          "value": "desc",
-          "label": "DESC"
-        }
-      ]
-    },
-    {
       "type": "select",
       "name": "subType",
       "label": "Sub Type",
@@ -255,6 +214,48 @@
         {
           "value": "xDay",
           "label": "xDay"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "sort",
+      "label": "Sort",
+      "showInSettings": true,
+      "defaultValue": "asc",
+      "hasLogicHandler": true,
+      "handlerId": "sortLogic",
+      "handlerLabel": "Sort Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "asc",
+          "label": "ASC"
+        },
+        {
+          "value": "desc",
+          "label": "DESC"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "subSort",
+      "label": "Sub Sort",
+      "showInSettings": true,
+      "defaultValue": "asc",
+      "hasLogicHandler": true,
+      "handlerId": "subSortLogic",
+      "handlerLabel": "Sub Sort Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "asc",
+          "label": "Asc"
+        },
+        {
+          "value": "desc",
+          "label": "Desc"
         }
       ]
     },
@@ -372,6 +373,16 @@
       ]
     },
     {
+      "type": "text",
+      "name": "scaleDomain",
+      "label": "Scale Domain",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "scaleDomainLogic",
+      "handlerLabel": "Scale Domain Logic",
+      "dataBinding": true
+    },
+    {
       "type": "color",
       "name": "scaleOpacityBaseColor",
       "label": "Scale Opacity Base Color",
@@ -403,6 +414,27 @@
       "dataBinding": true
     },
     {
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "name": "gutter",
+      "handlerId": "gutterLogic",
+      "label": "Gutter",
+      "handlerLabel": "Gutter Logic",
+      "dataBinding": true,
+      "type": "text"
+    },
+    {
+      "type": "number",
+      "name": "subGutter",
+      "label": "Sub Gutter",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": true,
+      "handlerId": "subGutterLogic",
+      "handlerLabel": "Sub Gutter Logic",
+      "dataBinding": true
+    },
+    {
       "type": "checkbox",
       "name": "verticalOrientation",
       "label": "Vertical Orientation",
@@ -410,6 +442,51 @@
       "hasLogicHandler": true,
       "handlerId": "verticalOrientationLogic",
       "handlerLabel": "Vertical Orientation Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "dynamicDimension",
+      "label": "Dynamic Dimension",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dynamicDimensionLogic",
+      "handlerLabel": "Dynamic Dimension Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "legend",
+      "label": "Legend",
+      "showInSettings": true,
+      "defaultValue": "none",
+      "hasLogicHandler": true,
+      "handlerId": "legendLogic",
+      "handlerLabel": "Legend Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "LegendLite",
+          "label": "Lite"
+        },
+        {
+          "value": "Legend",
+          "label": "Standard"
+        }
+      ]
+    },
+    {
+      "type": "json",
+      "name": "calendarLabel",
+      "label": "Calendar Label",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "calendarLabelLogic",
+      "handlerLabel": "Calendar Label Logic",
       "dataBinding": true
     },
     {
@@ -588,18 +665,7 @@
       "dataBinding": true
     },
     {
-      "type": "number",
-      "name": "subGutter",
-      "label": "Sub Gutter",
-      "showInSettings": true,
-      "defaultValue": "2",
-      "hasLogicHandler": true,
-      "handlerId": "subGutterLogic",
-      "handlerLabel": "Sub Gutter Logic",
-      "dataBinding": true
-    },
-    {
-      "type": "text",
+      "type": "color",
       "name": "subColorLabel",
       "label": "Sub Color Label",
       "showInSettings": true,
@@ -609,90 +675,36 @@
       "dataBinding": true
     },
     {
-      "type": "select",
-      "name": "subSort",
-      "label": "Sub Sort",
+      "type": "number",
+      "name": "animationDuration",
+      "label": "Animation Duration",
       "showInSettings": true,
-      "defaultValue": "asc",
       "hasLogicHandler": true,
-      "handlerId": "subSortLogic",
-      "handlerLabel": "Sub Sort Logic",
+      "handlerId": "animationDurationLogic",
+      "handlerLabel": "Animation Duration Logic",
       "dataBinding": true,
-      "options": [
-        {
-          "value": "asc",
-          "label": "Asc"
-        },
-        {
-          "value": "desc",
-          "label": "Desc"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "name": "dynamicDimension",
-      "label": "Dynamic Dimension",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "dynamicDimensionLogic",
-      "handlerLabel": "Dynamic Dimension Logic",
-      "dataBinding": true
-    },
-    {
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "name": "gutter",
-      "handlerId": "gutterLogic",
-      "label": "Gutter",
-      "handlerLabel": "Gutter Logic",
-      "dataBinding": true,
-      "type": "text"
+      "defaultValue": "200"
     },
     {
       "type": "select",
-      "name": "legend",
-      "label": "Legend",
+      "name": "theme",
+      "label": "Theme",
       "showInSettings": true,
-      "defaultValue": "none",
+      "defaultValue": "light",
       "hasLogicHandler": true,
-      "handlerId": "legendLogic",
-      "handlerLabel": "Legend Logic",
+      "handlerId": "themeLogic",
+      "handlerLabel": "Theme Logic",
       "dataBinding": true,
       "options": [
         {
-          "value": "none",
-          "label": "None"
+          "value": "light",
+          "label": "Light"
         },
         {
-          "value": "LegendLite",
-          "label": "Lite"
-        },
-        {
-          "value": "Legend",
-          "label": "Standard"
+          "value": "dark",
+          "label": "Dark"
         }
       ]
-    },
-    {
-      "type": "text",
-      "name": "scaleDomain",
-      "label": "Scale Domain",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "scaleDomainLogic",
-      "handlerLabel": "Scale Domain Logic",
-      "dataBinding": true
-    },
-    {
-      "type": "json",
-      "name": "calendarLabel",
-      "label": "Calendar Label",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "calendarLabelLogic",
-      "handlerLabel": "Calendar Label Logic",
-      "dataBinding": true
     }
   ],
   "eventHandlers": [
