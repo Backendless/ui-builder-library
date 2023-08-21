@@ -109,7 +109,7 @@ function validateCircle(circle) {
   }
 
   if (description !== undefined && typeof description !== 'string') {
-    console.error(`Circle Erorr!\n Expected description type string but received "${ description }" in\n`, circle);
+    console.error(`Circle error!\n Expected - description type string, but received - "${ description }" in\n`, circle);
 
     return false;
   }
