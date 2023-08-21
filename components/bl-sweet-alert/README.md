@@ -46,6 +46,29 @@ More information about this popup can be found in the [Sweet Alert 2](https://sw
 @bl-customComponent-sweet-alert-padding: 0 0 1.25em;
 @bl-customComponent-sweet-alert-color: #545454;
 @bl-customComponent-sweet-alert-background: #fff;
+@bl-customComponent-sweet-alert-fontFamily: Roboto, sans-serif;
+@bl-customComponent-sweet-alert-border: none;
+@bl-customComponent-sweet-alert-borderRadius: 5px;
+
+@bl-customComponent-sweet-alert-icon-width: 5em;
+@bl-customComponent-sweet-alert-icon-height: 5em;
+
+@bl-customComponent-sweet-alert-title-fontSize: 1.875em;
+@bl-customComponent-sweet-alert-title-fontWeight: 600;
+@bl-customComponent-sweet-alert-title-margin: 0;
+@bl-customComponent-sweet-alert-title-padding: 0.8em 1em 0;
+@bl-customComponent-sweet-alert-title-color: inherit;
+
+@bl-customComponent-sweet-alert-html-container-margin: 1em 1.6em 0.3em;
+@bl-customComponent-sweet-alert-html-container-padding: 0;
+@bl-customComponent-sweet-alert-html-container-color: inherit;
+@bl-customComponent-sweet-alert-html-container-fontSize: 1.125em;
+
+@bl-customComponent-sweet-alert-footer-margin: 1em 0 0;
+@bl-customComponent-sweet-alert-footer-padding: 1em 1em 0;
+@bl-customComponent-sweet-alert-footer-borderTop: 1px solid #eee;
+@bl-customComponent-sweet-alert-footer-color: inherit;
+@bl-customComponent-sweet-alert-footer-fontSize: 1em;
 ````
 
 ## Usage
@@ -68,7 +91,7 @@ To do this, let's take the `Delete My File` button, by clicking on which the mai
 
 To configure the main Sweet Alert, add the following settings:
 
-- basic - 'Are you sure?', 'You won't be able to revert this!', 'warning'
+- basic - `{ title: 'Are you sure?', text: 'You won't be able to revert this!', icon: 'warning' }`
 
 <p align="center">
   <img src="./example-images/main-settings.png" alt="main settings" width="300"/>
@@ -117,8 +140,8 @@ As a result, we get a Sweet Alert of this kind:
 
 The next step is to set up `Sweet Alert Confirm` and `Sweet Alert Dismiss` by adding the appropriate parameters in the same way as in the main Sweet Alert:
 
-Sweet Alert Confirm - 'Deleted!', 'Your file has been deleted.', 'success'
-Sweet Alert Dismiss - 'Cancelled', 'Your file is safe :)', 'error'
+Sweet Alert Confirm - `{ title: 'Deleted!', text: 'Your file has been deleted.', icon: 'success' }`
+Sweet Alert Dismiss - `{ title: 'Cancelled', text: 'Your file is safe :)', icon: 'error' }`
 
 Thus, when confirming on the main Sweet Alert, a `Sweet Alert Confirm` will appear.
 

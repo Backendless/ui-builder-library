@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-import Swal from './lib/sweetalert2';
+import SweetAlert from './lib/sweetalert2';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -26,12 +26,12 @@ export default function SweetAlertComponent({ component, eventHandlers, elRef })
 
   useEffect(() => {
     if (swalInstanceRef.current && options) {
-      updateAlert(swalInstanceRef, options);
+      updateAlert(options);
     }
   }, [swalInstanceRef.current, options]);
 
   component.show = () => showAlert();
-  component.close = () => Swal.close();
+  component.close = () => SweetAlert.close();
 
   if (!display) {
     return null;
@@ -45,7 +45,7 @@ export default function SweetAlertComponent({ component, eventHandlers, elRef })
 const createAlert = (elRef, swalRef, options, eventHandlers) => {
   const { onConfirm, onDeny, onDismiss } = eventHandlers;
 
-  swalRef.current = Swal.fire({ target: elRef.current, ...options });
+  swalRef.current = SweetAlert.fire({ target: elRef.current, ...options });
   swalRef.current.then(response => {
     const { isConfirmed, isDismissed, isDenied } = response;
 
@@ -55,14 +55,10 @@ const createAlert = (elRef, swalRef, options, eventHandlers) => {
   }).finally(() => swalRef.current = null);
 };
 
-const updateAlert = (swalRef, options) => {
-  const updateOptions = Object.keys(options).reduce((acc, key) => {
-    if (Swal.isUpdatableParameter(key)) {
-      acc[key] = options[key];
-    }
-
-    return acc;
+const updateAlert = (options) => {
+  const optionsToUpdate = Object.keys(options).reduce((acc, key) => {
+    return SweetAlert.isUpdatableParameter(key) ? { ...acc, [key]: options[key] } : acc;
   }, {});
 
-  swalRef.current.update({ ...updateOptions });
+  SweetAlert.update(optionsToUpdate);
 };
