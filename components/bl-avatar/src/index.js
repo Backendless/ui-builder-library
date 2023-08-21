@@ -6,10 +6,8 @@ import { updateImage, uploadImage } from './helpers';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function AvatarComponent({ component, eventHandlers, elRef }) {
+  const { classList, display, style, readOnly, shape, imageUrl, width, height, uploadIcon, smartImageFit } = component;
   const { onUpload } = eventHandlers;
-  const {
-    classList, display, style, readOnly, shape, imageUrl, width, height, emptyLabel, changeLabel, smartImageFit,
-  } = component;
 
   const [imageSource, setImageSource] = useState(imageUrl);
   const [imageDimensions, setImageDimensions] = useState({});
@@ -53,8 +51,8 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
       />
 
       { !readOnly && (
-        <div className={ cn('avatar-label', { hide: imageSource }) } onClick={ onClick }>
-          { imageSource ? changeLabel : emptyLabel }
+        <div className={ cn('upload-label', { hide: imageSource }) } onClick={ onClick }>
+          <i className="upload-icon material-icons-round" aria-hidden="true">{ uploadIcon }</i>
         </div>
       ) }
 

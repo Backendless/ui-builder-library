@@ -107,28 +107,67 @@ export function createCircles(circles, map, eventHandlers) {
   }
 }
 
+function validateMarker(marker) {
+  if (!marker.point) {
+    console.error('Marker error!\n Marker should store "point" property with latlng object in\n', marker);
+
+    return false;
+  }
+
+  const { point: { lat, lng }, description } = marker;
+
+  if (description !== undefined && typeof description !== 'string') {
+    console.error(`Marker Error!\n Expected description type string but received "${ description }" in\n`, marker);
+
+    return false;
+  }
+
+  return [lat, lng].every(value => {
+    const result = !isNaN(value);
+
+    if (!result) {
+      console.error(
+        `Marker error!\n Expected point coordinates with number type but received "${ value }" in\n`,
+        marker
+      );
+    }
+
+    return result;
+  });
+}
+
 export function useMarkers(markers, icon, map, eventHandlers) {
   const markersArray = useRef();
 
   useEffect(() => {
     clearOldMarkers(markersArray);
 
-    if (map && markers) {
+    if (map.current && markers) {
       const { onMarkerClick } = eventHandlers;
 
-      markersArray.current = markers.map(({ point: { lng, lat }, description }) => {
-        return Leaflet.marker([lat, lng], { icon })
-          .on('click', () => onMarkerClick({ coordinates: [lat, lng], description }))
-          .addTo(map)
-          .bindPopup(description);
+      markersArray.current = markers.map(marker => {
+        if (validateMarker(marker)) {
+          const { point: { lng, lat }, description } = marker;
+          const processedMarker = Leaflet.marker([lat, lng], { icon })
+            .on('click', () => onMarkerClick({ coordinates: [lat, lng], description }))
+            .addTo(map.current);
+
+          if (description) {
+            processedMarker.bindPopup(description);
+          }
+
+          return processedMarker;
+        }
+
+        return null;
       });
     }
-  }, [markers, map]);
+  }, [map.current, markers]);
 }
 
 function clearOldMarkers(markersArray) {
   if (markersArray.current) {
-    markersArray.current.forEach(item => item.remove());
+    markersArray.current.forEach(item => item?.remove());
 
     markersArray.current = [];
   }
