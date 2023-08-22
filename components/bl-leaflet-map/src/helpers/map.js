@@ -94,18 +94,13 @@ function validateCircle(circle) {
   }
 
   const { point: { lat, lng }, radius, description } = circle;
-  const isAllPropertiesAreNumbers = [lat, lng, radius].every(value => {
-    const result = !isNaN(value);
 
-    if (!result) {
-      console.error(`Circle error!\n Expected number but received "${ value }" in\n`, circle);
+  for (const item of [lat, lng, radius]) {
+    if (isNaN(item)) {
+      console.error(`Circle error!\n Expected - number, but received - "${item}" in\n`, circle);
+
+      return false;
     }
-
-    return result;
-  });
-
-  if (!isAllPropertiesAreNumbers) {
-    return false;
   }
 
   if (description !== undefined && typeof description !== 'string') {
@@ -115,7 +110,7 @@ function validateCircle(circle) {
   }
 
   if (radius <= 0) {
-    console.error(`Circle error!\n Circle radius should be greater than 0, but received ${ radius } in\n`, circle);
+    console.error(`Circle error!\n Circle radius should be greater than 0, but received ${radius} in\n`, circle);
 
     return false;
   }
