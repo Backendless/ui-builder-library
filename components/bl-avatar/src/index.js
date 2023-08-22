@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import FALLBACK_IMAGE from './assets/fallback-image.jpg';
 import { updateImage, uploadImage } from './helpers';
@@ -11,6 +11,7 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
 
   const [imageSource, setImageSource] = useState(imageUrl);
   const [imageDimensions, setImageDimensions] = useState({});
+  const [isInteracted, setIsInteracted] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -20,12 +21,18 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
     }
   }, [imageUrl]);
 
-  const onClick = () => {
-    if (!readOnly && inputRef.current) {
-      inputRef.current.click();
+  const toggleUserInteractionState = useCallback(isInteracted => {
+    if (!readOnly) {
+      setIsInteracted(isInteracted);
     }
+  }, [readOnly]);
+
+  const onClick = () => {
+    inputRef.current.click();
+    setIsInteracted(false);
   };
 
+  const uploadLabelVisibility = !readOnly && (isInteracted || !imageSource);
   const styles = {
     minHeight    : height,
     pointerEvents: readOnly && 'none',
@@ -42,7 +49,13 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-avatar', shape, classList) } style={ styles }>
+    <div
+      ref={ elRef }
+      className={ cn('bl-customComponent-avatar', shape, classList) }
+      style={ styles }
+      onMouseEnter={ () => toggleUserInteractionState(true) }
+      onMouseLeave={ () => toggleUserInteractionState(false) }
+      onTouchStart={ () => toggleUserInteractionState(true) }>
       <ImagePreview
         imageSource={ readOnly ? (imageSource || FALLBACK_IMAGE) : imageSource }
         component={ component }
@@ -50,8 +63,8 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
         dimensions={ imageDimensions }
       />
 
-      { !readOnly && (
-        <div className={ cn('upload-label', { hide: imageSource }) } onClick={ onClick }>
+      { uploadLabelVisibility && (
+        <div className={ cn('upload-label', { interacted: isInteracted }) } onClick={ onClick }>
           <i className="upload-icon material-icons-round" aria-hidden="true">{ uploadIcon }</i>
         </div>
       ) }

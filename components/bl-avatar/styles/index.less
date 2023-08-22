@@ -21,11 +21,6 @@
   justify-content: center;
   background-color: @bl-customComponent-avatar-backgroundColor;
 
-  &:hover .upload-label.hide {
-    display: flex;
-    background-color: @bl-customComponent-avatar-uploadLabel-hover-backgroundColor;
-  }
-
   &.rounded-rectangle {
     border-radius: @bl-customComponent-avatar-roundedRectangle-borderRadius;
   }
@@ -59,19 +54,14 @@
     justify-content: center;
     flex-direction: column;
     user-select: @bl-customComponent-avatar-uploadLabel-userSelect;
+    cursor: pointer;
+
+    &.interacted {
+      background-color: @bl-customComponent-avatar-uploadLabel-hover-backgroundColor;
+    }
 
     .upload-icon {
       font-size: @bl-customComponent-avatar-uploadIcon-fontSize;
-    }
-
-    &.hide {
-      display: none;
-    }
-
-    &:hover {
-      background-color: @bl-customComponent-avatar-uploadLabel-hover-backgroundColor;
-      display: flex;
-      cursor: pointer;
     }
   }
 }
