@@ -10,6 +10,8 @@ const DefaultValues = {
   TYPE  : 'openStreet',
 };
 
+const MINIMAL_POLYGON_POINTS_COUNT = 3;
+
 export function changeMapType(map, currentLayer, component) {
   const { mapType } = component;
 
@@ -171,19 +173,73 @@ function clearOldMarkers(markersArray) {
   }
 }
 
+function validatePoints(points) {
+  if (points.length < MINIMAL_POLYGON_POINTS_COUNT) {
+    console.error(
+      'Polygon error!\n' +
+      `Expected minimum number of points 3, received number of points: ${ points.length }, in\n`,
+      points
+    );
+
+    return false;
+  }
+
+  return points.every(({ lat, lng }) => {
+    if (isNaN(lat) || isNaN(lng)) {
+      console.error(`Polygon Point error!\n Point lat/lng is not a number. Recived lat: ${ lat }, lng: ${ lng }`);
+
+      return false;
+    }
+
+    return true;
+  });
+}
+
+function validatePolygon(polygon) {
+  if (!polygon.polygon?.boundary?.points) {
+    console.error(
+      'Polygon error!\n' +
+      'Polygon points route is invalid.\n ' +
+      'Expected "polygon: { boundary: { points }}" in\n',
+      polygon
+    );
+
+    return false;
+  }
+
+  const { polygon: { boundary: { points } }, description } = polygon;
+
+  if (description !== undefined && typeof description !== 'string') {
+    console.error(
+      'Polygon error!\n' +
+      'Polygon description is not valid!\n' +
+      `Recived "${ description }", expected description type string, in\n`,
+      polygon
+    );
+
+    return false;
+  }
+
+  return validatePoints(points);
+}
+
 export function createPolygons(polygons, map, eventHandlers) {
   if (polygons) {
     const { onPolygonClick } = eventHandlers;
 
     polygons.forEach(item => {
-      const coordinates = item.polygon.boundary.points.map(point => [point.lat, point.lng]);
+      if (validatePolygon(item)) {
+        const { polygon: { boundary: { points } }, description } = item;
+        const coordinates = points.map(({ lat, lng }) => [lat, lng]);
 
-      Leaflet.polygon(coordinates)
-        .on('click', () => {
-          onPolygonClick({ coordinates, description: item.description });
-        })
-        .addTo(map)
-        .bindPopup(item.description);
+        const polygon = Leaflet.polygon(coordinates)
+          .on('click', () => { onPolygonClick({ coordinates, description })})
+          .addTo(map);
+
+        if (description) {
+          polygon.bindPopup(description);
+        }
+      }
     });
   }
 }
