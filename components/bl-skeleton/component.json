@@ -9,6 +9,17 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "checkbox",
+      "name": "isContentVisible",
+      "label": "Is Content Visible",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "isContentVisibleLogic",
+      "handlerLabel": "Is Content Visible Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the visibility of pod content"
+    },
+    {
       "type": "select",
       "name": "variant",
       "label": "Variant",
@@ -80,5 +91,22 @@
     }
   ],
   "eventHandlers": [],
-  "actions": []
+  "actions": [
+    {
+      "id": "contentVisibility",
+      "inputs": [
+        {
+          "id": "isVisible",
+          "label": "Is Visible"
+        }
+      ],
+      "label": "Content Visibility"
+    }
+  ],
+  "pods": {
+    "4c869491ffdc1c55089d0a1129e45dc5": {
+      "id": "skeletonContent",
+      "dataContainer": true
+    }
+  }
 }
