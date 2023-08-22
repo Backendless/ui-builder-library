@@ -88,21 +88,56 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
   });
 }
 
+function validateCircle(circle) {
+  if (!circle.point) {
+    console.error('Circle error!\n Circle should store "point" property with latlng object in\n', circle);
+
+    return false;
+  }
+
+  const { point: { lat, lng }, radius, description } = circle;
+
+  for (const item of [lat, lng, radius]) {
+    if (isNaN(item)) {
+      console.error(`Circle error!\n Expected - number, but received - "${item}" in\n`, circle);
+
+      return false;
+    }
+  }
+
+  if (description !== undefined && typeof description !== 'string') {
+    console.error(`Circle error!\n Expected - description type string, but received - "${ description }" in\n`, circle);
+
+    return false;
+  }
+
+  if (radius <= 0) {
+    console.error(`Circle error!\n Circle radius should be greater than 0, but received ${radius} in\n`, circle);
+
+    return false;
+  }
+
+  return true;
+}
+
 export function createCircles(circles, map, eventHandlers) {
   if (circles) {
     const { onCircleClick } = eventHandlers;
 
     circles.forEach(item => {
-      Leaflet.circle([item.point.lat, item.point.lng], { radius: item.radius })
-        .on('click', () => {
-          onCircleClick({
-            coordinates: [item.point.lat, item.point.lng],
-            radius     : item.radius,
-            description: item.description,
-          });
-        })
-        .addTo(map)
-        .bindPopup(item.description);
+      if (validateCircle(item)) {
+        const { point: { lat, lng }, radius, description } = item;
+
+        const circle = Leaflet.circle([lat, lng], { radius })
+          .on('click', () => {
+            onCircleClick({ coordinates: [lat, lng], radius, description });
+          })
+          .addTo(map);
+
+        if (description) {
+          circle.bindPopup(description);
+        }
+      }
     });
   }
 }
