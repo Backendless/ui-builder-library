@@ -16,7 +16,9 @@
       "hasLogicHandler": true,
       "handlerId": "sourceDataUrlLogic",
       "handlerLabel": "Source Data URL Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the URL for fetching data from a remote source.",
+      "settingTooltip": "Allows to determine the URL for fetching data from a remote source."
     },
     {
       "type": "select",
@@ -45,7 +47,9 @@
           "value": "txt",
           "label": "TXT"
         }
-      ]
+      ],
+      "handlerDescription": "This handler for the logic to determine the type of data(JSON, CSV, TSV, TXT).",
+      "settingTooltip": "Allows to determine the type of data(JSON, CSV, TSV, TXT)."
     },
     {
       "type": "json",
@@ -55,7 +59,9 @@
       "hasLogicHandler": true,
       "handlerId": "dataLogic",
       "handlerLabel": "Data Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine data used to populate the calendar.",
+      "settingTooltip": "Allows to to determine data used to populate the calendar."
     },
     {
       "type": "text",
@@ -66,7 +72,9 @@
       "handlerId": "datePropNameLogic",
       "handlerLabel": "Date Property Name Logic",
       "dataBinding": true,
-      "defaultValue": "date"
+      "defaultValue": "date",
+      "handlerDescription": "This is a handler for the logic to determine the property name of the date. Instruct the calendar how to extract the date property from your data.",
+      "settingTooltip": "Allows to determine the property name of the date. Instruct the calendar how to extract the date property from your data."
     },
     {
       "type": "text",
@@ -77,17 +85,21 @@
       "handlerId": "valuePropNameLogic",
       "handlerLabel": "Value Property Name Logic",
       "dataBinding": true,
-      "defaultValue": "value"
+      "defaultValue": "value",
+      "handlerDescription": "This is a handler for the logic to determine the property name of the value. Instruct the calendar how to extract the value property from your data.",
+      "settingTooltip": "Allows to determine the property name of the value. Instruct the calendar how to extract the value property from your data."
     },
     {
       "type": "text",
       "name": "defaultDataValue",
       "label": "Default Data Value",
       "showInSettings": true,
-      "hasLogicHandler": true,
+      "hasLogicHandler": false,
       "handlerId": "defaultDataValueLogic",
       "handlerLabel": "Default Data Value Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the default value when your dataset does not have a value for a date.",
+      "settingTooltip": "Allows to determine the default value when your dataset does not have a value for a date."
     },
     {
       "type": "text",
@@ -97,7 +109,9 @@
       "hasLogicHandler": true,
       "handlerId": "startDateLogic",
       "handlerLabel": "Start Date Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the start date of the calendar.",
+      "settingTooltip": "Allows to determine the start date of the calendar."
     },
     {
       "type": "text",
@@ -107,7 +121,9 @@
       "hasLogicHandler": true,
       "handlerId": "minDateLogic",
       "handlerLabel": "Min Date Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the minimum allowed date. Used on navigation, to set a lower bound when navigating backward.",
+      "settingTooltip": "Allows to determine the minimum allowed date. Used on navigation, to set a lower bound when navigating backward."
     },
     {
       "type": "text",
@@ -117,7 +133,9 @@
       "hasLogicHandler": true,
       "handlerId": "maxDateLogic",
       "handlerLabel": "Max Date Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the maximum allowed date. Used on navigation, to set an upper bound when navigating forward.",
+      "settingTooltip": "Allows to determine the maximum allowed date. Used on navigation, to set an upper bound when navigating forward."
     },
     {
       "type": "text",
@@ -127,7 +145,9 @@
       "hasLogicHandler": true,
       "handlerId": "highlightDateLogic",
       "handlerLabel": "Highlight Date Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the array of dates to highlight. Highlighted subDomain cells are given a special class to make them stand out.",
+      "settingTooltip": "Allows to determine the array of dates to highlight. Highlighted subDomain cells are given a special class to make them stand out."
     },
     {
       "type": "range",
@@ -139,9 +159,11 @@
       "handlerId": "rangeLogic",
       "handlerLabel": "Range Logic",
       "dataBinding": true,
-      "min": "0",
-      "max": "12",
-      "step": "1"
+      "min": "1",
+      "max": "36",
+      "step": "1",
+      "handlerDescription": "This is a handler for the logic to determine the number of domains to show.",
+      "settingTooltip": "Allows to determine the number of domains to show."
     },
     {
       "type": "select",
@@ -174,7 +196,9 @@
           "value": "hour",
           "label": "Hour"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the domain's type, representing a time unit(year, month, week, day, hour).",
+      "settingTooltip": "Allows to determine the domain's type, representing a time unit(year, month, week, day, hour)."
     },
     {
       "type": "select",
@@ -215,7 +239,9 @@
           "value": "xDay",
           "label": "xDay"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the SubDomain's type, representing a time unit. This is the time unit represented by each cell in the calendar. The subDomain should always be smaller than the domain type.",
+      "settingTooltip": "Allows to determine the SubDomain's type, representing a time unit. This is the time unit represented by each cell in the calendar. The subDomain should always be smaller than the domain type."
     },
     {
       "type": "select",
@@ -236,7 +262,9 @@
           "value": "desc",
           "label": "DESC"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the sort order of the domains.",
+      "settingTooltip": "Allows to determine the sort order of the domains."
     },
     {
       "type": "select",
@@ -257,7 +285,9 @@
           "value": "desc",
           "label": "Desc"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the sort order of the subDomains.",
+      "settingTooltip": "Allows to determine the sort order of the subDomains."
     },
     {
       "type": "select",
@@ -290,7 +320,8 @@
           "value": "median",
           "label": "Median"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine how to group all values from the same subDomain."
     },
     {
       "type": "select",
@@ -370,7 +401,9 @@
           "value": "diverging-symlog",
           "label": "Diverging-symlog"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the scale type used to encode colors",
+      "settingTooltip": "Allows to determine the scale type used to encode colors"
     },
     {
       "type": "text",
@@ -380,7 +413,9 @@
       "hasLogicHandler": true,
       "handlerId": "scaleDomainLogic",
       "handlerLabel": "Scale Domain Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine an array of at least 2 values, specifying the minimum and maximum value of your dataset. By default min and max values of the specified dataset. When using the threshold's type, domain should be a list of different threshold.",
+      "settingTooltip": "Allows to determine an array of at least 2 values, specifying the minimum and maximum value of your dataset. By default min and max values of the specified dataset. When using the threshold's type, domain should be a list of different threshold."
     },
     {
       "type": "color",
@@ -391,7 +426,9 @@
       "hasLogicHandler": true,
       "handlerId": "scaleOpacityBaseColorLogic",
       "handlerLabel": "Scale Opacity Base Color Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the base color.",
+      "settingTooltip": "Allows to determine the base color."
     },
     {
       "showInSettings": true,
@@ -401,7 +438,9 @@
       "label": "Scale Color Scheme",
       "handlerLabel": "Scale Color Scheme Logic",
       "dataBinding": true,
-      "type": "text"
+      "type": "text",
+      "handlerDescription": "This is a handler for the logic to determine the color scheme name from d3-scale-chromatic.",
+      "settingTooltip": "Allows to to determine the color scheme name from d3-scale-chromatic."
     },
     {
       "type": "text",
@@ -411,7 +450,9 @@
       "hasLogicHandler": true,
       "handlerId": "scaleColorRangeLogic",
       "handlerLabel": "Scale Color Range Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the array of colors. Expects a minimum of 2 colors.",
+      "settingTooltip": "Allows to determine the array of colors. Expects a minimum of 2 colors."
     },
     {
       "showInSettings": true,
@@ -421,7 +462,9 @@
       "label": "Gutter",
       "handlerLabel": "Gutter Logic",
       "dataBinding": true,
-      "type": "text"
+      "type": "text",
+      "handlerDescription": "This is a handler for the logic to determine the space between each domain, in pixel.",
+      "settingTooltip": "Allows to determine the space between each domain, in pixel."
     },
     {
       "type": "number",
@@ -432,7 +475,9 @@
       "hasLogicHandler": true,
       "handlerId": "subGutterLogic",
       "handlerLabel": "Sub Gutter Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the space between each subDomain, in pixel.",
+      "settingTooltip": "Allows to determine the space between each subDomain, in pixel."
     },
     {
       "type": "checkbox",
@@ -442,7 +487,9 @@
       "hasLogicHandler": true,
       "handlerId": "verticalOrientationLogic",
       "handlerLabel": "Vertical Orientation Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine whether the domains should be arranged on top of each other, or side by side.",
+      "settingTooltip": "Allows to determine whether the domains should be arranged on top of each other, or side by side."
     },
     {
       "type": "checkbox",
@@ -452,7 +499,9 @@
       "hasLogicHandler": true,
       "handlerId": "dynamicDimensionLogic",
       "handlerLabel": "Dynamic Dimension Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine whether the domain's should be resized to fit its content.",
+      "settingTooltip": "Allows to determine whether the domain's should be resized to fit its content."
     },
     {
       "type": "select",
@@ -477,7 +526,9 @@
           "value": "Legend",
           "label": "Standard"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to select the legend that will be displayed.",
+      "settingTooltip": "Allows to select the legend that will be displayed."
     },
     {
       "type": "json",
@@ -487,7 +538,9 @@
       "hasLogicHandler": true,
       "handlerId": "calendarLabelLogic",
       "handlerLabel": "Calendar Label Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the calendar label.",
+      "settingTooltip": "Allows to determine the calendar label."
     },
     {
       "type": "number",
@@ -498,7 +551,9 @@
       "handlerId": "cellHeightLogic",
       "handlerLabel": "Cell Height Logic",
       "dataBinding": true,
-      "defaultValue": "20"
+      "defaultValue": "20",
+      "handlerDescription": "This is a handler for the logic to determine the height of each subDomain cell, in pixel.",
+      "settingTooltip": "Allows to determine the height of each subDomain cell, in pixel."
     },
     {
       "type": "number",
@@ -509,7 +564,9 @@
       "handlerId": "cellWidthLogic",
       "handlerLabel": "Cell Width Logic",
       "dataBinding": true,
-      "defaultValue": "20"
+      "defaultValue": "20",
+      "handlerDescription": "This is a handler for the logic to determine the width of each subDomain cell, in pixel.",
+      "settingTooltip": "Allows to determine the width of each subDomain cell, in pixel."
     },
     {
       "type": "number",
@@ -520,7 +577,9 @@
       "hasLogicHandler": true,
       "handlerId": "cellRadiusLogic",
       "handlerLabel": "Cell Radius Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the border radius of each subDomain cell, in pixel.",
+      "settingTooltip": "Allows to determine the border radius of each subDomain cell, in pixel."
     },
     {
       "type": "text",
@@ -528,7 +587,9 @@
       "label": "Label",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "labelLogic"
+      "handlerId": "labelLogic",
+      "settingTooltip": "Allows to determine the label's content. For detail watch in documentation.",
+      "defaultValue": "MMMM"
     },
     {
       "type": "select",
@@ -557,7 +618,9 @@
           "label": "Left"
         }
       ],
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the position of the label, relative to its domain.",
+      "settingTooltip": "Allows to determine the position of the label, relative to its domain."
     },
     {
       "type": "number",
@@ -568,7 +631,9 @@
       "hasLogicHandler": true,
       "handlerId": "labelHeightLogic",
       "handlerLabel": "Label Height",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the height of the label, in pixel.",
+      "settingTooltip": "Allows to determine the height of the label, in pixel."
     },
     {
       "type": "number",
@@ -579,7 +644,9 @@
       "hasLogicHandler": true,
       "handlerId": "labelWidthLogic",
       "handlerLabel": "Label Width Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the width of the label, in pixel.",
+      "settingTooltip": "Allows to determine the width of the label, in pixel."
     },
     {
       "type": "select",
@@ -604,7 +671,9 @@
           "label": "Right"
         }
       ],
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the rotation to obtain a vertical label.",
+      "settingTooltip": "Allows to determine the rotation to obtain a vertical label."
     },
     {
       "type": "select",
@@ -629,7 +698,9 @@
           "value": "end",
           "label": "End"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the horizontal alignment of the label.",
+      "settingTooltip": "Allows to determine the horizontal alignment of the label."
     },
     {
       "type": "number",
@@ -640,7 +711,9 @@
       "hasLogicHandler": true,
       "handlerId": "labelOffsetXLogic",
       "handlerLabel": "Label Offset X Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label placement along its x-axis.",
+      "settingTooltip": "Allows to determine the label placement along its x-axis."
     },
     {
       "type": "number",
@@ -651,7 +724,9 @@
       "hasLogicHandler": true,
       "handlerId": "labelOffsetYLogic",
       "handlerLabel": "Label Offset Y Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label placement along its y-axis.",
+      "settingTooltip": "Allows to determine the label placement along its y-axis."
     },
     {
       "type": "text",
@@ -662,7 +737,8 @@
       "hasLogicHandler": false,
       "handlerId": "subLabelLogic",
       "handlerLabel": "Sub Label Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine the label of the subDomain. For detail watch documentation."
     },
     {
       "type": "color",
@@ -672,7 +748,8 @@
       "hasLogicHandler": false,
       "handlerId": "subColorLabelLogic",
       "handlerLabel": "Sub Color Label Logic",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine the color of the subDomain's label."
     },
     {
       "type": "number",
@@ -683,7 +760,9 @@
       "handlerId": "animationDurationLogic",
       "handlerLabel": "Animation Duration Logic",
       "dataBinding": true,
-      "defaultValue": "200"
+      "defaultValue": "200",
+      "handlerDescription": "This is a handler for the logic to determine the duration of the various animations. Animation is used each time there is a change in the calendar UI, such as navigation, resize, etc...",
+      "settingTooltip": "Allows to determine the duration of the various animations. Animation is used each time there is a change in the calendar UI, such as navigation, resize, etc..."
     },
     {
       "type": "select",
@@ -704,7 +783,9 @@
           "value": "dark",
           "label": "Dark"
         }
-      ]
+      ],
+      "handlerDescription": "This is a handler for the logic to toggle between light and dark mode.",
+      "settingTooltip": "Allows to toggle between light and dark mode."
     }
   ],
   "eventHandlers": [
@@ -725,7 +806,8 @@
           "id": "backgroundColor",
           "label": "backgroundColor"
         }
-      ]
+      ],
+      "handlerDescription": "This is an event for logic to determine the color of the subDomain's label."
     },
     {
       "name": "subLabelLogic",
@@ -744,7 +826,8 @@
           "id": "element",
           "label": "Element"
         }
-      ]
+      ],
+      "handlerDescription": "This is an event for the logic to determine the label of the subDomain. For detail watch documentation."
     },
     {
       "name": "groupYLogic",
@@ -755,7 +838,8 @@
           "id": "values",
           "label": "Values"
         }
-      ]
+      ],
+      "handlerDescription": "This is an event for the logic to determine how to group all values from the same subDomain."
     },
     {
       "name": "labelLogic",
@@ -770,7 +854,8 @@
           "id": "element",
           "label": "Element"
         }
-      ]
+      ],
+      "handlerDescription": "This is an event for logic to determine the label's content. For detail watch in documentation."
     },
     {
       "name": "onCellClick",
@@ -788,23 +873,28 @@
           "id": "value",
           "label": "Value"
         }
-      ]
+      ],
+      "handlerDescription": "This event is triggered when on a subDomain cell click."
     },
     {
       "name": "mouseOver",
-      "label": "Mouse Over"
+      "label": "Mouse Over",
+      "handlerDescription": "This event is triggered when the mouse enter a subDomain cell."
     },
     {
       "name": "mouseOut",
-      "label": "Mouse Out"
+      "label": "Mouse Out",
+      "handlerDescription": "This event is triggered when the mouse exit a subDomain cell."
     },
     {
       "name": "minDateReached",
-      "label": "Min Date Reached"
+      "label": "Min Date Reached",
+      "handlerDescription": "This event is triggered after a navigation event, and when the calendar has reached the min date, if set."
     },
     {
       "name": "maxDateReached",
-      "label": "Max Date Reached"
+      "label": "Max Date Reached",
+      "handlerDescription": "This event is triggered after a navigation event, and when the calendar has reached the max date, if set."
     }
   ],
   "actions": [

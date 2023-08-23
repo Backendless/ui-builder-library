@@ -133,7 +133,7 @@ export default function ComponentName({ component, eventHandlers, instanceId }) 
     <>
       <div
         id={ `cal-heatmap-${ instanceId }` }
-        className={ cn('bl-customComponent-componentName', classList) }
+        className={ cn('bl-customComponent-calendar-heatmap', classList) }
         style={ style }
       ></div>
       <div id={ `legend-label-${ instanceId }` }></div>
