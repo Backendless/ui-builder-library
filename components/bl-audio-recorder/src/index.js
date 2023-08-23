@@ -53,8 +53,7 @@ export default function AudioRecorder({ component, eventHandlers, elRef }) {
     downloadFile: () => downloadRecordedFile(),
     getBlob     : () => recordedBlob,
     pause       : () => toggleRecord(),
-    getUrl      : () => URL.createObjectURL(recordedBlob),
-    clearRecord  : () => clearRecord(),
+    clearRecord : () => clearRecord(),
   });
 
   const startRecording = useCallback(async () => {
