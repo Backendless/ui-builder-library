@@ -62,7 +62,8 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
         canvasInstRef.current = null;
       }
     }
-  }, [display, direction, customDirection, states, isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed]);
+  }, [display, direction, image, customDirection, states,
+    isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed]);
 
   trackOptionChanges(canvasInstRef, direction, customDirection, states,
     isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed);
