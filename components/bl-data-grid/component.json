@@ -195,6 +195,30 @@
       ]
     },
     {
+      "type": "text",
+      "name": "loadingText",
+      "label": "Loading Text",
+      "settingTooltip": "This setting lets you specify the text displayed when loading data for the Data Grid component.",
+      "showInSettings": true,
+      "defaultValue": "Loading...",
+      "hasLogicHandler": true,
+      "handlerId": "loadingTextLogic",
+      "handlerLabel": "Loading Text Logic",
+      "handlerDescription": "This handler lets you specify the text displayed when loading data for the Data Grid component."
+    },
+    {
+      "type": "text",
+      "name": "noRowsText",
+      "label": "No Rows Text",
+      "settingTooltip": "This setting allows you to specify the text displayed when the Data Grid component has received no rows.",
+      "showInSettings": true,
+      "defaultValue": "No Data",
+      "hasLogicHandler": true,
+      "handlerId": "noRowsTextLogic",
+      "handlerLabel": "No Rows Text Logic",
+      "handlerDescription": "This handler allows you to specify the text displayed when the Data Grid component has received no rows."
+    },
+    {
       "type": "checkbox",
       "name": "pagination",
       "label": "Pagination",

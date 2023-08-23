@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
 
-import { EmptyMessage } from './empty-message';
-
 import { useStyles } from './use-styles';
 import { rowsValidation } from './utils';
 
@@ -11,19 +9,27 @@ const { cn } = BackendlessUI.CSSUtils;
 
 function CellComponent(params) {
   return (<span>{ params.value }</span>);
-};
+}
+
+function LoadingComponent({ loadingText }) {
+  return (<div className="ag-overlay-loading-center">{ loadingText }</div>);
+}
+
+function NoRowsComponent({ noRowsText }) {
+  return (<div className="ag-overlay-loading-center">{ noRowsText }</div>);
+}
 
 export default function DataGridComponent({ component, eventHandlers }) {
   const {
-    classList, display, style, disabled, sortable, filter,
-    floatingFilter, editable, resizable, suppressCellFocus, multipleRowsSelection,
-    columnDefs, rowsData, height, width, theme, pagination, paginationAutoPageSize, paginationPageSize
+    classList, display, style, disabled, sortable, filter, floatingFilter,
+    editable, resizable, suppressCellFocus, multipleRowsSelection, columnDefs, rowsData,
+    height, width, theme, loadingText, noRowsText, pagination, paginationAutoPageSize, paginationPageSize
   } = component;
   const { onCellClick, onColumnMoved } = eventHandlers;
 
   const gridRef = useRef();
   const [columns, setColumns] = useState([]);
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState();
 
   const rowsToDisplay = useMemo(() => rowsValidation(rows), [rows]);
 
@@ -42,6 +48,11 @@ export default function DataGridComponent({ component, eventHandlers }) {
     resizable,
     cellRenderer: memo(CellComponent)
   }), [sortable, filter, floatingFilter, resizable]);
+
+  const loadingOverlayComponent = useMemo(() => LoadingComponent, []);
+  const loadingOverlayComponentParams = useMemo(() => ({ loadingText }), [loadingText]);
+  const noRowsOverlayComponent = useMemo(() => NoRowsComponent, []);
+  const noRowsOverlayComponentParams = useMemo(() => ({ noRowsText }), [noRowsText]);
 
   const handleCellClick = useCallback(params => {
     onCellClick({ cellParams: params });
@@ -65,23 +76,24 @@ export default function DataGridComponent({ component, eventHandlers }) {
     <div
       style={ styles }
       className={ classes }>
-      { !columns.length || !rows.length
-        ? <EmptyMessage noColumns={ !columns.length } noRows={ !rows.length } />
-        : <AgGridReact
-            ref={ gridRef }
-            rowData={ rowsToDisplay }
-            columnDefs={ columns }
-            defaultColDef={ defaultColDef }
-            scrollbarWidth={ 14 }
-            suppressCellFocus={ suppressCellFocus }
-            pagination={ pagination }
-            paginationPageSize={ paginationPageSize }
-            paginationAutoPageSize={ paginationAutoPageSize }
-            rowSelection={ multipleRowsSelection ? "multiple" : "single" }
-            onCellClicked={ handleCellClick }
-            onColumnMoved={ handleColumnMove }
-          />
-      }
+      <AgGridReact
+        ref={ gridRef }
+        rowData={ rowsToDisplay }
+        columnDefs={ columns }
+        defaultColDef={ defaultColDef }
+        scrollbarWidth={ 14 }
+        suppressCellFocus={ suppressCellFocus }
+        pagination={ pagination }
+        loadingOverlayComponent={ loadingOverlayComponent }
+        loadingOverlayComponentParams={ loadingOverlayComponentParams }
+        noRowsOverlayComponent={ noRowsOverlayComponent }
+        noRowsOverlayComponentParams={ noRowsOverlayComponentParams }
+        paginationPageSize={ paginationPageSize }
+        paginationAutoPageSize={ paginationAutoPageSize }
+        rowSelection={ multipleRowsSelection ? "multiple" : "single" }
+        onCellClicked={ handleCellClick }
+        onColumnMoved={ handleColumnMove }
+      />
     </div>
   );
 }
