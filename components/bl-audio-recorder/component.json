@@ -232,11 +232,6 @@
       "label": "Pause/Resume in"
     },
     {
-      "id": "getUrl",
-      "label": "Get URL from recorded file in",
-      "hasReturn": true
-    },
-    {
       "id": "clearRecord",
       "label": "Clear Record in"
     }
