@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+const { normalizeDimensionValue } = BackendlessUI.CSSUtils;
+
 const ESCAPE_KEY_CODE = 27;
 
 const Placement = {
@@ -51,10 +53,8 @@ export function useDrawerActions(component, eventHandlers, drawerContentRef, dra
   }, [animationDuration, drawerContainerRef, drawerContentRef, onClose, placement, visibility]);
 
   useEffect(() => {
-    if (defaultOpen) {
-      setVisibility(true);
-    }
-  }, [])
+    setVisibility(defaultOpen);
+  }, [defaultOpen]);
 
   component.open = event => openContent(event);
   component.close = event => closeContent(event);
@@ -66,7 +66,7 @@ export function useDrawerStyles(component) {
   const { placement, size, backdropVisibility, animationDuration } = component;
 
   const sizeStyles = useMemo(() => {
-    const validSize = ensureMeasure('width', size);
+    const validSize = normalizeDimensionValue(size);
 
     return SizeMap[placement](validSize);
   }, [placement, size]);
@@ -117,12 +117,4 @@ export function useCloseEvents(drawerContentRef, closeContent, component) {
       document.removeEventListener('keydown', handleEscClick);
     };
   }, []);
-}
-
-// TODO: Waiting for validation function from SDK Utils (MARKET-1835)
-// TEMPORARY SOLUTION
-function ensureMeasure(propertyName, value) {
-  const dimension = value.replace(/ /g, '');
-
-  return CSS.supports(propertyName, dimension) ? dimension : parseFloat(dimension) + 'px';
 }
