@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Mapbox from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
@@ -176,22 +176,14 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 
 };
 
-/*export const useMarkers = (markers, mapRef, onMarkerClick) => {
-  const [markersArray, setMarkersArray] = useState([]);
-
-  const markers = useMemo(() => {
-
-  },[markers])
+export const useMarkers = (markers, mapRef, onMarkerClick) => {
+  const markerElements = useRef();
 
   useEffect(() => {
+    removeMarkers(markerElements.current);
+
     if (markers?.length) {
-      markersArray.forEach(marker => {
-        marker.remove();
-      });
-
-      setMarkersArray([]);
-
-      markers.forEach(markerItem => {
+      markerElements.current = markers.map(markerItem => {
         const { color, description, data, coordinates: { lat, lng } } = markerItem;
 
         const marker = new Marker({ color })
@@ -204,19 +196,37 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
           const coordinates = { lat, lng };
 
           onMarkerClick({ coordinates, description: description || '', data });
+
+          changeMarkerColor(marker);
         });
 
         if (description) {
           popup.setText(description);
         }
 
-        setMarkersArray(prev => [...prev, marker]);
+        popup.on('close', () => {
+          changeMarkerColor(marker);
+        });
 
         marker.setPopup(popup);
+
+        return marker;
       });
     }
   }, [markers]);
-};*/
+};
+
+const removeMarkers = markers => {
+  if (markers?.length) {
+    markers.forEach(marker => {
+      marker.remove();
+    });
+  }
+};
+
+const changeMarkerColor = marker => {
+  marker.getElement().childNodes[0].classList.toggle('mapbox-marker-active');
+};
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
   polygonsArray.forEach(polygon => {
@@ -335,172 +345,3 @@ export const useGeolocation = (mapRef, onDeterminingGeoposition, map) => {
     });
   });
 };
-
-const isEqual = (first, second) => {
-  if (first === second) {
-    return true;
-  }
-  if ((first === undefined || second === undefined || first === null || second === null)
-    && (first || second)) {
-    return false;
-  }
-  const firstType = first?.constructor.name;
-  const secondType = second?.constructor.name;
-  if (firstType !== secondType) {
-    return false;
-  }
-  if (firstType === 'Array') {
-    if (first.length !== second.length) {
-      return false;
-    }
-    let equal = true;
-    for (let i = 0; i < first.length; i++) {
-      if (!isEqual(first[i], second[i])) {
-        equal = false;
-        break;
-      }
-    }
-    return equal;
-  }
-  if (firstType === 'Object') {
-    let equal = true;
-    const fKeys = Object.keys(first);
-    const sKeys = Object.keys(second);
-    if (fKeys.length !== sKeys.length) {
-      return false;
-    }
-    for (let i = 0; i < fKeys.length; i++) {
-      if (first[fKeys[i]] && second[fKeys[i]]) {
-        if (first[fKeys[i]] === second[fKeys[i]]) {
-          continue; // eslint-disable-line
-        }
-        if (first[fKeys[i]] && (first[fKeys[i]].constructor.name === 'Array'
-          || first[fKeys[i]].constructor.name === 'Object')) {
-          equal = isEqual(first[fKeys[i]], second[fKeys[i]]);
-          if (!equal) {
-            break;
-          }
-        } else if (first[fKeys[i]] !== second[fKeys[i]]) {
-          equal = false;
-          break;
-        }
-      } else if ((first[fKeys[i]] && !second[fKeys[i]]) || (!first[fKeys[i]] && second[fKeys[i]])) {
-        equal = false;
-        break;
-      }
-    }
-    return equal;
-  }
-  return first === second;
-};
-
-export function get(object, path) {
-  const _path = Array.isArray(path)
-    ? path
-    : path.split('.');
-  if (object && _path.length) return ownGet(object[_path.shift()], _path);
-  return object;
-}
-
-export const isDataChanged = (prevData = {}, nextData = {}, propsKeys, strictEqual = false) => {
-  const isEqual = strictEqual ? (a, b) => a === b : isEqual;
-
-  if (!propsKeys || !propsKeys.length) {
-    return !isEqual(prevData, nextData);
-  }
-
-  for (let i = 0; i < propsKeys.length; i++) {
-    const propName = propsKeys[i];
-
-    if (!isEqual(get(prevData, propName), get(nextData, propName))) {
-      return true;
-    }
-  }
-
-  return false;
-};
-
-export function usePrevData(data) {
-  const prevRef = useRef()
-  const prevData = prevRef.current
-
-  useEffect(() => {
-    prevRef.current = data
-  })
-
-  return prevData
-}
-
-export const useMarkers = (markers, mapRef, onMarkerClick) => {
-  const prevData = usePrevData(markers);
-  const markerElements = useRef();
-
-
-  useEffect(() => {
-    if (isDataChanged(prevData, markers)) {
-      markerElements.current?.forEach(marker => {
-        marker.remove();
-      });
-
-      markerElements.current = markers.map(markerItem => {
-        const { color, description, data, coordinates: { lat, lng } } = markerItem;
-
-        const marker = new Marker({ color })
-          .setLngLat([lng, lat])
-          .addTo(mapRef.current);
-
-        const popup = new Popup();
-
-        popup.on('open', () => {
-          const coordinates = { lat, lng };
-
-          onMarkerClick({ coordinates, description: description || '', data });
-        });
-
-        if (description) {
-          popup.setText(description);
-        }
-
-        marker.setPopup(popup);
-
-        return marker;
-      });
-    }
-
-    return markerElements.current;
-
-  }, [markers]);
-}
-
-//Marker update color
-/*
-          const el = marker.getElement().addEventListener('click', () => {
-            const element = marker.getElement();
-            const elem = document.querySelector('svg path[fill="' + marker._color + '"]').setAttribute('fill', 'red');
-            console.log(elem);
-            .setAttribute('fill', 'red');
-            marker._element.childNodes[0].childNodes[2].attributes.fill.value = 'red';
-            marker._color = 'red';
-            marker._update();
-
-            console.log(marker);
-            console.log(marker.getElement())
-            onMarkerClick({ coordinates, description: description || '', data, element });
-          })
-
-                  popup.on('open', () => {
-          const coordinates = { lat, lng };
-
-          onMarkerClick({ coordinates, description: description || '', data });
-
-          marker._element.childNodes[0].childNodes[2].attributes.fill.value = 'red';
-          marker._color = 'red';
-          marker._update({color:'red'});
-        });
-
-        popup.on('close', () => {
-          marker._element.childNodes[0].childNodes[2].attributes.fill.value = color;
-          marker._color = color;
-          marker._update(()=> newMarker({color}));
-        })
-*/

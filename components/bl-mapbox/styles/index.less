@@ -4,6 +4,7 @@
 
 @bl-customComponent-mapbox-height: 400px;
 @bl-customComponent-mapbox-width: 600px;
+@bl-customComponent-mapbox-marker-click-color: red;
 
 .bl-customComponent-mapbox {
   height: @bl-customComponent-mapbox-height;
@@ -16,5 +17,9 @@
 
   .mapboxgl-ctrl-geocoder--input {
     padding: 10px 10px 10px 30px !important;
+  }
+
+  .mapbox-marker-active path {
+    fill: @bl-customComponent-mapbox-marker-click-color;
   }
 }
