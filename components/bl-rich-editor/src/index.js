@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { Toolbar } from './toolbar';
 import { insertHTML, useQuillLibrary } from './use-quill-library';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function RichEditor({ component, eventHandlers, elRef }) {
   const {
@@ -37,15 +37,15 @@ export default function RichEditor({ component, eventHandlers, elRef }) {
 
   const styles = {
     display    : display ? 'flex' : 'none',
-    borderWidth: ensureMeasure(borderWidth),
+    borderWidth: normalizeDimensionValue(borderWidth),
     borderStyle,
     borderColor,
     ...style,
   };
 
   const editorStyles = {
-    height   : ensureMeasure(editorHeight),
-    minHeight: ensureMeasure(editorMinHeight),
+    height   : normalizeDimensionValue(editorHeight),
+    minHeight: normalizeDimensionValue(editorMinHeight),
   };
 
   return (
@@ -55,10 +55,6 @@ export default function RichEditor({ component, eventHandlers, elRef }) {
       <div ref={ quillRef } id="editor" style={ editorStyles } onBlur={ blur } onFocus={ focus }/>
     </div>
   );
-}
-
-export function ensureMeasure(dimension) {
-  return String(Number(dimension)) === dimension ? dimension + 'px' : dimension;
 }
 
 function useComponentActions(component, editorRef) {

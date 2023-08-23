@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 
 import Quill from './lib/quil.min';
 
-const FontSize = [
+export const APP_FONT_SIZE = 'inherit';
+export const FontSize = [
   '8px', '9px', '10px', '11px', '12px', '14px', '16px', '18px', '20px', '22px', '24px', '26px', '28px', '36px', '48px',
 ];
 
@@ -23,7 +24,24 @@ export const FontFamilyMap = {
   VERDANA            : 'verdana, geneva, sans-serif',
 };
 
-const FontFamily = Object.values(FontFamilyMap);
+export const FontFamilyLabels = {
+  [FontFamilyMap.ARIAL]              : 'Arial',
+  [FontFamilyMap.COMIC_SANS_MS]      : 'Comic Sans MS',
+  [FontFamilyMap.COURIER_NEW]        : 'Courier New',
+  [FontFamilyMap.GEORGIA]            : 'Georgia',
+  [FontFamilyMap.HELVETICA]          : 'Helvetica',
+  [FontFamilyMap.LUCIDA_SANS_UNICODE]: 'Lucida Sans Unicode',
+  [FontFamilyMap.ANDALE_MONO]        : 'Andale Mono',
+  [FontFamilyMap.BOOK_ANTIQUA]       : 'Book Antiqua',
+  [FontFamilyMap.IMPACT]             : 'Impact',
+  [FontFamilyMap.TAHOMA]             : 'Tahoma',
+  [FontFamilyMap.TERMINAL]           : 'Terminal',
+  [FontFamilyMap.TIMES_NEW_ROMAN]    : 'Times New Roman',
+  [FontFamilyMap.TREBUCHET_MS]       : 'Trebuchet MS',
+  [FontFamilyMap.VERDANA]            : 'Verdana',
+};
+
+export const FontFamily = Object.values(FontFamilyMap);
 
 const BlockquoteStyles = {
   borderLeft  : '4px solid #ccc',
@@ -40,8 +58,8 @@ const CodeStyles = {
   backgroundImage: 'linear-gradient(rgba(209, 209, 209, 0.5), rgba(209, 209, 209, 0.5))',
 };
 
-export const Size = Quill.import('formats/size');
-export const Font = Quill.import('formats/font');
+const Size = Quill.import('formats/size');
+const Font = Quill.import('formats/font');
 const AlignStyle = Quill.import('attributors/style/align');
 const DirectionStyle = Quill.import('attributors/style/direction');
 const FontStyle = Quill.import('attributors/style/font');
@@ -58,13 +76,18 @@ FontStyle.whitelist = FontFamily;
 addInlineStyles(Blockquote, BlockquoteStyles);
 addInlineStyles(CodeBlock, CodeStyles);
 
-function registerBlockFormat(defaultFontFamily, defaultFontSize) {
+function registerBlockFormat(defaultFontFamily, defaultFontSize, quillRef) {
+  const computedStyle = getComputedStyle(quillRef.current);
+  const defaultFont = FontFamilyMap[defaultFontFamily] || defaultFontFamily;
+  const font = FontFamilyMap[defaultFontFamily] ? defaultFont : computedStyle.fontFamily;
+  const fontSize = defaultFontSize === APP_FONT_SIZE ? computedStyle.fontSize : defaultFontSize;
+
   class Block extends BlockPrototype {
     constructor(domNode, value) {
       super(domNode, value);
 
-      this.format('fontSize', defaultFontSize);
-      this.format('fontFamily', defaultFontFamily);
+      this.format('fontSize', fontSize);
+      this.format('fontFamily', font);
     }
 
     format(name, value) {
@@ -95,7 +118,7 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
   const contentRef = useRef(null);
 
   useEffect(() => {
-    registerBlockFormat(FontFamilyMap[defaultFontFamily], defaultFontSize);
+    registerBlockFormat(defaultFontFamily, defaultFontSize, quillRef);
 
     editorRef.current = new Quill(quillRef.current, {
       bounds : quillRef.current,
@@ -126,7 +149,7 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
 
       onTextChange();
     });
-  }, [scrollingContainer]);
+  }, [scrollingContainer, placeholder]);
 
   useEffect(() => {
     if (content === undefined || content === contentRef.current) {

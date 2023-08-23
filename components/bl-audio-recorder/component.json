@@ -16,7 +16,7 @@
       "defaultValue": true,
       "hasLogicHandler": true,
       "handlerId": "playerLogic",
-      "handlerLabel": "Show PLayer Logic",
+      "handlerLabel": "Show Player Logic",
       "handlerDescription": "This is a handler to control audio player visibility.",
       "dataBinding": true,
       "settingTooltip": "Toggle the audio player visibility."
@@ -230,11 +230,6 @@
     {
       "id": "pause",
       "label": "Pause/Resume in"
-    },
-    {
-      "id": "getUrl",
-      "label": "Get URL from recorded file in",
-      "hasReturn": true
     },
     {
       "id": "clearRecord",

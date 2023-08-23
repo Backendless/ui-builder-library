@@ -1,7 +1,9 @@
-import { ensureMeasure } from './index';
-import { Font, FontFamilyMap, Size } from './use-quill-library';
+import { APP_FONT_SIZE, FontFamily, FontFamilyLabels, FontFamilyMap, FontSize } from './use-quill-library';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
+
+const APP_FONT_SIZE_LABEL = 'Font Size';
+const APP_FONT_LABEL = 'Font';
 
 export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
   const {
@@ -17,8 +19,8 @@ export function Toolbar({ component, toolbarRef, toolbarVisibility }) {
 
   const styles = {
     display          : toolbarVisibility && optionsVisibility ? 'block' : 'none',
-    borderBottomWidth: toolbarPosition === 'top' ? ensureMeasure(borderWidth) : '0',
-    borderTopWidth   : toolbarPosition === 'bottom' ? ensureMeasure(borderWidth) : '0',
+    borderBottomWidth: toolbarPosition === 'top' ? normalizeDimensionValue(borderWidth) : '0',
+    borderTopWidth   : toolbarPosition === 'bottom' ? normalizeDimensionValue(borderWidth) : '0',
     order            : toolbarPosition === 'bottom' ? '2' : '0',
     borderColor,
     borderStyle,
@@ -89,14 +91,14 @@ const InlineFormattingButtons = React.memo(() => (
 
 const FontSelect = React.memo(({ defaultFontFamily }) => (
   <span className="ql-formats">
-    <select className="ql-font" defaultValue={ FontFamilyMap[defaultFontFamily] }>
-      { Font.whitelist.map((font, index) => {
-        const fontLabel = font.split(',')[0].trim().replace(/(^|\s)\S/g, letter => letter.toUpperCase());
+    <select className="ql-font" defaultValue={ FontFamilyMap[defaultFontFamily] || defaultFontFamily }>
+      { !FontFamilyMap[defaultFontFamily] && (
+        <option value={ defaultFontFamily }>{ APP_FONT_LABEL }</option>
+      ) }
 
-        return (
-          <option value={ font } key={ index }>{ fontLabel }</option>
-        );
-      }) }
+      { FontFamily.map((font, index) => (
+        <option value={ font } key={ index }>{ FontFamilyLabels[font] }</option>
+      )) }
     </select>
   </span>
 ));
@@ -104,7 +106,11 @@ const FontSelect = React.memo(({ defaultFontFamily }) => (
 const SizeSelect = React.memo(({ defaultFontSize }) => (
   <span className="ql-formats">
     <select className="ql-size" defaultValue={ defaultFontSize }>
-      { Size.whitelist.map((size, index) => (
+      { defaultFontSize === APP_FONT_SIZE && (
+        <option value={ defaultFontSize }>{ APP_FONT_SIZE_LABEL }</option>
+      ) }
+
+      { FontSize.map((size, index) => (
         <option value={ size } key={ index }>{ size }</option>
       )) }
     </select>
