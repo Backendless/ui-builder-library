@@ -27,8 +27,6 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   const rowsToDisplay = useMemo(() => rowsValidation(rows), [rows]);
 
-  useActions({ component, gridRef });
-
   useEffect(() => {
     setColumns(columnDefs || []);
     setRows(rowsData || []);
@@ -50,6 +48,24 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const handleColumnMove = useCallback(() => {
     onColumnMoved({ columns: gridRef.current.columnApi.getColumnState() });
   }, []);
+
+  const sortByColIdAsc = useCallback(columnId => {
+    gridRef.current.columnApi.applyColumnState({
+      state: [{ colId: columnId, sort: 'asc' }], defaultState: { sort: null }
+    });
+  }, []);
+
+  const sortByColIdDesc = useCallback(columnId => {
+    gridRef.current.columnApi.applyColumnState({
+      state: [{ colId: columnId, sort: 'desc' }], defaultState: { sort: null }
+    });
+  }, []);
+
+  const clearSort = useCallback(() => {
+    gridRef.current.columnApi.applyColumnState({ defaultState: { sort: null } });
+  }, []);
+
+  useActions({ component, gridRef, sortByColIdAsc, sortByColIdDesc, clearSort });
 
   const styles = useStyles(style, width, height);
   const classes = cn(
@@ -86,7 +102,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   );
 }
 
-function useActions({ component, gridRef }) {
+function useActions({ component, gridRef, sortByColIdAsc, sortByColIdDesc, clearSort }) {
   Object.assign(component, {
     getRowsData: () => {
       const rowsData = [];
@@ -97,7 +113,10 @@ function useActions({ component, gridRef }) {
 
       return rowsData;
     },
-    getColumnState: () => gridRef.current.columnApi.getColumnState(),
-    getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data)
+    getColumnState : () => gridRef.current.columnApi.getColumnState(),
+    getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data),
+    sortByColIdAsc : columnId => sortByColIdAsc(columnId),
+    sortByColIdDesc: columnId => sortByColIdDesc(columnId),
+    clearSort      : () => clearSort()
   });
 }
