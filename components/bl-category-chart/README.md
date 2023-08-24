@@ -30,7 +30,6 @@ The Category Chart component allows you to display data in the form of charts. Y
 
 **Dimensions**
 ````
-@bl-customComponent-categoryChart-disabled-cursor: default;
 @bl-customComponent-categoryChart-disabled-opacity: 0.38;
 ````
 
