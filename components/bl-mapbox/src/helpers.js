@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Mapbox from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
@@ -51,14 +51,6 @@ export class MapController {
     this.mapRef.current.addControl(control, position);
   }
 
-  removeLayer(id) {
-    this.mapRef.current.removeLayer(id);
-  }
-
-  removeSource(id) {
-    this.mapRef.current.removeSource(id);
-  }
-
   addPolygonOutline(id, outlineColor, outlineWidth) {
     this.mapRef.current.addLayer({
       id    : `${ id }-outline`,
@@ -70,6 +62,14 @@ export class MapController {
         'line-width': outlineWidth,
       },
     });
+  }
+
+  removePolygon(polygon) {
+    if (polygon.outlineWidth > 0) {
+      this.mapRef.current.removeLayer(`${ polygon.id }-outline`);
+    }
+    this.mapRef.current.removeLayer(`${ polygon.id }-layer`);
+    this.mapRef.current.removeSource(polygon.id);
   }
 }
 
@@ -177,51 +177,61 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 };
 
 export const useMarkers = (markers, mapRef, onMarkerClick) => {
-  const [markersArray, setMarkersArray] = useState([]);
+  const markerElements = useRef();
 
   useEffect(() => {
+    removeMarkers(markerElements.current);
+
     if (markers?.length) {
-      markersArray.forEach(marker => {
-        marker.remove();
-      });
-
-      setMarkersArray([]);
-
-      markers.forEach(markerItem => {
-        const { color, description } = markerItem;
+      markerElements.current = markers.map(markerItem => {
+        const { color, description, data, coordinates: { lat, lng } } = markerItem;
 
         const marker = new Marker({ color })
-          .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
+          .setLngLat([lng, lat])
           .addTo(mapRef.current);
 
         const popup = new Popup();
 
         popup.on('open', () => {
-          const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
+          const coordinates = { lat, lng };
 
-          onMarkerClick({ coordinates, description: description || '' });
+          onMarkerClick({ coordinates, description: description || '', data });
+
+          changeMarkerColor(marker);
         });
 
         if (description) {
           popup.setText(description);
         }
 
-        setMarkersArray(prev => [...prev, marker]);
+        popup.on('close', () => {
+          changeMarkerColor(marker);
+        });
 
         marker.setPopup(popup);
+
+        return marker;
       });
     }
   }, [markers]);
 };
 
+const removeMarkers = markers => {
+  if (markers?.length) {
+    markers.forEach(marker => {
+      marker.remove();
+    });
+  }
+};
+
+const changeMarkerColor = marker => {
+  marker.getElement().classList.toggle('marker-root--active');
+};
+
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
   polygonsArray.forEach(polygon => {
     if (mapRef.current.getSource(polygon.id)) {
-      if (polygon.outlineWidth > 0) {
-        map.removeLayer(`${ polygon.id }-outline`);
-      }
-      map.removeLayer(`${ polygon.id }-layer`);
-      map.removeSource(polygon.id);
+      map.removePolygon(polygon);
     }
   });
 
