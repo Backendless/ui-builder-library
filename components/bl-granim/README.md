@@ -47,7 +47,9 @@ More information about Granim you can find in the [Granim](https://github.com/sa
 
 **Dimensions**
 ```
-@bl-customComponent-granim-size: 100%;
+@bl-customComponent-granim-width: 100%;
+@bl-customComponent-granim-canvas-width: 100%;
+@bl-customComponent-granim-canvas-height: 100%;
 ```
 
 **Other**
