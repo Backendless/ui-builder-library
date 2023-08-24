@@ -170,7 +170,7 @@
       "name": "type",
       "label": "Type",
       "showInSettings": true,
-      "defaultValue": "year",
+      "defaultValue": "month",
       "hasLogicHandler": true,
       "handlerId": "typeLogic",
       "handlerLabel": "Type Logic",
@@ -205,7 +205,7 @@
       "name": "subType",
       "label": "Sub Type",
       "showInSettings": true,
-      "defaultValue": "month",
+      "defaultValue": "day",
       "hasLogicHandler": true,
       "handlerId": "subTypeLogic",
       "handlerLabel": "Sub Type Logic",
@@ -422,7 +422,6 @@
       "name": "scaleOpacityBaseColor",
       "label": "Scale Opacity Base Color",
       "showInSettings": true,
-      "defaultValue": "#000000",
       "hasLogicHandler": true,
       "handlerId": "scaleOpacityBaseColorLogic",
       "handlerLabel": "Scale Opacity Base Color Logic",
@@ -831,7 +830,7 @@
     },
     {
       "name": "groupYLogic",
-      "label": "Group Logic",
+      "label": "Group Y Logic",
       "output": true,
       "contextBlocks": [
         {
@@ -878,7 +877,7 @@
     },
     {
       "name": "mouseOver",
-      "label": "Mouse Over",
+      "label": "Mouse Over Event",
       "handlerDescription": "This event is triggered when the mouse enter a subDomain cell."
     },
     {

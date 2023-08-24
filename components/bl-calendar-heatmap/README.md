@@ -23,14 +23,14 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 | Max Date: `maxDate`                               | Text     |               | Max Date Logic                 | YES          | YES        | Allows to determine the maximum allowed date. Used on navigation, to set an upper bound when navigating forward.                                                                                                                                      |
 | Highlight Date: `highlightDate`                   | Text     |               | Highlight Date Logic           | YES          | YES        | Allows to determine the array of dates to highlight. Highlighted subDomain cells are given a special class to make them stand out.                                                                                                                    |
 | Range: `range`                                    | Range    | 12            | Range Logic                    | YES          | YES        | Allows to determine the number of domains to show.                                                                                                                                                                                                    |
-| Type: `type`                                      | Select   | "year"        | Type Logic                     | YES          | YES        | Allows to determine the domain's type, representing a time unit(year, month, week, day, hour).                                                                                                                                                        |
-| Sub Type: `subType`                               | Select   | "month"       | Sub Type Logic                 | YES          | YES        | Allows to determine the SubDomain's type, representing a time unit. This is the time unit represented by each cell in the calendar. The subDomain should always be smaller than the domain type.                                                      |
+| Type: `type`                                      | Select   | "month"       | Type Logic                     | YES          | YES        | Allows to determine the domain's type, representing a time unit(year, month, week, day, hour).                                                                                                                                                        |
+| Sub Type: `subType`                               | Select   | "day"         | Sub Type Logic                 | YES          | YES        | Allows to determine the SubDomain's type, representing a time unit. This is the time unit represented by each cell in the calendar. The subDomain should always be smaller than the domain type.                                                      |
 | Sort: `sort`                                      | Select   | "asc"         | Sort Logic                     | YES          | YES        | Allows to determine the sort order of the domains.                                                                                                                                                                                                    |
 | Sub Sort: `subSort`                               | Select   | "asc"         | Sub Sort Logic                 | YES          | YES        | Allows to determine the sort order of the subDomains.                                                                                                                                                                                                 |
 | Group: `groupY`                                   | Select   | "sum"         |                                | YES          | YES        | Allows to determine how to group all values from the same subDomain.                                                                                                                                                                                  |
 | Scale Type: `scaleType`                           | Select   | "linear"      | Scale Type Logic               | NO           | YES        | Allows to determine the scale type used to encode colors                                                                                                                                                                                              |
 | Scale Domain: `scaleDomain`                       | Text     |               | Scale Domain Logic             | YES          | YES        | Allows to determine an array of at least 2 values, specifying the minimum and maximum value of your dataset. By default min and max values of the specified dataset. When using the threshold's type, domain should be a list of different threshold. |
-| Scale Opacity Base Color: `scaleOpacityBaseColor` | Color    | "#000000"     | Scale Opacity Base Color Logic | YES          | YES        | Allows to determine the base color.                                                                                                                                                                                                                   |
+| Scale Opacity Base Color: `scaleOpacityBaseColor` | Color    |               | Scale Opacity Base Color Logic | YES          | YES        | Allows to determine the base color.                                                                                                                                                                                                                   |
 | Scale Color Scheme: `scaleColorScheme`            | Text     |               | Scale Color Scheme Logic       | YES          | YES        | Allows to to determine the color scheme name from d3-scale-chromatic.                                                                                                                                                                                 |
 | Scale Color Range: `scaleColorRange`              | Text     |               | Scale Color Range Logic        | YES          | YES        | Allows to determine the array of colors. Expects a minimum of 2 colors.                                                                                                                                                                               |
 | Gutter: `gutter`                                  | Text     |               | Gutter Logic                   | YES          | YES        | Allows to determine the space between each domain, in pixel.                                                                                                                                                                                          |
@@ -134,6 +134,20 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 
 ## <a id="examples"></a> Codeless Examples
 
+Terminology:
+
+![](example-images/scheme.png)
+
 Addition  calendar data:
 
 ![](example-images/calendarData-example.png)
+
+## Usage guide
+
+1. Add the component to the page.
+2. Set the data source URL in format JSON, CSV, TSV, but you need select appropriate `Data Type`. Or set JSON in `Data` by UI settings, Logic handler or Data binding.
+3. Set the `Date Property Name` and `Value Property Name` for component know how to extract the date and value property from your data.
+4. Set the `Start Date` to determine the calendar's start date. By default, the calendar will start from the current date.
+5. Now you can see result in preview mode.
+
+Scaling the calendar:
