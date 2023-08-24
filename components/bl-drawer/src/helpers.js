@@ -27,7 +27,7 @@ const TransformMap = {
 
 export function useDrawerActions(component, eventHandlers, drawerContentRef, drawerContainerRef) {
   const { onOpen, onClose } = eventHandlers;
-  const { placement, animationDuration, defaultOpen } = component;
+  const { placement, animationDuration, isOpen } = component;
 
   const [visibility, setVisibility] = useState(false);
 
@@ -53,8 +53,8 @@ export function useDrawerActions(component, eventHandlers, drawerContentRef, dra
   }, [animationDuration, drawerContainerRef, drawerContentRef, onClose, placement, visibility]);
 
   useEffect(() => {
-    setVisibility(defaultOpen);
-  }, [defaultOpen]);
+    setVisibility(isOpen);
+  }, [isOpen]);
 
   component.open = event => openContent(event);
   component.close = event => closeContent(event);
