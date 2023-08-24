@@ -19,7 +19,7 @@ to open a panel that is overlaid on top of a page and slides in from the edge of
 | Close On Click Outside  | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables closing the drawer window by clicking outside it.        |
 | Close On Escape         | *Checkbox*                                            | `true`        |                    | NO           | YES        | Enables closing the drawer window by pressing the Escape button. |
 | Animation Duration (ms) | *Range*                                               | 300           |                    | NO           | YES        | Specifies how long the drawer window opens and closes.           |
-| Default Open            | *Checkbox*                                            | `false`       | Default Open Logic | NO           | YES        | Enables showing the drawer window after the page is loaded.      |
+| Is Open                 | *Checkbox*                                            | `false`       | Is Open Logic      | NO           | YES        | Controls whether the drawer window is open or closed.            |
 
 ## Events
 
