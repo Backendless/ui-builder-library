@@ -49,15 +49,9 @@ export default function DataGridComponent({ component, eventHandlers }) {
     onColumnMoved({ columns: gridRef.current.columnApi.getColumnState() });
   }, []);
 
-  const sortByColIdAsc = useCallback(columnId => {
+  const sortByColumnId = useCallback((columnId, direction) => {
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: columnId, sort: 'asc' }], defaultState: { sort: null }
-    });
-  }, []);
-
-  const sortByColIdDesc = useCallback(columnId => {
-    gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: columnId, sort: 'desc' }], defaultState: { sort: null }
+      state: [{ colId: columnId, sort: direction.toLowerCase() }], defaultState: { sort: null }
     });
   }, []);
 
@@ -65,7 +59,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     gridRef.current.columnApi.applyColumnState({ defaultState: { sort: null } });
   }, []);
 
-  useActions({ component, gridRef, sortByColIdAsc, sortByColIdDesc, clearSort });
+  useActions({ component, gridRef, sortByColumnId, clearSort });
 
   const styles = useStyles(style, width, height);
   const classes = cn(
@@ -102,7 +96,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   );
 }
 
-function useActions({ component, gridRef, sortByColIdAsc, sortByColIdDesc, clearSort }) {
+function useActions({ component, gridRef, sortByColumnId, clearSort }) {
   Object.assign(component, {
     getRowsData: () => {
       const rowsData = [];
@@ -115,8 +109,7 @@ function useActions({ component, gridRef, sortByColIdAsc, sortByColIdDesc, clear
     },
     getColumnState : () => gridRef.current.columnApi.getColumnState(),
     getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data),
-    sortByColIdAsc : columnId => sortByColIdAsc(columnId),
-    sortByColIdDesc: columnId => sortByColIdDesc(columnId),
+    sortByColumnId : (columnId, direction) => sortByColumnId(columnId, direction),
     clearSort      : () => clearSort()
   });
 }
