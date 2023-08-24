@@ -225,7 +225,7 @@ const removeMarkers = markers => {
 };
 
 const changeMarkerColor = marker => {
-  marker.getElement().childNodes[0].classList.toggle('mapbox-marker-active');
+  marker.getElement().classList.toggle('marker-root--active');
 };
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {

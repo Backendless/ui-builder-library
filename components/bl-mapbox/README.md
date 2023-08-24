@@ -72,7 +72,7 @@ The component covers basic features of the library and allows you in a couple cl
 ````
 @bl-customComponent-mapbox-height: 400px;
 @bl-customComponent-mapbox-width: 600px;
-@bl-customComponent-mapbox-marker-click-color: red;
+@bl-customComponent-mapbox-marker-active-color: #3FB1CE;
 ````
 ## Codeless Examples
 
