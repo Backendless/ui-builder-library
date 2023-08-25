@@ -41,14 +41,6 @@ Animated Box is the component that can be used in Backendless [UI-Builder](https
 @bl-customComponent-animated-box-width: 100%;
 ```
 
-**Other**
-````
-@bl-customComponent-animated-box-animation-fill-mode: both;
-@bl-customComponent-animated-box-animate-duration: 1s;
-@bl-customComponent-animated-box-animate-delay: 0s;
-@bl-customComponent-animated-box-animate-iteration-count: infinite;
-````
-
 ## Examples
 
 Below is an Example highlighting how to use the Animated Box component:
