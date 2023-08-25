@@ -297,22 +297,16 @@
       "color": "#204994"
     },
     {
-      "id": "sortByColIdAsc",
-      "label": "Sort By Column Id Asc in",
+      "id": "sortByColumnId",
+      "label": "Sort By Column Id in",
       "inputs": [
         {
           "id": "columnId",
           "label": "Column Id"
-        }
-      ]
-    },
-    {
-      "id": "sortByColIdDesc",
-      "label": "Sort By Column Id Desc in",
-      "inputs": [
+        },
         {
-          "id": "columnId",
-          "label": "Column Id"
+          "id": "direction",
+          "label": "Direction"
         }
       ]
     },

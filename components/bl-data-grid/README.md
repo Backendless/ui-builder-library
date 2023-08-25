@@ -100,3 +100,13 @@ There is also a `Multiple Rows Selection` property for selecting multiple rows. 
 Use `Get Selected Rows of Data Grid` action to get all selected rows:
 
 ![guide example](./example-images/get-selected-rows-action.png)
+
+## <a id="adding-default-column-sorting-guide"></a>Adding Default Column Sorting Guide
+
+For the required column, add a `sort` property with a value of `asc` or `desc` depending on what you need.
+
+1. Using the settings:
+![guide example](./example-images/add-default-column-sort-json.png)
+
+2. Using the codeless:
+![guide example](./example-images/add-default-column-sort-codeless.png)
