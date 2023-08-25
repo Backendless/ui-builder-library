@@ -39,11 +39,13 @@ If you want to know more about this component, you can [follow the link.](https:
 
 ## Actions
 
-| Action                         | Inputs     | Returns                                 |
-|--------------------------------|------------|-----------------------------------------|
-| Get Selected Rows of Data Grid |            | `JSON`: list of selected rows           |
-| Get Columns of Data Grid       |            | `JSON`: list of moved columns           |
-| Get Rows Data of Data Grid     |            | `JSON`: list of rows                    |
+| Action                         | Inputs                              | Returns                       |
+|--------------------------------|-------------------------------------|-------------------------------|
+| Get Selected Rows of Data Grid |                                     | `JSON`: list of selected rows |
+| Get Columns of Data Grid       |                                     | `JSON`: list of moved columns |
+| Get Rows Data of Data Grid     |                                     | `JSON`: list of rows          |
+| Sort By Column Id in Data Grid | columnId: `Text`, direction: `Text` |                               |
+| Clear Sort of Data Grid        |                                     |                               |
 
 ## <a id="examples"></a> Codeless Examples
 

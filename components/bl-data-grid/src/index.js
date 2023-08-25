@@ -33,8 +33,6 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   const rowsToDisplay = useMemo(() => rowsValidation(rows), [rows]);
 
-  useActions({ component, gridRef });
-
   useEffect(() => {
     setColumns(columnDefs || []);
     setRows(rowsData || []);
@@ -61,6 +59,18 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const handleColumnMove = useCallback(() => {
     onColumnMoved({ columns: gridRef.current.columnApi.getColumnState() });
   }, []);
+
+  const sortByColumnId = useCallback((columnId, direction) => {
+    gridRef.current.columnApi.applyColumnState({
+      state: [{ colId: columnId, sort: direction.toLowerCase() }], defaultState: { sort: null }
+    });
+  }, []);
+
+  const clearSort = useCallback(() => {
+    gridRef.current.columnApi.applyColumnState({ defaultState: { sort: null } });
+  }, []);
+
+  useActions({ component, gridRef, sortByColumnId, clearSort });
 
   const styles = useStyles(style, width, height);
   const classes = cn(
@@ -98,7 +108,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   );
 }
 
-function useActions({ component, gridRef }) {
+function useActions({ component, gridRef, sortByColumnId, clearSort }) {
   Object.assign(component, {
     getRowsData: () => {
       const rowsData = [];
@@ -109,7 +119,9 @@ function useActions({ component, gridRef }) {
 
       return rowsData;
     },
-    getColumnState: () => gridRef.current.columnApi.getColumnState(),
-    getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data)
+    getColumnState : () => gridRef.current.columnApi.getColumnState(),
+    getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data),
+    sortByColumnId : (columnId, direction) => sortByColumnId(columnId, direction),
+    clearSort      : () => clearSort()
   });
 }

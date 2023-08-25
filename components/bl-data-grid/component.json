@@ -295,6 +295,30 @@
       "label": "Get Rows Data of ",
       "hasReturn": true,
       "color": "#204994"
+    },
+    {
+      "id": "sortByColIdAsc",
+      "label": "Sort By Column Id Asc in",
+      "inputs": [
+        {
+          "id": "columnId",
+          "label": "Column Id"
+        }
+      ]
+    },
+    {
+      "id": "sortByColIdDesc",
+      "label": "Sort By Column Id Desc in",
+      "inputs": [
+        {
+          "id": "columnId",
+          "label": "Column Id"
+        }
+      ]
+    },
+    {
+      "id": "clearSort",
+      "label": "Clear Sort of"
     }
   ]
 }
