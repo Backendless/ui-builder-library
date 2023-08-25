@@ -1,14 +1,6 @@
 @bl-customComponent-animated-box-width: 100%;
-@bl-customComponent-animated-box-animation-fill-mode: both;
-@bl-customComponent-animated-box-animate-duration: 1s;
-@bl-customComponent-animated-box-animate-delay: 0s;
-@bl-customComponent-animated-box-animate-iteration-count: infinite;
 
 .bl-customComponent-animated-box {
-  --animate-duration: @bl-customComponent-animated-box-animate-duration;
-  --animate-delay: @bl-customComponent-animated-box-animate-delay;
-  --animate-iteration-count: @bl-customComponent-animated-box-animate-iteration-count;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,8 +14,8 @@
     animation-delay: var(--animate-delay);
     -webkit-animation-iteration-count: var(--animate-iteration-count);
     animation-iteration-count: var(--animate-iteration-count);
-    -webkit-animation-fill-mode: @bl-customComponent-animated-box-animation-fill-mode;
-    animation-fill-mode: @bl-customComponent-animated-box-animation-fill-mode;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
   }
 
   .animated-box-content {
