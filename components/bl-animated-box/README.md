@@ -23,9 +23,9 @@ Animated Box is the component that can be used in Backendless [UI-Builder](https
 | On Click           | when the user clicks on the component.                  |                |
 | On Mouse Over      | when the mouse pointer hovers over the component.       |                |
 | On Mouse Out       | when the mouse pointer leaves the component.            |                |
-| On Animation Start | when the animation start.                               |                |
+| On Animation Start | when the animation starts.                               |                |
 | On Cycle Complete  | when the component finishes a loop.                     |                |
-| On Animation End   | when the animation end, only calls if loop is non-zero. |                |
+| On Animation End   | when the animation end, only calls if the loop is non-zero. |                |
 
 ## Actions
 
@@ -45,7 +45,7 @@ Animated Box is the component that can be used in Backendless [UI-Builder](https
 
 Below is an Example highlighting how to use the Animated Box component:
 
-For example, you want to apply a horizontal shaker effect to a block with an image and text inside, no delay, a duration of 3 seconds for one cycle, infinite playback, and automatic start of the animation. Let's add the following settings:
+For example, you want to apply a horizontal shaker effect to a block with an image and text inside, no delay, a duration of 3 seconds for one cycle, infinite playback, and an automatic start of the animation. Let's add the following settings:
 
 <p align="center">
   <img src="./example-images/example.png" alt="collapsible panel example" width="720"/>
@@ -57,7 +57,7 @@ If there is a need to stop the animation, for example on a click on the componen
   <img src="./example-images/stop-on-click.png" alt="stop on click" width="780"/>
 </p>
 
-And to restart, use the following action at the right time:
+To restart use the following action at the right time:
 
 <p align="center">
   <img src="./example-images/action-play.png" alt="action play" width="720"/>
