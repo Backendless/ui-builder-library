@@ -176,11 +176,15 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 
 };
 
-export const useMarkers = (markers, mapRef, onMarkerClick) => {
+export const useMarkers = (markers, mapRef, eventHandlers) => {
+  const { onMarkerClick, onMarkersCreated } = eventHandlers;
   const markerElements = useRef();
+  const collectedMarkerData = useRef([]);
 
   useEffect(() => {
     removeMarkers(markerElements.current);
+
+    collectedMarkerData.current = [];
 
     if (markers?.length) {
       markerElements.current = markers.map(markerItem => {
@@ -195,13 +199,13 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
         popup.on('open', () => {
           const coordinates = { lat, lng };
 
-          onMarkerClick({ coordinates, description: description || '', data });
+          onMarkerClick({ coordinates, description: description || '', data, marker });
 
-          changeMarkerColor(marker);
+          changeMarkerColor(marker, true);
         });
 
         if (description) {
-          popup.setText(description);
+          popup.setText(description, false);
         }
 
         popup.on('close', () => {
@@ -210,9 +214,16 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
 
         marker.setPopup(popup);
 
+        collectedMarkerData.current.push({
+          marker,
+          markerProps: markerItem,
+        });
+
         return marker;
       });
     }
+
+    onMarkersCreated({ markers: collectedMarkerData.current });
   }, [markers]);
 };
 
@@ -224,8 +235,14 @@ const removeMarkers = markers => {
   }
 };
 
-const changeMarkerColor = marker => {
-  marker.getElement().classList.toggle('marker-root--active');
+export const changeMarkerColor = (marker, status) => {
+  const element = marker?.getElement();
+
+  if (element && status) {
+    element.classList.add('marker-root--active');
+  } else if (element) {
+    element.classList.remove('marker-root--active');
+  }
 };
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {

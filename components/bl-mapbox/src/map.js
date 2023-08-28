@@ -12,7 +12,7 @@ export default function MapboxComponent({ component, eventHandlers, settings }) 
 
   const { accessToken } = settings;
 
-  const { onMarkerClick, onPolygonClick } = eventHandlers;
+  const { onPolygonClick } = eventHandlers;
 
   const { markers, polygons, center, classList } = component;
 
@@ -32,7 +32,7 @@ export default function MapboxComponent({ component, eventHandlers, settings }) 
     }
   }, [center]);
 
-  useMarkers(markers, mapRef, onMarkerClick);
+  useMarkers(markers, mapRef, eventHandlers);
 
   usePolygons(polygons, mapRef, onPolygonClick, map, isMapLoaded);
 
