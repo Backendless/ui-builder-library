@@ -21,6 +21,7 @@
   margin: 0 auto;
   padding-bottom: 10px;
   width: 100%;
+  min-width: 200px;
 
   .audio {
     width: 100%;
@@ -67,6 +68,11 @@
       width: 20px;
       border-radius: 50%;
       animation: blinking-dot 1s ease-in-out infinite alternate;
+    }
+
+    .paused {
+      animation: none;
+      background: red;
     }
 
     .record-text {

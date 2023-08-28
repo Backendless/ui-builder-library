@@ -24,6 +24,8 @@ If you want to know more about this component, you can [follow the link.](https:
 | Height<br/>`height`                                    | Text                                                                                                                             | "500px"                                                                                                                                                                   | Height Logic                    | YES          | YES        | This handler allows you to specify the height of the component.                                                                                                                               |
 | Width<br/>`width`                                      | Text                                                                                                                             | "750px"                                                                                                                                                                   | Width Logic                     | YES          | YES        | This handler allows you to specify the width of the component.                                                                                                                                |
 | Theme<br/>`theme`                                      | Select [Alpine:`alpine`<br/>Alpine Dark:`alpine-dark`<br/>Balham:`balham`<br/>Balham Dark:`balham-dark`<br/>Material:`material`] | Alpine:`alpine`                                                                                                                                                           | Theme Logic                     | YES          | YES        | This handler allows you to specify the theme of the component.                                                                                                                                |
+| Loading Text<br/>`loadingText`                         | Text                                                                                                                             | "Loading..."                                                                                                                                                              | Loading Text Logic              | NO           | YES        | This handler lets you specify the text displayed when loading data for the Data Grid component.                                                                                               |
+| No Rows Text<br/>`noRowsText`                          | Text                                                                                                                             | "No Data"                                                                                                                                                                 | No Rows Text Logic              | NO           | YES        | This handler allows you to specify the text displayed when the Data Grid component has received no rows.                                                                                      |
 | Pagination<br/>`pagination`                            | Checkbox                                                                                                                         | `false`                                                                                                                                                                   | Pagination Logic                | NO           | YES        | This handler allows you to add pagination.                                                                                                                                                    |
 | Pagination Auto Page Size<br/>`paginationAutoPageSize` | Checkbox                                                                                                                         | `false`                                                                                                                                                                   | Pagination Auto Page Size Logic | NO           | YES        | This handler allows automatically showing as many rows on each page as possible.                                                                                                              |
 | Pagination Page Size<br/>`paginationPageSize`          | Number                                                                                                                           | 10                                                                                                                                                                        | Pagination Page Size Logic      | NO           | YES        | This handler allows you to specify the required number of rows to display on each page. Does not work when Pagination Auto Page Size is selected!                                             |
@@ -37,11 +39,13 @@ If you want to know more about this component, you can [follow the link.](https:
 
 ## Actions
 
-| Action                         | Inputs     | Returns                                 |
-|--------------------------------|------------|-----------------------------------------|
-| Get Selected Rows of Data Grid |            | `JSON`: list of selected rows           |
-| Get Columns of Data Grid       |            | `JSON`: list of moved columns           |
-| Get Rows Data of Data Grid     |            | `JSON`: list of rows                    |
+| Action                         | Inputs                              | Returns                       |
+|--------------------------------|-------------------------------------|-------------------------------|
+| Get Selected Rows of Data Grid |                                     | `JSON`: list of selected rows |
+| Get Columns of Data Grid       |                                     | `JSON`: list of moved columns |
+| Get Rows Data of Data Grid     |                                     | `JSON`: list of rows          |
+| Sort By Column Id in Data Grid | columnId: `Text`, direction: `Text` |                               |
+| Clear Sort of Data Grid        |                                     |                               |
 
 ## <a id="examples"></a> Codeless Examples
 
@@ -96,3 +100,13 @@ There is also a `Multiple Rows Selection` property for selecting multiple rows. 
 Use `Get Selected Rows of Data Grid` action to get all selected rows:
 
 ![guide example](./example-images/get-selected-rows-action.png)
+
+## <a id="adding-default-column-sorting-guide"></a>Adding Default Column Sorting Guide
+
+For the required column, add a `sort` property with a value of `asc` or `desc` depending on what you need.
+
+1. Using the settings:
+![guide example](./example-images/add-default-column-sort-json.png)
+
+2. Using the codeless:
+![guide example](./example-images/add-default-column-sort-codeless.png)

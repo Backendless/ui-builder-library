@@ -16,7 +16,7 @@
       "defaultValue": true,
       "hasLogicHandler": true,
       "handlerId": "playerLogic",
-      "handlerLabel": "Show PLayer Logic",
+      "handlerLabel": "Show Player Logic",
       "handlerDescription": "This is a handler to control audio player visibility.",
       "dataBinding": true,
       "settingTooltip": "Toggle the audio player visibility."
@@ -161,6 +161,17 @@
       "handlerDescription": "This is a handler that controls the Resume Button Text when recording is paused.",
       "dataBinding": true,
       "settingTooltip": "Set the Resume Record button label, when record is paused."
+    },
+    {
+      "showInSettings": false,
+      "hasLogicHandler": true,
+      "name": "clearText",
+      "handlerId": "clearTextLogic",
+      "handlerLabel": "Clear Record Button Text Logic ",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler that controls the Clear Record Button Text.",
+      "type": "text",
+      "defaultValue": "Clear"
     }
   ],
   "eventHandlers": [
@@ -221,9 +232,8 @@
       "label": "Pause/Resume in"
     },
     {
-      "id": "getUrl",
-      "label": "Get URL from recorded file in",
-      "hasReturn": true
+      "id": "clearRecord",
+      "label": "Clear Record in"
     }
   ],
   "pods": {}

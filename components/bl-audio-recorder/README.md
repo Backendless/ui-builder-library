@@ -1,6 +1,6 @@
 # Audio Recorder
 
-Audio Recorder is a component of Backendless UI-Builder designer based on the [RecordRTC](https://recordrtc.org/) library. This allows recording audio from the user's microphone and using the recorded file.
+Audio Recorder is a component of Backendless UI-Builder designer. This allows recording audio from the user's microphone and using the recorded file.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
@@ -8,20 +8,21 @@ Audio Recorder is a component of Backendless UI-Builder designer based on the [R
 
 ## Properties
 
-| Property                 | Type                            | Default Value       | Logic                      | Data Binding | UI Setting | Description                                                                                                                                      |
-|--------------------------|---------------------------------|---------------------|----------------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| Show Player              | *Checkbox*                      | `true`              | Show PLayer Logic          | YES          | YES        | This is a handler to control audio player visibility.                                                                                            |
-| Show Controls            | *Checkbox*                      | `true`              | Show Controls Logic        | YES          | YES        | This handler allows to show or hide control buttons.                                                                                             |
-| Control Labels Type      | *Select* <br/>[`icons`, `text`] | `icons`             |                            | NO           | YES        | This is a handler to control the control button labels.                                                                                          |
-| Noise Suppression        | *Checkbox*                      | `true`              |                            | NO           | YES        | This is a handler to control Noise Suppression property.                                                                                         |
-| File Name                | *Text*                          | 'Recorded Audio'    | File Name Logic            | YES          | YES        | This is a handler to control the name of the downloaded file.                                                                                    |
-| File Name Has Timestamp  | *Checkbox*                      | `true`              |                            | NO           | YES        | This is a handler that adds the record date to the name of the downloaded file. Type of date [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
-| Width                    | *Text*                          | '380px'             |                            | NO           | YES        | This is a handler to control the width of the component.                                                                                         |
-| Start Record Button Text | *Text*                          | 'Start Record'      | Start Button Text Logic    | YES          | NO         | This is a handler that controls the Start Button Text.                                                                                           |
-| Stop Record Button Text  | *Text*                          | 'Stop Record'       | Stop Button Text Logic     | YES          | NO         | This is a handler that controls the Stop Button Text.                                                                                            |
-| Download Button Text     | *Text*                          | 'Download Recorded' | Download Button Text Logic | YES          | NO         | This is a handler that controls the Download Button Text.                                                                                        |
-| Pause Button Text        | *Text*                          | 'Pause'             | Pause Button Text Logic    | YES          | NO         | This is a handler that controls the Pause Button Text when recording.                                                                            |
-| Resume Button Text       | *Text*                          | 'Resume'            | Resume Button Text Logic   | YES          | NO         | This is a handler that controls the Resume Button Text when recording is paused.                                                                 |
+| Property                 | Type                            | Default Value       | Logic                          | Data Binding | UI Setting | Description                                                                                                                                      |
+|--------------------------|---------------------------------|---------------------|--------------------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| Show Player              | *Checkbox*                      | `true`              | Show PLayer Logic              | YES          | YES        | This is a handler to control audio player visibility.                                                                                            |
+| Show Controls            | *Checkbox*                      | `true`              | Show Controls Logic            | YES          | YES        | This handler allows to show or hide control buttons.                                                                                             |
+| Control Labels Type      | *Select* <br/>[`icons`, `text`] | `icons`             |                                | NO           | YES        | This is a handler to control the control button labels.                                                                                          |
+| Noise Suppression        | *Checkbox*                      | `true`              |                                | NO           | YES        | This is a handler to control Noise Suppression property.                                                                                         |
+| File Name                | *Text*                          | 'Recorded Audio'    | File Name Logic                | YES          | YES        | This is a handler to control the name of the downloaded file.                                                                                    |
+| File Name Has Timestamp  | *Checkbox*                      | `true`              |                                | NO           | YES        | This is a handler that adds the record date to the name of the downloaded file. Type of date [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
+| Width                    | *Text*                          | '380px'             |                                | NO           | YES        | This is a handler to control the width of the component.                                                                                         |
+| Start Record Button Text | *Text*                          | 'Start Record'      | Start Button Text Logic        | YES          | NO         | This is a handler that controls the Start Button Text.                                                                                           |
+| Stop Record Button Text  | *Text*                          | 'Stop Record'       | Stop Button Text Logic         | YES          | NO         | This is a handler that controls the Stop Button Text.                                                                                            |
+| Download Button Text     | *Text*                          | 'Download Recorded' | Download Button Text Logic     | YES          | NO         | This is a handler that controls the Download Button Text.                                                                                        |
+| Pause Button Text        | *Text*                          | 'Pause'             | Pause Button Text Logic        | YES          | NO         | This is a handler that controls the Pause Button Text when recording.                                                                            |
+| Resume Button Text       | *Text*                          | 'Resume'            | Resume Button Text Logic       | YES          | NO         | This is a handler that controls the Resume Button Text when recording is paused.                                                                 |
+| Clear Record Button Text | *Text*                          | 'Clear'             | Clear Record Button Text Logic | YES          | NO         | This is a handler that controls the Clear Record Button Text.                                                                                    |
 
 ## Events
 
@@ -41,7 +42,7 @@ Audio Recorder is a component of Backendless UI-Builder designer based on the [R
 | Download Recorded file from Audio Recorder   |                            |                              |
 | Get Blob from Audio Recorder                 |                            | `Blob`: recorded blob        |
 | Pause/Resume in Audio Recorder               |                            |                              |
-| Get URL from recorded file in Audio Recorder |                            | `Text`: URL of recorded blob |
+| Clear Record in Audio Recorder               |                            |                              |
 
 ## Styles
 
@@ -82,5 +83,26 @@ Use File API to add file to the file storage.
 
 ````javascript
 <block xmlns="http://www.w3.org/1999/xhtml" type="create_file" id="fyZ-S297uoGp/(IJf}lC" x="331" y="124"><mutation has_output="false"></mutation><field name="connections_toggler">FALSE</field><value name="file_path"><shadow type="text" id="I0.+QI8d4!d_CJ,T?IQ4"><field name="TEXT">/audio</field></shadow></value><value name="file_name"><shadow type="text" id="O9:RAdCn_^07PqG|{erF"><field name="TEXT">Recorded Audio.webm</field></shadow></value><value name="file_content"><shadow type="text" id="mr#w0oE_%jv%2d2pvTf4"><field name="TEXT"></field></shadow><block type="ui_custom_component__c_5fb4fc55206a78a530c50f6ea9aba4f8__getBlob" id="$46v*gjwsUE*m!e0,RUa" bl_meta="{&quot;label&quot;:&quot;Audio Recorder Component Action - Get Blob from&quot;}"><mutation has_output="true"></mutation><field name="componentUid">'1e1e7558158658d85db207c9a1c8615b'</field><field name="connections_toggler">TRUE</field></block></value><value name="overwrite"><shadow type="logic_boolean" id="1yWD5LP[~wx2vAx?AKp/"><field name="BOOL">TRUE</field></shadow></value></block>
+````
+</details>
+
+Using audio record in app.
+Get link with recorded file from file storage and use it in your app.
+
+![saving link example](./example-images/saving-link-example.png)
+
+<details><summary>Codeless example</summary>
+
+````javascript
+<block xmlns="http://www.w3.org/1999/xhtml" type="set_object_property" id="@X]y9/]uk-AZ%6gmp^Es" x="41" y="76"><value name="object"><block type="root_block_ui_builder_common__context_blocks_pageData" id="k2kI_poUM3]f6CvrAK]Z" bl_meta="{&quot;label&quot;:&quot;Page Data&quot;}"></block></value><value name="propName"><shadow type="text" id="v5TrLF2CQ]}_pwNMWNg$"><field name="TEXT">link</field></shadow></value><value name="propValue"><block type="create_file" id="fyZ-S297uoGp/(IJf}lC"><mutation has_output="true"></mutation><field name="connections_toggler">TRUE</field><value name="file_path"><shadow type="text" id="I0.+QI8d4!d_CJ,T?IQ4"><field name="TEXT">/audio</field></shadow></value><value name="file_name"><shadow type="text" id="O9:RAdCn_^07PqG|{erF"><field name="TEXT">Recorded Audio.webm</field></shadow></value><value name="file_content"><shadow type="text" id="mr#w0oE_%jv%2d2pvTf4"><field name="TEXT"></field></shadow><block type="ui_custom_component__c_5fb4fc55206a78a530c50f6ea9aba4f8__getBlob" id="$46v*gjwsUE*m!e0,RUa" bl_meta="{&quot;label&quot;:&quot;Audio Recorder Component Action - Get Blob from&quot;}"><mutation has_output="true"></mutation><field name="componentUid">'1e1e7558158658d85db207c9a1c8615b'</field><field name="connections_toggler">TRUE</field></block></value><value name="overwrite"><shadow type="logic_boolean" id="1yWD5LP[~wx2vAx?AKp/"><field name="BOOL">TRUE</field></shadow></value></block></value></block>
+````
+</details>
+
+![using link example](./example-images/using-link-example.png)
+
+<details><summary>Codeless example</summary>
+
+````javascript
+<block xmlns="http://www.w3.org/1999/xhtml" type="ui_dynamic_category__app-router__open_web_page" id="kLOj{Er67-T[^J.[nk[[" bl_meta="{&quot;label&quot;:&quot;Dynamic Block: Open Web Page&quot;}" x="41" y="76"><field name="isExternal">true</field><value name="url"><shadow type="text" id="7H/y51Bh:~zV,Nod{e2D"><field name="TEXT"></field></shadow><block type="get_object_property" id="?w[7XF(GH92_KL)wSc+p"><value name="prop_name"><shadow type="text" id="e~@fKR8airw)S:sj/%p!"><field name="TEXT">link</field></shadow></value><value name="object"><block type="root_block_ui_builder_common__context_blocks_pageData" id="d;.i-#Ohg_/II6;fhwUh" bl_meta="{&quot;label&quot;:&quot;Page Data&quot;}"></block></value></block></value></block>
 ````
 </details>

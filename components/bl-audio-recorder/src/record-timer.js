@@ -1,6 +1,8 @@
-export const RecordTimer = ({ time }) => (
+const { cn } = BackendlessUI.CSSUtils;
+
+export const RecordTimer = ({ time, paused }) => (
   <>
-    <span className="record-dot"/>
+    <span className={ cn('record-dot', { paused }) }/>
     <span className="record-text">rec</span>
     <span className="record-time">{ time }</span>
   </>
