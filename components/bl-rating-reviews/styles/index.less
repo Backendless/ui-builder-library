@@ -1,0 +1,156 @@
+@bl-cutomComponent-customer-reviews-color: @appTextColor;
+@bl-cutomComponent-customer-reviews-font-family: @inputOutlinedFontFamily;
+@bl-cutomComponent-customer-reviews-progress-bar-background: #eee;
+
+
+.bl-cutomComponent-customer-reviews {
+  font-family: @bl-cutomComponent-customer-reviews-font-family;
+  color: @bl-cutomComponent-customer-reviews-color;
+
+  .top-container {
+    display: flex;
+  }
+
+  .average {
+    font-weight: bold;
+  }
+
+  .data-container {
+    display: flex;
+    line-height: 20px;
+  }
+
+  .icon-row {
+    display: flex;
+  }
+
+  .icon {
+    margin-right: 5px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    margin: 5px;
+    background: @bl-cutomComponent-customer-reviews-progress-bar-background;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+  }
+
+  .oneColorReview {
+    padding: 10px;
+    min-width: fit-content;
+
+    .top-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .average {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      padding-bottom: 10px;
+    }
+
+    .average-value {
+      font-size: 1.5em;
+      margin: 0 5px;
+    }
+
+    .total-reviews {
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 10px;
+      align-items: center;
+    }
+
+    .total-text {
+      margin-left: 10px;
+      min-width: fit-content;
+    }
+
+    .data-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon-row {
+      align-self: baseline;
+    }
+  }
+
+  .twoColorReview {
+    padding: 10px;
+
+    .icon-container {
+      display: flex;
+      justify-content: end;
+    }
+
+    .number {
+      margin-right: 1px;
+    }
+
+    .icon {
+      fill: @bl-cutomComponent-customer-reviews-color;
+    }
+
+    .values {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .multiColorReview {
+    padding: 10px;
+    min-width: fit-content;
+
+    .top-container {
+      align-items: center;
+    }
+
+    .average-value {
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    .icon-row {
+      display: flex;
+      justify-content: space-evenly;
+      align-self: center;
+      margin: 0 5px;
+    }
+
+    .data-container {
+      line-height: 20px;
+      display: flex;
+    }
+
+    .numbers {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .percents {
+      display: flex;
+      flex-direction: column;
+      margin: 0 5px;
+    }
+
+    .values {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
