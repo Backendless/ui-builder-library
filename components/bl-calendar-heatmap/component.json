@@ -3,7 +3,7 @@
   "name": "Calendar Heatmap",
   "description": "",
   "showInToolbox": true,
-  "faIcon": "pencil-ruler",
+  "faIcon": "calendar-alt",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",

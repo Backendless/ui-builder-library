@@ -145,9 +145,41 @@ Addition  calendar data:
 ## Usage guide
 
 1. Add the component to the page.
-2. Set the data source URL in format JSON, CSV, TSV, but you need select appropriate `Data Type`. Or set JSON in `Data` by UI settings, Logic handler or Data binding.
-3. Set the `Date Property Name` and `Value Property Name` for component know how to extract the date and value property from your data.
-4. Set the `Start Date` to determine the calendar's start date. By default, the calendar will start from the current date.
-5. Now you can see result in preview mode.
 
-Scaling the calendar:
+    ![](./example-images/added-componet-on-page.png)
+
+2. Set the data source URL in format JSON, CSV, TSV, and you need select appropriate `Data Type`. Or set JSON in `Data` by UI settings, Logic handler or Data binding.
+
+    ![](./example-images/dataset.png)
+
+3. Set the `Date Property Name` and `Value Property Name` for component know how to extract the date and value property from your data.
+
+    ![](./example-images/data_example.png)
+    ![](./example-images/property_name.png)
+
+4. Set the `Start Date` to determine the calendar's start date. By default, the calendar will start from the current date.
+
+    ![](./example-images/set-start-date.png)
+
+5. Now you can see a result in preview mode.
+
+    ![](./example-images/preview.png)
+
+### Scaling the calendar:
+
+1. Set the `Scale Type` to used to encode colors.
+
+    ![](./example-images/set-scale-type.png)
+
+2. Set the min and max value in `Scale Domain`. By default, min and max values of the specified dataset, but if you use url for a data source, you need to set min and max value by your self. When using the threshold's `Scale Type`, domain should be a list of different threshold.
+
+        ![](./example-images/set-scale-domain.png)
+
+3. Set scheme name from [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic) in `Scale Color Scheme` or set the array of colors in `Scale Color Range`. Expect a minimum of two colors.
+
+    ![](./example-images/get-scale-color-scheme.png)
+    ![](./example-images/set-scale-color-scheme.png)
+
+4. Now you can see a result in preview mode.
+
+    ![](./example-images/preview-scale.png)
