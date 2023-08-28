@@ -20,6 +20,11 @@
     position: absolute;
     overflow: scroll;
     z-index: @bl-customComponent-modal-content-z-index;
+    scrollbar-width: none;
+  }
+
+  .modal-content::-webkit-scrollbar {
+    display: none;
   }
 
   .backdrop {
