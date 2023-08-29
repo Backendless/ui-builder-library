@@ -21,6 +21,19 @@
     },
     {
       "type": "text",
+      "name": "width",
+      "label": "Width",
+      "settingTooltip": "This setting allows you to specify the width of the component.",
+      "showInSettings": true,
+      "defaultValue": "300px",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "handlerDescription": "This handler allows you to specify the width of the component.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
       "name": "placeholder",
       "label": "Placeholder",
       "defaultValue": "Placeholder",
@@ -91,8 +104,8 @@
           "label": "Checkmark"
         },
         {
-          "value": "chip",
-          "label": "Chip"
+          "value": "chips",
+          "label": "Chips"
         }
       ]
     },

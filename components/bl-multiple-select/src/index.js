@@ -1,14 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 import { Options } from './options';
 import { SelectField } from './select-field';
 import { useOnClickOutside, validateOptions, validateValue } from './helpers';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function MultipleSelectComponent({ component, eventHandlers, elRef }) {
   const {
-    display, classList, disabled, placeholder, selectAllCheckbox, selectAllLabel, variant, type, value, options
+    display, classList, style, disabled, width, placeholder,
+    selectAllCheckbox, selectAllLabel, variant, type, value, options
   } = component;
   const { onChange } = eventHandlers;
 
@@ -27,10 +28,11 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
     setSelectValue(validateValue(value, optionsList));
   }, [value, optionsList]);
 
-  const classes = cn(
-    'bl-customComponent-multipleSelect', variant, classList,
-    { 'bl-customComponent-multipleSelect--disabled': disabled }
-  );
+  const handleRemoveSelectedValue = useCallback((e, label) => {
+    e.stopPropagation();
+
+    setSelectValue(prevState => prevState.filter(item => item.label !== label));
+  }, []);
 
   const handleClickOutside = useCallback(() => {
     if (isOptionsOpen) {
@@ -42,6 +44,12 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
 
   useOnClickOutside(elRef, handleClickOutside);
 
+  const styles = useStyles({ style, width });
+  const classes = cn(
+    'bl-customComponent-multipleSelect', variant, classList,
+    { 'bl-customComponent-multipleSelect--disabled': disabled }
+  );
+
   if (!display) {
     return null;
   }
@@ -49,6 +57,7 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
   return (
     <div
       ref={ elRef }
+      style={ styles }
       className={ classes }>
       <SelectField
         type={ type }
@@ -58,6 +67,7 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
         isSelectActive={ isSelectActive }
         setIsOptionsOpen={ setIsOptionsOpen }
         setIsSelectActive={ setIsSelectActive }
+        handleRemoveSelectedValue={ handleRemoveSelectedValue }
       />
       { isOptionsOpen &&
         <Options
@@ -82,3 +92,7 @@ function useActions({ component, optionsList, setOptionsList, selectValue, setSe
     setValue  : value => setSelectValue(validateValue(value, optionsList))
   })
 };
+
+function useStyles({ style, width }) {
+  return useMemo(() => ({ ...style, width: normalizeDimensionValue(width) }), [style, width]);
+}
