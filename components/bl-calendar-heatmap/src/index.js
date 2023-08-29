@@ -8,7 +8,7 @@ import Tooltip from './cal-heatmap-tooltip.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function ComponentName({ component, eventHandlers, instanceId }) {
+export default function ComponentName({ elRef, component, eventHandlers, instanceId }) {
   const {
     display, classList, style, sourceDataUrl, dataType, data, range, sort, subType, type,
     datePropName, valuePropName, labelPosition, labelRotation, textAlign, labelOffsetX,
@@ -132,6 +132,7 @@ export default function ComponentName({ component, eventHandlers, instanceId }) 
   return (
     <>
       <div
+        ref={ elRef }
         id={ `cal-heatmap-${ instanceId }` }
         className={ cn('bl-customComponent-calendar-heatmap', classList) }
         style={ style }

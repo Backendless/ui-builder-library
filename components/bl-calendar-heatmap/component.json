@@ -1,7 +1,7 @@
 {
   "id": "c_826bf5f8a42dfd7a50d2812b08929e6b",
   "name": "Calendar Heatmap",
-  "description": "",
+  "description": "This component allows you add calendar heatmaps to your application",
   "showInToolbox": true,
   "faIcon": "calendar-alt",
   "mainJS": "dist/index.js",
