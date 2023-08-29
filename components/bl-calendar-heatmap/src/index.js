@@ -12,7 +12,7 @@ export default function ComponentName({ component, eventHandlers, instanceId }) 
   const {
     display, classList, style, sourceDataUrl, dataType, data, range, sort, subType, type,
     datePropName, valuePropName, labelPosition, labelRotation, textAlign, labelOffsetX,
-    labelOffsetY, labelHeight, labelWidth, min, max, scaleType, scaleColorScheme, scaleColorRange,
+    labelOffsetY, labelHeight, labelWidth, scaleType, scaleColorScheme, scaleColorRange,
     scaleOpacityBaseColor, verticalOrientation, startDate, minDate, maxDate, highlightDate,
     defaultDataValue, cellHeight, cellWidth, subLabel, subGutter, subColorLabel, cellRadius,
     groupY, label, gutter, dynamicDimension, subSort, scaleDomain, legend, calendarLabel,
@@ -22,8 +22,8 @@ export default function ComponentName({ component, eventHandlers, instanceId }) 
 
   const cal = useMemo(() => new CalHeatmap(), []);
 
-  const maxValid = useMemo(() => max || (data && Math.max(...data.map(({ value }) => value))), [data, max]);
-  const minValid = useMemo(() => min || (data && Math.min(...data.map(({ value }) => value))), [data, min]);
+  const maxValid = useMemo(() => data && Math.max(...data.map(({ value }) => value)), [data]);
+  const minValid = useMemo(() => data && Math.min(...data.map(({ value }) => value)), [data]);
 
   useEffect(() => {
     cal.paint({
@@ -115,7 +115,7 @@ export default function ComponentName({ component, eventHandlers, instanceId }) 
     minValid, range, scaleColorRange, scaleColorScheme, scaleOpacityBaseColor, scaleType, sort, startDate,
     subColorLabel, subColorLabelLogic, subGutter, subLabel, subLabelLogic, subType, textAlign, type, valuePropName,
     verticalOrientation, sourceDataUrl, data, groupYLogic, groupY, scaleDomain, dynamicDimension, gutter, labelLogic,
-    label, subSort, legend, calendarLabel]);
+    label, subSort, legend, calendarLabel, animationDuration, theme]);
 
   useEffect(() => cal.on('click', (event, timestamp, value) => onCellClick({ event, timestamp, value })), []);
 
@@ -167,7 +167,6 @@ const scaleValidate = (
 
 const prepareHighlights = highlightDate => highlightDate.split(',').map(date => new Date(date));
 
-const validateCalendarLabel = calendarLabel => calendarLabel.map(item => [CalendarLabel, {
-  ...item,
-  text: () => item.text,
-}]);
+const validateCalendarLabel = calendarLabel => calendarLabel
+  ? calendarLabel.map(item => [CalendarLabel, { ...item, text: () => item.text }])
+  : [];
