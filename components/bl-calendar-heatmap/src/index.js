@@ -1,10 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
 import CalHeatmap from './cal-heatmap.min';
-import CalendarLabel from './cal-heatmap-calendar-label.min';
-import Legend from './cal-heatmap-legend.min';
-import LegendLite from './cal-heatmap-legend-lite.min';
-import Tooltip from './cal-heatmap-tooltip.min';
+import { ensureValidScale, shapeData, shapeDate, shapeDomain, shapePlugins, shapeSubDomain } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -28,88 +25,29 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
   useEffect(() => {
     cal.paint({
         range,
-        date: {
-          start    : startDate ? new Date(startDate) : new Date(),
-          min      : minDate,
-          max      : maxDate,
-          highlight: highlightDate && prepareHighlights(highlightDate),
-        },
+        date: shapeDate(startDate, minDate, maxDate, highlightDate),
 
-        data: {
-          source: sourceDataUrl || data,
-          type  : dataType,
-          x     : datePropName,
-          y     : valuePropName,
-          defaultDataValue,
-          groupY: groupYLogic.hasLogic
-            ? values => groupYLogic({ values })
-            : groupY,
-        },
+        data: shapeData(sourceDataUrl, data, dataType, datePropName,
+          valuePropName, defaultDataValue, groupYLogic, groupY),
 
-        scale: scaleValidate(
+        scale: ensureValidScale(
           scaleColorRange, scaleColorScheme, scaleOpacityBaseColor,
           scaleType, scaleDomain, minValid, maxValid
         ),
 
-        domain: {
-          type,
-          dynamicDimension,
-          gutter,
-          sort,
-          label: {
-            text    : labelLogic.hasLogic
-              ? (timestamp, element) => labelLogic({ timestamp, element })
-              : label,
-            position: labelPosition,
-            rotate  : labelRotation,
-            textAlign,
-            offset  : {
-              x: labelOffsetX,
-              y: labelOffsetY,
-            },
-            height  : labelHeight,
-            width   : labelWidth,
-          },
-        },
+        domain: shapeDomain(type, dynamicDimension, gutter, sort, labelLogic, label, labelPosition, labelRotation,
+          textAlign, labelOffsetX, labelOffsetY, labelHeight, labelWidth),
 
-        subDomain: {
-          type  : subType,
-          sort  : subSort,
-          width : cellWidth,
-          height: cellHeight,
-          label : subLabelLogic.hasLogic
-            ? (timestamp, value, element) => subLabelLogic({ timestamp, value, element })
-            : subLabel,
-          color : subColorLabelLogic.hasLogic
-            ? (timestamp, value, backgroundColor) => subColorLabelLogic({ timestamp, value, backgroundColor })
-            : subColorLabel,
-          gutter: subGutter,
-          radius: cellRadius,
-        },
+        subDomain: shapeSubDomain(subType, subLabel, subGutter, subColorLabel, subColorLabelLogic, subSort,
+          cellWidth, cellHeight, subLabelLogic, cellRadius),
 
         verticalOrientation,
         animationDuration,
         theme,
-        itemSelector: `#cal-heatmap-${ instanceId }`,
+        itemSelector: `#bl-cal-heatmap-${ instanceId }`,
       },
-      [
-        [Tooltip],
-        [
-          Legend,
-          {
-            enabled     : legend === 'Legend',
-            itemSelector: `#legend-label-${ instanceId }`,
-          },
-        ],
-        [
-          LegendLite,
-          {
-            enabled     : legend === 'LegendLite',
-            itemSelector: `#legend-label-${ instanceId }`,
-          },
-        ],
-        ...validateCalendarLabel(calendarLabel),
-      ]);
+      shapePlugins(legend, instanceId, calendarLabel)
+    );
   }, [cal, cellHeight, cellRadius, cellWidth, dataType, datePropName, defaultDataValue, highlightDate, instanceId,
     labelHeight, labelPosition, labelRotation, labelWidth, labelOffsetX, labelOffsetY, maxDate, maxValid, minDate,
     minValid, range, scaleColorRange, scaleColorScheme, scaleOpacityBaseColor, scaleType, sort, startDate,
@@ -133,41 +71,11 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
     <>
       <div
         ref={ elRef }
-        id={ `cal-heatmap-${ instanceId }` }
+        id={ `bl-cal-heatmap-${ instanceId }` }
         className={ cn('bl-customComponent-calendar-heatmap', classList) }
         style={ style }
-      ></div>
-      <div id={ `legend-label-${ instanceId }` }></div>
+      />
+      <div id={ `bl-legend-label-${ instanceId }` }/>
     </>
   );
 }
-
-const scaleValidate = (
-  scaleColorRange, scaleColorScheme, scaleOpacityBaseColor,
-  scaleType, scaleDomain, minValid, maxValid
-) => {
-  if (scaleColorScheme || scaleColorRange) {
-    return {
-      color: {
-        range : scaleColorRange && scaleColorRange.split(',').map(item => item.trim()),
-        scheme: scaleColorScheme,
-        type  : scaleType,
-        domain: scaleDomain ? scaleDomain.split(',').map(item => Number(item.trim())) : [minValid, maxValid],
-      },
-    };
-  }
-
-  return {
-    opacity: {
-      baseColor: scaleOpacityBaseColor,
-      type     : scaleType,
-      domain   : scaleDomain ? scaleDomain.split(',').map(item => Number(item.trim())) : [minValid, maxValid],
-    },
-  };
-};
-
-const prepareHighlights = highlightDate => highlightDate.split(',').map(date => new Date(date));
-
-const validateCalendarLabel = calendarLabel => calendarLabel
-  ? calendarLabel.map(item => [CalendarLabel, { ...item, text: () => item.text }])
-  : [];

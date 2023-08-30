@@ -1,6 +1,6 @@
 # Calendar Heatmap
 
-This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer based on the [React Calendar Heatmap](https://github.com/kevinsqi/react-calendar-heatmap) library.
+This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer based on the [Cal-Heatmap](https://cal-heatmap.com/) library.
 
 The component allows you to add calendar heatmaps to your UI-Builder application.
 
