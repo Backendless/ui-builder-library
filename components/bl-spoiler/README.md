@@ -16,12 +16,11 @@ Spoiler is the component that can be used in Backendless [UI-Builder](https://ba
 
 ## Events
 
-| Name           | Triggers                                          | Context Blocks                        |
-|----------------|---------------------------------------------------|---------------------------------------|
-| On Click       | when the user clicks on the component.            | Event: `Object`, isEnabled: `Boolean` |
-| On Mouse Enter | when the mouse pointer hovers over the component. |                                       |
-| On Mouse Move  | when the mouse pointer moves over the component.  |                                       |
-| On Mouse Leave | when the mouse pointer leaves the component.      |                                       |
+| Name           | Triggers                                          | Context Blocks  |
+|----------------|---------------------------------------------------|-----------------|
+| On Click       | when the user clicks on the component.            | Event: `Object` |
+| On Mouse Enter | when the mouse pointer hovers over the component. |                 |
+| On Mouse Leave | when the mouse pointer leaves the component.      |                 |
 
 ## Actions
 
