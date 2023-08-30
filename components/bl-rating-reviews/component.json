@@ -32,14 +32,14 @@
       "settingTooltip": "Add the main color."
     },
     {
-      "type": "text",
+      "type": "number",
       "name": "iconSize",
+      "label": "Icon Size ",
+      "settingTooltip": "Set icons size(px).",
       "showInSettings": true,
-      "defaultValue": "20px",
+      "defaultValue": "20",
       "hasLogicHandler": false,
-      "handlerId": "iconSizeLogic",
-      "label": "Icon Size",
-      "settingTooltip": "Set icons size."
+      "handlerId": "iconSizeLogic"
     },
     {
       "type": "text",

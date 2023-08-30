@@ -1,44 +1,43 @@
 import { useMemo } from 'react';
 
-import { calculateAverage, calculatePercent,calculateTotalReviews, prepareReviewData } from './helpers';
-import ViewsMap from './views';
+import { calculateAverage, calculatePercent, calculateTotalReviews, prepareReviewData } from './helpers';
+import { ViewsMap } from './views';
 
-const { cn, normalizeDimensionValue, normalizePropertyValue } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function CustomUIComponent({ component, eventHandlers, elRef }) {
   const { ratingData, color, iconSize, width, view, localizations, style, classList } = component;
 
-  const processedData = prepareReviewData(ratingData, color);
-
+  const processedData = useMemo(() => prepareReviewData(ratingData, color), [ratingData, color]);
   const maxValue = useMemo(() => processedData.length, [processedData.length]);
   const totalReviews = useMemo(() => calculateTotalReviews(processedData), [processedData]);
   const average = useMemo(() => calculateAverage(processedData), [processedData]);
-  const processedIconSize = normalizePropertyValue(iconSize, ['px'], 'px');
 
   const Review = ViewsMap[view];
 
   const styles = useMemo(() => ({
     width: normalizeDimensionValue(width),
     ...style,
-  }), [style]);
+  }), [style, width]);
 
   Object.assign(component, {
-    getAverage: () => average,
-    getPercents: () => processedData.map(el => Math.round(calculatePercent(el.value, totalReviews))),
-    getTotal: () => totalReviews,
+    getAverage : () => average,
+    getPercents: () => processedData.map(({ value }) => Math.round(calculatePercent(value, totalReviews))),
+    getTotal   : () => totalReviews,
   });
 
   return (
-    <div ref={ elRef } className={ cn('bl-cutomComponent-customer-reviews', classList) } style={ styles }>
+    <div ref={ elRef } className={ cn('bl-customComponent-customer-reviews', classList) } style={ styles }>
       <Review
         color={ color }
         maxValue={ maxValue }
         average={ average }
         reviewData={ processedData }
-        iconSize={ processedIconSize }
+        iconSize={ `${ iconSize }px` }
         totalReviews={ totalReviews }
         localizations={ localizations }
-        eventHandlers={ eventHandlers }/>
+        eventHandlers={ eventHandlers }
+      />
     </div>
   );
-};
+}

@@ -3,18 +3,16 @@ const DEFAULT_DATA = [{
   color: '#ffffff',
 }];
 
-export const calculatePercent = (value, maxValue) => {
-  return value * 100 / maxValue;
-};
+export const calculatePercent = (value, maxValue) => value * 100 / maxValue;
 
 export const calculateAverage = reviewData => {
   let totalReviews = 0;
   let totalForFormula = 0;
 
-  for (let i = 0; i < reviewData.length; i++) {
-    totalReviews += reviewData[i].value;
-    totalForFormula += ( reviewData.length - i ) * reviewData[i].value;
-  }
+  reviewData.forEach(({ value }, i, { length }) => {
+    totalReviews += value;
+    totalForFormula += (length - i) * value;
+  });
 
   return (totalForFormula / totalReviews).toFixed(1);
 };
@@ -28,15 +26,5 @@ export const prepareReviewData = (data, color) => {
     return DEFAULT_DATA;
   }
 
-  return data.map(el => {
-    if (typeof el === 'number') {
-      return ({
-        value: el,
-        color: color,
-      });
-    }
-    else {
-      return el;
-    }
-  });
+  return data.map(el => typeof el === 'number' ? { value: el, color } : el);
 };

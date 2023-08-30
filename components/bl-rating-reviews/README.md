@@ -8,15 +8,15 @@ Rating Reviews is a component of Backendless UI-builder designer. This allows si
 
 ## Properties
 
-| Property               | Type                                                 | Default Value | Logic             | Data Binding | UI Setting | Description                                                                                                                               |
-|------------------------|------------------------------------------------------|---------------|-------------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| Review Data            | *JSON*                                               |               | Review Data Logic | YES          | YES        | This handler adds review data for component. Watch [Codeless Examples](#codeless-examples). Signature of Review Data: `[{value, color}]`. |
-| Color                  | *Color*                                              | '#337AB7'     |                   | NO           | YES        | This is a handler that controls component main color.                                                                                     |
-| Icon Size              | *Text*                                               | '20px'        |                   | NO           | YES        | This is a handler that controls icon size(only 'px').                                                                                     |
-| Width                  | *Text*                                               | '500px'       |                   | NO           | YES        | This is a handler that controls component width.                                                                                          |
-| View                   | *Select* <br/>[`oneColor`, `twoColor`, `multiColor`] | 'oneColor'    |                   | NO           | YES        | This is a handler that controls different views of the component.                                                                         |
-| One Color Average Text | *Text*                                               | 'out of'      |                   | NO           | YES        | This is a handler that controls 'average' text in 'One Color' view.                                                                       |
-| Reviews Text           | *Text*                                               | 'Reviews'     |                   | NO           | YES        | This is a handler that controls 'Reviews' text.                                                                                           |
+| Property               | Type                                                 | Default Value | Logic             | Data Binding | UI Setting | Description                                                                                                                                               |
+|------------------------|------------------------------------------------------|---------------|-------------------|--------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Review Data            | *JSON*                                               |               | Review Data Logic | YES          | YES        | This handler adds review data for component. Watch [Codeless Examples](#codeless-examples). Signature of Review Data: `[{value: Number, color: String}]`. |
+| Color                  | *Color*                                              | '#337AB7'     |                   | NO           | YES        | This is a handler that controls component main color.                                                                                                     |
+| Icon Size              | *Text*                                               | '20px'        |                   | NO           | YES        | This is a handler that controls icon size(only 'px').                                                                                                     |
+| Width                  | *Text*                                               | '500px'       |                   | NO           | YES        | This is a handler that controls component width.                                                                                                          |
+| View                   | *Select* <br/>[`oneColor`, `twoColor`, `multiColor`] | 'oneColor'    |                   | NO           | YES        | This is a handler that controls different views of the component.                                                                                         |
+| One Color Average Text | *Text*                                               | 'out of'      |                   | NO           | YES        | This is a handler that controls 'average' text in 'One Color' view.                                                                                       |
+| Reviews Text           | *Text*                                               | 'Reviews'     |                   | NO           | YES        | This is a handler that controls 'Reviews' text.                                                                                                           |
 
 ## Events
 
@@ -36,9 +36,9 @@ Rating Reviews is a component of Backendless UI-builder designer. This allows si
 
 **Other**
 ````
-@bl-cutomComponent-customer-reviews-color: @appTextColor;
-@bl-cutomComponent-customer-reviews-font-family: @inputOutlinedFontFamily;
-@bl-cutomComponent-customer-reviews-progress-bar-background: #eee;
+@bl-customComponent-customer-reviews-color: @appTextColor;
+@bl-customComponent-customer-reviews-font-family: @inputOutlinedFontFamily;
+@bl-customComponent-customer-reviews-progress-bar-background: #eee;
 ````
 
 ## Codeless Examples
