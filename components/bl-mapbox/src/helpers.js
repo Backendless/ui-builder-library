@@ -126,6 +126,14 @@ const appendDirectionsOnMobile = (directions, mapRef, mapContainerRef) => {
   mapContainerRef.current.parentNode.insertAdjacentElement('afterend', div);
 };
 
+export const isMapWidthChanged = (mapRef, isMapLoaded) => {
+  useEffect(() => {
+    if (isMapLoaded) {
+      console.log('width changed to ', mapRef?.current?.transform?.width);
+    }
+  }, [mapRef?.current?.transform?.width, isMapLoaded])
+}
+
 export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers, map) => {
   const { START_POS, MAP_STYLE, ZOOM, PROJECTION } = defaultMapboxProps;
   const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
@@ -179,12 +187,12 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 export const useMarkers = (markers, mapRef, eventHandlers) => {
   const { onMarkerClick, onMarkersCreated } = eventHandlers;
   const markerElements = useRef();
-  const collectedMarkerData = useRef([]);
+  const collectedMarkerData = [];
 
   useEffect(() => {
     removeMarkers(markerElements.current);
 
-    collectedMarkerData.current = [];
+    collectedMarkerData.length = 0;
 
     if (markers?.length) {
       markerElements.current = markers.map(markerItem => {
@@ -209,21 +217,21 @@ export const useMarkers = (markers, mapRef, eventHandlers) => {
         }
 
         popup.on('close', () => {
-          changeMarkerColor(marker);
+          changeMarkerColor(marker, false);
         });
 
         marker.setPopup(popup);
 
-        collectedMarkerData.current.push({
+        collectedMarkerData.push({
           marker,
           markerProps: markerItem,
-        });
+        })
 
         return marker;
       });
     }
 
-    onMarkersCreated({ markers: collectedMarkerData.current });
+    onMarkersCreated({markers: collectedMarkerData});
   }, [markers]);
 };
 
@@ -237,13 +245,11 @@ const removeMarkers = markers => {
 
 export const changeMarkerColor = (marker, status) => {
   const element = marker?.getElement();
-
-  if (element && status) {
-    element.classList.add('marker-root--active');
-  } else if (element) {
-    element.classList.remove('marker-root--active');
+  if (element) {
+    element?.classList.toggle('marker-root--active', status);
   }
 };
+
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
   polygonsArray.forEach(polygon => {

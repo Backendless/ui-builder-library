@@ -60,7 +60,7 @@ The component covers basic features of the library and allows you in a couple cl
 | Set Zoom to Mapbox          | Zoom: `Number` <br/> Event Data: `Object`                                   |                                        |
 | Fly To Mapbox               | Options: `Object` <br/> Event Data: `Object`                                |                                        |
 | Rotate To Mapbox            | Bearing: `Number` <br/> Options: `Object` <br/> Event Data: `Object`        |                                        |
-| Set Marker Status of Mapbox | Marker: `Object` <br/> Status: `Boolean`                                    |                                        |
+| Set Marker Status of Mapbox | Marker: `Object` <br/> Active: `Boolean`                                    |                                        |
 
 ## Settings
 
@@ -140,7 +140,7 @@ Find marker:
 
 Highlight marker:
 ````
-<block xmlns="http://www.w3.org/1999/xhtml" type="ui_custom_component__c_4d14629c33bdf5b6b50ffd72e25e5ca2__setMarkerStatus" id="kV$uZ59!CoYa,cmY}yY@" bl_meta="{&quot;label&quot;:&quot;Mapbox Component Action - Set Marker Status of&quot;}" x="322.99999999999983" y="433.99999999999983"><field name="componentUid">'bdc238e58125d0cefb0b46a1d0aa33f8'</field><value name="marker"><block type="get_object_property" id=";XBjL%3Nhy?S`x/l%@c="><value name="prop_name"><shadow type="text" id="p,})::1`zjIynH(xcNNN"><field name="TEXT">choosedMarker</field></shadow></value><value name="object"><block type="root_block_ui_builder_common__context_blocks_pageData" id="2##UwV%Jb=pG).x+`i}J" bl_meta="{&quot;label&quot;:&quot;Page Data&quot;}"></block></value></block></value><value name="status"><block type="logic_boolean" id="1QhK`w{4?4kcvHx1r9sU"><field name="BOOL">TRUE</field></block></value></block>
+<block xmlns="http://www.w3.org/1999/xhtml" type="ui_custom_component__c_4d14629c33bdf5b6b50ffd72e25e5ca2__setMarkerStatus" id="kV$uZ59!CoYa,cmY}yY@" bl_meta="{&quot;label&quot;:&quot;Mapbox Component Action - Set Marker Status of&quot;}" x="41" y="297"><field name="componentUid">'bdc238e58125d0cefb0b46a1d0aa33f8'</field><value name="marker"><block type="get_object_property" id=";XBjL%3Nhy?S`x/l%@c="><value name="prop_name"><shadow type="text" id="p,})::1`zjIynH(xcNNN"><field name="TEXT">choosedMarker</field></shadow></value><value name="object"><block type="root_block_ui_builder_common__context_blocks_pageData" id="2##UwV%Jb=pG).x+`i}J" bl_meta="{&quot;label&quot;:&quot;Page Data&quot;}"></block></value></block></value><value name="active"><block type="logic_boolean" id="+LtfodZvb$X,Au!lr5RL"><field name="BOOL">TRUE</field></block></value></block>
 ````
 
 </details>

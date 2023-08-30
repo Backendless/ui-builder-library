@@ -1,5 +1,5 @@
 {
-  "id": "c_8f971f6aef45e2a67d942f97229a378a",
+  "id": "c_4d14629c33bdf5b6b50ffd72e25e5ca2",
   "name": "Mapbox",
   "description": "The component allows you to work with the map.",
   "showInToolbox": true,
@@ -437,15 +437,15 @@
     },
     {
       "id": "setMarkerStatus",
-      "label": "Set Marker Status",
+      "label": "Set Marker Status of",
       "inputs": [
         {
           "id": "marker",
           "label": "Marker"
         },
         {
-          "id": "status",
-          "label": "Status"
+          "id": "active",
+          "label": "Active"
         }
       ]
     }
