@@ -1,12 +1,17 @@
-import { ChipList } from './chip-list';
+import { ChipsList } from './chips-list';
 
-export function Input({ type, selectId, selectValue }) {
+const CHIPS = 'chips';
+
+export function Input({ type, selectId, selectValue, handleRemoveSelectedValue }) {
   const inputValue = selectValue.map(item => item.label).join(', ');
-  
+
   return (
     <>
       <div className="input__container">
-        { type === "chip" ? <ChipList items={ selectValue } /> : <span>{ inputValue }</span> }
+        { type === CHIPS
+          ? <ChipsList items={ selectValue } handleRemoveSelectedValue={ handleRemoveSelectedValue } />
+          : <span>{ inputValue }</span>
+        }
       </div>
       <input
         type="text"
