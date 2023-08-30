@@ -20,7 +20,7 @@ export function Blur({ fill }) {
     <>
       <defs>
         <filter id="filter-blur">
-          <feGaussianBlur stdDeviation="8 16" x="0%" y="0%" in="SourceGraphic" edgeMode="none" result="blur"/>
+          <feGaussianBlur stdDeviation="8 6" x="0%" y="0%" in="SourceGraphic" edgeMode="none" result="blur"/>
           <feColorMatrix
             type="matrix"
             values="1 0 0 0 0
