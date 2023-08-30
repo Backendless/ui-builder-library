@@ -2,12 +2,11 @@
 @bl-customComponent-multipleSelect-backgroundColor: @appBackgroundColor;
 @bl-customComponent-multipleSelect-textColor: @appTextColor;
 
-@boxShadowPrimary: 0px 2px 1px -1px  @themePrimary, 0px 1px 1px 0px  @themePrimary, 0px 1px 3px 0px  @themePrimary;
-
-@bl-customComponent-multipleSelect-width: 300px;
 @bl-customComponent-multipleSelect-margin: 0;
 
-@bl-customComponent-multipleSelect-options-width: 300px;
+@boxShadowPrimary: 0px 2px 1px -1px  @themePrimary, 0px 1px 1px 0px  @themePrimary, 0px 1px 3px 0px  @themePrimary;
+
+@bl-customComponent-multipleSelect-options-width: 100%;
 @bl-customComponent-multipleSelect-options-minHeight: 200px;
 @bl-customComponent-multipleSelect-options-boxShadow: @boxShadowPrimary;
 
@@ -16,7 +15,7 @@
 @bl-customComponent-multipleSelect-optionSelected-backgroundColor-onHover: rgba(@themePrimary, 0.122);
 
 @bl-customComponent-multipleSelect-optionCheckmark-color: @bl-customComponent-multipleSelect-themeColor;
-@bl-customComponent-multipleSelect-optionChip-backgroundColor: @bl-customComponent-multipleSelect-optionSelected-backgroundColor;
+@bl-customComponent-multipleSelect-optionChips-backgroundColor: @bl-customComponent-multipleSelect-optionSelected-backgroundColor;
 
 @bl-customComponent-multipleSelect-borderColor-onHover: rgba(@themePrimary, 0.75);
 @bl-customComponent-multipleSelect-dropDownButton-color: @bl-customComponent-multipleSelect-themeColor;
@@ -31,7 +30,6 @@
   background-color: @bl-customComponent-multipleSelect-backgroundColor;
   display: block;
   padding-top: 13px;
-  width: @bl-customComponent-multipleSelect-width;
 
   &--disabled {
     opacity: 0.38;
@@ -47,7 +45,7 @@
     margin: @bl-customComponent-multipleSelect-margin;
     border: 0;
     min-width: 0;
-    width: 300px;
+    width: 100%;
     color: @bl-customComponent-multipleSelect-textColor;
     cursor: pointer;
 
@@ -272,7 +270,7 @@
     border-top-right-radius: @bl-customComponent-multipleSelect-selectAllCheckbox-borderTopRightRadius;
   }
 
-  .chip {
+  .chips {
     &__items {
       display: flex;
       flex-wrap: wrap;
@@ -283,12 +281,15 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
+      gap: 7px;
       max-width: 100%;
       font-size: 13px;
       height: 32px;
       color: @bl-customComponent-multipleSelect-textColor;
-      background-color: @bl-customComponent-multipleSelect-optionChip-backgroundColor;
+      background-color: @bl-customComponent-multipleSelect-optionChips-backgroundColor;
       border-radius: 16px;
+      padding-left: 12px;
+      padding-right: 12px;
       white-space: nowrap;
       box-sizing: border-box;
       cursor: default;
@@ -297,9 +298,22 @@
     &-item__label {
       overflow: hidden;
       text-overflow: ellipsis;
-      padding-left: 12px;
-      padding-right: 12px;
       white-space: nowrap;
+    }
+
+    &-item__icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3px;
+      border: 1px solid @bl-customComponent-multipleSelect-textColor;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &-item__icon-container:hover {
+      transform: scale(1.2);
+      transition: transform .3s;
     }
   }
 }
