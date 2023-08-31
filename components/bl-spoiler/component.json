@@ -95,11 +95,6 @@
       "label": "On Mouse Enter"
     },
     {
-      "name": "onMouseMove",
-      "label": "On Mouse Move",
-      "handlerDescription": "Triggered when the mouse pointer moves over the component."
-    },
-    {
       "name": "onMouseLeave",
       "handlerDescription": "Triggered when the mouse pointer leaves the component.",
       "label": "On Mouse Leave"

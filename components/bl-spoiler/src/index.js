@@ -29,7 +29,7 @@ const OPACITY = 0.5;
 
 export default function SpoilerComponent({ component, elRef, eventHandlers, pods }) {
   const { style, classList, display, effect, background, enabled } = component;
-  const { onClick, onMouseEnter, onMouseMove, onMouseLeave } = eventHandlers;
+  const { onClick, onMouseEnter, onMouseLeave } = eventHandlers;
 
   const [isEnabled, setIsEnabled] = useState(enabled);
 
@@ -43,7 +43,7 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
     if (state !== undefined) {
       setIsEnabled(state);
     } else {
-      setIsApplied(v => !v);
+      setIsEnabled(v => !v);
     }
   };
 
@@ -60,7 +60,6 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
       style={ style }
       onClick={ onClickHandler }
       onMouseEnter={ onMouseEnter }
-      onMouseMove={ onMouseMove }
       onMouseLeave={ onMouseLeave }>
 
       <div
