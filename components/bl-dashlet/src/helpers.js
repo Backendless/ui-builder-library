@@ -10,7 +10,7 @@ export const ContextMenuItemTypes = {
   ACTION: 'action',
 };
 
-export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) => {
+export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable, setPosition }) => {
   const [pressed, setPressed] = useState(false);
 
   const position = useMemo(() => ({ current: { x: initialPosition.x, y: initialPosition.y } }), [initialPosition]);
@@ -65,6 +65,7 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) =>
 
       const handleMouseUp = e => {
         e.target.style.userSelect = 'auto';
+        setPosition(position);
         setPressed(false);
       };
 
