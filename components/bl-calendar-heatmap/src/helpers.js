@@ -1,90 +1,131 @@
-import { today } from './index';
+import CalendarLabel from './cal-heatmap-calendar-label.min';
+import Legend from './cal-heatmap-legend.min';
+import LegendLite from './cal-heatmap-legend-lite.min';
+import Tooltip from './cal-heatmap-tooltip.min';
 
-const NTH_ROOT = 3;
+const LegendTypes = {
+  Legend    : Legend,
+  LegendLite: LegendLite,
+};
 
-export const generateData = (numberDays, data) => {
-  const newData = [];
+export const ensureValidScale = scale => {
+  const {
+    scaleColorRange, scaleColorScheme, scaleOpacityBaseColor,
+    scaleType, scaleDomain, minValid, maxValid,
+  } = scale;
 
-  for (let i = 0; i < numberDays; i++) {
-    const previousDay = getPreviousDay(today, i);
-    const foundData = data.find(({ date }) => dateComparison(date, previousDay));
-    const { date, count } = foundData || { date: previousDay, count: 0 };
-
-    newData.push({ date, count });
+  if (scaleColorScheme || scaleColorRange) {
+    return {
+      color: {
+        range : scaleColorRange && scaleColorRange.split(',').map(item => item.trim()),
+        scheme: scaleColorScheme,
+        type  : scaleType,
+        domain: scaleDomain ? scaleDomain.split(',').map(item => Number(item.trim())) : [minValid, maxValid],
+      },
+    };
   }
 
-  return newData;
+  return {
+    opacity: {
+      baseColor: scaleOpacityBaseColor,
+      type     : scaleType,
+      domain   : scaleDomain ? scaleDomain.split(',').map(item => Number(item.trim())) : [minValid, maxValid],
+    },
+  };
 };
 
-const dateComparison = (date1, date2) => new Date(date1).toDateString() === new Date(date2).toDateString();
+const prepareHighlights = highlightDate => highlightDate.split(',').map(date => new Date(date));
 
-const getPreviousDay = (date, previousDay) => {
-  const previous = new Date(date.getTime());
-  previous.setDate(date.getDate() - previousDay);
+const validateCalendarLabel = calendarLabel => calendarLabel.map(item => [
+  CalendarLabel,
+  { ...item, text: () => item.text },
+]);
 
-  return previous;
+export const shapeDate = (startDate, minDate, maxDate, highlightDate) => ({
+  start    : startDate ? new Date(startDate) : new Date(),
+  min      : minDate,
+  max      : maxDate,
+  highlight: highlightDate && prepareHighlights(highlightDate),
+});
+
+export const shapeData = props => {
+  const {
+    sourceDataUrl, data, dataType, datePropName,
+    valuePropName, defaultDataValue, groupYLogic, groupY,
+  } = props;
+
+  return {
+    source: sourceDataUrl || data,
+    type  : dataType,
+    x     : datePropName,
+    y     : valuePropName,
+    defaultDataValue,
+    groupY: groupYLogic.hasLogic
+      ? values => groupYLogic({ values })
+      : groupY,
+  };
 };
 
-export const shiftDate = (date, numDays) => {
-  const newDate = new Date(date);
+export const shapeDomain = props => {
+  const {
+    type, dynamicDimension, gutter, sort, labelLogic, label, labelPosition, labelRotation, textAlign,
+    labelOffsetX, labelOffsetY, labelHeight, labelWidth,
+  } = props;
 
-  newDate.setDate(newDate.getDate() - numDays);
-
-  return newDate;
+  return {
+    type,
+    dynamicDimension,
+    gutter,
+    sort,
+    label: {
+      text    : labelLogic.hasLogic
+        ? (timestamp, element) => labelLogic({ timestamp, element })
+        : label,
+      position: labelPosition,
+      rotate  : labelRotation,
+      textAlign,
+      offset  : {
+        x: labelOffsetX,
+        y: labelOffsetY,
+      },
+      height  : labelHeight,
+      width   : labelWidth,
+    },
+  };
 };
 
-export const validate = items => {
-  if (typeof items === 'string') {
-    return items.split(',');
+export const shapeSubDomain = props => {
+  const {
+    subType, subLabel, subGutter, subColorLabel, subColorLabelLogic,
+    subSort, cellWidth, cellHeight, subLabelLogic, cellRadius,
+  } = props;
+
+  return {
+    type  : subType,
+    sort  : subSort,
+    width : cellWidth,
+    height: cellHeight,
+    label : subLabelLogic.hasLogic
+      ? (timestamp, value, element) => subLabelLogic({ timestamp, value, element })
+      : subLabel,
+    color : subColorLabelLogic.hasLogic
+      ? (timestamp, value, backgroundColor) => subColorLabelLogic({ timestamp, value, backgroundColor })
+      : subColorLabel,
+    gutter: subGutter,
+    radius: cellRadius,
+  };
+};
+
+export const shapePlugins = (legend, instanceId, calendarLabel) => {
+  const plugins = [[Tooltip]];
+
+  if (legend !== 'none') {
+    plugins.push([LegendTypes[legend], { itemSelector: `#bl-cal-heatmap--legend-label--${ instanceId }` }]);
   }
 
-  return items;
-};
-
-export const getSaturationByCount = (maxCount, minCount, count) => {
-  maxCount = maxCount - minCount;
-  count = count - minCount;
-
-  const maxCountRoot = Math.pow(maxCount, 1 / NTH_ROOT);
-  const countRoot = Math.pow(count, 1 / NTH_ROOT);
-  const onePercentOfSaturationCost = maxCountRoot / 100;
-
-  return countRoot / onePercentOfSaturationCost;
-};
-
-// https://gist.github.com/xenozauros/f6e185c8de2a04cdfecf?permalink_comment_id=4193442#gistcomment-4193442
-export const hexToHSL = hex => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  let r = parseInt(result[1], 16);
-  let g = parseInt(result[2], 16);
-  let b = parseInt(result[3], 16);
-
-  r /= 255;
-  g /= 255;
-  b /= 255;
-
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let h, s, l = (max + min) / 2;
-
-  if (max === min) {
-    h = s = 0; // achromatic
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-
-    switch(max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
-      default: break;
-    }
-
-    h /= 6;
+  if (calendarLabel) {
+    plugins.push([...validateCalendarLabel(calendarLabel)]);
   }
 
-  h = Math.round(h * 360);
-  s = Math.round(s * 100);
-  l = Math.round(l * 100);
-
-  return { h, s, l };
+  return plugins;
 };
