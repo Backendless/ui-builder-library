@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export const StyleVariants = {
   'default'    : '',
@@ -13,7 +13,7 @@ export const ContextMenuItemTypes = {
 export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) => {
   const [pressed, setPressed] = useState(false);
 
-  const position = useRef({ x: initialPosition.x, y: initialPosition.y });
+  const position = useMemo(() => ({ current: { x: initialPosition.x, y: initialPosition.y } }), [initialPosition]);
   const ref = useRef();
 
   const unsubscribe = useRef();
