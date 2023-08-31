@@ -32,6 +32,26 @@
       "settingTooltip": "Add the main color."
     },
     {
+      "type": "select",
+      "name": "iconType",
+      "label": "Icon Type",
+      "settingTooltip": "Choose the type of icons.",
+      "showInSettings": true,
+      "defaultValue": "star",
+      "hasLogicHandler": false,
+      "handlerId": "iconTypeLogic",
+      "options": [
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "heart",
+          "label": "Heart"
+        }
+      ]
+    },
+    {
       "type": "number",
       "name": "iconSize",
       "label": "Icon Size ",
@@ -56,21 +76,21 @@
       "name": "view",
       "label": "View",
       "showInSettings": true,
-      "defaultValue": "oneColor",
+      "defaultValue": "standard",
       "hasLogicHandler": false,
       "handlerId": "viewLogic",
       "options": [
         {
-          "value": "oneColor",
-          "label": "One Color"
+          "value": "standard",
+          "label": "Standard"
         },
         {
-          "value": "twoColor",
-          "label": "Two Color"
+          "value": "simple",
+          "label": "Simple"
         },
         {
-          "value": "multiColor",
-          "label": "Multi Color"
+          "value": "detailed",
+          "label": "Detailed"
         }
       ],
       "settingTooltip": "Choose the component view."

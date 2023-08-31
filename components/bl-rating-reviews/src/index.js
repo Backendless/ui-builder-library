@@ -6,12 +6,12 @@ import { ViewsMap } from './views';
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function CustomUIComponent({ component, eventHandlers, elRef }) {
-  const { ratingData, color, iconSize, width, view, localizations, style, classList } = component;
+  const { ratingData, color, iconType, iconSize, width, view, localizations, style, classList } = component;
 
   const processedData = useMemo(() => prepareReviewData(ratingData, color), [ratingData, color]);
-  const maxValue = useMemo(() => processedData.length, [processedData.length]);
   const totalReviews = useMemo(() => calculateTotalReviews(processedData), [processedData]);
   const average = useMemo(() => calculateAverage(processedData), [processedData]);
+  const maxValue = processedData.length;
 
   const Review = ViewsMap[view];
 
@@ -33,6 +33,7 @@ export default function CustomUIComponent({ component, eventHandlers, elRef }) {
         maxValue={ maxValue }
         average={ average }
         reviewData={ processedData }
+        iconType={ iconType }
         iconSize={ `${ iconSize }px` }
         totalReviews={ totalReviews }
         localizations={ localizations }

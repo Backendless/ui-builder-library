@@ -1,4 +1,4 @@
-export const EmptyHeart = () => (
+const EmptyHeart = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512">
@@ -11,7 +11,8 @@ export const EmptyHeart = () => (
      20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z"/>
   </svg>
 );
-export const FilledHeart = () => (
+
+const FilledHeart = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512">
@@ -20,7 +21,8 @@ export const FilledHeart = () => (
     84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
   </svg>
 );
-export const EmptyStar = () => (
+
+const EmptyStar = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 576 512">
@@ -32,7 +34,8 @@ export const EmptyStar = () => (
     1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z"/>
   </svg>
 );
-export const FilledStar = () => (
+
+const FilledStar = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 576 512">
@@ -43,4 +46,13 @@ export const FilledStar = () => (
   </svg>
 );
 
-export const icons = { EmptyStar, FilledStar, EmptyHeart, FilledHeart };
+export const IconsMap = {
+  star : {
+    filled: FilledStar,
+    empty : EmptyStar,
+  },
+  heart: {
+    filled: FilledHeart,
+    empty : EmptyHeart,
+  },
+};
