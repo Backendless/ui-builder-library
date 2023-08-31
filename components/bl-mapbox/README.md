@@ -31,14 +31,14 @@ The component covers basic features of the library and allows you in a couple cl
 
 ## Events
 
-| Name                       | Triggers                            | Context Blocks                                                                                                                                         |
-|----------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| On Click                   | when a user click on map            | Coordinates: `{lat: Number, lng: Number}`                                                                                                              |
-| On Marker Click            | when a user click on a marker       | Coordinates: `{lat: Number, lng: Number}` <br/> Description: `String` <br/> Data: `String` \| `Number` \| `Boolean` \| `Object` <br\> Marker: `Object` |
-| On Polygon Click           | when a user click on a polygon      | Coordinates: `{lat: Number, lng: Number}` <br/> Description: `String`                                                                                  |
-| On Determining Geoposition | when a user determining geoposition | Coordinates: `{lat: Number, lng: Number}`                                                                                                              |
-| On Pan Event               | when a user moves the map around    | Center: `{lat: Number, lng: Number}` <br/> North East: `{lat: Number, lng: Number}` <br/> South West: `{lat: Number, lng: Number}`                     |
-| On Markers Created Event   | when markers are created            | Markers: `[{marker: Object, markerProps: Object}]`                                                                                                     |
+| Name                       | Triggers                            | Context Blocks                                                                                                                     |
+|----------------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| On Click                   | when a user click on map            | Coordinates: `{lat: Number, lng: Number}`                                                                                          |
+| On Marker Click            | when a user click on a marker       | Coordinates: `{lat: Number, lng: Number}` <br/> Description: `String` <br/> Data: `String` \| `Number` \| `Boolean` \| `Object`    |
+| On Polygon Click           | when a user click on a polygon      | Coordinates: `{lat: Number, lng: Number}` <br/> Description: `String`                                                              |
+| On Determining Geoposition | when a user determining geoposition | Coordinates: `{lat: Number, lng: Number}`                                                                                          |
+| On Pan Event               | when a user moves the map around    | Center: `{lat: Number, lng: Number}` <br/> North East: `{lat: Number, lng: Number}` <br/> South West: `{lat: Number, lng: Number}` |
+| On Markers Created Event   | when markers are created            | Markers: `[{marker: Object, markerProps: Object}]`                                                                                 |
 
 ## Actions
 
@@ -60,7 +60,7 @@ The component covers basic features of the library and allows you in a couple cl
 | Set Zoom to Mapbox          | Zoom: `Number` <br/> Event Data: `Object`                                   |                                        |
 | Fly To Mapbox               | Options: `Object` <br/> Event Data: `Object`                                |                                        |
 | Rotate To Mapbox            | Bearing: `Number` <br/> Options: `Object` <br/> Event Data: `Object`        |                                        |
-| Set Marker Status of Mapbox | Marker: `Object` <br/> Active: `Boolean`                                    |                                        |
+| Set Marker Active of Mapbox | Marker: `Object` <br/> Active: `Boolean`                                    |                                        |
 
 ## Settings
 

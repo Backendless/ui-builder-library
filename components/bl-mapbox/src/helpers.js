@@ -126,14 +126,6 @@ const appendDirectionsOnMobile = (directions, mapRef, mapContainerRef) => {
   mapContainerRef.current.parentNode.insertAdjacentElement('afterend', div);
 };
 
-export const isMapWidthChanged = (mapRef, isMapLoaded) => {
-  useEffect(() => {
-    if (isMapLoaded) {
-      console.log('width changed to ', mapRef?.current?.transform?.width);
-    }
-  }, [mapRef?.current?.transform?.width, isMapLoaded])
-}
-
 export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers, map) => {
   const { START_POS, MAP_STYLE, ZOOM, PROJECTION } = defaultMapboxProps;
   const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
@@ -187,12 +179,11 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 export const useMarkers = (markers, mapRef, eventHandlers) => {
   const { onMarkerClick, onMarkersCreated } = eventHandlers;
   const markerElements = useRef();
-  const collectedMarkerData = [];
 
   useEffect(() => {
-    removeMarkers(markerElements.current);
+    const collectedMarkerData = [];
 
-    collectedMarkerData.length = 0;
+    removeMarkers(markerElements.current);
 
     if (markers?.length) {
       markerElements.current = markers.map(markerItem => {
@@ -207,9 +198,9 @@ export const useMarkers = (markers, mapRef, eventHandlers) => {
         popup.on('open', () => {
           const coordinates = { lat, lng };
 
-          onMarkerClick({ coordinates, description: description || '', data, marker });
+          onMarkerClick({ coordinates, description: description || '', data });
 
-          changeMarkerColor(marker, true);
+          setMarkerActive(marker, true);
         });
 
         if (description) {
@@ -217,7 +208,7 @@ export const useMarkers = (markers, mapRef, eventHandlers) => {
         }
 
         popup.on('close', () => {
-          changeMarkerColor(marker, false);
+          setMarkerActive(marker, false);
         });
 
         marker.setPopup(popup);
@@ -243,10 +234,11 @@ const removeMarkers = markers => {
   }
 };
 
-export const changeMarkerColor = (marker, status) => {
+export const setMarkerActive = (marker, status) => {
   const element = marker?.getElement();
+
   if (element) {
-    element?.classList.toggle('marker-root--active', status);
+    element.classList.toggle('marker-root--active', status);
   }
 };
 

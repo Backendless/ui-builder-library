@@ -1,4 +1,4 @@
-import { changeMarkerColor } from './helpers';
+import { setMarkerActive } from './helpers';
 
 export function createActions(mapRef, component) {
   const map = mapRef.current;
@@ -20,6 +20,6 @@ export function createActions(mapRef, component) {
     setZoom        : (zoom, eventData) => map?.setZoom(zoom, eventData),
     flyTo          : (options, eventData) => map?.flyTo(options, eventData),
     rotateTo       : (bearing, options, eventData) => map?.rotateTo(bearing, options, eventData),
-    setMarkerStatus: (marker, active) => changeMarkerColor(marker, active),
+    setMarkerActive: (marker, active) => setMarkerActive(marker, active),
   });
 }
