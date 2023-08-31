@@ -27,19 +27,25 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
         range,
         date: shapeDate(startDate, minDate, maxDate, highlightDate),
 
-        data: shapeData(sourceDataUrl, data, dataType, datePropName,
-          valuePropName, defaultDataValue, groupYLogic, groupY),
+        data: shapeData({
+          sourceDataUrl, data, dataType, datePropName,
+          valuePropName, defaultDataValue, groupYLogic, groupY,
+        }),
 
-        scale: ensureValidScale(
+        scale: ensureValidScale({
           scaleColorRange, scaleColorScheme, scaleOpacityBaseColor,
-          scaleType, scaleDomain, minValid, maxValid
-        ),
+          scaleType, scaleDomain, minValid, maxValid,
+        }),
 
-        domain: shapeDomain(type, dynamicDimension, gutter, sort, labelLogic, label, labelPosition, labelRotation,
-          textAlign, labelOffsetX, labelOffsetY, labelHeight, labelWidth),
+        domain: shapeDomain({
+          type, dynamicDimension, gutter, sort, labelLogic, label, labelPosition, labelRotation,
+          textAlign, labelOffsetX, labelOffsetY, labelHeight, labelWidth,
+        }),
 
-        subDomain: shapeSubDomain(subType, subLabel, subGutter, subColorLabel, subColorLabelLogic, subSort,
-          cellWidth, cellHeight, subLabelLogic, cellRadius),
+        subDomain: shapeSubDomain({
+          subType, subLabel, subGutter, subColorLabel, subColorLabelLogic, subSort,
+          cellWidth, cellHeight, subLabelLogic, cellRadius,
+        }),
 
         verticalOrientation,
         animationDuration,
@@ -75,7 +81,7 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
         className={ cn('bl-customComponent-calendar-heatmap', classList) }
         style={ style }
       />
-      <div id={ `bl-legend-label-${ instanceId }` }/>
+      <div id={ `bl-cal-heatmap--legend-label--${ instanceId }` }/>
     </>
   );
 }
