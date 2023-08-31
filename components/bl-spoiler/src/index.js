@@ -62,9 +62,7 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
 
-      <div
-        className={ cn('spoiler-content', { blurred: isEnabled }) }
-        style={{ filter: isEnabled ? `url(#filter-${ effect })` : 'none' }}>
+      <div className="spoiler-content" style={{ filter: isEnabled ? `url(#filter-${ effect })` : 'none' }}>
         { pods.spoilerContent.render() }
       </div>
 
