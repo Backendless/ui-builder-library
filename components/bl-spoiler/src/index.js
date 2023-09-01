@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Blur, Morphology, Morphose, Music, Ripples, Smoke, Snow, Turbulence } from './effects';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -37,6 +37,10 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
     onClick({ event, isEnabled });
   }, [isEnabled]);
 
+  const contentStyles = useMemo(() => ({ filter: isEnabled ? `url(#filter-${ effect })` : 'none' }), [isEnabled, effect]);
+  const svgStyles = useMemo(() => ({ opacity: effect === EffectTypes.MORPHOLOGY ? OPACITY : undefined }), [effect]);
+
+
   component.enableSpoiler = () => setIsEnabled(true);
   component.disableSpoiler = () => setIsEnabled(false);
   component.toggleSpoiler = (state) => {
@@ -62,12 +66,12 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
       onMouseEnter={ onMouseEnter }
       onMouseLeave={ onMouseLeave }>
 
-      <div className="spoiler-content" style={{ filter: isEnabled ? `url(#filter-${ effect })` : 'none' }}>
+      <div className="spoiler-content" style={ contentStyles }>
         { pods.spoilerContent.render() }
       </div>
 
       { isEnabled && (
-        <svg className="svg" style={{ opacity: effect === EffectTypes.MORPHOLOGY ? OPACITY : undefined }}>
+        <svg className="svg" style={ svgStyles }>
           <Effect fill={ background }/>
         </svg>
       ) }
