@@ -209,7 +209,8 @@
           "id": "data",
           "label": "Data"
         }
-      ]
+      ],
+      "output": true
     },
     {
       "name": "onPolygonClick",
@@ -255,6 +256,18 @@
         }
       ],
       "handlerDescription": "This event is triggered when the user moves the map around."
+    },
+    {
+      "name": "onMarkersCreated",
+      "label": "On Markers Created Event",
+      "output": false,
+      "handlerDescription": "This event is triggered when markers are created.",
+      "contextBlocks": [
+        {
+          "id": "markers",
+          "label": "Markers"
+        }
+      ]
     }
   ],
   "actions": [
@@ -415,6 +428,20 @@
         {
           "id": "eventData",
           "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "setMarkerActive",
+      "label": "Set Marker Active of",
+      "inputs": [
+        {
+          "id": "marker",
+          "label": "Marker"
+        },
+        {
+          "id": "active",
+          "label": "Active"
         }
       ]
     }

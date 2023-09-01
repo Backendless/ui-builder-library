@@ -176,10 +176,13 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 
 };
 
-export const useMarkers = (markers, mapRef, onMarkerClick) => {
+export const useMarkers = (markers, mapRef, eventHandlers) => {
+  const { onMarkerClick, onMarkersCreated } = eventHandlers;
   const markerElements = useRef();
 
   useEffect(() => {
+    const collectedMarkerData = [];
+
     removeMarkers(markerElements.current);
 
     if (markers?.length) {
@@ -197,22 +200,29 @@ export const useMarkers = (markers, mapRef, onMarkerClick) => {
 
           onMarkerClick({ coordinates, description: description || '', data });
 
-          changeMarkerColor(marker);
+          setMarkerActive(marker, true);
         });
 
         if (description) {
-          popup.setText(description);
+          popup.setText(description, false);
         }
 
         popup.on('close', () => {
-          changeMarkerColor(marker);
+          setMarkerActive(marker, false);
         });
 
         marker.setPopup(popup);
 
+        collectedMarkerData.push({
+          marker,
+          markerProps: markerItem,
+        })
+
         return marker;
       });
     }
+
+    onMarkersCreated({markers: collectedMarkerData});
   }, [markers]);
 };
 
@@ -224,9 +234,14 @@ const removeMarkers = markers => {
   }
 };
 
-const changeMarkerColor = marker => {
-  marker.getElement().classList.toggle('marker-root--active');
+export const setMarkerActive = (marker, status) => {
+  const element = marker?.getElement();
+
+  if (element) {
+    element.classList.toggle('marker-root--active', status);
+  }
 };
+
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
   polygonsArray.forEach(polygon => {

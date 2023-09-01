@@ -1,133 +1,87 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 
-import CalendarHeatmap from './lib/react-calendar-heatmap.umd.min';
-import ReactTooltip from './lib/react-tooltip.min';
-import { generateData, getSaturationByCount, hexToHSL, shiftDate, validate } from './helpers';
-import { Legend } from './subcomponents';
+import CalHeatmap from './cal-heatmap.min';
+import { ensureValidScale, shapeData, shapeDate, shapeDomain, shapePlugins, shapeSubDomain } from './helpers';
 
-const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
+const { cn } = BackendlessUI.CSSUtils;
 
-export const today = new Date();
-const WEEKDAY_LABELS_RIGHT_SPACE = 10;
-
-export default function CalendarHeatmapComponent({ component, eventHandlers }) {
+export default function ComponentName({ elRef, component, eventHandlers, instanceId }) {
   const {
-    style, display, classList, calendarData, numberDays, monthLabels, weekdayLabels,
-    color, legend, showMonthLabels, showWeekdayLabels, width, height, maxCount: propMaxCount, minCount: propMinCount,
+    display, classList, style, sourceDataUrl, dataType, data, range, sort, subType, type,
+    datePropName, valuePropName, labelPosition, labelRotation, textAlign, labelOffsetX,
+    labelOffsetY, labelHeight, labelWidth, scaleType, scaleColorScheme, scaleColorRange,
+    scaleOpacityBaseColor, verticalOrientation, startDate, minDate, maxDate, highlightDate,
+    defaultDataValue, cellHeight, cellWidth, subLabel, subGutter, subColorLabel, cellRadius,
+    groupY, label, gutter, dynamicDimension, subSort, scaleDomain, legend, calendarLabel,
+    animationDuration, theme,
   } = component;
-  const { onCellClick } = eventHandlers;
+  const { subColorLabelLogic, subLabelLogic, groupYLogic, labelLogic, onCellClick } = eventHandlers;
 
-  const ref = useRef();
-  const legendRef = useRef();
+  const cal = useMemo(() => new CalHeatmap(), []);
 
-  const [legendMargin, setLegendMargin] = useState(0);
-  const [maxCount, setMaxCount] = useState(0);
-  const [minCount, setMinCount] = useState(0);
-
-  const rootStyle = useMemo(() => ({
-    ...style,
-    width : normalizeDimensionValue(width),
-    height: normalizeDimensionValue(height),
-  }), [style, width, height]);
-
-  const hslColor = useMemo(() => hexToHSL(color), [color]);
-
-  const newCalendarData = useMemo(() => {
-    return calendarData && numberDays ? generateData(numberDays, calendarData) : calendarData;
-  }, [numberDays, calendarData]);
-
-  const month = useMemo(() => validate(monthLabels), [monthLabels]);
-  const weeks = useMemo(() => validate(weekdayLabels), [weekdayLabels]);
-
-  const handleResize = useCallback(() => {
-    const weekdayLabels = ref.current.querySelector('.react-calendar-heatmap-weekday-labels');
-
-    setLegendMargin(weekdayLabels.getBoundingClientRect().width + WEEKDAY_LABELS_RIGHT_SPACE);
-  }, []);
+  const maxValid = useMemo(() => data && Math.max(...data.map(({ value }) => value)), [data]);
+  const minValid = useMemo(() => data && Math.min(...data.map(({ value }) => value)), [data]);
 
   useEffect(() => {
-    if (propMaxCount === null) {
-      setMaxCount(getMaxMinCalendarCount(newCalendarData).maxCount);
-    } else {
-      setMaxCount(propMaxCount);
-    }
-  }, [propMaxCount, newCalendarData]);
+    cal.paint({
+        range,
+        date: shapeDate(startDate, minDate, maxDate, highlightDate),
 
-  useEffect(() => {
-    if (propMinCount === null) {
-      setMinCount(getMaxMinCalendarCount(newCalendarData).minCount);
-    } else {
-      setMinCount(propMinCount);
-    }
-  }, [propMinCount, newCalendarData]);
+        data: shapeData({
+          sourceDataUrl, data, dataType, datePropName,
+          valuePropName, defaultDataValue, groupYLogic, groupY,
+        }),
 
-  useEffect(() => {
-    if (ref.current && legendRef.current) {
-      handleResize();
-      window.addEventListener('resize', handleResize, false);
+        scale: ensureValidScale({
+          scaleColorRange, scaleColorScheme, scaleOpacityBaseColor,
+          scaleType, scaleDomain, minValid, maxValid,
+        }),
 
-      const calendar = ref.current.querySelector('svg');
+        domain: shapeDomain({
+          type, dynamicDimension, gutter, sort, labelLogic, label, labelPosition, labelRotation,
+          textAlign, labelOffsetX, labelOffsetY, labelHeight, labelWidth,
+        }),
 
-      calendar.style.height = `calc(100% - ${ legendRef.current.clientHeight }px)`;
-      calendar.style.width = '100%';
-    }
+        subDomain: shapeSubDomain({
+          subType, subLabel, subGutter, subColorLabel, subColorLabelLogic, subSort,
+          cellWidth, cellHeight, subLabelLogic, cellRadius,
+        }),
 
-    return () => {
-      window.removeEventListener('resize', handleResize, false);
-    };
-  }, [ref.current, legendRef.current]);
+        verticalOrientation,
+        animationDuration,
+        theme,
+        itemSelector: `#bl-cal-heatmap-${ instanceId }`,
+      },
+      shapePlugins(legend, instanceId, calendarLabel)
+    );
+  }, [cal, cellHeight, cellRadius, cellWidth, dataType, datePropName, defaultDataValue, highlightDate, instanceId,
+    labelHeight, labelPosition, labelRotation, labelWidth, labelOffsetX, labelOffsetY, maxDate, maxValid, minDate,
+    minValid, range, scaleColorRange, scaleColorScheme, scaleOpacityBaseColor, scaleType, sort, startDate,
+    subColorLabel, subColorLabelLogic, subGutter, subLabel, subLabelLogic, subType, textAlign, type, valuePropName,
+    verticalOrientation, sourceDataUrl, data, groupYLogic, groupY, scaleDomain, dynamicDimension, gutter, labelLogic,
+    label, subSort, legend, calendarLabel, animationDuration, theme]);
 
-  const transformDayElement = useCallback((element, value) => {
-    const newElement = React.cloneElement(element, { title: value.date });
-    const rateOfSaturation = getSaturationByCount(maxCount, minCount, value.count);
-    const { h, l } = hslColor;
+  useEffect(() => cal.on('click', (event, timestamp, value) => onCellClick({ event, timestamp, value })), []);
 
-    newElement.props.fill = `hsl(${ h }, ${ rateOfSaturation }%, ${ l }%)`;
+  component.goNext = steps => cal.next(steps);
+  component.goPrev = steps => cal.previous(steps);
+  component.jumpTo = (date, reset) => cal.jumpTo(date, reset);
 
-    return newElement;
-  }, [maxCount, minCount, hslColor]);
+  if (!display) {
+    cal.destroy();
 
-  if (!display || !newCalendarData) {
     return null;
   }
 
   return (
-    <div ref={ ref } className={ cn('bl-customComponent-calendarHeatmap', classList) } style={ rootStyle }>
-      <div className="wrapper">
-        <CalendarHeatmap
-          values={ newCalendarData }
-          startDate={ shiftDate(today, newCalendarData.length) }
-          endDate={ today }
-          showMonthLabels={ showMonthLabels }
-          showWeekdayLabels={ showWeekdayLabels }
-          monthLabels={ month }
-          weekdayLabels={ weeks }
-          tooltipDataAttrs={ getTooltipData }
-          transformDayElement={ transformDayElement }
-          onClick={ ({ date, count }) => onCellClick({ date, count }) }
-        />
-        <Legend
-          maxCount={ maxCount }
-          minCount={ minCount }
-          hslColor={ hslColor }
-          legendRef={ legendRef }
-          legend={ legend }
-          margin={ legendMargin }
-        />
-      </div>
-      <ReactTooltip/>
-    </div>
+    <>
+      <div
+        ref={ elRef }
+        id={ `bl-cal-heatmap-${ instanceId }` }
+        className={ cn('bl-customComponent-calendar-heatmap', classList) }
+        style={ style }
+      />
+      <div id={ `bl-cal-heatmap--legend-label--${ instanceId }` }/>
+    </>
   );
 }
-
-const getTooltipData = value => {
-  const date = new Date(value.date);
-
-  return { 'data-tip': `${ date.toISOString().slice(0, 10) } has count: ${ value.count }` };
-};
-
-const getMaxMinCalendarCount = calendarData => {
-  const counts = calendarData.map(value => value.count);
-
-  return { maxCount: Math.max(...counts), minCount: Math.min(...counts) };
-};

@@ -5,12 +5,6 @@
 @bl-customComponent-spoiler-content-width: 100%;
 @bl-customComponent-spoiler-content-height: 100%;
 @bl-customComponent-spoiler-content-direction: column;
-@bl-customComponent-spoiler-content-transition: all 0.3s ease;
-@bl-customComponent-spoiler-content-blur: 8px;
-
-@bl-customComponent-spoiler-overlay-width: 100%;
-@bl-customComponent-spoiler-overlay-height: 100%;
-@bl-customComponent-spoiler-overlay-cursor: pointer;
 
 @bl-customComponent-spoiler-svg-cursor: pointer;
 
@@ -27,20 +21,6 @@
     width: @bl-customComponent-spoiler-content-width;
     height: @bl-customComponent-spoiler-content-height;
     flex-direction: @bl-customComponent-spoiler-content-direction;
-    transition: @bl-customComponent-spoiler-content-transition;
-
-    &.blurred {
-      filter: blur(@bl-customComponent-spoiler-content-blur);
-    }
-  }
-
-  .spoiler-overlay {
-    width: @bl-customComponent-spoiler-overlay-width;
-    height: @bl-customComponent-spoiler-overlay-height;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: @bl-customComponent-spoiler-overlay-cursor;
   }
 
   .svg {
