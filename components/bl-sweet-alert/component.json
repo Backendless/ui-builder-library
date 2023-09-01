@@ -243,8 +243,8 @@
       "label": "On Confirm",
       "contextBlocks": [
         {
-          "id": "response",
-          "label": "response"
+          "id": "value",
+          "label": "value"
         }
       ],
       "handlerDescription": "Triggered when the \"Confirm\" button was clicked."
@@ -255,8 +255,8 @@
       "handlerDescription": "Triggered when the \"Deny\" button was clicked.",
       "contextBlocks": [
         {
-          "id": "response",
-          "label": "response"
+          "id": "value",
+          "label": "value"
         }
       ]
     },
@@ -265,8 +265,8 @@
       "label": "On Dismiss",
       "contextBlocks": [
         {
-          "id": "response",
-          "label": "response"
+          "id": "dismiss",
+          "label": "dismiss"
         }
       ],
       "handlerDescription": "Triggered when there is any reason to dismiss(\"Close\", \"Cancel\", `Esc`, etc.)."

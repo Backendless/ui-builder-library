@@ -51,11 +51,11 @@ More information about this popup can be found in the [Sweet Alert 2](https://sw
 
 ## Events
 
-| Name       | Triggers                                                             | Context Blocks                                                                                          |
-|------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| On Confirm | when the "Confirm" button was clicked.                               | response: `{ isConfirmed: Boolean, isDenied: Boolean, isDismissed: Boolean, value: Boolean \| String }` |
-| On Deny    | when the "Deny" button was clicked.                                  | response: `{ isConfirmed: Boolean, isDenied: Boolean, isDismissed: Boolean, value: Boolean }`           |
-| On Dismiss | when there is any reason to dismiss("Close", "Cancel", `Esc`, etc.). | response: `{ isConfirmed: Boolean, isDenied: Boolean, isDismissed: Boolean, dismiss: String }`          |
+| Name       | Triggers                                                             | Context Blocks             |
+|------------|----------------------------------------------------------------------|----------------------------|
+| On Confirm | when the "Confirm" button was clicked.                               | value: `Boolean \| String` |
+| On Deny    | when the "Deny" button was clicked.                                  | value: `Boolean`           |
+| On Dismiss | when there is any reason to dismiss("Close", "Cancel", `Esc`, etc.). | dismiss: `String`          |
 
 ## Actions
 

@@ -47,11 +47,11 @@ const createAlert = (elRef, swalRef, options, eventHandlers) => {
 
   swalRef.current = SweetAlert.fire({ target: elRef.current, ...options });
   swalRef.current.then(response => {
-    const { isConfirmed, isDismissed, isDenied } = response;
+    const { isConfirmed, isDismissed, isDenied, value, dismiss } = response;
 
-    isConfirmed && onConfirm({ response });
-    isDismissed && onDismiss({ response });
-    isDenied && onDeny({ response });
+    isConfirmed && onConfirm({ value });
+    isDismissed && onDismiss({ dismiss });
+    isDenied && onDeny({ value });
   }).finally(() => swalRef.current = null);
 };
 
