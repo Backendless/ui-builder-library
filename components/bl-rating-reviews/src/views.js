@@ -1,14 +1,17 @@
+import { useMemo } from 'react';
+
 import { IconsMap } from './icons';
 import { IconRow, Percents, ProgressBarContainer, Scores } from './subcomponents';
 
-const Standard = props => {
+const StandardReview = props => {
   const {
     width, average, maxValue, color, iconType, iconSize, totalReviews, reviewData, localizations,
-    eventHandlers
+    eventHandlers,
   } = props;
+  const styles = { width, color };
 
   return (
-    <div className="oneColorReview" style={ { 'width': width, 'color': color } }>
+    <div className="oneColorReview" style={ styles }>
       <div className="top-container">
         <div className="average">
           <span className="average-value">
@@ -53,20 +56,21 @@ const Standard = props => {
   );
 };
 
-const Simple = props => {
+const SimpleReview = props => {
   const { width, maxValue, color, iconType, iconSize, totalReviews, reviewData, eventHandlers } = props;
   const Icon = IconsMap[iconType].filled;
+  const styles = useMemo(() => ({ width }), [width]);
 
   return (
-    <div className="twoColorReview" style={ { 'width': width } }>
+    <div className="twoColorReview" style={ styles }>
       <div className="data-container">
         <div className="icons">
           { reviewData.map((el, i) => (
             <div className="icon-container" key={ i }>
               <span className="number">{ maxValue - i }</span>
-              <span className="icon" style={ { 'height': iconSize, 'width': iconSize } }>
-                  <Icon/>
-                </span>
+              <span className="icon" style={{ 'height': iconSize, 'width': iconSize }}>
+                <Icon/>
+              </span>
             </div>
           )) }
         </div>
@@ -86,14 +90,15 @@ const Simple = props => {
   );
 };
 
-const Detailed = props => {
+const DetailedReview = props => {
   const {
     width, average, maxValue, color, iconType, iconSize, totalReviews, reviewData, localizations,
-    eventHandlers
+    eventHandlers,
   } = props;
+  const styles = useMemo(() => ({ width }), [width]);
 
   return (
-    <div className="multiColorReview" style={ { 'width': width } }>
+    <div className="multiColorReview" style={ styles }>
       <div className="top-container">
         <div className="average-value">{ average }</div>
         <IconRow
@@ -123,7 +128,7 @@ const Detailed = props => {
 };
 
 export const ViewsMap = {
-  standard: Standard,
-  simple  : Simple,
-  detailed: Detailed,
+  standard: StandardReview,
+  simple  : SimpleReview,
+  detailed: DetailedReview,
 };

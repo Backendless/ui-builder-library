@@ -17,9 +17,9 @@ export const calculateAverage = reviewData => {
   return (totalForFormula / totalReviews).toFixed(1);
 };
 
-export const calculateTotalReviews = reviewData => (
-  reviewData.reduce((accumulator, current) => accumulator + current.value, 0)
-);
+export const calculateTotalReviews = reviewData => {
+  return (reviewData.reduce((accumulator, current) => accumulator + current.value, 0));
+};
 
 export const prepareReviewData = (data, color) => {
   if (!Array.isArray(data) || data.length === 0) {

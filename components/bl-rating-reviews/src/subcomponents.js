@@ -1,11 +1,16 @@
+import { useMemo } from 'react';
+
 import { calculatePercent } from './helpers';
 import { IconsMap } from './icons';
 
 export const IconRow = ({ iconType, maxValue, value, color, size }) => {
-  const styleObject = { 'fill': color, 'width': size, 'height': size };
+  const styles = { fill: color, width: size, height: size };
+  const { FilledIcon, EmptyIcon } = useMemo(() => ({
+    FilledIcon: IconsMap[iconType].filled,
+    EmptyIcon: IconsMap[iconType].empty,
+  }), [iconType]);
   const resultRow = Array.from({ length: maxValue }, (_, i) => {
-    const typedIcons = IconsMap[iconType];
-    const Icon = i + 1 <= value ? typedIcons.filled : typedIcons.empty;
+    const Icon = value > i + 1 ? FilledIcon : EmptyIcon;
 
     return (<Icon key={ i }/>);
   });
@@ -13,14 +18,16 @@ export const IconRow = ({ iconType, maxValue, value, color, size }) => {
   return (
     <div className="icon-row">
       { resultRow.map((el, key) => (
-        <span className="icon" style={ styleObject } key={ key }>{ el }</span>)
+        <span className="icon" style={ styles } key={ key }>{ el }</span>)
       ) }
     </div>
   );
 };
 
 export const Percents = ({ reviewData, totalReviews }) => {
-  const percentsArray = reviewData.map(({ value }) => Math.round(calculatePercent(value, totalReviews)));
+  const percentsArray = useMemo(() => {
+    return (reviewData.map(({ value }) => Math.round(calculatePercent(value, totalReviews))));
+  }, [reviewData, totalReviews]);
 
   return (
     <div className="percents">
@@ -47,13 +54,14 @@ export const ProgressBarContainer = ({ reviewData, eventHandlers, totalReviews, 
 };
 
 const ProgressBar = ({ value, maxValue, color, eventHandlers: { getRatingScore } }) => {
-  const percent = `${ Math.round(value * 100 / maxValue) }%`;
+  const percent = useMemo(() => (`${ Math.round(value * 100 / maxValue) }%`), [value, maxValue]);
+  const styles = { width: percent, background: color };
 
   const onClickHandler = () => getRatingScore({ score: value });
 
   return (
     <div className="progress-bar" onClick={ onClickHandler }>
-      <div className="progress-bar-fill" style={ { 'width': percent, 'background': color } }/>
+      <div className="progress-bar-fill" style={ styles }/>
     </div>
   );
 };
