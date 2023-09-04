@@ -56,6 +56,7 @@ Collapsible Panel is the component that can be used in Backendless [UI-Builder](
 
 **Other**
 ````
+@bl-customComponent-collapsiblePanel-content-direction: column;
 @bl-customComponent-collapsiblePanel-content-animationName-open: collapsiblePanel-animation-open;
 @bl-customComponent-collapsiblePanel-content-animationName-close: collapsiblePanel-animation-close;
 @bl-customComponent-collapsiblePanel-content-animationDuration: 0.3s;
