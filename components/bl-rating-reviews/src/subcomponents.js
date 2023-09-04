@@ -4,11 +4,13 @@ import { calculatePercent } from './helpers';
 import { IconsMap } from './icons';
 
 export const IconRow = ({ iconType, maxValue, value, color, size }) => {
-  const styles = { fill: color, width: size, height: size };
+  const styles = useMemo(() => ({ fill: color, width: size, height: size }), [color, size]);
+
   const { FilledIcon, EmptyIcon } = useMemo(() => ({
     FilledIcon: IconsMap[iconType].filled,
     EmptyIcon: IconsMap[iconType].empty,
   }), [iconType]);
+
   const resultRow = Array.from({ length: maxValue }, (_, i) => {
     const Icon = value > i + 1 ? FilledIcon : EmptyIcon;
 
@@ -55,7 +57,7 @@ export const ProgressBarContainer = ({ reviewData, eventHandlers, totalReviews, 
 
 const ProgressBar = ({ value, maxValue, color, eventHandlers: { getRatingScore } }) => {
   const percent = useMemo(() => (`${ Math.round(value * 100 / maxValue) }%`), [value, maxValue]);
-  const styles = { width: percent, background: color };
+  const styles = useMemo(() => ({ width: percent, background: color }), [percent, color]);
 
   const onClickHandler = () => getRatingScore({ score: value });
 

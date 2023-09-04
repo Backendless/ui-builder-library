@@ -8,7 +8,8 @@ const StandardReview = props => {
     width, average, maxValue, color, iconType, iconSize, totalReviews, reviewData, localizations,
     eventHandlers,
   } = props;
-  const styles = { width, color };
+
+  const styles = useMemo(() => ({ width, color }), [width, color]);
 
   return (
     <div className="oneColorReview" style={ styles }>
@@ -58,7 +59,8 @@ const StandardReview = props => {
 
 const SimpleReview = props => {
   const { width, maxValue, color, iconType, iconSize, totalReviews, reviewData, eventHandlers } = props;
-  const Icon = IconsMap[iconType].filled;
+
+  const Icon = useMemo(() => (IconsMap[iconType].filled), [iconType]);
   const styles = useMemo(() => ({ width }), [width]);
 
   return (
