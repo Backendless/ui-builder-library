@@ -10,7 +10,7 @@ export const ContextMenuItemTypes = {
   ACTION: 'action',
 };
 
-export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) => {
+export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable, setPosition }) => {
   const [pressed, setPressed] = useState(false);
 
   const position = useRef({ x: initialPosition.x, y: initialPosition.y });
@@ -41,6 +41,8 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) =>
     }
   }, [draggable]);
 
+  useEffect(() => position.current = initialPosition, [initialPosition]);
+
   useEffect(() => {
     if (!pressed) {
       return;
@@ -65,6 +67,7 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable }) =>
 
       const handleMouseUp = e => {
         e.target.style.userSelect = 'auto';
+        setPosition(position.current);
         setPressed(false);
       };
 

@@ -6,6 +6,7 @@
 @bl-customComponent-collapsiblePanel-width: 100%;
 @bl-customComponent-collapsiblePanel-padding: 10px 14px;
 @bl-customComponent-collapsiblePanel-content-width: 100%;
+@bl-customComponent-collapsiblePanel-content-direction: column;
 @bl-customComponent-collapsiblePanel-content-open-maxHeight: 1000px;
 @bl-customComponent-collapsiblePanel-content-animationName-open: collapsiblePanel-animation-open;
 @bl-customComponent-collapsiblePanel-content-animationName-close: collapsiblePanel-animation-close;
@@ -93,6 +94,7 @@
 
   .panel-content {
     display: flex;
+    flex-direction: @bl-customComponent-collapsiblePanel-content-direction;
     width: @bl-customComponent-collapsiblePanel-content-width;
     max-height: 0;
     overflow: hidden;

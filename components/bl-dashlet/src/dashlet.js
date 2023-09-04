@@ -43,19 +43,14 @@ export function Dashlet(props) {
     }
   }, [position]);
 
-  const handleDrag = useCallback(coords => {
-    const position = getPosition(rootRef, coords);
-
-    setPosition(position);
-
-    return position;
-  }, []);
+  const handleDrag = useCallback(coords => getPosition(rootRef, coords), []);
 
   const [ref] = useDraggable({
     onDrag         : handleDrag,
     rootRef        : rootRef,
     initialPosition: position,
     draggable,
+    setPosition,
   });
 
   const onResizeStop = useCallback((e, { size: { height, width } }) => {
