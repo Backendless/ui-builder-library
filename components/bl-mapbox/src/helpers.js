@@ -8,7 +8,7 @@ import { createActions } from './actions';
 const { Map, FullscreenControl, NavigationControl, Marker, Popup, GeolocateControl } = Mapbox;
 
 const defaultMapboxProps = {
-  START_POS            : { lat: 0, lng: 0 },
+  START_POS            : { lat: 40.730610, lng: -73.935242 },
   MAP_STYLE            : 'mapbox://styles/mapbox/streets-v11',
   ZOOM                 : 10,
   PROJECTION           : 'mercator',
