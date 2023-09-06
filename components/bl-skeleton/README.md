@@ -10,12 +10,13 @@ The component based on external [Skeleton](https://mui.com/material-ui/react-ske
 
 ## Properties
 
-| Property  | Type   | Default Value | Logic        | Data Binding | UI Setting | Description                                                                       |
-|-----------|--------|---------------|--------------|--------------|------------|-----------------------------------------------------------------------------------|
-| Variant   | Select | "text"        |              | NO           | YES        | Allows select variant of skeleton ("text", "circular", "rectangular", "rounded"). |
-| Height    | String | "0px"         | Height Logic | YES          | YES        | Allows determinate height for skeleton.                                           |
-| Width     | String | "0px"         | Width Logic  | YES          | YES        | Allows to determinate width for skeleton.                                         |
-| Animation | Select | "default"     |              | NO           | YES        | Allows select animation of skeleton ("default", "wave", "none").                  |
+| Property                               | Type     | Default Value | Logic                    | Data Binding | UI Setting | Description                                                                       |
+|----------------------------------------|----------|---------------|--------------------------|--------------|------------|-----------------------------------------------------------------------------------|
+| Is Content Visible: `isContentVisible` | Checkbox | `false`       | Is Content Visible Logic | YES          | YES        | Allows to determine visibility of pod content                                     |
+| Variant: `variant`                     | Select   | "text"        |                          | NO           | YES        | Allows select variant of skeleton ("text", "circular", "rectangular", "rounded"). |
+| Height: `height`                       | String   | "100%"        | Height Logic             | YES          | YES        | Allows determinate height for skeleton.                                           |
+| Width: `width`                         | String   | "100%"        | Width Logic              | YES          | YES        | Allows to determinate width for skeleton.                                         |
+| Animation: `animation`                 | Select   | "default"     |                          | NO           | YES        | Allows select animation of skeleton ("default", "wave", "none").                  |
 
 
 ## Styles

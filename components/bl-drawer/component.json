@@ -105,14 +105,14 @@
     },
     {
       "type": "checkbox",
-      "name": "defaultOpen",
-      "label": "Default Open",
+      "name": "isOpen",
+      "label": "Is Open",
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": true,
-      "handlerId": "defaultOpenLogic",
-      "handlerLabel": "Default Open Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the drawer window opens after the page is loaded."
+      "handlerId": "isOpenLogic",
+      "handlerLabel": "Is Open Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the drawer window is open or closed."
     }
   ],
   "eventHandlers": [

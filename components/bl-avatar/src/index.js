@@ -1,28 +1,38 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import FALLBACK_IMAGE from './assets/fallback-image.jpg';
-import { defineImageDimensions, uploadImage } from './helpers';
+import { updateImage, uploadImage } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function AvatarComponent({ component, eventHandlers, elRef }) {
-  const { classList, display, style, readOnly, shape, imageUrl, width, height, emptyLabel, changeLabel } = component;
+  const { classList, display, style, readOnly, shape, imageUrl, width, height, uploadIcon, smartImageFit } = component;
   const { onUpload } = eventHandlers;
 
   const [imageSource, setImageSource] = useState(imageUrl);
+  const [imageDimensions, setImageDimensions] = useState({});
+  const [isInteracted, setIsInteracted] = useState(false);
 
   const inputRef = useRef(null);
 
   useEffect(() => {
-    setImageSource(imageUrl);
+    if (imageUrl !== imageSource) {
+      updateImage(imageUrl, smartImageFit, setImageDimensions, setImageSource);
+    }
   }, [imageUrl]);
 
-  const onClick = () => {
-    if (!readOnly && inputRef.current) {
-      inputRef.current.click();
+  const toggleUserInteractionState = useCallback(isInteracted => {
+    if (!readOnly) {
+      setIsInteracted(isInteracted);
     }
+  }, [readOnly]);
+
+  const onClick = () => {
+    inputRef.current.click();
+    setIsInteracted(false);
   };
 
+  const uploadLabelVisibility = !readOnly && (isInteracted || !imageSource);
   const styles = {
     minHeight    : height,
     pointerEvents: readOnly && 'none',
@@ -39,16 +49,23 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-customComponent-avatar', shape, classList) } style={ styles }>
+    <div
+      ref={ elRef }
+      className={ cn('bl-customComponent-avatar', shape, classList) }
+      style={ styles }
+      onMouseEnter={ () => toggleUserInteractionState(true) }
+      onMouseLeave={ () => toggleUserInteractionState(false) }
+      onTouchStart={ () => toggleUserInteractionState(true) }>
       <ImagePreview
         imageSource={ readOnly ? (imageSource || FALLBACK_IMAGE) : imageSource }
         component={ component }
         eventHandlers={ eventHandlers }
+        dimensions={ imageDimensions }
       />
 
-      { !readOnly && (
-        <div className={ cn('avatar-label', { hide: imageSource }) } onClick={ onClick }>
-          { imageSource ? changeLabel : emptyLabel }
+      { uploadLabelVisibility && (
+        <div className={ cn('upload-label', { interacted: isInteracted }) } onClick={ onClick }>
+          <i className="upload-icon material-icons-round" aria-hidden="true">{ uploadIcon }</i>
         </div>
       ) }
 
@@ -57,24 +74,19 @@ export default function AvatarComponent({ component, eventHandlers, elRef }) {
         type="file"
         accept="image/*"
         aria-label="upload-input"
-        onChange={ event => uploadImage(event, setImageSource, onUpload) }
+        onChange={ event => uploadImage(event, setImageSource, setImageDimensions, smartImageFit, onUpload) }
         hidden
       />
     </div>
   );
 }
 
-function ImagePreview({ imageSource, component, eventHandlers }) {
-  const { alt, smartImageFit } = component;
+function ImagePreview({ imageSource, component, eventHandlers, dimensions }) {
+  const { alt } = component;
   const { onError, onChange } = eventHandlers;
-
-  const [{ height, width }, setDimensions] = useState({});
+  const { height, width } = dimensions;
 
   useEffect(() => {
-    if (imageSource) {
-      defineImageDimensions(imageSource, smartImageFit, setDimensions);
-    }
-
     component.imageUrl = imageSource;
 
     onChange({ imageSource });

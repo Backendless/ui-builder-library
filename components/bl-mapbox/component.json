@@ -40,7 +40,7 @@
       "handlerLabel": "Center Logic",
       "dataBinding": true,
       "handlerDescription": "Used to set center on the map.",
-      "defaultValue": "{\n  \"lat\": 0,\n  \"lng\": 0\n}"
+      "defaultValue": "{\n  \"lat\": 40.730610,\n  \"lng\": -73.935242\n}"
     },
     {
       "type": "number",
@@ -204,8 +204,13 @@
         {
           "id": "description",
           "label": "Description"
+        },
+        {
+          "id": "data",
+          "label": "Data"
         }
-      ]
+      ],
+      "output": true
     },
     {
       "name": "onPolygonClick",
@@ -251,6 +256,18 @@
         }
       ],
       "handlerDescription": "This event is triggered when the user moves the map around."
+    },
+    {
+      "name": "onMarkersCreated",
+      "label": "On Markers Created Event",
+      "output": false,
+      "handlerDescription": "This event is triggered when markers are created.",
+      "contextBlocks": [
+        {
+          "id": "markers",
+          "label": "Markers"
+        }
+      ]
     }
   ],
   "actions": [
@@ -411,6 +428,20 @@
         {
           "id": "eventData",
           "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "setMarkerActive",
+      "label": "Set Marker Active of",
+      "inputs": [
+        {
+          "id": "marker",
+          "label": "Marker"
+        },
+        {
+          "id": "active",
+          "label": "Active"
         }
       ]
     }

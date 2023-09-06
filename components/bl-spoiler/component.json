@@ -60,7 +60,7 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "backgroundLogic",
-      "defaultValue": "#a5b3cd"
+      "defaultValue": "rgba(255,255,255,0)"
     },
     {
       "type": "checkbox",
@@ -93,11 +93,6 @@
       "name": "onMouseEnter",
       "handlerDescription": "Triggered when the mouse pointer hovers over the component.",
       "label": "On Mouse Enter"
-    },
-    {
-      "name": "onMouseMove",
-      "label": "On Mouse Move",
-      "handlerDescription": "Triggered when the mouse pointer moves over the component."
     },
     {
       "name": "onMouseLeave",

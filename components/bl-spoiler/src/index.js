@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Blur, Morphology, Morphose, Music, Ripples, Smoke, Snow, Turbulence } from './effects';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -29,7 +29,7 @@ const OPACITY = 0.5;
 
 export default function SpoilerComponent({ component, elRef, eventHandlers, pods }) {
   const { style, classList, display, effect, background, enabled } = component;
-  const { onClick, onMouseEnter, onMouseMove, onMouseLeave } = eventHandlers;
+  const { onClick, onMouseEnter, onMouseLeave } = eventHandlers;
 
   const [isEnabled, setIsEnabled] = useState(enabled);
 
@@ -37,13 +37,17 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
     onClick({ event, isEnabled });
   }, [isEnabled]);
 
+  const contentStyles = useMemo(() => ({ filter: isEnabled ? `url(#filter-${ effect })` : 'none' }), [isEnabled, effect]);
+  const svgStyles = useMemo(() => ({ opacity: effect === EffectTypes.MORPHOLOGY ? OPACITY : undefined }), [effect]);
+
+
   component.enableSpoiler = () => setIsEnabled(true);
   component.disableSpoiler = () => setIsEnabled(false);
   component.toggleSpoiler = (state) => {
     if (state !== undefined) {
       setIsEnabled(state);
     } else {
-      setIsApplied(v => !v);
+      setIsEnabled(v => !v);
     }
   };
 
@@ -60,17 +64,14 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
       style={ style }
       onClick={ onClickHandler }
       onMouseEnter={ onMouseEnter }
-      onMouseMove={ onMouseMove }
       onMouseLeave={ onMouseLeave }>
 
-      <div
-        className={ cn('spoiler-content', { blurred: isEnabled }) }
-        style={{ filter: isEnabled ? `url(#filter-${ effect })` : 'none' }}>
+      <div className="spoiler-content" style={ contentStyles }>
         { pods.spoilerContent.render() }
       </div>
 
       { isEnabled && (
-        <svg className="svg" style={{ opacity: effect === EffectTypes.MORPHOLOGY ? OPACITY : undefined }}>
+        <svg className="svg" style={ svgStyles }>
           <Effect fill={ background }/>
         </svg>
       ) }

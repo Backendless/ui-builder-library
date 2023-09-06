@@ -1,6 +1,6 @@
 export function rowsValidation(data) {
   if (!data) {
-    return [];
+    return null;
   }
 
   return data.map(item => {

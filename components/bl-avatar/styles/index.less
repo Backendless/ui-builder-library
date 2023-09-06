@@ -4,13 +4,14 @@
 @bl-customComponent-avatar-circle-borderRadius: 50%;
 @bl-customComponent-avatar-rectangle-borderRadius: 0;
 
-@bl-customComponent-avatar-label-color: #FFFFFF;
-@bl-customComponent-avatar-label-backgroundColor: rgba(128, 128, 128, 0.486);
-@bl-customComponent-avatar-label-margin: 0;
-@bl-customComponent-avatar-label-width: 100%;
-@bl-customComponent-avatar-label-height: 100%;
-@bl-customComponent-avatar-label-userSelect: none;
-@bl-customComponent-avatar-label-hover-backgroundColor: rgba(71, 71, 71, 0.74);
+@bl-customComponent-avatar-uploadLabel-color: #FFFFFF;
+@bl-customComponent-avatar-uploadLabel-backgroundColor: rgba(128, 128, 128, 0.486);
+@bl-customComponent-avatar-uploadLabel-margin: 0;
+@bl-customComponent-avatar-uploadLabel-width: 100%;
+@bl-customComponent-avatar-uploadLabel-height: 100%;
+@bl-customComponent-avatar-uploadLabel-userSelect: none;
+@bl-customComponent-avatar-uploadLabel-hover-backgroundColor: rgba(71, 71, 71, 0.74);
+@bl-customComponent-avatar-uploadIcon-fontSize: 24px;
 
 .bl-customComponent-avatar {
   position: relative;
@@ -19,11 +20,6 @@
   align-items: center;
   justify-content: center;
   background-color: @bl-customComponent-avatar-backgroundColor;
-
-  &:hover .avatar-label.hide {
-    display: flex;
-    background-color: @bl-customComponent-avatar-label-hover-backgroundColor;
-  }
 
   &.rounded-rectangle {
     border-radius: @bl-customComponent-avatar-roundedRectangle-borderRadius;
@@ -43,31 +39,29 @@
     background-position: center;
   }
 
-  .avatar-label {
-    margin: @bl-customComponent-avatar-label-margin;
+  .upload-label {
+    margin: @bl-customComponent-avatar-uploadLabel-margin;
     overflow: hidden;
-    background-color: @bl-customComponent-avatar-label-backgroundColor;
+    background-color: @bl-customComponent-avatar-uploadLabel-backgroundColor;
     position: absolute;
     left: 0;
     top: 0;
-    width: @bl-customComponent-avatar-label-width;
-    height: @bl-customComponent-avatar-label-height;
-    color: @bl-customComponent-avatar-label-color;
+    width: @bl-customComponent-avatar-uploadLabel-width;
+    height: @bl-customComponent-avatar-uploadLabel-height;
+    color: @bl-customComponent-avatar-uploadLabel-color;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     flex-direction: column;
-    user-select: @bl-customComponent-avatar-label-userSelect;
+    user-select: @bl-customComponent-avatar-uploadLabel-userSelect;
+    cursor: pointer;
 
-    &.hide {
-      display: none;
+    &.interacted {
+      background-color: @bl-customComponent-avatar-uploadLabel-hover-backgroundColor;
     }
 
-    &:hover {
-      background-color: @bl-customComponent-avatar-label-hover-backgroundColor;
-      display: flex;
-      cursor: pointer;
+    .upload-icon {
+      font-size: @bl-customComponent-avatar-uploadIcon-fontSize;
     }
   }
 }

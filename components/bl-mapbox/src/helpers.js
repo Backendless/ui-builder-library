@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Mapbox from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
@@ -8,7 +8,7 @@ import { createActions } from './actions';
 const { Map, FullscreenControl, NavigationControl, Marker, Popup, GeolocateControl } = Mapbox;
 
 const defaultMapboxProps = {
-  START_POS            : { lat: 0, lng: 0 },
+  START_POS            : { lat: 40.730610, lng: -73.935242 },
   MAP_STYLE            : 'mapbox://styles/mapbox/streets-v11',
   ZOOM                 : 10,
   PROJECTION           : 'mercator',
@@ -51,14 +51,6 @@ export class MapController {
     this.mapRef.current.addControl(control, position);
   }
 
-  removeLayer(id) {
-    this.mapRef.current.removeLayer(id);
-  }
-
-  removeSource(id) {
-    this.mapRef.current.removeSource(id);
-  }
-
   addPolygonOutline(id, outlineColor, outlineWidth) {
     this.mapRef.current.addLayer({
       id    : `${ id }-outline`,
@@ -70,6 +62,14 @@ export class MapController {
         'line-width': outlineWidth,
       },
     });
+  }
+
+  removePolygon(polygon) {
+    if (polygon.outlineWidth > 0) {
+      this.mapRef.current.removeLayer(`${ polygon.id }-outline`);
+    }
+    this.mapRef.current.removeLayer(`${ polygon.id }-layer`);
+    this.mapRef.current.removeSource(polygon.id);
   }
 }
 
@@ -176,52 +176,77 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
 
 };
 
-export const useMarkers = (markers, mapRef, onMarkerClick) => {
-  const [markersArray, setMarkersArray] = useState([]);
+export const useMarkers = (markers, mapRef, eventHandlers) => {
+  const { onMarkerClick, onMarkersCreated } = eventHandlers;
+  const markerElements = useRef();
 
   useEffect(() => {
+    const collectedMarkerData = [];
+
+    removeMarkers(markerElements.current);
+
     if (markers?.length) {
-      markersArray.forEach(marker => {
-        marker.remove();
-      });
-
-      setMarkersArray([]);
-
-      markers.forEach(markerItem => {
-        const { color, description } = markerItem;
+      markerElements.current = markers.map(markerItem => {
+        const { color, description, data, coordinates: { lat, lng } } = markerItem;
 
         const marker = new Marker({ color })
-          .setLngLat([markerItem.coordinates.lng, markerItem.coordinates.lat])
+          .setLngLat([lng, lat])
           .addTo(mapRef.current);
 
         const popup = new Popup();
 
         popup.on('open', () => {
-          const coordinates = { lat: markerItem.coordinates.lat, lng: markerItem.coordinates.lng };
+          const coordinates = { lat, lng };
 
-          onMarkerClick({ coordinates, description: description || '' });
+          onMarkerClick({ coordinates, description: description || '', data });
+
+          setMarkerActive(marker, true);
         });
 
         if (description) {
-          popup.setText(description);
+          popup.setText(description, false);
         }
 
-        setMarkersArray(prev => [...prev, marker]);
+        popup.on('close', () => {
+          setMarkerActive(marker, false);
+        });
 
         marker.setPopup(popup);
+
+        collectedMarkerData.push({
+          marker,
+          markerProps: markerItem,
+        })
+
+        return marker;
       });
     }
+
+    onMarkersCreated({markers: collectedMarkerData});
   }, [markers]);
 };
+
+const removeMarkers = markers => {
+  if (markers?.length) {
+    markers.forEach(marker => {
+      marker.remove();
+    });
+  }
+};
+
+export const setMarkerActive = (marker, status) => {
+  const element = marker?.getElement();
+
+  if (element) {
+    element.classList.toggle('marker-root--active', status);
+  }
+};
+
 
 const updatePolygonsArray = (polygons, mapRef, polygonsArray, setPolygonsArray, map) => {
   polygonsArray.forEach(polygon => {
     if (mapRef.current.getSource(polygon.id)) {
-      if (polygon.outlineWidth > 0) {
-        map.removeLayer(`${ polygon.id }-outline`);
-      }
-      map.removeLayer(`${ polygon.id }-layer`);
-      map.removeSource(polygon.id);
+      map.removePolygon(polygon);
     }
   });
 

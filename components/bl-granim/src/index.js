@@ -43,8 +43,8 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    if(states && !canvasInstRef.current) {
-      if(!states['default-state']) {
+    if (display && states && !canvasInstRef.current) {
+      if (!states['default-state']) {
         states['default-state'] = DEFAULT_STATE;
       }
 
@@ -62,32 +62,39 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
         canvasInstRef.current = null;
       }
     }
-  }, [direction, customDirection, states, isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed]);
+  }, [display, direction, image, customDirection, states,
+    isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed]);
 
   trackOptionChanges(canvasInstRef, direction, customDirection, states,
     isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed);
 
   component.changeState = (stateName) => {
-    if(states?.[stateName]) {
-      canvasInstRef.current.changeState(stateName);
-    } else {
-      console.error(`Error: Invalid state name '${ stateName }'`);
+    if (display && canvasInstRef.current) {
+      if (states?.[stateName]) {
+        canvasInstRef.current.changeState(stateName);
+      } else {
+        console.error(`Error: Invalid state name '${ stateName }'`);
+      }
     }
   }
 
   component.changeDirection = (directionName) => {
-    if(DIRECTIONS_MAP[directionName]) {
-      canvasInstRef.current.changeDirection(directionName);
-    } else {
-      console.error(`Error: Invalid direction name '${ directionName }'`);
+    if (display && canvasInstRef.current) {
+      if (DIRECTIONS_MAP[directionName]) {
+        canvasInstRef.current.changeDirection(directionName);
+      } else {
+        console.error(`Error: Invalid direction name '${ directionName }'`);
+      }
     }
   }
 
   component.changeBlendingMode = (blendingModeName) => {
-    if(BLENDING_MODES_MAP[blendingModeName]) {
-      canvasInstRef.current.changeBlendingMode(blendingModeName);
-    } else {
-      console.error(`Error: Invalid blending mode name '${ blendingModeName }'`);
+    if (display && canvasInstRef.current) {
+      if (BLENDING_MODES_MAP[blendingModeName]) {
+        canvasInstRef.current.changeBlendingMode(blendingModeName);
+      } else {
+        console.error(`Error: Invalid blending mode name '${ blendingModeName }'`);
+      }
     }
   }
 
@@ -97,7 +104,7 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
     clear: () => canvasInstRef.current.clear()
   });
 
-  if(!display) {
+  if (!display) {
     return null;
   }
 
