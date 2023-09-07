@@ -186,7 +186,7 @@
       "type": "json",
       "name": "buttonsSettings",
       "label": "Buttons Settings",
-      "settingTooltip": "Settings on the \"Confirm\", \"Deny\", \"Cancel\", \"Close\" buttons.",
+      "settingTooltip": "Settings on the 'Confirm', 'Deny', 'Cancel', 'Close' buttons.",
       "showInSettings": true,
       "defaultValue": "{\n  \"showConfirmButton\": true,\n  \"confirmButtonText\": \"OK\",\n  \"confirmButtonColor\": \"#3085d6\",\n  \"confirmButtonAriaLabel\": \"\",\n  \"focusConfirm\": true,\n  \"showDenyButton\": false,\n  \"denyButtonText\": \"No\",\n  \"denyButtonColor\": \"#dd6b55\",\n  \"denyButtonAriaLabel\": \"\",\n  \"focusDeny\": false,\n  \"showCancelButton\": false,\n  \"cancelButtonText\": \"Cancel\",\n  \"cancelButtonColor\": \"#aaa\",\n  \"cancelButtonAriaLabel\": \"\",\n  \"focusCancel\": false,\n  \"showCloseButton\": false,\n  \"closeButtonHtml\": \"&times;\",\n  \"closeButtonAriaLabel\": \"Close this dialog\"\n}",
       "hasLogicHandler": true,
