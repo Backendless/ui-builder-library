@@ -79,21 +79,31 @@ const LineShapeProps = {
 
 export function useOptions(component) {
   const {
-    preset, textValue, color, backgroundColor, autoPlay, fullScreen, shape, zIndex, lineLinksVisibility, move, size,
-    speed, opacity, direction, colorAnimation, number, imageURL, rotate, rotationAnimation, customOptions, linksColor,
+    preset, textValue, color, background, autoPlay, fullScreen, shape, zIndex, lineLinksVisibility, move, size,
+    speed, direction, colorAnimation, number, imageURL, rotate, rotationAnimation, customOptions, linksColor,
     rollingAnimation, duration, delay, triangleLinksVisibility, collisionMode, outModes,
   } = component;
+
+  const { color: backgroundColor, opacity: backgroundOpacity } = useMemo(() => parseColor(background), [background]);
+  const { color: linkColor, opacity: linkOpacity } = useMemo(() => parseColor(linksColor), [linksColor]);
+  const { color: particlesColor, opacity: particlesOpacity } = useMemo(() => {
+    if (Array.isArray(color)) {
+      return { color };
+    }
+
+    return parseColor(color);
+  }, [color]);
 
   const particles = useMemo(() => ({
     collisions: { enable: collisionMode !== UNSET_COLLISION_MODE, mode: collisionMode },
     links     : {
       enable   : lineLinksVisibility || triangleLinksVisibility,
       distance : LINKS_DISTANCE,
-      color    : linksColor || Colors.RANDOM,
-      opacity  : lineLinksVisibility ? Opacity.FULL : Opacity.LOW,
+      color    : linkColor || Colors.RANDOM,
+      opacity  : lineLinksVisibility ? linkOpacity : Opacity.LOW,
       triangles: {
         enable : triangleLinksVisibility,
-        color  : linksColor,
+        color  : linkColor,
         opacity: Opacity.LOW,
       },
     },
@@ -105,10 +115,10 @@ export function useOptions(component) {
     },
     roll      : { enable: rollingAnimation, speed },
     color     : {
-      value    : color || Colors.RANDOM,
+      value    : particlesColor || Colors.RANDOM,
       animation: { enable: colorAnimation, speed: COLOR_ANIMATION_SPEED },
     },
-    opacity   : { value: opacity },
+    opacity   : { value: particlesOpacity },
     shape     : {
       type   : shape,
       options: {
@@ -122,21 +132,18 @@ export function useOptions(component) {
     size      : { value: size },
     number    : { value: number, density: { enable: true } },
   }), [
-    collisionMode, lineLinksVisibility, triangleLinksVisibility, linksColor, rotate, rotationAnimation, speed, number,
-    rollingAnimation, color, colorAnimation, opacity, shape, imageURL, textValue, move, direction, outModes, size,
+    collisionMode, lineLinksVisibility, triangleLinksVisibility, linkColor, linkOpacity, rotate, rotationAnimation,
+    speed, rollingAnimation, particlesColor, colorAnimation, particlesOpacity, shape, imageURL, textValue, move,
+    direction, outModes, size, number,
   ]);
 
-  const otherProps = useMemo(() => {
-    const { color, opacity } = parseColor(backgroundColor);
-
-    return {
-      duration  : duration || DEFAULT_TIMING,
-      delay     : delay || DEFAULT_TIMING,
-      fullScreen: { enable: fullScreen, zIndex: zIndex || DEFAULT_Z_INDEX },
-      background: { color, opacity },
-      ...PresetsMap[preset],
-    };
-  }, [duration, delay, fullScreen, zIndex, backgroundColor, preset]);
+  const otherProps = useMemo(() => ({
+    duration  : duration || DEFAULT_TIMING,
+    delay     : delay || DEFAULT_TIMING,
+    fullScreen: { enable: fullScreen, zIndex: zIndex || DEFAULT_Z_INDEX },
+    background: { color: backgroundColor, opacity: backgroundOpacity },
+    ...PresetsMap[preset],
+  }), [duration, delay, fullScreen, zIndex, backgroundColor, backgroundOpacity, preset]);
 
   return {
     detectRetina: true, pauseOnBlur: false,
