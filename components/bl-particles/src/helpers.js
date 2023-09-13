@@ -49,6 +49,9 @@ const PresetsMap = {
   [Presets.TRIANGLES]        : Triangles,
 };
 
+const HEX_REGEX = /^#([0-9a-f]{3}|[0-9a-f]{6})([0-9a-f]{2})?$/i;
+const RGBA_REGEX = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/;
+const HSLA_REGEX = /^hsla?\((\d+),\s*(\d+%?),\s*(\d+%?)(?:,\s*([\d.]+))?\)$/;
 const UNSET_COLLISION_MODE = 'unset';
 const LINKS_DISTANCE = 150;
 const STROKE_WIDTH = 2;
@@ -78,7 +81,7 @@ export function useOptions(component) {
   const {
     preset, textValue, color, backgroundColor, autoPlay, fullScreen, shape, zIndex, lineLinksVisibility, move, size,
     speed, opacity, direction, colorAnimation, number, imageURL, rotate, rotationAnimation, customOptions, linksColor,
-    rollingAnimation, duration, delay, triangleLinksVisibility, collisionMode, outModes, backgroundOpacity,
+    rollingAnimation, duration, delay, triangleLinksVisibility, collisionMode, outModes,
   } = component;
 
   const particles = useMemo(() => ({
@@ -123,19 +126,51 @@ export function useOptions(component) {
     rollingAnimation, color, colorAnimation, opacity, shape, imageURL, textValue, move, direction, outModes, size,
   ]);
 
-  const otherProps = useMemo(() => ({
-    duration  : duration || DEFAULT_TIMING,
-    delay     : delay || DEFAULT_TIMING,
-    fullScreen: { enable: fullScreen, zIndex: zIndex || DEFAULT_Z_INDEX },
-    background: { color: backgroundColor, opacity: backgroundOpacity },
-    ...PresetsMap[preset],
-  }), [duration, delay, fullScreen, zIndex, backgroundColor, backgroundOpacity, preset]);
+  const otherProps = useMemo(() => {
+    const { color, opacity } = parseColor(backgroundColor);
+
+    return {
+      duration  : duration || DEFAULT_TIMING,
+      delay     : delay || DEFAULT_TIMING,
+      fullScreen: { enable: fullScreen, zIndex: zIndex || DEFAULT_Z_INDEX },
+      background: { color, opacity },
+      ...PresetsMap[preset],
+    };
+  }, [duration, delay, fullScreen, zIndex, backgroundColor, preset]);
 
   return {
     detectRetina: true, pauseOnBlur: false,
     autoPlay, particles,
     ...otherProps, ...customOptions,
   };
+}
+
+function parseColor(value) {
+  if (HEX_REGEX.test(value)) {
+    const matches = value.match(HEX_REGEX);
+    const color = `#${ matches[1] }`;
+    const opacity = matches[2] ? (parseInt(matches[2], 16) / 255).toFixed(2) : Opacity.FULL;
+
+    return { color, opacity: parseFloat(opacity) };
+  }
+
+  if (RGBA_REGEX.test(value)) {
+    const matches = value.match(RGBA_REGEX);
+    const color = `rgb(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`;
+    const opacity = matches[4] ? parseFloat(matches[4]) : Opacity.FULL;
+
+    return { color, opacity };
+  }
+
+  if (HSLA_REGEX.test(value)) {
+    const matches = value.match(HSLA_REGEX);
+    const color = `hsl(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`;
+    const opacity = matches[4] ? parseFloat(matches[4]) : Opacity.FULL;
+
+    return { color, opacity };
+  }
+
+  return {};
 }
 
 async function loadShapes(engine) {

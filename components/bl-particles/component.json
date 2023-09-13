@@ -43,22 +43,12 @@
       "name": "backgroundColor",
       "label": "Background Color",
       "showInSettings": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "backgroundColorLogic",
-      "settingTooltip": "Set the background color of the canvas."
-    },
-    {
-      "type": "range",
-      "name": "backgroundOpacity",
-      "label": "Background Opacity",
-      "settingTooltip": "Set the opacity of canvas background.",
-      "showInSettings": true,
-      "defaultValue": "1",
-      "hasLogicHandler": false,
-      "handlerId": "backgroundOpacityLogic",
-      "min": "0",
-      "max": "1",
-      "step": "0.01"
+      "settingTooltip": "Set the background color of the canvas.",
+      "handlerLabel": "Background Color Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the background color of particles."
     },
     {
       "type": "text",
