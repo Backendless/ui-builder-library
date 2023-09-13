@@ -170,7 +170,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "allowEscapeKeyLogic",
-      "settingTooltip": "Flag indicating whether the user can dismiss the popup by pressing the `Esc` key by default or not."
+      "settingTooltip": "Flag indicating whether the user can dismiss the popup by pressing the `Esc` key by default(requires `allowEnterKey` parameter to be set to `true`) or not."
     },
     {
       "type": "checkbox",
