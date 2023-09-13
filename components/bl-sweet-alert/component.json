@@ -156,7 +156,7 @@
       "type": "checkbox",
       "name": "allowOutsideClick",
       "label": "Allow Outside Click",
-      "settingTooltip": "Flag indicating whether the user can dismiss the popup by clicking outside it by default(requires `backdrop` parameter to be set to `true`) or not.",
+      "settingTooltip": "Flag indicating whether the user can dismiss the popup by clicking outside it by default (requires `backdrop` parameter to be set to `true`) or not.",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
@@ -170,7 +170,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "allowEscapeKeyLogic",
-      "settingTooltip": "Flag indicating whether the user can dismiss the popup by pressing the `Esc` key by default or not."
+      "settingTooltip": "Flag indicating whether the user can dismiss the popup by pressing the `Esc` key by default (requires `allowEnterKey` parameter to be set to `true`) or not."
     },
     {
       "type": "checkbox",
