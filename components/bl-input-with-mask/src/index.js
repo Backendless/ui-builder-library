@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import moment from './moment.min';
+import { customParseFormat, dayjs } from './day.min';
 import { IMask, useIMask } from './react-imask';
 import { Fieldset, Input, Placeholder } from './subcomponent';
 
@@ -36,68 +36,32 @@ const AutofixMap = {
 
 export default function InputWithMask({ component, eventHandlers, elRef }) {
   const {
-    style, display, classList, maskType, mask, definitions, displayChar, placeholder, placeholderChar, lazy, variant,
-    blocks, scaleNumber, initValue, min, max, thousandsSeparator, padFractionalZeros, normalizeZeros, radix, overwrite,
-    maskEnum, eager, autofix, from, to, skipInvalid, mapToRadix, customOptions, dynamicMask, dateFormat,
+    style, display, classList, initValue, variant, placeholder, dynamicMask, maskType, mask, blocks, min, max,
+    from, to, thousandsSeparator, padFractionalZeros, normalizeZeros, radix, mapToRadix, definitions, scaleNumber,
+    overwrite, displayChar, placeholderChar, autofix, skipInvalid, lazy, eager, dateFormat, maskEnum,
   } = component;
-
   const { onChangeValue, onValidate, onComplete } = eventHandlers;
 
   const [isFocused, setIsFocused] = useState(false);
 
-  const options = useMemo(() => {
-    const options = {
-      mask              : dynamicMask ? preparedDynamicMask(dynamicMask) : preparedMask(maskType, mask),
-      blocks            : blocks && prepareBlocks(blocks),
-      min               : Number(min),
-      max               : Number(max),
-      from,
-      to,
-      thousandsSeparator: thousandsSeparator || '',
-      padFractionalZeros,
-      normalizeZeros,
-      radix             : radix || '',
-      mapToRadix        : mapToRadix && mapToRadix.split(''),
-      definitions,
-      scale             : scaleNumber,
-      overwrite         : OverwriteMap[overwrite],
-      displayChar       : displayChar || '',
-      placeholderChar   : placeholderChar || '_',
-      autofix           : AutofixMap[autofix],
-      skipInvalid,
-      lazy,
-      eager             : EagerMap[eager],
-      prepare           : (value, mask) => {
-        const result = onValidate({ value, mask });
+  const options = useMemo(() => ({
+    ...prepareOptions({
+      dynamicMask, maskType, mask, blocks, min, max, from, to, thousandsSeparator, padFractionalZeros, normalizeZeros,
+      radix, mapToRadix, definitions, scaleNumber, overwrite, displayChar, placeholderChar, autofix, skipInvalid, lazy,
+      eager, dateFormat, maskEnum,
+    }),
+    prepare: (value, mask) => {
+      const result = onValidate({ value, mask });
 
-        return result === undefined ? value : result;
-      },
-    };
-
-    if (maskType === 'Enum') {
-      Object.assign(options, {
-        enum: maskEnum && maskEnum.split(',').map(item => item.trim()),
-      });
-    }
-
-    if (maskType === 'Date') {
-      Object.assign(options, {
-        pattern: dateFormat,
-        format : date => moment(date).format(dateFormat),
-        parse  : str => moment(str, dateFormat),
-        min    : min && new Date(min),
-        max    : max && new Date(max),
-      });
-    }
-
-    return options;
-  }, [autofix, blocks, dateFormat, definitions, displayChar, dynamicMask, eager, from, lazy, mapToRadix, mask,
-    maskEnum, maskType, max, min, normalizeZeros, onValidate, overwrite, padFractionalZeros, placeholderChar,
-    radix, scaleNumber, skipInvalid, thousandsSeparator, to]);
+      return result === undefined ? value : result;
+    },
+  }), [dynamicMask, maskType, mask, blocks, min, max, from, to, thousandsSeparator, padFractionalZeros, normalizeZeros,
+    radix, mapToRadix, definitions, scaleNumber, overwrite, displayChar, placeholderChar, autofix, skipInvalid, lazy,
+    eager, dateFormat, maskEnum]);
 
   const {
     ref: inputRef, value, setUnmaskedValue, unmaskedValue,
-  } = useIMask(customOptions || options, { onComplete: (value, mask) => onComplete({ value, mask }) });
+  } = useIMask(options, { onComplete: (value, mask) => onComplete({ value, mask }) });
 
   useEffect(() => setUnmaskedValue(initValue || ''), [initValue]);
   useEffect(() => onChangeValue({ value, unmaskedValue }), [value, unmaskedValue]);
@@ -141,37 +105,9 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
   );
 }
 
-const preparedDynamicMask = dynamicMask => dynamicMask.map(mask => {
-  const options = {
-    ...mask,
-    mask      : preparedMask(mask.maskType, mask.mask),
-    blocks    : mask.blocks && prepareBlocks(mask.blocks),
-    eager     : EagerMap[mask?.eager],
-    mapToRadix: mask.mapToRadix && mask.mapToRadix.split(''),
-    overwrite : OverwriteMap[mask?.overwrite],
-    autofix   : AutofixMap[mask?.autofix],
-  };
+const prepareDynamicMask = dynamicMask => dynamicMask.map(mask => prepareOptions(mask));
 
-  if (mask.maskType === 'Enum') {
-    Object.assign(options, {
-      enum: mask.maskEnum && mask.maskEnum.split(',').map(item => item.trim()),
-    });
-  }
-
-  if (mask.maskType === 'Date') {
-    Object.assign(options, {
-      pattern: mask.dateFormat,
-      format : date => moment(date).format(mask.dateFormat),
-      parse  : str => moment(str, mask.dateFormat),
-      min    : mask.min && new Date(mask.min),
-      max    : mask.max && new Date(mask.max),
-    });
-  }
-
-  return options;
-});
-
-const preparedMask = (maskType, mask) => {
+const prepareMask = (maskType, mask) => {
   if (maskType === MaskTypes.RegExp) {
     try {
       return new RegExp(mask);
@@ -187,9 +123,54 @@ const prepareBlocks = blocks => {
   const preparedBlocks = {};
 
   blocks.forEach(item => {
-    preparedBlocks[item.name] = { ...item.block, mask: preparedMask(item.block.maskType, item.block.mask) };
+    preparedBlocks[item.name] = prepareOptions(item.block);
   });
 
   return preparedBlocks;
 };
 
+const prepareOptions = settings => {
+  const {
+    dynamicMask, maskType, mask, blocks, min, max, from, to, thousandsSeparator, padFractionalZeros, normalizeZeros,
+    radix, mapToRadix, definitions, scaleNumber, overwrite, displayChar, placeholderChar, autofix, skipInvalid, lazy,
+    eager, dateFormat, maskEnum,
+  } = settings;
+
+  const options = {
+    mask              : dynamicMask ? prepareDynamicMask(dynamicMask) : prepareMask(maskType, mask),
+    min               : Number(min),
+    max               : Number(max),
+    from,
+    to,
+    thousandsSeparator: thousandsSeparator || '',
+    padFractionalZeros: !!padFractionalZeros,
+    normalizeZeros    : !!normalizeZeros,
+    scale             : scaleNumber || 2,
+    overwrite         : OverwriteMap[overwrite],
+    displayChar       : displayChar || '',
+    placeholderChar   : placeholderChar || '_',
+    autofix           : AutofixMap[autofix],
+    skipInvalid       : !!skipInvalid,
+    lazy              : !!lazy,
+    eager             : EagerMap[eager],
+    definitions       : definitions || {},
+    mapToRadix        : mapToRadix ? mapToRadix.split('') : [],
+    ...(!!radix && { radix }),
+    ...(!!blocks && { blocks: prepareBlocks(blocks) }),
+    ...(maskType === 'Enum' && !!maskEnum && { enum: maskEnum.split(',').map(item => item.trim()) }),
+  };
+
+  if (maskType === 'Date') {
+    dayjs.extend(customParseFormat);
+
+    Object.assign(options, {
+      pattern: dateFormat,
+      format : date => dayjs(date).format(dateFormat),
+      parse  : str => dayjs(str, dateFormat),
+      min    : min && new Date(min),
+      max    : max && new Date(max),
+    });
+  }
+
+  return options;
+};
