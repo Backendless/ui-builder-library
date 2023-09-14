@@ -1,3 +1,5 @@
+@bl-customComponent-calendar-heatmap-user-select: none;
+
 @bl-customComponent-calendar-heatmap-domain-bg: transparent;
 @bl-customComponent-calendar-heatmap-domain-text: currentColor;
 @bl-customComponent-calendar-heatmap-domain-text-size: 10px;
@@ -34,6 +36,8 @@
 @bl-customComponent-calendar-heatmap-tooltip-dark-color: #cdd9e5;
 
 .bl-customComponent-calendar-heatmap {
+  user-select: @bl-customComponent-calendar-heatmap-user-select;
+
   .ch-container {
     display: block;
   }
@@ -91,11 +95,11 @@
       stroke: @bl-customComponent-calendar-heatmap-dark-subdomain-bg-stroke-highlight;
     }
   }
+}
 
-  #ch-plugin-legend > svg {
-    background: @bl-customComponent-calendar-heatmap-legends-background;
-    color: @bl-customComponent-calendar-heatmap-legends-color;
-  }
+#ch-plugin-legend > svg {
+  background: @bl-customComponent-calendar-heatmap-legends-background;
+  color: @bl-customComponent-calendar-heatmap-legends-color;
 }
 
 #ch-tooltip {

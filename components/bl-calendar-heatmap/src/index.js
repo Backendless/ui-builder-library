@@ -74,14 +74,9 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
   }
 
   return (
-    <>
-      <div
-        ref={ elRef }
-        id={ `bl-cal-heatmap-${ instanceId }` }
-        className={ cn('bl-customComponent-calendar-heatmap', classList) }
-        style={ style }
-      />
+    <div ref={ elRef } className={ cn('bl-customComponent-calendar-heatmap', classList) } style={ style }>
+      <div id={ `bl-cal-heatmap-${ instanceId }` }/>
       <div id={ `bl-cal-heatmap--legend-label--${ instanceId }` }/>
-    </>
+    </div>
   );
 }
