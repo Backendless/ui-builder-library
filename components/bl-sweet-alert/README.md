@@ -94,6 +94,7 @@ More information about this popup can be found in the [Sweet Alert 2](https://sw
 @bl-customComponent-sweet-alert-footer-borderTop: 1px solid #eee;
 @bl-customComponent-sweet-alert-footer-color: inherit;
 @bl-customComponent-sweet-alert-footer-fontSize: 1em;
+@bl-customComponent-sweet-alert-footer-wordBreak: break-word;
 ````
 
 ## Usage
