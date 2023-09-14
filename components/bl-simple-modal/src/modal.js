@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
-import { Title, Container, ModalButtons } from './subcomponents';
+
 import modalTypes from './modal-types';
+import { Container, ModalButtons, Title } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -15,7 +16,7 @@ export function Modal(props) {
     placeholder,
     closeButtonLabel,
     submitButtonLabel,
-    closingDuration
+    closingDuration,
   } = component;
   const { onInputValueChange, onClose, onSubmit } = eventHandlers;
 
@@ -39,7 +40,7 @@ export function Modal(props) {
   }, [inputValue]);
 
   return ReactDOM.createPortal(
-    <div className={ modalClasses } style={ { animationDuration: `${ closingDuration }ms`, ...style } }>
+    <div className={ modalClasses } style={{ animationDuration: `${ closingDuration }ms`, ...style }}>
       <div onClick={ onClose } className="overlay"></div>
       <div className="simple-modal__content">
         <Title content={ title }/>
@@ -50,6 +51,7 @@ export function Modal(props) {
             inputValue={ inputValue }
             setInputValue={ setInputValue }
             placeholder={ placeholder }
+            onSubmit={ onSubmit }
           />
         ) }
 
