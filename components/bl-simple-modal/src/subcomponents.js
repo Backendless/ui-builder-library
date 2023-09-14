@@ -4,10 +4,17 @@ import modalTypes from './modal-types';
 import { sanitize } from './sanitize';
 
 function SimpleModalInput(props) {
-  const { inputValue, placeholder, setInputValue } = props;
+  const { inputValue, placeholder, setInputValue, onSubmit } = props;
 
   const onChange = event => {
     setInputValue(event.target.value);
+  };
+
+  const onKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      onSubmit({ inputValue });
+    }
   };
 
   return (
@@ -21,6 +28,7 @@ function SimpleModalInput(props) {
           placeholder={ placeholder }
           value={ inputValue }
           onChange={ onChange }
+          onKeyDown={ onKeyDown }
         />
         <label
           htmlFor="modal-input"
@@ -34,7 +42,7 @@ function SimpleModalInput(props) {
 }
 
 export function Container(props) {
-  const { content, type, inputValue, setInputValue, placeholder } = props;
+  const { content, type, inputValue, setInputValue, placeholder, onSubmit } = props;
   const sanitizedContent = useMemo(() => content ? sanitize(content) : '', [content]);
 
   return (
@@ -48,6 +56,7 @@ export function Container(props) {
           inputValue={ inputValue }
           setInputValue={ setInputValue }
           placeholder={ placeholder }
+          onSubmit={ onSubmit }
         />
       ) }
     </div>
