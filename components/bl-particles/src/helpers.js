@@ -152,32 +152,36 @@ export function useOptions(component) {
   };
 }
 
+const ParsersList = [
+  {
+    regexp        : HEX_REGEX,
+    buildColor    : matches => `#${ matches[1] }`,
+    extractOpacity: matches => matches[2] ? parseFloat((parseInt(matches[2], 16) / 255).toFixed(2)) : Opacity.FULL,
+  },
+  {
+    regexp        : RGBA_REGEX,
+    buildColor    : matches => `rgb(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`,
+    extractOpacity: matches => matches[4] ? parseFloat(matches[4]) : Opacity.FULL,
+  },
+  {
+    regexp        : HSLA_REGEX,
+    buildColor    : matches => `hsl(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`,
+    extractOpacity: matches => matches[4] ? parseFloat(matches[4]) : Opacity.FULL,
+  },
+];
+
 function parseColor(value) {
-  if (HEX_REGEX.test(value)) {
-    const matches = value.match(HEX_REGEX);
-    const color = `#${ matches[1] }`;
-    const opacity = matches[2] ? (parseInt(matches[2], 16) / 255).toFixed(2) : Opacity.FULL;
+  const parser = ParsersList.find(parser => parser.regexp.test(value));
 
-    return { color, opacity: parseFloat(opacity) };
+  if (!parser) {
+    return {};
   }
 
-  if (RGBA_REGEX.test(value)) {
-    const matches = value.match(RGBA_REGEX);
-    const color = `rgb(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`;
-    const opacity = matches[4] ? parseFloat(matches[4]) : Opacity.FULL;
+  const matches = value.match(parser.regexp);
+  const color = parser.buildColor(matches);
+  const opacity = parser.extractOpacity(matches);
 
-    return { color, opacity };
-  }
-
-  if (HSLA_REGEX.test(value)) {
-    const matches = value.match(HSLA_REGEX);
-    const color = `hsl(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`;
-    const opacity = matches[4] ? parseFloat(matches[4]) : Opacity.FULL;
-
-    return { color, opacity };
-  }
-
-  return {};
+  return { color, opacity };
 }
 
 async function loadShapes(engine) {
