@@ -173,7 +173,7 @@ Addition  calendar data:
 
 2. Set the min and max value in `Scale Domain`. By default, min and max values of the specified dataset, but if you use url for a data source, you need to set min and max value by your self. When using the threshold's `Scale Type`, domain should be a list of different threshold.
 
-        ![](./example-images/set-scale-domain.png)
+    ![](./example-images/set-scale-domain.png)
 
 3. Set scheme name from [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic) in `Scale Color Scheme` or set the array of colors in `Scale Color Range`. Expect a minimum of two colors.
 
