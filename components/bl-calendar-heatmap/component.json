@@ -415,7 +415,8 @@
       "handlerLabel": "Scale Domain Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine an array of at least 2 values, specifying the minimum and maximum value of your dataset. By default min and max values of the specified dataset. When using the threshold's type, domain should be a list of different threshold.",
-      "settingTooltip": "Allows to determine an array of at least 2 values, specifying the minimum and maximum value of your dataset. By default min and max values of the specified dataset. When using the threshold's type, domain should be a list of different threshold."
+      "settingTooltip": "Allows to determine an array of at least 2 values, specifying the minimum and maximum value of your dataset. By default min and max values of the specified dataset. When using the threshold's type, domain should be a list of different threshold.",
+      "defaultValue": "0, 100"
     },
     {
       "type": "color",
@@ -439,7 +440,8 @@
       "dataBinding": true,
       "type": "text",
       "handlerDescription": "This is a handler for the logic to determine the color scheme name from d3-scale-chromatic.",
-      "settingTooltip": "Allows to to determine the color scheme name from d3-scale-chromatic."
+      "settingTooltip": "Allows to to determine the color scheme name from d3-scale-chromatic.",
+      "defaultValue": "Blues"
     },
     {
       "type": "text",
