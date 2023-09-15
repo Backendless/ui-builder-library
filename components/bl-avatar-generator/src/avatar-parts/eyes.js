@@ -165,7 +165,7 @@ const WinkWacky = () => (
   </g>
 );
 
-export const eyesTypes = {
+export const EyesTypes = {
   Close    : Close,
   Cry      : Cry,
   Default  : Default,

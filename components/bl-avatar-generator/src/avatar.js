@@ -1,38 +1,40 @@
 import { Nose } from './avatar-parts/nose';
-import { accessoryTypes } from './avatar-parts/accessory';
-import { facialHairTypes } from './avatar-parts/facial-hair';
-import { topTypes } from './avatar-parts/top';
-import { mouthTypes } from './avatar-parts/mouth';
-import { clothesTypes } from './avatar-parts/clothes';
-import { graphicTypes } from './avatar-parts/graphics';
-import { eyesTypes } from './avatar-parts/eyes';
-import { browsTypes } from './avatar-parts/brows';
-import { hatColors, hairColors, skinColors } from './avatar-parts/colors';
+import { AccessoryTypes } from './avatar-parts/accessory';
+import { FacialHairTypes } from './avatar-parts/facial-hair';
+import { TopTypes } from './avatar-parts/top';
+import { MouthTypes } from './avatar-parts/mouth';
+import { ClothesTypes } from './avatar-parts/clothes';
+import { GraphicTypes } from './avatar-parts/graphics';
+import { EyesTypes } from './avatar-parts/eyes';
+import { BrowsTypes } from './avatar-parts/brows';
+import { HatColors, HairColors, SkinColors } from './avatar-parts/colors';
 
-export const Avatar = ({ avatarStyle, avatarData }) => {
-  const isCircleStyle = avatarStyle==='circle';
+const CIRCLE_STYLE = 'circle';
 
+export const Avatar = ({ avatarStyle, avatarData, svgRef }) => {
   const {
     background, circleColor, skin, top, hairColor, hatColor, brows, eyes,
     mouth, facialHair, facialHairColor, accessory, clothes, fabricColor, graphic,
   } = avatarData;
 
-  const Clothes = clothesTypes[clothes];
-  const Graphic = graphicTypes[graphic];
-  const Brows = browsTypes[brows];
-  const Eyes = eyesTypes[eyes];
-  const Mouth = mouthTypes[mouth];
-  const Top = topTypes[top];
-  const FacialHair = facialHairTypes[facialHair];
-  const Accessory = accessoryTypes[accessory];
-  const avatarSkin = skinColors[skin];
-  const avatarHairColor = hairColors[hairColor];
-  const avatarHatColor = hatColors[hatColor];
-  const avatarFacialHairColor = hairColors[facialHairColor];
-  const avatarFabricColor = hatColors[fabricColor];
+  const isCircleStyle = avatarStyle === CIRCLE_STYLE;
+
+  const Clothes = ClothesTypes[clothes];
+  const Graphic = GraphicTypes[graphic];
+  const Brows = BrowsTypes[brows];
+  const Eyes = EyesTypes[eyes];
+  const Mouth = MouthTypes[mouth];
+  const Top = TopTypes[top];
+  const FacialHair = FacialHairTypes[facialHair];
+  const Accessory = AccessoryTypes[accessory];
+  const avatarSkin = SkinColors[skin];
+  const avatarHairColor = HairColors[hairColor];
+  const avatarHatColor = HatColors[hatColor];
+  const avatarFacialHairColor = HairColors[facialHairColor];
+  const avatarFabricColor = HatColors[fabricColor];
 
   return (
-    <svg viewBox="0 0 264 280" id="AvatarSVG" style={{ background }}>
+    <svg ref={ svgRef } viewBox="0 0 264 280" style={{ background }}>
       <defs>
         <circle id="path-1" cx="120" cy="120" r="120"/>
         <path
@@ -64,7 +66,7 @@ export const Avatar = ({ avatarStyle, avatarData }) => {
             ) }
 
             <g id="Mask"/>
-            <g id="Avatar" stroke-width="1" fill-rule="evenodd" fill="black" mask="url(#mask-2)">
+            <g id="Avatar" strokeWidth="1" fillRule="evenodd" fill="black" mask="url(#mask-2)">
               <g id="Body" transform="translate(32.000000, 36.000000)">
                 <mask id="mask-silhouette" fill="white">
                   <use xlinkHref="#path-silhouette"/>
@@ -77,6 +79,7 @@ export const Avatar = ({ avatarStyle, avatarData }) => {
                   fill="#000000"
                   mask="url(#mask-silhouette)"/>
               </g>
+
               <Clothes fabricColor={ avatarFabricColor }/>
               <Graphic/>
               <Brows/>

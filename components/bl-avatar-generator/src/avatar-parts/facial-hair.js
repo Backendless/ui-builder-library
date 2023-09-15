@@ -70,7 +70,7 @@ const MoustacheMagnum = ({ facialHairColor }) => (
   </g>
 );
 
-export const facialHairTypes = {
+export const FacialHairTypes = {
   Blank          : Blank,
   BeardMedium    : BeardMedium,
   BeardLight     : BeardLight,

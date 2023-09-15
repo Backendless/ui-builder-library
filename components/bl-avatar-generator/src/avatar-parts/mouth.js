@@ -221,7 +221,7 @@ const Vomit = () => (
   </g>
 );
 
-export const mouthTypes = {
+export const MouthTypes = {
   Concerned : Concerned,
   Default   : Default,
   Disbelief : Disbelief,

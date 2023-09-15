@@ -103,11 +103,11 @@ const Sunglasses = () => (
     <g id="Sunglasses" transform="translate(8.000000, 8.000000)">
       <g id="shades">
         <use fillOpacity="0.700000048" fill="#000000" xlinkHref="#SunglassesPath1"/>
-        <use fill="url(#linearGradient1)" style={{ mixBlendMode: "screen" }} xlinkHref="#SunglassesPath1"/>
+        <use fill="url(#linearGradient1)" style={{ mixBlendMode: 'screen' }} xlinkHref="#SunglassesPath1"/>
       </g>
       <g id="shades">
         <use fillOpacity="0.700000048" fill="#000000" xlinkHref="#SunglassesPath2"/>
-        <use fill="url(#linearGradient2)" style={{ mixBlendMode: "screen" }} xlinkHref="#SunglassesPath2"/>
+        <use fill="url(#linearGradient2)" style={{ mixBlendMode: 'screen' }} xlinkHref="#SunglassesPath2"/>
       </g>
       <g id="Glasses" fill="#252C2F">
         <path
@@ -149,11 +149,11 @@ const Wayfarers = () => (
       <g id="Shades" transform="translate(10.795455, 2.928571)" fillRule="nonzero">
         <g id="Shade">
           <use fillOpacity="0.700000048" fill="#000000" fillRule="evenodd" xlinkHref="#WayfarersPath1"/>
-          <use fill="url(#linearGradient1)" fillRule="evenodd" style={{ mixBlendMode: "screen" }} xlinkHref="#WayfarersPath1"/>
+          <use fill="url(#linearGradient1)" fillRule="evenodd" style={{ mixBlendMode: 'screen' }} xlinkHref="#WayfarersPath1"/>
         </g>
         <g id="Shade">
           <use fillOpacity="0.700000048" fill="#000000" fillRule="evenodd" xlinkHref="#WayfarersPath2"/>
-          <use fill="url(#linearGradient1)" fillRule="evenodd" style={{ mixBlendMode: "screen" }} xlinkHref="#WayfarersPath2"/>
+          <use fill="url(#linearGradient1)" fillRule="evenodd" style={{ mixBlendMode: 'screen' }} xlinkHref="#WayfarersPath2"/>
         </g>
       </g>
       <path
@@ -175,7 +175,7 @@ const Wayfarers = () => (
   </g>
 );
 
-export const accessoryTypes = {
+export const AccessoryTypes = {
   Blank         : Blank,
   Kurt          : Kurt,
   Prescription01: Prescription01,

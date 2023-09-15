@@ -1294,7 +1294,7 @@ const WinterHat4 = ({ hatColor }) => (
   </g>
 );
 
-export const topTypes = {
+export const TopTypes = {
   NoHair                    : NoHair,
   Eyepatch                  : Eyepatch,
   Hat                       : Hat,

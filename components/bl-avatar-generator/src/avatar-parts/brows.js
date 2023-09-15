@@ -164,7 +164,7 @@ const UpDownNatural = () => (
   </g>
 );
 
-export const browsTypes = {
+export const BrowsTypes = {
   Angry               : Angry,
   AngryNatural        : AngryNatural,
   Default             : Default,

@@ -232,7 +232,7 @@ const SkullOutline = () => (
   </g>
 );
 
-export const graphicTypes = {
+export const GraphicTypes = {
   Bat         : Bat,
   Bear        : Bear,
   Blank       : Blank,
