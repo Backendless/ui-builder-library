@@ -1,0 +1,49 @@
+@bl-customComponent-emoji-themeColor: @themePrimary;
+@bl-customComponent-emoji-backgroundColor: @appBackgroundColor;
+@bl-customComponent-emoji-textColor: @appTextColor;
+
+@bl-customComponent-emoji-dropdownPosition-left: -93%;
+@bl-customComponent-emoji-dropdownPosition-center: -46%;
+@bl-customComponent-emoji-dropdownPosition-right: 0%;
+
+.bl-customComponent-emoji {
+  display: flex;
+  height: auto;
+  width: auto;
+
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .emoji-picker {
+    position: relative;
+
+    &__button {
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform .3s;
+      }
+    }
+
+    &__dropdown {
+      position: absolute;
+      z-index: 100;
+
+      &-position--left {
+        transform: translateX(@bl-customComponent-emoji-dropdownPosition-left);
+      }
+
+      &-position--center {
+        transform: translateX(@bl-customComponent-emoji-dropdownPosition-center);
+      }
+
+      &-position--right {
+        transform: translateX(@bl-customComponent-emoji-dropdownPosition-right);
+      }
+    }
+  }
+}
