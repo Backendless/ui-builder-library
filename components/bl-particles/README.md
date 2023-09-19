@@ -124,7 +124,11 @@ Adding a particle size range:
 
 ## Configuration
 
-The Custom Options object overrides the values of the settings and can include all parameters that you want to specify for particles. You can find samples on [tsParticles](https://particles.js.org/) to use the ready-made solution.
+The Custom Options object overrides the values of the settings and can include all parameters that you want to specify
+for particles. You can find samples on [tsParticles](https://particles.js.org/) to use the ready-made solution.
+Simply visit the Demos page to choose your preferred Preset, then click on `More -> Export Config` to obtain it.
+Alternatively, you can export configurations directly from the main page Editor, copy parameters from the Confetti page,
+or explore various solutions available on CodePen.
 
 Below is the complete list of possible properties for the Custom Options object:
 
