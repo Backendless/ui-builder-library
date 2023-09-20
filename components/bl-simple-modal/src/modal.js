@@ -40,12 +40,10 @@ export function Modal(props) {
   }, []);
 
   const onSubmitHandler = useCallback(() => {
-    if (type === modalTypes.confirm) {
-      onSubmit();
-    } else {
-      onSubmit({ inputValue });
-    }
-  }, []);
+    const payload = type === modalTypes.confirm ? undefined : { inputValue };
+
+    onSubmit(payload);
+  }, [type, inputValue]);
 
   return ReactDOM.createPortal(
     <div className={ modalClasses } style={{ animationDuration: `${ closingDuration }ms`, ...style }}>
