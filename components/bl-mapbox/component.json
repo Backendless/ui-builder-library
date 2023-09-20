@@ -40,7 +40,7 @@
       "handlerLabel": "Center Logic",
       "dataBinding": true,
       "handlerDescription": "Used to set center on the map.",
-      "defaultValue": "{\n  \"lat\": 0,\n  \"lng\": 0\n}"
+      "defaultValue": "{\n  \"lat\": 40.730610,\n  \"lng\": -73.935242\n}"
     },
     {
       "type": "number",

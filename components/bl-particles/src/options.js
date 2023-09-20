@@ -209,7 +209,6 @@ export const Fire = {
 };
 
 export const Firefly = {
-  fullScreen   : { enable: true, zIndex: -1 },
   background   : { color: Colors.BLACK },
   particles    : {
     number : { value: 0 },

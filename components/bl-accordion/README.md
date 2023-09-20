@@ -84,6 +84,7 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 ````
 @bl-customComponent-accordion-fontSize: 16px;
 @bl-customComponent-accordion-lineHeight: 1.5;
+@bl-customComponent-accordion-content-whiteSpace: break-spaces;
 ````
 
 **Decoration**
