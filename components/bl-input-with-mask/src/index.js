@@ -4,6 +4,8 @@ import { customParseFormat, dayjs } from './day.min';
 import { IMask, useIMask } from './react-imask';
 import { Fieldset, Input, Placeholder } from './subcomponent';
 
+dayjs.extend(customParseFormat);
+
 const { cn } = BackendlessUI.CSSUtils;
 
 const MaskTypes = {
@@ -155,14 +157,21 @@ const prepareOptions = settings => {
     eager             : EagerMap[eager],
     definitions       : definitions || {},
     mapToRadix        : mapToRadix ? mapToRadix.split('') : [],
-    ...(!!radix && { radix }),
-    ...(!!blocks && { blocks: prepareBlocks(blocks) }),
-    ...(maskType === 'Enum' && !!maskEnum && { enum: maskEnum.split(',').map(item => item.trim()) }),
   };
 
-  if (maskType === 'Date') {
-    dayjs.extend(customParseFormat);
+  if (radix) {
+    options.radix = radix;
+  }
 
+  if (blocks) {
+    options.blocks = prepareBlocks(blocks);
+  }
+
+  if (maskType === 'Enum' && maskEnum) {
+    options.enum = maskEnum.split(',').map(item => item.trim());
+  }
+
+  if (maskType === 'Date') {
     Object.assign(options, {
       pattern: dateFormat,
       format : date => dayjs(date).format(dateFormat),
