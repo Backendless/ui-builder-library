@@ -5,8 +5,8 @@ import { ViewsMap } from './views';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
-export default function CustomUIComponent({ component, eventHandlers, elRef }) {
-  const { ratingData, color, iconType, iconSize, width, view, localizations, style, classList } = component;
+export default function RatingReviews({ component, eventHandlers, elRef }) {
+  const { ratingData, color, iconType, iconSize, width, view, localizations, style, classList, display } = component;
 
   const processedData = useMemo(() => prepareReviewData(ratingData, color), [ratingData, color]);
   const totalReviews = useMemo(() => calculateTotalReviews(processedData), [processedData]);
@@ -25,6 +25,10 @@ export default function CustomUIComponent({ component, eventHandlers, elRef }) {
     getPercents: () => processedData.map(({ value }) => Math.round(calculatePercent(value, totalReviews))),
     getTotal   : () => totalReviews,
   });
+
+  if (!display) {
+    return null;
+  }
 
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-customer-reviews', classList) } style={ styles }>
