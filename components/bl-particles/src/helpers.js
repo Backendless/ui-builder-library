@@ -58,6 +58,10 @@ const STROKE_WIDTH = 2;
 const COLOR_ANIMATION_SPEED = 20;
 const DEFAULT_Z_INDEX = 0;
 const DEFAULT_TIMING = 0;
+const DEFAULT_IMAGE_URL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAmklEQVR42mP8/6BxwMS' +
+  'AweSLTxIoBrAGVCDMEArAhoDCxgEzAmBpA1oAsGASMAZwhGIKzBgLcHMC2B2AwYBkwSMyAwAF2AGGA1gYgC2BBMYDSgDGgMwR8gDmH1ABDMCqAIQVw' +
+  'DAgAUEAIBCDJAACISNAEIAxkFgBbJCACSRiRyBSoA3gIAAlEAISlCB4DwYdohkhITMAaGAmPVAzJpSAYVgAdhCAxkgsJCGZMwBA2YYIbQFzQBgRmB' +
+  'iFgjQRyBQyAyYBmkXgHBMAKZKAEigCJMBuAIaJAAAQBJIigISUJgAABRxUigOQAkAAAAAElFTkSuQmCC';
 
 const Opacity = { FULL: 1, LOW: 0.1 };
 const RotateDegrees = { MIN: 0, MAX: 360 };
@@ -94,6 +98,11 @@ export function useOptions(component) {
     return parseColor(color);
   }, [color]);
 
+  if (shape === Shapes.IMAGE && !imageURL) {
+    console.warn('Warning: You have selected Image type as the particles shape, but no image source has been ' +
+      'provided. Please make sure to specify the Image URL(s) property in the Particles component settings.');
+  }
+
   const particles = useMemo(() => ({
     collisions: { enable: collisionMode !== UNSET_COLLISION_MODE, mode: collisionMode },
     links     : {
@@ -122,7 +131,7 @@ export function useOptions(component) {
     shape     : {
       type   : shape,
       options: {
-        [Shapes.IMAGE] : Array.isArray(imageURL) ? imageURL : { src: imageURL },
+        [Shapes.IMAGE] : Array.isArray(imageURL) ? imageURL : { src: imageURL || DEFAULT_IMAGE_URL },
         [Shapes.TEXT]  : { value: textValue },
         [Shapes.SPIRAL]: SpiralShapeProps,
         [Shapes.LINE]  : LineShapeProps,
