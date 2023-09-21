@@ -9,6 +9,16 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "text",
+      "name": "initValue",
+      "label": "Value",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "initValueLogic",
+      "handlerLabel": "Value Logic",
+      "dataBinding": true
+    },
+    {
       "type": "select",
       "name": "maskType",
       "label": "Mask Type",
@@ -29,6 +39,18 @@
         {
           "value": "RegExp",
           "label": "RegExp"
+        },
+        {
+          "value": "Enum",
+          "label": "Enum"
+        },
+        {
+          "value": "Range",
+          "label": "Range"
+        },
+        {
+          "value": "Date",
+          "label": "Date"
         }
       ],
       "handlerDescription": "This is a handler for the logic to determine type of mask(Number, String, RegExp).",
@@ -46,6 +68,16 @@
       "settingTooltip": "Allows to specify the mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp. "
     },
     {
+      "type": "text",
+      "name": "maskEnum",
+      "label": "Enum",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maskEnumLogic",
+      "handlerLabel": "Enum Logic",
+      "dataBinding": true
+    },
+    {
       "type": "json",
       "name": "definitions",
       "label": "Definitions",
@@ -53,9 +85,17 @@
       "hasLogicHandler": true,
       "handlerId": "definitionsLogic",
       "handlerLabel": "Definitions Logic",
-      "dataBinding": true,
-      "settingTooltip": "Allows to provide custom mask definitions such as default \"0\", \"a\", and \"*\". Signature of data where X is any single char: `{ X: { mask: string, displayChar: string, placeholderChar: string }`",
-      "handlerDescription": "This is a handler for the logic to determine a custom mask definitions such as default \"0\", \"a\", and \"*\". Signature of data where X is any single char: `{ X: { mask: string, displayChar: string, placeholderChar: string }`"
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "blocks",
+      "label": "Blocks",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "blocksLogic",
+      "handlerLabel": "Blocks Logic",
+      "dataBinding": true
     },
     {
       "type": "text",
@@ -65,20 +105,7 @@
       "hasLogicHandler": true,
       "handlerId": "displayCharLogic",
       "handlerLabel": "Display Char Logic",
-      "dataBinding": true,
-      "settingTooltip": "Allows to specify char that will be displayed instead of the input value.",
-      "handlerDescription": "This is a handler for the logic to determine a char that will be displayed instead of the input value."
-    },
-    {
-      "type": "text",
-      "name": "placeholder",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "placeholderLogic",
-      "dataBinding": true,
-      "label": "Placeholder",
-      "handlerDescription": "This is a handler for the logic to determine a placeholder.",
-      "settingTooltip": "Allows to specify placeholder."
+      "dataBinding": true
     },
     {
       "type": "text",
@@ -92,6 +119,90 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine a placeholder character.",
       "settingTooltip": "Allows to specify placeholder char. If it is left empty, the default value will be `_`."
+    },
+    {
+      "type": "number",
+      "name": "scaleNumber",
+      "label": "Scale of Number",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": true,
+      "handlerId": "scaleNumberLogic",
+      "handlerLabel": "Scale of Number Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "min",
+      "label": "Min",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minLogic",
+      "handlerLabel": "Min Loagic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "max",
+      "label": "Max",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxLogic",
+      "handlerLabel": "Max Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "thousandsSeparator",
+      "label": "Thousands Separator",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "thousandsSeparatorLogic",
+      "handlerLabel": "Thousands Separator Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "padFractionalZeros",
+      "label": "Pad Fractional Zeros",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "padFractionalZerosLogic",
+      "handlerLabel": "Pad Fractional Zeros Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "normalizeZeros",
+      "label": "Normalize Zeros",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "normalizeZerosLogic",
+      "handlerLabel": "Normalize Zeros Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "radix",
+      "label": "Radix",
+      "showInSettings": true,
+      "defaultValue": ",",
+      "hasLogicHandler": true,
+      "handlerId": "radixLogic",
+      "handlerLabel": "Radix Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "placeholderLogic",
+      "dataBinding": true,
+      "label": "Placeholder",
+      "handlerDescription": "This is a handler for the logic to determine a placeholder.",
+      "settingTooltip": "Allows to specify placeholder."
     },
     {
       "type": "checkbox",
@@ -129,6 +240,145 @@
       ],
       "handlerDescription": "This is a handler for the logic to choose one of three style variants - outlined, standard, or filled.",
       "settingTooltip": "Allows to choose one of three style variants - outlined, standard, or filled."
+    },
+    {
+      "type": "select",
+      "name": "overwrite",
+      "label": "Overwrite",
+      "showInSettings": true,
+      "defaultValue": "no",
+      "hasLogicHandler": true,
+      "handlerId": "overwriteLogic",
+      "handlerLabel": "Overwrite Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "shift",
+          "label": "Shift"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "eager",
+      "label": "Eager",
+      "showInSettings": true,
+      "defaultValue": "no",
+      "hasLogicHandler": true,
+      "handlerId": "eagerLogic",
+      "handlerLabel": "Eager Logic",
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "append",
+          "label": "Append"
+        },
+        {
+          "value": "remove",
+          "label": "Remove"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "autofix",
+      "label": "Autofix",
+      "showInSettings": true,
+      "defaultValue": "no",
+      "hasLogicHandler": true,
+      "handlerId": "autofixLogic",
+      "handlerLabel": "Autofix Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "pad",
+          "label": "Pad"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "from",
+      "label": "From",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "fromLogic",
+      "handlerLabel": "From Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "to",
+      "label": "To",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "toLogic",
+      "handlerLabel": "To Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "skipInvalid",
+      "label": "Skip Invalid",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "skipInvalidLogic",
+      "handlerLabel": "Skip Invalid Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "mapToRadix",
+      "label": "Map to Radix",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "mapToRadixLogic",
+      "handlerLabel": "Map to Radix Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "dynamicMask",
+      "label": "Dynamic Mask",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dynamicMaskLogic",
+      "handlerLabel": "Dynamic Mask Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "dateFormat",
+      "label": "Date Format",
+      "showInSettings": true,
+      "defaultValue": "DD/MM/YYYY",
+      "hasLogicHandler": true,
+      "handlerId": "dateFormatLogic",
+      "handlerLabel": "Date Format Logic",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
@@ -139,6 +389,10 @@
         {
           "id": "value",
           "label": "Value"
+        },
+        {
+          "id": "unmaskedValue",
+          "label": "Unmasked Value"
         }
       ],
       "handlerDescription": "This event is triggered when the component's state (value) changes."
