@@ -541,7 +541,8 @@
       "handlerLabel": "Calendar Label Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the calendar label.",
-      "settingTooltip": "Allows to determine the calendar label."
+      "settingTooltip": "Allows to determine the few calendar labels. For detail watch documentation.",
+      "defaultValue": "[\r\n  {\r\n    \"enabled\": true,\r\n    \"text\": [\"Sat\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sun\"],\r\n    \"key\": \"weekdays\",\r\n    \"position\": \"left\",\r\n    \"padding\": [0, 10, 0, 0],\r\n    \"radius\": 0,\r\n    \"width\": 20,\r\n    \"height\": 20,\r\n    \"gutter\": 2,\r\n    \"textAlign\": \"middle\"\r\n  }\r\n]"
     },
     {
       "type": "number",
