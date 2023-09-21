@@ -192,6 +192,8 @@ For example, we want to add the label for the weekday. We need to set in array c
 
 ![](./example-images/set-calendar-label.png)
 
+![](./example-images/calendar-label-preview.png)
+
 <details>
 <summary>Try yourself</summary>
 
@@ -199,7 +201,7 @@ For example, we want to add the label for the weekday. We need to set in array c
 [
   {
     "enabled": true,
-    "text": ["Sat", "Mon", "Tue", "Wed", "Thu", "Fri", "Sun"],
+    "text": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     "key": "weekdays",
     "position": "left",
     "padding": [0, 10, 0, 0],
