@@ -9,12 +9,17 @@ dayjs.extend(customParseFormat);
 const { cn } = BackendlessUI.CSSUtils;
 
 const MaskTypes = {
+  Enum  : 'Enum',
+  Date  : 'Date',
+  RegExp: 'RegExp',
+};
+
+const MaskTypeMap = {
   Number,
   String,
-  RegExp: 'RegExp',
-  Enum  : IMask.MaskedEnum,
-  Range : IMask.MaskedRange,
   Date,
+  Enum : IMask.MaskedEnum,
+  Range: IMask.MaskedRange,
 };
 
 const OverwriteMap = {
@@ -118,7 +123,7 @@ const prepareMask = (maskType, mask) => {
     }
   }
 
-  return mask || MaskTypes[maskType];
+  return mask || MaskTypeMap[maskType];
 };
 
 const prepareBlocks = blocks => {
@@ -167,11 +172,11 @@ const prepareOptions = settings => {
     options.blocks = prepareBlocks(blocks);
   }
 
-  if (maskType === 'Enum' && maskEnum) {
+  if (MaskTypes.Enum === maskType && maskEnum) {
     options.enum = maskEnum.split(',').map(item => item.trim());
   }
 
-  if (maskType === 'Date') {
+  if (maskType === MaskTypes.Date) {
     Object.assign(options, {
       pattern: dateFormat,
       format : date => dayjs(date).format(dateFormat),
