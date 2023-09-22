@@ -20,9 +20,9 @@ Navigation Dots is the component that can be used in Backendless [UI-Builder](ht
 
 ## Events
 
-| Name     | Triggers                               | Context Blocks           |
-|----------|----------------------------------------|--------------------------|
-| On Click | when the user clicks on the component. | activeSection: `Element` |
+| Name     | Triggers                               | Context Blocks            |
+|----------|----------------------------------------|---------------------------|
+| On Click | when the user clicks on the component. | Active Section: `Element` |
 
 ## Actions
 

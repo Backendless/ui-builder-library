@@ -13,14 +13,57 @@ export default function NavigationDotsComponent({ component, eventHandlers, elRe
 
   const styles = useMemo(() => ({
     '--nav-item-background': background,
-    '--nav-item-color'     : color,
-    '--tooltip-background' : tooltipBackground,
-    '--tooltip-color'      : tooltipColor,
+    '--nav-item-color': color,
+    '--tooltip-background': tooltipBackground,
+    '--tooltip-color': tooltipColor,
     ...style,
-  }), [background, color, tooltipBackground, tooltipColor]);
+  }), [style, background, color, tooltipBackground, tooltipColor]);
 
-  const scrollHandler = handleScroll(sections, setActiveDotIndex, scrollEnabled);
-  const dotClickHandler = handleDotClick(sections, setActiveDotIndex, setScrollEnabled, onClick);
+  const scrollHandler = useCallback(() => {
+    if (!scrollEnabled || !sections) {
+      return;
+    }
+
+    const windowHeight = window.innerHeight;
+
+    let newActiveDotIndex = -1;
+
+    for (let i = 0; i < sections.length; i++) {
+      const sectionElement = document.getElementById(sections[i].anchor);
+
+      if (sectionElement) {
+        const rect = sectionElement.getBoundingClientRect();
+
+        if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+          newActiveDotIndex = i;
+          break;
+        }
+      }
+    }
+
+    setActiveDotIndex(newActiveDotIndex);
+  }, [scrollEnabled, sections]);
+
+  const dotClickHandler = useCallback(index => {
+    if (!sections || !sections[index]) {
+      return;
+    }
+
+    setScrollEnabled(false);
+    setActiveDotIndex(index);
+
+    const anchor = sections[index].anchor;
+    const sectionElement = document.getElementById(anchor);
+
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+      onClick({ activeSection: sections[index] });
+    }
+
+    setTimeout(() => {
+      setScrollEnabled(true);
+    }, 1000);
+  }, [sections, onClick]);
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler);
@@ -65,54 +108,4 @@ export default function NavigationDotsComponent({ component, eventHandlers, elRe
       </ul>
     </div>
   );
-}
-
-function handleScroll(sections, setActiveDotIndex, scrollEnabled) {
-  return useCallback(() => {
-    if (!scrollEnabled || !sections) {
-      return;
-    }
-
-    const windowHeight = window.innerHeight;
-
-    let newActiveDotIndex = -1;
-
-    for (let i = 0; i < sections.length; i++) {
-      const sectionElement = document.getElementById(sections[i].anchor);
-
-      if (sectionElement) {
-        const rect = sectionElement.getBoundingClientRect();
-
-        if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
-          newActiveDotIndex = i;
-          break;
-        }
-      }
-    }
-
-    setActiveDotIndex(newActiveDotIndex);
-  }, [scrollEnabled, sections, setActiveDotIndex]);
-}
-
-function handleDotClick(sections, setActiveDotIndex, setScrollEnabled, onClick) {
-  return useCallback(index => {
-    if (!sections || !sections[index]) {
-      return;
-    }
-
-    setScrollEnabled(false);
-    setActiveDotIndex(index);
-
-    const anchor = sections[index].anchor;
-    const sectionElement = document.getElementById(anchor);
-
-    if (sectionElement) {
-      sectionElement.scrollIntoView({ behavior: 'smooth' });
-      onClick({ activeSection: sections[index] });
-    }
-
-    setTimeout(() => {
-      setScrollEnabled(true);
-    }, 1000);
-  }, [sections, setScrollEnabled, setActiveDotIndex, onClick]);
 }
