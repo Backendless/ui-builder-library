@@ -148,7 +148,7 @@ Addition  calendar data:
 
     ![](./example-images/added-componet-on-page.png)
 
-2. Set the data source URL in format JSON, CSV, TSV, and you need select appropriate `Data Type`. Or set JSON in `Data` by UI settings, Logic handler or Data binding.
+2. Set the data source URL in format JSON, CSV, TSV [Example URL](https://acutestop.backendless.app/api/files/DEMO_Files/Calendar_Heatmap/data.json), and you need select appropriate `Data Type`. Or set JSON in `Data` by UI settings, Logic handler or Data binding.
 
     ![](./example-images/dataset.png)
 
