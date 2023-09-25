@@ -8,6 +8,10 @@ The component based on external [lightbox2](https://lokeshdhakar.com/projects/li
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/GpC3WukSvF62FqIMnKBi).
+
 ## Usage
 
  Add component on your page and add codeless logic, which loading images.

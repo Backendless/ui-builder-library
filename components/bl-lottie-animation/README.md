@@ -8,6 +8,10 @@ The component based on external [Lottie Animation](https://github.com/airbnb/lot
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/WVXYVludjJYEODMBXHmV).
+
 ## Properties
 
 | Property  | Type                             | Default Value | Logic         | Data Binding | UI Setting | Description                                                                                                                                                                                                                                                          |

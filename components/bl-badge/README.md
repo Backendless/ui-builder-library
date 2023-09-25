@@ -14,6 +14,10 @@ After adding the component to the page, specify the label of the badge. This can
 
 Then it is necessary to determine the contents of the component. Go to UI-Builder designer and specify one of the content field or combine them if you need. The component will be displayed with default properties. If you need even more flexibility, make other changes to its appearance in UI-Builder designer or by codeless logic.
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/0mgOJyiY78PDX03OuPs2).
+
 ## Properties
 
 | Property               | Type                                                                             | Default value                                | Logic                           | Data Binding      | UI Setting | Description                                                   |

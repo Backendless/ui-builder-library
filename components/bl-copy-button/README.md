@@ -6,6 +6,10 @@ Copy Button is a component of Backendless UI-Builder designer. This allows you c
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/2sH2FPZkeCT3uvMUlbjP).
+
 ## Properties
 
 | Property            | Type    | Default Value | Logic                | Data Binding | UI Setting | Description                                   |

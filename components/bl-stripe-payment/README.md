@@ -18,6 +18,10 @@ Backendless marketplace. The plugin product is available under the All Services 
 
 Then add the component to the page and specify the Publishable key in UI-Builder Settings.
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/2uKoYeifRMf2qrnrzp6l).
+
 ## Properties
 
 | Property              | Type       | Default value | Logic        | Data Binding | UI Setting | Description                                                            |
