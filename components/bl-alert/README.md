@@ -41,7 +41,7 @@ Then navigate to the **Logic** section of the selected component, and in the **U
 
 ## Demo
 
-View an example of how to install this component and how it works in your UI here: [Arcade URL](https://app.arcade.software/share/VKYqQJggd6WmFm87fq22).
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/VKYqQJggd6WmFm87fq22).
 
 
 ## Properties
