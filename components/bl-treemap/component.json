@@ -1,0 +1,129 @@
+{
+  "id": "c_eaf14153f39378780d6967c7ecfa90ff",
+  "name": "Treemap",
+  "description": "The main purpose of the component is proportional display of data.",
+  "showInToolbox": true,
+  "faIcon": "chart-bar",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true,
+      "settingTooltip": "This handler allows you to disable the component.",
+      "handlerDescription": "This handler allows you to disable the component."
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "showInSettings": true,
+      "defaultValue": "Treemap",
+      "hasLogicHandler": true,
+      "handlerId": "titleLogic",
+      "settingTooltip": "This handler allows you to specify a label for the component.",
+      "handlerLabel": "Title Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify a title for the component."
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "settingTooltip": "This handler allows you to specify the width of the component.",
+      "showInSettings": true,
+      "defaultValue": "100%",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "handlerDescription": "This handler allows you to specify the component's width in pixels(px) or percentages(%).",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "settingTooltip": "This handler allows you to specify the height of the component.",
+      "showInSettings": true,
+      "defaultValue": "100%",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "handlerDescription": "This handler allows you to specify the component's height in pixels(px) or percentages(%).",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "fillBrushes",
+      "label": "Fill Brushes",
+      "settingTooltip": "This handler allows you to specify the fill brushes.",
+      "showInSettings": true,
+      "defaultValue": "blue green",
+      "hasLogicHandler": true,
+      "handlerId": "fillBrushesLogic",
+      "handlerLabel": "Fill Brushes Logic",
+      "handlerDescription": "This handler allows you to specify the fill brushes.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "fillScaleLogarithmic",
+      "label": "Fill Scale Logarithmic",
+      "settingTooltip": "This handler allows you to control the logarithmic fill scale.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "fillScaleLogarithmicLogic",
+      "handlerLabel": "Fill Scale Logarithmic Logic",
+      "handlerDescription": "This handler allows you to control the logarithmic fill scale.",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "headerDisplayMode",
+      "label": "Header Display Mode",
+      "showInSettings": true,
+      "defaultValue": "Overlay",
+      "hasLogicHandler": true,
+      "handlerId": "headerDisplayModeLogic",
+      "options": [
+        {
+          "value": "Overlay",
+          "label": "Overlay"
+        },
+        {
+          "value": "Header",
+          "label": "Header"
+        },
+        {
+          "value": "Auto",
+          "label": "Auto"
+        }
+      ],
+      "dataBinding": true,
+      "handlerLabel": "Header Display Mode Logic",
+      "handlerDescription": "This handler allows you to specify the header display mode.",
+      "settingTooltip": "This handler allows you to specify the header display mode."
+    },
+    {
+      "type": "json",
+      "name": "data",
+      "label": "Data",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dataLogic",
+      "handlerLabel": "Data Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to add data to the component.",
+      "settingTooltip": "This handler allows you to add data to the component.",
+      "defaultValue": "[\n  {\n    \"label\": \"Europe\",\n    \"value\": null,\n    \"parent\": null\n  },\n  {\n    \"label\": \"Asia\",\n    \"value\": null,\n    \"parent\": null\n  },\n  {\n    \"label\": \"Germany\",\n    \"value\": 357588,\n    \"parent\": \"Europe\"\n  },\n  {\n    \"label\": \"France\",\n    \"value\": 551695,\n    \"parent\": \"Europe\"\n  },\n  {\n    \"label\": \"Vietnam\",\n    \"value\": 331690 ,\n    \"parent\": \"Asia\"\n  },\n  {\n    \"label\": \"Japan\",\n    \"value\": 377973,\n    \"parent\": \"Asia\"\n  }\n]"
+    }
+  ]
+}

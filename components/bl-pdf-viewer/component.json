@@ -1,0 +1,121 @@
+{
+  "id": "c_922ad4981c2ee5613687e21c9ceee144",
+  "name": "PDF Viewer",
+  "description": "PDF Viewer is a component for reading and displaying PDF files.",
+  "showInToolbox": true,
+  "faIcon": "file-pdf",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "pdfUrl",
+      "label": "PDF URL",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "pdfUrlLogic",
+      "handlerLabel": "PDF URL Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is the handler for the logic to determine the PDF URL.",
+      "settingTooltip": "Allows write URL of PDF file, but file must be in Backendless Files."
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerDescription": "This is the handler for the logic to determine the width of the PDF Viewer.",
+      "dataBinding": true,
+      "settingTooltip": "Allows determine the width of the PDF Viewer."
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerDescription": "This is the handler for the logic to determine the height of the PDF Viewer.",
+      "dataBinding": true,
+      "settingTooltip": "Allows determine the height of the PDF Viewer."
+    },
+    {
+      "type": "number",
+      "name": "scale",
+      "label": "Scale(%)",
+      "showInSettings": true,
+      "defaultValue": "100",
+      "hasLogicHandler": false,
+      "handlerId": "scaleLogic",
+      "settingTooltip": "Allows determine the default scale value in percentage."
+    },
+    {
+      "type": "checkbox",
+      "name": "showPrintButton",
+      "label": "Show Print Button",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "showPrintButtonLogic",
+      "handlerLabel": "Show Print Button Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the print button should be visible. If the handler returns true, the component will be visible.",
+      "dataBinding": true,
+      "defaultValue": true,
+      "settingTooltip": "Allows determine if the print button should be visible. If the handler returns true, the component will be visible."
+    },
+    {
+      "type": "checkbox",
+      "name": "showDownloadButton",
+      "label": "Show Download Button",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "showDownloadButtonLogic",
+      "handlerLabel": "Show Download Button Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the download button should be visible. If the handler returns true, the component will be visible.",
+      "dataBinding": true,
+      "defaultValue": true,
+      "settingTooltip": "Allows determine if the download button should be visible. If the handler returns true, the component will be visible. "
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onLoadSuccess",
+      "label": "On Load Success",
+      "contextBlocks": [
+        {
+          "id": "pageCount",
+          "label": "Page Count"
+        }
+      ],
+      "output": false,
+      "handlerDescription": "This event is triggered when the PDF file is successfully downloaded"
+    },
+    {
+      "name": "onLoadError",
+      "label": "On Load Error",
+      "output": false,
+      "contextBlocks": [
+        {
+          "id": "message",
+          "label": "Message"
+        }
+      ],
+      "handlerDescription": "This event is triggered when a PDF download error"
+    }
+  ],
+  "actions": [
+    {
+      "id": "setPage",
+      "label": "Set Page for",
+      "inputs": [
+        {
+          "id": "page",
+          "label": "Page"
+        }
+      ]
+    }
+  ],
+  "pods": {}
+}

@@ -1,0 +1,190 @@
+@bl-customComponent-transferList-themeColor: @themePrimary;
+@bl-customComponent-transferList-backgroundColor: @appBackgroundColor;
+@bl-customComponent-transferList-textColor: @appTextColor;
+
+@boxShadowPrimary:
+  0px 2px 1px -1px  @themePrimary,
+  0px 1px 1px 0px  @themePrimary,
+  0px 1px 3px 0px  @themePrimary;
+
+@bl-customComponent-transferList-boxShadow: @boxShadowPrimary;
+
+@bl-customComponent-transferList-listContentColor: @bl-customComponent-transferList-textColor;
+@bl-customComponent-transferList-listHeaderHeight: 58px;
+@bl-customComponent-transferList-listHeaderFontSize: 14px;
+@bl-customComponent-transferList-listHeaderCounterColor: @bl-customComponent-transferList-textColor;
+@bl-customComponent-transferList-listHeaderPadding: 8px 16px;
+@bl-customComponent-transferList-listHeaderBorderBottom: 1px solid @bl-customComponent-transferList-themeColor;
+
+@bl-customComponent-transferList-listBorderRadius: 5px;
+@bl-customComponent-transferList-listBackgroundColor: @bl-customComponent-transferList-backgroundColor;
+
+@bl-customComponent-transferList-checkboxWidth: 42px;
+@bl-customComponent-transferList-checkboxMarginRight: 14px;
+
+@bl-customComponent-transferList-list-width: 200px;
+@bl-customComponent-transferList-list-height: 230px;
+
+@bl-customComponent-transferList-itemPadding: 4px 16px;
+@bl-customComponent-transferList-itemHoverBackgroundColor: #0000000a;
+
+@bl-customComponent-transferList-iconWidth: 20px;
+@bl-customComponent-transferList-iconColor: @bl-customComponent-transferList-themeColor;
+
+@bl-customComponent-transferList-buttonColor: @bl-customComponent-transferList-themeColor;
+@bl-customComponent-transferList-buttonBackgroundColor: @bl-customComponent-transferList-backgroundColor;
+@bl-customComponent-transferList-buttonBorderRadius: 4px;
+@bl-customComponent-transferList-buttonBorder: 1px solid @bl-customComponent-transferList-themeColor;
+@bl-customComponent-transferList-buttonDisabledColor: #3d3c3c88;
+@bl-customComponent-transferList-buttonDisabledBorderColor: #0a080867;
+@bl-customComponent-transferList-buttonHoverColor: #1976d2;
+
+.bl-customComponent-transferList {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .list {
+    width: @bl-customComponent-transferList-list-width;
+    background-color: @bl-customComponent-transferList-listBackgroundColor;
+    box-shadow: @bl-customComponent-transferList-boxShadow;
+    border-radius: @bl-customComponent-transferList-listBorderRadius;
+    flex-shrink: 0;
+
+    &__header {
+      position: sticky;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: @bl-customComponent-transferList-listHeaderHeight;
+      padding: @bl-customComponent-transferList-listHeaderPadding;
+      box-sizing: border-box;
+      border-bottom: @bl-customComponent-transferList-listHeaderBorderBottom;
+
+      &-content {
+        flex: 1 1 auto;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        color: @bl-customComponent-transferList-listContentColor;
+        font-size: @bl-customComponent-transferList-listHeaderFontSize;
+        font-weight: 400;
+        line-height: 1.43;
+        letter-spacing: 0.17px;
+        overflow: auto;
+      }
+
+      &-title {
+        white-space: nowrap;
+      }
+
+      &-counter {
+        color: @bl-customComponent-transferList-listHeaderCounterColor;
+      }
+    }
+
+    &__items {
+      width: 100%;
+      height: @bl-customComponent-transferList-list-height;
+      overflow: auto;
+    }
+  }
+
+  .control-buttons {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 64px;
+      margin: 4px 15px;
+      line-height: 1.75;
+      color: @bl-customComponent-transferList-buttonColor;
+      border: @bl-customComponent-transferList-buttonBorder;
+      border-radius: @bl-customComponent-transferList-buttonBorderRadius;
+      background-color: @bl-customComponent-transferList-buttonBackgroundColor;
+      cursor: pointer;
+      transition: background-color .3s, border-color .3s;
+
+      &:disabled {
+        cursor: default;
+        pointer-events: none;
+        color: @bl-customComponent-transferList-buttonDisabledColor;
+        border-color: @bl-customComponent-transferList-buttonDisabledBorderColor;
+      }
+
+      &:hover {
+        text-decoration: none;
+        background-color: transparent;
+        border-color: @bl-customComponent-transferList-buttonHoverColor;
+        color: @bl-customComponent-transferList-buttonHoverColor;
+      }
+    }
+  }
+
+  .list-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: @bl-customComponent-transferList-itemPadding;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover {
+      background-color: @bl-customComponent-transferList-itemHoverBackgroundColor;
+    }
+
+    &__content {
+      flex: 1 1 auto;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      color: @bl-customComponent-transferList-listContentColor;
+    }
+  }
+
+  .checkbox {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: @bl-customComponent-transferList-checkboxWidth;
+    height: @bl-customComponent-transferList-checkboxWidth;
+    margin-right: @bl-customComponent-transferList-checkboxMarginRight;
+
+    &__icon {
+      width: @bl-customComponent-transferList-iconWidth;
+      fill: @bl-customComponent-transferList-iconColor;
+    }
+
+    &__input {
+      cursor: pointer;
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+    }
+  }
+}
+
+@media(max-width: 540px) {
+  .bl-customComponent-transferList {
+    flex-direction: column;
+  }
+}

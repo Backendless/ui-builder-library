@@ -1,3 +1,7 @@
+.idea
+
+node_modules
+
 components/**/dist
 components/**/node_modules
 

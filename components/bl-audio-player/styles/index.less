@@ -1,0 +1,187 @@
+@bl-customComponent-audioPlayer-themeColor: @themePrimary;
+@bl-customComponent-audioPlayer-backgroundColor: @appBackgroundColor;
+@bl-customComponent-audioPlayer-textColor: @appTextColor;
+@bl-customComponent-audioPlayer-ShadowColor: @appComponentShadowColor;
+@bl-customComponent-audioPlayer-disabledColor: @disabledColor;
+
+@bl-customComponent-audioPlayer-fontSize: 14px;
+@bl-customComponent-audioPlayer-border: 3px solid @bl-customComponent-audioPlayer-themeColor;
+@bl-customComponent-audioPlayer-borderRadius: 10px;
+@bl-customComponent-audioPlayer-width: 100%;
+@bl-customComponent-audioPlayer-padding: 10px;
+
+@bl-customComponent-audioPlayer-trackNavigation-width: @bl-customComponent-audioPlayer-width;
+@bl-customComponent-audioPlayer-trackNavigation-height: 5px;
+@bl-customComponent-audioPlayer-trackNavigation-margin: 5px 0;
+@bl-customComponent-audioPlayer-trackNavigation-border: 1px solid @bl-customComponent-audioPlayer-themeColor;
+
+@bl-customComponent-audioPlayer-controls-width: @bl-customComponent-audioPlayer-width;
+
+@bl-customComponent-audioPlayer-button-shadowColor: @bl-customComponent-audioPlayer-ShadowColor;
+@bl-customComponent-audioPlayer-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-audioPlayer-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-audioPlayer-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-audioPlayer-button-shadowColor, 12%);
+@bl-customComponent-audioPlayer-button-shadowDisabled: none;
+@bl-customComponent-audioPlayer-button-disabledBackground: @bl-customComponent-audioPlayer-disabledColor;
+@bl-customComponent-audioPlayer-button-disabledColor: contrast(@bl-customComponent-audioPlayer-button-disabledBackground);
+@bl-customComponent-audioPlayer-button-backgroundColor: @bl-customComponent-audioPlayer-themeColor;
+@bl-customComponent-audioPlayer-button-color: contrast(@bl-customComponent-audioPlayer-button-backgroundColor);
+@bl-customComponent-audioPlayer-button-margin: 2px;
+
+@bl-customComponent-audioPlayer-icon-color: @bl-customComponent-audioPlayer-themeColor;
+
+@bl-customComponent-audioPlayer-input-border: 1px solid @bl-customComponent-audioPlayer-themeColor;
+@bl-customComponent-audioPlayer-input-borderRadius: 5px;
+@bl-customComponent-audioPlayer-input-maxWidth: 85px;
+@bl-customComponent-audioPlayer-input-height: 7px;
+@bl-customComponent-audioPlayer-input-thumb-height: 15px;
+@bl-customComponent-audioPlayer-input-thumb-width: 15px;
+@bl-customComponent-audioPlayer-input-thumb-borderRadius: 50%;
+
+.bl-customComponent-audio-player {
+  .player-container {
+    display: flex;
+    flex-direction: column;
+    font-size: @bl-customComponent-audioPlayer-fontSize;
+    padding: @bl-customComponent-audioPlayer-padding;
+    color: @bl-customComponent-audioPlayer-textColor;
+    background-color: @bl-customComponent-audioPlayer-backgroundColor;
+    border: @bl-customComponent-audioPlayer-border;
+    border-radius: @bl-customComponent-audioPlayer-borderRadius;
+    text-align: center;
+    user-select: none;
+
+    .wrapper {
+      display: flex;
+      width: 100%;
+
+      .track-navigation {
+        width: @bl-customComponent-audioPlayer-trackNavigation-width;
+        height: @bl-customComponent-audioPlayer-trackNavigation-height;
+        border: @bl-customComponent-audioPlayer-trackNavigation-border;
+        margin: @bl-customComponent-audioPlayer-trackNavigation-margin;
+        cursor: pointer;
+
+        .seek-bar {
+          width: 0;
+          height: 100%;
+          background-color: @bl-customComponent-audioPlayer-themeColor;
+        }
+      }
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      align-items: center;
+      width: @bl-customComponent-audioPlayer-controls-width;
+
+      @media (max-width: 554px) {
+        display: block;
+      }
+
+      .track-time {
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+        padding: 10px;
+
+        span {
+          margin: 0 3px;
+        }
+      }
+
+      button {
+        color: @bl-customComponent-audioPlayer-button-color;
+        background-color: @bl-customComponent-audioPlayer-button-backgroundColor;
+        border-color: @bl-customComponent-audioPlayer-button-backgroundColor;
+        margin: @bl-customComponent-audioPlayer-button-margin;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: @bl-customComponent-audioPlayer-button-shadowHover;
+        }
+
+        &:disabled {
+          background: @bl-customComponent-audioPlayer-button-disabledBackground;
+          color: @bl-customComponent-audioPlayer-button-disabledColor;
+          box-shadow: @bl-customComponent-audioPlayer-button-shadowDisabled;
+          border-color: @bl-customComponent-audioPlayer-button-disabledBackground;
+        }
+      }
+
+      .volume-control {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input, i {
+          cursor: pointer;
+        }
+
+        input[type="range"] {
+          -webkit-appearance: none;
+          height: @bl-customComponent-audioPlayer-input-height;
+          max-width: @bl-customComponent-audioPlayer-input-maxWidth;
+          border: @bl-customComponent-audioPlayer-input-border;
+          border-radius: @bl-customComponent-audioPlayer-input-borderRadius;
+          background-image: linear-gradient(@bl-customComponent-audioPlayer-button-backgroundColor, @bl-customComponent-audioPlayer-button-backgroundColor);
+          background-repeat: no-repeat;
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: @bl-customComponent-audioPlayer-input-thumb-height;
+            width: @bl-customComponent-audioPlayer-input-thumb-width;
+            border-radius: @bl-customComponent-audioPlayer-input-thumb-borderRadius;
+            background: @bl-customComponent-audioPlayer-button-backgroundColor;
+            cursor: pointer;
+          }
+          
+          &::-moz-range-thumb {
+            -webkit-appearance: none;
+            height: @bl-customComponent-audioPlayer-input-thumb-height;
+            width: @bl-customComponent-audioPlayer-input-thumb-width;
+            border-radius: @bl-customComponent-audioPlayer-input-thumb-borderRadius;
+            background: @bl-customComponent-audioPlayer-button-backgroundColor;
+            cursor: pointer;
+          }
+
+          &::-ms-thumb {
+            -webkit-appearance: none;
+            height: @bl-customComponent-audioPlayer-input-thumb-height;
+            width: @bl-customComponent-audioPlayer-input-thumb-width;
+            border-radius: @bl-customComponent-audioPlayer-input-thumb-borderRadius;
+            background: @bl-customComponent-audioPlayer-button-backgroundColor;
+            cursor: pointer;
+          }
+
+          &::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+          }
+
+          &::-moz-range-track {
+            -webkit-appearance: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+          }
+
+          &::-ms-track {
+            -webkit-appearance: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+          }
+        }
+
+        .mute {
+          display: flex;
+          color: @bl-customComponent-audioPlayer-icon-color;
+        }
+      }
+    }
+  }
+}
+

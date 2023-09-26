@@ -1,0 +1,71 @@
+@bl-customComponent-popover-border-width: 1px;
+@bl-customComponent-popover-max-width: 276px;
+@bl-customComponent-popover-arrow-size: 10px;
+
+@bl-customComponent-popover-background-color: @appBackgroundColor;
+@bl-customComponent-popover-border-color: if(@isLightTheme, rgba(0, 0, 0, 0.175), rgba(255, 255, 255, 0.175));
+
+@bl-customComponent-popover-border: @bl-customComponent-popover-border-width solid @bl-customComponent-popover-border-color;
+@bl-customComponent-popover-border-radius: 0.5rem;
+
+.bl-customComponent-popover {
+  .content-container {
+    display: inline-block;
+  }
+
+  &.popover {
+    position: absolute;
+    max-width: @bl-customComponent-popover-max-width;
+
+    background-color: @bl-customComponent-popover-background-color;
+    background-clip: padding-box;
+    border: @bl-customComponent-popover-border;
+    border-radius: @bl-customComponent-popover-border-radius;
+
+    .popover-arrow {
+      position: absolute;
+      z-index: -1;
+
+      height: @bl-customComponent-popover-arrow-size;
+      width: @bl-customComponent-popover-arrow-size;
+
+      background-clip: padding-box;
+      background-color: @bl-customComponent-popover-background-color;
+
+      transform: translate(-50%, -50%) rotate(45deg);
+
+      &--top {
+        bottom: calc(-@bl-customComponent-popover-arrow-size - 1px);
+        left: 50%;
+
+        border-bottom: @bl-customComponent-popover-border;
+        border-right: @bl-customComponent-popover-border;
+      }
+
+      &--right {
+        left: -1px;
+        top: 50%;
+
+        border-bottom: @bl-customComponent-popover-border;
+        border-left: @bl-customComponent-popover-border;
+      }
+
+      &--left {
+        right: -1px;
+        top: 50%;
+
+        border-right: @bl-customComponent-popover-border;
+        border-top: @bl-customComponent-popover-border;
+        transform: translate(50%, -50%) rotate(45deg);
+      }
+
+      &--bottom {
+        left: 50%;
+        top: -1px;
+
+        border-left: @bl-customComponent-popover-border;
+        border-top: @bl-customComponent-popover-border;
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "id": "c_cb263caa99937a6981fc4001cdb410f9",
+  "name": "Stepper",
+  "description": "This component makes it possible to display the steps of performing an action",
+  "showInToolbox": true,
+  "faIcon": "check-circle",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "stepList",
+      "handlerId": "stepListLogic",
+      "dataBinding": true,
+      "type": "text",
+      "label": "List of Steps",
+      "handlerLabel": "Step List Logic",
+      "handlerDescription": "This is a handler for the logic to determine the list of steps",
+      "showInSettings": true,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "number",
+      "name": "countSteps",
+      "label": "Count Steps",
+      "defaultValue": "2",
+      "handlerId": "CountStepsLogic",
+      "handlerLabel": "Count Steps Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the count steps",
+      "showInSettings": true,
+      "hasLogicHandler": true
+    },
+    {
+      "type": "select",
+      "name": "stepperType",
+      "label": "Style",
+      "defaultValue": "root",
+      "options": [
+        {
+          "value": "root",
+          "label": "Root"
+        },
+        {
+          "value": "alternativeLabel",
+          "label": "Alternative Label"
+        },
+        {
+          "value": "customized",
+          "label": "Customized"
+        }
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onStepChange",
+      "label": "On Step Change",
+      "handlerDescription": "This handler triggered when the step changed.",
+      "contextBlocks": [
+        {
+          "id": "currentStep",
+          "label": "Current Step"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "goNextStep",
+      "label": "Go to Next Step in"
+    },
+    {
+      "id": "goPrevStep",
+      "label": "Go to Previous Step in"
+    },
+    {
+      "id": "resetStep",
+      "label": "Reset Current Step for"
+    },
+    {
+      "id": "setStep",
+      "label": "Set Step for",
+      "inputs": [
+        {
+          "id": "step",
+          "label": "Step Number"
+        }
+      ]
+    },
+    {
+      "id": "getCurrentStep",
+      "label": "Get Current Step in",
+      "hasReturn": true
+    }
+  ]
+}

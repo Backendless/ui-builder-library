@@ -1,0 +1,70 @@
+@bl-customComponent-sweet-alert-width: 32em;
+@bl-customComponent-sweet-alert-padding: 0 0 1.25em;
+@bl-customComponent-sweet-alert-color: #545454;
+@bl-customComponent-sweet-alert-background: #fff;
+@bl-customComponent-sweet-alert-fontFamily: Roboto, sans-serif;
+@bl-customComponent-sweet-alert-border: none;
+@bl-customComponent-sweet-alert-borderRadius: 5px;
+
+@bl-customComponent-sweet-alert-icon-width: 5em;
+@bl-customComponent-sweet-alert-icon-height: 5em;
+
+@bl-customComponent-sweet-alert-title-fontSize: 1.875em;
+@bl-customComponent-sweet-alert-title-fontWeight: 600;
+@bl-customComponent-sweet-alert-title-margin: 0;
+@bl-customComponent-sweet-alert-title-padding: 0.8em 1em 0;
+@bl-customComponent-sweet-alert-title-color: inherit;
+
+@bl-customComponent-sweet-alert-html-container-margin: 1em 1.6em 0.3em;
+@bl-customComponent-sweet-alert-html-container-padding: 0;
+@bl-customComponent-sweet-alert-html-container-color: inherit;
+@bl-customComponent-sweet-alert-html-container-fontSize: 1.125em;
+
+@bl-customComponent-sweet-alert-footer-margin: 1em 0 0;
+@bl-customComponent-sweet-alert-footer-padding: 1em 1em 0;
+@bl-customComponent-sweet-alert-footer-borderTop: 1px solid #eee;
+@bl-customComponent-sweet-alert-footer-color: inherit;
+@bl-customComponent-sweet-alert-footer-fontSize: 1em;
+@bl-customComponent-sweet-alert-footer-wordBreak: break-word;
+
+.bl-customComponent-sweet-alert div:where(.swal2-container) {
+
+  div:where(.swal2-popup) {
+    width: @bl-customComponent-sweet-alert-width;
+    padding: @bl-customComponent-sweet-alert-padding;
+    color: @bl-customComponent-sweet-alert-color;
+    background: @bl-customComponent-sweet-alert-background;
+    font-family: @bl-customComponent-sweet-alert-fontFamily;
+    border: @bl-customComponent-sweet-alert-border;
+    border-radius: @bl-customComponent-sweet-alert-borderRadius;
+  }
+
+  div:where(.swal2-icon) {
+    width: @bl-customComponent-sweet-alert-icon-width;
+    height: @bl-customComponent-sweet-alert-icon-height;
+  }
+
+  h2:where(.swal2-title) {
+    margin: @bl-customComponent-sweet-alert-title-margin;
+    padding: @bl-customComponent-sweet-alert-title-padding;
+    color: @bl-customComponent-sweet-alert-title-color;
+    font-size: @bl-customComponent-sweet-alert-title-fontSize;
+    font-weight: @bl-customComponent-sweet-alert-title-fontWeight;
+  }
+
+  .swal2-html-container {
+    margin: @bl-customComponent-sweet-alert-html-container-margin;
+    padding: @bl-customComponent-sweet-alert-html-container-padding;
+    color: @bl-customComponent-sweet-alert-html-container-color;
+    font-size: @bl-customComponent-sweet-alert-html-container-fontSize;
+  }
+
+  div:where(.swal2-footer) {
+    margin: @bl-customComponent-sweet-alert-footer-margin;
+    padding: @bl-customComponent-sweet-alert-footer-padding;
+    border-top: @bl-customComponent-sweet-alert-footer-borderTop;
+    color: @bl-customComponent-sweet-alert-footer-color;
+    font-size: @bl-customComponent-sweet-alert-footer-fontSize;
+    word-break: @bl-customComponent-sweet-alert-footer-wordBreak;
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "c_6e5372e892672dc497744fb8ceb3e4e4",
+  "name": "Color Picker",
+  "description": "Color Picker is a component for specifying a color.",
+  "showInToolbox": true,
+  "faIcon": "palette",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "pickerTriggerVisibility",
+      "label": "Picker Trigger Visibility",
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "circleColorPicker",
+      "label": "Circle Color Picker",
+      "defaultValue": false,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "verticalColorPicker",
+      "label": "Vertical Color Picker",
+      "defaultValue": false,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "opacitySliderVisibility",
+      "label": "Opacity Slider Visibility",
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "opacityInputVisibility",
+      "label": "Opacity Input Visibility",
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "rgbFormatVisibility",
+      "label": "RGB Format Visibility",
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "hslFormatVisibility",
+      "label": "HSL Format Visibility",
+      "defaultValue": true,
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "color",
+      "name": "selectedColor",
+      "showInSettings": true,
+      "defaultValue": "#ff0000",
+      "hasLogicHandler": true,
+      "handlerId": "selectedColorLogic",
+      "handlerLabel": "Selected Color Logic",
+      "handlerDescription": "This is a handler for the logic to determine what color should be applied in the color picker.",
+      "dataBinding": true,
+      "label": "Selected Color"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChangeColor",
+      "label": "On Change Color Event",
+      "contextBlocks": [
+        {
+          "id": "selectedColor",
+          "label": "Selected Color"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user changes the picker selected color."
+    }
+  ],
+  "actions": [
+    {
+      "id": "openPicker",
+      "label": "Open"
+    },
+    {
+      "id": "closePicker",
+      "label": "Close"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "id": "c_e659bc9ae47310f25cd6f281f907a74b",
+  "name": "Webcam photo",
+  "description": "This component allows you to take a picture on the webcam and save it.",
+  "showInToolbox": true,
+  "faIcon": "camera-retro",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "name": "uploadButtonLabel",
+      "label": "Upload button label",
+      "type": "text",
+      "defaultValue": "Upload",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "uploadButtonDisabled",
+      "label": "Upload button disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "uploadButtonDisabledLogic",
+      "handlerDescription": "This handler controls if the upload button is disabled.",
+      "dataBinding": true,
+      "handlerLabel": "Upload Button Disabled Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "uploadButtonVisible",
+      "label": "Upload button visible",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "uploadButtonVisibleLogic",
+      "handlerDescription": "This handler controls if the upload button is visible.",
+      "dataBinding": true,
+      "handlerLabel": "Upload Button Visibility Logic"
+    },
+    {
+      "name": "makePhotoButtonLabel",
+      "label": "Make photo button label",
+      "type": "text",
+      "defaultValue": "Make photo",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "name": "makePhotoButtonDisabled",
+      "handlerLabel": "Photo Button Disabled Logic",
+      "handlerId": "makePhotoButtonDisabledLogic",
+      "dataBinding": true,
+      "type": "checkbox",
+      "label": "Make photo button disabled",
+      "defaultValue": false,
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerDescription": "This handler controls if the photo button is disabled."
+    },
+    {
+      "type": "checkbox",
+      "name": "makePhotoButtonVisible",
+      "label": "Make photo button visible",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "makePhotoButtonVisibleLogic",
+      "handlerLabel": "Photo Button Visible Logic",
+      "handlerDescription": "This handler controls if the photo button is visible.",
+      "dataBinding": true
+    },
+    {
+      "name": "makeSnapshotButtonLabel",
+      "label": "Snapshot button label",
+      "type": "text",
+      "defaultValue": "Snapshot",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "name": "doneButtonLabel",
+      "label": "Done button label",
+      "type": "text",
+      "defaultValue": "Done",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "text",
+      "name": "popupLinkLabel",
+      "label": "Popup link label",
+      "defaultValue": "Info...",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "text",
+      "name": "noYetPermissionPopupTitle",
+      "label": "No yet  permission popup title",
+      "defaultValue": "Give access to the camera",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "text",
+      "name": "noYetPermissionPopupDescription",
+      "label": "No yet permission popup description",
+      "defaultValue": "To work properly, you must allow the app to access the camera.",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "text",
+      "name": "noPermissionPopupTitle",
+      "label": "No permission popup title",
+      "defaultValue": "No camera access",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "text",
+      "name": "noPermissionPopupDescription",
+      "label": "No yet permission popup description",
+      "defaultValue": "Blocked app access to the camera. Follow the link for detailed information on how to grant access.",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onSaveImage",
+      "label": "On Save Image Event",
+      "handlerDescription": "This event is fired when the user clicks on the 'Done' button.",
+      "contextBlocks": [
+        {
+          "id": "imageBlob",
+          "label": "Image Blob"
+        }
+      ]
+    }
+  ],
+  "actions": [],
+  "blockUI": "<div data-module-type=\"system\" data-module-id=\"block\" data-display data-uid=\"02fffa7a0d6da55dad6a865bcbbb2691\" style=\"display:flex;flex-shrink:0;flex-direction:column;padding:10px;min-height:100px;min-width:100px;justify-content:flex-start;align-items:flex-start;align-self:center;\"><img data-url=\"data:image/png;base64,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KRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUDlSkYUwyyUjBQmYIxxSArBQOVKRhTDLJSMFCZgjHFICsFA5UpGFMMslIwUJmCMcUgKwUD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\" data-module-type=\"system\" data-module-id=\"image\" data-display data-uid=\"c227fcaef3a6690f02c91d4830e89ef3\" style=\"width:100%;align-self:flex-start;\"/></div>"
+}

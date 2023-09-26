@@ -1,0 +1,459 @@
+{
+  "id": "c_8f971f6aef45e2a67d942f97229a378a",
+  "name": "Mapbox",
+  "description": "The component allows you to work with the map.",
+  "showInToolbox": true,
+  "faIcon": "map-marked-alt",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "markers",
+      "label": "Markers",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "markersLogic",
+      "handlerLabel": "Markers Logic",
+      "dataBinding": true,
+      "handlerDescription": "Specifies an array of markers to display on the map."
+    },
+    {
+      "type": "json",
+      "name": "polygons",
+      "label": "Polygons",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "polygonsLogic",
+      "handlerLabel": "Polygons Logic",
+      "dataBinding": true,
+      "handlerDescription": "Specifies an array of polygons to display on the map."
+    },
+    {
+      "type": "json",
+      "name": "center",
+      "label": "Center",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "centerLogic",
+      "handlerLabel": "Center Logic",
+      "dataBinding": true,
+      "handlerDescription": "Used to set center on the map.",
+      "defaultValue": "{\n  \"lat\": 40.730610,\n  \"lng\": -73.935242\n}"
+    },
+    {
+      "type": "number",
+      "name": "zoom",
+      "label": "Starting Zoom",
+      "defaultValue": "10",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "directions",
+      "label": "Directions",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "directionsLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "fullScreen",
+      "label": "Full Screen Button",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "checkbox",
+      "name": "navigation",
+      "label": "Navigation Button",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "navigationLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "searchBar",
+      "label": "Search Bar",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "searchBarLogic",
+      "handlerLabel": "Search Bar Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "geolocation",
+      "label": "Geolocation Button",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "geolocationLogic",
+      "handlerLabel": "Geolocation Button Logic"
+    },
+    {
+      "type": "select",
+      "name": "projection",
+      "label": "Projection",
+      "defaultValue": "globe",
+      "options": [
+        {
+          "value": "mercator",
+          "label": "Mercator"
+        },
+        {
+          "value": "globe",
+          "label": "Globe"
+        },
+        {
+          "value": "equalEarth",
+          "label": "Equal Earth"
+        },
+        {
+          "value": "naturalEarth",
+          "label": "Natural Earth"
+        },
+        {
+          "value": "winkelTripel",
+          "label": "Winkel Tripel"
+        },
+        {
+          "value": "lambertConformalConic",
+          "label": "Lambert Conformal Conic"
+        },
+        {
+          "value": "equirectangular",
+          "label": "Equirectangular"
+        }
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "color",
+      "name": "lowerAtmosphere",
+      "label": "Lower atmosphere",
+      "defaultValue": "#bad2eb",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "color",
+      "name": "upperAtmosphere",
+      "label": "Upper atmosphere",
+      "defaultValue": "#245cdf",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "number",
+      "name": "atmosphereThickness",
+      "label": "Atmosphere thickness",
+      "defaultValue": "0.2",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "color",
+      "name": "spaceColor",
+      "label": "Space color",
+      "defaultValue": "#0b0b19",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "number",
+      "name": "starIntensity",
+      "label": "Star intensity",
+      "defaultValue": "0.2",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    },
+    {
+      "type": "text",
+      "name": "mapStyle",
+      "label": "Map Style URL",
+      "defaultValue": "mapbox://styles/mapbox/streets-v11",
+      "showInSettings": true,
+      "hasLogicHandler": false
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks on the map.",
+      "label": "On Click Event",
+      "output": false
+    },
+    {
+      "name": "onMarkerClick",
+      "label": "On Marker Click Event",
+      "handlerDescription": "This event is triggered when the user clicks on the marker.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        },
+        {
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "id": "data",
+          "label": "Data"
+        }
+      ],
+      "output": true
+    },
+    {
+      "name": "onPolygonClick",
+      "label": "On Polygon Click Event",
+      "handlerDescription": "This event is triggered when the user clicks on the polygon.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        },
+        {
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "name": "onDeterminingGeoposition",
+      "label": "On Determining Geoposition Event",
+      "handlerDescription": "This event is triggered when the user clicks on the button determining geoposition.",
+      "contextBlocks": [
+        {
+          "id": "coordinates",
+          "label": "Coordinates"
+        }
+      ]
+    },
+    {
+      "name": "onPan",
+      "label": "On Pan Event",
+      "contextBlocks": [
+        {
+          "id": "center",
+          "label": "Center"
+        },
+        {
+          "id": "northEast",
+          "label": "North East"
+        },
+        {
+          "id": "southWest",
+          "label": "South West"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user moves the map around."
+    },
+    {
+      "name": "onMarkersCreated",
+      "label": "On Markers Created Event",
+      "output": false,
+      "handlerDescription": "This event is triggered when markers are created.",
+      "contextBlocks": [
+        {
+          "id": "markers",
+          "label": "Markers"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "isMoving",
+      "label": "Is Moving",
+      "hasReturn": true
+    },
+    {
+      "id": "isZooming",
+      "label": "Is Zooming",
+      "hasReturn": true
+    },
+    {
+      "id": "isRotating",
+      "label": "Is Rotating",
+      "hasReturn": true
+    },
+    {
+      "id": "setStyle",
+      "label": "Set Style to",
+      "inputs": [
+        {
+          "id": "style",
+          "label": "Style"
+        },
+        {
+          "id": "options",
+          "label": "Options"
+        }
+      ]
+    },
+    {
+      "id": "getStyle",
+      "label": "Get Style from",
+      "hasReturn": true
+    },
+    {
+      "id": "setFog",
+      "label": "Set Fog to",
+      "inputs": [
+        {
+          "id": "fog",
+          "label": "Fog"
+        }
+      ]
+    },
+    {
+      "id": "getFog",
+      "label": "Get Fog from",
+      "hasReturn": true
+    },
+    {
+      "id": "loaded",
+      "label": "Is Map Loaded",
+      "hasReturn": true
+    },
+    {
+      "id": "getCenter",
+      "label": "Get Center from",
+      "hasReturn": true
+    },
+    {
+      "id": "setCenter",
+      "label": "Set Center to",
+      "inputs": [
+        {
+          "id": "center",
+          "label": "Center"
+        },
+        {
+          "id": "eventData",
+          "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "panBy",
+      "label": "Pan By",
+      "inputs": [
+        {
+          "id": "offset",
+          "label": "Offset"
+        },
+        {
+          "id": "options",
+          "label": "Options"
+        },
+        {
+          "id": "eventData",
+          "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "panTo",
+      "label": "Pan To",
+      "inputs": [
+        {
+          "id": "lnglat",
+          "label": "LngLat"
+        },
+        {
+          "id": "options",
+          "label": "Options"
+        },
+        {
+          "id": "eventData",
+          "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "getZoom",
+      "label": "Get Zoom from",
+      "hasReturn": true
+    },
+    {
+      "id": "setZoom",
+      "label": "Set Zoom to",
+      "inputs": [
+        {
+          "id": "zoom",
+          "label": "Zoom"
+        },
+        {
+          "id": "eventData",
+          "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "flyTo",
+      "label": "Fly To",
+      "inputs": [
+        {
+          "id": "options",
+          "label": "Options"
+        },
+        {
+          "id": "eventData",
+          "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "rotateTo",
+      "label": "Rotate To",
+      "inputs": [
+        {
+          "id": "bearing",
+          "label": "Bearing"
+        },
+        {
+          "id": "options",
+          "label": "Options"
+        },
+        {
+          "id": "eventData",
+          "label": "Event Data"
+        }
+      ]
+    },
+    {
+      "id": "setMarkerActive",
+      "label": "Set Marker Active of",
+      "inputs": [
+        {
+          "id": "marker",
+          "label": "Marker"
+        },
+        {
+          "id": "active",
+          "label": "Active"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "name": "accessToken",
+      "title": "Access Token",
+      "description": "It is an Access Token needed to use Mapbox",
+      "required": true
+    }
+  ],
+  "pods": {}
+}

@@ -1,0 +1,72 @@
+{
+  "id": "c_f6882cbc4c8892c8cc465b8d23d45e3a",
+  "name": "Collapsible Panel",
+  "description": "The Collapsible Panel component displays summary information and upon selecting the panel, it expands to display the full expansion panel.",
+  "showInToolbox": true,
+  "faIcon": "window-maximize",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "titleLogic",
+      "dataBinding": true,
+      "settingTooltip": "Default title of the panel",
+      "handlerLabel": "Title Logic",
+      "handlerDescription": "This is a handler for the logic to determine the title of the panel.",
+      "defaultValue": "Panel Title"
+    },
+    {
+      "type": "checkbox",
+      "name": "multiline",
+      "label": "Multi-line Title",
+      "settingTooltip": "Flag indicating whether the title layout 'multi-line' for multiple lines with word wrapping or 'one-line' for a single line without line breaks by default.",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "multilineLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "isExpanded",
+      "label": "Expanded",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "isExpandedLogic",
+      "settingTooltip": "Flag indicating whether the component is expanded or collapsed by default."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onExpand",
+      "label": "On Expand Event",
+      "handlerDescription": "Triggered when the user opens the panel section."
+    },
+    {
+      "name": "onCollapse",
+      "label": "On Collapse Event",
+      "handlerDescription": "Triggered when the user closes the panel section."
+    }
+  ],
+  "actions": [
+    {
+      "id": "expand",
+      "label": "Expand Content of"
+    },
+    {
+      "id": "collapse",
+      "label": "Collapse Content of"
+    }
+  ],
+  "settings": [],
+  "pods": {
+    "b8828219095d33ecaffe9d3c6ba4e2ae": {
+      "id": "panelContent",
+      "dataContainer": true
+    }
+  }
+}

@@ -1,0 +1,158 @@
+@bl-customComponent-socialLoginButtons-maxWidth: 375px;
+@bl-customComponent-socialLoginButtons-minWidth: 300px;
+@bl-customComponent-socialLoginButtons-colorOnHover: #FFFFFF;
+
+@bl-customComponent-socialLoginButtons-button-width: 100%;
+@bl-customComponent-socialLoginButtons-button-height: 50px;
+@bl-customComponent-socialLoginButtons-button-borderRadius: 3px;
+@bl-customComponent-socialLoginButtons-button-marginBottom: 10px;
+@bl-customComponent-socialLoginButtons-button-backgroundColor: #FFFFFF;
+
+@bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary: #DC4A3D;
+@bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary: #3C5A9A;
+@bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary: #55ACEE;
+@bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary: #0A66C2;
+@bl-customComponent-socialLoginButtons-iconGithub-colorPrimary: #000000;
+
+.bl-customComponent-socialLoginButtons {
+  max-width: @bl-customComponent-socialLoginButtons-maxWidth;
+  min-width: @bl-customComponent-socialLoginButtons-minWidth;
+  width: 100%;
+
+  .social-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: @bl-customComponent-socialLoginButtons-button-height;
+    width: @bl-customComponent-socialLoginButtons-button-width;
+    line-height: 50px;
+    margin-bottom: @bl-customComponent-socialLoginButtons-button-marginBottom;
+    background-color: @bl-customComponent-socialLoginButtons-button-backgroundColor;
+    box-sizing: border-box;
+    border-radius: @bl-customComponent-socialLoginButtons-button-borderRadius;
+    cursor: pointer;
+
+    &:hover {
+      color: @bl-customComponent-socialLoginButtons-colorOnHover;
+      transition: color .3s;
+
+      & .icon {
+        fill: @bl-customComponent-socialLoginButtons-colorOnHover;
+        transition: fill .3s;
+      }
+    }
+
+    &__googleplus {
+      color: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
+
+      &:hover {
+        background-color: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
+        transition: background-color .3s;
+      }
+    }
+
+    &__facebook {
+      color: @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
+
+      &:hover {
+        background-color: @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
+        transition: background-color .3s;
+      }
+    }
+
+    &__twitter {
+      color: @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
+
+      &:hover {
+        background-color: @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
+        transition: background-color .3s;
+      }
+    }
+
+    &__linkedin {
+      color: @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
+
+      &:hover {
+        background-color: @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
+        transition: background-color .3s;
+      }
+    }
+
+    &__github {
+      color: @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
+      border: 1px solid @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
+
+      &:hover {
+        background-color: @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
+        transition: background-color .3s;
+      }
+    }
+
+    &__icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      max-width: 15%;
+    }
+
+    &__text-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 75%;
+    }
+
+    &__text {
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+
+      &__googleplus {
+        fill: @bl-customComponent-socialLoginButtons-iconGoogle-colorPrimary;
+      }
+
+      &__facebook {
+        fill: @bl-customComponent-socialLoginButtons-iconFacebook-colorPrimary;
+      }
+
+      &__twitter {
+        fill: @bl-customComponent-socialLoginButtons-iconTwitter-colorPrimary;
+      }
+
+      &__linkedin {
+        fill: @bl-customComponent-socialLoginButtons-iconLinkedin-colorPrimary;
+      }
+
+      &__github {
+        fill: @bl-customComponent-socialLoginButtons-iconGithub-colorPrimary;
+      }
+    }
+  }
+
+  .with-icon {
+    justify-content: space-between;
+  }
+
+  .with-icon .social-button__text-container {
+    justify-content: start;
+  }
+}
+
+@media(max-width: 450px) {
+  .bl-customComponent-socialLoginButtons {
+    .social-button__text {
+      font-size: 14px;
+    }
+  }
+}

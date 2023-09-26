@@ -1,0 +1,184 @@
+{
+  "id": "c_e5dc7484d0c3859c15054eb6f5661b36",
+  "name": "Barcode Scanner",
+  "description": "This is a component for scanning barcodes directly from a web application.",
+  "showInToolbox": true,
+  "faIcon": "expand",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "fullScreen",
+      "label": "Full Screen",
+      "settingTooltip": "Select to set the scanner to the full window size.",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "fullScreenLogic"
+    },
+    {
+      "type": "number",
+      "name": "fps",
+      "label": "Frame Per Second",
+      "showInSettings": true,
+      "defaultValue": "10",
+      "hasLogicHandler": false,
+      "handlerId": "fpsLogic",
+      "settingTooltip": "Define the frame rate of the scanning."
+    },
+    {
+      "type": "number",
+      "name": "width",
+      "label": "Scan Box Width",
+      "showInSettings": true,
+      "defaultValue": "300",
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic",
+      "settingTooltip": "Limit the width of the viewfinder area."
+    },
+    {
+      "type": "number",
+      "name": "height",
+      "label": "Scan Box Height",
+      "showInSettings": true,
+      "defaultValue": "150",
+      "hasLogicHandler": false,
+      "handlerId": "heightLogic",
+      "settingTooltip": "Limit the height of the viewfinder area."
+    },
+    {
+      "type": "checkbox",
+      "name": "hideAfterScan",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "hideAfterScanLogic",
+      "label": "Hide After Scan",
+      "settingTooltip": "Hide the scanner on successful decoding."
+    },
+    {
+      "type": "checkbox",
+      "name": "scanButtonVisibility",
+      "label": "Scan Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "scanButtonVisibilityLogic",
+      "settingTooltip": "Show the scan button."
+    },
+    {
+      "type": "text",
+      "name": "scanButtonLabel",
+      "label": "Scan Button Label",
+      "showInSettings": true,
+      "defaultValue": "Scan Barcode",
+      "hasLogicHandler": false,
+      "handlerId": "scanButtonLabelLogic",
+      "settingTooltip": "Define the label of the scan button."
+    },
+    {
+      "type": "checkbox",
+      "name": "uploadButtonVisibility",
+      "label": "Upload Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "uploadButtonVisibilityLogic",
+      "settingTooltip": "Show the scan image button."
+    },
+    {
+      "type": "text",
+      "name": "uploadButtonLabel",
+      "label": "Upload Button Label",
+      "showInSettings": true,
+      "defaultValue": "Scan Image File",
+      "hasLogicHandler": false,
+      "handlerId": "uploadButtonLabelLogic",
+      "settingTooltip": "Define the label of the scan image button."
+    },
+    {
+      "type": "select",
+      "name": "aspectRatio",
+      "label": "Aspect Ratio",
+      "showInSettings": true,
+      "defaultValue": "STANDARD",
+      "hasLogicHandler": false,
+      "handlerId": "aspectRatioLogic",
+      "options": [
+        {
+          "value": "FULL_SCREEN",
+          "label": "16:9"
+        },
+        {
+          "value": "STANDARD",
+          "label": "4:3"
+        },
+        {
+          "value": "SQUARE",
+          "label": "1:1"
+        }
+      ],
+      "settingTooltip": "Select to render the video feed in a certain aspect ratio."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onDecodeSuccess",
+      "label": "On Decode Success Event",
+      "contextBlocks": [
+        {
+          "id": "decodedCode",
+          "label": "Decoded Code"
+        }
+      ],
+      "handlerDescription": "This event is fired on successful decoding."
+    },
+    {
+      "name": "onDecodeError",
+      "label": "On Decode Error Event",
+      "handlerDescription": "This event is fired on decoding errors.",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ]
+    },
+    {
+      "name": "onScannerClick",
+      "label": "On Scanner Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse on the scanner area."
+    },
+    {
+      "name": "onStartScanFailed",
+      "label": "On Start Scan Failed Event",
+      "handlerDescription": "This event is fired when an error occurs while starting the scan.",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "startScan",
+      "label": "Start Scan"
+    },
+    {
+      "id": "stopScan",
+      "label": "Stop Scan"
+    },
+    {
+      "id": "toggleScan",
+      "label": "Toggle Scan"
+    },
+    {
+      "id": "scanImageFile",
+      "label": "Scan Image File"
+    }
+  ]
+}

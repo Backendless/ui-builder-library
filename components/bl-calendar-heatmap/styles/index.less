@@ -1,0 +1,160 @@
+@bl-customComponent-calendar-heatmap-user-select: none;
+
+@bl-customComponent-calendar-heatmap-domain-bg: transparent;
+@bl-customComponent-calendar-heatmap-domain-text: currentColor;
+@bl-customComponent-calendar-heatmap-domain-text-size: 10px;
+
+@bl-customComponent-calendar-heatmap-subdomain-bg: #ededed;
+@bl-customComponent-calendar-heatmap-subdomain-bg-stroke-hover: #000;
+@bl-customComponent-calendar-heatmap-subdomain-bg-stroke-width-hover: 1px;
+@bl-customComponent-calendar-heatmap-subdomain-bg-stroke-highlight: #444;
+@bl-customComponent-calendar-heatmap-subdomain-bg-stroke-width-highlight: 1px;
+@bl-customComponent-calendar-heatmap-subdomain-text-size: 8px;
+@bl-customComponent-calendar-heatmap-subdomain-text-pointer-events: none;
+
+@bl-customComponent-calendar-heatmap-dark-subdomain-bg: #2d333b;
+@bl-customComponent-calendar-heatmap-dark-subdomain-bg-stroke-hover: #636e7b;
+@bl-customComponent-calendar-heatmap-dark-subdomain-bg-stroke-highlight: #768390;
+
+@bl-customComponent-calendar-heatmap-legends-background: transparent;
+@bl-customComponent-calendar-heatmap-legends-color: currentColor;
+
+@bl-customComponent-calendar-heatmap-tooltip-background: #222;
+@bl-customComponent-calendar-heatmap-tooltip-color: #bbb;
+@bl-customComponent-calendar-heatmap-tooltip-font-size: 12px;
+@bl-customComponent-calendar-heatmap-tooltip-line-height: 1.4;
+@bl-customComponent-calendar-heatmap-tooltip-padding: 5px 10px;
+@bl-customComponent-calendar-heatmap-tooltip-text-align: center;
+@bl-customComponent-calendar-heatmap-tooltip-border-radius: 2px;
+@bl-customComponent-calendar-heatmap-tooltip-box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+@bl-customComponent-calendar-heatmap-tooltip-arrow-background: inherit;
+@bl-customComponent-calendar-heatmap-tooltip-arrow-height: 8px;
+@bl-customComponent-calendar-heatmap-tooltip-arrow-width: 8px;
+@bl-customComponent-calendar-heatmap-tooltip-arrow-before-transform-rotate: rotate(45deg);
+
+@bl-customComponent-calendar-heatmap-tooltip-dark-background: #636e7b;
+@bl-customComponent-calendar-heatmap-tooltip-dark-color: #cdd9e5;
+
+.bl-customComponent-calendar-heatmap {
+  user-select: @bl-customComponent-calendar-heatmap-user-select;
+
+  .ch-container {
+    display: block;
+  }
+
+  .ch-container, .ch-domain, .ch-domain-container, .ch-domain-container-animation-wrapper {
+    overflow: visible;
+  }
+
+  .ch-domain-container.in-transition .ch-domain-container-animation-wrapper {
+    overflow: hidden;
+  }
+
+  .ch-domain {
+    &-bg {
+      fill: @bl-customComponent-calendar-heatmap-domain-bg;
+    }
+
+    &-text {
+      fill: @bl-customComponent-calendar-heatmap-domain-text;
+      font-size: @bl-customComponent-calendar-heatmap-domain-text-size;
+    }
+  }
+
+  .ch-subdomain {
+    overflow: visible;
+
+    &-bg {
+      fill: @bl-customComponent-calendar-heatmap-subdomain-bg;
+
+      &:hover {
+        stroke: @bl-customComponent-calendar-heatmap-subdomain-bg-stroke-hover;
+        stroke-width: @bl-customComponent-calendar-heatmap-subdomain-bg-stroke-width-hover;
+      }
+
+      &.highlight {
+        stroke: @bl-customComponent-calendar-heatmap-subdomain-bg-stroke-highlight;
+        stroke-width: @bl-customComponent-calendar-heatmap-subdomain-bg-stroke-width-highlight;
+      }
+    }
+
+    &-text {
+      font-size: @bl-customComponent-calendar-heatmap-subdomain-text-size;
+      pointer-events: @bl-customComponent-calendar-heatmap-subdomain-text-pointer-events;
+    }
+  }
+
+  [data-theme=dark] .ch-subdomain-bg {
+    fill: @bl-customComponent-calendar-heatmap-dark-subdomain-bg;
+
+    &:hover {
+      stroke: @bl-customComponent-calendar-heatmap-dark-subdomain-bg-stroke-hover;
+    }
+
+    &.highlight {
+      stroke: @bl-customComponent-calendar-heatmap-dark-subdomain-bg-stroke-highlight;
+    }
+  }
+}
+
+#ch-plugin-legend > svg {
+  background: @bl-customComponent-calendar-heatmap-legends-background;
+  color: @bl-customComponent-calendar-heatmap-legends-color;
+}
+
+#ch-tooltip {
+  background: @bl-customComponent-calendar-heatmap-tooltip-background;
+  border-radius: @bl-customComponent-calendar-heatmap-tooltip-border-radius;
+  box-shadow: @bl-customComponent-calendar-heatmap-tooltip-box-shadow;
+  box-sizing: border-box;
+  color: @bl-customComponent-calendar-heatmap-tooltip-color;
+  display: none;
+  font-size: @bl-customComponent-calendar-heatmap-tooltip-font-size;
+  line-height: @bl-customComponent-calendar-heatmap-tooltip-line-height;
+  padding: @bl-customComponent-calendar-heatmap-tooltip-padding;
+  text-align: @bl-customComponent-calendar-heatmap-tooltip-text-align;
+}
+
+#ch-tooltip[data-show] {
+  display: block;
+}
+
+#ch-tooltip-arrow, #ch-tooltip-arrow:before {
+  background: @bl-customComponent-calendar-heatmap-tooltip-arrow-background;
+  height: @bl-customComponent-calendar-heatmap-tooltip-arrow-height;
+  position: absolute;
+  width: @bl-customComponent-calendar-heatmap-tooltip-arrow-width;
+}
+
+#ch-tooltip-arrow {
+  visibility: hidden;
+
+  &:before {
+    content: "";
+    transform: @bl-customComponent-calendar-heatmap-tooltip-arrow-before-transform-rotate;
+    visibility: visible;
+  }
+}
+
+#ch-tooltip[data-popper-placement^=top] > #ch-tooltip-arrow {
+  bottom: -4px;
+  margin-left: -4px;
+}
+
+#ch-tooltip[data-popper-placement^=bottom] > #ch-tooltip-arrow {
+  margin-left: -4px;
+  top: -4px;
+}
+
+#ch-tooltip[data-popper-placement^=left] > #ch-tooltip-arrow {
+  right: -4px;
+}
+
+#ch-tooltip[data-popper-placement^=right] > #ch-tooltip-arrow {
+  left: -4px;
+}
+
+#ch-tooltip[data-theme=dark] {
+  background: @bl-customComponent-calendar-heatmap-tooltip-dark-background;
+  color: @bl-customComponent-calendar-heatmap-tooltip-dark-color;
+}

@@ -1,0 +1,164 @@
+{
+  "id": "c_4283bbcc6fe4de33162f0826bbc23b91",
+  "name": "Avatar",
+  "description": "An Avatar component is a graphical representation used to identify users or entities within an application's interface.",
+  "showInToolbox": true,
+  "faIcon": "user-circle",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "text",
+      "name": "imageUrl",
+      "label": "Image URL",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "imageUrlLogic",
+      "handlerLabel": "Image URL Logic",
+      "defaultValue": "",
+      "settingTooltip": "The source URL for the avatar image.",
+      "handlerDescription": "This is a handler for the logic to determine the source URL for the avatar image.",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "shape",
+      "label": "Shape",
+      "settingTooltip": "Select the shape of the avatar container.",
+      "showInSettings": true,
+      "defaultValue": "rounded-rectangle",
+      "hasLogicHandler": false,
+      "handlerId": "shapeLogic",
+      "options": [
+        {
+          "value": "rounded-rectangle",
+          "label": "Rounded Rectangle"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "rectangle",
+          "label": "Rectangle"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "150",
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic",
+      "settingTooltip": "The width of the avatar container."
+    },
+    {
+      "type": "number",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "150",
+      "hasLogicHandler": false,
+      "handlerId": "heightLogic",
+      "settingTooltip": "The height of the avatar container."
+    },
+    {
+      "type": "select",
+      "name": "smartImageFit",
+      "label": "Smart Image Fit",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": false,
+      "handlerId": "smartImageFitLogic",
+      "options": [
+        {
+          "value": "unset",
+          "label": "Unset"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "orientation",
+          "label": "Orientation"
+        }
+      ],
+      "settingTooltip": "Display image according to its height and width."
+    },
+    {
+      "type": "mui_icon",
+      "name": "uploadIcon",
+      "label": "Upload Icon",
+      "settingTooltip": "Select the icon for uploading a new avatar image.",
+      "showInSettings": true,
+      "defaultValue": "add_circle_outline",
+      "hasLogicHandler": false,
+      "handlerId": "uploadIconLogic"
+    },
+    {
+      "type": "text",
+      "name": "alt",
+      "label": "Alt",
+      "settingTooltip": "Define an alternative text that describes the image for accessibility and when the image cannot be displayed.",
+      "showInSettings": true,
+      "defaultValue": "Avatar",
+      "hasLogicHandler": false,
+      "handlerId": "altLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "readOnly",
+      "label": "Read Only",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "readOnlyLogic",
+      "handlerLabel": "Read Only Logic",
+      "handlerDescription": "This is a handler for the logic to determine whether the component allows the user to change the avatar image.",
+      "settingTooltip": "Disable the ability to change the avatar image."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "contextBlocks": [
+        {
+          "id": "imageSource",
+          "label": "Image Source"
+        }
+      ],
+      "label": "On Change Event",
+      "handlerDescription": "This event is triggered when an avatar image is changed."
+    },
+    {
+      "name": "onUpload",
+      "label": "On Upload Event",
+      "contextBlocks": [
+        {
+          "id": "selectedFile",
+          "label": "Selected File"
+        }
+      ],
+      "handlerDescription": "This event is triggered when an image file is selected for upload."
+    },
+    {
+      "name": "onError",
+      "label": "On Error Event",
+      "handlerDescription": "This event is triggered when an error occurred on loading the image.",
+      "contextBlocks": []
+    }
+  ],
+  "actions": [
+    {
+      "id": "removeImage",
+      "label": "Remove Image from"
+    },
+    {
+      "id": "uploadImage",
+      "label": "Upload Image to"
+    }
+  ]
+}

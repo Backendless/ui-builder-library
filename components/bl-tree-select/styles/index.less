@@ -1,0 +1,359 @@
+@import 'treeselect';
+
+@bl-customComponent-treeSelect-themeColor: @themePrimary;
+@bl-customComponent-treeSelect-backgroundColor: @appBackgroundColor;
+@bl-customComponent-treeSelect-textColor: @appTextColor;
+@bl-customComponent-treeSelect-disabledColor: @disabledColor;
+@bl-customComponent-treeSelect-shadowColor: @appComponentShadowColor;
+@bl-customComponent-treeSelect-borderRadius: @appComponentBorderRadius;
+@bl-customComponent-treeSelect-borderWidth: @appComponentBorderWidth;
+
+@bl-customComponent-treeSelect-fontSize: inherit;
+@bl-customComponent-treeSelect-borderType: solid;
+@bl-customComponent-treeSelect-borderColor: @bl-customComponent-treeSelect-themeColor;
+@bl-customComponent-treeSelect-border: @bl-customComponent-treeSelect-borderWidth @bl-customComponent-treeSelect-borderType @bl-customComponent-treeSelect-borderColor;
+@bl-customComponent-treeSelect-color: @bl-customComponent-treeSelect-textColor;
+
+@bl-customComponent-treeSelect-tree-background: @bl-customComponent-treeSelect-backgroundColor;
+@bl-customComponent-treeSelect-tree-color: @bl-customComponent-treeSelect-color;
+@bl-customComponent-treeSelect-tree-padding: 20px;
+@bl-customComponent-treeSelect-tree-border: 0 none;
+@bl-customComponent-treeSelect-tree-toggler-marginRight: 8px;
+@bl-customComponent-treeSelect-tree-toggler-width: 32px;
+@bl-customComponent-treeSelect-tree-toggler-height: 32px;
+@bl-customComponent-treeSelect-tree-toggler-border: 0 none;
+@bl-customComponent-treeSelect-tree-toggler-background: transparent;
+@bl-customComponent-treeSelect-tree-toggler-borderRadius: 50%;
+@bl-customComponent-treeSelect-tree-toggler-transition: background-color 0.2s;
+@bl-customComponent-treeSelect-tree-treenode-padding: 2px;
+@bl-customComponent-treeSelect-tree-treenodeChildren-paddingLeft: 16px;
+@bl-customComponent-treeSelect-tree-treenodeContent-padding: 8px;
+
+@bl-customComponent-treeSelect-icon-color: @bl-customComponent-treeSelect-themeColor;
+@bl-customComponent-treeSelect-icon-fontSize: 24px;
+@bl-customComponent-treeSelect-icon-fontFamily: 'Material Icons Round';
+@bl-customComponent-treeSelect-icon-search-marginTop: -12px;
+
+@bl-customComponent-treeSelect-options-color: @bl-customComponent-treeSelect-tree-color;
+@bl-customComponent-treeSelect-options-background: @bl-customComponent-treeSelect-tree-background;
+@bl-customComponent-treeSelect-options-boxShadow: 0 2px 12px 0 fade(@bl-customComponent-treeSelect-shadowColor, 60%);
+
+@bl-customComponent-treeSelect-header-background: #7e7e7e59;
+@bl-customComponent-treeSelect-header-padding: 12px 20px;
+@bl-customComponent-treeSelect-header-margin: 0;
+@bl-customComponent-treeSelect-header-borderBottom: 1px solid fade(@bl-customComponent-treeSelect-tree-color, 80%);
+
+@bl-customComponent-treeSelect-filter-marginRight: 8px;
+@bl-customComponent-treeSelect-filter-paddingRight: 38px;
+@bl-customComponent-treeSelect-filter-icon-position-right: 12px;
+@bl-customComponent-treeSelect-filter-icon-color: fade(@bl-customComponent-treeSelect-color, 60%);
+
+@bl-customComponent-treeSelect-close-icon-width: 32px;
+@bl-customComponent-treeSelect-close-icon-height: 32px;
+@bl-customComponent-treeSelect-close-icon-background: transparent;
+@bl-customComponent-treeSelect-close-icon-borderRadius: 50%;
+@bl-customComponent-treeSelect-close-icon-transition: background-color 0.2s;
+@bl-customComponent-treeSelect-close-icon-border: 0 none;
+@bl-customComponent-treeSelect-close-icon-hover-background: fade(@bl-customComponent-treeSelect-themeColor, 10%);
+
+@bl-customComponent-treeSelect-checkbox-icon-color: @bl-customComponent-treeSelect-color;
+@bl-customComponent-treeSelect-checkbox-background: @bl-customComponent-treeSelect-backgroundColor;
+@bl-customComponent-treeSelect-checkbox-highlight-background: @bl-customComponent-treeSelect-themeColor;
+@bl-customComponent-treeSelect-checkbox-highlight-borderColor: @bl-customComponent-treeSelect-checkbox-highlight-background;
+@bl-customComponent-treeSelect-checkbox-hover-borderColor: @bl-customComponent-treeSelect-checkbox-highlight-borderColor;
+@bl-customComponent-treeSelect-checkbox-borderRadius: 4px;
+@bl-customComponent-treeSelect-checkbox-width: 20px;
+@bl-customComponent-treeSelect-checkbox-height: 20px;
+@bl-customComponent-treeSelect-checkbox-border: 2px solid fade(@bl-customComponent-treeSelect-color, 30%);
+@bl-customComponent-treeSelect-checkbox-transition: background-color 0.2s, border-color 0.2s;
+@bl-customComponent-treeSelect-checkbox-transitionDuration: 0.2s;
+@bl-customComponent-treeSelect-checkbox-fontSize: 14px;
+@bl-customComponent-treeSelect-checkbox-marginRight: 8px;
+
+@bl-customComponent-treeSelect-emptyMessage-padding: 12px 20px;
+@bl-customComponent-treeSelect-emptyMessage-color: fade(@bl-customComponent-treeSelect-textColor, 80%);
+@bl-customComponent-treeSelect-emptyMessage-background: transparent;
+
+@bl-customComponent-treeSelect-input-color: @bl-customComponent-treeSelect-textColor;
+@bl-customComponent-treeSelect-input-background: transparent;
+@bl-customComponent-treeSelect-input-hover-borderColor: @bl-customComponent-treeSelect-borderColor;
+@bl-customComponent-treeSelect-input-hover-boxShadow: 0 0 0 0.1rem fade(@bl-customComponent-treeSelect-themeColor, 60%);
+@bl-customComponent-treeSelect-input-fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+@bl-customComponent-treeSelect-input-fontSize: 16px;
+@bl-customComponent-treeSelect-input-padding: 12px 44px 12px 12px;
+@bl-customComponent-treeSelect-input-border: 1px solid fade(@bl-customComponent-treeSelect-color, 20%);
+@bl-customComponent-treeSelect-input-transition: border-color 0.2s, box-shadow 0.2s;
+
+@bl-customComponent-treeSelect-label-padding: 17px 14px;
+@bl-customComponent-treeSelect-chip-label-padding: 11px 14px;
+@bl-customComponent-treeSelect-chip-token-padding: 6px 12px;
+@bl-customComponent-treeSelect-chip-token-marginRight: 8px;
+@bl-customComponent-treeSelect-chip-token-background: #dee2e6;
+@bl-customComponent-treeSelect-chip-token-color: #495057;
+@bl-customComponent-treeSelect-chip-token-borderRadius: 16px;
+
+@bl-customComponent-treeSelect-toggler-hover-background: fade(@bl-customComponent-treeSelect-themeColor, 10%);
+@bl-customComponent-treeSelect-trigger-width: 48px;
+@bl-customComponent-treeSelect-trigger-minHeight: 53px;
+@bl-customComponent-treeSelect-trigger-background: transparent;
+
+@bl-customComponent-treeSelect-content-highlight-color: @bl-customComponent-treeSelect-themeColor;
+@bl-customComponent-treeSelect-content-highlight-background: fade(@bl-customComponent-treeSelect-themeColor, 5%);
+@bl-customComponent-treeSelect-content-hover-color: @bl-customComponent-treeSelect-textColor;
+@bl-customComponent-treeSelect-content-hover-background: @bl-customComponent-treeSelect-content-highlight-background;
+
+.bl-customComponent-treeSelect {
+  display: flex;
+  font-size: @bl-customComponent-treeSelect-fontSize;
+  height: max-content;
+  border: @bl-customComponent-treeSelect-border;
+  border-radius: @bl-customComponent-treeSelect-borderRadius;
+  color: @bl-customComponent-treeSelect-color;
+  background: @bl-customComponent-treeSelect-backgroundColor;
+
+  &.p-treeselect-chip .p-treeselect-label:not(.p-placeholder) {
+    padding: @bl-customComponent-treeSelect-chip-label-padding;
+
+    .p-treeselect-token {
+      padding: @bl-customComponent-treeSelect-chip-token-padding;
+      margin-right: @bl-customComponent-treeSelect-chip-token-marginRight;
+      background: @bl-customComponent-treeSelect-chip-token-background;
+      color: @bl-customComponent-treeSelect-chip-token-color;
+      border-radius: @bl-customComponent-treeSelect-chip-token-borderRadius;
+    }
+  }
+
+  .p-treeselect-label-container {
+    display: flex;
+    align-items: center;
+
+    .p-treeselect-label {
+      padding: @bl-customComponent-treeSelect-label-padding;
+    }
+  }
+
+  .p-treeselect-trigger {
+    font-family: @bl-customComponent-treeSelect-icon-fontFamily;
+    font-size: @bl-customComponent-treeSelect-icon-fontSize;
+    color: @bl-customComponent-treeSelect-icon-color;
+    background: @bl-customComponent-treeSelect-trigger-background;
+    width: @bl-customComponent-treeSelect-trigger-width;
+    min-height: @bl-customComponent-treeSelect-trigger-minHeight;
+
+    .pi-chevron-down:before {
+      content: "keyboard_arrow_down";
+    }
+  }
+
+  &.p-disabled {
+    color: @bl-customComponent-treeSelect-disabledColor;
+    border-color: @bl-customComponent-treeSelect-disabledColor;
+    opacity: 1;
+    cursor: default;
+    user-select: none;
+
+    .p-treeselect-trigger {
+      color: inherit;
+    }
+
+    .p-treeselect-label {
+      cursor: default;
+    }
+  }
+
+  .p-hidden-accessible {
+    position: absolute;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+.bl-customComponent-treeSelect-options {
+  background: @bl-customComponent-treeSelect-options-background;
+  color: @bl-customComponent-treeSelect-options-color;
+  border: 0 none;
+  border-radius: @bl-customComponent-treeSelect-borderRadius;
+  box-shadow: @bl-customComponent-treeSelect-options-boxShadow;
+  cursor: default;
+
+  .p-treeselect-header {
+    padding: @bl-customComponent-treeSelect-header-padding;
+    border-bottom: @bl-customComponent-treeSelect-header-borderBottom;
+    color: @bl-customComponent-treeSelect-textColor;
+    background: @bl-customComponent-treeSelect-header-background;
+    margin: @bl-customComponent-treeSelect-header-margin;
+    border-top-right-radius: @bl-customComponent-treeSelect-borderRadius;
+    border-top-left-radius: @bl-customComponent-treeSelect-borderRadius;
+
+    .p-treeselect-filter-container {
+      margin-right: @bl-customComponent-treeSelect-filter-marginRight;
+
+      .p-treeselect-filter {
+        padding-right: @bl-customComponent-treeSelect-filter-paddingRight;
+
+        &.p-inputtext {
+          font-family: @bl-customComponent-treeSelect-input-fontFamily;
+          font-size: @bl-customComponent-treeSelect-input-fontSize;
+          color: @bl-customComponent-treeSelect-input-color;
+          background: @bl-customComponent-treeSelect-input-background;
+          padding: @bl-customComponent-treeSelect-input-padding;
+          border: @bl-customComponent-treeSelect-input-border;
+          transition: @bl-customComponent-treeSelect-input-transition;
+          appearance: none;
+          border-radius: @bl-customComponent-treeSelect-borderRadius;
+
+          &:enabled:hover {
+            border-color: @bl-customComponent-treeSelect-input-hover-borderColor;
+          }
+
+          &:enabled:focus {
+            outline: 0 none;
+            outline-offset: 0;
+            box-shadow: @bl-customComponent-treeSelect-input-hover-boxShadow;
+            border-color: @bl-customComponent-treeSelect-input-hover-borderColor;
+          }
+        }
+      }
+
+      .p-treeselect-filter-icon {
+        right: @bl-customComponent-treeSelect-filter-icon-position-right;
+        color: @bl-customComponent-treeSelect-filter-icon-color;
+      }
+    }
+
+    .p-treeselect-close {
+      width: @bl-customComponent-treeSelect-close-icon-width;
+      height: @bl-customComponent-treeSelect-close-icon-height;
+      border: @bl-customComponent-treeSelect-close-icon-border;
+      background: @bl-customComponent-treeSelect-close-icon-background;
+      border-radius: @bl-customComponent-treeSelect-close-icon-borderRadius;
+      transition: @bl-customComponent-treeSelect-close-icon-transition;
+      cursor: pointer;
+
+      &:hover {
+        background: @bl-customComponent-treeSelect-close-icon-hover-background;
+      }
+    }
+  }
+
+  .p-tree {
+    background: @bl-customComponent-treeSelect-tree-background;
+    color: @bl-customComponent-treeSelect-tree-color;
+    padding: @bl-customComponent-treeSelect-tree-padding;
+    border: @bl-customComponent-treeSelect-tree-border;
+    border-radius: @bl-customComponent-treeSelect-borderRadius;
+
+    .p-treenode {
+      padding: @bl-customComponent-treeSelect-tree-treenode-padding;
+
+      .p-treenode-content {
+        border-radius: @bl-customComponent-treeSelect-borderRadius;
+        padding: @bl-customComponent-treeSelect-tree-treenodeContent-padding;
+
+        .p-tree-toggler {
+          margin-right: @bl-customComponent-treeSelect-tree-toggler-marginRight;
+          width: @bl-customComponent-treeSelect-tree-toggler-width;
+          height: @bl-customComponent-treeSelect-tree-toggler-height;
+          border: @bl-customComponent-treeSelect-tree-toggler-border;
+          background: @bl-customComponent-treeSelect-tree-toggler-background;
+          border-radius: @bl-customComponent-treeSelect-tree-toggler-borderRadius;
+          transition: @bl-customComponent-treeSelect-tree-toggler-transition;
+
+          &:hover {
+            background: @bl-customComponent-treeSelect-toggler-hover-background;
+          }
+        }
+
+        .p-checkbox {
+          margin-right: @bl-customComponent-treeSelect-checkbox-marginRight;
+
+          .p-checkbox-box {
+            border: @bl-customComponent-treeSelect-checkbox-border;
+            background: @bl-customComponent-treeSelect-checkbox-background;
+            width: @bl-customComponent-treeSelect-checkbox-width;
+            height: @bl-customComponent-treeSelect-checkbox-height;
+            border-radius: @bl-customComponent-treeSelect-checkbox-borderRadius;
+            transition: @bl-customComponent-treeSelect-checkbox-transition;
+
+            .p-checkbox-icon {
+              transition-duration: @bl-customComponent-treeSelect-checkbox-transitionDuration;
+              color: @bl-customComponent-treeSelect-checkbox-icon-color;
+              font-size: @bl-customComponent-treeSelect-checkbox-fontSize;
+
+              &.pi-check {
+                color: @bl-customComponent-treeSelect-backgroundColor;
+              }
+            }
+
+            &.p-highlight {
+              border-color: @bl-customComponent-treeSelect-checkbox-highlight-borderColor;
+              background: @bl-customComponent-treeSelect-checkbox-highlight-background;
+            }
+
+            &:hover {
+              border-color: @bl-customComponent-treeSelect-checkbox-hover-borderColor;
+            }
+          }
+        }
+
+        &.p-highlight {
+          background: @bl-customComponent-treeSelect-content-highlight-background;
+          color: @bl-customComponent-treeSelect-content-highlight-color;
+        }
+
+        &.p-treenode-selectable:not(.p-highlight):hover {
+          background: @bl-customComponent-treeSelect-content-hover-background;
+          color: @bl-customComponent-treeSelect-content-hover-color;
+        }
+      }
+    }
+
+    .p-treenode-children {
+      padding-left: @bl-customComponent-treeSelect-tree-treenodeChildren-paddingLeft;
+    }
+  }
+
+  .p-treeselect-empty-message {
+    padding: @bl-customComponent-treeSelect-emptyMessage-padding;
+    color: @bl-customComponent-treeSelect-emptyMessage-color;
+    background: @bl-customComponent-treeSelect-emptyMessage-background;
+  }
+
+  .pi {
+    font-family: @bl-customComponent-treeSelect-icon-fontFamily;
+    font-size: @bl-customComponent-treeSelect-icon-fontSize;
+    color: @bl-customComponent-treeSelect-icon-color;
+
+    &.pi-search {
+      margin-top: @bl-customComponent-treeSelect-icon-search-marginTop;
+
+      &:before {
+        content: "search";
+      }
+    }
+
+    &.pi-chevron-right:before {
+      content: "keyboard_arrow_right";
+    }
+
+    &.pi-chevron-down:before {
+      content: "keyboard_arrow_down";
+    }
+
+    &.pi-times:before {
+      content: "close";
+    }
+
+    &.pi-check:before {
+      content: "check";
+    }
+
+    &.pi-minus:before {
+      content: "remove";
+    }
+  }
+}
