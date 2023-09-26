@@ -8,7 +8,7 @@ const DAY = 24 * HOUR;
 export const useAnimation = (time, elementRef, animationDuration) => {
   useEffect(() => {
     if (elementRef.current.children.length > 1) {
-      [...elementRef.current.children].slice(0, -1).forEach((child) => {
+      [...elementRef.current.children].slice(0, -1).forEach(child => {
         child.remove();
       });
     }
@@ -33,7 +33,7 @@ export const useAnimation = (time, elementRef, animationDuration) => {
 };
 
 export const getTime = () => {
-  let [hours, minutes, seconds] = new Date().toLocaleTimeString().split(':');
+  const [hours, minutes, seconds] = new Date().toLocaleTimeString().split(':');
 
   return {
     hourTens   : hours[0],
@@ -41,11 +41,11 @@ export const getTime = () => {
     minuteTens : minutes[0],
     minuteUnits: minutes[1],
     secondTens : seconds[0],
-    secondUnits: seconds[1]
+    secondUnits: seconds[1],
   };
 };
 
-export const getTimer = (timerDate) => {
+export const getTimer = timerDate => {
   const gap = timerDate - Date.now();
 
   let days = String(Math.floor(gap / DAY));
@@ -67,6 +67,6 @@ export const getTimer = (timerDate) => {
     minuteUnits: minutes[1],
     secondTens : seconds[0],
     secondUnits: seconds[1],
-    all        : Number(days + hours + minutes + seconds)
+    all        : Number(days + hours + minutes + seconds),
   };
 };

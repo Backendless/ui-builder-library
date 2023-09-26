@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function Stopwatch({ component }) {
   const [remainingSecond, setRemainingSecond] = useState(0);
@@ -29,9 +29,7 @@ export function Stopwatch({ component }) {
   };
 
   useEffect(() => {
-    return () => {
-      component.stopStopwatch();
-    };
+    return () => component.stopStopwatch();
   }, []);
 
   return (

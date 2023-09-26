@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+
 import { useAnimation } from './helpers';
 
 export function Time({ timeTens, timeUnits, animationDuration, withDelimeter }) {
