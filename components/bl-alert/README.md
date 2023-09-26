@@ -1,6 +1,6 @@
 # Alert
 
-Alert is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows notifying a user when a specific event happens. 
+Alert is a component of the Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows notifying a user when a specific event happens.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
@@ -38,6 +38,9 @@ Then navigate to the **Logic** section of the selected component, and in the **U
 ![message_add_codeless_block](https://user-images.githubusercontent.com/115621450/195363381-09d4b9ff-3d72-4ecb-9144-81721b3b2ccc.png)
 
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/VKYqQJggd6WmFm87fq22).
 
 ## Properties
 

@@ -145,8 +145,8 @@ const prepareOptions = settings => {
 
   const options = {
     mask              : dynamicMask ? prepareDynamicMask(dynamicMask) : prepareMask(maskType, mask),
-    min               : Number(min),
-    max               : Number(max),
+    min               : min && Number(min),
+    max               : max && Number(max),
     from,
     to,
     thousandsSeparator: thousandsSeparator || '',
