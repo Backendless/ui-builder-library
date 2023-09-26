@@ -1,0 +1,158 @@
+{
+  "id": "c_24592c2570c452fc8fd77b5a353b2dbc",
+  "name": "Drawer",
+  "description": "Drawer is a panel which slides in from the edge of the screen.",
+  "showInToolbox": true,
+  "faIcon": "bars",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "controlVisibility",
+      "label": "Control Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "controlVisibilityLogic"
+    },
+    {
+      "type": "text",
+      "name": "controlLabel",
+      "label": "Control Label",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "controlLabelLogic",
+      "defaultValue": "Open Drawer"
+    },
+    {
+      "type": "select",
+      "name": "placement",
+      "label": "Placement",
+      "showInSettings": true,
+      "defaultValue": "right",
+      "hasLogicHandler": false,
+      "handlerId": "placementLogic",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "size",
+      "label": "Size",
+      "showInSettings": true,
+      "defaultValue": "40%",
+      "hasLogicHandler": true,
+      "handlerId": "sizeLogic",
+      "handlerLabel": "Size Logic",
+      "handlerDescription": "This is a handler for the logic to determine the size of the drawer window."
+    },
+    {
+      "type": "checkbox",
+      "name": "backdropVisibility",
+      "label": "Backdrop Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "backdropVisibilityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "closeOnClickOutside",
+      "label": "Close On Click Outside",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "closeOnClickOutsideLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "closeOnEscape",
+      "label": "Close On Escape",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "closeOnEscapeLogic"
+    },
+    {
+      "type": "range",
+      "name": "animationDuration",
+      "label": "Animation Duration (ms)",
+      "showInSettings": true,
+      "defaultValue": "300",
+      "hasLogicHandler": false,
+      "handlerId": "animationDurationLogic",
+      "min": "0",
+      "max": "1000",
+      "step": "100"
+    },
+    {
+      "type": "checkbox",
+      "name": "isOpen",
+      "label": "Is Open",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": true,
+      "handlerId": "isOpenLogic",
+      "handlerLabel": "Is Open Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the drawer window is open or closed."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onOpen",
+      "label": "On Open Event",
+      "handlerDescription": "This event is fired when the drawer window has opened."
+    },
+    {
+      "name": "onClose",
+      "label": "On Close Event",
+      "handlerDescription": "This event is fired when the drawer window has closed."
+    }
+  ],
+  "actions": [
+    {
+      "id": "open",
+      "label": "Open",
+      "inputs": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "label": "Close",
+      "inputs": [
+        {
+          "id": "event",
+          "label": "Event"
+        }
+      ]
+    }
+  ],
+  "pods": {
+    "3a710d8262c201bdc66fcf9a29ffe89f": {
+      "id": "Drawer Content",
+      "dataContainer": true
+    }
+  }
+}

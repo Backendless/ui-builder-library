@@ -1,0 +1,67 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-skeleton-background-color: if((luma(@appBackgroundColor) > 50%), rgba(0, 0, 0, 0.11), rgba(255, 255, 255, 0.11));
+@bl-customComponent-skeleton-background-color-wave: if((luma(@appBackgroundColor) > 50%), rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+
+.bl-customComponent-skeleton {
+  display: block;
+  background-color: @bl-customComponent-skeleton-background-color;
+
+  &.text {
+    margin-top: 0;
+    margin-bottom: 0;
+    transform-origin: 0 55%;
+    transform: scale(1, 0.60);
+    border-radius: 4px 6.7px;
+    font-size: 1rem;
+  }
+
+  &.circular {
+    border-radius: 50%;
+  }
+
+  &.rounded {
+    border-radius: 4px;
+  }
+
+  &.default {
+    animation: default 1.5s ease-in-out 0.5s infinite;
+  }
+
+  &.wave {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &.wave::after {
+    animation: wave 1.6s linear 0.5s infinite;
+    background: linear-gradient(90deg, transparent, @bl-customComponent-skeleton-background-color-wave, transparent);
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  @keyframes default {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}

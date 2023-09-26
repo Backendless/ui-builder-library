@@ -1,0 +1,140 @@
+{
+  "id": "c_225ba2a6a4ed0d2c395ae1081d5de0a3",
+  "name": "Popover",
+  "description": "Popover is a component to display some content when the user clicks a button",
+  "showInToolbox": true,
+  "faIcon": "comment-alt",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "position",
+      "label": "Position",
+      "showInSettings": true,
+      "defaultValue": "top",
+      "hasLogicHandler": true,
+      "handlerId": "positionLogic",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to determine the position of the popover relative to the button",
+      "settingTooltip": "Allows to determine the position of the popover relative to the button"
+    },
+    {
+      "type": "number",
+      "name": "enterDelay",
+      "label": "Enter Delay",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the enter delay"
+    },
+    {
+      "type": "number",
+      "name": "exitDelay",
+      "label": "Exit Delay",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the exit delay"
+    },
+    {
+      "type": "number",
+      "name": "zIndex",
+      "label": "Z Index",
+      "showInSettings": true,
+      "defaultValue": "1",
+      "hasLogicHandler": true,
+      "handlerId": "zIndexLogic",
+      "handlerLabel": "Z Index Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the z-index style for popover ",
+      "settingTooltip": "Allows to determine the z-index style for popover "
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onTargetClick",
+      "label": "On Target Click",
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks on the target."
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the mouse pointer hovers over the component."
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the mouse pointer leaves the component."
+    },
+    {
+      "name": "onClickOutside",
+      "label": "On Click Outside",
+      "contextBlocks": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ],
+      "handlerDescription": "This event is triggered when the user clicks outside the component."
+    }
+  ],
+  "actions": [
+    {
+      "id": "setIsOpen",
+      "label": "Set Is Open",
+      "inputs": [
+        {
+          "id": "isOpen",
+          "label": "Is Open"
+        }
+      ]
+    }
+  ],
+  "pods": {
+    "f1bac586857f6846d1ca7ab7f71ba20b": {
+      "id": "popoverTarget",
+      "dataContainer": true
+    },
+    "1aec8dec2faf84f92fd9b717e81db234": {
+      "id": "popoverContent",
+      "dataContainer": true
+    }
+  }
+}

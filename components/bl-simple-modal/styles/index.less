@@ -1,0 +1,251 @@
+@bl-customComponent-simple-modal-themeColor: @themePrimary;
+@bl-customComponent-simple-modal-backgroundColor: @appBackgroundColor;
+@bl-customComponent-simple-modal-textColor: @appTextColor;
+
+@bl-customComponent-simple-modal-font-family: inherit;
+@bl-customComponent-simple-modal-max-width: 600px;
+@bl-customComponent-simple-modal-min-width: 300px;
+@bl-customComponent-simple-modal-z-index: 1000;
+@bl-customComponent-simple-modal-open-animation: modal-open linear forwards;
+@bl-customComponent-simple-modal-close-animation: modal-close linear forwards;
+
+@bl-customComponent-simple-modal-content-padding: 16px 20px 8px;
+@bl-customComponent-simple-modal-content-border-radius: 3px;
+
+@bl-customComponent-simple-modal-title-margin: 0;
+@bl-customComponent-simple-modal-title-padding: 0 0 16px;
+@bl-customComponent-simple-modal-title-font-size: 1.25rem;
+@bl-customComponent-simple-modal-title-font-weight: 500;
+
+@bl-customComponent-simple-modal-text-margin: 0;
+@bl-customComponent-simple-modal-text-font-size: 1rem;
+@bl-customComponent-simple-modal-text-font-weight: 400;
+@bl-customComponent-simple-modal-text-opacity: 0.6;
+
+@bl-customComponent-simple-modal-buttonColor: @bl-customComponent-simple-modal-themeColor;
+@bl-customComponent-simple-modal-button-backgroundColor: transparent;
+@bl-customComponent-simple-modal-button-backgroundColorHover: fade(@bl-customComponent-simple-modal-themeColor, 4%);
+@bl-customComponent-simple-modal-button-borderRadius: 4px;
+@bl-customComponent-simple-modal-button-margin: 0;
+@bl-customComponent-simple-modal-button-border: 0;
+@bl-customComponent-simple-modal-button-outline: 0;
+@bl-customComponent-simple-modal-button-padding: 6px 8px;
+@bl-customComponent-simple-modal-button-font-size: 0.875rem;
+@bl-customComponent-simple-modal-button-font-weight: 500;
+@bl-customComponent-simple-modal-button-text-transform: uppercase;
+@bl-customComponent-simple-modal-button-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+@bl-customComponent-simple-modal-input-background-color: transparent;
+@bl-customComponent-simple-modal-input-border-bottom: 1px solid gray;
+@bl-customComponent-simple-modal-input-border-bottom-focus: 2px solid @bl-customComponent-simple-modal-themeColor;
+@bl-customComponent-simple-modal-input-border-width-hover: 3px;
+@bl-customComponent-simple-modal-input-border-bottom-transition: 0.3s;
+@bl-customComponent-simple-modal-input-font-size: 1.25rem;
+@bl-customComponent-simple-modal-input-font-weight: 400;
+
+@bl-customComponent-simple-modal-placeholder-color: gray;
+@bl-customComponent-simple-modal-placeholder-font-size: 1rem;
+@bl-customComponent-simple-modal-placeholder-font-weight: 400;
+@bl-customComponent-simple-modal-placeholder-transition: 0.3s;
+@bl-customComponent-simple-modal-placeholder-input-focused-font-size: 0.8rem;
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.bl-customComponent-simple-modal {
+  z-index: @bl-customComponent-simple-modal-z-index;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .simple-modal {
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      position: fixed;
+      top: 40%;
+      left: 50%;
+
+      max-width: @bl-customComponent-simple-modal-max-width;
+      min-width: @bl-customComponent-simple-modal-min-width;
+
+      padding: @bl-customComponent-simple-modal-content-padding;
+
+      transform: translate(-50%, -50%);
+
+      background: @bl-customComponent-simple-modal-backgroundColor;
+      border-radius: @bl-customComponent-simple-modal-content-border-radius;
+    }
+
+    &__title {
+      margin: @bl-customComponent-simple-modal-title-margin;
+      padding: @bl-customComponent-simple-modal-title-padding;
+
+      font-family: @bl-customComponent-simple-modal-font-family;
+
+      font-weight: @bl-customComponent-simple-modal-title-font-weight;
+      font-size: @bl-customComponent-simple-modal-title-font-size;
+
+      line-height: 1.6;
+      letter-spacing: 0.0075em;
+
+      color: @bl-customComponent-simple-modal-textColor
+    }
+
+    &__container {
+      padding-bottom: 24px;
+    }
+
+    &__text {
+      margin: @bl-customComponent-simple-modal-text-margin;
+
+      font-family: @bl-customComponent-simple-modal-font-family;
+      font-weight: @bl-customComponent-simple-modal-text-font-weight;
+      font-size: @bl-customComponent-simple-modal-text-font-size;
+
+      line-height: 1.5;
+      letter-spacing: 0.00938em;
+
+      color: @bl-customComponent-simple-modal-textColor;
+      opacity: @bl-customComponent-simple-modal-text-opacity;
+    }
+
+    &__button-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &__button {
+      outline: @bl-customComponent-simple-modal-button-outline;
+      border: @bl-customComponent-simple-modal-button-border;
+      margin: @bl-customComponent-simple-modal-button-margin;
+      padding: @bl-customComponent-simple-modal-button-padding;
+
+      cursor: pointer;
+
+      font-family: @bl-customComponent-simple-modal-font-family;
+      font-weight: @bl-customComponent-simple-modal-button-font-weight;
+      font-size: @bl-customComponent-simple-modal-button-font-size;
+      color: @bl-customComponent-simple-modal-buttonColor;
+
+      line-height: 1.75;
+      letter-spacing: 0.02857em;
+
+      text-transform: @bl-customComponent-simple-modal-button-text-transform;
+
+      background-color: @bl-customComponent-simple-modal-button-backgroundColor;
+      border-radius: @bl-customComponent-simple-modal-button-borderRadius;
+      transition: @bl-customComponent-simple-modal-button-transition;
+
+      &:hover {
+        text-decoration: none;
+        background-color: @bl-customComponent-simple-modal-button-backgroundColorHover;
+      }
+    }
+
+    &__input-form {
+      .form-input {
+        position: relative;
+        width: 100%;
+        margin-top: calc(@bl-customComponent-simple-modal-input-font-size + 8px);
+
+        &__input {
+          width: 100%;
+          height: @bl-customComponent-simple-modal-input-font-size;
+
+          font-family: @bl-customComponent-simple-modal-font-family;
+          font-size: @bl-customComponent-simple-modal-input-font-size;
+          font-weight: @bl-customComponent-simple-modal-input-font-weight;
+          color: @bl-customComponent-simple-modal-textColor;
+
+          padding: 0;
+          border: 0;
+          outline: none;
+
+          border-bottom: @bl-customComponent-simple-modal-input-border-bottom;
+          background-color: @bl-customComponent-simple-modal-input-background-color;
+          transition: @bl-customComponent-simple-modal-input-border-bottom-transition;
+
+          &::placeholder {
+            opacity: 0;
+          }
+
+          &:focus {
+            border-bottom: @bl-customComponent-simple-modal-input-border-bottom-focus;
+          }
+
+          &:hover {
+            border-width: @bl-customComponent-simple-modal-input-border-width-hover;
+          }
+        }
+
+        &__placeholder {
+          position: absolute;
+          left: 0;
+          top: 50%;
+
+          font-family: @bl-customComponent-simple-modal-font-family;
+          font-size: @bl-customComponent-simple-modal-placeholder-font-size;
+          font-weight: @bl-customComponent-simple-modal-placeholder-font-weight;
+          line-height: 1.4375em;
+          letter-spacing: 0.00938em;
+          color: @bl-customComponent-simple-modal-placeholder-color;
+
+          user-select: none;
+          z-index: -1;
+          transition: @bl-customComponent-simple-modal-placeholder-transition;
+          transform: translateY(-50%);
+        }
+
+        &__input:focus + .form-input__placeholder {
+          color: @bl-customComponent-simple-modal-themeColor;
+        }
+
+        &__input:focus + .form-input__placeholder,
+        &__input:not(:placeholder-shown) + .form-input__placeholder {
+          top: 0;
+          font-size: @bl-customComponent-simple-modal-placeholder-input-focused-font-size;
+          transform: translateY(-130%);
+        }
+      }
+    }
+  }
+
+  .open-modal {
+    animation: @bl-customComponent-simple-modal-open-animation;
+  }
+
+  @keyframes modal-open {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .close-modal {
+    animation: @bl-customComponent-simple-modal-close-animation;
+  }
+
+  @keyframes modal-close {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

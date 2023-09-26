@@ -1,0 +1,27 @@
+{
+  "id": "c_5b646da6b1a30e4643a63beeeb7692bc",
+  "name": "native-input",
+  "description": "",
+  "showInToolbox": true,
+  "type": "custom",
+  "category": "Custom Components",
+  "mainJS": "dist/index.js",
+  "properties": [
+    {
+      "label": "Value",
+      "type": "text",
+      "name": "value",
+      "handlerId": "value",
+      "handlerLabel": "Value Logic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "dataBinding": false,
+      "label": "On Change Event"
+    }
+  ],
+  "actions": [],
+  "faIcon": "pencil-ruler"
+}

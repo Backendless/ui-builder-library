@@ -1,0 +1,42 @@
+@bl-customComponent-innerImageZoom-theme: @themePrimary;
+@bl-customComponent-innerImageZoom-shadow: @appComponentShadow;
+@bl-customComponent-innerImageZoom-border: @appBlockBorder;
+@bl-customComponent-innerImageZoom-border-radius: @appComponentBorderRadius;
+
+@bl-customComponent-innerImageZoom-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+
+@bl-customComponent-innerImageZoom-width: fit-content;
+@bl-customComponent-innerImageZoom-margin: 10px;
+
+@bl-customComponent-innerImageZoom-cursor: crosshair;
+
+.bl-customComponent-innerImageZoom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: @bl-customComponent-innerImageZoom-width;
+  height: auto;
+  margin: @bl-customComponent-innerImageZoom-margin;
+  background-color: @bl-customComponent-innerImageZoom-background-color;
+  border: @bl-customComponent-innerImageZoom-border;
+  border-radius: @bl-customComponent-innerImageZoom-border-radius;
+  box-shadow: @bl-customComponent-innerImageZoom-shadow;
+
+  .zoom-content {
+    margin: 0;
+    background-repeat: no-repeat;
+    border-radius: @bl-customComponent-innerImageZoom-border-radius;
+    cursor: @bl-customComponent-innerImageZoom-cursor;
+
+    &:hover .img {
+      opacity: 0;
+    }
+  }
+
+  .img {
+    display: block;
+    width: 100%;
+    border-radius: @bl-customComponent-innerImageZoom-border-radius;
+    pointer-events: none;
+  }
+}

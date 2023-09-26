@@ -1,0 +1,222 @@
+{
+  "id": "c_82fae8bc221e0f6df00c363a12931989",
+  "name": "Snackbar",
+  "description": "Snackbars provide brief notifications.\nSnackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the corner of the screen. They shouldn't interrupt the user experience, and they don't require user input to disappear.",
+  "showInToolbox": true,
+  "faIcon": "window-maximize",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "showClose",
+      "label": "Show Close",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "showCloseLogic",
+      "settingTooltip": "Show close button."
+    },
+    {
+      "type": "checkbox",
+      "name": "showAction",
+      "label": "Show Action",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": false,
+      "handlerId": "showActionLogic",
+      "settingTooltip": "Show action button."
+    },
+    {
+      "type": "text",
+      "name": "actionContent",
+      "label": "Action Content",
+      "showInSettings": true,
+      "defaultValue": "Action",
+      "hasLogicHandler": true,
+      "handlerId": "actionContentLogic",
+      "handlerLabel": "Action Content Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to set the label of the action button.",
+      "settingTooltip": "Set action button label"
+    },
+    {
+      "type": "text",
+      "name": "snackContent",
+      "label": "Snackbar Content",
+      "showInSettings": true,
+      "defaultValue": "Snackbar Content",
+      "hasLogicHandler": true,
+      "handlerId": "snackContentLogic",
+      "handlerLabel": "Snackbar Content Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler to set the text of the snackbar.",
+      "settingTooltip": "Set snackbar text."
+    },
+    {
+      "type": "checkbox",
+      "name": "autoHide",
+      "label": "Auto Hide",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "autoHideLogic",
+      "handlerLabel": "Auto Hide Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler that controls autohiding.",
+      "settingTooltip": "Allow autohide."
+    },
+    {
+      "type": "number",
+      "name": "autoHideDuration",
+      "label": "Auto Hide Duration",
+      "showInSettings": true,
+      "defaultValue": "5000",
+      "hasLogicHandler": true,
+      "handlerId": "autoHideDurationLogic",
+      "handlerLabel": "Auto Hide Duration Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler that sets the autohide duration.",
+      "settingTooltip": "Set autohide duration."
+    },
+    {
+      "type": "select",
+      "name": "verticalPosition",
+      "label": "Vertical Position",
+      "showInSettings": true,
+      "defaultValue": "top",
+      "hasLogicHandler": false,
+      "handlerId": "verticalPositionLogic",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "settingTooltip": "Choose the vertical position of a snackbar."
+    },
+    {
+      "type": "select",
+      "name": "horizontalPosition",
+      "label": "Horizontal Position",
+      "showInSettings": true,
+      "defaultValue": "right",
+      "hasLogicHandler": false,
+      "handlerId": "horizontalPositionLogic",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "settingTooltip": "Choose the horizontal position of a snackbar."
+    },
+    {
+      "type": "select",
+      "name": "type",
+      "label": "Type",
+      "showInSettings": true,
+      "defaultValue": "default",
+      "hasLogicHandler": false,
+      "handlerId": "typeLogic",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "info",
+          "label": "Info"
+        },
+        {
+          "value": "success",
+          "label": "Success"
+        },
+        {
+          "value": "warning",
+          "label": "Warning"
+        },
+        {
+          "value": "error",
+          "label": "Error"
+        }
+      ],
+      "settingTooltip": "Choose the type of the snackbar."
+    },
+    {
+      "type": "number",
+      "name": "maxSnacks",
+      "label": "Max Snacks on Page",
+      "showInSettings": true,
+      "defaultValue": "3",
+      "hasLogicHandler": false,
+      "handlerId": "maxSnacksLogic",
+      "settingTooltip": "Set maximum visible snackbars."
+    },
+    {
+      "type": "checkbox",
+      "name": "outline",
+      "label": "Outline",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "outlineLogic",
+      "settingTooltip": "Allow outline"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClose",
+      "label": "On Close",
+      "handlerDescription": "This event is fired when the user clicks on the close button."
+    },
+    {
+      "name": "onAction",
+      "label": "On Action",
+      "handlerDescription": "This event is fired when the user clicks on the action button."
+    }
+  ],
+  "actions": [
+    {
+      "id": "create",
+      "label": "Create",
+      "inputs": [
+        {
+          "id": "isClose",
+          "label": "Show Close Button"
+        },
+        {
+          "id": "isAction",
+          "label": "Show Action Button"
+        },
+        {
+          "id": "actionText",
+          "label": "Action Button Content"
+        },
+        {
+          "id": "text",
+          "label": "Snackbar Content"
+        },
+        {
+          "id": "snackType",
+          "label": "Type"
+        }
+      ]
+    }
+  ]
+}

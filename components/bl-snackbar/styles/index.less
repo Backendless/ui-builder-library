@@ -1,0 +1,159 @@
+@bl-customComponent-distance: 15px;
+@bl-customComponent-snackBar-background-color: @themePrimary;
+@bl-customComponent-snackBar-text-color: contrast(@themePrimary);
+@bl-customComponent-snackBar-border-width: 1px;
+@bl-customComponent-snackBar-border-color: #000;
+@bl-customComponent-snackBar-border-style: solid;
+
+@bl-customComponent-snackBar-success-background-color: #4e9a51;
+@bl-customComponent-snackBar-success-color-text: contrast(@themePrimary);
+@bl-customComponent-snackBar-info-background-color: #1e95d6;
+@bl-customComponent-snackBar-info-color-text: contrast(@themePrimary);
+@bl-customComponent-snackBar-warning-background-color: #f68a1c;
+@bl-customComponent-snackBar-warning-color-text: contrast(@themePrimary);
+@bl-customComponent-snackBar-error-background-color: #d84646;
+@bl-customComponent-snackBar-error-color-text: contrast(@themePrimary);
+
+.bl-customComponent-snackbar {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  z-index: 1;
+
+  .message {
+    display: flex;
+    padding: 16px 6px;
+    border-radius: 4px;
+    color: @bl-customComponent-snackBar-text-color;
+    background: @bl-customComponent-snackBar-background-color;
+    word-break: break-word;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    max-width: 500px;
+    border-width: @bl-customComponent-snackBar-border-width;
+    border-color: @bl-customComponent-snackBar-border-color;
+    border-style: @bl-customComponent-snackBar-border-style;
+
+    .text {
+      padding: 0 5px;
+      display: flex;
+
+      .content {
+        max-width: 380px;
+        margin-left: 5px;
+        line-height: 24px;
+      }
+    }
+
+    .icon {
+      fill: @bl-customComponent-snackBar-text-color;
+      width: 22px;
+    }
+
+    .buttons {
+      display: flex;
+    }
+
+    .close {
+      padding: 0;
+      height: 24px;
+      width: 24px;
+      word-break: normal;
+      border-radius: 12px;
+      background-color: transparent;
+      color: @bl-customComponent-snackBar-text-color;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .action {
+      height: max-content;
+      word-break: normal;
+      align-self: center;
+      background-color: transparent;
+      border: none;
+      border-radius: 2px;
+      padding: 3px;
+      color: @bl-customComponent-snackBar-text-color;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &_success {
+      background-color: @bl-customComponent-snackBar-success-background-color;
+      color: @bl-customComponent-snackBar-success-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-success-color-text;
+      }
+    }
+
+    &_info {
+      background-color: @bl-customComponent-snackBar-info-background-color;
+      color: @bl-customComponent-snackBar-info-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-info-color-text;
+      }
+    }
+
+    &_warning {
+      background-color: @bl-customComponent-snackBar-warning-background-color;
+      color: @bl-customComponent-snackBar-warning-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-warning-color-text;
+      }
+    }
+
+    &_error {
+      background-color: @bl-customComponent-snackBar-error-background-color;
+      color: @bl-customComponent-snackBar-error-color-text;
+
+      .close {
+        color: @bl-customComponent-snackBar-error-color-text;
+      }
+    }
+  }
+
+  &_top {
+    top: @bl-customComponent-distance;
+  }
+
+  &_bottom {
+    bottom: @bl-customComponent-distance;
+  }
+
+  &_left {
+    left: @bl-customComponent-distance;
+  }
+
+  &_right {
+    right: @bl-customComponent-distance;
+  }
+
+  &_centerX {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  &_centerY {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &_center {
+    top: 50%;
+    transform: translate(50%, -50%);
+    right: 50%;
+  }
+}

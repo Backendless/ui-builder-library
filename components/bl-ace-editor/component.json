@@ -1,0 +1,340 @@
+{
+  "id": "c_34f4855cac24a0355167b68952b238ec",
+  "name": "Ace Editor",
+  "description": "The Ace Editor component is the high-performance code editor for the web.",
+  "showInToolbox": true,
+  "faIcon": "square",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "readOnly",
+      "label": "Read Only",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "readOnlyLogic",
+      "handlerLabel": "Read Only Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to disable editing of the component value."
+    },
+    {
+      "type": "text",
+      "name": "name",
+      "label": "Name",
+      "showInSettings": true,
+      "defaultValue": "Ace Editor",
+      "hasLogicHandler": true,
+      "handlerId": "nameLogic",
+      "handlerLabel": "Name Logic",
+      "handlerDescription": "This handler allows you to specify the name of a component."
+    },
+    {
+      "type": "text",
+      "name": "value",
+      "label": "Value",
+      "settingTooltip": "The value you specify with this handler will be displayed in this component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "valueLogic",
+      "handlerLabel": "Value Logic",
+      "handlerDescription": "This handler allows you to add value to the component.",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "mode",
+      "label": "Mode",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "modeLogic",
+      "handlerLabel": "Mode Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "java",
+          "label": "Java"
+        },
+        {
+          "value": "javascript",
+          "label": "JavaScript"
+        },
+        {
+          "value": "typescript",
+          "label": "TypeScript"
+        },
+        {
+          "value": "python",
+          "label": "Python"
+        },
+        {
+          "value": "json",
+          "label": "JSON"
+        },
+        {
+          "value": "php",
+          "label": "PHP"
+        },
+        {
+          "value": "c_cpp",
+          "label": "C and C++"
+        },
+        {
+          "value": "csharp",
+          "label": "C#"
+        },
+        {
+          "value": "ruby",
+          "label": "Ruby"
+        },
+        {
+          "value": "html",
+          "label": "HTML"
+        },
+        {
+          "value": "css",
+          "label": "CSS"
+        }
+      ],
+      "defaultValue": "java",
+      "handlerDescription": "This handler allows you to select the mode of a component.",
+      "settingTooltip": "The highlight and auto-completion will work according to the selected mode."
+    },
+    {
+      "type": "select",
+      "name": "theme",
+      "label": "Theme",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "themeLogic",
+      "handlerLabel": "Theme Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "github",
+          "label": "GitHub"
+        },
+        {
+          "value": "chrome",
+          "label": "Chrome"
+        },
+        {
+          "value": "monokai",
+          "label": "Monokai"
+        },
+        {
+          "value": "nord_dark",
+          "label": "Nord Dark"
+        },
+        {
+          "value": "twilight",
+          "label": "Twilight"
+        },
+        {
+          "value": "idle_fingers",
+          "label": "idle Fingers"
+        }
+      ],
+      "defaultValue": "github",
+      "handlerDescription": "This handler allows you to select the theme of a component.\n"
+    },
+    {
+      "type": "select",
+      "name": "foldStyle",
+      "label": "Fold Style",
+      "showInSettings": true,
+      "defaultValue": "manual",
+      "hasLogicHandler": true,
+      "handlerId": "foldStyleLogic",
+      "handlerLabel": "Fold Style Logic",
+      "handlerDescription": "This handler allows you to select the fold style.",
+      "options": [
+        {
+          "value": "manual",
+          "label": "Manual"
+        },
+        {
+          "value": "markbegin",
+          "label": "Mark begin"
+        },
+        {
+          "value": "markbeginend",
+          "label": "Mark begin and end"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "label": "Placeholder",
+      "showInSettings": true,
+      "defaultValue": "Placeholder",
+      "hasLogicHandler": true,
+      "handlerId": "placeholderLogic",
+      "handlerLabel": "Placeholder",
+      "handlerDescription": "This handler allows you to specify the placeholder for a component.",
+      "settingTooltip": "A placeholder will be displayed if the component has no value."
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "defaultValue": "750px",
+      "hasLogicHandler": true,
+      "handlerId": "widthLogic",
+      "handlerLabel": "Width Logic",
+      "handlerDescription": "This handler allows you to specify the width of a component.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "defaultValue": "500px",
+      "hasLogicHandler": true,
+      "handlerId": "heightLogic",
+      "handlerLabel": "Height Logic",
+      "handlerDescription": "This handler allows you to specify the height of a component.",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "fontSize",
+      "label": "Font Size",
+      "showInSettings": true,
+      "defaultValue": "16",
+      "hasLogicHandler": true,
+      "handlerId": "fontSizeLogic",
+      "handlerLabel": "Font Size Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify the font size for the value of a component."
+    },
+    {
+      "type": "number",
+      "name": "tabSize",
+      "label": "Tab Size",
+      "showInSettings": true,
+      "defaultValue": "4",
+      "hasLogicHandler": true,
+      "handlerId": "tabSizeLogic",
+      "handlerLabel": "Tab Size Logic",
+      "handlerDescription": "This handler allows you to specify the tab size."
+    },
+    {
+      "type": "number",
+      "name": "printMarginColumn",
+      "label": "Print Margin Column",
+      "showInSettings": true,
+      "defaultValue": "80",
+      "hasLogicHandler": true,
+      "handlerId": "printMarginColumnLogic",
+      "handlerLabel": "Print Margin Column Logic",
+      "handlerDescription": "This handler allows you to specify the print margin column."
+    },
+    {
+      "type": "checkbox",
+      "name": "printMarginVisibility",
+      "label": "Print Margin Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "printMarginVisibilityLogic",
+      "handlerLabel": "Print Margin Visibility Logic",
+      "handlerDescription": "This handler allows you to control the visibility of the print margin."
+    },
+    {
+      "type": "checkbox",
+      "name": "gutterVisibility",
+      "label": "Gutter Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "gutterVisibilityLogic",
+      "handlerLabel": "Gutter Visibility Logic",
+      "handlerDescription": "This handler allows you to control the visibility of the gutter."
+    },
+    {
+      "type": "checkbox",
+      "name": "autocompletion",
+      "label": "Autocompletion",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": true,
+      "handlerId": "autocompletionLogic",
+      "handlerLabel": "Autocompletion Logic",
+      "handlerDescription": "This handler allows you to add auto-completion capability for a component."
+    },
+    {
+      "type": "checkbox",
+      "name": "highlightActiveLine",
+      "label": "Highlight Active Line",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "highlightActiveLineLogic",
+      "handlerLabel": "Highlight Active Line Logic",
+      "handlerDescription": "This handler allows you to add a highlight for the active line.",
+      "settingTooltip": "The line in which the cursor is located will be highlighted"
+    },
+    {
+      "type": "checkbox",
+      "name": "highlightSelectedWord",
+      "label": "Highlight Selected Word",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": true,
+      "handlerId": "highlightSelectedWordLogic",
+      "handlerLabel": "Highlight Selected Word Logic",
+      "handlerDescription": "This handler allows you to add the ability to highlight the selected word."
+    },
+    {
+      "type": "checkbox",
+      "name": "showInvisibles",
+      "label": "Show Invisibles",
+      "showInSettings": true,
+      "defaultValue": false,
+      "hasLogicHandler": true,
+      "handlerId": "showInvisiblesLogic",
+      "handlerLabel": "Show Invisibles Logic",
+      "handlerDescription": "This handler allows you to add the ability to highlight empty spaces.",
+      "settingTooltip": "Empty spaces will be highlighted."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "label": "On Change",
+      "handlerDescription": "This event is triggered when the value of the component changes.",
+      "output": true,
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "getValue",
+      "label": "Get Value",
+      "hasReturn": true,
+      "inputs": [],
+      "color": "#244c98"
+    },
+    {
+      "id": "setValue",
+      "label": "Set Value",
+      "color": "#982230",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    }
+  ]
+}

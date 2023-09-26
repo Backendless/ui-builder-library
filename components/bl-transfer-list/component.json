@@ -1,0 +1,113 @@
+{
+  "id": "c_cf2905b57bfc4375f8e8d00b5f03090d",
+  "name": "Transfer list",
+  "description": "A transfer list or shuttle enables the user to move one or more list items between lists.",
+  "showInToolbox": true,
+  "faIcon": "list",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "settingTooltip": "This handler allows you to disable a component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This handler allows you to disable a component.",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "listType",
+      "label": "List Type",
+      "defaultValue": "basic",
+      "handlerId": "listType",
+      "handlerLabel": "List Type Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "basic",
+          "label": "Basic"
+        },
+        {
+          "value": "enhanced",
+          "label": "Enhanced"
+        }
+      ],
+      "handlerDescription": "This property allows you to select a list type of Basic or Enhanced.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This property allows you to select a list type of Basic or Enhanced."
+    },
+    {
+      "type": "text",
+      "name": "leftListTitle",
+      "label": "Left List Title",
+      "settingTooltip": "This handler allows you to specify the title of the list to the left.",
+      "showInSettings": true,
+      "defaultValue": "Choices",
+      "hasLogicHandler": true,
+      "handlerId": "leftListTitleLogic",
+      "handlerLabel": "Left List Title Logic",
+      "handlerDescription": "This handler allows you to specify the title of the list to the left.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "rightListTitle",
+      "label": "Right List Title",
+      "settingTooltip": "This handler allows you to specify the title of the list to the right.",
+      "showInSettings": true,
+      "defaultValue": "Chosen",
+      "hasLogicHandler": true,
+      "handlerId": "rightListTitleLogic",
+      "handlerLabel": "Right List Title Logic",
+      "handlerDescription": "This handler allows you to specify the title of the list to the right.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "leftListItems",
+      "label": "Left List Items",
+      "settingTooltip": "This handler allows you to add items to the list to the left.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "leftListItemsLogic",
+      "handlerLabel": "Left List Items Logic",
+      "handlerDescription": "This handler allows you to add items to the list to the left.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "rightListItems",
+      "label": "Right List Items",
+      "settingTooltip": "This handler allows you to add items to the list to the right.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "rightListItemsLogic",
+      "handlerLabel": "Right List Items Logic",
+      "handlerDescription": "This handler allows you to add items to the list to the right.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "label": "On Change Event",
+      "contextBlocks": [
+        {
+          "id": "leftItems",
+          "label": "Left Items"
+        },
+        {
+          "id": "rightItems",
+          "label": "Right Items"
+        }
+      ]
+    }
+  ]
+}
