@@ -2,6 +2,10 @@
 
 This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows display time, use stopwatch and timer.
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property    | Type                                   | Default Value | Logic            | Data Binding | UI Setting | Description                                                                                                       |
