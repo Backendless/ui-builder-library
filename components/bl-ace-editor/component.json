@@ -3,7 +3,7 @@
   "name": "Ace Editor",
   "description": "The Ace Editor component is the high-performance code editor for the web.",
   "showInToolbox": true,
-  "faIcon": "square",
+  "faIcon": "code",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
