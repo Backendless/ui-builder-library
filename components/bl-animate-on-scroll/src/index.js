@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo } from 'react';
+
 import { Aos } from './aos';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -10,33 +11,28 @@ const DevicesMap = {
   none  : false,
 };
 
-export default function AnimateOnScroll({ component, eventHandlers, pods }) {
+export default function AnimateOnScroll({ component, eventHandlers, settings, pods, elRef }) {
   const {
     display, classList, style, animationType, easing, side,
-    duration, offset, disableFor, delay, mirror, once, anchor,
+    duration, offset, delay, mirror, once, anchor,
   } = component;
+  const { disableFor } = settings;
   const { onAnimationEnter, onAnimationOut } = eventHandlers;
   const elementPod = pods['animationPod'];
 
-  const animationOnScrollRef = useRef(null);
-
-  const animationName = useMemo(() => {
-    return animationType + (side === 'none' ? '' : `-${ side }`);
-  }, [animationType, side]);
+  const animationName = useMemo(() => animationType + (side === 'none' ? '' : `-${ side }`), [animationType, side]);
 
   useEffect(() => {
     Aos.init({ disable: DevicesMap[disableFor] });
 
-    document.addEventListener('aos:in', () => onAnimationEnter());
-    document.addEventListener('aos:out', () => onAnimationOut());
+    document.addEventListener('aos:in', ({ detail }) => onAnimationEnter({ detail }));
+    document.addEventListener('aos:out', ({ detail }) => onAnimationOut({ detail }));
 
     return () => {
-      document.removeEventListener('aos:in', () => onAnimationEnter());
-      document.removeEventListener('aos:out', () => onAnimationOut());
+      document.addEventListener('aos:in', ({ detail }) => onAnimationEnter({ detail }));
+      document.addEventListener('aos:out', ({ detail }) => onAnimationOut({ detail }));
     };
   }, []);
-
-  useEffect(() => component.el = animationOnScrollRef.current, []);
 
   if (!display) {
     return null;
@@ -44,7 +40,7 @@ export default function AnimateOnScroll({ component, eventHandlers, pods }) {
 
   return (
     <div
-      ref={ animationOnScrollRef }
+      ref={ elRef }
       className={ cn('bl-customComponent-animateOnScroll', classList) }
       style={ style }
       data-aos={ animationName }

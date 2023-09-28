@@ -10,33 +10,6 @@
   "properties": [
     {
       "type": "select",
-      "name": "disableFor",
-      "label": "Disable For",
-      "showInSettings": true,
-      "defaultValue": "none",
-      "hasLogicHandler": false,
-      "options": [
-        {
-          "value": "mobile",
-          "label": "Mobile"
-        },
-        {
-          "value": "tablet",
-          "label": "Tablet"
-        },
-        {
-          "value": "all",
-          "label": "All"
-        },
-        {
-          "value": "none",
-          "label": "None"
-        }
-      ],
-      "handlerDescription": "This handler allows determining to disable or not animation."
-    },
-    {
-      "type": "select",
       "name": "animationType",
       "label": "Animation Type",
       "showInSettings": true,
@@ -63,7 +36,8 @@
           "value": "zoom-out",
           "label": "Zoom Out"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine type of animation "
     },
     {
       "type": "select",
@@ -94,7 +68,8 @@
           "value": "left",
           "label": "Left"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine side of animation."
     },
     {
       "type": "select",
@@ -185,7 +160,8 @@
           "value": "ease-in-out-quart",
           "label": "ease-in-out-quart"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine easing of animation"
     },
     {
       "type": "number",
@@ -193,7 +169,8 @@
       "label": "Duration (ms)",
       "showInSettings": true,
       "defaultValue": "500",
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the duration of animation."
     },
     {
       "type": "number",
@@ -201,7 +178,8 @@
       "label": "Delay (ms)",
       "showInSettings": true,
       "defaultValue": "0",
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the delay for starting animation."
     },
     {
       "type": "text",
@@ -211,8 +189,9 @@
       "hasLogicHandler": true,
       "handlerId": "anchorLogic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows determining the element by class whose offset will be used to trigger animation instead of an actual one.",
-      "handlerLabel": "Anchor Logic"
+      "handlerDescription": "This is a handler for the logic to determine the element by class whose offset will be used to trigger animation instead of an actual one.",
+      "handlerLabel": "Anchor Logic",
+      "settingTooltip": "Allows to determine the element by class whose offset will be used to trigger animation instead of an actual one."
     },
     {
       "type": "number",
@@ -221,31 +200,45 @@
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
-      "settingTooltip": "offset(px) from the original trigger point"
+      "settingTooltip": "Allows to determine offset(px) from the original trigger point ."
     },
     {
       "type": "checkbox",
       "name": "mirror",
       "label": "Mirrored",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine whether elements should animate out while scrolling past them"
     },
     {
       "type": "checkbox",
       "name": "once",
       "label": "Play Once",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine whether the animation should happen only once - while scrolling down."
     }
   ],
   "eventHandlers": [
     {
       "name": "onAnimationEnter",
-      "label": "On Animation Enter"
+      "label": "On Animation Enter",
+      "contextBlocks": [
+        {
+          "id": "detail",
+          "label": "Detail"
+        }
+      ]
     },
     {
       "name": "onAnimationOut",
-      "label": "On Animation Out"
+      "label": "On Animation Out",
+      "contextBlocks": [
+        {
+          "id": "detail",
+          "label": "Detail"
+        }
+      ]
     }
   ],
   "actions": [],
@@ -254,5 +247,32 @@
       "id": "animationPod",
       "dataContainer": true
     }
-  }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "name": "disableFor",
+      "title": "Disable for",
+      "options": [
+        {
+          "value": "mobile",
+          "label": "Mobile"
+        },
+        {
+          "value": "tablet",
+          "label": "Tablet"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "defaultValue": "none",
+      "description": "Allows to determine whether or not to disable the animation"
+    }
+  ]
 }
