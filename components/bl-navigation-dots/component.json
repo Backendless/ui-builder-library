@@ -10,14 +10,16 @@
   "properties": [
     {
       "type": "json",
-      "name": "sections",
-      "showInSettings": false,
+      "name": "anchors",
+      "showInSettings": true,
       "defaultValue": "[]",
       "hasLogicHandler": true,
-      "handlerId": "sectionsLogic",
+      "handlerId": "anchorsLogic",
       "dataBinding": true,
-      "handlerLabel": "Sections Logic",
-      "handlerDescription": "This handler allows you to specify the array of sections."
+      "handlerLabel": "Anchors Logic",
+      "handlerDescription": "This handler allows you to specify the array of anchors for navigation.",
+      "label": "Anchors",
+      "settingTooltip": "Set of anchors for navigation."
     },
     {
       "type": "select",
@@ -104,34 +106,44 @@
       "handlerLabel": "Tooltip Color Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to specify the color of the tooltip."
+    },
+    {
+      "type": "checkbox",
+      "name": "smoothScroll",
+      "label": "Smooth Scrolling",
+      "settingTooltip": "Flag indicating whether scrolling will be smooth by default or not.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "smoothScrollLogic"
     }
   ],
   "eventHandlers": [
     {
-      "name": "onClick",
-      "label": "On Click",
+      "name": "onAnchorChange",
+      "label": "On Anchor Change",
       "contextBlocks": [
         {
-          "id": "activeSection",
-          "label": "Active Section"
+          "id": "activeAnchor",
+          "label": "Active Anchor"
         }
       ],
-      "handlerDescription": "Triggered when the user clicks on the component."
+      "handlerDescription": "Triggered when the active anchor changes (by clicking on a navigation dot or scrolling to the corresponding section)."
     }
   ],
   "actions": [
     {
-      "id": "getActiveSection",
-      "label": "Get Active Section from",
+      "id": "getActiveAnchor",
+      "label": "Get Active Anchor from",
       "hasReturn": true
     },
     {
-      "id": "setActiveSection",
-      "label": "Set Active Section to",
+      "id": "setActiveAnchor",
+      "label": "Set Active Anchor to",
       "inputs": [
         {
-          "id": "section",
-          "label": "Section"
+          "id": "anchor",
+          "label": "Anchor"
         }
       ]
     }

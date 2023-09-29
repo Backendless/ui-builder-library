@@ -8,28 +8,29 @@ Navigation Dots is the component that can be used in Backendless [UI-Builder](ht
 
 ## Properties
 
-| Property                                    | Type                                           | Default value     | Logic                    | Data Binding | UI Setting | Description                                                                                                               |
-|---------------------------------------------|------------------------------------------------|-------------------|--------------------------|--------------|------------|---------------------------------------------------------------------------------------------------------------------------|
-| Sections <br> `sections`                    | *JSON*                                         | `[]`              | Sections Logic           | YES          | NO         | This logic allows you to specify the array of sections.  Signature of sections: list of DOM elements `[Element, Element]` |
-| Dot Shape <br> `dotShape`                   | *Select* <br> [`circle`, `square`, `triangle`] | `circle`          |                          | NO           | YES        | Controls the dot shape type.                                                                                              |
-| Dot Background <br> `background`            | *Color*                                        | `rgba(0,0,0,0.7)` | Dot Background Logic     | YES          | YES        | This logic allows you to specify the color of the dot container.                                                          |
-| Dot Color <br> `color`                      | *Color*                                        | `#ffffff`         | Dot Color Logic          | YES          | YES        | This logic allows you to specify the color of an internal dot.                                                            |
-| Tooltip <br> `tooltip`                      | *Checkbox*                                     | `true`            |                          | NO           | YES        | Controls whether a tooltip will be shown when hovering over a dot by default or not.                                      |
-| Tooltip Background <br> `tooltipBackground` | *Color*                                        | `rgba(0,0,0,0.7)` | Tooltip Background Logic | YES          | YES        | This logic allows you to specify the background of the tooltip.                                                           |
-| Tooltip Color <br> `tooltipColor`           | *Color*                                        | `#ffffff`         | Tooltip Color Logic      | YES          | YES        | This logic allows you to specify the color of the tooltip.                                                                |
+| Property                                    | Type                                           | Default value     | Logic                    | Data Binding | UI Setting | Description                                                                                                      |
+|---------------------------------------------|------------------------------------------------|-------------------|--------------------------|--------------|------------|------------------------------------------------------------------------------------------------------------------|
+| Anchors <br> `anchors`                      | *JSON*                                         | `[]`              | Anchors Logic            | YES          | YES        | This logic allows you to specify the array of anchors.  Signature of anchors: list of anchors `[String, String]` |
+| Dot Shape <br> `dotShape`                   | *Select* <br> [`circle`, `square`, `triangle`] | `circle`          |                          | NO           | YES        | Controls the dot shape type.                                                                                     |
+| Dot Background <br> `background`            | *Color*                                        | `rgba(0,0,0,0.7)` | Dot Background Logic     | YES          | YES        | This logic allows you to specify the color of the dot container.                                                 |
+| Dot Color <br> `color`                      | *Color*                                        | `#ffffff`         | Dot Color Logic          | YES          | YES        | This logic allows you to specify the color of an internal dot.                                                   |
+| Tooltip <br> `tooltip`                      | *Checkbox*                                     | `true`            |                          | NO           | YES        | Controls whether a tooltip will be shown when hovering over a dot by default or not.                             |
+| Tooltip Background <br> `tooltipBackground` | *Color*                                        | `rgba(0,0,0,0.7)` | Tooltip Background Logic | YES          | YES        | This logic allows you to specify the background of the tooltip.                                                  |
+| Tooltip Color <br> `tooltipColor`           | *Color*                                        | `#ffffff`         | Tooltip Color Logic      | YES          | YES        | This logic allows you to specify the color of the tooltip.                                                       |
+| Smooth Scrolling <br> `smoothScroll`        | *Checkbox*                                     | `true`            |                          | NO           | YES        | Controls whether scrolling will be smooth by default or not.                                                     |
 
 ## Events
 
-| Name     | Triggers                               | Context Blocks            |
-|----------|----------------------------------------|---------------------------|
-| On Click | when the user clicks on the component. | Active Section: `Element` |
+| Name             | Triggers                                                                                                   | Context Blocks          |
+|------------------|------------------------------------------------------------------------------------------------------------|-------------------------|
+| On Anchor Change | when the active anchor changes (by clicking on a navigation dot or scrolling to the corresponding section) | Active Anchor: `String` |
 
 ## Actions
 
-| Action                                  | Inputs             | Returns   |
-|-----------------------------------------|--------------------|-----------|
-| Get Active Section from Navigation Dots |                    | `Element` |
-| Set Active Section to Navigation Dots   | Section: `Element` |           |
+| Action                                 | Inputs           | Returns          |
+|----------------------------------------|------------------|------------------|
+| Get Active Anchor from Navigation Dots |                  | Anchor: `String` |
+| Set Active Anchor to Navigation Dots   | Anchor: `String` |                  |
 
 ## Styles
 
@@ -94,10 +95,16 @@ Each of the sections (these are ordinary container blocks, for example) needs to
   <img src="./example-images/section-id-anchor.png" alt="add section id and anchor" width="500"/>
 </p>
 
-The third step is to add logic for the navigation sections in our Navigation Dots component logic.
+The third step is to add logic for the navigation anchors in our Navigation Dots component logic.
 
 <p align="center">
-  <img src="./example-images/sections-logic.png" alt="add section id and anchor" width="780"/>
+  <img src="./example-images/anchors-logic.png" alt="add list of anchors" width="780"/>
+</p>
+
+Or this way
+
+<p align="center">
+  <img src="./example-images/anchors-logic1.png" alt="add list of anchors other way" width="780"/>
 </p>
 
 After this, you can view the result. Clicking on a navigation dot will scroll the page to the corresponding section. In this case, a normal scroll across the page between sections will display the corresponding dot of the navigation bar active.
@@ -106,20 +113,8 @@ After this, you can view the result. Clicking on a navigation dot will scroll th
   <img src="./example-images/example-view.png" alt="example view" width="780"/>
 </p>
 
-In addition, you have two actions at your disposal: `Get Active Section from Navigation Dots` will return the currently active DOM element, and `Set Active Section to Navigation Dots` will set the passed DOM element as the active section (at the moment that you need according to the logic of your project).
+In addition, you have two actions at your disposal: `Get Active Anchor from Navigation Dots` will return the currently active anchor of DOM element, and `Set Active Anchor to Navigation Dots` will set the passed anchor of DOM element as the active anchor (at the moment that you need according to the logic of your project).
 
 <p align="center">
   <img src="./example-images/actions.png" alt="example view" width="780"/>
-</p>
-
-And one more point regarding the smoothness of scrolling. In order to ensure smooth scrolling between sections, add the following parameter to your html in styles.
-
-````
-html {
-  scroll-behavior: smooth;
-}
-````
-
-<p align="center">
-  <img src="./example-images/scroll-behavior.png" alt="scroll-behavior" width="780"/>
 </p>
