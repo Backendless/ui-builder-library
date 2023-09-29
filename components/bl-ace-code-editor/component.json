@@ -1,7 +1,7 @@
 {
   "id": "c_34f4855cac24a0355167b68952b238ec",
-  "name": "Ace Editor",
-  "description": "The Ace Editor component is the high-performance code editor for the web.",
+  "name": "Ace Code Editor",
+  "description": "The Ace Code Editor component is the high-performance code editor for the web.",
   "showInToolbox": true,
   "faIcon": "code",
   "mainJS": "dist/index.js",

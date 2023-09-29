@@ -1,6 +1,6 @@
-# Ace Editor
+# Ace Code Editor
 
-Ace Editor is a component of Backendless UI-Builder designer. The Ace Editor component is the high-performance code editor for the web. This component is created using the [react-ace](https://www.npmjs.com/package/react-ace) library.
+Ace Code Editor is a component of Backendless UI-Builder designer. The Ace Code Editor component is the high-performance code editor for the web. This component is created using the [react-ace](https://www.npmjs.com/package/react-ace) library.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
