@@ -17,9 +17,13 @@ Cascade Select is a component of Backendless UI-Builder designer. This allows yo
 
 ## Action
 
-| Action        | Inputs | Return                   |
-|---------------|--------|--------------------------|
-| Get Select in |        | Object: of a select item |
+| Action        | Inputs           | Return                      |
+|---------------|------------------|-----------------------------|
+| Get Select in |                  | Object: of a select item    |
+| Set Cascade   | cascade: `Array` |                             |
+| Get Cascade   |                  | Array: of s cascade         |
+| Set Code      | code: `String`   |                             |
+| Get Code      |                  | String: code of select item |
 
 ## <a name="Examples"></a> Codeless Examples
 

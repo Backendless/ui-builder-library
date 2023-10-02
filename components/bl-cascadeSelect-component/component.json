@@ -49,6 +49,36 @@
       "id": "getSelected",
       "label": "Get Selected in",
       "hasReturn": true
+    },
+    {
+      "id": "setCascade",
+      "label": "Set Cascade",
+      "inputs": [
+        {
+          "id": "cascade",
+          "label": "Cascade"
+        }
+      ]
+    },
+    {
+      "id": "getCascade",
+      "label": "Get Cascade",
+      "hasReturn": true
+    },
+    {
+      "id": "setCode",
+      "label": "Set Code",
+      "inputs": [
+        {
+          "id": "code",
+          "label": "Code"
+        }
+      ]
+    },
+    {
+      "id": "getCode",
+      "label": "Get Code",
+      "hasReturn": true
     }
   ]
 }
