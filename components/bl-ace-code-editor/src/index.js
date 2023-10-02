@@ -5,7 +5,7 @@ import './lib/ace-builds.umd';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export default function AceEditorComponent({ component, elRef, eventHandlers }) {
+export default function AceCodeEditorComponent({ component, elRef, eventHandlers }) {
   const {
     classList, display, style, readOnly, value, mode, theme,
     foldStyle, placeholder, width, height, fontSize, tabSize, printMarginColumn,
@@ -40,7 +40,7 @@ export default function AceEditorComponent({ component, elRef, eventHandlers }) 
   }
 
   return (
-    <div ref={ elRef } className={ cn("bl-customComponent-aceEditor", classList) } style={ style }>
+    <div ref={ elRef } className={ cn("bl-customComponent-aceCodeEditor", classList) } style={ style }>
       <AceEditor
         value={ editorValue }
         mode={ mode }
