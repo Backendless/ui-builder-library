@@ -1,0 +1,100 @@
+{
+  "id": "c_e2eac1c619c3b43ab3b3ee1ec971538e",
+  "name": "Clock",
+  "description": "This component allows you to add on page clock, stopwatch or timer.",
+  "showInToolbox": true,
+  "faIcon": "clock",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "type",
+      "showInSettings": true,
+      "defaultValue": "clock",
+      "hasLogicHandler": false,
+      "options": [
+        {
+          "value": "clock",
+          "label": "Clock"
+        },
+        {
+          "value": "stopwatch",
+          "label": "Stopwatch"
+        },
+        {
+          "value": "timer",
+          "label": "Timer"
+        }
+      ],
+      "label": "Type"
+    },
+    {
+      "type": "select",
+      "name": "timeVariant",
+      "label": "Time Variant",
+      "showInSettings": true,
+      "defaultValue": "all",
+      "hasLogicHandler": false,
+      "options": [
+        {
+          "value": "hhmmss",
+          "label": "HH:MM:SS"
+        },
+        {
+          "value": "hhmm",
+          "label": "HH:MM"
+        },
+        {
+          "value": "hh",
+          "label": "HH"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "timerDate",
+      "label": "Timer Date",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "timerDateLogic",
+      "handlerLabel": "Timer Date Logic",
+      "handlerDescription": "This is a handler for the logic to determine the date and time when the timer will be stopped.",
+      "dataBinding": true
+    },
+    {
+      "type": "number",
+      "name": "animationDuration",
+      "label": "Animation Duration (ms)",
+      "showInSettings": true,
+      "defaultValue": "400",
+      "hasLogicHandler": true,
+      "handlerId": "animationDurationLogic",
+      "handlerLabel": "Animation Duration Logic",
+      "handlerDescription": "This is a handler for the logic to determine the duration of the animation to change the time",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onTimerEnd",
+      "label": "On Timer End",
+      "handlerDescription": "This event triggers when the timer ends"
+    }
+  ],
+  "actions": [
+    {
+      "id": "startStopwatch",
+      "label": "Start Stopwatch"
+    },
+    {
+      "id": "stopStopwatch",
+      "label": "Stop Stopwatch"
+    },
+    {
+      "id": "resetStopwatch",
+      "label": "Reset Stopwatch"
+    }
+  ]
+}

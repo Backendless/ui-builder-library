@@ -1,0 +1,84 @@
+@bl-customComponent-staticBreadcrumbs-backgroundColor: @appBackgroundColor;
+@bl-customComponent-staticBreadcrumbs-textColor: @appTextColor;
+
+@bl-customComponent-staticBreadcrumbs-width: 100%;
+@bl-customComponent-staticBreadcrumbs-padding: 10px;
+
+@bl-customComponent-staticBreadcrumbs-label-color: fade(@bl-customComponent-staticBreadcrumbs-textColor, 75%);
+@bl-customComponent-staticBreadcrumbs-label-backgroundColor: @bl-customComponent-staticBreadcrumbs-backgroundColor;
+@bl-customComponent-staticBreadcrumbs-label-fontFamily: inherit;
+@bl-customComponent-staticBreadcrumbs-label-fontSize: 16px;
+@bl-customComponent-staticBreadcrumbs-label-fontWeight: normal;
+@bl-customComponent-staticBreadcrumbs-label-fontStyle: normal;
+@bl-customComponent-staticBreadcrumbs-label-padding: 5px;
+@bl-customComponent-staticBreadcrumbs-label-margin: 0;
+@bl-customComponent-staticBreadcrumbs-label-border: none;
+@bl-customComponent-staticBreadcrumbs-label-borderRadius: 0;
+@bl-customComponent-staticBreadcrumbs-label-cursor: pointer;
+@bl-customComponent-staticBreadcrumbs-label-hover-color: @bl-customComponent-staticBreadcrumbs-label-color;
+@bl-customComponent-staticBreadcrumbs-label-hover-backgroundColor: @bl-customComponent-staticBreadcrumbs-label-backgroundColor;
+@bl-customComponent-staticBreadcrumbs-label-hover-textDecoration: underline;
+@bl-customComponent-staticBreadcrumbs-label-active-color: @bl-customComponent-staticBreadcrumbs-textColor;
+@bl-customComponent-staticBreadcrumbs-label-active-backgroundColor: @bl-customComponent-staticBreadcrumbs-label-backgroundColor;
+@bl-customComponent-staticBreadcrumbs-label-active-pointerEvents: auto;
+@bl-customComponent-staticBreadcrumbs-label-active-hover-color: @bl-customComponent-staticBreadcrumbs-label-active-color;
+@bl-customComponent-staticBreadcrumbs-label-active-hover-backgroundColor: @bl-customComponent-staticBreadcrumbs-label-active-backgroundColor;
+@bl-customComponent-staticBreadcrumbs-label-active-hover-textDecoration: @bl-customComponent-staticBreadcrumbs-label-hover-textDecoration;
+
+@bl-customComponent-staticBreadcrumbs-separator-content: "/";
+@bl-customComponent-staticBreadcrumbs-separator-fontSize: 16px;
+@bl-customComponent-staticBreadcrumbs-separator-color: @bl-customComponent-staticBreadcrumbs-label-color;
+@bl-customComponent-staticBreadcrumbs-separator-margin: 0 4px;
+
+.bl-customComponent-staticBreadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  color: @bl-customComponent-staticBreadcrumbs-textColor;
+  background-color: @bl-customComponent-staticBreadcrumbs-backgroundColor;
+  width: @bl-customComponent-staticBreadcrumbs-width;
+  padding: @bl-customComponent-staticBreadcrumbs-padding;
+
+  .breadcrumbs-item {
+    display: flex;
+    align-items: center;
+
+    .breadcrumbs-item-label {
+      color: @bl-customComponent-staticBreadcrumbs-label-color;
+      background-color: @bl-customComponent-staticBreadcrumbs-label-backgroundColor;
+      font-family: @bl-customComponent-staticBreadcrumbs-label-fontFamily;
+      font-size: @bl-customComponent-staticBreadcrumbs-label-fontSize;
+      font-weight: @bl-customComponent-staticBreadcrumbs-label-fontWeight;
+      font-style: @bl-customComponent-staticBreadcrumbs-label-fontStyle;
+      padding: @bl-customComponent-staticBreadcrumbs-label-padding;
+      margin: @bl-customComponent-staticBreadcrumbs-label-margin;
+      border: @bl-customComponent-staticBreadcrumbs-label-border;
+      border-radius: @bl-customComponent-staticBreadcrumbs-label-borderRadius;
+      cursor: @bl-customComponent-staticBreadcrumbs-label-cursor;
+
+      &:hover {
+        color: @bl-customComponent-staticBreadcrumbs-label-hover-color;
+        background-color: @bl-customComponent-staticBreadcrumbs-label-hover-backgroundColor;
+        text-decoration: @bl-customComponent-staticBreadcrumbs-label-hover-textDecoration;
+      }
+    }
+
+    &:last-child .label {
+      color: @bl-customComponent-staticBreadcrumbs-label-active-color;
+      background-color: @bl-customComponent-staticBreadcrumbs-label-active-backgroundColor;
+      pointer-events: @bl-customComponent-staticBreadcrumbs-label-active-pointerEvents;
+
+      &:hover {
+        color: @bl-customComponent-staticBreadcrumbs-label-active-hover-color;
+        background-color: @bl-customComponent-staticBreadcrumbs-label-active-hover-backgroundColor;
+        text-decoration: @bl-customComponent-staticBreadcrumbs-label-active-hover-textDecoration;
+      }
+    }
+
+    &:not(:last-child):after {
+      content: @bl-customComponent-staticBreadcrumbs-separator-content;
+      font-size: @bl-customComponent-staticBreadcrumbs-separator-fontSize;
+      color: @bl-customComponent-staticBreadcrumbs-separator-color;
+      margin: @bl-customComponent-staticBreadcrumbs-separator-margin;
+    }
+  }
+}

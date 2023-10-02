@@ -1,0 +1,48 @@
+@import 'mapbox.less';
+@import 'mapbox-geocoder.less';
+@import 'mapbox-directions.less';
+
+@bl-customComponent-mapbox-height: 400px;
+@bl-customComponent-mapbox-width: 600px;
+@bl-customComponent-mapbox-marker-active-color: #3FB1CE;
+
+.bl-customComponent-mapbox {
+  width: @bl-customComponent-mapbox-width;
+  position: relative;
+
+  .map-dimensions {
+    width: 100%;
+    height: @bl-customComponent-mapbox-height;
+  }
+
+  .mapboxgl-ctrl-geocoder--input {
+    padding: 10px 10px 10px 30px !important;
+  }
+
+  .marker-root--active path {
+    fill: @bl-customComponent-mapbox-marker-active-color;
+  }
+
+  .mapbox-directions-instructions {
+    height: (@bl-customComponent-mapbox-height - 180);
+  }
+
+  .mapbox-directions {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  @media screen and (max-width: 560px) {
+    .mapbox-directions {
+      margin-top: 5px;
+      position: static;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mapbox-directions-instructions {
+      height: auto;
+    }
+  }
+}

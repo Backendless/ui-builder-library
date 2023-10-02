@@ -1,0 +1,155 @@
+@import 'cropper';
+
+@bl-customComponent-cropper-themeColor: @themePrimary;
+@bl-customComponent-cropper-backgroundColor: @appBackgroundColor;
+@bl-customComponent-cropper-textColor: @appTextColor;
+@bl-customComponent-cropper-disabledColor: @disabledColor;
+@bl-customComponent-cropper-shadowColor: @appComponentShadowColor;
+
+@bl-customComponent-cropper-width: 100%;
+@bl-customComponent-cropper-maxHeight: 80vh;
+@bl-customComponent-cropper-padding: 5px;
+@bl-customComponent-cropper-border: 1px solid fade(@bl-customComponent-cropper-textColor, 60%);
+@bl-customComponent-cropper-borderRadius: 4px;
+@bl-customComponent-cropper-gap: 5px;
+
+@bl-customComponent-cropper-image-maxWidth: 100%;
+@bl-customComponent-cropper-image-maxHeight: 100%;
+@bl-customComponent-cropper-buttonsGroup-margin: 2px;
+
+@bl-customComponent-cropper-button-fontSize: 14px;
+@bl-customComponent-cropper-button-borderWidth: 0;
+@bl-customComponent-cropper-button-borderRadius: 4px;
+@bl-customComponent-cropper-button-margin: 2px;
+@bl-customComponent-cropper-button-padding: 6px 16px;
+@bl-customComponent-cropper-button-background: @bl-customComponent-cropper-themeColor;
+@bl-customComponent-cropper-button-color: contrast(@bl-customComponent-cropper-button-background);
+@bl-customComponent-cropper-button-shadowColor: @bl-customComponent-cropper-shadowColor;
+@bl-customComponent-cropper-button-shadowHover: 0px 2px 4px -1px fade(@bl-customComponent-cropper-button-shadowColor, 20%), 0px 4px 5px 0px fade(@bl-customComponent-cropper-button-shadowColor, 14%), 0px 1px 10px 0px fade(@bl-customComponent-cropper-button-shadowColor, 12%);
+@bl-customComponent-cropper-button-shadowDisabled: none;
+@bl-customComponent-cropper-button-disabledBackground: @bl-customComponent-cropper-disabledColor;
+@bl-customComponent-cropper-button-disabledColor: contrast(@bl-customComponent-cropper-button-disabledBackground);
+
+@bl-customComponent-cropper-icon-fontSize: 20px;
+@bl-customComponent-cropper-icon-margin: 0;
+@bl-customComponent-cropper-icon-padding: 4.4px 16px;
+
+@bl-customComponent-cropper-dropImageArea-width: 100%;
+@bl-customComponent-cropper-dropImageArea-height: 100%;
+
+@bl-customComponent-cropper-browseButton-width: 100%;
+@bl-customComponent-cropper-browseButton-height: 100%;
+@bl-customComponent-cropper-browseButton-color: @bl-customComponent-cropper-themeColor;
+
+.bl-customComponent-cropper {
+  display: flex;
+  flex-direction: column;
+  gap: @bl-customComponent-cropper-gap;
+  width: @bl-customComponent-cropper-width;
+  padding: @bl-customComponent-cropper-padding;
+  border: @bl-customComponent-cropper-border;
+  border-radius: @bl-customComponent-cropper-borderRadius;
+  max-height: @bl-customComponent-cropper-maxHeight;
+
+  .header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    min-width: min-content;
+
+    .buttons-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+
+      &:last-child {
+        justify-content: end;
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .drop-image-area {
+      width: @bl-customComponent-cropper-dropImageArea-width;
+      height: @bl-customComponent-cropper-dropImageArea-height;
+
+      label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: @bl-customComponent-cropper-browseButton-color;
+        width: @bl-customComponent-cropper-browseButton-width;
+        height: @bl-customComponent-cropper-browseButton-height;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    input {
+      display: none;
+    }
+
+    img {
+      display: block;
+      max-width: @bl-customComponent-cropper-image-maxWidth;
+      max-height: @bl-customComponent-cropper-image-maxHeight;
+    }
+  }
+
+  .footer-toolbar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .buttons-group {
+      display: flex;
+      gap: 1px;
+      margin: @bl-customComponent-cropper-buttonsGroup-margin;
+
+      button {
+        font-size: @bl-customComponent-cropper-icon-fontSize;
+        margin: @bl-customComponent-cropper-icon-margin;
+        padding: @bl-customComponent-cropper-icon-padding;
+
+        &:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+  }
+
+  button, .header-toolbar label {
+    font-size: @bl-customComponent-cropper-button-fontSize;
+    text-decoration: none;
+    margin: @bl-customComponent-cropper-button-margin;
+    padding: @bl-customComponent-cropper-button-padding;
+    background: @bl-customComponent-cropper-button-background;
+    color: @bl-customComponent-cropper-button-color;
+    border-width: @bl-customComponent-cropper-button-borderWidth;
+    border-radius: @bl-customComponent-cropper-button-borderRadius;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      box-shadow: @bl-customComponent-cropper-button-shadowHover;
+    }
+
+    &:disabled {
+      background: @bl-customComponent-cropper-button-disabledBackground;
+      color: @bl-customComponent-cropper-button-disabledColor;
+      box-shadow: @bl-customComponent-cropper-button-shadowDisabled;
+    }
+  }
+}

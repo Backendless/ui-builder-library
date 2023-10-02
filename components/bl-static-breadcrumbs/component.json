@@ -1,0 +1,71 @@
+{
+  "id": "c_1b2f2897e6984c5c6b22548d9bb18e77",
+  "name": "Static Breadcrumbs",
+  "description": "This component allows you to add a list of links that help visualize the location of a page in the application's hierarchical structure.",
+  "showInToolbox": true,
+  "faIcon": "angle-double-right",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "options",
+      "label": "Options",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "handlerDescription": "This is a handler for the logic to determine the data for the breadcrumbs. Array of objects returned by the handler will define the label and the corresponding page name.",
+      "defaultValue": "[{\"label\": \"Landing\", \"pageName\": \"landing\"}]",
+      "settingTooltip": "Define the items of the breadcrumbs."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onItemClick",
+      "label": "On Item Click Event",
+      "contextBlocks": [
+        {
+          "id": "label",
+          "label": "Page Label"
+        },
+        {
+          "id": "pageName",
+          "label": "Page Name"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the breadcrumbs item."
+    },
+    {
+      "name": "onMouseOver",
+      "label": "On Mouse Over Event",
+      "handlerDescription": "This event is fired when the mouse pointer hovers over the breadcrumbs item.",
+      "contextBlocks": [
+        {
+          "id": "label",
+          "label": "Page Label"
+        },
+        {
+          "label": "Page Name",
+          "id": "pageName"
+        }
+      ]
+    },
+    {
+      "name": "onMouseOut",
+      "label": "On Mouse Out Event",
+      "handlerDescription": "This event is fired when the mouse pointer leaves the breadcrumbs item boundaries.",
+      "contextBlocks": [
+        {
+          "id": "label",
+          "label": "Page Label"
+        },
+        {
+          "id": "pageName",
+          "label": "Page Name"
+        }
+      ]
+    }
+  ]
+}

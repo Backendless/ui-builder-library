@@ -1,0 +1,545 @@
+{
+  "id": "c_23f92ec6db7d7c559c6a344d0a83a134",
+  "name": "Particles",
+  "description": "The Particles component allows the user to create animated backgrounds or visual effects in the application.",
+  "showInToolbox": true,
+  "faIcon": "star-half",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "autoPlay",
+      "label": "Auto Play",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "autoPlayLogic",
+      "settingTooltip": "Select to start animations automatically."
+    },
+    {
+      "type": "checkbox",
+      "name": "fullScreen",
+      "label": "Full Screen",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "fullScreenLogic",
+      "settingTooltip": "Select to set the background to the full window size."
+    },
+    {
+      "type": "number",
+      "name": "zIndex",
+      "label": "Z Index",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "zIndexLogic",
+      "settingTooltip": "The CSS z-index property set to the canvas.",
+      "defaultValue": "0"
+    },
+    {
+      "type": "color",
+      "name": "background",
+      "label": "Background Color",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "backgroundLogic",
+      "settingTooltip": "Set the background color of the canvas.",
+      "handlerLabel": "Background Color Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the background color of particles."
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "label": "Width",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic",
+      "settingTooltip": "The width of the canvas."
+    },
+    {
+      "type": "text",
+      "name": "height",
+      "label": "Height",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "heightLogic",
+      "settingTooltip": "The height of the canvas."
+    },
+    {
+      "type": "number",
+      "name": "duration",
+      "label": "Duration",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "durationLogic",
+      "defaultValue": "",
+      "settingTooltip": "The particles effect duration in seconds."
+    },
+    {
+      "type": "number",
+      "name": "delay",
+      "label": "Delay",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "delayLogic",
+      "settingTooltip": "The initial delay before starting the animation."
+    },
+    {
+      "type": "select",
+      "name": "shape",
+      "label": "Shape",
+      "showInSettings": true,
+      "defaultValue": "bubble",
+      "hasLogicHandler": true,
+      "handlerId": "shapeLogic",
+      "options": [
+        {
+          "value": "bubble",
+          "label": "Bubble"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "heart",
+          "label": "Heart"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "line",
+          "label": "Line"
+        },
+        {
+          "value": "triangle",
+          "label": "Triangle"
+        },
+        {
+          "value": "polygon",
+          "label": "Polygon"
+        },
+        {
+          "value": "rounded-rect",
+          "label": "Rounded Rectangle"
+        },
+        {
+          "value": "spiral",
+          "label": "Spiral"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "handlerLabel": "Shape Logic",
+      "settingTooltip": "Define the shape of the particles.",
+      "handlerDescription": "This is a handler for the logic to determine the shape(s) of the particles."
+    },
+    {
+      "type": "number",
+      "name": "number",
+      "label": "Number",
+      "showInSettings": true,
+      "defaultValue": "15",
+      "hasLogicHandler": false,
+      "handlerId": "numberLogic",
+      "settingTooltip": "Set the number of particles displayed on the canvas."
+    },
+    {
+      "type": "number",
+      "name": "size",
+      "label": "Size",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "sizeLogic",
+      "defaultValue": "5",
+      "settingTooltip": "Set the particle size.",
+      "handlerLabel": "Size Logic",
+      "handlerDescription": "This is a handler for the logic to determine particle size."
+    },
+    {
+      "type": "color",
+      "name": "color",
+      "label": "Color",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "colorLogic",
+      "handlerLabel": "Color Logic",
+      "handlerDescription": "This is a handler for the logic to determine the color(s) of particles.",
+      "settingTooltip": "Set the color of particles.",
+      "dataBinding": true
+    },
+    {
+      "type": "checkbox",
+      "name": "colorAnimation",
+      "label": "Color Animation",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "colorAnimationLogic",
+      "settingTooltip": "Enable animation of particle color."
+    },
+    {
+      "type": "checkbox",
+      "name": "move",
+      "label": "Move",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "moveLogic",
+      "defaultValue": true,
+      "settingTooltip": "Enable particle movement."
+    },
+    {
+      "type": "number",
+      "name": "speed",
+      "label": "Speed",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "speedLogic",
+      "defaultValue": "2",
+      "settingTooltip": "Set the speed of particle movement."
+    },
+    {
+      "type": "select",
+      "name": "direction",
+      "label": "Direction",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "directionLogic",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "inside",
+          "label": "Inside"
+        },
+        {
+          "value": "outside",
+          "label": "Outside"
+        }
+      ],
+      "defaultValue": "none",
+      "settingTooltip": "Select the direction of particle movement."
+    },
+    {
+      "type": "select",
+      "name": "outModes",
+      "label": "Out Modes",
+      "showInSettings": true,
+      "defaultValue": "out",
+      "hasLogicHandler": false,
+      "handlerId": "outModesLogic",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "bounce",
+          "label": "Bounce"
+        },
+        {
+          "value": "split",
+          "label": "Split"
+        },
+        {
+          "value": "destroy",
+          "label": "Destroy"
+        },
+        {
+          "value": "out",
+          "label": "Out"
+        },
+        {
+          "value": "bounceHorizontal",
+          "label": "Bounce Horizontal"
+        },
+        {
+          "value": "bounceVertical",
+          "label": "Bounce Vertical"
+        }
+      ],
+      "settingTooltip": "Set the particle out mode."
+    },
+    {
+      "type": "checkbox",
+      "name": "rotate",
+      "label": "Rotate",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "rotateLogic",
+      "settingTooltip": "Rotate particles by a random angle."
+    },
+    {
+      "type": "checkbox",
+      "name": "rotationAnimation",
+      "label": "Rotation Animation",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "rotationAnimationLogic",
+      "settingTooltip": "Enable animation of particle rotation."
+    },
+    {
+      "type": "checkbox",
+      "name": "rollingAnimation",
+      "label": "Rolling Animation",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "rollingAnimationLogic",
+      "settingTooltip": "Enable particle rolling animation."
+    },
+    {
+      "type": "checkbox",
+      "name": "lineLinksVisibility",
+      "label": "Line Links Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "lineLinksVisibilityLogic",
+      "settingTooltip": "Enable particle links."
+    },
+    {
+      "type": "checkbox",
+      "name": "triangleLinksVisibility",
+      "label": "Triangle Links Visibility",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "triangleLinksVisibilityLogic",
+      "settingTooltip": "Fills the triangles made by link lines."
+    },
+    {
+      "type": "color",
+      "name": "linksColor",
+      "label": "Links Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "linksColorLogic",
+      "settingTooltip": "Set the color of the links."
+    },
+    {
+      "type": "select",
+      "name": "collisionMode",
+      "label": "Collision Mode",
+      "showInSettings": true,
+      "defaultValue": "unset",
+      "hasLogicHandler": false,
+      "handlerId": "collisionModeLogic",
+      "options": [
+        {
+          "value": "unset",
+          "label": "Unset"
+        },
+        {
+          "value": "bounce",
+          "label": "Bounce"
+        },
+        {
+          "value": "absorb",
+          "label": "Absorb"
+        },
+        {
+          "value": "destroy",
+          "label": "Destroy"
+        }
+      ],
+      "settingTooltip": "Set the particle collision mode."
+    },
+    {
+      "type": "text",
+      "name": "textValue",
+      "label": "Text Value(s)",
+      "showInSettings": true,
+      "defaultValue": "",
+      "hasLogicHandler": true,
+      "handlerId": "textValueLogic",
+      "handlerLabel": "Text Value(s) Logic",
+      "settingTooltip": "Specify a particle value(s) for the Text shape.",
+      "handlerDescription": "This is a handler for the logic to determine the text particles. The value(s) returned by the handler will be used as the particles for the Text shape."
+    },
+    {
+      "type": "text",
+      "name": "imageURL",
+      "label": "Image URL(s)",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "imageURLLogic",
+      "handlerLabel": "Image URL(s) Logic",
+      "defaultValue": "",
+      "settingTooltip": "Specify the image source for Image shape.",
+      "handlerDescription": "This is a handler for the logic to determine the image source for particles. The value(s) returned by the handler will be used for the Image shape."
+    },
+    {
+      "type": "select",
+      "name": "preset",
+      "label": "Presets",
+      "showInSettings": true,
+      "defaultValue": "unset",
+      "hasLogicHandler": false,
+      "handlerId": "presetLogic",
+      "options": [
+        {
+          "value": "unset",
+          "label": "Unset"
+        },
+        {
+          "value": "bigCircles",
+          "label": "Big Circles"
+        },
+        {
+          "value": "bubbles",
+          "label": "Bubbles"
+        },
+        {
+          "value": "confetti",
+          "label": "Confetti"
+        },
+        {
+          "value": "fire",
+          "label": "Fire"
+        },
+        {
+          "value": "firefly",
+          "label": "Firefly"
+        },
+        {
+          "value": "fireworks",
+          "label": "Fireworks"
+        },
+        {
+          "value": "growing",
+          "label": "Growing"
+        },
+        {
+          "value": "hyperspace",
+          "label": "Hyperspace"
+        },
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "links",
+          "label": "Links"
+        },
+        {
+          "value": "seaAnemone",
+          "label": "Sea Anemone"
+        },
+        {
+          "value": "snow",
+          "label": "Snow"
+        },
+        {
+          "value": "stars",
+          "label": "Stars"
+        },
+        {
+          "value": "tetradicConfetti",
+          "label": "Tetradic Confetti"
+        },
+        {
+          "value": "triangles",
+          "label": "Triangles"
+        }
+      ],
+      "settingTooltip": "Choose a particle preset. Set to Basic to adjust the particles."
+    },
+    {
+      "type": "json",
+      "name": "customOptions",
+      "label": "Custom Options",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "customOptionsLogic",
+      "handlerLabel": "Custom Options Logic",
+      "settingTooltip": "Set your own particle configuration.",
+      "handlerDescription": "This is a handler for the logic to determine the options for particles. The value returned by the handler will be used as the particle configuration."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onLoad",
+      "label": "On Load Event",
+      "handlerDescription": "This event is fired when particles are correctly loaded in canvas.",
+      "contextBlocks": [
+        {
+          "id": "options",
+          "label": "Options"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start"
+    },
+    {
+      "id": "stop",
+      "label": "Stop"
+    },
+    {
+      "id": "play",
+      "label": "Play"
+    },
+    {
+      "id": "pause",
+      "label": "Pause"
+    },
+    {
+      "id": "destroy",
+      "label": "Destroy"
+    },
+    {
+      "id": "refresh",
+      "label": "Refresh"
+    }
+  ]
+}

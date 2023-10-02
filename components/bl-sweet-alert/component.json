@@ -1,0 +1,286 @@
+{
+  "id": "c_b2fa730664bb611512f3c6cdecff8a36",
+  "name": "Sweet Alert",
+  "description": "The Sweet Alert component allows you to use a beautiful, responsive, accessible replacement for javascript's popup boxes.",
+  "showInToolbox": true,
+  "faIcon": "exclamation-circle",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "position",
+      "label": "Position",
+      "settingTooltip": "Popup window position.",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": false,
+      "handlerId": "positionLogic",
+      "options": [
+        {
+          "value": "top",
+          "label": "top"
+        },
+        {
+          "value": "top-start",
+          "label": "top-start"
+        },
+        {
+          "value": "top-end",
+          "label": "top-end"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "center-start",
+          "label": "center-start"
+        },
+        {
+          "value": "center-end",
+          "label": "center-end"
+        },
+        {
+          "value": "bottom",
+          "label": "bottom"
+        },
+        {
+          "value": "bottom-start",
+          "label": "bottom-start"
+        },
+        {
+          "value": "bottom-end",
+          "label": "bottom-end"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "label": "Title",
+      "settingTooltip": "The title of the popup, as text or HTML.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "titleLogic",
+      "handlerLabel": "Title Logic",
+      "handlerDescription": "This handler allows you to specify a title of the popup, as text or HTML.",
+      "dataBinding": true,
+      "defaultValue": "Sweet Alert"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "label": "Text Body",
+      "settingTooltip": "A description for the popup.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "textLogic",
+      "handlerLabel": "Text Body Logic",
+      "handlerDescription": "This handler allows you to specify a description for the popup.",
+      "dataBinding": true,
+      "defaultValue": "We are pleased to welcome you!"
+    },
+    {
+      "type": "text",
+      "name": "footer",
+      "label": "Footer",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "footerLogic",
+      "handlerLabel": "Footer Logic",
+      "dataBinding": true,
+      "settingTooltip": "The footer of the popup. Can be either plain text or HTML.",
+      "handlerDescription": "This handler allows you to specify a footer of the popup. Can be either plain text or HTML."
+    },
+    {
+      "type": "select",
+      "name": "icon",
+      "label": "Icon",
+      "settingTooltip": "The icon of the popup.",
+      "showInSettings": true,
+      "defaultValue": "success",
+      "hasLogicHandler": false,
+      "handlerId": "iconLogic",
+      "options": [
+        {
+          "value": "success",
+          "label": "success"
+        },
+        {
+          "value": "error",
+          "label": "error"
+        },
+        {
+          "value": "info",
+          "label": "info"
+        },
+        {
+          "value": "warning",
+          "label": "warning"
+        },
+        {
+          "value": "question",
+          "label": "question"
+        },
+        {
+          "value": "",
+          "label": "none"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "name": "iconColor",
+      "label": "Icon Color",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "iconColorLogic",
+      "settingTooltip": "Use this to change the color of the icon."
+    },
+    {
+      "type": "checkbox",
+      "name": "backdrop",
+      "label": "Backdrop",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "backdropLogic",
+      "handlerLabel": "Backdrop Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify whether or not the component should show a full screen click-to-dismiss backdrop.\nCan be either a boolean or a string which will be assigned to the CSS background property.",
+      "settingTooltip": "Flag indicating whether the full screen click-to-dismiss backdrop is hidden or should show by default."
+    },
+    {
+      "type": "checkbox",
+      "name": "allowOutsideClick",
+      "label": "Allow Outside Click",
+      "settingTooltip": "Flag indicating whether the user can dismiss the popup by clicking outside it by default (requires `backdrop` parameter to be set to `true`) or not.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "allowOutsideClickLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "allowEscapeKey",
+      "label": "Allow Escape Key",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "allowEscapeKeyLogic",
+      "settingTooltip": "Flag indicating whether the user can dismiss the popup by pressing the `Esc` key by default (requires `allowEnterKey` parameter to be set to `true`) or not."
+    },
+    {
+      "type": "checkbox",
+      "name": "allowEnterKey",
+      "label": "Allow Enter Key",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "allowEnterKeyLogic",
+      "settingTooltip": "Flag indicating whether the user can confirm the popup by pressing the `Enter` or `Space` keys by default or not, unless they manually focus the confirm button."
+    },
+    {
+      "type": "json",
+      "name": "buttonsSettings",
+      "label": "Buttons Settings",
+      "settingTooltip": "Settings of the 'Confirm', 'Deny', 'Cancel' and 'Close' buttons.",
+      "showInSettings": true,
+      "defaultValue": "{\n  \"showConfirmButton\": true,\n  \"confirmButtonText\": \"OK\",\n  \"confirmButtonColor\": \"#3085d6\",\n  \"confirmButtonAriaLabel\": \"\",\n  \"focusConfirm\": true,\n  \"showDenyButton\": false,\n  \"denyButtonText\": \"No\",\n  \"denyButtonColor\": \"#dd6b55\",\n  \"denyButtonAriaLabel\": \"\",\n  \"focusDeny\": false,\n  \"showCancelButton\": false,\n  \"cancelButtonText\": \"Cancel\",\n  \"cancelButtonColor\": \"#aaa\",\n  \"cancelButtonAriaLabel\": \"\",\n  \"focusCancel\": false,\n  \"showCloseButton\": false,\n  \"closeButtonHtml\": \"&times;\",\n  \"closeButtonAriaLabel\": \"Close this dialog\"\n}",
+      "hasLogicHandler": true,
+      "handlerId": "buttonsSettingsLogic",
+      "handlerLabel": "Buttons Settings Logic",
+      "handlerDescription": "This handler allows you to specify the settings of the \"Confirm\", \"Deny\", \"Cancel\" and \"Close\" buttons.",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "grow",
+      "label": "Grow",
+      "showInSettings": true,
+      "defaultValue": "",
+      "hasLogicHandler": false,
+      "handlerId": "growLogic",
+      "options": [
+        {
+          "value": "row",
+          "label": "row"
+        },
+        {
+          "value": "column",
+          "label": "column"
+        },
+        {
+          "value": "fullscreen",
+          "label": "fullscreen"
+        },
+        {
+          "value": "",
+          "label": "none"
+        }
+      ],
+      "settingTooltip": "Paired with window position, sets the direction the popup should grow in."
+    },
+    {
+      "type": "json",
+      "name": "additionalSettings",
+      "label": "Additional Settings",
+      "settingTooltip": "Additional popup settings.",
+      "showInSettings": true,
+      "defaultValue": "{\n  \"showClass\": {\n    \"popup\": \"swal2-show\",\n    \"backdrop\": \"swal2-backdrop-show\",\n    \"icon\": \"swal2-icon-show\"\n  },\n  \"hideClass\": {\n    \"popup\": \"swal2-hide\",\n    \"backdrop\": \"swal2-backdrop-hide\",\n    \"icon\": \"swal2-icon-hide\"\n  }\n}",
+      "hasLogicHandler": true,
+      "handlerId": "additionalSettingsLogic",
+      "handlerLabel": "Additional Settings Logic",
+      "handlerDescription": "This handler allows you to specify the additional popup settings.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onConfirm",
+      "label": "On Confirm",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "value"
+        }
+      ],
+      "handlerDescription": "Triggered when the \"Confirm\" button was clicked."
+    },
+    {
+      "name": "onDeny",
+      "label": "On Deny",
+      "handlerDescription": "Triggered when the \"Deny\" button was clicked.",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "value"
+        }
+      ]
+    },
+    {
+      "name": "onDismiss",
+      "label": "On Dismiss",
+      "contextBlocks": [
+        {
+          "id": "dismiss",
+          "label": "dismiss"
+        }
+      ],
+      "handlerDescription": "Triggered when there is any reason to dismiss(\"Close\", \"Cancel\", `Esc`, etc.)."
+    }
+  ],
+  "actions": [
+    {
+      "id": "show",
+      "label": "Show"
+    },
+    {
+      "id": "close",
+      "label": "Close"
+    }
+  ],
+  "pods": {}
+}

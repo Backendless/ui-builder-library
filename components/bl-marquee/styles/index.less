@@ -1,0 +1,87 @@
+@bl-customComponent-marquee-width: 100%;
+@bl-customComponent-marquee-container-width: 100%;
+@bl-customComponent-marquee-content-width: 100%;
+
+@bl-customComponent-marquee-animation-name: scroll;
+@bl-customComponent-marquee-animation-timing-function: linear;
+@bl-customComponent-marquee-animation-delay: 0s;
+@bl-customComponent-marquee-animation-duration: 10s;
+
+@bl-customComponent-marquee-overlay-width: 100%;
+@bl-customComponent-marquee-overlay-height: 100%;
+@bl-customComponent-marquee-overlay-background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+@bl-customComponent-marquee-overlay-pseudo-width: 200px;
+@bl-customComponent-marquee-overlay-z-index: 2;
+
+.bl-customComponent-marquee {
+  display: flex;
+  position: relative;
+  width: @bl-customComponent-marquee-width;
+
+  .marquee-container {
+    width: @bl-customComponent-marquee-container-width;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: hidden !important;
+    position: relative;
+
+    &:hover .marquee-content {
+      animation-play-state: var(--marquee-pause-on-hover);
+    }
+
+    &:active .marquee-content {
+      animation-play-state: var(--marquee-pause-on-click);
+    }
+
+    .marquee-content {
+      flex: 0 0 auto;
+      min-width: @bl-customComponent-marquee-content-width;
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      animation-name: @bl-customComponent-marquee-animation-name;
+      animation-timing-function: @bl-customComponent-marquee-animation-timing-function;
+      animation-play-state: var(--marquee-play);
+      animation-delay: @bl-customComponent-marquee-animation-delay;
+      animation-duration: @bl-customComponent-marquee-animation-duration;
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    width: @bl-customComponent-marquee-overlay-width;
+    height: @bl-customComponent-marquee-overlay-height;
+
+    &::before,
+    &::after {
+      content: "";
+      height: @bl-customComponent-marquee-overlay-height;
+      position: absolute;
+      background: @bl-customComponent-marquee-overlay-background;
+      width: @bl-customComponent-marquee-overlay-pseudo-width;
+      z-index: @bl-customComponent-marquee-overlay-z-index;
+    }
+
+    &::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+    }
+  }
+}

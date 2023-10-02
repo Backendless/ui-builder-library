@@ -1,0 +1,57 @@
+// you can use LESS variables from the current Theme and app extensions of the UI-Container
+@bl-customComponent-rating-themeColor: @themePrimary;
+@bl-customComponent-rating-backgroundColor: @appBackgroundColor;
+@bl-customComponent-rating-textColor: @appTextColor;
+
+@bl-customComponent-rating-iconWidth: 35px;
+
+@bl-customComponent-rating-disabled: 0.38;
+@bl-customComponent-rating-labelWidth: 100%;
+
+.bl-customComponent-rating {
+  display: flex;
+  position: relative;
+  
+  &.disabled {
+    opacity: @bl-customComponent-rating-disabled;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.bl-customComponent-rating__icons {
+  display: inline-flex;
+  
+  .rating-icon {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: @bl-customComponent-rating-iconWidth;
+    height: @bl-customComponent-rating-iconWidth;
+  
+    &__label {
+      width: @bl-customComponent-rating-labelWidth;
+      height: @bl-customComponent-rating-labelWidth;
+      left: 0;
+      cursor: pointer;
+    }
+  
+    &__svg {
+      width: @bl-customComponent-rating-iconWidth;
+      height: @bl-customComponent-rating-iconWidth;
+      display: inline-block;
+    }
+  
+    &__input {
+      width: 0;
+    }
+  }
+  
+  .half-icon {
+    position: absolute;
+    width: 50%;
+    overflow: hidden;
+  }
+}

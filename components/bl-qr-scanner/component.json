@@ -1,0 +1,182 @@
+{
+  "id": "c_f1f121bc677fdc6cc4ee3909dc53054c",
+  "name": "QR Scanner",
+  "description": "This is a component for scanning QR codes directly from a web application.",
+  "showInToolbox": true,
+  "faIcon": "qrcode",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "highlightScanRegion",
+      "label": "Highlight Scan Region",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "highlightScanRegionLogic",
+      "defaultValue": true
+    },
+    {
+      "type": "checkbox",
+      "name": "highlightCodeOutline",
+      "label": "Highlight Code Outline",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "highlightCodeOutlineLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "hideAfterScan",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "hideAfterScanLogic",
+      "label": "Hide After Scan"
+    },
+    {
+      "type": "number",
+      "name": "maxScansPerSecond",
+      "label": "Max Scans Per Second",
+      "showInSettings": true,
+      "defaultValue": "25",
+      "hasLogicHandler": false,
+      "handlerId": "maxScansPerSecondLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "scanButtonVisibility",
+      "label": "Scan Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "scanButtonVisibilityLogic"
+    },
+    {
+      "type": "text",
+      "name": "scanButtonLabel",
+      "label": "Scan Button Label",
+      "showInSettings": true,
+      "defaultValue": "Scan QR Code",
+      "hasLogicHandler": false,
+      "handlerId": "scanButtonLabelLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "uploadButtonVisibility",
+      "label": "Upload Button Visibility",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "uploadButtonVisibilityLogic"
+    },
+    {
+      "type": "text",
+      "name": "uploadButtonLabel",
+      "label": "Upload Button Label",
+      "showInSettings": true,
+      "defaultValue": "Upload QR Code",
+      "hasLogicHandler": false,
+      "handlerId": "uploadButtonLabelLogic"
+    },
+    {
+      "type": "select",
+      "name": "direction",
+      "label": "Direction",
+      "showInSettings": true,
+      "defaultValue": "row",
+      "hasLogicHandler": false,
+      "handlerId": "directionLogic",
+      "options": [
+        {
+          "value": "row",
+          "label": "Row"
+        },
+        {
+          "value": "row-reverse",
+          "label": "Row reverse"
+        },
+        {
+          "value": "column",
+          "label": "Column"
+        },
+        {
+          "value": "column-reverse",
+          "label": "Column reverse"
+        }
+      ]
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onDecodeError",
+      "label": "On Decode Error Event",
+      "handlerDescription": "This event is fired on decoding errors.",
+      "output": false,
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ]
+    },
+    {
+      "name": "onDecodeSuccess",
+      "label": "On Decode Success Event",
+      "contextBlocks": [
+        {
+          "id": "decodedQRCode",
+          "label": "Decoded QR Code"
+        }
+      ],
+      "handlerDescription": "This event is fired on successful decoding."
+    },
+    {
+      "name": "onScannerClick",
+      "label": "On Scanner Click Event",
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the scanner area."
+    },
+    {
+      "name": "onStartScanFailed",
+      "label": "On Start Scan Failed",
+      "handlerDescription": "This event is triggered if an error occurs during the start of the scan.",
+      "contextBlocks": [
+        {
+          "id": "error",
+          "label": "Error"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "startScan",
+      "label": "Start Scan"
+    },
+    {
+      "id": "stopScan",
+      "label": "Stop Scan"
+    },
+    {
+      "id": "getCamerasList",
+      "label": "Get Cameras List",
+      "hasReturn": true
+    },
+    {
+      "id": "hasCamera",
+      "label": "Has Camera",
+      "hasReturn": true
+    },
+    {
+      "id": "setCamera",
+      "label": "Set Camera",
+      "inputs": [
+        {
+          "id": "camera",
+          "label": "camera"
+        }
+      ]
+    }
+  ]
+}

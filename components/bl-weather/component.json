@@ -1,0 +1,258 @@
+{
+  "id": "c_7c4bc1edf82a1e2f90217ef50d71446e",
+  "name": "Weather",
+  "description": "The Weather component allows the user to add a weather widget for the current day or with the addition of a forecast.",
+  "showInToolbox": true,
+  "faIcon": "cloud-sun",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "currentLocation",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "currentLocationLogic",
+      "label": "Current Location",
+      "settingTooltip": "Select to display the weather for your location."
+    },
+    {
+      "type": "json",
+      "name": "location",
+      "showInSettings": true,
+      "defaultValue": "{\"lat\": 40.730610, \"lng\": -73.935242}",
+      "hasLogicHandler": true,
+      "handlerId": "locationLogic",
+      "settingTooltip": "Latitude and longitude of a location to display the weather for them.",
+      "handlerDescription": "This is a handler for the logic to determine the latitude and longitude of a location to display the weather for them.",
+      "label": "Location",
+      "handlerLabel": "Location Logic",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "showInSettings": true,
+      "defaultValue": "Long Island City",
+      "hasLogicHandler": true,
+      "handlerId": "locationLabelLogic",
+      "label": "Location Label",
+      "settingTooltip": "The name of a location or city to show in the component.",
+      "handlerLabel": "Location Label Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the name of a location or city to display it in the component."
+    },
+    {
+      "type": "checkbox",
+      "name": "weatherInfo",
+      "label": "Weather Info",
+      "settingTooltip": "Select to display weather information.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "weatherInfoLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "date",
+      "label": "Date",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "dateLogic",
+      "settingTooltip": "Select to display today’s date."
+    },
+    {
+      "type": "checkbox",
+      "name": "temperature",
+      "label": "Temperature",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "temperatureLogic",
+      "settingTooltip": "Select to display the temperature for now."
+    },
+    {
+      "type": "checkbox",
+      "name": "desc",
+      "label": "Description",
+      "settingTooltip": "Select to display the weather description for now.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "descLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "wind",
+      "label": "Wind",
+      "settingTooltip": "Select to display the wind speed for now.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "windLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "humidity",
+      "label": "Humidity",
+      "settingTooltip": "Select to display the humidity for now.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "humidityLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "weatherIcon",
+      "label": "Weather Icon",
+      "settingTooltip": "Select to display weather icon.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "weatherIconLogic"
+    },
+    {
+      "type": "checkbox",
+      "name": "forecast",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "forecastLogic",
+      "settingTooltip": "Select to display the weather forecast.",
+      "label": "Forecast"
+    },
+    {
+      "type": "select",
+      "name": "unit",
+      "showInSettings": true,
+      "defaultValue": "imperial",
+      "hasLogicHandler": false,
+      "handlerId": "unitLogic",
+      "options": [
+        {
+          "value": "imperial",
+          "label": "Fahrenheit (°F), mph"
+        },
+        {
+          "value": "metric",
+          "label": "Celsius (°C), m/s"
+        },
+        {
+          "value": "standard",
+          "label": "Kelvin (K), m/s"
+        }
+      ],
+      "settingTooltip": "Choose a unit of measurement.",
+      "label": "Unit"
+    },
+    {
+      "type": "json",
+      "name": "theme",
+      "showInSettings": true,
+      "defaultValue": "{\r\n  \"fontFamily\": \"Helvetica, sans-serif\",\r\n  \"gradientStart\": \"#0181C2\",\r\n  \"gradientMid\": \"#04A7F9\",\r\n  \"gradientEnd\": \"#4BC4F7\",\r\n  \"locationFontColor\": \"#FFF\",\r\n  \"todayTempFontColor\": \"#FFF\",\r\n  \"todayDateFontColor\": \"#B5DEF4\",\r\n  \"todayRangeFontColor\": \"#B5DEF4\",\r\n  \"todayDescFontColor\": \"#B5DEF4\",\r\n  \"todayInfoFontColor\": \"#B5DEF4\",\r\n  \"todayIconColor\": \"#FFF\",\r\n  \"forecastBackgroundColor\": \"#FFF\",\r\n  \"forecastSeparatorColor\": \"#DDD\",\r\n  \"forecastDateColor\": \"#777\",\r\n  \"forecastDescColor\": \"#777\",\r\n  \"forecastRangeColor\": \"#777\",\r\n  \"forecastIconColor\": \"#4BC4F7\",\r\n  \"containerDropShadow\": \"0px 3px 6px 0px rgba(50, 50, 50, 0.5)\"\r\n}",
+      "hasLogicHandler": true,
+      "handlerId": "themeLogic",
+      "label": "Custom styling",
+      "handlerLabel": "Custom Styling Logic",
+      "handlerDescription": "This is a handler for the logic to determine the custom styling options for the component.",
+      "settingTooltip": "Custom styling options for the component."
+    },
+    {
+      "type": "select",
+      "name": "lang",
+      "showInSettings": true,
+      "defaultValue": "en",
+      "hasLogicHandler": false,
+      "handlerId": "langLogic",
+      "options": [
+        {
+          "value": "ca",
+          "label": "Catalan"
+        },
+        {
+          "value": "zh_tw",
+          "label": "Chinese (Traditional)"
+        },
+        {
+          "value": "cs",
+          "label": "Czech"
+        },
+        {
+          "value": "da",
+          "label": "Danish"
+        },
+        {
+          "value": "nl",
+          "label": "Dutch"
+        },
+        {
+          "value": "nl_be",
+          "label": "Dutch (Belgium)"
+        },
+        {
+          "value": "en",
+          "label": "English"
+        },
+        {
+          "value": "fr",
+          "label": "French"
+        },
+        {
+          "value": "de",
+          "label": "German"
+        },
+        {
+          "value": "it",
+          "label": "Italian"
+        },
+        {
+          "value": "ja",
+          "label": "Japanese"
+        },
+        {
+          "value": "pl",
+          "label": "Polish"
+        },
+        {
+          "value": "pt",
+          "label": "Portuguese"
+        },
+        {
+          "value": "pt_br",
+          "label": "Portuguese (Brazil)"
+        },
+        {
+          "value": "sl",
+          "label": "Slovenian"
+        },
+        {
+          "value": "es",
+          "label": "Spanish"
+        },
+        {
+          "value": "tr",
+          "label": "Turkish"
+        },
+        {
+          "value": "uk",
+          "label": "Ukrainian"
+        }
+      ],
+      "label": "Lang",
+      "settingTooltip": "Choose the language to show \"humidity\" and \"wind speed\"."
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [],
+  "pods": {},
+  "settings": [
+    {
+      "type": "text",
+      "name": "API_KEY",
+      "title": "WEATHER_API_KEY",
+      "required": true,
+      "description": "This setting allows determining the API key for weather component."
+    }
+  ]
+}

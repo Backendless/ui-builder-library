@@ -1,0 +1,124 @@
+@bl-customComponent-collapsiblePanel-themeTextColor: @appTextColor;
+
+@bl-customComponent-collapsiblePanel-background-color: if(@isLightTheme, rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+@bl-customComponent-collapsiblePanel-hover-background-color: fade(@bl-customComponent-collapsiblePanel-background-color, 20%);
+
+@bl-customComponent-collapsiblePanel-width: 100%;
+@bl-customComponent-collapsiblePanel-padding: 10px 14px;
+@bl-customComponent-collapsiblePanel-content-width: 100%;
+@bl-customComponent-collapsiblePanel-content-direction: column;
+@bl-customComponent-collapsiblePanel-content-open-maxHeight: 1000px;
+@bl-customComponent-collapsiblePanel-content-animationName-open: collapsiblePanel-animation-open;
+@bl-customComponent-collapsiblePanel-content-animationName-close: collapsiblePanel-animation-close;
+@bl-customComponent-collapsiblePanel-content-animationDuration: 0.3s;
+
+@bl-customComponent-collapsiblePanel-title-width: 100%;
+@bl-customComponent-collapsiblePanel-title-fontSize: 26px;
+@bl-customComponent-collapsiblePanel-title-icon-width: 1.5em;
+@bl-customComponent-collapsiblePanel-title-icon-height: 1.5em;
+@bl-customComponent-collapsiblePanel-title-icon-color: @bl-customComponent-collapsiblePanel-themeTextColor;
+@bl-customComponent-collapsiblePanel-title-icon-transition: all 0.3s ease-in-out;
+@bl-customComponent-collapsiblePanel-title-icon-transform: rotateZ(180deg);
+
+@bl-customComponent-collapsiblePanel-cursor: pointer;
+
+.bl-customComponent-collapsiblePanel {
+  width: @bl-customComponent-collapsiblePanel-width;
+
+  &.panel-expanded {
+    .collapse-icon {
+      transform: @bl-customComponent-collapsiblePanel-title-icon-transform;
+    }
+
+    .panel-content {
+      max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
+    }
+
+    &.with-animation {
+      .panel-content {
+        animation-name: @bl-customComponent-collapsiblePanel-content-animationName-open;
+        animation-duration: (@bl-customComponent-collapsiblePanel-content-animationDuration * 2);
+      }
+    }
+  }
+
+  &:not(.panel-expanded).with-animation {
+    .close {
+      animation-name: @bl-customComponent-collapsiblePanel-content-animationName-close;
+      animation-duration: @bl-customComponent-collapsiblePanel-content-animationDuration;
+    }
+  }
+
+  .panel-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: @bl-customComponent-collapsiblePanel-title-width;
+    padding: @bl-customComponent-collapsiblePanel-padding;
+    background-color: @bl-customComponent-collapsiblePanel-background-color;
+    cursor: @bl-customComponent-collapsiblePanel-cursor;
+
+    &:hover {
+      background-color: @bl-customComponent-collapsiblePanel-hover-background-color;
+    }
+  }
+
+  .panel-title-text {
+    width: calc(100% - @bl-customComponent-collapsiblePanel-title-icon-width);
+    font-size: @bl-customComponent-collapsiblePanel-title-fontSize;
+    color: @bl-customComponent-collapsiblePanel-themeTextColor;
+
+    &::selection {
+      background: none;
+    }
+
+    &.oneline {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.multiline {
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  .collapse-icon {
+    width: @bl-customComponent-collapsiblePanel-title-icon-width;
+    height: @bl-customComponent-collapsiblePanel-title-icon-height;
+    font-size: @bl-customComponent-collapsiblePanel-title-fontSize;
+    fill: @bl-customComponent-collapsiblePanel-title-icon-color;
+    transition: @bl-customComponent-collapsiblePanel-title-icon-transition;
+  }
+
+  .panel-content {
+    display: flex;
+    flex-direction: @bl-customComponent-collapsiblePanel-content-direction;
+    width: @bl-customComponent-collapsiblePanel-content-width;
+    max-height: 0;
+    overflow: hidden;
+  }
+}
+
+@keyframes collapsiblePanel-animation-open {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
+    opacity: 1;
+  }
+}
+
+@keyframes collapsiblePanel-animation-close {
+  0% {
+    max-height: @bl-customComponent-collapsiblePanel-content-open-maxHeight;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    opacity: 0;
+  }
+}

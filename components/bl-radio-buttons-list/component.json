@@ -1,0 +1,94 @@
+{
+  "id": "c_bbfe448ecd3e2a52206799950f880c89",
+  "name": "Radio Buttons List",
+  "description": "The main goal of this component is to display radio buttons.",
+  "showInToolbox": true,
+  "faIcon": "circle",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "settingTooltip": "This handler allows you to disable the component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This handler allows you to disable the component.",
+      "dataBinding": true
+    },
+    {
+      "type": "json",
+      "name": "options",
+      "label": "Options",
+      "settingTooltip": "This handler allows you to add options to the component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "optionsLogic",
+      "handlerLabel": "Options Logic",
+      "handlerDescription": "This handler allows you to add options to the component.",
+      "dataBinding": true,
+      "defaultValue": "[\n  {\"label\": \"Radio 1\", \"value\": \"radio1\", \"disabled\": true},\n  {\"label\": \"Radio 2\", \"value\": \"radio2\"},\n  {\"label\": \"Radio 3\", \"value\": \"radio3\"}\n]"
+    },
+    {
+      "type": "text",
+      "name": "value",
+      "label": "Value",
+      "settingTooltip": "This handler allows you to select value by default.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "valueLogic",
+      "handlerLabel": "Value Logic",
+      "handlerDescription": "This handler allows you to select value by default.",
+      "dataBinding": true,
+      "defaultValue": "radio3"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onChange",
+      "label": "On Change Event",
+      "contextBlocks": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "getValue",
+      "label": "Get Value of",
+      "hasReturn": true
+    },
+    {
+      "id": "setValue",
+      "label": "Set Value to",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    },
+    {
+      "id": "getOptions",
+      "label": "Get Options of",
+      "hasReturn": true
+    },
+    {
+      "inputs": [
+        {
+          "id": "options",
+          "label": "Options"
+        }
+      ],
+      "id": "setOptions",
+      "label": "Set Options to"
+    }
+  ]
+}
