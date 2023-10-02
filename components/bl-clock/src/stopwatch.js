@@ -1,9 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 
 export function Stopwatch({ component }) {
+  const { stopwatchScale } = component;
+
   const [remainingSecond, setRemainingSecond] = useState(0);
 
   const timerRef = useRef();
+
+  useEffect(() => {
+    if (stopwatchScale < 0) {
+      console.warn('Stopwatch Scale can\'t be less than 0');
+    }
+  }, []);
 
   component.startStopwatch = () => {
     if (!timerRef.current) {
@@ -13,8 +21,8 @@ export function Stopwatch({ component }) {
         const currentDate = Date.now();
         const gap = getRemainingSeconds(startDate, currentDate, remainingSecond);
 
-        setRemainingSecond((gap / 1000).toFixed(2));
-      }, 100);
+        setRemainingSecond((gap / 1000).toFixed(stopwatchScale >= 0 ? stopwatchScale : 0));
+      }, 1);
     }
   };
 
