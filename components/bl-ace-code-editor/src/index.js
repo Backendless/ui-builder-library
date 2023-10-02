@@ -7,7 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 export default function AceCodeEditorComponent({ component, elRef, eventHandlers }) {
   const {
-    classList, display, style, readOnly, name, value, mode, theme,
+    classList, display, style, readOnly, value, mode, theme,
     foldStyle, placeholder, width, height, fontSize, tabSize, printMarginColumn,
     printMarginVisibility, gutterVisibility, autocompletion, highlightActiveLine, showInvisibles
   } = component;
@@ -49,7 +49,6 @@ export default function AceCodeEditorComponent({ component, elRef, eventHandlers
         height={ height }
         readOnly={ readOnly }
         placeholder={ placeholder }
-        name={ name }
         fontSize={ fontSize }
         showGutter={ gutterVisibility }
         highlightActiveLine={ highlightActiveLine }

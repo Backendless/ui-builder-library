@@ -22,18 +22,6 @@
     },
     {
       "type": "text",
-      "name": "name",
-      "label": "Name",
-      "showInSettings": true,
-      "defaultValue": "Ace Editor",
-      "hasLogicHandler": true,
-      "handlerId": "nameLogic",
-      "handlerLabel": "Name Logic",
-      "handlerDescription": "This handler allows you to specify the name of a component.",
-      "settingTooltip": "Name of the component."
-    },
-    {
-      "type": "text",
       "name": "value",
       "label": "Value",
       "settingTooltip": "The value you specify with this handler will be displayed in this component.",
