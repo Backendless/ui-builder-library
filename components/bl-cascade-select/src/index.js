@@ -45,7 +45,7 @@ export default function CascadeSelect({ component, eventHandlers, elRef }) {
   }
 
   return (
-    <div ref={ elRef } className={ cn('bl-cascadeSelect-component', classList) } style={ style }>
+    <div ref={ elRef } className={ cn('bl-cascade-select', classList) } style={ style }>
       <div
         className={ cn('cascade-select__input', { 'cascade-select__input--selected': selected.code }) }
         onClick={ onClickInput }>
