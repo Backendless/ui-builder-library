@@ -71,11 +71,11 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 
 ## Actions
 
-| Action      | Inputs                        | Returns |
-|-------------|-------------------------------|---------|
-| Go Next     | Steps: `Number`               |         |
-| Go Previous | Steps: `Number`               |         |
-| Jump To     | Date: `Date` Reset: `Boolean` |         |
+| Action                          | Inputs                        | Returns |
+|---------------------------------|-------------------------------|---------|
+| Go Next in Calendar Heatmap     | Steps: `Number`               |         |
+| Go Previous in Calendar Heatmap | Steps: `Number`               |         |
+| Jump To in Calendar Heatmap     | Date: `Date` Reset: `Boolean` |         |
 
 ## Styles
 
