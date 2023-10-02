@@ -3,7 +3,7 @@
   "name": "Clock",
   "description": "This component allows you to add on page clock, stopwatch or timer.",
   "showInToolbox": true,
-  "faIcon": "clock",
+  "faIcon": "stopwatch",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
