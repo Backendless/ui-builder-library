@@ -902,7 +902,7 @@
   "actions": [
     {
       "id": "goNext",
-      "label": "Go Next",
+      "label": "Go Next in",
       "inputs": [
         {
           "id": "steps",
@@ -912,7 +912,7 @@
     },
     {
       "id": "goPrev",
-      "label": "Go Previous",
+      "label": "Go Previous in",
       "inputs": [
         {
           "id": "steps",
@@ -922,7 +922,7 @@
     },
     {
       "id": "jumpTo",
-      "label": "Jump To",
+      "label": "Jump To in",
       "inputs": [
         {
           "id": "date",
