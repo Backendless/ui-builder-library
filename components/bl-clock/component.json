@@ -36,7 +36,7 @@
       "name": "timeVariant",
       "label": "Time Variant",
       "showInSettings": true,
-      "defaultValue": "all",
+      "defaultValue": "hhmmss",
       "hasLogicHandler": false,
       "options": [
         {
