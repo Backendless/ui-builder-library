@@ -28,14 +28,15 @@
           "label": "Timer"
         }
       ],
-      "label": "Type"
+      "label": "Type",
+      "settingTooltip": "Allows to determine the function of the component"
     },
     {
       "type": "select",
       "name": "timeVariant",
       "label": "Time Variant",
       "showInSettings": true,
-      "defaultValue": "all",
+      "defaultValue": "hhmmss",
       "hasLogicHandler": false,
       "options": [
         {
@@ -50,7 +51,8 @@
           "value": "hh",
           "label": "HH"
         }
-      ]
+      ],
+      "settingTooltip": "Allows to determine variant of displaying time"
     },
     {
       "type": "number",
@@ -70,7 +72,8 @@
       "handlerId": "timerDateLogic",
       "handlerLabel": "Timer Date Logic",
       "handlerDescription": "This is a handler for the logic to determine the date and time when the timer will be stopped.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows you to specify the date, time, and time zone when the timer will expire. Signature `MM.DD.YY HH:MM:SS UTC`"
     },
     {
       "type": "number",
@@ -82,7 +85,8 @@
       "handlerId": "animationDurationLogic",
       "handlerLabel": "Animation Duration Logic",
       "handlerDescription": "This is a handler for the logic to determine the duration of the animation to change the time",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine the duration of the animation to change the time."
     }
   ],
   "eventHandlers": [
