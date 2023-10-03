@@ -207,14 +207,5 @@ const ShirtVNeck = ({ fabricColor }) => (
   </g>
 );
 
-export const ClothesTypes = {
-  BlazerShirt   : BlazerShirt,
-  BlazerSweater : BlazerSweater,
-  CollarSweater : CollarSweater,
-  GraphicShirt  : GraphicShirt,
-  Hoodie        : Hoodie,
-  Overall       : Overall,
-  ShirtCrewNeck : ShirtCrewNeck,
-  ShirtScoopNeck: ShirtScoopNeck,
-  ShirtVNeck    : ShirtVNeck,
-};
+export const ClothesTypes = { BlazerShirt, BlazerSweater, CollarSweater, GraphicShirt,
+  Hoodie, Overall, ShirtCrewNeck, ShirtScoopNeck, ShirtVNeck, };

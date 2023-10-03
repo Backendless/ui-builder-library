@@ -232,17 +232,5 @@ const SkullOutline = () => (
   </g>
 );
 
-export const GraphicTypes = {
-  Bat         : Bat,
-  Bear        : Bear,
-  Blank       : Blank,
-  Cumbia      : Cumbia,
-  Deer        : Deer,
-  Diamond     : Diamond,
-  Hola        : Hola,
-  Pizza       : Pizza,
-  Resist      : Resist,
-  Selena      : Selena,
-  Skull       : Skull,
-  SkullOutline: SkullOutline,
-};
+export const GraphicTypes = { Bat, Bear, Blank, Cumbia, Deer, Diamond, Hola,
+  Pizza, Resist, Selena, Skull, SkullOutline, };

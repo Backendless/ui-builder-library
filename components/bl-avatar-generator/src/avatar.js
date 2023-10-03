@@ -1,37 +1,7 @@
-import { Nose } from './avatar-parts/nose';
-import { AccessoryTypes } from './avatar-parts/accessory';
-import { FacialHairTypes } from './avatar-parts/facial-hair';
-import { TopTypes } from './avatar-parts/top';
-import { MouthTypes } from './avatar-parts/mouth';
-import { ClothesTypes } from './avatar-parts/clothes';
-import { GraphicTypes } from './avatar-parts/graphics';
-import { EyesTypes } from './avatar-parts/eyes';
-import { BrowsTypes } from './avatar-parts/brows';
-import { HatColors, HairColors, SkinColors } from './avatar-parts/colors';
-
 const CIRCLE_STYLE = 'circle';
 
-export const Avatar = ({ avatarStyle, avatarData, svgRef }) => {
-  const {
-    background, circleColor, skin, top, hairColor, hatColor, brows, eyes,
-    mouth, facialHair, facialHairColor, accessory, clothes, fabricColor, graphic,
-  } = avatarData;
-
+export const Avatar = ({ avatarStyle, background, circleColor, skin, svgRef, children }) => {
   const isCircleStyle = avatarStyle === CIRCLE_STYLE;
-
-  const Clothes = ClothesTypes[clothes];
-  const Graphic = GraphicTypes[graphic];
-  const Brows = BrowsTypes[brows];
-  const Eyes = EyesTypes[eyes];
-  const Mouth = MouthTypes[mouth];
-  const Top = TopTypes[top];
-  const FacialHair = FacialHairTypes[facialHair];
-  const Accessory = AccessoryTypes[accessory];
-  const avatarSkin = SkinColors[skin];
-  const avatarHairColor = HairColors[hairColor];
-  const avatarHatColor = HatColors[hatColor];
-  const avatarFacialHairColor = HairColors[facialHairColor];
-  const avatarFabricColor = HatColors[fabricColor];
 
   return (
     <svg ref={ svgRef } viewBox="0 0 264 280" style={{ background }}>
@@ -71,7 +41,7 @@ export const Avatar = ({ avatarStyle, avatarData, svgRef }) => {
                 <mask id="mask-silhouette" fill="white">
                   <use xlinkHref="#path-silhouette"/>
                 </mask>
-                <use fill={ avatarSkin } xlinkHref="#path-silhouette"/>
+                <use fill={ skin } xlinkHref="#path-silhouette"/>
                 <path
                   d="M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z"
                   id="Neck-Shadow"
@@ -80,15 +50,8 @@ export const Avatar = ({ avatarStyle, avatarData, svgRef }) => {
                   mask="url(#mask-silhouette)"/>
               </g>
 
-              <Clothes fabricColor={ avatarFabricColor }/>
-              <Graphic/>
-              <Brows/>
-              <Eyes/>
-              <Nose/>
-              <Mouth/>
-              <Top hatColor={ avatarHatColor } hairColor={ avatarHairColor }/>
-              <FacialHair facialHairColor={ avatarFacialHairColor }/>
-              <Accessory/>
+              { children }
+
             </g>
           </g>
         </g>

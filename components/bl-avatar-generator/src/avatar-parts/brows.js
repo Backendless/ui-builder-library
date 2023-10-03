@@ -164,18 +164,5 @@ const UpDownNatural = () => (
   </g>
 );
 
-export const BrowsTypes = {
-  Angry               : Angry,
-  AngryNatural        : AngryNatural,
-  Default             : Default,
-  DefaultNatural      : DefaultNatural,
-  FlatNatural         : FlatNatural,
-  FrownNatural        : FrownNatural,
-  RaisedExcited       : RaisedExcited,
-  RaisedExcitedNatural: RaisedExcitedNatural,
-  SadConcerned        : SadConcerned,
-  SadConcernedNatural : SadConcernedNatural,
-  UnibrowNatural      : UnibrowNatural,
-  UpDown              : UpDown,
-  UpDownNatural       : UpDownNatural,
-};
+export const BrowsTypes = { Angry, AngryNatural, Default, DefaultNatural, FlatNatural, FrownNatural, RaisedExcited,
+  RaisedExcitedNatural, SadConcerned, SadConcernedNatural, UnibrowNatural, UpDown, UpDownNatural, };

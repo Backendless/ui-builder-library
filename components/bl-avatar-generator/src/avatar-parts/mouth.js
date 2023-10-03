@@ -221,17 +221,5 @@ const Vomit = () => (
   </g>
 );
 
-export const MouthTypes = {
-  Concerned : Concerned,
-  Default   : Default,
-  Disbelief : Disbelief,
-  Eating    : Eating,
-  Grimace   : Grimace,
-  Sad       : Sad,
-  ScreamOpen: ScreamOpen,
-  Serious   : Serious,
-  Smile     : Smile,
-  Tongue    : Tongue,
-  Twinkle   : Twinkle,
-  Vomit     : Vomit
-};
+export const MouthTypes = { Concerned, Default, Disbelief, Eating, Grimace,
+  Sad, ScreamOpen, Serious, Smile, Tongue, Twinkle, Vomit, };

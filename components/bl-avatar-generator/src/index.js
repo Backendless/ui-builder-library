@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
+import {
+  Nose, AccessoryTypes, FacialHairTypes, TopTypes, MouthTypes, ClothesTypes,
+  GraphicTypes, EyesTypes, BrowsTypes, HatColors, HairColors, SkinColors
+} from './avatar-parts';
 import { Avatar } from './avatar';
 import { data } from './avatar-data';
 import { ActionsKeys, handleOptions, handleRandomOptions } from './helpers';
@@ -24,11 +28,7 @@ export default function AvatarGeneratorComponent({ component, eventHandlers, elR
     mouth, facialHair, facialHairColor, accessory, clothes, fabricColor, graphic]);
 
   Object.assign(component, {
-    random: (background, circleColor, skin, top, hairColor, hatColor, brows, eyes,
-      mouth, facialHair, facialHairColor, accessory, clothes, fabricColor, graphic) => {
-      setAvatarData(handleRandomOptions(background, circleColor, skin, top, hairColor, hatColor, brows, eyes,
-        mouth, facialHair, facialHairColor, accessory, clothes, fabricColor, graphic));
-    },
+    random: (...options) => setAvatarData(handleRandomOptions(...options)),
     getAvatarGeneratedData: () => avatarData,
     getAllOptionsData: () => data,
     getSVG: fileName => getSVGFile(fileName, svgRef.current),
@@ -47,7 +47,47 @@ export default function AvatarGeneratorComponent({ component, eventHandlers, elR
       ref={ elRef }
       style={ style }
       onClick={ onClick }>
-      <Avatar avatarStyle={ avatarStyle } avatarData={ avatarData } svgRef={ svgRef }/>
+
+      <Avatar
+        avatarStyle={ avatarStyle }
+        background={ avatarData.background }
+        circleColor={ avatarData.circleColor }
+        skin={ SkinColors[avatarData.skin] }
+        svgRef={ svgRef }>
+
+        { avatarChildren(avatarData) }
+
+      </Avatar>
     </div>
   );
 }
+
+const avatarChildren = avatarData => {
+  const {
+    top, hairColor, hatColor, brows, eyes, mouth, facialHair,
+    facialHairColor, accessory, clothes, fabricColor, graphic,
+  } = avatarData;
+
+  const ClothesComponent = ClothesTypes[clothes];
+  const GraphicComponent = GraphicTypes[graphic];
+  const BrowsComponent = BrowsTypes[brows];
+  const EyesComponent = EyesTypes[eyes];
+  const MouthComponent = MouthTypes[mouth];
+  const TopComponent = TopTypes[top];
+  const FacialHairComponent = FacialHairTypes[facialHair];
+  const AccessoryComponent = AccessoryTypes[accessory];
+
+  return (
+    <>
+      <ClothesComponent fabricColor={ HatColors[fabricColor] } />
+      <GraphicComponent />
+      <BrowsComponent />
+      <EyesComponent />
+      <Nose />
+      <MouthComponent />
+      <TopComponent hatColor={ HatColors[hatColor] } hairColor={ HairColors[hairColor] } />
+      <FacialHairComponent facialHairColor={ HairColors[facialHairColor] } />
+      <AccessoryComponent />
+    </>
+  );
+};
