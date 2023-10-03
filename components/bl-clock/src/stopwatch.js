@@ -1,20 +1,51 @@
 import { useEffect, useRef, useState } from 'react';
 
+const TimeVariant = {
+  HHMMSS: 'hhmmss',
+  MMSS: 'mmss',
+  SS: 'ss',
+};
+
+const stopwatchMap = {
+  ss: elapsedTime => ({ seconds: (elapsedTime / 1000) }),
+  mmss: elapsedTime => {
+    const { seconds } = stopwatchMap.ss(elapsedTime);
+    const minutes = Math.floor(elapsedTime / 1000 / 60);
+
+    return { seconds: seconds % 60, minutes };
+  },
+  hhmmss: elapsedTime => {
+    const { seconds, minutes } = stopwatchMap.mmss(elapsedTime);
+    const hours = Math.floor(elapsedTime / 1000 / 60 / 60);
+
+    return { seconds: seconds % 60, minutes: minutes % 60, hours };
+  },
+};
+
 export function Stopwatch({ component }) {
-  const [remainingSecond, setRemainingSecond] = useState(0);
+  const { stopwatchVariant } = component;
+
+  const [second, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [hours, setHours] = useState(0);
 
   const timerRef = useRef();
 
   component.startStopwatch = () => {
     if (!timerRef.current) {
-      const startDate = Date.now();
+      const startTime = Date.now();
 
       timerRef.current = setInterval(() => {
-        const currentDate = Date.now();
-        const gap = getRemainingSeconds(startDate, currentDate, remainingSecond);
 
-        setRemainingSecond((gap / 1000).toFixed(2));
-      }, 100);
+        const currentTime = new Date().getTime();
+        const elapsedTime = currentTime - startTime;
+
+        const { seconds, minutes, hours } = stopwatchMap[stopwatchVariant](elapsedTime);
+
+        setSeconds(seconds.toFixed(2));
+        minutes && setMinutes(minutes);
+        hours && setHours(hours);
+      }, 1);
     }
   };
 
@@ -24,7 +55,9 @@ export function Stopwatch({ component }) {
   };
 
   component.resetStopwatch = () => {
-    setRemainingSecond(0);
+    setSeconds(0);
+    setMinutes(0);
+    setHours(0);
     component.stopStopwatch();
   };
 
@@ -33,10 +66,15 @@ export function Stopwatch({ component }) {
   }, []);
 
   return (
-    <div className="stopwatch"> { remainingSecond } </div>
+    <>
+      {hasHours(stopwatchVariant) && (<span className="stopwatch">{`${pad(hours)}:`}</span>)}
+      {hasMinutes(stopwatchVariant) && (<span className="stopwatch">{`${pad(minutes)}:`}</span>)}
+      <span className="stopwatch"> {`${pad(second)}`} </span>
+    </>
   );
 }
 
-const getRemainingSeconds = (startDate, currentDate, stopwatch) => {
-  return stopwatch * 1000 + currentDate - startDate;
-};
+const pad = number => (number < 10 ? '0' : '') + number;
+
+const hasMinutes = timeVariant => timeVariant === TimeVariant.HHMMSS || timeVariant === TimeVariant.MMSS;
+const hasHours = timeVariant => timeVariant === TimeVariant.HHMMSS;

@@ -55,6 +55,29 @@
       "settingTooltip": "Allows to determine variant of displaying time"
     },
     {
+      "type": "select",
+      "name": "stopwatchVariant",
+      "label": "Stopwatch Variant",
+      "showInSettings": true,
+      "defaultValue": "ss",
+      "hasLogicHandler": false,
+      "options": [
+        {
+          "value": "ss",
+          "label": "SS"
+        },
+        {
+          "value": "mmss",
+          "label": "MM:SS"
+        },
+        {
+          "value": "hhmmss",
+          "label": "HH:MM:SS"
+        }
+      ],
+      "settingTooltip": "Allows to determine variant of displaying stopwatch"
+    },
+    {
       "type": "text",
       "name": "timerDate",
       "label": "Timer Date",
