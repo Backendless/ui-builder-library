@@ -5,6 +5,10 @@ when scrolling the page.
 
 The component based on external [Animate on Scroll](https://github.com/michalsnik/aos).
 
+<p align="center">
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
+</p>
+
 ## Properties
 
 | Property                        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Default Value    | Logic        | Data Binding | UI Setting | Description                                                                                                       |
