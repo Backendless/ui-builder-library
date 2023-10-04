@@ -15,7 +15,7 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
     groupY, label, gutter, dynamicDimension, subSort, scaleDomain, legend, calendarLabel,
     animationDuration, theme,
   } = component;
-  const { subColorLabelLogic, subLabelLogic, groupYLogic, labelLogic, onCellClick } = eventHandlers;
+  const { subColorLabelLogic, subLabelLogic, groupYLogic, labelLogic, onCellClick, onMouseOver, onMouseOut } = eventHandlers;
 
   const cal = useMemo(() => new CalHeatmap(), []);
 
@@ -61,7 +61,11 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
     verticalOrientation, sourceDataUrl, data, groupYLogic, groupY, scaleDomain, dynamicDimension, gutter, labelLogic,
     label, subSort, legend, calendarLabel, animationDuration, theme]);
 
-  useEffect(() => cal.on('click', (event, timestamp, value) => onCellClick({ event, timestamp, value })), []);
+  useEffect(() => {
+    cal.on('click', (event, timestamp, value) => onCellClick({ event, timestamp, value }));
+    cal.on('mouseover', (event, timestamp, value) => onMouseOver({ event, timestamp, value }));
+    cal.on('mouseout', (event, timestamp, value) => onMouseOut({ event, timestamp, value }));
+  }, []);
 
   component.goNext = steps => cal.next(steps);
   component.goPrev = steps => cal.previous(steps);
