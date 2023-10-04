@@ -56,12 +56,12 @@
     },
     {
       "type": "number",
-      "name": "stopwatchScale",
-      "label": "Stopwatch Scale",
+      "name": "tickRate",
+      "label": "Tick Rate",
       "showInSettings": true,
       "defaultValue": "3",
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the scale of  stopwatch seconds"
+      "settingTooltip": "Allows to determine the tick rate of the stopwatch"
     },
     {
       "type": "text",

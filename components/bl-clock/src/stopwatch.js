@@ -1,16 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 export function Stopwatch({ component }) {
-  const { stopwatchScale } = component;
+  const { tickRate } = component;
 
   const [remainingSecond, setRemainingSecond] = useState(0);
 
   const timerRef = useRef();
 
-  useEffect(() => {
-    if (stopwatchScale < 0) {
+  const validTickRate = useMemo(() => {
+    if (tickRate < 0) {
       console.warn('Stopwatch Scale can\'t be less than 0');
+
+      return 0;
     }
+
+    return tickRate;
   }, []);
 
   component.startStopwatch = () => {
@@ -21,7 +25,7 @@ export function Stopwatch({ component }) {
         const currentDate = Date.now();
         const gap = getRemainingSeconds(startDate, currentDate, remainingSecond);
 
-        setRemainingSecond((gap / 1000).toFixed(stopwatchScale >= 0 ? stopwatchScale : 0));
+        setRemainingSecond((gap / 1000).toFixed(validTickRate));
       }, 1);
     }
   };
@@ -45,6 +49,6 @@ export function Stopwatch({ component }) {
   );
 }
 
-const getRemainingSeconds = (startDate, currentDate, stopwatch) => {
-  return stopwatch * 1000 + currentDate - startDate;
+const getRemainingSeconds = (startDate, currentDate, remainingSecond) => {
+  return remainingSecond * 1000 + currentDate - startDate;
 };
