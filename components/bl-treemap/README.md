@@ -5,6 +5,10 @@ Treemap is a component of Backendless UI-Builder designer. The main purpose of t
   <img alt="main thumbnail" src="./thumbnail.png" width="720"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/cEh8LIICH9hiF2p72wlb).
+
 ## Properties
 
 | Property                                          | Type                                                           | Default Value                                                                                                                                                                                                                                                                                                                                            | Logic                        | Data Binding | UI Setting | Description                                                                                                                                                                                          |
