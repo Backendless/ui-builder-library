@@ -9,6 +9,10 @@ The component allows you to select any area of the image and then download it as
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/qwotM4XUP1NLXsw8nrZ6).
+
 ## Properties
 
 | Property                     | Type                                                                                                   | Default value                        | Logic                             | Data Binding | UI Setting | Description                                                                              |
