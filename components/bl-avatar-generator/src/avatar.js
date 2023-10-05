@@ -1,4 +1,4 @@
-const CIRCLE_STYLE = 'circle';
+import { CIRCLE_STYLE } from './avatar-data';
 
 export const Avatar = ({ avatarStyle, background, circleColor, skin, svgRef, children }) => {
   const isCircleStyle = avatarStyle === CIRCLE_STYLE;

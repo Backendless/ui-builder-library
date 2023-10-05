@@ -1089,68 +1089,14 @@
       "hasReturn": true
     },
     {
-      "id": "getTopTypes",
-      "label": "Get Top Types of",
-      "hasReturn": true
-    },
-    {
-      "id": "getBrowsTypes",
-      "label": "Get Brows Types of",
-      "hasReturn": true
-    },
-    {
-      "id": "getEyesTypes",
-      "label": "Get Eyes Types of",
-      "hasReturn": true
-    },
-    {
-      "id": "getMouthTypes",
-      "label": "Get Mouth Types of",
-      "hasReturn": true
-    },
-    {
-      "id": "getFacialHairTypes",
-      "label": "Get Facial Hair Types of",
-      "hasReturn": true
-    },
-    {
-      "id": "getAccessoryTypes",
-      "label": "Get Accessory Types of",
-      "hasReturn": true
-    },
-    {
-      "id": "getClothesTypes",
-      "label": "Get Clothes Types of",
-      "hasReturn": true
-    },
-    {
-      "id": "getGraphicTypes",
-      "hasReturn": true,
-      "label": "Get Graphic Types of"
-    },
-    {
-      "id": "getSkinColors",
-      "label": "Get Skin Colors of",
-      "hasReturn": true
-    },
-    {
-      "id": "getHairColors",
-      "label": "Get Hair Colors of",
-      "hasReturn": true
-    },
-    {
-      "id": "getHatColors",
-      "label": "Get Hat Colors of",
-      "hasReturn": true
-    },
-    {
-      "id": "getFacialHairColors",
-      "label": "Get Facial Hair Colors of",
-      "hasReturn": true
-    },
-    {
-      "id": "getFabricColors",
-      "label": "Get Fabric Colors of",
+      "inputs": [
+        {
+          "id": "propertyName",
+          "label": "Property Name"
+        }
+      ],
+      "id": "getPropertyOptions",
+      "label": "Get Property Options of",
       "hasReturn": true
     }
   ],
