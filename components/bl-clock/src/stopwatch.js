@@ -20,13 +20,14 @@ export function Stopwatch({ component }) {
   component.startStopwatch = () => {
     if (!timerRef.current) {
       const startDate = Date.now();
+      const interval = validTickRate === 0 ? 1000 : 1;
 
       timerRef.current = setInterval(() => {
         const currentDate = Date.now();
         const gap = getRemainingSeconds(startDate, currentDate, remainingSecond);
 
         setRemainingSecond((gap / 1000).toFixed(validTickRate));
-      }, validTickRate === 0 ? 1000 : 1);
+      }, interval);
     }
   };
 
