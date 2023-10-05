@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { AceEditor } from './lib/react-ace.umd';
 import './lib/ace-builds.umd';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { normalizeDimensionValue, cn } = BackendlessUI.CSSUtils;
 
 export default function AceCodeEditorComponent({ component, elRef, eventHandlers }) {
   const {
