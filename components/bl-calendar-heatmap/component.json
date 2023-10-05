@@ -879,13 +879,41 @@
       "handlerDescription": "This event is triggered when on a subDomain cell click."
     },
     {
-      "name": "mouseOver",
-      "label": "Mouse Over Event",
+      "name": "onMouseOver",
+      "label": " On Mouse Over",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "timestamp",
+          "label": "Timestamp"
+        },
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ],
       "handlerDescription": "This event is triggered when the mouse enter a subDomain cell."
     },
     {
-      "name": "mouseOut",
-      "label": "Mouse Out",
+      "name": "onMouseOut",
+      "label": "On Mouse Out",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "timestamp",
+          "label": "Timestamp"
+        },
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ],
       "handlerDescription": "This event is triggered when the mouse exit a subDomain cell."
     },
     {
