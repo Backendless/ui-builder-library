@@ -1,33 +1,33 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 
-const TimeVariant = {
+const StopwatchTimeFormat = {
   HHMMSS: 'hhmmss',
   MMSS: 'mmss',
   SS: 'ss',
 };
 
-const stopwatchMap = {
+const timeFormatter = {
   ss: elapsedTime => ({ seconds: (elapsedTime / 1000) }),
   mmss: elapsedTime => {
-    const { seconds } = stopwatchMap.ss(elapsedTime);
+    const { seconds } = timeFormatter.ss(elapsedTime);
     const minutes = Math.floor(elapsedTime / 1000 / 60);
 
     return { seconds: seconds % 60, minutes };
   },
   hhmmss: elapsedTime => {
-    const { seconds, minutes } = stopwatchMap.mmss(elapsedTime);
+    const { seconds, minutes } = timeFormatter.mmss(elapsedTime);
     const hours = Math.floor(elapsedTime / 1000 / 60 / 60);
 
     return { seconds: seconds % 60, minutes: minutes % 60, hours };
   },
 };
 
-export function Stopwatch({ component }) {
-  const { stopwatchVariant } = component;
+const initTime = { seconds: 0, minutes: 0, hours: 0 };
 
-  const [second, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [hours, setHours] = useState(0);
+export function Stopwatch({ component }) {
+  const { stopwatchTimeFormat } = component;
+
+  const [time, setTime] = useObjectState(initTime);
 
   const timerRef = useRef();
 
@@ -40,11 +40,9 @@ export function Stopwatch({ component }) {
         const currentTime = new Date().getTime();
         const elapsedTime = currentTime - startTime;
 
-        const { seconds, minutes, hours } = stopwatchMap[stopwatchVariant](elapsedTime);
+        const { seconds, minutes, hours } = timeFormatter[stopwatchTimeFormat](elapsedTime);
 
-        setSeconds(seconds.toFixed(2));
-        minutes && setMinutes(minutes);
-        hours && setHours(hours);
+        setTime({ seconds: seconds.toFixed(2), minutes, hours });
       }, 1);
     }
   };
@@ -55,9 +53,7 @@ export function Stopwatch({ component }) {
   };
 
   component.resetStopwatch = () => {
-    setSeconds(0);
-    setMinutes(0);
-    setHours(0);
+    setTime({ seconds: 0, minutes: 0, hours: 0 });
     component.stopStopwatch();
   };
 
@@ -67,14 +63,26 @@ export function Stopwatch({ component }) {
 
   return (
     <>
-      {hasHours(stopwatchVariant) && (<span className="stopwatch">{`${pad(hours)}:`}</span>)}
-      {hasMinutes(stopwatchVariant) && (<span className="stopwatch">{`${pad(minutes)}:`}</span>)}
-      <span className="stopwatch"> {`${pad(second)}`} </span>
+      {hasHours(stopwatchTimeFormat) && (<span className="stopwatch">{`${pad(time.hours)}:`}</span>)}
+      {hasMinutes(stopwatchTimeFormat) && (<span className="stopwatch">{`${pad(time.minutes)}:`}</span>)}
+      <span className="stopwatch"> {`${pad(time.seconds)}`} </span>
     </>
   );
 }
 
 const pad = number => (number < 10 ? '0' : '') + number;
 
-const hasMinutes = timeVariant => timeVariant === TimeVariant.HHMMSS || timeVariant === TimeVariant.MMSS;
-const hasHours = timeVariant => timeVariant === TimeVariant.HHMMSS;
+const hasMinutes = timeFormat => timeFormat === StopwatchTimeFormat.HHMMSS || timeFormat === StopwatchTimeFormat.MMSS;
+const hasHours = timeFormat => timeFormat === StopwatchTimeFormat.HHMMSS;
+
+function useObjectState(initialState) {
+  initialState = useState(initialState)[0];
+
+  return useReducer((state, patch) => {
+    const changes = typeof patch === 'function' ? patch(state) : patch;
+
+    const changed = Object.entries(changes).some(([key, value]) => state[key] !== value);
+
+    return changed ? { ...state, ...changes } : state;
+  }, initialState || {});
+}

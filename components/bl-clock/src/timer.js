@@ -4,7 +4,7 @@ import { getTimer } from './helpers';
 import { Time } from './subcomponents';
 
 export function Timer({ component, eventHandlers }) {
-  const { timerDate, timeVariant, animationDuration } = component;
+  const { timerDate, animationDuration } = component;
   const { onTimerEnd } = eventHandlers;
 
   const [time, setTime] = useState(getTimer(new Date(timerDate)));
@@ -29,7 +29,7 @@ export function Timer({ component, eventHandlers }) {
     setDaysVisibility(isDays);
     setHoursVisibility(isHours);
     setMinutesVisibility(isMinutes);
-  }, [time, timeVariant]);
+  }, [time]);
 
   if (!time.all) {
     onTimerEnd();
