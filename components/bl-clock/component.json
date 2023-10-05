@@ -61,7 +61,7 @@
       "showInSettings": true,
       "defaultValue": "3",
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the tick rate of the stopwatch"
+      "settingTooltip": "Allows you to determine how precisely to display the seconds (the count of numbers after the period)."
     },
     {
       "type": "text",

@@ -26,7 +26,7 @@ export function Stopwatch({ component }) {
         const gap = getRemainingSeconds(startDate, currentDate, remainingSecond);
 
         setRemainingSecond((gap / 1000).toFixed(validTickRate));
-      }, 1);
+      }, validTickRate === 0 ? 1000 : 1);
     }
   };
 
