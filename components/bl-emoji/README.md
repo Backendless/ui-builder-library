@@ -37,6 +37,10 @@ Emoji is a component of Backendless UI-Builder designer. The component is design
 
 **Dimensions**
 ````
+@bl-customComponent-emoji-disabled-opacity: 0.38;
+@bl-customComponent-emoji-button-transform-onHover: scale(1.2);
+@bl-customComponent-emoji-button-transition-onHover: transform .3s;
+@bl-customComponent-emoji-emojiPicker-zIndex: 100;
 @bl-customComponent-emoji-dropdownPosition-left: -93%;
 @bl-customComponent-emoji-dropdownPosition-center: -46%;
 @bl-customComponent-emoji-dropdownPosition-right: 0%;
