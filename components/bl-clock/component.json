@@ -55,6 +55,15 @@
       "settingTooltip": "Allows to determine variant of displaying time"
     },
     {
+      "type": "number",
+      "name": "tickRate",
+      "label": "Tick Rate",
+      "showInSettings": true,
+      "defaultValue": "3",
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows you to determine how precisely to display the seconds (the count of numbers after the period)."
+    },
+    {
       "type": "text",
       "name": "timerDate",
       "label": "Timer Date",
