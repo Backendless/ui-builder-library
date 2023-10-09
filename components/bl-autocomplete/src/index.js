@@ -1,13 +1,15 @@
-import { useState, useMemo, useCallback, useRef } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 
-import { useOnClickOutside, useFilteredOptions, validate } from './helpers';
+import { useOnClickOutside, useFilteredOptions, valueValidation, optionsValidation } from './helpers';
 import { Options } from './options';
 import { TextField } from './text-field';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function AutocompleteComponent({ component, eventHandlers, elRef }) {
-  const { classList, style, display, disabled, placeholder, emptyOptionsLabel, variant, options } = component;
+  const {
+    classList, style, display, disabled, placeholder, emptyOptionsLabel, variant, value, options
+  } = component;
 
   const autocompleteRef = useRef();
   const [inputValue, setInputValue] = useState('');
@@ -15,12 +17,18 @@ export default function AutocompleteComponent({ component, eventHandlers, elRef 
   const [autocompleteValue, setAutocompleteValue] = useState(null);
   const [isAutocompleteActive, setIsAutocompleteActive] = useState(false);
 
-  const optionsList = useMemo(() => validate(options), [options]);
-
+  const optionsList = useMemo(() => optionsValidation(options), [options]);
   const hasGroup = !!optionsList[0]?.groupLabel;
+  const filteredOptions = useFilteredOptions(optionsList, inputValue, hasGroup);
+
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
 
-  const filteredOptions = useFilteredOptions(optionsList, inputValue, hasGroup);
+  component.getValue = () => autocompleteValue.value;
+  component.setValue = value => setAutocompleteValue(valueValidation(value, optionsList, hasGroup));
+
+  useEffect(() => {
+    setAutocompleteValue(valueValidation(value, optionsList, hasGroup));
+  }, [value, optionsList])
 
   const classes = cn(
     'bl-customComponent-autocomplete', `bl-customComponent-autocomplete--${variant}`, classList,
