@@ -41,4 +41,9 @@ module.exports = {
     'BackendlessUI': true,
     'Backendless'  : true,
   },
+  'settings': {
+    'react': {
+      'version': '17',
+    },
+  },
 };
