@@ -233,4 +233,4 @@ const SkullOutline = () => (
 );
 
 export const GraphicTypes = { Bat, Bear, Blank, Cumbia, Deer, Diamond, Hola,
-  Pizza, Resist, Selena, Skull, SkullOutline, };
+  Pizza, Resist, Selena, Skull, SkullOutline };

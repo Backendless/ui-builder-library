@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import primereact from './lib/core';
 
@@ -9,7 +9,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function KnobComponent({ component, eventHandlers }) {
   const {
     initialValue, readOnly, disabled, maxValue, minValue, step, dial, valueTemplate, size, valueColor, rangeColor,
-    display, classList, setValue, setReadOnly, setDisabled, style, getValue,
+    display, classList, style,
   } = component;
   const { onChange } = eventHandlers;
 

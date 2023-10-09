@@ -1,9 +1,9 @@
-import { useRef, useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 
-import { PositionIcon } from './icons';
-import { useIcon } from './helpers/use-icon';
-import { IconOptions } from './icons';
 import { getGeolocation } from './helpers/map';
+import { useIcon } from './helpers/use-icon';
+import { PositionIcon } from './icons';
+import { IconOptions } from './icons';
 
 export function GeopositionButton({ map, eventHandlers }) {
   const geoMarker = useRef(null);

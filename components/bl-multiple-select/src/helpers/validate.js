@@ -1,6 +1,9 @@
 export const validateOptions = options => {
   if (!Array.isArray(options)) {
-    console.error(`The "Multiple Select" component expects a list of options but it gets an ${typeof options} type. Make sure you passed the correct one in Logic or the component Settings.`);
+    console.error(
+      `The "Multiple Select" component expects a list of options but it gets an ${ typeof options } type.` +
+      'Make sure you passed the correct one in Logic or the component Settings.'
+    );
 
     return [];
   }

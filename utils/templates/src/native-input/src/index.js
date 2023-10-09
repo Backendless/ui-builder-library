@@ -1,11 +1,11 @@
 export default function NativeInput({ component, eventHandlers }) {
   const onChange = e => {
-    const value = e.target.value
+    const value = e.target.value;
 
-    component.value = value
+    component.value = value;
 
-    eventHandlers.onChange({ value })
-  }
+    eventHandlers.onChange({ value });
+  };
 
   return (
     <input
@@ -13,5 +13,5 @@ export default function NativeInput({ component, eventHandlers }) {
       value={ component.value || '' }
       onChange={ onChange }
     />
-  )
+  );
 }

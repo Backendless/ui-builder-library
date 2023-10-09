@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
-import {
-  Nose, AccessoryTypes, FacialHairTypes, TopTypes, MouthTypes, ClothesTypes,
-  GraphicTypes, EyesTypes, BrowsTypes, HatColors, HairColors, SkinColors
-} from './avatar-parts';
 import { Avatar } from './avatar';
 import { data } from './avatar-data';
+import {
+AccessoryTypes, BrowsTypes, ClothesTypes,
+EyesTypes, FacialHairTypes,   GraphicTypes, HairColors, HatColors, MouthTypes,   Nose, SkinColors,
+TopTypes } from './avatar-parts';
 import { ActionsKeys, handleOptions, handleRandomOptions } from './helpers';
-import { getSVGFile, getPNGFile, getJPEGFile } from './svg-utils';
+import { getJPEGFile, getPNGFile, getSVGFile } from './svg-utils';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -34,7 +34,7 @@ export default function AvatarGeneratorComponent({ component, eventHandlers, elR
     getSVG: fileName => getSVGFile(fileName, svgRef.current),
     getPNG: fileName => getPNGFile(fileName, svgRef.current),
     getJPEG: fileName => getJPEGFile(fileName, svgRef.current) },
-    ...Object.keys(ActionsKeys).map(key => ({ [key]: () => ActionsKeys[key] })),
+    ...Object.keys(ActionsKeys).map(key => ({ [key]: () => ActionsKeys[key] }))
   );
 
   if (!display) {

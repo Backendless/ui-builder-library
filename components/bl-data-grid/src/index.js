@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef, useMemo, useCallback, memo } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+import { AgGridReact } from './lib/ag-grid-react.min.js';
 
 import { useStyles } from './use-styles';
 import { rowsValidation } from './utils';
-
-import { AgGridReact } from './lib/ag-grid-react.min.js';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -23,7 +23,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const {
     classList, display, style, disabled, sortable, filter, floatingFilter,
     editable, resizable, suppressCellFocus, multipleRowsSelection, columnDefs, rowsData,
-    height, width, theme, loadingText, noRowsText, pagination, paginationAutoPageSize, paginationPageSize
+    height, width, theme, loadingText, noRowsText, pagination, paginationAutoPageSize, paginationPageSize,
   } = component;
   const { onCellClick, onColumnMoved } = eventHandlers;
 
@@ -44,7 +44,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     floatingFilter: filter ? floatingFilter : false,
     editable,
     resizable,
-    cellRenderer: memo(CellComponent)
+    cellRenderer: memo(CellComponent),
   }), [sortable, filter, floatingFilter, resizable]);
 
   const loadingOverlayComponent = useMemo(() => LoadingComponent, []);
@@ -62,7 +62,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   const sortByColumnId = useCallback((columnId, direction) => {
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: columnId, sort: direction.toLowerCase() }], defaultState: { sort: null }
+      state: [{ colId: columnId, sort: direction.toLowerCase() }], defaultState: { sort: null },
     });
   }, []);
 
@@ -100,7 +100,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
         noRowsOverlayComponentParams={ noRowsOverlayComponentParams }
         paginationPageSize={ paginationPageSize }
         paginationAutoPageSize={ paginationAutoPageSize }
-        rowSelection={ multipleRowsSelection ? "multiple" : "single" }
+        rowSelection={ multipleRowsSelection ? 'multiple' : 'single' }
         onCellClicked={ handleCellClick }
         onColumnMoved={ handleColumnMove }
       />
@@ -122,6 +122,6 @@ function useActions({ component, gridRef, sortByColumnId, clearSort }) {
     getColumnState : () => gridRef.current.columnApi.getColumnState(),
     getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data),
     sortByColumnId : (columnId, direction) => sortByColumnId(columnId, direction),
-    clearSort      : () => clearSort()
+    clearSort      : () => clearSort(),
   });
 }

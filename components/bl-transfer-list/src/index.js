@@ -1,15 +1,16 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
+import { getMapFromObjectsArray, validate } from './helpers';
 import { List } from './list';
 import { TransferButtons } from './transfer-buttons';
-import { validate, getMapFromObjectsArray } from './helpers';
 
 const ENHANCED = 'enhanced';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TransferListComponent({ component, eventHandlers }) {
-  const { display, classList, style, disabled, listType,
-    leftListItems, rightListItems, leftListTitle, rightListTitle
+  const {
+    display, classList, style, disabled, listType,
+    leftListItems, rightListItems, leftListTitle, rightListTitle,
   } = component;
 
   const [left, setLeft] = useState([]);
@@ -19,7 +20,7 @@ export default function TransferListComponent({ component, eventHandlers }) {
   useEffect(() => {
     setLeft(validate(leftListItems));
     setRight(validate(rightListItems));
-  }, [leftListItems, rightListItems])
+  }, [leftListItems, rightListItems]);
 
   const allSelectedMap = useMemo(() => getMapFromObjectsArray(allSelected), [allSelected]);
 
@@ -28,7 +29,7 @@ export default function TransferListComponent({ component, eventHandlers }) {
   }, [left, allSelectedMap]);
 
   const rightSelected = useMemo(() => {
-    return right.filter(({ objectId }) => allSelectedMap[objectId])
+    return right.filter(({ objectId }) => allSelectedMap[objectId]);
   }, [right, allSelectedMap]);
 
   if (!display) {
@@ -37,9 +38,9 @@ export default function TransferListComponent({ component, eventHandlers }) {
 
   return (
     <div
-      className={
-        cn('bl-customComponent-transferList', classList, { 'bl-customComponent-transferList--disabled': disabled })
-      }
+      className={ cn('bl-customComponent-transferList', classList, {
+        'bl-customComponent-transferList--disabled': disabled,
+      }) }
       style={ style }>
       <List
         enableSelectAll={ listType === ENHANCED }

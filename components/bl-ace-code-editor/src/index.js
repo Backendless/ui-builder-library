@@ -1,6 +1,7 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { AceEditor } from './lib/react-ace.umd';
+
 import './lib/ace-builds.umd';
 
 const { normalizeDimensionValue, cn } = BackendlessUI.CSSUtils;
@@ -9,7 +10,7 @@ export default function AceCodeEditorComponent({ component, elRef, eventHandlers
   const {
     classList, display, style, readOnly, value, mode, theme,
     foldStyle, placeholder, width, height, fontSize, tabSize, printMarginColumn,
-    printMarginVisibility, gutterVisibility, autocompletion, highlightActiveLine, showInvisibles
+    printMarginVisibility, gutterVisibility, autocompletion, highlightActiveLine, showInvisibles,
   } = component;
   const { onChange } = eventHandlers;
 
@@ -30,7 +31,7 @@ export default function AceCodeEditorComponent({ component, elRef, eventHandlers
     foldStyle,
   }), [printMarginColumn, showInvisibles, autocompletion, foldStyle]);
 
-  const onChangeHandler = useCallback((value) => {
+  const onChangeHandler = useCallback(value => {
     setEditorValue(value);
     onChange({ value });
   }, []);
@@ -38,7 +39,7 @@ export default function AceCodeEditorComponent({ component, elRef, eventHandlers
   const styles = useMemo(() => ({
     ...style,
     width: normalizeDimensionValue(width),
-    height: normalizeDimensionValue(height)
+    height: normalizeDimensionValue(height),
   }), [style, width, height]);
 
   if (!display) {
@@ -46,7 +47,7 @@ export default function AceCodeEditorComponent({ component, elRef, eventHandlers
   }
 
   return (
-    <div ref={ elRef } className={ cn("bl-customComponent-aceCodeEditor", classList) } style={ styles }>
+    <div ref={ elRef } className={ cn('bl-customComponent-aceCodeEditor', classList) } style={ styles }>
       <AceEditor
         value={ editorValue }
         mode={ mode }

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 
-import { s } from './lib/granim.min';
+import './lib/granim.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 const DIRECTIONS = ['left-right', 'diagonal', 'top-bottom', 'radial',  'custom'];
@@ -13,14 +13,14 @@ const DEFAULT_CUSTOM_DIRECTION = {
   x0: '0px',
   y0: '0px',
   x1: '100%',
-  y1: '100%'
+  y1: '100%',
 };
 const DEFAULT_STATE = {
   gradients: [
     ['#834d9b', '#d04ed6'],
     ['#1CD8D2', '#93EDC7']],
   transitionSpeed: 5000,
-  loop: true
+  loop: true,
 };
 
 export default function GranimComponent({ component, elRef, eventHandlers, pods }) {
@@ -48,11 +48,11 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
         states['default-state'] = DEFAULT_STATE;
       }
 
-      canvasInstRef.current = new Granim({
+      canvasInstRef.current = new window.Granim({
         element: canvasRef.current,
         customDirection: customDirection || DEFAULT_CUSTOM_DIRECTION,
         isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed,
-        direction, image, states, onStart, onGradientChange, onEnd
+        direction, image, states, onStart, onGradientChange, onEnd,
       });
     }
 
@@ -61,14 +61,14 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
         canvasInstRef.current.destroy();
         canvasInstRef.current = null;
       }
-    }
+    };
   }, [display, direction, image, customDirection, states,
     isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed]);
 
   trackOptionChanges(canvasInstRef, direction, customDirection, states,
     isPausedWhenNotInView, scrollDebounceThreshold, stateTransitionSpeed);
 
-  component.changeState = (stateName) => {
+  component.changeState = stateName => {
     if (display && canvasInstRef.current) {
       if (states?.[stateName]) {
         canvasInstRef.current.changeState(stateName);
@@ -76,9 +76,9 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
         console.error(`Error: Invalid state name '${ stateName }'`);
       }
     }
-  }
+  };
 
-  component.changeDirection = (directionName) => {
+  component.changeDirection = directionName => {
     if (display && canvasInstRef.current) {
       if (DIRECTIONS_MAP[directionName]) {
         canvasInstRef.current.changeDirection(directionName);
@@ -86,9 +86,9 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
         console.error(`Error: Invalid direction name '${ directionName }'`);
       }
     }
-  }
+  };
 
-  component.changeBlendingMode = (blendingModeName) => {
+  component.changeBlendingMode = blendingModeName => {
     if (display && canvasInstRef.current) {
       if (BLENDING_MODES_MAP[blendingModeName]) {
         canvasInstRef.current.changeBlendingMode(blendingModeName);
@@ -96,12 +96,12 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
         console.error(`Error: Invalid blending mode name '${ blendingModeName }'`);
       }
     }
-  }
+  };
 
   Object.assign(component, {
     play : () => canvasInstRef.current.play(),
     pause: () => canvasInstRef.current.pause(),
-    clear: () => canvasInstRef.current.clear()
+    clear: () => canvasInstRef.current.clear(),
   });
 
   if (!display) {
@@ -117,7 +117,7 @@ export default function GranimComponent({ component, elRef, eventHandlers, pods 
 }
 
 function mapFromArray(array) {
-  return array.reduce((a, v) => ({ ...a, [v]: 1}), {});
+  return array.reduce((a, v) => ({ ...a, [v]: 1 }), {});
 }
 
 function useOptions(canvasInstRef, option, value) {

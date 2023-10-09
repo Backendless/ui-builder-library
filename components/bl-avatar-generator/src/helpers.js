@@ -148,7 +148,7 @@ const OptionsList = [
     validate: true,
     defaultValue: DefaultOptions.GRAPHIC,
   },
-]
+];
 
 export const ActionsKeys = {
   getTopTypes        : characterOptions[OptionsKeys.TOP],
@@ -182,14 +182,17 @@ function isValueValid(categoryKey, value) {
   const isValid = characterOptions[categoryKey]?.includes(value);
 
   if (value && value !== RANDOM_OPTION && !isValid) {
-    console.warn(`The "${ categoryKey }" category does not contain the "${ value }" parameter. The random parameter will be applied.`);
+    console.warn(
+      `The "${ categoryKey }" category does not contain the "${ value }" parameter.` +
+      'The random parameter will be applied.'
+    );
   }
 
   return isValid;
 }
 
 export const handleOptions = component => {
-  return OptionsList.reduce((acc, {key, categoryKey, validate, defaultValue}) => {
+  return OptionsList.reduce((acc, { key, categoryKey, validate, defaultValue }) => {
     let value = component[key] || defaultValue;
 
     if(validate && !isValueValid(categoryKey, component[key])) {
@@ -207,7 +210,7 @@ export const handleRandomOptions = (...options) => {
 
   Object.values(ComponentOptionsKeys).forEach((key, index) => component[key] = options[index]);
 
-  return OptionsList.reduce((acc, {key, categoryKey, validate, defaultValue}) => {
+  return OptionsList.reduce((acc, { key, categoryKey, validate, defaultValue }) => {
     let value = component[key];
 
     if (!value && !validate) {

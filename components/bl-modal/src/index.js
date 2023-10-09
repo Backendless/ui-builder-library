@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import { useModalContentStyles, useCloseOnEscape } from './helpers';
+import { useCloseOnEscape, useModalContentStyles } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function ModalComponent({ component, eventHandlers, pods, elRef }) {
   const {
-    display, classList, style, modalVisibility, closeOnEscape, allowScrolling, contentWidth, contentHeight
+    display, classList, style, modalVisibility, closeOnEscape, allowScrolling, contentWidth, contentHeight,
   } = component;
   const { onClose } = eventHandlers;
 
@@ -48,7 +48,7 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   }
 
   return ReactDOM.createPortal((
-    <div ref={ elRef } style={ style } className={ cn("bl-customComponent-modal", classList) }>
+    <div ref={ elRef } style={ style } className={ cn('bl-customComponent-modal', classList) }>
       <div className="backdrop" onClick={ handleBackdropClick } />
       <div className="modal-content" style={ modalContentStyles }>{ modalContentPod.render() }</div>
     </div>

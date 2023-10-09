@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useMemo } from 'react';
+import { forwardRef, useMemo, useRef } from 'react';
 
 import { ButtonContainer } from './button-container';
 import { Fieldset } from './fieldset';
@@ -8,7 +8,7 @@ import { Placeholder } from './placeholder';
 export const TextField = forwardRef((props, ref) => {
   const {
     inputValue, disabled, placeholder, autocompleteValue, isOptionsOpen, isAutocompleteActive,
-    setInputValue, setIsOptionsOpen, setAutocompleteValue, setIsAutocompleteActive, eventHandlers
+    setInputValue, setIsOptionsOpen, setAutocompleteValue, setIsAutocompleteActive, eventHandlers,
   } = props;
 
   const { onButtonClearClick, onChange } = eventHandlers;

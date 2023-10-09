@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import Chart from './chartjs';
+
+import Chart from './lib/chartjs';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -15,9 +16,7 @@ export default function CategoryChartComponent({ component, elRef }) {
     <div
       ref={ elRef }
       style={ styles }
-      className={
-        cn('bl-customComponent-categoryChart', classList, { 'bl-customComponent-categoryChart--disabled': disabled })
-      }>
+      className={ cn('bl-customComponent-categoryChart', classList, { 'bl-customComponent-categoryChart--disabled': disabled }) }>
       <CategoryChart component={ component }/>
     </div>
   );
@@ -34,7 +33,7 @@ function CategoryChart({ component }) {
 function useChart(component) {
   const {
     options, yGridLineVisibility, xGridLineVisibility, gridLinesColor, gridLinesWidth,
-    legendVisibility, titleVisibility, title, titleFontSize, type, labels, datasets
+    legendVisibility, titleVisibility, title, titleFontSize, type, labels, datasets,
   } = component;
 
   const chartRef = useRef(null);

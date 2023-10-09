@@ -222,4 +222,4 @@ const Vomit = () => (
 );
 
 export const MouthTypes = { Concerned, Default, Disbelief, Eating, Grimace,
-  Sad, ScreamOpen, Serious, Smile, Tongue, Twinkle, Vomit, };
+  Sad, ScreamOpen, Serious, Smile, Tongue, Twinkle, Vomit };

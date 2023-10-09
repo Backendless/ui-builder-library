@@ -65,7 +65,6 @@ export function Modal(props) {
           type={ type }
           onCloseHandler={ onCloseHandler }
           onSubmitHandler={ onSubmitHandler }
-          inputValue={ inputValue }
           submitButtonLabel={ submitButtonLabel }
           closeButtonLabel={ closeButtonLabel }
         />

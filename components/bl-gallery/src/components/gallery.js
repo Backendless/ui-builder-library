@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import LightBox from '../lib/lightbox';
 import { replaceArrowBrackets } from '../helpers/string';
+import LightBox from '../lib/lightbox';
 import { GalleryImage } from './gallery-image';
 
 export function Gallery(props) {

@@ -83,7 +83,7 @@ export function PageList(props) {
 
         if (page === DOTS) {
           return (
-            <li>
+            <li key={ page }>
               <div className={ cn('pagination__dots', { [`pagination__dots--${ paginationSize }`]: paginationSize }) }>
                 { DOTS }
               </div>
@@ -92,7 +92,7 @@ export function PageList(props) {
         }
 
         return (
-          <li>
+          <li key={ page }>
             <button
               type="button"
               className={ classes }

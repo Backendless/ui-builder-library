@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Mapbox from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
 import MapboxGeocoder from './lib/mapbox-geocoder';
+
 import { createActions } from './actions';
 
 const { Map, FullscreenControl, NavigationControl, Marker, Popup, GeolocateControl } = Mapbox;
@@ -210,13 +211,13 @@ export const useMarkers = (markers, mapRef, eventHandlers) => {
         collectedMarkerData.push({
           marker,
           markerProps: markerItem,
-        })
+        });
 
         return marker;
       });
     }
 
-    onMarkersCreated({markers: collectedMarkerData});
+    onMarkersCreated({ markers: collectedMarkerData });
   }, [markers]);
 };
 

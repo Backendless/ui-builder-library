@@ -165,4 +165,4 @@ const UpDownNatural = () => (
 );
 
 export const BrowsTypes = { Angry, AngryNatural, Default, DefaultNatural, FlatNatural, FrownNatural, RaisedExcited,
-  RaisedExcitedNatural, SadConcerned, SadConcernedNatural, UnibrowNatural, UpDown, UpDownNatural, };
+  RaisedExcitedNatural, SadConcerned, SadConcernedNatural, UnibrowNatural, UpDown, UpDownNatural };

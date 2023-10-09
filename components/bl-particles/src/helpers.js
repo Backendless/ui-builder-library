@@ -8,6 +8,7 @@ import {
   loadPathShape, loadPerlinNoisePath, loadPolygonMaskPlugin, loadPolygonPath, loadRoundedRectShape,
   loadSimplexNoisePath, loadSoundsPlugin, loadSpiralShape,
 } from './lib/particles.min';
+
 import {
   BigCircles, Bubbles, Colors, Confetti, Direction, Fire, Firefly, Fireworks, Growing,
   Hyperspace, Light, Links, SeaAnemone, Shapes, Snow, Stars, TetradicConfetti, Triangles,

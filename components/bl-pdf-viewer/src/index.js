@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 
-import { Document, Page } from './react-pdf.min.js';
+import { Document, Page } from './lib/react-pdf.min.js';
+
 import { Controls, NoData } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;

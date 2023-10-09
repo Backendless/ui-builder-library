@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import primereact from './lib/core';
-import { filterSuggestions, orderFields, stringToList, useTriggers, updateSuggestionsMap } from './helpers.js';
+
+import { filterSuggestions, orderFields, stringToList, updateSuggestionsMap, useTriggers } from './helpers.js';
 import { SuggestionCard } from './suggestion-card.js';
 
 const { Mention } = primereact.mention;

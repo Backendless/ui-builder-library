@@ -1299,4 +1299,4 @@ export const TopTypes = { NoHair, Eyepatch, Hat, Hijab, Turban, WinterHat1, Wint
   LongHairFroBand, LongHairNotTooLong, LongHairShavedSides, LongHairMiaWallace, LongHairStraight, LongHairStraight2,
   LongHairStraightStrand, ShortHairDreads01, ShortHairDreads02, ShortHairFrizzle, ShortHairShaggy,
   ShortHairShaggyMullet, ShortHairShortCurly, ShortHairShortFlat, ShortHairShortRound, ShortHairShortWaved,
-  ShortHairSides, ShortHairTheCaesar, ShortHairTheCaesarSidePart, };
+  ShortHairSides, ShortHairTheCaesar, ShortHairTheCaesarSidePart };

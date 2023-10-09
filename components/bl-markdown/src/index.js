@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import MarkdownIt from './markdown-it.min.js';
+import MarkdownIt from './lib/markdown-it.min.js';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -51,7 +51,7 @@ export default function Markdown({ component, elRef }) {
     <div
       ref={ elRef }
       className={ cn('bl-customComponent-markdown markdown-body', classList) }
-      style={ { ...style, height: validateDimension(height), width: validateDimension(width) } }>
+      style={{ ...style, height: validateDimension(height), width: validateDimension(width) }}>
       <MdContent isLoading={ isLoading } errorMessage={ errorMessage } markdown={ markdown }/>
     </div>
   );
@@ -66,7 +66,7 @@ function MdContent({ isLoading, errorMessage, markdown }) {
     return <span className="error-message"> { errorMessage } </span>;
   }
 
-  return <div className="markdown-body" dangerouslySetInnerHTML={ { __html: markdown } }/>;
+  return <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdown }}/>;
 }
 
 function Loader() {
@@ -80,7 +80,7 @@ function Loader() {
   );
 }
 
-const validateDimension = (dimension) => {
+const validateDimension = dimension => {
   if (dimension) {
     if (!!Number(dimension)) {
       return dimension + 'px';

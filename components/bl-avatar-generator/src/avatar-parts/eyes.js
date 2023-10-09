@@ -166,4 +166,4 @@ const WinkWacky = () => (
 );
 
 export const EyesTypes = { Close, Cry, Default, Dizzy, EyeRoll, Happy, Hearts,
-  Side, Squint, Surprised, Wink, WinkWacky, };
+  Side, Squint, Surprised, Wink, WinkWacky };

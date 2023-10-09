@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Dropzone, FileMosaic, FullScreen, ImagePreview, VideoPreview } from './lib/files-ui.min';
+
 import { ensureFileType, useDropzone } from './helpers';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;

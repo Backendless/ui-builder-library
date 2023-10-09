@@ -9,10 +9,10 @@ export function TabControl({ tabs, currentTabId, setCurrentTabId, onChange }) {
   return (
     <div className="tabs">
       { tabs.map(({ id, label }) => (
-        <button key={ id } className={ cn("tab", { "tab-active": currentTabId === id }) } onClick={ () => onTabChange(id) }>
+        <button key={ id } className={ cn('tab', { 'tab-active': currentTabId === id }) } onClick={ () => onTabChange(id) }>
           { label }
         </button>
       )) }
     </div>
-  )
+  );
 }

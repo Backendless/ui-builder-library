@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
-import CalHeatmap from './cal-heatmap.min';
+import CalHeatmap from './lib/cal-heatmap.min';
+
 import { ensureValidScale, shapeData, shapeDate, shapeDomain, shapePlugins, shapeSubDomain } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;

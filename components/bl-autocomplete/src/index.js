@@ -1,14 +1,13 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { useOnClickOutside, useFilteredOptions, Validators } from './helpers';
+import { useFilteredOptions, useOnClickOutside, Validators } from './helpers';
 import { Options } from './options';
 import { TextField } from './text-field';
 
 const { cn } = BackendlessUI.CSSUtils;
-
 export default function AutocompleteComponent({ component, eventHandlers, elRef }) {
   const {
-    classList, style, display, disabled, placeholder, emptyOptionsLabel, variant, value, options
+    classList, style, display, disabled, placeholder, emptyOptionsLabel, variant, value, options,
   } = component;
 
   const autocompleteRef = useRef();
@@ -28,7 +27,7 @@ export default function AutocompleteComponent({ component, eventHandlers, elRef 
 
   useEffect(() => {
     setAutocompleteValue(Validators.value(value, optionsList, hasGroup));
-  }, [value, optionsList])
+  }, [value, optionsList]);
 
   const classes = cn(
     'bl-customComponent-autocomplete', `bl-customComponent-autocomplete--${variant}`, classList,

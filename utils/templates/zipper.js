@@ -1,63 +1,63 @@
-const fs = require('fs-extra')
-const path = require('path')
-const { zip } = require('zip-a-folder')
+const fs = require('fs-extra');
+const path = require('path');
+const { zip } = require('zip-a-folder');
 
-const templateName = process.argv[2]
+const templateName = process.argv[2];
 
-;(async () => {
+(async () => {
   try {
     if (templateName) {
-      await zipTemplate(templateName)
+      await zipTemplate(templateName);
     } else {
-      await zipAllTemplates()
+      await zipAllTemplates();
     }
 
-    console.log('done!')
+    console.log('done!');
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
-})()
+})();
 
 async function zipAllTemplates() {
-  console.log('zip all components...')
+  console.log('zip all components...');
 
-  const componentList = await fs.readdir(resolvePath('./src'))
+  const componentList = await fs.readdir(resolvePath('./src'));
 
-  console.log(` found ${ componentList.length } components: [${ componentList.join(', ') }]`)
+  console.log(` found ${ componentList.length } components: [${ componentList.join(', ') }]`);
 
   for (const componentName of componentList) {
-    await zipTemplate(componentName)
+    await zipTemplate(componentName);
   }
 
-  console.log('zipped all components!')
+  console.log('zipped all components!');
 }
 
 async function zipTemplate(name) {
-  const startDate = Date.now()
+  const startDate = Date.now();
 
-  console.log(`\n---- start zipping a component with name=${ name }...`)
+  console.log(`\n---- start zipping a component with name=${ name }...`);
 
-  const sourceDir = resolvePath(`./src/${ name }`)
-  const targetDir = resolvePath(`./dist/${ name }`)
-  const targetFile = resolvePath(`./dist/${ name }/template.zip`)
+  const sourceDir = resolvePath(`./src/${ name }`);
+  const targetDir = resolvePath(`./dist/${ name }`);
+  const targetFile = resolvePath(`./dist/${ name }/template.zip`);
 
-  await fs.ensureDir(targetDir)
+  await fs.ensureDir(targetDir);
 
-  console.log(`   |- remove old template.zip file in the directory: [${ relativePath(targetDir) }]`)
+  console.log(`   |- remove old template.zip file in the directory: [${ relativePath(targetDir) }]`);
 
   if (await fs.exists(targetFile)) {
-    await fs.remove(targetFile)
+    await fs.remove(targetFile);
   }
 
   await zip(sourceDir, targetFile);
 
-  console.log(`   |- zipped a component with name=${ name } in ${ Date.now() - startDate } milliseconds\n`)
+  console.log(`   |- zipped a component with name=${ name } in ${ Date.now() - startDate } milliseconds\n`);
 }
 
 function resolvePath(p) {
-  return path.resolve(__dirname, p)
+  return path.resolve(__dirname, p);
 }
 
 function relativePath(p) {
-  return path.relative(__dirname, p)
+  return path.relative(__dirname, p);
 }
