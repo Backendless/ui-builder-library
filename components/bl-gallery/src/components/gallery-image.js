@@ -8,6 +8,3 @@ export function GalleryImage({ url, height }) {
     />
   )
 }
-
-
-console.log(NONEXIST)
