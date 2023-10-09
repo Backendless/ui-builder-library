@@ -15,15 +15,18 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
     groupY, label, gutter, dynamicDimension, subSort, scaleDomain, legend, calendarLabel,
     animationDuration, theme,
   } = component;
-  const { subColorLabelLogic, subLabelLogic, groupYLogic, labelLogic, onCellClick } = eventHandlers;
+  const {
+    subColorLabelLogic, subLabelLogic, groupYLogic,
+    labelLogic, onCellClick, onMouseOver, onMouseOut,
+  } = eventHandlers;
 
-  const cal = useMemo(() => new CalHeatmap(), []);
+  const calHeatmap = useMemo(() => new CalHeatmap(), []);
 
   const maxValid = useMemo(() => data && Math.max(...data.map(({ value }) => value)), [data]);
   const minValid = useMemo(() => data && Math.min(...data.map(({ value }) => value)), [data]);
 
   useEffect(() => {
-    cal.paint({
+    calHeatmap.paint({
         range,
         date: shapeDate(startDate, minDate, maxDate, highlightDate),
 
@@ -54,34 +57,33 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
       },
       shapePlugins(legend, instanceId, calendarLabel)
     );
-  }, [cal, cellHeight, cellRadius, cellWidth, dataType, datePropName, defaultDataValue, highlightDate, instanceId,
-    labelHeight, labelPosition, labelRotation, labelWidth, labelOffsetX, labelOffsetY, maxDate, maxValid, minDate,
-    minValid, range, scaleColorRange, scaleColorScheme, scaleOpacityBaseColor, scaleType, sort, startDate,
+  }, [calHeatmap, cellHeight, cellRadius, cellWidth, dataType, datePropName, defaultDataValue, highlightDate,
+    instanceId, labelHeight, labelPosition, labelRotation, labelWidth, labelOffsetX, labelOffsetY, maxDate, maxValid,
+    minDate, minValid, range, scaleColorRange, scaleColorScheme, scaleOpacityBaseColor, scaleType, sort, startDate,
     subColorLabel, subColorLabelLogic, subGutter, subLabel, subLabelLogic, subType, textAlign, type, valuePropName,
     verticalOrientation, sourceDataUrl, data, groupYLogic, groupY, scaleDomain, dynamicDimension, gutter, labelLogic,
     label, subSort, legend, calendarLabel, animationDuration, theme]);
 
-  useEffect(() => cal.on('click', (event, timestamp, value) => onCellClick({ event, timestamp, value })), []);
+  useEffect(() => {
+    calHeatmap.on('click', (event, timestamp, value) => onCellClick({ event, timestamp, value }));
+    calHeatmap.on('mouseover', (event, timestamp, value) => onMouseOver({ event, timestamp, value }));
+    calHeatmap.on('mouseout', (event, timestamp, value) => onMouseOut({ event, timestamp, value }));
+  }, []);
 
-  component.goNext = steps => cal.next(steps);
-  component.goPrev = steps => cal.previous(steps);
-  component.jumpTo = (date, reset) => cal.jumpTo(date, reset);
+  component.goNext = steps => calHeatmap.next(steps);
+  component.goPrev = steps => calHeatmap.previous(steps);
+  component.jumpTo = (date, reset) => calHeatmap.jumpTo(date, reset);
 
   if (!display) {
-    cal.destroy();
+    calHeatmap.destroy();
 
     return null;
   }
 
   return (
-    <>
-      <div
-        ref={ elRef }
-        id={ `bl-cal-heatmap-${ instanceId }` }
-        className={ cn('bl-customComponent-calendar-heatmap', classList) }
-        style={ style }
-      />
+    <div ref={ elRef } className={ cn('bl-customComponent-calendar-heatmap', classList) } style={ style }>
+      <div id={ `bl-cal-heatmap-${ instanceId }` }/>
       <div id={ `bl-cal-heatmap--legend-label--${ instanceId }` }/>
-    </>
+    </div>
   );
 }

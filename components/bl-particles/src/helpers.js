@@ -49,12 +49,19 @@ const PresetsMap = {
   [Presets.TRIANGLES]        : Triangles,
 };
 
+const HEX_REGEX = /^#([0-9a-f]{3}|[0-9a-f]{6})([0-9a-f]{2})?$/i;
+const RGBA_REGEX = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/;
+const HSLA_REGEX = /^hsla?\((\d+),\s*(\d+%?),\s*(\d+%?)(?:,\s*([\d.]+))?\)$/;
 const UNSET_COLLISION_MODE = 'unset';
 const LINKS_DISTANCE = 150;
 const STROKE_WIDTH = 2;
 const COLOR_ANIMATION_SPEED = 20;
 const DEFAULT_Z_INDEX = 0;
 const DEFAULT_TIMING = 0;
+const DEFAULT_IMAGE_URL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAmklEQVR42mP8/6BxwMS' +
+  'AweSLTxIoBrAGVCDMEArAhoDCxgEzAmBpA1oAsGASMAZwhGIKzBgLcHMC2B2AwYBkwSMyAwAF2AGGA1gYgC2BBMYDSgDGgMwR8gDmH1ABDMCqAIQVw' +
+  'DAgAUEAIBCDJAACISNAEIAxkFgBbJCACSRiRyBSoA3gIAAlEAISlCB4DwYdohkhITMAaGAmPVAzJpSAYVgAdhCAxkgsJCGZMwBA2YYIbQFzQBgRmB' +
+  'iFgjQRyBQyAyYBmkXgHBMAKZKAEigCJMBuAIaJAAAQBJIigISUJgAABRxUigOQAkAAAAAElFTkSuQmCC';
 
 const Opacity = { FULL: 1, LOW: 0.1 };
 const RotateDegrees = { MIN: 0, MAX: 360 };
@@ -76,21 +83,36 @@ const LineShapeProps = {
 
 export function useOptions(component) {
   const {
-    preset, textValue, color, backgroundColor, autoPlay, fullScreen, shape, zIndex, lineLinksVisibility, move, size,
-    speed, opacity, direction, colorAnimation, number, imageURL, rotate, rotationAnimation, customOptions, linksColor,
-    rollingAnimation, duration, delay, triangleLinksVisibility, collisionMode, outModes, backgroundOpacity,
+    preset, textValue, color, background, autoPlay, fullScreen, shape, zIndex, lineLinksVisibility, move, size,
+    speed, direction, colorAnimation, number, imageURL, rotate, rotationAnimation, customOptions, linksColor,
+    rollingAnimation, duration, delay, triangleLinksVisibility, collisionMode, outModes,
   } = component;
+
+  const { color: backgroundColor, opacity: backgroundOpacity } = useMemo(() => parseColor(background), [background]);
+  const { color: linkColor, opacity: linkOpacity } = useMemo(() => parseColor(linksColor), [linksColor]);
+  const { color: particlesColor, opacity: particlesOpacity } = useMemo(() => {
+    if (Array.isArray(color)) {
+      return { color };
+    }
+
+    return parseColor(color);
+  }, [color]);
+
+  if (shape === Shapes.IMAGE && !imageURL) {
+    console.warn('Warning: You have selected Image type as the particles shape, but no image source has been ' +
+      'provided. Please make sure to specify the Image URL(s) property in the Particles component settings.');
+  }
 
   const particles = useMemo(() => ({
     collisions: { enable: collisionMode !== UNSET_COLLISION_MODE, mode: collisionMode },
     links     : {
       enable   : lineLinksVisibility || triangleLinksVisibility,
       distance : LINKS_DISTANCE,
-      color    : linksColor || Colors.RANDOM,
-      opacity  : lineLinksVisibility ? Opacity.FULL : Opacity.LOW,
+      color    : linkColor || Colors.RANDOM,
+      opacity  : lineLinksVisibility ? linkOpacity : Opacity.LOW,
       triangles: {
         enable : triangleLinksVisibility,
-        color  : linksColor,
+        color  : linkColor,
         opacity: Opacity.LOW,
       },
     },
@@ -102,14 +124,14 @@ export function useOptions(component) {
     },
     roll      : { enable: rollingAnimation, speed },
     color     : {
-      value    : color || Colors.RANDOM,
+      value    : particlesColor || Colors.RANDOM,
       animation: { enable: colorAnimation, speed: COLOR_ANIMATION_SPEED },
     },
-    opacity   : { value: opacity },
+    opacity   : { value: particlesOpacity },
     shape     : {
       type   : shape,
       options: {
-        [Shapes.IMAGE] : Array.isArray(imageURL) ? imageURL : { src: imageURL },
+        [Shapes.IMAGE] : Array.isArray(imageURL) ? imageURL : { src: imageURL || DEFAULT_IMAGE_URL },
         [Shapes.TEXT]  : { value: textValue },
         [Shapes.SPIRAL]: SpiralShapeProps,
         [Shapes.LINE]  : LineShapeProps,
@@ -119,8 +141,9 @@ export function useOptions(component) {
     size      : { value: size },
     number    : { value: number, density: { enable: true } },
   }), [
-    collisionMode, lineLinksVisibility, triangleLinksVisibility, linksColor, rotate, rotationAnimation, speed, number,
-    rollingAnimation, color, colorAnimation, opacity, shape, imageURL, textValue, move, direction, outModes, size,
+    collisionMode, lineLinksVisibility, triangleLinksVisibility, linkColor, linkOpacity, rotate, rotationAnimation,
+    speed, rollingAnimation, particlesColor, colorAnimation, particlesOpacity, shape, imageURL, textValue, move,
+    direction, outModes, size, number,
   ]);
 
   const otherProps = useMemo(() => ({
@@ -136,6 +159,38 @@ export function useOptions(component) {
     autoPlay, particles,
     ...otherProps, ...customOptions,
   };
+}
+
+const ParsersList = [
+  {
+    regexp        : HEX_REGEX,
+    buildColor    : matches => `#${ matches[1] }`,
+    extractOpacity: matches => matches[2] ? parseFloat((parseInt(matches[2], 16) / 255).toFixed(2)) : Opacity.FULL,
+  },
+  {
+    regexp        : RGBA_REGEX,
+    buildColor    : matches => `rgb(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`,
+    extractOpacity: matches => matches[4] ? parseFloat(matches[4]) : Opacity.FULL,
+  },
+  {
+    regexp        : HSLA_REGEX,
+    buildColor    : matches => `hsl(${ matches[1] }, ${ matches[2] }, ${ matches[3] })`,
+    extractOpacity: matches => matches[4] ? parseFloat(matches[4]) : Opacity.FULL,
+  },
+];
+
+function parseColor(value) {
+  const parser = ParsersList.find(parser => parser.regexp.test(value));
+
+  if (!parser) {
+    return {};
+  }
+
+  const matches = value.match(parser.regexp);
+  const color = parser.buildColor(matches);
+  const opacity = parser.extractOpacity(matches);
+
+  return { color, opacity };
 }
 
 async function loadShapes(engine) {

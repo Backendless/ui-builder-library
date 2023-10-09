@@ -7,6 +7,10 @@ to open a panel that is overlaid on top of a page and slides in from the edge of
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/mUUJNgy1rFmjXlX57Fqo).
+
 ## Properties
 
 | Property                | Type                                                  | Default value | Logic              | Data Binding | UI Setting | Description                                                      |

@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { Modal } from './modal';
 
 export default function SimpleModal({ component, eventHandlers }) {
-  const {
-    display,
-    closingDuration,
-  } = component;
+  const { display, closingDuration } = component;
 
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -29,14 +27,13 @@ export default function SimpleModal({ component, eventHandlers }) {
     document.body.classList.toggle('active-modal', isOpen);
   }, [isOpen]);
 
-
   useEffect(() => {
     if (display) {
-      setIsOpen(true)
+      component.openModal();
     } else {
       component.closeModal();
     }
-  }, [display])
+  }, [display]);
 
   if (!isOpen) {
     return null;

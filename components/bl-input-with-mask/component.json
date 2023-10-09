@@ -9,6 +9,18 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "text",
+      "name": "initValue",
+      "label": "Value",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "initValueLogic",
+      "handlerLabel": "Value Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the initial value of the input field.",
+      "settingTooltip": "Allows to determine the initial value of the input field."
+    },
+    {
       "type": "select",
       "name": "maskType",
       "label": "Mask Type",
@@ -29,6 +41,18 @@
         {
           "value": "RegExp",
           "label": "RegExp"
+        },
+        {
+          "value": "Enum",
+          "label": "Enum"
+        },
+        {
+          "value": "Range",
+          "label": "Range"
+        },
+        {
+          "value": "Date",
+          "label": "Date"
         }
       ],
       "handlerDescription": "This is a handler for the logic to determine type of mask(Number, String, RegExp).",
@@ -46,6 +70,55 @@
       "settingTooltip": "Allows to specify the mask. 0 - any digit; a - any letter; * - any char. Or you can write RegExp. "
     },
     {
+      "type": "text",
+      "name": "maskEnum",
+      "label": "Enum",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maskEnumLogic",
+      "handlerLabel": "Enum Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the list of strings that are enabled to write in the input field.",
+      "settingTooltip": "Allows to determine the list of strings that are enabled to write in the input field."
+    },
+    {
+      "type": "text",
+      "name": "dateFormat",
+      "label": "Date Format",
+      "showInSettings": true,
+      "defaultValue": "DD/MM/YYYY",
+      "hasLogicHandler": true,
+      "handlerId": "dateFormatLogic",
+      "handlerLabel": "Date Format Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the format of date when the Mask Type is Date.",
+      "settingTooltip": "Allows to determine the format of date when the Mask Type is Date."
+    },
+    {
+      "type": "json",
+      "name": "dynamicMask",
+      "label": "Dynamic Mask",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "dynamicMaskLogic",
+      "handlerLabel": "Dynamic Mask Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the array of masks. Dynamic mask automatically selects the appropriate mask from a provided array of masks. The mask with the largest number of fitting characters is selected considering the provided mask order.",
+      "settingTooltip": "Allows to determine the array of masks. Dynamic mask automatically selects the appropriate mask from a provided array of masks. The mask with the largest number of fitting characters is selected considering the provided mask order."
+    },
+    {
+      "type": "json",
+      "name": "blocks",
+      "label": "Blocks",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "blocksLogic",
+      "handlerLabel": "Blocks Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the nested masks.",
+      "settingTooltip": "Allows to determine the nested masks."
+    },
+    {
       "type": "json",
       "name": "definitions",
       "label": "Definitions",
@@ -54,8 +127,8 @@
       "handlerId": "definitionsLogic",
       "handlerLabel": "Definitions Logic",
       "dataBinding": true,
-      "settingTooltip": "Allows to provide custom mask definitions such as default \"0\", \"a\", and \"*\". Signature of data where X is any single char: `{ X: { mask: string, displayChar: string, placeholderChar: string }`",
-      "handlerDescription": "This is a handler for the logic to determine a custom mask definitions such as default \"0\", \"a\", and \"*\". Signature of data where X is any single char: `{ X: { mask: string, displayChar: string, placeholderChar: string }`"
+      "handlerDescription": "This is a handler for the logic to determine the custom definition of the mask pattern.",
+      "settingTooltip": "Allows to determine the custom definition of the mask pattern."
     },
     {
       "type": "text",
@@ -66,19 +139,8 @@
       "handlerId": "displayCharLogic",
       "handlerLabel": "Display Char Logic",
       "dataBinding": true,
-      "settingTooltip": "Allows to specify char that will be displayed instead of the input value.",
-      "handlerDescription": "This is a handler for the logic to determine a char that will be displayed instead of the input value."
-    },
-    {
-      "type": "text",
-      "name": "placeholder",
-      "showInSettings": true,
-      "hasLogicHandler": true,
-      "handlerId": "placeholderLogic",
-      "dataBinding": true,
-      "label": "Placeholder",
-      "handlerDescription": "This is a handler for the logic to determine a placeholder.",
-      "settingTooltip": "Allows to specify placeholder."
+      "handlerDescription": "This is a handler for the logic to determine the character that will be displayed instead of the entered character.",
+      "settingTooltip": "Allows to determine the character that will be displayed instead of the entered character."
     },
     {
       "type": "text",
@@ -94,6 +156,140 @@
       "settingTooltip": "Allows to specify placeholder char. If it is left empty, the default value will be `_`."
     },
     {
+      "type": "text",
+      "name": "placeholder",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "placeholderLogic",
+      "dataBinding": true,
+      "label": "Placeholder",
+      "handlerDescription": "This is a handler for the logic to determine a placeholder.",
+      "settingTooltip": "Allows to specify placeholder."
+    },
+    {
+      "type": "text",
+      "name": "min",
+      "label": "Min",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "minLogic",
+      "handlerLabel": "Min Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the min number that can be input.",
+      "settingTooltip": "Allows to determine the min number that can be input"
+    },
+    {
+      "type": "text",
+      "name": "max",
+      "label": "Max",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "maxLogic",
+      "handlerLabel": "Max Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the max number that can be input.",
+      "settingTooltip": "Allows to determine the max number that can be input."
+    },
+    {
+      "type": "number",
+      "name": "from",
+      "label": "From",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "fromLogic",
+      "handlerLabel": "From Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the number from which you can input in the field when MaskType has a value of Range.",
+      "settingTooltip": "Allows to determine the number from which you can input in the field when MaskType has a value of Range."
+    },
+    {
+      "type": "number",
+      "name": "to",
+      "label": "To",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "toLogic",
+      "handlerLabel": "To Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the number to which you can enter in the field when MaskType has a value of Range.",
+      "settingTooltip": "Allows to determine the number to which you can enter in the field when MaskType has a value of Range."
+    },
+    {
+      "type": "text",
+      "name": "thousandsSeparator",
+      "label": "Thousands Separator",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "thousandsSeparatorLogic",
+      "handlerLabel": "Thousands Separator Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the thousands separator.",
+      "settingTooltip": "Allows to determine the thousands separator."
+    },
+    {
+      "type": "checkbox",
+      "name": "normalizeZeros",
+      "label": "Normalize Zeros",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": true,
+      "handlerId": "normalizeZerosLogic",
+      "handlerLabel": "Normalize Zeros Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler of the logic to determine if the redundant zeros should be removed at the ends.",
+      "settingTooltip": "Allows to determine if the redundant zeros should be removed at the ends."
+    },
+    {
+      "type": "number",
+      "name": "scaleNumber",
+      "label": "Scale of Number",
+      "showInSettings": true,
+      "defaultValue": "2",
+      "hasLogicHandler": true,
+      "handlerId": "scaleNumberLogic",
+      "handlerLabel": "Scale of Number Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the count of numbers after the comma.",
+      "settingTooltip": "Allows to determine the count of numbers after the comma."
+    },
+    {
+      "type": "text",
+      "name": "radix",
+      "label": "Radix",
+      "showInSettings": true,
+      "defaultValue": ",",
+      "hasLogicHandler": true,
+      "handlerId": "radixLogic",
+      "handlerLabel": "Radix Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the separator of a float number.",
+      "settingTooltip": "Allows to determine the separator of a float number."
+    },
+    {
+      "type": "text",
+      "name": "mapToRadix",
+      "label": "Map to Radix",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "mapToRadixLogic",
+      "handlerLabel": "Map to Radix Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the symbols to process as radix.",
+      "settingTooltip": "Allows to determine the symbols to process as radix."
+    },
+    {
+      "type": "checkbox",
+      "name": "padFractionalZeros",
+      "label": "Pad Fractional Zeros",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "padFractionalZerosLogic",
+      "handlerLabel": "Pad Fractional Zeros Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the fractional zeros should be added.",
+      "settingTooltip": "Allows to determine if the fractional zeros should be added."
+    },
+    {
       "type": "checkbox",
       "name": "lazy",
       "label": "Lazy",
@@ -102,6 +298,102 @@
       "handlerId": "lazyLogic",
       "handlerDescription": "This is a handler for the logic to determine a lazy. If lazy is true mask is not visible, and if lazy is false mask visible, but if the mask is visible, the input value includes the mask.",
       "settingTooltip": " Allows to specify lazy or not lazy. Lazy it's when the input doesn't display the template of the mask. For example, Mask: `000 000 000`, Placeholder Char: `_`, Lazy: `checked` input will be empty, but if Lazy: `unchecked` input will be `___ ___ ___` "
+    },
+    {
+      "type": "select",
+      "name": "overwrite",
+      "label": "Overwrite",
+      "showInSettings": true,
+      "defaultValue": "no",
+      "hasLogicHandler": true,
+      "handlerId": "overwriteLogic",
+      "handlerLabel": "Overwrite Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "shift",
+          "label": "Shift"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to determine whether to enable or disable character overwriting (replacement or offset) instead of insertion.",
+      "settingTooltip": "Allows to determine whether to enable or disable character overwriting (replacement or offset) instead of insertion."
+    },
+    {
+      "type": "select",
+      "name": "eager",
+      "label": "Eager",
+      "showInSettings": true,
+      "defaultValue": "no",
+      "hasLogicHandler": true,
+      "handlerId": "eagerLogic",
+      "handlerLabel": "Eager Logic",
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "append",
+          "label": "Append"
+        },
+        {
+          "value": "remove",
+          "label": "Remove"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to determine how to behave around undefined mask characters.",
+      "settingTooltip": "Allows to determine how to behave around undefined mask characters."
+    },
+    {
+      "type": "select",
+      "name": "autofix",
+      "label": "Autofix",
+      "showInSettings": true,
+      "defaultValue": "no",
+      "hasLogicHandler": true,
+      "handlerId": "autofixLogic",
+      "handlerLabel": "Autofix Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "pad",
+          "label": "Pad"
+        }
+      ],
+      "handlerDescription": "This is a handler for the logic to determine if the auto-fix should be.",
+      "settingTooltip": "Allows to determine if the auto-fix should be."
+    },
+    {
+      "type": "checkbox",
+      "name": "skipInvalid",
+      "label": "Skip Invalid",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "skipInvalidLogic",
+      "handlerLabel": "Skip Invalid Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the invalid value should be skipped.",
+      "settingTooltip": "Allows to determine if the invalid value should be skipped."
     },
     {
       "type": "select",
@@ -139,6 +431,10 @@
         {
           "id": "value",
           "label": "Value"
+        },
+        {
+          "id": "unmaskedValue",
+          "label": "Unmasked Value"
         }
       ],
       "handlerDescription": "This event is triggered when the component's state (value) changes."

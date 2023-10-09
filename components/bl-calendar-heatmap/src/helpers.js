@@ -124,7 +124,7 @@ export const shapePlugins = (legend, instanceId, calendarLabel) => {
   }
 
   if (calendarLabel) {
-    plugins.push([...validateCalendarLabel(calendarLabel)]);
+    plugins.push(...validateCalendarLabel(calendarLabel));
   }
 
   return plugins;
