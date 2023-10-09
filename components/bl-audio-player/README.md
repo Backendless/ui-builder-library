@@ -8,8 +8,9 @@ For more information about the configuration of this component, refer to the [Co
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
 
-Below you can find all component settings and corresponding descriptions:
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/lhHSsprNT679NEr2W3Ag).
 
 ## Properties
 
@@ -104,7 +105,7 @@ Note how the URL leads right to the audio file(forest_sounds.mp3), and not just 
 
 For audio streams, the URL can be of the following format: ````https://cast.radiogroup.com.ua/nrj````
 
-To create a list containing multiple URLs to the audio files or streams, you have to navigate to the Logic of the component, and there you have to add the **Audio Url Logic** handler. 
+To create a list containing multiple URLs to the audio files or streams, you have to navigate to the Logic of the component, and there you have to add the **Audio Url Logic** handler.
 
 In this block you must specify the list containing the URLs as following:
 

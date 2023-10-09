@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { AceEditor } from './lib/react-ace.umd';
 import './lib/ace-builds.umd';
 
-const { cn } = BackendlessUI.CSSUtils;
+const { normalizeDimensionValue, cn } = BackendlessUI.CSSUtils;
 
 export default function AceCodeEditorComponent({ component, elRef, eventHandlers }) {
   const {
@@ -35,18 +35,24 @@ export default function AceCodeEditorComponent({ component, elRef, eventHandlers
     onChange({ value });
   }, []);
 
+  const styles = useMemo(() => ({
+    ...style,
+    width: normalizeDimensionValue(width),
+    height: normalizeDimensionValue(height)
+  }), [style, width, height]);
+
   if (!display) {
     return null;
   }
 
   return (
-    <div ref={ elRef } className={ cn("bl-customComponent-aceCodeEditor", classList) } style={ style }>
+    <div ref={ elRef } className={ cn("bl-customComponent-aceCodeEditor", classList) } style={ styles }>
       <AceEditor
         value={ editorValue }
         mode={ mode }
         theme={ theme }
-        width={ width }
-        height={ height }
+        width="100%"
+        height="100%"
         readOnly={ readOnly }
         placeholder={ placeholder }
         fontSize={ fontSize }

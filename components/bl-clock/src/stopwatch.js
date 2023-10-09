@@ -25,15 +25,26 @@ const timeFormatter = {
 const initTime = { seconds: 0, minutes: 0, hours: 0 };
 
 export function Stopwatch({ component }) {
-  const { stopwatchTimeFormat } = component;
+  const { stopwatchTimeFormat, tickRate } = component;
 
   const [time, setTime] = useObjectState(initTime);
 
   const timerRef = useRef();
 
+  const validTickRate = useMemo(() => {
+    if (tickRate < 0) {
+      console.warn('Stopwatch Scale can\'t be less than 0');
+
+      return 0;
+    }
+
+    return tickRate;
+  }, []);
+
   component.startStopwatch = () => {
     if (!timerRef.current) {
       const startTime = Date.now();
+      const interval = validTickRate === 0 ? 1000 : 1;
 
       timerRef.current = setInterval(() => {
 
@@ -42,8 +53,8 @@ export function Stopwatch({ component }) {
 
         const { seconds, minutes, hours } = timeFormatter[stopwatchTimeFormat](elapsedTime);
 
-        setTime({ seconds: seconds.toFixed(2), minutes, hours });
-      }, 1);
+        setTime({ seconds: seconds.toFixed(validTickRate), minutes, hours });
+      }, interval);
     }
   };
 
