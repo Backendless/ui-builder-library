@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { getTime } from './helpers';
 import { Time } from './subcomponents';
 
-const TimeVariant = {
+const TimeFormat = {
   HHMMSS: 'hhmmss',
   HHMM  : 'hhmm',
   HH    : 'hh',
 };
 
 export function ClockComponent({ component }) {
-  const { timeVariant, animationDuration } = component;
+  const { timeFormat, animationDuration } = component;
 
   const [time, setTime] = useState(() => getTime());
 
@@ -28,7 +28,7 @@ export function ClockComponent({ component }) {
         animationDuration={ animationDuration }
         withDelimeter={ true }
       />
-      { hasMinutes(timeVariant) && (
+      { hasMinutes(timeFormat) && (
         <Time
           timeTens={ time.minuteTens }
           timeUnits={ time.minuteUnits }
@@ -36,7 +36,7 @@ export function ClockComponent({ component }) {
           withDelimeter={ true }
         />
       ) }
-      { hasSeconds(timeVariant) && (
+      { hasSeconds(timeFormat) && (
         <Time
           timeTens={ time.secondTens }
           timeUnits={ time.secondUnits }
@@ -47,5 +47,5 @@ export function ClockComponent({ component }) {
   );
 }
 
-const hasMinutes = timeVariant => timeVariant === TimeVariant.HHMMSS || timeVariant === TimeVariant.HHMM;
-const hasSeconds = timeVariant => timeVariant === TimeVariant.HHMMSS;
+const hasMinutes = timeFormat => timeFormat === TimeFormat.HHMMSS || timeFormat === TimeFormat.HHMM;
+const hasSeconds = timeFormat => timeFormat === TimeFormat.HHMMSS;

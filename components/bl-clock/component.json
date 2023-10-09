@@ -33,8 +33,8 @@
     },
     {
       "type": "select",
-      "name": "timeVariant",
-      "label": "Time Variant",
+      "name": "timeFormat",
+      "label": "Time Format",
       "showInSettings": true,
       "defaultValue": "hhmmss",
       "hasLogicHandler": false,
@@ -53,6 +53,32 @@
         }
       ],
       "settingTooltip": "Allows to determine variant of displaying time"
+    },
+    {
+      "type": "select",
+      "name": "stopwatchTimeFormat",
+      "label": "Stopwatch Time Format",
+      "showInSettings": true,
+      "defaultValue": "ss",
+      "hasLogicHandler": true,
+      "handlerId": "stopwatchTimeFormatLogic",
+      "handlerLabel": "Stopwatch Time Format Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "ss",
+          "label": "SS"
+        },
+        {
+          "value": "mmss",
+          "label": "MM:SS"
+        },
+        {
+          "value": "hhmmss",
+          "label": "HH:MM:SS"
+        }
+      ],
+      "settingTooltip": "Allows to determine variant of displaying stopwatch"
     },
     {
       "type": "number",
