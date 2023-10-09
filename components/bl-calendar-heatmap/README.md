@@ -112,6 +112,7 @@ The component allows you to add calendar heatmaps to your UI-Builder application
 
 **Tooltip**
 ```
+@bl-customComponent-calendar-heatmap-tooltip-z-index: 0;
 @bl-customComponent-calendar-heatmap-tooltip-background: #222;
 @bl-customComponent-calendar-heatmap-tooltip-color: #bbb;
 @bl-customComponent-calendar-heatmap-tooltip-font-size: 12px;
