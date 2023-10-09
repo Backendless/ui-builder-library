@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 
-import { useOnClickOutside, useFilteredOptions, valueValidation, optionsValidation } from './helpers';
+import { useOnClickOutside, useFilteredOptions, Validators } from './helpers';
 import { Options } from './options';
 import { TextField } from './text-field';
 
@@ -17,17 +17,17 @@ export default function AutocompleteComponent({ component, eventHandlers, elRef 
   const [autocompleteValue, setAutocompleteValue] = useState(null);
   const [isAutocompleteActive, setIsAutocompleteActive] = useState(false);
 
-  const optionsList = useMemo(() => optionsValidation(options), [options]);
+  const optionsList = useMemo(() => Validators.options(options), [options]);
   const hasGroup = !!optionsList[0]?.groupLabel;
   const filteredOptions = useFilteredOptions(optionsList, inputValue, hasGroup);
 
   const autocompleteHeight = autocompleteRef.current?.getBoundingClientRect()?.height;
 
   component.getValue = () => autocompleteValue.value;
-  component.setValue = value => setAutocompleteValue(valueValidation(value, optionsList, hasGroup));
+  component.setValue = value => setAutocompleteValue(Validators.value(value, optionsList, hasGroup));
 
   useEffect(() => {
-    setAutocompleteValue(valueValidation(value, optionsList, hasGroup));
+    setAutocompleteValue(Validators.value(value, optionsList, hasGroup));
   }, [value, optionsList])
 
   const classes = cn(
