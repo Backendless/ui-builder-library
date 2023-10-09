@@ -74,6 +74,19 @@
       "dataBinding": true
     },
     {
+      "type": "text",
+      "name": "value",
+      "label": "Value",
+      "settingTooltip": "This setting allows you to specify a default value.",
+      "showInSettings": true,
+      "defaultValue": "December",
+      "hasLogicHandler": true,
+      "handlerId": "valueLogic",
+      "handlerLabel": "Value Logic",
+      "handlerDescription": "This handler allows you to specify a default value.",
+      "dataBinding": true
+    },
+    {
       "type": "json",
       "name": "options",
       "label": "Options",
@@ -106,6 +119,23 @@
       ],
       "dataBinding": true,
       "handlerDescription": "This event triggered when the text in the input field changes."
+    }
+  ],
+  "actions": [
+    {
+      "id": "getValue",
+      "label": "Get Value Of",
+      "hasReturn": true
+    },
+    {
+      "id": "setValue",
+      "label": "Set Value For",
+      "inputs": [
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ]
     }
   ]
 }
