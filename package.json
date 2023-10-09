@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "This is a repository for custom Backendless UI-Builder components",
   "scripts": {
-    "lint": "eslint components utils"
+    "lint": "eslint components utils",
+    "lint:ci": "eslint components utils --max-warnings=0"
   },
   "author": "Backendless",
   "license": "ISC",
