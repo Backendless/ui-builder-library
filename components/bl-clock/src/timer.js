@@ -7,7 +7,7 @@ export function Timer({ component, eventHandlers }) {
   const { timerDate, animationDuration } = component;
   const { onTimerEnd } = eventHandlers;
 
-  const [time, setTime] = useState(getTimer(new Date(timerDate)));
+  const [time, setTime] = useState(() => getTimer(new Date(timerDate)));
 
   const [daysVisibility, setDaysVisibility] = useState(false);
   const [hoursVisibility, setHoursVisibility] = useState(false);

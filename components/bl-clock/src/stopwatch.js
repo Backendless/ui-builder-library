@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
 const StopwatchTimeFormat = {
   HHMMSS: 'hhmmss',
@@ -61,10 +61,15 @@ export function Stopwatch({ component }) {
     return () => component.stopStopwatch();
   }, []);
 
+  const FormatTokens = useMemo(() => ({
+    HH: hasHours(stopwatchTimeFormat),
+    MM: hasMinutes(stopwatchTimeFormat),
+  }), [stopwatchTimeFormat]);
+
   return (
     <>
-      {hasHours(stopwatchTimeFormat) && (<span className="stopwatch">{`${pad(time.hours)}:`}</span>)}
-      {hasMinutes(stopwatchTimeFormat) && (<span className="stopwatch">{`${pad(time.minutes)}:`}</span>)}
+      {FormatTokens.HH && (<span className="stopwatch">{`${pad(time.hours)}:`}</span>)}
+      {FormatTokens.MM && (<span className="stopwatch">{`${pad(time.minutes)}:`}</span>)}
       <span className="stopwatch"> {`${pad(time.seconds)}`} </span>
     </>
   );

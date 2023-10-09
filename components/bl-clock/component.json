@@ -60,7 +60,10 @@
       "label": "Stopwatch Time Format",
       "showInSettings": true,
       "defaultValue": "ss",
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
+      "handlerId": "stopwatchTimeFormatLogic",
+      "handlerLabel": "Stopwatch Time Format Logic",
+      "dataBinding": true,
       "options": [
         {
           "value": "ss",
