@@ -13,7 +13,7 @@ export default function CopyButton({ component, eventHandlers }) {
     copiedLabel,
     copiedDuration,
     isCopiedIconVisible,
-    isCopyIconVisible
+    isCopyIconVisible,
   } = component;
   const { onCopy } = eventHandlers;
 

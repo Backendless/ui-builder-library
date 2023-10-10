@@ -1,6 +1,6 @@
 # Dashlet
 
-This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer.
+This is a component for a Backendless [UI-Builder](https://backendless.com/developers/#ui-builder) designer.
 
 The component allows you to add a dashlet to your UI-Builder application.
 
@@ -37,10 +37,10 @@ The component allows you to add a dashlet to your UI-Builder application.
 |--------------|-------------------------------------------|---------------------------------------|
 | Get Position |                                           | { x: `Number`, y: `Number`}           |
 | Get Size     |                                           | { height: `Number`, width: `Number` } |
-| Get Is Open  |                                           | `Bollean`                             |
+| Get Is Open  |                                           | `Boolean`                             |
 | Set Position | Position: `{ x: Number y: Number}`        |                                       |
 | Set Size     | Size: `{ height: Number, width: Number }` |                                       |
-| Set Is Open  | Is Open: `Bollean`                        |                                       |
+| Set Is Open  | Is Open: `Boolean`                        |                                       |
 
 ## Styles
 
@@ -120,7 +120,7 @@ Addition of context menu in UI Setting:
 
 </details>
 
-Use context menu actions in event Context Menu Handler:
+Use context menu actions in the event Context Menu Handler:
 
 ![context menu actions example](example-images/context-menu-handler-logic.jpg)
 

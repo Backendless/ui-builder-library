@@ -93,7 +93,7 @@ Next, so that the user has the opportunity to select and customize his own avata
 To configure each of them, apply the logic below using the necessary parameters.
 
 <p align="center">
-  <img src="./example-images/set-options-and-value.png" alt="set options and value" width="780"/>
+  <img src="./example-images/set-options-and-values.png" alt="set options and value" width="780"/>
 </p>
 
 And, the question remains of saving the parameters and the avatar itself.

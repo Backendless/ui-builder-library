@@ -31,4 +31,4 @@ export const HalfPointControll = ({ icon, iconColor, disabled, checked, inputVal
       />
     </>
   );
-}
+};

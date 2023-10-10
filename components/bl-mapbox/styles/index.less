@@ -7,12 +7,12 @@
 @bl-customComponent-mapbox-marker-active-color: #3FB1CE;
 
 .bl-customComponent-mapbox {
-  height: @bl-customComponent-mapbox-height;
   width: @bl-customComponent-mapbox-width;
+  position: relative;
 
   .map-dimensions {
     width: 100%;
-    height: if(@bl-customComponent-mapbox-height < 100%, 100%, inherit);
+    height: @bl-customComponent-mapbox-height;
   }
 
   .mapboxgl-ctrl-geocoder--input {
@@ -21,5 +21,28 @@
 
   .marker-root--active path {
     fill: @bl-customComponent-mapbox-marker-active-color;
+  }
+
+  .mapbox-directions-instructions {
+    height: (@bl-customComponent-mapbox-height - 180);
+  }
+
+  .mapbox-directions {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  @media screen and (max-width: 560px) {
+    .mapbox-directions {
+      margin-top: 5px;
+      position: static;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mapbox-directions-instructions {
+      height: auto;
+    }
   }
 }

@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 
-import { DraggableIcon } from './icons';
 import { prepareOnEditContext } from './helpers/context';
-import { ItemControls } from './item-controls';
-import { EditControl } from './edit-control';
 import { validate } from './helpers/validate';
+import { EditControl } from './edit-control';
+import { DraggableIcon } from './icons';
+import { ItemControls } from './item-controls';
 
 export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, component, onDelete, eventHandlers }) {
   const { itemsList, allowEdit, allowDelete, showValues } = component;
@@ -46,9 +46,9 @@ export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, comp
         { isEdit
           ? <EditControl item={ itemState } onChange={ handleChange }/>
           : <div>
-              <span style={ { 'display': 'inline-block', 'min-width': '100px' } }>{ item.label }</span>
+              <span style={{ 'display': 'inline-block', 'min-width': '100px' }}>{ item.label }</span>
               { showValues && (
-                <span style={ { 'margin-left': '10px' } }>{ item.value }</span>
+                <span style={{ 'margin-left': '10px' }}>{ item.value }</span>
               ) }
             </div>
         }

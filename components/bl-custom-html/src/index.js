@@ -7,7 +7,7 @@ export default function CustomHtml({ component }) {
 
   const classes = useClasses(classList);
 
-  component.setHtml = (html) => {
+  component.setHtml = html => {
     setRawHtml(html);
   };
 
@@ -16,11 +16,11 @@ export default function CustomHtml({ component }) {
   }
 
   return (
-    <div className={ classes } dangerouslySetInnerHTML={ { __html: rawHtml } } style={ style }></div>
+    <div className={ classes } dangerouslySetInnerHTML={{ __html: rawHtml }} style={ style }></div>
   );
 }
 
-const useClasses = (classList) => {
+const useClasses = classList => {
   const classes = ['bl-customComponent-customHtml', ...classList];
 
   return classes.join(' ');

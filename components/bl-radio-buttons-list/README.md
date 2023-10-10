@@ -5,6 +5,10 @@ Radio Buttons List is a component of Backendless UI-Builder designer. The main g
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/TLPrn0JdRLmKb2bOKzJz).
+
 ## Properties
 
 | Property                | Type     | Default Value                                                                                                                                                             | Logic          | Data Binding | UI Setting | Description                                                                                                                                                                                                                                                            |

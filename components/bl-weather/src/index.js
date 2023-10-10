@@ -7,7 +7,7 @@ const { cn } = BackendlessUI.CSSUtils;
 const UNITS = {
   standard: { temperature: 'K', windSpeed: 'm/s' },
   metric: { temperature: '°C', windSpeed: 'm/s' },
-  imperial: { temperature: '°F', windSpeed: 'mph' }
+  imperial: { temperature: '°F', windSpeed: 'mph' },
 };
 
 export default function WeatherComponent({ component, elRef, settings }) {

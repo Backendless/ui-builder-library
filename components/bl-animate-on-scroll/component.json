@@ -1,0 +1,278 @@
+{
+  "id": "c_10781b7f3c7d301c2459726acab35b51",
+  "name": "Animate on Scroll",
+  "description": "This component allows adding animation for elements when scrolling the page",
+  "showInToolbox": true,
+  "faIcon": "caret-square-down",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "animationType",
+      "label": "Animation Type",
+      "showInSettings": true,
+      "defaultValue": "fade",
+      "hasLogicHandler": false,
+      "options": [
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "flip",
+          "label": "Flip"
+        },
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "zoom-in",
+          "label": "Zoom In"
+        },
+        {
+          "value": "zoom-out",
+          "label": "Zoom Out"
+        }
+      ],
+      "settingTooltip": "Allows to determine type of animation "
+    },
+    {
+      "type": "select",
+      "name": "side",
+      "label": "Side",
+      "showInSettings": true,
+      "defaultValue": "none",
+      "hasLogicHandler": false,
+      "handlerId": "sideLogic",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "up",
+          "label": "Up"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "down",
+          "label": "Down"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "settingTooltip": "Allows to determine side of animation."
+    },
+    {
+      "type": "select",
+      "name": "easing",
+      "label": "Easing",
+      "showInSettings": true,
+      "defaultValue": "linear",
+      "hasLogicHandler": false,
+      "handlerId": "easingLogic",
+      "options": [
+        {
+          "value": "linear",
+          "label": "linear"
+        },
+        {
+          "value": "ease",
+          "label": "ease"
+        },
+        {
+          "value": "ease-in",
+          "label": "ease-in"
+        },
+        {
+          "value": "ease-out",
+          "label": "ease-out"
+        },
+        {
+          "value": "ease-in-out",
+          "label": "ease-in-out"
+        },
+        {
+          "value": "ease-in-back",
+          "label": "ease-in-back"
+        },
+        {
+          "value": "ease-out-back",
+          "label": "ease-out-back"
+        },
+        {
+          "value": "ease-in-out-back",
+          "label": "ease-in-out-back"
+        },
+        {
+          "value": "ease-in-sine",
+          "label": "ease-in-sine"
+        },
+        {
+          "value": "ease-out-sine",
+          "label": "ease-out-sine"
+        },
+        {
+          "value": "ease-in-out-sine",
+          "label": "ease-in-out-sine"
+        },
+        {
+          "value": "ease-in-quad",
+          "label": "ease-in-quad"
+        },
+        {
+          "value": "ease-out-quad",
+          "label": "ease-out-quad"
+        },
+        {
+          "value": "ease-in-out-quad",
+          "label": "ease-in-out-quad"
+        },
+        {
+          "value": "ease-in-cubic",
+          "label": "ease-in-cubic"
+        },
+        {
+          "value": "ease-out-cubic",
+          "label": "ease-out-cubic"
+        },
+        {
+          "value": "ease-in-out-cubic",
+          "label": "ease-in-out-cubic"
+        },
+        {
+          "value": "ease-in-quart",
+          "label": "ease-in-quart"
+        },
+        {
+          "value": "ease-out-quart",
+          "label": "ease-out-quart"
+        },
+        {
+          "value": "ease-in-out-quart",
+          "label": "ease-in-out-quart"
+        }
+      ],
+      "settingTooltip": "Allows to determine easing of animation"
+    },
+    {
+      "type": "number",
+      "name": "duration",
+      "label": "Duration (ms)",
+      "showInSettings": true,
+      "defaultValue": "500",
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the duration of animation."
+    },
+    {
+      "type": "number",
+      "name": "delay",
+      "label": "Delay (ms)",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the delay for starting animation."
+    },
+    {
+      "type": "text",
+      "name": "anchor",
+      "label": "Anchor",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "anchorLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the element by class whose offset will be used to trigger animation instead of an actual one.",
+      "handlerLabel": "Anchor Logic",
+      "settingTooltip": "Allows to determine the element by class whose offset will be used to trigger animation instead of an actual one."
+    },
+    {
+      "type": "number",
+      "name": "offset",
+      "label": "Offset",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine offset(px) from the original trigger point ."
+    },
+    {
+      "type": "checkbox",
+      "name": "mirror",
+      "label": "Mirrored",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine whether elements should animate out while scrolling past them"
+    },
+    {
+      "type": "checkbox",
+      "name": "once",
+      "label": "Play Once",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine whether the animation should happen only once - while scrolling down."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onAnimationEnter",
+      "label": "On Animation Enter",
+      "contextBlocks": [
+        {
+          "id": "detail",
+          "label": "Detail"
+        }
+      ]
+    },
+    {
+      "name": "onAnimationOut",
+      "label": "On Animation Out",
+      "contextBlocks": [
+        {
+          "id": "detail",
+          "label": "Detail"
+        }
+      ]
+    }
+  ],
+  "actions": [],
+  "pods": {
+    "ffa84b6e2bcd09a99b1fe95e1417377b": {
+      "id": "animationPod",
+      "dataContainer": true
+    }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "name": "disableFor",
+      "title": "Disable for",
+      "options": [
+        {
+          "value": "mobile",
+          "label": "Mobile"
+        },
+        {
+          "value": "tablet",
+          "label": "Tablet"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "defaultValue": "none",
+      "description": "Allows to determine whether or not to disable the animation"
+    }
+  ]
+}

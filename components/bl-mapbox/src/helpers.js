@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Mapbox from './lib/mapbox';
 import MapboxDirections from './lib/mapbox-directions';
 import MapboxGeocoder from './lib/mapbox-geocoder';
+
 import { createActions } from './actions';
 
 const { Map, FullscreenControl, NavigationControl, Marker, Popup, GeolocateControl } = Mapbox;
@@ -117,13 +118,14 @@ export const applyFog = (mapRef, component, map) => {
   });
 };
 
-const appendDirectionsOnMobile = (directions, mapRef, mapContainerRef) => {
+const appendDirections = (accessToken, mapRef, mapContainerRef) => {
+  const directions = new MapboxDirections({ accessToken });
   const div = document.createElement('div');
 
-  div.style.margin = '0 auto';
+  div.classList.add('mapbox-directions');
   div.appendChild(directions.onAdd(mapRef.current));
 
-  mapContainerRef.current.parentNode.insertAdjacentElement('afterend', div);
+  mapContainerRef.current.parentNode.insertAdjacentElement('beforeend', div);
 };
 
 export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandlers, map) => {
@@ -142,14 +144,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
   createActions(mapRef, component);
 
   if (directions) {
-    const directions = new MapboxDirections({ accessToken });
-    const isFit = mapRef.current.transform.width > 570;
-
-    if (isFit) {
-      map.addControl(directions, 'top-left');
-    } else {
-      appendDirectionsOnMobile(directions, mapRef, mapContainerRef);
-    }
+    appendDirections(accessToken, mapRef, mapContainerRef);
   }
 
   map.onLoad(() => {
@@ -216,13 +211,13 @@ export const useMarkers = (markers, mapRef, eventHandlers) => {
         collectedMarkerData.push({
           marker,
           markerProps: markerItem,
-        })
+        });
 
         return marker;
       });
     }
 
-    onMarkersCreated({markers: collectedMarkerData});
+    onMarkersCreated({ markers: collectedMarkerData });
   }, [markers]);
 };
 

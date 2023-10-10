@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { RadioButton } from './components';
 
@@ -12,8 +12,8 @@ export default function RadioButtonsListComponent({ component, eventHandlers, el
   const [selectedValue, setSelectedValue] = useState(null);
   const classes = useMemo(() => (
     cn(
-      "bl-customComponent-radioButtonsList", classList,
-      { "bl-customComponent-radioButtonsList--disabled": disabled }
+      'bl-customComponent-radioButtonsList', classList,
+      { 'bl-customComponent-radioButtonsList--disabled': disabled }
     )
   ), [classList, disabled]);
 

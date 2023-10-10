@@ -5,8 +5,12 @@ Knob is a component of Backendless UI-Builder designer. This allows you to defin
 The component based on external [Knob](https://www.primefaces.org/primereact/knob/).
 
 <p align="center">
-  <img src="./thumbnail.png" alt="main thumbnail" width="400"/>
+  <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
+
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/WHBViDmmjtpsJnkv1zZE).
 
 ## Properties
 

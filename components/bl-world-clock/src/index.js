@@ -2,20 +2,24 @@ import { useEffect, useState } from 'react';
 
 import dayjs from './lib/dayjs.min';
 import utc from './lib/utc';
+
 import { AnalogClock } from './views/analog-clock';
 import { DigitalClock } from './views/digital-clock';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const TWELVE_HOUR = '12';
+
 const ClockTypes = {
   ANALOG : 'analog',
   DIGITAL: 'digital',
 };
+
 const ClockViews = {
   [ClockTypes.ANALOG] : AnalogClock,
   [ClockTypes.DIGITAL]: DigitalClock,
-}
-const TWELVE_HOUR = '12';
+};
+
 const TimeFormats = {
   TWELVE_HOUR     : 'hh',
   TWENTY_FOUR_HOUR: 'HH',

@@ -9,7 +9,7 @@ export function DigitalClockTechno({ time, displaySeconds }) {
     <div className="clock">
       <div className="calendar">
         { WEEKDAYS.map((value, index) => (
-          <Word key={ value } value={ value } dimmed={ index != weekday }/>
+          <Word key={ value } value={ value } dimmed={ String(index) !== weekday }/>
         )) }
       </div>
 

@@ -17,6 +17,10 @@ Additional properties allow customizing the font size, background color, text co
 
 Configuration can be done in the UI Builder or using the Codeless Logic. You have to specify the data that will be displayed in the title and the section of the component.
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/WzFqrf9QI6AhbJsH7QrW).
+
 ## Properties
 
 | Property                 | Type       | Default value                                                                                                    | Logic                | Data Binding | UI Setting | Description                                                                                                                                               |
@@ -84,6 +88,7 @@ Configuration can be done in the UI Builder or using the Codeless Logic. You hav
 ````
 @bl-customComponent-accordion-fontSize: 16px;
 @bl-customComponent-accordion-lineHeight: 1.5;
+@bl-customComponent-accordion-content-whiteSpace: break-spaces;
 ````
 
 **Decoration**

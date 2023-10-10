@@ -41,6 +41,7 @@ export function List(props) {
 
         return (
           <Item
+            key={ index }
             content={ content }
             title={ title }
             style={ style }
@@ -102,6 +103,7 @@ export function CarouselIndicators(props) {
     <div className="carousel__indicator-list">
       { imagesList.map((_, index) => (
         <button
+          key={ index }
           type="button"
           className={ cn('carousel__indicator-item', { 'active': index === nextCurrentImage }) }
           onClick={ () => goToImage(index) }

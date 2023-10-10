@@ -6,7 +6,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export default function DoubleCalendarComponent({ component, eventHandlers }) {
  const {
     classList, display, disabled, style, specificDateRange, startDateOfRange, selectionRange, selectedDate,
-    headerVisibility, daysAmountVisibility, monthDropdownVisibility, yearDropdownVisibility, fromDate, toDate
+    headerVisibility, daysAmountVisibility, monthDropdownVisibility, yearDropdownVisibility, fromDate, toDate,
   } = component;
   const { onStartDateChange, onEndDateChange, onDateSelect, onDateReset } = eventHandlers;
 
@@ -17,9 +17,7 @@ export default function DoubleCalendarComponent({ component, eventHandlers }) {
   return (
     <div
       style={ style }
-      className={
-        cn("bl-customComponent-doubleCalendar", { "bl-customComponent-doubleCalendar--disabled": disabled }, classList)
-      }>
+      className={ cn('bl-customComponent-doubleCalendar', { 'bl-customComponent-doubleCalendar--disabled': disabled }, classList) }>
       { specificDateRange ?
         <SpecificDateRange
           selectionRange={ selectionRange }

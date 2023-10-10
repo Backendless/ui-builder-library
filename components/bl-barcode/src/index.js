@@ -77,6 +77,6 @@ function useBarcodeLibrary(component, barcodeRef) {
       return;
     }
 
-    JsBarcode(barcodeRef.current, value, { ...options, valid: onValidate });
+    window.JsBarcode(barcodeRef.current, value, { ...options, valid: onValidate });
   }, [value, options, display]);
 }

@@ -1,16 +1,15 @@
-import { useState, useRef } from 'react';
-
-import { Option } from './option';
-import { GroupedOptions } from './grouped-options';
+import { useRef, useState } from 'react';
 
 import { useOptionsPlacement } from '../helpers';
+import { GroupedOptions } from './grouped-options';
+import { Option } from './option';
 
 const { cn } = BackendlessUI.CSSUtils;
 
 export function Options(props) {
   const {
     hasGroup, optionsList, emptyOptionsLabel, autocompleteHeight,
-    setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange
+    setInputValue, setAutocompleteValue, setIsOptionsOpen, onChange,
   } = props;
 
   const optionsContainerRef = useRef(null);
@@ -46,4 +45,4 @@ export function Options(props) {
       )) }
     </div>
   );
-};
+}
