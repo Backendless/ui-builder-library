@@ -99,4 +99,4 @@ export const CIRCLE_STYLE = 'circle';
 export const BackgroundColors = {
   [Properties.BACKGROUND]  : 'transparent',
   [Properties.CIRCLE_COLOR]: '#E6E6E6',
-}
+};

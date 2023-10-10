@@ -1,4 +1,4 @@
-import { Properties, AvatarOptionsData, RANDOM_OPTION, BackgroundColors } from './avatar-data';
+import { AvatarOptionsData, BackgroundColors, Properties, RANDOM_OPTION } from './avatar-data';
 
 const DefaultOptions = Object.keys(Properties).reduce((options, prop) => {
   options[Properties[prop]] = getRandomCategoryValue(Properties[prop]) || BackgroundColors[Properties[prop]];
