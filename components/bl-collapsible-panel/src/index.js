@@ -11,10 +11,10 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 
   const className = cn('bl-customComponent-collapsiblePanel', classList, {
     'panel-expanded': expanded,
-    'with-animation': withAnimation
+    'with-animation': withAnimation,
   });
 
-  const togglePanel = useCallback((expanded) => {
+  const togglePanel = useCallback(expanded => {
     setExpanded(!expanded);
     setWithAnimation(true);
 

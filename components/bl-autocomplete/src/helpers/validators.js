@@ -1,17 +1,17 @@
 export const Validators = {
   options: options => optionsValidator(options),
-  value  : (value, options, hasGroup) => valueValidator(value, options, hasGroup)
+  value  : (value, options, hasGroup) => valueValidator(value, options, hasGroup),
 };
 
 function optionsValidator(options) {
   if (!Array.isArray(options)) {
-    console.error("Options should be a list");
+    console.error('Options should be a list');
 
     return [];
   }
 
-  return options;
-};
+  return  options;
+}
 
 function valueValidator(value, options, hasGroup) {
   if (!value) {

@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { getUserMedia, stopUserMedia } from './helpers/device';
+import { dataURLToBlob } from './helpers/file';
+import { usePopupOptions } from './helpers/use-popup-options';
 import { DoneButton, MakeSnapshotButton } from './buttons';
 import { Popup } from './popup';
-import { dataURLToBlob } from './helpers/file';
-import { getUserMedia, stopUserMedia } from './helpers/device';
-import { usePopupOptions } from './helpers/use-popup-options';
 
 export function Modal({ setVisibility, component, eventHandlers }) {
   const { makeSnapshotButtonLabel, doneButtonLabel } = component;

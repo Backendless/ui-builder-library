@@ -17,7 +17,7 @@ export function useActions({ component, startDate, endDate, daysAmount, setStart
         setStartDate(fromDateObject);
         setEndDate(toDateObject);
       } else {
-        console.warn("The date in the From Date property is later than the To Date! Please pass a valid date.");
+        console.warn('The date in the From Date property is later than the To Date! Please pass a valid date.');
       }
     },
     getDaysAmount   : () => daysAmount,
@@ -26,6 +26,6 @@ export function useActions({ component, startDate, endDate, daysAmount, setStart
 
       setStartDate(now);
       setEndDate(now);
-    }
-  })
+    },
+  });
 }

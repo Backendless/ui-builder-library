@@ -1,6 +1,7 @@
 import { useCallback, useRef } from 'react';
 
 import Particles from './lib/particles.min';
+
 import { loadParticles, useOptions } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;

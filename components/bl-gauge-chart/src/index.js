@@ -6,7 +6,7 @@ export default function GaugeChartComponent({ component }) {
   const { classList, style, display, disabled, goal, progress } = component;
 
   const {
-    shownGoal, shownProgress, angleFillStyle, progressPercentage, decorationLetter
+    shownGoal, shownProgress, angleFillStyle, progressPercentage, decorationLetter,
   } = useChartData(goal, progress, component);
 
   if (!display) {
@@ -16,9 +16,7 @@ export default function GaugeChartComponent({ component }) {
   return (
     <div
       style={ style }
-      className={
-        cn("bl-customComponent-gaugeChart", classList, { "bl-customComponent-gaugeChart--disabled": disabled })
-      }>
+      className={ cn('bl-customComponent-gaugeChart', classList, { 'bl-customComponent-gaugeChart--disabled': disabled }) }>
       <div className="gauge-chart">
         <div className="gauge-chart__wrap">
           <div className="gauge-chart__body"></div>

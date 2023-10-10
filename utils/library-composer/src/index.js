@@ -1,3 +1,3 @@
-import MyModuleX from 'my-module-x'
+import MyModuleX from 'my-module-x';
 
-export default MyModuleX
+export default MyModuleX;

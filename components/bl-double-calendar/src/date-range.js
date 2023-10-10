@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import DatePicker from './lib/react-datepicker.min.js';
 
 import { Header } from './header';
-
-import { useActions, differenceInDays, differenceInTime } from './helpers';
+import { differenceInDays, differenceInTime, useActions } from './helpers';
 
 export function DateRange(props) {
   const {
     fromDate, toDate, headerVisibility, daysAmountVisibility, monthDropdownVisibility,
-    yearDropdownVisibility, component, onStartDateChange, onEndDateChange, onDateReset
+    yearDropdownVisibility, component, onStartDateChange, onEndDateChange, onDateReset,
   } = props;
 
   const [startDate, setStartDate] = useState(null);
@@ -22,7 +21,7 @@ export function DateRange(props) {
 
   useEffect(() => {
     if (!fromDate) {
-      console.warn("From Date is not provided!");
+      console.warn('From Date is not provided!');
 
       setStartDate(new Date());
     }
@@ -36,7 +35,7 @@ export function DateRange(props) {
     }
 
     if (diffInTime <= 0) {
-      console.warn("From Date is not valid!");
+      console.warn('From Date is not valid!');
 
       setStartDate(new Date());
     }
@@ -44,7 +43,7 @@ export function DateRange(props) {
 
   useEffect(() => {
     if (!toDate) {
-      console.warn("To Date is not provided!");
+      console.warn('To Date is not provided!');
 
       setEndDate(new Date());
     }
@@ -58,7 +57,7 @@ export function DateRange(props) {
     }
 
     if (diffInTime <= 0) {
-      console.warn("To Date is not valid!");
+      console.warn('To Date is not valid!');
 
       setEndDate(new Date());
     }

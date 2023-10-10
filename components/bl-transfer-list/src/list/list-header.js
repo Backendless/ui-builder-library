@@ -1,5 +1,5 @@
-import { Checkbox } from './checkbox';
 import { getMapFromObjectsArray } from '../helpers';
+import { Checkbox } from './checkbox';
 
 export function ListHeader(props) {
   const { items, title, selected, setAllSelected } = props;
@@ -16,7 +16,7 @@ export function ListHeader(props) {
         return prevState.concat(selectedItems);
       });
     } else {
-      setAllSelected(prevState => {         
+      setAllSelected(prevState => {
         const prevStateMap = getMapFromObjectsArray(prevState);
 
         return prevState.filter(({ objectId }) => !prevStateMap[objectId]);
@@ -42,4 +42,4 @@ export function ListHeader(props) {
       </div>
     </div>
   );
-};
+}

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { ResizableBox } from './lib/react-resizable.min';
+
 import { getPosition, StyleVariants, useDraggable } from './helpers';
-import { ResizableBox } from './react-resizable.min';
 import { CollapseButtonIcon, ContextMenu } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;

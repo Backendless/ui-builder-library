@@ -74,7 +74,7 @@ export function Title({ content }) {
 }
 
 export function ModalButtons(props) {
-  const { type, onCloseHandler, onSubmitHandler, inputValue, submitButtonLabel, closeButtonLabel } = props;
+  const { type, onCloseHandler, onSubmitHandler, submitButtonLabel, closeButtonLabel } = props;
 
   return (
     <div className="simple-modal__button-container">

@@ -1,6 +1,6 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import { TurnOnFullscreenIcon, TurnOffFullscreenIcon } from './icons';
+import { TurnOffFullscreenIcon, TurnOnFullscreenIcon } from './icons';
 
 export function FullscreenButton({ component, eventHandlers }) {
   const { onFullscreenClick } = eventHandlers;

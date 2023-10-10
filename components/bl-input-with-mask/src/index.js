@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { customParseFormat, dayjs } from './day.min';
-import { IMask, useIMask } from './react-imask';
+import { customParseFormat, dayjs } from './lib/day.min';
+import { IMask, useIMask } from './lib/react-imask';
+
 import { Fieldset, Input, Placeholder } from './subcomponent';
 
 dayjs.extend(customParseFormat);

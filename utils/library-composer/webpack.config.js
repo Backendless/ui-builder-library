@@ -1,7 +1,7 @@
-const path = require('path')
+const path = require('path');
 
-const DIST = path.resolve(__dirname, './dist')
-const SRC = path.resolve(__dirname, './src')
+const DIST = path.resolve(__dirname, './dist');
+const SRC = path.resolve(__dirname, './src');
 
 module.exports = {
   entry: path.resolve(SRC, 'index.js'),
@@ -20,4 +20,4 @@ module.exports = {
     backendless     : 'global Backendless',
     'backendless-ui': 'global BackendlessUI',
   },
-}
+};

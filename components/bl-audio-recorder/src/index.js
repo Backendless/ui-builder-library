@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { captureMediaDevices, download, prepareLabel, Timer } from './helpers';
 import ysFixWebmDuration from './lib';
+
+import { captureMediaDevices, download, prepareLabel, Timer } from './helpers';
 import { RecordTimer } from './record-timer';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;

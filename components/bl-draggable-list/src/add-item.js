@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
 
-import { AddIcon, DoneIcon } from './icons';
 import { prepareOnAddContext } from './helpers/context';
 import { validate } from './helpers/validate';
 import { EditControl } from './edit-control';
+import { AddIcon, DoneIcon } from './icons';
 
 const initialItemState = { label: '', value: '' };
 

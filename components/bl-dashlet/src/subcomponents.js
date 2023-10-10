@@ -50,8 +50,9 @@ export function ContextMenu({ menuItems, contextMenuHandler, styleVariant }) {
         }}>
         <ul className="context-menu__list">
 
-          { menuItems.map(({ label, type, content }) => (
+          { menuItems.map(({ label, type, content }, i) => (
             <ContextMenuItem
+              key={ i }
               label={ label }
               type={ type }
               content={ content }

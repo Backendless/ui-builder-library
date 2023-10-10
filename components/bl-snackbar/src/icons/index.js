@@ -1,7 +1,7 @@
 import { Error } from './error';
+import { Info } from './info';
 import { Success } from './success';
 import { Warning } from './warning';
-import { Info } from './info';
 
 export * from './close';
 

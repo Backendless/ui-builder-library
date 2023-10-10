@@ -48,7 +48,7 @@ export default function GalleryComponent({ component }) {
     return null;
   }
 
-  return <Gallery
+  return (<Gallery
     images={ images }
     wrapAround={ wrapAround }
     showImageCount={ showImageCount }
@@ -61,5 +61,5 @@ export default function GalleryComponent({ component }) {
     imageLabel={ options.imageLabel }
     alwaysShowNavOnTouchDevices={ alwaysShowNavOnTouchDevices }
     shortId={ shortId }
-  />;
+  />);
 }

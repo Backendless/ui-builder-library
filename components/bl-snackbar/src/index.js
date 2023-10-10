@@ -19,7 +19,7 @@ export default function SnackbarComponent({ component, eventHandlers }) {
     type,
     maxSnacks,
     outline,
-    display
+    display,
   } = component;
 
   const { onClose, onAction } = eventHandlers;

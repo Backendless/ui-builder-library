@@ -1,11 +1,11 @@
-import CalendarLabel from './cal-heatmap-calendar-label.min';
-import Legend from './cal-heatmap-legend.min';
-import LegendLite from './cal-heatmap-legend-lite.min';
-import Tooltip from './cal-heatmap-tooltip.min';
+import CalendarLabel from './lib/cal-heatmap-calendar-label.min';
+import Legend from './lib/cal-heatmap-legend.min';
+import LegendLite from './lib/cal-heatmap-legend-lite.min';
+import Tooltip from './lib/cal-heatmap-tooltip.min';
 
 const LegendTypes = {
-  Legend    : Legend,
-  LegendLite: LegendLite,
+  Legend,
+  LegendLite,
 };
 
 export const ensureValidScale = scale => {

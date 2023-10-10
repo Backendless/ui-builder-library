@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { destroy, loadAnimation, play, stop } from './lottie.min';
+
+import { destroy, loadAnimation, play, stop } from './lib/lottie.min';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -50,7 +51,7 @@ const loadAnimationHandler = (container, type, isLoop, isStepped, data) => {
   if (data) {
     let animationJson;
 
-    if (data != null && data.constructor.name === 'Object') {
+    if (data.constructor.name === 'Object') {
       animationJson = data;
     } else if (typeof data === 'string') {
       animationJson = JSON.parse(data);
@@ -61,7 +62,7 @@ const loadAnimationHandler = (container, type, isLoop, isStepped, data) => {
       renderer     : type,
       loop         : isLoop,
       autoplay     : !isStepped,
-      animationData: animationJson
+      animationData: animationJson,
     });
   }
 };

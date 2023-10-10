@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { ListContent } from './list-content';
-import { AddItem } from './add-item';
-import { prepareOnDragContext, prepareOnDeleteContext } from './helpers/context';
+import { prepareOnDeleteContext, prepareOnDragContext } from './helpers/context';
 import { enrichWithUids } from './helpers/id';
+import { AddItem } from './add-item';
+import { ListContent } from './list-content';
 
 export function List({ component, eventHandlers }) {
   const { onDrag, onDelete } = eventHandlers;
