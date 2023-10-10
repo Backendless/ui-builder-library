@@ -38,7 +38,10 @@ function isValueValid(categoryKey, value) {
   const isValid = AvatarOptionsData[categoryKey]?.includes(value);
 
   if (value && value !== RANDOM_OPTION && !isValid) {
-    console.warn(`The "${ categoryKey }" category does not contain the "${ value }" parameter. The random parameter will be applied.`);
+    console.warn(
+      `The "${ categoryKey }" category does not contain the "${ value }" parameter.` +
+      'The random parameter will be applied.'
+    );
   }
 
   return isValid;
@@ -63,7 +66,7 @@ export const handleRandomOptions = (...options) => {
 
   Object.values(Properties).forEach((key, index) => component[key] = options[index]);
 
-  return OptionsList.reduce((acc, {key, validate, defaultValue}) => {
+  return OptionsList.reduce((acc, { key, validate, defaultValue }) => {
     let value = component[key];
 
     if (!value && !validate) {

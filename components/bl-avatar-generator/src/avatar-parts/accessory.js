@@ -175,4 +175,4 @@ const Wayfarers = () => (
   </g>
 );
 
-export const AccessoryTypes = { Blank, Kurt, Prescription01, Prescription02, Round, Sunglasses, Wayfarers, };
+export const AccessoryTypes = { Blank, Kurt, Prescription01, Prescription02, Round, Sunglasses, Wayfarers };

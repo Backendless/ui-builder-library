@@ -208,4 +208,4 @@ const ShirtVNeck = ({ fabricColor }) => (
 );
 
 export const ClothesTypes = { BlazerShirt, BlazerSweater, CollarSweater, GraphicShirt,
-  Hoodie, Overall, ShirtCrewNeck, ShirtScoopNeck, ShirtVNeck, };
+  Hoodie, Overall, ShirtCrewNeck, ShirtScoopNeck, ShirtVNeck };
