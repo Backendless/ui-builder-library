@@ -6,6 +6,10 @@ Transfer list is a component of Backendless UI-Builder designer. It allows you t
   <img alt="main thumbnail" src="./thumbnail.png" width="720"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/R7bYZty8pOwSAa4TRiNP).
+
 ## Properties
 
 | Property         | Type                                 | Default value | Logic                  | Data Binding | UI Setting | Description                                                                   |

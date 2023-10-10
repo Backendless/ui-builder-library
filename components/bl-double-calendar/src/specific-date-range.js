@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { addDays } from './lib/date-fns.min.js';
 import DatePicker from './lib/react-datepicker.min.js';
@@ -22,7 +22,7 @@ export function SpecificDateRange({ selectionRange, defaultSelectedDate, startDa
   const handleDateSelect = date => {
     setSelectedDate(date);
     onDateSelect({ selectedDate: date });
-  }
+  };
 
   return (
     <DatePicker

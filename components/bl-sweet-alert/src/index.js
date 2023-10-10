@@ -55,7 +55,7 @@ const createAlert = (elRef, swalRef, options, eventHandlers) => {
   }).finally(() => swalRef.current = null);
 };
 
-const updateAlert = (options) => {
+const updateAlert = options => {
   const optionsToUpdate = Object.keys(options).reduce((acc, key) => {
     return SweetAlert.isUpdatableParameter(key) ? { ...acc, [key]: options[key] } : acc;
   }, {});

@@ -10,6 +10,7 @@ export function Branch(props) {
       { itemsTree.map(item => {
         return (
           <BranchItem
+            key={ item.id }
             item={ item }
             parentItems={ parentItems }
             gap={ gap }

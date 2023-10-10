@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useRef, useMemo, useCallback } from 'react';
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { Option } from './option';
 import { SelectAllCheckbox } from './select-all-checkbox';
@@ -25,9 +25,11 @@ export function Options(props) {
     return selectValue.reduce((m, { value }) => ({ ...m, [value]: 1 }), {});
   }, [selectValue]);
 
-  const isAllOptionsSelected = useMemo(() => options.length === Object.keys(selectedValuesMap).length, [selectedValuesMap]);
+  const isAllOptionsSelected = useMemo(() => {
+    return options.length === Object.keys(selectedValuesMap).length;
+  }, [selectedValuesMap]);
 
-  const handleSelectValue = useCallback((option) => {
+  const handleSelectValue = useCallback(option => {
     let newSelectValue;
     const isOptionSelected = selectValue.find(({ value }) => value === option.value);
 
@@ -47,7 +49,7 @@ export function Options(props) {
   }, [selectValue]);
 
   return (
-    <div ref={ selectRef } className={ cn("options", { ["options__placement-top"]: isOptionsOnTop }) }>
+    <div ref={ selectRef } className={ cn('options', { ['options__placement-top']: isOptionsOnTop }) }>
       { selectAllCheckbox &&
         <SelectAllCheckbox
           label={ selectAllLabel }
@@ -70,4 +72,4 @@ export function Options(props) {
       </div>
     </div>
   );
-};
+}

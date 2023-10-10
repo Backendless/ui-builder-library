@@ -5,7 +5,7 @@ const { cn } = BackendlessUI.CSSUtils;
 export function Button(props) {
   const {
     providerCode, buttonLabel, iconsVisibility, redirectToPage,
-    extraQueryParams, callbackUrlDomain, onLogin, onLoginFail
+    extraQueryParams, callbackUrlDomain, onLogin, onLoginFail,
   } = props;
 
   const handleClick = async () => {
@@ -15,13 +15,13 @@ export function Button(props) {
           const user = await BackendlessUI.DeviceAPI
             .socialLogin(providerCode, fieldsMappings, scope, options, callbackUrlDomain);
 
-          Backendless.UserService.setCurrentUser(user, true)
+          Backendless.UserService.setCurrentUser(user, true);
 
           if (redirectToPage) {
             BackendlessUI.Navigator.goToPage(redirectToPage);
           }
         } else {
-          const redirectAfterLoginUrl = redirectToPage
+          let redirectAfterLoginUrl = redirectToPage
             ? window.location.href.split('?')[0] + `?page=${ redirectToPage }`
             : window.location.href;
 
@@ -47,7 +47,7 @@ export function Button(props) {
   return (
     <button
       onClick={ handleClick }
-      className={ cn("social-button", `social-button__${ providerCode }`, { ["with-icon"]: iconsVisibility }) }>
+      className={ cn('social-button', `social-button__${ providerCode }`, { ['with-icon']: iconsVisibility }) }>
       { iconsVisibility &&
         <div className="social-button__icon-container">{ iconsMap[providerCode] }</div>
       }

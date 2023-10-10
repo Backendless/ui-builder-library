@@ -1,9 +1,9 @@
 {
   "id": "c_34f4855cac24a0355167b68952b238ec",
-  "name": "Ace Editor",
-  "description": "The Ace Editor component is the high-performance code editor for the web.",
+  "name": "Ace Code Editor",
+  "description": "The Ace Code Editor component is the high-performance code editor for the web.",
   "showInToolbox": true,
-  "faIcon": "square",
+  "faIcon": "code",
   "mainJS": "dist/index.js",
   "type": "custom",
   "category": "Custom Components",
@@ -17,18 +17,8 @@
       "handlerId": "readOnlyLogic",
       "handlerLabel": "Read Only Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to disable editing of the component value."
-    },
-    {
-      "type": "text",
-      "name": "name",
-      "label": "Name",
-      "showInSettings": true,
-      "defaultValue": "Ace Editor",
-      "hasLogicHandler": true,
-      "handlerId": "nameLogic",
-      "handlerLabel": "Name Logic",
-      "handlerDescription": "This handler allows you to specify the name of a component."
+      "handlerDescription": "This handler allows you to disable editing of the component value.",
+      "settingTooltip": "By selecting this setting, you will disable the ability to edit the code in the editor."
     },
     {
       "type": "text",
@@ -137,7 +127,8 @@
         }
       ],
       "defaultValue": "github",
-      "handlerDescription": "This handler allows you to select the theme of a component.\n"
+      "handlerDescription": "This handler allows you to select the theme of a component.\n",
+      "settingTooltip": "This setting allows you to select the theme of a component."
     },
     {
       "type": "select",
@@ -162,7 +153,8 @@
           "value": "markbeginend",
           "label": "Mark begin and end"
         }
-      ]
+      ],
+      "settingTooltip": "This setting allows you to select the fold style."
     },
     {
       "type": "text",
@@ -186,7 +178,8 @@
       "handlerId": "widthLogic",
       "handlerLabel": "Width Logic",
       "handlerDescription": "This handler allows you to specify the width of a component.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Width of the component."
     },
     {
       "type": "text",
@@ -198,7 +191,8 @@
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
       "handlerDescription": "This handler allows you to specify the height of a component.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Height of the component."
     },
     {
       "type": "number",
@@ -210,7 +204,8 @@
       "handlerId": "fontSizeLogic",
       "handlerLabel": "Font Size Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to specify the font size for the value of a component."
+      "handlerDescription": "This handler allows you to specify the font size for the value of a component.",
+      "settingTooltip": "Font size of editor content."
     },
     {
       "type": "number",
@@ -221,7 +216,8 @@
       "hasLogicHandler": true,
       "handlerId": "tabSizeLogic",
       "handlerLabel": "Tab Size Logic",
-      "handlerDescription": "This handler allows you to specify the tab size."
+      "handlerDescription": "This handler allows you to specify the tab size.",
+      "settingTooltip": "The number of empty cells after pressing the tab key."
     },
     {
       "type": "number",
@@ -232,7 +228,8 @@
       "hasLogicHandler": true,
       "handlerId": "printMarginColumnLogic",
       "handlerLabel": "Print Margin Column Logic",
-      "handlerDescription": "This handler allows you to specify the print margin column."
+      "handlerDescription": "This handler allows you to specify the print margin column.",
+      "settingTooltip": "This setting allows you to specify the print margin column."
     },
     {
       "type": "checkbox",
@@ -243,7 +240,8 @@
       "hasLogicHandler": true,
       "handlerId": "printMarginVisibilityLogic",
       "handlerLabel": "Print Margin Visibility Logic",
-      "handlerDescription": "This handler allows you to control the visibility of the print margin."
+      "handlerDescription": "This handler allows you to control the visibility of the print margin.",
+      "settingTooltip": "This setting allows you to control the visibility of the print margin."
     },
     {
       "type": "checkbox",
@@ -254,7 +252,8 @@
       "hasLogicHandler": true,
       "handlerId": "gutterVisibilityLogic",
       "handlerLabel": "Gutter Visibility Logic",
-      "handlerDescription": "This handler allows you to control the visibility of the gutter."
+      "handlerDescription": "This handler allows you to control the visibility of the gutter.",
+      "settingTooltip": "This setting allows you to control the visibility of the gutter."
     },
     {
       "type": "checkbox",
@@ -265,7 +264,8 @@
       "hasLogicHandler": true,
       "handlerId": "autocompletionLogic",
       "handlerLabel": "Autocompletion Logic",
-      "handlerDescription": "This handler allows you to add auto-completion capability for a component."
+      "handlerDescription": "This handler allows you to add auto-completion capability for a component.",
+      "settingTooltip": "This setting allows you to add auto-completion capability for a component."
     },
     {
       "type": "checkbox",
@@ -288,7 +288,8 @@
       "hasLogicHandler": true,
       "handlerId": "highlightSelectedWordLogic",
       "handlerLabel": "Highlight Selected Word Logic",
-      "handlerDescription": "This handler allows you to add the ability to highlight the selected word."
+      "handlerDescription": "This handler allows you to add the ability to highlight the selected word.",
+      "settingTooltip": "This setting allows you to add the ability to highlight the selected word."
     },
     {
       "type": "checkbox",
@@ -306,7 +307,7 @@
   "eventHandlers": [
     {
       "name": "onChange",
-      "label": "On Change",
+      "label": "On Change Event",
       "handlerDescription": "This event is triggered when the value of the component changes.",
       "output": true,
       "contextBlocks": [

@@ -228,7 +228,7 @@ function getRandomBaseFrequency() {
 function getRandomPosition() {
   return {
     x: Math.random() * 100,
-    y: Math.random() * 100
+    y: Math.random() * 100,
   };
 }
 

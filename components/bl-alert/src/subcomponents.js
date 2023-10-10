@@ -1,7 +1,7 @@
-import IconsMap from './icons'
+import IconsMap from './icons';
 
 export function AlertButton (props) {
-  const { onClose, variant } = props
+  const { onClose, variant } = props;
 
   return (
     <div className="button-container">
@@ -12,23 +12,23 @@ export function AlertButton (props) {
         </svg>
       </button>
     </div>
-  )
+  );
 }
 
 export function AlertTitle (props) {
-  const { title, classesTitle } = props
+  const { title, classesTitle } = props;
 
   return (
     <span className={ classesTitle }>
       { title }
     </span>
-  )
+  );
 }
 
 export function AlertIcon (props) {
-  const { typeAlert, variant } = props
+  const { typeAlert, variant } = props;
 
-  const Icon = IconsMap[typeAlert]
+  const Icon = IconsMap[typeAlert];
 
-  return <Icon variant={ variant }/>
+  return <Icon variant={ variant }/>;
 }

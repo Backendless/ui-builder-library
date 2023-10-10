@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import Mapbox from './lib/mapbox';
+
 import { initMapboxLibrary, MapController, useMarkers, usePolygons } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;

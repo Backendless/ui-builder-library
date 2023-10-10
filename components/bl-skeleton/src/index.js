@@ -10,7 +10,7 @@ export default function Skeleton({ component }) {
   return (
     <div
       className={ cn('bl-customComponent-skeleton',  variant, animation, classList) }
-      style={ { ...style, width: width || '100%', height: height || '100%' } }>
+      style={{ ...style, width: width || '100%', height: height || '100%' }}>
     </div>
   );
 }

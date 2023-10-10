@@ -8,6 +8,11 @@ The component based on external [Carousel](https://getbootstrap.com/docs/5.2/com
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/HFmYLN4iARGO5ngCK2N4).
+
 ## Properties
 
 | Property                                    | Type                                    | Default Value                         | Logic                       | Data Binding | UI Setting | Description                                                                                                                                              |

@@ -1,15 +1,15 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { useOnClickOutside, validateOptions, validateValue } from './helpers';
 import { Options } from './options';
 import { SelectField } from './select-field';
-import { useOnClickOutside, validateOptions, validateValue } from './helpers';
 
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function MultipleSelectComponent({ component, eventHandlers, elRef }) {
   const {
     display, classList, style, disabled, width, placeholder,
-    selectAllCheckbox, selectAllLabel, variant, type, value, options
+    selectAllCheckbox, selectAllLabel, variant, type, value, options,
   } = component;
   const { onChange } = eventHandlers;
 
@@ -89,9 +89,9 @@ function useActions({ component, optionsList, setOptionsList, selectValue, setSe
     getOptions: () => optionsList,
     setOptions: options => setOptionsList(validateOptions(options)),
     getValue  : () => selectValue,
-    setValue  : value => setSelectValue(validateValue(value, optionsList))
-  })
-};
+    setValue  : value => setSelectValue(validateValue(value, optionsList)),
+  });
+}
 
 function useStyles({ style, width }) {
   return useMemo(() => ({ ...style, width: normalizeDimensionValue(width) }), [style, width]);

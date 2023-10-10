@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 export const Input = forwardRef((props, ref) => {
   const {
-    inputValue, disabled, autocompleteId, autocompleteValue, isOptionsOpen, onChange, setInputValue, setIsOptionsOpen
+    inputValue, disabled, autocompleteId, autocompleteValue, isOptionsOpen, onChange, setInputValue, setIsOptionsOpen,
   } = props;
 
   const value = validateValue(inputValue, autocompleteValue);

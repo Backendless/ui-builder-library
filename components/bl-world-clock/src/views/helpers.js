@@ -16,6 +16,6 @@ export function useObjectState(initialState) {
 
     const changed = Object.entries(changes).some(([key, value]) => state[key] !== value);
 
-    return changed ? { ...state, ...changes } : state
+    return changed ? { ...state, ...changes } : state;
   }, initialState || {});
 }

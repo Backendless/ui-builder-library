@@ -541,7 +541,8 @@
       "handlerLabel": "Calendar Label Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the calendar label.",
-      "settingTooltip": "Allows to determine the calendar label."
+      "settingTooltip": "Allows to determine the few calendar labels. For detail watch documentation.",
+      "defaultValue": "[\r\n  {\r\n    \"enabled\": true,\r\n    \"text\": [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"],\r\n    \"key\": \"weekdays\",\r\n    \"position\": \"left\",\r\n    \"padding\": [0, 10, 0, 0],\r\n    \"radius\": 0,\r\n    \"width\": 20,\r\n    \"height\": 20,\r\n    \"gutter\": 2,\r\n    \"textAlign\": \"middle\"\r\n  }\r\n]"
     },
     {
       "type": "number",
@@ -878,13 +879,41 @@
       "handlerDescription": "This event is triggered when on a subDomain cell click."
     },
     {
-      "name": "mouseOver",
-      "label": "Mouse Over Event",
+      "name": "onMouseOver",
+      "label": " On Mouse Over",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "timestamp",
+          "label": "Timestamp"
+        },
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ],
       "handlerDescription": "This event is triggered when the mouse enter a subDomain cell."
     },
     {
-      "name": "mouseOut",
-      "label": "Mouse Out",
+      "name": "onMouseOut",
+      "label": "On Mouse Out",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "timestamp",
+          "label": "Timestamp"
+        },
+        {
+          "id": "value",
+          "label": "Value"
+        }
+      ],
       "handlerDescription": "This event is triggered when the mouse exit a subDomain cell."
     },
     {
@@ -901,7 +930,7 @@
   "actions": [
     {
       "id": "goNext",
-      "label": "Go Next",
+      "label": "Go Next in",
       "inputs": [
         {
           "id": "steps",
@@ -911,7 +940,7 @@
     },
     {
       "id": "goPrev",
-      "label": "Go Previous",
+      "label": "Go Previous in",
       "inputs": [
         {
           "id": "steps",
@@ -921,7 +950,7 @@
     },
     {
       "id": "jumpTo",
-      "label": "Jump To",
+      "label": "Jump To in",
       "inputs": [
         {
           "id": "date",

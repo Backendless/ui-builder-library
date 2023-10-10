@@ -19,7 +19,7 @@ export function Header({ startDate, endDate, daysAmount, daysAmountVisibility, r
       <button
         onClick={ handleReset }
         disabled={ resetButtonDisabled }
-        className={ cn("header__button-reset", { "header__button-reset--disabled": resetButtonDisabled }) }>
+        className={ cn('header__button-reset', { 'header__button-reset--disabled': resetButtonDisabled }) }>
         Reset
       </button>
     </div>

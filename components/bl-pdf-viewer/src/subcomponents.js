@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
+import printJS from './lib/print-pdf.js';
+
 import { DownloadIcon, MinusIcon, NextButtonIcon, PlusIcon, PrevButtonIcon, PrintIcon } from './icons';
-import printJS from './print-pdf.js';
 
 export function Controls(props) {
   const { currentPage, setCurrentPage, pageCount, controlsRef, scale, setScale, pdfUrl, component } = props;

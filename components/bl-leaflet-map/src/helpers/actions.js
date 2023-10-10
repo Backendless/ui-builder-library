@@ -10,7 +10,7 @@ export function createActions(component, map) {
     map.setView(currentCoords, currentZoom);
   };
 
-  component.setMapZoom = (value) => {
+  component.setMapZoom = value => {
     map.setZoom(value);
   };
 
