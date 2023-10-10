@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Avatar } from './avatar';
 import { AvatarOptionsData } from './avatar-data';
 import { AccessoryTypes, BrowsTypes, ClothesTypes, EyesTypes, FacialHairTypes, GraphicTypes, HairColors, HatColors, MouthTypes, Nose, SkinColors, TopTypes } from './avatar-parts';
-import { getJPEGFile, getPNGFile, getSVGFile,handleOptions, handleRandomOptions } from './helpers';
+import { getJPEGFile, getPNGFile, getSVGFile, handleOptions, handleRandomOptions } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
