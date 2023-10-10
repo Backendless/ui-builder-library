@@ -1,0 +1,62 @@
+{
+  "id": "c_e2eac1c619c3b43ab3b3ee1ec971538e",
+  "name": "Stopwatch",
+  "description": "This component allows you to add on page stopwatch.",
+  "showInToolbox": true,
+  "faIcon": "stopwatch",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "timeFormat",
+      "label": "Time Format",
+      "showInSettings": true,
+      "defaultValue": "ss",
+      "hasLogicHandler": true,
+      "handlerId": "timeFormatLogic",
+      "handlerLabel": "Time Format Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "ss",
+          "label": "SS"
+        },
+        {
+          "value": "mmss",
+          "label": "MM:SS"
+        },
+        {
+          "value": "hhmmss",
+          "label": "HH:MM:SS"
+        }
+      ],
+      "settingTooltip": "Allows to determine time format of stopwatch"
+    },
+    {
+      "type": "number",
+      "name": "tickRate",
+      "label": "Tick Rate",
+      "showInSettings": true,
+      "defaultValue": "3",
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows you to determine how precisely to display the seconds (the count of numbers after the period)."
+    }
+  ],
+  "eventHandlers": [],
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start"
+    },
+    {
+      "id": "stop",
+      "label": "Stop"
+    },
+    {
+      "id": "reset",
+      "label": "Reset"
+    }
+  ]
+}
