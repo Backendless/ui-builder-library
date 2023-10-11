@@ -1,13 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Avatar } from './avatar';
-import { data } from './avatar-data';
-import {
-AccessoryTypes, BrowsTypes, ClothesTypes,
-EyesTypes, FacialHairTypes,   GraphicTypes, HairColors, HatColors, MouthTypes,   Nose, SkinColors,
-TopTypes } from './avatar-parts';
-import { ActionsKeys, handleOptions, handleRandomOptions } from './helpers';
-import { getJPEGFile, getPNGFile, getSVGFile } from './svg-utils';
+import { AvatarOptionsData } from './avatar-data';
+import { AccessoryTypes, BrowsTypes, ClothesTypes, EyesTypes, FacialHairTypes, GraphicTypes, HairColors, HatColors, MouthTypes, Nose, SkinColors, TopTypes } from './avatar-parts';
+import { getJPEGFile, getPNGFile, getSVGFile, handleOptions, handleRandomOptions } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
@@ -28,13 +24,13 @@ export default function AvatarGeneratorComponent({ component, eventHandlers, elR
     mouth, facialHair, facialHairColor, accessory, clothes, fabricColor, graphic]);
 
   Object.assign(component, {
-    random: (...options) => setAvatarData(handleRandomOptions(...options)),
+    random: options => setAvatarData(handleRandomOptions(options)),
     getAvatarGeneratedData: () => avatarData,
-    getAllOptionsData: () => data,
+    getAllOptionsData: () => AvatarOptionsData,
+    getPropertyOptions: propertyName => AvatarOptionsData[propertyName],
     getSVG: fileName => getSVGFile(fileName, svgRef.current),
     getPNG: fileName => getPNGFile(fileName, svgRef.current),
-    getJPEG: fileName => getJPEGFile(fileName, svgRef.current) },
-    ...Object.keys(ActionsKeys).map(key => ({ [key]: () => ActionsKeys[key] }))
+    getJPEG: fileName => getJPEGFile(fileName, svgRef.current) }
   );
 
   if (!display) {
@@ -55,39 +51,39 @@ export default function AvatarGeneratorComponent({ component, eventHandlers, elR
         skin={ SkinColors[avatarData.skin] }
         svgRef={ svgRef }>
 
-        { avatarChildren(avatarData) }
+        <AvatarChildren avatarData={ avatarData }/>
 
       </Avatar>
     </div>
   );
 }
 
-const avatarChildren = avatarData => {
+const AvatarChildren = ({ avatarData }) => {
   const {
     top, hairColor, hatColor, brows, eyes, mouth, facialHair,
     facialHairColor, accessory, clothes, fabricColor, graphic,
   } = avatarData;
 
-  const ClothesComponent = ClothesTypes[clothes];
-  const GraphicComponent = GraphicTypes[graphic];
-  const BrowsComponent = BrowsTypes[brows];
-  const EyesComponent = EyesTypes[eyes];
-  const MouthComponent = MouthTypes[mouth];
-  const TopComponent = TopTypes[top];
-  const FacialHairComponent = FacialHairTypes[facialHair];
-  const AccessoryComponent = AccessoryTypes[accessory];
+  const ClothesComponent = useMemo(() => ClothesTypes[clothes], [clothes]);
+  const GraphicComponent = useMemo(() => GraphicTypes[graphic], [graphic]);
+  const BrowsComponent = useMemo(() => BrowsTypes[brows], [brows]);
+  const EyesComponent = useMemo(() => EyesTypes[eyes], [eyes]);
+  const MouthComponent = useMemo(() => MouthTypes[mouth], [mouth]);
+  const TopComponent = useMemo(() => TopTypes[top], [top]);
+  const FacialHairComponent = useMemo(() => FacialHairTypes[facialHair], [facialHair]);
+  const AccessoryComponent = useMemo(() => AccessoryTypes[accessory], [accessory]);
 
   return (
     <>
-      <ClothesComponent fabricColor={ HatColors[fabricColor] } />
-      <GraphicComponent />
-      <BrowsComponent />
-      <EyesComponent />
-      <Nose />
-      <MouthComponent />
-      <TopComponent hatColor={ HatColors[hatColor] } hairColor={ HairColors[hairColor] } />
-      <FacialHairComponent facialHairColor={ HairColors[facialHairColor] } />
-      <AccessoryComponent />
+      <ClothesComponent fabricColor={ HatColors[fabricColor] }/>
+      <GraphicComponent/>
+      <BrowsComponent/>
+      <EyesComponent/>
+      <Nose/>
+      <MouthComponent/>
+      <TopComponent hatColor={ HatColors[hatColor] } hairColor={ HairColors[hairColor] }/>
+      <FacialHairComponent facialHairColor={ HairColors[facialHairColor] }/>
+      <AccessoryComponent/>
     </>
   );
 };

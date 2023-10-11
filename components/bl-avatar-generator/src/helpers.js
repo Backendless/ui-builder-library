@@ -1,173 +1,31 @@
-import { data as characterOptions } from './avatar-data';
+import { AvatarOptionsData, BackgroundColors, Properties } from './avatar-data';
 
 const RANDOM_OPTION = 'Random';
 
-const OptionsKeys = {
-  BACKGROUND        : 'background',
-  CIRCLE_COLOR      : 'circleColor',
-  SKIN              : 'skinColors',
-  TOP               : 'topTypes',
-  HAIR_COLOR        : 'hairColors',
-  HAT_COLOR         : 'hatColors',
-  BROWS             : 'browsTypes',
-  EYES              : 'eyesTypes',
-  MOUTH             : 'mouthTypes',
-  FACIAL_HAIR       : 'facialHairTypes',
-  FACIAL_HAIR_COLOR : 'hairColors',
-  ACCESSORY         : 'accessoryTypes',
-  CLOTHES           : 'clothesTypes',
-  FABRIC_COLOR      : 'hatColors',
-  GRAPHIC           : 'graphicTypes',
-};
+const DefaultOptions = Object.keys(Properties).reduce((options, prop) => {
+  options[Properties[prop]] = getRandomCategoryValue(Properties[prop]) || BackgroundColors[Properties[prop]];
 
-// the order is important for handleRandomOptions
-const ComponentOptionsKeys = {
-  BACKGROUND        : 'background',
-  CIRCLE_COLOR      : 'circleColor',
-  SKIN              : 'skin',
-  TOP               : 'top',
-  HAIR_COLOR        : 'hairColor',
-  HAT_COLOR         : 'hatColor',
-  BROWS             : 'brows',
-  EYES              : 'eyes',
-  MOUTH             : 'mouth',
-  FACIAL_HAIR       : 'facialHair',
-  FACIAL_HAIR_COLOR : 'facialHairColor',
-  ACCESSORY         : 'accessory',
-  CLOTHES           : 'clothes',
-  FABRIC_COLOR      : 'fabricColor',
-  GRAPHIC           : 'graphic',
-};
+  return options;
+}, {});
 
-export const DefaultOptions = {
-  BACKGROUND       : 'transparent',
-  CIRCLE_COLOR     : '#E6E6E6',
-  SKIN             : getRandomValue(OptionsKeys.SKIN),
-  TOP              : getRandomValue(OptionsKeys.TOP),
-  HAIR_COLOR       : getRandomValue(OptionsKeys.HAIR_COLOR),
-  HAT_COLOR        : getRandomValue(OptionsKeys.HAT_COLOR),
-  BROWS            : getRandomValue(OptionsKeys.BROWS),
-  EYES             : getRandomValue(OptionsKeys.EYES),
-  MOUTH            : getRandomValue(OptionsKeys.MOUTH),
-  FACIAL_HAIR      : getRandomValue(OptionsKeys.FACIAL_HAIR),
-  FACIAL_HAIR_COLOR: getRandomValue(OptionsKeys.FACIAL_HAIR_COLOR),
-  ACCESSORY        : getRandomValue(OptionsKeys.ACCESSORY),
-  CLOTHES          : getRandomValue(OptionsKeys.CLOTHES),
-  FABRIC_COLOR     : getRandomValue(OptionsKeys.FABRIC_COLOR),
-  GRAPHIC          : getRandomValue(OptionsKeys.GRAPHIC),
-};
+const baseOptionResolver = key => ({
+  key,
+  defaultValue: DefaultOptions[key],
+  validate: shouldValidate(key),
+});
 
-const OptionsList = [
-  {
-    key: ComponentOptionsKeys.BACKGROUND,
-    categoryKey: OptionsKeys.BACKGROUND,
-    validate: false,
-    defaultValue: DefaultOptions.BACKGROUND,
-  },
-  {
-    key: ComponentOptionsKeys.CIRCLE_COLOR,
-    categoryKey: OptionsKeys.CIRCLE_COLOR,
-    validate: false,
-    defaultValue: DefaultOptions.CIRCLE_COLOR,
-  },
-  {
-    key: ComponentOptionsKeys.SKIN,
-    categoryKey: OptionsKeys.SKIN,
-    validate: true,
-    defaultValue: DefaultOptions.SKIN,
-  },
-  {
-    key: ComponentOptionsKeys.TOP,
-    categoryKey: OptionsKeys.TOP,
-    validate: true,
-    defaultValue: DefaultOptions.TOP,
-  },
-  {
-    key: ComponentOptionsKeys.HAIR_COLOR,
-    categoryKey: OptionsKeys.HAIR_COLOR,
-    validate: true,
-    defaultValue: DefaultOptions.HAIR_COLOR,
-  },
-  {
-    key: ComponentOptionsKeys.HAT_COLOR,
-    categoryKey: OptionsKeys.HAT_COLOR,
-    validate: true,
-    defaultValue: DefaultOptions.HAT_COLOR,
-  },
-  {
-    key: ComponentOptionsKeys.BROWS,
-    categoryKey: OptionsKeys.BROWS,
-    validate: true,
-    defaultValue: DefaultOptions.BROWS,
-  },
-  {
-    key: ComponentOptionsKeys.EYES,
-    categoryKey: OptionsKeys.EYES,
-    validate: true,
-    defaultValue: DefaultOptions.EYES,
-  },
-  {
-    key: ComponentOptionsKeys.MOUTH,
-    categoryKey: OptionsKeys.MOUTH,
-    validate: true,
-    defaultValue: DefaultOptions.MOUTH,
-  },
-  {
-    key: ComponentOptionsKeys.FACIAL_HAIR,
-    categoryKey: OptionsKeys.FACIAL_HAIR,
-    validate: true,
-    defaultValue: DefaultOptions.FACIAL_HAIR,
-  },
-  {
-    key: ComponentOptionsKeys.FACIAL_HAIR_COLOR,
-    categoryKey: OptionsKeys.FACIAL_HAIR_COLOR,
-    validate: true,
-    defaultValue: DefaultOptions.FACIAL_HAIR_COLOR,
-  },
-  {
-    key: ComponentOptionsKeys.ACCESSORY,
-    categoryKey: OptionsKeys.ACCESSORY,
-    validate: true,
-    defaultValue: DefaultOptions.ACCESSORY,
-  },
-  {
-    key: ComponentOptionsKeys.CLOTHES,
-    categoryKey: OptionsKeys.CLOTHES,
-    validate: true,
-    defaultValue: DefaultOptions.CLOTHES,
-  },
-  {
-    key: ComponentOptionsKeys.FABRIC_COLOR,
-    categoryKey: OptionsKeys.FABRIC_COLOR,
-    validate: true,
-    defaultValue: DefaultOptions.FABRIC_COLOR,
-  },
-  {
-    key: ComponentOptionsKeys.GRAPHIC,
-    categoryKey: OptionsKeys.GRAPHIC,
-    validate: true,
-    defaultValue: DefaultOptions.GRAPHIC,
-  },
-];
+function shouldValidate(key) {
+  if (key === Properties.BACKGROUND || key === Properties.CIRCLE_COLOR) {
+    return false;
+  }
 
-export const ActionsKeys = {
-  getTopTypes        : characterOptions[OptionsKeys.TOP],
-  getBrowsTypes      : characterOptions[OptionsKeys.BROWS],
-  getEyesTypes       : characterOptions[OptionsKeys.EYES],
-  getMouthTypes      : characterOptions[OptionsKeys.MOUTH],
-  getFacialHairTypes : characterOptions[OptionsKeys.FACIAL_HAIR],
-  getAccessoryTypes  : characterOptions[OptionsKeys.ACCESSORY],
-  getClothesTypes    : characterOptions[OptionsKeys.CLOTHES],
-  getGraphicTypes    : characterOptions[OptionsKeys.GRAPHIC],
-  getSkinColors      : characterOptions[OptionsKeys.SKIN],
-  getHairColors      : characterOptions[OptionsKeys.HAIR_COLOR],
-  getHatColors       : characterOptions[OptionsKeys.HAT_COLOR],
-  getFacialHairColors: characterOptions[OptionsKeys.FACIAL_HAIR_COLOR],
-  getFabricColors    : characterOptions[OptionsKeys.FABRIC_COLOR],
-};
+  return true;
+}
 
-function getRandomValue(categoryKey) {
-  const category = characterOptions[categoryKey];
+const OptionsList = Object.values(Properties).map(key => baseOptionResolver(key));
+
+function getRandomCategoryValue(categoryKey) {
+  const category = AvatarOptionsData[categoryKey];
 
   if (!category || category.length === 0) {
     return null;
@@ -179,7 +37,7 @@ function getRandomValue(categoryKey) {
 }
 
 function isValueValid(categoryKey, value) {
-  const isValid = characterOptions[categoryKey]?.includes(value);
+  const isValid = AvatarOptionsData[categoryKey]?.includes(value);
 
   if (value && value !== RANDOM_OPTION && !isValid) {
     console.warn(
@@ -192,10 +50,10 @@ function isValueValid(categoryKey, value) {
 }
 
 export const handleOptions = component => {
-  return OptionsList.reduce((acc, { key, categoryKey, validate, defaultValue }) => {
+  return OptionsList.reduce((acc, { key, validate, defaultValue }) => {
     let value = component[key] || defaultValue;
 
-    if(validate && !isValueValid(categoryKey, component[key])) {
+    if(validate && !isValueValid(key, component[key])) {
       value = defaultValue;
     }
 
@@ -205,18 +63,16 @@ export const handleOptions = component => {
   }, {});
 };
 
-export const handleRandomOptions = (...options) => {
-  const component = {};
+export const handleRandomOptions = options => {
+  const optionsObj = isObject(options) ? options : {};
 
-  Object.values(ComponentOptionsKeys).forEach((key, index) => component[key] = options[index]);
-
-  return OptionsList.reduce((acc, { key, categoryKey, validate, defaultValue }) => {
-    let value = component[key];
+  return OptionsList.reduce((acc, { key, validate, defaultValue }) => {
+    let value = optionsObj[key];
 
     if (!value && !validate) {
       value = defaultValue;
-    } else if (!value || (validate && !isValueValid(categoryKey, component[key]))) {
-      value = getRandomValue(categoryKey);
+    } else if (!value || (validate && !isValueValid(key, optionsObj[key]))) {
+      value = getRandomCategoryValue(key);
     }
 
     acc[key] = value;
@@ -224,3 +80,82 @@ export const handleRandomOptions = (...options) => {
     return acc;
   }, {});
 };
+
+function isObject(obj) {
+  return typeof obj === 'object' && obj !== null;
+}
+
+function getSVGElement(svgElement) {
+  if (!svgElement) {
+    throw new Error('SVG element not found');
+  }
+
+  return new XMLSerializer().serializeToString(svgElement);
+}
+
+export function getSVGFile(fileName, svgElement) {
+  const svgString = getSVGElement(svgElement);
+  const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
+
+  return new File([svgBlob], `${ fileName }.svg`, { type: 'image/svg+xml' });
+}
+
+export function getPNGFile(fileName, svgElement) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const svgString = getSVGElement(svgElement);
+    const svgDataUrl = `data:image/svg+xml;base64,${ btoa(unescape(encodeURIComponent(svgString))) }`;
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      context.drawImage(img, 0, 0);
+
+      canvas.toBlob(blob => {
+        if (blob) {
+          const pngFile = new File([blob], `${ fileName }.png`, { type: 'image/png' });
+
+          resolve(pngFile);
+        } else {
+          reject(new Error('Failed to create PNG'));
+        }
+      }, 'image/png');
+    };
+
+    img.src = svgDataUrl;
+  });
+}
+
+export function getJPEGFile(fileName, svgElement) {
+  return new Promise((resolve, reject) => {
+    const svgString = getSVGElement(svgElement);
+    const img = new Image();
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      ctx.drawImage(img, 0, 0);
+
+      canvas.toBlob(blob => {
+        const jpgBlob = new Blob([blob], { type: 'image/jpeg' });
+        const jpgFile = new File([jpgBlob], `${ fileName }.jpeg`, { type: 'image/jpeg' });
+
+        resolve(jpgFile);
+      }, 'image/jpeg', 1.0);
+    };
+
+    img.onerror = () => {
+      reject(new Error('Image loading error'));
+    };
+
+    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString)));
+  });
+}
