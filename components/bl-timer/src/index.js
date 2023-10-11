@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { getTimer } from './helpers';
 import { Time } from './subcomponents';
@@ -19,13 +19,16 @@ export default function Timer({ component, eventHandlers }) {
     return { daysVisibility, hoursVisibility, minutesVisibility };
   }, [time]);
 
-  useEffect(() => {
-    const timer = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
+  const timer = useRef(null);
 
-    return () => clearInterval(timer);
+  useEffect(() => {
+    timer.current = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
+
+    return () => clearInterval(timer.current);
   }, []);
 
   if (!time.all) {
+    clearInterval(timer.current);
     onTimerEnd();
 
     return null;
