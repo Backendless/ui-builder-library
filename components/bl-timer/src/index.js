@@ -11,11 +11,13 @@ export default function Timer({ component, eventHandlers }) {
 
   const [time, setTime] = useState(() => getTimer(new Date(timerDate)));
 
-  const daysVisibility = useMemo(() => time.dayTens + time.dayUnits > 0, [time]);
-  const hoursVisibility = useMemo(() => time.hourTens + time.hourUnits > 0 || daysVisibility, [time, daysVisibility]);
-  const minutesVisibility = useMemo(() => {
-    return time.minuteTens + time.minuteUnits > 0 || daysVisibility || hoursVisibility;
-  }, [time, daysVisibility, hoursVisibility]);
+  const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
+    const daysVisibility = time.dayTens + time.dayUnits > 0;
+    const hoursVisibility = time.hourTens + time.hourUnits > 0 || daysVisibility;
+    const minutesVisibility = time.minuteTens + time.minuteUnits > 0 || daysVisibility || hoursVisibility;
+
+    return { daysVisibility, hoursVisibility, minutesVisibility };
+  }, [time]);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
