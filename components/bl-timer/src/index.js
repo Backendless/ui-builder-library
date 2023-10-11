@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { getTimer } from './helpers';
 import { Time } from './subcomponents';
@@ -11,29 +11,17 @@ export default function Timer({ component, eventHandlers }) {
 
   const [time, setTime] = useState(() => getTimer(new Date(timerDate)));
 
-  const [daysVisibility, setDaysVisibility] = useState(false);
-  const [hoursVisibility, setHoursVisibility] = useState(false);
-  const [minutesVisibility, setMinutesVisibility] = useState(false);
+  const daysVisibility = useMemo(() => time.dayTens + time.dayUnits > 0, [time]);
+  const hoursVisibility = useMemo(() => time.hourTens + time.hourUnits > 0 || daysVisibility, [time, daysVisibility]);
+  const minutesVisibility = useMemo(() => {
+    return time.minuteTens + time.minuteUnits > 0 || daysVisibility || hoursVisibility;
+  }, [time, daysVisibility, hoursVisibility]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(getTimer(new Date(timerDate)));
-    }, 1000);
+    const timer = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
 
-    return () => {
-      clearInterval(timer);
-    };
+    return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    const isDays = time.dayTens + time.dayUnits > 0;
-    const isHours = time.hourTens + time.hourUnits > 0 || isDays;
-    const isMinutes = time.minuteTens + time.minuteUnits > 0 || isDays || isHours;
-
-    setDaysVisibility(isDays);
-    setHoursVisibility(isHours);
-    setMinutesVisibility(isMinutes);
-  }, [time]);
 
   if (!time.all) {
     onTimerEnd();
@@ -52,7 +40,7 @@ export default function Timer({ component, eventHandlers }) {
           timeTens={ time.dayTens }
           timeUnits={ time.dayUnits }
           animationDuration={ animationDuration }
-          withDelimeter={ true }
+          withDelimeter
         />
       ) }
 
@@ -61,7 +49,7 @@ export default function Timer({ component, eventHandlers }) {
           timeTens={ time.hourTens }
           timeUnits={ time.hourUnits }
           animationDuration={ animationDuration }
-          withDelimeter={ true }
+          withDelimeter
         />
       ) }
 
@@ -70,7 +58,7 @@ export default function Timer({ component, eventHandlers }) {
           timeTens={ time.minuteTens }
           timeUnits={ time.minuteUnits }
           animationDuration={ animationDuration }
-          withDelimeter={ true }
+          withDelimeter
         />
       ) }
 
