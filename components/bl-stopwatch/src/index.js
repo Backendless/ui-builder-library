@@ -66,11 +66,11 @@ export default function Stopwatch({ component }) {
 
   component.reset = () => {
     setTime({ seconds: 0, minutes: 0, hours: 0 });
-    component.stopStopwatch();
+    component.stop();
   };
 
   useEffect(() => {
-    return () => component.stopStopwatch();
+    return () => component.stop();
   }, []);
 
   const FormatTokens = useMemo(() => ({
