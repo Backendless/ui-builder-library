@@ -1,4 +1,4 @@
-# Clock
+# Timer
 
 This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows you to display a timer and trigger an event when it completes.
 
