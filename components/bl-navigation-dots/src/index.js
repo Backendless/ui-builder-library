@@ -157,6 +157,6 @@ function validateAnchors(anchors) {
       }
     });
   } else {
-    console.error(`Error: anchors are missing in NavigationDotsComponent.`);
+    console.error('Error: anchors are missing in NavigationDotsComponent.');
   }
 }
