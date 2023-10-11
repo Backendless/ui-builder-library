@@ -1,0 +1,55 @@
+@bl-customComponent-timer-font-size: 16px;
+@bl-customComponent-timer-text-color: @appTextColor;
+
+.bl-customComponent-timer {
+  display: flex;
+
+  font-size: @bl-customComponent-timer-font-size;
+  color: @bl-customComponent-timer-text-color;
+
+  .clock {
+    &__item {
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      height: calc(@bl-customComponent-timer-font-size + 4px);
+      width: calc(@bl-customComponent-timer-font-size - 2px);
+
+      overflow: hidden;
+      text-align: center;
+    }
+
+    &__number {
+      position: absolute;
+
+      &.old {
+        animation: old ease-in-out;
+      }
+
+      &.new {
+        animation: new ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes new {
+  from {
+    transform: translate(0, @bl-customComponent-timer-font-size + 2px);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes old {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(0, calc((@bl-customComponent-timer-font-size + 2px) * -1));
+  }
+}
