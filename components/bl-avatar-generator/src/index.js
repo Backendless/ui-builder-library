@@ -24,7 +24,7 @@ export default function AvatarGeneratorComponent({ component, eventHandlers, elR
     mouth, facialHair, facialHairColor, accessory, clothes, fabricColor, graphic]);
 
   Object.assign(component, {
-    random: (...options) => setAvatarData(handleRandomOptions(...options)),
+    random: options => setAvatarData(handleRandomOptions(options)),
     getAvatarGeneratedData: () => avatarData,
     getAllOptionsData: () => AvatarOptionsData,
     getPropertyOptions: propertyName => AvatarOptionsData[propertyName],

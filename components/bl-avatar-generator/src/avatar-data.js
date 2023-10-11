@@ -57,7 +57,6 @@ const HatColors = [
   'PastelBlue', 'PastelGreen', 'PastelOrange', 'PastelRed', 'PastelYellow', 'Pink', 'Red', 'White',
 ];
 
-// the order is important for handleRandomOptions
 export const Properties = {
   BACKGROUND        : 'background',
   CIRCLE_COLOR      : 'circleColor',
@@ -91,10 +90,6 @@ export const AvatarOptionsData = {
   [Properties.FABRIC_COLOR]     : HatColors,
   [Properties.GRAPHIC]          : GraphicTypes,
 };
-
-export const RANDOM_OPTION = 'Random';
-
-export const CIRCLE_STYLE = 'circle';
 
 export const BackgroundColors = {
   [Properties.BACKGROUND]  : 'transparent',

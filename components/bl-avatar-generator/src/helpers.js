@@ -1,4 +1,6 @@
-import { AvatarOptionsData, BackgroundColors, Properties, RANDOM_OPTION } from './avatar-data';
+import { AvatarOptionsData, BackgroundColors, Properties } from './avatar-data';
+
+const RANDOM_OPTION = 'Random';
 
 const DefaultOptions = Object.keys(Properties).reduce((options, prop) => {
   options[Properties[prop]] = getRandomCategoryValue(Properties[prop]) || BackgroundColors[Properties[prop]];
@@ -9,10 +11,10 @@ const DefaultOptions = Object.keys(Properties).reduce((options, prop) => {
 const baseOptionResolver = key => ({
   key,
   defaultValue: DefaultOptions[key],
-  validate: toValidate(key),
+  validate: shouldValidate(key),
 });
 
-function toValidate(key) {
+function shouldValidate(key) {
   if (key === Properties.BACKGROUND || key === Properties.CIRCLE_COLOR) {
     return false;
   }
@@ -61,17 +63,15 @@ export const handleOptions = component => {
   }, {});
 };
 
-export const handleRandomOptions = (...options) => {
-  const component = {};
-
-  Object.values(Properties).forEach((key, index) => component[key] = options[index]);
+export const handleRandomOptions = options => {
+  const optionsObj = isObject(options) ? options : {};
 
   return OptionsList.reduce((acc, { key, validate, defaultValue }) => {
-    let value = component[key];
+    let value = optionsObj[key];
 
     if (!value && !validate) {
       value = defaultValue;
-    } else if (!value || (validate && !isValueValid(key, component[key]))) {
+    } else if (!value || (validate && !isValueValid(key, optionsObj[key]))) {
       value = getRandomCategoryValue(key);
     }
 
@@ -80,6 +80,10 @@ export const handleRandomOptions = (...options) => {
     return acc;
   }, {});
 };
+
+function isObject(obj) {
+  return typeof obj === 'object' && obj !== null;
+}
 
 function getSVGElement(svgElement) {
   if (!svgElement) {

@@ -979,64 +979,8 @@
       "label": "Generate Avatar from",
       "inputs": [
         {
-          "id": "background",
-          "label": "Background"
-        },
-        {
-          "id": "circleColor",
-          "label": "Internal Circle Color"
-        },
-        {
-          "id": "skin",
-          "label": "Skin"
-        },
-        {
-          "id": "top",
-          "label": "Top"
-        },
-        {
-          "id": "hairColor",
-          "label": "Hair Color"
-        },
-        {
-          "id": "hatColor",
-          "label": "Hat Color"
-        },
-        {
-          "id": "brows",
-          "label": "Brows"
-        },
-        {
-          "id": "eyes",
-          "label": "Eyes"
-        },
-        {
-          "id": "mouth",
-          "label": "Mouth"
-        },
-        {
-          "id": "facialHair",
-          "label": "Facial Hair"
-        },
-        {
-          "id": "facialHairColor",
-          "label": "Facial Hair Color"
-        },
-        {
-          "id": "accessory",
-          "label": "Accessory"
-        },
-        {
-          "id": "clothes",
-          "label": "Clothes"
-        },
-        {
-          "id": "fabricColor",
-          "label": "Fabric Color"
-        },
-        {
-          "id": "graphic",
-          "label": "Graphic"
+          "id": "options",
+          "label": "Options"
         }
       ],
       "color": "#224b98"
