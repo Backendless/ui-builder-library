@@ -28,7 +28,7 @@ export const IconRow = ({ iconType, maxValue, value, color, size }) => {
 
 export const Percents = ({ reviewData, totalReviews }) => {
   const percentsArray = useMemo(() => {
-    return (reviewData.map(({ value }) => Math.round(calculatePercent(value, totalReviews))));
+    return reviewData.map(({ value }) => Math.round(calculatePercent(value, totalReviews)));
   }, [reviewData, totalReviews]);
 
   return (
