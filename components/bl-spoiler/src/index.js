@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+
 import { Blur, Morphology, Morphose, Music, Ripples, Smoke, Snow, Turbulence } from './effects';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -33,7 +34,7 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
 
   const [isEnabled, setIsEnabled] = useState(enabled);
 
-  const onClickHandler = useCallback((event) => {
+  const onClickHandler = useCallback(event => {
     onClick({ event, isEnabled });
   }, [isEnabled]);
 
@@ -43,7 +44,7 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
 
   component.enableSpoiler = () => setIsEnabled(true);
   component.disableSpoiler = () => setIsEnabled(false);
-  component.toggleSpoiler = (state) => {
+  component.toggleSpoiler = state => {
     if (state !== undefined) {
       setIsEnabled(state);
     } else {

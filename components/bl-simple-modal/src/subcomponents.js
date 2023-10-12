@@ -74,22 +74,14 @@ export function Title({ content }) {
 }
 
 export function ModalButtons(props) {
-  const { type, onClose, onSubmit, inputValue, submitButtonLabel, closeButtonLabel } = props;
-
-  const onSubmitHandler = () => {
-    if (type === modalTypes.confirm) {
-      onSubmit();
-    } else {
-      onSubmit({ inputValue });
-    }
-  };
+  const { type, onCloseHandler, onSubmitHandler, submitButtonLabel, closeButtonLabel } = props;
 
   return (
     <div className="simple-modal__button-container">
       <button
         type="button"
         className="simple-modal__button close-button"
-        onClick={ onClose }
+        onClick={ onCloseHandler }
       >
         { closeButtonLabel }
       </button>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import { Html5Qrcode } from './lib/html5-qrcode.min';
+
 import { scanImage, useScanner } from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;

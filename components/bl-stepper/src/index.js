@@ -43,7 +43,7 @@ export default function Stepper({ component, eventHandlers }) {
   };
 
   component.setStep = nextStep => {
-    if (steps.length + 1 >=  nextStep > 0) {
+    if (steps.length + 1 >= nextStep > 0) {
       setCurrentStep(nextStep - 1);
       setSteps(steps => updateCompletedSteps(steps, nextStep));
     } else {
@@ -63,6 +63,7 @@ export default function Stepper({ component, eventHandlers }) {
     <div className={ cn(stepperClassNames.stepper, classList) }>
       { steps.map((step, index) => (
         <StepperItem
+          key={ index }
           customized={ stepperType === 'customized' }
           stepperClassNames={ stepperClassNames }
           currentStep={ currentStep }

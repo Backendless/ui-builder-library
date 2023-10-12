@@ -2,8 +2,12 @@
 Double Calendar is a component of Backendless UI-Builder designer. The component is designed to select a start date and an end date. And you can also choose `Specific date range` mode to select a specific date. Also, if you wish, you can view the documentation of the used library here at [the link.](https://reactdatepicker.com/)
 
 <p align="center">
-  <img alt="main thumbnail" height="263" src="./thumbnail.png" width="420"/>
+  <img alt="main thumbnail" height="480" src="./thumbnail.png" width="780"/>
 </p>
+
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/lUqLdFKIbWMyhICAnTm6).
 
 ## Properties
 

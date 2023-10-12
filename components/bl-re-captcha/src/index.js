@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { ReCaptcha } from './re-captcha';
+import { ReCaptcha } from './lib/re-captcha';
 
 const { cn } = BackendlessUI.CSSUtils;
 

@@ -1,0 +1,152 @@
+{
+  "id": "c_04b214e455c21c0d8ded6b5aeb750d77",
+  "name": "Navigation Dots",
+  "description": "The Navigation Dots сomponent is a navigation element designed for use in web applications. It provides a visually appealing way to navigate through different sections on a webpage.",
+  "showInToolbox": true,
+  "faIcon": "ellipsis-v",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "anchors",
+      "showInSettings": true,
+      "defaultValue": "[]",
+      "hasLogicHandler": true,
+      "handlerId": "anchorsLogic",
+      "dataBinding": true,
+      "handlerLabel": "Anchors Logic",
+      "handlerDescription": "This handler allows you to specify the array of anchors for navigation.",
+      "label": "Anchors",
+      "settingTooltip": "Set of anchors for navigation."
+    },
+    {
+      "type": "select",
+      "name": "dotShape",
+      "label": "Dot Shape",
+      "showInSettings": true,
+      "defaultValue": "circle",
+      "hasLogicHandler": false,
+      "handlerId": "dotShapeLogic",
+      "options": [
+        {
+          "value": "circle",
+          "label": "circle"
+        },
+        {
+          "value": "square",
+          "label": "square"
+        },
+        {
+          "value": "triangle",
+          "label": "triangle"
+        }
+      ],
+      "settingTooltip": "Dot shape type."
+    },
+    {
+      "type": "color",
+      "name": "background",
+      "label": "Dot Background",
+      "settingTooltip": "Dot container color.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "backgroundLogic",
+      "defaultValue": "rgba(0,0,0,0.7)",
+      "dataBinding": true,
+      "handlerLabel": "Dot Background Logic",
+      "handlerDescription": "This handler allows you to specify the color of the dot container."
+    },
+    {
+      "type": "color",
+      "name": "color",
+      "label": "Dot Color",
+      "settingTooltip": "Internal dot color.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "colorLogic",
+      "defaultValue": "#ffffff",
+      "handlerDescription": "This handler allows you to specify the color of an internal dot.",
+      "dataBinding": true,
+      "handlerLabel": "Dot Color Logic"
+    },
+    {
+      "type": "checkbox",
+      "name": "tooltip",
+      "label": "Tooltip",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "tooltipLogic",
+      "settingTooltip": "Flag indicating whether a tooltip will be shown when hovering over a dot by default or not."
+    },
+    {
+      "type": "color",
+      "name": "tooltipBackground",
+      "label": "Tooltip Background",
+      "settingTooltip": "Background of the tooltip.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "tooltipBackgroundLogic",
+      "defaultValue": "rgba(0,0,0,0.7)",
+      "handlerLabel": "Tooltip Background Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify the background of the tooltip."
+    },
+    {
+      "type": "color",
+      "name": "tooltipColor",
+      "label": "Tooltip Color",
+      "settingTooltip": "Color of the tooltip.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "tooltipColorLogic",
+      "defaultValue": "#ffffff",
+      "handlerLabel": "Tooltip Color Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify the color of the tooltip."
+    },
+    {
+      "type": "checkbox",
+      "name": "smoothScroll",
+      "label": "Smooth Scrolling",
+      "settingTooltip": "Flag indicating whether scrolling will be smooth by default or not.",
+      "showInSettings": true,
+      "defaultValue": true,
+      "hasLogicHandler": false,
+      "handlerId": "smoothScrollLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onAnchorChange",
+      "label": "On Anchor Change",
+      "contextBlocks": [
+        {
+          "id": "activeAnchor",
+          "label": "Active Anchor"
+        }
+      ],
+      "handlerDescription": "Triggered when the active anchor changes (by clicking on a navigation dot or scrolling to the corresponding section)."
+    }
+  ],
+  "actions": [
+    {
+      "id": "getActiveAnchor",
+      "label": "Get Active Anchor from",
+      "hasReturn": true
+    },
+    {
+      "id": "setActiveAnchor",
+      "label": "Set Active Anchor to",
+      "inputs": [
+        {
+          "id": "anchor",
+          "label": "Anchor"
+        }
+      ]
+    }
+  ],
+  "pods": {}
+}

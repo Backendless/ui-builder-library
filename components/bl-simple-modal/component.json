@@ -17,7 +17,8 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the title.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "defaultValue": "Modal Title"
     },
     {
       "type": "text",
@@ -28,7 +29,8 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the text content of modal window.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "defaultValue": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
     },
     {
       "type": "text",
@@ -58,7 +60,7 @@
       "type": "select",
       "name": "type",
       "label": "Type",
-      "defaultValue": "alert",
+      "defaultValue": "confirm",
       "options": [
         {
           "value": "alert",

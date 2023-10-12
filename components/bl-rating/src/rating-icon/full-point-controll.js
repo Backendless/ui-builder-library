@@ -31,4 +31,4 @@ export const FullPointControll = ({ icon, iconColor, disabled, checked, inputVal
       />
     </>
   );
-}
+};

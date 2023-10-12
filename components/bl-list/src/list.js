@@ -12,7 +12,7 @@ export function List({ type, items, onItemClick }) {
 
 function Item({ key, item, listType, onClick }) {
   return (
-    <li key={ key } className="list__item" onClick={ (e) => onClick(e, item) }>
+    <li key={ key } className="list__item" onClick={ e => onClick(e, item) }>
       { item.content }
 
       { item.children && (

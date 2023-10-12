@@ -7,9 +7,11 @@ Color picker is the component for the Backendless [UI-Builder](https://backendle
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
-The component allows specifying a color, either by using a visual color picker interface or by entering the color code(HEX, RGB or HSL format) in the corresponding input fields. Also, the Color Picker provides functionality to select the alpha channel, whose intensity can be adjusted using the slider or the input field. 
+The component allows specifying a color, either by using a visual color picker interface or by entering the color code(HEX, RGB or HSL format) in the corresponding input fields. Also, the Color Picker provides functionality to select the alpha channel, whose intensity can be adjusted using the slider or the input field.
 
-All component's settings are described in the table below:
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/MYI8uNl9cLTc1oB9EJJy).
 
 ## Properties
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import modalTypes from './modal-types';
 import { Container, ModalButtons, Title } from './subcomponents';
@@ -8,23 +8,15 @@ const { cn } = BackendlessUI.CSSUtils;
 export function Modal(props) {
   const { component, eventHandlers, inputValue, setInputValue, isClosing } = props;
   const {
-    style,
-    title,
-    content,
-    classList,
-    type,
-    placeholder,
-    closeButtonLabel,
-    submitButtonLabel,
-    closingDuration,
+    style, title, content, classList, type, placeholder,
+    closeButtonLabel, submitButtonLabel, closingDuration,
   } = component;
   const { onInputValueChange, onClose, onSubmit } = eventHandlers;
 
   const { modalClasses, rootClasses } = useClasses(classList, isClosing);
 
-  const root = useMemo(() => {
-    return document.createElement('div');
-  }, []);
+  const root = useMemo(() => document.createElement('div'), []);
+
   root.className = rootClasses;
 
   useEffect(() => {
@@ -39,9 +31,23 @@ export function Modal(props) {
     onInputValueChange({ inputValue });
   }, [inputValue]);
 
+  const onCloseHandler = useCallback(() => {
+    if (onClose.hasLogic) {
+      onClose();
+    } else {
+      component.closeModal();
+    }
+  }, []);
+
+  const onSubmitHandler = useCallback(() => {
+    const payload = type === modalTypes.confirm ? undefined : { inputValue };
+
+    onSubmit(payload);
+  }, [type, inputValue]);
+
   return ReactDOM.createPortal(
     <div className={ modalClasses } style={{ animationDuration: `${ closingDuration }ms`, ...style }}>
-      <div onClick={ onClose } className="overlay"></div>
+      <div onClick={ onCloseHandler } className="overlay"></div>
       <div className="simple-modal__content">
         <Title content={ title }/>
         { (type === modalTypes.prompt || content) && (
@@ -57,9 +63,8 @@ export function Modal(props) {
 
         <ModalButtons
           type={ type }
-          onClose={ onClose }
-          onSubmit={ onSubmit }
-          inputValue={ inputValue }
+          onCloseHandler={ onCloseHandler }
+          onSubmitHandler={ onSubmitHandler }
           submitButtonLabel={ submitButtonLabel }
           closeButtonLabel={ closeButtonLabel }
         />

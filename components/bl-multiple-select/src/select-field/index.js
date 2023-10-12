@@ -1,14 +1,14 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
-import { Label } from "./label";
-import { Input } from "./input";
-import { Fieldset } from "./fieldset";
-import { DropDownButton } from "./drop-down-button";
+import { DropDownButton } from './drop-down-button';
+import { Fieldset } from './fieldset';
+import { Input } from './input';
+import { Label } from './label';
 
 export function SelectField(props) {
   const {
     type, placeholder, selectValue, isOptionsOpen, isSelectActive,
-    setIsOptionsOpen, setIsSelectActive, handleRemoveSelectedValue
+    setIsOptionsOpen, setIsSelectActive, handleRemoveSelectedValue,
   } = props;
 
   const selectId = useMemo(() => BackendlessUI.UUID.short(), []);
@@ -38,4 +38,4 @@ export function SelectField(props) {
       </div>
     </div>
   );
-};
+}

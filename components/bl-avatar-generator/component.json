@@ -1,0 +1,1048 @@
+{
+  "id": "c_4476e465c7d1c187452b9b8c572f3c7f",
+  "name": "Avatar Generator",
+  "description": "The Avatar Generator empowers users to create highly customizable avatars, enhancing user engagement and personalization within your applications.",
+  "showInToolbox": true,
+  "faIcon": "user-edit",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "select",
+      "name": "avatarStyle",
+      "label": "Avatar Style",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "avatarStyleLogic",
+      "options": [
+        {
+          "value": "circle",
+          "label": "circle"
+        },
+        {
+          "value": "square",
+          "label": "square"
+        }
+      ],
+      "defaultValue": "circle",
+      "settingTooltip": "Avatar container style."
+    },
+    {
+      "type": "color",
+      "name": "background",
+      "label": "Background",
+      "showInSettings": true,
+      "defaultValue": "rgba(255,255,255,0)",
+      "hasLogicHandler": true,
+      "handlerId": "backgroundLogic",
+      "handlerLabel": "Background Logic",
+      "dataBinding": true,
+      "settingTooltip": "Avatar background.",
+      "handlerDescription": "This handler allows you to specify avatar background."
+    },
+    {
+      "type": "color",
+      "name": "circleColor",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "circleColorLogic",
+      "defaultValue": "#e6e6e6",
+      "label": "Internal Circle Color",
+      "settingTooltip": "The color of the inner circle of the avatar (with the selected avatar style - circle).",
+      "handlerLabel": "Internal Circle Color Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify the color of the inner circle of the avatar (with the selected avatar style - circle)."
+    },
+    {
+      "type": "select",
+      "name": "skin",
+      "label": "Skin",
+      "showInSettings": true,
+      "defaultValue": "Tanned",
+      "hasLogicHandler": true,
+      "handlerId": "skinLogic",
+      "handlerLabel": "Skin Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Black",
+          "label": "Black"
+        },
+        {
+          "value": "Brown",
+          "label": "Brown"
+        },
+        {
+          "value": "DarkBrown",
+          "label": "DarkBrown"
+        },
+        {
+          "value": "Light",
+          "label": "Light"
+        },
+        {
+          "value": "Pale",
+          "label": "Pale"
+        },
+        {
+          "value": "Tanned",
+          "label": "Tanned"
+        },
+        {
+          "value": "Yellow",
+          "label": "Yellow"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "handlerDescription": "This handler allows you to specify the skin color of the avatar.",
+      "settingTooltip": "Avatar skin color."
+    },
+    {
+      "type": "select",
+      "name": "top",
+      "label": "Top",
+      "showInSettings": true,
+      "defaultValue": "Random",
+      "hasLogicHandler": true,
+      "handlerId": "topLogic",
+      "handlerLabel": "Top Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "NoHair",
+          "label": "NoHair"
+        },
+        {
+          "value": "Eyepatch",
+          "label": "Eyepatch"
+        },
+        {
+          "value": "Hat",
+          "label": "Hat"
+        },
+        {
+          "value": "Hijab",
+          "label": "Hijab"
+        },
+        {
+          "value": "Turban",
+          "label": "Turban"
+        },
+        {
+          "value": "WinterHat1",
+          "label": "WinterHat1"
+        },
+        {
+          "value": "WinterHat2",
+          "label": "WinterHat2"
+        },
+        {
+          "value": "WinterHat3",
+          "label": "WinterHat3"
+        },
+        {
+          "value": "WinterHat4",
+          "label": "WinterHat4"
+        },
+        {
+          "value": "LongHairBigHair",
+          "label": "LongHairBigHair"
+        },
+        {
+          "value": "LongHairBob",
+          "label": "LongHairBob"
+        },
+        {
+          "value": "LongHairBun",
+          "label": "LongHairBun"
+        },
+        {
+          "value": "LongHairCurly",
+          "label": "LongHairCurly"
+        },
+        {
+          "value": "LongHairCurvy",
+          "label": "LongHairCurvy"
+        },
+        {
+          "value": "LongHairDreads",
+          "label": "LongHairDreads"
+        },
+        {
+          "value": "LongHairFrida",
+          "label": "LongHairFrida"
+        },
+        {
+          "value": "LongHairFro",
+          "label": "LongHairFro"
+        },
+        {
+          "value": "LongHairFroBand",
+          "label": "LongHairFroBand"
+        },
+        {
+          "value": "LongHairNotTooLong",
+          "label": "LongHairNotTooLong"
+        },
+        {
+          "value": "LongHairShavedSides",
+          "label": "LongHairShavedSides"
+        },
+        {
+          "value": "LongHairMiaWallace",
+          "label": "LongHairMiaWallace"
+        },
+        {
+          "value": "LongHairStraight",
+          "label": "LongHairStraight"
+        },
+        {
+          "value": "LongHairStraight2",
+          "label": "LongHairStraight2"
+        },
+        {
+          "value": "LongHairStraightStrand",
+          "label": "LongHairStraightStrand"
+        },
+        {
+          "value": "ShortHairDreads01",
+          "label": "ShortHairDreads01"
+        },
+        {
+          "value": "ShortHairDreads02",
+          "label": "ShortHairDreads02"
+        },
+        {
+          "value": "ShortHairFrizzle",
+          "label": "ShortHairFrizzle"
+        },
+        {
+          "value": "ShortHairShaggy",
+          "label": "ShortHairShaggy"
+        },
+        {
+          "value": "ShortHairShaggyMullet",
+          "label": "ShortHairShaggyMullet"
+        },
+        {
+          "value": "ShortHairShortCurly",
+          "label": "ShortHairShortCurly"
+        },
+        {
+          "value": "ShortHairShortFlat",
+          "label": "ShortHairShortFlat"
+        },
+        {
+          "value": "ShortHairShortRound",
+          "label": "ShortHairShortRound"
+        },
+        {
+          "value": "ShortHairShortWaved",
+          "label": "ShortHairShortWaved"
+        },
+        {
+          "value": "ShortHairSides",
+          "label": "ShortHairSides"
+        },
+        {
+          "value": "ShortHairTheCaesar",
+          "label": "ShortHairTheCaesar"
+        },
+        {
+          "value": "ShortHairTheCaesarSidePart",
+          "label": "ShortHairTheCaesarSidePart"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "settingTooltip": "Top avatar type.",
+      "handlerDescription": "This handler allows you to specify the top avatar type."
+    },
+    {
+      "type": "select",
+      "name": "hairColor",
+      "label": "Hair Color",
+      "showInSettings": true,
+      "defaultValue": "Random",
+      "hasLogicHandler": true,
+      "handlerId": "hairColorLogic",
+      "handlerLabel": "Hair Color Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Auburn",
+          "label": "Auburn"
+        },
+        {
+          "value": "Black",
+          "label": "Black"
+        },
+        {
+          "value": "Blonde",
+          "label": "Blonde"
+        },
+        {
+          "value": "BlondeGolden",
+          "label": "BlondeGolden"
+        },
+        {
+          "value": "Brown",
+          "label": "Brown"
+        },
+        {
+          "value": "BrownDark",
+          "label": "BrownDark"
+        },
+        {
+          "value": "PastelPink",
+          "label": "PastelPink"
+        },
+        {
+          "value": "Platinum",
+          "label": "Platinum"
+        },
+        {
+          "value": "Red",
+          "label": "Red"
+        },
+        {
+          "value": "SilverGray",
+          "label": "SilverGray"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "handlerDescription": "This handler allows you to specify the avatar's hair color.",
+      "settingTooltip": "Avatar's hair color."
+    },
+    {
+      "type": "select",
+      "name": "hatColor",
+      "label": "Hat Color",
+      "showInSettings": true,
+      "defaultValue": "Random",
+      "hasLogicHandler": true,
+      "handlerId": "hatColorLogic",
+      "handlerLabel": "Hat Color Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Black",
+          "label": "Black"
+        },
+        {
+          "value": "Blue01",
+          "label": "Blue01"
+        },
+        {
+          "value": "Blue02",
+          "label": "Blue02"
+        },
+        {
+          "value": "Blue03",
+          "label": "Blue03"
+        },
+        {
+          "value": "Gray01",
+          "label": "Gray01"
+        },
+        {
+          "value": "Gray02",
+          "label": "Gray02"
+        },
+        {
+          "value": "Gray03",
+          "label": "Gray03"
+        },
+        {
+          "value": "Heather",
+          "label": "Heather"
+        },
+        {
+          "value": "PastelBlue",
+          "label": "PastelBlue"
+        },
+        {
+          "value": "PastelGreen",
+          "label": "PastelGreen"
+        },
+        {
+          "value": "PastelOrange",
+          "label": "PastelOrange"
+        },
+        {
+          "value": "PastelRed",
+          "label": "PastelRed"
+        },
+        {
+          "value": "PastelYellow",
+          "label": "PastelYellow"
+        },
+        {
+          "value": "Pink",
+          "label": "Pink"
+        },
+        {
+          "value": "Red",
+          "label": "Red"
+        },
+        {
+          "value": "White",
+          "label": "White"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "settingTooltip": "Avatar's hat color.",
+      "handlerDescription": "This handler allows you to specify the avatar's hat color."
+    },
+    {
+      "type": "select",
+      "name": "brows",
+      "label": "Brows",
+      "showInSettings": true,
+      "defaultValue": "Default",
+      "hasLogicHandler": true,
+      "handlerId": "browsLogic",
+      "handlerLabel": "Brows Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Angry",
+          "label": "Angry"
+        },
+        {
+          "value": "AngryNatural",
+          "label": "AngryNatural"
+        },
+        {
+          "value": "Default",
+          "label": "Default"
+        },
+        {
+          "value": "DefaultNatural",
+          "label": "DefaultNatural"
+        },
+        {
+          "value": "FlatNatural",
+          "label": "FlatNatural"
+        },
+        {
+          "value": "FrownNatural",
+          "label": "FrownNatural"
+        },
+        {
+          "value": "RaisedExcited",
+          "label": "RaisedExcited"
+        },
+        {
+          "value": "RaisedExcitedNatural",
+          "label": "RaisedExcitedNatural"
+        },
+        {
+          "value": "SadConcerned",
+          "label": "SadConcerned"
+        },
+        {
+          "value": "SadConcernedNatural",
+          "label": "SadConcernedNatural"
+        },
+        {
+          "value": "UnibrowNatural",
+          "label": "UnibrowNatural"
+        },
+        {
+          "value": "UpDown",
+          "label": "UpDown"
+        },
+        {
+          "value": "UpDownNatural",
+          "label": "UpDownNatural"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "handlerDescription": "This handler allows you to specify the avatar's brows type.",
+      "settingTooltip": "Avatar's brows type."
+    },
+    {
+      "type": "select",
+      "name": "eyes",
+      "label": "Eyes",
+      "showInSettings": true,
+      "defaultValue": "Default",
+      "hasLogicHandler": true,
+      "handlerId": "eyesLogic",
+      "handlerLabel": "Eyes Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Close",
+          "label": "Close"
+        },
+        {
+          "value": "Cry",
+          "label": "Cry"
+        },
+        {
+          "value": "Default",
+          "label": "Default"
+        },
+        {
+          "value": "Dizzy",
+          "label": "Dizzy"
+        },
+        {
+          "value": "EyeRoll",
+          "label": "EyeRoll"
+        },
+        {
+          "value": "Happy",
+          "label": "Happy"
+        },
+        {
+          "value": "Hearts",
+          "label": "Hearts"
+        },
+        {
+          "value": "Side",
+          "label": "Side"
+        },
+        {
+          "value": "Squint",
+          "label": "Squint"
+        },
+        {
+          "value": "Surprised",
+          "label": "Surprised"
+        },
+        {
+          "value": "Wink",
+          "label": "Wink"
+        },
+        {
+          "value": "WinkWacky",
+          "label": "WinkWacky"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "settingTooltip": "Avatar's eyes type.",
+      "handlerDescription": "This handler allows you to specify the avatar's eyes type."
+    },
+    {
+      "type": "select",
+      "name": "mouth",
+      "label": "Mouth",
+      "showInSettings": true,
+      "defaultValue": "Default",
+      "hasLogicHandler": true,
+      "handlerId": "mouthLogic",
+      "handlerLabel": "Mouth Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Concerned",
+          "label": "Concerned"
+        },
+        {
+          "value": "Default",
+          "label": "Default"
+        },
+        {
+          "value": "Disbelief",
+          "label": "Disbelief"
+        },
+        {
+          "value": "Eating",
+          "label": "Eating"
+        },
+        {
+          "value": "Grimace",
+          "label": "Grimace"
+        },
+        {
+          "value": "Sad",
+          "label": "Sad"
+        },
+        {
+          "value": "ScreamOpen",
+          "label": "ScreamOpen"
+        },
+        {
+          "value": "Serious",
+          "label": "Serious"
+        },
+        {
+          "value": "Smile",
+          "label": "Smile"
+        },
+        {
+          "value": "Tongue",
+          "label": "Tongue"
+        },
+        {
+          "value": "Twinkle",
+          "label": "Twinkle"
+        },
+        {
+          "value": "Vomit",
+          "label": "Vomit"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "handlerDescription": "This handler allows you to specify the avatar's mouth type.",
+      "settingTooltip": "Avatar's mouth type."
+    },
+    {
+      "type": "select",
+      "name": "facialHair",
+      "label": "Facial Hair",
+      "showInSettings": true,
+      "defaultValue": "Blank",
+      "hasLogicHandler": true,
+      "handlerId": "facialHairLogic",
+      "handlerLabel": "Facial Hair Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Blank",
+          "label": "Blank"
+        },
+        {
+          "value": "BeardMedium",
+          "label": "BeardMedium"
+        },
+        {
+          "value": "BeardLight",
+          "label": "BeardLight"
+        },
+        {
+          "value": "BeardMajestic",
+          "label": "BeardMajestic"
+        },
+        {
+          "value": "MoustacheFancy",
+          "label": "MoustacheFancy"
+        },
+        {
+          "value": "MoustacheMagnum",
+          "label": "MoustacheMagnum"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "settingTooltip": "Avatar's facial hair type.",
+      "handlerDescription": "This handler allows you to specify the avatar's facial hair type."
+    },
+    {
+      "type": "select",
+      "name": "facialHairColor",
+      "label": "Facial Hair Color",
+      "showInSettings": true,
+      "defaultValue": "Random",
+      "hasLogicHandler": true,
+      "handlerId": "facialHairColorLogic",
+      "handlerLabel": "Facial Hair Color Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Auburn",
+          "label": "Auburn"
+        },
+        {
+          "value": "Black",
+          "label": "Black"
+        },
+        {
+          "value": "Blonde",
+          "label": "Blonde"
+        },
+        {
+          "value": "BlondeGolden",
+          "label": "BlondeGolden"
+        },
+        {
+          "value": "Brown",
+          "label": "Brown"
+        },
+        {
+          "value": "BrownDark",
+          "label": "BrownDark"
+        },
+        {
+          "value": "PastelPink",
+          "label": "PastelPink"
+        },
+        {
+          "value": "Platinum",
+          "label": "Platinum"
+        },
+        {
+          "value": "Red",
+          "label": "Red"
+        },
+        {
+          "value": "SilverGray",
+          "label": "SilverGray"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "settingTooltip": "Avatar's facial hair color.",
+      "handlerDescription": "This handler allows you to specify the avatar's facial hair color."
+    },
+    {
+      "type": "select",
+      "name": "accessory",
+      "label": "Accessory",
+      "showInSettings": true,
+      "defaultValue": "Blank",
+      "hasLogicHandler": true,
+      "handlerId": "accessoryLogic",
+      "handlerLabel": "Accessory Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Blank",
+          "label": "Blank"
+        },
+        {
+          "value": "Kurt",
+          "label": "Kurt"
+        },
+        {
+          "value": "Prescription01",
+          "label": "Prescription01"
+        },
+        {
+          "value": "Prescription02",
+          "label": "Prescription02"
+        },
+        {
+          "value": "Round",
+          "label": "Round"
+        },
+        {
+          "value": "Sunglasses",
+          "label": "Sunglasses"
+        },
+        {
+          "value": "Wayfarers",
+          "label": "Wayfarers"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "handlerDescription": "This handler allows you to specify the avatar's accessory type.",
+      "settingTooltip": "Avatar's accessory type."
+    },
+    {
+      "type": "select",
+      "name": "clothes",
+      "label": "Clothes",
+      "showInSettings": true,
+      "defaultValue": "Random",
+      "hasLogicHandler": true,
+      "handlerId": "clothesLogic",
+      "handlerLabel": "Clothes Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "BlazerShirt",
+          "label": "BlazerShirt"
+        },
+        {
+          "value": "BlazerSweater",
+          "label": "BlazerSweater"
+        },
+        {
+          "value": "CollarSweater",
+          "label": "CollarSweater"
+        },
+        {
+          "value": "GraphicShirt",
+          "label": "GraphicShirt"
+        },
+        {
+          "value": "Hoodie",
+          "label": "Hoodie"
+        },
+        {
+          "value": "Overall",
+          "label": "Overall"
+        },
+        {
+          "value": "ShirtCrewNeck",
+          "label": "ShirtCrewNeck"
+        },
+        {
+          "value": "ShirtScoopNeck",
+          "label": "ShirtScoopNeck"
+        },
+        {
+          "value": "ShirtVNeck",
+          "label": "ShirtVNeck"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "settingTooltip": "Avatar's clothes type.",
+      "handlerDescription": "This handler allows you to specify the avatar's clothes type."
+    },
+    {
+      "type": "select",
+      "name": "fabricColor",
+      "label": "Fabric Color",
+      "showInSettings": true,
+      "defaultValue": "Random",
+      "hasLogicHandler": true,
+      "handlerId": "fabricColorLogic",
+      "handlerLabel": "Fabric Color Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Black",
+          "label": "Black"
+        },
+        {
+          "value": "Blue01",
+          "label": "Blue01"
+        },
+        {
+          "value": "Blue02",
+          "label": "Blue02"
+        },
+        {
+          "value": "Blue03",
+          "label": "Blue03"
+        },
+        {
+          "value": "Gray01",
+          "label": "Gray01"
+        },
+        {
+          "value": "Gray02",
+          "label": "Gray02"
+        },
+        {
+          "value": "Gray03",
+          "label": "Gray03"
+        },
+        {
+          "value": "Heather",
+          "label": "Heather"
+        },
+        {
+          "value": "PastelBlue",
+          "label": "PastelBlue"
+        },
+        {
+          "value": "PastelGreen",
+          "label": "PastelGreen"
+        },
+        {
+          "value": "PastelOrange",
+          "label": "PastelOrange"
+        },
+        {
+          "value": "PastelRed",
+          "label": "PastelRed"
+        },
+        {
+          "value": "PastelYellow",
+          "label": "PastelYellow"
+        },
+        {
+          "value": "Pink",
+          "label": "Pink"
+        },
+        {
+          "value": "Red",
+          "label": "Red"
+        },
+        {
+          "value": "White",
+          "label": "White"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "settingTooltip": "Avatar's fabric color.",
+      "handlerDescription": "This handler allows you to specify the avatar's fabric color."
+    },
+    {
+      "type": "select",
+      "name": "graphic",
+      "label": "Graphic",
+      "showInSettings": true,
+      "defaultValue": "Blank",
+      "hasLogicHandler": true,
+      "handlerId": "graphicLogic",
+      "handlerLabel": "Graphic Logic",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "Bat",
+          "label": "Bat"
+        },
+        {
+          "value": "Bear",
+          "label": "Bear"
+        },
+        {
+          "value": "Blank",
+          "label": "Blank"
+        },
+        {
+          "value": "Cumbia",
+          "label": "Cumbia"
+        },
+        {
+          "value": "Deer",
+          "label": "Deer"
+        },
+        {
+          "value": "Diamond",
+          "label": "Diamond"
+        },
+        {
+          "value": "Hola",
+          "label": "Hola"
+        },
+        {
+          "value": "Pizza",
+          "label": "Pizza"
+        },
+        {
+          "value": "Resist",
+          "label": "Resist"
+        },
+        {
+          "value": "Selena",
+          "label": "Selena"
+        },
+        {
+          "value": "Skull",
+          "label": "Skull"
+        },
+        {
+          "value": "SkullOutline",
+          "label": "SkullOutline"
+        },
+        {
+          "value": "Random",
+          "label": "Random"
+        }
+      ],
+      "handlerDescription": "This handler allows you to specify the avatar's graphic type.",
+      "settingTooltip": "Avatar's graphic type."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click",
+      "handlerDescription": "Triggered when the user clicks on the component."
+    }
+  ],
+  "actions": [
+    {
+      "id": "random",
+      "label": "Generate Avatar from",
+      "inputs": [
+        {
+          "id": "options",
+          "label": "Options"
+        }
+      ],
+      "color": "#224b98"
+    },
+    {
+      "id": "getAvatarGeneratedData",
+      "label": "Get Avatar Generated Data of",
+      "hasReturn": true,
+      "color": "#224b98"
+    },
+    {
+      "id": "getSVG",
+      "label": "Get SVG File from",
+      "hasReturn": true,
+      "inputs": [
+        {
+          "id": "fileName",
+          "label": "File Name"
+        }
+      ],
+      "color": "#229857"
+    },
+    {
+      "id": "getPNG",
+      "label": "Get PNG File from",
+      "inputs": [
+        {
+          "id": "fileName",
+          "label": "File Name"
+        }
+      ],
+      "hasReturn": true,
+      "color": "#229857"
+    },
+    {
+      "id": "getJPEG",
+      "label": "Get JPEG File from",
+      "inputs": [
+        {
+          "id": "fileName",
+          "label": "File Name"
+        }
+      ],
+      "hasReturn": true,
+      "color": "#229857"
+    },
+    {
+      "id": "getAllOptionsData",
+      "label": "Get All Options Data of",
+      "hasReturn": true
+    },
+    {
+      "inputs": [
+        {
+          "id": "propertyName",
+          "label": "Property Name"
+        }
+      ],
+      "id": "getPropertyOptions",
+      "label": "Get Property Options of",
+      "hasReturn": true
+    }
+  ],
+  "pods": {}
+}

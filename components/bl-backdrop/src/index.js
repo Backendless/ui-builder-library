@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useUpdateEffect } from "./use-update-effect";
 
 import { LoadersMap } from './loaders';
+import { useUpdateEffect } from './use-update-effect';
 
 export default function BackdropSpinner({ component, eventHandlers }) {
   const { backdropVisibility, loaderType, display, style } = component;

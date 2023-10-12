@@ -45,7 +45,7 @@ export function getGeolocation(map, geoMarker, icon, eventHandlers) {
 
       geoMarker.current = Leaflet.marker(coords, { icon }).addTo(map);
     },
-    (error) => {
+    error => {
       console.error(`Leaflet Map: ${ error.message }`);
     }
   );
@@ -73,7 +73,7 @@ export function initMap(component, eventHandlers, map, currentLayer, uid) {
     removeZoomControl(map.current);
   }
 
-  map.current.on('move', event => {
+  map.current.on('move', () => {
     const bounds = map.current.getBounds();
 
     onPan({
@@ -268,7 +268,7 @@ export function createPolygons(polygons, map, eventHandlers) {
         const coordinates = points.map(({ lat, lng }) => [lat, lng]);
 
         const polygon = Leaflet.polygon(coordinates)
-          .on('click', () => { onPolygonClick({ coordinates, description })})
+          .on('click', () => { onPolygonClick({ coordinates, description });})
           .addTo(map);
 
         if (description) {

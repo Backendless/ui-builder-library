@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { getIconHoverValue, useRatingClassList } from './helpers';
 import { RatingIcon } from './rating-icon';
@@ -19,7 +19,7 @@ export default function RatingComponent({ component, eventHandlers }) {
 
   useEffect(() => {
     setRatingValue(defaultValue);
-  }, [defaultValue])
+  }, [defaultValue]);
 
   const handleRatingValue = useCallback(({ target: { value  } }) => {
     setRatingValue(prevState => prevState === value ? 0 : value);

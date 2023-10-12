@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useCardElement } from './helpers/use-card-element';
 import { CardElement } from './lib/react-stripe.umd.min';
+
+import { useCardElement } from './helpers/use-card-element';
 import { BillingDetails } from './payment-components/billing-details';
 import { PaymentAmount, useAmountPattern } from './payment-components/payment-amount';
 

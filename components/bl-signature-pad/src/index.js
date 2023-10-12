@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import SignaturePad from './lib/signature-pad.umd.min';
+
 import { resizeCanvas } from './utils/canvas';
 import { ActionButtons } from './action-buttons';
 

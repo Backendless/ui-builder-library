@@ -1,8 +1,8 @@
 import { useCallback, useRef, useState } from 'react';
 
-import { MakePhotoButton, UploadButton } from './buttons';
-import { dataURLToBlob, toBase64 } from './helpers/file';
 import { checkMobile } from './helpers/device';
+import { dataURLToBlob, toBase64 } from './helpers/file';
+import { MakePhotoButton, UploadButton } from './buttons';
 import { Modal } from './modal';
 
 const isMobile = checkMobile();
@@ -15,7 +15,7 @@ export default function WebcamPhoto({ component, eventHandlers }) {
     uploadButtonDisabled,
     uploadButtonVisible,
     makePhotoButtonDisabled,
-    makePhotoButtonVisible
+    makePhotoButtonVisible,
   } = component;
   const { onSaveImage } = eventHandlers;
 
