@@ -8,10 +8,10 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 ## Properties
 
-| Property                        | Type                                                 | Default Value | Logic             | Data Binding | UI Setting | Description                                                                                                  |
-|---------------------------------|------------------------------------------------------|---------------|-------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------|
-| Time Format: `timeFormat`       | Select [SS: `ss`, MM:SS: `mmss`, HH:MM:SS: `hhmmss`] | SS: `ss`      | Time Format Logic | YES          | YES        | Allows to determine time format of stopwatch.                                                                |
-| Decimal Places: `decimalPlaces` | Select [0: `0`, 1: `1`, 2: `2`, 3: `3`]              | 3: `3`        |                   | NO           | YES        | Allows you to determine how precisely to display the seconds (the count of numbers after the decimal point). |
+| Property                        | Type                                                 | Default Value      | Logic             | Data Binding | UI Setting | Description                                                                                                  |
+|---------------------------------|------------------------------------------------------|--------------------|-------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------|
+| Time Format: `timeFormat`       | Select [SS: `ss`, MM:SS: `mmss`, HH:MM:SS: `hhmmss`] | HH:MM:SS: `hhmmss` | Time Format Logic | YES          | YES        | Allows to determine time format of stopwatch.                                                                |
+| Decimal Places: `decimalPlaces` | Select [0: `0`, 1: `1`, 2: `2`, 3: `3`]              | 3: `3`             |                   | NO           | YES        | Allows you to determine how precisely to display the seconds (the count of numbers after the decimal point). |
 
 ## Actions
 

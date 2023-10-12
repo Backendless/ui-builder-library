@@ -13,7 +13,7 @@
       "name": "timeFormat",
       "label": "Time Format",
       "showInSettings": true,
-      "defaultValue": "ss",
+      "defaultValue": "hhmmss",
       "hasLogicHandler": true,
       "handlerId": "timeFormatLogic",
       "handlerLabel": "Time Format Logic",
