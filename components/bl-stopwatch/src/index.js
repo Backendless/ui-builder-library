@@ -36,7 +36,7 @@ export default function Stopwatch({ component }) {
   component.start = () => {
     if (!timerRef.current) {
       const startTime = Date.now();
-      const interval = Number(decimalPlaces) === 0 ? 1000 : 1;
+      const interval = 1 / Math.pow(10, Number(decimalPlaces)) * 1000;
 
       timerRef.current = setInterval(() => {
         const currentTime = new Date().getTime();
