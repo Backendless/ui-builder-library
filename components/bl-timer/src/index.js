@@ -27,12 +27,12 @@ export default function Timer({ component, eventHandlers }) {
     return () => clearInterval(timer.current);
   }, []);
 
-  if (!time.all) {
-    clearInterval(timer.current);
-    onTimerEnd();
-
-    return null;
-  }
+  useEffect(() => {
+    if (!time.all) {
+      clearInterval(timer.current);
+      onTimerEnd();
+    }
+  }, [time]);
 
   if (!display) {
     return null;
