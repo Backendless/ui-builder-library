@@ -8,19 +8,19 @@ export const IconRow = ({ iconType, maxValue, value, color, size }) => {
 
   const { FilledIcon, EmptyIcon } = useMemo(() => ({
     FilledIcon: IconsMap[iconType].filled,
-    EmptyIcon: IconsMap[iconType].empty,
+    EmptyIcon : IconsMap[iconType].empty,
   }), [iconType]);
 
-  const resultRow = Array.from({ length: maxValue }, (_, i) => {
+  const icons = useMemo(() => Array.from({ length: maxValue }, (_, i) => {
     const Icon = value > i + 1 ? FilledIcon : EmptyIcon;
 
     return (<Icon key={ i }/>);
-  });
+  }), [maxValue]);
 
   return (
     <div className="icon-row">
-      { resultRow.map((el, key) => (
-        <span className="icon" style={ styles } key={ key }>{ el }</span>)
+      { icons.map((icon, i) => (
+        <span className="icon" style={ styles } key={ i }>{ icon }</span>)
       ) }
     </div>
   );
@@ -28,12 +28,14 @@ export const IconRow = ({ iconType, maxValue, value, color, size }) => {
 
 export const Percents = ({ reviewData, totalReviews }) => {
   const percentsArray = useMemo(() => {
-    return (reviewData.map(({ value }) => Math.round(calculatePercent(value, totalReviews))));
+    return reviewData.map(({ value }) => Math.round(calculatePercent(value, totalReviews)));
   }, [reviewData, totalReviews]);
 
   return (
     <div className="percents">
-      { percentsArray.map((percent, i) => (<span key={ i }>{ `${ percent }%` }</span>)) }
+      { percentsArray.map((percent, i) => (
+        <span key={ i }>{ `${ percent }%` }</span>
+      )) }
     </div>
   );
 };
