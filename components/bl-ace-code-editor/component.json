@@ -23,9 +23,7 @@
     {
       "type": "text",
       "name": "value",
-      "label": "Value",
-      "settingTooltip": "The value you specify with this handler will be displayed in this component.",
-      "showInSettings": true,
+      "showInSettings": false,
       "hasLogicHandler": true,
       "handlerId": "valueLogic",
       "handlerLabel": "Value Logic",
