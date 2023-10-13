@@ -8,6 +8,13 @@ const TimeFormat = {
   SS    : 'ss',
 };
 
+const tickRates = {
+  '0': 1000,
+  '1': 100,
+  '2': 10,
+  '3': 1,
+};
+
 const timeFormatter = {
   ss    : elapsedTime => ({ seconds: (elapsedTime / 1000) }),
   mmss  : elapsedTime => {
@@ -27,7 +34,7 @@ const timeFormatter = {
 const initTime = { seconds: 0, minutes: 0, hours: 0 };
 
 export default function Stopwatch({ component }) {
-  const { display, classList, timeFormat, decimalPlaces } = component;
+  const { display, classList, timeFormat, tickRate } = component;
 
   const [time, setTime] = useObjectState(initTime);
 
@@ -36,7 +43,6 @@ export default function Stopwatch({ component }) {
   component.start = () => {
     if (!timerRef.current) {
       const startTime = Date.now();
-      const interval = 1 / Math.pow(10, Number(decimalPlaces)) * 1000;
 
       timerRef.current = setInterval(() => {
         const currentTime = new Date().getTime();
@@ -44,8 +50,8 @@ export default function Stopwatch({ component }) {
 
         const { seconds, minutes, hours } = timeFormatter[timeFormat](elapsedTime);
 
-        setTime({ seconds: seconds.toFixed(Number(decimalPlaces)), minutes, hours });
-      }, interval);
+        setTime({ seconds: seconds.toFixed(Number(tickRate)), minutes, hours });
+      }, tickRates[tickRate]);
     }
   };
 
