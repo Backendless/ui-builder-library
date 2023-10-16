@@ -7,6 +7,10 @@ Barcode is the component for the Backendless [UI-Builder](https://backendless.co
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/nh5AdKcVvqbe30NWe2lf).
+
 ## Properties
 
 | Property         | Type                                                                                                                                                                                    | Default value  | Logic            | Data Binding | UI Setting | Description                                                     |
