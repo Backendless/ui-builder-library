@@ -6,10 +6,10 @@ import { Time } from './subcomponents';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function Timer({ component, eventHandlers }) {
-  const { display, classList, style, timerDate, animationDuration } = component;
+  const { display, classList, style, countdown, animationDuration } = component;
   const { onTimerEnd } = eventHandlers;
 
-  const [time, setTime] = useState(() => getTimer(new Date(timerDate)));
+  const [time, setTime] = useState(() => getTimer(new Date(countdown)));
 
   const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
     const daysVisibility = time.dayTens + time.dayUnits > 0;
@@ -22,7 +22,7 @@ export default function Timer({ component, eventHandlers }) {
   const timer = useRef(null);
 
   useEffect(() => {
-    timer.current = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
+    timer.current = setInterval(() => setTime(getTimer(new Date(countdown))), 1000);
 
     return () => clearInterval(timer.current);
   }, []);
