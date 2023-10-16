@@ -8,7 +8,7 @@ const TimeFormat = {
   SS    : 'ss',
 };
 
-const tickRates = {
+const TickRateInMs = {
   '0': 1000,
   '1': 100,
   '2': 10,
@@ -51,7 +51,7 @@ export default function Stopwatch({ component }) {
         const { seconds, minutes, hours } = timeFormatter[timeFormat](elapsedTime);
 
         setTime({ seconds: seconds.toFixed(Number(tickRate)), minutes, hours });
-      }, tickRates[tickRate]);
+      }, TickRateInMs[tickRate]);
     }
   };
 
