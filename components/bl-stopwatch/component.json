@@ -35,13 +35,31 @@
       "settingTooltip": "Allows to determine time format of stopwatch"
     },
     {
-      "type": "number",
+      "type": "select",
       "name": "tickRate",
-      "label": "Tick Rate",
+      "label": "Decimal Places",
       "showInSettings": true,
       "defaultValue": "3",
+      "options": [
+        {
+          "value": "0",
+          "label": "0"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ],
       "hasLogicHandler": false,
-      "settingTooltip": "Allows you to determine how precisely to display the seconds (the count of numbers after the period)."
+      "settingTooltip": "Allows you to determine how precisely to display the seconds (the count of numbers after the decimal point)."
     }
   ],
   "eventHandlers": [],
