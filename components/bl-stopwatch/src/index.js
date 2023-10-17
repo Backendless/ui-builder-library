@@ -61,7 +61,7 @@ export default function Stopwatch({ component }) {
   };
 
   component.reset = () => {
-    setTime({ seconds: 0, minutes: 0, hours: 0, elapsedTime: 0 });
+    setTime(initTime);
     component.stop();
   };
 
