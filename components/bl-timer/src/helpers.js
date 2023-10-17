@@ -32,8 +32,8 @@ export const useAnimation = (time, elementRef, animationDuration) => {
   }, [time]);
 };
 
-export const getTimer = timerDate => {
-  const gap = timerDate - Date.now();
+export const getTimer = countdown => {
+  const gap = countdown - Date.now();
 
   let days = String(Math.floor(gap / DAY));
   let hours = String(Math.floor(gap / HOUR) % 24);

@@ -10,7 +10,7 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 | Property                                     | Type   | Default Value | Logic                    | Data Binding | UI Setting | Description                                                                                                       |
 |----------------------------------------------|--------|---------------|--------------------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------|
-| Timer Date: `timerDate`                      | Text   |               | Timer Date Logic         | YES          | YES        | Allows you to specify the date, time, and time zone when the timer will expire. Signature `MM.DD.YY HH:MM:SS UTC` |
+| Countdown: `countdown`                       | Text   |               | Countdown Logic          | YES          | YES        | Allows you to specify the date, time, and time zone when the timer will expire. Signature `MM.DD.YY HH:MM:SS UTC` |
 | Animation Duration (ms): `animationDuration` | Number | 400           | Animation Duration Logic | YES          | YES        | Allows to determine the duration of the animation to change the time.                                             |
 
 ## Actions
