@@ -10,6 +10,10 @@ Inner Image Zoom is the component that can be used in Backendless [UI-Builder](h
 
 Configuration can be done in the UI Builder or using the Codeless Logic. You have to specify the URL of the image that will be displayed in the component and to which the zoom effect will be applied.
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/wZDgQVdAdgAuWGmfEZDo).
+
 ## Properties
 
 | Property           | Type     | Default value                                     | Logic     | Data Binding | UI Setting | Description                                         |
