@@ -31,7 +31,7 @@ const timeFormatter = {
   },
 };
 
-const initTime = { seconds: 0, minutes: 0, hours: 0 };
+const initTime = { seconds: 0, minutes: 0, hours: 0, elapsedTime: 0 };
 
 export default function Stopwatch({ component }) {
   const { display, classList, timeFormat, tickRate } = component;
@@ -45,12 +45,12 @@ export default function Stopwatch({ component }) {
       const startTime = Date.now();
 
       timerRef.current = setInterval(() => {
-        const currentTime = new Date().getTime();
-        const elapsedTime = currentTime - startTime;
+        const currentTime = Date.now();
+        const elapsedTime = currentTime - startTime + time.elapsedTime;
 
         const { seconds, minutes, hours } = timeFormatter[timeFormat](elapsedTime);
 
-        setTime({ seconds: seconds.toFixed(Number(tickRate)), minutes, hours });
+        setTime({ seconds: seconds.toFixed(Number(tickRate)), minutes, hours, elapsedTime });
       }, TickRateInMs[tickRate]);
     }
   };
@@ -61,7 +61,7 @@ export default function Stopwatch({ component }) {
   };
 
   component.reset = () => {
-    setTime({ seconds: 0, minutes: 0, hours: 0 });
+    setTime(initTime);
     component.stop();
   };
 
