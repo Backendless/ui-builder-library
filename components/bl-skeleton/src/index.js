@@ -1,4 +1,4 @@
-const { cn } = BackendlessUI.CSSUtils;
+const { cn, normalizeDimensionValue  } = BackendlessUI.CSSUtils;
 
 export default function Skeleton({ component }) {
   const { style, display, classList, variant, width, height, animation } = component;
@@ -10,7 +10,7 @@ export default function Skeleton({ component }) {
   return (
     <div
       className={ cn('bl-customComponent-skeleton',  variant, animation, classList) }
-      style={{ ...style, width: width || '100%', height: height || '100%' }}>
+      style={{ ...style, width: normalizeDimensionValue(width), height: normalizeDimensionValue(height) }}>
     </div>
   );
 }
