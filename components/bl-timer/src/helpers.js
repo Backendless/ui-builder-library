@@ -35,10 +35,14 @@ export const useAnimation = (time, elementRef, animationDuration) => {
 export const getTimer = timerDate => {
   const gap = timerDate - Date.now();
 
-  let days = String(Math.floor(gap / DAY));
-  let hours = String(Math.floor(gap / HOUR) % 24);
-  let minutes = String(Math.floor(gap / MINUTE) % 60);
-  let seconds = String(Math.floor(gap / SECOND) % 60);
+  return timeFormatter(gap);
+};
+
+export const timeFormatter = time => {
+  let days = String(Math.floor(time / DAY));
+  let hours = String(Math.floor(time / HOUR) % 24);
+  let minutes = String(Math.floor(time / MINUTE) % 60);
+  let seconds = String(Math.floor(time / SECOND) % 60);
 
   days = days.length === 1 ? '0' + days : days;
   hours = hours.length === 1 ? '0' + hours : hours;
@@ -54,6 +58,6 @@ export const getTimer = timerDate => {
     minuteUnits: minutes[1],
     secondTens : seconds[0],
     secondUnits: seconds[1],
-    all        : Number(days + hours + minutes + seconds),
+    all        : time,
   };
 };

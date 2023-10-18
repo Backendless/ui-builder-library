@@ -1,15 +1,27 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { getTimer } from './helpers';
+import { getTimer, timeFormatter } from './helpers';
 import { Time } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const getSimpleTimerInSeconds = time => {
+  const timeUnits = time.split(':');
+
+  const seconds = Number(timeUnits[2]);
+  const minutes = Number(timeUnits[1]) * 60;
+  const hours = Number(timeUnits[0]) * 60 * 60;
+
+  return seconds + minutes + hours;
+};
+
 export default function Timer({ component, eventHandlers }) {
-  const { display, classList, style, timerDate, animationDuration } = component;
+  const { display, classList, style, timerDate, animationDuration, simpleTimer } = component;
   const { onTimerEnd } = eventHandlers;
 
-  const [time, setTime] = useState(() => getTimer(new Date(timerDate)));
+  const [time, setTime] = useState(() => timerDate
+    ? getTimer(new Date(timerDate))
+    : timeFormatter(getSimpleTimerInSeconds(simpleTimer) * 1000));
 
   const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
     const daysVisibility = time.dayTens + time.dayUnits > 0;
@@ -22,14 +34,36 @@ export default function Timer({ component, eventHandlers }) {
   const timer = useRef(null);
 
   useEffect(() => {
-    timer.current = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
+    if (timerDate && !timer.current) {
+      timer.current = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
+    }
 
     return () => clearInterval(timer.current);
-  }, []);
+  }, [timerDate]);
+
+  component.start = () => {
+    if (!timerDate && !timer.current) {
+      const startTime = Date.now();
+
+      timer.current = setInterval(() => {
+        const gap = Math.floor(Date.now() / 1000) - Math.floor(startTime / 1000);
+        const timePassed = time.all - gap;
+
+        setTime(timeFormatter(timePassed * 1000));
+      }, 1000);
+    }
+  };
+
+  component.stop = () => {
+    clearInterval(timer.current);
+    timer.current = null;
+  };
 
   useEffect(() => {
-    if (!time.all) {
+    if (time.all <= 0) {
       clearInterval(timer.current);
+      timer.current = null;
+
       onTimerEnd();
     }
   }, [time]);
