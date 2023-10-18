@@ -56,6 +56,16 @@
       "handlerDescription": "This is a handler for the logic to determine the height."
     },
     {
+      "type": "text",
+      "name": "margin",
+      "label": "Margin",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "marginLogic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the margin."
+    },
+    {
       "type": "select",
       "name": "animation",
       "label": "Animation",
