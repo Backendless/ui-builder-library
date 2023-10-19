@@ -63,7 +63,8 @@
       "hasLogicHandler": true,
       "handlerId": "marginLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the margin."
+      "handlerDescription": "This is a handler for the logic to determine the margin.",
+      "settingTooltip": "Allows to determinate margin for skeleton."
     },
     {
       "type": "select",
