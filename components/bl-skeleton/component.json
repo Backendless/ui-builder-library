@@ -34,7 +34,7 @@
           "label": "Rounded"
         }
       ],
-      "settingTooltip": "Allows select variant of skeleton (\"text\", \"circular\", \"rectangular\", \"rounded\")."
+      "settingTooltip": "Allows select variant of skeleton ('text', 'circular', 'rectangular', 'rounded')."
     },
     {
       "type": "text",
@@ -94,7 +94,7 @@
           "label": "None"
         }
       ],
-      "settingTooltip": "Allows select animation of skeleton (\"default\", \"wave\", \"none\")."
+      "settingTooltip": "Allows select animation of skeleton ('default', 'wave', 'none')."
     }
   ],
   "eventHandlers": [],
