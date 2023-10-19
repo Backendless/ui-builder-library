@@ -33,7 +33,8 @@
           "value": "rounded",
           "label": "Rounded"
         }
-      ]
+      ],
+      "settingTooltip": "Allows select variant of skeleton ('text', 'circular', 'rectangular', 'rounded')."
     },
     {
       "type": "text",
@@ -43,7 +44,9 @@
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the width."
+      "handlerDescription": "This is a handler for the logic to determine the width.",
+      "settingTooltip": "Allows to determinate width for skeleton.",
+      "handlerLabel": "Width Logic "
     },
     {
       "type": "text",
@@ -53,7 +56,9 @@
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the height."
+      "handlerDescription": "This is a handler for the logic to determine the height.",
+      "settingTooltip": "Allows determinate height for skeleton.",
+      "handlerLabel": "Height Logic"
     },
     {
       "type": "text",
@@ -64,7 +69,8 @@
       "handlerId": "marginLogic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the margin.",
-      "settingTooltip": "Allows to determinate margin for skeleton."
+      "settingTooltip": "Allows to determinate margin for skeleton.",
+      "handlerLabel": "Margin Logic"
     },
     {
       "type": "select",
@@ -87,7 +93,8 @@
           "value": "none",
           "label": "None"
         }
-      ]
+      ],
+      "settingTooltip": "Allows select animation of skeleton ('default', 'wave', 'none')."
     }
   ],
   "eventHandlers": [],
