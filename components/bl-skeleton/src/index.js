@@ -13,8 +13,13 @@ export default function Skeleton({ component }) {
 
   return (
     <div
-      className={ cn('bl-customComponent-skeleton',  variant, animation, classList) }
-      style={{ width: normalizeDimensionValue(width), height: normalizeDimensionValue(height), margin: validMargin, ...style }}>
+      className={ cn('bl-customComponent-skeleton', variant, animation, classList) }
+      style={{
+        width : normalizeDimensionValue(width),
+        height: normalizeDimensionValue(height),
+        margin: validMargin,
+        ...style,
+      }}>
     </div>
   );
 }
