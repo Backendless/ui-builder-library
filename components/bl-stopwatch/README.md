@@ -15,11 +15,12 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 ## Actions
 
-| Action          | Inputs | Returns |
-|-----------------|--------|---------|
-| Start Stopwatch |        |         |
-| Stop Stopwatch  |        |         |
-| Reset Stopwatch |        |         |
+| Action          | Inputs | Returns                                                                                                                                                                              |
+|-----------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Start Stopwatch |        |                                                                                                                                                                                      |
+| Stop Stopwatch  |        |                                                                                                                                                                                      |
+| Reset Stopwatch |        |                                                                                                                                                                                      |
+| Get Time        |        | Object: `{ elapsedTime: Number, seconds: Number, minutes: Number, hours: Number }`. `elapsedTIme`: total elapsed time in milliseconds, `seconds`/`minutes`/`hours`: times like in UI |
 
 ## Styles
 

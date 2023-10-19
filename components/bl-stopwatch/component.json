@@ -75,6 +75,11 @@
     {
       "id": "reset",
       "label": "Reset"
+    },
+    {
+      "id": "getTime",
+      "label": "Get Time",
+      "hasReturn": true
     }
   ]
 }
