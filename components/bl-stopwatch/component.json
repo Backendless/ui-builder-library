@@ -78,7 +78,7 @@
     },
     {
       "id": "getTime",
-      "label": "Get Time",
+      "label": "Get Time from",
       "hasReturn": true
     }
   ]
