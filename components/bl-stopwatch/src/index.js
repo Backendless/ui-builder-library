@@ -50,7 +50,7 @@ export default function Stopwatch({ component }) {
 
         const { seconds, minutes, hours } = timeFormatter[timeFormat](elapsedTime);
 
-        setTime({ seconds: Number(seconds.toFixed(Number(tickRate))), minutes, hours, elapsedTime });
+        setTime({ seconds: seconds.toFixed(Number(tickRate)), minutes, hours, elapsedTime });
       }, TickRateInMs[tickRate]);
     }
   };
@@ -65,7 +65,7 @@ export default function Stopwatch({ component }) {
     component.stop();
   };
 
-  component.getTime = () => time;
+  component.getTime = () => ({ ...time, seconds: Number(time.seconds) });
 
   useEffect(() => {
     return () => component.stop();
