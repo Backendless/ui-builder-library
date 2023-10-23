@@ -24,14 +24,10 @@ This is a component for Backendless [UI-Builder](https://backendless.com/develop
 
 ## Styles
 
-**Dimensions**
-
 ```
 @bl-customComponent-stopwatch-font-size: 16px;
-```
-
-**Color**
-
-```
 @bl-customComponent-stopwatch-text-color: @appTextColor;
+@bl-customComponent-stopwatch-font-family: "Lucida Console", monospace;
 ```
+
+> **_NOTE:_** If you notice that the stopwatch twitches (this is especially noticeable when the component is centered horizontally), you may need to specify a font from the monospace family
