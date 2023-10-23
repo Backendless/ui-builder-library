@@ -8,6 +8,11 @@ The component based on external [Transitions](https://mui.com/material-ui/transi
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/6sRu7wmXjfXki9LHpjBN).
+
 ## Properties
 
 | Property                         | Type                                                                                                            | Default Value | Logic         | Data Binding | UI Setting | Description                                                 |
