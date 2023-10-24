@@ -1,0 +1,183 @@
+{
+  "id": "c_4c016ae4bb42f3d167f9146271d22db1",
+  "name": "Image List",
+  "description": "The Image List displays a collection of images in an organized grid.",
+  "showInToolbox": true,
+  "faIcon": "film",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "itemData",
+      "label": "Item Data",
+      "showInSettings": true,
+      "defaultValue": "[]",
+      "hasLogicHandler": true,
+      "handlerId": "itemDataLogic",
+      "handlerLabel": "Item Data Logic",
+      "dataBinding": true,
+      "settingTooltip": "Image list items data.",
+      "handlerDescription": "Specifies a JSON array containing data of the image list items. Signature of items list: [ <Item> ]. Signature of item: { img: String, title: String, rows: Number, cols: Number }."
+    },
+    {
+      "type": "select",
+      "name": "listVariant",
+      "label": "Variant",
+      "showInSettings": true,
+      "defaultValue": "standard",
+      "hasLogicHandler": false,
+      "handlerId": "listVariantLogic",
+      "options": [
+        {
+          "value": "standard",
+          "label": "standard"
+        },
+        {
+          "value": "quilted",
+          "label": "quilted"
+        },
+        {
+          "value": "woven",
+          "label": "woven"
+        },
+        {
+          "value": "masonry",
+          "label": "masonry"
+        }
+      ],
+      "settingTooltip": "The variant to use."
+    },
+    {
+      "type": "number",
+      "name": "cols",
+      "label": "Columns",
+      "showInSettings": true,
+      "defaultValue": "3",
+      "hasLogicHandler": false,
+      "handlerId": "colsLogic",
+      "settingTooltip": "Number of columns."
+    },
+    {
+      "type": "number",
+      "name": "rowHeight",
+      "label": "Row Height",
+      "settingTooltip": "The height of one row in px. Ignored with masonry variant.",
+      "showInSettings": true,
+      "defaultValue": "164",
+      "hasLogicHandler": false,
+      "handlerId": "rowHeightLogic"
+    },
+    {
+      "type": "number",
+      "name": "gap",
+      "label": "Gap",
+      "showInSettings": true,
+      "defaultValue": "4",
+      "hasLogicHandler": false,
+      "handlerId": "gapLogic",
+      "settingTooltip": "The gap between items in px."
+    },
+    {
+      "type": "checkbox",
+      "name": "showTitleBar",
+      "label": "Show Title Bar",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "showTitleBarLogic",
+      "settingTooltip": "Flag indicating whether the title bar is shown or hidden by default."
+    },
+    {
+      "type": "select",
+      "name": "titleBarPosition",
+      "label": "Title Bar Position",
+      "showInSettings": true,
+      "defaultValue": "bottom",
+      "hasLogicHandler": false,
+      "handlerId": "titleBarPositionLogic",
+      "options": [
+        {
+          "value": "below",
+          "label": "below"
+        },
+        {
+          "value": "bottom",
+          "label": "bottom"
+        },
+        {
+          "value": "top",
+          "label": "top"
+        }
+      ],
+      "settingTooltip": "Position of the title bar."
+    },
+    {
+      "type": "number",
+      "name": "titleBarHeight",
+      "label": "Title Bar Height",
+      "showInSettings": true,
+      "defaultValue": "42",
+      "hasLogicHandler": false,
+      "handlerId": "titleBarHeightLogic",
+      "settingTooltip": "Height of the title bar in px."
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onItemClick",
+      "label": "On Item Click",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "item",
+          "label": "Item"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the item of the image list."
+    },
+    {
+      "name": "onTitleClick",
+      "label": "On Title Click",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "id": "item",
+          "label": "Item"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the title of the item of the image list."
+    },
+    {
+      "name": "onImageClick",
+      "label": "On Image Click",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "img",
+          "label": "Image URL"
+        },
+        {
+          "id": "item",
+          "label": "Item"
+        }
+      ],
+      "handlerDescription": "This event is fired when the user clicks the mouse or taps the image of the item of the image list."
+    }
+  ],
+  "actions": [],
+  "pods": {}
+}
