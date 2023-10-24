@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { getTimer, timeFormatter } from './helpers';
+import { getCountdown, getTimer, timeFormatter } from './helpers';
 import { Time } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const getSimpleTimerInSeconds = time => {
+const getTimeInSeconds = time => {
   const timeUnits = time.split(':');
 
   const seconds = Number(timeUnits[2]);
@@ -19,9 +19,9 @@ export default function Timer({ component, eventHandlers }) {
   const { display, classList, style, timerDate, animationDuration, simpleTimer } = component;
   const { onTimerEnd } = eventHandlers;
 
-  const [time, setTime] = useState(() => timerDate
-    ? getTimer(new Date(timerDate))
-    : timeFormatter(getSimpleTimerInSeconds(simpleTimer) * 1000));
+  const [time, setTime] = useState(() => (
+    timerDate ? getCountdown(new Date(timerDate)) : timeFormatter(getTimeInSeconds(simpleTimer)))
+  );
 
   const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
     const daysVisibility = time.dayTens + time.dayUnits > 0;
@@ -35,7 +35,7 @@ export default function Timer({ component, eventHandlers }) {
 
   useEffect(() => {
     if (timerDate && !timer.current) {
-      timer.current = setInterval(() => setTime(getTimer(new Date(timerDate))), 1000);
+      timer.current = setInterval(() => setTime(getCountdown(new Date(timerDate))), 1000);
     }
 
     return () => clearInterval(timer.current);
@@ -45,12 +45,7 @@ export default function Timer({ component, eventHandlers }) {
     if (!timerDate && !timer.current) {
       const startTime = Date.now();
 
-      timer.current = setInterval(() => {
-        const gap = Math.floor(Date.now() / 1000) - Math.floor(startTime / 1000);
-        const timePassed = time.all - gap;
-
-        setTime(timeFormatter(timePassed * 1000));
-      }, 1000);
+      timer.current = setInterval(() => setTime(getTimer(startTime, time)), 1000);
     }
   };
 
