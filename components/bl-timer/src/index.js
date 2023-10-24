@@ -16,11 +16,11 @@ const getTimeInSeconds = time => {
 };
 
 export default function Timer({ component, eventHandlers }) {
-  const { display, classList, style, timerDate, animationDuration, simpleTimer } = component;
+  const { display, classList, style, countdown, animationDuration, simpleTimer } = component;
   const { onTimerEnd } = eventHandlers;
 
   const [time, setTime] = useState(() => (
-    timerDate ? getCountdown(new Date(timerDate)) : timeFormatter(getTimeInSeconds(simpleTimer)))
+    countdown ? getCountdown(new Date(countdown)) : timeFormatter(getTimeInSeconds(simpleTimer)))
   );
 
   const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
@@ -34,15 +34,15 @@ export default function Timer({ component, eventHandlers }) {
   const timer = useRef(null);
 
   useEffect(() => {
-    if (timerDate && !timer.current) {
-      timer.current = setInterval(() => setTime(getCountdown(new Date(timerDate))), 1000);
+    if (countdown && !timer.current) {
+      timer.current = setInterval(() => setTime(getCountdown(new Date(countdown))), 1000);
     }
 
     return () => clearInterval(timer.current);
-  }, [timerDate]);
+  }, [countdown]);
 
   component.start = () => {
-    if (!timerDate && !timer.current) {
+    if (!countdown && !timer.current) {
       const startTime = Date.now();
 
       timer.current = setInterval(() => setTime(getTimer(startTime, time)), 1000);

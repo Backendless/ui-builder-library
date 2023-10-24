@@ -9,6 +9,10 @@ The component based on external [markdown-it](https://github.com/markdown-it/mar
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/sRsWqneOdYvUdbSaojrD).
+
 ## Properties
 
 | Property | Type | Default Value                                                                                          | Logic        | Data Binding | UI Setting | Description                                         |

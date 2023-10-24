@@ -11,8 +11,8 @@ display a timer and trigger an event when it completes.
 
 | Property                                     | Type   | Default Value | Logic                    | Data Binding | UI Setting | Description                                                                                                       |
 |----------------------------------------------|--------|---------------|--------------------------|--------------|------------|-------------------------------------------------------------------------------------------------------------------|
-| Simple TImer: `simpleTimer`                  | Text   | "00:00:05"    | Simple Timer Logic       | YES          | YES        | Allows to determine a regular timer. Format of timer: '00:05:00'.                                                 |
-| Timer Date: `timerDate`                      | Text   |               | Timer Date Logic         | YES          | YES        | Allows you to specify the date, time, and time zone when the timer will expire. Signature `MM.DD.YY HH:MM:SS UTC` |
+| Simple Timer: `simpleTimer`                  | Text   | "00:00:05"    | Simple Timer Logic       | YES          | YES        | Allows to determine a regular timer. Format of timer: '00:05:00'.                                                 |
+| Countdown: `countdown`                       | Text   |               | Countdown Logic          | YES          | YES        | Allows you to specify the date, time, and time zone when the timer will expire. Signature `MM.DD.YY HH:MM:SS UTC` |
 | Animation Duration (ms): `animationDuration` | Number | 400           | Animation Duration Logic | YES          | YES        | Allows to determine the duration of the animation to change the time.                                             |
 
 ## Events

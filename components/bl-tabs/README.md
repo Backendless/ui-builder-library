@@ -6,6 +6,10 @@ Tabs is a component of Backendless UI-Builder designer. This component make it e
   <img alt="main thumbnail" src="./thumbnail.png" width="720"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/EqZKce9osFg9qAyND8vc).
+
 ## Properties
 
 | Property         | Type                                               | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |

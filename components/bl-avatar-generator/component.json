@@ -262,7 +262,7 @@
         }
       ],
       "settingTooltip": "Top avatar type.",
-      "handlerDescription": "This handler allows you to specify the top avatar type."
+      "handlerDescription": "This handler allows you to specify the top type of the avatar."
     },
     {
       "type": "select",
@@ -320,8 +320,8 @@
           "label": "Random"
         }
       ],
-      "handlerDescription": "This handler allows you to specify the avatar's hair color.",
-      "settingTooltip": "Avatar's hair color."
+      "handlerDescription": "This handler allows you to specify the hair color of the avatar.",
+      "settingTooltip": "Avatar hair color."
     },
     {
       "type": "select",
@@ -403,8 +403,8 @@
           "label": "Random"
         }
       ],
-      "settingTooltip": "Avatar's hat color.",
-      "handlerDescription": "This handler allows you to specify the avatar's hat color."
+      "settingTooltip": "Avatar hat color.",
+      "handlerDescription": "This handler allows you to specify the hat color of the avatar."
     },
     {
       "type": "select",
@@ -474,8 +474,8 @@
           "label": "Random"
         }
       ],
-      "handlerDescription": "This handler allows you to specify the avatar's brows type.",
-      "settingTooltip": "Avatar's brows type."
+      "handlerDescription": "This handler allows you to specify the brows type of the avatar.",
+      "settingTooltip": "Avatar brows type."
     },
     {
       "type": "select",
@@ -541,8 +541,8 @@
           "label": "Random"
         }
       ],
-      "settingTooltip": "Avatar's eyes type.",
-      "handlerDescription": "This handler allows you to specify the avatar's eyes type."
+      "settingTooltip": "Avatar eyes type.",
+      "handlerDescription": "This handler allows you to specify the eyes type of the avatar."
     },
     {
       "type": "select",
@@ -608,8 +608,8 @@
           "label": "Random"
         }
       ],
-      "handlerDescription": "This handler allows you to specify the avatar's mouth type.",
-      "settingTooltip": "Avatar's mouth type."
+      "handlerDescription": "This handler allows you to specify the mouth type of the avatar.",
+      "settingTooltip": "Avatar mouth type."
     },
     {
       "type": "select",
@@ -651,8 +651,8 @@
           "label": "Random"
         }
       ],
-      "settingTooltip": "Avatar's facial hair type.",
-      "handlerDescription": "This handler allows you to specify the avatar's facial hair type."
+      "settingTooltip": "Avatar facial hair type.",
+      "handlerDescription": "This handler allows you to specify the facial hair type of the avatar."
     },
     {
       "type": "select",
@@ -710,8 +710,8 @@
           "label": "Random"
         }
       ],
-      "settingTooltip": "Avatar's facial hair color.",
-      "handlerDescription": "This handler allows you to specify the avatar's facial hair color."
+      "settingTooltip": "Avatar facial hair color.",
+      "handlerDescription": "This handler allows you to specify the facial hair color of the avatar."
     },
     {
       "type": "select",
@@ -757,8 +757,8 @@
           "label": "Random"
         }
       ],
-      "handlerDescription": "This handler allows you to specify the avatar's accessory type.",
-      "settingTooltip": "Avatar's accessory type."
+      "handlerDescription": "This handler allows you to specify the accessory type of the avatar.",
+      "settingTooltip": "Avatar accessory type."
     },
     {
       "type": "select",
@@ -812,8 +812,8 @@
           "label": "Random"
         }
       ],
-      "settingTooltip": "Avatar's clothes type.",
-      "handlerDescription": "This handler allows you to specify the avatar's clothes type."
+      "settingTooltip": "Avatar clothes type.",
+      "handlerDescription": "This handler allows you to specify the clothes type of the avatar."
     },
     {
       "type": "select",
@@ -895,8 +895,8 @@
           "label": "Random"
         }
       ],
-      "settingTooltip": "Avatar's fabric color.",
-      "handlerDescription": "This handler allows you to specify the avatar's fabric color."
+      "settingTooltip": "Avatar fabric color.",
+      "handlerDescription": "This handler allows you to specify the fabric color of the avatar."
     },
     {
       "type": "select",
@@ -962,8 +962,8 @@
           "label": "Random"
         }
       ],
-      "handlerDescription": "This handler allows you to specify the avatar's graphic type.",
-      "settingTooltip": "Avatar's graphic type."
+      "handlerDescription": "This handler allows you to specify the graphic type of the avatar.",
+      "settingTooltip": "Avatar graphic type."
     }
   ],
   "eventHandlers": [
