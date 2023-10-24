@@ -1,15 +1,27 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { getTimer } from './helpers';
+import { getCountdown, getTimer, timeFormatter } from './helpers';
 import { Time } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const getTimeInSeconds = time => {
+  const timeUnits = time.split(':');
+
+  const seconds = Number(timeUnits[2]);
+  const minutes = Number(timeUnits[1]) * 60;
+  const hours = Number(timeUnits[0]) * 60 * 60;
+
+  return seconds + minutes + hours;
+};
+
 export default function Timer({ component, eventHandlers }) {
-  const { display, classList, style, countdown, animationDuration } = component;
+  const { display, classList, style, countdown, animationDuration, simpleTimer } = component;
   const { onTimerEnd } = eventHandlers;
 
-  const [time, setTime] = useState(() => getTimer(new Date(countdown)));
+  const [time, setTime] = useState(() => (
+    countdown ? getCountdown(new Date(countdown)) : timeFormatter(getTimeInSeconds(simpleTimer)))
+  );
 
   const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
     const daysVisibility = time.dayTens + time.dayUnits > 0;
@@ -22,14 +34,31 @@ export default function Timer({ component, eventHandlers }) {
   const timer = useRef(null);
 
   useEffect(() => {
-    timer.current = setInterval(() => setTime(getTimer(new Date(countdown))), 1000);
+    if (countdown && !timer.current) {
+      timer.current = setInterval(() => setTime(getCountdown(new Date(countdown))), 1000);
+    }
 
     return () => clearInterval(timer.current);
-  }, []);
+  }, [countdown]);
+
+  component.start = () => {
+    if (!countdown && !timer.current) {
+      const startTime = Date.now();
+
+      timer.current = setInterval(() => setTime(getTimer(startTime, time)), 1000);
+    }
+  };
+
+  component.stop = () => {
+    clearInterval(timer.current);
+    timer.current = null;
+  };
 
   useEffect(() => {
-    if (!time.all) {
+    if (time.all <= 0) {
       clearInterval(timer.current);
+      timer.current = null;
+
       onTimerEnd();
     }
   }, [time]);
