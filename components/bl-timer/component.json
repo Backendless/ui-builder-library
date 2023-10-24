@@ -11,7 +11,7 @@
     {
       "type": "text",
       "name": "simpleTimer",
-      "label": "Simple TImer",
+      "label": "Simple Timer",
       "showInSettings": true,
       "defaultValue": "00:00:05",
       "hasLogicHandler": true,
