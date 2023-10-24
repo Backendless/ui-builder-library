@@ -11,7 +11,7 @@ const IMAGE_HEIGHT_REDUCTION_FACTOR = 0.7;
 export default function ImageListComponent({ component, eventHandlers, elRef }) {
   const {
     style, classList, display, itemData, listVariant, cols, rowHeight,
-    gap, showTitleBar, titleBarPosition, titleBarHeight
+    gap, showTitleBar, titleBarPosition, titleBarHeight,
   } = component;
 
   const [items, setItems] = useState([]);
