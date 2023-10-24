@@ -82,6 +82,19 @@
       "handlerDescription": "This handler allows you to add data to the component.",
       "dataBinding": true,
       "defaultValue": "[\n  { \"id\":\"tab1\", \"label\":\"Tab 1\" },\n  { \"id\":\"tab2\", \"label\":\"Tab 2\" },\n  { \"id\":\"tab3\", \"label\":\"Tab 3\" }\n]"
+    },
+    {
+      "type": "text",
+      "name": "currentTab",
+      "label": "Current Tab Id",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "currentTabLogic",
+      "handlerLabel": "Current Tab Id Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to determine the current tab.",
+      "defaultValue": "tab1",
+      "settingTooltip": "This handler allows you to determine the current tab."
     }
   ],
   "eventHandlers": [
@@ -95,6 +108,14 @@
         }
       ],
       "handlerDescription": "This event triggered when a tab is changed."
+    },
+    {
+      "name": "onMounted",
+      "label": "On Mounted"
+    },
+    {
+      "name": "onBeforeUnmount",
+      "label": "On Before Unmount"
     }
   ],
   "actions": [

@@ -12,18 +12,21 @@ View an example of how to install this component and how it works in your UI [he
 
 ## Properties
 
-| Property         | Type                                               | Default Value | Logic          | Data Binding | UI Setting | Description                                                                                                                                        |
-|------------------|----------------------------------------------------|---------------|----------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled         | *Checkbox*                                         | `false`       | Disabled Logic | YES          | YES        | This handler allows you to disable a component.                                                                                                    |
-| Variant          | *Select* <br/>"Standard" \| "Filled" \| "Outlined" | "Standard"    | Variant Logic  | YES          | YES        | This handler allows you to select variant of tab.                                                                                                  |
-| Tabs Orientation | *Select* <br/>"Left" \| "Center" \| "Right"        | "Center"      |                | NO           | YES        | This handler allows you to specify the orientation of the tabs.                                                                                    |
-| Tabs             | *JSON*                                             |               | Tabs Logic     | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Usage Guide](#Examples). Signature of tab: {id: `String`, label: `String`}. |
+| Property         | Type                                               | Default Value | Logic                | Data Binding | UI Setting | Description                                                                                                                                  |
+|------------------|----------------------------------------------------|---------------|----------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled         | *Checkbox*                                         | `false`       | Disabled Logic       | YES          | YES        | This handler allows you to disable a component.                                                                                              |
+| Variant          | *Select* <br/>"Standard" \| "Filled" \| "Outlined" | "Standard"    | Variant Logic        | YES          | YES        | This handler allows you to select variant of tab.                                                                                            |
+| Tabs Orientation | *Select* <br/>"Left" \| "Center" \| "Right"        | "Center"      |                      | NO           | YES        | This handler allows you to specify the orientation of the tabs.                                                                              |
+| Tabs             | *JSON*                                             |               | Tabs Logic           | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Usage Guide](#Examples). Signature of tab: {id: `String`, label: `String`}. |
+| Current Tab Id   | *Text*                                             | "tab1"        | Current Tab Id Logic | YES          | YES        | This handler allows you to determine the current tab.                                                                                        |
 
 ## Events
 
-| Name                  | Triggers                        | Context Blocks               |
-|-----------------------|---------------------------------|------------------------------|
-| On Change Event       | triggered when a tab is changed | Current Tab Id: `String`     |
+| Name              | Triggers                                    | Context Blocks               |
+|-------------------|---------------------------------------------|------------------------------|
+| On Change Event   | triggered when a tab is changed             | Current Tab Id: `String`     |
+| On Mounted        | triggered after the component is mounted    |                              |
+| On Before Unmount | triggered before the component is unmounted |                              |
 
 ## Actions
 
