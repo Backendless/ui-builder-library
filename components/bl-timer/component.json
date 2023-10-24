@@ -13,13 +13,13 @@
       "name": "simpleTimer",
       "label": "Simple Timer",
       "showInSettings": true,
-      "defaultValue": "00:00:05",
+      "defaultValue": "00:05:00",
       "hasLogicHandler": true,
       "handlerId": "timerLogic",
       "handlerLabel": "Simple Timer Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine a regular timer. Format of timer: '00:05:00'.",
-      "settingTooltip": "Allows to determine a regular timer. Format of timer: '00:05:00'."
+      "handlerDescription": "This is a handler for the logic to determine a regular timer. Format of timer: 'HH:MM:SS'.",
+      "settingTooltip": "Allows to determine a regular timer. Format of timer: 'HH:MM:SS'."
     },
     {
       "type": "text",
