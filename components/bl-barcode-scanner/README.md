@@ -8,6 +8,10 @@ application. The component supports a variety of 2D and 1D code formats.
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/65ITYv4cdfa401JYw2nM).
+
 ## Properties
 
 | Property                                               | Type                                    | Default value     | Logic | Data Binding | UI Setting | Description                                         |

@@ -8,6 +8,10 @@ The component allows you to add a pdf viewer to your UI-Builder application
   <img src="./thumbnail.png" alt="main thumbnail" width="780" />
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/3gfDFMjSErqvr69xDvSf).
+
 ## Properties
 
 | Property                                    | Type     | Default Value | Logic                      | Data Binding | UI Setting | Description                                                                                                                                                                   |
