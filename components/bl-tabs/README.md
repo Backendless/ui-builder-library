@@ -12,28 +12,28 @@ View an example of how to install this component and how it works in your UI [he
 
 ## Properties
 
-| Property         | Type                                               | Default Value | Logic                | Data Binding | UI Setting | Description                                                                                                                                  |
-|------------------|----------------------------------------------------|---------------|----------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| Disabled         | *Checkbox*                                         | `false`       | Disabled Logic       | YES          | YES        | This handler allows you to disable a component.                                                                                              |
-| Variant          | *Select* <br/>"Standard" \| "Filled" \| "Outlined" | "Standard"    | Variant Logic        | YES          | YES        | This handler allows you to select variant of tab.                                                                                            |
-| Tabs Orientation | *Select* <br/>"Left" \| "Center" \| "Right"        | "Center"      |                      | NO           | YES        | This handler allows you to specify the orientation of the tabs.                                                                              |
-| Tabs             | *JSON*                                             |               | Tabs Logic           | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Usage Guide](#Examples). Signature of tab: {id: `String`, label: `String`}. |
-| Current Tab Id   | *Text*                                             | "tab1"        | Current Tab Id Logic | YES          | YES        | This handler allows you to determine the current tab.                                                                                        |
+| Property                                | Type                                                                          | Default Value                                                                                              | Logic                | Data Binding | UI Setting | Description                                                                                                                                  |
+|-----------------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|----------------------|--------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| Disabled <br> `disabled`                | *Checkbox*                                                                    | `false`                                                                                                    | Disabled Logic       | YES          | YES        | This handler allows you to disable a component.                                                                                              |
+| Variant <br> `variant`                  | *Select*  <br> [Standard: `standard`, Filled: `filled`, Outlined: `outlined`] | Standard: `standard`                                                                                       | Variant Logic        | YES          | YES        | This handler allows you to select variant of tab.                                                                                            |
+| Tabs Orientation <br> `tabsOrientation` | *Select* <br> [Left: `left`, Center: `center`, Right: `right`]                | Center: `center`                                                                                           |                      | NO           | YES        | This handler allows you to specify the orientation of the tabs.                                                                              |
+| Tabs <br> `tabs`                        | *JSON*                                                                        | `[ { "id":"tab1", "label":"Tab 1" }, { "id":"tab2", "label":"Tab 2" }, { "id":"tab3", "label":"Tab 3" } ]` | Tabs Logic           | YES          | YES        | This handler allows you to add tabs buttons to component. Watch [Usage Guide](#Examples). Signature of tab: {id: `String`, label: `String`}. |
+| Current Tab Id <br> `currentTab`        | *Text*                                                                        | `tab1`                                                                                                     | Current Tab Id Logic | YES          | YES        | This handler allows you to determine the current tab.                                                                                        |
 
 ## Events
 
-| Name              | Triggers                                    | Context Blocks               |
-|-------------------|---------------------------------------------|------------------------------|
-| On Change Event   | triggered when a tab is changed             | Current Tab Id: `String`     |
-| On Mounted        | triggered after the component is mounted    |                              |
-| On Before Unmount | triggered before the component is unmounted |                              |
+| Name                    | Triggers                          | Context Blocks           |
+|-------------------------|-----------------------------------|--------------------------|
+| On Change Event         | when the tab is changed           | Current Tab Id: `String` |
+| On Mounted Event        | after the component is mounted    |                          |
+| On Before Unmount Event | before the component is unmounted |                          |
 
 ## Actions
 
-| Action                | Inputs                          | Returns                      |
-|-----------------------|---------------------------------|------------------------------|
-| Set Current Tab Id    | Id: `String`                    |                              |
-| Get Current Tab Id    |                                 | `String`: current tab id     |
+| Action                       | Inputs       | Returns                  |
+|------------------------------|--------------|--------------------------|
+| Set Current Tab Id to Tabs   | Id: `String` |                          |
+| Get Current Tab Id from Tabs |              | `String`: current tab id |
 
 ## Styles
 

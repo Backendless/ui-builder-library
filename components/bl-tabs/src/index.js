@@ -8,7 +8,7 @@ export default function TabsComponent({ component, eventHandlers, pods }) {
   const { classList, style, display, disabled, variant, tabsOrientation, tabs, currentTab } = component;
   const { onChange, onMounted, onBeforeUnmount } = eventHandlers;
 
-  const [currentTabId, setCurrentTabId] = useState(currentTab);
+  const [currentTabId, setCurrentTabId] = useState(currentTab || tabs[0]?.id);
 
   const classes = cn(
     'bl-customComponent-tabs', classList, `bl-customComponent-tabs--${ tabsOrientation }`,

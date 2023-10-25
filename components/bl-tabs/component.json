@@ -1,5 +1,5 @@
 {
-  "id": "c_276d37d255e7db1c9f13a0a88b24890a",
+  "id": "c_54d456fba5de9124a90a9a0df084bfc2",
   "name": "Tabs",
   "description": "This component make it easy to explore and switch between different views by selecting a different tab.",
   "showInToolbox": true,
@@ -111,17 +111,17 @@
     },
     {
       "name": "onMounted",
-      "label": "On Mounted"
+      "label": "On Mounted Event"
     },
     {
       "name": "onBeforeUnmount",
-      "label": "On Before Unmount"
+      "label": "On Before Unmount Event"
     }
   ],
   "actions": [
     {
       "id": "setCurrentTabId",
-      "label": "Set Current Tab Id",
+      "label": "Set Current Tab Id to",
       "inputs": [
         {
           "id": "id",
@@ -132,7 +132,7 @@
     },
     {
       "id": "getCurrentTabId",
-      "label": "Get Current Tab Id",
+      "label": "Get Current Tab Id from",
       "hasReturn": true,
       "color": "#0a59ed"
     }
