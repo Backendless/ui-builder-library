@@ -2,8 +2,10 @@
 @bl-customComponent-image-list-height: auto;
 @bl-customComponent-image-list-overflow: unset;
 @bl-customComponent-image-list-background: transparent;
+@bl-customComponent-image-list-image-cursor: auto;
 
 @bl-customComponent-image-list-bar-fontFamily: Roboto, Helvetica, Arial, sans-serif;
+@bl-customComponent-image-list-bar-cursor: auto;
 @bl-customComponent-image-list-bar-background: rgba(0, 0, 0, 0.5);
 @bl-customComponent-image-list-bar-below-background: transparent;
 @bl-customComponent-image-list-bar-titleWrap-padding: 12px 16px;
@@ -32,6 +34,7 @@
     .MuiImageListItem {
       &-img {
         height: var(--image-height);
+        cursor: @bl-customComponent-image-list-image-cursor;
       }
 
       &-woven:nth-of-type(2n) .MuiImageListItem-img {
@@ -55,6 +58,7 @@
   .MuiImageListItemBar {
     &-root {
       font-family: @bl-customComponent-image-list-bar-fontFamily;
+      cursor: @bl-customComponent-image-list-bar-cursor;
     }
 
     &-positionTop,

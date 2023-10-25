@@ -34,8 +34,10 @@ Image List is the component that can be used in Backendless [UI-Builder](https:/
 @bl-customComponent-image-list-height: auto;
 @bl-customComponent-image-list-overflow: unset;
 @bl-customComponent-image-list-background: transparent;
+@bl-customComponent-image-list-image-cursor: auto;
 
 @bl-customComponent-image-list-bar-fontFamily: Roboto, Helvetica, Arial, sans-serif;
+@bl-customComponent-image-list-bar-cursor: auto;
 @bl-customComponent-image-list-bar-background: rgba(0, 0, 0, 0.5);
 @bl-customComponent-image-list-bar-below-background: transparent;
 @bl-customComponent-image-list-bar-titleWrap-padding: 12px 16px;
