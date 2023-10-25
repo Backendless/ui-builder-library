@@ -10,6 +10,10 @@ Customize the appearance of the breadcrumbs according to your preferences using 
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/WEe4Q89jautXFh6B5wZe).
+
 ## Properties
 
 | Property               | Type    | Default value                                   | Logic         | Data Binding | UI Setting | Description                                                                                                                                                |
