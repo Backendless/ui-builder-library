@@ -7,6 +7,10 @@ More information about list you can find [here](https://developer.mozilla.org/en
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/SzYth80Z7BiGfGK4U83C).
+
 ## Properties
 
 | Property                    | Type                                         | Default value  | Logic           | Data Binding | UI Setting | Description                                                                                                                                                                                                          |

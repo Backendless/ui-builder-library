@@ -10,6 +10,10 @@ Marquee is the component that can be used in Backendless [UI-Builder](https://ba
 
 Configuration can be done in the UI Builder. You have to specify the content that will be displayed in the component and to which the effect will be applied.
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/K3hzDeZlgfLXBoVW2H7i).
+
 ## Properties
 
 | Property                           | Type                                             | Default value    | Logic | Data Binding | UI Setting | Description                                                                        |
