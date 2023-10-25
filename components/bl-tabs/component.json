@@ -12,7 +12,7 @@
       "type": "checkbox",
       "name": "disabled",
       "label": "Disabled",
-      "settingTooltip": "This handler allows you to disable a component.",
+      "settingTooltip": "Flag indicating whether the component is disable or active by default.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "disabledLogic",
@@ -24,13 +24,13 @@
       "type": "select",
       "name": "variant",
       "label": "Variant",
-      "settingTooltip": "This handler allows you to select variant of tab.",
+      "settingTooltip": "Variant of the tabs view.",
       "showInSettings": true,
       "defaultValue": "standard",
       "hasLogicHandler": true,
       "handlerId": "variantLogic",
       "handlerLabel": "Variant Logic",
-      "handlerDescription": "This handler allows you to select variant of tab.",
+      "handlerDescription": "This handler allows you to specify the variant of the tabs view.",
       "dataBinding": true,
       "options": [
         {
@@ -68,18 +68,19 @@
           "value": "right",
           "label": "Right"
         }
-      ]
+      ],
+      "settingTooltip": "Orientation of the tabs."
     },
     {
       "type": "json",
       "name": "tabs",
       "label": "Tabs",
-      "settingTooltip": "This handler allows you to add data to the component.",
+      "settingTooltip": "Tabs data.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "tabsLogic",
       "handlerLabel": "Tabs Logic",
-      "handlerDescription": "This handler allows you to add data to the component.",
+      "handlerDescription": "This handler allows you to specify the data to the component.",
       "dataBinding": true,
       "defaultValue": "[\n  { \"id\":\"tab1\", \"label\":\"Tab 1\" },\n  { \"id\":\"tab2\", \"label\":\"Tab 2\" },\n  { \"id\":\"tab3\", \"label\":\"Tab 3\" }\n]"
     },
@@ -94,7 +95,7 @@
       "dataBinding": true,
       "handlerDescription": "This handler allows you to determine the current tab.",
       "defaultValue": "tab1",
-      "settingTooltip": "This handler allows you to determine the current tab."
+      "settingTooltip": "Current tab id."
     }
   ],
   "eventHandlers": [
