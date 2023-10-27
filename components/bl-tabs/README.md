@@ -60,9 +60,25 @@ Add tabs to the component. You can add tabs using component logic. Note: Be sure
 
 <img alt="tabs" src="./example-images/add-tabs-via-logic.png" width="720" />
 
+<details>
+<summary>Try yourself</summary>
+
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="lists_create_with" id="Ysy;;_EvbLhdKgldhqlA" x="119.11250305175781" y="100"><mutation items="3"></mutation><value name="ADD0"><block type="create_object" id="uGF[Rq{z4|`-/OykM}F="><mutation><properties><item id="property" prop-name="id"></item><item id="property" prop-name="label"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="vzg7CO[9xo}(l%eomeBn"><field name="TEXT">tab1</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="cT+1+6k`()$B=fh7/S9E"><field name="TEXT">Tab 1</field></block></value></block></value><value name="ADD1"><block type="create_object" id="{UbJQ5=hB|,9glkuxDLz"><mutation><properties><item id="property" prop-name="id"></item><item id="property" prop-name="label"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="^i/$(@}SvdoNtY]q@NaW"><field name="TEXT">tab2</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="#wDdvUpo`}Ql,005@,zy"><field name="TEXT">Tab 2</field></block></value></block></value><value name="ADD2"><block type="create_object" id="7,pc@u+{y(hZD_]Jpt`~"><mutation><properties><item id="property" prop-name="id"></item><item id="property" prop-name="label"></item></properties></mutation><value name="create_object_mutator_container_properties_stack_property0"><block type="text" id="V)~Cl!%r@wFtdRZG#~DS"><field name="TEXT">tab3</field></block></value><value name="create_object_mutator_container_properties_stack_property1"><block type="text" id="h}5Ktr4G1H6tCAQ-AMQw"><field name="TEXT">Tab 3</field></block></value></block></value></block>
+```
+</details>
+
 Or using JSON:
 
 <img alt="tabs" src="./example-images/add-tabs-via-JSON.png" width="720" />
+
+````
+[
+  { "id":"tab1", "label":"Tab 1" },
+  { "id":"tab2", "label":"Tab 2" },
+  { "id":"tab3", "label":"Tab 3" }
+]
+````
 
 Add a content block for each tab:
 
@@ -75,3 +91,11 @@ Specify for each content block the ID that you specified for the tab:
 In the logic of each content block in the "Visibility Logic" tab, check whether the block Id matches "currentTabId":
 
 <img alt="control visibility" src="./example-images/tab-visibility-logic.png" width="720" />
+
+<details>
+<summary>Try yourself</summary>
+
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="logic_compare" id="A$VQMyZa(Q}#rq0Ie?M2" x="95" y="233"><field name="OP">EQ</field><value name="A"><block type="get_object_property" id="$uLUXl!;w_d`o+5t{ep+"><value name="prop_name"><shadow type="text" id="YSj.f[^h0,K=Qq/YJy#p"><field name="TEXT">currentTabId</field></shadow></value></block></value><value name="B"><block type="text" id="6oM6}IkCQL!1R_6d#*]b"><field name="TEXT">tab1</field></block></value></block>
+```
+</details>
