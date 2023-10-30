@@ -5,10 +5,10 @@ import { TabControl } from './tab-control';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function TabsComponent({ component, eventHandlers, pods }) {
-  const { classList, style, display, disabled, variant, tabsOrientation, tabs } = component;
-  const { onChange } = eventHandlers;
+  const { classList, style, display, disabled, variant, tabsOrientation, tabs, currentTab } = component;
+  const { onChange, onMounted, onBeforeUnmount } = eventHandlers;
 
-  const [currentTabId, setCurrentTabId] = useState(null);
+  const [currentTabId, setCurrentTabId] = useState(currentTab || tabs[0]?.id);
 
   const classes = cn(
     'bl-customComponent-tabs', classList, `bl-customComponent-tabs--${ tabsOrientation }`,
@@ -47,9 +47,17 @@ export default function TabsComponent({ component, eventHandlers, pods }) {
     }
   }, [currentTabId, tabsList]);
 
+  useEffect(() => setCurrentTabId(currentTab), [currentTab]);
+
   useEffect(() => {
     podsContent.dataModel.currentTabId = currentTabId;
   }, [currentTabId]);
+
+  useEffect(() => {
+    onMounted();
+
+    return () => onBeforeUnmount();
+  }, []);
 
   if (!display) {
     return null;

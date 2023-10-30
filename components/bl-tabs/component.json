@@ -1,5 +1,5 @@
 {
-  "id": "c_276d37d255e7db1c9f13a0a88b24890a",
+  "id": "c_54d456fba5de9124a90a9a0df084bfc2",
   "name": "Tabs",
   "description": "This component make it easy to explore and switch between different views by selecting a different tab.",
   "showInToolbox": true,
@@ -12,7 +12,7 @@
       "type": "checkbox",
       "name": "disabled",
       "label": "Disabled",
-      "settingTooltip": "This handler allows you to disable a component.",
+      "settingTooltip": "Flag indicating whether the component is disable or active by default.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "disabledLogic",
@@ -24,13 +24,13 @@
       "type": "select",
       "name": "variant",
       "label": "Variant",
-      "settingTooltip": "This handler allows you to select variant of tab.",
+      "settingTooltip": "Variant of the tabs view.",
       "showInSettings": true,
       "defaultValue": "standard",
       "hasLogicHandler": true,
       "handlerId": "variantLogic",
       "handlerLabel": "Variant Logic",
-      "handlerDescription": "This handler allows you to select variant of tab.",
+      "handlerDescription": "This handler allows you to specify the variant of the tabs view.",
       "dataBinding": true,
       "options": [
         {
@@ -68,20 +68,34 @@
           "value": "right",
           "label": "Right"
         }
-      ]
+      ],
+      "settingTooltip": "Orientation of the tabs."
     },
     {
       "type": "json",
       "name": "tabs",
       "label": "Tabs",
-      "settingTooltip": "This handler allows you to add data to the component.",
+      "settingTooltip": "Tabs data.",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "tabsLogic",
       "handlerLabel": "Tabs Logic",
-      "handlerDescription": "This handler allows you to add data to the component.",
+      "handlerDescription": "This handler allows you to specify the data to the component.",
       "dataBinding": true,
       "defaultValue": "[\n  { \"id\":\"tab1\", \"label\":\"Tab 1\" },\n  { \"id\":\"tab2\", \"label\":\"Tab 2\" },\n  { \"id\":\"tab3\", \"label\":\"Tab 3\" }\n]"
+    },
+    {
+      "type": "text",
+      "name": "currentTab",
+      "label": "Current Tab Id",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "currentTabLogic",
+      "handlerLabel": "Current Tab Id Logic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to determine the current tab.",
+      "defaultValue": "tab1",
+      "settingTooltip": "Current tab id."
     }
   ],
   "eventHandlers": [
@@ -95,12 +109,20 @@
         }
       ],
       "handlerDescription": "This event triggered when a tab is changed."
+    },
+    {
+      "name": "onMounted",
+      "label": "On Mounted Event"
+    },
+    {
+      "name": "onBeforeUnmount",
+      "label": "On Before Unmount Event"
     }
   ],
   "actions": [
     {
       "id": "setCurrentTabId",
-      "label": "Set Current Tab Id",
+      "label": "Set Current Tab Id to",
       "inputs": [
         {
           "id": "id",
@@ -111,7 +133,7 @@
     },
     {
       "id": "getCurrentTabId",
-      "label": "Get Current Tab Id",
+      "label": "Get Current Tab Id from",
       "hasReturn": true,
       "color": "#0a59ed"
     }
