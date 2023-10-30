@@ -9,8 +9,7 @@ const TYPE_QUILTED = 'quilted';
 const IMAGE_HEIGHT_REDUCTION_FACTOR = 0.7;
 
 export default function ImageListComponent({ component, eventHandlers, elRef }) {
-  const { style, classList, display, itemData, listVariant, cols, rowHeight,
-    gap } = component;
+  const { style, classList, display, itemData, listVariant, cols, rowHeight, gap } = component;
 
   const [items, setItems] = useState([]);
 
@@ -24,19 +23,10 @@ export default function ImageListComponent({ component, eventHandlers, elRef }) 
 
   return (
     <div className={ cn('bl-customComponent-image-list', classList) } ref={ elRef } style={ style }>
-      <ImageList
-        cols={ cols }
-        gap={ gap }
-        rowHeight={ rowHeight }
-        variant={ listVariant }>
+      <ImageList cols={ cols } gap={ gap } rowHeight={ rowHeight } variant={ listVariant }>
 
         { items.map(item => (
-          <Item
-            key={ item.img }
-            item={ item }
-            component={ component }
-            eventHandlers={ eventHandlers }
-          />
+          <Item key={ item.img } item={ item } component={ component } eventHandlers={ eventHandlers }/>
         )) }
       </ImageList>
     </div>
@@ -58,12 +48,7 @@ function Item({ item, component, eventHandlers }) {
       rows={ isQuilted && rows ? rows : 1 }
       onClick={ event => onItemClick({ event, item }) }>
 
-      <img
-        src={ img }
-        alt={ title }
-        style={ imageStyle }
-        onClick={ event => onImageClick({ event, img, item }) }
-      />
+      <img src={ img } alt={ title } style={ imageStyle } onClick={ event => onImageClick({ event, img, item }) }/>
 
       { showTitleBar && (
         <ImageListItemBar
@@ -87,9 +72,9 @@ function useCalculatedImageStyle(showTitleBar, rowHeight, titleBarHeight, titleB
     const isItemBarBelow = showTitleBar && titleBarPosition === POS_BELOW;
 
     return ({
-        '--image-height'       : isItemBarBelow ? `${ deltaHeight }px` : `${ rowHeight }px`,
-        '--image-height-even'  : isItemBarBelow ? `${ deltaHeightEven }px` : `${ heightEven }px`,
-        '--image-height-common': isItemBarBelow ? `calc(100% - ${ titleBarHeight }px)` : '100%',
+      '--image-height'       : isItemBarBelow ? `${ deltaHeight }px` : `${ rowHeight }px`,
+      '--image-height-even'  : isItemBarBelow ? `${ deltaHeightEven }px` : `${ heightEven }px`,
+      '--image-height-common': isItemBarBelow ? `calc(100% - ${ titleBarHeight }px)` : '100%',
     });
   }, [showTitleBar, rowHeight, titleBarHeight, titleBarPosition]);
 }
