@@ -9,6 +9,10 @@ The component allows rich text editing and presents the user with a WYSIWYG edit
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/OAxVetwKxovONsaISpi4).
+
 ## Properties
 
 | Property                | Type                                                                                                                                                                                                                                                       | Default value        | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                                     |

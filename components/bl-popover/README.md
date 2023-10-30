@@ -8,6 +8,10 @@ The component allows you to render a popup window in your UI-Builder application
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/1NqjSYEQUoRbTHS5kWaL).
+
 ## Properties
 
 | Property                 | Type                                                            | Default Value | Logic          | Data Binding | UI Setting | Description                                                            |
