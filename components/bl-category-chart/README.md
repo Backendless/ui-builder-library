@@ -5,6 +5,10 @@ The Category Chart component allows you to display data in the form of charts. Y
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/qeQLsr7t4M9JhBT5pTp9).
+
 ## Properties
 
 | Property                                          | Type                                              | Default value                                                                                                                                                                                                                                                                                                     | Logic                  | Data Binding | UI Setting | Description                                                                                                                                                                                                                                                           |
