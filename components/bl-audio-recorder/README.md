@@ -6,6 +6,10 @@ Audio Recorder is a component of Backendless UI-Builder designer. This allows re
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/LIega0wBI2hchzlmyyEN).
+
 ## Properties
 
 | Property                 | Type                            | Default Value       | Logic                          | Data Binding | UI Setting | Description                                                                                                                                      |
