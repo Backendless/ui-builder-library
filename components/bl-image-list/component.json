@@ -10,25 +10,25 @@
   "properties": [
     {
       "type": "json",
-      "name": "itemData",
-      "label": "Item Data",
+      "name": "itemsData",
+      "label": "Items Data",
       "showInSettings": true,
       "defaultValue": "[]",
       "hasLogicHandler": true,
-      "handlerId": "itemDataLogic",
-      "handlerLabel": "Item Data Logic",
+      "handlerId": "itemsDataLogic",
+      "handlerLabel": "Items Data Logic",
       "dataBinding": true,
       "settingTooltip": "Image list items data.",
       "handlerDescription": "Specifies a JSON array containing data of the image list items. Signature of items list: [ <Item> ]. Signature of item: { img: String, title: String, rows: Number, cols: Number }."
     },
     {
       "type": "select",
-      "name": "listVariant",
-      "label": "Variant",
+      "name": "layout",
+      "label": "Layout",
       "showInSettings": true,
       "defaultValue": "standard",
       "hasLogicHandler": false,
-      "handlerId": "listVariantLogic",
+      "handlerId": "layoutLogic",
       "options": [
         {
           "value": "standard",
@@ -47,7 +47,7 @@
           "label": "masonry"
         }
       ],
-      "settingTooltip": "The variant to use."
+      "settingTooltip": "Layout for use."
     },
     {
       "type": "number",

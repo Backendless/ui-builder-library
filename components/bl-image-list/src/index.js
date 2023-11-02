@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 import { ImageList, ImageListItem, ImageListItemBar } from './lib/mui';
 
@@ -9,13 +9,9 @@ const TYPE_QUILTED = 'quilted';
 const IMAGE_HEIGHT_REDUCTION_FACTOR = 0.7;
 
 export default function ImageListComponent({ component, eventHandlers, elRef }) {
-  const { style, classList, display, itemData, listVariant, cols, rowHeight, gap } = component;
-
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    setItems(itemData);
-  }, [itemData]);
+  const {
+    style, classList, display, itemsData, layout, cols, rowHeight, gap, showTitleBar, titleBarPosition, titleBarHeight,
+  } = component;
 
   if (!display) {
     return null;
@@ -23,23 +19,31 @@ export default function ImageListComponent({ component, eventHandlers, elRef }) 
 
   return (
     <div className={ cn('bl-customComponent-image-list', classList) } ref={ elRef } style={ style }>
-      <ImageList cols={ cols } gap={ gap } rowHeight={ rowHeight } variant={ listVariant }>
+      <ImageList cols={ cols } gap={ gap } rowHeight={ rowHeight } variant={ layout }>
 
-        { items.map(item => (
-          <Item key={ item.img } item={ item } component={ component } eventHandlers={ eventHandlers }/>
+        { itemsData?.map((item, index) => (
+          <Item
+            key={ index }
+            item={ item }
+            layout={ layout }
+            rowHeight={ rowHeight }
+            showTitleBar={ showTitleBar }
+            titleBarPosition={ titleBarPosition }
+            titleBarHeight={ titleBarHeight }
+            eventHandlers={ eventHandlers }
+          />
         )) }
       </ImageList>
     </div>
   );
 }
 
-function Item({ item, component, eventHandlers }) {
+function Item({ item, layout, rowHeight, showTitleBar, titleBarPosition, titleBarHeight, eventHandlers }) {
   const { img, title, rows, cols } = item;
-  const { listVariant, rowHeight, showTitleBar, titleBarPosition, titleBarHeight } = component;
   const { onItemClick, onTitleClick, onImageClick } = eventHandlers;
 
   const imageStyle = useCalculatedImageStyle(showTitleBar, rowHeight, titleBarHeight, titleBarPosition);
-  const isQuilted = useMemo(() => listVariant === TYPE_QUILTED, [listVariant]);
+  const isQuilted = useMemo(() => layout === TYPE_QUILTED, [layout]);
 
   return (
     <ImageListItem
