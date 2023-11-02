@@ -54,7 +54,7 @@ The Avatar Generator is a feature-rich component seamlessly integrated into Back
 
 ## Usage examples
 
-Below is an example of using the Avatar Generator to allow the user to create his own personalized avatar and then save its settings for editing in the future.
+Below is an example of using the Avatar Generator to allow the user to create his personalized avatar and then save its settings for editing in the future.
 
 In this example, we will use local storage, and you can choose, for example, to work with your database.
 
@@ -84,7 +84,7 @@ Next, in the logic on Page Enter, we check whether we have previously saved data
 ```
 </details>
 
-Next, so that the user has the opportunity to select and customize his own avatar, we need to create a form with inputs of the select type.
+Next, so that the user has the opportunity to select and customize his avatar, we need to create a form with inputs of the select type.
 
 <p align="center">
   <img src="./example-images/add-select.png" alt="add select" width="720"/>
@@ -98,13 +98,13 @@ To configure each of them, apply the logic below using the necessary parameters.
 
 And, the question remains of saving the parameters and the avatar itself.
 Let's add a save button, clicking on which will save the data to local storage.
-And we’ll save the generated avatar in the file system, for example, we’ll save it in SVG format to the avatars folder inside the assets folder, passing the required file name (instead of the string "user ID", you can pass the ID of your user, for example). To rewrite the same file, instead of creating a new one, set `overwrite` to `true`.
+We’ll save the generated avatar in the file system, for example, we’ll save it in SVG format to the avatars folder inside the assets folder, passing the required file name (instead of the string "user ID", you can pass the ID of your user, for example). To rewrite the same file, instead of creating a new one, set `overwrite` to `true`.
 
 <p align="center">
   <img src="./example-images/save-avatar.png" alt="save avatar" width="780"/>
 </p>
 
-And one more thing, in order for your user to have the opportunity to randomly generate an avatar, use the `Generate Avatar from Avatar Generator` action, and if you leave the field empty, the parameters will be taken randomly. Add this action to any button or to the `On Click` event of the Avatar Generator component itself.
+And one more thing, for your user to have the opportunity to randomly generate an avatar, use the `Generate Avatar from Avatar Generator` action, and if you leave the field empty, the parameters will be taken randomly. Add this action to any button or to the `On Click` event of the Avatar Generator component itself.
 
 <p align="center">
   <img src="./example-images/random.png" alt="random" width="780"/>

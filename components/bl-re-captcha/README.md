@@ -7,6 +7,11 @@ In this component we use [ReCaptcha v2](https://www.google.com/recaptcha/about/)
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/tZ7HL5qPaMGEaEZ9kwEZ).
+
 ## Properties
 
 | Property          | Type                                             | Default Value  | Logic                   | Data Binding | UI Setting | Description                                                      |

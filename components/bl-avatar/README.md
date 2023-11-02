@@ -7,6 +7,10 @@ a graphical representation used to identify users or entities within an applicat
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/ztyAMReNpbs3S3ivzpkP).
+
 ## Properties
 
 | Property                             | Type                                                          | Default value        | Logic           | Data Binding  | UI Setting | Description                                                                                                                                                                                                                 |
