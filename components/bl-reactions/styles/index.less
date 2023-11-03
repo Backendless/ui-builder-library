@@ -1,0 +1,129 @@
+@bl-customComponent-reactions-width: 100%;
+@bl-customComponent-reactions-flexDirrection: column;
+@bl-customComponent-reactions-alignItems: center;
+
+@bl-customComponent-reactions-picker-height: 200px;
+@bl-customComponent-reactions-picker-min-height: 130px;
+@bl-customComponent-reactions-picker-zIndex: 111;
+
+@bl-customComponent-reaction-control-flexDirrection: row;
+@bl-customComponent-reaction-control-alignItems: center;
+
+@bl-customComponent-reaction-control-emoji-btn-margin: 2px;
+@bl-customComponent-reaction-control-emoji-btn-padding: 3px 10px;
+@bl-customComponent-reaction-control-emoji-btn-borderRadius: 17px;
+@bl-customComponent-reaction-control-emoji-btn-border: 1px solid transparent;
+@bl-customComponent-reaction-control-emoji-btn-background: #f4f4f4;
+@bl-customComponent-reaction-control-emoji-btn-hover-border: 1px solid #e0e0e0;
+@bl-customComponent-reaction-control-emoji-btn-hover-background: #fff;
+@bl-customComponent-reaction-control-emoji-btn-transition: all .3s linear;
+@bl-customComponent-reaction-control-emoji-btn-cursor: pointer;
+
+@bl-customComponent-reaction-control-emoji-flexDirrection: row;
+@bl-customComponent-reaction-control-emoji-count-color: #333333;
+@bl-customComponent-reaction-control-emoji-user-count-color: #007acc;
+@bl-customComponent-reaction-control-emoji-user-border: 1px solid #007acc;
+@bl-customComponent-reaction-control-emoji-user-background: #e6f7ff;
+
+@bl-customComponent-reaction-control-btn-alignItems: end;
+@bl-customComponent-reaction-control-btn-fill: #007acc;
+@bl-customComponent-reaction-control-btn-hover-background: #f4f4f4;
+@bl-customComponent-reaction-control-btn-emoji-fill: #fff;
+@bl-customComponent-reaction-control-btn-emoji-hover-fill: #ff0;
+
+.bl-customComponent-reactions {
+  display: flex;
+  flex-direction: @bl-customComponent-reactions-flexDirrection;
+  align-items: @bl-customComponent-reactions-alignItems;
+  width: @bl-customComponent-reactions-width;
+  position: relative;
+
+  .reaction-control {
+    display: flex;
+    flex-direction: @bl-customComponent-reaction-control-flexDirrection;
+    align-items: @bl-customComponent-reaction-control-alignItems;
+
+    &__emoji,
+    &__btn {
+      padding: @bl-customComponent-reaction-control-emoji-btn-padding;
+      border: @bl-customComponent-reaction-control-emoji-btn-border;
+      border-radius: @bl-customComponent-reaction-control-emoji-btn-borderRadius;
+      background: @bl-customComponent-reaction-control-emoji-btn-background;
+      margin: @bl-customComponent-reaction-control-emoji-btn-margin;
+      transition: @bl-customComponent-reaction-control-emoji-btn-transition;
+      cursor: @bl-customComponent-reaction-control-emoji-btn-cursor;
+
+      &:not(.user-reaction):hover {
+        border: @bl-customComponent-reaction-control-emoji-btn-hover-border;
+        background: @bl-customComponent-reaction-control-emoji-btn-hover-background;
+      }
+    }
+  }
+
+  .reaction-control__emoji {
+    display: flex;
+    flex-direction: @bl-customComponent-reaction-control-emoji-flexDirrection;
+    box-sizing: border-box;
+
+    &--em-emoji {
+      align-self: center;
+    }
+
+    &--count {
+      align-self: flex-end;
+      color: @bl-customComponent-reaction-control-emoji-count-color;
+    }
+
+    &.user-reaction {
+      border: @bl-customComponent-reaction-control-emoji-user-border;
+      background: @bl-customComponent-reaction-control-emoji-user-background;
+
+      .reaction-control__emoji--count {
+        color: @bl-customComponent-reaction-control-emoji-user-count-color;
+      }
+    }
+  }
+
+  .reaction-control__btn {
+    display: flex;
+    align-items: @bl-customComponent-reaction-control-btn-alignItems;
+    opacity: .7;
+
+    svg {
+      circle,
+      path {
+        fill: @bl-customComponent-reaction-control-btn-fill;
+      }
+
+      .circle {
+        fill: @bl-customComponent-reaction-control-btn-emoji-fill;
+        stroke: @bl-customComponent-reaction-control-btn-fill;
+      }
+    }
+
+    span {
+      align-self: baseline;
+      color: @bl-customComponent-reaction-control-btn-fill;
+    }
+
+    &:hover {
+      opacity: 1;
+      background: @bl-customComponent-reaction-control-btn-hover-background;
+
+      .circle {
+        fill: @bl-customComponent-reaction-control-btn-emoji-hover-fill;
+      }
+
+    }
+  }
+
+  em-emoji-picker {
+    height: @bl-customComponent-reactions-picker-height;
+    min-height: @bl-customComponent-reactions-picker-min-height;
+  }
+
+  .reactions {
+    position: absolute;
+    z-index: @bl-customComponent-reactions-picker-zIndex;
+  }
+}

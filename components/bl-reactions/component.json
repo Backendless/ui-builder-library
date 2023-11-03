@@ -1,0 +1,190 @@
+{
+  "id": "c_f83a1dc150caea717acbb6d77ef7d789",
+  "name": "Reactions",
+  "description": "The Reactions component is a custom React component for displaying and selecting emoji reactions.",
+  "showInToolbox": true,
+  "faIcon": "heart",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "availableReactions",
+      "label": "Available Reactions",
+      "showInSettings": true,
+      "defaultValue": "[{\r\n  \"id\": \"custom\",\r\n  \"emojis\": [\"grin\", \"sweat_smile\", \"rolling_on_the_floor_laughing\", \"joy\", \"slightly_smiling_face\", \"upside_down_face\", \"wink\", \"blush\", \"heart_eyes\", \"stuck_out_tongue_winking_eye\", \"zany_face\", \"hugging_face\", \"face_with_peeking_eye\", \"thinking_face\", \"exploding_head\", \"ghost\", \"ok_hand\", \"+1\", \"-1\", \"clap\", \"raised_hands\", \"heart_hands\", \"handshake\", \"pray\", \"muscle\", \"eyes\", \"astonished\", \"disappointed_relieved\", \"sob\", \"scream\", \"disappointed\", \"man-facepalming\", \"woman-facepalming\", \"man-shrugging\", \"woman-shrugging\", \"see_no_evil\", \"100\", \"heart\", \"tada\", \"champagne\", \"birthday\", \"palm_tree\", \"bulb\", \"heavy_plus_sign\", \"heavy_minus_sign\"]\r\n}]",
+      "hasLogicHandler": true,
+      "handlerId": "availableReactionsLogic",
+      "dataBinding": true,
+      "settingTooltip": "All available reactions to display in the picker.",
+      "handlerLabel": "Available Reactions Logic",
+      "handlerDescription": "This handler allows you to specify all available reactions to display in the picker."
+    },
+    {
+      "type": "select",
+      "name": "theme",
+      "label": "Theme",
+      "showInSettings": true,
+      "defaultValue": "light",
+      "hasLogicHandler": false,
+      "handlerId": "themeLogic",
+      "options": [
+        {
+          "value": "light",
+          "label": "light"
+        },
+        {
+          "value": "dark",
+          "label": "dark"
+        }
+      ],
+      "settingTooltip": "Picker theme."
+    },
+    {
+      "type": "number",
+      "name": "perLine",
+      "label": "Emojis Per Line",
+      "showInSettings": true,
+      "defaultValue": "5",
+      "hasLogicHandler": false,
+      "handlerId": "perLineLogic",
+      "settingTooltip": "The number of emojis to show per line."
+    },
+    {
+      "type": "number",
+      "name": "emojiSize",
+      "label": "Emoji Size",
+      "showInSettings": true,
+      "defaultValue": "24",
+      "hasLogicHandler": false,
+      "handlerId": "emojiSizeLogic",
+      "settingTooltip": "The size of the emojis (inside the buttons) in px."
+    },
+    {
+      "type": "number",
+      "name": "emojiButtonSize",
+      "label": "Emoji Button Size",
+      "showInSettings": true,
+      "defaultValue": "36",
+      "hasLogicHandler": false,
+      "handlerId": "emojiButtonSizeLogic",
+      "settingTooltip": "The size of the emoji buttons in px."
+    },
+    {
+      "type": "text",
+      "name": "emojiButtonRadius",
+      "label": "Emoji Button Radius",
+      "showInSettings": true,
+      "defaultValue": "100%",
+      "hasLogicHandler": false,
+      "handlerId": "emojiButtonRadiusLogic",
+      "settingTooltip": "The radius of the emoji buttons."
+    },
+    {
+      "type": "json",
+      "name": "emojiButtonColors",
+      "label": "Emoji Button Colors",
+      "showInSettings": true,
+      "defaultValue": "[\"#f00\", \"pink\", \"rgba(155,223,88,.7)\"]",
+      "hasLogicHandler": false,
+      "handlerId": "emojiButtonColorsLogic",
+      "settingTooltip": "An array of color that affects the hover background color."
+    },
+    {
+      "type": "json",
+      "name": "initialReactions",
+      "showInSettings": false,
+      "defaultValue": "[]",
+      "hasLogicHandler": true,
+      "handlerId": "initialReactionsLogic",
+      "dataBinding": true,
+      "handlerLabel": "Initial Reactions Logic",
+      "handlerDescription": "This handler allows you to specify an initial array of selected reactions."
+    },
+    {
+      "type": "json",
+      "name": "initialReactionsByUser",
+      "showInSettings": false,
+      "defaultValue": "[]",
+      "hasLogicHandler": true,
+      "handlerId": "initialReactionsByUserLogic",
+      "dataBinding": true,
+      "handlerDescription": "This handler allows you to specify an initial array of selected reactions by user.",
+      "handlerLabel": "Initial Reactions By User Logic"
+    },
+    {
+      "type": "number",
+      "name": "userReactionsCount",
+      "label": "User Reactions Count",
+      "settingTooltip": "Counter of the maximum number of possible selected emotions for the user (0 for an unlimited number).",
+      "showInSettings": true,
+      "defaultValue": "0",
+      "hasLogicHandler": false,
+      "handlerId": "userReactionsCountLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onEmojiSelect",
+      "label": "On Emoji Select",
+      "contextBlocks": [
+        {
+          "id": "event",
+          "label": "Event"
+        },
+        {
+          "id": "emoji",
+          "label": "Emoji"
+        }
+      ],
+      "handlerDescription": "Triggered when the user selects or deselects an emoji."
+    }
+  ],
+  "actions": [
+    {
+      "id": "open",
+      "label": "Open"
+    },
+    {
+      "id": "close",
+      "label": "Close"
+    },
+    {
+      "id": "getSelectedReactions",
+      "label": "Get Selected Reactions from",
+      "hasReturn": true
+    },
+    {
+      "id": "getSelectedReactionsByUser",
+      "label": "Get Selected Reactions by User from",
+      "hasReturn": true
+    },
+    {
+      "id": "getAllAvailableReactions",
+      "label": "Get All Available Reactions from",
+      "hasReturn": true
+    },
+    {
+      "id": "setSelectedReactions",
+      "label": "Set Selected Reactions to",
+      "inputs": [
+        {
+          "id": "reactions",
+          "label": "Reactions"
+        }
+      ]
+    },
+    {
+      "id": "setSelectedReactionsByUser",
+      "label": "Set Selected Reactions by User to",
+      "inputs": [
+        {
+          "id": "reactions",
+          "label": "Reactions"
+        }
+      ]
+    }
+  ],
+  "pods": {}
+}
