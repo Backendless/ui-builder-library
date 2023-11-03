@@ -7,7 +7,7 @@ const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function RatingReviews({ component, eventHandlers, elRef }) {
   const {
-    ratingReviewsData, color, iconType, iconSize, width, view, localizations, style, classList, display
+    ratingReviewsData, color, iconType, iconSize, width, view, localizations, style, classList, display,
   } = component;
 
   const processedData = useMemo(() => prepareReviewData(ratingReviewsData, color), [ratingReviewsData, color]);
