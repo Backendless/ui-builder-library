@@ -108,8 +108,8 @@
   ],
   "eventHandlers": [
     {
-      "name": "getRatingScore",
-      "label": "Get Rating Score",
+      "name": "onClick",
+      "label": "On Click Event",
       "contextBlocks": [
         {
           "id": "score",
