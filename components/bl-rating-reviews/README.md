@@ -20,9 +20,9 @@ Rating Reviews is a component of Backendless UI-builder designer. This allows si
 
 ## Events
 
-| Name             | Triggers                                  | Context Blocks  |
-|------------------|-------------------------------------------|-----------------|
-| Get Rating Score | When the user clicks on the progress bar. | Score: `Number` |
+| Name           | Triggers                                  | Context Blocks  |
+|----------------|-------------------------------------------|-----------------|
+| On Click Event | When the user clicks on the progress bar. | Score: `Number` |
 
 ## Actions
 

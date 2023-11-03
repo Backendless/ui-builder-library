@@ -57,11 +57,11 @@ export const ProgressBarContainer = ({ reviewData, eventHandlers, totalReviews, 
   );
 };
 
-const ProgressBar = ({ value, maxValue, color, eventHandlers: { getRatingScore } }) => {
+const ProgressBar = ({ value, maxValue, color, eventHandlers: { onClick } }) => {
   const percent = useMemo(() => (`${ Math.round(value * 100 / maxValue) }%`), [value, maxValue]);
   const styles = useMemo(() => ({ width: percent, background: color }), [percent, color]);
 
-  const onClickHandler = () => getRatingScore({ score: value });
+  const onClickHandler = () => onClick({ score: value });
 
   return (
     <div className="progress-bar" onClick={ onClickHandler }>
