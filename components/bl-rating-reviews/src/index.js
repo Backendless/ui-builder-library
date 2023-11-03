@@ -6,7 +6,9 @@ import { ViewsMap } from './views';
 const { cn, normalizeDimensionValue } = BackendlessUI.CSSUtils;
 
 export default function RatingReviews({ component, eventHandlers, elRef }) {
-  const { ratingReviewsData, color, iconType, iconSize, width, view, localizations, style, classList, display } = component;
+  const {
+    ratingReviewsData, color, iconType, iconSize, width, view, localizations, style, classList, display
+  } = component;
 
   const processedData = useMemo(() => prepareReviewData(ratingReviewsData, color), [ratingReviewsData, color]);
   const totalReviews = useMemo(() => calculateTotalReviews(processedData), [processedData]);
