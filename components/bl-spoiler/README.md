@@ -6,6 +6,10 @@ Spoiler is the component that can be used in Backendless [UI-Builder](https://ba
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/bzdgCqasK3qnKXQ6z8YI).
+
 ## Properties
 
 | Property                           | Type                                                                                                | Default value         | Logic | Data Binding | UI Setting | Description                                           |
