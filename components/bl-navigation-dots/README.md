@@ -6,6 +6,10 @@ Navigation Dots is the component that can be used in Backendless [UI-Builder](ht
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/BnuIBIbIXhzQM3nQ5FCa).
+
 ## Properties
 
 | Property                                    | Type                                           | Default value     | Logic                    | Data Binding | UI Setting | Description                                                                                                      |
