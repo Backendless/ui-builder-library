@@ -37,6 +37,7 @@ Rating Reviews is a component of Backendless UI-builder designer. This allows si
 **Other**
 ````
 @bl-customComponent-customer-reviews-color: @appTextColor;
+@bl-customComponent-customer-reviews-iconNumberColor: @themePrimary;
 @bl-customComponent-customer-reviews-font-family: @inputOutlinedFontFamily;
 @bl-customComponent-customer-reviews-progress-bar-background: #eee;
 ````
