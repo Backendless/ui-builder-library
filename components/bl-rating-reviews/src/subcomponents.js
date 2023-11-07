@@ -12,7 +12,7 @@ export const IconRow = ({ iconType, maxValue, value, color, size }) => {
   }), [iconType]);
 
   const icons = useMemo(() => Array.from({ length: maxValue }, (_, i) => {
-    const Icon = value > i ? FilledIcon : EmptyIcon;
+    const Icon = Math.round(value) > i ? FilledIcon : EmptyIcon;
 
     return (<Icon key={ i }/>);
   }), [maxValue]);
