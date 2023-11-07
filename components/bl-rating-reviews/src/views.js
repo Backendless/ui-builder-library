@@ -67,8 +67,8 @@ const SimpleReview = props => {
       <div className="data-container">
         <div className="icons">
           { reviewData.map((el, i) => (
-            <div className="icon-container" key={ i } style={{ "height": iconSize, "width": iconSize }}>
-              <span className="number" style={{ "fontSize": iconSize }}>{ maxValue - i }</span>
+            <div className="icon-container" key={ i } style={{ 'height': iconSize, 'width': iconSize }}>
+              <span className="number" style={{ 'fontSize': iconSize }}>{ maxValue - i }</span>
               <span className="icon">
                 <Icon />
               </span>
