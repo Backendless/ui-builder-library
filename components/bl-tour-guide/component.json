@@ -190,7 +190,7 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "spotlightClicksLogic",
-      "settingTooltip": "Allow mouse and touch events thru the spotlight."
+      "settingTooltip": "Allow mouse and touch events through the spotlight."
     },
     {
       "type": "number",
