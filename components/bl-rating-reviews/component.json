@@ -101,7 +101,7 @@
       "label": "Localizations",
       "settingTooltip": "Fill the localization object.",
       "showInSettings": true,
-      "defaultValue": "{\r\n\t\"averageText\": \"/\",\r\n\t\"reviewstext\" : \"Reviews\"\r\n}",
+      "defaultValue": "{\r\n\t\"averageText\": \"/\",\r\n\t\"reviewsText\" : \"Reviews\"\r\n}",
       "hasLogicHandler": false,
       "handlerId": "localizationsLogic"
     }
