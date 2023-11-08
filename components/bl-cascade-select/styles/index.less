@@ -1,0 +1,134 @@
+@bl-cascadeSelect-component-themePrimary: @themePrimary;
+@bl-cascadeSelect-component-themeBackgroundColor: @appBackgroundColor;
+@bl-cascadeSelect-component-themeTextColor: @appTextColor;
+
+@bl-cascadeSelect-component-collapse-icon-size: 15px;
+
+@bl-cascadeSelect-component-input-icon-size: 20px;
+@bl-cascadeSelect-component-input-min-width: 200px;
+@bl-cascadeSelect-component-input-border-color: if(@isLightTheme, rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+@bl-cascadeSelect-component-input-color: #6c757d;
+
+@bl-cascadeSelect-component-list-z-index: 1;
+@bl-cascadeSelect-component-list: if(
+        @isLightTheme,
+        @bl-cascadeSelect-component-themeBackgroundColor,
+        lighten(@bl-cascadeSelect-component-themeBackgroundColor, 5%)
+);
+
+@bl-cascadeSelect-component-item-backround-color: if(@isLightTheme, rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+@bl-cascadeSelect-component-item-color-open: lighten(@bl-cascadeSelect-component-themePrimary, 10%);
+@bl-cascadeSelect-component-item-backround-color-open: if(
+        @isLightTheme,
+        lighten(@bl-cascadeSelect-component-themePrimary, 40%),
+        darken(@bl-cascadeSelect-component-themePrimary, 55%)
+);
+
+@bl-cascadeSelect-component-item-border-focus: if(
+        @isLightTheme,
+        lighten(@bl-cascadeSelect-component-themePrimary, 30%),
+        darken(@bl-cascadeSelect-component-themePrimary, 40%)
+);
+
+.bl-cascadeSelect-component {
+  position: relative;
+  user-select: none;
+
+  .cascade-select {
+    &__input {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 10px;
+
+      cursor: pointer;
+
+      border: 1px solid @bl-cascadeSelect-component-input-border-color;
+      border-radius: 6px;
+
+      background-color: @bl-cascadeSelect-component-themeBackgroundColor;
+      color: @bl-cascadeSelect-component-input-color;
+
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: @bl-cascadeSelect-component-themePrimary;
+      }
+
+      &--selected {
+        color: @bl-cascadeSelect-component-themeTextColor;
+      }
+    }
+
+    &__list {
+      position: absolute;
+      top: 100%;
+      z-index: @bl-cascadeSelect-component-list-z-index;
+
+      min-width: 100%;
+
+      margin: 0;
+      padding: 10px 0;
+
+      list-style: none;
+
+      background: @bl-cascadeSelect-component-list;
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+      animation: 0.1s linear list-open;
+    }
+
+    @keyframes list-open {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 17px;
+
+      transition: background-color, color 0.2s;
+
+      &:hover {
+        background-color: @bl-cascadeSelect-component-item-backround-color;
+      }
+
+      &.open {
+        background-color: @bl-cascadeSelect-component-item-backround-color-open;
+        color: @bl-cascadeSelect-component-item-color-open;
+      }
+
+      &:focus {
+        border: 2px solid @bl-cascadeSelect-component-item-border-focus;
+      }
+    }
+
+    &__collapse-input-icon {
+      width: @bl-cascadeSelect-component-input-icon-size;
+      height: @bl-cascadeSelect-component-input-icon-size;
+
+      fill: #aaa;
+
+      transform: rotate(-90deg);
+    }
+
+    &__collapse-icon {
+      height: @bl-cascadeSelect-component-collapse-icon-size;
+      width: @bl-cascadeSelect-component-collapse-icon-size;
+
+      fill: #aaa;
+
+      transform: rotate(-180deg);
+    }
+  }
+}
