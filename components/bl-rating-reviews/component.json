@@ -19,7 +19,7 @@
       "handlerLabel": "Rating Reviews Data Logic",
       "dataBinding": true,
       "handlerDescription": "This is a handler for rating reviews data of the component.",
-      "defaultValue": ""
+      "defaultValue": "[\n  {\"value\": 100, \"color\": \"green\"},\n  {\"value\": 15, \"color\": \"yellowgreen\"},\n  {\"value\": 1, \"color\": \"yellow\"},\n  {\"value\": 2, \"color\": \"orange\"},\n  {\"value\": 4, \"color\": \"red\"}\n]"
     },
     {
       "type": "color",
