@@ -23,10 +23,11 @@ display a digital timer and trigger an event when it completes. You can use it a
 
 ## Actions
 
-| Action | Inputs | Returns |
-|--------|--------|---------|
-| Start  |        |         |
-| Stop   |        |         |
+| Action             | Inputs | Returns |
+|--------------------|--------|---------|
+| Start Simple Timer |        |         |
+| Stop Simple Timer  |        |         |
+| Reset Simple Timer |        |         |
 
 ## Styles
 

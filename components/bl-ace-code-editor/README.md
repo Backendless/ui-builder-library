@@ -6,6 +6,10 @@ Ace Code Editor is a component of Backendless UI-Builder designer. The Ace Code 
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/pdwUdA7tZpEs7mlLLbxT).
+
 ## Properties
 
 | Property                                            | Type                                                                                                                                                                                                               | Default Value   | Logic                         | Data Binding | UI Setting | Description                                                                    |
