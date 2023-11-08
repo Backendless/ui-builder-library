@@ -10,15 +10,15 @@
   "properties": [
     {
       "type": "json",
-      "name": "ratingData",
+      "name": "ratingReviewsData",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "ratingDataLogic",
-      "label": "Rating Data",
+      "handlerId": "ratingReviewsDataLogic",
+      "label": "Rating Reviews Data",
       "settingTooltip": "Add an array of rating data.",
-      "handlerLabel": "Rating Data Logic",
+      "handlerLabel": "Rating Reviews Data Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for rating data of the component.",
+      "handlerDescription": "This is a handler for rating reviews data of the component.",
       "defaultValue": ""
     },
     {
@@ -101,15 +101,15 @@
       "label": "Localizations",
       "settingTooltip": "Fill the localization object.",
       "showInSettings": true,
-      "defaultValue": "{\r\n\t\"averageText\": \"/\",\r\n\t\"reviewstext\" : \"Reviews\"\r\n}",
+      "defaultValue": "{\r\n\t\"averageText\": \"/\",\r\n\t\"reviewsText\" : \"Reviews\"\r\n}",
       "hasLogicHandler": false,
       "handlerId": "localizationsLogic"
     }
   ],
   "eventHandlers": [
     {
-      "name": "getRatingScore",
-      "label": "Get Rating Score",
+      "name": "onClick",
+      "label": "On Click Event",
       "contextBlocks": [
         {
           "id": "score",

@@ -12,7 +12,7 @@ export const IconRow = ({ iconType, maxValue, value, color, size }) => {
   }), [iconType]);
 
   const icons = useMemo(() => Array.from({ length: maxValue }, (_, i) => {
-    const Icon = value > i + 1 ? FilledIcon : EmptyIcon;
+    const Icon = Math.round(value) > i ? FilledIcon : EmptyIcon;
 
     return (<Icon key={ i }/>);
   }), [maxValue]);
@@ -57,11 +57,11 @@ export const ProgressBarContainer = ({ reviewData, eventHandlers, totalReviews, 
   );
 };
 
-const ProgressBar = ({ value, maxValue, color, eventHandlers: { getRatingScore } }) => {
+const ProgressBar = ({ value, maxValue, color, eventHandlers: { onClick } }) => {
   const percent = useMemo(() => (`${ Math.round(value * 100 / maxValue) }%`), [value, maxValue]);
   const styles = useMemo(() => ({ width: percent, background: color }), [percent, color]);
 
-  const onClickHandler = () => getRatingScore({ score: value });
+  const onClickHandler = () => onClick({ score: value });
 
   return (
     <div className="progress-bar" onClick={ onClickHandler }>

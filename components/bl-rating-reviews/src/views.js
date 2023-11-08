@@ -5,11 +5,11 @@ import { IconRow, Percents, ProgressBarContainer, Scores } from './subcomponents
 
 const StandardReview = props => {
   const {
-    width, average, maxValue, color, iconType, iconSize, totalReviews, reviewData, localizations,
+    average, maxValue, color, iconType, iconSize, totalReviews, reviewData, localizations,
     eventHandlers,
   } = props;
 
-  const styles = useMemo(() => ({ width, color }), [width, color]);
+  const styles = useMemo(() => ({ color }), [color]);
 
   return (
     <div className="oneColorReview" style={ styles }>
@@ -58,20 +58,19 @@ const StandardReview = props => {
 };
 
 const SimpleReview = props => {
-  const { width, maxValue, color, iconType, iconSize, totalReviews, reviewData, eventHandlers } = props;
+  const { maxValue, color, iconType, iconSize, totalReviews, reviewData, eventHandlers } = props;
 
   const Icon = useMemo(() => (IconsMap[iconType].filled), [iconType]);
-  const styles = useMemo(() => ({ width }), [width]);
 
   return (
-    <div className="twoColorReview" style={ styles }>
+    <div className="twoColorReview">
       <div className="data-container">
         <div className="icons">
           { reviewData.map((el, i) => (
-            <div className="icon-container" key={ i }>
-              <span className="number">{ maxValue - i }</span>
-              <span className="icon" style={{ 'height': iconSize, 'width': iconSize }}>
-                <Icon/>
+            <div className="icon-container" key={ i } style={{ 'height': iconSize, 'width': iconSize }}>
+              <span className="number" style={{ 'fontSize': iconSize }}>{ maxValue - i }</span>
+              <span className="icon">
+                <Icon />
               </span>
             </div>
           )) }
@@ -94,13 +93,11 @@ const SimpleReview = props => {
 
 const DetailedReview = props => {
   const {
-    width, average, maxValue, color, iconType, iconSize, totalReviews, reviewData, localizations,
-    eventHandlers,
+    average, maxValue, color, iconType, iconSize, totalReviews, reviewData, localizations, eventHandlers,
   } = props;
-  const styles = useMemo(() => ({ width }), [width]);
 
   return (
-    <div className="multiColorReview" style={ styles }>
+    <div className="multiColorReview">
       <div className="top-container">
         <div className="average-value">{ average }</div>
         <IconRow

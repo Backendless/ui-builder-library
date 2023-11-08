@@ -1,7 +1,7 @@
 # Timer
 
 This is a component for Backendless [UI-Builder](https://backendless.com/developers/#ui-builder). It allows you to
-display a timer and trigger an event when it completes.
+display a digital timer and trigger an event when it completes. You can use it as a countdown.
 
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>

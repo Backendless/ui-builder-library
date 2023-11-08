@@ -5,6 +5,10 @@ Modal is a component of Backendless UI-Builder designer. This component is a Pod
   <img src="./thumbnail.png" alt="main thumbnail" width="780" />
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/4lJ1yA3d92pHF3Fkg9aM).
+
 ## Properties
 
 | Property                               | Type     | Default Value | Logic                  | Data Binding | UI Setting | Description                                                                                         |
