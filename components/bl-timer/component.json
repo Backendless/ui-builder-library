@@ -57,11 +57,15 @@
   "actions": [
     {
       "id": "start",
-      "label": "Start"
+      "label": "Start Simple"
     },
     {
       "id": "stop",
-      "label": "Stop"
+      "label": "Stop Simple"
+    },
+    {
+      "id": "reset",
+      "label": "Reset Simple"
     }
   ]
 }

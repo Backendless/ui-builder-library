@@ -19,9 +19,11 @@ export default function Timer({ component, eventHandlers }) {
   const { display, classList, style, countdown, animationDuration, simpleTimer } = component;
   const { onTimerEnd } = eventHandlers;
 
-  const [time, setTime] = useState(() => (
-    countdown ? getCountdown(new Date(countdown)) : timeFormatter(getTimeInSeconds(simpleTimer)))
-  );
+  const startTime = useMemo(() => (
+    countdown ? getCountdown(new Date(countdown)) : timeFormatter(getTimeInSeconds(simpleTimer))
+  ), [countdown, simpleTimer]);
+
+  const [time, setTime] = useState(startTime);
 
   const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
     const daysVisibility = time.dayTens + time.dayUnits > 0;
@@ -41,6 +43,11 @@ export default function Timer({ component, eventHandlers }) {
     return () => clearInterval(timer.current);
   }, [countdown]);
 
+  const stopTimer = () => {
+    clearInterval(timer.current);
+    timer.current = null;
+  };
+
   component.start = () => {
     if (!countdown && !timer.current) {
       const startTime = Date.now();
@@ -49,9 +56,12 @@ export default function Timer({ component, eventHandlers }) {
     }
   };
 
-  component.stop = () => {
-    clearInterval(timer.current);
-    timer.current = null;
+  component.stop = () => stopTimer();
+  component.reset = () => {
+    if (!countdown) {
+      stopTimer();
+      setTime(startTime);
+    }
   };
 
   useEffect(() => {
