@@ -6,12 +6,16 @@ Ace Code Editor is a component of Backendless UI-Builder designer. The Ace Code 
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/pdwUdA7tZpEs7mlLLbxT).
+
 ## Properties
 
 | Property                                            | Type                                                                                                                                                                                                               | Default Value   | Logic                         | Data Binding | UI Setting | Description                                                                    |
 |-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------|--------------|------------|--------------------------------------------------------------------------------|
 | Read Only<br/>`readOnly`                            | Checkbox                                                                                                                                                                                                           | `false`         | Read Only Logic               | YES          | YES        | This handler allows you to disable editing of the component value.             |
-| Value<br/>`value`                                   | Text                                                                                                                                                                                                               | ""              | Value Logic                   | YES          | YES        | This handler allows you to add value to the component.                         |
+| Value<br/>`value`                                   | Text                                                                                                                                                                                                               | ""              | Value Logic                   | YES          | NO         | This handler allows you to add value to the component. Watch [Usage Guide](#usage-guide). |
 | Mode<br/>`mode`                                     | Select [Java:`java`<br/>JavaScript:`javascript`<br/>TypeScript:`typescript`<br/>Python:`python`<br/>JSON:`json`<br/>PHP:`php`</br>C and C++:`c_cpp`<br/>C#:`csharp`<br/>Ruby:`ruby`<br/>HTML:`html`<br/>CSS:`css`] | Java:`java`     | Mode Logic                    | YES          | YES        | This handler allows you to select the mode of a component.                     |
 | Theme<br/>`theme`                                   | Select [GitHub:`github`<br/>Chrome:`chrome`<br/>Monokai:`monokai`<br/>Nord Dark:`nord_dark`<br/>Twilight:`twilight`<br/>idle Fingers:`idle_fingers`]                                                               | GitHub:`github` | Theme Logic                   | YES          | YES        | This handler allows you to select the theme of a component.                    |
 | Fold Style<br/>`foldStyle`                          | Select [Manual:`manual`<br/>Mark begin:`markbegin`<br/>Mark begin and end:`markbeginend`]                                                                                                                          | Manual:`manual` | Fold Style Logic              | NO           | YES        | This handler allows you to select the fold style.                              |
@@ -39,3 +43,23 @@ Ace Code Editor is a component of Backendless UI-Builder designer. The Ace Code 
 |-----------------|-----------------------------------------|-------------------------|
 | Set Value       | Value: `String`                         |                         |
 | Get Value       |                                         | `String`: current value |
+
+## <a id="usage-guide"></a> Usage Guide
+
+> **To paste code using `Value` property:**
+
+1. Select the `Custom Code` block:
+
+![usage-guide](./example-images/select-custom-code-block.png)
+
+2. Open the editor:
+
+![usage-guide](./example-images/open-editor.png)
+
+3. Paste the code and select `Return result` checkbox:
+
+![usage-guide](./example-images/paste-code.png)
+
+4. Paste the `Custom Code` block into the `Value` block return:
+
+![usage-guide](./example-images/return-custom-code-block.png)

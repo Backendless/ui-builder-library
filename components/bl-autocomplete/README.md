@@ -6,6 +6,10 @@ Autocomplete is a component of Backendless UI-Builder designer. This allows you 
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/AM5Yn2bYDd7Nt7hnRLYc).
+
 ## Properties
 
 | Property                                    | Type                                                                     | Default Value                                                                                                                                                                                                                                                                                                                                                   | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                                                                                                                                                                              |

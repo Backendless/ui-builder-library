@@ -1,0 +1,97 @@
+@bl-customComponent-image-list-width: 100%;
+@bl-customComponent-image-list-height: auto;
+@bl-customComponent-image-list-overflow: unset;
+@bl-customComponent-image-list-background: transparent;
+@bl-customComponent-image-list-image-cursor: auto;
+
+@bl-customComponent-image-list-bar-fontFamily: Roboto, Helvetica, Arial, sans-serif;
+@bl-customComponent-image-list-bar-cursor: auto;
+@bl-customComponent-image-list-bar-background: rgba(0, 0, 0, 0.5);
+@bl-customComponent-image-list-bar-below-background: transparent;
+@bl-customComponent-image-list-bar-titleWrap-padding: 12px 16px;
+@bl-customComponent-image-list-bar-titleWrap-overflow: hidden;
+@bl-customComponent-image-list-bar-titleWrap-color: rgb(255, 255, 255);
+@bl-customComponent-image-list-bar-below-titleWrap-padding: 6px 0px 12px;
+@bl-customComponent-image-list-bar-below-titleWrap-overflow: hidden;
+@bl-customComponent-image-list-bar-below-titleWrap-color: rgb(0, 0, 0);
+@bl-customComponent-image-list-bar-title-fontSize: 1rem;
+@bl-customComponent-image-list-bar-title-lineHeight: 24px;
+@bl-customComponent-image-list-bar-title-textOverflow: ellipsis;
+@bl-customComponent-image-list-bar-title-overflow: hidden;
+@bl-customComponent-image-list-bar-title-whiteSpace: nowrap;
+
+.bl-customComponent-image-list {
+  width: @bl-customComponent-image-list-width;
+  height: @bl-customComponent-image-list-height;
+  background: @bl-customComponent-image-list-background;
+  overflow: @bl-customComponent-image-list-overflow;
+
+  .MuiImageList-root {
+    width: 100%;
+    background: @bl-customComponent-image-list-background;
+    overflow: unset;
+
+    .MuiImageListItem {
+      &-img {
+        height: var(--image-height);
+        cursor: @bl-customComponent-image-list-image-cursor;
+      }
+
+      &-woven:nth-of-type(2n) .MuiImageListItem-img {
+        height: var(--image-height-even);
+      }
+
+      &-quilted .MuiImageListItem-img {
+        height: var(--image-height-common);
+      }
+
+      &-masonry {
+        height: 100% !important;
+
+        .MuiImageListItem-img {
+          height: var(--image-height-common);
+        }
+      }
+    }
+  }
+
+  .MuiImageListItemBar {
+    &-root {
+      font-family: @bl-customComponent-image-list-bar-fontFamily;
+      cursor: @bl-customComponent-image-list-bar-cursor;
+    }
+
+    &-positionTop,
+    &-positionBottom {
+      background: @bl-customComponent-image-list-bar-background;
+    }
+
+    &-positionBelow {
+      background: @bl-customComponent-image-list-bar-below-background;
+    }
+
+    &-titleWrap {
+      padding: @bl-customComponent-image-list-bar-titleWrap-padding;
+      overflow: @bl-customComponent-image-list-bar-titleWrap-overflow;
+    }
+
+    &-titleWrapBelow {
+      padding: @bl-customComponent-image-list-bar-below-titleWrap-padding;
+      overflow: @bl-customComponent-image-list-bar-below-titleWrap-overflow;
+      color: @bl-customComponent-image-list-bar-below-titleWrap-color;
+    }
+
+    &-titleWrapTop,
+    &-titleWrapBottom {
+      color: @bl-customComponent-image-list-bar-titleWrap-color;
+    }
+
+    &-title {
+      font-size: @bl-customComponent-image-list-bar-title-fontSize;
+      line-height: @bl-customComponent-image-list-bar-title-lineHeight;
+      text-overflow: @bl-customComponent-image-list-bar-title-textOverflow;
+      overflow: @bl-customComponent-image-list-bar-title-overflow;
+      white-space: @bl-customComponent-image-list-bar-title-whiteSpace;
+    }
+  }
+}

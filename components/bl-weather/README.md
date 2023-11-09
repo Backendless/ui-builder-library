@@ -6,6 +6,10 @@ Weather is the component that can be used in Backendless [UI-Builder](https://ba
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/gR3sTcGCVbE8v6s1drYX).
+
 ## Properties
 
 | Property                                | Type                                                                                                                                                                                                                                                                                                                                 | Default value                         | Logic                | Data Binding | UI Setting | Description                                                                                                                                                            |

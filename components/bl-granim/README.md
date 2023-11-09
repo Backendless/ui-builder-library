@@ -7,6 +7,10 @@ More information about Granim you can find in the [Granim](https://github.com/sa
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/EmTrWbbmHUkH0u5pZgNt).
+
 ## Properties
 
 | Property                                                 | Type                                                                                                                                                                                                                      | Default value                                                                                                                                                                                                                                 | Logic                  | Data Binding | UI Setting | Description                                                                                                                                                                                                                                  |

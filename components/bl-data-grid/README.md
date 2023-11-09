@@ -7,6 +7,10 @@ If you want to know more about this component, you can [follow the link.](https:
   <img src="./thumbnail.png" alt="thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/CXVuAnEGfiqqQAmlzisU).
+
 ## Properties
 
 | Property                                               | Type                                                                                                                             | Default Value                                                                                                                                                             | Logic                           | Data Binding | UI Setting | Description                                                                                                                                                                                   |

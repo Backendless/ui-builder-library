@@ -1,0 +1,153 @@
+@bl-customComponent-navigation-dots-width: 200px;
+@bl-customComponent-navigation-dots-height: 100%;
+@bl-customComponent-navigation-dots-textShadow: 0 1px 1px rgba(0, 0, 0, .5);
+@bl-customComponent-navigation-dots-zIndex: 111;
+
+@bl-customComponent-navigation-dots-nav-width: 100%;
+@bl-customComponent-navigation-dots-nav-padding: 0 0 0 18px;
+
+@bl-customComponent-navigation-dots-nav-item-padding: 8px 0;
+@bl-customComponent-navigation-dots-nav-item-transform: rotate(0deg);
+@bl-customComponent-navigation-dots-nav-item-dot-transform: rotate(0deg);
+@bl-customComponent-navigation-dots-nav-item-onHover-filter: contrast(200%) saturate(200%) opacity(100%);
+
+@bl-customComponent-navigation-dots-circle-square-size: 18px;
+@bl-customComponent-navigation-dots-circle-square-dot-size: 12px;
+@bl-customComponent-navigation-dots-circle-square-dot-left: 3px;
+@bl-customComponent-navigation-dots-circle-square-boxShadow: 0 0 3px rgba(255, 255, 255, .5);
+@bl-customComponent-navigation-dots-circle-borderRadius: 50%;
+@bl-customComponent-navigation-dots-square-borderRadius: 0;
+
+@bl-customComponent-navigation-dots-triangle-borderWidth-left: 13.5px;
+@bl-customComponent-navigation-dots-triangle-borderWidth-right: 13.5px;
+@bl-customComponent-navigation-dots-triangle-borderWidth-bottom: 18px;
+@bl-customComponent-navigation-dots-triangle-dot-borderWidth-left: 9px;
+@bl-customComponent-navigation-dots-triangle-dot-borderWidth-right: 9px;
+@bl-customComponent-navigation-dots-triangle-dot-borderWidth-bottom: 12px;
+@bl-customComponent-navigation-dots-triangle-dot-left: 4px;
+@bl-customComponent-navigation-dots-triangle-dot-top: 11.5px;
+
+@bl-customComponent-navigation-dots-tooltip-fontSize: 12px;
+@bl-customComponent-navigation-dots-tooltip-textTransform: uppercase;
+@bl-customComponent-navigation-dots-tooltip-fontWeight: 700;
+@bl-customComponent-navigation-dots-tooltip-left: 24px;
+@bl-customComponent-navigation-dots-tooltip-textAlign: center;
+@bl-customComponent-navigation-dots-tooltip-borderRadius: 100px;
+@bl-customComponent-navigation-dots-tooltip-padding: 3px 8px;
+
+.bl-customComponent-navigation-dots {
+  display: flex;
+  align-items: center;
+  width: @bl-customComponent-navigation-dots-width;
+  height: @bl-customComponent-navigation-dots-height;
+  text-shadow: @bl-customComponent-navigation-dots-textShadow;
+  position: fixed;
+  z-index: @bl-customComponent-navigation-dots-zIndex;
+  pointer-events: none;
+
+  .nav {
+    width: @bl-customComponent-navigation-dots-nav-width;
+    padding: @bl-customComponent-navigation-dots-nav-padding;
+    list-style: none;
+  }
+
+  .nav-item {
+    display: flex;
+    position: relative;
+    align-items: center;
+    outline: none;
+    text-decoration: none;
+    padding: @bl-customComponent-navigation-dots-nav-item-padding;
+
+    &:before {
+      content: "";
+      display: block;
+      pointer-events: auto;
+      transform: @bl-customComponent-navigation-dots-nav-item-transform;
+    }
+
+    &:after {
+      content: "";
+      display: none;
+      position: absolute;
+      transform: @bl-customComponent-navigation-dots-nav-item-dot-transform;
+    }
+
+    &:hover:before {
+      filter: @bl-customComponent-navigation-dots-nav-item-onHover-filter;
+    }
+
+    &.active:after,
+    &:hover:after {
+      display: block;
+    }
+
+    &:hover .nav-item-tooltip {
+      display: block;
+    }
+  }
+
+  .circle:before,
+  .square:before {
+    background: var(--nav-item-background);
+    width: @bl-customComponent-navigation-dots-circle-square-size;
+    height: @bl-customComponent-navigation-dots-circle-square-size;
+    box-shadow: @bl-customComponent-navigation-dots-circle-square-boxShadow;
+  }
+
+  .circle:after,
+  .square:after {
+    background: var(--nav-item-color);
+    width: @bl-customComponent-navigation-dots-circle-square-dot-size;
+    height: @bl-customComponent-navigation-dots-circle-square-dot-size;
+    left: @bl-customComponent-navigation-dots-circle-square-dot-left;
+  }
+
+  .circle:before,
+  .circle:after {
+    border-radius: @bl-customComponent-navigation-dots-circle-borderRadius;
+  }
+
+  .square:before,
+  .square:after {
+    border-radius: @bl-customComponent-navigation-dots-square-borderRadius;
+  }
+
+  .triangle {
+
+    &:before {
+      width: 0;
+      height: 0;
+      border-left: @bl-customComponent-navigation-dots-triangle-borderWidth-left solid transparent;
+      border-right: @bl-customComponent-navigation-dots-triangle-borderWidth-right solid transparent;
+      border-bottom: @bl-customComponent-navigation-dots-triangle-borderWidth-bottom solid var(--nav-item-background);
+      position: relative;
+
+    }
+
+    &:after {
+      width: 0;
+      height: 0;
+      background: transparent;
+      border-left: @bl-customComponent-navigation-dots-triangle-dot-borderWidth-left solid transparent;
+      border-right: @bl-customComponent-navigation-dots-triangle-dot-borderWidth-right solid transparent;
+      border-bottom: @bl-customComponent-navigation-dots-triangle-dot-borderWidth-bottom solid var(--nav-item-color);
+      left: @bl-customComponent-navigation-dots-triangle-dot-left;
+      top: @bl-customComponent-navigation-dots-triangle-dot-top;
+    }
+  }
+
+  .nav-item-tooltip {
+    position: absolute;
+    font-size: @bl-customComponent-navigation-dots-tooltip-fontSize;
+    text-transform: @bl-customComponent-navigation-dots-tooltip-textTransform;
+    font-weight: @bl-customComponent-navigation-dots-tooltip-fontWeight;
+    left: @bl-customComponent-navigation-dots-tooltip-left;
+    text-align: @bl-customComponent-navigation-dots-tooltip-textAlign;
+    color: var(--tooltip-color);
+    border-radius: @bl-customComponent-navigation-dots-tooltip-borderRadius;
+    background: var(--tooltip-background);
+    padding: @bl-customComponent-navigation-dots-tooltip-padding;
+    display: none;
+  }
+}

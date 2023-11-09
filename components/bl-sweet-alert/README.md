@@ -6,6 +6,10 @@ More information about this popup can be found in the [Sweet Alert 2](https://sw
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/1tIEhuFIYOE0ppwD9oZU).
+
 ## Properties
 
 | Property                                      | Type                                                                                                                          | Default value                                                                                                                                                                                                     | Logic                     | Data Binding | UI Setting | Description                                                                                                                                                                                               |

@@ -10,12 +10,25 @@
   "properties": [
     {
       "type": "text",
-      "name": "timerDate",
-      "label": "Timer Date",
+      "name": "simpleTimer",
+      "label": "Simple Timer",
+      "showInSettings": true,
+      "defaultValue": "00:05:00",
+      "hasLogicHandler": true,
+      "handlerId": "timerLogic",
+      "handlerLabel": "Simple Timer Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine a regular timer. Format of timer: 'HH:MM:SS'.",
+      "settingTooltip": "Allows to determine a regular timer. Format of timer: 'HH:MM:SS'."
+    },
+    {
+      "type": "text",
+      "name": "countdown",
+      "label": "Countdown",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerId": "timerDateLogic",
-      "handlerLabel": "Timer Date Logic",
+      "handlerId": "countdownLogic",
+      "handlerLabel": "Countdown Logic",
       "handlerDescription": "This is a handler for the logic to determine the date and time when the timer will be stopped.",
       "dataBinding": true,
       "settingTooltip": "Allows you to specify the date, time, and time zone when the timer will expire. Signature `MM.DD.YY HH:MM:SS UTC`"
@@ -41,5 +54,18 @@
       "handlerDescription": "This event triggers when the timer ends"
     }
   ],
-  "actions": []
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start Simple"
+    },
+    {
+      "id": "stop",
+      "label": "Stop Simple"
+    },
+    {
+      "id": "reset",
+      "label": "Reset Simple"
+    }
+  ]
 }

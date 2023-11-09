@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const SECOND = 1000;
-const MINUTE = 60 * SECOND;
+const MINUTE = 60;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
@@ -32,13 +32,23 @@ export const useAnimation = (time, elementRef, animationDuration) => {
   }, [time]);
 };
 
-export const getTimer = timerDate => {
-  const gap = timerDate - Date.now();
+export const getCountdown = countdown => {
+  const gap = Math.floor((countdown - Date.now()) / SECOND);
 
-  let days = String(Math.floor(gap / DAY));
-  let hours = String(Math.floor(gap / HOUR) % 24);
-  let minutes = String(Math.floor(gap / MINUTE) % 60);
-  let seconds = String(Math.floor(gap / SECOND) % 60);
+  return timeFormatter(gap);
+};
+
+export const getTimer = (startTime, time) => {
+  const gap = Math.floor(Date.now() / 1000) - Math.floor(startTime / 1000);
+
+  return timeFormatter(time.all - gap);
+};
+
+export const timeFormatter = time => {
+  let days = String(Math.floor(time / DAY));
+  let hours = String(Math.floor(time / HOUR) % 24);
+  let minutes = String(Math.floor(time / MINUTE) % 60);
+  let seconds = String(time % 60);
 
   days = days.length === 1 ? '0' + days : days;
   hours = hours.length === 1 ? '0' + hours : hours;
@@ -54,6 +64,6 @@ export const getTimer = timerDate => {
     minuteUnits: minutes[1],
     secondTens : seconds[0],
     secondUnits: seconds[1],
-    all        : Number(days + hours + minutes + seconds),
+    all        : time,
   };
 };

@@ -8,6 +8,10 @@ This component is based on an external library [imask.js](https://github.com/uNm
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/7byUJtHd6lC3AvFJRweX).
+
 ## Properties
 
 | Property                                   | Type                                                                                                      | Default Value        | Logic                      | Data Binding | UI Setting | Description                                                                                                                                                                                                                                               |

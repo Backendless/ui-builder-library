@@ -1,0 +1,141 @@
+{
+  "id": "c_e8220b8314fbc32c79fb7648718afbb2",
+  "name": "Rating Reviews",
+  "description": "This component allows to addition of a rating review.",
+  "showInToolbox": true,
+  "faIcon": "poll-h",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "json",
+      "name": "ratingReviewsData",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "ratingReviewsDataLogic",
+      "label": "Rating Reviews Data",
+      "settingTooltip": "Add an array of rating data.",
+      "handlerLabel": "Rating Reviews Data Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for rating reviews data of the component.",
+      "defaultValue": "[\n  {\"value\": 100, \"color\": \"green\"},\n  {\"value\": 15, \"color\": \"yellowgreen\"},\n  {\"value\": 1, \"color\": \"yellow\"},\n  {\"value\": 2, \"color\": \"orange\"},\n  {\"value\": 4, \"color\": \"red\"}\n]"
+    },
+    {
+      "type": "color",
+      "name": "color",
+      "showInSettings": true,
+      "defaultValue": "#337ab7",
+      "hasLogicHandler": false,
+      "handlerId": "colorLogic",
+      "label": "Color",
+      "settingTooltip": "Add the main color."
+    },
+    {
+      "type": "select",
+      "name": "iconType",
+      "label": "Icon Type",
+      "settingTooltip": "Choose the type of icons.",
+      "showInSettings": true,
+      "defaultValue": "star",
+      "hasLogicHandler": false,
+      "handlerId": "iconTypeLogic",
+      "options": [
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "heart",
+          "label": "Heart"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "iconSize",
+      "label": "Icon Size ",
+      "settingTooltip": "Set icons size(px).",
+      "showInSettings": true,
+      "defaultValue": "20",
+      "hasLogicHandler": false,
+      "handlerId": "iconSizeLogic"
+    },
+    {
+      "type": "text",
+      "name": "width",
+      "showInSettings": true,
+      "defaultValue": "500px",
+      "hasLogicHandler": false,
+      "handlerId": "widthLogic",
+      "label": "Width",
+      "settingTooltip": "Set component width."
+    },
+    {
+      "type": "select",
+      "name": "view",
+      "label": "View",
+      "showInSettings": true,
+      "defaultValue": "standard",
+      "hasLogicHandler": false,
+      "handlerId": "viewLogic",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "simple",
+          "label": "Simple"
+        },
+        {
+          "value": "detailed",
+          "label": "Detailed"
+        }
+      ],
+      "settingTooltip": "Choose the component view."
+    },
+    {
+      "type": "json",
+      "name": "localizations",
+      "label": "Localizations",
+      "settingTooltip": "Fill the localization object.",
+      "showInSettings": true,
+      "defaultValue": "{\r\n\t\"averageText\": \"/\",\r\n\t\"reviewsText\" : \"Reviews\"\r\n}",
+      "hasLogicHandler": false,
+      "handlerId": "localizationsLogic"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onClick",
+      "label": "On Click Event",
+      "contextBlocks": [
+        {
+          "id": "score",
+          "label": "Score"
+        }
+      ],
+      "output": false,
+      "handlerDescription": "This event is triggered when the user clicks on the progress bar."
+    }
+  ],
+  "actions": [
+    {
+      "id": "getAverage",
+      "label": "Get Average in",
+      "hasReturn": true
+    },
+    {
+      "id": "getPercents",
+      "label": "Get Percents Array in ",
+      "hasReturn": true
+    },
+    {
+      "id": "getTotal",
+      "label": "Get Total of Reviews in",
+      "hasReturn": true
+    }
+  ],
+  "pods": {}
+}

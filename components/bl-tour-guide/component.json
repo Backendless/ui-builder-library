@@ -17,7 +17,8 @@
       "hasLogicHandler": true,
       "handlerId": "optionsLogic",
       "handlerLabel": "Options Logic",
-      "handlerDescription": "This is a handler for the logic to determine steps of the tour."
+      "handlerDescription": "This is a handler for the logic to determine steps of the tour.",
+      "settingTooltip": "Specify the steps of the tour."
     },
     {
       "type": "checkbox",
@@ -26,7 +27,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "continuousLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Play the tour sequentially with the Next button."
     },
     {
       "type": "checkbox",
@@ -34,7 +36,8 @@
       "label": "Auto Start",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "autoStartLogic"
+      "handlerId": "autoStartLogic",
+      "settingTooltip": "Start playing the tour automatically."
     },
     {
       "type": "checkbox",
@@ -43,7 +46,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "controlVisibilityLogic"
+      "handlerId": "controlVisibilityLogic",
+      "settingTooltip": "Show the Start Tour button."
     },
     {
       "type": "text",
@@ -54,7 +58,8 @@
       "handlerId": "controlLabelLogic",
       "defaultValue": "Start",
       "handlerLabel": "Control Label Logic",
-      "handlerDescription": "This is a handler for the logic to determine the label of the Start Tour button."
+      "handlerDescription": "This is a handler for the logic to determine the label of the Start Tour button.",
+      "settingTooltip": "The label of the Start Tour button."
     },
     {
       "type": "checkbox",
@@ -63,7 +68,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "overlayVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Show an overlay with holes above your steps."
     },
     {
       "type": "checkbox",
@@ -72,7 +78,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "closeOnClickOverlayLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Close the tooltip when the overlay is clicked."
     },
     {
       "type": "checkbox",
@@ -81,7 +88,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "closeOnEscapeLogic"
+      "handlerId": "closeOnEscapeLogic",
+      "settingTooltip": "Close the tooltip by pressing the Escape button."
     },
     {
       "type": "checkbox",
@@ -90,7 +98,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "scrollingLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Auto scrolling between steps."
     },
     {
       "type": "json",
@@ -101,7 +110,8 @@
       "handlerId": "labelsLogic",
       "defaultValue": "{ \"back\": \"Back\", \"close\": \"Close\", \"last\": \"Finish\", \"next\": \"Next\", \"open\": \"Open the dialog\", \"skip\": \"Skip\" }",
       "handlerLabel": "Labels Logic",
-      "handlerDescription": "This is a handler for the logic to determine the strings used in the tooltip."
+      "handlerDescription": "This is a handler for the logic to determine the strings used in the tooltip.",
+      "settingTooltip": "The strings used in the tooltip."
     },
     {
       "type": "checkbox",
@@ -110,7 +120,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "backButtonVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Show the Back button."
     },
     {
       "type": "checkbox",
@@ -119,7 +130,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "closeButtonVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Show the Close button."
     },
     {
       "type": "checkbox",
@@ -128,7 +140,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "skipButtonVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Show the Skip button."
     },
     {
       "type": "checkbox",
@@ -137,7 +150,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "progressVisibilityLogic"
+      "handlerId": "progressVisibilityLogic",
+      "settingTooltip": "Show the tour progress on the Next button in continuous tours."
     },
     {
       "type": "number",
@@ -146,7 +160,8 @@
       "showInSettings": true,
       "defaultValue": "20",
       "hasLogicHandler": false,
-      "handlerId": "scrollOffsetLogic"
+      "handlerId": "scrollOffsetLogic",
+      "settingTooltip": "The scroll distance from the element scrollTop value."
     },
     {
       "type": "number",
@@ -155,7 +170,8 @@
       "showInSettings": true,
       "defaultValue": "300",
       "hasLogicHandler": false,
-      "handlerId": "scrollDurationLogic"
+      "handlerId": "scrollDurationLogic",
+      "settingTooltip": "The duration of the scroll to the element."
     },
     {
       "type": "checkbox",
@@ -164,7 +180,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "scrollToFirstStepLogic"
+      "handlerId": "scrollToFirstStepLogic",
+      "settingTooltip": "Page scrolling for the first step."
     },
     {
       "type": "checkbox",
@@ -172,7 +189,8 @@
       "label": "Spotlight Clicks",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "spotlightClicksLogic"
+      "handlerId": "spotlightClicksLogic",
+      "settingTooltip": "Allow mouse and touch events through the spotlight."
     },
     {
       "type": "number",
@@ -181,7 +199,8 @@
       "showInSettings": true,
       "defaultValue": "10",
       "hasLogicHandler": false,
-      "handlerId": "spotlightPaddingLogic"
+      "handlerId": "spotlightPaddingLogic",
+      "settingTooltip": "The padding of the spotlight."
     },
     {
       "type": "number",
@@ -190,7 +209,8 @@
       "showInSettings": true,
       "defaultValue": "36",
       "hasLogicHandler": false,
-      "handlerId": "beaconSizeLogic"
+      "handlerId": "beaconSizeLogic",
+      "settingTooltip": "The size of the beacon."
     },
     {
       "type": "number",
@@ -199,7 +219,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "widthLogic",
-      "defaultValue": "380"
+      "defaultValue": "380",
+      "settingTooltip": "The width of the tooltip."
     },
     {
       "type": "color",
@@ -208,7 +229,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "primaryColorLogic",
-      "defaultValue": "#ff0044"
+      "defaultValue": "#ff0044",
+      "settingTooltip": "The theme color of the tour guide."
     },
     {
       "type": "color",
@@ -217,7 +239,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "textColorLogic",
-      "defaultValue": "#000000"
+      "defaultValue": "#000000",
+      "settingTooltip": "The text color of the tour guide."
     },
     {
       "type": "color",
@@ -226,7 +249,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "backgroundColorLogic",
-      "defaultValue": "#ffffff"
+      "defaultValue": "#ffffff",
+      "settingTooltip": "The background color of the tour guide."
     },
     {
       "type": "color",
@@ -235,7 +259,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "arrowColorLogic",
-      "defaultValue": "#ffffff"
+      "defaultValue": "#ffffff",
+      "settingTooltip": "The color of the tooltip arrow."
     },
     {
       "type": "color",
@@ -244,7 +269,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "overlayColorLogic",
-      "defaultValue": "rgba(0,0,0,0.5)"
+      "defaultValue": "rgba(0,0,0,0.5)",
+      "settingTooltip": "The overlaid color of the tour guide."
     }
   ],
   "eventHandlers": [
