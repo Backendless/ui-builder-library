@@ -2,7 +2,7 @@ import { getMapFromObjectsArray } from '../helpers';
 
 export function MoveSelectedToRight(props) {
   const { left, right, allSelected, leftSelected, setLeft, setRight, setAllSelected, onChange } = props;
-  
+
   const moveSelectedToRight = () => {
     const newRightItems = right.concat(leftSelected);
     const leftSelectedMap = getMapFromObjectsArray(leftSelected);
@@ -19,7 +19,7 @@ export function MoveSelectedToRight(props) {
       });
     }
   };
-  
+
   return (
     <button
       onClick={ moveSelectedToRight }
@@ -28,4 +28,5 @@ export function MoveSelectedToRight(props) {
       &gt;
     </button>
   );
-};
+}
+

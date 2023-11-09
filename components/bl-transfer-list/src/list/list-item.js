@@ -2,7 +2,7 @@ import { Checkbox } from './checkbox';
 
 export function ListItem(props) {
   const { id, value, label, isChecked, onChange } = props;
-  
+
   return (
     <label htmlFor={ id } className="list-item">
       <Checkbox
@@ -14,4 +14,4 @@ export function ListItem(props) {
       <span className="list-item__content">{ label }</span>
     </label>
   );
-};
+}

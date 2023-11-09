@@ -7,7 +7,7 @@ export class Storage {
     let result;
 
     try {
-      result =  JSON.parse(localStorage.getItem(this.name));
+      result = JSON.parse(localStorage.getItem(this.name));
     } catch (e) {
       result = {};
     }

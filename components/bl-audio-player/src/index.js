@@ -53,6 +53,7 @@ export default function AudioPlayer({ component, elRef }) {
 
   component.playAudio = () => setIsPlaying(true);
   component.stopAudio = () => stopPlaying();
+
   component.replaceAudio = (url, title) => {
     setCurrentTrack({ url, title });
     setIsPlaying(true);

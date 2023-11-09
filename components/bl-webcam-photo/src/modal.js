@@ -27,6 +27,7 @@ export function Modal({ setVisibility, component, eventHandlers }) {
     if (videoRef.current.srcObject) {
       stopUserMedia(videoRef.current);
     }
+
     setVisibility(false);
   }, [videoRef.current]);
 

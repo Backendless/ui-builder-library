@@ -109,4 +109,4 @@ export default function MentionComponent({ component, eventHandlers }) {
       onHide={ onHide }
     />
   );
-};
+}

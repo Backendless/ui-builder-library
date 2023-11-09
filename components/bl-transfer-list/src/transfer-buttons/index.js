@@ -4,18 +4,10 @@ import { MoveSelectedToLeft } from './move-selected-to-left';
 import { MoveSelectedToRight } from './move-selected-to-right';
 
 export function TransferButtons(props) {
-    const {
-      left,
-      right,
-      allSelected,
-      leftSelected,
-      rightSelected,
-      enableMoveAll,
-      setLeft,
-      setRight,
-      setAllSelected,
-      eventHandlers,
-    } = props;
+  const {
+    left, right, allSelected, leftSelected, rightSelected, enableMoveAll,
+    setLeft, setRight, setAllSelected, eventHandlers,
+  } = props;
 
   const { onChange } = eventHandlers;
 
@@ -61,4 +53,4 @@ export function TransferButtons(props) {
       }
     </div>
   );
-};
+}

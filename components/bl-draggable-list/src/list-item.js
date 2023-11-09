@@ -46,11 +46,11 @@ export function ListItem({ item, onDragStart, onDragEnd, onDragOver, index, comp
         { isEdit
           ? <EditControl item={ itemState } onChange={ handleChange }/>
           : <div>
-              <span style={{ 'display': 'inline-block', 'min-width': '100px' }}>{ item.label }</span>
-              { showValues && (
-                <span style={{ 'margin-left': '10px' }}>{ item.value }</span>
-              ) }
-            </div>
+            <span style={{ 'display': 'inline-block', 'min-width': '100px' }}>{ item.label }</span>
+            { showValues && (
+              <span style={{ 'margin-left': '10px' }}>{ item.value }</span>
+            ) }
+          </div>
         }
       </div>
       <ItemControls

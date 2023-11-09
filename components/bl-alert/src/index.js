@@ -4,16 +4,8 @@ import { AlertButton, AlertIcon, AlertTitle } from './subcomponents';
 
 export default function Alert({ component, eventHandlers }) {
   const {
-    style,
-    display,
-    classList,
-    iconVisibility,
-    messageType,
-    messageTitle,
-    messageText,
-    variant,
-    closeButtonVisibility,
-    closingDuration,
+    style, display, classList, iconVisibility, messageType, messageTitle,
+    messageText, variant, closeButtonVisibility, closingDuration,
   } = component;
   const { onClose } = eventHandlers;
 
@@ -62,7 +54,7 @@ export default function Alert({ component, eventHandlers }) {
       </div>
     </div>
   );
-};
+}
 
 const useAlertClasses = (variant, messageType, isClosing) => {
   const classes = ['alert', variant, `${ variant }--${ messageType }`];
@@ -71,7 +63,6 @@ const useAlertClasses = (variant, messageType, isClosing) => {
 
   return classes.join(' ');
 };
-
 
 const useTextClass = (initialClass, variant, messageType) => {
   const classes = [initialClass];

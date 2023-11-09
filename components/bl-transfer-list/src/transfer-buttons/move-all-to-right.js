@@ -1,6 +1,6 @@
 export function MoveAllToRight(props) {
   const { left, right, setLeft, setRight, onChange } = props;
-  
+
   const moveAllToRight = () => {
     const newRightItems = right.concat(left);
 
@@ -14,8 +14,8 @@ export function MoveAllToRight(props) {
       });
     }
   };
-  
+
   return (
     <button disabled={ !left.length } onClick={ moveAllToRight } className="control-buttons__item">≫</button>
   );
-};
+}

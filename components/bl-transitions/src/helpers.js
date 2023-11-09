@@ -22,7 +22,7 @@ export const useTransition = (
     if (!isTakenMeasurements && isOpen) {
       const readyToStartTransition = podElement && isContentLoaded;
 
-      if(readyToStartTransition) {
+      if (readyToStartTransition) {
         setPodElementDimension(podElement[clientName]);
         setIsTakenMeasurements(true);
       }

@@ -69,6 +69,7 @@ export class MapController {
     if (polygon.outlineWidth > 0) {
       this.mapRef.current.removeLayer(`${ polygon.id }-outline`);
     }
+
     this.mapRef.current.removeLayer(`${ polygon.id }-layer`);
     this.mapRef.current.removeSource(polygon.id);
   }
@@ -133,6 +134,7 @@ export const initMapboxLibrary = (mapRef, mapContainerRef, component, eventHandl
   const { mapStyle, center, zoom, projection, directions, fullScreen, navigation, searchBar, geolocation } = component;
   const { onDeterminingGeoposition } = eventHandlers;
   const { accessToken } = Mapbox;
+
   mapRef.current = new Map({
     container : mapContainerRef.current,
     style     : mapStyle || MAP_STYLE,

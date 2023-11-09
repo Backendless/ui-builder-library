@@ -77,6 +77,7 @@ export function useCardElement(eventHandlers, setIsLoading, setTransactionDetail
 
   const onCardFocus = () => onFocusEvent();
   const onCardBlur = () => onBlurEvent();
+
   const onCardChange = event => {
     const cardCondition = event;
     const error = cardCondition.error;

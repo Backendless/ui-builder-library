@@ -23,4 +23,4 @@ export function Option(props) {
       </span>
     </div>
   );
-};
+}

@@ -5,6 +5,7 @@ import { Options } from './options';
 import { TextField } from './text-field';
 
 const { cn } = BackendlessUI.CSSUtils;
+
 export default function AutocompleteComponent({ component, eventHandlers, elRef }) {
   const {
     classList, style, display, disabled, placeholder, emptyOptionsLabel, variant, value, options,
@@ -83,4 +84,6 @@ export default function AutocompleteComponent({ component, eventHandlers, elRef 
       ) }
     </div>
   );
-};
+}
+
+;

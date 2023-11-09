@@ -23,4 +23,4 @@ export function Input({ type, selectId, selectValue, handleRemoveSelectedValue }
       />
     </>
   );
-};
+}

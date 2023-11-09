@@ -99,20 +99,19 @@ function ClockHands({ handStyle, markersVisible, markersFull }) {
   );
 }
 
-function Markers({ markersFull=false }) {
-  const renderedMarkers = useMemo(() => {
+function Markers({ markersFull = false }) {
+  return useMemo(() => {
     if (markersFull) {
-      return (
-        HOURS_LIST.map(i => {
-          const rotation = -60 + 30 * i;
-          const rotate = 60 - 30 * i;
+      return HOURS_LIST.map(i => {
+        const rotation = -60 + 30 * i;
+        const rotate = 60 - 30 * i;
 
-          return (
-            <div className="number" key={ i } style={{ '--rotation': `${ rotation }deg` }}>
-              <span className="number-content" style={{ transform: `rotate(${ rotate }deg)` }}>{ i + 1 }</span>
-            </div>
-          );
-      }));
+        return (
+          <div className="number" key={ i } style={{ '--rotation': `${ rotation }deg` }}>
+            <span className="number-content" style={{ transform: `rotate(${ rotate }deg)` }}>{ i + 1 }</span>
+          </div>
+        );
+      });
     }
 
     return (
@@ -124,8 +123,6 @@ function Markers({ markersFull=false }) {
       </>
     );
   }, [markersFull]);
-
-  return renderedMarkers;
 }
 
 function useDate(hour, minute, second) {

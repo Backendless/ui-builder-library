@@ -5,7 +5,7 @@ import { ListItem } from './list-item';
 
 export function List(props) {
   const { enableSelectAll, items, title, selected, allSelected, setAllSelected } = props;
-  
+
   const componentId = useMemo(() => BackendlessUI.UUID.short(), []);
 
   const handleToggleItem = ({ target: { value, checked } }) => {
@@ -33,7 +33,7 @@ export function List(props) {
       <div className="list__items">
         { items.map(item => {
           const isChecked = allSelected.some(({ objectId }) => item.objectId === objectId);
-          
+
           return (
             <ListItem
               key={ item.objectId }
@@ -48,4 +48,4 @@ export function List(props) {
       </div>
     </div>
   );
-};
+}

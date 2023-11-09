@@ -21,7 +21,7 @@ export default function RatingComponent({ component, eventHandlers }) {
     setRatingValue(defaultValue);
   }, [defaultValue]);
 
-  const handleRatingValue = useCallback(({ target: { value  } }) => {
+  const handleRatingValue = useCallback(({ target: { value } }) => {
     setRatingValue(prevState => prevState === value ? 0 : value);
 
     if (onRatingChange) {
@@ -71,4 +71,4 @@ export default function RatingComponent({ component, eventHandlers }) {
       </div>
     </div>
   );
-};
+}

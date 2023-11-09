@@ -99,7 +99,7 @@ function validateCircle(circle) {
 
   for (const item of [lat, lng, radius]) {
     if (isNaN(item)) {
-      console.error(`Circle error!\n Expected - number, but received - "${item}" in\n`, circle);
+      console.error(`Circle error!\n Expected - number, but received - "${ item }" in\n`, circle);
 
       return false;
     }
@@ -112,7 +112,7 @@ function validateCircle(circle) {
   }
 
   if (radius <= 0) {
-    console.error(`Circle error!\n Circle radius should be greater than 0, but received ${radius} in\n`, circle);
+    console.error(`Circle error!\n Circle radius should be greater than 0, but received ${ radius } in\n`, circle);
 
     return false;
   }
@@ -268,7 +268,7 @@ export function createPolygons(polygons, map, eventHandlers) {
         const coordinates = points.map(({ lat, lng }) => [lat, lng]);
 
         const polygon = Leaflet.polygon(coordinates)
-          .on('click', () => { onPolygonClick({ coordinates, description });})
+          .on('click', () => onPolygonClick({ coordinates, description }))
           .addTo(map);
 
         if (description) {
@@ -306,6 +306,7 @@ export function toggleFullscreen(container, fullscreen, map) {
   if (fullscreen !== undefined) {
     container.classList.toggle('bl-customComponent-leafletMap-fullscreen', fullscreen);
   }
+
   map.invalidateSize();
 }
 

@@ -10,7 +10,7 @@ const DefaultValues = {
     MAX_X          : 0.3,
     MIN_Y          : 0.01,
     MAX_Y          : 0.03,
-   },
+  },
 };
 
 const SNOWFLAKES = generateSnowflakes();

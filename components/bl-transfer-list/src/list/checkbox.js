@@ -2,12 +2,12 @@ import { getToggleAllIcon } from '../helpers';
 
 export function Checkbox(props) {
   const { id, value, isChecked, isIndeterminated, onChange } = props;
-  
+
   const icon = getToggleAllIcon(isChecked, isIndeterminated);
 
   return (
     <div className="checkbox">
-       <input
+      <input
         id={ id }
         type="checkbox"
         value={ value }
@@ -25,4 +25,4 @@ export function Checkbox(props) {
       </svg>
     </div>
   );
-};
+}

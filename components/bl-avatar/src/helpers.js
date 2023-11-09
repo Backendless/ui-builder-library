@@ -76,6 +76,7 @@ function getImageOrientation(imageSource) {
 
     image.src = imageSource;
     image.onerror = () => reject('Failed to load the image');
+
     image.onload = () => {
       const { width, height } = image;
 

@@ -72,4 +72,4 @@ export default function TransferListComponent({ component, eventHandlers }) {
       />
     </div>
   );
-};
+}

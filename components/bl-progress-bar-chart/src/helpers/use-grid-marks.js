@@ -5,7 +5,7 @@ export const useGridMarks = gridMarks => useMemo(() => {
   const spredNumber = 100 / Number(gridMarks);
   let currentNumber = spredNumber;
 
-  while(currentNumber <= 100) {
+  while (currentNumber <= 100) {
     marks.push(currentNumber);
     currentNumber += spredNumber;
   }

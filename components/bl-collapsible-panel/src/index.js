@@ -46,7 +46,7 @@ export default function CollapsiblePanelComponent({ component, elRef, eventHandl
 function PanelTitle({ title, multiline, expanded, onClick }) {
   return (
     <div className="panel-title" aria-expanded={ expanded } role="button" onClick={ () => onClick(expanded) }>
-      <span className={ cn('panel-title-text', multiline ? 'multiline' : 'oneline' ) }>{ title }</span>
+      <span className={ cn('panel-title-text', multiline ? 'multiline' : 'oneline') }>{ title }</span>
 
       <svg
         className="collapse-icon"

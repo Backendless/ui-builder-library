@@ -28,35 +28,35 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
 
   useEffect(() => {
     calHeatmap.paint({
-        range,
-        date: shapeDate(startDate, minDate, maxDate, highlightDate),
+      range,
+      date: shapeDate(startDate, minDate, maxDate, highlightDate),
 
-        data: shapeData({
-          sourceDataUrl, data, dataType, datePropName,
-          valuePropName, defaultDataValue, groupYLogic, groupY,
-        }),
+      data: shapeData({
+        sourceDataUrl, data, dataType, datePropName,
+        valuePropName, defaultDataValue, groupYLogic, groupY,
+      }),
 
-        scale: ensureValidScale({
-          scaleColorRange, scaleColorScheme, scaleOpacityBaseColor,
-          scaleType, scaleDomain, minValid, maxValid,
-        }),
+      scale: ensureValidScale({
+        scaleColorRange, scaleColorScheme, scaleOpacityBaseColor,
+        scaleType, scaleDomain, minValid, maxValid,
+      }),
 
-        domain: shapeDomain({
-          type, dynamicDimension, gutter, sort, labelLogic, label, labelPosition, labelRotation,
-          textAlign, labelOffsetX, labelOffsetY, labelHeight, labelWidth,
-        }),
+      domain: shapeDomain({
+        type, dynamicDimension, gutter, sort, labelLogic, label, labelPosition, labelRotation,
+        textAlign, labelOffsetX, labelOffsetY, labelHeight, labelWidth,
+      }),
 
-        subDomain: shapeSubDomain({
-          subType, subLabel, subGutter, subColorLabel, subColorLabelLogic, subSort,
-          cellWidth, cellHeight, subLabelLogic, cellRadius,
-        }),
+      subDomain: shapeSubDomain({
+        subType, subLabel, subGutter, subColorLabel, subColorLabelLogic, subSort,
+        cellWidth, cellHeight, subLabelLogic, cellRadius,
+      }),
 
-        verticalOrientation,
-        animationDuration,
-        theme,
-        itemSelector: `#bl-cal-heatmap-${ instanceId }`,
-      },
-      shapePlugins(legend, instanceId, calendarLabel)
+      verticalOrientation,
+      animationDuration,
+      theme,
+      itemSelector: `#bl-cal-heatmap-${ instanceId }`,
+    },
+    shapePlugins(legend, instanceId, calendarLabel)
     );
   }, [calHeatmap, cellHeight, cellRadius, cellWidth, dataType, datePropName, defaultDataValue, highlightDate,
     instanceId, labelHeight, labelPosition, labelRotation, labelWidth, labelOffsetX, labelOffsetY, maxDate, maxValid,

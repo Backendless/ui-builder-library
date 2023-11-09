@@ -6,7 +6,7 @@ const { cn } = BackendlessUI.CSSUtils;
 
 const UNITS = {
   standard: { temperature: 'K', windSpeed: 'm/s' },
-  metric: { temperature: '°C', windSpeed: 'm/s' },
+  metric  : { temperature: '°C', windSpeed: 'm/s' },
   imperial: { temperature: '°F', windSpeed: 'mph' },
 };
 
@@ -24,11 +24,11 @@ export default function WeatherComponent({ component, elRef, settings }) {
   useEffect(async () => {
     const usedLocation = currentLocation ? await BackendlessUI.Navigator.getCurrentGeolocation() : location;
 
-    if(usedLocation?.lat && usedLocation.lng) {
-     setOptions({ ...options, lat: usedLocation.lat, lon: usedLocation.lng });
-   } else {
-    console.error('Location data not provided or provided incorrectly');
-   }
+    if (usedLocation?.lat && usedLocation.lng) {
+      setOptions({ ...options, lat: usedLocation.lat, lon: usedLocation.lng });
+    } else {
+      console.error('Location data not provided or provided incorrectly');
+    }
   }, [currentLocation, location]);
 
   if (!display) {
@@ -38,7 +38,7 @@ export default function WeatherComponent({ component, elRef, settings }) {
   return (
     <div ref={ elRef } className={ cn('bl-customComponent-weather', classList) } style={ styles }>
       { options?.lat && options.lon && (
-        <Weather options={ options } locationLabel={ label } showForecast={ forecast } theme={ theme } lang={ lang } />
+        <Weather options={ options } locationLabel={ label } showForecast={ forecast } theme={ theme } lang={ lang }/>
       ) }
     </div>
   );

@@ -37,6 +37,7 @@ export function useScanner(scannerRef, instanceId, component, eventHandlers) {
     }
 
     const onScanFailed = debounce(error => onDecodeError({ error }), fps);
+
     const onScanSuccess = decodedCode => {
       onDecodeSuccess({ decodedCode });
 
@@ -53,6 +54,7 @@ export function useScanner(scannerRef, instanceId, component, eventHandlers) {
   }, [fps, hideAfterScan, onDecodeError, onDecodeSuccess, onStartScanFailed, options, scannerRef, stopScan]);
 
   const toggleScan = scannerVisibility ? stopScan : startScan;
+
   const updateScanner = () => {
     if (scannerRef.current?.isScanning) {
       scannerRef.current.stop()

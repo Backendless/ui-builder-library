@@ -26,6 +26,7 @@ export default function TreeView({ component, eventHandlers }) {
 
         if (item.children) {
           levelOfNesting++;
+
           validItem = {
             ...validItem,
             children: prepare(item.children, validItem.id),
@@ -55,6 +56,7 @@ export default function TreeView({ component, eventHandlers }) {
     setParentItems(state => state.map(item => (
       item.id === id ? { ...item, isOpen: !item.isOpen } : item
     )));
+
     handlerItemClick(id, value, label);
   }, []);
 

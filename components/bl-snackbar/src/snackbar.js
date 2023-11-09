@@ -3,6 +3,7 @@ import { CloseIcon, IconsMap } from './icons';
 
 export function Snackbar({ showClose, showAction, actionContent, snackContent, type, onAction, onClose, id, outline }) {
   const Icon = IconsMap[type];
+
   return (
     <div className={ `message message_${ type }` } style={{ border: !outline && 'none' }}>
       <div className="text">

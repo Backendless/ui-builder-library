@@ -77,11 +77,13 @@ export function FooterToolbar({ cropperRef, image, toolbarVisibility, disabled }
     const zoomOut = () => cropperRef.current.zoom(-0.1);
     const rotateLeft = () => cropperRef.current.rotate(-45);
     const rotateRight = () => cropperRef.current.rotate(45);
+
     const scaleX = () => {
       const newScaleX = -cropperRef.current.getImageData().scaleX;
 
       cropperRef.current.scaleX(newScaleX || -1);
     };
+
     const scaleY = () => {
       const newScaleY = -cropperRef.current.getImageData().scaleY;
 

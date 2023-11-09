@@ -35,6 +35,7 @@ export const useDraggable = ({ onDrag, rootRef, initialPosition, draggable, setP
       };
 
       elem.addEventListener('mousedown', handleMouseDown);
+
       unsubscribe.current = () => {
         elem.removeEventListener('mousedown', handleMouseDown);
       };

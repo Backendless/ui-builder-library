@@ -13,6 +13,7 @@ export default function ModalComponent({ component, eventHandlers, pods, elRef }
   const [visibility, setVisibility] = useState(modalVisibility);
 
   component.openModal = () => setVisibility(true);
+
   component.closeModal = () => {
     setVisibility(false);
     onClose();

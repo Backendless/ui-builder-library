@@ -56,6 +56,7 @@ function CaptchaComponent({ component, onErrored, siteKey }) {
   const onExpired = () => useCallback(() => setIsPassed(false), []);
 
   component.onPassed = () => isPassed;
+
   component.onTokenSent = () => {
     setIsPassed(false);
 

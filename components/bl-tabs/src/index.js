@@ -16,6 +16,7 @@ export default function TabsComponent({ component, eventHandlers, pods }) {
   );
 
   component.getCurrentTabId = () => currentTabId;
+
   component.setCurrentTabId = id => {
     setCurrentTabId(id);
     onChange({ currentTabId: id });

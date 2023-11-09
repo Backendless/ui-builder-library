@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import './lib/granim.min';
 
 const { cn } = BackendlessUI.CSSUtils;
-const DIRECTIONS = ['left-right', 'diagonal', 'top-bottom', 'radial',  'custom'];
+const DIRECTIONS = ['left-right', 'diagonal', 'top-bottom', 'radial', 'custom'];
 const DIRECTIONS_MAP = mapFromArray(DIRECTIONS);
 const BLENDING_MODES = [
   'multiply', 'screen', 'normal', 'overlay', 'darken', 'lighten', 'lighter', 'color-dodge', 'color-burn',

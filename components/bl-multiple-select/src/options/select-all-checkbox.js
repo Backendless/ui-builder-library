@@ -16,4 +16,4 @@ export function SelectAllCheckbox({ label, options, isAllOptionsSelected, setSel
       <span>{ label }</span>
     </div>
   );
-};
+}

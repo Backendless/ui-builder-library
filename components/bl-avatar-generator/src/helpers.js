@@ -15,11 +15,7 @@ const baseOptionResolver = key => ({
 });
 
 function shouldValidate(key) {
-  if (key === Properties.BACKGROUND || key === Properties.CIRCLE_COLOR) {
-    return false;
-  }
-
-  return true;
+  return !(key === Properties.BACKGROUND || key === Properties.CIRCLE_COLOR);
 }
 
 const OptionsList = Object.values(Properties).map(key => baseOptionResolver(key));
@@ -53,7 +49,7 @@ export const handleOptions = component => {
   return OptionsList.reduce((acc, { key, validate, defaultValue }) => {
     let value = component[key] || defaultValue;
 
-    if(validate && !isValueValid(key, component[key])) {
+    if (validate && !isValueValid(key, component[key])) {
       value = defaultValue;
     }
 

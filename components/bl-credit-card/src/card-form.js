@@ -168,6 +168,7 @@ function useFormActions(formState, setFormState, card, eventHandlers) {
   };
 
   const onCardFocus = event => onFocus({ event, formData });
+
   const onCardBlur = event => {
     onBlur({ event, formData });
     setFormState({ focusedField: null });

@@ -82,7 +82,7 @@ export default function MultipleSelectComponent({ component, eventHandlers, elRe
       }
     </div>
   );
-};
+}
 
 function useActions({ component, optionsList, setOptionsList, selectValue, setSelectValue }) {
   Object.assign(component, {

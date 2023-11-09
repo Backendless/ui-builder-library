@@ -4,7 +4,7 @@ import { SpecificDateRange } from './specific-date-range';
 const { cn } = BackendlessUI.CSSUtils;
 
 export default function DoubleCalendarComponent({ component, eventHandlers }) {
- const {
+  const {
     classList, display, disabled, style, specificDateRange, startDateOfRange, selectionRange, selectedDate,
     headerVisibility, daysAmountVisibility, monthDropdownVisibility, yearDropdownVisibility, fromDate, toDate,
   } = component;

@@ -1,7 +1,7 @@
 const { cn } = BackendlessUI.CSSUtils;
 
 export const Fieldset = props => {
-  const {  placeholder,  autocompleteValue, isAutocompleteActive } = props;
+  const { placeholder, autocompleteValue, isAutocompleteActive } = props;
 
   return (
     <fieldset className="fieldset">

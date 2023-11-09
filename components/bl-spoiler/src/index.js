@@ -44,6 +44,7 @@ export default function SpoilerComponent({ component, elRef, eventHandlers, pods
 
   component.enableSpoiler = () => setIsEnabled(true);
   component.disableSpoiler = () => setIsEnabled(false);
+
   component.toggleSpoiler = state => {
     if (state !== undefined) {
       setIsEnabled(state);

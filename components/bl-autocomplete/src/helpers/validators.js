@@ -10,7 +10,7 @@ function optionsValidator(options) {
     return [];
   }
 
-  return  options;
+  return options;
 }
 
 function valueValidator(value, options, hasGroup) {
