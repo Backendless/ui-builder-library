@@ -49,7 +49,7 @@ export default function Timer({ component, eventHandlers }) {
   };
 
   component.start = () => {
-    if (!countdown && !timer.current) {
+    if (!countdown && !timer.current && time.all > 0) {
       const startTime = Date.now();
 
       timer.current = setInterval(() => setTime(getTimer(startTime, time)), 1000);
