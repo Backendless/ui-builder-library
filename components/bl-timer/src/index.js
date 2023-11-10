@@ -36,12 +36,14 @@ export default function Timer({ component, eventHandlers }) {
   const timer = useRef(null);
 
   useEffect(() => {
-    if (countdown && !timer.current) {
+    setTime(startTime);
+
+    if (countdown) {
       timer.current = setInterval(() => setTime(getCountdown(new Date(countdown))), 1000);
     }
 
     return () => clearInterval(timer.current);
-  }, [countdown]);
+  }, [startTime]);
 
   const stopTimer = () => {
     clearInterval(timer.current);
