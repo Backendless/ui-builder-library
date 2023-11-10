@@ -35,8 +35,7 @@ export default function MentionComponent({ component, eventHandlers }) {
   }, [hideField]);
 
   useEffect(() => {
-    onSearch({ searchValue })
-      .then(result => updateSuggestionsMap(result, setSuggestionsMap));
+    onSearch({ searchValue })?.then(result => updateSuggestionsMap(result, setSuggestionsMap));
   }, [searchValue]);
 
   const searchHandler = useCallback(event => {
