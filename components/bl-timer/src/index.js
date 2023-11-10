@@ -57,6 +57,7 @@ export default function Timer({ component, eventHandlers }) {
   };
 
   component.stop = () => stopTimer();
+
   component.reset = () => {
     if (!countdown) {
       stopTimer();

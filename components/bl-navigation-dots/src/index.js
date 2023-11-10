@@ -73,6 +73,7 @@ export default function NavigationDotsComponent({ component, eventHandlers, elRe
   useEffect(() => validateAnchors(anchors), [anchors]);
 
   component.getActiveAnchor = () => anchors[activeDotIndex];
+
   component.setActiveAnchor = anchor => {
     const index = anchors.findIndex(a => a === anchor);
 
