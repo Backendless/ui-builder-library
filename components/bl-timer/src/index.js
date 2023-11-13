@@ -15,20 +15,31 @@ const getTimeInSeconds = time => {
   return seconds + minutes + hours;
 };
 
-export default function Timer({ component, eventHandlers }) {
+export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
   const { display, classList, style, countdown, animationDuration, simpleTimer } = component;
-  const { onTimerEnd } = eventHandlers;
 
-  const startTime = useMemo(() => (
-    countdown ? getCountdown(new Date(countdown)) : timeFormatter(getTimeInSeconds(simpleTimer))
-  ), [countdown, simpleTimer]);
+  const startTime = useMemo(() => {
+    if (countdown) {
+      return getCountdown(new Date(countdown));
+    }
+
+    if (simpleTimer) {
+      return timeFormatter(getTimeInSeconds(simpleTimer));
+    }
+
+    console.warn('Timer value is not provided.');
+
+    return {};
+  }, [countdown, simpleTimer]);
 
   const [time, setTime] = useState(startTime);
 
+  const { dayTens, dayUnits, hourTens, hourUnits, minuteTens, minuteUnits, secondTens, secondUnits, all } = time;
+
   const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
-    const daysVisibility = time.dayTens + time.dayUnits > 0;
-    const hoursVisibility = time.hourTens + time.hourUnits > 0 || daysVisibility;
-    const minutesVisibility = time.minuteTens + time.minuteUnits > 0 || daysVisibility || hoursVisibility;
+    const daysVisibility = dayTens + dayUnits > 0;
+    const hoursVisibility = hourTens + hourUnits > 0 || daysVisibility;
+    const minutesVisibility = minuteTens + minuteUnits > 0 || daysVisibility || hoursVisibility;
 
     return { daysVisibility, hoursVisibility, minutesVisibility };
   }, [time]);
@@ -51,7 +62,7 @@ export default function Timer({ component, eventHandlers }) {
   };
 
   component.start = () => {
-    if (!countdown && !timer.current && time.all > 0) {
+    if (!countdown && !timer.current && all > 0) {
       const startTime = Date.now();
 
       timer.current = setInterval(() => setTime(getTimer(startTime, time)), 1000);
@@ -68,7 +79,7 @@ export default function Timer({ component, eventHandlers }) {
   };
 
   useEffect(() => {
-    if (time.all <= 0) {
+    if (all <= 0) {
       clearInterval(timer.current);
       timer.current = null;
 
@@ -76,44 +87,25 @@ export default function Timer({ component, eventHandlers }) {
     }
   }, [time]);
 
-  if (!display) {
+  if (!display || !secondUnits) {
     return null;
   }
 
   return (
     <div className={ cn('bl-customComponent-timer', classList) } style={ style }>
       { daysVisibility && (
-        <Time
-          timeTens={ time.dayTens }
-          timeUnits={ time.dayUnits }
-          animationDuration={ animationDuration }
-          withDelimeter
-        />
+        <Time timeTens={ dayTens } timeUnits={ dayUnits } animationDuration={ animationDuration } withDelimeter/>
       ) }
 
       { hoursVisibility && (
-        <Time
-          timeTens={ time.hourTens }
-          timeUnits={ time.hourUnits }
-          animationDuration={ animationDuration }
-          withDelimeter
-        />
+        <Time timeTens={ hourTens } timeUnits={ hourUnits } animationDuration={ animationDuration } withDelimeter/>
       ) }
 
       { minutesVisibility && (
-        <Time
-          timeTens={ time.minuteTens }
-          timeUnits={ time.minuteUnits }
-          animationDuration={ animationDuration }
-          withDelimeter
-        />
+        <Time timeTens={ minuteTens } timeUnits={ minuteUnits } animationDuration={ animationDuration } withDelimeter/>
       ) }
 
-      <Time
-        timeTens={ time.secondTens }
-        timeUnits={ time.secondUnits }
-        animationDuration={ animationDuration }
-      />
+      <Time timeTens={ secondTens } timeUnits={ secondUnits } animationDuration={ animationDuration }/>
     </div>
   );
 }
