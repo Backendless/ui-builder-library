@@ -5,6 +5,13 @@ import { Time } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
 
+const TimeIntervals = {
+  DAY  : 'Day',
+  DAYS : 'Days',
+  WEEK : 'Week',
+  WEEKS: 'Weeks',
+};
+
 const getTimeInSeconds = time => {
   const timeUnits = time.split(':');
 
@@ -34,14 +41,17 @@ export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
 
   const [time, setTime] = useState(startTime);
 
-  const { dayTens, dayUnits, hourTens, hourUnits, minuteTens, minuteUnits, secondTens, secondUnits, all } = time;
+  const {
+    weekTens, weekUnits, dayTens, dayUnits, hourTens, hourUnits, minuteTens, minuteUnits, secondTens, secondUnits, all,
+  } = time;
 
-  const { daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
-    const daysVisibility = dayTens + dayUnits > 0;
+  const { weeksVisibility, daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
+    const weeksVisibility = weekTens + weekUnits > 0;
+    const daysVisibility = dayTens + dayUnits > 0 || weeksVisibility;
     const hoursVisibility = hourTens + hourUnits > 0 || daysVisibility;
-    const minutesVisibility = minuteTens + minuteUnits > 0 || daysVisibility || hoursVisibility;
+    const minutesVisibility = minuteTens + minuteUnits > 0 || hoursVisibility;
 
-    return { daysVisibility, hoursVisibility, minutesVisibility };
+    return { weeksVisibility, daysVisibility, hoursVisibility, minutesVisibility };
   }, [time]);
 
   const timer = useRef(null);
@@ -93,8 +103,21 @@ export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
 
   return (
     <div className={ cn('bl-customComponent-timer', classList) } style={ style }>
+      { weeksVisibility && (
+        <Time
+          timeTens={ weekTens }
+          timeUnits={ weekUnits }
+          animationDuration={ animationDuration }
+          timeInterval={ weekTens + weekUnits > 1 ? TimeIntervals.WEEKS : TimeIntervals.WEEK }
+        />
+      ) }
       { daysVisibility && (
-        <Time timeTens={ dayTens } timeUnits={ dayUnits } animationDuration={ animationDuration } withDelimeter/>
+        <Time
+          timeTens={ dayTens }
+          timeUnits={ dayUnits }
+          animationDuration={ animationDuration }
+          timeInterval={ dayTens + dayUnits > 1 ? TimeIntervals.DAYS : TimeIntervals.DAY }
+        />
       ) }
 
       { hoursVisibility && (
