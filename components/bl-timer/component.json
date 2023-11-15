@@ -45,6 +45,40 @@
       "handlerDescription": "This is a handler for the logic to determine the duration of the animation to change the time",
       "dataBinding": true,
       "settingTooltip": "Allows to determine the duration of the animation to change the time."
+    },
+    {
+      "type": "select",
+      "name": "format",
+      "label": "Format",
+      "settingTooltip": "Allows to determine the time format of the timer.",
+      "showInSettings": true,
+      "defaultValue": "hoursMinutesSeconds",
+      "hasLogicHandler": true,
+      "handlerId": "formatLogic",
+      "options": [
+        {
+          "value": "seconds",
+          "label": "SS"
+        },
+        {
+          "value": "minutesSeconds",
+          "label": "MM:SS"
+        },
+        {
+          "value": "hoursMinutesSeconds",
+          "label": "HH:MM:SS"
+        },
+        {
+          "value": "daysHoursMinutesSeconds",
+          "label": "Days HH:MM:SS"
+        },
+        {
+          "value": "weeksDaysHoursMinutesSeconds",
+          "label": "Weeks Days HH:MM:SS"
+        }
+      ],
+      "handlerLabel": "Format Logic",
+      "handlerDescription": "This is a handler for the logic to determine the time format of the timer."
     }
   ],
   "eventHandlers": [

@@ -12,6 +12,14 @@ const TimeIntervals = {
   WEEKS: 'Weeks',
 };
 
+const Formats = {
+  SECONDS                         : 'seconds',
+  MINUTES_SECONDS                 : 'minutesSeconds',
+  HOURS_MINUTES_SECONDS           : 'hoursMinutesSeconds',
+  DAYS_HOURS_MINUTES_SECONDS      : 'daysHoursMinutesSeconds',
+  WEEKS_DAYS_HOURS_MINUTES_SECONDS: 'weeksDaysHoursMinutesSeconds',
+};
+
 const getTimeInSeconds = time => {
   const timeUnits = time.split(':');
 
@@ -23,7 +31,7 @@ const getTimeInSeconds = time => {
 };
 
 export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
-  const { display, classList, style, countdown, animationDuration, simpleTimer } = component;
+  const { display, classList, style, countdown, animationDuration, simpleTimer, format } = component;
 
   const startTime = useMemo(() => {
     if (countdown) {
@@ -46,13 +54,13 @@ export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
   } = time;
 
   const { weeksVisibility, daysVisibility, hoursVisibility, minutesVisibility } = useMemo(() => {
-    const weeksVisibility = weekTens + weekUnits > 0;
-    const daysVisibility = dayTens + dayUnits > 0 || weeksVisibility;
-    const hoursVisibility = hourTens + hourUnits > 0 || daysVisibility;
-    const minutesVisibility = minuteTens + minuteUnits > 0 || hoursVisibility;
+    const weeksVisibility = weekTens + weekUnits > 0 || Formats.WEEKS_DAYS_HOURS_MINUTES_SECONDS === format;
+    const daysVisibility = dayTens + dayUnits > 0 || weeksVisibility || Formats.DAYS_HOURS_MINUTES_SECONDS === format;
+    const hoursVisibility = hourTens + hourUnits > 0 || daysVisibility || Formats.HOURS_MINUTES_SECONDS === format;
+    const minutesVisibility = minuteTens + minuteUnits > 0 || hoursVisibility || Formats.MINUTES_SECONDS === format;
 
     return { weeksVisibility, daysVisibility, hoursVisibility, minutesVisibility };
-  }, [time]);
+  }, [time, format]);
 
   const timer = useRef(null);
 
@@ -108,7 +116,7 @@ export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
           timeTens={ weekTens }
           timeUnits={ weekUnits }
           animationDuration={ animationDuration }
-          timeInterval={ weekTens + weekUnits > 1 ? TimeIntervals.WEEKS : TimeIntervals.WEEK }
+          timeInterval={ Number(weekTens + weekUnits) === 1 ? TimeIntervals.WEEK : TimeIntervals.WEEKS }
         />
       ) }
       { daysVisibility && (
@@ -116,7 +124,7 @@ export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
           timeTens={ dayTens }
           timeUnits={ dayUnits }
           animationDuration={ animationDuration }
-          timeInterval={ dayTens + dayUnits > 1 ? TimeIntervals.DAYS : TimeIntervals.DAY }
+          timeInterval={ Number(dayTens + dayUnits) === 1 ? TimeIntervals.DAY : TimeIntervals.DAYS }
         />
       ) }
 
