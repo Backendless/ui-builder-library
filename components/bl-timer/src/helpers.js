@@ -4,6 +4,7 @@ const SECOND = 1000;
 const MINUTE = 60;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
+const WEEK = 7 * DAY;
 
 export const useAnimation = (time, elementRef, animationDuration) => {
   useEffect(() => {
@@ -45,17 +46,21 @@ export const getTimer = (startTime, time) => {
 };
 
 export const timeFormatter = time => {
-  let days = String(Math.floor(time / DAY));
+  let weeks = String(Math.floor(time / WEEK));
+  let days = String(Math.floor(time / DAY) % 7);
   let hours = String(Math.floor(time / HOUR) % 24);
   let minutes = String(Math.floor(time / MINUTE) % 60);
   let seconds = String(time % 60);
 
+  weeks = weeks.length === 1 ? '0' + weeks : weeks;
   days = days.length === 1 ? '0' + days : days;
   hours = hours.length === 1 ? '0' + hours : hours;
   minutes = minutes.length === 1 ? '0' + minutes : minutes;
   seconds = seconds.length === 1 ? '0' + seconds : seconds;
 
   return {
+    weekTens   : weeks[0],
+    weekUnits  : weeks[1],
     dayTens    : days[0],
     dayUnits   : days[1],
     hourTens   : hours[0],
