@@ -100,6 +100,11 @@
     {
       "id": "reset",
       "label": "Reset Simple"
+    },
+    {
+      "id": "getActualValue",
+      "label": "Get Actual Value from",
+      "hasReturn": true
     }
   ]
 }

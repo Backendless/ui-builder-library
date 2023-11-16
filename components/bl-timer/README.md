@@ -24,11 +24,12 @@ display a digital timer and trigger an event when it completes. You can use it a
 
 ## Actions
 
-| Action             | Inputs | Returns |
-|--------------------|--------|---------|
-| Start Simple Timer |        |         |
-| Stop Simple Timer  |        |         |
-| Reset Simple Timer |        |         |
+| Action                      | Inputs | Returns                                                                                    |
+|-----------------------------|--------|--------------------------------------------------------------------------------------------|
+| Start Simple Timer          |        |                                                                                            |
+| Stop Simple Timer           |        |                                                                                            |
+| Reset Simple Timer          |        |                                                                                            |
+| Get Actual Value from Timer |        | { weeks: `Number`, days: `Number`, hours: `Number`, minutes: `Number`, seconds: `Number` } |
 
 ## Styles
 
