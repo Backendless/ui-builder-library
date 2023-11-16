@@ -96,6 +96,14 @@ export default function Timer({ component, eventHandlers: { onTimerEnd } }) {
     }
   };
 
+  component.getActualValue = () => ({
+    weeks  : Number(weekTens + weekUnits),
+    days   : Number(dayTens + dayUnits),
+    hours  : Number(hourTens + hourUnits),
+    minutes: Number(minuteTens + minuteUnits),
+    seconds: Number(secondTens + secondUnits),
+  });
+
   useEffect(() => {
     if (all <= 0) {
       clearInterval(timer.current);
