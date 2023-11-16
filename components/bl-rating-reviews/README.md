@@ -6,6 +6,10 @@ Rating Reviews is a component of Backendless UI-builder designer. This allows si
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/obp42vEEr4zyX0RAgkBP).
+
 ## Properties
 
 | Property                                    | Type                                                                     | Default Value                                                                                                                                                                                       | Logic                     | Data Binding | UI Setting | Description                                                                                                                                               |
