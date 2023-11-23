@@ -18,7 +18,7 @@
       "handlerDescription": "This is a handler for the logic to determine the url of the audio. Value returned by the handler will be used as the audio url.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "specifies the url of the audio file or the list containing audio urls"
+      "settingTooltip": "Specifies the url of the audio file or the list containing audio urls."
     },
     {
       "name": "audioTitle",
@@ -30,7 +30,7 @@
       "handlerDescription": "This is a handler for the logic to determine the title of the audio. Value returned by the handler will be used as the audio title.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "specifies the title of the audio or the list of audio titles"
+      "settingTooltip": "Specifies the title of the audio or the list of audio titles."
     },
     {
       "type": "checkbox",
@@ -39,7 +39,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "enables the visibility of the audio player"
+      "settingTooltip": "Enables the visibility of the audio player."
     },
     {
       "type": "checkbox",
@@ -48,7 +48,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "enables the visibility of the track navigation"
+      "settingTooltip": "Enables the visibility of the track navigation."
     },
     {
       "type": "checkbox",
@@ -57,7 +57,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "enables the visibility of the track title"
+      "settingTooltip": "Enables the visibility of the track title."
     },
     {
       "type": "range",
@@ -69,7 +69,7 @@
       "min": "0",
       "max": "100",
       "step": "1",
-      "settingTooltip": "controls the default volume of the player"
+      "settingTooltip": "Controls the default volume of the player."
     },
     {
       "type": "checkbox",
@@ -78,7 +78,7 @@
       "defaultValue": false,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "enables automatic playback of the track after the page is loaded"
+      "settingTooltip": "Enables automatic playback of the track after the page is loaded."
     },
     {
       "type": "checkbox",
@@ -87,7 +87,7 @@
       "defaultValue": false,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "enables repeating one track infinitely"
+      "settingTooltip": "Enables repeating one track infinitely."
     }
   ],
   "eventHandlers": [],
