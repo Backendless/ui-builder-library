@@ -56,7 +56,7 @@
       "handlerLabel": "Max Value Logic",
       "handlerDescription": "This is a handler to control the max value.",
       "dataBinding": true,
-      "settingTooltip": "Allows "
+      "settingTooltip": "Allows to control the max value"
     },
     {
       "type": "number",
@@ -82,7 +82,7 @@
       "handlerLabel": "Step Logic",
       "handlerDescription": "This is a handler to control the step of the Knob.",
       "dataBinding": true,
-      "settingTooltip": "Allows "
+      "settingTooltip": "Allows to control the step of the Knob"
     },
     {
       "showInSettings": true,
