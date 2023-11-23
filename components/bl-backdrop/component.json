@@ -19,7 +19,7 @@
       "defaultValue": false,
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "controls the visibility of a component."
+      "settingTooltip": "Controls the visibility of a component."
     },
     {
       "type": "select",
@@ -60,7 +60,7 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "controls the loader type of a component."
+      "settingTooltip": "Controls the loader type of a component."
     }
   ],
   "eventHandlers": [
