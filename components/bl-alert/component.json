@@ -15,7 +15,10 @@
       "handlerId": "messageTitleLogic",
       "handlerLabel": "Message Title Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the title for alert."
+      "handlerDescription": "This is a handler for the logic to determine the title for alert.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "The title of an alert message."
     },
     {
       "type": "text",
@@ -24,7 +27,11 @@
       "handlerId": "messageTextLogic",
       "handlerLabel": " Message Text Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the text for alert."
+      "handlerDescription": "This is a handler for the logic to determine the text for alert.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "defaultValue": "",
+      "settingTooltip": "The content of an alert message."
     },
     {
       "type": "select",
@@ -51,7 +58,10 @@
           "label": "Success"
         }
       ],
-      "handlerDescription": "This is a handler for the logic to determine the type of alert (error, warning,  info, success)."
+      "handlerDescription": "This is a handler for the logic to determine the type of alert (error, warning,  info, success).",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "This property allows selecting the alert type: error, warning, info, success."
     },
     {
       "type": "checkbox",
@@ -60,7 +70,10 @@
       "defaultValue": true,
       "handlerId": "iconVisibilityLogic",
       "handlerLabel": "Icon Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if an icon is visible in the alert."
+      "handlerDescription": "This is a handler for the logic to determine if an icon is visible in the alert.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "When enabled, the alert icon is displayed in the message."
     },
     {
       "type": "checkbox",
@@ -69,7 +82,10 @@
       "defaultValue": true,
       "handlerId": "closeButtonVisibilityLogic",
       "handlerLabel": "Close Button Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the close button is visible in the alert."
+      "handlerDescription": "This is a handler for the logic to determine if the close button is visible in the alert.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "When enabled, the alert message appears without the close button."
     },
     {
       "type": "select",
@@ -89,13 +105,19 @@
           "value": "alert-filled",
           "label": "Filled"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "settingTooltip": "This property allows selecting the graphical variant of an alert: root, alert outline, alert filled."
     },
     {
       "type": "number",
       "name": "closingDuration",
       "label": "Closing Duration(ms)",
-      "defaultValue": "200"
+      "defaultValue": "200",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows specifying the animation speed in milliseconds when closing the alert."
     }
   ],
   "eventHandlers": [

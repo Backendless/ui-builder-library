@@ -15,7 +15,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "controlVisibilityLogic"
+      "handlerId": "controlVisibilityLogic",
+      "settingTooltip": "Enables showing the Open Drawer button."
     },
     {
       "type": "text",
@@ -24,7 +25,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "controlLabelLogic",
-      "defaultValue": "Open Drawer"
+      "defaultValue": "Open Drawer",
+      "settingTooltip": "Controls the label of the Open Drawer button."
     },
     {
       "type": "select",
@@ -51,7 +53,8 @@
           "value": "left",
           "label": "Left"
         }
-      ]
+      ],
+      "settingTooltip": "Controls the placement of the drawer window."
     },
     {
       "type": "text",
@@ -62,7 +65,8 @@
       "hasLogicHandler": true,
       "handlerId": "sizeLogic",
       "handlerLabel": "Size Logic",
-      "handlerDescription": "This is a handler for the logic to determine the size of the drawer window."
+      "handlerDescription": "This is a handler for the logic to determine the size of the drawer window.",
+      "settingTooltip": "Controls the size of the drawer window."
     },
     {
       "type": "checkbox",
@@ -71,7 +75,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "backdropVisibilityLogic"
+      "handlerId": "backdropVisibilityLogic",
+      "settingTooltip": "Enables showing the backdrop when the drawer window is opened."
     },
     {
       "type": "checkbox",
@@ -80,7 +85,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "closeOnClickOutsideLogic"
+      "handlerId": "closeOnClickOutsideLogic",
+      "settingTooltip": "Enables closing the drawer window by clicking outside it."
     },
     {
       "type": "checkbox",
@@ -89,7 +95,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "closeOnEscapeLogic"
+      "handlerId": "closeOnEscapeLogic",
+      "settingTooltip": "Enables closing the drawer window by pressing the Escape button."
     },
     {
       "type": "range",
@@ -101,7 +108,8 @@
       "handlerId": "animationDurationLogic",
       "min": "0",
       "max": "1000",
-      "step": "100"
+      "step": "100",
+      "settingTooltip": "Specifies how long the drawer window opens and closes."
     },
     {
       "type": "checkbox",
@@ -112,7 +120,8 @@
       "hasLogicHandler": true,
       "handlerId": "isOpenLogic",
       "handlerLabel": "Is Open Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the drawer window is open or closed."
+      "handlerDescription": "This is a handler for the logic to determine if the drawer window is open or closed.",
+      "settingTooltip": "Controls whether the drawer window is open or closed."
     }
   ],
   "eventHandlers": [
