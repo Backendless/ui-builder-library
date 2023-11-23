@@ -18,7 +18,7 @@
       "handlerDescription": "This is a handler for the logic to determine the customer's HTML. ",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "Allows write your HTML"
+      "settingTooltip": "Allows write your HTML."
     }
   ],
   "eventHandlers": [],
