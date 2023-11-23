@@ -18,7 +18,8 @@
       "defaultValue": "10",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine the count of pages"
     },
     {
       "type": "number",
@@ -30,7 +31,8 @@
       "handlerDescription": "This is a handler for the logic to determine how many digits to display either side of current page.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine how many digits to display either side of current page"
     },
     {
       "type": "select",
@@ -56,7 +58,8 @@
       ],
       "defaultValue": "button",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the variant of pagination style"
     },
     {
       "type": "select",
@@ -78,7 +81,8 @@
         }
       ],
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the size for pagination"
     },
     {
       "type": "checkbox",
@@ -86,7 +90,8 @@
       "label": "Next Button",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the visible or not visible \"Next\" button"
     },
     {
       "type": "checkbox",
@@ -94,7 +99,8 @@
       "label": "Previous Button",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the visible or not visible \"Previous\" button"
     },
     {
       "type": "checkbox",
@@ -102,7 +108,8 @@
       "label": "First Page Button",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the visible or not visible \"First Page\" button"
     },
     {
       "type": "checkbox",
@@ -110,7 +117,8 @@
       "label": "Last Page Button",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the visible or not visible \"Last Page\" button"
     }
   ],
   "eventHandlers": [

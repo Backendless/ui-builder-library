@@ -17,7 +17,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "dataBinding": true,
-      "settingTooltip": "This handler allows you to disable component."
+      "settingTooltip": "This setting allows you to disable component."
     },
     {
       "type": "text",
@@ -38,7 +38,8 @@
       "label": "Placeholder",
       "defaultValue": "Placeholder",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "This setting allows you to specify a placeholder for a component."
     },
     {
       "type": "checkbox",
@@ -50,7 +51,8 @@
       "handlerId": "selectAllCheckboxLogic",
       "handlerLabel": "Select All Checkbox Logic",
       "handlerDescription": "This handler allows you to add a checkbox that selects all options.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "This setting allows you to add a checkbox to select all options."
     },
     {
       "type": "text",
@@ -62,7 +64,8 @@
       "handlerId": "selectAllLabelLogic",
       "handlerLabel": "Select All Label Logic",
       "handlerDescription": "This handler allows you to specify a label for \\\"Select All Checkbox\\\" control.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "This setting allows you to specify label for \"Select All Checkbox\"."
     },
     {
       "type": "select",
@@ -84,7 +87,8 @@
         }
       ],
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "This setting allows you to select a variant of the component."
     },
     {
       "type": "select",
@@ -107,7 +111,8 @@
           "value": "chips",
           "label": "Chips"
         }
-      ]
+      ],
+      "settingTooltip": "This setting allows you to select a type of the component."
     },
     {
       "type": "text",
@@ -132,7 +137,8 @@
       "handlerLabel": "Options logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to set options for the component.",
-      "defaultValue": "[\n  {\"value\": \"Aston Martin Valkyrie\", \"label\": \"Aston Martin Valkyrie\"},\n  {\"value\": \"Bugatti Chiron\", \"label\": \"Bugatti Chiron\"},\n  {\"value\": \"Hennessey Venom GT\", \"label\": \"Hennessey Venom GT\"},\n  {\"value\": \"Tesla Model 3\", \"label\": \"Tesla Model 3\"},\n  {\"value\": \"Porsche Taycan\", \"label\": \"Porsche Taycan\"}\n]"
+      "defaultValue": "[\n  {\"value\": \"Aston Martin Valkyrie\", \"label\": \"Aston Martin Valkyrie\"},\n  {\"value\": \"Bugatti Chiron\", \"label\": \"Bugatti Chiron\"},\n  {\"value\": \"Hennessey Venom GT\", \"label\": \"Hennessey Venom GT\"},\n  {\"value\": \"Tesla Model 3\", \"label\": \"Tesla Model 3\"},\n  {\"value\": \"Porsche Taycan\", \"label\": \"Porsche Taycan\"}\n]",
+      "settingTooltip": "This setting allows you to add options to the component. Signature of options: list of objects { label: String, value: String}"
     }
   ],
   "eventHandlers": [

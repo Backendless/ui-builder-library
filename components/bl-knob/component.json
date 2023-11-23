@@ -18,7 +18,8 @@
       "handlerId": "initialValueLogic",
       "handlerLabel": "Initial Value Logic",
       "handlerDescription": "This is a handler to control the initial value.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to control the initial value."
     },
     {
       "type": "checkbox",
@@ -29,7 +30,8 @@
       "handlerId": "readOnlyLogic",
       "handlerLabel": "Read Only Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler that controls the readOnly property."
+      "handlerDescription": "This is a handler that controls the readOnly property.",
+      "settingTooltip": "Allows to control the readOnly property."
     },
     {
       "type": "checkbox",
@@ -40,7 +42,8 @@
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
       "handlerDescription": "This is a handler to control the disabled property.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to control the disabled property."
     },
     {
       "type": "number",
@@ -52,7 +55,8 @@
       "handlerId": "maxValueLogic",
       "handlerLabel": "Max Value Logic",
       "handlerDescription": "This is a handler to control the max value.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows "
     },
     {
       "type": "number",
@@ -64,7 +68,8 @@
       "handlerId": "minValueLogic",
       "handlerLabel": "Min Value Logic",
       "handlerDescription": "This is a handler to control the min value.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to control the min value."
     },
     {
       "type": "number",
@@ -76,7 +81,8 @@
       "handlerId": "stepLogic",
       "handlerLabel": "Step Logic",
       "handlerDescription": "This is a handler to control the step of the Knob.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows "
     },
     {
       "showInSettings": true,
@@ -88,7 +94,8 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler to control the dial width of the Knob.",
       "type": "text",
-      "defaultValue": "14"
+      "defaultValue": "14",
+      "settingTooltip": "Allows to control the dial width of the Knob."
     },
     {
       "type": "text",
@@ -100,7 +107,8 @@
       "handlerId": "valueTemplateLogic",
       "handlerLabel": "Value Template Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler to control the value template of the Knob."
+      "handlerDescription": "This is a handler to control the value template of the Knob.",
+      "settingTooltip": "Allows to control the value template of the Knob."
     },
     {
       "type": "number",
@@ -112,7 +120,8 @@
       "handlerId": "sizeLogic",
       "handlerLabel": "Size Logic",
       "handlerDescription": "This is a handler to control the size of the Knob.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to control the size of the Knob."
     },
     {
       "type": "color",
@@ -124,7 +133,8 @@
       "handlerId": "valueColorLogic",
       "handlerLabel": "Value Color Logic",
       "handlerDescription": "This is a handler to control the value color of the Knob.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to control the value color of the Knob."
     },
     {
       "type": "color",
@@ -136,7 +146,8 @@
       "handlerId": "rangeColorLogic",
       "handlerLabel": "Range Color Logic",
       "handlerDescription": "This is a handler to control the range color of the Knob.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to control the range color of the Knob."
     }
   ],
   "eventHandlers": [
