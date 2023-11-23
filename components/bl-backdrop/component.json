@@ -16,7 +16,10 @@
       "handlerId": "backdropVisibilityHandler",
       "handlerDescription": "Used to control the visibility of a component.",
       "dataBinding": true,
-      "defaultValue": false
+      "defaultValue": false,
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "controls the visibility of a component."
     },
     {
       "type": "select",
@@ -54,7 +57,10 @@
           "value": "radar",
           "label": "Radar"
         }
-      ]
+      ],
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "controls the loader type of a component."
     }
   ],
   "eventHandlers": [
