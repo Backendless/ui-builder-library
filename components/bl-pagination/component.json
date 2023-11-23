@@ -1,7 +1,7 @@
 {
   "id": "c_1505076c978bd1a43a67369c0f255644",
   "name": "Pagination",
-  "description": "Pagination is a component for switching between pages",
+  "description": "Pagination is a component for switching between pages.",
   "showInToolbox": true,
   "faIcon": "chevron-circle-right",
   "mainJS": "dist/index.js",
@@ -19,7 +19,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "dataBinding": true,
-      "settingTooltip": "Allows to determine the count of pages"
+      "settingTooltip": "Allows to determine the count of pages."
     },
     {
       "type": "number",
@@ -32,7 +32,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "dataBinding": true,
-      "settingTooltip": "Allows to determine how many digits to display either side of current page"
+      "settingTooltip": "Allows to determine how many digits to display either side of current page."
     },
     {
       "type": "select",
@@ -59,7 +59,7 @@
       "defaultValue": "button",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the variant of pagination style"
+      "settingTooltip": "Allows to determine the variant of pagination style."
     },
     {
       "type": "select",
@@ -82,7 +82,7 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the size for pagination"
+      "settingTooltip": "Allows to determine the size for pagination."
     },
     {
       "type": "checkbox",
@@ -91,7 +91,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the visible or not visible \"Next\" button"
+      "settingTooltip": "Allows to determine the visible or not visible \"Next\" button."
     },
     {
       "type": "checkbox",
@@ -100,7 +100,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the visible or not visible \"Previous\" button"
+      "settingTooltip": "Allows to determine the visible or not visible \"Previous\" button."
     },
     {
       "type": "checkbox",
@@ -109,7 +109,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the visible or not visible \"First Page\" button"
+      "settingTooltip": "Allows to determine the visible or not visible \"First Page\" button."
     },
     {
       "type": "checkbox",
@@ -118,7 +118,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the visible or not visible \"Last Page\" button"
+      "settingTooltip": "Allows to determine the visible or not visible \"Last Page\" button."
     }
   ],
   "eventHandlers": [
