@@ -17,7 +17,7 @@
       "label": "Image Url",
       "handlerLabel": "Image Url Logic",
       "handlerDescription": "This is a handler for the logic to determine the image of the cropper.",
-      "settingTooltip": "controls the image of the cropper",
+      "settingTooltip": "Controls the image of the cropper.",
       "defaultValue": ""
     },
     {
@@ -28,7 +28,7 @@
       "defaultValue": "Drop image here or click to select",
       "hasLogicHandler": false,
       "handlerId": "initialLabelLogic",
-      "settingTooltip": "controls the initial label of the cropper"
+      "settingTooltip": "Controls the initial label of the cropper."
     },
     {
       "type": "checkbox",
@@ -40,7 +40,7 @@
       "handlerId": "toolbarVisibilityLogic",
       "handlerLabel": "Toolbar Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the toolbar should be visible.",
-      "settingTooltip": "enables showing the toolbar of the cropper"
+      "settingTooltip": "Enables showing the toolbar of the cropper."
     },
     {
       "type": "checkbox",
@@ -52,7 +52,7 @@
       "handlerId": "addImageButtonVisibilityLogic",
       "handlerLabel": "Add Image Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the Add Image button should be visible.",
-      "settingTooltip": "controls the label of the Add Image button"
+      "settingTooltip": "Controls the label of the Add Image button."
     },
     {
       "type": "checkbox",
@@ -64,7 +64,7 @@
       "handlerId": "cleanButtonVisibilityLogic",
       "handlerLabel": "Clean Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the Clean button should be visible.",
-      "settingTooltip": "enables showing the Clean button"
+      "settingTooltip": "Enables showing the Clean button."
     },
     {
       "type": "checkbox",
@@ -76,7 +76,7 @@
       "handlerId": "saveButtonVisibilityLogic",
       "handlerLabel": "Save Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the Save button should be visible.",
-      "settingTooltip": "enables showing the Save button"
+      "settingTooltip": "Enables showing the Save button."
     },
     {
       "type": "checkbox",
@@ -88,7 +88,7 @@
       "handlerId": "downloadButtonVisibilityLogic",
       "handlerLabel": "Download Button Visibility Logic",
       "handlerDescription": "This is a handler for the logic to determine if the Download button should be visible.",
-      "settingTooltip": "enables showing the Download button"
+      "settingTooltip": "Enables showing the Download button."
     },
     {
       "type": "select",
@@ -120,7 +120,7 @@
           "label": "2:3"
         }
       ],
-      "settingTooltip": "controls the aspect ratio of the crop box"
+      "settingTooltip": "Controls the aspect ratio of the crop box."
     },
     {
       "type": "select",
@@ -144,7 +144,7 @@
           "label": "none"
         }
       ],
-      "settingTooltip": "controls the dragging mode of the cropper"
+      "settingTooltip": "Controls the dragging mode of the cropper."
     },
     {
       "type": "checkbox",
@@ -154,7 +154,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "cropBoxModalLogic",
-      "settingTooltip": "enables showing the black modal above the image and under the crop box"
+      "settingTooltip": "Enables showing the black modal above the image and under the crop box."
     },
     {
       "type": "checkbox",
@@ -164,7 +164,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "cropBoxGuidesLogic",
-      "settingTooltip": "enables showing the dashed lines above the crop box"
+      "settingTooltip": "Enables showing the dashed lines above the crop box."
     },
     {
       "type": "checkbox",
@@ -174,7 +174,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "centerIndicatorLogic",
-      "settingTooltip": "enables showing the center indicator above the crop box"
+      "settingTooltip": "Enables showing the center indicator above the crop box."
     },
     {
       "type": "checkbox",
@@ -184,7 +184,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "cropBoxHighlightLogic",
-      "settingTooltip": "enables showing the white modal above the crop box"
+      "settingTooltip": "Enables showing the white modal above the crop box."
     },
     {
       "type": "checkbox",
@@ -194,7 +194,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "backgroundGridLogic",
-      "settingTooltip": "enables showing the grid background of the container"
+      "settingTooltip": "Enables showing the grid background of the container."
     },
     {
       "type": "checkbox",
@@ -204,7 +204,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "autoCropLogic",
-      "settingTooltip": "enables to crop the image automatically when initialized"
+      "settingTooltip": "Enables to crop the image automatically when initialized."
     },
     {
       "type": "select",
@@ -256,7 +256,7 @@
           "label": "100%"
         }
       ],
-      "settingTooltip": "controls the automatic cropping area size"
+      "settingTooltip": "Controls the automatic cropping area size."
     },
     {
       "type": "checkbox",
@@ -266,7 +266,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "movableImageLogic",
-      "settingTooltip": "enables to move the image"
+      "settingTooltip": "Enables to move the image."
     },
     {
       "type": "checkbox",
@@ -276,7 +276,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "rotatableImageLogic",
-      "settingTooltip": "enables to rotate the image"
+      "settingTooltip": "Enables to rotate the image."
     },
     {
       "type": "checkbox",
@@ -286,7 +286,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "scalableImageLogic",
-      "settingTooltip": "enables to scale the image"
+      "settingTooltip": "Enables to scale the image."
     },
     {
       "type": "checkbox",
@@ -296,7 +296,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "zoomableImageLogic",
-      "settingTooltip": "enables to zoom the image"
+      "settingTooltip": "Enables to zoom the image."
     },
     {
       "type": "checkbox",
@@ -306,7 +306,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "zoomOnTouchLogic",
-      "settingTooltip": "enables to zoom the image by dragging touch"
+      "settingTooltip": "Enables to zoom the image by dragging touch."
     },
     {
       "type": "checkbox",
@@ -316,7 +316,7 @@
       "hasLogicHandler": false,
       "handlerId": "zoomOnWheelLogic",
       "defaultValue": true,
-      "settingTooltip": "enables to zoom the image by mouse wheeling"
+      "settingTooltip": "Enables to zoom the image by mouse wheeling."
     },
     {
       "type": "checkbox",
@@ -326,7 +326,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "cropBoxMovableLogic",
-      "settingTooltip": "enables to move the crop box by dragging"
+      "settingTooltip": "Enables to move the crop box by dragging."
     },
     {
       "type": "checkbox",
@@ -336,7 +336,7 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "cropBoxResizableLogic",
-      "settingTooltip": "enables to resize the crop box by dragging"
+      "settingTooltip": "Enables to resize the crop box by dragging."
     },
     {
       "type": "checkbox",
@@ -346,7 +346,7 @@
       "hasLogicHandler": false,
       "handlerId": "toggleDragModeOnDblclickLogic",
       "defaultValue": true,
-      "settingTooltip": "enables to toggle drag mode between crop and move when clicking twice on the cropper"
+      "settingTooltip": "Enables to toggle drag mode between crop and move when clicking twice on the cropper."
     },
     {
       "type": "number",
@@ -356,7 +356,7 @@
       "defaultValue": "200",
       "hasLogicHandler": false,
       "handlerId": "minContainerWidthLogic",
-      "settingTooltip": "controls the minimum width of the cropper container"
+      "settingTooltip": "Controls the minimum width of the cropper container."
     },
     {
       "type": "number",
@@ -366,7 +366,7 @@
       "defaultValue": "100",
       "hasLogicHandler": false,
       "handlerId": "minContainerHeightLogic",
-      "settingTooltip": "controls the minimum height of the cropper container"
+      "settingTooltip": "Controls the minimum height of the cropper container."
     },
     {
       "type": "number",
@@ -376,7 +376,7 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "minCanvasWidthLogic",
-      "settingTooltip": "controls the minimum width of the canvas (image wrapper)"
+      "settingTooltip": "Controls the minimum width of the canvas (image wrapper)."
     },
     {
       "type": "number",
@@ -386,7 +386,7 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "minCanvasHeightLogic",
-      "settingTooltip": "controls the minimum height of the canvas (image wrapper)"
+      "settingTooltip": "Controls the minimum height of the canvas (image wrapper)."
     },
     {
       "type": "number",
@@ -396,7 +396,7 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "minCropBoxWidthLogic",
-      "settingTooltip": "controls the minimum width of the crop box"
+      "settingTooltip": "Controls the minimum width of the crop box."
     },
     {
       "type": "number",
@@ -406,7 +406,7 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "minCropBoxHeightLogic",
-      "settingTooltip": "controls the minimum height of the crop box"
+      "settingTooltip": "Controls the minimum height of the crop box."
     },
     {
       "showInSettings": true,
@@ -416,7 +416,7 @@
       "label": "Add Image Button Label",
       "type": "text",
       "defaultValue": "Add image",
-      "settingTooltip": "controls the label of the Add Image button"
+      "settingTooltip": "Controls the label of the Add Image button."
     },
     {
       "type": "text",
@@ -426,7 +426,7 @@
       "hasLogicHandler": false,
       "handlerId": "cleanButtonLabelLogic",
       "defaultValue": "Clean",
-      "settingTooltip": "controls the label of the Clean button"
+      "settingTooltip": "Controls the label of the Clean button."
     },
     {
       "type": "text",
@@ -436,7 +436,7 @@
       "defaultValue": "Save",
       "hasLogicHandler": false,
       "handlerId": "saveButtonLabelLogic",
-      "settingTooltip": "controls the label of the Save button"
+      "settingTooltip": "Controls the label of the Save button."
     },
     {
       "type": "text",
@@ -446,7 +446,7 @@
       "defaultValue": "Download",
       "hasLogicHandler": false,
       "handlerId": "downloadButtonLabelLogic",
-      "settingTooltip": "controls the label of the Download button"
+      "settingTooltip": "Controls the label of the Download button."
     }
   ],
   "eventHandlers": [
