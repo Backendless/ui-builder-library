@@ -18,7 +18,7 @@
       "dataBinding": true,
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "controls the label of the badge"
+      "settingTooltip": "Controls the label of the badge."
     },
     {
       "type": "color",
@@ -26,7 +26,7 @@
       "label": "Badge Label Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the color of the badge label"
+      "settingTooltip": "Controls the color of the badge label."
     },
     {
       "type": "color",
@@ -34,7 +34,7 @@
       "label": "Badge Background Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the background color of the badge"
+      "settingTooltip": "Controls the background color of the badge."
     },
     {
       "name": "badgeFontSize",
@@ -42,7 +42,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the font size of the badge label"
+      "settingTooltip": "Controls the font size of the badge label."
     },
     {
       "type": "select",
@@ -69,7 +69,7 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the position of the badge"
+      "settingTooltip": "Controls the position of the badge."
     },
     {
       "name": "badgeVisibility",
@@ -82,7 +82,7 @@
       "defaultValue": true,
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "enables the visibility of the badge"
+      "settingTooltip": "Enables the visibility of the badge."
     },
     {
       "name": "badgeWidth",
@@ -90,7 +90,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the width of the badge"
+      "settingTooltip": "Controls the width of the badge."
     },
     {
       "name": "badgeHeight",
@@ -98,7 +98,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the height of the badge"
+      "settingTooltip": "Controls the height of the badge."
     },
     {
       "type": "select",
@@ -121,7 +121,7 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the form of the badge"
+      "settingTooltip": "Controls the form of the badge."
     },
     {
       "type": "mui_icon",
@@ -129,7 +129,7 @@
       "label": "Icon",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "specifies the icon content of the component"
+      "settingTooltip": "Specifies the icon content of the component."
     },
     {
       "name": "textContent",
@@ -137,7 +137,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "specifies the text content of the component"
+      "settingTooltip": "Specifies the text content of the component."
     },
     {
       "name": "contentFontSize",
@@ -145,7 +145,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the font size of the content"
+      "settingTooltip": "Controls the font size of the content."
     },
     {
       "name": "imageUrl",
@@ -153,7 +153,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "specifies the image content of the component"
+      "settingTooltip": "Specifies the image content of the component."
     },
     {
       "name": "imageWidth",
@@ -161,7 +161,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the width of the image content"
+      "settingTooltip": "Controls the width of the image content."
     },
     {
       "name": "padding",
@@ -169,7 +169,7 @@
       "type": "text",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "controls the distance from the badge to the component content"
+      "settingTooltip": "Controls the distance from the badge to the component content."
     }
   ],
   "eventHandlers": [
