@@ -81,7 +81,7 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows select type of Simple Modal (\"alert\", \"prompt\", \"confirm\")."
+      "settingTooltip": "Allows to select type of Simple Modal (\"alert\", \"prompt\", \"confirm\")."
     },
     {
       "type": "text",
