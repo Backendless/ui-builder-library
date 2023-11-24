@@ -17,7 +17,8 @@
       "label": "Label",
       "defaultValue": "Select Items",
       "handlerLabel": "Label Logic",
-      "handlerDescription": "This is a handler for the logic to determine a label displayed in the selection box. When the handler returns a string, it is used as the label."
+      "handlerDescription": "This is a handler for the logic to determine a label displayed in the selection box. When the handler returns a string, it is used as the label.",
+      "settingTooltip": "Controls the hint text for the input field."
     },
     {
       "type": "json",
@@ -28,7 +29,8 @@
       "hasLogicHandler": true,
       "handlerId": "optionsLogic",
       "handlerLabel": "Options Logic",
-      "handlerDescription": "This is a handler for the logic to determine a collection of options provided by the component."
+      "handlerDescription": "This is a handler for the logic to determine a collection of options provided by the component.",
+      "settingTooltip": "Specifies an array of options to display. Signature of Option: {key: String, label: String, data: Any, children: [ Option ]}."
     },
     {
       "type": "text",
@@ -38,7 +40,8 @@
       "hasLogicHandler": true,
       "handlerId": "selectedOptionKeyLogic",
       "handlerLabel": "Selected Option Key(s) Logic",
-      "handlerDescription": "This is a handler for the logic to make a programmatic selection of the option(s). The handler should return the key assigned to the option which the logic would like to select for single mode. In multiple mode it should return object with key-value pairs where key is the node key and value is a boolean to indicate selection. In checkbox mode, instead of a boolean, value should be an object that has \"checked\" and \"partialChecked\" properties to represent the checked state of a node."
+      "handlerDescription": "This is a handler for the logic to make a programmatic selection of the option(s). The handler should return the key assigned to the option which the logic would like to select for single mode. In multiple mode it should return object with key-value pairs where key is the node key and value is a boolean to indicate selection. In checkbox mode, instead of a boolean, value should be an object that has \"checked\" and \"partialChecked\" properties to represent the checked state of a node.",
+      "settingTooltip": "Controls the selection state of the component. If there are several keys, they should be separated by commas."
     },
     {
       "type": "select",
@@ -61,7 +64,8 @@
           "value": "checkbox",
           "label": "Checkbox"
         }
-      ]
+      ],
+      "settingTooltip": "Controls the selection mode of the options."
     },
     {
       "type": "checkbox",
@@ -69,7 +73,8 @@
       "label": "Chips Visibility",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "chipsVisibilityLogic"
+      "handlerId": "chipsVisibilityLogic",
+      "settingTooltip": "Enables showing selected items as tokens."
     },
     {
       "type": "checkbox",
@@ -79,7 +84,8 @@
       "hasLogicHandler": true,
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled State Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the component should be disabled. When the handler returns true, the component becomes disabled."
+      "handlerDescription": "This is a handler for the logic to determine if the component should be disabled. When the handler returns true, the component becomes disabled.",
+      "settingTooltip": "Specifies that the component should be disabled."
     },
     {
       "type": "checkbox",
@@ -88,7 +94,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "filterVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Enables showing an input field to filter the items."
     },
     {
       "type": "checkbox",
@@ -96,7 +103,8 @@
       "label": "Reset Filter On Hide",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "resetFilterOnHideLogic"
+      "handlerId": "resetFilterOnHideLogic",
+      "settingTooltip": "Enables clearing the filter value when hiding the dropdown list."
     },
     {
       "type": "checkbox",
@@ -105,7 +113,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "filterInputAutoFocusLogic"
+      "handlerId": "filterInputAutoFocusLogic",
+      "settingTooltip": "Enables focusing the filter input automatically when the dropdown list is opened."
     },
     {
       "type": "text",
@@ -113,7 +122,8 @@
       "label": "Filter Placeholder",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "filterPlaceholderLogic"
+      "handlerId": "filterPlaceholderLogic",
+      "settingTooltip": "Controls placeholder text to show when filter input is empty."
     },
     {
       "type": "text",
@@ -122,7 +132,8 @@
       "showInSettings": true,
       "defaultValue": "400px",
       "hasLogicHandler": false,
-      "handlerId": "optionsPanelHeightLogic"
+      "handlerId": "optionsPanelHeightLogic",
+      "settingTooltip": "Controls maximum height of the options panel."
     },
     {
       "type": "checkbox",
@@ -130,7 +141,8 @@
       "label": "Meta Key Selection",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "metaKeySelectionLogic"
+      "handlerId": "metaKeySelectionLogic",
+      "settingTooltip": "Feature Only for a \"Multiple\" selection mode. Allows a Multiple selection only with pressed meta key. Meta keys: Cmd(Mac) or Ctrl(Win/Linux)."
     },
     {
       "type": "text",
@@ -139,7 +151,8 @@
       "showInSettings": true,
       "defaultValue": "No results found",
       "hasLogicHandler": false,
-      "handlerId": "emptyMessageLogic"
+      "handlerId": "emptyMessageLogic",
+      "settingTooltip": "Controls text to display when there are no options."
     }
   ],
   "eventHandlers": [

@@ -14,7 +14,8 @@
       "type": "text",
       "defaultValue": "Upload",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls label on the Upload button."
     },
     {
       "type": "checkbox",
@@ -25,7 +26,8 @@
       "handlerId": "uploadButtonDisabledLogic",
       "handlerDescription": "This handler controls if the upload button is disabled.",
       "dataBinding": true,
-      "handlerLabel": "Upload Button Disabled Logic"
+      "handlerLabel": "Upload Button Disabled Logic",
+      "settingTooltip": "Controls if the upload button is disabled."
     },
     {
       "type": "checkbox",
@@ -37,7 +39,8 @@
       "handlerId": "uploadButtonVisibleLogic",
       "handlerDescription": "This handler controls if the upload button is visible.",
       "dataBinding": true,
-      "handlerLabel": "Upload Button Visibility Logic"
+      "handlerLabel": "Upload Button Visibility Logic",
+      "settingTooltip": "Controls if the upload button is visible."
     },
     {
       "name": "makePhotoButtonLabel",
@@ -45,7 +48,8 @@
       "type": "text",
       "defaultValue": "Make photo",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls label on the Make photo button."
     },
     {
       "name": "makePhotoButtonDisabled",
@@ -57,7 +61,8 @@
       "defaultValue": false,
       "showInSettings": true,
       "hasLogicHandler": true,
-      "handlerDescription": "This handler controls if the photo button is disabled."
+      "handlerDescription": "This handler controls if the photo button is disabled.",
+      "settingTooltip": "Controls if the photo button is disabled."
     },
     {
       "type": "checkbox",
@@ -69,7 +74,8 @@
       "handlerId": "makePhotoButtonVisibleLogic",
       "handlerLabel": "Photo Button Visible Logic",
       "handlerDescription": "This handler controls if the photo button is visible.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Controls if the photo button is visible."
     },
     {
       "name": "makeSnapshotButtonLabel",
@@ -77,7 +83,8 @@
       "type": "text",
       "defaultValue": "Snapshot",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls label on the Make snapshot button."
     },
     {
       "name": "doneButtonLabel",
@@ -85,7 +92,8 @@
       "type": "text",
       "defaultValue": "Done",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls label on the Done button."
     },
     {
       "type": "text",
@@ -93,7 +101,8 @@
       "label": "Popup link label",
       "defaultValue": "Info...",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls link label in popup."
     },
     {
       "type": "text",
@@ -101,7 +110,8 @@
       "label": "No yet  permission popup title",
       "defaultValue": "Give access to the camera",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls title in popup when the user has not yet allowed the use of the camera."
     },
     {
       "type": "text",
@@ -109,7 +119,8 @@
       "label": "No yet permission popup description",
       "defaultValue": "To work properly, you must allow the app to access the camera.",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls description in popup when the user has not yet allowed the use of the camera."
     },
     {
       "type": "text",
@@ -117,7 +128,8 @@
       "label": "No permission popup title",
       "defaultValue": "No camera access",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls title in popup when the user did not allow the use of the camera."
     },
     {
       "type": "text",
@@ -125,7 +137,8 @@
       "label": "No yet permission popup description",
       "defaultValue": "Blocked app access to the camera. Follow the link for detailed information on how to grant access.",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls description in popup when the user did not allow the use of the camera."
     }
   ],
   "eventHandlers": [

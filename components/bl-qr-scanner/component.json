@@ -15,7 +15,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "highlightScanRegionLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Enables showing an outline around the scan region on the video stream."
     },
     {
       "type": "checkbox",
@@ -24,7 +25,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "highlightCodeOutlineLogic"
+      "handlerId": "highlightCodeOutlineLogic",
+      "settingTooltip": "Enables showing an outline around detected QR codes."
     },
     {
       "type": "checkbox",
@@ -33,7 +35,8 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "hideAfterScanLogic",
-      "label": "Hide After Scan"
+      "label": "Hide After Scan",
+      "settingTooltip": "Enables hiding the scanner on successful decoding."
     },
     {
       "type": "number",
@@ -42,7 +45,8 @@
       "showInSettings": true,
       "defaultValue": "25",
       "hasLogicHandler": false,
-      "handlerId": "maxScansPerSecondLogic"
+      "handlerId": "maxScansPerSecondLogic",
+      "settingTooltip": "Controls the frequency of scans."
     },
     {
       "type": "checkbox",
@@ -51,7 +55,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "scanButtonVisibilityLogic"
+      "handlerId": "scanButtonVisibilityLogic",
+      "settingTooltip": "Enables showing the Scan QR Code button."
     },
     {
       "type": "text",
@@ -60,7 +65,8 @@
       "showInSettings": true,
       "defaultValue": "Scan QR Code",
       "hasLogicHandler": false,
-      "handlerId": "scanButtonLabelLogic"
+      "handlerId": "scanButtonLabelLogic",
+      "settingTooltip": "Controls the label of the scan button."
     },
     {
       "type": "checkbox",
@@ -69,7 +75,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "uploadButtonVisibilityLogic"
+      "handlerId": "uploadButtonVisibilityLogic",
+      "settingTooltip": "Enables showing the Upload QR Code button."
     },
     {
       "type": "text",
@@ -78,7 +85,8 @@
       "showInSettings": true,
       "defaultValue": "Upload QR Code",
       "hasLogicHandler": false,
-      "handlerId": "uploadButtonLabelLogic"
+      "handlerId": "uploadButtonLabelLogic",
+      "settingTooltip": "Controls the label of the upload button."
     },
     {
       "type": "select",
@@ -105,7 +113,8 @@
           "value": "column-reverse",
           "label": "Column reverse"
         }
-      ]
+      ],
+      "settingTooltip": "Controls the direction of the buttons."
     }
   ],
   "eventHandlers": [
