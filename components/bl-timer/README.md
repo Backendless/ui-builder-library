@@ -7,6 +7,10 @@ display a digital timer and trigger an event when it completes. You can use it a
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/WPJdsvldiTe3HmNXHueu).
+
 ## Properties
 
 | Property                                     | Type                                                                                                                                                                                      | Default Value                     | Logic                    | Data Binding | UI Setting | Description                                                                                                       |
