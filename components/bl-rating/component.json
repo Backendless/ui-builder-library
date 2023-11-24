@@ -18,7 +18,7 @@
       "dataBinding": true,
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "This is the handler to disable the component.",
+      "settingTooltip": "Allows you to disable the component.",
       "handlerDescription": "This is the handler to disable the component."
     },
     {
@@ -41,7 +41,7 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "This is a handler for selecting the icon that will display the rating.",
+      "settingTooltip": "Setting for selecting the icon that will display the rating.",
       "handlerDescription": "This is a handler for selecting the icon that will display the rating."
     },
     {
@@ -54,7 +54,7 @@
       "handlerLabel": "Default Value Logic",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "This handler allows you to specify a default rating.",
+      "settingTooltip": "Allows you to specify a default rating.",
       "handlerDescription": "This handler allows you to specify a default rating."
     },
     {
@@ -67,7 +67,7 @@
       "dataBinding": true,
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "This handler allows you to specify the number of icons to be displayed.",
+      "settingTooltip": "Allows you to specify the number of icons to be displayed.",
       "handlerDescription": "This handler allows you to specify the number of icons to be displayed."
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "#faaf00",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "This handler allows you to specify a color for icons.",
+      "settingTooltip": "Allows you to specify a color for icons.",
       "handlerDescription": "This handler allows you to specify a color for icons."
     },
     {
@@ -102,7 +102,7 @@
       ],
       "showInSettings": true,
       "hasLogicHandler": true,
-      "settingTooltip": "This handler allows you to specify the precision of rating evaluation.",
+      "settingTooltip": "Allows you to specify the precision of rating evaluation.",
       "handlerDescription": "This handler allows you to specify the precision of rating evaluation."
     }
   ],

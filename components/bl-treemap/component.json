@@ -17,7 +17,7 @@
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
       "dataBinding": true,
-      "settingTooltip": "This handler allows you to disable the component.",
+      "settingTooltip": "Allows you to disable the component.",
       "handlerDescription": "This handler allows you to disable the component."
     },
     {
@@ -28,7 +28,7 @@
       "defaultValue": "Treemap",
       "hasLogicHandler": true,
       "handlerId": "titleLogic",
-      "settingTooltip": "This handler allows you to specify a label for the component.",
+      "settingTooltip": "Allows you to specify a label for the component.",
       "handlerLabel": "Title Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to specify a title for the component."
@@ -37,7 +37,7 @@
       "type": "text",
       "name": "width",
       "label": "Width",
-      "settingTooltip": "This handler allows you to specify the width of the component.",
+      "settingTooltip": "Allows you to specify the width of the component.",
       "showInSettings": true,
       "defaultValue": "100%",
       "hasLogicHandler": true,
@@ -50,7 +50,7 @@
       "type": "text",
       "name": "height",
       "label": "Height",
-      "settingTooltip": "This handler allows you to specify the height of the component.",
+      "settingTooltip": "Allows you to specify the height of the component.",
       "showInSettings": true,
       "defaultValue": "100%",
       "hasLogicHandler": true,
@@ -63,7 +63,7 @@
       "type": "text",
       "name": "fillBrushes",
       "label": "Fill Brushes",
-      "settingTooltip": "This handler allows you to specify the fill brushes.",
+      "settingTooltip": "Allows you to specify the fill brushes.",
       "showInSettings": true,
       "defaultValue": "blue green",
       "hasLogicHandler": true,
@@ -76,7 +76,7 @@
       "type": "checkbox",
       "name": "fillScaleLogarithmic",
       "label": "Fill Scale Logarithmic",
-      "settingTooltip": "This handler allows you to control the logarithmic fill scale.",
+      "settingTooltip": "Allows you to control the logarithmic fill scale.",
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": true,
@@ -110,7 +110,7 @@
       "dataBinding": true,
       "handlerLabel": "Header Display Mode Logic",
       "handlerDescription": "This handler allows you to specify the header display mode.",
-      "settingTooltip": "This handler allows you to specify the header display mode."
+      "settingTooltip": "Allows you to specify the header display mode."
     },
     {
       "type": "json",
@@ -122,7 +122,7 @@
       "handlerLabel": "Data Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to add data to the component.",
-      "settingTooltip": "This handler allows you to add data to the component.",
+      "settingTooltip": "Allows you to add data to the component.Signature of data: list of objects {label: String, value: Number | null, parent: String | null}.",
       "defaultValue": "[\n  {\n    \"label\": \"Europe\",\n    \"value\": null,\n    \"parent\": null\n  },\n  {\n    \"label\": \"Asia\",\n    \"value\": null,\n    \"parent\": null\n  },\n  {\n    \"label\": \"Germany\",\n    \"value\": 357588,\n    \"parent\": \"Europe\"\n  },\n  {\n    \"label\": \"France\",\n    \"value\": 551695,\n    \"parent\": \"Europe\"\n  },\n  {\n    \"label\": \"Vietnam\",\n    \"value\": 331690 ,\n    \"parent\": \"Asia\"\n  },\n  {\n    \"label\": \"Japan\",\n    \"value\": 377973,\n    \"parent\": \"Asia\"\n  }\n]"
     }
   ]
