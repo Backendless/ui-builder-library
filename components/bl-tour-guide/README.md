@@ -4,6 +4,9 @@ Tour Guide is the component for Backendless [UI-Builder](https://backendless.com
 [React Joyride](https://github.com/gilbarbara/react-joyride) library. It provides a way to create a sequence of steps
 that guide users through the features and functionality of an application.
 
+For the best user experience and seamless navigation through the tour steps, we recommend utilizing the root scroll
+of the page. This ensures consistent behavior and a smoother visual experience for your users.
+
 <p align="center">
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
