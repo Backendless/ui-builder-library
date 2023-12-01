@@ -48,6 +48,23 @@ of the page. This ensures consistent behavior and a smoother visual experience f
 |------------------|-----------------------------|----------------------|
 | On Change Event  | when the tour state changes | Tour State: `Object` |
 
+On Change Event is fired when the tour state has changed. One action can change the state multiple times.
+To avoid excessive triggering of the event, please add a condition with specific Tour State parameters on which this
+event should be triggered.
+
+<p align="center">
+  <img src="./example-images/on-change-event.png" alt="on change event example" width="891"/>
+</p>
+
+<details>
+<summary>Try yourself</summary>
+
+```
+<block xmlns="http://www.w3.org/1999/xhtml" type="controls_if" id="T3llC4lLSpEZB)7,{sb+"><value name="IF0"><block type="logic_compare" id="G9*#O)2Hx;My/gvj[[h("><field name="OP">EQ</field><value name="A"><block type="get_object_property" id="b4;Lm8BGRG/*Q/HME)Iq"><value name="prop_name"><shadow type="text" id="NE9,`qixe_=24~vH)/od"><field name="TEXT">type</field></shadow></value><value name="object"><block type="root_block_ui_builder_c_6b0d48d3180372b129fb1dc58bb4554a_onChange_handler_context_blocks_tourState" id="c%UC[bUEzm_s#uTY~Mo(" bl_meta="{&quot;label&quot;:&quot;Tour State&quot;}"></block></value></block></value><value name="B"><block type="text" id="=keaWdxRaHkxIo6y8j@R"><field name="TEXT">tooltip</field></block></value></block></value><statement name="DO0"><block type="text_print" id="!S56^5!x#;LT41L*ucY["><value name="TEXT"><shadow type="text" id="$t+Bp[#=uk.vU0)3m1=@"><field name="TEXT">The tour is over!</field></shadow><block type="get_object_property" id="u_!j))3$#xBZn{Z}C7oQ"><value name="prop_name"><shadow type="text" id="CtYcCaJd.T8{cX~kv)D}"><field name="TEXT">title</field></shadow></value><value name="object"><block type="get_object_property" id="ueK1jt~*eWUVA^ebU|!I"><value name="prop_name"><shadow type="text" id="f1:[,5C6q[0`2$IM1mq%"><field name="TEXT">step</field></shadow></value><value name="object"><block type="root_block_ui_builder_c_6b0d48d3180372b129fb1dc58bb4554a_onChange_handler_context_blocks_tourState" id="]=Jd1)%:gcA3*#Ln^=i." bl_meta="{&quot;label&quot;:&quot;Tour State&quot;}"></block></value></block></value></block></value></block></statement><next><block type="controls_if" id="o@+eo09~MoQ8L:ta;R;Z"><value name="IF0"><block type="logic_compare" id="1Qk/coWg65X8|q+h}(hb"><field name="OP">EQ</field><value name="A"><block type="get_object_property" id="*0T1qL0ojs8emWn;y;h0"><value name="prop_name"><shadow type="text" id="y,#Sdf-isJBr)vw88?.{"><field name="TEXT">type</field></shadow></value><value name="object"><block type="root_block_ui_builder_c_6b0d48d3180372b129fb1dc58bb4554a_onChange_handler_context_blocks_tourState" id="fKvULA,kpviqUPmWU;3I" bl_meta="{&quot;label&quot;:&quot;Tour State&quot;}"></block></value></block></value><value name="B"><block type="text" id="h0Js@GH/$XZ3/jn}p:s;"><field name="TEXT">tour:end</field></block></value></block></value><statement name="DO0"><block type="text_print" id="hRsf/Yxz^P#c?Wn!d;HY"><value name="TEXT"><shadow type="text" id="$t+Bp[#=uk.vU0)3m1=@"><field name="TEXT">The tour is over!</field></shadow></value></block></statement></block></next></block>
+```
+</details>
+
+
 ## Actions
 
 | Action                            | Inputs | Returns |
