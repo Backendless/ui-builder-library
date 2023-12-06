@@ -99,7 +99,7 @@
       "hasLogicHandler": false,
       "handlerId": "scrollingLogic",
       "defaultValue": true,
-      "settingTooltip": "Auto scrolling between steps."
+      "settingTooltip": "Enables auto-scrolling to the next step after the current step is closed while unchecked property keeps the view unchanged. Only for step closing action."
     },
     {
       "type": "json",
