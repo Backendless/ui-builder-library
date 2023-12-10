@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import modalTypes from './modal-types';
+import { modalTypes } from './utils';
 import { sanitize } from './sanitize';
 
 function SimpleModalInput(props) {
@@ -51,7 +51,7 @@ export function Container(props) {
         <p className="simple-modal__text" dangerouslySetInnerHTML={{ __html: sanitizedContent }}></p>
       ) }
 
-      { type === modalTypes.prompt && (
+      { type === modalTypes.PROMPT && (
         <SimpleModalInput
           inputValue={ inputValue }
           setInputValue={ setInputValue }
@@ -86,7 +86,7 @@ export function ModalButtons(props) {
         { closeButtonLabel }
       </button>
 
-      { (type === modalTypes.prompt || type === modalTypes.confirm) && (
+      { (type === modalTypes.PROMPT || type === modalTypes.CONFIRM) && (
         <button
           type="button"
           className="simple-modal__button submit-button"

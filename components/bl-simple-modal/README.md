@@ -14,15 +14,16 @@ View an example of how to install this component and how it works in your UI [he
 
 ## Properties
 
-| Property          | Type                                  | Default Value | Logic               | Data Binding | UI Setting | Description                                                             |
-|-------------------|---------------------------------------|---------------|---------------------|--------------|------------|-------------------------------------------------------------------------|
-| title             | Text                                  |               | Title Logic         | YES          | YES        | Allows write title for Simple Modal.                                    |
-| content           | Text                                  |               | Content Logic       | YES          | YES        | Allows write content for Simple Modal.                                  |
-| closeButtonLabel  | Text                                  | "Close"       | Close Button Label  | YES          | YES        | Allows to write label for close button. Default value "Close".          |
-| submitButtonLabel | Text                                  | "Submit"      | Submit Button Label | YES          | YES        | Allows to write label for Submit Button. Default value "Submit".        |
-| type              | Select ["alert", "prompt", "confirm"] | "alert"       |                     | NO           | YES        | Allows select type of Simple Modal ("alert", "prompt", "confirm").      |
-| placeholder       | Text                                  |               | Placeholder Logic   | YES          | YES        | Allows to write text for input placeholder.                             |
-| closingDuration   | Number                                | 100           |                     | NO           | YES        | Allows to specify speed animation opening and closing for Simple Modal. |
+| Property          | Type                                  | Default Value | Logic               | Data Binding | UI Setting | Description                                                                           |
+|-------------------|---------------------------------------|---------------|---------------------|--------------|------------|---------------------------------------------------------------------------------------|
+| initialState      | Select ["Hidden", "Displayed"]        | "Displayed"   |                     | NO           | YES        | Allows to specify the component's initial state, whether it will be displayed or not. |
+| title             | Text                                  |               | Title Logic         | YES          | YES        | Allows write title for Simple Modal.                                                  |
+| content           | Text                                  |               | Content Logic       | YES          | YES        | Allows write content for Simple Modal.                                                |
+| closeButtonLabel  | Text                                  | "Close"       | Close Button Label  | YES          | YES        | Allows to write label for close button. Default value "Close".                        |
+| submitButtonLabel | Text                                  | "Submit"      | Submit Button Label | YES          | YES        | Allows to write label for Submit Button. Default value "Submit".                      |
+| type              | Select ["alert", "prompt", "confirm"] | "alert"       |                     | NO           | YES        | Allows select type of Simple Modal ("alert", "prompt", "confirm").                    |
+| placeholder       | Text                                  |               | Placeholder Logic   | YES          | YES        | Allows to write text for input placeholder.                                           |
+| closingDuration   | Number                                | 100           |                     | NO           | YES        | Allows to specify speed animation opening and closing for Simple Modal.               |
 
 ## Events
 
