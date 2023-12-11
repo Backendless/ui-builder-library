@@ -11,6 +11,9 @@ of the page. This ensures consistent behavior and a smoother visual experience f
   <img src="./thumbnail.png" alt="main thumbnail" width="780"/>
 </p>
 
+## Demo
+View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/4HjXokeB6EMdVtFcrYOY).
+
 ## Properties
 
 | Property                | Type       | Default value                                                                                                       | Logic               | Data Binding | UI Setting | Description                                                                                                                                               |
