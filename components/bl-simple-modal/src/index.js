@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Modal } from './modal';
-import { modalState } from './utils';
+import { modalState } from './constants';
 
 export default function SimpleModal({ component, eventHandlers }) {
   const { initialState, closingDuration } = component;

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
-import { modalTypes } from './utils';
 import { sanitize } from './sanitize';
+import { modalTypes } from './constants';
 
 function SimpleModalInput(props) {
   const { inputValue, placeholder, setInputValue, onSubmit } = props;

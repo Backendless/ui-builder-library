@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react';
 
-import { modalTypes } from './utils';
 import { Container, ModalButtons, Title } from './subcomponents';
+import { modalTypes } from './constants';
 
 const { cn } = BackendlessUI.CSSUtils;
 
