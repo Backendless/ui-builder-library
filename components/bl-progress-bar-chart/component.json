@@ -18,7 +18,7 @@
       "handlerLabel": "Disabled Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to disable a component.",
-      "settingTooltip": "This handler allows you to disable a component."
+      "settingTooltip": "Allows you to disable a component."
     },
     {
       "type": "checkbox",
@@ -31,7 +31,7 @@
       "handlerLabel": "Grid Visibility Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to control the visibility of the grid.",
-      "settingTooltip": "This handler allows you to control the visibility of the grid."
+      "settingTooltip": "Allows you to control the visibility of the grid."
     },
     {
       "type": "select",
@@ -53,7 +53,8 @@
           "label": "Horizontal Bars"
         }
       ],
-      "handlerDescription": "This handler allows you to specify the chart orientation."
+      "handlerDescription": "This handler allows you to specify the chart orientation.",
+      "settingTooltip": "Allows you to specify the chart orientation."
     },
     {
       "type": "select",
@@ -84,7 +85,7 @@
       "dataBinding": true,
       "handlerLabel": "Grid Marks Logic",
       "handlerDescription": "This handler allows you to specify the number of marks.",
-      "settingTooltip": "This handler allows you to specify the number of marks."
+      "settingTooltip": "Allows you to specify the number of marks."
     },
     {
       "type": "number",
@@ -96,7 +97,8 @@
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to specify the height of a component."
+      "handlerDescription": "This handler allows you to specify the height of a component.",
+      "settingTooltip": "Allows you to specify the height of a component."
     },
     {
       "type": "number",
@@ -108,7 +110,8 @@
       "handlerId": "widthLogic",
       "handlerLabel": "Width Logic",
       "dataBinding": true,
-      "handlerDescription": "This handler allows you to specify the width of a component."
+      "handlerDescription": "This handler allows you to specify the width of a component.",
+      "settingTooltip": "Allows you to specify the width of a component."
     },
     {
       "type": "json",
@@ -119,7 +122,7 @@
       "handlerId": "dataLogic",
       "handlerLabel": "Data Logic",
       "dataBinding": true,
-      "settingTooltip": "This handler allows you to add chart items to the component.",
+      "settingTooltip": "Allows you to add chart items to the component. Signature of the item: list of object {name: String, goal: Number, progress: Number}.",
       "handlerDescription": "This handler allows you to add chart items to the component.",
       "defaultValue": "[\n  {\n    \"name\": \"Example 1\",\n    \"goal\": 100,\n    \"progress\": 65\n  },\n  {\n    \"name\": \"Example 2\",\n    \"goal\": 100,\n    \"progress\": 45\n  }\n]"
     }

@@ -15,7 +15,10 @@
       "handlerId": "htmlLogic",
       "handlerLabel": "HTML Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine the customer's HTML. "
+      "handlerDescription": "This is a handler for the logic to determine the customer's HTML. ",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows write your HTML."
     }
   ],
   "eventHandlers": [],

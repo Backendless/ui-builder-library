@@ -14,7 +14,8 @@
       "label": "Picker Trigger Visibility",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "When this parameter is set to true, the Color Picker will be loaded on the page in the collapsed form. Otherwise, once the page is loaded the component's interface will be hidden."
     },
     {
       "type": "checkbox",
@@ -22,7 +23,8 @@
       "label": "Circle Color Picker",
       "defaultValue": false,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Enables the wheel layout for the Color Picker."
     },
     {
       "type": "checkbox",
@@ -30,7 +32,8 @@
       "label": "Vertical Color Picker",
       "defaultValue": false,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "When set to false, the component is loaded horizontally, otherwise vertically."
     },
     {
       "type": "checkbox",
@@ -38,7 +41,8 @@
       "label": "Opacity Slider Visibility",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Enables the opacity slider in the color picker menu."
     },
     {
       "type": "checkbox",
@@ -46,7 +50,8 @@
       "label": "Opacity Input Visibility",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Enables the opacity input in the color picker menu."
     },
     {
       "type": "checkbox",
@@ -54,7 +59,8 @@
       "label": "RGB Format Visibility",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Enables the RGB color input fields in the Color Picker menu."
     },
     {
       "type": "checkbox",
@@ -62,7 +68,8 @@
       "label": "HSL Format Visibility",
       "defaultValue": true,
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Enables the HSL color input fields in the Color Picker menu."
     },
     {
       "type": "color",
@@ -74,7 +81,8 @@
       "handlerLabel": "Selected Color Logic",
       "handlerDescription": "This is a handler for the logic to determine what color should be applied in the color picker.",
       "dataBinding": true,
-      "label": "Selected Color"
+      "label": "Selected Color",
+      "settingTooltip": "Controls the default color of the Color Picker."
     }
   ],
   "eventHandlers": [

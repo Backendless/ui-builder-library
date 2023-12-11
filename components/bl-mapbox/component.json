@@ -17,7 +17,8 @@
       "handlerId": "markersLogic",
       "handlerLabel": "Markers Logic",
       "dataBinding": true,
-      "handlerDescription": "Specifies an array of markers to display on the map."
+      "handlerDescription": "Specifies an array of markers to display on the map.",
+      "settingTooltip": "Specifies an array of markers to display on the map. Signature of marker: {color, description, coordinates: {lat, lng}, data}."
     },
     {
       "type": "json",
@@ -28,7 +29,8 @@
       "handlerId": "polygonsLogic",
       "handlerLabel": "Polygons Logic",
       "dataBinding": true,
-      "handlerDescription": "Specifies an array of polygons to display on the map."
+      "handlerDescription": "Specifies an array of polygons to display on the map.",
+      "settingTooltip": "Specifies an array of polygons to display on the map. Signature of polygon: {color, description, opacity, polygon: {boundary: points: [ {lat, lng} ]}, outlineWidth, outlineColor}."
     },
     {
       "type": "json",
@@ -40,7 +42,8 @@
       "handlerLabel": "Center Logic",
       "dataBinding": true,
       "handlerDescription": "Used to set center on the map.",
-      "defaultValue": "{\n  \"lat\": 40.730610,\n  \"lng\": -73.935242\n}"
+      "defaultValue": "{\n  \"lat\": 40.730610,\n  \"lng\": -73.935242\n}",
+      "settingTooltip": "Used to set center on the map."
     },
     {
       "type": "number",
@@ -48,7 +51,8 @@
       "label": "Starting Zoom",
       "defaultValue": "10",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the map zoom."
     },
     {
       "type": "checkbox",
@@ -56,14 +60,16 @@
       "label": "Directions",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "directionsLogic"
+      "handlerId": "directionsLogic",
+      "settingTooltip": "Adds directions to the map."
     },
     {
       "type": "checkbox",
       "name": "fullScreen",
       "label": "Full Screen Button",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Adds fullscreen button to the map."
     },
     {
       "type": "checkbox",
@@ -72,7 +78,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "navigationLogic"
+      "handlerId": "navigationLogic",
+      "settingTooltip": "Adds navigation button to the map."
     },
     {
       "type": "checkbox",
@@ -81,7 +88,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "searchBarLogic",
-      "handlerLabel": "Search Bar Logic"
+      "handlerLabel": "Search Bar Logic",
+      "settingTooltip": "Adds search bar to the map."
     },
     {
       "type": "checkbox",
@@ -90,7 +98,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "geolocationLogic",
-      "handlerLabel": "Geolocation Button Logic"
+      "handlerLabel": "Geolocation Button Logic",
+      "settingTooltip": "Adds geolocation button to the map."
     },
     {
       "type": "select",
@@ -128,7 +137,8 @@
         }
       ],
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the map type."
     },
     {
       "type": "color",
@@ -136,7 +146,8 @@
       "label": "Lower atmosphere",
       "defaultValue": "#bad2eb",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Sets lower atmosphere color."
     },
     {
       "type": "color",
@@ -144,7 +155,8 @@
       "label": "Upper atmosphere",
       "defaultValue": "#245cdf",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Sets upper atmosphere color."
     },
     {
       "type": "number",
@@ -152,7 +164,8 @@
       "label": "Atmosphere thickness",
       "defaultValue": "0.2",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Sets atmosphere thickness."
     },
     {
       "type": "color",
@@ -160,7 +173,8 @@
       "label": "Space color",
       "defaultValue": "#0b0b19",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Sets space color."
     },
     {
       "type": "number",
@@ -168,7 +182,8 @@
       "label": "Star intensity",
       "defaultValue": "0.2",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Sets star intensity."
     },
     {
       "type": "text",
@@ -176,7 +191,8 @@
       "label": "Map Style URL",
       "defaultValue": "mapbox://styles/mapbox/streets-v11",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Sets map style."
     }
   ],
   "eventHandlers": [

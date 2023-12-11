@@ -17,8 +17,9 @@
       "label": "URL",
       "handlerLabel": "URL Logic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine URL of markdown file",
-      "defaultValue": "https://raw.githubusercontent.com/Backendless/ui-builder-library/main/components/bl-markdown/README.md"
+      "handlerDescription": "This is a handler for the logic to determine URL of markdown file.",
+      "defaultValue": "https://raw.githubusercontent.com/Backendless/ui-builder-library/main/components/bl-markdown/README.md",
+      "settingTooltip": "Allows determining the url of markdown file."
     },
     {
       "type": "text",
@@ -28,8 +29,9 @@
       "hasLogicHandler": true,
       "handlerId": "textLogic",
       "handlerLabel": "Text Logic",
-      "handlerDescription": "This is a handler for the logic to determine text of markdown",
-      "dataBinding": true
+      "handlerDescription": "This is a handler for the logic to determine text of markdown.",
+      "dataBinding": true,
+      "settingTooltip": "Allows determining the text of markdown."
     },
     {
       "type": "text",
@@ -39,8 +41,9 @@
       "hasLogicHandler": true,
       "handlerId": "heightLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine height for component",
-      "handlerLabel": "Height Logic"
+      "handlerDescription": "This is a handler for the logic to determine height for component.",
+      "handlerLabel": "Height Logic",
+      "settingTooltip": "Allows determining the height of markdown component."
     },
     {
       "type": "text",
@@ -50,8 +53,9 @@
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine width for component",
-      "handlerLabel": "Width Logic"
+      "handlerDescription": "This is a handler for the logic to determine width for component.",
+      "handlerLabel": "Width Logic",
+      "settingTooltip": "Allows determining the width of markdown component."
     }
   ],
   "eventHandlers": [],

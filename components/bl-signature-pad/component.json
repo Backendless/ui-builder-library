@@ -18,7 +18,8 @@
       "dataBinding": true,
       "showInSettings": true,
       "hasLogicHandler": true,
-      "defaultValue": "#000000"
+      "defaultValue": "#000000",
+      "settingTooltip": "Controls the color used to draw the lines."
     },
     {
       "name": "description",
@@ -30,7 +31,8 @@
       "handlerDescription": "This is a handler for the logic to determine the description of the Signature Pad. Value returned by the handler will be used as the description of the Signature Pad.",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Controls the description for the signature pad."
     },
     {
       "type": "checkbox",
@@ -39,7 +41,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "changeColorButtonVisibilityLogic",
-      "defaultValue": true
+      "defaultValue": true,
+      "settingTooltip": "Enables the visibility of the Change Color button."
     },
     {
       "name": "savePNGButtonVisibility",
@@ -51,7 +54,8 @@
       "defaultValue": true,
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Enables the visibility of the Save PNG button."
     },
     {
       "name": "saveJPGButtonVisibility",
@@ -63,7 +67,8 @@
       "defaultValue": true,
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Enables the visibility of the Save JPG button."
     },
     {
       "name": "saveSVGButtonVisibility",
@@ -75,7 +80,8 @@
       "handlerDescription": "This is a handler for the logic to determine if the Save SVG button should be visible. If the handler returns 'true' the button will be displayed.",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Enables the visibility of the Save SVG button."
     },
     {
       "name": "saveSignatureButtonVisibility",
@@ -87,7 +93,8 @@
       "handlerDescription": "This is a handler for the logic to determine if the Save Signature button should be visible. If the handler returns 'true' the button will be displayed.",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Enables the visibility of the Save Signature button."
     },
     {
       "name": "clearButtonLabel",
@@ -95,7 +102,8 @@
       "defaultValue": "Clear",
       "type": "text",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the label of the Clear button."
     },
     {
       "name": "changeColorButtonLabel",
@@ -103,7 +111,8 @@
       "type": "text",
       "defaultValue": "Change Color",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the label of the Change Color button."
     },
     {
       "name": "undoButtonLabel",
@@ -111,7 +120,8 @@
       "type": "text",
       "defaultValue": "Undo",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the label of the Undo button."
     },
     {
       "name": "savePNGButtonLabel",
@@ -119,7 +129,8 @@
       "type": "text",
       "defaultValue": "Save as PNG",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the label of the Save PNG button."
     },
     {
       "name": "saveJPGButtonLabel",
@@ -127,7 +138,8 @@
       "type": "text",
       "defaultValue": "Save as JPG",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the label of the Save JPG button."
     },
     {
       "name": "saveSVGButtonLabel",
@@ -135,7 +147,8 @@
       "type": "text",
       "defaultValue": "Save as SVG",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the label of the Save SVG button."
     },
     {
       "name": "saveSignatureButtonLabel",
@@ -143,7 +156,8 @@
       "type": "text",
       "defaultValue": "Save Signature",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Controls the label of the Save Signature button."
     }
   ],
   "eventHandlers": [

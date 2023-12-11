@@ -28,7 +28,8 @@
       "handlerDescription": "This is a handler for the logic to determine title.",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to determine title."
     },
     {
       "type": "checkbox",
@@ -40,7 +41,8 @@
       "handlerId": "allowDeleteHandler",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to determine if the item is allowed to delete."
     },
     {
       "type": "checkbox",
@@ -52,7 +54,8 @@
       "handlerId": "allowEditHandler",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to determine if the item is allowed to edit."
     },
     {
       "type": "checkbox",
@@ -64,7 +67,8 @@
       "handlerId": "allowAddItemHandler",
       "dataBinding": true,
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to determine if the item is allowed to add."
     },
     {
       "type": "checkbox",
@@ -76,7 +80,8 @@
       "handlerId": "showValuesLogic",
       "handlerLabel": "Show Values Logic",
       "handlerDescription": "This is a handler for the logic to determine if shows the value of the item.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows to determine if show the value of the item."
     }
   ],
   "eventHandlers": [

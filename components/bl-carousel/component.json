@@ -18,7 +18,8 @@
       "handlerId": "imagesDataLogic",
       "handlerLabel": "Images Data Logic",
       "handlerDescription": "This is a handler for the logic to determine data for images slide.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows determinate data for carousel. Signature of polygon: {\"url\": string, \"title\": string, \"content\": string }"
     },
     {
       "type": "text",
@@ -30,7 +31,8 @@
       "handlerId": "heightLogic",
       "handlerLabel": "Height Logic",
       "handlerDescription": "This is a handler for the logic to determine image height.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows determinate height for images."
     },
     {
       "type": "text",
@@ -41,7 +43,8 @@
       "hasLogicHandler": true,
       "handlerId": "widthLogic",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic to determine image width."
+      "handlerDescription": "This is a handler for the logic to determine image width.",
+      "settingTooltip": "Allows determinate width for images."
     },
     {
       "type": "number",
@@ -53,7 +56,8 @@
       "handlerId": "autoplayDelayLogic",
       "dataBinding": true,
       "handlerLabel": "Autoplay Delay Logic",
-      "handlerDescription": "This is a handler for the logic to determine the delay between automatically cycling an item. If this property doesn't set or equal 0, the carousel will not automatically cycle."
+      "handlerDescription": "This is a handler for the logic to determine the delay between automatically cycling an item. If this property doesn't set or equal 0, the carousel will not automatically cycle.",
+      "settingTooltip": "Allows determinate delay(ms) for autoplay."
     },
     {
       "type": "select",
@@ -72,7 +76,8 @@
           "value": "smooth",
           "label": "Smooth Transition"
         }
-      ]
+      ],
+      "settingTooltip": "Allows select type of animation (slide, smooth)."
     },
     {
       "type": "number",
@@ -84,7 +89,8 @@
       "handlerId": "animationDurationLogic",
       "dataBinding": true,
       "handlerLabel": "Animation Duration Logic",
-      "handlerDescription": "This is a handler for the logic to determine the duration of animation. "
+      "handlerDescription": "This is a handler for the logic to determine the duration of animation. ",
+      "settingTooltip": "Allows determinate duration for animation."
     },
     {
       "type": "checkbox",
@@ -94,7 +100,8 @@
       "hasLogicHandler": true,
       "handlerId": "withControlsLogic",
       "handlerLabel": "Controls Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the control buttons should be visible. If the handler returns true, the component will be visible."
+      "handlerDescription": "This is a handler for the logic to determine if the control buttons should be visible. If the handler returns true, the component will be visible.",
+      "settingTooltip": "Allows determine if the control buttons should be visible."
     },
     {
       "type": "checkbox",
@@ -104,7 +111,8 @@
       "hasLogicHandler": true,
       "handlerId": "withIndicatorsLogic",
       "handlerLabel": "Indicators Visibility Logic",
-      "handlerDescription": "This is a handler for the logic to determine if the indicators should be visible. If the handler returns true, the component will be visible."
+      "handlerDescription": "This is a handler for the logic to determine if the indicators should be visible. If the handler returns true, the component will be visible.",
+      "settingTooltip": "Allows determine if the indicators should be visible."
     }
   ],
   "eventHandlers": [

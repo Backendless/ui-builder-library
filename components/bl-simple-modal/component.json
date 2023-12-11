@@ -18,7 +18,8 @@
       "handlerDescription": "This is a handler for the logic to determine the title.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "defaultValue": "Modal Title"
+      "defaultValue": "Modal Title",
+      "settingTooltip": "Allows to write title for Simple Modal."
     },
     {
       "type": "text",
@@ -30,7 +31,8 @@
       "handlerDescription": "This is a handler for the logic to determine the text content of modal window.",
       "showInSettings": true,
       "hasLogicHandler": true,
-      "defaultValue": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
+      "defaultValue": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+      "settingTooltip": "Allows to write content for Simple Modal."
     },
     {
       "type": "text",
@@ -42,7 +44,8 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the label for Submit Button.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to write label for Submit Button. Default value \"Submit\"."
     },
     {
       "type": "text",
@@ -54,7 +57,8 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the label for Close Button.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to write label for close button. Default value \"Close\"."
     },
     {
       "type": "select",
@@ -76,7 +80,8 @@
         }
       ],
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to select type of Simple Modal (\"alert\", \"prompt\", \"confirm\")."
     },
     {
       "type": "text",
@@ -87,7 +92,8 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the text for input placeholder.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to write text for input placeholder."
     },
     {
       "type": "number",
@@ -95,7 +101,8 @@
       "label": "Closing Duration(ms)",
       "defaultValue": "100",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to specify speed animation opening and closing for Simple Modal."
     }
   ],
   "eventHandlers": [
