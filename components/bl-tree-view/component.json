@@ -17,7 +17,8 @@
       "handlerId": "treeItemsLogic",
       "handlerLabel": "Tree Items Logic",
       "handlerDescription": "This is a handler for the logic to determine tree items for the tree view.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Allows you to determine tree items. Signature of data: [{ label: string, value: string, ?children: [{ label, value, ?children }] }]."
     },
     {
       "type": "number",
@@ -29,7 +30,8 @@
       "dataBinding": true,
       "handlerDescription": "This a handler for the logic to determine gap for every nested element",
       "label": "Gap",
-      "handlerLabel": "Gap  Logic"
+      "handlerLabel": "Gap  Logic",
+      "settingTooltip": "Allows you to determine gap for every nested element."
     }
   ],
   "eventHandlers": [

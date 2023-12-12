@@ -17,7 +17,8 @@
       "handlerId": "accordionDataLogic",
       "defaultValue": "[{\"title\": \"Collapsible Group Item #1\", \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"}]",
       "handlerDescription": "This is a handler for the logic to determine the data for the accordion. Array of objects returned by the handler will define the title and content of the accordion sections.",
-      "handlerLabel": "Accordion Data Logic"
+      "handlerLabel": "Accordion Data Logic",
+      "settingTooltip": "Specifies a JSON array containing data for the title and the section : {title: string, content: string}"
     },
     {
       "type": "checkbox",
@@ -26,7 +27,8 @@
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": false,
-      "handlerId": "controlledAccordionLogic"
+      "handlerId": "controlledAccordionLogic",
+      "settingTooltip": "When enabled, only one section expands at a time"
     },
     {
       "type": "color",
@@ -34,7 +36,8 @@
       "label": "Title Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "titleColorLogic"
+      "handlerId": "titleColorLogic",
+      "settingTooltip": "Controls the color of the title"
     },
     {
       "type": "color",
@@ -42,7 +45,8 @@
       "label": "Title Background Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "titleBackgroundColorLogic"
+      "handlerId": "titleBackgroundColorLogic",
+      "settingTooltip": "Controls the background color of the title"
     },
     {
       "type": "text",
@@ -51,7 +55,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "titleFontSizeLogic",
-      "defaultValue": "16px"
+      "defaultValue": "16px",
+      "settingTooltip": "Controls the font size of the title"
     },
     {
       "type": "text",
@@ -60,7 +65,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "titlePaddingLogic",
-      "defaultValue": "12px 16px 12px 10px"
+      "defaultValue": "12px 16px 12px 10px",
+      "settingTooltip": "Controls the padding of the title"
     },
     {
       "type": "color",
@@ -68,7 +74,8 @@
       "label": "Content Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "contentColorLogic"
+      "handlerId": "contentColorLogic",
+      "settingTooltip": "Controls the color of the section's content"
     },
     {
       "type": "color",
@@ -76,7 +83,8 @@
       "label": "Content Background Color",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "contentBackgroundColorLogic"
+      "handlerId": "contentBackgroundColorLogic",
+      "settingTooltip": "Controls the background color of the section's content"
     },
     {
       "type": "text",
@@ -85,7 +93,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "contentFontSizeLogic",
-      "defaultValue": "16px"
+      "defaultValue": "16px",
+      "settingTooltip": "Controls the font size of the section's content"
     },
     {
       "type": "text",
@@ -94,7 +103,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "contentPaddingLogic",
-      "defaultValue": "16px"
+      "defaultValue": "16px",
+      "settingTooltip": "Controls the padding of the section's content"
     }
   ],
   "eventHandlers": [

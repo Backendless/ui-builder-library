@@ -15,7 +15,8 @@
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows disabled or not disabled copy button."
     },
     {
       "name": "content",
@@ -26,7 +27,8 @@
       "type": "text",
       "handlerDescription": "This is the handler for the logic of determining the content to be copied.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows write content that be copied."
     },
     {
       "type": "text",
@@ -38,7 +40,8 @@
       "dataBinding": true,
       "handlerDescription": "This is the handler for the logic to determine the label for copy button.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows writing label for the copy button."
     },
     {
       "type": "text",
@@ -50,7 +53,8 @@
       "dataBinding": true,
       "handlerDescription": "This is the handler for the logic to determine the label for copied button.",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows writing label for the copied button."
     },
     {
       "type": "checkbox",
@@ -59,7 +63,8 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "isCopyIconLogic",
-      "label": "Copy Icon Visibility"
+      "label": "Copy Icon Visibility",
+      "settingTooltip": "Allows display or not display copy icon."
     },
     {
       "type": "checkbox",
@@ -68,7 +73,8 @@
       "defaultValue": true,
       "hasLogicHandler": false,
       "handlerId": "isCopiedIconLogic",
-      "label": "Copied Icon Visibility"
+      "label": "Copied Icon Visibility",
+      "settingTooltip": "Allows display or not display copied icon."
     },
     {
       "type": "number",
@@ -76,7 +82,8 @@
       "label": "Copied Duration (ms)",
       "defaultValue": "1000",
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to specify duration(ms) copied button."
     }
   ],
   "eventHandlers": [

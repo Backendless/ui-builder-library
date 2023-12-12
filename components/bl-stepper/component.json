@@ -17,7 +17,8 @@
       "handlerLabel": "Step List Logic",
       "handlerDescription": "This is a handler for the logic to determine the list of steps",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to determine the list of steps, text through comas \",\"."
     },
     {
       "type": "number",
@@ -29,7 +30,8 @@
       "dataBinding": true,
       "handlerDescription": "This is a handler for the logic to determine the count steps",
       "showInSettings": true,
-      "hasLogicHandler": true
+      "hasLogicHandler": true,
+      "settingTooltip": "Allows to determine the count steps."
     },
     {
       "type": "select",
@@ -51,7 +53,8 @@
         }
       ],
       "showInSettings": true,
-      "hasLogicHandler": false
+      "hasLogicHandler": false,
+      "settingTooltip": "Allows to determine the type of stepper style."
     }
   ],
   "eventHandlers": [

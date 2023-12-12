@@ -15,7 +15,7 @@
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerDescription": "This handler allows you to disable a component.",
-      "settingTooltip": "This handler allows you to disable a component.",
+      "settingTooltip": "This setting allows you to disable a component.",
       "handlerId": "disabledLogic",
       "handlerLabel": "Disabled Logic",
       "dataBinding": true
@@ -31,7 +31,7 @@
       "handlerLabel": "Goal Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to specify a goal.",
-      "settingTooltip": "This handler allows you to specify a goal."
+      "settingTooltip": "This setting allows you to specify a goal."
     },
     {
       "type": "number",
@@ -44,7 +44,7 @@
       "handlerLabel": "Progress Logic",
       "dataBinding": true,
       "handlerDescription": "This handler allows you to specify a progress.",
-      "settingTooltip": "This handler allows you to specify a progress."
+      "settingTooltip": "This setting allows you to specify a progress."
     }
   ],
   "actions": [

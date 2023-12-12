@@ -18,7 +18,8 @@
       "handlerLabel": "Amount Logic",
       "dataBinding": true,
       "defaultValue": "0.5",
-      "handlerDescription": "This is a handler for the logic to determine what amount should be applied for payment."
+      "handlerDescription": "This is a handler for the logic to determine what amount should be applied for payment.",
+      "settingTooltip": "Controls the payment amount."
     },
     {
       "type": "number",
@@ -27,7 +28,8 @@
       "showInSettings": true,
       "defaultValue": "0.5",
       "hasLogicHandler": false,
-      "handlerId": "minAmountLogic"
+      "handlerId": "minAmountLogic",
+      "settingTooltip": "Controls the minimum amount that can be charged."
     },
     {
       "type": "checkbox",
@@ -36,7 +38,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "fixedAmountLogic"
+      "handlerId": "fixedAmountLogic",
+      "settingTooltip": "Enables to fix the payment amount."
     },
     {
       "type": "number",
@@ -45,7 +48,8 @@
       "showInSettings": true,
       "defaultValue": "2",
       "hasLogicHandler": false,
-      "handlerId": "amountDecimalPlacesLogic"
+      "handlerId": "amountDecimalPlacesLogic",
+      "settingTooltip": "Controls the number of characters after the dot for the payment amount."
     },
     {
       "type": "text",
@@ -54,7 +58,8 @@
       "showInSettings": true,
       "defaultValue": "USD",
       "hasLogicHandler": false,
-      "handlerId": "currencyLogic"
+      "handlerId": "currencyLogic",
+      "settingTooltip": "Controls the currency label."
     },
     {
       "type": "checkbox",
@@ -63,7 +68,8 @@
       "showInSettings": true,
       "hasLogicHandler": false,
       "handlerId": "nameVisibilityLogic",
-      "defaultValue": false
+      "defaultValue": false,
+      "settingTooltip": "Enables the visibility of the cardholder name field."
     },
     {
       "type": "checkbox",
@@ -72,7 +78,8 @@
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": false,
-      "handlerId": "addressVisibilityLogic"
+      "handlerId": "addressVisibilityLogic",
+      "settingTooltip": "Enables the visibility of the address field."
     },
     {
       "type": "checkbox",
@@ -81,7 +88,8 @@
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": false,
-      "handlerId": "cityVisibilityLogic"
+      "handlerId": "cityVisibilityLogic",
+      "settingTooltip": "Enables the visibility of the city name field."
     },
     {
       "type": "checkbox",
@@ -90,7 +98,8 @@
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": false,
-      "handlerId": "stateVisibilityLogic"
+      "handlerId": "stateVisibilityLogic",
+      "settingTooltip": "Enables the visibility of the state name field."
     },
     {
       "type": "checkbox",
@@ -99,7 +108,8 @@
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": false,
-      "handlerId": "countryVisibilityLogic"
+      "handlerId": "countryVisibilityLogic",
+      "settingTooltip": "Enables the visibility of the state name field."
     },
     {
       "type": "checkbox",
@@ -108,7 +118,8 @@
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": false,
-      "handlerId": "zipVisibilityLogic"
+      "handlerId": "zipVisibilityLogic",
+      "settingTooltip": "Enables the visibility of the postal code or ZIP value field."
     }
   ],
   "eventHandlers": [
