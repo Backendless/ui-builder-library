@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { modalState } from './constants';
 import { Modal } from './modal';
 
 export default function SimpleModal({ component, eventHandlers }) {
-  const { display, closingDuration } = component;
+  const { initialState, closingDuration } = component;
 
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -28,12 +29,12 @@ export default function SimpleModal({ component, eventHandlers }) {
   }, [isOpen]);
 
   useEffect(() => {
-    if (display) {
+    if (initialState === modalState.DISPLAYED) {
       component.openModal();
     } else {
       component.closeModal();
     }
-  }, [display]);
+  }, [initialState]);
 
   if (!isOpen) {
     return null;

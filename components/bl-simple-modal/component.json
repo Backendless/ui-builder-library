@@ -9,6 +9,28 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "select",
+      "name": "initialState",
+      "label": "Initial State",
+      "settingTooltip": "This setting allows you to specify the component's initial state, whether it will be displayed or not.",
+      "showInSettings": true,
+      "defaultValue": "displayed",
+      "hasLogicHandler": false,
+      "handlerId": "initialStateLogic",
+      "options": [
+        {
+          "value": "displayed",
+          "label": "Displayed",
+          "disabled": false
+        },
+        {
+          "value": "hidden",
+          "label": "Hidden",
+          "disabled": false
+        }
+      ]
+    },
+    {
       "type": "text",
       "name": "title",
       "label": "Title",

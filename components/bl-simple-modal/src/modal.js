@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
 
-import modalTypes from './modal-types';
+import { modalTypes } from './constants';
 import { Container, ModalButtons, Title } from './subcomponents';
 
 const { cn } = BackendlessUI.CSSUtils;
@@ -40,7 +40,7 @@ export function Modal(props) {
   }, []);
 
   const onSubmitHandler = useCallback(() => {
-    const payload = type === modalTypes.confirm ? undefined : { inputValue };
+    const payload = type === modalTypes.CONFIRM ? undefined : { inputValue };
 
     onSubmit(payload);
   }, [type, inputValue]);
@@ -50,7 +50,7 @@ export function Modal(props) {
       <div onClick={ onCloseHandler } className="overlay"></div>
       <div className="simple-modal__content">
         <Title content={ title }/>
-        { (type === modalTypes.prompt || content) && (
+        { (type === modalTypes.PROMPT || content) && (
           <Container
             content={ content }
             type={ type }
