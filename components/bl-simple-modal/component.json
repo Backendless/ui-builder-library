@@ -165,5 +165,6 @@
       "id": "closeModal",
       "label": "Close"
     }
-  ]
+  ],
+  "hasDisplayTrait": false
 }
