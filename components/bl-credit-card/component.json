@@ -18,7 +18,7 @@
       "defaultValue": true,
       "settingTooltip": "Select to display a preview of the credit card.",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic determine if the credit card preview should be visible.",
+      "handlerDescription": "This is a handler for the logic to determine if the credit card preview should be visible.",
       "handlerLabel": "Card Preview Visibility Logic"
     },
     {
@@ -31,7 +31,7 @@
       "handlerId": "cvcVisibilityLogic",
       "settingTooltip": "Select to display digits of the credit card CVC number.",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic determine if the CVC number should be visible. If the handler returns 'false' digits will be hidden.",
+      "handlerDescription": "This is a handler for the logic to determine if the CVC number should be visible. If the handler returns 'false' digits will be hidden.",
       "handlerLabel": "CVC Visibility Logic"
     },
     {
@@ -72,7 +72,7 @@
       "handlerId": "labelsVisibilityLogic",
       "settingTooltip": "Select to display labels of the form fields.",
       "dataBinding": true,
-      "handlerDescription": "This is a handler for the logic determine if the labels of the form fields should be visible.",
+      "handlerDescription": "This is a handler for the logic to determine if the labels of the form fields should be visible.",
       "handlerLabel": "Labels Visibility Logic"
     },
     {
@@ -99,7 +99,7 @@
       "settingTooltip": "Select to display the cardholder name field.",
       "dataBinding": true,
       "handlerLabel": "Cardholder Name Field Visibility Logic",
-      "handlerDescription": "This is a handler for the logic determine if the cardholder name field should be visible."
+      "handlerDescription": "This is a handler for the logic to determine if the cardholder name field should be visible."
     },
     {
       "type": "text",
