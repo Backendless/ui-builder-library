@@ -1,15 +1,28 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useMemo, useReducer, useState } from 'react';
 
 import { CardForm } from './card-form';
 import { CardPreview } from './card-preview';
-import { formatCVC, getCardByNumber, validateCardCVC, validateCardExpiry, validateCardNumber } from './helpers';
+import {
+  formatCreditCardNumber, formatCVC, formatExpirationDate, getCardByNumber,
+  validateCardCVC, validateCardExpiry, validateCardNumber,
+} from './helpers';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-const initialFormState = { cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: null };
-
 export default function CreditCardComponent({ component, eventHandlers, elRef }) {
-  const { display, classList, style, direction, cardPreviewVisibility } = component;
+  const {
+    display, classList, style, direction, cardPreviewVisibility, initialCardNumber,
+    initialCardholderName, initialExpiry, initialCVC,
+  } = component;
+
+  const initialFormState = useMemo(() => {
+    const card = getCardByNumber(initialCardNumber);
+    const cardNumber = formatCreditCardNumber(initialCardNumber, card);
+    const cvc = formatCVC(initialCVC, card);
+    const expiry = formatExpirationDate(initialExpiry);
+
+    return { cardNumber, expiry, cvc, cardholderName: initialCardholderName, focusedField: null };
+  }, [initialCardNumber, initialCardholderName, initialExpiry, initialCVC]);
 
   const [card, setCard] = useState();
   const [formState, setFormState] = useObjectState(initialFormState);
@@ -30,10 +43,14 @@ export default function CreditCardComponent({ component, eventHandlers, elRef })
     }
   }, [card]);
 
+  useEffect(() => {
+    setFormState(initialFormState);
+  }, [initialFormState]);
+
   const styles = { flexDirection: direction, ...style };
 
   Object.assign(component, {
-    clearForm     : () => setFormState(initialFormState),
+    clearForm     : () => setFormState({ cardNumber: '', expiry: '', cvc: '', cardholderName: '', focusedField: null }),
     validateNumber: () => validateCardNumber(cardNumber, card),
     validateExpiry: () => validateCardExpiry(expiry),
     validateCVC   : () => validateCardCVC(cvc, card),
