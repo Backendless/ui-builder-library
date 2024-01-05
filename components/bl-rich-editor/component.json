@@ -488,6 +488,14 @@
         }
       ],
       "settingTooltip": "Select the default font size of the editor."
+    },
+    {
+      "type": "checkbox",
+      "name": "insertImageAsURL",
+      "label": "Insert Image As URL",
+      "showInSettings": true,
+      "hasLogicHandler": false,
+      "handlerId": "insertImageAsURLLogic"
     }
   ],
   "eventHandlers": [

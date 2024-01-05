@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import Quill from './lib/quil.min';
 
+const TOOLTIP_INPUT_PLACEHOLDER = 'Embed URL';
 export const APP_FONT_SIZE = 'inherit';
 export const FontSize = [
   '8px', '9px', '10px', '11px', '12px', '14px', '16px', '18px', '20px', '22px', '24px', '26px', '28px', '36px', '48px',
@@ -67,6 +68,7 @@ const SizeStyle = Quill.import('attributors/style/size');
 const Blockquote = Quill.import('formats/blockquote');
 const CodeBlock = Quill.import('formats/code');
 const BlockPrototype = Quill.import('blots/block');
+const Delta = Quill.import('delta');
 
 Size.whitelist = FontSize;
 Font.whitelist = FontFamily;
@@ -112,7 +114,9 @@ Quill.register(Blockquote, true);
 Quill.register(CodeBlock, true);
 
 export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
-  const { placeholder, readOnly, content, scrollingContainer, defaultFontFamily, defaultFontSize } = component;
+  const {
+    placeholder, readOnly, content, scrollingContainer, defaultFontFamily, defaultFontSize, insertImageAsURL,
+  } = component;
 
   const editorRef = useRef(null);
   const contentRef = useRef(null);
@@ -125,7 +129,11 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
       modules: {
         toolbar  : {
           container: toolbarRef.current,
-          handlers : { undo, redo },
+          handlers : {
+            undo,
+            redo,
+            image: insertImageAsURL ? insertImageURL : undefined,
+          },
         },
         clipboard: { matchVisual: false },
       },
@@ -149,6 +157,11 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
 
       onTextChange();
     });
+
+    if (insertImageAsURL) {
+      editorRef.current.clipboard.addMatcher('IMG', () => new Delta().insert(''));
+      editorRef.current.clipboard.addMatcher('PICTURE', () => new Delta().insert(''));
+    }
   }, [scrollingContainer, placeholder]);
 
   useEffect(() => {
@@ -165,6 +178,31 @@ export function useQuillLibrary(quillRef, toolbarRef, component, onTextChange) {
 
   const undo = () => editorRef.current.history.undo();
   const redo = () => editorRef.current.history.redo();
+
+  const insertImageURL = useCallback(() => {
+    const tooltip = editorRef.current.theme.tooltip;
+    const originalSave = tooltip.save;
+    const originalHide = tooltip.hide;
+
+    tooltip.save = () => {
+      const range = editorRef.current.getSelection(true);
+      const value = tooltip.textbox.value;
+
+      if (value) {
+        editorRef.current.insertEmbed(range.index, 'image', value, 'user');
+        tooltip.textbox.value = '';
+      }
+    };
+
+    tooltip.hide = () => {
+      tooltip.save = originalSave;
+      tooltip.hide = originalHide;
+      tooltip.hide();
+    };
+
+    tooltip.edit('image');
+    tooltip.textbox.placeholder = TOOLTIP_INPUT_PLACEHOLDER;
+  }, []);
 
   return editorRef;
 }
