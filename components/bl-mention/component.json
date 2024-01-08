@@ -31,7 +31,8 @@
       "handlerLabel": "Suggestions Logic",
       "handlerDescription": "It is a handler to set an array of suggestions to display.",
       "dataBinding": true,
-      "settingTooltip": "Specifies an array of suggestions to display."
+      "settingTooltip": "Specifies an array of suggestions to display.",
+      "defaultValue": "[{\"trigger\":\"@\",\"suggestions\":[{\"nickname\":\"jamesButt\",\"name\":\"James Butt\"},{\"nickname\":\"krisMarrier\",\"name\":\"Kris Marrier\"}]}]"
     },
     {
       "type": "text",
