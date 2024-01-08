@@ -18,7 +18,8 @@
       "handlerId": "triggerLogic",
       "handlerLabel": "Trigger Logic",
       "handlerDescription": "It is a handler to set trigger keywords.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Defines trigger keywords."
     },
     {
       "type": "json",
@@ -29,7 +30,8 @@
       "handlerId": "suggestionsLogic",
       "handlerLabel": "Suggestions Logic",
       "handlerDescription": "It is a handler to set an array of suggestions to display.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Specifies an array of suggestions to display."
     },
     {
       "type": "text",
@@ -41,7 +43,8 @@
       "handlerLabel": "Field Logic",
       "handlerDescription": "It is a handler to set a field of a suggested object to resolve and display.",
       "dataBinding": true,
-      "defaultValue": "nickname"
+      "defaultValue": "nickname",
+      "settingTooltip": "Defines a field of a suggested object to resolve and display."
     },
     {
       "type": "text",
@@ -50,7 +53,8 @@
       "showInSettings": true,
       "defaultValue": "200px",
       "hasLogicHandler": false,
-      "handlerId": "scrollHeightLogic"
+      "handlerId": "scrollHeightLogic",
+      "settingTooltip": "The maximum height of the suggestions panel."
     },
     {
       "type": "checkbox",
@@ -59,7 +63,8 @@
       "showInSettings": true,
       "defaultValue": true,
       "hasLogicHandler": false,
-      "handlerId": "autoHighlightLogic"
+      "handlerId": "autoHighlightLogic",
+      "settingTooltip": "Highlights the first item in the list by default."
     },
     {
       "type": "text",
@@ -68,7 +73,8 @@
       "showInSettings": true,
       "defaultValue": "Please enter @ to mention",
       "hasLogicHandler": false,
-      "handlerId": "placeholderLogic"
+      "handlerId": "placeholderLogic",
+      "settingTooltip": "Defines a placeholder of the component."
     },
     {
       "type": "number",
@@ -77,7 +83,8 @@
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
-      "handlerId": "delayLogic"
+      "handlerId": "delayLogic",
+      "settingTooltip": "Defines a delay between keystrokes to wait before sending a query."
     },
     {
       "type": "checkbox",
@@ -86,7 +93,8 @@
       "showInSettings": true,
       "defaultValue": false,
       "hasLogicHandler": false,
-      "handlerId": "autoresizeLogic"
+      "handlerId": "autoresizeLogic",
+      "settingTooltip": "Enables automatic resizing of the textarea."
     },
     {
       "type": "number",
@@ -95,7 +103,8 @@
       "showInSettings": true,
       "defaultValue": "5",
       "hasLogicHandler": false,
-      "handlerId": "rowsLogic"
+      "handlerId": "rowsLogic",
+      "settingTooltip": "Defines a number of rows of the component."
     },
     {
       "type": "number",
@@ -104,7 +113,8 @@
       "showInSettings": true,
       "defaultValue": "40",
       "hasLogicHandler": false,
-      "handlerId": "colsLogic"
+      "handlerId": "colsLogic",
+      "settingTooltip": "Defines a number of columns of the component."
     },
     {
       "type": "text",
@@ -115,7 +125,8 @@
       "handlerId": "hideFieldLogic",
       "handlerLabel": "Hide Field Logic",
       "handlerDescription": "It is a handler to determine which fields will not showed in suggestions.",
-      "dataBinding": true
+      "dataBinding": true,
+      "settingTooltip": "Determines which fields will not show in suggestions."
     }
   ],
   "eventHandlers": [
