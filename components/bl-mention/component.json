@@ -44,7 +44,7 @@
       "handlerLabel": "Field Logic",
       "handlerDescription": "It is a handler to set a field of a suggested object to resolve and display.",
       "dataBinding": true,
-      "defaultValue": "nickname",
+      "defaultValue": "name",
       "settingTooltip": "Defines a field of a suggested object to resolve and display."
     },
     {
