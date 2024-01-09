@@ -21,6 +21,7 @@ export default function MentionComponent({ component, eventHandlers }) {
   const [processedSuggestions, setProcessedSuggestions] = useState([]);
   const triggers = useTriggers(trigger);
   const [blacklistedFields, setBlacklistedFields] = useState(BLACKLISTED_FIELDS);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     updateSuggestionsMap(suggestions, setSuggestionsMap);
@@ -33,19 +34,24 @@ export default function MentionComponent({ component, eventHandlers }) {
     }
   }, [hideField]);
 
-  const searchHandler = useCallback(async ({ trigger: eventTrigger, query }) => {
-    if (!triggers.includes(eventTrigger)) {
-      return;
+  useEffect(() => {
+    onSearch({ searchValue })?.then(result => updateSuggestionsMap(result, setSuggestionsMap));
+  }, [searchValue]);
+
+  const searchHandler = useCallback(event => {
+    const { trigger: eventTrigger, query } = event;
+
+    setSearchValue(query);
+
+    for (const trigger of triggers) {
+      if (trigger !== eventTrigger) {
+        continue;
+      }
+
+      const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
+
+      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query, field));
     }
-
-    if (query) {
-      await onSearch({ searchValue: query })?.then(result => updateSuggestionsMap(result, setSuggestionsMap));
-    }
-
-    const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
-    const filteredSuggestions = filterSuggestions(suggestionsByTrigger, query, field);
-
-    setProcessedSuggestions(filteredSuggestions);
   }, [triggers, suggestionsMap]);
 
   const itemRenderer = useCallback((suggestion, options) => {
