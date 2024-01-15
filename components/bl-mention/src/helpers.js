@@ -38,7 +38,7 @@ export const positionMentionPanel = mentionRef => {
   if (mentionRect.width < mentionPanelRect.width) {
     mentionPanel.style.left = 0;
     
-    return 
+    return;
   }
 
   if (mentionRect.right < mentionPanelRect.right) {
