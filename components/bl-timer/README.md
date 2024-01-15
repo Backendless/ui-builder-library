@@ -40,11 +40,11 @@ View an example of how to install this component and how it works in your UI [he
 **Dimensions**
 
 ```
-@bl-customComponent-clock-font-size: 16px;
+@bl-customComponent-timer-font-size: 16px;
 ```
 
 **Color**
 
 ```
-@bl-customComponent-clock-text-color: @appTextColor;
+@bl-customComponent-timer-text-color: @appTextColor;
 ```
