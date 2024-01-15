@@ -184,7 +184,7 @@ export function formatCVC(value, card) {
 }
 
 export function formatExpirationDate(expiry) {
-  const parts = expiry.match(expiryFormat);
+  const parts = expiry?.match(expiryFormat);
 
   if (!parts) {
     return '';
@@ -219,7 +219,7 @@ export function formatExpirationDate(expiry) {
   }
 
   if (month > 12) {
-    year = month[1] + year;
+    year = month[1] + year.slice(0, 1);
     month = `0${ month[0] }`;
     separator = ' / ';
   }

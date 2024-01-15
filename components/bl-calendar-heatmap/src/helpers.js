@@ -1,12 +1,6 @@
 import CalendarLabel from './lib/cal-heatmap-calendar-label.min';
 import Legend from './lib/cal-heatmap-legend.min';
-import LegendLite from './lib/cal-heatmap-legend-lite.min';
 import Tooltip from './lib/cal-heatmap-tooltip.min';
-
-const LegendTypes = {
-  Legend,
-  LegendLite,
-};
 
 export const ensureValidScale = scale => {
   const {
@@ -116,11 +110,11 @@ export const shapeSubDomain = props => {
   };
 };
 
-export const shapePlugins = (legend, instanceId, calendarLabel) => {
+export const shapePlugins = (legendVisibility, instanceId, calendarLabel) => {
   const plugins = [[Tooltip]];
 
-  if (legend !== 'none') {
-    plugins.push([LegendTypes[legend], { itemSelector: `#bl-cal-heatmap--legend-label--${ instanceId }` }]);
+  if (legendVisibility) {
+    plugins.push([Legend, { itemSelector: `#bl-cal-heatmap--legend-label--${ instanceId }` }]);
   }
 
   if (calendarLabel) {

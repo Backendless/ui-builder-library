@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import primereact from './lib/core';
 
-import { filterSuggestions, orderFields, stringToList, updateSuggestionsMap, useTriggers } from './helpers.js';
+import {
+  filterSuggestions, orderFields, positionMentionPanel, stringToList, updateSuggestionsMap, useTriggers,
+} from './helpers.js';
 import { SuggestionCard } from './suggestion-card.js';
 
 const { Mention } = primereact.mention;
@@ -16,6 +18,8 @@ export default function MentionComponent({ component, eventHandlers }) {
     hideField, classList, style, display,
   } = component;
   const { onChange, onFocus, onBlur, onShow, onHide, onSearch } = eventHandlers;
+
+  const mentionRef = useRef(null);
 
   const [suggestionsMap, setSuggestionsMap] = useState(() => new Map());
   const [processedSuggestions, setProcessedSuggestions] = useState([]);
@@ -50,7 +54,7 @@ export default function MentionComponent({ component, eventHandlers }) {
 
       const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
 
-      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query));
+      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query, field));
     }
   }, [triggers, suggestionsMap]);
 
@@ -75,6 +79,8 @@ export default function MentionComponent({ component, eventHandlers }) {
     if (processedSuggestions.length) {
       onShow({ suggestions: processedSuggestions });
     }
+
+    positionMentionPanel(mentionRef);
   }, [processedSuggestions]);
 
   const onChangeHandler = useCallback(e => {
@@ -87,6 +93,7 @@ export default function MentionComponent({ component, eventHandlers }) {
 
   return (
     <Mention
+      ref={ mentionRef }
       trigger={ triggers }
       suggestions={ processedSuggestions }
       field={ field }
