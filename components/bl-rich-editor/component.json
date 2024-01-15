@@ -495,7 +495,8 @@
       "label": "Insert Image As URL",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "handlerId": "insertImageAsURLLogic"
+      "handlerId": "insertImageAsURLLogic",
+      "settingTooltip": "Enables inserting image by entering external URL instead of uploading local files."
     }
   ],
   "eventHandlers": [
