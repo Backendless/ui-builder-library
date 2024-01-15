@@ -26,3 +26,22 @@ export const orderFields = (suggestion, fieldsBlacklistSet) => {
 export const updateSuggestionsMap = (suggestions, setSuggestionsMap) => {
   suggestions?.forEach(el => setSuggestionsMap(prev => prev.set(el.trigger, el.suggestions)));
 };
+
+export const positionMentionPanel = mentionRef => {
+  const mentionPanel = mentionRef.current.getOverlay();
+
+  mentionPanel.style.display = 'block';
+
+  const mentionRect = mentionRef.current.getElement().getBoundingClientRect();
+  const mentionPanelRect = mentionPanel.getBoundingClientRect();
+
+  if (mentionRect.width < mentionPanelRect.width) {
+    mentionPanel.style.left = 0;
+    
+    return 
+  }
+
+  if (mentionRect.right < mentionPanelRect.right) {
+    mentionPanel.style.left = mentionRect.right - mentionPanelRect.width;
+  }
+};
