@@ -13,7 +13,7 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
     labelOffsetY, labelHeight, labelWidth, scaleType, scaleColorScheme, scaleColorRange,
     scaleOpacityBaseColor, verticalOrientation, startDate, minDate, maxDate, highlightDate,
     defaultDataValue, cellHeight, cellWidth, subLabel, subGutter, subColorLabel, cellRadius,
-    groupY, label, gutter, dynamicDimension, subSort, scaleDomain, legend, calendarLabel,
+    groupY, label, gutter, dynamicDimension, subSort, scaleDomain, legendVisibility, calendarLabel,
     animationDuration, theme,
   } = component;
   const {
@@ -56,14 +56,14 @@ export default function ComponentName({ elRef, component, eventHandlers, instanc
       theme,
       itemSelector: `#bl-cal-heatmap-${ instanceId }`,
     },
-    shapePlugins(legend, instanceId, calendarLabel)
+    shapePlugins(legendVisibility, instanceId, calendarLabel)
     );
   }, [calHeatmap, cellHeight, cellRadius, cellWidth, dataType, datePropName, defaultDataValue, highlightDate,
     instanceId, labelHeight, labelPosition, labelRotation, labelWidth, labelOffsetX, labelOffsetY, maxDate, maxValid,
     minDate, minValid, range, scaleColorRange, scaleColorScheme, scaleOpacityBaseColor, scaleType, sort, startDate,
     subColorLabel, subColorLabelLogic, subGutter, subLabel, subLabelLogic, subType, textAlign, type, valuePropName,
     verticalOrientation, sourceDataUrl, data, groupYLogic, groupY, scaleDomain, dynamicDimension, gutter, labelLogic,
-    label, subSort, legend, calendarLabel, animationDuration, theme]);
+    label, subSort, legendVisibility, calendarLabel, animationDuration, theme]);
 
   useEffect(() => {
     calHeatmap.on('click', (event, timestamp, value) => onCellClick({ event, timestamp, value }));

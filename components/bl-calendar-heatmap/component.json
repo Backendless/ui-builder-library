@@ -507,31 +507,17 @@
       "settingTooltip": "Allows to determine whether the domain's should be resized to fit its content."
     },
     {
-      "type": "select",
-      "name": "legend",
-      "label": "Legend",
+      "type": "checkbox",
+      "name": "legendVisibility",
+      "label": "Legend Visibility",
+      "settingTooltip": "Allows to determine whether the legend should be displayed.",
       "showInSettings": true,
-      "defaultValue": "none",
+      "defaultValue": false,
       "hasLogicHandler": true,
-      "handlerId": "legendLogic",
-      "handlerLabel": "Legend Logic",
-      "dataBinding": true,
-      "options": [
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "LegendLite",
-          "label": "Lite"
-        },
-        {
-          "value": "Legend",
-          "label": "Standard"
-        }
-      ],
-      "handlerDescription": "This is a handler for the logic to select the legend that will be displayed.",
-      "settingTooltip": "Allows to select the legend that will be displayed."
+      "handlerId": "legendVisibilityLogic",
+      "handlerLabel": "Legend Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine whether the legend should be displayed.",
+      "dataBinding": true
     },
     {
       "type": "json",
