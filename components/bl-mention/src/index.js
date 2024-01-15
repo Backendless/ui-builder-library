@@ -54,7 +54,7 @@ export default function MentionComponent({ component, eventHandlers }) {
 
       const suggestionsByTrigger = suggestionsMap.get(eventTrigger);
 
-      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query));
+      setProcessedSuggestions(filterSuggestions(suggestionsByTrigger, query, field));
     }
   }, [triggers, suggestionsMap]);
 

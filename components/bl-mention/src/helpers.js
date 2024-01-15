@@ -1,13 +1,13 @@
-const compareCaseInsensitive = (suggestion, query) => {
-  return suggestion.field.toLowerCase().startsWith(query.toLowerCase());
+const compareCaseInsensitive = (suggestion, query, field) => {
+  return suggestion[field]?.toLowerCase().startsWith(query.toLowerCase());
 };
 
 export const useTriggers = trigger => (trigger ? stringToList(trigger) : ['@']);
 
-export const filterSuggestions = (suggestions, query) => {
+export const filterSuggestions = (suggestions, query, field) => {
   return !query.trim()
     ? suggestions
-    : suggestions?.filter(suggestion => compareCaseInsensitive(suggestion, query));
+    : suggestions?.filter(suggestion => compareCaseInsensitive(suggestion, query, field));
 };
 
 export const stringToList = text => text.split(',').map(el => el.trim());

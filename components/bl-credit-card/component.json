@@ -13,10 +13,13 @@
       "name": "cardPreviewVisibility",
       "label": "Card Preview Visibility",
       "showInSettings": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "cardPreviewVisibilityLogic",
       "defaultValue": true,
-      "settingTooltip": "Select to display a preview of the card."
+      "settingTooltip": "Select to display a preview of the credit card.",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the credit card preview should be visible.",
+      "handlerLabel": "Card Preview Visibility Logic"
     },
     {
       "type": "checkbox",
@@ -24,9 +27,12 @@
       "label": "CVC Visibility",
       "showInSettings": true,
       "defaultValue": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "cvcVisibilityLogic",
-      "settingTooltip": "Select to display digits of the credit card CVC number."
+      "settingTooltip": "Select to display digits of the credit card CVC number.",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the CVC number should be visible. If the handler returns 'false' digits will be hidden.",
+      "handlerLabel": "CVC Visibility Logic"
     },
     {
       "type": "select",
@@ -62,9 +68,12 @@
       "label": "Labels Visibility",
       "showInSettings": true,
       "defaultValue": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "labelsVisibilityLogic",
-      "settingTooltip": "Select to display labels of the form fields."
+      "settingTooltip": "Select to display labels of the form fields.",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the labels of the form fields should be visible.",
+      "handlerLabel": "Labels Visibility Logic"
     },
     {
       "type": "text",
@@ -72,49 +81,12 @@
       "label": "Submit Button Label",
       "showInSettings": true,
       "defaultValue": "Pay",
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "submitButtonLabelLogic",
-      "settingTooltip": "Define the label of the submit button."
-    },
-    {
-      "type": "text",
-      "name": "cardNumberFieldPlaceholder",
-      "label": "Card Number Field Placeholder",
-      "showInSettings": true,
-      "defaultValue": "Card Number",
-      "hasLogicHandler": false,
-      "handlerId": "cardNumberFieldPlaceholderLogic",
-      "settingTooltip": "Define the placeholder for the card number field."
-    },
-    {
-      "type": "text",
-      "name": "cardholderNameFieldPlaceholder",
-      "label": "Cardholder Name Field Placeholder",
-      "showInSettings": true,
-      "defaultValue": "Cardholder Name",
-      "hasLogicHandler": false,
-      "handlerId": "cardholderNameFieldPlaceholderLogic",
-      "settingTooltip": "Define the placeholder for the cardholder name field."
-    },
-    {
-      "type": "text",
-      "name": "expiryFieldPlaceholder",
-      "label": "Expiry Field Placeholder",
-      "showInSettings": true,
-      "defaultValue": "MM / YY",
-      "hasLogicHandler": false,
-      "handlerId": "expiryFieldPlaceholderLogic",
-      "settingTooltip": "Define the placeholder for the card expiration field."
-    },
-    {
-      "type": "text",
-      "name": "cvcFieldPlaceholder",
-      "label": "CVC Field Placeholder",
-      "showInSettings": true,
-      "defaultValue": "CVC",
-      "hasLogicHandler": false,
-      "handlerId": "cvcFieldPlaceholderLogic",
-      "settingTooltip": "Define the placeholder for the CVC number field."
+      "settingTooltip": "Define the label of the submit button.",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the label of the submit button.",
+      "handlerLabel": "Submit Button Label Logic"
     },
     {
       "type": "checkbox",
@@ -122,9 +94,112 @@
       "label": "Cardholder Name Field Visibility",
       "showInSettings": true,
       "defaultValue": true,
-      "hasLogicHandler": false,
+      "hasLogicHandler": true,
       "handlerId": "cardholderNameFieldVisibilityLogic",
-      "settingTooltip": "Select to display the cardholder name field."
+      "settingTooltip": "Select to display the cardholder name field.",
+      "dataBinding": true,
+      "handlerLabel": "Cardholder Name Field Visibility Logic",
+      "handlerDescription": "This is a handler for the logic to determine if the cardholder name field should be visible."
+    },
+    {
+      "type": "text",
+      "name": "cardNumberFieldPlaceholder",
+      "label": "Card Number Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "Card Number",
+      "hasLogicHandler": true,
+      "handlerId": "cardNumberFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the card number field.",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the placeholder for the card number entry field.",
+      "handlerLabel": "Card Number Field Placeholder Logic"
+    },
+    {
+      "type": "text",
+      "name": "cardholderNameFieldPlaceholder",
+      "label": "Cardholder Name Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "Cardholder Name",
+      "hasLogicHandler": true,
+      "handlerId": "cardholderNameFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the cardholder name field.",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the placeholder for the cardholder name entry field.",
+      "handlerLabel": "Cardholder Name Field Placeholder Logic"
+    },
+    {
+      "type": "text",
+      "name": "expiryFieldPlaceholder",
+      "label": "Expiry Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "MM / YY",
+      "hasLogicHandler": true,
+      "handlerId": "expiryFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the card expiration field.",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine the placeholder for the card expiration entry field.",
+      "handlerLabel": "Expiry Field Placeholder Logic"
+    },
+    {
+      "type": "text",
+      "name": "cvcFieldPlaceholder",
+      "label": "CVC Field Placeholder",
+      "showInSettings": true,
+      "defaultValue": "CVC",
+      "hasLogicHandler": true,
+      "handlerId": "cvcFieldPlaceholderLogic",
+      "settingTooltip": "Define the placeholder for the CVC number field.",
+      "dataBinding": true,
+      "handlerLabel": "CVC Field Placeholder Logic",
+      "handlerDescription": "This is a handler for the logic to determine the placeholder for the CVC entry field."
+    },
+    {
+      "type": "text",
+      "name": "initialCardNumber",
+      "label": "Initial Card Number",
+      "settingTooltip": "Define the initial value for the card number field.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "initialCardNumberLogic",
+      "handlerLabel": "Initial Card Number Logic",
+      "handlerDescription": "This is a handler for the logic to determine the initial value for the card number entry field.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "initialCardholderName",
+      "label": "Initial Cardholder Name ",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "initialCardholderNameLogic",
+      "handlerLabel": "Initial Cardholder Name Logic",
+      "dataBinding": true,
+      "settingTooltip": "Define the initial value for the cardholder name field.",
+      "handlerDescription": "This is a handler for the logic to determine the initial value for the cardholder name entry field."
+    },
+    {
+      "type": "text",
+      "name": "initialExpiry",
+      "label": "Initial Expiry",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "initialExpiryLogic",
+      "handlerLabel": "Initial Expiry Logic",
+      "dataBinding": true,
+      "settingTooltip": "Define the initial value for the card expiration field in 'MM/YY' format.",
+      "handlerDescription": "This is a handler for the logic to determine the initial value for the card expiration entry field. Set expiration in 'MM/YY' format."
+    },
+    {
+      "type": "text",
+      "name": "initialCVC",
+      "label": "Initial CVC",
+      "settingTooltip": "Define the initial value for the CVC number field.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "initialCVCLogic",
+      "handlerLabel": "Initial CVC Logic",
+      "handlerDescription": "This is a handler for the logic to determine the initial value for the CVC number entry field.",
+      "dataBinding": true
     }
   ],
   "eventHandlers": [
