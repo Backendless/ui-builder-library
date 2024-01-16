@@ -48,10 +48,12 @@ The component is based on external [Mention](https://www.primefaces.org/primerea
 @bl-customComponent-Mention-inputText-borderColor: @themePrimary;
 @bl-customComponent-Mention-panel-background: @appBackgroundColor;
 @bl-customComponent-Mention-panel-color: @appTextColor;
+@bl-customComponent-Mention-items-width: max-content;
+@bl-customComponent-Mention-item-width: 100%;
 @bl-customComponent-Mention-item-color: @appTextColor;
-@bl-customComponent-Mention-item-color-hover: #appTextColor;
+@bl-customComponent-Mention-item-color-hover: @appTextColor;
 @bl-customComponent-Mention-item-background-hover: average(@appBackgroundColor, @themePrimary);
-@bl-customComponent-Mention-item-highlight-color: #appTextColor;
+@bl-customComponent-Mention-item-highlight-color: @appTextColor;
 @bl-customComponent-Mention-item-highlight-background: darken(average(@appBackgroundColor, @themePrimary), 40%);
 ````
 
