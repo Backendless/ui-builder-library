@@ -1,73 +1,71 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { AlertButton, AlertIcon, AlertTitle } from './subcomponents';
 
-export default function Alert({ component, eventHandlers }) {
+const { cn } = BackendlessUI.CSSUtils;
+
+export default function Alert({ component, eventHandlers: { onClose }, elRef }) {
   const {
     style, display, classList, iconVisibility, messageType, messageTitle,
     messageText, variant, closeButtonVisibility, closingDuration,
   } = component;
-  const { onClose } = eventHandlers;
 
-  const [isAlertVisible, setIsAlertVisible] = useState(true);
-  const [isClosing, setIsClosing] = useState(false);
+  const [isClosing, setIsClosing] = useState(!display);
 
-  const classes = useAlertClasses(variant, messageType, isClosing);
-  const classesTitle = useTextClass('alert__title', variant, messageType);
-  const classesAlertText = useTextClass('alert__text', variant, messageType);
+  useEffect(() => {
+    setIsClosing(!display);
+  }, [display]);
 
-  component.close = () => {
-    setIsClosing(true);
+  useEffect(() => {
+    const duration = isClosing ? closingDuration : 0;
 
     setTimeout(() => {
-      setIsAlertVisible(false);
-    }, closingDuration);
+      component.display = !isClosing;
+    }, duration);
+  }, [isClosing]);
+
+  const closeAlert = () => {
+    setIsClosing(true);
+
+    onClose();
   };
 
-  if (!display || !isAlertVisible) {
+  component.close = () => closeAlert();
+  component.open = () => setIsClosing(false);
+
+  if (!display && isClosing) {
     return null;
   }
 
   return (
-    <div className={ 'bl-customComponent-alert ' + classList.join(' ') } style={ style }>
-      <div className={ classes } style={{ animationDuration: `${ closingDuration }ms` }}>
+    <div ref={ elRef } className={ cn('bl-customComponent-alert', classList) } style={ style }>
+      <div
+        className={ cn('alert', variant, `${ variant }--${ messageType }`, { 'alert-close': isClosing }) }
+        style={{ animationDuration: `${ closingDuration }ms` }}>
+
         { iconVisibility && (
           <div className="alert__icon">
-            <AlertIcon
-              typeAlert={ messageType }
-              variant={ variant }
-            />
+            <AlertIcon typeAlert={ messageType } variant={ variant }/>
           </div>
         ) }
 
         <div className="alert__content">
-          { messageTitle && (<AlertTitle title={ messageTitle } classesTitle={ classesTitle }/>) }
-          <div className={ classesAlertText }>{ messageText }</div>
+          { messageTitle && (
+            <AlertTitle
+              title={ messageTitle }
+              classesTitle={ cn('alert__title', { [`alert__title--${ messageType }`]: variant !== 'alert-filled' }) }
+            />
+          ) }
+
+          <div className={ cn('alert__text', { [`alert__text--${ messageType }`]: variant !== 'alert-filled' }) }>
+            { messageText }
+          </div>
         </div>
 
         { closeButtonVisibility && (
-          <AlertButton
-            onClose={ onClose }
-            variant={ variant }
-          />
+          <AlertButton onClose={ closeAlert } variant={ variant }/>
         ) }
       </div>
     </div>
   );
 }
-
-const useAlertClasses = (variant, messageType, isClosing) => {
-  const classes = ['alert', variant, `${ variant }--${ messageType }`];
-
-  classes.push(isClosing ? 'alert-close' : 'alert-open');
-
-  return classes.join(' ');
-};
-
-const useTextClass = (initialClass, variant, messageType) => {
-  const classes = [initialClass];
-
-  classes.push(variant === 'alert-filled' ? '' : `${ initialClass }--${ messageType }`);
-
-  return classes.join(' ');
-};
