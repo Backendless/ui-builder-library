@@ -9,6 +9,18 @@
   "category": "Custom Components",
   "properties": [
     {
+      "type": "checkbox",
+      "name": "display",
+      "label": "Display",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "displayLogic",
+      "handlerLabel": "Visibility Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the component should be visible. If the handler returns true, the component will be visible.",
+      "settingTooltip": "Determines if the component should be visible."
+    },
+    {
       "type": "text",
       "name": "messageTitle",
       "label": "Message Title",
@@ -120,6 +132,7 @@
       "settingTooltip": "Allows specifying the animation speed in milliseconds when closing the alert."
     }
   ],
+  "hasDisplayTrait": false,
   "eventHandlers": [
     {
       "name": "onClose",
