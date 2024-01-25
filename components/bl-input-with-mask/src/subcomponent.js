@@ -2,7 +2,8 @@ import { useMemo } from 'react';
 
 const { cn } = BackendlessUI.CSSUtils;
 
-export const Input = ({ inputRef, htmlFor, eventHandlers, setIsFocused }) => {
+export const Input = props => {
+  const { inputRef, htmlFor, eventHandlers, setIsFocused, readOnly, disabled } = props;
   const { onFocusEvent, onLostFocusEvent, onMouseEnter, onMouseLeave } = eventHandlers;
 
   const onFocusHandler = event => {
@@ -25,17 +26,22 @@ export const Input = ({ inputRef, htmlFor, eventHandlers, setIsFocused }) => {
       onBlur={ onBlurHandler }
       onMouseEnter={ event => onMouseEnter({ event }) }
       onMouseLeave={ event => onMouseLeave({ event }) }
+      readOnly={ readOnly }
+      disabled={ disabled }
     />
   );
 };
 
-export const Placeholder = ({ placeholder, htmlFor, value, isFocused }) => {
+export const Placeholder = props => {
+  const { placeholder, htmlFor, value, isFocused, disabled } = props;
+
   const classes = useMemo(() => cn('input-with-mask__label',
     {
-      'input-with-mask__label--move-up': isFocused || value,
-      'input-with-mask__label--focused': isFocused,
+      'input-with-mask__label--move-up' : isFocused || value,
+      'input-with-mask__label--focused' : isFocused,
+      'input-with-mask__label--disabled': disabled,
     }
-  ), [isFocused, value]);
+  ), [isFocused, value, disabled]);
 
   return (
     <label
