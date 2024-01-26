@@ -421,6 +421,30 @@
       ],
       "handlerDescription": "This is a handler for the logic to choose one of three style variants - outlined, standard, or filled.",
       "settingTooltip": "Allows to choose one of three style variants - outlined, standard, or filled."
+    },
+    {
+      "type": "checkbox",
+      "name": "readOnly",
+      "label": "Read Only",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "readOnlyLogic",
+      "handlerLabel": "Read Only Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the input should be read-only. When the handler returns true, the component becomes read-only.",
+      "settingTooltip": "Determines if the input should be read-only."
+    },
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "dataBinding": true,
+      "handlerDescription": "This is a handler for the logic to determine if the component should be disabled. If the handler returns true, the component will be disabled.",
+      "settingTooltip": "Determines if the component should be disabled."
     }
   ],
   "eventHandlers": [

@@ -98,10 +98,14 @@
       &--move-up {
         transform: translate(14px, -6px) scale(0.75);
       }
+
+      &--disabled {
+        color: @inputOutlinedLabelColorDisabled;
+      }
     }
 
     &__text-field {
-      &:not(&--focused):hover {
+      &:not(&--disabled):not(&--focused):hover {
         fieldset {
           border: @inputOutlinedBorderHover;
           box-shadow: @inputOutlinedShadowHover;
@@ -151,6 +155,14 @@
       color: @inputOutlinedColor;
       font-size: @inputOutlinedFontSize;
       font-family: @inputOutlinedFontFamily;
+
+      &--disabled {
+        color: @inputOutlinedColorDisabled;
+
+        fieldset {
+          border: @inputOutlinedBorderDisabled;
+        }
+      }
     }
 
     &__field {
@@ -187,6 +199,10 @@
 
       &:not(.input-with-mask--focused):hover {
         color: @inputFilledLabelColorHover;
+      }
+
+      &--disabled {
+        color: @inputFilledLabelColorDisabled;
       }
     }
 
@@ -251,7 +267,7 @@
         }
       }
 
-      &:not(&--focused):hover {
+      &:not(&--disabled):not(&--focused):hover {
         input:autofill:hover {
           text-fill-color: @inputFilledAutofillColorHover;
           transition: background-color 5000s ease-in-out 0s;
@@ -267,6 +283,10 @@
         &::before {
           border-bottom: 1px solid rgba(0, 0, 0, 1);
         }
+      }
+
+      &--disabled {
+        background-color: @inputFilledBackgroundDisabled;
       }
     }
   }
@@ -305,6 +325,10 @@
       &:hover:not(&--focused) {
         color: @inputStandardLabelColorHover;
       }
+
+      &--disabled {
+        color: @inputStandardLabelColorDisabled;
+      }
     }
 
     &__fieldset {
@@ -313,6 +337,14 @@
 
     &__text-field {
       position: relative;
+
+      &--disabled {
+        color: @inputStandardColorDisabled;
+
+        &::before {
+          border-bottom: @inputStandardUnderlineDisabled;
+        }
+      }
 
       input:autofill {
         text-fill-color: @inputStandardAutofillColor;
@@ -348,7 +380,7 @@
         pointer-events: none;
       }
 
-      &:hover:not(&--focused) {
+      &:not(&--disabled):hover:not(&--focused) {
         input:autofill:hover {
           text-fill-color: @inputStandardAutofillColorHover;
           transition: background-color 5000s ease-in-out 0s;

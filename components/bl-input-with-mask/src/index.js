@@ -44,9 +44,9 @@ const AutofixMap = {
 
 export default function InputWithMask({ component, eventHandlers, elRef }) {
   const {
-    style, display, classList, initValue, variant, placeholder, dynamicMask, maskType, mask, blocks, min, max,
-    from, to, thousandsSeparator, padFractionalZeros, normalizeZeros, radix, mapToRadix, definitions, scaleNumber,
-    overwrite, displayChar, placeholderChar, autofix, skipInvalid, lazy, eager, dateFormat, maskEnum,
+    style, display, classList, initValue, variant, placeholder, dynamicMask, maskType, mask, blocks, min, max, from, to,
+    thousandsSeparator, padFractionalZeros, normalizeZeros, radix, mapToRadix, definitions, scaleNumber, overwrite,
+    displayChar, placeholderChar, autofix, skipInvalid, lazy, eager, dateFormat, maskEnum, readOnly, disabled,
   } = component;
   const { onChangeValue, onValidate, onComplete } = eventHandlers;
 
@@ -92,15 +92,21 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
           value={ value }
           isFocused={ isFocused }
           placeholder={ placeholder }
+          disabled={ disabled }
           htmlFor="input_field"
         />
 
-        <div className={ cn('input-with-mask__text-field', { 'input-with-mask__text-field--focused': isFocused }) }>
+        <div className={ cn('input-with-mask__text-field', {
+          'input-with-mask__text-field--focused' : isFocused,
+          'input-with-mask__text-field--disabled': disabled,
+        }) }>
           <Input
             inputRef={ inputRef }
             htmlFor="input_field"
             eventHandlers={ eventHandlers }
             setIsFocused={ setIsFocused }
+            disabled={ disabled }
+            readOnly={ readOnly }
           />
           <Fieldset
             placeholder={ placeholder }
