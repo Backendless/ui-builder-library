@@ -234,7 +234,8 @@
           "id": "detail",
           "label": "Detail"
         }
-      ]
+      ],
+      "handlerDescription": "The event is fired whenever any element animates in."
     },
     {
       "name": "onAnimationOut",
@@ -244,7 +245,8 @@
           "id": "detail",
           "label": "Detail"
         }
-      ]
+      ],
+      "handlerDescription": "The event is fired whenever any element animates out."
     }
   ],
   "actions": [],
