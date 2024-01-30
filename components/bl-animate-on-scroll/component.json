@@ -214,7 +214,8 @@
       "label": "Mirrored",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine whether elements should animate out while scrolling past them"
+      "settingTooltip": "Allows to determine whether elements should animate out while scrolling past them",
+      "defaultValue": true
     },
     {
       "type": "checkbox",
