@@ -25,9 +25,9 @@ The component is based on external [Animate on Scroll](https://github.com/michal
 
 ## Settings
 
-| Name                      | Type                                                                  | Default Value | Required | Description                                                 |
-|---------------------------|-----------------------------------------------------------------------|---------------|----------|-------------------------------------------------------------|
-| Disable for: `disableFor` | Select [ Mobile: `mobile`, Tablet: `tablet`, All: `all`, None: `none` | None: `none`  | No       | Allows to determine whether or not to disable the animation.|
+| Name                      | Type                                                                  | Default Value | Required | Description                                                                         |
+|---------------------------|-----------------------------------------------------------------------|---------------|----------|-------------------------------------------------------------------------------------|
+| Disable for: `disableFor` | Select [ Mobile: `mobile`, Tablet: `tablet`, All: `all`, None: `none` | None: `none`  | No       | Allows to determine whether or not to disable the animation. Watch [Usage](#usage). |
 
 ## Events
 
@@ -35,3 +35,13 @@ The component is based on external [Animate on Scroll](https://github.com/michal
 |--------------------|-----------------------------------|-----------------------|
 | On Animation Enter | whenever any element animates in  | Detail: `HTMLElement` |
 | On Animation Out   | whenever any element animates out | Detail: `HTMLElement` |
+
+## Usage
+
+To deactivate the component's animation, navigate to the SETTINGS tab in UI Builder. Then, select 'UI Components' from
+the sidebar, and choose the desired parameter from the dropdown menu.
+
+<p align="center">
+  <img src="./example-images/disable-for-setting.png" alt="disable for setting" width="1123"/>
+</p>
+
