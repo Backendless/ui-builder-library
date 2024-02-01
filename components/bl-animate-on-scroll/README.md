@@ -31,10 +31,9 @@ The component is based on external [Animate on Scroll](https://github.com/michal
 
 ## Events
 
-| Name               | Triggers                          | Context Blocks        |
-|--------------------|-----------------------------------|-----------------------|
-| On Animation Enter | whenever any element animates in  | Detail: `HTMLElement` |
-| On Animation Out   | whenever any element animates out | Detail: `HTMLElement` |
+| Name               | Triggers                       | Context Blocks        |
+|--------------------|--------------------------------|-----------------------|
+| On Animation Event | whenever any element animates  | Detail: `HTMLElement` |
 
 ## Usage
 
@@ -42,6 +41,6 @@ To deactivate the component's animation, navigate to the SETTINGS tab in UI Buil
 the sidebar, and choose the desired parameter from the dropdown menu.
 
 <p align="center">
-  <img src="./example-images/disable-for-setting.png" alt="disable for setting" width="1123"/>
+  <img src="./example-images/disable-for-setting.png" alt="disable for setting" width="1064"/>
 </p>
 
