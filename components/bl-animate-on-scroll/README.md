@@ -38,10 +38,25 @@ The component is based on external [Animate on Scroll](https://github.com/michal
 
 ## Usage
 
+After adding the component to the page, ensure it remains visible within its parent element as the animation relies
+on browser scroll events. To achieve this, verify the overflow property of each parent block.
+
+<p align="center">
+  <img src="./example-images/overflow-setting.png" alt="overflow setting" width="1118"/>
+</p>
+
+By default, the animated element triggers its own animation. If using an anchor to initiate the animation, ensure it
+is not hidden within any parent block. Also, remember that the anchor property value should correspond to the class name
+of the triggering element.
+
+<p align="center">
+  <img src="./example-images/anchor-setting.png" alt="anchor setting" width="912"/>
+</p>
+
 To deactivate the component's animation, navigate to the SETTINGS tab in UI Builder. Then, select 'UI Components' from
 the sidebar, and choose the desired parameter from the dropdown menu.
 
 <p align="center">
-  <img src="./example-images/disable-for-setting.png" alt="disable for setting" width="1123"/>
+  <img src="./example-images/disable-for-setting.png" alt="disable for setting" width="1064"/>
 </p>
 
