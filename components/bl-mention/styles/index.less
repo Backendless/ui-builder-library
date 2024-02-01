@@ -11,13 +11,15 @@
 @bl-customComponent-Mention-panel-border: 0 none;
 @bl-customComponent-Mention-panel-borderRadius: 6px;
 @bl-customComponent-Mention-panel-boxShadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+@bl-customComponent-Mention-items-width: max-content;
+@bl-customComponent-Mention-item-width: 100%;
 @bl-customComponent-Mention-item-background: transparent;
 @bl-customComponent-Mention-item-border: 0 none;
 @bl-customComponent-Mention-item-color: @appTextColor;
-@bl-customComponent-Mention-item-color-hover: #appTextColor;
+@bl-customComponent-Mention-item-color-hover: @appTextColor;
 @bl-customComponent-Mention-item-img-width: 32px;
 @bl-customComponent-Mention-item-background-hover: average(@appBackgroundColor, @themePrimary);
-@bl-customComponent-Mention-item-highlight-color: #appTextColor;
+@bl-customComponent-Mention-item-highlight-color: @appTextColor;
 @bl-customComponent-Mention-item-highlight-background: darken(average(@appBackgroundColor, @themePrimary), 40%);
 
 .bl-customComponent-Mention {
@@ -113,12 +115,14 @@
   }
 
   .p-mention-panel .p-mention-items {
+    width: @bl-customComponent-Mention-items-width;
     padding: 0.75rem 0;
   }
 
   .p-mention-panel .p-mention-items .p-mention-item {
     margin: 0;
     padding: 0.75rem 1.25rem;
+    width: @bl-customComponent-Mention-item-width;
     border: @bl-customComponent-Mention-item-border;
     color: @bl-customComponent-Mention-item-color;
     background: @bl-customComponent-Mention-item-background;
