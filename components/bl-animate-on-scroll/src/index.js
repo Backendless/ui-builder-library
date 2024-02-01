@@ -34,6 +34,10 @@ export default function AnimateOnScroll({ component, eventHandlers, settings, po
     };
   }, []);
 
+  useEffect(() => {
+    Aos.refresh();
+  }, [anchor]);
+
   if (!display) {
     return null;
   }
