@@ -164,22 +164,28 @@
       "settingTooltip": "Allows to determine easing of animation"
     },
     {
-      "type": "number",
+      "type": "range",
       "name": "duration",
       "label": "Duration (ms)",
+      "settingTooltip": "Allows to determine the duration of animation.",
       "showInSettings": true,
       "defaultValue": "500",
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the duration of animation."
+      "min": "50",
+      "max": "3000",
+      "step": "50"
     },
     {
-      "type": "number",
+      "type": "range",
       "name": "delay",
       "label": "Delay (ms)",
+      "settingTooltip": "Allows to determine the delay for starting animation.",
       "showInSettings": true,
       "defaultValue": "0",
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine the delay for starting animation."
+      "min": "0",
+      "max": "3000",
+      "step": "50"
     },
     {
       "type": "text",
@@ -208,7 +214,8 @@
       "label": "Mirrored",
       "showInSettings": true,
       "hasLogicHandler": false,
-      "settingTooltip": "Allows to determine whether elements should animate out while scrolling past them"
+      "settingTooltip": "Allows to determine whether elements should animate out while scrolling past them",
+      "defaultValue": true
     },
     {
       "type": "checkbox",
@@ -228,7 +235,8 @@
           "id": "detail",
           "label": "Detail"
         }
-      ]
+      ],
+      "handlerDescription": "The event is fired whenever any element animates in."
     },
     {
       "name": "onAnimationOut",
@@ -238,7 +246,8 @@
           "id": "detail",
           "label": "Detail"
         }
-      ]
+      ],
+      "handlerDescription": "The event is fired whenever any element animates out."
     }
   ],
   "actions": [],
