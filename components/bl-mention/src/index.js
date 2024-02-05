@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import primereact from './lib/core';
+import { Mention } from './lib/mention.min';
 
 import {
   filterSuggestions, orderFields, positionMentionPanel, stringToList, updateSuggestionsMap, useTriggers,
 } from './helpers.js';
 import { SuggestionCard } from './suggestion-card.js';
 
-const { Mention } = primereact.mention;
 const { cn } = BackendlessUI.CSSUtils;
 
 const BLACKLISTED_FIELDS = new Set(['created', '___class', 'ownerId', 'updated', 'objectId']);
