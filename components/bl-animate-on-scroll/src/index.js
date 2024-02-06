@@ -28,7 +28,7 @@ export default function AnimateOnScroll(props) {
     document.addEventListener(`aos:in:${ instanceId }`, ({ detail }) => onAnimation({ detail }));
 
     return () => {
-      document.addEventListener(`aos:in:${ instanceId }`, ({ detail }) => onAnimation({ detail }));
+      document.removeEventListener(`aos:in:${ instanceId }`, ({ detail }) => onAnimation({ detail }));
     };
   }, []);
 
