@@ -31,10 +31,9 @@ The component is based on external [Animate on Scroll](https://github.com/michal
 
 ## Events
 
-| Name               | Triggers                          | Context Blocks        |
-|--------------------|-----------------------------------|-----------------------|
-| On Animation Enter | whenever any element animates in  | Detail: `HTMLElement` |
-| On Animation Out   | whenever any element animates out | Detail: `HTMLElement` |
+| Name               | Triggers                       | Context Blocks        |
+|--------------------|--------------------------------|-----------------------|
+| On Animation Event | whenever any element animates  | Detail: `HTMLElement` |
 
 ## Usage
 

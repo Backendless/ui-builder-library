@@ -11,13 +11,13 @@ const DevicesMap = {
   none  : false,
 };
 
-export default function AnimateOnScroll({ component, eventHandlers, settings, pods, elRef }) {
+export default function AnimateOnScroll(props) {
+  const { component, eventHandlers: { onAnimation }, settings: { disableFor }, pods, elRef, instanceId } = props;
   const {
     display, classList, style, animationType, easing, side,
     duration, offset, delay, mirror, once, anchor,
   } = component;
-  const { disableFor } = settings;
-  const { onAnimationEnter, onAnimationOut } = eventHandlers;
+
   const elementPod = pods['animationPod'];
 
   const animationName = useMemo(() => animationType + (side === 'none' ? '' : `-${ side }`), [animationType, side]);
@@ -25,12 +25,10 @@ export default function AnimateOnScroll({ component, eventHandlers, settings, po
   useEffect(() => {
     Aos.init({ disable: DevicesMap[disableFor] });
 
-    document.addEventListener('aos:in', ({ detail }) => onAnimationEnter({ detail }));
-    document.addEventListener('aos:out', ({ detail }) => onAnimationOut({ detail }));
+    document.addEventListener(`aos:in:${ instanceId }`, ({ detail }) => onAnimation({ detail }));
 
     return () => {
-      document.addEventListener('aos:in', ({ detail }) => onAnimationEnter({ detail }));
-      document.addEventListener('aos:out', ({ detail }) => onAnimationOut({ detail }));
+      document.removeEventListener(`aos:in:${ instanceId }`, ({ detail }) => onAnimation({ detail }));
     };
   }, []);
 
@@ -55,7 +53,8 @@ export default function AnimateOnScroll({ component, eventHandlers, settings, po
       data-aos-mirror={ mirror }
       data-aos-once={ once }
       data-aos-anchor={ anchor ? '.' + anchor : null }
-    >
+      data-aos-id={ instanceId }>
+
       { elementPod.render() }
     </div>
   );

@@ -228,26 +228,15 @@
   ],
   "eventHandlers": [
     {
-      "name": "onAnimationEnter",
-      "label": "On Animation Enter",
+      "name": "onAnimation",
+      "label": "On Animation Event",
       "contextBlocks": [
         {
           "id": "detail",
           "label": "Detail"
         }
       ],
-      "handlerDescription": "The event is fired whenever any element animates in."
-    },
-    {
-      "name": "onAnimationOut",
-      "label": "On Animation Out",
-      "contextBlocks": [
-        {
-          "id": "detail",
-          "label": "Detail"
-        }
-      ],
-      "handlerDescription": "The event is fired whenever any element animates out."
+      "handlerDescription": "The event is fired whenever any element animates."
     }
   ],
   "actions": [],
