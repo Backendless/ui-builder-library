@@ -25,9 +25,15 @@ export default function AnimateOnScroll(props) {
   useEffect(() => {
     Aos.init({ disable: DevicesMap[disableFor] });
 
+    const observer = new ResizeObserver(() => Aos.refresh());
+
+    observer.observe(document.body);
+
     document.addEventListener(`aos:in:${ instanceId }`, ({ detail }) => onAnimation({ detail }));
 
     return () => {
+      observer.disconnect();
+
       document.removeEventListener(`aos:in:${ instanceId }`, ({ detail }) => onAnimation({ detail }));
     };
   }, []);
