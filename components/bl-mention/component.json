@@ -120,7 +120,7 @@
     {
       "type": "text",
       "name": "hideField",
-      "label": "Hide Filed",
+      "label": "Hide Field",
       "showInSettings": true,
       "hasLogicHandler": true,
       "handlerId": "hideFieldLogic",
