@@ -85,7 +85,7 @@
       "defaultValue": "0",
       "hasLogicHandler": false,
       "handlerId": "delayLogic",
-      "settingTooltip": "Defines a delay between keystrokes to wait before sending a query."
+      "settingTooltip": "Defines a delay (ms) between keystrokes to wait before sending a query."
     },
     {
       "type": "checkbox",
