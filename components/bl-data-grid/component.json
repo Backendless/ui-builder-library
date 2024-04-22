@@ -255,6 +255,22 @@
   ],
   "eventHandlers": [
     {
+      "name": "onCellValueChanged",
+      "label": "On Cell Value Changed Event",
+      "output": false,
+      "handlerDescription": "This event is fired when Enter is pressed after the cell value has changed.",
+      "contextBlocks": [
+        {
+          "id": "cellParams",
+          "label": "Cell Params"
+        },
+        {
+          "id": "dataObject",
+          "label": "Data Object"
+        }
+      ]
+    },
+    {
       "name": "onCellClick",
       "label": "On Cell Click Event",
       "contextBlocks": [

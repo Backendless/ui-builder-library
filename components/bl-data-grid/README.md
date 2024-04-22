@@ -36,10 +36,11 @@ View an example of how to install this component and how it works in your UI [he
 
 ## Events
 
-| Name                  | Triggers                                                                  | Context Blocks                 |
-|-----------------------|---------------------------------------------------------------------------|--------------------------------|
-| On Cell Click Event   | This event is fired when the user clicks the mouse or taps the grid cell. | Cell Params: `{key: value}`    |
-| On Column Moved Event | This event is fired when any column is moved.                             | Columns: list of moved columns |
+| Name                        | Triggers                                                                    | Context Blocks                                           |
+|-----------------------------|-----------------------------------------------------------------------------|----------------------------------------------------------|
+| On Cell Value Changed Event | This event is fired when Enter is pressed after the cell value has changed. | Cell Params: `{key: value}`, Data Object: `{key: value}` |
+| On Cell Click Event         | This event is fired when the user clicks the mouse or taps the grid cell.   | Cell Params: `{key: value}`                              |
+| On Column Moved Event       | This event is fired when any column is moved.                               | Columns: list of moved columns                           |
 
 ## Actions
 
@@ -114,3 +115,11 @@ For the required column, add a `sort` property with a value of `asc` or `desc` d
 
 2. Using the codeless:
 ![guide example](./example-images/add-default-column-sort-codeless.png)
+
+## <a id="on-cell-value-changed-guide"></a>On Cell Value Changed Event Guide
+
+1. Open the `Data API` tab and select the `Upsert Object in Backendless` block:
+   ![guide example](./example-images/add-upsert-object.png)
+
+2. Specify the desired table and pass the `Data Object` block:
+   ![guide example](./example-images/update-changed-cell-value.png)
