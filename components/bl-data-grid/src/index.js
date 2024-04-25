@@ -25,7 +25,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     editable, resizable, suppressCellFocus, multipleRowsSelection, columnDefs, rowsData,
     height, width, theme, loadingText, noRowsText, pagination, paginationAutoPageSize, paginationPageSize,
   } = component;
-  const { onCellClick, onColumnMoved } = eventHandlers;
+  const { onCellValueChanged, onCellClick, onColumnMoved } = eventHandlers;
 
   const gridRef = useRef();
   const [columns, setColumns] = useState([]);
@@ -54,6 +54,10 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   const handleCellClick = useCallback(params => {
     onCellClick({ cellParams: params });
+  }, []);
+
+  const handleCellValueChanged = useCallback(params => {
+    onCellValueChanged({ cellParams: params, dataObject: params.data });
   }, []);
 
   const handleColumnMove = useCallback(() => {
@@ -102,6 +106,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
         paginationAutoPageSize={ paginationAutoPageSize }
         rowSelection={ multipleRowsSelection ? 'multiple' : 'single' }
         onCellClicked={ handleCellClick }
+        onCellValueChanged={ handleCellValueChanged }
         onColumnMoved={ handleColumnMove }
       />
     </div>
