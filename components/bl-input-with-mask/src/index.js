@@ -69,10 +69,12 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
 
   const {
     ref: inputRef, value, setUnmaskedValue, unmaskedValue,
-  } = useIMask(options, { onComplete: (value, mask) => onComplete({ value, mask }) });
+  } = useIMask(options, {
+    onComplete: (value, mask) => onComplete({ value, mask }),
+    onAccept  : (value, mask) => onChangeValue({ value, unmaskedValue: mask.unmaskedValue })
+  });
 
   useEffect(() => setUnmaskedValue(initValue || ''), [initValue]);
-  useEffect(() => onChangeValue({ value, unmaskedValue }), [value, unmaskedValue]);
 
   if (!display) {
     return null;
