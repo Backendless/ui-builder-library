@@ -116,6 +116,12 @@ For the required column, add a `sort` property with a value of `asc` or `desc` d
 2. Using the codeless:
 ![guide example](./example-images/add-default-column-sort-codeless.png)
 
+## <a id="adding-default-selected-rows"></a>Adding Selected Rows by Default Guide
+
+For the desired row, add the `selected` property with the value `true`.
+
+![guide example](./example-images/adding-default-selected-rows.png)
+
 ## <a id="on-cell-value-changed-guide"></a>On Cell Value Changed Event Guide
 
 1. Open the `Data API` tab and select the `Upsert Object in Backendless` block:

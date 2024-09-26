@@ -44,7 +44,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     floatingFilter: filter ? floatingFilter : false,
     editable,
     resizable,
-    cellRenderer: memo(CellComponent),
+    cellRenderer  : memo(CellComponent),
   }), [sortable, filter, floatingFilter, resizable]);
 
   const loadingOverlayComponent = useMemo(() => LoadingComponent, []);
@@ -73,6 +73,21 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const clearSort = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({ defaultState: { sort: null } });
   }, []);
+
+  const onFirstDataRendered = useCallback(
+    params => {
+      const nodesToSelect = [];
+
+      params.api.forEachNode(node => {
+        if (!!node.data && node.data.selected) {
+          nodesToSelect.push(node);
+        }
+      });
+
+      params.api.setNodesSelected({ nodes: nodesToSelect, newValue: true });
+    },
+    []
+  );
 
   useActions({ component, gridRef, sortByColumnId, clearSort });
 
@@ -108,6 +123,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
         onCellClicked={ handleCellClick }
         onCellValueChanged={ handleCellValueChanged }
         onColumnMoved={ handleColumnMove }
+        onFirstDataRendered={ onFirstDataRendered }
       />
     </div>
   );
@@ -115,7 +131,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
 function useActions({ component, gridRef, sortByColumnId, clearSort }) {
   Object.assign(component, {
-    getRowsData: () => {
+    getRowsData    : () => {
       const rowsData = [];
 
       gridRef.current.api.forEachNode(node => {
