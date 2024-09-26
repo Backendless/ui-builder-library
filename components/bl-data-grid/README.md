@@ -116,6 +116,12 @@ For the required column, add a `sort` property with a value of `asc` or `desc` d
 2. Using the codeless:
 ![guide example](./example-images/add-default-column-sort-codeless.png)
 
+## <a id="adding-cell-styles-guide"></a>Adding Styles For Column Guide
+
+For the required Column, add a `cellStyle` property with an object that will contain the required styles.
+
+![guide example](./example-images/add-cell-styles.png)
+
 ## <a id="on-cell-value-changed-guide"></a>On Cell Value Changed Event Guide
 
 1. Open the `Data API` tab and select the `Upsert Object in Backendless` block:
