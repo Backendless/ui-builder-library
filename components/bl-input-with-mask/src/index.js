@@ -68,14 +68,13 @@ export default function InputWithMask({ component, eventHandlers, elRef }) {
     eager, dateFormat, maskEnum]);
 
   const {
-    ref: inputRef,
-    value,
-    setUnmaskedValue,
-    unmaskedValue
-  } = useIMask(options, { onComplete: (value, mask) => onComplete({ value, mask }) });
+    ref: inputRef, value, setUnmaskedValue, unmaskedValue,
+  } = useIMask(options, {
+    onComplete: (value, mask) => onComplete({ value, mask }),
+    onAccept  : (value, mask) => onChangeValue({ value, unmaskedValue: mask.unmaskedValue })
+  });
 
   useEffect(() => setUnmaskedValue(initValue || ''), [initValue]);
-  useEffect(() => onChangeValue({ value, unmaskedValue }), [value, unmaskedValue]);
 
   if (!display) {
     return null;
