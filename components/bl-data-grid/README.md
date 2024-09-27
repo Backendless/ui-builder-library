@@ -122,6 +122,12 @@ For the required Column, add a `cellStyle` property with an object that will con
 
 ![guide example](./example-images/add-cell-styles.png)
 
+## <a id="adding-default-selected-rows"></a>Adding Selected Rows by Default Guide
+
+For the desired row, add the `selected` property with the value `true`.
+
+![guide example](./example-images/adding-default-selected-rows.png)
+
 ## <a id="on-cell-value-changed-guide"></a>On Cell Value Changed Event Guide
 
 1. Open the `Data API` tab and select the `Upsert Object in Backendless` block:
