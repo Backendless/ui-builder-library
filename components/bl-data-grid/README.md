@@ -1,6 +1,7 @@
 # Data Grid
 
-Data Grid is a component of Backendless UI-Builder designer. The main purpose of the component is to display data, and this data can be sorted and filtered.
+Data Grid is a component of Backendless UI-Builder designer. The main purpose of the component is to display data, and
+this data can be sorted and filtered.
 If you want to know more about this component, you can [follow the link.](https://www.ag-grid.com/example/)
 
 <p align="center">
@@ -9,7 +10,8 @@ If you want to know more about this component, you can [follow the link.](https:
 
 ## Demo
 
-View an example of how to install this component and how it works in your UI [here](https://app.arcade.software/share/CXVuAnEGfiqqQAmlzisU).
+View an example of how to install this component and how it works in your
+UI [here](https://app.arcade.software/share/CXVuAnEGfiqqQAmlzisU).
 
 ## Properties
 
@@ -24,7 +26,7 @@ View an example of how to install this component and how it works in your UI [he
 | Suppress Cell Focus<br/>`suppressCellFocus`            | Checkbox                                                                                                                         | `false`                                                                                                                                                                   | Suppress Cell Focus Logic       | NO           | YES        | This handler allows you to disable cell focus and keyboard navigation.                                                                                                                        |
 | Multiple Rows Selection<br/>`multipleRowsSelection`    | Checkbox                                                                                                                         | `true`                                                                                                                                                                    | Multiple Rows Selection Logic   | YES          | YES        | This handler adds the ability to select multiple rows. Watch [Adding Row Selections Guide](#adding-row-selections-guide).                                                                     |
 | Column Definition<br/>`columnDefs`                     | JSON                                                                                                                             | `[`<br/>`{"field": "name", "flex": 1},`<br/>`{"field": "age", "sortable": true, "flex": 1},`<br/>`{"field": "city", "flex": 1}`<br/>`]`                                   | Column Definition Logic         | YES          | YES        | This handler allows you to define columns for the component. Watch [Codeless Examples](#examples). Signature of column: List of object `{field: String, sortable: Boolean, filter: Boolean}`. |
-| Rows Data<br/>`rowsData`                               | JSON                                                                                                                             | `[`<br/>`{"name": "Jack", "age": 26, "city": "London"},`<br/>`{"name": "Kate", "age": 22, "city": "New York"},`<br/>`{"name": "Nick", "age": 28, "city": "Kyiv"}`<br/>`]` | Rows Data Logic                 | YES          | YES        | This handler allows you to set data to the component. Watch [Codeless Examples](#examples). Signature of data: List of object `{field: String \| Number}`                                     |
+| Rows Data<br/>`rowsData`                               | JSON                                                                                                                             | `[`<br/>`{"name": "Jack", "age": 26, "city": "London"},`<br/>`{"name": "Kate", "age": 22, "city": "New York"},`<br/>`{"name": "Nick", "age": 28, "city": "Kyiv"}`<br/>`]` | Rows Data Logic                 | YES          | YES        | This handler allows you to set data to the component. Watch [Codeless Examples](#examples). Signature of data: List of object `{field: String \                                               | Number}`                                     |
 | Height<br/>`height`                                    | Text                                                                                                                             | "500px"                                                                                                                                                                   | Height Logic                    | YES          | YES        | This handler allows you to specify the height of the component.                                                                                                                               |
 | Width<br/>`width`                                      | Text                                                                                                                             | "750px"                                                                                                                                                                   | Width Logic                     | YES          | YES        | This handler allows you to specify the width of the component.                                                                                                                                |
 | Theme<br/>`theme`                                      | Select [Alpine:`alpine`<br/>Alpine Dark:`alpine-dark`<br/>Balham:`balham`<br/>Balham Dark:`balham-dark`<br/>Material:`material`] | Alpine:`alpine`                                                                                                                                                           | Theme Logic                     | YES          | YES        | This handler allows you to specify the theme of the component.                                                                                                                                |
@@ -36,11 +38,12 @@ View an example of how to install this component and how it works in your UI [he
 
 ## Events
 
-| Name                        | Triggers                                                                    | Context Blocks                                           |
-|-----------------------------|-----------------------------------------------------------------------------|----------------------------------------------------------|
-| On Cell Value Changed Event | This event is fired when Enter is pressed after the cell value has changed. | Cell Params: `{key: value}`, Data Object: `{key: value}` |
-| On Cell Click Event         | This event is fired when the user clicks the mouse or taps the grid cell.   | Cell Params: `{key: value}`                              |
-| On Column Moved Event       | This event is fired when any column is moved.                               | Columns: list of moved columns                           |
+| Name                        | Triggers                                                                    | Context Blocks                                                                       |
+|-----------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| On Cell Value Changed Event | This event is fired when Enter is pressed after the cell value has changed. | Cell Params: `{key: value}`, Data Object: `{key: value}`                             |
+| On Cell Click Event         | This event is fired when the user clicks the mouse or taps the grid cell.   | Cell Params: `{key: value}`                                                          |
+| On Column Moved Event       | This event is fired when any column is moved.                               | Columns: list of moved columns                                                       |
+| On Filtering Event          | This event is fired when text is entered into the filter fields.            | Filter Model: list of active filters `{filter: Text, filterType: Text, type: Text }` |
 
 ## Actions
 
@@ -63,13 +66,15 @@ Adding columns to the component:
 ![markers example](./example-images/columns.png)
 
 
-> **If you have nested objects (as shown in the screenshot below) and you want it to display as a group, then you need to do the following:**
+> **If you have nested objects (as shown in the screenshot below) and you want it to display as a group, then you need
+to do the following:**
 
 1. Add row data with nested objects:
 
 ![markers example](./example-images/rows-with-nested-object.png)
 
-2. Add a `children` property for the field with the nested object, and pass a list of nested properties as shown in the screenshot:
+2. Add a `children` property for the field with the nested object, and pass a list of nested properties as shown in the
+   screenshot:
 
 ![markers example](./example-images/col-def-with-children-prop.png)
 
@@ -94,11 +99,13 @@ Add `"checkboxSelection": true` property to the desired column:
 
 ![guide example](./example-images/add-checkboxSelection.png)
 
-Add `"headerCheckboxSelection": true` to the desired column if you want to add the checkbox to the header to all rows select:
+Add `"headerCheckboxSelection": true` to the desired column if you want to add the checkbox to the header to all rows
+select:
 
 ![guide example](./example-images/add-headerCheckboxSelection.png)
 
-There is also a `Multiple Rows Selection` property for selecting multiple rows. Uncheck the box if you want to make the ability to select only one row:
+There is also a `Multiple Rows Selection` property for selecting multiple rows. Uncheck the box if you want to make the
+ability to select only one row:
 
 ![guide example](./example-images/control-selection-type.png)
 
@@ -111,10 +118,10 @@ Use `Get Selected Rows of Data Grid` action to get all selected rows:
 For the required column, add a `sort` property with a value of `asc` or `desc` depending on what you need.
 
 1. Using the settings:
-![guide example](./example-images/add-default-column-sort-json.png)
+   ![guide example](./example-images/add-default-column-sort-json.png)
 
 2. Using the codeless:
-![guide example](./example-images/add-default-column-sort-codeless.png)
+   ![guide example](./example-images/add-default-column-sort-codeless.png)
 
 ## <a id="adding-default-selected-rows"></a>Adding Selected Rows by Default Guide
 
