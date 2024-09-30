@@ -303,6 +303,17 @@
           "label": "Columns"
         }
       ]
+    },
+    {
+      "name": "onFiltering",
+      "label": "On Filtering",
+      "contextBlocks": [
+        {
+          "id": "filterModel",
+          "label": "Filter Model"
+        }
+      ],
+      "handlerDescription": "This event is fired when text is entered into the filter fields."
     }
   ],
   "actions": [

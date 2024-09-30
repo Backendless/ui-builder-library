@@ -39,11 +39,12 @@ UI [here](https://app.arcade.software/share/CXVuAnEGfiqqQAmlzisU).
 
 ## Events
 
-| Name                        | Triggers                                                                    | Context Blocks                                           |
-|-----------------------------|-----------------------------------------------------------------------------|----------------------------------------------------------|
-| On Cell Value Changed Event | This event is fired when Enter is pressed after the cell value has changed. | Cell Params: `{key: value}`, Data Object: `{key: value}` |
-| On Cell Click Event         | This event is fired when the user clicks the mouse or taps the grid cell.   | Cell Params: `{key: value}`                              |
-| On Column Moved Event       | This event is fired when any column is moved.                               | Columns: list of moved columns                           |
+| Name                        | Triggers                                                                    | Context Blocks                                                                       |
+|-----------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| On Cell Value Changed Event | This event is fired when Enter is pressed after the cell value has changed. | Cell Params: `{key: value}`, Data Object: `{key: value}`                             |
+| On Cell Click Event         | This event is fired when the user clicks the mouse or taps the grid cell.   | Cell Params: `{key: value}`                                                          |
+| On Column Moved Event       | This event is fired when any column is moved.                               | Columns: list of moved columns                                                       |
+| On Filtering Event          | This event is fired when text is entered into the filter fields.            | Filter Model: list of active filters `{filter: Text, filterType: Text, type: Text }` |
 
 ## Actions
 

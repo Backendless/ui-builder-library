@@ -25,7 +25,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
     editable, resizable, suppressCellFocus, multipleRowsSelection, columnDefs, rowsData,
     height, width, theme, rowStyle, loadingText, noRowsText, pagination, paginationAutoPageSize, paginationPageSize,
   } = component;
-  const { onCellValueChanged, onCellClick, onColumnMoved } = eventHandlers;
+  const { onCellValueChanged, onCellClick, onColumnMoved, onFiltering } = eventHandlers;
 
   const gridRef = useRef();
   const [columns, setColumns] = useState([]);
@@ -62,6 +62,10 @@ export default function DataGridComponent({ component, eventHandlers }) {
 
   const handleColumnMove = useCallback(() => {
     onColumnMoved({ columns: gridRef.current.columnApi.getColumnState() });
+  }, []);
+
+  const handleFilterChange = useCallback(() => {
+    onFiltering({ filterModel: gridRef.current.api.getFilterModel() });
   }, []);
 
   const sortByColumnId = useCallback((columnId, direction) => {
@@ -124,6 +128,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
         onCellClicked={ handleCellClick }
         onCellValueChanged={ handleCellValueChanged }
         onColumnMoved={ handleColumnMove }
+        onFilterChanged={ handleFilterChange }
         onFirstDataRendered={ onFirstDataRendered }
       />
     </div>
