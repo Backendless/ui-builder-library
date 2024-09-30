@@ -23,7 +23,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   const {
     classList, display, style, disabled, sortable, filter, floatingFilter,
     editable, resizable, suppressCellFocus, multipleRowsSelection, columnDefs, rowsData,
-    height, width, theme, loadingText, noRowsText, pagination, paginationAutoPageSize, paginationPageSize,
+    height, width, theme, rowStyle, loadingText, noRowsText, pagination, paginationAutoPageSize, paginationPageSize,
   } = component;
   const { onCellValueChanged, onCellClick, onColumnMoved, onFiltering } = eventHandlers;
 
@@ -111,6 +111,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
       className={ classes }>
       <AgGridReact
         ref={ gridRef }
+        rowStyle={ rowStyle }
         rowData={ rowsToDisplay }
         columnDefs={ columns }
         defaultColDef={ defaultColDef }
