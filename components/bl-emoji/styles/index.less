@@ -1,0 +1,55 @@
+@bl-customComponent-emoji-themeColor: @themePrimary;
+@bl-customComponent-emoji-backgroundColor: @appBackgroundColor;
+@bl-customComponent-emoji-textColor: @appTextColor;
+
+@bl-customComponent-emoji-disabled-opacity: 0.38;
+
+@bl-customComponent-emoji-button-transform-onHover: scale(1.2);
+@bl-customComponent-emoji-button-transition-onHover: transform .3s;
+@bl-customComponent-emoji-emojiPicker-zIndex: 100;
+
+@bl-customComponent-emoji-dropdownPosition-left: -93%;
+@bl-customComponent-emoji-dropdownPosition-center: -46%;
+@bl-customComponent-emoji-dropdownPosition-right: 0%;
+
+.bl-customComponent-emoji {
+  display: flex;
+  height: auto;
+  width: auto;
+
+  &--disabled {
+    opacity: @bl-customComponent-emoji-disabled-opacity;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .emoji-picker {
+    position: relative;
+
+    &__button {
+      cursor: pointer;
+
+      &:hover {
+        transform: @bl-customComponent-emoji-button-transform-onHover;
+        transition: @bl-customComponent-emoji-button-transition-onHover;
+      }
+    }
+
+    &__dropdown {
+      position: absolute;
+      z-index: @bl-customComponent-emoji-emojiPicker-zIndex;
+
+      &-position--left {
+        transform: translateX(@bl-customComponent-emoji-dropdownPosition-left);
+      }
+
+      &-position--center {
+        transform: translateX(@bl-customComponent-emoji-dropdownPosition-center);
+      }
+
+      &-position--right {
+        transform: translateX(@bl-customComponent-emoji-dropdownPosition-right);
+      }
+    }
+  }
+}
