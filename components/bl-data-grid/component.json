@@ -195,6 +195,18 @@
       ]
     },
     {
+      "type": "json",
+      "name": "rowStyle",
+      "label": "Row Style",
+      "settingTooltip": "ability to specify row styles",
+      "showInSettings": true,
+      "defaultValue": "{\"backgroundColor\": \"#f8fcfd\"}",
+      "hasLogicHandler": true,
+      "handlerId": "rowStyleLogic",
+      "handlerLabel": "Row Style Logic",
+      "handlerDescription": "This handler allows you to specify styles for component rows."
+    },
+    {
       "type": "text",
       "name": "loadingText",
       "label": "Loading Text",
@@ -291,6 +303,17 @@
           "label": "Columns"
         }
       ]
+    },
+    {
+      "name": "onFiltering",
+      "label": "On Filtering",
+      "contextBlocks": [
+        {
+          "id": "filterModel",
+          "label": "Filter Model"
+        }
+      ],
+      "handlerDescription": "This event is fired when text is entered into the filter fields."
     }
   ],
   "actions": [
