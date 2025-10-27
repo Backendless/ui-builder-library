@@ -61,7 +61,7 @@ export default function DataGridComponent({ component, eventHandlers }) {
   }, []);
 
   const handleColumnMove = useCallback(() => {
-    onColumnMoved({ columns: gridRef.current.columnApi.getColumnState() });
+    onColumnMoved({ columns: gridRef.current.api.getColumnState() });
   }, []);
 
   const handleFilterChange = useCallback(() => {
@@ -69,13 +69,13 @@ export default function DataGridComponent({ component, eventHandlers }) {
   }, []);
 
   const sortByColumnId = useCallback((columnId, direction) => {
-    gridRef.current.columnApi.applyColumnState({
+    gridRef.current.api.applyColumnState({
       state: [{ colId: columnId, sort: direction.toLowerCase() }], defaultState: { sort: null },
     });
   }, []);
 
   const clearSort = useCallback(() => {
-    gridRef.current.columnApi.applyColumnState({ defaultState: { sort: null } });
+    gridRef.current.api.applyColumnState({ defaultState: { sort: null } });
   }, []);
 
   const onFirstDataRendered = useCallback(
@@ -146,7 +146,7 @@ function useActions({ component, gridRef, sortByColumnId, clearSort }) {
 
       return rowsData;
     },
-    getColumnState : () => gridRef.current.columnApi.getColumnState(),
+    getColumnState : () => gridRef.current.api.getColumnState(),
     getSelectedRows: () => gridRef.current.api.getSelectedNodes().map(node => node.data),
     sortByColumnId : (columnId, direction) => sortByColumnId(columnId, direction),
     clearSort      : () => clearSort(),
