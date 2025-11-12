@@ -1,0 +1,187 @@
+{
+  "id": "c_9a93b7887145faf22c0fe8941612bac3",
+  "name": "Emoji",
+  "description": "The component is for emoji selection.",
+  "showInToolbox": true,
+  "faIcon": "icons",
+  "mainJS": "dist/index.js",
+  "type": "custom",
+  "category": "Custom Components",
+  "properties": [
+    {
+      "type": "checkbox",
+      "name": "disabled",
+      "label": "Disabled",
+      "settingTooltip": "This setting allows you to disable the component.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "disabledLogic",
+      "handlerLabel": "Disabled Logic",
+      "handlerDescription": "This handler allows you to disable the component.",
+      "dataBinding": true
+    },
+    {
+      "type": "color",
+      "name": "buttonColor",
+      "label": "Button Color",
+      "settingTooltip": "This setting allows you to specify the color of the button.",
+      "showInSettings": true,
+      "defaultValue": "#000000",
+      "hasLogicHandler": true,
+      "handlerId": "buttonColorLogic",
+      "handlerLabel": "Button Color Logic",
+      "handlerDescription": "This handler allows you to specify the color of the button.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "buttonSize",
+      "label": "Button Size",
+      "settingTooltip": "This setting allows you to specify the button size.",
+      "showInSettings": true,
+      "defaultValue": "24px",
+      "hasLogicHandler": true,
+      "handlerId": "buttonSizeLogic",
+      "handlerLabel": "Button Size Logic",
+      "handlerDescription": "This handler allows you to specify the button size.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "dropdownHeight",
+      "label": "Dropdown List Height",
+      "settingTooltip": "This setting allows you to specify the dropdown list height.",
+      "showInSettings": true,
+      "defaultValue": "500px",
+      "hasLogicHandler": true,
+      "handlerId": "dropdownHeightLogic",
+      "handlerLabel": "Dropdown List Height Logic",
+      "handlerDescription": "This handler allows you to specify the dropdown list height.",
+      "dataBinding": true
+    },
+    {
+      "type": "text",
+      "name": "dropdownWidth",
+      "label": "Dropdown List Width",
+      "settingTooltip": "This setting allows you to specify the dropdown list width.",
+      "showInSettings": true,
+      "defaultValue": "400px",
+      "hasLogicHandler": true,
+      "handlerId": "dropdownWidthLogic",
+      "handlerLabel": "Dropdown List Width Logic",
+      "handlerDescription": "This handler allows you to specify the dropdown list width.",
+      "dataBinding": true
+    },
+    {
+      "type": "select",
+      "name": "dropdownPosition",
+      "label": "Dropdown List Position",
+      "settingTooltip": "This setting allows you to select the position of the dropdown.",
+      "showInSettings": true,
+      "defaultValue": "center",
+      "hasLogicHandler": true,
+      "handlerId": "dropdownPositionLogic",
+      "handlerLabel": "Dropdown List Position Logic",
+      "handlerDescription": "This handler allows you to select the position of the dropdown.",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "theme",
+      "label": "Theme",
+      "settingTooltip": "This setting allows you to select a theme for the emoji dropdown list.",
+      "showInSettings": true,
+      "defaultValue": "light",
+      "hasLogicHandler": true,
+      "handlerId": "themeLogic",
+      "handlerLabel": "Theme Logic",
+      "handlerDescription": "This handler allows you to select a theme for the emoji dropdown list.",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "dark",
+          "label": "Dark"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "emojiStyle",
+      "label": "Emoji Style",
+      "settingTooltip": "This setting allows you to select an emoji style.",
+      "showInSettings": true,
+      "defaultValue": "apple",
+      "hasLogicHandler": true,
+      "handlerId": "emojiStyleLogic",
+      "handlerLabel": "Emoji Style Logic",
+      "handlerDescription": "This handler allows you to select an emoji style.",
+      "dataBinding": true,
+      "options": [
+        {
+          "value": "apple",
+          "label": "Apple"
+        },
+        {
+          "value": "google",
+          "label": "Google"
+        },
+        {
+          "value": "facebook",
+          "label": "Facebook"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "name": "searchDisabled",
+      "label": "Search Disabled",
+      "settingTooltip": "This setting allows you to disable the emoji search field.",
+      "showInSettings": true,
+      "hasLogicHandler": true,
+      "handlerId": "searchDisabledLogic",
+      "handlerLabel": "Search Disabled Logic",
+      "handlerDescription": "This handler allows you to disable the emoji search field.",
+      "dataBinding": true
+    }
+  ],
+  "eventHandlers": [
+    {
+      "name": "onEmojiSelect",
+      "label": "On Emoji Select Event",
+      "output": false,
+      "handlerDescription": "This event is triggered when an emoji is selected.",
+      "contextBlocks": [
+        {
+          "id": "emoji",
+          "label": "Emoji"
+        },
+        {
+          "id": "emojiNames",
+          "label": "Emoji Names"
+        }
+      ]
+    }
+  ]
+}
